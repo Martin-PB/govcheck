@@ -2,32 +2,41 @@
 
 **Gouvernance formelle des dépôts logiciels, centrée sur le dépôt.**
 
-GovCheck vise à rendre les règles de développement explicites, vérifiables par machine, traçables et applicables au moment de l'acceptation des changements, indépendamment de l'agent, du VCS, de l'hébergement ou de la forge.
+GovCheck vise à rendre les règles de développement explicites, vérifiables par machine, traçables et applicables à l'acceptation des changements, indépendamment de l'agent, du VCS, de l'hébergement, de la forge ou d'un service distant.
 
-> **Bootstrap :** aucun exécutable, moteur canonique, preuve formelle ou mécanisme d'application n'est encore implémenté. Ce dépôt consigne les décisions de conception, pas des garanties opérationnelles.
+> **État actuel :** les spécifications d'architecture sont prêtes pour revue. GovCheck n'est pas encore implémenté ni formellement vérifié. Les intentions de conception ne sont pas des garanties opérationnelles.
 
 ## Principes
 
-- Le dépôt et son cycle de vie sont l'objet gouverné ; humains et agents sont des contributeurs.
-- Un modèle canonique versionné, lisible par machine, sera l'unique autorité normative. Markdown en sera une projection ou une explication contrôlée.
-- Le socle formel s'applique à tout dépôt, quelle que soit sa taille.
-- Petit exécutable local comme interface principale ; aucun service hébergé, daemon ou serveur MCP obligatoire.
-- Git et Pijul sont de première classe, avec leurs sémantiques propres.
-- Usages locaux, serveurs d'équipe, hébergements auto-gérés et forges publiques sont dans le périmètre.
+- Le dépôt et son cycle de vie sont gouvernés ; humains et agents sont des contributeurs.
+- Un modèle canonique versionné est l'unique autorité normative ; Markdown est une projection contrôlée ou une explication.
+- Les fondations formelles de gouvernance et d'assurance s'appliquent à tous les dépôts, quelle que soit leur taille.
+- Un petit exécutable local est l'interface principale ; aucun service hébergé, daemon ou serveur MCP obligatoire.
+- Git et Pijul sont de première classe et sémantiquement distincts.
+- Usages locaux, serveurs d'équipe, hébergements auto-gérés et publics sont dans le périmètre.
 - VCS, hébergement, collaboration et acceptation sont des responsabilités séparées.
-- Noyau réduit, profils déclaratifs et adaptateurs étroits ; réutilisation des outils existants.
-- Bootstrap et migrations selon inspecter → planifier → appliquer, sans écrasement silencieux.
+- Les contrôles locaux sont utiles ; l'application partagée relève d'une frontière d'intégration vérifiable indépendamment.
+- Préférer un noyau réduit, des profils déclaratifs, des adaptateurs étroits et la réutilisation des outils existants.
+- Bootstrap et migration suivent inspecter → planifier → appliquer, sans destruction.
 
 ## Langues
 
 L'anglais est la langue par défaut : [README.md](README.md). Cette page est la version française.
 
-## État
+## Spécifications d'architecture
 
-Le premier jalon est de définir le contrat canonique, la sémantique du cycle de vie, le vocabulaire d'assurance et les contrats d'adaptateurs avant de choisir le langage d'implémentation.
+Le premier cycle de conception est documenté dans [docs/specifications](docs/specifications/README.md) :
+1. Modèle canonique de gouvernance.
+2. Cycle de vie et acceptation des changements.
+3. Contrats des adaptateurs VCS et collaboration.
+4. Assurance, affirmations et preuves.
 
-Voir [ADR 0001 — périmètre et architecture](docs/decisions/0001-bootstrap-boundaries.fr.md) et [la version anglaise](docs/decisions/0001-bootstrap-boundaries.md).
+Chaque spécification existe en anglais et en français. Elles définissent des contrats proposés, pas un comportement implémenté.
+
+## Décisions et suite
+
+[ADR 0001](docs/decisions/0001-bootstrap-boundaries.fr.md) consigne les frontières du bootstrap. Restent à décider : langage d'implémentation, format/schéma canonique, langage d'expression, noyau formel, approche cryptographique, licence et stratégie de dépendances. Ces choix doivent faire l'objet d'une analyse comparative explicite avant l'implémentation.
 
 ## Licence
 
-Aucune licence n'a été choisie. Aucune permission de réutilisation ou redistribution ne doit être présumée.
+Aucune licence n'a été choisie. Aucune permission de réutilisation, modification ou redistribution ne doit être présumée.

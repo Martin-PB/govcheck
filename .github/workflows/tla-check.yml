@@ -28,10 +28,11 @@ jobs:
         run: |
           set +e
           python3 scripts/render-lifecycle-diagram.py --check 2>&1 | tee drift-check.log
-          echo "check-exit=${PIPESTATUS[0]}" | tee -a drift-check.log
+          check_rc=${PIPESTATUS[0]}
+          echo "check-exit=${check_rc}" | tee -a drift-check.log
           python3 --version 2>&1 | tee -a drift-check.log
           git status --porcelain | tee -a drift-check.log
-          exit ${PIPESTATUS[0]}
+          exit "${check_rc}"
       - name: Upload drift check log
         if: always()
         uses: actions/upload-artifact@v4

@@ -223,8 +223,7 @@ NoImplicitApplication ==
   phase # "Applied" => appliedCandidateId = None
 
 TerminalDiscipline ==
-  phase \in TerminalPhases =>
-    phase' = phase
+  [] (phase \in TerminalPhases => phase' = phase)
 
 HistoryNonEmpty == Len(history) >= 1
 

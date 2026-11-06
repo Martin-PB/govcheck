@@ -55,7 +55,9 @@ jobs:
       - name: Run SANY parse check
         run: java -cp tla2tools.jar tla2sany.SANY formal/tla/GovCheckLifecycle.tla
       - name: Run TLC with pinned configuration
-        run: java -cp tla2tools.jar tlc2.TLC -config formal/tla/GovCheckLifecycle.cfg formal/tla/GovCheckLifecycle.tla 2>&1 | tee tlc-report.txt
+        run: |
+          set -o pipefail
+          java -cp tla2tools.jar tlc2.TLC -config formal/tla/GovCheckLifecycle.cfg formal/tla/GovCheckLifecycle.tla 2>&1 | tee tlc-report.txt
       - name: Upload TLC report
         uses: actions/upload-artifact@v4
         with:

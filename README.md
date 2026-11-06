@@ -33,6 +33,8 @@ The first architecture-design pass is documented in [docs/specifications](docs/s
 
 Each specification has an English and French version. They define proposed contracts, not implemented behavior.
 
+The design rationale, assurance distinctions, lifecycle-model audit, canonical documentation authority, governance metamodel, development workflow and ecosystem assessments are indexed in [docs/architecture](docs/architecture/README.md).
+
 ## Decisions and next phase
 
 [ADR 0001](docs/decisions/0001-bootstrap-boundaries.md) records the accepted bootstrap boundaries. Remaining decisions include implementation language, canonical serialization/schema, expression language, formal kernel, cryptographic approach, license, and dependency strategy. These should be resolved through explicit comparative analysis before implementation.

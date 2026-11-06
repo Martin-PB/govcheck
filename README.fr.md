@@ -33,6 +33,8 @@ Le premier cycle de conception est documenté dans [docs/specifications](docs/sp
 
 Chaque spécification existe en anglais et en français. Elles définissent des contrats proposés, pas un comportement implémenté.
 
+Le raisonnement de conception, les distinctions d’assurance, l’audit du modèle de cycle de vie, l’autorité documentaire canonique, le métamodèle, le flux de développement et les évaluations de l’écosystème sont indexés dans [docs/architecture](docs/architecture/README.fr.md).
+
 ## Décisions et suite
 
 [ADR 0001](docs/decisions/0001-bootstrap-boundaries.fr.md) consigne les frontières du bootstrap. Restent à décider : langage d'implémentation, format/schéma canonique, langage d'expression, noyau formel, approche cryptographique, licence et stratégie de dépendances. Ces choix doivent faire l'objet d'une analyse comparative explicite avant l'implémentation.

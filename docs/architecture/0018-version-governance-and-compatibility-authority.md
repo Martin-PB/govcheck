@@ -152,3 +152,7 @@ This record does not claim that GovCheck implements a decision engine, dependenc
 - [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html); [W3C PROV-O](https://www.w3.org/TR/prov-o/); [DataCite Versioning](https://support.datacite.org/docs/versioning); [1EdTech Versioning Framework 1.0](https://www.imsglobal.org/spec/versioning/v1).
 
 External references inform the design; the authority and compatibility rules here are GovCheck proposals, not requirements imposed by those standards.
+
+## Machine-readable design
+
+A non-normative first draft of the machine-readable records is maintained in [formal/schemas/README.md](../../formal/schemas/README.md). It separates version-decision events from revision-bound dependency edges. These schemas remain proposals: they do not establish authority, prove compatibility or implement invalidation.

@@ -4,13 +4,29 @@ on:
   pull_request:
     paths:
       - 'formal/tla/**'
+      - 'formal/lifecycle-transitions.json'
+      - 'scripts/render-lifecycle-diagram.py'
+      - 'docs/formal/lifecycle-diagram.mmd'
       - '.github/workflows/tla-check.yml'
   push:
     branches: [main]
     paths:
       - 'formal/tla/**'
+      - 'formal/lifecycle-transitions.json'
+      - 'scripts/render-lifecycle-diagram.py'
+      - 'docs/formal/lifecycle-diagram.mmd'
 
 jobs:
+  diagram-drift:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check generated lifecycle diagram is fresh
+        run: python3 scripts/render-lifecycle-diagram.py --check
+
   tlc:
     runs-on: ubuntu-latest
     steps:

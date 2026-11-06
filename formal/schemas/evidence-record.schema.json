@@ -12,7 +12,6 @@
     "subject",
     "governance",
     "method",
-    "execution",
     "result",
     "provenance",
     "limitations",
@@ -42,6 +41,7 @@
       "type": "object",
       "additionalProperties": false,
       "required": [
+        "packageId",
         "packageRevision",
         "semanticsVersion"
       ],
@@ -276,13 +276,32 @@
         {
           "required": [
             "rawResult"
-          ]
+          ],
+          "not": {
+            "anyOf": [
+              {
+                "required": [
+                  "rawResultReference"
+                ]
+              },
+              {
+                "required": [
+                  "rawResultDigest"
+                ]
+              }
+            ]
+          }
         },
         {
           "required": [
             "rawResultReference",
             "rawResultDigest"
-          ]
+          ],
+          "not": {
+            "required": [
+              "rawResult"
+            ]
+          }
         },
         {
           "properties": {
@@ -293,6 +312,25 @@
                 "unsupported"
               ]
             }
+          },
+          "not": {
+            "anyOf": [
+              {
+                "required": [
+                  "rawResult"
+                ]
+              },
+              {
+                "required": [
+                  "rawResultReference"
+                ]
+              },
+              {
+                "required": [
+                  "rawResultDigest"
+                ]
+              }
+            ]
           }
         }
       ]
@@ -500,5 +538,38 @@
         }
       }
     }
-  }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "result": {
+            "properties": {
+              "status": {
+                "const": "not-run"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          }
+        },
+        "required": [
+          "result"
+        ]
+      },
+      "then": {
+        "not": {
+          "required": [
+            "execution"
+          ]
+        }
+      },
+      "else": {
+        "required": [
+          "execution"
+        ]
+      }
+    }
+  ]
 }

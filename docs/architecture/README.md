@@ -14,3 +14,5 @@ The foundational contracts are in [docs/specifications](../specifications/README
 ## Status
 
 These documents are proposals and design records for maintainer review. They are not implemented controls, verified security properties or technology decisions. See each document's status and limitations before relying on it.
+- [0010 — Assurance, Testimony, Proof and Conformance](0010-assurance-proof-and-conformance.md) · [Français](0010-assurance-proof-and-conformance.fr.md)
+- [0011 — Lifecycle Model: Assertion-by-Assertion Audit](0011-lifecycle-model-assertion-audit.md) · [Français](0011-lifecycle-model-assertion-audit.fr.md)

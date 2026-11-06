@@ -13,8 +13,9 @@ L'anglais est la langue par défaut. Chaque document d'architecture possède une
 - [0014 — Flux de développement gouverné et responsabilités](0014-governed-development-workflow.fr.md) · [English](0014-governed-development-workflow.md)
 - [0015 — Outil de conformité de gouvernance et plan de validation](0015-governance-conformance-and-validation-plan.fr.md) · [English](0015-governance-conformance-and-validation-plan.md)
 - [0016 — Évaluation de Writ et Privateer fondée sur leurs sources](0016-writ-privateer-assessment.fr.md) · [English](0016-writ-privateer-assessment.md)
+- [0017 — Identité, révision et politique de versionnement des artefacts](0017-artifact-identity-revision-and-versioning.fr.md) · [English](0017-artifact-identity-revision-and-versioning.md)
 
-Les documents 0009–0015 préservent le raisonnement de conception et les distinctions d'assurance. Ils complètent les contrats fondateurs dans [docs/specifications](../specifications/README.md) ; ils ne transforment pas silencieusement des propositions en contrôles implémentés ou règles approuvées.
+Les documents 0009–0017 préservent le raisonnement de conception et les distinctions d'assurance. Le document 0017 propose une politique par catégorie qui sépare identité logique, révisions immuables, versions de compatibilité des contrats, identités de release et instances de preuve/événement. Il n'impose pas SemVer universellement et ne transforme pas les propositions en contrôles implémentés ou règles normatives approuvées.
 
 ## Statut
 

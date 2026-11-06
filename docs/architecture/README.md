@@ -13,8 +13,9 @@ English is the default language. Each record has a French counterpart.
 - [0014 — Governed development workflow and actor responsibilities](0014-governed-development-workflow.md) · [Français](0014-governed-development-workflow.fr.md)
 - [0015 — Governance conformance tool and validation plan](0015-governance-conformance-and-validation-plan.md) · [Français](0015-governance-conformance-and-validation-plan.fr.md)
 - [0016 — Source-based assessment of Writ and Privateer](0016-writ-privateer-assessment.md) · [Français](0016-writ-privateer-assessment.fr.md)
+- [0017 — Artifact identity, revision and versioning policy](0017-artifact-identity-revision-and-versioning.md) · [Français](0017-artifact-identity-revision-and-versioning.fr.md)
 
-Records 0009–0015 preserve design rationale and assurance distinctions. They complement the foundational contracts in [docs/specifications](../specifications/README.md); they do not silently turn proposals into implemented controls or approved normative rules.
+Records 0009–0017 preserve design rationale and assurance distinctions. Record 0017 proposes a category-specific policy separating logical identity, immutable revisions, contract compatibility versions, release identities and evidence/event instances. It does not make SemVer universal or turn proposals into implemented controls or approved normative rules.
 
 ## Status
 

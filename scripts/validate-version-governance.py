@@ -232,10 +232,12 @@ def validate_bundle(bundle: Any) -> dict[str, Any]:
             key = (decision.get("artifactId", ""), decision.get("contractId", ""),
                    revision_key(decision.get("artifactId", ""), decision["candidateRevision"]))
             authorized.setdefault(key, []).append(decision_id)
+    superseded_ids = set(supersession_graph.values())
     for ids in authorized.values():
-        if len(ids) > 1:
+        current_ids = [decision_id for decision_id in ids if decision_id not in superseded_ids]
+        if len(current_ids) > 1:
             add(findings, "error", "decision.multiple-authorizations",
-                f"Multiple authorized decisions target the same artifact/contract/revision: {', '.join(sorted(ids))}.")
+                f"Multiple non-superseded authorized decisions target the same artifact/contract/revision: {', '.join(sorted(current_ids))}.")
 
     return _result(findings)
 

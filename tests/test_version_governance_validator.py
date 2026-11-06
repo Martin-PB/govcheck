@@ -22,6 +22,7 @@ def authorized_decision():
         "previous": None,
         "candidateRevision": revision("a" * 40),
         "proposedContractVersion": "1.0.0",
+        "contractScope": {"summary": "Synthetic public contract.", "consumerClasses": ["test-consumer"]},
         "compatibility": {
             "classification": "initial-publication",
             "rationale": "Synthetic test case.",
@@ -54,7 +55,8 @@ def bundle():
             "relation": "verifies",
             "source": {"artifactId": "govcheck.example-proof", "revision": revision("b" * 40)},
             "target": {"artifactId": "govcheck.example-contract", "revision": revision("a" * 40)},
-            "validity": {"status": "active"}
+            "validity": {"status": "active"},
+            "provenance": {"recordedAt": "2026-01-01T00:00:00Z", "recordedBy": "synthetic-test"}
         }]
     }
 
@@ -86,6 +88,13 @@ class ValidatorTests(unittest.TestCase):
         result = MODULE.validate_bundle(data)
         self.assertEqual(result["status"], "stale")
         self.assertIn("edge.not-current", {x["code"] for x in result["findings"]})
+
+    def test_missing_edge_validity_is_unknown_not_active(self):
+        data = bundle()
+        data["dependencies"][0].pop("validity")
+        result = MODULE.validate_bundle(data)
+        self.assertEqual(result["status"], "unknown")
+        self.assertIn("edge.validity-unresolved", {x["code"] for x in result["findings"]})
 
     def test_impact_cannot_call_revoked_edge_unaffected(self):
         data = bundle()

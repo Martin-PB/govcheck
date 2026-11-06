@@ -5,7 +5,7 @@
 | Schema | Purpose | Its `schemaVersion` identifies |
 |---|---|---|
 | [release-manifest.schema.json](release-manifest.schema.json) | Binds a repository release to source artifacts and generated evidence | Release-manifest serialization format |
-| [version-decision.schema.json](version-decision.schema.json) | Records an immutable version/compatibility decision event | Version-decision record format |
+| [version-decision.schema.json](version-decision.schema.json) | Records an immutable version/compatibility decision event | Version-decision record format |\n| [evidence-record.schema.json](evidence-record.schema.json) | Binds an observation, execution or derivation to claims, exact subjects, method, context and provenance | Evidence-record format |
 | [dependency-edge.schema.json](dependency-edge.schema.json) | Records a typed relation between exact artifact revisions | Dependency-edge record format |
 | [version-governance-bundle.schema.json](version-governance-bundle.schema.json) | Groups an exact-revision inventory, decisions and dependency edges for cross-record checks | Validation-bundle envelope format |
 
@@ -32,6 +32,8 @@ The schemas do not impose one global acyclicity rule: cycle constraints, if any,
 
 - [version-decision-blocked.example.json](../fixtures/version-decision-blocked.example.json)
 - [dependency-edge.example.json](../fixtures/dependency-edge.example.json)
+- [evidence-record-passed.example.json](../fixtures/evidence-record-passed.example.json)
+- [evidence-record-not-run.example.json](../fixtures/evidence-record-not-run.example.json)
 
 The examples deliberately use reserved `example.invalid` references and synthetic revision IDs. They are schema illustrations, not GovCheck history or evidence.
 

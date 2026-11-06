@@ -268,6 +268,13 @@ Recommended order: refine semantic identities and evidence assumptions; validate
 - `formal/lifecycle-transitions.json`, `docs/formal/lifecycle-diagram.mmd`, `scripts/render-lifecycle-diagram.py`: explanatory transition registry, generated diagram and structural drift checker.
 - `formal/artifacts.json`, `formal/schemas/release-manifest.schema.json`: artifact identity and release evidence manifest.
 
+- `docs/architecture/0010-assurance-proof-and-conformance.md`: assurance, evidence, proof and conformance distinctions.
+- `docs/architecture/0011-lifecycle-model-assertion-audit.md`: source-level audit of the current TLA+ lifecycle model.
+- `docs/architecture/0012-normative-authority-and-documentation.md`: canonical authority and controlled documentation projections.
+- `docs/architecture/0013-governance-metamodel.md`: goals, requirements, norms, properties and assurance traceability.
+- `docs/architecture/0014-governed-development-workflow.md`: task workflow, actor responsibilities and agent qualification.
+- `docs/architecture/0015-governance-conformance-and-validation-plan.md`: conformance responsibilities, future acceptance tests and delivery sequence.
+
 ## 15. Change control for this record
 
 This document is a consolidated rationale and decision index, not a second normative specification. If a design decision changes, update the relevant ADR/specification/model first and then update this record and its French counterpart. Do not silently change historical decisions: supersede them with a dated ADR or explicit specification revision. Keep implementation status and verification claims synchronized with actual repository evidence.

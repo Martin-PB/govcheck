@@ -113,11 +113,11 @@ def validate_bundle(bundle: Any) -> dict[str, Any]:
                 add(findings, "error", "decision.undetermined-authorized",
                     f"Undetermined decision '{decision_id}' cannot be authorized.")
             if classification == "initial-publication":
-                if previous is not None or not isinstance(proposed, str) or not SEMVER.fullmatch(proposed):
+                if "previous" not in decision or previous is not None or "proposedContractVersion" not in decision or not isinstance(proposed, str) or not SEMVER.fullmatch(proposed):
                     add(findings, "error", "decision.initial-publication",
                         f"Initial publication '{decision_id}' needs previous=null and a SemVer contract version.")
             elif classification == "no-contract-change":
-                if proposed is not None:
+                if "proposedContractVersion" not in decision or proposed is not None:
                     add(findings, "error", "decision.no-contract-change",
                         f"No-contract-change decision '{decision_id}' must not assign a new contract version.")
             elif classification in {"major", "minor", "patch"}:

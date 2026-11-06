@@ -1,0 +1,24 @@
+{
+  "catalogueVersion": 1,
+  "versioningPolicy": {
+    "sourceFiles": "Stable paths; revisions are recorded in Git history.",
+    "releaseIdentity": "A Git tag identifies the exact repository commit for a release.",
+    "generatedEvidence": "Attach immutable, release-specific reports and a release manifest to the GitHub Release; do not commit renamed copies of source files.",
+    "renames": "Preserve the stable artifactId when an artifact is renamed or moved. Record the new path in the catalogue in the same change."
+  },
+  "artifacts": [
+    {
+      "artifactId": "govcheck.lifecycle",
+      "kind": "formal-model",
+      "title": "GovCheck lifecycle TLA+ model",
+      "source": "formal/tla/GovCheckLifecycle.tla",
+      "configuration": "formal/tla/GovCheckLifecycle.cfg",
+      "documentation": {
+        "en": "docs/formal/lifecycle-model.md",
+        "fr": "docs/formal/lifecycle-model.fr.md"
+      },
+      "revisionPolicy": "repository-history",
+      "releaseBinding": "release-tag-and-commit"
+    }
+  ]
+}

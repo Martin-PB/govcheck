@@ -1,0 +1,59 @@
+stateDiagram-v2
+  direction TB
+  state "Proposed" as Proposed
+  state "Prepared" as Prepared
+  state "Evaluated" as Evaluated
+  state "Reviewable" as Reviewable
+  state "Accepted" as Accepted
+  state "Applied" as Applied <<end>>
+  state "Stale" as Stale
+  state "Rejected" as Rejected <<end>>
+  state "Withdrawn" as Withdrawn <<end>>
+  state "Superseded" as Superseded <<end>>
+  Proposed --> Prepared : Prepare [Prepare]
+  Prepared --> Prepared : Publish evidence; invalidate evaluation [PublishEvidence]
+  Evaluated --> Prepared : Publish evidence; invalidate evaluation [PublishEvidence]
+  Reviewable --> Prepared : Publish evidence; invalidate evaluation [PublishEvidence]
+  Prepared --> Reviewable : Evaluate (all evidence present) [Evaluate]
+  Evaluated --> Reviewable : Evaluate (all evidence present) [Evaluate]
+  Reviewable --> Reviewable : Evaluate (all evidence present) [Evaluate]
+  Stale --> Reviewable : Evaluate (all evidence present) [Evaluate]
+  Prepared --> Evaluated : Evaluate (evidence incomplete) [Evaluate]
+  Evaluated --> Evaluated : Evaluate (evidence incomplete) [Evaluate]
+  Reviewable --> Evaluated : Evaluate (evidence incomplete) [Evaluate]
+  Stale --> Evaluated : Evaluate (evidence incomplete) [Evaluate]
+  Reviewable --> Reviewable : Approve (authorized actor) [Approve]
+  Reviewable --> Accepted : Accept (predicate satisfied) [Accept]
+  Accepted --> Applied : Apply exact accepted candidate [Apply]
+  Proposed --> Stale : Change inputs; invalidate derived state [ChangeInputs]
+  Prepared --> Stale : Change inputs; invalidate derived state [ChangeInputs]
+  Evaluated --> Stale : Change inputs; invalidate derived state [ChangeInputs]
+  Reviewable --> Stale : Change inputs; invalidate derived state [ChangeInputs]
+  Accepted --> Stale : Change inputs; invalidate derived state [ChangeInputs]
+  Stale --> Stale : Change inputs; invalidate derived state [ChangeInputs]
+  Proposed --> Rejected : Reject [Reject]
+  Prepared --> Rejected : Reject [Reject]
+  Evaluated --> Rejected : Reject [Reject]
+  Reviewable --> Rejected : Reject [Reject]
+  Accepted --> Rejected : Reject [Reject]
+  Stale --> Rejected : Reject [Reject]
+  Proposed --> Withdrawn : Withdraw [Withdraw]
+  Prepared --> Withdrawn : Withdraw [Withdraw]
+  Evaluated --> Withdrawn : Withdraw [Withdraw]
+  Reviewable --> Withdrawn : Withdraw [Withdraw]
+  Accepted --> Withdrawn : Withdraw [Withdraw]
+  Stale --> Withdrawn : Withdraw [Withdraw]
+  Proposed --> Superseded : Supersede [Supersede]
+  Prepared --> Superseded : Supersede [Supersede]
+  Evaluated --> Superseded : Supersede [Supersede]
+  Reviewable --> Superseded : Supersede [Supersede]
+  Accepted --> Superseded : Supersede [Supersede]
+  Stale --> Superseded : Supersede [Supersede]
+
+  note right of Reviewable
+    Approval is distinct from evidence and acceptance.
+    Acceptance is distinct from application.
+  end note
+
+  %% Generated from formal/lifecycle-transitions.json.
+  %% Explanatory view only; TLA+ remains authoritative.

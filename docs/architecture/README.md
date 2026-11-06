@@ -15,8 +15,9 @@ English is the default language. Each record has a French counterpart.
 - [0016 — Source-based assessment of Writ and Privateer](0016-writ-privateer-assessment.md) · [Français](0016-writ-privateer-assessment.fr.md)
 - [0017 — Artifact identity, revision and versioning policy](0017-artifact-identity-revision-and-versioning.md) · [Français](0017-artifact-identity-revision-and-versioning.fr.md)
 - [0018 — Version governance, compatibility and approval authority](0018-version-governance-and-compatibility-authority.md) · [Français](0018-version-governance-and-compatibility-authority.fr.md)
+- [0019 — Artifact catalogue and release-manifest evolution](0019-catalogue-and-release-manifest-migration.md) · [Français](0019-catalogue-and-release-manifest-migration.fr.md)
 
-Records 0009–0018 preserve design rationale and assurance distinctions. Record 0017 proposes a category-specific policy separating logical identity, immutable revisions, contract compatibility versions, release identities and evidence/event instances. It does not make SemVer universal or turn proposals into implemented controls or approved normative rules.
+Records 0009–0019 preserve design rationale and assurance distinctions. Record 0019 proposes a staged catalogue and release-manifest migration; it remains a proposal, not an implemented control or approved normative rule. Record 0017 proposes a category-specific policy separating logical identity, immutable revisions, contract compatibility versions, release identities and evidence/event instances. It does not make SemVer universal or turn proposals into implemented controls or approved normative rules.
 
 ## Status
 

@@ -26,14 +26,18 @@ jobs:
           python-version: '3.12'
       - name: Check generated lifecycle diagram is fresh
         run: |
-          python3 scripts/render-lifecycle-diagram.py --check || {
-            echo '--- drift check failed, debug info ---';
-            python3 --version;
-            python3 scripts/render-lifecycle-diagram.py --check;
-            echo "exit=$?";
-            git status --porcelain;
-            exit 1;
-          }
+          set +e
+          python3 scripts/render-lifecycle-diagram.py --check 2>&1 | tee drift-check.log
+          echo "check-exit=${PIPESTATUS[0]}" | tee -a drift-check.log
+          python3 --version 2>&1 | tee -a drift-check.log
+          git status --porcelain | tee -a drift-check.log
+          exit ${PIPESTATUS[0]}
+      - name: Upload drift check log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: drift-check-log
+          path: drift-check.log
 
   tlc:
     runs-on: ubuntu-latest

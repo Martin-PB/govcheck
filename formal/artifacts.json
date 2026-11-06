@@ -19,6 +19,19 @@
       },
       "revisionPolicy": "repository-history",
       "releaseBinding": "release-tag-and-commit"
+    },
+    {
+      "artifactId": "govcheck.assurance",
+      "kind": "formal-model",
+      "title": "GovCheck assurance claims and freshness TLA+ model",
+      "source": "formal/tla/GovCheckAssurance.tla",
+      "configuration": "formal/tla/GovCheckAssurance.cfg",
+      "documentation": {
+        "en": "docs/architecture/0021-assurance-claims-and-freshness.md",
+        "fr": "docs/architecture/0021-assurance-claims-and-freshness.fr.md"
+      },
+      "revisionPolicy": "repository-history",
+      "releaseBinding": "release-tag-and-commit"
     }
   ]
 }

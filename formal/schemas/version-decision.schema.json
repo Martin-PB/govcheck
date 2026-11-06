@@ -202,6 +202,8 @@
       "then": {
         "required": ["previous", "proposedContractVersion", "contractScope", "roles", "authority"],
         "properties": {
+          "previous": { "type": "object" },
+          "proposedContractVersion": { "$ref": "#/$defs/semver" },
           "roles": { "required": ["proposer", "authorizer"] },
           "compatibility": {
             "properties": { "classification": { "not": { "const": "undetermined" } } }

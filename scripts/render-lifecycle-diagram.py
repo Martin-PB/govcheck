@@ -14,10 +14,6 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 REGISTRY = ROOT / "formal/lifecycle-transitions.json"
-ACTION_NAMES = {
-    "Prepare", "PublishEvidence", "Evaluate", "Approve", "Accept", "Apply",
-    "ChangeInputs", "Reject", "Withdraw", "Supersede",
-}
 DEFINITION = re.compile(r"^([A-Za-z][A-Za-z0-9_]*)(?:\([^\n]*\))?\s*==", re.MULTILINE)
 
 
@@ -54,17 +50,27 @@ def main() -> int:
     diagram_path = ROOT / data["diagram"]
     model = model_path.read_text(encoding="utf-8")
     definitions = set(DEFINITION.findall(model))
+    next_match = re.search(r"^Next ==\s*(.*?)(?=^TypeOK ==)", model, re.MULTILINE | re.DOTALL)
+    if not next_match:
+        print("Could not locate the Next action definition")
+        return 1
+    branches = re.split(r"^\s*\\/", next_match.group(1), flags=re.MULTILINE)
+    next_actions = set()
+    for branch in branches:
+        action = re.search(r"(?:^|:)\\s*([A-Z][A-Za-z0-9_]*)\\s*(?:\\(|$)", branch.strip(), re.MULTILINE)
+        if action:
+            next_actions.add(action.group(1))
     registry_ops = {item["operator"] for item in data["transitions"]}
     missing_definitions = registry_ops - definitions
-    missing_registry = ACTION_NAMES - registry_ops
-    unknown_ops = registry_ops - ACTION_NAMES
+    missing_registry = next_actions - registry_ops
+    unknown_ops = registry_ops - next_actions
     if missing_definitions or missing_registry or unknown_ops:
         if missing_definitions:
             print("Missing TLA+ definitions:", ", ".join(sorted(missing_definitions)))
         if missing_registry:
-            print("Lifecycle actions missing from registry:", ", ".join(sorted(missing_registry)))
+            print("TLA+ Next actions missing from registry:", ", ".join(sorted(missing_registry)))
         if unknown_ops:
-            print("Unexpected registry operators:", ", ".join(sorted(unknown_ops)))
+            print("Registry operators not present in Next:", ", ".join(sorted(unknown_ops)))
         return 1
     generated = render(data)
     if args.check:

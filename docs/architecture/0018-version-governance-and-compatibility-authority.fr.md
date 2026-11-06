@@ -152,3 +152,7 @@ Ce document ne prétend pas que GovCheck implémente un moteur de décision, un 
 - [Semantic Versioning 2.0.0](https://semver.org/lang/fr/spec/v2.0.0.html) ; [W3C PROV-O](https://www.w3.org/TR/prov-o/) ; [DataCite — Versioning](https://support.datacite.org/docs/versioning) ; [1EdTech Versioning Framework 1.0](https://www.imsglobal.org/spec/versioning/v1).
 
 Ces références éclairent la conception ; les règles d'autorité et de compatibilité présentées ici sont des propositions propres à GovCheck, et non des exigences imposées par ces standards.
+
+## Modèle machine-readable
+
+Un premier brouillon non normatif des enregistrements machine-readable est maintenu dans [formal/schemas/README.md](../../formal/schemas/README.md). Il sépare les événements de décision de version des relations de dépendance liées à des révisions précises. Ces schémas restent des propositions : ils ne désignent pas l'autorité, ne prouvent pas la compatibilité et n'implémentent pas l'invalidation.

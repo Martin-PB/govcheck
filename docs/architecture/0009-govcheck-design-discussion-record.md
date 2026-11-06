@@ -275,6 +275,8 @@ Recommended order: refine semantic identities and evidence assumptions; validate
 - `docs/architecture/0014-governed-development-workflow.md`: task workflow, actor responsibilities and agent qualification.
 - `docs/architecture/0015-governance-conformance-and-validation-plan.md`: conformance responsibilities, future acceptance tests and delivery sequence.
 
+- `docs/architecture/0016-writ-privateer-assessment.md`: source-based assessment of Writ and Privateer, their distinct product layers, security limits and possible test-fixture roles.
+
 ## 15. Change control for this record
 
 This document is a consolidated rationale and decision index, not a second normative specification. If a design decision changes, update the relevant ADR/specification/model first and then update this record and its French counterpart. Do not silently change historical decisions: supersede them with a dated ADR or explicit specification revision. Keep implementation status and verification claims synchronized with actual repository evidence.

@@ -275,6 +275,8 @@ Ordre recommandé : affiner les identités sémantiques et hypothèses sur les p
 - `docs/architecture/0014-governed-development-workflow.fr.md` : flux des tâches, responsabilités et qualification des agents.
 - `docs/architecture/0015-governance-conformance-and-validation-plan.fr.md` : responsabilités de conformité, tests d’acceptation futurs et séquencement.
 
+- `docs/architecture/0016-writ-privateer-assessment.fr.md` : évaluation de Writ et Privateer à partir de leurs sources, de leurs couches produit distinctes, limites de sécurité et rôles possibles comme fixtures de test.
+
 ## 15. Gestion des évolutions de cette mémoire
 
 Ce document est une mémoire de conception et un index de décisions, pas une seconde spécification normative. Si une décision évolue, modifier d’abord l’ADR/la spécification/le modèle concerné, puis mettre à jour cette mémoire et sa version anglaise. Ne pas modifier silencieusement les décisions historiques : les remplacer par un ADR daté ou une révision explicite de spécification. Maintenir le statut d’implémentation et les affirmations de vérification alignés sur les preuves réellement présentes dans le dépôt.

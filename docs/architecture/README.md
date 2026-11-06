@@ -12,6 +12,7 @@ English is the default language. Each record has a French counterpart.
 - [0013 — Governance metamodel](0013-governance-metamodel.md) · [Français](0013-governance-metamodel.fr.md)
 - [0014 — Governed development workflow and actor responsibilities](0014-governed-development-workflow.md) · [Français](0014-governed-development-workflow.fr.md)
 - [0015 — Governance conformance tool and validation plan](0015-governance-conformance-and-validation-plan.md) · [Français](0015-governance-conformance-and-validation-plan.fr.md)
+- [0016 — Source-based assessment of Writ and Privateer](0016-writ-privateer-assessment.md) · [Français](0016-writ-privateer-assessment.fr.md)
 
 Records 0009–0015 preserve design rationale and assurance distinctions. They complement the foundational contracts in [docs/specifications](../specifications/README.md); they do not silently turn proposals into implemented controls or approved normative rules.
 

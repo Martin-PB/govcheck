@@ -12,6 +12,7 @@ L'anglais est la langue par défaut. Chaque document d'architecture possède une
 - [0013 — Métamodèle de gouvernance](0013-governance-metamodel.fr.md) · [English](0013-governance-metamodel.md)
 - [0014 — Flux de développement gouverné et responsabilités](0014-governed-development-workflow.fr.md) · [English](0014-governed-development-workflow.md)
 - [0015 — Outil de conformité de gouvernance et plan de validation](0015-governance-conformance-and-validation-plan.fr.md) · [English](0015-governance-conformance-and-validation-plan.md)
+- [0016 — Évaluation de Writ et Privateer fondée sur leurs sources](0016-writ-privateer-assessment.fr.md) · [English](0016-writ-privateer-assessment.md)
 
 Les documents 0009–0015 préservent le raisonnement de conception et les distinctions d'assurance. Ils complètent les contrats fondateurs dans [docs/specifications](../specifications/README.md) ; ils ne transforment pas silencieusement des propositions en contrôles implémentés ou règles approuvées.
 

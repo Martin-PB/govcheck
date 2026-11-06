@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "edgeId": "example:edge:lifecycle-proof",
+  "relation": "verifies",
+  "source": {
+    "artifactId": "govcheck.lifecycle.proof",
+    "revision": {
+      "vcs": "git",
+      "nativeId": "1111111111111111111111111111111111111111",
+      "repository": "https://example.invalid/govcheck",
+      "path": "formal/proofs/lifecycle-proof"
+    }
+  },
+  "target": {
+    "artifactId": "govcheck.lifecycle",
+    "revision": {
+      "vcs": "git",
+      "nativeId": "2222222222222222222222222222222222222222",
+      "repository": "https://example.invalid/govcheck",
+      "path": "formal/tla/GovCheckLifecycle.tla"
+    }
+  },
+  "scope": "Synthetic illustration only; not a claim that this proof artifact exists.",
+  "criticality": "informational",
+  "validity": {
+    "status": "active",
+    "reason": "Example fixture; no real dependency assertion."
+  },
+  "provenance": {
+    "recordedAt": "2026-01-01T00:00:00Z",
+    "recordedBy": "fixture-generator",
+    "sourceReference": "https://example.invalid"
+  }
+}

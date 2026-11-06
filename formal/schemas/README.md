@@ -5,7 +5,7 @@
 | Schema | Purpose | Its `schemaVersion` identifies |
 |---|---|---|
 | [release-manifest.schema.json](release-manifest.schema.json) | Binds a repository release to source artifacts and generated evidence | Release-manifest serialization format |
-| [version-decision.schema.json](version-decision.schema.json) | Records an immutable version/compatibility decision event | Version-decision record format |
+| [version-decision.schema.json](version-decision.schema.json) | Records an immutable version/compatibility decision event | Version-decision record format |\n| [evidence-record.schema.json](evidence-record.schema.json) | Binds an observation, execution or derivation to claims, exact subjects, method, context and provenance | Evidence-record format |
 | [dependency-edge.schema.json](dependency-edge.schema.json) | Records a typed relation between exact artifact revisions | Dependency-edge record format |
 
 These format versions are independent of the contract versions of artifacts described by the records. They are not GovCheck product versions and do not follow the MAJOR/MINOR/PATCH policy automatically.

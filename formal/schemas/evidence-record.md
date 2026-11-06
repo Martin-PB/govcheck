@@ -38,6 +38,8 @@ The result vocabulary preserves the distinctions required by Specification 0005:
 | `passed` | The method completed and reported its scoped positive result |
 | `inconclusive` | The result does not establish pass or fail |
 
+Synthetic illustrations are provided in [evidence-record-passed.example.json](../fixtures/evidence-record-passed.example.json) and [evidence-record-not-run.example.json](../fixtures/evidence-record-not-run.example.json). They are examples only, not repository evidence.
+
 A `passed` record is testimony from the declared method, not a universal proof. Its meaning remains bounded by method class, scope, assumptions, tool, configuration, environment and trust base.
 
 ## Validation boundary

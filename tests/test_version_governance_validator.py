@@ -140,6 +140,21 @@ class ValidatorTests(unittest.TestCase):
         result = MODULE.validate_bundle(data)
         self.assertIn("decision.version-increment-mismatch", {x["code"] for x in result["findings"]})
 
+    def test_impact_assessment_must_match_edge_validity(self):
+        data = bundle()
+        data["decisions"][0]["dependencyImpact"] = [
+            {"edgeId": "edge:proof:contract", "assessment": "revoked"}
+        ]
+        result = MODULE.validate_bundle(data)
+        self.assertIn("decision.impact-contradiction", {x["code"] for x in result["findings"]})
+
+    def test_non_array_dependency_impact_is_invalid(self):
+        data = bundle()
+        data["decisions"][0]["dependencyImpact"] = "unaffected"
+        result = MODULE.validate_bundle(data)
+        self.assertEqual(result["status"], "invalid")
+        self.assertIn("decision.impact-type", {x["code"] for x in result["findings"]})
+
     def test_duplicate_decision_ids_are_invalid(self):
         data = bundle()
         duplicate = dict(data["decisions"][0])

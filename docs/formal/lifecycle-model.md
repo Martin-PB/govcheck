@@ -20,6 +20,8 @@ It deliberately does not model Git internals, Pijul patch/channel semantics, cry
 
 ## State and transitions
 
+The lifecycle is also shown in the [generated state diagram](lifecycle-diagram.mmd). Its transition registry and generator are linked from the [formal-model index](README.md). The diagram is explanatory, not normative: the TLA+ module remains the semantic authority.
+
 - `phase`: lifecycle phase.
 - `evaluatedTuple`: exact tuple evaluated.
 - `evidence`: obligations for which evidence has been published against the current tuple.
@@ -27,7 +29,7 @@ It deliberately does not model Git internals, Pijul patch/channel semantics, cry
 - `approvals`: set of authorized actors approving the current tuple.
 - `acceptedTuple`: exact tuple accepted.
 - `appliedCandidateId`: candidate identity reported as applied.
-- `history`: sequence extended by every modeled state-changing action.
+- `history`: sequence extended by every modeled state-changing action. Its length is bounded by `HistoryLimit` (12 in the TLC configuration) so the explored state space remains finite; reaching the cap disables further state-changing actions. This is an exploration bound, not a production retention policy.
 
 Transitions are `Prepare`, `PublishEvidence`, `Evaluate`, `Approve`, `Accept`, `Apply`, `ChangeInputs`, `Reject`, `Withdraw`, and `Supersede`.
 
@@ -44,7 +46,9 @@ Transitions are `Prepare`, `PublishEvidence`, `Evaluate`, `Approve`, `Accept`, `
 | `NoImplicitApplication` | Before the Applied phase, no applied-candidate identity is recorded. |
 | `HistoryNonEmpty` | The event sequence contains its initial creation event. |
 
-The TLA+ module also states corresponding theorem obligations from `Spec`. TLC configuration is bounded to two values for each identity dimension, two actors, and two obligations.
+The TLC configuration also checks the temporal property `TerminalDiscipline`: once a phase is terminal (`Applied`, `Rejected`, `Withdrawn`, or `Superseded`), it cannot transition out of that phase.
+
+The TLA+ module also states corresponding theorem obligations from `Spec`. TLC configuration is bounded to two values for each identity dimension, two actors, two obligations, and at most 12 history events.
 
 ## Important limitations and next refinements
 

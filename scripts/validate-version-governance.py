@@ -160,11 +160,6 @@ def validate_bundle(bundle: Any) -> dict[str, Any]:
         if not isinstance(impact, list):
             add(findings, "error", "decision.impact-type",
                 f"Decision '{decision_id}' dependencyImpact must be an array.")
-        else:
-            for entry in impact:
-                if not isinstance(entry, dict) or not isinstance(entry.get("edgeId"), str):
-                    add(findings, "error", "decision.impact-shape",
-                        f"Decision '{decision_id}' has a malformed dependencyImpact entry.")
 
     edge_index: dict[str, dict[str, Any]] = {}
     for i, edge in enumerate(dependencies):

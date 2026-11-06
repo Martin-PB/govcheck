@@ -41,7 +41,7 @@ def validate_bundle(bundle: Any) -> dict[str, Any]:
         return {"status": "invalid", "findings": [
             {"level": "error", "code": "bundle.type", "message": "Bundle root must be an object."}
         ]}
-    if bundle.get("schemaVersion") != 1:
+    if type(bundle.get("schemaVersion")) is not int or bundle.get("schemaVersion") != 1:
         add(findings, "error", "bundle.schema-version", "Unsupported bundle schemaVersion; expected 1.")
 
     for key in ("revisions", "decisions", "dependencies"):
@@ -70,6 +70,8 @@ def validate_bundle(bundle: Any) -> dict[str, Any]:
         if not isinstance(decision, dict):
             add(findings, "error", "decision.shape", f"decisions[{i}] must be an object.")
             continue
+        if type(decision.get("schemaVersion")) is not int or decision.get("schemaVersion") != 1:
+            add(findings, "error", "decision.schema-version", f"Decision at index {i} has unsupported schemaVersion; expected integer 1.")
         decision_id = decision.get("decisionId")
         if not isinstance(decision_id, str) or not decision_id:
             add(findings, "error", "decision.id", f"decisions[{i}] has no decisionId.")
@@ -144,6 +146,8 @@ def validate_bundle(bundle: Any) -> dict[str, Any]:
         if not isinstance(edge, dict):
             add(findings, "error", "edge.shape", f"dependencies[{i}] must be an object.")
             continue
+        if type(edge.get("schemaVersion")) is not int or edge.get("schemaVersion") != 1:
+            add(findings, "error", "edge.schema-version", f"Edge at index {i} has unsupported schemaVersion; expected integer 1.")
         edge_id = edge.get("edgeId")
         if not isinstance(edge_id, str) or not edge_id:
             add(findings, "error", "edge.id", f"dependencies[{i}] has no edgeId.")

@@ -72,6 +72,8 @@ Classification is relative to the previous approved and published contract, its 
 | No contract increment | No contract change: editorial, metadata-only, regenerated projection or implementation change outside the contract | Record ordinary revision; do not manufacture SemVer |
 | Undetermined / blocked | Evidence is insufficient, contradictory or outside supported analysis | No compatibility claim; require competent human review |
 
+Initial publication is a distinct authorization event, not a MAJOR/MINOR/PATCH increment: it establishes the first approved baseline contract version where §2.2 of Architecture 0017 is satisfied. There is no prior published contract to compare, but the designated authority is still required. A decision that concludes there is no contract change records no new contract version. Neither case may be silently represented as PATCH.
+
 A correction that changes the meaning consumers actually receive is not automatically PATCH because it is called a bug fix. A security fix is PATCH only if it preserves the declared contract and guarantees. An optional schema field is not automatically MINOR: unknown-field behavior must be part of the contract. Weakening a relied-upon security or assurance guarantee may be MAJOR even if conformance becomes easier. A version number cannot retroactively legitimize an unauthorized normative change.
 
 ## 5. Dependencies and evidence freshness
@@ -150,3 +152,7 @@ This record does not claim that GovCheck implements a decision engine, dependenc
 - [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html); [W3C PROV-O](https://www.w3.org/TR/prov-o/); [DataCite Versioning](https://support.datacite.org/docs/versioning); [1EdTech Versioning Framework 1.0](https://www.imsglobal.org/spec/versioning/v1).
 
 External references inform the design; the authority and compatibility rules here are GovCheck proposals, not requirements imposed by those standards.
+
+## Machine-readable design
+
+A non-normative first draft of the machine-readable records is maintained in [formal/schemas/README.md](../../formal/schemas/README.md). It separates version-decision events from revision-bound dependency edges. These schemas remain proposals: they do not establish authority, prove compatibility or implement invalidation.

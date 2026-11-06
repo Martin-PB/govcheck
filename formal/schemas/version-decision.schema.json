@@ -1,0 +1,293 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Martin-PB/govcheck/blob/main/formal/schemas/version-decision.schema.json",
+  "title": "GovCheck immutable version decision event",
+  "description": "A revision-bound, auditable record of a proposed or authorized compatibility-version decision. Structural validation does not establish semantic compatibility or authority.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "decisionId",
+    "artifactId",
+    "contractId",
+    "candidateRevision",
+    "compatibility",
+    "decision",
+    "provenance"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "decisionId": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{2,127}$"
+    },
+    "artifactId": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9][a-z0-9-]*)+$"
+    },
+    "contractId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "previous": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["revision"],
+      "properties": {
+        "revision": { "$ref": "#/$defs/revision" },
+        "contractVersion": { "$ref": "#/$defs/semver" }
+      }
+    },
+    "candidateRevision": { "$ref": "#/$defs/revision" },
+    "proposedContractVersion": {
+      "oneOf": [
+        { "$ref": "#/$defs/semver" },
+        { "type": "null" }
+      ]
+    },
+    "contractScope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["summary", "consumerClasses"],
+      "properties": {
+        "summary": { "type": "string", "minLength": 1 },
+        "consumerClasses": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        },
+        "compatibilityDirection": {
+          "enum": ["backward", "forward", "bidirectional", "not-applicable", "undetermined"]
+        }
+      }
+    },
+    "compatibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["classification", "rationale", "changedGuarantees"],
+      "properties": {
+        "classification": {
+          "enum": ["initial-publication", "major", "minor", "patch", "no-contract-change", "undetermined"]
+        },
+        "rationale": { "type": "string", "minLength": 1 },
+        "changedGuarantees": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "affectedConsumers": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        },
+        "counterexamples": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "uncertainties": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "dependencyImpact": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["edgeId", "assessment"],
+        "properties": {
+          "edgeId": { "type": "string", "minLength": 1 },
+          "assessment": {
+            "enum": ["unaffected", "review-required", "stale-invalid", "superseded", "revoked"]
+          },
+          "rationale": { "type": "string" },
+          "revalidationRequired": { "type": "boolean" }
+        }
+      }
+    },
+    "migration": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "required": { "type": "boolean" },
+        "plan": { "type": "string" },
+        "deprecation": { "type": "string" },
+        "supportPolicy": { "type": "string" }
+      }
+    },
+    "roles": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["proposer"],
+      "properties": {
+        "proposer": { "$ref": "#/$defs/actor" },
+        "assessors": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/actor" }
+        },
+        "authorizer": { "$ref": "#/$defs/actor" }
+      }
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["authorityId", "basis", "scope"],
+      "properties": {
+        "authorityId": { "type": "string", "minLength": 1 },
+        "basis": { "type": "string", "minLength": 1 },
+        "scope": { "type": "string", "minLength": 1 },
+        "delegationRecord": { "type": "string" }
+      }
+    },
+    "decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["outcome", "decidedAt"],
+      "properties": {
+        "outcome": {
+          "enum": ["proposed", "authorized", "rejected", "blocked", "withdrawn", "superseded"]
+        },
+        "decidedAt": { "type": "string", "format": "date-time" },
+        "conditions": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "supersedesDecisionId": { "type": "string" }
+      }
+    },
+    "releaseBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tag", "commit"],
+      "properties": {
+        "tag": { "type": "string", "minLength": 1 },
+        "commit": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+        "manifestSha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["recordedAt", "recordedBy"],
+      "properties": {
+        "recordedAt": { "type": "string", "format": "date-time" },
+        "recordedBy": { "$ref": "#/$defs/actor" },
+        "sourceReferences": {
+          "type": "array",
+          "items": { "type": "string", "format": "uri-reference" }
+        },
+        "integrity": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "algorithm": { "const": "sha-256" },
+            "digest": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+          }
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "decision": {
+            "properties": { "outcome": { "const": "authorized" } },
+            "required": ["outcome"]
+          }
+        },
+        "required": ["decision"]
+      },
+      "then": {
+        "required": ["proposedContractVersion", "contractScope", "roles", "authority"],
+        "properties": {
+          "roles": { "required": ["proposer", "authorizer"] },
+          "compatibility": {
+            "properties": { "classification": { "not": { "const": "undetermined" } } }
+          },
+          "decision": {
+            "properties": { "conditions": { "maxItems": 0 } }
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "compatibility": {
+                  "properties": { "classification": { "const": "initial-publication" } },
+                  "required": ["classification"]
+                }
+              },
+              "required": ["compatibility"]
+            },
+            "then": {
+              "required": ["previous"],
+              "properties": {
+                "previous": { "type": "null" },
+                "proposedContractVersion": { "$ref": "#/$defs/semver" }
+              }
+            },
+            "else": {
+              "if": {
+                "properties": {
+                  "compatibility": {
+                    "properties": { "classification": { "const": "no-contract-change" } },
+                    "required": ["classification"]
+                  }
+                },
+                "required": ["compatibility"]
+              },
+              "then": {
+                "properties": { "proposedContractVersion": { "type": "null" } }
+              },
+              "else": {
+                "required": ["previous"],
+                "properties": {
+                  "previous": { "type": "object" },
+                  "proposedContractVersion": { "$ref": "#/$defs/semver" }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "$defs": {
+    "semver": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?(?:\\+[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?$"
+    },
+    "revision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["vcs", "nativeId"],
+      "properties": {
+        "vcs": { "enum": ["git", "pijul", "other"] },
+        "nativeId": { "type": "string", "minLength": 1 },
+        "repository": { "type": "string", "format": "uri-reference" },
+        "path": { "type": "string" },
+        "contentDigest": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["algorithm", "value"],
+          "properties": {
+            "algorithm": { "enum": ["sha-256"] },
+            "value": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+          }
+        }
+      }
+    },
+    "actor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["actorId", "actorType"],
+      "properties": {
+        "actorId": { "type": "string", "minLength": 1 },
+        "actorType": { "enum": ["person", "organization", "service", "agent"] },
+        "displayName": { "type": "string" }
+      }
+    }
+  }
+}

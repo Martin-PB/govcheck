@@ -127,9 +127,31 @@ def validate_bundle(bundle: Any) -> dict[str, Any]:
                 elif revision_key(artifact_id, previous["revision"]) not in revision_index:
                     add(findings, "error", "decision.previous-missing",
                         f"Decision '{decision_id}' previous revision is absent from the revision inventory.")
-                if not isinstance(proposed, str) or not SEMVER.fullmatch(proposed):
+                previous_version = previous.get("contractVersion") if isinstance(previous, dict) else None
+                previous_match = SEMVER.fullmatch(previous_version) if isinstance(previous_version, str) else None
+                proposed_match = SEMVER.fullmatch(proposed) if isinstance(proposed, str) else None
+                if previous_match is None:
+                    add(findings, "error", "decision.previous-version",
+                        f"Increment decision '{decision_id}' needs a valid previous contractVersion.")
+                if proposed_match is None:
                     add(findings, "error", "decision.semver",
-                        f"Increment decision '{decision_id}' needs a valid SemVer contract version.")
+                        f"Increment decision '{decision_id}' needs a valid proposed SemVer contract version.")
+                if previous_match is not None and proposed_match is not None:
+                    if "-" in previous_version.split("+")[0] or "-" in proposed.split("+")[0]:
+                        add(findings, "unknown", "decision.prerelease-progression",
+                            f"Prerelease version progression for '{decision_id}' requires explicit compatibility review.")
+                    else:
+                        old_core = tuple(int(previous_match.group(n)) for n in (1, 2, 3))
+                        new_core = tuple(int(proposed_match.group(n)) for n in (1, 2, 3))
+                        if classification == "major":
+                            expected = (old_core[0] + 1, 0, 0)
+                        elif classification == "minor":
+                            expected = (old_core[0], old_core[1] + 1, 0)
+                        else:
+                            expected = (old_core[0], old_core[1], old_core[2] + 1)
+                        if new_core != expected:
+                            add(findings, "error", "decision.version-increment-mismatch",
+                                f"Decision '{decision_id}' is classified '{classification}' but proposes {proposed} after {previous_version}; expected core version {'.'.join(map(str, expected))}.")
             # The record shape is not proof that the named authority delegated this scope.
             add(findings, "unknown", "decision.authority-not-resolved",
                 f"Delegation and subject scope for authority on '{decision_id}' require the canonical governance authority registry; this bundle cannot establish them.")

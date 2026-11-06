@@ -164,12 +164,17 @@ def validate_bundle(bundle: Any) -> dict[str, Any]:
             if key not in revision_index:
                 add(findings, "error", "edge.endpoint-missing",
                     f"Edge '{edge_id}' {endpoint_name} endpoint is absent from the revision inventory.")
-        validity = edge.get("validity") or {}
-        state = validity.get("status", "active") if isinstance(validity, dict) else "active"
-        if state not in EDGE_STATES:
-            add(findings, "error", "edge.validity", f"Edge '{edge_id}' has an unknown validity status.")
-        elif state in {"review-required", "stale-invalid", "superseded", "revoked"}:
-            add(findings, "stale", "edge.not-current", f"Edge '{edge_id}' is marked '{state}', not active.")
+        validity = edge.get("validity")
+        if not isinstance(validity, dict) or "status" not in validity:
+            state = None
+            add(findings, "unknown", "edge.validity-unresolved",
+                f"Edge '{edge_id}' has no explicit validity status; it cannot be treated as active.")
+        else:
+            state = validity.get("status")
+            if state not in EDGE_STATES:
+                add(findings, "error", "edge.validity", f"Edge '{edge_id}' has an unknown validity status.")
+            elif state in {"review-required", "stale-invalid", "superseded", "revoked"}:
+                add(findings, "stale", "edge.not-current", f"Edge '{edge_id}' is marked '{state}', not active.")
 
     for decision in decisions:
         if not isinstance(decision, dict):
@@ -190,7 +195,8 @@ def validate_bundle(bundle: Any) -> dict[str, Any]:
             if edge_id not in edge_index:
                 add(findings, "error", "decision.impact-orphan", f"Decision '{decision_id}' references missing edge '{edge_id}'.")
             elif item.get("assessment") == "unaffected":
-                state = ((edge_index[edge_id].get("validity") or {}).get("status", "active"))
+                validity = edge_index[edge_id].get("validity")
+                state = validity.get("status") if isinstance(validity, dict) else None
                 if state != "active":
                     add(findings, "error", "decision.impact-contradiction",
                         f"Decision '{decision_id}' calls edge '{edge_id}' unaffected while its status is '{state}'.")

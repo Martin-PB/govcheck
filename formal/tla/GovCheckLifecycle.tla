@@ -4,11 +4,12 @@ EXTENDS Naturals, Sequences, FiniteSets
 CONSTANTS
   Actors, AuthorizedActors, RequiredApprovals,
   Bases, Candidates, Governances, Specs, Obligations,
-  Pass, Fail, Unknown, None
+  Pass, Fail, Unknown, None, HistoryLimit
 
 ASSUME AuthorizedActors \subseteq Actors
 ASSUME RequiredApprovals \in Nat
 ASSUME RequiredApprovals <= Cardinality(AuthorizedActors)
+ASSUME HistoryLimit >= 1
 ASSUME Pass # Fail
 ASSUME Pass # Unknown
 ASSUME Fail # Unknown
@@ -48,6 +49,7 @@ Init ==
   /\ history = <<"Created">>
 
 Prepare ==
+  /\ Len(history) < HistoryLimit
   /\ phase = "Proposed"
   /\ phase' = "Prepared"
   /\ UNCHANGED <<baseId, candidateId, governanceId, specId,
@@ -56,6 +58,7 @@ Prepare ==
   /\ history' = Append(history, "Prepared")
 
 PublishEvidence(obligation) ==
+  /\ Len(history) < HistoryLimit
   /\ phase \in {"Prepared", "Evaluated", "Reviewable"}
   /\ obligation \in Obligations
   /\ evidence' = evidence \cup {obligation}
@@ -67,6 +70,7 @@ PublishEvidence(obligation) ==
   /\ history' = Append(history, "EvidencePublished")
 
 Evaluate ==
+  /\ Len(history) < HistoryLimit
   /\ phase \in {"Prepared", "Evaluated", "Reviewable", "Stale"}
   /\ evaluatedTuple' = CurrentTuple
   /\ outcomes' = [o \in Obligations |->
@@ -77,6 +81,7 @@ Evaluate ==
   /\ history' = Append(history, "Evaluated")
 
 Approve(actor) ==
+  /\ Len(history) < HistoryLimit
   /\ phase = "Reviewable"
   /\ actor \in AuthorizedActors
   /\ evaluatedTuple = CurrentTuple
@@ -87,6 +92,7 @@ Approve(actor) ==
   /\ history' = Append(history, "Approved")
 
 Accept ==
+  /\ Len(history) < HistoryLimit
   /\ phase = "Reviewable"
   /\ evaluatedTuple = CurrentTuple
   /\ outcomes = [o \in Obligations |-> Pass]
@@ -99,6 +105,7 @@ Accept ==
   /\ history' = Append(history, "Accepted")
 
 Apply ==
+  /\ Len(history) < HistoryLimit
   /\ phase = "Accepted"
   /\ acceptedTuple = CurrentTuple
   /\ acceptedTuple[2] = candidateId
@@ -109,6 +116,7 @@ Apply ==
   /\ history' = Append(history, "Applied")
 
 ChangeInputs(newBase, newCandidate, newGovernance, newSpec) ==
+  /\ Len(history) < HistoryLimit
   /\ phase \notin TerminalPhases
   /\ newBase \in Bases
   /\ newCandidate \in Candidates
@@ -129,6 +137,7 @@ ChangeInputs(newBase, newCandidate, newGovernance, newSpec) ==
   /\ history' = Append(history, "InputsChanged")
 
 Reject ==
+  /\ Len(history) < HistoryLimit
   /\ phase \notin TerminalPhases
   /\ phase' = "Rejected"
   /\ UNCHANGED <<baseId, candidateId, governanceId, specId,
@@ -137,6 +146,7 @@ Reject ==
   /\ history' = Append(history, "Rejected")
 
 Withdraw ==
+  /\ Len(history) < HistoryLimit
   /\ phase \notin TerminalPhases
   /\ phase' = "Withdrawn"
   /\ UNCHANGED <<baseId, candidateId, governanceId, specId,
@@ -145,6 +155,7 @@ Withdraw ==
   /\ history' = Append(history, "Withdrawn")
 
 Supersede ==
+  /\ Len(history) < HistoryLimit
   /\ phase \notin TerminalPhases
   /\ phase' = "Superseded"
   /\ UNCHANGED <<baseId, candidateId, governanceId, specId,
@@ -180,6 +191,7 @@ TypeOK ==
        (Bases \X Candidates \X Governances \X Specs)
   /\ appliedCandidateId \in {None} \cup Candidates
   /\ history \in Seq(STRING)
+  /\ Len(history) <= HistoryLimit
 
 AcceptanceSoundness ==
   phase = "Accepted" =>

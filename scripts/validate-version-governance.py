@@ -157,11 +157,14 @@ def validate_bundle(bundle: Any) -> dict[str, Any]:
                 f"Delegation and subject scope for authority on '{decision_id}' require the canonical governance authority registry; this bundle cannot establish them.")
 
         impact = decision.get("dependencyImpact", [])
-        if isinstance(impact, list):
+        if not isinstance(impact, list):
+            add(findings, "error", "decision.impact-type",
+                f"Decision '{decision_id}' dependencyImpact must be an array.")
+        else:
             for entry in impact:
-                if isinstance(entry, dict) and entry.get("edgeId"):
-                    # Checked against the complete edge set below.
-                    pass
+                if not isinstance(entry, dict) or not isinstance(entry.get("edgeId"), str):
+                    add(findings, "error", "decision.impact-shape",
+                        f"Decision '{decision_id}' has a malformed dependencyImpact entry.")
 
     edge_index: dict[str, dict[str, Any]] = {}
     for i, edge in enumerate(dependencies):
@@ -216,12 +219,21 @@ def validate_bundle(bundle: Any) -> dict[str, Any]:
             seen_impact.add(edge_id)
             if edge_id not in edge_index:
                 add(findings, "error", "decision.impact-orphan", f"Decision '{decision_id}' references missing edge '{edge_id}'.")
-            elif item.get("assessment") == "unaffected":
+            else:
+                assessment = item.get("assessment")
+                if assessment not in ({"unaffected"} | EDGE_STATES):
+                    add(findings, "error", "decision.impact-assessment",
+                        f"Decision '{decision_id}' gives edge '{edge_id}' an unknown impact assessment.")
+                    continue
                 validity = edge_index[edge_id].get("validity")
                 state = validity.get("status") if isinstance(validity, dict) else None
-                if state != "active":
+                expected_state = "active" if assessment == "unaffected" else assessment
+                if state is None:
+                    add(findings, "unknown", "decision.impact-validity-unresolved",
+                        f"Decision '{decision_id}' assesses edge '{edge_id}', but its validity status is unresolved.")
+                elif state != expected_state:
                     add(findings, "error", "decision.impact-contradiction",
-                        f"Decision '{decision_id}' calls edge '{edge_id}' unaffected while its status is '{state}'.")
+                        f"Decision '{decision_id}' assesses edge '{edge_id}' as '{assessment}' but its status is '{state}'.")
 
     # Supersession links must resolve and stay within the same contract identity.
     supersession_graph: dict[str, str] = {}

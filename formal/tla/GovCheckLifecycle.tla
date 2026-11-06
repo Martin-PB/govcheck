@@ -230,6 +230,10 @@ TerminalDiscipline ==
 
 HistoryNonEmpty == Len(history) >= 1
 
+NoUnexpectedNonterminalDeadlock ==
+  Len(history) < HistoryLimit /\ phase \notin TerminalPhases =>
+    ENABLED Next
+
 Spec == Init /\ [][Next]_vars
 
 THEOREM Spec => []TypeOK
@@ -240,5 +244,6 @@ THEOREM Spec => []EvidenceBinding
 THEOREM Spec => []ApprovalBinding
 THEOREM Spec => []NoImplicitApplication
 THEOREM Spec => []HistoryNonEmpty
+THEOREM Spec => []NoUnexpectedNonterminalDeadlock
 
 =============================================================================

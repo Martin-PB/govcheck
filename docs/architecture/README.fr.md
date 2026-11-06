@@ -14,3 +14,5 @@ Les contrats fondateurs sont dans [docs/specifications](../specifications/README
 ## Statut
 
 Ces documents sont des propositions et mémoires de conception à examiner. Ils ne constituent ni contrôles implémentés, ni propriétés de sécurité vérifiées, ni décisions technologiques. Lire le statut et les limites de chaque document avant de s'y fier.
+- [0010 — Assurance, témoignage, preuve et conformité](0010-assurance-proof-and-conformance.fr.md) · [English](0010-assurance-proof-and-conformance.md)
+- [0011 — Modèle de cycle de vie : audit de chaque assertion](0011-lifecycle-model-assertion-audit.fr.md) · [English](0011-lifecycle-model-assertion-audit.md)

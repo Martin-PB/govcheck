@@ -222,8 +222,11 @@ ApprovalBinding ==
 NoImplicitApplication ==
   phase # "Applied" => appliedCandidateId = None
 
+TerminalStep ==
+  phase \in TerminalPhases => UNCHANGED vars
+
 TerminalDiscipline ==
-  [][phase \in TerminalPhases => UNCHANGED vars]_vars
+  [][TerminalStep]_vars
 
 HistoryNonEmpty == Len(history) >= 1
 

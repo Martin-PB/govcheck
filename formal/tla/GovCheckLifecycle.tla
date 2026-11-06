@@ -223,7 +223,7 @@ NoImplicitApplication ==
   phase # "Applied" => appliedCandidateId = None
 
 TerminalDiscipline ==
-  [] (phase \in TerminalPhases => phase' = phase)
+  [][phase \in TerminalPhases => UNCHANGED vars]_vars
 
 HistoryNonEmpty == Len(history) >= 1
 

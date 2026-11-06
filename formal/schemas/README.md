@@ -7,6 +7,7 @@
 | [release-manifest.schema.json](release-manifest.schema.json) | Binds a repository release to source artifacts and generated evidence | Release-manifest serialization format |
 | [version-decision.schema.json](version-decision.schema.json) | Records an immutable version/compatibility decision event | Version-decision record format |
 | [dependency-edge.schema.json](dependency-edge.schema.json) | Records a typed relation between exact artifact revisions | Dependency-edge record format |
+| [version-governance-bundle.schema.json](version-governance-bundle.schema.json) | Groups an exact-revision inventory, decisions and dependency edges for cross-record checks | Validation-bundle envelope format |
 
 These format versions are independent of the contract versions of artifacts described by the records. They are not GovCheck product versions and do not follow the MAJOR/MINOR/PATCH policy automatically.
 
@@ -33,6 +34,10 @@ The schemas do not impose one global acyclicity rule: cycle constraints, if any,
 - [dependency-edge.example.json](../fixtures/dependency-edge.example.json)
 
 The examples deliberately use reserved `example.invalid` references and synthetic revision IDs. They are schema illustrations, not GovCheck history or evidence.
+
+## Cross-record validator
+
+[version-governance-validator.md](version-governance-validator.md) documents the experimental standard-library validator and its bundle contract. The envelope schema references the two record schemas; the validator performs additional cross-record checks. It intentionally returns `unknown` for authorized decisions until delegation can be resolved against an adopted authority registry.
 
 ## Validation boundary
 

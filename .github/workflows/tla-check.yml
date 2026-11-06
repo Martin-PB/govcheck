@@ -25,7 +25,15 @@ jobs:
         with:
           python-version: '3.12'
       - name: Check generated lifecycle diagram is fresh
-        run: python3 scripts/render-lifecycle-diagram.py --check
+        run: |
+          python3 scripts/render-lifecycle-diagram.py --check || {
+            echo '--- drift check failed, debug info ---';
+            python3 --version;
+            python3 scripts/render-lifecycle-diagram.py --check;
+            echo "exit=$?";
+            git status --porcelain;
+            exit 1;
+          }
 
   tlc:
     runs-on: ubuntu-latest

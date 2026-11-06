@@ -18,7 +18,7 @@ ACTION_NAMES = {
     "Prepare", "PublishEvidence", "Evaluate", "Approve", "Accept", "Apply",
     "ChangeInputs", "Reject", "Withdraw", "Supersede",
 }
-DEFINITION = re.compile(r"^([A-Za-z][A-Za-z0-9_]*)(?:\\([^\\n]*\\))?\\s*==", re.MULTILINE)
+DEFINITION = re.compile(r"^([A-Za-z][A-Za-z0-9_]*)(?:\([^\n]*\))?\s*==", re.MULTILINE)
 
 
 def render(data: dict) -> str:

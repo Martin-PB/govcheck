@@ -189,7 +189,7 @@ TypeOK ==
   /\ approvals \subseteq AuthorizedActors
   /\ acceptedTuple \in {NoTuple} \cup
        (Bases \X Candidates \X Governances \X Specs)
-  /\ appliedCandidateId \in {NoTuple} \cup Candidates
+  /\ appliedCandidateId \in {NoCandidate} \cup Candidates
   /\ history \in Seq(STRING)
   /\ Len(history) <= HistoryLimit
 

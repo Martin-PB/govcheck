@@ -31,6 +31,8 @@ The schemas do not impose one global acyclicity rule: cycle constraints, if any,
 
 - [version-decision-blocked.example.json](../fixtures/version-decision-blocked.example.json)
 - [dependency-edge.example.json](../fixtures/dependency-edge.example.json)
+- [evidence-record-passed.example.json](../fixtures/evidence-record-passed.example.json)
+- [evidence-record-not-run.example.json](../fixtures/evidence-record-not-run.example.json)
 
 The examples deliberately use reserved `example.invalid` references and synthetic revision IDs. They are schema illustrations, not GovCheck history or evidence.
 

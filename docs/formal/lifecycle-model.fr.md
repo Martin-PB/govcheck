@@ -24,8 +24,9 @@ Le cycle de vie est également représenté dans le [diagramme d’états géné
 
 - `phase` : phase du cycle de vie.
 - `evaluatedTuple` : tuple exact qui a été évalué.
-- `evidence` : obligations pour lesquelles une preuve a été publiée sur le tuple courant.
-- `outcomes` : `Pass`, `Fail` ou `Unknown`. Dans cette première abstraction, l’absence de preuve produit `Unknown` ; une preuve publiée produit `Pass`. C’est une simplification explicite, pas une affirmation selon laquelle une preuve serait véridique ou suffisante dans un système réel.
+- `evidence` : obligations pour lesquelles un enregistrement de preuve a été publié sur le tuple courant.
+- `evidenceOutcomes` : dernier résultat publié pour chaque obligation.
+- `outcomes` : résultats liés à la dernière évaluation. `PublishEvidence(obligation, outcome)` peut publier `Pass`, `Fail`, `Unknown`, `Unsupported`, `NotRun` ou `Incomplete`. Une preuve absente produit `Unknown`. Le cycle n’atteint `Reviewable` que si chaque obligation possède une preuve et si chaque résultat vaut `Pass` ; tout autre résultat laisse le cycle dans `Evaluated` et interdit l’acceptation. La publication ou le remplacement d’une preuve efface les approbations antérieures et impose une nouvelle évaluation/revue. Cela modélise la propagation des statuts, pas la véracité ni la suffisance de la preuve.
 - `approvals` : ensemble des acteurs autorisés ayant approuvé le tuple courant.
 - `acceptedTuple` : tuple exact accepté.
 - `appliedCandidateId` : identité du candidat déclaré appliqué.
@@ -41,9 +42,12 @@ Les transitions sont `Prepare`, `PublishEvidence`, `Evaluate`, `Approve`, `Accep
 | `AcceptanceSoundness` | Un changement accepté est lié au tuple courant, à une évaluation courante, à des obligations réussies et au nombre requis d’approbations. |
 | `ApplicationSoundness` | Applied signifie que le candidat appliqué enregistré est exactement celui du tuple accepté et du tuple courant. |
 | `NoStaleEvaluation` | Les états Reviewable, Accepted et Applied ne peuvent pas reposer sur l’évaluation d’un ancien tuple. |
-| `EvidenceBinding` | Reviewable exige une preuve pour chacune des obligations modélisées sur l’évaluation courante. |
+| `EvidenceBinding` | Reviewable exige une preuve et un résultat `Pass` pour chacune des obligations modélisées sur l’évaluation courante. |
+| `EvaluationOutcomeBinding` | Evaluated et les phases suivantes utilisent le résultat publié pour chaque obligation prouvée ; une preuve absente reste `Unknown`. |
+| `FailedOrUnresolvedEvidenceBlocksAcceptance` | Tout résultat différent de `Pass` interdit les phases Accepted et Applied. |
 | `ApprovalBinding` | Les états Accepted et Applied ne contiennent que des approbations provenant de l’ensemble configuré des acteurs autorisés. |
 | `NoImplicitApplication` | Avant la phase Applied, aucune identité de candidat appliqué n’est enregistrée. |
+| `NoApprovalInPreparedPhase` | La phase Prepared ne conserve aucune approbation antérieure à une nouvelle publication de preuve. |
 | `HistoryNonEmpty` | La séquence d’événements contient son événement initial de création. |
 
 La configuration TLC vérifie également la propriété temporelle `TerminalDiscipline` : une fois une phase terminale atteinte (`Applied`, `Rejected`, `Withdrawn` ou `Superseded`), le changement ne peut plus en sortir.
@@ -52,8 +56,8 @@ Le module TLA+ énonce également les obligations de théorème correspondantes 
 
 ## Limites importantes et raffinements suivants
 
-1. La véracité des preuves, leur provenance, les dépendances de fraîcheur, la révocation et la vérification indépendante sont abstraites. Le modèle actuel traite la publication comme une preuve suffisante pour l’obligation correspondante.
-2. `Fail` appartient au domaine des résultats, mais aucune transition ne le produit encore. Un raffinement ultérieur devra modéliser les contrôles explicitement échoués et distinguer échec, inconnu, non pris en charge et non exécuté.
+1. La véracité des preuves, leur provenance, les dépendances de fraîcheur, la révocation et la vérification indépendante restent abstraites. Le modèle accepte une valeur `Pass` publiée en entrée ; il ne vérifie pas cette valeur.
+2. Le modèle propage maintenant les résultats explicites `Fail`, `Unknown`, `Unsupported`, `NotRun` et `Incomplete`. Il n’intègre pas encore toute la richesse des statuts et méthodes du modèle de preuve défini dans la spécification 0005.
 3. Le modèle ne représente pas encore les opérations concurrentes, l’indisponibilité d’un adaptateur, les courses TOCTOU ou un adaptateur malveillant.
 4. La séquence d’événements est étendue par les actions modélisées, mais cette version ne définit pas encore une propriété temporelle distincte d’intégrité de l’historique ni les métadonnées acteur/motif pour chaque événement.
 5. `ChangeInputs` est désactivée après les phases terminales, y compris Applied. Une politique de production pour la remédiation/réouverture après application exige une décision séparée.

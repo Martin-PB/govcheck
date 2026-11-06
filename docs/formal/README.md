@@ -18,6 +18,6 @@ The lifecycle model is a source artifact with a stable logical identifier, `govc
 
 The diagram is generated from `formal/lifecycle-transitions.json`. The registry records explanatory labels and links each displayed transition to a top-level TLA+ operator. Run `python3 scripts/render-lifecycle-diagram.py` to regenerate it, or add `--check` to detect drift. The checker verifies operator-name coverage and generated-file freshness; it does **not** parse TLA+ semantics or prove that the explanatory guards/effects faithfully describe the operators. Review those together whenever a transition changes.
 
-The initial model covers one abstract change, tuple-bound evaluation, evidence publication, authorized approvals, acceptance, exact-candidate application, input mutation, and terminal decisions.
+The model covers one abstract change, tuple-bound evaluation, evidence publication with explicit outcomes (pass, fail, unknown, unsupported, not-run and incomplete), authorized approvals, acceptance, exact-candidate application, input mutation, and terminal decisions. Reviewable now requires every obligation to have an explicit Pass outcome.
 
 **Verification status:** specification and TLC configuration added; no TLC execution or proof result is claimed. See the model document for abstraction limits and required next refinements.

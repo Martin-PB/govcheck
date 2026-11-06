@@ -1,10 +1,14 @@
-name: TLA+ model check
+name: Formal model and governance checks
 
 on:
   pull_request:
     paths:
       - 'formal/tla/**'
+      - 'formal/schemas/**'
+      - 'formal/fixtures/**'
       - 'formal/lifecycle-transitions.json'
+      - 'scripts/validate-version-governance.py'
+      - 'tests/test_version_governance_validator.py'
       - 'scripts/render-lifecycle-diagram.py'
       - 'docs/formal/lifecycle-diagram.mmd'
       - '.github/workflows/tla-check.yml'
@@ -12,11 +16,28 @@ on:
     branches: [main]
     paths:
       - 'formal/tla/**'
+      - 'formal/schemas/**'
+      - 'formal/fixtures/**'
       - 'formal/lifecycle-transitions.json'
+      - 'scripts/validate-version-governance.py'
+      - 'tests/test_version_governance_validator.py'
       - 'scripts/render-lifecycle-diagram.py'
       - 'docs/formal/lifecycle-diagram.mmd'
+      - '.github/workflows/tla-check.yml'
 
 jobs:
+  python-validator:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run version-governance validator unit tests
+        run: python3 -m unittest discover -s tests -p 'test_version_governance_validator.py' -v
+      - name: Compile validator and tests
+        run: python3 -m py_compile scripts/validate-version-governance.py tests/test_version_governance_validator.py
+
   diagram-drift:
     runs-on: ubuntu-latest
     steps:
@@ -60,6 +81,7 @@ jobs:
           set -o pipefail
           java -cp tla2tools.jar tlc2.TLC -config formal/tla/GovCheckLifecycle.cfg formal/tla/GovCheckLifecycle.tla 2>&1 | tee tlc-report.txt
       - name: Upload TLC report
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: tlc-report

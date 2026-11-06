@@ -57,7 +57,7 @@ def main() -> int:
     branches = re.split(r"^\s*\\/", next_match.group(1), flags=re.MULTILINE)
     next_actions = set()
     for branch in branches:
-        action = re.search(r"(?:^|:)\\s*([A-Z][A-Za-z0-9_]*)\\s*(?:\\(|$)", branch.strip(), re.MULTILINE)
+        action = re.search(r"(?:^|:)\s*([A-Z][A-Za-z0-9_]*)\s*(?:\(|$)", branch.strip(), re.MULTILINE)
         if action:
             next_actions.add(action.group(1))
     registry_ops = {item["operator"] for item in data["transitions"]}

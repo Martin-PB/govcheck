@@ -4,7 +4,7 @@ EXTENDS Naturals, Sequences, FiniteSets
 CONSTANTS
   Actors, AuthorizedActors, RequiredApprovals,
   Bases, Candidates, Governances, Specs, Obligations,
-  Pass, Fail, Unknown, None, HistoryLimit
+  Pass, Fail, Unknown, NoTuple, NoCandidate, HistoryLimit
 
 ASSUME AuthorizedActors \subseteq Actors
 ASSUME RequiredApprovals \in Nat
@@ -40,12 +40,12 @@ Init ==
   /\ candidateId \in Candidates
   /\ governanceId \in Governances
   /\ specId \in Specs
-  /\ evaluatedTuple = None
+  /\ evaluatedTuple = NoTuple
   /\ outcomes = [o \in Obligations |-> Unknown]
   /\ evidence = {}
   /\ approvals = {}
-  /\ acceptedTuple = None
-  /\ appliedCandidateId = None
+  /\ acceptedTuple = NoTuple
+  /\ appliedCandidateId = NoCandidate
   /\ history = <<"Created">>
 
 Prepare ==
@@ -63,7 +63,7 @@ PublishEvidence(obligation) ==
   /\ obligation \in Obligations
   /\ evidence' = evidence \cup {obligation}
   /\ phase' = "Prepared"
-  /\ evaluatedTuple' = None
+  /\ evaluatedTuple' = NoTuple
   /\ outcomes' = [o \in Obligations |-> Unknown]
   /\ UNCHANGED <<baseId, candidateId, governanceId, specId,
                  approvals, acceptedTuple, appliedCandidateId>>
@@ -128,12 +128,12 @@ ChangeInputs(newBase, newCandidate, newGovernance, newSpec) ==
   /\ governanceId' = newGovernance
   /\ specId' = newSpec
   /\ phase' = "Stale"
-  /\ evaluatedTuple' = None
+  /\ evaluatedTuple' = NoTuple
   /\ outcomes' = [o \in Obligations |-> Unknown]
   /\ evidence' = {}
   /\ approvals' = {}
-  /\ acceptedTuple' = None
-  /\ appliedCandidateId' = None
+  /\ acceptedTuple' = NoTuple
+  /\ appliedCandidateId' = NoCandidate
   /\ history' = Append(history, "InputsChanged")
 
 Reject ==
@@ -182,14 +182,14 @@ TypeOK ==
   /\ candidateId \in Candidates
   /\ governanceId \in Governances
   /\ specId \in Specs
-  /\ evaluatedTuple \in {None} \cup
+  /\ evaluatedTuple \in {NoTuple} \cup
        (Bases \X Candidates \X Governances \X Specs)
   /\ outcomes \in [Obligations -> Outcomes]
   /\ evidence \subseteq Obligations
   /\ approvals \subseteq AuthorizedActors
-  /\ acceptedTuple \in {None} \cup
+  /\ acceptedTuple \in {NoTuple} \cup
        (Bases \X Candidates \X Governances \X Specs)
-  /\ appliedCandidateId \in {None} \cup Candidates
+  /\ appliedCandidateId \in {NoCandidate} \cup Candidates
   /\ history \in Seq(STRING)
   /\ Len(history) <= HistoryLimit
 
@@ -220,12 +220,19 @@ ApprovalBinding ==
     approvals \subseteq AuthorizedActors
 
 NoImplicitApplication ==
-  phase # "Applied" => appliedCandidateId = None
+  phase # "Applied" => appliedCandidateId = NoCandidate
+
+TerminalStep ==
+  phase \in TerminalPhases => UNCHANGED vars
 
 TerminalDiscipline ==
-  [] (phase \in TerminalPhases => phase' = phase)
+  [][TerminalStep]_vars
 
 HistoryNonEmpty == Len(history) >= 1
+
+NoUnexpectedNonterminalDeadlock ==
+  Len(history) < HistoryLimit /\ phase \notin TerminalPhases =>
+    ENABLED Next
 
 Spec == Init /\ [][Next]_vars
 
@@ -237,5 +244,6 @@ THEOREM Spec => []EvidenceBinding
 THEOREM Spec => []ApprovalBinding
 THEOREM Spec => []NoImplicitApplication
 THEOREM Spec => []HistoryNonEmpty
+THEOREM Spec => []NoUnexpectedNonterminalDeadlock
 
 =============================================================================

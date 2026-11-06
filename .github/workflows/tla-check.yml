@@ -4,13 +4,42 @@ on:
   pull_request:
     paths:
       - 'formal/tla/**'
+      - 'formal/lifecycle-transitions.json'
+      - 'scripts/render-lifecycle-diagram.py'
+      - 'docs/formal/lifecycle-diagram.mmd'
       - '.github/workflows/tla-check.yml'
   push:
     branches: [main]
     paths:
       - 'formal/tla/**'
+      - 'formal/lifecycle-transitions.json'
+      - 'scripts/render-lifecycle-diagram.py'
+      - 'docs/formal/lifecycle-diagram.mmd'
 
 jobs:
+  diagram-drift:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check generated lifecycle diagram is fresh
+        run: |
+          set +e
+          python3 scripts/render-lifecycle-diagram.py --check 2>&1 | tee drift-check.log
+          check_rc=${PIPESTATUS[0]}
+          echo "check-exit=${check_rc}" | tee -a drift-check.log
+          python3 --version 2>&1 | tee -a drift-check.log
+          git status --porcelain | tee -a drift-check.log
+          exit "${check_rc}"
+      - name: Upload drift check log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: drift-check-log
+          path: drift-check.log
+
   tlc:
     runs-on: ubuntu-latest
     steps:
@@ -19,14 +48,17 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
-      - name: Download pinned tla2tools
+      - name: Download pinned tla2tools (v1.7.4, checksum-verified)
         run: |
-          curl -fsSL -o tla2tools.jar https://github.com/tlaplus/tla2tools/releases/download/v1.8.0/tla2tools.jar
+          curl -fsSL -o tla2tools.jar https://downloads.sourceforge.net/project/tlaplus.mirror/v1.7.4/tla2tools.jar
+          echo "936a262061c914694dfd669a543be24573c45d5aa0ff20a8b96b23d01e050e88  tla2tools.jar" | sha256sum -c -
           sha256sum tla2tools.jar | tee tla2tools.sha256
       - name: Run SANY parse check
         run: java -cp tla2tools.jar tla2sany.SANY formal/tla/GovCheckLifecycle.tla
       - name: Run TLC with pinned configuration
-        run: java -cp tla2tools.jar tlc2.TLC -config formal/tla/GovCheckLifecycle.cfg formal/tla/GovCheckLifecycle.tla 2>&1 | tee tlc-report.txt
+        run: |
+          set -o pipefail
+          java -cp tla2tools.jar tlc2.TLC -config formal/tla/GovCheckLifecycle.cfg formal/tla/GovCheckLifecycle.tla 2>&1 | tee tlc-report.txt
       - name: Upload TLC report
         uses: actions/upload-artifact@v4
         with:

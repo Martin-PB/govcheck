@@ -45,7 +45,7 @@ Init ==
   /\ approvals = {}
   /\ acceptedTuple = None
   /\ appliedCandidateId = None
-  /\ history = <<[kind |-> "Created", tuple |-> CurrentTuple]>>
+  /\ history = <<"Created">>
 
 Prepare ==
   /\ phase = "Proposed"
@@ -53,7 +53,7 @@ Prepare ==
   /\ UNCHANGED <<baseId, candidateId, governanceId, specId,
                  evaluatedTuple, outcomes, evidence, approvals,
                  acceptedTuple, appliedCandidateId>>
-  /\ history' = Append(history, [kind |-> "Prepared", tuple |-> CurrentTuple])
+  /\ history' = Append(history, "Prepared")
 
 PublishEvidence(obligation) ==
   /\ phase \in {"Prepared", "Evaluated", "Reviewable"}
@@ -64,9 +64,7 @@ PublishEvidence(obligation) ==
   /\ outcomes' = [o \in Obligations |-> Unknown]
   /\ UNCHANGED <<baseId, candidateId, governanceId, specId,
                  approvals, acceptedTuple, appliedCandidateId>>
-  /\ history' = Append(history,
-       [kind |-> "EvidencePublished", obligation |-> obligation,
-        tuple |-> CurrentTuple])
+  /\ history' = Append(history, "EvidencePublished")
 
 Evaluate ==
   /\ phase \in {"Prepared", "Evaluated", "Reviewable", "Stale"}
@@ -76,7 +74,7 @@ Evaluate ==
   /\ phase' = IF evidence = Obligations THEN "Reviewable" ELSE "Evaluated"
   /\ UNCHANGED <<baseId, candidateId, governanceId, specId,
                  evidence, approvals, acceptedTuple, appliedCandidateId>>
-  /\ history' = Append(history, [kind |-> "Evaluated", tuple |-> CurrentTuple])
+  /\ history' = Append(history, "Evaluated")
 
 Approve(actor) ==
   /\ phase = "Reviewable"
@@ -86,8 +84,7 @@ Approve(actor) ==
   /\ UNCHANGED <<phase, baseId, candidateId, governanceId, specId,
                  evaluatedTuple, outcomes, evidence,
                  acceptedTuple, appliedCandidateId>>
-  /\ history' = Append(history,
-       [kind |-> "Approved", actor |-> actor, tuple |-> CurrentTuple])
+  /\ history' = Append(history, "Approved")
 
 Accept ==
   /\ phase = "Reviewable"
@@ -99,7 +96,7 @@ Accept ==
   /\ UNCHANGED <<baseId, candidateId, governanceId, specId,
                  evaluatedTuple, outcomes, evidence, approvals,
                  appliedCandidateId>>
-  /\ history' = Append(history, [kind |-> "Accepted", tuple |-> CurrentTuple])
+  /\ history' = Append(history, "Accepted")
 
 Apply ==
   /\ phase = "Accepted"
@@ -109,8 +106,7 @@ Apply ==
   /\ appliedCandidateId' = candidateId
   /\ UNCHANGED <<baseId, candidateId, governanceId, specId,
                  evaluatedTuple, outcomes, evidence, approvals, acceptedTuple>>
-  /\ history' = Append(history,
-       [kind |-> "Applied", candidate |-> candidateId, tuple |-> CurrentTuple])
+  /\ history' = Append(history, "Applied")
 
 ChangeInputs(newBase, newCandidate, newGovernance, newSpec) ==
   /\ phase \notin TerminalPhases
@@ -130,10 +126,7 @@ ChangeInputs(newBase, newCandidate, newGovernance, newSpec) ==
   /\ approvals' = {}
   /\ acceptedTuple' = None
   /\ appliedCandidateId' = None
-  /\ history' = Append(history,
-       [kind |-> "InputsChanged",
-        oldTuple |-> CurrentTuple,
-        newTuple |-> <<newBase, newCandidate, newGovernance, newSpec>>])
+  /\ history' = Append(history, "InputsChanged")
 
 Reject ==
   /\ phase \notin TerminalPhases
@@ -141,7 +134,7 @@ Reject ==
   /\ UNCHANGED <<baseId, candidateId, governanceId, specId,
                  evaluatedTuple, outcomes, evidence, approvals,
                  acceptedTuple, appliedCandidateId>>
-  /\ history' = Append(history, [kind |-> "Rejected", tuple |-> CurrentTuple])
+  /\ history' = Append(history, "Rejected")
 
 Withdraw ==
   /\ phase \notin TerminalPhases
@@ -149,7 +142,7 @@ Withdraw ==
   /\ UNCHANGED <<baseId, candidateId, governanceId, specId,
                  evaluatedTuple, outcomes, evidence, approvals,
                  acceptedTuple, appliedCandidateId>>
-  /\ history' = Append(history, [kind |-> "Withdrawn", tuple |-> CurrentTuple])
+  /\ history' = Append(history, "Withdrawn")
 
 Supersede ==
   /\ phase \notin TerminalPhases
@@ -157,7 +150,7 @@ Supersede ==
   /\ UNCHANGED <<baseId, candidateId, governanceId, specId,
                  evaluatedTuple, outcomes, evidence, approvals,
                  acceptedTuple, appliedCandidateId>>
-  /\ history' = Append(history, [kind |-> "Superseded", tuple |-> CurrentTuple])
+  /\ history' = Append(history, "Superseded")
 
 Next ==
   \/ Prepare
@@ -186,7 +179,7 @@ TypeOK ==
   /\ acceptedTuple \in {None} \cup
        (Bases \X Candidates \X Governances \X Specs)
   /\ appliedCandidateId \in {None} \cup Candidates
-  /\ history \in Seq([kind : STRING])
+  /\ history \in Seq(STRING)
 
 AcceptanceSoundness ==
   phase = "Accepted" =>

@@ -20,6 +20,8 @@ Il ne modélise volontairement ni les mécanismes internes de Git, ni la sémant
 
 ## État et transitions
 
+Le cycle de vie est également représenté dans le [diagramme d’états généré](lifecycle-diagram.mmd). Son registre de transitions et son générateur sont référencés dans l’[index des modèles formels](README.fr.md). Le diagramme est explicatif, pas normatif : le module TLA+ reste l’autorité sémantique.
+
 - `phase` : phase du cycle de vie.
 - `evaluatedTuple` : tuple exact qui a été évalué.
 - `evidence` : obligations pour lesquelles une preuve a été publiée sur le tuple courant.
@@ -27,7 +29,7 @@ Il ne modélise volontairement ni les mécanismes internes de Git, ni la sémant
 - `approvals` : ensemble des acteurs autorisés ayant approuvé le tuple courant.
 - `acceptedTuple` : tuple exact accepté.
 - `appliedCandidateId` : identité du candidat déclaré appliqué.
-- `history` : séquence étendue par chaque action modifiant l’état.
+- `history` : séquence étendue par chaque action modifiant l’état. Sa longueur est bornée par `HistoryLimit` (12 dans la configuration TLC) afin de conserver un espace d’états fini ; une fois cette limite atteinte, les actions modifiant l’état ne sont plus activables. Il s’agit d’une borne d’exploration, pas d’une politique de rétention en production.
 
 Les transitions sont `Prepare`, `PublishEvidence`, `Evaluate`, `Approve`, `Accept`, `Apply`, `ChangeInputs`, `Reject`, `Withdraw` et `Supersede`.
 
@@ -44,7 +46,9 @@ Les transitions sont `Prepare`, `PublishEvidence`, `Evaluate`, `Approve`, `Accep
 | `NoImplicitApplication` | Avant la phase Applied, aucune identité de candidat appliqué n’est enregistrée. |
 | `HistoryNonEmpty` | La séquence d’événements contient son événement initial de création. |
 
-Le module TLA+ énonce également les obligations de théorème correspondantes à partir de `Spec`. La configuration TLC est bornée à deux valeurs par dimension d’identité, deux acteurs et deux obligations.
+La configuration TLC vérifie également la propriété temporelle `TerminalDiscipline` : une fois une phase terminale atteinte (`Applied`, `Rejected`, `Withdrawn` ou `Superseded`), le changement ne peut plus en sortir.
+
+Le module TLA+ énonce également les obligations de théorème correspondantes à partir de `Spec`. La configuration TLC est bornée à deux valeurs par dimension d’identité, deux acteurs, deux obligations et au maximum 12 événements d’historique.
 
 ## Limites importantes et raffinements suivants
 

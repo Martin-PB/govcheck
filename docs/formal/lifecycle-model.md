@@ -24,8 +24,9 @@ The lifecycle is also shown in the [generated state diagram](lifecycle-diagram.m
 
 - `phase`: lifecycle phase.
 - `evaluatedTuple`: exact tuple evaluated.
-- `evidence`: obligations for which evidence has been published against the current tuple.
-- `outcomes`: `Pass`, `Fail`, or `Unknown`. In this first abstraction, missing evidence yields `Unknown`; published evidence yields `Pass`. This is an explicit simplifying assumption, not a claim that evidence is truthful or sufficient in a real system.
+- `evidence`: obligations for which an evidence record has been published against the current tuple.
+- `evidenceOutcomes`: the latest published outcome for each obligation.
+- `outcomes`: the outcomes bound to the latest evaluation. `PublishEvidence(obligation, outcome)` can publish `Pass`, `Fail`, `Unknown`, `Unsupported`, `NotRun` or `Incomplete`. Missing evidence evaluates to `Unknown`. The lifecycle reaches `Reviewable` only when every obligation has evidence and every outcome is `Pass`; all other outcomes remain `Evaluated` and cannot be accepted. Publishing or replacing evidence clears prior approvals and forces a fresh evaluation/review. This models status propagation, not evidence truth or sufficiency.
 - `approvals`: set of authorized actors approving the current tuple.
 - `acceptedTuple`: exact tuple accepted.
 - `appliedCandidateId`: candidate identity reported as applied.
@@ -41,9 +42,12 @@ Transitions are `Prepare`, `PublishEvidence`, `Evaluate`, `Approve`, `Accept`, `
 | `AcceptanceSoundness` | An accepted change is bound to the current tuple, a current evaluation, passing obligations, and the required approval count. |
 | `ApplicationSoundness` | Applied means the recorded applied candidate is exactly the candidate in the accepted tuple and current tuple. |
 | `NoStaleEvaluation` | Reviewable, Accepted, and Applied states cannot rely on an evaluation for an older tuple. |
-| `EvidenceBinding` | Reviewable requires all modeled obligations to have evidence for the current evaluation. |
+| `EvidenceBinding` | Reviewable requires all modeled obligations to have evidence and a `Pass` outcome for the current evaluation. |
+| `EvaluationOutcomeBinding` | Evaluated and later phases use the published outcome for each evidenced obligation; missing evidence remains `Unknown`. |
+| `FailedOrUnresolvedEvidenceBlocksAcceptance` | Any non-`Pass` obligation outcome prevents Accepted and Applied phases. |
 | `ApprovalBinding` | Accepted and Applied states contain only approvals from the configured authorized actor set. |
 | `NoImplicitApplication` | Before the Applied phase, no applied-candidate identity is recorded. |
+| `NoApprovalInPreparedPhase` | Prepared carries no approval from before a new evidence publication. |
 | `HistoryNonEmpty` | The event sequence contains its initial creation event. |
 
 The TLC configuration also checks the temporal property `TerminalDiscipline`: once a phase is terminal (`Applied`, `Rejected`, `Withdrawn`, or `Superseded`), it cannot transition out of that phase.
@@ -52,8 +56,8 @@ The TLA+ module also states corresponding theorem obligations from `Spec`. TLC c
 
 ## Important limitations and next refinements
 
-1. Evidence truth, provenance, freshness dependencies, revocation, and independent verification are abstracted away. The current model treats publication as sufficient evidence for its obligation.
-2. `Fail` is in the outcome domain but no transition currently produces it. A later refinement should model explicit failed checks and distinguish failed, unknown, unsupported, and not-run outcomes.
+1. Evidence truth, provenance, freshness dependencies, revocation, and independent verification are abstracted away. The model accepts a published `Pass` value as an input; it does not verify that value.
+2. The model now propagates explicit `Fail`, `Unknown`, `Unsupported`, `NotRun` and `Incomplete` outcomes. It still abstracts away the richer evidence-record status and method semantics defined in Specification 0005.
 3. The model does not yet represent concurrent operations, adapter unavailability, TOCTOU races, or a malicious adapter.
 4. The event sequence is extended by the modeled actions, but this version does not yet define a separate temporal history-integrity property or actor/reason metadata for every event.
 5. `ChangeInputs` is disabled after terminal phases, including Applied. A production policy for post-application remediation/reopening requires a separate decision.

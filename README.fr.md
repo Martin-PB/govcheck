@@ -11,7 +11,7 @@ GovCheck vise à rendre les règles de développement explicites, vérifiables p
 - Le dépôt et son cycle de vie sont gouvernés ; humains et agents sont des contributeurs.
 - Un modèle canonique versionné est l'unique autorité normative ; Markdown est une projection contrôlée ou une explication.
 - Les fondations formelles de gouvernance et d'assurance s'appliquent à tous les dépôts, quelle que soit leur taille.
-- Un petit exécutable local est l'interface principale ; aucun service hébergé, daemon ou serveur MCP obligatoire.
+- Un petit exécutable local est l'interface principale ; aucun service hébergé ni daemon obligatoire. Un adaptateur MCP optionnel pourra être évalué plus tard comme un adaptateur parmi d'autres ; il ne fait pas partie du noyau.
 - Git et Pijul sont de première classe et sémantiquement distincts.
 - Usages locaux, serveurs d'équipe, hébergements auto-gérés et publics sont dans le périmètre.
 - VCS, hébergement, collaboration et acceptation sont des responsabilités séparées.
@@ -33,7 +33,7 @@ Le premier cycle de conception est documenté dans [docs/specifications](docs/sp
 
 Chaque spécification existe en anglais et en français. Elles définissent des contrats proposés, pas un comportement implémenté.
 
-Le raisonnement de conception, les distinctions d’assurance, l’audit du modèle de cycle de vie, l’autorité documentaire canonique, le métamodèle, le flux de développement et les évaluations de l’écosystème sont indexés dans [docs/architecture](docs/architecture/README.fr.md).
+Le raisonnement de conception, les distinctions d'assurance, l'audit du modèle de cycle de vie, l'autorité documentaire canonique, le métamodèle, le flux de développement et les évaluations de l'écosystème sont indexés dans [docs/architecture](docs/architecture/README.fr.md).
 
 ## Décisions et suite
 

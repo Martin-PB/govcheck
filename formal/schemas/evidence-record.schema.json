@@ -304,15 +304,6 @@
           }
         },
         {
-          "properties": {
-            "status": {
-              "enum": [
-                "not-run",
-                "not-applicable",
-                "unsupported"
-              ]
-            }
-          },
           "not": {
             "anyOf": [
               {
@@ -327,6 +318,60 @@
               },
               {
                 "required": [
+                  "rawResultDigest"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "not-run",
+                  "not-applicable",
+                  "unsupported"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "rawResult"
+                  ]
+                },
+                {
+                  "required": [
+                    "rawResultReference"
+                  ]
+                },
+                {
+                  "required": [
+                    "rawResultDigest"
+                  ]
+                }
+              ]
+            }
+          },
+          "else": {
+            "anyOf": [
+              {
+                "required": [
+                  "rawResult"
+                ]
+              },
+              {
+                "required": [
+                  "rawResultReference",
                   "rawResultDigest"
                 ]
               }
@@ -546,7 +591,11 @@
           "result": {
             "properties": {
               "status": {
-                "const": "not-run"
+                "enum": [
+                  "not-run",
+                  "not-applicable",
+                  "unsupported"
+                ]
               }
             },
             "required": [

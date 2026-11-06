@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Martin-PB/govcheck/blob/main/formal/schemas/version-governance-bundle.schema.json",
+  "title": "GovCheck version-governance validation bundle",
+  "description": "A validation envelope joining a caller-supplied exact-revision inventory with version decisions and dependency edges. It is not a release manifest.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "revisions", "decisions", "dependencies"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "revisions": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/inventoryEntry" }
+    },
+    "decisions": {
+      "type": "array",
+      "items": { "$ref": "version-decision.schema.json" }
+    },
+    "dependencies": {
+      "type": "array",
+      "items": { "$ref": "dependency-edge.schema.json" }
+    }
+  },
+  "$defs": {
+    "inventoryEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["artifactId", "revision"],
+      "properties": {
+        "artifactId": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9][a-z0-9-]*)+$"
+        },
+        "revision": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["vcs", "nativeId"],
+          "properties": {
+            "vcs": { "enum": ["git", "pijul", "other"] },
+            "nativeId": { "type": "string", "minLength": 1 },
+            "repository": { "type": "string", "format": "uri-reference" },
+            "path": { "type": "string" },
+            "contentDigest": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["algorithm", "value"],
+              "properties": {
+                "algorithm": { "const": "sha-256" },
+                "value": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

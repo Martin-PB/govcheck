@@ -72,6 +72,8 @@ La classification se rapporte au contrat antérieur approuvé et publié, à ses
 | Aucun incrément de contrat | Aucun changement du contrat : éditorial, métadonnées, projection régénérée ou implémentation hors contrat | Révision ordinaire ; ne pas fabriquer de SemVer |
 | Indéterminé / bloqué | Éléments insuffisants/contradictoires ou analyse non prise en charge | Aucune affirmation de compatibilité ; revue humaine compétente |
 
+La publication initiale est un événement d'autorisation distinct, et non un incrément MAJOR/MINOR/PATCH : elle établit la première version de référence approuvée du contrat lorsque les conditions du §2.2 du document 0017 sont satisfaites. Il n'existe alors aucun contrat publié antérieur à comparer, mais l'autorité désignée reste requise. Une décision concluant à l'absence de changement de contrat n'enregistre aucune nouvelle version. Aucun de ces cas ne doit être présenté silencieusement comme un PATCH.
+
 Une correction qui change le sens effectivement reçu par les consommateurs n'est pas automatiquement PATCH parce qu'elle est appelée correction de bug. Une correction de sécurité n'est PATCH que si elle préserve le contrat et ses garanties. Un champ facultatif n'est pas automatiquement MINOR : le comportement face aux champs inconnus doit faire partie du contrat. L'affaiblissement d'une garantie de sécurité ou d'assurance peut être MAJOR même s'il facilite la conformité. Un numéro de version ne légitime pas rétroactivement une modification normative non autorisée.
 
 ## 5. Dépendances et fraîcheur des preuves

@@ -68,7 +68,7 @@
       "required": ["classification", "rationale", "changedGuarantees"],
       "properties": {
         "classification": {
-          "enum": ["major", "minor", "patch", "no-contract-change", "undetermined"]
+          "enum": ["initial-publication", "major", "minor", "patch", "no-contract-change", "undetermined"]
         },
         "rationale": { "type": "string", "minLength": 1 },
         "changedGuarantees": {
@@ -200,10 +200,8 @@
         "required": ["decision"]
       },
       "then": {
-        "required": ["previous", "proposedContractVersion", "contractScope", "roles", "authority"],
+        "required": ["proposedContractVersion", "contractScope", "roles", "authority"],
         "properties": {
-          "previous": { "type": "object" },
-          "proposedContractVersion": { "$ref": "#/$defs/semver" },
           "roles": { "required": ["proposer", "authorizer"] },
           "compatibility": {
             "properties": { "classification": { "not": { "const": "undetermined" } } }
@@ -211,7 +209,48 @@
           "decision": {
             "properties": { "conditions": { "maxItems": 0 } }
           }
-        }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "compatibility": {
+                  "properties": { "classification": { "const": "initial-publication" } },
+                  "required": ["classification"]
+                }
+              },
+              "required": ["compatibility"]
+            },
+            "then": {
+              "required": ["previous"],
+              "properties": {
+                "previous": { "type": "null" },
+                "proposedContractVersion": { "$ref": "#/$defs/semver" }
+              }
+            },
+            "else": {
+              "if": {
+                "properties": {
+                  "compatibility": {
+                    "properties": { "classification": { "const": "no-contract-change" } },
+                    "required": ["classification"]
+                  }
+                },
+                "required": ["compatibility"]
+              },
+              "then": {
+                "properties": { "proposedContractVersion": { "type": "null" } }
+              },
+              "else": {
+                "required": ["previous"],
+                "properties": {
+                  "previous": { "type": "object" },
+                  "proposedContractVersion": { "$ref": "#/$defs/semver" }
+                }
+              }
+            }
+          }
+        ]
       }
     }
   ],

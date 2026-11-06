@@ -106,6 +106,40 @@ class ValidatorTests(unittest.TestCase):
         self.assertEqual(result["status"], "invalid")
         self.assertIn("decision.impact-contradiction", {x["code"] for x in result["findings"]})
 
+    def test_patch_increment_matches_previous_contract_version(self):
+        data = bundle()
+        previous = revision("c" * 40)
+        data["revisions"].append({
+            "artifactId": "govcheck.example-contract",
+            "revision": previous
+        })
+        decision = authorized_decision()
+        decision["decisionId"] = "decision:patch:001"
+        decision["previous"] = {"revision": previous, "contractVersion": "1.0.0"}
+        decision["compatibility"]["classification"] = "patch"
+        decision["proposedContractVersion"] = "1.0.1"
+        data["decisions"] = [decision]
+        result = MODULE.validate_bundle(data)
+        codes = {x["code"] for x in result["findings"]}
+        self.assertNotIn("decision.version-increment-mismatch", codes)
+        self.assertNotIn("decision.previous-version", codes)
+
+    def test_patch_increment_cannot_skip_to_minor(self):
+        data = bundle()
+        previous = revision("c" * 40)
+        data["revisions"].append({
+            "artifactId": "govcheck.example-contract",
+            "revision": previous
+        })
+        decision = authorized_decision()
+        decision["decisionId"] = "decision:patch:bad"
+        decision["previous"] = {"revision": previous, "contractVersion": "1.0.0"}
+        decision["compatibility"]["classification"] = "patch"
+        decision["proposedContractVersion"] = "1.1.0"
+        data["decisions"] = [decision]
+        result = MODULE.validate_bundle(data)
+        self.assertIn("decision.version-increment-mismatch", {x["code"] for x in result["findings"]})
+
     def test_duplicate_decision_ids_are_invalid(self):
         data = bundle()
         duplicate = dict(data["decisions"][0])

@@ -12,6 +12,8 @@ Chaque dossier distingue affirmation (proposition réfutable et bornée), argume
 
 Les classes de méthodes sont l'axe principal ; le mot « niveaux » est réservé au seul sous-ensemble empirique (SLSA, Common Criteria EAL et DO-178C DAL utilisent « levels » sur d'autres axes).
 
+Pour la reconstruction détaillée de ces distinctions (auto-certification vs vérification, témoignage vs preuve, les trois questions d'assurance, statuts des preuves), voir l'enregistrement d'architecture [0010 — Assurance, témoignage, preuve et conformité](../architecture/0010-assurance-proof-and-conformance.fr.md), qui complète cette spécification sans la remplacer.
+
 ### Classe 1 — Exécution empirique (sous-niveaux)
 
 | Sous-niveau | Exemples | Établit | N'établit pas |

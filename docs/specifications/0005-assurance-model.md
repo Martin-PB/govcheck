@@ -12,6 +12,8 @@ Each record distinguishes claim (falsifiable scoped proposition), argument, evid
 
 Method classes are the primary axis; the word “levels” is reserved for the empirical sub-scale only (SLSA levels, Common Criteria EAL and DO-178C DAL use “levels” on different axes).
 
+For the detailed reconstruction of these distinctions (self-certification vs verification, testimony vs proof, the three assurance questions, evidence statuses), see architecture record [0010 — Assurance, testimony, proof and conformance](../architecture/0010-assurance-proof-and-conformance.md), which complements this specification without replacing it.
+
 ### Class 1 — Empirical execution (sub-levels)
 
 | Sub-level | Examples | Establishes | Does not establish |

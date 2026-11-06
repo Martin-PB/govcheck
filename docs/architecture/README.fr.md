@@ -15,8 +15,9 @@ L'anglais est la langue par défaut. Chaque document d'architecture possède une
 - [0016 — Évaluation de Writ et Privateer fondée sur leurs sources](0016-writ-privateer-assessment.fr.md) · [English](0016-writ-privateer-assessment.md)
 - [0017 — Identité, révision et politique de versionnement des artefacts](0017-artifact-identity-revision-and-versioning.fr.md) · [English](0017-artifact-identity-revision-and-versioning.md)
 - [0018 — Gouvernance des versions, compatibilité et autorité d'approbation](0018-version-governance-and-compatibility-authority.fr.md) · [English](0018-version-governance-and-compatibility-authority.md)
+- [0019 — Évolution du catalogue d'artefacts et du manifeste de release](0019-catalogue-and-release-manifest-migration.fr.md) · [English](0019-catalogue-and-release-manifest-migration.md)
 
-Les documents 0009–0018 préservent le raisonnement de conception et les distinctions d'assurance. Les documents 0017 et 0018 proposent respectivement une politique de versionnement des artefacts par catégorie et le processus d'autorité/compatibilité associé. Ils n'imposent pas SemVer universellement et ne transforment pas les propositions en contrôles implémentés ou règles normatives approuvées.
+Les documents 0009–0019 préservent le raisonnement de conception et les distinctions d'assurance. Le document 0019 propose une migration progressive du catalogue et du manifeste de release ; il reste une proposition, pas un contrôle implémenté ni une règle normative approuvée. Les documents 0017 et 0018 proposent respectivement une politique de versionnement des artefacts par catégorie et le processus d'autorité/compatibilité associé. Ils n'imposent pas SemVer universellement et ne transforment pas les propositions en contrôles implémentés ou règles normatives approuvées.
 
 ## Statut
 

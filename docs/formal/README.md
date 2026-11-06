@@ -15,7 +15,7 @@ GovCheck's formal work is developed incrementally and remains separate from impl
 ## Assurance
 
 - [Assurance claims and freshness — English](../architecture/0021-assurance-claims-and-freshness.md)
-- [Affirmations, arguments et fraîcheur — français](../architecture/0020-assurance-claims-and-freshness.fr.md)
+- [Affirmations, arguments et fraîcheur — français](../architecture/0021-assurance-claims-and-freshness.fr.md)
 - [TLA+ module](../../formal/tla/GovCheckAssurance.tla)
 - [TLC configuration](../../formal/tla/GovCheckAssurance.cfg)
 

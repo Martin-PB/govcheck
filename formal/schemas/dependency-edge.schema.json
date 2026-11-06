@@ -5,9 +5,18 @@
   "description": "A typed, directed relation between exact artifact revisions. This schema validates record shape, not semantic impact or graph acyclicity.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schemaVersion", "edgeId", "relation", "source", "target", "provenance"],
+  "required": [
+    "schemaVersion",
+    "edgeId",
+    "relation",
+    "source",
+    "target",
+    "provenance"
+  ],
   "properties": {
-    "schemaVersion": { "const": 1 },
+    "schemaVersion": {
+      "const": 1
+    },
     "edgeId": {
       "type": "string",
       "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{2,127}$"
@@ -26,36 +35,72 @@
         "published-with"
       ]
     },
-    "source": { "$ref": "#/$defs/artifactRevision" },
-    "target": { "$ref": "#/$defs/artifactRevision" },
+    "source": {
+      "$ref": "#/$defs/artifactRevision"
+    },
+    "target": {
+      "$ref": "#/$defs/artifactRevision"
+    },
     "scope": {
       "type": "string",
       "description": "Optional statement of the precise claim, property, interface or subset covered by this edge."
     },
     "criticality": {
-      "enum": ["blocking", "material", "informational"]
+      "enum": [
+        "blocking",
+        "material",
+        "informational"
+      ]
     },
     "validity": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
         "status": {
-          "enum": ["active", "review-required", "stale-invalid", "superseded", "revoked"]
+          "enum": [
+            "active",
+            "review-required",
+            "stale-invalid",
+            "superseded",
+            "revoked"
+          ]
         },
-        "since": { "type": "string", "format": "date-time" },
-        "until": { "type": "string", "format": "date-time" },
-        "reason": { "type": "string" },
-        "supersededBy": { "type": "string" }
+        "since": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "until": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "supersededBy": {
+          "type": "string"
+        }
       }
     },
     "provenance": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["recordedAt", "recordedBy"],
+      "required": [
+        "recordedAt",
+        "recordedBy"
+      ],
       "properties": {
-        "recordedAt": { "type": "string", "format": "date-time" },
-        "recordedBy": { "type": "string", "minLength": 1 },
-        "sourceReference": { "type": "string", "format": "uri-reference" }
+        "recordedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "recordedBy": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceReference": {
+          "type": "string",
+          "format": "uri-reference"
+        }
       }
     }
   },
@@ -63,7 +108,10 @@
     "artifactRevision": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["artifactId", "revision"],
+      "required": [
+        "artifactId",
+        "revision"
+      ],
       "properties": {
         "artifactId": {
           "type": "string",
@@ -72,27 +120,54 @@
         "revision": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["vcs", "nativeId"],
+          "required": [
+            "vcs",
+            "nativeId"
+          ],
           "properties": {
-            "vcs": { "enum": ["git", "pijul", "other"] },
-            "nativeId": { "type": "string", "minLength": 1 },
-            "repository": { "type": "string", "format": "uri-reference" },
-            "path": { "type": "string" },
+            "vcs": {
+              "enum": [
+                "git",
+                "pijul",
+                "other"
+              ]
+            },
+            "nativeId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "repository": {
+              "type": "string",
+              "format": "uri-reference"
+            },
+            "path": {
+              "type": "string"
+            },
             "contentDigest": {
               "type": "object",
               "additionalProperties": false,
-              "required": ["algorithm", "value"],
+              "required": [
+                "algorithm",
+                "value"
+              ],
               "properties": {
-                "algorithm": { "const": "sha-256" },
-                "value": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+                "algorithm": {
+                  "const": "sha-256"
+                },
+                "value": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                }
               }
             }
           }
         },
-        "contractId": { "type": "string" },
+        "contractId": {
+          "type": "string"
+        },
         "contractVersion": {
           "type": "string",
-          "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?(?:\\+[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?$"
+          "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-((?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*))*))?(?:\\+([0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*))?$"
         }
       }
     }

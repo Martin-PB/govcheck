@@ -11,7 +11,7 @@ GovCheck aims to make repository development rules explicit, machine-checkable, 
 - The repository and its change lifecycle are governed; humans and agents are contributors.
 - A versioned canonical governance model is the sole normative authority; Markdown is a controlled projection or explanation.
 - Formal governance and assurance foundations apply to every repository size.
-- A small local executable is the primary interface; no hosted service, mandatory daemon, or MCP server is required.
+- A small local executable is the primary interface; no hosted service or mandatory daemon is required. An optional MCP adapter may be assessed later as one adapter among others; it is not part of the core.
 - Git and Pijul are first-class and semantically distinct.
 - Local-only, team-hosted, self-hosted, and public workflows are in scope.
 - VCS, hosting, collaboration, and acceptance are separate concerns.

@@ -10,12 +10,40 @@ Chaque dossier distingue affirmation (proposition réfutable et bornée), argume
 
 ## Classes de méthodes non interchangeables
 
-1. **Exécution empirique :** tests, linters, builds, scans ; résultats observés dans la portée/environnement exécutés.
-2. **Model checking :** exploration d'un modèle selon bornes/hypothèses ; ne dit rien automatiquement de l'implémentation.
-3. **Preuve de théorème :** vérification d'une dérivation dans une logique/noyau ; consigner axiomes, imports, hypothèses et échappements.
-4. **Conformité de l'implémentation :** relation et méthode explicites de raffinement/conformité entre programme et spécification.
-5. **Fidélité normative :** traçabilité entre règles approuvées, IDs formels et projections humaines fidèles.
-6. **Acceptation :** décision de gouvernance selon laquelle claims/preuves/approbations satisfont le prédicat pour un candidat exact ; elle ne prouve pas toutes les affirmations sous-jacentes.
+Les classes de méthodes sont l'axe principal ; le mot « niveaux » est réservé au seul sous-ensemble empirique (SLSA, Common Criteria EAL et DO-178C DAL utilisent « levels » sur d'autres axes).
+
+### Classe 1 — Exécution empirique (sous-niveaux)
+
+| Sous-niveau | Exemples | Établit | N'établit pas |
+|---|---|---|---|
+| 1a. Tests unitaires | assert_eq!, Vitest | Le comportement attendu sur les cas exécutés | Toute généralité au-delà |
+| 1b. Tests d'intégration | plusieurs composants exécutés ensemble | Le chemin fonctionnel testé fonctionne | La composition complète du système |
+| 1c. Tests de propriétés | entrées générées, vérification d'invariants | Des propriétés tiennent sur un ensemble élargi d'entrées | Une preuve, même sur le domaine généré |
+| 1d. Analyse statique | Clippy, TypeScript strict, linters | Certaines catégories d'erreurs détectées sans exécution | Le comportement réel à l'exécution |
+
+> Une suite de tests, même très complète, n'est pas une preuve formelle.
+
+### Classes formelles et de gouvernance
+
+2. **Model checking :** exploration d'un modèle selon bornes/hypothèses (TLA+/TLC, Alloy, Spin) ; ne dit rien automatiquement de l'implémentation.
+3. **Vérification de programmes :** établit des propriétés du programme ou de ses spécifications dans un cadre logique précis (Kani, Verus, Dafny, Lean).
+4. **Preuve de théorème :** vérification d'une dérivation dans une logique/noyau (Lean, Coq, Isabelle) ; consigner axiomes, imports, hypothèses et échappements.
+5. **Conformité de l'implémentation :** relation et méthode explicites de raffinement/conformité entre programme et spécification.
+6. **Fidélité normative :** traçabilité entre règles approuvées, IDs formels et projections humaines fidèles.
+7. **Acceptation :** décision de gouvernance pour un candidat exact ; ne prouve pas que toutes les affirmations sont vraies.
+
+## Chaîne de conformité prouvable (langage naturel → formel → implémentation)
+
+La conformité à un texte en langage naturel (ex. AGENTS.md) ne se déduit pas automatiquement d'un programme. Elle s'établit par une chaîne tracée :
+
+    texte normatif → interprétation approuvée (autorité humaine compétente, datée, versionnée)
+                   → spécification formelle (règle formelle à ID stable)
+                   → implémentation prouvée conforme à cette spécification
+
+- Chaque maillon est consigné dans un registre d'interprétations (ID de règle stable, révision et empreinte du texte source, approbateur, date, spécification formelle référencée).
+- Prouver le dernier maillon ne prouve pas les précédents.
+- GovCheck ne déclare jamais « conforme » un cas insuffisamment vérifié (l'indéterminé n'est pas un succès).
+- La projection vers l'humain est déterministe : générée par script depuis les artefacts formels (diagrammes Mermaid, diagrammes de séquence issus de traces TLC), jamais produite directement par un LLM. La documentation HTML générée servie aux validateurs est un artefact versionné avec contrôle de dérive, comme le diagramme de cycle de vie.
 
 ## Enregistrement des preuves
 

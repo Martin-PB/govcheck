@@ -1,0 +1,36 @@
+name: TLA+ model check
+
+on:
+  pull_request:
+    paths:
+      - 'formal/tla/**'
+      - '.github/workflows/tla-check.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'formal/tla/**'
+
+jobs:
+  tlc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Download pinned tla2tools
+        run: |
+          curl -fsSL -o tla2tools.jar https://github.com/tlaplus/tla2tools/releases/download/v1.8.0/tla2tools.jar
+          sha256sum tla2tools.jar | tee tla2tools.sha256
+      - name: Run SANY parse check
+        run: java -cp tla2tools.jar tla2sany.SANY formal/tla/GovCheckLifecycle.tla
+      - name: Run TLC with pinned configuration
+        run: java -cp tla2tools.jar tlc2.TLC -config formal/tla/GovCheckLifecycle.cfg formal/tla/GovCheckLifecycle.tla 2>&1 | tee tlc-report.txt
+      - name: Upload TLC report
+        uses: actions/upload-artifact@v4
+        with:
+          name: tlc-report
+          path: |
+            tlc-report.txt
+            tla2tools.sha256

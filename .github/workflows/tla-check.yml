@@ -76,15 +76,22 @@ jobs:
           sha256sum tla2tools.jar | tee tla2tools.sha256
       - name: Run SANY parse check
         run: java -cp tla2tools.jar tla2sany.SANY formal/tla/GovCheckLifecycle.tla
-      - name: Run TLC with pinned configuration
+      - name: Run TLC with pinned lifecycle configuration
         run: |
           set -o pipefail
-          java -cp tla2tools.jar tlc2.TLC -config formal/tla/GovCheckLifecycle.cfg formal/tla/GovCheckLifecycle.tla 2>&1 | tee tlc-report.txt
+          java -cp tla2tools.jar tlc2.TLC -config formal/tla/GovCheckLifecycle.cfg formal/tla/GovCheckLifecycle.tla 2>&1 | tee tlc-lifecycle-report.txt
+      - name: Run SANY parse check for assurance model
+        run: java -cp tla2tools.jar tla2sany.SANY formal/tla/GovCheckAssurance.tla
+      - name: Run TLC with pinned assurance configuration
+        run: |
+          set -o pipefail
+          java -cp tla2tools.jar tlc2.TLC -config formal/tla/GovCheckAssurance.cfg formal/tla/GovCheckAssurance.tla 2>&1 | tee tlc-assurance-report.txt
       - name: Upload TLC report
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: tlc-report
           path: |
-            tlc-report.txt
+            tlc-lifecycle-report.txt
+            tlc-assurance-report.txt
             tla2tools.sha256

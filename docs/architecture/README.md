@@ -1,18 +1,20 @@
-# Architecture design
+# Architecture records
 
-English is the default. French counterparts are maintained for every architecture document.
+English is the default language. Each record has a French counterpart.
 
-- [0006 — Threat and Trust Model](0006-threat-and-trust-model.md) · [Français](0006-threat-and-trust-model.fr.md)
-- [0007 — Technology Decision Framework](0007-technology-decision-framework.md) · [Français](0007-technology-decision-framework.fr.md)
-- [0008 — Formalization and Conformance Plan](0008-formalization-and-conformance.md) · [Français](0008-formalization-and-conformance.fr.md)
-- [0009 — GovCheck Design Discussion Record and Consolidated Decision Log](0009-govcheck-design-discussion-record.md) · [Français](0009-govcheck-design-discussion-record.fr.md)
+- [0006 — Threat and trust model](0006-threat-and-trust-model.md) · [Français](0006-threat-and-trust-model.fr.md)
+- [0007 — Technology decision framework](0007-technology-decision-framework.md) · [Français](0007-technology-decision-framework.fr.md)
+- [0008 — Formalization and conformance plan](0008-formalization-and-conformance.md) · [Français](0008-formalization-and-conformance.fr.md)
+- [0009 — GovCheck design discussion record](0009-govcheck-design-discussion-record.md) · [Français](0009-govcheck-design-discussion-record.fr.md)
+- [0010 — Assurance, testimony, proof and conformance](0010-assurance-proof-and-conformance.md) · [Français](0010-assurance-proof-and-conformance.fr.md)
+- [0011 — Lifecycle model: assertion-by-assertion audit](0011-lifecycle-model-assertion-audit.md) · [Français](0011-lifecycle-model-assertion-audit.fr.md)
+- [0012 — Canonical normative authority and documentation conformity](0012-normative-authority-and-documentation.md) · [Français](0012-normative-authority-and-documentation.fr.md)
+- [0013 — Governance metamodel](0013-governance-metamodel.md) · [Français](0013-governance-metamodel.fr.md)
+- [0014 — Governed development workflow and actor responsibilities](0014-governed-development-workflow.md) · [Français](0014-governed-development-workflow.fr.md)
+- [0015 — Governance conformance tool and validation plan](0015-governance-conformance-and-validation-plan.md) · [Français](0015-governance-conformance-and-validation-plan.fr.md)
 
-Document 0009 consolidates the product boundaries, architectural decisions, assurance vocabulary, threat assumptions, current lifecycle model, verification limitations, open questions and ordered follow-up work discussed on 5–6 November 2026. It is a rationale and decision index, not a replacement for the normative specifications or an assertion that proposed controls are implemented.
-
-The foundational contracts are in [docs/specifications](../specifications/README.md): canonical governance semantics, change lifecycle and acceptance, VCS/collaboration adapter contracts, and assurance/evidence.
+Records 0009–0015 preserve design rationale and assurance distinctions. They complement the foundational contracts in [docs/specifications](../specifications/README.md); they do not silently turn proposals into implemented controls or approved normative rules.
 
 ## Status
 
-These documents are proposals and design records for maintainer review. They are not implemented controls, verified security properties or technology decisions. See each document's status and limitations before relying on it.
-- [0010 — Assurance, Testimony, Proof and Conformance](0010-assurance-proof-and-conformance.md) · [Français](0010-assurance-proof-and-conformance.fr.md)
-- [0011 — Lifecycle Model: Assertion-by-Assertion Audit](0011-lifecycle-model-assertion-audit.md) · [Français](0011-lifecycle-model-assertion-audit.fr.md)
+Architecture records are proposals/design records unless stated otherwise. They are not evidence of implemented controls, verified security properties or technology adoption. Read each record's status, scope and limits.

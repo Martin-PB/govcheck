@@ -10,7 +10,7 @@
 - **Formal models, proofs and assurance arguments:** R-04, R-05.
 - **Evidence provenance and software supply chain:** R-06, R-07, R-08.
 - **Executable policy and authorization:** R-09, R-10.
-- **Repository security posture and enforcement boundary:** R-11, R-12.
+- **Repository security posture and enforcement boundary:** R-03, R-08, R-18, R-19.
 - **Canonical schemas, versioning and release identity:** R-13, R-14, R-15, R-16.
 - **External governance/catalogue pattern:** R-17.
 - **Candidate agent-workflow tools assessed, not adopted:** R-18, R-19.

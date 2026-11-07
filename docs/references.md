@@ -410,7 +410,7 @@
 
 <a id="r-37"></a>
 ### R-37 — Alloy language and Analyzer
-- **Cited by:** no current record on this branch cites this source.
+- **Cited by:** [0005](specifications/0005-assurance-model.md), [0007](architecture/0007-technology-decision-framework.md), [0009](architecture/0009-govcheck-design-discussion-record.md)
 
 - **Primary sources:** [Alloy project and documentation](https://alloytools.org/) · [Alloy Analyzer source repository](https://github.com/AlloyTools/org.alloytools.alloy)
 - **Relevant concepts:** relational modeling, bounded analysis, SAT-based instance finding and counterexample search; Alloy 6 adds mutable state and temporal operators.

@@ -93,7 +93,9 @@ These are proposed work packages, not approved policy changes.
 
 ### G0 — Adopt and identify the normative authority
 
-Resolve who has authority over the canonical governance model and how delegation is represented. Adopt Specification 0002 and the relevant parts of 0012/0013 through an explicit decision. Until then, documents remain proposals and no validator should infer authority from repository ownership, PR merge or CI status.
+**Initial decision now recorded in Architecture 0023:** one principal, `Martin-PB`, currently holds normative authority and may amend the authority regime itself. No authority is inferred from repository ownership, PR merge or CI status. The decision is versioned, prospective and explicitly amendable by its holder.
+
+This decision still needs translation into canonical records, validation and a formal model. Architecture 0023 also distinguishes normative authorization, technical review and execution, and makes explicit that the initial regime does not provide separation of persons for adoption.
 
 ### G1 — Define the minimal canonical governance records
 

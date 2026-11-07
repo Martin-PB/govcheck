@@ -317,11 +317,11 @@ If a conflict is found, the existing approved normative authority prevails until
 
 ## 12. External references
 
-- [Semantic Versioning 2.0.0]([R-14](../references.md#r-14)): requires a declared public API and defines immutable published versions and compatibility-based increments.
-- [1EdTech Versioning Framework 1.0]([R-23](../references.md#r-23)): applies SemVer-derived principles separately to specifications, documentation, specification artifacts, data models and software.
-- [W3C PROV-O]([R-24](../references.md#r-24)): provenance vocabulary for entities, activities, agents and derivation; it complements rather than replaces versioning.
-- [DataCite — Versioning]([R-25](../references.md#r-25)): distinguishes versions, related identifiers and concept-level records; stewards determine what counts as major/minor.
-- [Scientific Data (2024), dataset versioning framework]([R-26](../references.md#r-26)): domain-specific treatment of dataset revisions and reproducibility.
+- [R-14](../references.md#r-14): requires a declared public API and defines immutable published versions and compatibility-based increments.
+- [R-23](../references.md#r-23): applies SemVer-derived principles separately to specifications, documentation, specification artifacts, data models and software.
+- [R-24](../references.md#r-24): provenance vocabulary for entities, activities, agents and derivation; it complements rather than replaces versioning.
+- [R-25](../references.md#r-25): distinguishes versions, related identifiers and concept-level records; stewards determine what counts as major/minor.
+- [R-26](../references.md#r-26): domain-specific treatment of dataset revisions and reproducibility.
 
 These references support the distinction between compatibility versioning, revision identity and provenance. They do not prescribe GovCheck's artifact classifications; those are project-specific proposals above.
 

@@ -39,6 +39,7 @@
 | Agent-instruction interoperability and spec-driven workflows | R-104 |
 | Policy-as-code and runtime agent-governance research | R-105 |
 | OWASP guidance for AI-agent and MCP security | R-106 |
+| GitHub Actions workflow location and syntax | R-107 |
 
 ## Full reference entries
 
@@ -74,6 +75,7 @@
 - **Agent instructions and spec-driven workflows:** R-104.
 - **Policy-as-code, continuous assurance and MCP governance research:** R-105.
 - **AI-agent and MCP security guidance:** R-106.
+- **GitHub Actions workflow placement:** R-107.
 
 ## Standards, government guidance and industry specifications
 
@@ -1028,4 +1030,13 @@
 - **Relevant concepts:** versioned and testable policy for agent permissions; authorization at a gateway or proxy using identity, tool and arguments; deny-by-default permissions; short-lived scoped identities; sandboxing and egress allowlists; configuration validation and audit logging.
 - **Use in GovCheck:** supports the distinction between natural-language agent instructions and controls enforced at tool, gateway, identity and operating-system boundaries.
 - **Limit:** this is an evolving engineering guideline, not a certification or proof of implementation. Recommendations must be mapped to the actual agent harness, execution host, tool surface and threat model; the guideline does not establish that a particular deployment enforces every listed control.
+
+
+<a id="r-107"></a>
+### R-107 — GitHub Actions workflow location and syntax
+- **Cited by:** [ADR 0003](decisions/0003-two-level-governance.md)
+- **Primary sources:** [GitHub Actions workflow syntax](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax) · [GitHub Actions workflow concepts](https://docs.github.com/en/actions/concepts/workflows-and-actions/workflows)
+- **Relevant concepts:** GitHub Actions workflow definitions are YAML files stored under the repository-root `.github/workflows/` directory; GitHub discovers workflow files from that location and evaluates them against repository events.
+- **Use in GovCheck:** supports the ADR 0003 constraint that reusable product-package content cannot by itself relocate a GitHub Actions workflow: the bootstrap/synchronization process must materialize the workflow at the required repository-root path.
+- **Limit:** this is a GitHub Actions platform constraint, not a general CI/CD requirement. It does not establish that a workflow is enabled, trusted, protected from bypass, correctly configured or successfully executed.
 

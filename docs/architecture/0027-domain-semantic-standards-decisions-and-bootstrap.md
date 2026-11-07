@@ -123,7 +123,7 @@ The following is an initial, deliberately broad discovery inventory, not an adop
 | Provenance | OMG PPMN; W3C PROV family | Provenance/pedigree models for entities, activities, agents, derivations and responsibility across artifacts and processes. | PPMN and PROV are complementary candidates, not assumed substitutes. OMG catalog lists PPMN 1.0 formal (September 2026); W3C PROV includes PROV-DM, PROV-O, PROV-XML and constraints. |
 | Supply-chain inventory | SPDX; CycloneDX | Machine-readable software/component inventories, licenses, relationships, vulnerabilities, services and related supply-chain information. | Choose formats according to use cases and ecosystem; SBOM presence is not proof of component safety or complete provenance. SPDX 3.0 is current in its specification catalogue; pin CycloneDX version separately. |
 | Secure development | NIST SSDF (SP 800-218) | Secure-development practices and outcomes across the software lifecycle. | Practice framework, not a complete machine-readable metamodel or executable policy language. |
-| Open-source compliance | OpenChain ISO/IEC 5230; ISO/IEC 18974 | Process requirements for open-source license compliance and security assurance. | Organizational/process standards; adoption and certification claims require separate evidence. |
+| Open-source compliance | OpenChain ISO/IEC 5230; ISO/IEC 18974 | Formal program requirements for open-source license compliance and security assurance. | Organizational/process standards; program scope and verification materials matter. Conformance claims require evidence; see R-103. |
 | Semantic governance and constraints | RDF, OWL 2, SKOS, SHACL, JSON-LD, W3C PROV | Vocabularies, ontologies, constraints and linked-data representations for cross-domain semantic integration. | Use only where their graph/ontology semantics add value; do not impose an RDF knowledge graph as a prerequisite. |
 | Business motivation and rules | OMG BMM, SBVR and DMN | Motivation/goals/influencers, business vocabulary/rules, and decision logic. | Complementary layers; do not conflate motivation, policy authority, vocabulary and executable decision logic. |
 
@@ -279,6 +279,7 @@ The primary sources consulted for this record are registered in the central bili
 - **Software supply-chain inventory:** R-99 (SPDX 3.0) and R-100 (CycloneDX).
 - **Secure development practices:** R-101 (NIST SP 800-218 SSDF).
 - **Provenance:** R-102 (W3C PROV family).
+- **Open-source compliance and security assurance:** R-103 (ISO/IEC 5230 and ISO/IEC 18974).
 
 See [the central reference catalogue](../references.md) and its [French counterpart](../references.fr.md). The catalogue entries distinguish formal specifications from beta/draft versions and explain the limits of what each source establishes.
 

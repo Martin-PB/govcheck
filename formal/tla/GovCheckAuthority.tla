@@ -30,7 +30,7 @@ Amend(actor, nextAuthority, nextRevision) ==
   /\ actor = currentAuthority
   /\ nextAuthority \in Principals
   /\ nextRevision \in Revisions
-  /\ <<nextAuthority, nextRevision>> # <<currentAuthority, currentRevision>>
+  /\ nextRevision \notin {history[i].revision : i \in 1..Len(history)}
   /\ currentAuthority' = nextAuthority
   /\ currentRevision' = nextRevision
   /\ history' = Append(history,
@@ -66,9 +66,11 @@ OnlyCurrentAuthorityCanAmend ==
 
 AmendmentChainIsContinuous ==
   \A i \in 2..Len(history) :
-    /\ history[i].priorAuthority = history[i-1].nextAuthority
-    /\ history[i].revision # history[i-1].revision \/
-       history[i].nextAuthority # history[i-1].nextAuthority
+    history[i].priorAuthority = history[i-1].nextAuthority
+
+RevisionIsNeverReused ==
+  \A i, j \in 2..Len(history) :
+    i # j => history[i].revision # history[j].revision
 
 HistoryExtendsPrevious ==
   /\ Len(history') >= Len(history)
@@ -81,6 +83,7 @@ Spec == Init /\ [][Next]_vars
 THEOREM Spec => []TypeOK
 THEOREM Spec => []OnlyCurrentAuthorityCanAmend
 THEOREM Spec => []AmendmentChainIsContinuous
+THEOREM Spec => []RevisionIsNeverReused
 THEOREM Spec => HistoryIsAppendOnly
 
 =============================================================================

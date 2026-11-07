@@ -44,6 +44,7 @@ L'étude d'intégration et ses sources techniques externes sont cataloguées sé
 - [R-18 — Évaluation de Writ à partir des sources](../references.fr.md#r-18)
 - [R-19 — Évaluation de Privateer à partir des sources](../references.fr.md#r-19)
 - [R-20 — Assistant de preuve Lean](../references.fr.md#r-20)
+- [R-21 — Conseils de versionnement et de reproductibilité des logiciels de recherche](../references.fr.md#r-21)
 - [R-22 — Sémantiques natives de Git/Pijul et hébergement Nest](../references.fr.md#r-22)
 - [R-35 — Common Criteria / ISO/IEC 15408 et évaluation EAL](../references.fr.md#r-35)
 - [R-36 — RTCA DO-178C / EUROCAE ED-12C et niveaux DAL](../references.fr.md#r-36)
@@ -99,3 +100,4 @@ L'étude d'intégration et ses sources techniques externes sont cataloguées sé
 - [R-93 — logique déontique et modalités normatives](../references.fr.md#r-93)
 - [R-104 — Formats d'instructions pour agents et workflows pilotés par les spécifications](../references.fr.md#r-104)
 - [R-105 — Recherches sur le policy-as-code, l'assurance continue et la gouvernance des agents](../references.fr.md#r-105)
+- [R-106 — Recommandations OWASP pour la sécurité des agents IA et de MCP](../references.fr.md#r-106)

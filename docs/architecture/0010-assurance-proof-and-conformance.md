@@ -114,8 +114,8 @@ This document expands the distinctions in specifications 0002–0005 and archite
 
 ## References
 
-- [GovCheck governance and assurance reference register](../references/governance-and-assurance.md): GSN assurance arguments, Lamport/TLA+, in-toto provenance and Lean's proof-kernel boundary.
-- [French reference register](../references/governance-and-assurance.fr.md).
+- [GovCheck governance and assurance reference register](../references.md): GSN assurance arguments, Lamport/TLA+, in-toto provenance and Lean's proof-kernel boundary.
+- [French reference register](../references.fr.md).
 
 
 ## Bibliographic references

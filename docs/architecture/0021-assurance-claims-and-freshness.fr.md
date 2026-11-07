@@ -103,7 +103,16 @@ Le module et la configuration sont des sources formelles proposées. Ils doivent
 
 ## Références bibliographiques
 
-- [R-05 — Modélisation par transitions d'états TLA+ / TLC](../references.fr.md#r-05)
-- [R-09 — Moteur de décision de politiques Open Policy Agent](../references.fr.md#r-09)
-- [R-18 — Évaluation de Writ à partir des sources](../references.fr.md#r-18)
-- [R-22 — Sémantiques natives Git et Pijul](../references.fr.md#r-22)
+- [R-05 — modélisation par transitions d'états TLA+ / TLC](../references.fr.md#r-05)
+- [R-09 — moteur de décision de politiques Open Policy Agent](../references.fr.md#r-09)
+- [R-18 — évaluation de Writ à partir des sources](../references.fr.md#r-18)
+- [R-22 — sémantiques natives Git et Pijul](../references.fr.md#r-22)
+- [R-33 — revue de recherche sur les dossiers d'assurance de sécurité](../references.fr.md#r-33)
+- [R-34 — métamodèle d'assurance structurée OMG (SACM)](../references.fr.md#r-34)
+- [R-70 — ingénierie de dossiers d'assurance par modèles ACCESS](../references.fr.md#r-70)
+- [R-71 — Assurance 2.0 et argumentation réfutable](../references.fr.md#r-71)
+- [R-72 — modélisation des menaces à partir d'observations en production](../references.fr.md#r-72)
+- [R-73 — statut et constructions proposées de OMG SACM 2.4 Beta 1](../references.fr.md#r-73)
+- [R-74 — modèle PEAK de décision de projet](../references.fr.md#r-74)
+- [R-75 — surveillance continue de la sécurité NIST](../references.fr.md#r-75)
+- [R-76 — certification à l'exécution et surveillance des hypothèses](../references.fr.md#r-76)

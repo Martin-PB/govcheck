@@ -7,6 +7,7 @@
 | Autorité de gouvernance, séparation des tâches et développement sécurisé | R-01–R-03, R-11 |
 | Évaluation des risques, modélisation des menaces et chemins d'attaque | R-27–R-32 |
 | Dossiers d'assurance de sécurité et métamodèles | R-33–R-34 |
+| Décision PEAK, observations continues et assurance à l'exécution | R-67–R-73 |
 | Régimes d'assurance et exigences orientées objectifs | R-35–R-36, R-44 |
 | Model checking et vérification de programmes candidates | R-37–R-43 |
 | Provenance des preuves et chaîne d'approvisionnement logicielle | R-06–R-08 |
@@ -45,6 +46,7 @@
 - **Sémantiques natives des VCS et adaptateurs de collaboration :** R-22.
 - **Modélisation des menaces, chemins d'attaque et gestion des risques :** R-27 à R-32.
 - **Dossiers d'assurance de sécurité et métamodèles :** R-33 à R-34.
+- **Décision PEAK, observations continues et assurance à l'exécution :** R-67 à R-73.
 
 ## Normes, recommandations publiques et spécifications industrielles
 
@@ -666,6 +668,67 @@
 - **Concepts pertinents :** découverte de pairs par sujets, rendez-vous via table de hachage distribuée, UDP hole punching et connexions chiffrées entre pairs.
 - **Utilité pour GovCheck :** conserve l'alternative de découverte de pairs pour application desktop discutée dans la PR Cartocortex #28, à côté de la signalisation WebRTC dans les navigateurs.
 - **Limite :** Hyperswarm/HyperDHT est une pile réseau distincte, pas une signalisation WebRTC native au navigateur. Le DHT dépend d'une infrastructure de bootstrap et de la joignabilité réseau ; la découverte de pairs ne définit ni autorisation des salles, ni politique de membres, ni persistance.
+
+
+<a id="r-67"></a>
+### R-67 — Hoover, Rosso-Llopart et Taran, *Evaluating Project Decisions: Case Studies in Software Engineering* (2009/2010)
+- **Source primaire :** [Catalogue de l'éditeur et extrait du chapitre](https://www.informit.com/store/evaluating-project-decisions-case-studies-in-software-9780321544568)
+- **Référence bibliographique :** Carol L. Hoover, Mel Rosso-Llopart et Gil Taran, Addison-Wesley Professional, première publication en octobre 2009 (copyright 2010), ISBN 978-0-321-54456-8 ; le chapitre 1, §1.3 présente le modèle de décision PEAK.
+- **Concepts pertinents :** Problem, Experience, Assumptions et Knowledge comme entrées de la décision ; un processus de décision produit une solution et un risque assumé.
+- **Utilité pour GovCheck :** fournit une grille d'examen des décisions pour rendre explicites et traçables la formulation du problème, l'expérience mobilisée, les hypothèses, les connaissances factuelles, la solution retenue et le risque accepté.
+- **Limite :** PEAK est un modèle de décision, pas une taxonomie des menaces, un métamodèle de dossier d'assurance, un algorithme de calcul du risque ou une norme de gouvernance. Il ne prescrit ni sérialisation ni modèle d'autorisation.
+- **Cité par :** [0025](architecture/0025-runtime-observations-peak-and-sacm.fr.md) (projection PEAK et décisions gouvernées).
+
+<a id="r-68"></a>
+### R-68 — NIST SP 800-137, Information Security Continuous Monitoring (2011)
+- **Source primaire :** [Publication NIST](https://csrc.nist.gov/pubs/sp/800/137/final) · [DOI](https://doi.org/10.6028/NIST.SP.800-137)
+- **Concepts pertinents :** visibilité continue sur les actifs, menaces, vulnérabilités et efficacité des contrôles déployés ; surveillance alignée sur la tolérance au risque ; réaction lorsque les observations montrent que les contrôles sont insuffisants.
+- **Utilité pour GovCheck :** étaye une boucle de retour en production dans laquelle les observations actualisent l'état du système, l'évaluation des contrôles et les décisions de risque, au lieu de figer le modèle de menace à la conception.
+- **Limite :** les données de surveillance ne constituent pas automatiquement un incident validé, une menace ou une conclusion d'assurance. Couverture, intégrité de collecte, contexte, incertitude et santé des mécanismes de surveillance doivent être évalués.
+- **Cité par :** [0025](architecture/0025-runtime-observations-peak-and-sacm.fr.md) (observations de production et réévaluation continue).
+
+<a id="r-69"></a>
+### R-69 — Rushby, « Runtime Certification » (RV 2008)
+- **Source primaire :** [Article de l'auteur, présenté au huitième atelier Runtime Verification](https://citeseerx.ist.psu.edu/document?doi=c28045b0a573839028f6042870a3eccd8f9be748&repid=rep1&type=pdf)
+- **Référence bibliographique :** John Rushby, « Runtime Certification », article invité à RV 2008, Budapest, avril 2008.
+- **Concepts pertinents :** dossiers d'assurance comme affirmations, preuves et arguments ; surveillance en exécution des hypothèses et anomalies ; utilisation de la vérification à l'exécution comme preuve ; détection de la violation d'hypothèses environnementales.
+- **Utilité pour GovCheck :** justifie directement de relier les hypothèses déclarées à des conditions surveillables et de permettre aux observations de production de les contester et de déclencher la réévaluation des affirmations d'assurance.
+- **Limite :** les moniteurs à l'exécution n'établissent que des propriétés dans leur périmètre formalisé et leur frontière d'observation. Une anomalie ou une hypothèse violée ne constitue pas automatiquement une attaque confirmée ni une preuve de défaillance du système.
+- **Cité par :** [0025](architecture/0025-runtime-observations-peak-and-sacm.fr.md) (surveillance des hypothèses et boucle d'observation).
+
+<a id="r-70"></a>
+### R-70 — Wei et al., « ACCESS: Assurance Case Centric Engineering of Safety-critical Systems » (2024)
+- **Source primaire :** [Article du Journal of Systems and Software](https://doi.org/10.1016/j.jss.2024.112034) · [copie en accès ouvert](https://eprints.whiterose.ac.uk/id/eprint/211554/)
+- **Référence bibliographique :** Ran Wei, Simon Foster, Haitao Mei, Fang Yan, Ruizhe Yang, Ibrahim Habli, Colin O’Halloran, Nick Tudor, Tim Kelly et Yakoub Nemouchi, *Journal of Systems and Software* 213 (2024), article 112034.
+- **Concepts pertinents :** dossiers d'assurance fondés sur des modèles SACM ; traçabilité vers des artefacts d'ingénierie hétérogènes ; évaluation automatisée, analyse d'impact des changements, preuves de méthodes formelles et évaluation dynamique du dossier d'assurance en production.
+- **Utilité pour GovCheck :** démontre une approche étayée par la recherche pour faire évoluer les dossiers d'assurance avec les artefacts d'ingénierie et évaluer leur validité à partir de données d'exécution.
+- **Limite :** l'article présente une méthodologie, un prototype et une étude de cas, pas un moteur générique de gouvernance des risques de sécurité prêt pour la production. Il ne faut pas exagérer la portée ni la maturité de ses outils.
+- **Cité par :** [0025](architecture/0025-runtime-observations-peak-and-sacm.fr.md) (évaluation SACM et assurance à l'exécution).
+
+<a id="r-71"></a>
+### R-71 — Bloomfield et Rushby, « Assurance 2.0: A Manifesto » (2021)
+- **Source primaire :** [Page des auteurs chez SRI et article](https://www.csl.sri.com/users/rushby/abstracts/sss21) · [manuscrit arXiv](https://arxiv.org/abs/2004.10474)
+- **Référence bibliographique :** Robin Bloomfield et John Rushby, *Systems and Covid-19: Proceedings of the 29th Safety-Critical Systems Symposium*, 2021, p. 85–108.
+- **Concepts pertinents :** examen renforcé du raisonnement et des preuves ; explicitation des éléments réfutants (*defeaters*) et contre-preuves ; évaluation du poids des preuves et de leur capacité à distinguer une affirmation de sa négation.
+- **Utilité pour GovCheck :** motive la représentation explicite des contre-affirmations, éléments réfutants, observations contradictoires et évaluations de qualité/force des preuves, plutôt qu'un graphe unilatéral de soutien.
+- **Limite :** Assurance 2.0 est une approche/manifeste d'assurance, pas un schéma complet d'événements opérationnels, un modèle d'autorité d'acceptation du risque ou une méthode universelle de score numérique.
+- **Cité par :** [0025](architecture/0025-runtime-observations-peak-and-sacm.fr.md) (contre-preuves, éléments réfutants et évaluation des preuves).
+
+<a id="r-72"></a>
+### R-72 — Ericsson, « Runtime threat modeling for attack prediction and defense » (2025)
+- **Source primaire :** [Article d'ingénierie Ericsson](https://www.ericsson.com/en/blog/2025/12/runtime-threat-modeling-for-attack-prediction-and-defense)
+- **Concepts pertinents :** combinaison de télémétrie, état de configuration et changements d'actifs/contexte avec les connaissances sur les menaces ; hypothèses de menace issues des observations ; évaluation de l'efficacité des contrôles et boucles de retour.
+- **Utilité pour GovCheck :** exemple industriel reliant l'observabilité en production à l'évolution du modèle de menace et à l'évaluation des contrôles.
+- **Limite :** il s'agit d'un article industriel centré sur les réseaux d'accès radio, pas d'une norme neutre ni d'une preuve que les scores prédictifs sont étalonnés. GovCheck doit préserver provenance, incertitude et décisions humaines gouvernées plutôt que reprendre ses hypothèses de scoring/automatisation.
+- **Cité par :** [0025](architecture/0025-runtime-observations-peak-and-sacm.fr.md) (retour du modèle de menace depuis l'exécution).
+
+<a id="r-73"></a>
+### R-73 — OMG Structured Assurance Case Metamodel (SACM), version 2.4 Beta 1 (septembre 2026)
+- **Source primaire :** [État de la spécification SACM et documents de la bêta 2.4 chez OMG](https://www.omg.org/spec/SACM)
+- **Concepts pertinents :** extensions proposées à SACM 2.3, notamment valeurs structurées/forces typées, constructions liées à l'évaluation, jointures, références à un concept entier, marquage de l'état de développement et révision de la sémantique des packages/relations.
+- **Utilité pour GovCheck :** point de comparaison indispensable avant de sélectionner un métamodèle interne ou d'échange. Les résolutions de tickets de la bêta indiquent quelles lacunes de 2.3 la révision tente de combler.
+- **Limite :** la version 2.4 est une bêta, pas une spécification formelle adoptée. GovCheck ne doit pas traiter ses constructions provisoires comme des contrats stables ni revendiquer sa conformité. Conserver 2.3 comme base formelle actuelle en attendant l'examen de la version finale 2.4.
+- **Cité par :** [0025](architecture/0025-runtime-observations-peak-and-sacm.fr.md) (comparaison des versions SACM et recommandation d'adoption).
 
 ## Discipline bibliographique et provenance non résolue
 

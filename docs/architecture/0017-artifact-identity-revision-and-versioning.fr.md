@@ -1,6 +1,6 @@
 # 0017 — Identité, révision et politique de versionnement des artefacts
 
-**Statut :** proposition de politique de gouvernance soumise à la revue des mainteneurs. Elle n'impose pas SemVer à tous les artefacts, ne choisit pas de sérialisation canonique et ne prétend pas que les contrôles de versionnement sont implémentés.  
+**Statut :** politique de versionnement catégorielle adoptée par l'[ADR 0004](../decisions/0004-semantic-versioning-contracts.fr.md). SemVer n'est pas universel ; son application automatisée n'est pas encore implémentée.  
 **Langue :** l'anglais est la langue par défaut ; la version anglaise est [ici](0017-artifact-identity-revision-and-versioning.md).  
 **Périmètre :** tous les artefacts et enregistrements gouvernés par GovCheck : artefacts normatifs, architecturaux, formels, d'implémentation, preuves, décisions et publications.
 

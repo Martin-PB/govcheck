@@ -12,6 +12,21 @@ Un paquet contient : identité et version sémantique ; IDs de règles stables ;
 
 Un ID de règle est immuable et jamais réutilisé. Toute évolution sémantique exige revue et traçabilité. Une règle retirée reste référencée par tombstone ou remplacement.
 
+## Contrats de version du produit et du package
+
+GovCheck possède deux contrats de publication distincts :
+
+- **Produit GovCheck** (**govcheck.product**) : le produit distribuable complet et ses interfaces publiques déclarées, notamment l'exécutable/la CLI et les surfaces d'intégration prises en charge lorsqu'elles seront publiées.
+- **Package de gouvernance réutilisable** (**govcheck.governance-package**) : le package consommable indépendamment situé sous **govcheck/**, copié ou installé par bootstrap dans les dépôts gouvernés. Son contrat couvre le modèle de gouvernance, les règles, les profils, le comportement du bootstrap et les interfaces du package prises en charge.
+
+Chaque contrat possède sa propre séquence SemVer, sa propre évaluation de compatibilité, son autorisation et son identité de publication immuable. Une release du produit peut inclure une version donnée du package de gouvernance, mais aucune des deux versions ne se déduit de l'autre. Un tag Git identifie une release du dépôt et son commit ; il n'attribue automatiquement la version d'aucun de ces deux contrats.
+
+La première version cible prévue du produit GovCheck est **0.1.0** ; il s'agit d'un objectif, et non d'une release publiée ou autorisée. Le package de gouvernance réutilisable possède sa propre séquence de versions indépendante, dont la première version reste à attribuer. Une première publication est une décision explicite d'initial publication, et non un incrément MAJOR/MINOR/PATCH inventé. Une chaîne SemVer complète comporte trois composantes numériques (par exemple **0.1.0**) ; une abréviation telle que **v0.1** n'est pas une identité de release complète.
+
+Avant 1.0.0, le contrat concerné est explicitement en développement initial : selon SemVer, tout peut évoluer et l'API publique ne doit pas être considérée comme stable. Une modification qui rompt un contrat pré-1.0 déjà déclaré exige néanmoins une évaluation explicite de compatibilité, une note de migration et un incrément MINOR, plutôt qu'un PATCH silencieux. À partir de 1.0.0, les règles normales MAJOR/MINOR/PATCH fondées sur la compatibilité s'appliquent.
+
+Le produit et le package peuvent évoluer à des rythmes différents. Une modification de la CLI GovCheck peut incrémenter le contrat produit sans modifier le package de gouvernance. Une modification d'une règle normative peut incrémenter le contrat du package sans imposer d'incrément produit si les interfaces et garanties du produit restent inchangées. Les marqueurs de format des schémas, révisions d'artefacts, ADR, exécutions, preuves et décisions conservent leurs propres règles d'identité ; ils ne reçoivent pas SemVer du seul fait de leur inclusion dans une release.
+
 ## Sémantique des règles
 
 Distinguer au minimum : obligation, interdiction, permission, invariant/contrainte, exigence de preuve, exigence de processus/approbation et conseil. Le conseil est explicitement non normatif. L'absence d'interdiction ne vaut pas permission. Une permission n'annule pas une obligation ou interdiction sans relation de priorité explicite et valide.

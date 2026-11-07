@@ -37,30 +37,35 @@
 
 ## Normes, recommandations publiques et spécifications industrielles
 
+<a id="r-01"></a>
 ### R-01 — NIST SP 800-53 Rev. 5, contrôles de sécurité et de confidentialité
 - **Source primaire :** [Publication NIST SP 800-53](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final)
 - **Concepts pertinents :** AC-5 (séparation des tâches), gestion des accès, auditabilité et responsabilité des contrôles.
 - **Utilité pour GovCheck :** éclaire la distinction entre autorisation normative, revue technique et exécution, ainsi que les limites d'un régime à autorité unique.
 - **Limite :** un catalogue de contrôles n'est pas l'ontologie de GovCheck ; sélectionner un contrôle ne démontre pas son implémentation.
 
+<a id="r-02"></a>
 ### R-02 — NIST SP 800-218, Secure Software Development Framework (SSDF) 1.1
 - **Sources primaires :** [Publication NIST](https://csrc.nist.gov/pubs/sp/800/218/final) · [DOI](https://doi.org/10.6028/NIST.SP.800-218)
 - **Concepts pertinents :** exigences et décisions de conception de sécurité documentées, pratiques de développement sécurisé, provenance et releases.
 - **Utilité pour GovCheck :** référence pour les obligations traçables de développement et le contexte du cycle de vie où les preuves sont recueillies.
 - **Limite :** SSDF est un guide de pratiques, pas un prédicat formel d'acceptation ni une preuve de conformité. NIST a aussi publié un projet de SP 800-218 Rev. 1 / SSDF 1.2 ; respecter le statut de publication invoqué.
 
+<a id="r-03"></a>
 ### R-03 — Branches protégées et contrôles obligatoires GitHub
 - **Source primaire :** [Documentation des branches protégées](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)
 - **Concepts pertinents :** revues obligatoires, contrôles de statut, exceptions de contournement et restrictions de branche.
 - **Utilité pour GovCheck :** exemple concret d'un point d'application partagé pour l'acceptation.
 - **Limite :** les paramètres de la forge sont des mécanismes d'application, pas l'autorité normative. Les administrateurs et acteurs autorisés à contourner les règles restent dans le modèle de menace.
 
+<a id="r-04"></a>
 ### R-04 — Goal Structuring Notation (GSN), standard communautaire
 - **Source primaire :** [Site officiel du standard GSN](https://scsc.uk/gsn)
 - **Concepts pertinents :** structuration des affirmations d'assurance, arguments, stratégies, contexte, hypothèses et preuves.
 - **Utilité pour GovCheck :** vocabulaire utile au dossier d'assurance et à la traçabilité des exigences vers les propriétés et les preuves.
 - **Limite :** structurer un argument ne rend pas automatiquement ses prémisses vraies et ne remplace pas les prédicats vérifiables.
 
+<a id="r-05"></a>
 ### R-05 — TLA+ et TLC
 - **Sources primaires :** [Publications de Lamport sur TLA](https://www.microsoft.com/en-us/research/people/lamport/publications/) · [Projet et documentation TLA+](https://lamport.azurewebsites.net/tla/tla.html)
 - **Référence académique :** Leslie Lamport, « The Temporal Logic of Actions », ACM Transactions on Programming Languages and Systems, 16(3), 1994, p. 872–923. [DOI](https://doi.org/10.1145/177492.177726)
@@ -68,6 +73,7 @@
 - **Utilité pour GovCheck :** fondement des modèles du cycle de vie, de l'assurance et des transitions d'autorité.
 - **Limite :** un TLC terminé établit des propriétés uniquement pour le modèle, la configuration, les hypothèses et les bornes consignées ; il ne prouve ni le raffinement de l'implémentation ni la fidélité normative.
 
+<a id="r-06"></a>
 ### R-06 — in-toto : intégrité de la chaîne d'approvisionnement logicielle
 - **Sources primaires :** [Projet in-toto](https://in-toto.io/) · [Article USENIX Security 2019](https://ssl.engineering.nyu.edu/papers/torres-toto-usenix19.pdf)
 - **Référence académique :** Santiago Torres-Arias et al., « in-toto: Providing farm-to-table guarantees for bits and bytes », 28th USENIX Security Symposium, 2019.
@@ -75,60 +81,70 @@
 - **Utilité pour GovCheck :** provenance et liaison des enregistrements de contrôle/preuve aux artefacts et étapes qui les ont produits.
 - **Limite :** la provenance ne définit pas les règles normatives propres au dépôt et ne prouve pas la correction sémantique d'une étape enregistrée.
 
+<a id="r-07"></a>
 ### R-07 — SLSA
 - **Source primaire :** [Spécification SLSA](https://slsa.dev/spec/)
 - **Concepts pertinents :** niveaux de chaîne d'approvisionnement logicielle, provenance et intégrité de construction.
 - **Utilité pour GovCheck :** vocabulaire complémentaire pour la provenance des builds et les preuves de release.
 - **Limite :** SLSA ne définit ni l'autorité canonique de GovCheck, ni sa politique d'exception, ni son cycle de vie, ni un dossier d'assurance complet.
 
+<a id="r-08"></a>
 ### R-08 — OpenSSF Scorecard
 - **Sources primaires :** [Page OpenSSF](https://openssf.org/projects/scorecard/) · [Dépôt Scorecard](https://github.com/ossf/scorecard)
 - **Concepts pertinents :** contrôles automatisés et réutilisables de certaines pratiques de sécurité open source.
 - **Utilité pour GovCheck :** source candidate de preuves circonscrites sur la posture de sécurité.
 - **Limite :** un score n'est ni une évaluation complète de la gouvernance du dépôt, ni une preuve, ni une décision d'autorisation.
 
+<a id="r-09"></a>
 ### R-09 — Open Policy Agent (OPA)
 - **Source primaire :** [Documentation officielle OPA](https://www.openpolicyagent.org/docs)
 - **Concepts pertinents :** séparation entre décision de politique et application ; évaluation d'entrées structurées par rapport à une politique.
 - **Utilité pour GovCheck :** éclaire une séparation possible entre évaluateur et point d'application, et une comparaison de politiques déclaratives.
 - **Limite :** OPA n'est ni l'autorité normative de GovCheck, ni son moteur d'assurance, ni une preuve de résistance au contournement. Aucune dépendance n'est sélectionnée.
 
+<a id="r-10"></a>
 ### R-10 — Langage d'autorisation Cedar
 - **Sources primaires :** [Référence du langage Cedar](https://docs.cedarpolicy.com/) · [Projet Cedar](https://www.cedarpolicy.com/)
 - **Concepts pertinents :** décisions d'autorisation typées portant sur principal/action/ressource/contexte et séparation de la logique d'autorisation de la logique applicative.
 - **Utilité pour GovCheck :** référence pour une comparaison future de l'autorisation par périmètre et des sémantiques déterministes de décision.
 - **Limite :** Cedar n'est pas un cycle de vie complet, un modèle de fraîcheur des preuves ou un dossier d'assurance. Aucune dépendance n'est sélectionnée.
 
+<a id="r-11"></a>
 ### R-11 — NIST SSDF : page du projet
 - **Source primaire :** [Projet NIST SSDF et publications](https://csrc.nist.gov/projects/ssdf)
 - **Concepts pertinents :** pratiques de développement sécurisé et correspondances avec des pratiques établies.
 - **Utilité pour GovCheck :** navigation complémentaire sur le statut des publications et profils SSDF.
 - **Limite :** utiliser la publication finale datée pour une affirmation portant sur une version précise ; ne pas confondre projet de révision et norme finale.
 
+<a id="r-13"></a>
 ### R-13 — JSON Schema Draft 2020-12
 - **Source primaire :** [Page officielle de la spécification](https://json-schema.org/draft/2020-12/)
 - **Concepts pertinents :** validation structurelle d'enregistrements lisibles par machine.
 - **Utilité pour GovCheck :** référence candidate pour les enregistrements de gouvernance et manifestes de preuve si JSON Schema est adopté.
 - **Limite :** la validité du schéma n'établit ni autorisation, ni cohérence sémantique, ni vérité, ni adoption d'une politique, ni correction de l'évaluateur. Cette entrée ne le sélectionne pas comme format canonique.
 
+<a id="r-14"></a>
 ### R-14 — Semantic Versioning 2.0.0
 - **Source primaire :** [SemVer 2.0.0](https://semver.org/)
 - **Concepts pertinents :** MAJOR/MINOR/PATCH par rapport à une API publique et à un contrat de compatibilité déclarés ; les versions publiées sont immuables.
 - **Utilité pour GovCheck :** éclaire la distinction entre identité d'artefact, révision immuable, compatibilité du contrat et identité de release.
 - **Limite :** SemVer n'a pas de sens pour tous les artefacts de gouvernance. GovCheck évite de l'appliquer mécaniquement aux modèles, preuves, décisions ou événements.
 
+<a id="r-15"></a>
 ### R-15 — Tags Git et releases
 - **Sources primaires :** [Référence Git : étiquetage](https://git-scm.com/book/en/v2/Git-Basics-Tagging) · [GitHub Releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases)
 - **Concepts pertinents :** identification d'une révision source et publication des artefacts associés à une release.
 - **Utilité pour GovCheck :** rapports de vérification et manifestes liés à une release, identifiant l'arbre Git, le commit, le modèle, la configuration et les versions des outils.
 - **Limite :** un tag ou une release est un mécanisme d'identification/publication, pas la preuve qu'une vérification a été exécutée ou réussie.
 
+<a id="r-16"></a>
 ### R-16 — OpenAPI et contrats d'interface lisibles par machine
 - **Source primaire :** [Spécification OpenAPI](https://spec.openapis.org/oas/latest.html)
 - **Concepts pertinents :** contrats d'interface lisibles par machine.
 - **Utilité pour GovCheck :** contrats possibles pour le CLI/dossier et documentation des adaptateurs.
 - **Limite :** la conformité d'une interface ne prouve ni les sémantiques d'autorisation, ni le comportement d'exécution, ni la correction de l'implémentation.
 
+<a id="r-17"></a>
 ### R-17 — Google Cloud Knowledge Catalog
 - **Source primaire :** [Documentation Knowledge Catalog](https://docs.cloud.google.com/knowledge-catalog/docs)
 - **Concepts pertinents :** métadonnées typées, entrées de catalogue, relations/traçabilité, métadonnées de gouvernance et découverte de contexte.
@@ -137,18 +153,21 @@
 
 ## Projets industriels évalués comme complémentaires, non adoptés
 
+<a id="r-18"></a>
 ### R-18 — Writ (infinri/Writ)
 - **Sources primaires :** [Dépôt](https://github.com/infinri/Writ) · [Politique de sécurité à la révision étudiée](https://github.com/infinri/Writ/blob/ebdafe5450b201339f81e717ed104e6bcfd3fe3e/SECURITY.md) · [Contrat de session et de barrières](https://github.com/infinri/Writ/blob/ebdafe5450b201339f81e717ed104e6bcfd3fe3e/docs/reference/session-and-gates.md)
 - **Révision étudiée :** ebdafe5450b201339f81e717ed104e6bcfd3fe3e (revue consignée le 6 novembre 2026).
 - **Utilité pour GovCheck :** fixture facultative de test de workflow d'agent et source potentielle de preuves d'exécution circonscrites.
 - **Limite :** Writ indique explicitement ne pas être un bac à sable ni une frontière de sécurité ; ses sorties ne sont ni l'autorité normative de GovCheck ni une décision d'acceptation indépendante. Voir l'architecture 0016.
 
+<a id="r-19"></a>
 ### R-19 — Privateer (privateer-agent/privateer-agent)
 - **Sources primaires :** [Dépôt](https://github.com/privateer-agent/privateer-agent) · [Politique de sécurité à la révision étudiée](https://github.com/privateer-agent/privateer-agent/blob/181a988e443fa6b6b4138fc349d1260c96408ad4/SECURITY.md) · [README à la révision étudiée](https://github.com/privateer-agent/privateer-agent/blob/181a988e443fa6b6b4138fc349d1260c96408ad4/README.md)
 - **Révision étudiée :** 181a988e443fa6b6b4138fc349d1260c96408ad4 (revue consignée le 6 novembre 2026).
 - **Utilité pour GovCheck :** fixture candidate d'interopérabilité avec un harness d'agent fondé sur Pi.
 - **Limite :** une barrière de permission, une fonctionnalité de provenance ou un avertissement de confidentialité ne remplace pas la gouvernance canonique ou une acceptation vérifiée indépendamment. Voir l'architecture 0016.
 
+<a id="r-22"></a>
 ### R-22 — Sémantiques natives de Git et Pijul
 - **Sources primaires :** [Documentation Git](https://git-scm.com/docs) · [Manuel Pijul : théorie](https://pijul.org/manual/theory) · [Canaux Pijul](https://pijul.org/manual/workflows/channels) · [Conflits Pijul](https://pijul.org/manual/conflicts.html)
 - **Concepts pertinents :** modèle de snapshots/commits et arbres de Git ; graphe de changements/patches, canaux et conflits de première classe de Pijul.
@@ -159,12 +178,14 @@
 
 ## Fondements académiques et assistant de preuve
 
+<a id="r-20"></a>
 ### R-20 — Lean
 - **Source primaire :** [Référence du langage Lean](https://lean-lang.org/doc/reference/latest/)
 - **Concepts pertinents :** termes de preuve vérifiés par un petit noyau ; démonstration sous définitions, axiomes et hypothèses explicites.
 - **Utilité pour GovCheck :** candidat pour des prédicats critiques justifiant une preuve ou la vérification de certificats, si une ADR ultérieure le justifie.
 - **Limite :** un théorème sur un prédicat ne prouve ni que le prédicat représente la politique approuvée ni que l'exécutable le raffine. Lean n'est pas sélectionné comme dépendance globale.
 
+<a id="r-21"></a>
 ### R-21 — Guides de releases et de reproductibilité pour le logiciel de recherche
 - **Source primaire :** [Software Sustainability Institute — guides et ressources](https://www.software.ac.uk/resources)
 - **Concepts pertinents :** pérennité du logiciel de recherche, citation, releases et reproductibilité.
@@ -173,6 +194,7 @@
 
 
 
+<a id="r-23"></a>
 ### R-23 — IMS Global / 1EdTech : spécifications de versionnement
 - **Source primaire :** [Spécifications 1EdTech](https://www.1edtech.org/standards) (anciennement IMS Global ; consulter la version précise avant d'invoquer une règle particulière).
 - **Concepts pertinents :** identifiants de version et conventions de compatibilité pour des artefacts structurés et publiés.
@@ -180,6 +202,7 @@
 - **Limite :** famille de spécifications propre aux technologies éducatives, pas norme universelle de versionnement des artefacts de gouvernance.
 - **Cité par :** [Architecture 0017](../architecture/0017-artifact-identity-revision-and-versioning.fr.md), [Architecture 0018](../architecture/0018-version-governance-and-compatibility-authority.fr.md).
 
+<a id="r-24"></a>
 ### R-24 — W3C PROV-O
 - **Source primaire :** [Recommandation W3C PROV-O](https://www.w3.org/TR/prov-o/).
 - **Concepts pertinents :** entités, activités, agents et relations de provenance.
@@ -187,6 +210,7 @@
 - **Limite :** une ontologie ne fournit à elle seule ni politique de dépôt, ni assurance d'identité, ni mécanisme d'application.
 - **Cité par :** [Architecture 0017](../architecture/0017-artifact-identity-revision-and-versioning.fr.md), [Architecture 0018](../architecture/0018-version-governance-and-compatibility-authority.fr.md).
 
+<a id="r-25"></a>
 ### R-25 — Guide de versionnement DataCite
 - **Source primaire :** [Documentation DataCite sur le versionnement](https://support.datacite.org/docs/versioning).
 - **Concepts pertinents :** identification et relations entre versions de productions scientifiques citables.
@@ -194,6 +218,7 @@
 - **Limite :** les recommandations pour les productions scientifiques ne constituent pas une politique générale pour tous les artefacts logiciels et de gouvernance.
 - **Cité par :** [Architecture 0017](../architecture/0017-artifact-identity-revision-and-versioning.fr.md), [Architecture 0018](../architecture/0018-version-governance-and-compatibility-authority.fr.md).
 
+<a id="r-26"></a>
 ### R-26 — Étude sur le versionnement des données scientifiques (2024)
 - **Source primaire :** [Article Nature / Scientific Data](https://www.nature.com/articles/s41597-024-03153-y).
 - **Concepts pertinents :** pratiques de versionnement et de provenance des données scientifiques.

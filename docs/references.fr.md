@@ -36,6 +36,8 @@
 | API de stockage cloud | R-64 |
 | Persistance locale navigateur et WebAssembly | R-65 |
 | Modèles sémantiques de domaine, qualité et conformité open source | R-94–R-100, R-102–R-103 |
+| Interopérabilité des instructions d'agents et workflows pilotés par les spécifications | R-104 |
+| Recherches sur le policy-as-code et la gouvernance des agents à l'exécution | R-105 |
 
 ## Entrées bibliographiques détaillées
 
@@ -68,6 +70,8 @@
 - **Surveillance continue et assurance à l'exécution :** R-70, R-72, R-75 à R-76.
 - **Assurance 2.0 et évolution de SACM :** R-71, R-73.
 - **Modèles sémantiques de domaine, qualité produit et conformité open source (sources candidates) :** R-94–R-100, R-102–R-103.
+- **Instructions d'agents et workflows pilotés par spécifications :** R-104.
+- **Recherches sur le policy-as-code, l'assurance continue et la gouvernance MCP :** R-105.
 
 ## Normes, recommandations publiques et spécifications industrielles
 
@@ -93,7 +97,7 @@
 <a id="r-03"></a>
 
 ### R-03 — Branches protégées et contrôles obligatoires GitHub
-- **Cité par :** [0014](architecture/0014-governed-development-workflow.fr.md), [0022](architecture/0022-governance-capability-audit.fr.md), [0023](architecture/0023-bootstrap-governance-authority.fr.md)
+- **Cité par :** [0014](architecture/0014-governed-development-workflow.fr.md), [0022](architecture/0022-governance-capability-audit.fr.md), [0023](architecture/0023-bootstrap-governance-authority.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md)
 
 - **Source primaire :** [Documentation des branches protégées](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)
 - **Concepts pertinents :** revues obligatoires, contrôles de statut, exceptions de contournement et restrictions de branche.
@@ -113,7 +117,7 @@
 <a id="r-05"></a>
 
 ### R-05 — TLA+ et TLC
-- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [0008](architecture/0008-formalization-and-conformance.fr.md), [0009](architecture/0009-govcheck-design-discussion-record.fr.md), [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0011](architecture/0011-lifecycle-model-assertion-audit.fr.md), [0020](architecture/0020-first-tlc-execution-record.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md), [ADR 0001](decisions/0001-bootstrap-boundaries.fr.md), [Spec 0003](specifications/0003-change-lifecycle.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md)
+- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [0008](architecture/0008-formalization-and-conformance.fr.md), [0009](architecture/0009-govcheck-design-discussion-record.fr.md), [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0011](architecture/0011-lifecycle-model-assertion-audit.fr.md), [0020](architecture/0020-first-tlc-execution-record.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md), [ADR 0001](decisions/0001-bootstrap-boundaries.fr.md), [Spec 0003](specifications/0003-change-lifecycle.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md)
 
 - **Sources primaires :** [Publications de Lamport sur TLA](https://www.microsoft.com/en-us/research/people/lamport/publications/) · [Projet et documentation TLA+](https://lamport.azurewebsites.net/tla/tla.html)
 - **Référence académique :** Leslie Lamport, « The Temporal Logic of Actions », ACM Transactions on Programming Languages and Systems, 16(3), 1994, p. 872–923. [DOI](https://doi.org/10.1145/177492.177726)
@@ -124,7 +128,7 @@
 <a id="r-06"></a>
 
 ### R-06 — in-toto : intégrité de la chaîne d'approvisionnement logicielle
-- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md), [0007](architecture/0007-technology-decision-framework.fr.md), [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0014](architecture/0014-governed-development-workflow.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md)
+- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md), [0007](architecture/0007-technology-decision-framework.fr.md), [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0014](architecture/0014-governed-development-workflow.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md)
 
 - **Sources primaires :** [Projet in-toto](https://in-toto.io/) · [Article USENIX Security 2019](https://ssl.engineering.nyu.edu/papers/torres-toto-usenix19.pdf)
 - **Référence académique :** Santiago Torres-Arias et al., « in-toto: Providing farm-to-table guarantees for bits and bytes », 28th USENIX Security Symposium, 2019.
@@ -135,7 +139,7 @@
 <a id="r-07"></a>
 
 ### R-07 — SLSA
-- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md), [0007](architecture/0007-technology-decision-framework.fr.md), [0014](architecture/0014-governed-development-workflow.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md)
+- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md), [0007](architecture/0007-technology-decision-framework.fr.md), [0014](architecture/0014-governed-development-workflow.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md)
 
 - **Source primaire :** [Spécification SLSA](https://slsa.dev/spec/)
 - **Concepts pertinents :** niveaux de chaîne d'approvisionnement logicielle, provenance et intégrité de construction.
@@ -145,7 +149,7 @@
 <a id="r-08"></a>
 
 ### R-08 — OpenSSF Scorecard
-- **Cité par :** [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md)
+- **Cité par :** [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md)
 
 - **Sources primaires :** [Page OpenSSF](https://openssf.org/projects/scorecard/) · [Dépôt Scorecard](https://github.com/ossf/scorecard)
 - **Concepts pertinents :** contrôles automatisés et réutilisables de certaines pratiques de sécurité open source.
@@ -155,7 +159,7 @@
 <a id="r-09"></a>
 
 ### R-09 — Open Policy Agent (OPA)
-- **Cité par :** [0012](architecture/0012-normative-authority-and-documentation.fr.md), [0013](architecture/0013-governance-metamodel.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md), [0022](architecture/0022-governance-capability-audit.fr.md), [Spec 0002](specifications/0002-canonical-governance-model.fr.md)
+- **Cité par :** [0012](architecture/0012-normative-authority-and-documentation.fr.md), [0013](architecture/0013-governance-metamodel.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md), [0022](architecture/0022-governance-capability-audit.fr.md), [Spec 0002](specifications/0002-canonical-governance-model.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md)
 
 - **Source primaire :** [Documentation officielle OPA](https://www.openpolicyagent.org/docs)
 - **Concepts pertinents :** séparation entre décision de politique et application ; évaluation d'entrées structurées par rapport à une politique.
@@ -165,11 +169,11 @@
 <a id="r-10"></a>
 
 ### R-10 — Langage d'autorisation Cedar
-- **Cité par :** [0012](architecture/0012-normative-authority-and-documentation.fr.md), [0013](architecture/0013-governance-metamodel.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md), [0022](architecture/0022-governance-capability-audit.fr.md), [Spec 0002](specifications/0002-canonical-governance-model.fr.md)
+- **Cité par :** [0012](architecture/0012-normative-authority-and-documentation.fr.md), [0013](architecture/0013-governance-metamodel.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md), [0022](architecture/0022-governance-capability-audit.fr.md), [Spec 0002](specifications/0002-canonical-governance-model.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md)
 
-- **Sources primaires :** [Référence du langage Cedar](https://docs.cedarpolicy.com/) · [Projet Cedar](https://www.cedarpolicy.com/)
+- **Sources primaires :** [Référence du langage Cedar](https://docs.cedarpolicy.com/) · [Projet Cedar](https://www.cedarpolicy.com/) · [Article OOPSLA 2024](https://doi.org/10.1145/3649835) · [FSE Companion 2024 : How We Built Cedar](https://doi.org/10.1145/3663529.3663854) · [prépublication arXiv](https://arxiv.org/abs/2407.01688)
 - **Concepts pertinents :** décisions d'autorisation typées portant sur principal/action/ressource/contexte et séparation de la logique d'autorisation de la logique applicative.
-- **Utilité pour GovCheck :** référence pour une comparaison future de l'autorisation par périmètre et des sémantiques déterministes de décision.
+- **Utilité pour GovCheck :** éclaire la comparaison future de l'autorisation par périmètre et des sémantiques déterministes de décision, ainsi que le développement guidé par la vérification (modèle formel exécutable, preuves, tests différentiels et tests fondés sur les propriétés).
 - **Limite :** Cedar n'est pas un cycle de vie complet, un modèle de fraîcheur des preuves ou un dossier d'assurance. Aucune dépendance n'est sélectionnée.
 
 <a id="r-11"></a>
@@ -255,7 +259,7 @@
 
 <a id="r-20"></a>
 ### R-20 — Lean
-- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [0008](architecture/0008-formalization-and-conformance.fr.md), [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [ADR 0001](decisions/0001-bootstrap-boundaries.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md)
+- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [0008](architecture/0008-formalization-and-conformance.fr.md), [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [ADR 0001](decisions/0001-bootstrap-boundaries.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md)
 
 - **Source primaire :** [Référence du langage Lean](https://lean-lang.org/doc/reference/latest/)
 - **Concepts pertinents :** termes de preuve vérifiés par un petit noyau ; démonstration sous définitions, axiomes et hypothèses explicites.
@@ -275,10 +279,10 @@
 <a id="r-22"></a>
 
 ### R-22 — Sémantiques natives de Git et Pijul
-- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [0009](architecture/0009-govcheck-design-discussion-record.fr.md), [0011](architecture/0011-lifecycle-model-assertion-audit.fr.md), [0014](architecture/0014-governed-development-workflow.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md), [ADR 0001](decisions/0001-bootstrap-boundaries.fr.md), [Spec 0003](specifications/0003-change-lifecycle.fr.md), [Spec 0004](specifications/0004-vcs-collaboration-contracts.fr.md)
+- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [0009](architecture/0009-govcheck-design-discussion-record.fr.md), [0011](architecture/0011-lifecycle-model-assertion-audit.fr.md), [0014](architecture/0014-governed-development-workflow.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md), [ADR 0001](decisions/0001-bootstrap-boundaries.fr.md), [Spec 0003](specifications/0003-change-lifecycle.fr.md), [Spec 0004](specifications/0004-vcs-collaboration-contracts.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md)
 
-- **Sources primaires :** [Documentation Git](https://git-scm.com/docs) · [Manuel Pijul : théorie](https://pijul.org/manual/theory) · [Canaux Pijul](https://pijul.org/manual/workflows/channels) · [Conflits Pijul](https://pijul.org/manual/conflicts.html)
-- **Concepts pertinents :** modèle de snapshots/commits et arbres de Git ; graphe de changements/patches, canaux et conflits de première classe de Pijul.
+- **Sources primaires :** [Documentation Git](https://git-scm.com/docs) · [Manuel Pijul : théorie](https://pijul.org/manual/theory) · [Canaux Pijul](https://pijul.org/manual/workflows/channels) · [Conflits Pijul](https://pijul.org/manual/conflicts.html) · [Projet Pijul](https://pijul.org/) · [Service d'hébergement Nest](https://nest.pijul.com/) · [Dépôt source de Nest](https://nest.pijul.com/pijul/nest/tree)
+- **Concepts pertinents :** modèle d'instantanés/commits et arbres de Git ; graphe de changements/patchs, canaux et conflits de première classe de Pijul ; Nest comme plateforme d'hébergement de dépôts Pijul.
 - **Utilité pour GovCheck :** justifie la frontière explicite des adaptateurs VCS et l'obligation de représenter l'identité du candidat, les conflits et l'application selon les sémantiques natives plutôt que de tout forcer dans une abstraction inspirée de Git.
 - **Limite :** la documentation des projets décrit leurs sémantiques visées ; GovCheck doit encore fournir contrats d'adaptateur et tests de conformité. Cette référence ne prouve pas qu'un adaptateur est implémenté.
 
@@ -781,7 +785,7 @@
 <a id="r-77"></a>
 ### R-77 — Exemples d'application de politiques et de gouvernance des outils MCP
 - **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
-- **Sources primaires :** [Documentation HashiCorp Sentinel](https://developer.hashicorp.com/sentinel/docs) · [Documentation Consul MCP Gateway](https://docs.hashicorp.com/consul/docs/agentic-mesh/mcp-gateway) · [Gouvernance des outils agents et blocage des serveurs MCP GitLab](https://docs.gitlab.com/user/ai-governance/tool-governance/) · [Dépôt source Vectimus](https://github.com/vectimus/vectimus)
+- **Sources primaires :** [Documentation HashiCorp Sentinel](https://developer.hashicorp.com/sentinel/docs) · [Documentation Consul MCP Gateway](https://docs.hashicorp.com/consul/docs/agentic-mesh/mcp-gateway) · [Gouvernance des outils agents et blocage des serveurs MCP GitLab](https://docs.gitlab.com/user/ai-governance/tool-governance/) · [Dépôt source Vectimus](https://github.com/vectimus/vectimus) · [Documentation OPA Agent Tool Calling](https://www.openpolicyagent.org/docs/agent-tool-calling)
 - **Concepts pertinents :** politiques-as-code, évaluation des politiques aux frontières infrastructure et outils d'agents, autorisation/blocage de serveurs MCP, gouvernance par namespace, preuves d'approbation, événements d'audit et hooks Cedar déterministes.
 - **Utilité pour GovCheck :** conserve les systèmes d'application de politiques et de gouvernance MCP comparés dans les discussions élargies du projet, aux côtés d'OPA (R-09) et Cedar (R-10).
 - **Limite :** Sentinel est une fonctionnalité HashiCorp Enterprise ; la documentation Consul MCP Gateway indique un statut bêta. Le périmètre de blocage GitLab dépend du produit, de la version et de la surface. Les affirmations de sécurité et de performance de Vectimus ne sont pas établies indépendamment par son README. Ces exemples n'impliquent ni sélection, ni équivalence, ni intégration à GovCheck.
@@ -998,3 +1002,22 @@
 - **Concepts pertinents :** exigences organisationnelles relatives aux programmes de conformité des licences open source (5230) et d'assurance de sécurité open source (18974), notamment politique, périmètre, rôles, processus et éléments de vérification conservés.
 - **Utilité pour GovCheck :** normes candidates de processus et d'organisation pour les capacités de conformité open source et d'assurance de sécurité open source.
 - **Limite :** ces normes spécifient des exigences de programme ; elles ne définissent ni sérialisation SBOM, ni algorithmes de détection des vulnérabilités, ni preuve qu'un composant donné est sûr. La conformité porte sur le programme organisationnel délimité et ses éléments de vérification ; elle ne se déduit ni de la présence d'un SBOM ni de celle d'un scanner.
+
+
+<a id="r-104"></a>
+### R-104 — Formats d'instructions pour agents et workflows pilotés par les spécifications
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Sources primaires :** [Format ouvert AGENTS.md](https://agents.md/) · [Référence des instructions personnalisées de VS Code](https://code.visualstudio.com/docs/agents/reference/custom-instructions-reference) · [Instructions de projet et prise en charge d'AGENTS.md dans Claude Code](https://code.claude.com/docs/en/memory) · [Guide Codex sur les workflows de développement](https://developers.openai.com/cookbook/examples/codex/iterating-development-workflows-with-codex) · [Dépôt GitHub Spec Kit](https://github.com/github/spec-kit) · [Documentation GitHub Spec Kit](https://github.github.com/spec-kit/)
+- **Concepts pertinents :** instructions d'agent partagées au niveau du dépôt ; règles de découverte et de chargement propres à chaque environnement ; consignes de projet et règles ciblées par chemin ; workflows pilotés par les spécifications produisant plans, tâches et résultats révisables.
+- **Utilité pour GovCheck :** conserve les options d'instructions inter-agents et de workflows pilotés par les spécifications évoquées pour le bootstrap des dépôts et l'interopérabilité des agents.
+- **Limite :** AGENTS.md est une convention textuelle, pas une politique exécutoire ni une preuve du respect des consignes. La découverte et l'inclusion varient selon l'environnement et sa version ; la présence d'un fichier ne prouve pas qu'un agent le suit. Spec Kit est un outillage de workflow, pas une autorité normative, un dossier d'assurance ou une frontière de sécurité.
+
+
+<a id="r-105"></a>
+### R-105 — Recherches sur le policy-as-code, l'assurance continue et la gouvernance des agents à l'exécution
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Sources primaires :** [Étude empirique MSR 2026 sur le policy-as-code](https://2026.msrconf.org/details/msr-2026-technical-papers/22/An-Empirical-Study-of-Policy-as-Code-Adoption-Purpose-and-Maintenance) · [prépublication des auteurs](https://soft.vub.ac.be/Publications/2026/vub-tr-soft-26-01.pdf) · [CUGA : Governance by Construction for Generalist Agents](https://doi.org/10.1145/3786335.3813192) · [Audit-as-Code : cadre de policy-as-code pour l'assurance continue de l'IA](https://doi.org/10.3389/frai.2026.1759211) · [Runtime Policy Enforcement for MCP-Based LLM Agents](https://www.mdpi.com/2079-9292/15/13/2829)
+- **Concepts pertinents :** adoption et maintenance empiriques du policy-as-code sur 10 560 fichiers et 499 dépôts ; interventions de gouvernance à plusieurs étapes du cycle de vie des agents ; traduction d'exigences de gouvernance en contrôles exécutables et preuves structurées ; application des politiques à la frontière des appels d'outils avec étiquettes de flux d'information inter-étapes et journaux d'audit.
+- **Utilité pour GovCheck :** conserve les résultats de recherche évoqués sur l'adoption du policy-as-code, la gouvernance par construction, l'assurance continue de l'IA et le contrôle des appels d'outils MCP.
+- **Limite :** ces publications sont des travaux de recherche, pas des normes ni des certifications indépendantes. Le jeu de données MSR est limité aux dépôts et outils échantillonnés ; CUGA est une contribution de recherche/démonstration ; Audit-as-Code se concentre sur l'assurance IA/MLOps ; l'évaluation du contrôle MCP est expérimentale et ne démontre pas une sécurité universelle en production. Aucune de ces sources n'implique une adoption ou une implémentation par GovCheck.
+

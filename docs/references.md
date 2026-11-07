@@ -394,10 +394,10 @@
 ### R-35 — Common Criteria (ISO/IEC 15408) and Common Evaluation Methodology
 - **Cited by:** [0007](architecture/0007-technology-decision-framework.md), [Spec 0005](specifications/0005-assurance-model.md)
 
-- **Primary sources:** [Common Criteria Portal](https://www.commoncriteriaportal.org/) · [CC:2022 and CEM:2022 publications](https://www.commoncriteriaportal.org/cc/index.cfm)
+- **Primary sources:** [ISO/IEC 15408-1:2026 (current edition of Part 1)](https://www.iso.org/standard/15408-1) · [Common Criteria Portal](https://www.commoncriteriaportal.org/) · [CC:2022 and CEM:2022 scheme publications](https://www.commoncriteriaportal.org/cc/index.cfm)
 - **Relevant concepts:** security functional requirements, security assurance requirements, evaluation methodology and Evaluation Assurance Levels (EALs).
 - **Use in GovCheck:** contextualizes the assurance vocabulary explicitly contrasted with GovCheck's method classes in Specification 0005.
-- **Limit:** EALs are evaluation assurance packages in the Common Criteria scheme, not generic software maturity grades or GovCheck assurance tiers. Certification scope and target-of-evaluation matter.
+- **Limit:** EALs are evaluation assurance packages in the Common Criteria scheme, not generic software maturity grades or GovCheck assurance tiers. Certification scope and target-of-evaluation matter. ISO/IEC 15408-1:2026 is the current edition of Part 1; the Common Criteria Portal separately publishes the CC:2022/CEM:2022 scheme documents. Do not infer that a revision to one ISO part automatically changes every scheme or certification rule.
 
 <a id="r-36"></a>
 ### R-36 — RTCA DO-178C / EUROCAE ED-12C airborne software assurance

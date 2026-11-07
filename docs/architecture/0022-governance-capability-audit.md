@@ -146,3 +146,5 @@ The first implementation decision is therefore governance authority and adoption
 ## Bibliographic references
 
 External sources cited by this record: [R-01 — separation of duties and access-control governance](../references.md#r-01), [R-02 — secure-development practices and traceability](../references.md#r-02), [R-03 — enforcement boundaries and bypass limitations](../references.md#r-03), [R-09 — Open Policy Agent policy-decision engine](../references.md#r-09), [R-10 — Cedar policy language and authorization model](../references.md#r-10), and [R-17 — typed governance metadata and traceable relationships](../references.md#r-17).
+- [R-88 — NIST SP 800-192 access-control policy/model verification](../references.md#r-88)
+- [R-93 — deontic logic and normative modalities](../references.md#r-93)

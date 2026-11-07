@@ -110,3 +110,9 @@ TLA+ was used for the first model because the initial target is a transition sys
 ## 10. Scope
 
 This document expands the distinctions in specifications 0002–0005 and architecture 0008. It complements memory 0009; it does not change the proposed status of contracts or claim that an implementation exists.
+
+
+## References
+
+- [GovCheck governance and assurance reference register](../references/governance-and-assurance.md): GSN assurance arguments, Lamport/TLA+, in-toto provenance and Lean's proof-kernel boundary.
+- [French reference register](../references/governance-and-assurance.fr.md).

@@ -169,7 +169,7 @@ L'outil doit aider à comparer les options de traitement, leurs coûts, leur cha
 
 L'acceptation du risque ne fait pas disparaître une menace, ne valide pas une mesure et ne transforme pas une affirmation non étayée en affirmation étayée. Elle enregistre une décision gouvernée d'opérer avec une exposition résiduelle connue. Le statut d'assurance et le traitement du risque doivent donc rester distincts, mais reliés.
 
-## 5. Profil et arborescence générée
+## 6. Profil et arborescence générée
 
 Le résultat est un profil de projet lisible par machine et versionné, accompagné d'un plan de bootstrap déterministe. Le profil enregistre les capacités sélectionnées, les non-sélections explicites lorsque pertinentes, les justifications, le contexte/hypothèses, l'autorité et les révisions du profil/schéma. Il ne constitue pas une seconde source normative : les règles normatives restent dans le paquet canonique de gouvernance.
 
@@ -200,7 +200,7 @@ Règles :
 5. Ne jamais prétendre qu'un squelette généré constitue une suite de tests, une preuve, un contrôle de sécurité ou une barrière CI fonctionnels avant configuration et exécution.
 6. Les noms de répertoires sont des détails d'implémentation. Les identifiants stables de capacité du profil et les relations typées entre artefacts font autorité pour la planification.
 
-## 5. Dépendances et composition des capacités
+## 6. Dépendances et composition des capacités
 
 Les capacités forment un graphe de dépendances typées, pas un ensemble de booléens indépendants. Exemples :
 
@@ -213,7 +213,7 @@ Le résolveur doit détecter les dépendances manquantes, sélections incompatib
 
 Aucune méthode formelle propre au projet n'est un prérequis du socle de gouvernance.
 
-## 6. Cycle de vie du bootstrap : inspecter → décider → planifier → revoir → appliquer → vérifier
+## 7. Cycle de vie du bootstrap : inspecter → décider → planifier → revoir → appliquer → vérifier
 
 Le bootstrap doit préserver le cycle non destructif de l'ADR 0001 et rendre explicite l'étape de décision :
 
@@ -228,7 +228,7 @@ Le plan doit permettre aperçu/dry-run, sortie lisible par machine, régénérat
 
 Pour les dépôts existants, le bootstrap est un assistant de migration, pas une commande de remise à zéro. Il doit détecter la dérive et préserver les modifications utilisateur. Tout nettoyage destructeur exige une opération distincte et explicite, soumise à revue.
 
-## 7. Évolution après le bootstrap
+## 8. Évolution après le bootstrap
 
 Le profil n'est pas le résultat définitif d'un questionnaire. Un projet peut ensuite ajouter ou retirer des capacités lorsque ses affirmations, risques, équipe ou contexte de déploiement évoluent.
 
@@ -243,7 +243,7 @@ Une modification de profil doit :
 
 Retirer une méthode formelle du profil actif n'efface pas les anciennes preuves ou décisions. Cela ne modifie l'applicabilité et les attentes d'acceptation futures que par une décision autorisée et prospective.
 
-## 8. Esquisse de CLI et interface machine
+## 9. Esquisse de CLI et interface machine
 
 Les noms exacts des commandes restent ouverts, mais le parcours devrait prendre en charge des équivalents de :
 
@@ -256,7 +256,7 @@ Les noms exacts des commandes restent ouverts, mais le parcours devrait prendre 
 
 Il s'agit d'esquisses d'interface, pas de commandes implémentées ni d'un contrat CLI approuvé. La syntaxe exacte, la sérialisation et le schéma du profil nécessitent une spécification et un prototype séparés.
 
-## 9. Scénarios d'acceptation du premier prototype
+## 10. Scénarios d'acceptation du premier prototype
 
 Un prototype devrait démontrer au minimum :
 
@@ -274,7 +274,7 @@ Un prototype devrait démontrer au minimum :
 12. Le prototype distingue les mesures non évaluées, non traitées, planifiées, mises en œuvre, testées, revues et surveillées ; il expose les chemins non couverts et les hypothèses non étayées.
 13. Le risque ne peut être accepté que par un responsable autorisé, avec justification, périmètre, évaluation résiduelle et conditions de revue/expiration ; l'acceptation ne modifie jamais le statut des preuves.
 
-## 10. Séquence de livraison
+## 11. Séquence de livraison
 
 1. Examiner ce modèle de décision et harmoniser la terminologie avec les spécifications 0002/0005 et les architectures 0013/0015/0021.
 2. Définir les identifiants stables de capacités, le schéma de profil, la sémantique des dépendances et le contrat du catalogue de modèles.
@@ -285,7 +285,7 @@ Un prototype devrait démontrer au minimum :
 
 Ne pas commencer par une grande interface graphique, un service hébergé, un serveur MCP obligatoire, une place de marché de plugins ou un modèle universel de projet. L'exécutable local reste l'interface principale.
 
-## 11. Limites et statut
+## 12. Limites et statut
 
 Ce document définit une expérience proposée et ses propriétés de sûreté. Il ne sélectionne ni langage d'implémentation, ni format de sérialisation, ni syntaxe CLI concrète, ni framework de test, assistant de preuve, model checker, catalogue de répertoires ou profil de projet par défaut. Il ne prétend pas qu'une fonctionnalité de bootstrap existe déjà.
 

@@ -861,6 +861,54 @@
 - **Utilité pour GovCheck :** conserve WebTorrent comme option de découverte/transport évoquée dans l'étude de transport de Cartocortex PR #28, distincte de y-webrtc et de Hyperswarm/HyperDHT.
 - **Limite :** WebTorrent est un protocole et une implémentation de partage de contenus, pas un service générique de présence ou de synchronisation CRDT. Les pairs navigateur WebTorrent ne communiquent qu'avec des clients compatibles WebTorrent/WebRTC ; découverte, sécurité des salons, autorisation métier et persistance doivent être traitées séparément. Aucune adoption n'est implicite.
 
+<a id="r-88"></a>
+### R-88 — NIST SP 800-192 : méthodes de vérification et de test des politiques/modèles de contrôle d'accès
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [0013](architecture/0013-governance-metamodel.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md), [0022](architecture/0022-governance-capability-audit.fr.md), [Spec 0002](specifications/0002-canonical-governance-model.fr.md)
+- **Sources primaires :** [Notice de publication NIST SP 800-192](https://csrc.nist.gov/pubs/sp/800/192/final) · [DOI NIST](https://doi.org/10.6028/NIST.SP.800-192)
+- **Concepts pertinents :** vérification et test de politiques et modèles de contrôle d'accès ; incohérence, incomplétude, exigences de sûreté, vérification de modèles en boîte noire/boîte blanche et tests dérivés des modèles de politiques.
+- **Utilité pour GovCheck :** justifie directement la validation des modèles de politiques normatives avant de tester leurs évaluateurs ou mécanismes d'application. Une politique exécutable n'est pas nécessairement correcte, complète ou cohérente.
+- **Limite :** la publication porte sur les politiques/modèles de contrôle d'accès et leurs implémentations. Ce n'est ni un métamodèle complet de gouvernance, ni un langage d'autorisation, ni la preuve que GovCheck vérifie des politiques OPA/Cedar.
+
+<a id="r-89"></a>
+### R-89 — Méthode B et Atelier B
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [0005](specifications/0005-assurance-model.fr.md), [0007](architecture/0007-technology-decision-framework.fr.md)
+- **Sources primaires :** [J.-R. Abrial, The B-Book (Cambridge University Press)](https://www.cambridge.org/core/books/bbook/D0FA939B9F72E49DBA14BA0F68491118) · [Présentation et documentation de la méthode B par Atelier B](https://www.atelierb.eu/en/presentation-of-the-b-method/)
+- **Concepts pertinents :** spécification formelle en théorie des ensembles, machines abstraites, invariants, substitutions généralisées, obligations de preuve, raffinement et construction d'implémentations à partir de modèles progressivement raffinés.
+- **Utilité pour GovCheck :** conserve B comme méthode candidate de spécification/raffinement formels dans l'inventaire général des méthodes d'assurance, notamment lorsque l'état et la préservation des invariants sont centraux.
+- **Limite :** prouver les obligations d'un modèle B n'établit pas à lui seul que les exigences en langage naturel sont complètes, que le modèle décrit le système voulu, ni que le code généré/écrit et le comportement à l'exécution sont conformes. Aucun outillage B n'est choisi ou adopté.
+
+<a id="r-90"></a>
+### R-90 — Notation de spécification formelle Z (ISO/IEC 13568:2002)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [0005](specifications/0005-assurance-model.fr.md), [0007](architecture/0007-technology-decision-framework.fr.md)
+- **Sources primaires :** [ISO/IEC 13568:2002 — syntaxe, système de types et sémantique de Z](https://www.iso.org/fr/standard/21573.html) · [Rectificatif technique 1:2007](https://www.iso.org/fr/standard/46112.html)
+- **Concepts pertinents :** notation mathématique de spécification formelle ; syntaxe, système de types, sémantique et bibliothèque d'opérateurs mathématiques.
+- **Utilité pour GovCheck :** conserve Z comme notation candidate de spécification formelle pour les contraintes précises sur les états/données et les descriptions abstraites de systèmes.
+- **Limite :** ISO/IEC 13568 normalise la syntaxe, le système de types et la sémantique de la notation ; elle ne prescrit explicitement aucune méthode d'utilisation de Z. Une norme de notation ne prouve ni un modèle particulier ni son raffinement vers l'implémentation. La notice ISO indique que l'édition 2002 a été examinée et confirmée en 2026.
+
+<a id="r-91"></a>
+### R-91 — Communicating Sequential Processes (CSP) et FDR
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [0005](specifications/0005-assurance-model.fr.md), [0007](architecture/0007-technology-decision-framework.fr.md)
+- **Sources primaires :** [C. A. R. Hoare, Communicating Sequential Processes (édition électronique Oxford)](https://www.cs.ox.ac.uk/ucs/hoarebook.pdf) · [Documentation du model checker FDR4](https://cocotec.io/fdr/manual/index.html)
+- **Concepts pertinents :** algèbre de processus pour composants concurrents communicants ; traces, échecs et divergences ; vérification du raffinement, des interblocages, des blocages et des propriétés de sûreté/vivacité avec FDR.
+- **Utilité pour GovCheck :** formalisme candidat pour les modèles de concurrence et d'interaction lorsque le comportement des processus et le raffinement constituent l'affirmation examinée.
+- **Limite :** CSP/FDR traite du comportement de processus concurrents ; ce n'est ni un langage général de politiques de gouvernance, ni une preuve d'implémentation pour du code arbitraire, ni un remplacement de la modélisation du cycle de vie/de l'autorité. CSP désigne ici l'algèbre de processus de Hoare, pas le nom sans rapport de l'édition éducative CSP d'Atelier B.
+
+<a id="r-92"></a>
+### R-92 — Modélisation des exigences orientée objectifs iStar 2.0
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [0013](architecture/0013-governance-metamodel.fr.md)
+- **Sources primaires :** [Dalpiaz, Franch et Horkoff, iStar 2.0 Language Guide (arXiv:1605.07767)](https://arxiv.org/abs/1605.07767) · [Guide communautaire du langage iStar](https://sites.google.com/site/istarlanguage/)
+- **Concepts pertinents :** modélisation des objectifs centrée sur les acteurs, dépendances intentionnelles et sociales, objectifs, qualités, tâches et ressources ; vocabulaire commun pour l'ingénierie des exigences orientée objectifs.
+- **Utilité pour GovCheck :** conserve iStar comme complément candidat à KAOS/GORE pour relier objectifs des parties prenantes, acteurs, dépendances et exigences dérivées.
+- **Limite :** le guide décrit un langage de base défini par une communauté et indique qu'il est destiné à évoluer. La modélisation d'objectifs ne prouve pas la faisabilité, ne résout pas l'autorité normative, ne vérifie pas l'implémentation et ne quantifie pas le risque assumé. Aucun outil ni notation iStar n'est choisi.
+
+<a id="r-93"></a>
+### R-93 — Logique déontique et modalités normatives
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [0013](architecture/0013-governance-metamodel.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md), [0022](architecture/0022-governance-capability-audit.fr.md), [Spec 0002](specifications/0002-canonical-governance-model.fr.md)
+- **Sources primaires :** [G. H. von Wright, « Deontic Logic », Mind (1951)](https://doi.org/10.1093/mind/LX.237.1) · [Stanford Encyclopedia of Philosophy, Deontic Logic](https://plato.stanford.edu/entries/logic-deontic/)
+- **Concepts pertinents :** raisonnement formel sur obligation, permission, interdiction, optionalité, omission et autres statuts normatifs.
+- **Utilité pour GovCheck :** fournit un vocabulaire logique pour exprimer obligations, permissions et interdictions dans un modèle normatif de gouvernance, et les distinguer des faits descriptifs.
+- **Limite :** la logique déontique ne définit pas à elle seule qui a autorité pour émettre une règle, son périmètre, sa priorité, sa délégation, ses exceptions, sa date d'effet, ses preuves ou son application. Les systèmes standards ont aussi des paradoxes et limites expressives connus ; la logique doit être intégrée dans un modèle plus riche et explicitement gouverné.
+
 ## Discipline bibliographique et provenance non résolue
 
 1. Privilégier l'organisme normatif, l'éditeur, la documentation officielle ou le dépôt source plutôt que les résumés secondaires.

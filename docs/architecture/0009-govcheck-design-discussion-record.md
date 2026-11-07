@@ -280,3 +280,11 @@ Recommended order: refine semantic identities and evidence assumptions; validate
 ## 15. Change control for this record
 
 This document is a consolidated rationale and decision index, not a second normative specification. If a design decision changes, update the relevant ADR/specification/model first and then update this record and its French counterpart. Do not silently change historical decisions: supersede them with a dated ADR or explicit specification revision. Keep implementation status and verification claims synchronized with actual repository evidence.
+
+## Bibliographic references
+
+- [R-05 — TLA+ and TLC state-transition modeling](../references.md#r-05)
+- [R-18 — Writ agent-workflow fixture assessment](../references.md#r-18)
+- [R-19 — Privateer agent-workflow fixture assessment](../references.md#r-19)
+- [R-22 — Native Git and Pijul semantics](../references.md#r-22)
+- [R-29 — Alloy relational modeling and analysis](../references.md#r-29)

@@ -61,8 +61,13 @@ jobs:
           name: drift-check-log
           path: drift-check.log
 
-  tlc:
+  tla-models:
+    name: TLC — ${{ matrix.model }}
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        model: [GovCheckLifecycle, GovCheckAssurance]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
@@ -74,38 +79,28 @@ jobs:
           curl -fsSL -o tla2tools.jar https://downloads.sourceforge.net/project/tlaplus.mirror/v1.7.4/tla2tools.jar
           echo "936a262061c914694dfd669a543be24573c45d5aa0ff20a8b96b23d01e050e88  tla2tools.jar" | sha256sum -c -
           sha256sum tla2tools.jar | tee tla2tools.sha256
-      - name: Run SANY parse check
+      - name: Run SANY parse and semantic check
+        env:
+          MODEL: ${{ matrix.model }}
         run: |
           set -o pipefail
-          java -cp tla2tools.jar tla2sany.SANY formal/tla/GovCheckLifecycle.tla 2>&1 | tee sany-lifecycle-report.txt
-          if grep -Eq 'Semantic errors:|\*\*\* Errors:' sany-lifecycle-report.txt; then
-            echo "SANY reported semantic errors for GovCheckLifecycle.tla" >&2
+          java -cp tla2tools.jar tla2sany.SANY "formal/tla/${MODEL}.tla" 2>&1 | tee "sany-${MODEL}.txt"
+          if grep -Eq 'Semantic errors:|\*\*\* Errors:' "sany-${MODEL}.txt"; then
+            echo "SANY reported semantic errors for ${MODEL}.tla" >&2
             exit 1
           fi
-      - name: Run TLC with pinned lifecycle configuration
+      - name: Run TLC model checking
+        env:
+          MODEL: ${{ matrix.model }}
         run: |
           set -o pipefail
-          java -cp tla2tools.jar tlc2.TLC -config formal/tla/GovCheckLifecycle.cfg formal/tla/GovCheckLifecycle.tla 2>&1 | tee tlc-lifecycle-report.txt
-      - name: Run SANY parse check for assurance model
-        run: |
-          set -o pipefail
-          java -cp tla2tools.jar tla2sany.SANY formal/tla/GovCheckAssurance.tla 2>&1 | tee sany-assurance-report.txt
-          if grep -Eq 'Semantic errors:|\*\*\* Errors:' sany-assurance-report.txt; then
-            echo "SANY reported semantic errors for GovCheckAssurance.tla" >&2
-            exit 1
-          fi
-      - name: Run TLC with pinned assurance configuration
-        run: |
-          set -o pipefail
-          java -cp tla2tools.jar tlc2.TLC -config formal/tla/GovCheckAssurance.cfg formal/tla/GovCheckAssurance.tla 2>&1 | tee tlc-assurance-report.txt
-      - name: Upload TLC report
+          java -XX:+UseParallelGC -cp tla2tools.jar tlc2.TLC -workers 4 -config "formal/tla/${MODEL}.cfg" "formal/tla/${MODEL}.tla" 2>&1 | tee "tlc-${MODEL}.txt"
+      - name: Upload model-checking report
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: tlc-report
+          name: tlc-report-${{ matrix.model }}
           path: |
-            tlc-lifecycle-report.txt
-            tlc-assurance-report.txt
-            sany-lifecycle-report.txt
-            sany-assurance-report.txt
+            sany-${{ matrix.model }}.txt
+            tlc-${{ matrix.model }}.txt
             tla2tools.sha256

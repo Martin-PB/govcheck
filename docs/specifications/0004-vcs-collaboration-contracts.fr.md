@@ -37,6 +37,6 @@ Distinguer absence, non-prise-en-charge, indisponibilité, péremption, conflit,
 
 - [Documentation Git](https://git-scm.com/docs) pour les concepts natifs de dépôt, arbre, commit et fusion de Git.
 - [Manuel Pijul — théorie](https://pijul.org/manual/theory), [canaux](https://pijul.org/manual/workflows/channels) et [conflits](https://pijul.org/manual/conflicts.html) pour l'identité du graphe de patches, l'état des canaux et les sémantiques natives des conflits.
-- Le [registre de références GovCheck](../references/governance-and-assurance.fr.md) rassemble ces sources sous R-22 et explicite leurs limites.
+- Le [registre de références GovCheck](../references.fr.md) rassemble ces sources sous R-22 et explicite leurs limites.
 
 Ces sources décrivent les sémantiques des VCS sous-jacents ; elles ne démontrent pas que les adaptateurs GovCheck sont implémentés ou conformes.

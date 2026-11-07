@@ -97,4 +97,4 @@ Instruction explicite du propriétaire du projet dans la discussion de gouvernan
 
 ## Références bibliographiques
 
-Références externes citées dans ce document : [R-01](../references.fr.md#r-01), [R-03](../references.fr.md#r-03).
+Références externes citées dans ce document : [R-01 — contrôles NIST SP 800-53 sur la séparation des tâches et la gouvernance des accès](../references.fr.md#r-01), et [R-03 — application par branches protégées GitHub et limites de contournement](../references.fr.md#r-03).

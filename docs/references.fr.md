@@ -995,3 +995,12 @@
 - **Concepts pertinents :** famille de modèles de provenance interopérables couvrant entités, activités, agents et relations de dérivation/attribution, avec modèle de données, ontologie, contraintes et spécifications de sérialisation.
 - **Utilité pour GovCheck :** vocabulaire et famille de représentations candidates pour la provenance des décisions, sources, artefacts générés, observations et preuves.
 - **Limite :** PROV enregistre des relations de provenance ; il n'établit ni vérité, ni admissibilité, ni intégrité, ni suffisance des informations enregistrées, et ne fournit pas d'autorité de gouvernance du dépôt.
+
+
+<a id="r-103"></a>
+### R-103 — OpenChain : ISO/IEC 5230 et ISO/IEC 18974
+- **Cité par :** [Architecture 0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
+- **Sources primaires :** [ISO/IEC 5230:2020 — spécification OpenChain](https://www.iso.org/standard/81039.html) · [ISO/IEC 18974:2023 — spécification OpenChain d'assurance de sécurité](https://www.iso.org/standard/86450.html) · [Normes et guide d'adoption OpenChain](https://openchainproject.org/get-started)
+- **Concepts pertinents :** exigences organisationnelles relatives aux programmes de conformité des licences open source (5230) et d'assurance de sécurité open source (18974), notamment politique, périmètre, rôles, processus et éléments de vérification conservés.
+- **Utilité pour GovCheck :** normes candidates de processus et d'organisation pour les capacités de conformité open source et d'assurance de sécurité open source de l'inventaire du bootstrap.
+- **Limite :** ces normes spécifient des exigences de programme ; elles ne définissent ni sérialisation SBOM, ni algorithmes de détection des vulnérabilités, ni preuve qu'un composant donné est sûr. La conformité porte sur le programme organisationnel délimité et ses éléments de vérification ; elle ne se déduit ni de la présence d'un SBOM ni de celle d'un scanner.

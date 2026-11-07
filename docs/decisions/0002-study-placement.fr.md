@@ -34,8 +34,17 @@ L'étude nomme également B, Z, CSP, iStar et la logique déontique comme formal
 
 L'étude d'intégration et ses sources techniques externes sont cataloguées séparément afin de ne pas confondre étude, implémentation et décision d'adoption :
 
+- [R-03 — Contrôles de branches protégées GitHub](../references.fr.md#r-03)
+- [R-05 — Spécification TLA+ et model checking TLC](../references.fr.md#r-05)
+- [R-06 — Cadre de provenance in-toto](../references.fr.md#r-06)
+- [R-07 — Cadre SLSA de sécurité de la chaîne d'approvisionnement](../references.fr.md#r-07)
+- [R-08 — OpenSSF Scorecard et Best Practices Badge](../references.fr.md#r-08)
+- [R-09 — Open Policy Agent et langage Rego](../references.fr.md#r-09)
+- [R-10 — Langage d'autorisation Cedar et développement guidé par la vérification](../references.fr.md#r-10)
 - [R-18 — Évaluation de Writ à partir des sources](../references.fr.md#r-18)
 - [R-19 — Évaluation de Privateer à partir des sources](../references.fr.md#r-19)
+- [R-20 — Assistant de preuve Lean](../references.fr.md#r-20)
+- [R-22 — Sémantiques natives de Git/Pijul et hébergement Nest](../references.fr.md#r-22)
 - [R-35 — Common Criteria / ISO/IEC 15408 et évaluation EAL](../references.fr.md#r-35)
 - [R-36 — RTCA DO-178C / EUROCAE ED-12C et niveaux DAL](../references.fr.md#r-36)
 - [R-37 — Modélisation relationnelle Alloy](../references.fr.md#r-37)
@@ -88,3 +97,5 @@ L'étude d'intégration et ses sources techniques externes sont cataloguées sé
 - [R-91 — Communicating Sequential Processes et FDR](../references.fr.md#r-91)
 - [R-92 — modélisation des exigences orientée objectifs iStar 2.0](../references.fr.md#r-92)
 - [R-93 — logique déontique et modalités normatives](../references.fr.md#r-93)
+- [R-104 — Formats d'instructions pour agents et workflows pilotés par les spécifications](../references.fr.md#r-104)
+- [R-105 — Recherches sur le policy-as-code, l'assurance continue et la gouvernance des agents](../references.fr.md#r-105)

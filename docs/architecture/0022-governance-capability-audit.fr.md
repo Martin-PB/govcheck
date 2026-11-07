@@ -135,11 +135,11 @@ La première décision d'implémentation porte donc sur l'autorité et l'adoptio
 
 ## Références à l'appui de cet audit
 
-- [NIST SP 800-53]([R-01](../references.fr.md#r-01)) : séparation des tâches et gouvernance des accès.
-- [NIST SSDF]([R-02](../references.fr.md#r-02)) : pratiques traçables de développement sécurisé.
-- [Branches protégées GitHub]([R-03](../references.fr.md#r-03)) : point d'application pratique et limites de contournement.
-- [OPA]([R-09](../references.fr.md#r-09)) et [Cedar]([R-10](../references.fr.md#r-10)) : mécanismes de décision de politique, pas des systèmes complets de gouvernance ou d'assurance.
-- [Google Cloud Knowledge Catalog]([R-17](../references.fr.md#r-17)) : inspiration limitée aux métadonnées typées et aux relations traçables.
+- [R-01](../references.fr.md#r-01) : séparation des tâches et gouvernance des accès.
+- [R-02](../references.fr.md#r-02) : pratiques traçables de développement sécurisé.
+- [R-03](../references.fr.md#r-03) : point d'application pratique et limites de contournement.
+- [R-09](../references.fr.md#r-09) et [R-10](../references.fr.md#r-10) : mécanismes de décision de politique, pas des systèmes complets de gouvernance ou d'assurance.
+- [R-17](../references.fr.md#r-17) : inspiration limitée aux métadonnées typées et aux relations traçables.
 - Contexte et limites : [registre GovCheck des références](../references.fr.md) et [version anglaise](../references.fr.md).
 
 

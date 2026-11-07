@@ -63,3 +63,7 @@ L'étude d'intégration et ses sources techniques externes sont cataloguées sé
 - [R-80 — Protocole Matrix et client Element X](../references.fr.md#r-80)
 - [R-81 — Métamoteur SearXNG](../references.fr.md#r-81)
 - [R-82 — Conversion de documents Microsoft MarkItDown](../references.fr.md#r-82)
+- [R-83 — sérialisation de données liées JSON-LD 1.1](../references.fr.md#r-83)
+- [R-84 — syntaxe Turtle de RDF 1.1](../references.fr.md#r-84)
+- [R-85 — ontologie SIOC des communautés en ligne](../references.fr.md#r-85)
+- [R-86 — vocabulaire Schema.org DigitalDocument](../references.fr.md#r-86)

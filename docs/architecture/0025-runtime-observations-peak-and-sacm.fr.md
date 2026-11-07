@@ -1,4 +1,4 @@
-# 0025 — Observations transverses au cycle de vie, traçabilité décisionnelle PEAK et interopérabilité SACM
+# 0025 — Observations transverses au cycle de vie, traçabilité décisionnelle PEAK et intégration SACM
 
 **Statut :** recherche et recommandation d'architecture proposées à revue. Ce document propose des liens sémantiques ; il ne prétend pas qu'une collecte opérationnelle, un processus PEAK, un import/export SACM ou une réévaluation automatisée soient implémentés.  
 **Langue :** l'anglais est la version par défaut ; voir la [version anglaise](0025-runtime-observations-peak-and-sacm.md).
@@ -123,6 +123,8 @@ SACM n'est pas un concurrent de PEAK. PEAK aide à exposer les éléments de rai
 
 ### 5.1 Périmètre de la capacité SACM
 
+Le tableau suivant est illustratif et utilise des noms familiers de l'époque 2.3 ; il ne constitue pas l'inventaire exhaustif de couverture 2.4. L'inventaire complet, épinglé à SACM 2.4 Beta 1, ainsi que ses points de conformité normatifs et non normatifs, sont spécifiés dans l'architecture 0026.
+
 | Construction SACM | Usage potentiel dans GovCheck |
 |---|---|
 | AssuranceCasePackage | Regrouper un dossier d'assurance structuré et ses références |
@@ -188,7 +190,7 @@ Les concepts transverses devraient inclure :
 
 Les relations typées relient le socle commun aux enregistrements métier : derivesFrom, refines, constrains, appliesTo, implementedBy, verifiedBy, testedBy, evidencedBy, supports, refutes, assumes, dependsOn, affects, invalidates, supersedes, reviewedBy et authorizedBy. Des relations propres à un domaine (par exemple threatens, mitigatedBy ou regresses) ne sont ajoutées qu'avec une sémantique explicite.
 
-### 6.1 Vues et interopérabilité
+### 6.1 Vues et intégration
 
 - **Vue PEAK :** exposer le Problem, l'Experience, les Assumptions et le Knowledge qui éclairent une décision, puis sa Solution et son Assumed Risk.
 - **Capacité d'assurance SACM :** représenter et valider l'intégralité du métamodèle SACM épinglé ; préserver les constructions complémentaires non normatives et fournir un import/export/aller-retour sans perte des sémantiques natives SACM. Les liens vers le cycle de vie et les artefacts métier GovCheck restent explicites.

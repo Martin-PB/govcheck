@@ -7,7 +7,9 @@
 | Autorité de gouvernance, séparation des tâches et développement sécurisé | R-01–R-03, R-11 |
 | Évaluation des risques, modélisation des menaces et chemins d'attaque | R-27–R-32 |
 | Dossiers d'assurance de sécurité et métamodèles | R-33–R-34 |
-| Décision PEAK, observations continues et assurance à l'exécution | R-67–R-73 |
+| Modèle de décision PEAK | R-74 |
+| Surveillance continue et assurance à l'exécution | R-70, R-72, R-75–R-76 |
+| Assurance 2.0 et évolution de SACM | R-71, R-73 |
 | Régimes d'assurance et exigences orientées objectifs | R-35–R-36, R-44 |
 | Model checking et vérification de programmes candidates | R-37–R-43 |
 | Provenance des preuves et chaîne d'approvisionnement logicielle | R-06–R-08 |
@@ -49,7 +51,9 @@
 - **Sémantiques natives des VCS et adaptateurs de collaboration :** R-22.
 - **Modélisation des menaces, chemins d'attaque et gestion des risques :** R-27 à R-32.
 - **Dossiers d'assurance de sécurité et métamodèles :** R-33 à R-34.
-- **Décision PEAK, observations continues et assurance à l'exécution :** R-67 à R-73.
+- **Modèle de décision PEAK :** R-74.
+- **Surveillance continue et assurance à l'exécution :** R-70, R-72, R-75 à R-76.
+- **Assurance 2.0 et évolution de SACM :** R-71, R-73.
 
 ## Normes, recommandations publiques et spécifications industrielles
 
@@ -673,8 +677,8 @@
 - **Limite :** Hyperswarm/HyperDHT est une pile réseau distincte, pas une signalisation WebRTC native au navigateur. Le DHT dépend d'une infrastructure de bootstrap et de la joignabilité réseau ; la découverte de pairs ne définit ni autorisation des salles, ni politique de membres, ni persistance.
 
 
-<a id="r-67"></a>
-### R-67 — Hoover, Rosso-Llopart et Taran, *Evaluating Project Decisions: Case Studies in Software Engineering* (2009/2010)
+<a id="r-74"></a>
+### R-74 — Hoover, Rosso-Llopart et Taran, *Evaluating Project Decisions: Case Studies in Software Engineering* (2009/2010)
 - **Source primaire :** [Catalogue de l'éditeur et extrait du chapitre](https://www.informit.com/store/evaluating-project-decisions-case-studies-in-software-9780321544568)
 - **Référence bibliographique :** Carol L. Hoover, Mel Rosso-Llopart et Gil Taran, Addison-Wesley Professional, première publication en octobre 2009 (copyright 2010), ISBN 978-0-321-54456-8 ; le chapitre 1, §1.3 présente le modèle de décision PEAK.
 - **Concepts pertinents :** Problem, Experience, Assumptions et Knowledge comme entrées de la décision ; un processus de décision produit une solution et un risque assumé.
@@ -682,16 +686,16 @@
 - **Limite :** PEAK est un modèle de décision, pas une taxonomie des menaces, un métamodèle de dossier d'assurance, un algorithme de calcul du risque ou une norme de gouvernance. Il ne prescrit ni sérialisation ni modèle d'autorisation.
 - **Cité par :** [0025](architecture/0025-runtime-observations-peak-and-sacm.fr.md) (projection PEAK et décisions gouvernées).
 
-<a id="r-68"></a>
-### R-68 — NIST SP 800-137, Information Security Continuous Monitoring (2011)
+<a id="r-75"></a>
+### R-75 — NIST SP 800-137, Information Security Continuous Monitoring (2011)
 - **Source primaire :** [Publication NIST](https://csrc.nist.gov/pubs/sp/800/137/final) · [DOI](https://doi.org/10.6028/NIST.SP.800-137)
 - **Concepts pertinents :** visibilité continue sur les actifs, menaces, vulnérabilités et efficacité des contrôles déployés ; surveillance alignée sur la tolérance au risque ; réaction lorsque les observations montrent que les contrôles sont insuffisants.
 - **Utilité pour GovCheck :** étaye une boucle de retour en production dans laquelle les observations actualisent l'état du système, l'évaluation des contrôles et les décisions de risque, au lieu de figer le modèle de menace à la conception.
 - **Limite :** les données de surveillance ne constituent pas automatiquement un incident validé, une menace ou une conclusion d'assurance. Couverture, intégrité de collecte, contexte, incertitude et santé des mécanismes de surveillance doivent être évalués.
 - **Cité par :** [0025](architecture/0025-runtime-observations-peak-and-sacm.fr.md) (observations de production et réévaluation continue).
 
-<a id="r-69"></a>
-### R-69 — Rushby, « Runtime Certification » (RV 2008)
+<a id="r-76"></a>
+### R-76 — Rushby, « Runtime Certification » (RV 2008)
 - **Source primaire :** [Article de l'auteur, présenté au huitième atelier Runtime Verification](https://citeseerx.ist.psu.edu/document?doi=c28045b0a573839028f6042870a3eccd8f9be748&repid=rep1&type=pdf)
 - **Référence bibliographique :** John Rushby, « Runtime Certification », article invité à RV 2008, Budapest, avril 2008.
 - **Concepts pertinents :** dossiers d'assurance comme affirmations, preuves et arguments ; surveillance en exécution des hypothèses et anomalies ; utilisation de la vérification à l'exécution comme preuve ; détection de la violation d'hypothèses environnementales.

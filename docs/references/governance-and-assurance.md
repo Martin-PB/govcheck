@@ -86,12 +86,6 @@
 - **Use in GovCheck:** supplementary navigation for the status of SSDF publications and profiles.
 - **Limit:** use the dated final publication when making a version-specific claim; do not confuse a draft revision with a final standard.
 
-### R-12 — OpenSSF Scorecard security posture signals
-- **Primary source:** [Scorecard project](https://github.com/ossf/scorecard)
-- **Relevant concepts:** independently inspectable repository security indicators.
-- **Use in GovCheck:** optional external evidence adapter; retain each check, version, subject and raw result rather than relying only on aggregate score.
-- **Limit:** signals can be incomplete, context-dependent or wrong; they must not override mandatory project rules.
-
 ### R-13 — JSON Schema Draft 2020-12
 - **Primary source:** [Official specification landing page](https://json-schema.org/draft/2020-12/)
 - **Relevant concepts:** structural validation of machine-readable records.

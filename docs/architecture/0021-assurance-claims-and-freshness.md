@@ -100,3 +100,10 @@ It selects no canonical format, ontology, policy engine or proof assistant. It c
 ## 9. Verification status
 
 The module and configuration are proposed formal source artifacts. They must be parsed by SANY and explored by TLC with a pinned version. No SANY/TLC result is claimed by this proposal. Structural tests and source review do not replace TLC execution. Hosted CI is not triggered by this contribution; checks must be run according to maintainer authorization and repository instructions.
+
+## Bibliographic references
+
+- [R-05 — TLA+ and TLC state-transition modeling](../references.md#r-05)
+- [R-09 — Open Policy Agent policy-decision engine](../references.md#r-09)
+- [R-18 — Writ source-based assessment](../references.md#r-18)
+- [R-22 — Native Git and Pijul semantics](../references.md#r-22)

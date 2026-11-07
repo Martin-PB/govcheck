@@ -414,7 +414,7 @@
 
 <a id="r-37"></a>
 ### R-37 — Langage et analyseur Alloy
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [0005](specifications/0005-assurance-model.fr.md), [0007](architecture/0007-technology-decision-framework.fr.md), [0009](architecture/0009-govcheck-design-discussion-record.fr.md)
 
 - **Sources primaires :** [Projet Alloy et documentation](https://alloytools.org/) · [Dépôt source de l'analyseur Alloy](https://github.com/AlloyTools/org.alloytools.alloy)
 - **Concepts pertinents :** modélisation relationnelle, analyse bornée, recherche d'instances par SAT et recherche de contre-exemples ; Alloy 6 ajoute états mutables et opérateurs temporels.

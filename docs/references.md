@@ -1026,8 +1026,8 @@
 <a id="r-106"></a>
 ### R-106 — OWASP guidance for AI-agent and MCP security
 - **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
-- **Primary source:** [OWASP DevSecOps Guideline — AI Agent and MCP Security](https://owasp.github.io/DevSecOpsGuideline/2-Process/2-2-Develop/2-2-5-AI-Agent-and-MCP-Security/)
-- **Relevant concepts:** versioned and testable policy for agent permissions; authorization at a gateway or proxy using identity, tool and arguments; deny-by-default permissions; short-lived scoped identities; sandboxing and egress allowlists; configuration validation and audit logging.
+- **Primary source:** [OWASP DevSecOps Guideline — AI Agent and MCP Security](https://owasp.github.io/DevSecOpsGuideline/2-Process/2-2-Develop/2-2-5-AI-Agent-and-MCP-Security/) · [OWASP IDE and AI-assisted development security](https://owasp.github.io/DevSecOpsGuideline/2-Process/2-2-Develop/2-2-2-IDE-and-AI-assisted-development/)
+- **Relevant concepts:** versioned and testable policy for agent permissions; authorization at a gateway or proxy using identity, tool and arguments; deny-by-default permissions; short-lived scoped identities; sandboxing and egress allowlists; agent configuration reviewed as code; configuration validation and audit logging.
 - **Use in GovCheck:** supports the distinction between natural-language agent instructions and controls enforced at tool, gateway, identity and operating-system boundaries.
 - **Limit:** this is an evolving engineering guideline, not a certification or proof of implementation. Recommendations must be mapped to the actual agent harness, execution host, tool surface and threat model; the guideline does not establish that a particular deployment enforces every listed control.
 

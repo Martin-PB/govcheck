@@ -34,6 +34,8 @@ Les enregistrements de décision doivent rendre leurs éléments de raisonnement
 
 Distinguer obligation, interdiction, permission explicite, invariant/contrainte, exigence de preuve, exigence de processus/approbation et recommandation non contraignante. L’absence d’interdiction ne vaut pas permission. Une recommandation ne bloque pas l’acceptation. Les règles dérogeables exigent une sémantique explicite de priorité/exception ; conflits et précédences non résolues restent visibles.
 
+La logique déontique peut formaliser des modalités telles que l'obligation, la permission et l'interdiction, mais elle ne fournit pas la sémantique d'autorité, de périmètre, de priorité, de délégation, d'exception, de date d'effet, de preuve ou d'application d'un système de gouvernance. La vérification des modèles/politiques de contrôle d'accès doit examiner séparément cohérence, complétude et propriétés de sûreté avant de tester un évaluateur ou un point d'application. Voir [R-93](../references.fr.md#r-93) et [R-88](../references.fr.md#r-88).
+
 ## Périmètre, raffinement et réalisabilité
 
 Chaque objet possède identité stable, historique d’évolution, périmètre, provenance, propriétaire/autorité et relations typées. L’applicabilité peut dépendre du type de changement, des composants affectés, de la menace, du déploiement, des capacités VCS ou du profil projet. Les profils sélectionnent des obligations ; ils ne créent pas de niveaux d’assurance selon la taille du dépôt.

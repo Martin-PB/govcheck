@@ -90,7 +90,7 @@ Ces observations peuvent remettre en cause une hypothèse, indiquer qu'une exige
 7. **Décider :** laisser l'autorité compétente choisir d'enquêter, corriger, différer, accepter une déviation circonscrite, modifier une exigence ou prendre une autre mesure autorisée.
 8. **Vérifier la réponse :** enregistrer les preuves de suivi et déterminer si le résultat attendu a été obtenu.
 
-Ce cycle est indépendant du domaine. L'interprétation spécifique relève de la méthode ou de la capacité concernée. Par exemple, le retour vers le modèle de menace constitue un parcours spécialisé : des observations de sécurité en exploitation peuvent remettre en cause des hypothèses de menace ou l'efficacité des mesures, mais elles ne réécrivent pas silencieusement le modèle de menace et n'autorisent pas une remédiation. Le même schéma général s'applique à la qualité, à la maintenabilité, aux tests, aux dépendances, aux preuves et à la gouvernance des publications.
+Ce cycle est indépendant du domaine. L'interprétation spécifique relève de la méthode ou de la capacité concernée. Par exemple, le retour vers le modèle de menace constitue un parcours spécialisé : des observations de sécurité en exploitation peuvent remettre en cause des hypothèses de menace ou l'efficacité des mesures, mais elles ne réécrivent pas silencieusement le modèle de menace et n'autorisent pas une remédiation. Les recommandations de surveillance continue, les travaux sur la certification à l'exécution et un exemple industriel de modélisation des menaces à l'exécution illustrent ce parcours propre à la sécurité [R-75](../references.fr.md#r-75) [R-76](../references.fr.md#r-76) [R-72](../references.fr.md#r-72). Les travaux ACCESS illustrent également l'utilisation de données d'exécution dans l'évolution de dossiers d'assurance fondés sur SACM [R-70](../references.fr.md#r-70). Le même schéma général s'applique à la qualité, à la maintenabilité, aux tests, aux dépendances, aux preuves et à la gouvernance des publications.
 
 ### 4.2 Enregistrements d'observation et de preuve
 
@@ -119,7 +119,7 @@ Une observation peut être utilisée comme preuve, mais elle n'est pas automatiq
 
 SACM (Structured Assurance Case Metamodel) traite de la structure et de l'échange des dossiers d'assurance : affirmations, argumentation, inférences, références de preuves, contexte, artefacts et terminologie [R-34](../references.fr.md#r-34). Sa contribution doit être évaluée dans ce périmètre précis.
 
-SACM n'est pas un concurrent de PEAK. PEAK aide à exposer les éléments de raisonnement et le risque assumé derrière une décision ; SACM représente des arguments d'assurance structurés. GovCheck peut utiliser les deux à des fins différentes tout en conservant ses propres sémantiques de gouvernance des dépôts.
+SACM n'est pas un concurrent de PEAK. PEAK aide à exposer les éléments de raisonnement et le risque assumé derrière une décision ; SACM représente des arguments d'assurance structurés. GovCheck peut utiliser les deux à des fins différentes tout en conservant ses propres sémantiques de gouvernance des dépôts. Les recherches sur l'ingénierie des dossiers d'assurance soulignent également l'importance des réfutations possibles, des contre-preuves et de la force des preuves — des sujets pertinents pour l'évaluation des arguments par GovCheck, que SACM soit ou non utilisé comme format d'échange [R-71](../references.fr.md#r-71).
 
 ### 5.1 Constructions utiles de SACM 2.3
 

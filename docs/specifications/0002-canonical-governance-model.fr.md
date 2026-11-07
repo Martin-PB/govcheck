@@ -16,6 +16,8 @@ Un ID de règle est immuable et jamais réutilisé. Toute évolution sémantique
 
 Distinguer au minimum : obligation, interdiction, permission, invariant/contrainte, exigence de preuve, exigence de processus/approbation et conseil. Le conseil est explicitement non normatif. L'absence d'interdiction ne vaut pas permission. Une permission n'annule pas une obligation ou interdiction sans relation de priorité explicite et valide.
 
+La logique déontique fournit un vocabulaire formel utile pour ces modalités normatives, mais ne définit pas qui peut émettre une règle, son périmètre, sa priorité, sa délégation, ses exceptions, sa date d'effet ou son application. La validation du modèle de politiques doit aussi examiner cohérence, complétude et propriétés de sûreté ; valider uniquement le schéma du paquet ne suffit pas. Voir [R-93](../references.fr.md#r-93) et [R-88](../references.fr.md#r-88).
+
 ## Applicabilité et composition
 
 Le contexte identifie explicitement états du dépôt et candidat, révision de gouvernance, changement, ressources touchées, classe d'acteur et faits d'environnement déclarés. Les fondations obligatoires s'appliquent toujours. Les profils précisent ou ajoutent des contraintes. Une portée étroite ne peut affaiblir silencieusement une règle obligatoire. Les priorités forment une relation partielle explicite, jamais un ordre de fichiers ou un « dernier arrivé ».

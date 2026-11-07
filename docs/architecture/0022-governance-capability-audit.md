@@ -135,9 +135,14 @@ The first implementation decision is therefore governance authority and adoption
 
 ## References supporting this audit
 
-- [NIST SP 800-53](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final): separation of duties and access-control governance.
-- [NIST SSDF](https://csrc.nist.gov/pubs/sp/800/218/final): traceable secure-development practices.
-- [GitHub protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches): practical enforcement boundary and bypass limitations.
-- [OPA](https://www.openpolicyagent.org/docs) and [Cedar](https://docs.cedarpolicy.com/): policy-decision mechanisms, not complete governance or assurance systems.
-- [Google Cloud Knowledge Catalog](https://docs.cloud.google.com/knowledge-catalog/docs): inspiration limited to typed metadata and traceable relationships.
-- Full context and limitations: [governance and assurance reference register](../references/governance-and-assurance.md) and [French register](../references/governance-and-assurance.fr.md).
+- [NIST SP 800-53]([R-01](../references.md#r-01)): separation of duties and access-control governance.
+- [NIST SSDF]([R-02](../references.md#r-02)): traceable secure-development practices.
+- [GitHub protected branches]([R-03](../references.md#r-03)): practical enforcement boundary and bypass limitations.
+- [OPA]([R-09](../references.md#r-09)) and [Cedar]([R-10](../references.md#r-10)): policy-decision mechanisms, not complete governance or assurance systems.
+- [Google Cloud Knowledge Catalog]([R-17](../references.md#r-17)): inspiration limited to typed metadata and traceable relationships.
+- Full context and limitations: [governance and assurance reference register](../references.md) and [French register](../references.md).
+
+
+## Bibliographic references
+
+External sources cited by this record: [R-01](../references.md#r-01), [R-02](../references.md#r-02), [R-03](../references.md#r-03), [R-09](../references.md#r-09), [R-10](../references.md#r-10), [R-17](../references.md#r-17).

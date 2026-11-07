@@ -59,3 +59,8 @@ GovCheck alone cannot prevent a local administrator from editing repository file
 ## 7. Required design decisions before implementation
 
 Define canonical serialization and duplicate-key handling; evaluator isolation and resource limits; key/identity/approval model; evidence storage and privacy; local execution model for project checks; remote enforcement protocol and bypass reporting; threat-specific security tests. Keep these as explicit decisions, not accidental implementation defaults.
+
+
+## Bibliographic references
+
+External references used in this record: [R-01](../references.md#r-01), [R-02](../references.md#r-02), [R-06](../references.md#r-06), [R-07](../references.md#r-07).

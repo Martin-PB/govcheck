@@ -17,4 +17,4 @@ The specifications define semantics and conformance targets. They do not claim t
 
 The next engineering phase should derive executable conformance tests and formal models, then resolve technology choices using the architecture decision framework.
 
-External standards, methods and project sources are indexed in the [central reference catalogue](../references.md) ([French](../references.fr.md)); inclusion does not imply adoption.
+External standards, methods and project sources are indexed in the [central reference catalogue](../references.md) ([French](../references.fr.md)). Follow the [reference-integrity maintenance guide](../reference-integrity.md) and run the offline checker before changing references; inclusion does not imply adoption.

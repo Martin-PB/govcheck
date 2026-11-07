@@ -95,18 +95,7 @@ Avant toute intégration en production, tester défauts et contournements de la 
 
 ## Sources
 
-- Dépôt et architecture Writ : [R-18](../references.fr.md#r-18)
-- Politique de sécurité Writ : [R-18](../references.fr.md#r-18)/blob/ebdafe5450b201339f81e717ed104e6bcfd3fe3e/SECURITY.md
-- Contrat de session/barrières Writ : [R-18](../references.fr.md#r-18)/blob/ebdafe5450b201339f81e717ed104e6bcfd3fe3e/docs/reference/session-and-gates.md
-- Dépôt Privateer : [R-19](../references.fr.md#r-19)
-- Politique de sécurité Privateer : [R-19](../references.fr.md#r-19)/blob/181a988e443fa6b6b4138fc349d1260c96408ad4/SECURITY.md
-- README et instructions de vérification d’installation : [R-19](../references.fr.md#r-19)/blob/181a988e443fa6b6b4138fc349d1260c96408ad4/README.md
-
-
-## Registre de références
-
-Les révisions sources étudiées et leurs limites de sécurité sont indexées comme [R-18 Writ et R-19 Privateer](../references.fr.md). Ce registre rassemble les liens primaires sans modifier les conclusions de cette revue. Voir aussi le [registre anglais](../references.fr.md).
-
+Les URL des sources primaires, révisions épinglées et documents examinés sont maintenus dans le [catalogue central des références](../references.fr.md), entrées R-18 et R-19. Ce document renvoie vers ces entrées sans dupliquer les URL externes.
 
 ## Références bibliographiques
 

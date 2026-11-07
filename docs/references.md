@@ -38,6 +38,7 @@
 | Domain semantic models, product quality and open-source compliance | R-94–R-100, R-102–R-103 |
 | Agent-instruction interoperability and spec-driven workflows | R-104 |
 | Policy-as-code and runtime agent-governance research | R-105 |
+| OWASP guidance for AI-agent and MCP security | R-106 |
 
 ## Full reference entries
 
@@ -72,6 +73,7 @@
 - **Domain semantics, product quality and open-source compliance (candidate sources):** R-94–R-100, R-102–R-103.
 - **Agent instructions and spec-driven workflows:** R-104.
 - **Policy-as-code, continuous assurance and MCP governance research:** R-105.
+- **AI-agent and MCP security guidance:** R-106.
 
 ## Standards, government guidance and industry specifications
 
@@ -268,12 +270,12 @@
 <a id="r-21"></a>
 
 ### R-21 — Research software release and reproducibility guidance
-- **Cited by:** [0017](architecture/0017-artifact-identity-revision-and-versioning.md), [0018](architecture/0018-version-governance-and-compatibility-authority.md)
+- **Cited by:** [0017](architecture/0017-artifact-identity-revision-and-versioning.md), [0018](architecture/0018-version-governance-and-compatibility-authority.md), [ADR 0002](decisions/0002-study-placement.md)
 
-- **Primary source:** [Software Sustainability Institute — guides and resources](https://www.software.ac.uk/resources)
+- **Primary source:** [Software Sustainability Institute — guides and resources](https://www.software.ac.uk/resources) · [LUMC Research Software Guidelines — versioning and releases](https://lumc-dcc.github.io/rs-guidelines/best-practices/versioning-releases/)
 - **Relevant concepts:** sustainable research software, citation, releases and reproducibility.
-- **Use in GovCheck:** supports recording exact software/tool versions and release context needed to interpret verification evidence.
-- **Limit:** general guidance is not a concrete release-manifest contract. Link to a specific guide when relying on a particular recommendation.
+- **Use in GovCheck:** supports recording exact tool versions and release context needed to interpret evidence; the LUMC guide distinguishes SemVer for stable interfaces, CalVer for operational tools and meaningful tags for reproducibility.
+- **Limit:** these living guides are general recommendations for research software, not a release-manifest contract or mandatory standard. The versioning scheme must remain appropriate to the artifact type and the stability of its interface.
 
 <a id="r-22"></a>
 
@@ -651,6 +653,7 @@
 - **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
 
 - **Primary sources:** [Cartocortex repository](https://github.com/complexus-lab/cartocortex) · [MoriNet repository](https://github.com/lejeunecedric/MoriNet) · [SaussuNet repository](https://github.com/lejeunecedric/SaussuNet) · [Cartocortex PR #27 — OKF storage and graph-view study](https://github.com/complexus-lab/cartocortex/pull/27) · [Cartocortex PR #28 — CRDT, browser deployment and cloud-sync backlog](https://github.com/complexus-lab/cartocortex/pull/28)
+- **Provisional namespace URI:** [Cartocortex Knowledge Ontology (CKO)](https://cartocortex.dev/ontology#) — vocabulary identifier proposed in the PDF, not a standard or an adopted ontology.
 - **Relevant concepts:** source repositories and reviewed design artifacts for the integration study; PR #27 is a study of OKF v0.2 storage/projections, while PR #28 contains proposed CRDT and real-time transport work.
 - **Use in GovCheck:** preserves the concrete project-level sources behind the initial PDF “Évaluer l’intégration des dépôts” (6 November 2026, 224 pages) and the discussion recorded by ADR 0002.
 - **Limit:** PR #27 is a study, not an executed implementation; PR #28 is a proposal/backlog and its transport study is explicitly not executed. Repository capabilities must be rechecked at the reviewed revision before claiming current behavior. The “CKO” namespace in the PDF is a proposal, not an adopted external standard.
@@ -1003,7 +1006,7 @@
 <a id="r-104"></a>
 ### R-104 — Agent instruction formats and spec-driven agent workflows
 - **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
-- **Primary sources:** [AGENTS.md open format](https://agents.md/) · [VS Code custom-instructions reference](https://code.visualstudio.com/docs/agents/reference/custom-instructions-reference) · [Claude Code project instructions and AGENTS.md support](https://code.claude.com/docs/en/memory) · [Codex development-workflow guide](https://developers.openai.com/cookbook/examples/codex/iterating-development-workflows-with-codex) · [GitHub Spec Kit repository](https://github.com/github/spec-kit) · [GitHub Spec Kit documentation](https://github.github.com/spec-kit/)
+- **Primary sources:** [AGENTS.md open format](https://agents.md/) · [VS Code custom-instructions reference](https://code.visualstudio.com/docs/agents/reference/custom-instructions-reference) · [Secure AI-assisted development in VS Code](https://code.visualstudio.com/docs/agents/run/security) · [VS Code agent hooks](https://code.visualstudio.com/docs/agent-customization/hooks) · [VS Code approvals and permissions](https://code.visualstudio.com/docs/agents/run/approvals) · [Claude Code project instructions and AGENTS.md support](https://code.claude.com/docs/en/memory) · [Codex development-workflow guide](https://developers.openai.com/cookbook/examples/codex/iterating-development-workflows-with-codex) · [GitHub Spec Kit repository](https://github.com/github/spec-kit) · [GitHub Spec Kit documentation](https://github.github.com/spec-kit/)
 - **Relevant concepts:** shared repository-level agent instructions; harness-specific discovery and loading rules; project-specific and path-scoped guidance; specification-driven workflows that produce plans, tasks and reviewable outcomes.
 - **Use in GovCheck:** preserves the cross-agent instruction and spec-driven workflow options discussed for repository bootstrap and agent interoperability.
 - **Limit:** AGENTS.md is a plain-text convention, not an enforceable policy or proof of instruction compliance. Discovery and inclusion differ by harness and version; finding a file does not prove that an agent follows it. Spec Kit is a workflow toolkit, not a normative authority, assurance case or security boundary.
@@ -1016,4 +1019,13 @@
 - **Relevant concepts:** empirical policy-as-code adoption and maintenance across 10,560 files and 499 repositories; runtime governance interventions at multiple agent lifecycle checkpoints; mapping governance requirements to executable controls and structured evidence; tool-call-boundary enforcement with cross-step information-flow labels and audit records.
 - **Use in GovCheck:** preserves the research evidence discussed for policy-as-code adoption, governance-by-construction, continuous AI assurance and MCP tool-call enforcement.
 - **Limit:** these are research publications, not standards or independent certifications. The MSR dataset is bounded to its sampled repositories and tools; CUGA is a research/demo contribution; Audit-as-Code focuses on AI/MLOps assurance; the MCP enforcement evaluation is controlled and does not establish universal production safety. None implies adoption or implementation by GovCheck.
+
+
+<a id="r-106"></a>
+### R-106 — OWASP guidance for AI-agent and MCP security
+- **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
+- **Primary source:** [OWASP DevSecOps Guideline — AI Agent and MCP Security](https://owasp.github.io/DevSecOpsGuideline/2-Process/2-2-Develop/2-2-5-AI-Agent-and-MCP-Security/)
+- **Relevant concepts:** versioned and testable policy for agent permissions; authorization at a gateway or proxy using identity, tool and arguments; deny-by-default permissions; short-lived scoped identities; sandboxing and egress allowlists; configuration validation and audit logging.
+- **Use in GovCheck:** supports the distinction between natural-language agent instructions and controls enforced at tool, gateway, identity and operating-system boundaries.
+- **Limit:** this is an evolving engineering guideline, not a certification or proof of implementation. Recommendations must be mapped to the actual agent harness, execution host, tool surface and threat model; the guideline does not establish that a particular deployment enforces every listed control.
 

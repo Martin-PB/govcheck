@@ -90,6 +90,11 @@ Explicit instruction from the project owner in the GovCheck governance discussio
 
 ## References supporting the authority decision
 
-- [NIST SP 800-53](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final), especially separation-of-duties concepts: a single-root regime must disclose rather than disguise the absence of two-person authorization.
-- [GitHub protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches): repository and merge controls are enforcement settings, not the source of normative authority.
-- See the [governance and assurance reference register](../references/governance-and-assurance.md) and [French register](../references/governance-and-assurance.fr.md). The decision in this record derives from the project owner's explicit instruction; external sources do not authorize it.
+- [NIST SP 800-53]([R-01](../references.md#r-01)), especially separation-of-duties concepts: a single-root regime must disclose rather than disguise the absence of two-person authorization.
+- [GitHub protected branches]([R-03](../references.md#r-03)): repository and merge controls are enforcement settings, not the source of normative authority.
+- See the [governance and assurance reference register](../references.md) and [French register](../references.md). The decision in this record derives from the project owner's explicit instruction; external sources do not authorize it.
+
+
+## Bibliographic references
+
+External sources cited by this record: [R-01](../references.md#r-01), [R-03](../references.md#r-03).

@@ -135,9 +135,14 @@ La première décision d'implémentation porte donc sur l'autorité et l'adoptio
 
 ## Références à l'appui de cet audit
 
-- [NIST SP 800-53](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final) : séparation des tâches et gouvernance des accès.
-- [NIST SSDF](https://csrc.nist.gov/pubs/sp/800/218/final) : pratiques traçables de développement sécurisé.
-- [Branches protégées GitHub](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches) : point d'application pratique et limites de contournement.
-- [OPA](https://www.openpolicyagent.org/docs) et [Cedar](https://docs.cedarpolicy.com/) : mécanismes de décision de politique, pas des systèmes complets de gouvernance ou d'assurance.
-- [Google Cloud Knowledge Catalog](https://docs.cloud.google.com/knowledge-catalog/docs) : inspiration limitée aux métadonnées typées et aux relations traçables.
-- Contexte et limites : [registre GovCheck des références](../references/governance-and-assurance.fr.md) et [version anglaise](../references/governance-and-assurance.md).
+- [NIST SP 800-53]([R-01](../references.fr.md#r-01)) : séparation des tâches et gouvernance des accès.
+- [NIST SSDF]([R-02](../references.fr.md#r-02)) : pratiques traçables de développement sécurisé.
+- [Branches protégées GitHub]([R-03](../references.fr.md#r-03)) : point d'application pratique et limites de contournement.
+- [OPA]([R-09](../references.fr.md#r-09)) et [Cedar]([R-10](../references.fr.md#r-10)) : mécanismes de décision de politique, pas des systèmes complets de gouvernance ou d'assurance.
+- [Google Cloud Knowledge Catalog]([R-17](../references.fr.md#r-17)) : inspiration limitée aux métadonnées typées et aux relations traçables.
+- Contexte et limites : [registre GovCheck des références](../references.fr.md) et [version anglaise](../references.fr.md).
+
+
+## Références bibliographiques
+
+Références externes citées dans ce document : [R-01](../references.fr.md#r-01), [R-02](../references.fr.md#r-02), [R-03](../references.fr.md#r-03), [R-09](../references.fr.md#r-09), [R-10](../references.fr.md#r-10), [R-17](../references.fr.md#r-17).

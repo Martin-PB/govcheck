@@ -118,3 +118,9 @@ Compare on complementarity to the six responsibilities, narrow trust boundary, l
 ## Deferred decisions
 
 CLI commands/dossier serialization; profile composition/task schema; first forge/team integration and threat model; agent qualification protocol/independence thresholds; Writ/Privateer adoption; Lean's justified role; operational retention/privacy/protected evidence storage. Each needs a focused ADR/prototype and evidence.
+
+
+## References
+
+- [GovCheck governance and assurance reference register](../references/governance-and-assurance.md): NIST SSDF, in-toto/SLSA, OpenSSF Scorecard, OPA and Cedar, with scope and non-claims for each.
+- [French reference register](../references/governance-and-assurance.fr.md).

@@ -347,6 +347,213 @@
 - **Limite :** SACM est un métamodèle, pas une méthode d'évaluation des risques, un oracle de vérité ni une preuve de suffisance des éléments probants. La version 2.4 est actuellement une bêta ; cette entrée renvoie à la version formelle 2.3 et ne recommande pas l'adoption de SACM.
 - **Cité par :** [0024](architecture/0024-project-bootstrap-and-assurance-profiles.fr.md) (affirmations d'assurance et preuves typées).
 
+
+
+## Sources complémentaires retrouvées dans les discussions sur l'assurance et l'intégration
+
+<a id="r-27"></a>
+### R-27 — Common Criteria (ISO/IEC 15408) et méthode commune d'évaluation
+- **Sources primaires :** [Portail Common Criteria](https://www.commoncriteriaportal.org/) · [Publications CC:2022 et CEM:2022](https://www.commoncriteriaportal.org/cc/index.cfm)
+- **Concepts pertinents :** exigences fonctionnelles de sécurité, exigences d'assurance, méthode d'évaluation et niveaux EAL (Evaluation Assurance Levels).
+- **Utilité pour GovCheck :** contextualise le vocabulaire d'assurance explicitement distingué des classes de méthodes de GovCheck dans la spécification 0005.
+- **Limite :** les EAL sont des ensembles d'exigences d'assurance dans le régime Common Criteria, pas des niveaux génériques de maturité logicielle ni des paliers d'assurance GovCheck. Le périmètre et la cible d'évaluation comptent.
+
+<a id="r-28"></a>
+### R-28 — RTCA DO-178C / EUROCAE ED-12C : assurance logicielle aéronautique
+- **Sources primaires :** [FAA AC 20-115D](https://www.faa.gov/airports/resources/advisory_circulars/index.cfm/go/document.information/documentNumber/20-115D) · [Présentation RTCA de DO-178C et de ses suppléments](https://www.rtca.org/do-178/)
+- **Concepts pertinents :** objectifs du cycle de vie logiciel, vérification, indépendance, preuves de certification et niveaux logiciels A–E ; suppléments associés : DO-330, DO-331, DO-332 et DO-333.
+- **Utilité pour GovCheck :** fournit l'exemple aéronautique d'assurance/certification nommé dans la spécification 0005 et distingue les régimes sectoriels des méthodes génériques de test et de preuve.
+- **Limite :** DO-178C est une norme d'assurance logicielle aéronautique dans un contexte de certification de navigabilité. La circulaire FAA AC 20-115D décrit un moyen acceptable, pas le seul moyen ni une réglementation logicielle générale. La présentation publique RTCA ne reproduit pas la norme complète.
+
+<a id="r-29"></a>
+### R-29 — Langage et analyseur Alloy
+- **Sources primaires :** [Projet Alloy et documentation](https://alloytools.org/) · [Dépôt source de l'analyseur Alloy](https://github.com/AlloyTools/org.alloytools.alloy)
+- **Concepts pertinents :** modélisation relationnelle, analyse bornée, recherche d'instances par SAT et recherche de contre-exemples ; Alloy 6 ajoute états mutables et opérateurs temporels.
+- **Utilité pour GovCheck :** méthode candidate de modélisation formelle citée dans la spécification 0005 et les architectures 0007/0009.
+- **Limite :** les résultats dépendent des portées, bornes et hypothèses déclarées ; l'analyse Alloy ne prouve pas l'implémentation sans argument distinct de raffinement/conformité.
+
+<a id="r-30"></a>
+### R-30 — SPIN et Promela
+- **Source primaire :** [Manuel SPIN et documentation Promela](https://spinroot.com/spin/Man/Manual.html)
+- **Concepts pertinents :** modélisation et vérification de systèmes concurrents/distribués, communication asynchrone, invariants, interblocages et propriétés temporelles.
+- **Utilité pour GovCheck :** vérificateur de modèles candidat nommé dans la spécification 0005, distinct de TLA+/TLC et Alloy.
+- **Limite :** la vérification porte sur l'abstraction Promela et le mode/options de recherche retenus ; elle n'établit ni conformité de l'implémentation ni fidélité normative.
+
+<a id="r-31"></a>
+### R-31 — Vérificateur Rust Kani
+- **Source primaire :** [Documentation Kani](https://model-checking.github.io/kani/)
+- **Concepts pertinents :** model checking borné de programmes Rust, harnesses de preuve, assertions, détection de comportements indéfinis et contre-exemples.
+- **Utilité pour GovCheck :** méthode candidate de vérification de programmes citée dans la spécification 0005.
+- **Limite :** les fonctionnalités Rust prises en charge et la couverture de la concurrence sont limitées ; un harness réussi établit seulement les propriétés modélisées avec les bornes et la toolchain configurées.
+
+<a id="r-32"></a>
+### R-32 — Vérification Rust avec Verus
+- **Source primaire :** [Tutoriel et référence Verus](https://verus-lang.github.io/verus/guide/)
+- **Concepts pertinents :** vérification statique de correction fonctionnelle de programmes Rust à l'aide de spécifications et de preuves assistées.
+- **Utilité pour GovCheck :** méthode candidate de vérification de programmes citée dans la spécification 0005.
+- **Limite :** Verus ne prend pas en charge toutes les fonctionnalités et bibliothèques Rust et ne prétend vérifier ni les compilateurs Rust/LLVM ni lui-même ; les composants de confiance et constructions non prises en charge restent pertinents.
+
+<a id="r-33"></a>
+### R-33 — Langage et vérificateur Dafny
+- **Source primaire :** [Manuel de référence Dafny](https://dafny.org/dafny/DafnyRef/DafnyRef)
+- **Concepts pertinents :** constructions de spécification, pré/postconditions, invariants, métriques de terminaison, conditions de vérification et compilation.
+- **Utilité pour GovCheck :** système candidat de vérification de programmes cité dans la spécification 0005.
+- **Limite :** les affirmations vérifiées dépendent des spécifications Dafny, du vérificateur et de la toolchain ; elles ne valident pas que la spécification représente la politique approuvée.
+
+<a id="r-34"></a>
+### R-34 — Assistant de preuve Coq / Rocq
+- **Sources primaires :** [Documentation et manuels de référence Rocq](https://rocq-prover.org/docs) · [Archives de documentation Coq versionnée](https://docs.rocq-prover.org/)
+- **Concepts pertinents :** théorie des types dépendants, définitions Gallina et termes de preuve vérifiés par machine.
+- **Utilité pour GovCheck :** Coq est nommé dans la spécification 0005 ; le projet se nomme désormais Rocq, les noms historique et actuel sont donc conservés.
+- **Limite :** une dérivation vérifiée établit un théorème sous ses définitions, axiomes, résultats importés et hypothèses du noyau/toolchain ; elle n'établit pas l'adéquation normative.
+
+<a id="r-35"></a>
+### R-35 — Assistant de preuve Isabelle
+- **Source primaire :** [Documentation, tutoriels et manuels de référence Isabelle](https://www.isabelle.in.tum.de/documentation.html)
+- **Concepts pertinents :** preuve interactive de théorèmes, Isabelle/HOL, spécification formelle et vérification de preuves.
+- **Utilité pour GovCheck :** assistant de preuve candidat nommé dans la spécification 0005.
+- **Limite :** les résultats dépendent de la logique, des théories importées, des axiomes et de l'environnement de preuve ; aucune intégration Isabelle n'est sélectionnée.
+
+<a id="r-36"></a>
+### R-36 — KAOS et ingénierie des exigences orientée objectifs
+- **Source primaire :** [Axel van Lamsweerde, Requirements Engineering: From System Goals to UML Models to Software Specifications (2009), notice UCLouvain](https://research.dial.uclouvain.be/entities/publication/ddcd5cbc-c76d-4da2-bd29-509cbf0f9399)
+- **Concepts pertinents :** raffinement d'objectifs, obstacles, attribution des responsabilités et dérivation des objectifs système vers exigences et spécifications logicielles.
+- **Utilité pour GovCheck :** source de la famille KAOS/GORE explicitement mentionnée dans l'architecture 0013.
+- **Limite :** méthode d'ingénierie des exigences et source académique ; ce n'est ni une ontologie GovCheck adoptée ni un langage de politiques exécutable.
+
+<a id="r-37"></a>
+### R-37 — Fondements des CRDT
+- **Source primaire :** [Shapiro, Preguiça, Baquero et Zawirski, « A comprehensive study of Convergent and Commutative Replicated Data Types » (rapport de recherche INRIA 7506, 2011)](https://dsf.berkeley.edu/cs286/papers/crdt-tr2011.pdf)
+- **Concepts pertinents :** types répliqués fondés sur l'état ou les opérations, conditions de convergence, réplication asynchrone et mises à jour concurrentes.
+- **Utilité pour GovCheck :** source fondatrice de la discussion CRDT/coédition retrouvée dans l'étude d'intégration Cartocortex.
+- **Limite :** la convergence ne préserve pas à elle seule l'intention utilisateur, ne définit ni autorisation, ni transport/persistance, et ne garantit pas la préservation des invariants métier.
+
+<a id="r-38"></a>
+### R-38 — Yjs et Yrs
+- **Sources primaires :** [Documentation Yjs](https://docs.yjs.dev/) · [Dépôt source Yjs](https://github.com/yjs/yjs) · [Port Rust Yrs](https://github.com/y-crdt/y-crdt)
+- **Concepts pertinents :** types de données CRDT partagés, mises à jour indépendantes du transport, fournisseurs de synchronisation et édition collaborative.
+- **Utilité pour GovCheck :** famille d'implémentations candidate explicitement comparée dans l'étude de transport/backlog de la PR Cartocortex #28.
+- **Limite :** le comportement d'une bibliothèque ne choisit ni le modèle de données applicatif ni l'architecture de transport ; les déplacements d'arbres, undo/redo, persistance et migrations propres à Cartocortex exigent des tests distincts.
+
+<a id="r-39"></a>
+### R-39 — Automerge
+- **Sources primaires :** [Documentation Automerge](https://automerge.org/docs/) · [Dépôt source Automerge](https://github.com/automerge/automerge)
+- **Concepts pertinents :** documents CRDT local-first, fusion de changements concurrents, historique et synchronisation indépendante du transport.
+- **Utilité pour GovCheck :** implémentation candidate explicitement comparée dans l'étude Cartocortex de la PR #28.
+- **Limite :** la fusion CRDT ne préserve pas automatiquement l'intention métier ni les permissions ; réseau et stockage doivent être évalués séparément.
+
+<a id="r-40"></a>
+### R-40 — CRDT Loro
+- **Sources primaires :** [Documentation Loro](https://loro.dev/docs) · [Concepts CRDT de Loro](https://www.loro.dev/docs/concepts/crdt) · [Dépôt source Loro](https://github.com/loro-dev/loro)
+- **Concepts pertinents :** arbres/listes déplaçables, CRDT de texte enrichi, synchronisation local-first, historique et retour dans le temps.
+- **Utilité pour GovCheck :** candidat explicitement mis en avant dans l'étude de la PR #28 parce que ses arbres déplaçables pourraient correspondre aux structures de cartes mentales.
+- **Limite :** la matrice de fonctionnalités du projet ne constitue pas une évaluation indépendante d'adéquation ; tester identité, déplacement/suppression, undo/redo et persistance de Cartocortex avant sélection.
+
+<a id="r-41"></a>
+### R-41 — Communication temps réel WebRTC
+- **Sources primaires :** [Recommandation W3C WebRTC 1.0](https://www.w3.org/TR/webrtc/) · [RFC 8835 — Transports pour WebRTC](https://www.rfc-editor.org/rfc/rfc8835.html)
+- **Concepts pertinents :** connexions pair-à-pair, canaux de données, sécurité des transports et interaction avec ICE, STUN et TURN.
+- **Utilité pour GovCheck :** références protocolaires principales pour l'option de transport pair-à-pair discutée pour la coédition Cartocortex.
+- **Limite :** WebRTC ne définit ni signalisation applicative, ni autorisation des salles, ni sémantique CRDT, ni persistance. Pair-à-pair ne signifie pas sans infrastructure ni sans métadonnées.
+
+<a id="r-42"></a>
+### R-42 — ICE, STUN, TURN et infrastructure de relais
+- **Sources primaires :** [RFC 8445 — ICE](https://www.rfc-editor.org/rfc/rfc8445.html) · [RFC 8489 — STUN](https://www.rfc-editor.org/rfc/rfc8489.html) · [RFC 8656 — TURN](https://www.rfc-editor.org/rfc/rfc8656.html) · [Implémentation de relais coturn](https://github.com/coturn/coturn)
+- **Concepts pertinents :** collecte de candidats et vérifications de connectivité, traversée NAT, allocation de relais et repli lorsque les chemins directs échouent.
+- **Utilité pour GovCheck :** documente la pile protocolaire précise derrière les mentions STUN/TURN de l'étude Cartocortex.
+- **Limite :** STUN seul n'est pas une solution de traversée NAT ; TURN relaie le trafic et introduit disponibilité, coût, confidentialité et contraintes opérationnelles. L'estimation approximative d'usage du relais dans le PDF est une affirmation d'étude, pas une garantie protocolaire.
+
+<a id="r-43"></a>
+### R-43 — Open Knowledge Format (OKF) v0.2
+- **Sources primaires :** [Dépôt canonique de la spécification OKF](https://github.com/GoogleCloudPlatform/open-knowledge-format) · [Spécification OKF v0.2 dans l'ancien dépôt Knowledge Catalog](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md)
+- **Concepts pertinents :** bundles de connaissances portables fondés sur Markdown, frontmatter YAML, liens et métadonnées de provenance, confiance et cycle de vie.
+- **Utilité pour GovCheck :** source de l'étude de stockage OKF et des projections de cartes mentales dans la PR Cartocortex #27 ; c'est le sens précis de « OKF » dans cette discussion.
+- **Limite :** OKF est une convention légère de bundle de connaissances, pas une ontologie de graphe, un modèle de disposition de carte mentale, un CRDT, un protocole de transport ou une norme de gouvernance GovCheck. L'ancien chemin Knowledge Catalog est un instantané gelé ; le dépôt dédié est canonique.
+
+<a id="r-44"></a>
+### R-44 — Modèle de données RDF 1.1
+- **Source primaire :** [W3C RDF 1.1 Concepts and Abstract Syntax](https://www.w3.org/TR/rdf11-concepts/)
+- **Concepts pertinents :** modèle de graphes et jeux de données fondé sur des triplets sujet–prédicat–objet et des IRI.
+- **Utilité pour GovCheck :** modèle de données fondamental discuté pour une représentation de connaissances partagée entre Cartocortex, MoriNet et SaussuNet.
+- **Limite :** RDF est un modèle de données, pas une ontologie métier, un moteur de stockage, un langage de validation ou un protocole de collaboration.
+
+<a id="r-45"></a>
+### R-45 — SKOS
+- **Source primaire :** [Référence W3C SKOS](https://www.w3.org/TR/skos-reference/)
+- **Concepts pertinents :** concepts identifiés par URI, libellés, notations, schémas conceptuels, correspondances et relations sémantiques légères.
+- **Utilité pour GovCheck :** vocabulaire envisagé pour taxonomies et organisation des concepts dans l'étude d'intégration.
+- **Limite :** SKOS n'est ni un modèle général d'objets applicatifs ni un substitut aux axiomes OWL, contraintes SHACL ou mécanismes de collaboration CRDT.
+
+<a id="r-46"></a>
+### R-46 — Langage d'ontologie OWL 2
+- **Source primaire :** [W3C OWL 2 Structural Specification and Functional-Style Syntax](https://www.w3.org/TR/owl-syntax/)
+- **Concepts pertinents :** sémantique formellement définie pour classes, propriétés, individus et axiomes d'ontologie.
+- **Utilité pour GovCheck :** couche sémantique candidate discutée aux côtés de RDF et SKOS dans l'étude d'intégration.
+- **Limite :** le raisonnement OWL ne valide pas toutes les contraintes de données applicatives, ne préserve pas automatiquement toutes les propriétés des sources et ne fournit ni workflow, ni contrôle d'accès, ni synchronisation.
+
+<a id="r-47"></a>
+### R-47 — SHACL
+- **Source primaire :** [W3C Shapes Constraint Language (SHACL)](https://www.w3.org/TR/shacl/)
+- **Concepts pertinents :** validation de graphes RDF selon des formes et contraintes déclarées.
+- **Utilité pour GovCheck :** candidat pour valider structurellement les graphes de connaissances normalisés dans la discussion d'intégration SaussuNet.
+- **Limite :** la validation SHACL ne prouve ni vérité sémantique, ni authenticité de provenance, ni autorisation, ni conformité de l'implémentation de transformation.
+
+<a id="r-48"></a>
+### R-48 — Termes de métadonnées Dublin Core
+- **Source primaire :** [Spécification DCMI Metadata Terms](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/)
+- **Concepts pertinents :** propriétés et classes de métadonnées générales pour décrire des ressources.
+- **Utilité pour GovCheck :** vocabulaire de métadonnées candidat discuté pour les ressources documentaires du profil de connaissances partagé.
+- **Limite :** les termes Dublin Core ne définissent ni modèle métier complet, ni politique d'identité, ni sémantique de contrôle d'accès ou règles de validation.
+
+<a id="r-49"></a>
+### R-49 — Ontologie bibliographique BIBO
+- **Source primaire :** [Spécification DCMI BIBO](https://www.dublincore.org/specifications/bibo/bibo/)
+- **Concepts pertinents :** vocabulaire RDF pour ressources bibliographiques, citations et types de documents.
+- **Utilité pour GovCheck :** vocabulaire complémentaire envisagé pour rapports, articles et objets bibliographiques dans l'étude d'intégration.
+- **Limite :** BIBO est une spécification communautaire DCMI, pas une recommandation ISO ou W3C ; ne la combiner avec des vocabulaires généraux que si nécessaire.
+
+<a id="r-50"></a>
+### R-50 — Vocabulaire de catalogue de données (DCAT) 3
+- **Source primaire :** [Recommandation W3C DCAT 3](https://www.w3.org/TR/vocab-dcat-3/)
+- **Concepts pertinents :** descriptions interopérables de jeux de données, services de données, distributions et séries de jeux de données dans des catalogues.
+- **Utilité pour GovCheck :** vocabulaire candidat pour cataloguer bundles et collections de connaissances dans l'étude d'intégration.
+- **Limite :** DCAT décrit des jeux de données/services catalogués ; il ne modélise ni toutes les sémantiques du contenu, ni permissions applicatives, ni édition collaborative.
+
+<a id="r-51"></a>
+### R-51 — Modèle de données W3C Web Annotation
+- **Source primaire :** [W3C Web Annotation Data Model](https://www.w3.org/TR/annotation-model/)
+- **Concepts pertinents :** annotations, corps, cibles, sélecteurs et motivations pour annoter une ressource ou un fragment précis.
+- **Utilité pour GovCheck :** modèle candidat pour commentaires, questions et annotations attachés à des pages ou passages dans l'étude d'intégration.
+- **Limite :** Web Annotation ne définit ni graphe de connaissances complet, ni protocole de coédition temps réel, ni politique d'autorisation.
+
+<a id="r-52"></a>
+### R-52 — ActivityStreams 2.0
+- **Source primaire :** [W3C ActivityStreams 2.0 Core](https://www.w3.org/TR/activitystreams-core/)
+- **Concepts pertinents :** vocabulaire et syntaxe JSON-LD pour acteurs, objets, activités, collections et interactions sociales.
+- **Utilité pour GovCheck :** envisagé pour représenter des activités/événements publiés lorsque le cas d'usage social s'y prête.
+- **Limite :** ActivityStreams n'est ni un registre de provenance, ni une garantie d'event sourcing, ni un modèle d'accès, ni un remplacement de PROV-O.
+
+<a id="r-53"></a>
+### R-53 — Ontologie P-Plan
+- **Source primaire :** [Spécification de l'ontologie P-Plan](https://www.opmw.org/model/p-plan/)
+- **Concepts pertinents :** représentation de plans abstraits et correspondance avec les traces PROV-O des processus exécutés.
+- **Utilité pour GovCheck :** vocabulaire candidat pour décrire des plans d'ingestion/transformation attendus à côté de la provenance observée.
+- **Limite :** P-Plan est une ontologie de domaine étendant PROV-O, pas un moteur de workflow général ni une recommandation W3C.
+
+<a id="r-54"></a>
+### R-54 — Sources d'intégration Cartocortex, MoriNet et SaussuNet
+- **Sources primaires :** [Dépôt Cartocortex](https://github.com/complexus-lab/cartocortex) · [Dépôt MoriNet](https://github.com/lejeunecedric/MoriNet) · [Dépôt SaussuNet](https://github.com/lejeunecedric/SaussuNet) · [PR Cartocortex #27 — étude OKF, stockage et vues graphe](https://github.com/complexus-lab/cartocortex/pull/27) · [PR Cartocortex #28 — backlog CRDT, navigateur et synchronisation cloud](https://github.com/complexus-lab/cartocortex/pull/28)
+- **Concepts pertinents :** dépôts sources et artefacts d'étude examinés ; la PR #27 étudie le stockage/projection OKF v0.2, tandis que la PR #28 contient des propositions de travail CRDT et de transport temps réel.
+- **Utilité pour GovCheck :** conserve les sources concrètes derrière l'étude d'intégration initiale de 224 pages et la discussion enregistrée par l'ADR 0002.
+- **Limite :** la PR #27 est une étude, pas une implémentation exécutée ; la PR #28 est une proposition/backlog et son étude de transport est explicitement non exécutée. Les capacités des dépôts doivent être revérifiées à la révision examinée avant toute affirmation sur leur comportement courant. Le namespace « CKO » du PDF est une proposition, pas une norme externe adoptée.
+
+<a id="r-55"></a>
+### R-55 — Formats d'échange de cartes mentales et de graphes
+- **Sources primaires :** [Documentation Freeplane](https://docs.freeplane.org/) · [Projet FreeMind](https://freemind.sourceforge.io/wiki/index.php/Main_Page) · [XMind](https://xmind.app/) · [Spécification OPML 2.0](https://opml.org/spec2.opml) · [Spécification GraphML](http://graphml.graphdrawing.org/specification.html)
+- **Concepts pertinents :** échange de cartes mentales hiérarchiques, plans et graphes généraux, avec métadonnées et dispositions propres aux formats.
+- **Utilité pour GovCheck :** conserve les formats FreeMind, Freeplane, XMind, OPML et GraphML explicitement examinés pour l'import/export SaussuNet et la visualisation Cartocortex.
+- **Limite :** ces formats ont des capacités expressives et conventions de métadonnées différentes. Un parsing réussi n'est pas une conversion sémantique sans perte ; il faut des fixtures par format et des rapports de perte explicites.
+
 ## Discipline bibliographique et provenance non résolue
 
 1. Privilégier l'organisme normatif, l'éditeur, la documentation officielle ou le dépôt source plutôt que les résumés secondaires.

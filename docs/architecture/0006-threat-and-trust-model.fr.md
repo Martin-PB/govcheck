@@ -59,3 +59,8 @@ GovCheck seul ne peut empêcher un administrateur local de modifier les fichiers
 ## 7. Décisions avant implémentation
 
 Définir sérialisation canonique et clés dupliquées ; isolation/limites de l'évaluateur ; modèle de clés, identité et approbation ; stockage/confidentialité des preuves ; exécution locale des contrôles ; protocole d'application distante et visibilité des contournements ; tests de sécurité ciblés. Ne pas laisser ces choix devenir des défauts implicites.
+
+
+## Références bibliographiques
+
+Références externes utilisées dans ce document : [R-01](../references.fr.md#r-01), [R-02](../references.fr.md#r-02), [R-06](../references.fr.md#r-06), [R-07](../references.fr.md#r-07).

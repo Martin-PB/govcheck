@@ -5,14 +5,16 @@
 | Theme | Entries |
 |---|---|
 | Governance authority, separation of duties and secure development | R-01–R-03, R-11 |
-| Assurance cases, safety arguments and formal methods | R-04–R-05, R-20 |
+| Assurance cases, safety arguments and formal methods | R-04–R-05, R-20, R-27–R-36 |
+| Model checking and program-verification alternatives | R-29–R-35 |
 | Evidence provenance and software supply chain | R-06–R-08 |
 | Policy engines and authorization | R-09–R-10 |
 | Schemas and interface contracts | R-13, R-16 |
 | Artifact identity, versioning, releases and reproducibility | R-14–R-15, R-21, R-23–R-26 |
 | Governance metadata and catalogues | R-17 |
 | Agent workflow systems assessed as fixtures | R-18–R-19 |
-| Version-control semantics and collaboration | R-22 |
+| Version-control semantics and collaboration | R-22, R-37–R-42, R-54 |
+| Knowledge representation and interoperability | R-43–R-55 |
 | Threat modeling, attack paths and risk management | R-27–R-32 |
 | Security assurance cases and metamodels | R-33–R-34 |
 
@@ -336,6 +338,213 @@
 - **Use in GovCheck:** candidate comparative metamodel for typed assurance artifacts and traceability, beyond free-form narrative documents.
 - **Limit:** SACM is a metamodel, not a risk-assessment method, truth oracle or proof of evidence sufficiency. Version 2.4 is currently a beta; this entry points to the formal 2.3 version and does not recommend adopting SACM.
 - **Cited by:** [0024](architecture/0024-project-bootstrap-and-assurance-profiles.md) (typed assurance claims and evidence).
+
+
+
+## Additional sources recovered from the assurance and integration discussions
+
+<a id="r-27"></a>
+### R-27 — Common Criteria (ISO/IEC 15408) and Common Evaluation Methodology
+- **Primary sources:** [Common Criteria Portal](https://www.commoncriteriaportal.org/) · [CC:2022 and CEM:2022 publications](https://www.commoncriteriaportal.org/cc/index.cfm)
+- **Relevant concepts:** security functional requirements, security assurance requirements, evaluation methodology and Evaluation Assurance Levels (EALs).
+- **Use in GovCheck:** contextualizes the assurance vocabulary explicitly contrasted with GovCheck's method classes in Specification 0005.
+- **Limit:** EALs are evaluation assurance packages in the Common Criteria scheme, not generic software maturity grades or GovCheck assurance tiers. Certification scope and target-of-evaluation matter.
+
+<a id="r-28"></a>
+### R-28 — RTCA DO-178C / EUROCAE ED-12C airborne software assurance
+- **Primary sources:** [FAA AC 20-115D](https://www.faa.gov/airports/resources/advisory_circulars/index.cfm/go/document.information/documentNumber/20-115D) · [RTCA DO-178C overview and supplements](https://www.rtca.org/do-178/)
+- **Relevant concepts:** software life-cycle objectives, verification, independence, certification evidence and software levels (A–E); related supplements include DO-330, DO-331, DO-332 and DO-333.
+- **Use in GovCheck:** provides the aviation-specific assurance/certification example named in Specification 0005 and distinguishes domain-specific assurance regimes from generic test/proof methods.
+- **Limit:** DO-178C is an aviation software assurance standard used within an airworthiness certification context. FAA AC 20-115D describes an acceptable means, not the only means or a general software regulation. The full RTCA standard is not reproduced by the public overview.
+
+<a id="r-29"></a>
+### R-29 — Alloy language and Analyzer
+- **Primary sources:** [Alloy project and documentation](https://alloytools.org/) · [Alloy Analyzer source repository](https://github.com/AlloyTools/org.alloytools.alloy)
+- **Relevant concepts:** relational modeling, bounded analysis, SAT-based instance finding and counterexample search; Alloy 6 adds mutable state and temporal operators.
+- **Use in GovCheck:** candidate formal-modeling method cited in Specifications 0005 and Architecture 0007/0009.
+- **Limit:** results depend on declared scopes, bounds and model assumptions; Alloy analysis is not a proof about an implementation without a separate refinement/conformance argument.
+
+<a id="r-30"></a>
+### R-30 — SPIN and Promela
+- **Primary source:** [SPIN Basic Manual and Promela documentation](https://spinroot.com/spin/Man/Manual.html)
+- **Relevant concepts:** modeling and verification of concurrent and distributed systems, asynchronous communication, invariants, deadlocks and temporal properties.
+- **Use in GovCheck:** candidate model checker named in Specification 0005 as a distinct alternative to TLA+/TLC and Alloy.
+- **Limit:** verification applies to the Promela abstraction and selected search mode/options; it does not establish implementation conformance or normative fidelity.
+
+<a id="r-31"></a>
+### R-31 — Kani Rust Verifier
+- **Primary source:** [Kani documentation](https://model-checking.github.io/kani/)
+- **Relevant concepts:** bounded model checking of Rust programs, proof harnesses, assertions, undefined-behavior checks and counterexamples.
+- **Use in GovCheck:** candidate program-verification method named in Specification 0005.
+- **Limit:** supported Rust features and concurrency coverage are bounded; a successful harness proves only the modeled properties under the configured bounds and toolchain.
+
+<a id="r-32"></a>
+### R-32 — Verus Rust verification
+- **Primary source:** [Verus tutorial and reference](https://verus-lang.github.io/verus/guide/)
+- **Relevant concepts:** static functional-correctness verification for Rust using specifications and computer-aided proofs.
+- **Use in GovCheck:** candidate program-verification method named in Specification 0005.
+- **Limit:** Verus does not support all Rust features/libraries and does not claim to verify the Rust/LLVM compilers or itself; trusted components and unsupported constructs remain relevant.
+
+<a id="r-33"></a>
+### R-33 — Dafny language and verifier
+- **Primary source:** [Dafny Reference Manual](https://dafny.org/dafny/DafnyRef/DafnyRef)
+- **Relevant concepts:** specification constructs, pre/postconditions, invariants, termination metrics, verification conditions and compilation.
+- **Use in GovCheck:** candidate program-verification system named in Specification 0005.
+- **Limit:** verified claims are relative to Dafny specifications, verifier/toolchain and trusted backends; they do not validate whether the specification captures approved policy.
+
+<a id="r-34"></a>
+### R-34 — Coq / Rocq proof assistant
+- **Primary sources:** [Rocq documentation and reference manuals](https://rocq-prover.org/docs) · [versioned Coq documentation archive](https://docs.rocq-prover.org/)
+- **Relevant concepts:** dependent type theory, Gallina definitions and machine-checked proof terms.
+- **Use in GovCheck:** Coq is named in Specification 0005; the project is now named Rocq, so both the historical and current names are recorded.
+- **Limit:** a checked derivation establishes a theorem only under its definitions, axioms, imported results and kernel/toolchain assumptions; it does not establish normative adequacy.
+
+<a id="r-35"></a>
+### R-35 — Isabelle theorem prover
+- **Primary source:** [Isabelle documentation, tutorials and reference manuals](https://www.isabelle.in.tum.de/documentation.html)
+- **Relevant concepts:** interactive theorem proving, Isabelle/HOL, formal specification and proof checking.
+- **Use in GovCheck:** candidate proof assistant named in Specification 0005.
+- **Limit:** proof results depend on the selected logic, theory imports, axioms and trusted prover environment; no Isabelle integration is selected.
+
+<a id="r-36"></a>
+### R-36 — KAOS and goal-oriented requirements engineering
+- **Primary source:** [Axel van Lamsweerde, Requirements Engineering: From System Goals to UML Models to Software Specifications (2009), UCLouvain record](https://research.dial.uclouvain.be/entities/publication/ddcd5cbc-c76d-4da2-bd29-509cbf0f9399)
+- **Relevant concepts:** goal refinement, obstacles, responsibility assignment and derivation from system goals to requirements and software specifications.
+- **Use in GovCheck:** grounds the KAOS/GORE goal-refinement family explicitly mentioned in Architecture 0013.
+- **Limit:** this is a requirements-engineering method and scholarly source, not an adopted GovCheck ontology or executable policy language.
+
+<a id="r-37"></a>
+### R-37 — CRDT foundations
+- **Primary source:** [Shapiro, Preguiça, Baquero and Zawirski, “A comprehensive study of Convergent and Commutative Replicated Data Types” (INRIA Research Report 7506, 2011)](https://dsf.berkeley.edu/cs286/papers/crdt-tr2011.pdf)
+- **Relevant concepts:** state-based and operation-based replicated data types, convergence conditions, asynchronous replication and concurrent updates.
+- **Use in GovCheck:** foundational source for the CRDT/co-editing discussion recovered from the Cartocortex integration study.
+- **Limit:** convergence does not by itself preserve user intent, define authorization, solve persistence/transport, or guarantee that application-level invariants survive concurrent operations.
+
+<a id="r-38"></a>
+### R-38 — Yjs and Yrs
+- **Primary sources:** [Yjs documentation](https://docs.yjs.dev/) · [Yjs source repository](https://github.com/yjs/yjs) · [Yrs Rust port](https://github.com/y-crdt/y-crdt)
+- **Relevant concepts:** shared CRDT data types, transport-independent updates, synchronization providers and collaborative editing.
+- **Use in GovCheck:** candidate implementation family explicitly compared in the Cartocortex PR #28 transport/backlog study.
+- **Limit:** library behavior does not select an application data model or transport architecture; Cartocortex-specific tree moves, undo/redo, persistence and migration require separate conformance tests.
+
+<a id="r-39"></a>
+### R-39 — Automerge
+- **Primary sources:** [Automerge documentation](https://automerge.org/docs/) · [Automerge source repository](https://github.com/automerge/automerge)
+- **Relevant concepts:** local-first CRDT documents, concurrent change merging, history and transport-agnostic synchronization.
+- **Use in GovCheck:** candidate implementation explicitly compared in the Cartocortex PR #28 study.
+- **Limit:** a CRDT's merge semantics do not automatically preserve domain intent or enforce application permissions; networking and storage components must be evaluated separately.
+
+<a id="r-40"></a>
+### R-40 — Loro CRDT
+- **Primary sources:** [Loro documentation](https://loro.dev/docs) · [Loro CRDT concepts](https://www.loro.dev/docs/concepts/crdt) · [Loro source repository](https://github.com/loro-dev/loro)
+- **Relevant concepts:** movable trees/lists, rich-text CRDTs, local-first synchronization, history and time travel.
+- **Use in GovCheck:** candidate explicitly highlighted in the Cartocortex PR #28 study because movable trees may fit mind-map structures.
+- **Limit:** the library's feature matrix is not an independent suitability result; benchmark and test against Cartocortex's identity, move/delete, undo/redo and persistence invariants before selection.
+
+<a id="r-41"></a>
+### R-41 — WebRTC real-time communication
+- **Primary sources:** [W3C WebRTC 1.0 Recommendation](https://www.w3.org/TR/webrtc/) · [IETF RFC 8835 — Transports for WebRTC](https://www.rfc-editor.org/rfc/rfc8835.html)
+- **Relevant concepts:** peer connections, data channels, transport security and interaction with ICE, STUN and TURN.
+- **Use in GovCheck:** primary protocol references for the peer-to-peer transport option discussed for Cartocortex co-editing.
+- **Limit:** WebRTC does not define application signaling, room authorization, CRDT semantics or persistence. Peer-to-peer does not mean infrastructure-free or metadata-free.
+
+<a id="r-42"></a>
+### R-42 — ICE, STUN, TURN and relay infrastructure
+- **Primary sources:** [RFC 8445 — ICE](https://www.rfc-editor.org/rfc/rfc8445.html) · [RFC 8489 — STUN](https://www.rfc-editor.org/rfc/rfc8489.html) · [RFC 8656 — TURN](https://www.rfc-editor.org/rfc/rfc8656.html) · [coturn relay implementation](https://github.com/coturn/coturn)
+- **Relevant concepts:** candidate gathering and connectivity checks, NAT traversal, relay allocation and fallback when direct paths fail.
+- **Use in GovCheck:** documents the precise protocol stack behind the STUN/TURN references in the Cartocortex integration discussion.
+- **Limit:** STUN alone is not a NAT-traversal solution; TURN relays traffic and introduces availability, cost, privacy and operational considerations. The PDF's approximate relay-use estimate is a study claim, not a protocol guarantee.
+
+<a id="r-43"></a>
+### R-43 — Open Knowledge Format (OKF) v0.2
+- **Primary sources:** [Canonical OKF specification repository](https://github.com/GoogleCloudPlatform/open-knowledge-format) · [OKF v0.2 specification in the original Knowledge Catalog repository](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md)
+- **Relevant concepts:** portable knowledge bundles built from Markdown, YAML frontmatter, links, provenance, trust and lifecycle metadata.
+- **Use in GovCheck:** source of the OKF storage and mind-map projection study in Cartocortex PR #27; it is the specific meaning of “OKF” in that discussion.
+- **Limit:** OKF is a lightweight knowledge-bundle convention, not a graph ontology, mind-map layout model, CRDT, transport protocol or GovCheck governance standard. The old Knowledge Catalog path is a frozen snapshot; use the dedicated repository as canonical.
+
+<a id="r-44"></a>
+### R-44 — RDF 1.1 data model
+- **Primary source:** [W3C RDF 1.1 Concepts and Abstract Syntax](https://www.w3.org/TR/rdf11-concepts/)
+- **Relevant concepts:** graph and dataset data model based on subject–predicate–object triples and IRIs.
+- **Use in GovCheck:** foundational data model discussed for a possible shared knowledge representation across Cartocortex, MoriNet and SaussuNet.
+- **Limit:** RDF is a data model, not a domain ontology, storage engine, validation language or collaboration protocol.
+
+<a id="r-45"></a>
+### R-45 — SKOS
+- **Primary source:** [W3C SKOS Reference](https://www.w3.org/TR/skos-reference/)
+- **Relevant concepts:** URI-identified concepts, labels, notations, concept schemes, mappings and lightweight semantic relations.
+- **Use in GovCheck:** vocabulary considered for taxonomies and concept organization in the integration study.
+- **Limit:** SKOS is not a general application object model or a substitute for OWL axioms, SHACL constraints or CRDT collaboration.
+
+<a id="r-46"></a>
+### R-46 — OWL 2 Web Ontology Language
+- **Primary source:** [W3C OWL 2 Structural Specification and Functional-Style Syntax](https://www.w3.org/TR/owl-syntax/)
+- **Relevant concepts:** formally defined ontology semantics for classes, properties, individuals and axioms.
+- **Use in GovCheck:** candidate semantic layer discussed alongside RDF and SKOS in the integration study.
+- **Limit:** OWL reasoning does not validate all application data constraints, preserve arbitrary source properties or provide workflow, access-control or synchronization behavior.
+
+<a id="r-47"></a>
+### R-47 — SHACL
+- **Primary source:** [W3C Shapes Constraint Language (SHACL)](https://www.w3.org/TR/shacl/)
+- **Relevant concepts:** validation of RDF graphs against declared shapes and constraints.
+- **Use in GovCheck:** candidate for structural validation of normalized knowledge graphs in the SaussuNet integration discussion.
+- **Limit:** SHACL validation is not proof of semantic truth, provenance authenticity, authorization or conformance of the transformation implementation.
+
+<a id="r-48"></a>
+### R-48 — Dublin Core Metadata Terms
+- **Primary source:** [DCMI Metadata Terms specification](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/)
+- **Relevant concepts:** general-purpose metadata properties, classes and vocabulary terms for describing resources.
+- **Use in GovCheck:** candidate metadata vocabulary discussed for documentary resources in the shared knowledge profile.
+- **Limit:** Dublin Core terms do not define the full domain model, identity policy, access-control semantics or validation rules.
+
+<a id="r-49"></a>
+### R-49 — Bibliographic Ontology (BIBO)
+- **Primary source:** [DCMI BIBO specification](https://www.dublincore.org/specifications/bibo/bibo/)
+- **Relevant concepts:** RDF vocabulary for bibliographic resources, citations and document types.
+- **Use in GovCheck:** supplementary vocabulary considered for reports, articles and bibliographic objects in the integration study.
+- **Limit:** BIBO is a DCMI Community Specification, not an ISO or W3C Recommendation; it should be combined with broader metadata vocabularies only where needed.
+
+<a id="r-50"></a>
+### R-50 — Data Catalog Vocabulary (DCAT) 3
+- **Primary source:** [W3C DCAT 3 Recommendation](https://www.w3.org/TR/vocab-dcat-3/)
+- **Relevant concepts:** interoperable descriptions of datasets, data services, distributions and dataset series in catalogs.
+- **Use in GovCheck:** candidate vocabulary for cataloguing knowledge bundles and collections in the integration study.
+- **Limit:** DCAT describes catalogued datasets/services; it does not model all content semantics, application permissions or collaborative editing.
+
+<a id="r-51"></a>
+### R-51 — W3C Web Annotation Data Model
+- **Primary source:** [W3C Web Annotation Data Model](https://www.w3.org/TR/annotation-model/)
+- **Relevant concepts:** annotations, bodies, targets, selectors and motivations for annotating resources or specific fragments.
+- **Use in GovCheck:** candidate model for comments, questions and annotations attached to pages or passages in the integration study.
+- **Limit:** Web Annotation does not define a full knowledge graph, real-time co-editing protocol or authorization policy.
+
+<a id="r-52"></a>
+### R-52 — ActivityStreams 2.0
+- **Primary source:** [W3C ActivityStreams 2.0 Core](https://www.w3.org/TR/activitystreams-core/)
+- **Relevant concepts:** JSON-LD vocabulary and syntax for actors, objects, activities, collections and social interactions.
+- **Use in GovCheck:** considered for representing published activities/events where the social-activity use case fits.
+- **Limit:** ActivityStreams is not a provenance ledger, event-sourcing guarantee, access-control model or replacement for PROV-O.
+
+<a id="r-53"></a>
+### R-53 — P-Plan ontology
+- **Primary source:** [P-Plan ontology specification](https://www.opmw.org/model/p-plan/)
+- **Relevant concepts:** representation of abstract plans and their correspondence to PROV-O records of executed processes.
+- **Use in GovCheck:** candidate vocabulary for describing intended ingestion/transformation plans alongside observed provenance.
+- **Limit:** P-Plan is a domain ontology extending PROV-O, not a general workflow engine or W3C Recommendation.
+
+<a id="r-54"></a>
+### R-54 — Cartocortex, MoriNet and SaussuNet integration sources
+- **Primary sources:** [Cartocortex repository](https://github.com/complexus-lab/cartocortex) · [MoriNet repository](https://github.com/lejeunecedric/MoriNet) · [SaussuNet repository](https://github.com/lejeunecedric/SaussuNet) · [Cartocortex PR #27 — OKF storage and graph-view study](https://github.com/complexus-lab/cartocortex/pull/27) · [Cartocortex PR #28 — CRDT, browser deployment and cloud-sync backlog](https://github.com/complexus-lab/cartocortex/pull/28)
+- **Relevant concepts:** source repositories and reviewed design artifacts for the integration study; PR #27 is a study of OKF v0.2 storage/projections, while PR #28 contains proposed CRDT and real-time transport work.
+- **Use in GovCheck:** preserves the concrete project-level sources behind the initial 224-page integration assessment and the discussion recorded by ADR 0002.
+- **Limit:** PR #27 is a study, not an executed implementation; PR #28 is a proposal/backlog and its transport study is explicitly not executed. Repository capabilities must be rechecked at the reviewed revision before claiming current behavior. The “CKO” namespace in the PDF is a proposal, not an adopted external standard.
+
+<a id="r-55"></a>
+### R-55 — Mind-map and graph interchange formats
+- **Primary sources:** [Freeplane documentation](https://docs.freeplane.org/) · [FreeMind project](https://freemind.sourceforge.io/wiki/index.php/Main_Page) · [XMind](https://xmind.app/) · [OPML 2.0 specification](https://opml.org/spec2.opml) · [GraphML specification](http://graphml.graphdrawing.org/specification.html)
+- **Relevant concepts:** exchange of hierarchical mind maps, outlines and general graph structures, including format-specific metadata and layout information.
+- **Use in GovCheck:** records the FreeMind, Freeplane, XMind, OPML and GraphML formats explicitly considered for SaussuNet import/export and Cartocortex visualization.
+- **Limit:** these formats have different expressive power and metadata conventions. A successful parse is not lossless semantic round-tripping; conversion requires per-format fixtures and explicit loss reports.
 
 ## Reference discipline and unresolved provenance
 

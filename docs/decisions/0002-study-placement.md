@@ -22,11 +22,13 @@ French: [ADR 0002 (français)](0002-study-placement.fr.md).
 
 ## Source artifact and evidence boundary
 
-The initial source artifact for this record is **“Évaluer l’intégration des dépôts.pdf”**, dated 6 November 2026, 224 pages. It is retained in the project Library and is not copied into this repository. Its external sources, repositories, pull requests, protocols, vocabularies and format references are indexed in [R-35–R-69 and R-77–R-87](../references.md) through the central catalogue.
+The initial source artifact for this record is **“Évaluer l’intégration des dépôts.pdf”**, dated 6 November 2026, 224 pages. It is retained in the project Library and is not copied into this repository. Its external sources, repositories, pull requests, protocols, vocabularies and format references are indexed in [R-35–R-69 and R-77–R-93](../references.md) through the central catalogue.
 
 The reviewed Cartocortex artifacts have different evidence status: PR #9 is a documentation panorama; PR #27 is an OKF storage/projection study explicitly marked as not executed; PR #28 is a backlog and transport study explicitly marked as not executed. None of these statuses establishes that a proposed adapter, CRDT, transport, cloud sync or format importer is implemented or accepted. See [R-62](../references.md#r-62) and [R-69](../references.md#r-69).
 
 The approximate 10–20% share of sessions expected to require a TURN relay, repeated in the PR #28 study, was not tied to an independently verifiable measurement source in this audit. It is retained as an unvalidated planning assumption, not a general WebRTC statistic or a protocol guarantee; deployment telemetry would be needed to validate it.
+
+The study also names B, Z, CSP, iStar and deontic logic as candidate formalisms, and NIST SP 800-192 as a source for access-control policy/model verification. They are catalogued as distinct alternatives and methods; none is selected or adopted by implication.
 
 ## Bibliographic references
 

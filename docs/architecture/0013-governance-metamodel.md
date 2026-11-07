@@ -28,6 +28,8 @@ The metamodel preserves distinctions between intent, obligation, property, imple
 
 A requirement can refine into sub-requirements and link to properties. Properties are examined by methods; methods produce evidence; claims depend on evidence and assumptions. Relations are explicit, not inferred from document proximity or naming.
 
+Decision records should make their reasoning inputs inspectable. The PEAK model provides one useful scaffold: Problem, Experience, Assumptions and Knowledge are recorded separately before a solution and its accepted risk are evaluated. It complements the metamodel's typed links between decisions, assumptions, claims and evidence; it is not a risk score, an assurance argument, or a grant of authority. Assumptions remain falsifiable and observations may challenge them. See [R-74](../references.md#r-74).
+
 ## Normative force
 
 Distinguish obligation, prohibition, explicit permission, invariant/constraint, evidence requirement, process/approval requirement and non-binding recommendation. Absence of prohibition is not permission. A recommendation does not block acceptance. Defeasible rules require explicit priority/exception semantics; conflicts and unresolved precedence remain visible.
@@ -76,5 +78,9 @@ Ontology vocabulary, serialization, graph representation, formal logic, query la
 
 ## Bibliographic references
 
-External references used in this record: [R-01 — NIST SP 800-53 security and privacy controls](../references.md#r-01), [R-09 — Open Policy Agent policy-decision engine](../references.md#r-09), [R-10 — Cedar authorization language](../references.md#r-10), [R-13 — JSON Schema structural contracts](../references.md#r-13).
+- [R-01 — NIST SP 800-53 security and privacy controls](../references.md#r-01)
+- [R-09 — Open Policy Agent policy-decision engine](../references.md#r-09)
+- [R-10 — Cedar authorization language](../references.md#r-10)
+- [R-13 — JSON Schema structural contracts](../references.md#r-13)
 - [R-44 — KAOS and goal-oriented requirements engineering](../references.md#r-44)
+- [R-74 — PEAK project-decision model](../references.md#r-74)

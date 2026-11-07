@@ -25,7 +25,7 @@ Le dépôt contient également deux livrables distincts : le produit GovCheck et
 
 ## Conséquences
 
-- Les Architectures 0017 et 0018 sont adoptées comme politiques de versionnement catégoriel et de gouvernance des versions ; cet ADR résout leur ancien statut de proposition.
+- À la fusion de cet ADR, les Architectures 0017 et 0018 seront adoptées comme politiques de versionnement catégoriel et de gouvernance des versions ; cet ADR résoudra leur ancien statut de proposition.
 - La Spécification 0002 distingue désormais explicitement le contrat du package de gouvernance réutilisable et le contrat de release du produit GovCheck. Cela n'adopte pas l'intégralité du modèle canonique de gouvernance et ne prétend pas qu'un évaluateur existe.
 - Les valeurs existantes **catalogueVersion: 1**, **schemaVersion: 1**, les tags Git et les révisions historiques conservent leur signification actuelle. Aucune valeur existante n'est renommée ni convertie rétroactivement en SemVer.
 - La première version cible prévue du produit GovCheck est **0.1.0** ; elle n'est ni publiée ni autorisée à ce stade. Le package de gouvernance réutilisable possède une séquence indépendante et aucune version ne lui est attribuée ici. Chaque première release exige sa propre décision d'initial publication, un contrat déclaré, l'approbation de l'autorité et un lien immuable vers la publication.

@@ -44,3 +44,8 @@ The lifecycle model is a source artifact with stable identifier govcheck.lifecyc
 The lifecycle diagram is generated from formal/lifecycle-transitions.json. The checker verifies operator-name coverage and generated-file freshness; it does not parse TLA+ semantics or prove that explanatory guards/effects faithfully describe operators.
 
 **Verification status:** the lifecycle and assurance modules, and the authority-transition module, are source artifacts checked by the formal workflow. Their TLC results establish properties only within their respective finite configurations; they do not prove implementation refinement or production enforcement. See each model document and its CI report for exact scope, state-space bounds, abstraction limits and required refinements.
+
+
+## Reference register
+
+For the academic and industrial foundations, including the limitations of model checking and the distinction between provenance, proof and policy authority, see the [governance and assurance reference register](../references/governance-and-assurance.md) and its [French version](../references/governance-and-assurance.fr.md).

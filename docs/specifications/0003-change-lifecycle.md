@@ -40,3 +40,7 @@ Local-only acceptance uses the same predicate but states that no remote enforcem
 Base changes, rebases and Pijul graph/channel changes require adapter analysis of evidence validity; textual similarity is insufficient. Approvals bind to exact candidate and governance revisions. Logical audit history is append-only; corrections add events.
 
 Future tests and formal models must cover illegal transitions, stale evidence, post-approval mutation, governance changes, exact application, concurrent approvals, local-only acceptance, safety (never accept invalid state) and liveness (valid changes can progress). No lifecycle engine exists yet.
+
+## Bibliographic references
+
+- [R-22 — Native Git and Pijul semantics](../references.md#r-22)

@@ -84,3 +84,6 @@ Ontology vocabulary, serialization, graph representation, formal logic, query la
 - [R-13 — JSON Schema structural contracts](../references.md#r-13)
 - [R-44 — KAOS and goal-oriented requirements engineering](../references.md#r-44)
 - [R-74 — PEAK project-decision model](../references.md#r-74)
+- [R-88 — NIST SP 800-192 access-control policy/model verification](../references.md#r-88)
+- [R-92 — iStar 2.0 goal-oriented requirements modeling](../references.md#r-92)
+- [R-93 — deontic logic and normative modalities](../references.md#r-93)

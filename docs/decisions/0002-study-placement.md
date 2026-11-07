@@ -19,3 +19,29 @@ Studies, assessments and comparative analyses are **architecture records** place
 - Normative content stays in docs/specifications/ and docs/decisions/.
 
 French: [ADR 0002 (français)](0002-study-placement.fr.md).
+
+## Bibliographic references
+
+The integration study and its external technical sources are catalogued separately so the study is not mistaken for an implementation or adoption decision:
+
+- [R-18 — Writ source-based assessment](../references.md#r-18)
+- [R-19 — Privateer source-based assessment](../references.md#r-19)
+- [R-37 — CRDT foundations](../references.md#r-37)
+- [R-38 — Yjs and Yrs](../references.md#r-38)
+- [R-39 — Automerge](../references.md#r-39)
+- [R-40 — Loro CRDT](../references.md#r-40)
+- [R-41 — WebRTC transports](../references.md#r-41)
+- [R-42 — ICE, STUN and TURN](../references.md#r-42)
+- [R-43 — Open Knowledge Format (OKF) v0.2](../references.md#r-43)
+- [R-44 — RDF 1.1](../references.md#r-44)
+- [R-45 — SKOS](../references.md#r-45)
+- [R-46 — OWL 2](../references.md#r-46)
+- [R-47 — SHACL](../references.md#r-47)
+- [R-48 — Dublin Core Metadata Terms](../references.md#r-48)
+- [R-49 — Bibliographic Ontology (BIBO)](../references.md#r-49)
+- [R-50 — DCAT 3](../references.md#r-50)
+- [R-51 — W3C Web Annotation](../references.md#r-51)
+- [R-52 — ActivityStreams 2.0](../references.md#r-52)
+- [R-53 — P-Plan ontology](../references.md#r-53)
+- [R-54 — Cartocortex, MoriNet and SaussuNet repositories and PRs #27/#28](../references.md#r-54)
+- [R-55 — Mind-map and graph interchange formats](../references.md#r-55)

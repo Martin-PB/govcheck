@@ -1,6 +1,6 @@
 # 0017 — Artifact identity, revision and versioning policy
 
-**Status:** category-specific versioning adoption is recorded in [ADR 0004](../decisions/0004-semantic-versioning-contracts.md); its normative effect is contingent on merging PR #21 first and then ADR 0004. SemVer is not universal; automated enforcement is not yet implemented.  
+**Status:** category-specific versioning adoption is recorded in [ADR 0004](../decisions/0004-semantic-versioning-contracts.md); its normative effect is contingent on merging ADR 0004; PR #21, which establishes the authority baseline, is already merged. SemVer is not universal; automated enforcement is not yet implemented.  
 **Language:** English is the default; the French counterpart is [0017 (français)](0017-artifact-identity-revision-and-versioning.fr.md).  
 **Scope:** all governed artifacts and records in GovCheck, including normative, architectural, formal, implementation, evidence, decision and publication artifacts.
 

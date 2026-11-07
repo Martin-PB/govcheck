@@ -96,7 +96,7 @@ Les recommandations sont consultatives, sauf si une contrainte légale/contractu
 
 ### 3.5 Assurance guidée par les menaces et traçabilité
 
-Le bootstrap doit relier le contexte du projet et les choix d'assurance à une analyse explicite des menaces et des risques. Il ne doit pas demander de sélectionner des outils isolément.
+Le bootstrap doit relier le contexte du projet et les choix d'assurance à une analyse explicite des menaces et des risques. Il ne doit pas demander de sélectionner des outils isolément. Le parcours s'appuie sur les guides d'ingénierie de la sécurité des systèmes [R-28](../references.fr.md#r-28), la pratique de modélisation des menaces [R-31](../references.fr.md#r-31), ainsi que les techniques de comportement adverse et d'arbres d'attaque [R-30](../references.fr.md#r-30) [R-32](../references.fr.md#r-32) ; ces références sont complémentaires et ne constituent pas des méthodes obligatoires.
 
 Maintenir des relations typées et traçables entre, au minimum :
 
@@ -129,7 +129,7 @@ Une mesure n'est pas « efficace » simplement parce qu'elle est documentée ou 
 
 ### 3.6 Hypothèses, inférences et limites
 
-Tout argument d'assurance doit rendre son raisonnement inspectable :
+Tout argument d'assurance doit rendre son raisonnement inspectable. La recherche sur les dossiers d'assurance de sécurité et les métamodèles structurés appuie l'explicitation des affirmations, du contexte, des hypothèses, de l'argumentation et des preuves [R-33](../references.fr.md#r-33) [R-34](../references.fr.md#r-34) ; elle ne dispense pas de valider l'argument :
 
 - **Hypothèse :** prémisse tenue pour acquise dans un argument délimité, avec source, responsable, périmètre, confiance, période de validité et conditions de réfutation/réexamen.
 - **Preuve :** observation, résultat de test, analyse, attestation ou démonstration produit dans des conditions déclarées.

@@ -68,3 +68,8 @@ The TLA+ module also states corresponding theorem obligations from `Spec`. TLC c
 Run TLC against `GovCheckLifecycle.tla` with `GovCheckLifecycle.cfg` using a locally pinned TLA+ Tools distribution. Do not interpret a successful bounded run as implementation conformance, theorem proof, or normative fidelity.
 
 A release may attach a generated verification report and a release manifest. The manifest must identify the release tag and commit, stable artifact ID, exact path and content digest, TLC/tool version, configuration digest, execution status, and state/transition counts when available. Generated reports are release assets, not manually renamed source files. The manifest format is defined by `formal/schemas/release-manifest.schema.json`; the stable artifact catalogue is `formal/artifacts.json`.
+
+## Bibliographic references
+
+- [R-05 — TLA+ and TLC state-transition modeling](../references.md#r-05)
+- [R-22 — Native Git and Pijul semantics](../references.md#r-22)

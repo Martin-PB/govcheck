@@ -5,16 +5,21 @@
 | Thème | Entrées |
 |---|---|
 | Autorité de gouvernance, séparation des tâches et développement sécurisé | R-01–R-03, R-11 |
-| Dossiers d'assurance, arguments de sûreté et méthodes formelles | R-04–R-05, R-20 |
+| Dossiers d'assurance, arguments de sûreté et méthodes formelles | R-04–R-05, R-20, R-27–R-36 |
+| Model checking et vérification de programmes candidates | R-29–R-35 |
 | Provenance des preuves et chaîne d'approvisionnement logicielle | R-06–R-08 |
 | Moteurs de politiques et autorisation | R-09–R-10 |
 | Schémas et contrats d'interface | R-13, R-16 |
-| Identité, versionnement, releases et reproductibilité des artefacts | R-14–R-15, R-21, R-23–R-26 |
+| Identité, versionnement, releases et reproductibilité des artefacts | R-14–R-16, R-21, R-23–R-26 |
 | Métadonnées de gouvernance et catalogues | R-17 |
 | Systèmes de workflow d'agents évalués comme fixtures | R-18–R-19 |
-| Sémantiques des VCS et collaboration | R-22 |
-| Modélisation des menaces, chemins d'attaque et gestion des risques | R-27–R-32 |
-| Dossiers d'assurance de sécurité et métamodèles | R-33–R-34 |
+| Sémantiques des VCS et collaboration | R-22, R-37–R-42 |
+| Représentation des connaissances et interopérabilité | R-43–R-53 |
+| Dépôts et études d'intégration | R-54 |
+| Formats d'échange de cartes mentales et graphes | R-55 |
+| API de stockage cloud | R-56 |
+| Persistance navigateur et WebAssembly | R-57 |
+| Découverte de pairs desktop et DHT | R-58 |
 
 ## Entrées bibliographiques détaillées
 
@@ -465,7 +470,7 @@
 
 <a id="r-43"></a>
 ### R-43 — Open Knowledge Format (OKF) v0.2
-- **Sources primaires :** [Dépôt canonique de la spécification OKF](https://github.com/GoogleCloudPlatform/open-knowledge-format) · [Spécification OKF v0.2 dans l'ancien dépôt Knowledge Catalog](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md)
+- **Sources primaires :** [Spécification canonique OKF v0.2](https://github.com/GoogleCloudPlatform/open-knowledge-format/blob/main/SPEC.md) · [Spécification OKF v0.2 dans l'ancien dépôt Knowledge Catalog](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md)
 - **Concepts pertinents :** bundles de connaissances portables fondés sur Markdown, frontmatter YAML, liens et métadonnées de provenance, confiance et cycle de vie.
 - **Utilité pour GovCheck :** source de l'étude de stockage OKF et des projections de cartes mentales dans la PR Cartocortex #27 ; c'est le sens précis de « OKF » dans cette discussion.
 - **Limite :** OKF est une convention légère de bundle de connaissances, pas une ontologie de graphe, un modèle de disposition de carte mentale, un CRDT, un protocole de transport ou une norme de gouvernance GovCheck. L'ancien chemin Knowledge Catalog est un instantané gelé ; le dépôt dédié est canonique.
@@ -553,6 +558,29 @@
 - **Concepts pertinents :** échange de cartes mentales hiérarchiques, plans et graphes généraux, avec métadonnées et dispositions propres aux formats.
 - **Utilité pour GovCheck :** conserve les formats FreeMind, Freeplane, XMind, OPML et GraphML explicitement examinés pour l'import/export SaussuNet et la visualisation Cartocortex.
 - **Limite :** ces formats ont des capacités expressives et conventions de métadonnées différentes. Un parsing réussi n'est pas une conversion sémantique sans perte ; il faut des fixtures par format et des rapports de perte explicites.
+
+
+
+<a id="r-56"></a>
+### R-56 — API de stockage cloud et interopérabilité S3
+- **Sources primaires :** [Documentation et API Amazon S3](https://docs.aws.amazon.com/s3/) · [Interopérabilité Google Cloud Storage](https://docs.cloud.google.com/storage/docs/interoperability) · [Présentation de l'API Google Drive](https://developers.google.com/workspace/drive/api/guides/about-sdk) · [Ressource Drive Microsoft Graph](https://learn.microsoft.com/en-us/graph/api/drive-get?view=graph-rest-1.0) · [Introduction à Azure Blob Storage](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction) · [Documentation Hippius](https://docs.hippius.com/) · [Stockage objet compatible S3 Hippius](https://docs.hippius.com/storage/s3/advanced)
+- **Concepts pertinents :** API de stockage objet, points de terminaison compatibles S3, API de disques cloud, périmètres OAuth/identifiants, synchronisation côté client et sémantiques propres aux fournisseurs.
+- **Utilité pour GovCheck :** conserve les candidats de stockage nommés dans la PR Cartocortex #28 : Amazon S3, interopérabilité Google Cloud Storage, Google Drive, OneDrive/Microsoft Graph, Azure Blob Storage et Hippius.
+- **Limite :** « compatible S3 » ne signifie pas sémantiques, cohérence, IAM, versionnement, événements ou multipart identiques. Les API ont des modèles d'authentification et de permission distincts. Il s'agissait de candidats de backlog, pas de fournisseurs sélectionnés ou d'intégrations implémentées.
+
+<a id="r-57"></a>
+### R-57 — Accès aux fichiers du navigateur, persistance locale et WebAssembly
+- **Sources primaires :** [API File System MDN](https://developer.mozilla.org/en-US/docs/Web/API/File_System_API) · [Origin Private File System (OPFS) MDN](https://developer.mozilla.org/en-US/docs/Web/API/File_System_API/Origin_private_file_system) · [Indexed Database API 3.0 W3C](https://www.w3.org/TR/IndexedDB-3/) · [Spécifications WebAssembly](https://webassembly.org/specs/) · [WebAssembly System Interface (WASI)](https://github.com/WebAssembly/WASI)
+- **Concepts pertinents :** accès aux fichiers/répertoires avec autorisation utilisateur, stockage navigateur privé à l'origine, persistance IndexedDB et interfaces d'exécution WebAssembly.
+- **Utilité pour GovCheck :** conserve les candidats de déploiement et de persistance locaux au navigateur nommés dans la PR Cartocortex #28, notamment File System Access, OPFS, IndexedDB et l'usage conditionnel de WebAssembly/WASI pour réutiliser du code Rust.
+- **Limite :** les API navigateur ont des contraintes de prise en charge, permission, contexte sécurisé et quota ; OPFS est privé à l'origine et n'est pas un répertoire visible de l'utilisateur. WASI est une interface système pour runtimes WebAssembly, pas un contournement des permissions du système de fichiers du navigateur. La PR décrit une proposition/backlog, pas un déploiement testé.
+
+<a id="r-58"></a>
+### R-58 — Découverte de pairs Hyperswarm et HyperDHT
+- **Sources primaires :** [Projet Hyperswarm](https://github.com/holepunchto/hyperswarm) · [Implémentation HyperDHT](https://github.com/holepunchto/hyperdht) · [Documentation de découverte de pairs Hyperswarm](https://docs.pears.com/p2p/reference/building-blocks/hyperswarm/)
+- **Concepts pertinents :** découverte de pairs par sujets, rendez-vous via table de hachage distribuée, UDP hole punching et connexions chiffrées entre pairs.
+- **Utilité pour GovCheck :** conserve l'alternative de découverte de pairs pour application desktop discutée dans la PR Cartocortex #28, à côté de la signalisation WebRTC dans les navigateurs.
+- **Limite :** Hyperswarm/HyperDHT est une pile réseau distincte, pas une signalisation WebRTC native au navigateur. Le DHT dépend d'une infrastructure de bootstrap et de la joignabilité réseau ; la découverte de pairs ne définit ni autorisation des salles, ni politique de membres, ni persistance.
 
 ## Discipline bibliographique et provenance non résolue
 

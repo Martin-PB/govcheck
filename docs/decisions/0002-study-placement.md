@@ -63,3 +63,7 @@ The integration study and its external technical sources are catalogued separate
 - [R-80 — Matrix protocol and Element X client](../references.md#r-80)
 - [R-81 — SearXNG metasearch](../references.md#r-81)
 - [R-82 — Microsoft MarkItDown document conversion](../references.md#r-82)
+- [R-83 — JSON-LD 1.1 linked-data serialization](../references.md#r-83)
+- [R-84 — RDF 1.1 Turtle syntax](../references.md#r-84)
+- [R-85 — SIOC online-community ontology](../references.md#r-85)
+- [R-86 — Schema.org DigitalDocument vocabulary](../references.md#r-86)

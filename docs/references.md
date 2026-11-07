@@ -493,7 +493,7 @@
 ### R-46 — Yjs and Yrs
 - **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
 
-- **Primary sources:** [Yjs documentation](https://docs.yjs.dev/) · [Yjs source repository](https://github.com/yjs/yjs) · [Yrs Rust port](https://github.com/y-crdt/y-crdt)
+- **Primary sources:** [Yjs documentation](https://docs.yjs.dev/) · [Yjs source repository](https://github.com/yjs/yjs) · [y-webrtc provider and signaling implementation](https://github.com/yjs/y-webrtc) · [Yrs Rust port](https://github.com/y-crdt/y-crdt)
 - **Relevant concepts:** shared CRDT data types, transport-independent updates, synchronization providers and collaborative editing.
 - **Use in GovCheck:** candidate implementation family explicitly compared in the Cartocortex PR #28 transport/backlog study.
 - **Limit:** library behavior does not select an application data model or transport architecture; Cartocortex-specific tree moves, undo/redo, persistence and migration require separate conformance tests.
@@ -532,7 +532,7 @@
 - **Primary sources:** [RFC 8445 — ICE](https://www.rfc-editor.org/rfc/rfc8445.html) · [RFC 8489 — STUN](https://www.rfc-editor.org/rfc/rfc8489.html) · [RFC 8656 — TURN](https://www.rfc-editor.org/rfc/rfc8656.html) · [coturn relay implementation](https://github.com/coturn/coturn)
 - **Relevant concepts:** candidate gathering and connectivity checks, NAT traversal, relay allocation and fallback when direct paths fail.
 - **Use in GovCheck:** documents the precise protocol stack behind the STUN/TURN references in the Cartocortex integration discussion.
-- **Limit:** STUN alone is not a NAT-traversal solution; TURN relays traffic and introduces availability, cost, privacy and operational considerations. The PDF's approximate relay-use estimate is a study claim, not a protocol guarantee.
+- **Limit:** STUN alone is not a NAT-traversal solution; TURN relays traffic and introduces availability, cost, privacy and operational considerations. The PDF's approximate 10–20% relay-use estimate is not supported by the cited protocol RFCs or an independent measurement source identified in this audit; treat it as a planning heuristic to validate against deployment telemetry, not as a general WebRTC rate.
 
 <a id="r-51"></a>
 ### R-51 — Open Knowledge Format (OKF) v0.2
@@ -845,6 +845,14 @@
 - **Relevant concepts:** lightweight description of digital documents as web resources, including their relation to broader CreativeWork metadata.
 - **Use in GovCheck:** candidate general-purpose vocabulary for describing document resources when its properties fit the exchange context.
 - **Limit:** Schema.org is broad web metadata vocabulary, not a governance ontology, access-control system, evidence-admissibility rule or replacement for domain-specific vocabularies. Use only the terms that match the intended semantics.
+
+<a id="r-87"></a>
+### R-87 — WebTorrent browser peer-to-peer transport and discovery
+- **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
+- **Primary sources:** [WebTorrent official repository](https://github.com/webtorrent/webtorrent) · [WebTorrent website and documentation](https://webtorrent.io/)
+- **Relevant concepts:** BitTorrent client for browsers and Node.js; peer-to-peer transport over WebRTC data channels in browsers; discovery through trackers, DHT, local peer discovery and peer exchange.
+- **Use in GovCheck:** preserves WebTorrent as a transport/discovery option discussed in the Cartocortex PR #28 transport study, distinct from y-webrtc and Hyperswarm/HyperDHT.
+- **Limit:** WebTorrent is a content-sharing protocol and implementation, not a generic presence or CRDT synchronization service. Browser WebTorrent peers communicate only with compatible WebTorrent/WebRTC clients; discovery, room security, application authorization and persistence must be addressed separately. No adoption is implied.
 
 ## Reference discipline and unresolved provenance
 

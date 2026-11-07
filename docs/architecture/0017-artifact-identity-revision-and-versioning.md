@@ -328,4 +328,4 @@ These references support the distinction between compatibility versioning, revis
 
 ## Bibliographic references
 
-External sources cited by this record: [R-14](../references.md#r-14), [R-23](../references.md#r-23), [R-24](../references.md#r-24), [R-25](../references.md#r-25), [R-26](../references.md#r-26).
+External sources cited by this record: [R-14, [R-15](../references.md#r-15)](../references.md#r-14), [R-23](../references.md#r-23), [R-24](../references.md#r-24), [R-25](../references.md#r-25), [R-26](../references.md#r-26).

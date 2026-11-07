@@ -44,6 +44,7 @@ The integration study and its external technical sources are catalogued separate
 - [R-18 — Writ source-based assessment](../references.md#r-18)
 - [R-19 — Privateer source-based assessment](../references.md#r-19)
 - [R-20 — Lean proof assistant](../references.md#r-20)
+- [R-21 — Research-software versioning and reproducibility guidance](../references.md#r-21)
 - [R-22 — Native Git/Pijul semantics and Nest hosting](../references.md#r-22)
 - [R-35 — Common Criteria / ISO/IEC 15408 and EAL evaluation](../references.md#r-35)
 - [R-36 — RTCA DO-178C / EUROCAE ED-12C and DAL levels](../references.md#r-36)
@@ -99,3 +100,4 @@ The integration study and its external technical sources are catalogued separate
 - [R-93 — deontic logic and normative modalities](../references.md#r-93)
 - [R-104 — Agent instruction formats and spec-driven workflows](../references.md#r-104)
 - [R-105 — Policy-as-code, continuous assurance and agent-governance research](../references.md#r-105)
+- [R-106 — OWASP guidance for AI-agent and MCP security](../references.md#r-106)

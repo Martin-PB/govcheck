@@ -11,13 +11,27 @@ GovCheck's formal work is developed incrementally and remains separate from impl
 - [Diagram generator and drift check](../../scripts/render-lifecycle-diagram.py)
 - [TLA+ module](../../formal/tla/GovCheckLifecycle.tla)
 - [TLC configuration](../../formal/tla/GovCheckLifecycle.cfg)
+
+## Assurance
+
+- [Assurance claims and freshness — English](../architecture/0021-assurance-claims-and-freshness.md)
+- [Affirmations, arguments et fraîcheur — français](../architecture/0021-assurance-claims-and-freshness.fr.md)
+- [TLA+ module](../../formal/tla/GovCheckAssurance.tla)
+- [TLC configuration](../../formal/tla/GovCheckAssurance.cfg)
+
+The assurance model is a separate, composable formal artifact with stable logical identifier govcheck.assurance. It models a finite acyclic claim graph, the transitive closure of required evidence, versioned evidence dependencies, expiry, revocation, independent review and an acceptance snapshot. A dependency change makes affected evidence stale; the computed claim status propagates that result through the closure. Revalidation publishes a new result bound to current dependency versions.
+
+The model records independent reviews with ReviewClaim; evidence republication, dependency changes, revocation and expiry invalidate affected reviews. The root claim can be supported only after all claims in its closure have been reviewed by authorized actors distinct from their producers.
+
+The closure is an explicit model input and is checked against the child-claim graph. The first model uses conjunctive arguments only. It does not model external truth, cryptographic provenance, assumption discharge, distributed clocks, concurrency or implementation refinement.
+
+## Shared release evidence
+
 - [Stable artifact catalogue](../../formal/artifacts.json)
 - [Release evidence manifest schema](../../formal/schemas/release-manifest.schema.json)
 
-The lifecycle model is a source artifact with a stable logical identifier, `govcheck.lifecycle`. Its revisions are tracked by Git. A release tag binds the exact source tree and commit; it does not require copies of source files with release-specific names. Generated verification reports and their manifest belong to the corresponding GitHub Release.
+The lifecycle model is a source artifact with stable identifier govcheck.lifecycle; the assurance model uses govcheck.assurance. Their revisions are tracked by Git. A release tag binds the exact source tree and commit; generated verification reports and their manifest belong to the corresponding GitHub Release.
 
-The diagram is generated from `formal/lifecycle-transitions.json`. The registry records explanatory labels and links each displayed transition to a top-level TLA+ operator. Run `python3 scripts/render-lifecycle-diagram.py` to regenerate it, or add `--check` to detect drift. The checker verifies operator-name coverage and generated-file freshness; it does **not** parse TLA+ semantics or prove that the explanatory guards/effects faithfully describe the operators. Review those together whenever a transition changes.
+The lifecycle diagram is generated from formal/lifecycle-transitions.json. The checker verifies operator-name coverage and generated-file freshness; it does not parse TLA+ semantics or prove that explanatory guards/effects faithfully describe operators.
 
-The model covers one abstract change, tuple-bound evaluation, evidence publication with explicit outcomes (pass, fail, unknown, unsupported, not-run and incomplete), authorized approvals, acceptance, exact-candidate application, input mutation, and terminal decisions. Reviewable now requires every obligation to have an explicit Pass outcome.
-
-**Verification status:** specification and TLC configuration added; no TLC execution or proof result is claimed. See the model document for abstraction limits and required next refinements.
+**Verification status:** both modules and TLC configurations are source artifacts. No SANY/TLC execution or proof result is claimed for the new assurance model. See each model document for scope, abstraction limits and required refinements.

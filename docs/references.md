@@ -896,7 +896,7 @@
 <a id="r-92"></a>
 ### R-92 — iStar 2.0 goal-oriented requirements modeling
 - **Cited by:** [ADR 0002](decisions/0002-study-placement.md), [0013](architecture/0013-governance-metamodel.md)
-- **Primary sources:** [Dalpiaz, Franch and Horkoff, iStar 2.0 Language Guide (arXiv:1605.07767)](https://arxiv.org/abs/1605.07767) · [iStar language community guide](https://sites.google.com/site/istarlanguage/)
+- **Primary source:** [Dalpiaz, Franch and Horkoff, iStar 2.0 Language Guide (arXiv:1605.07767)](https://arxiv.org/abs/1605.07767)
 - **Relevant concepts:** actor-centered goal modeling, intentional and social dependencies, goals, qualities, tasks and resources; a shared core vocabulary for goal-oriented requirements engineering.
 - **Use in GovCheck:** preserves iStar as a candidate complement to KAOS/GORE for relating stakeholder goals, actors, dependencies and derived requirements.
 - **Limit:** the guide describes a community-defined core language and notes its intended evolution. Goal modeling does not itself prove feasibility, resolve normative authority, verify implementation or quantify accepted risk. No iStar tool or notation is selected.

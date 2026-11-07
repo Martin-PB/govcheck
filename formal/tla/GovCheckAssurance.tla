@@ -3,40 +3,72 @@ EXTENDS Naturals
 
 CONSTANTS
   Claims, Evidence, Dependencies, Versions, Actors, AuthorizedReviewers,
-  RootClaim, ClaimEdgePairs, ClaimEvidence, ClaimEvidenceClosure, ClaimClosure,
-  ClaimRank, ClaimDependencies, ClaimProducer, ClaimReviewer, EvidenceDependencies,
-  InitialVersions, InitialEvidenceVersions, InitialEvidenceOutcomes,
-  InitialEvidenceExpiry, MaxTime, NoSnapshot
+  RootClaim, LeafClaim, RootEvidence, LeafEvidence,
+  CandidateDependency, PolicyDependency, InitialVersion,
+  ProducerActor, ReviewerActor, MaxTime, NoSnapshot
 
 EvidenceOutcomes ==
   {"Supports", "Refutes", "Unknown", "Unsupported", "NotRun",
    "Incomplete", "Conflict"}
 
 ASSUME Claims # {}
-
-Children(c) ==
-  {child \in Claims :
-     /\ {c, child} \in ClaimEdgePairs
-     /\ ClaimRank[child] < ClaimRank[c]}
 ASSUME Evidence # {}
 ASSUME Dependencies # {}
 ASSUME Versions # {}
+ASSUME Actors # {}
 ASSUME RootClaim \in Claims
+ASSUME LeafClaim \in (Claims \ {RootClaim})
+ASSUME RootEvidence \in Evidence
+ASSUME LeafEvidence \in (Evidence \ {RootEvidence})
+ASSUME CandidateDependency \in Dependencies
+ASSUME PolicyDependency \in Dependencies
+ASSUME InitialVersion \in Versions
+ASSUME ProducerActor \in Actors
+ASSUME ReviewerActor \in Actors
 ASSUME AuthorizedReviewers \subseteq Actors
-ASSUME ClaimEdgePairs \subseteq SUBSET Claims
-ASSUME ClaimEvidence \in [Claims -> SUBSET Evidence]
-ASSUME ClaimEvidenceClosure \in [Claims -> SUBSET Evidence]
-ASSUME ClaimClosure \in [Claims -> SUBSET Claims]
-ASSUME ClaimRank \in [Claims -> Nat]
-ASSUME ClaimDependencies \in [Claims -> SUBSET Dependencies]
-ASSUME ClaimProducer \in [Claims -> Actors]
-ASSUME ClaimReviewer \in [Claims -> Actors]
-ASSUME EvidenceDependencies \in [Evidence -> SUBSET Dependencies]
-ASSUME InitialVersions \in [Dependencies -> Versions]
-ASSUME InitialEvidenceVersions \in [Evidence -> [Dependencies -> Versions]]
-ASSUME InitialEvidenceOutcomes \in [Evidence -> EvidenceOutcomes]
 ASSUME MaxTime \in Nat
-ASSUME InitialEvidenceExpiry \in [Evidence -> 0..MaxTime]
+
+ClaimEvidence ==
+  [c \in Claims |-> IF c = RootClaim THEN {RootEvidence} ELSE {LeafEvidence}]
+
+ClaimEvidenceClosure ==
+  [c \in Claims |->
+     IF c = RootClaim THEN {RootEvidence, LeafEvidence} ELSE {LeafEvidence}]
+
+ClaimClosure ==
+  [c \in Claims |->
+     IF c = RootClaim THEN {RootClaim, LeafClaim} ELSE {LeafClaim}]
+
+ClaimRank ==
+  [c \in Claims |-> IF c = RootClaim THEN 1 ELSE 0]
+
+Children(c) ==
+  IF c = RootClaim THEN {LeafClaim} ELSE {}
+
+ClaimDependencies ==
+  [c \in Claims |->
+     IF c = RootClaim
+     THEN {CandidateDependency, PolicyDependency}
+     ELSE {CandidateDependency}]
+
+ClaimProducer == [c \in Claims |-> ProducerActor]
+ClaimReviewer == [c \in Claims |-> ReviewerActor]
+
+EvidenceDependencies ==
+  [e \in Evidence |->
+     IF e = RootEvidence
+     THEN {PolicyDependency}
+     ELSE {CandidateDependency}]
+
+InitialVersions == [d \in Dependencies |-> InitialVersion]
+
+InitialEvidenceVersions ==
+  [e \in Evidence |-> [d \in Dependencies |-> InitialVersion]]
+
+InitialEvidenceOutcomes ==
+  [e \in Evidence |-> "Supports"]
+
+InitialEvidenceExpiry == [e \in Evidence |-> MaxTime]
 
 ASSUME \A c \in Claims :
   \A child \in Children(c) : ClaimRank[child] < ClaimRank[c]

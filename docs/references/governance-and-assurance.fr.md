@@ -10,7 +10,7 @@
 - **Modèles formels, preuves et arguments d'assurance :** R-04, R-05.
 - **Provenance des preuves et chaîne d'approvisionnement logicielle :** R-06, R-07, R-08.
 - **Politiques exécutables et autorisation :** R-09, R-10.
-- **Posture de sécurité et limites d'application :** R-11, R-12.
+- **Posture de sécurité et limites d'application :** R-03, R-08, R-18, R-19.
 - **Schémas canoniques, versionnement et identité des releases :** R-13, R-14, R-15, R-16.
 - **Patron externe de catalogue/gouvernance :** R-17.
 - **Outils de workflow d'agents évalués, mais non adoptés :** R-18, R-19.

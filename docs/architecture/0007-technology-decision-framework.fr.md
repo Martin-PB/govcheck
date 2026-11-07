@@ -23,7 +23,7 @@ Ce document définit comment choisir sans imposer prématurément une pile. Chaq
 | Langage | Rust, Go, OCaml, Haskell, Kotlin/JVM, Python | Garanties statiques, portabilité, taille/démarrage, écosystème, contributeurs, FFI, chaîne d'approvisionnement, maintenance |
 | Sérialisation canonique | JSON + JSON Schema, sous-ensemble YAML, TOML, CBOR, encodage canonique spécifique | Déterminisme, doublons, octets canoniques, évolution du schéma, commentaires/édition, outils, signatures |
 | Sémantique | Prédicats typés fixes, DSL restreint, moteur logique/règles | Décidabilité/bornes, explicabilité, composition, sûreté, formalisation, extensibilité |
-| Analyse formelle | TLA+, Alloy, PlusCal, Lean, Coq, Isabelle, machines à états exécutables | Claims établissables, TCB, automatisation, compétences, reproductibilité |
+| Analyse formelle | TLA+, Alloy, PlusCal, SPIN, CSP/FDR, B, Z, Lean, Coq, Isabelle, machines à états exécutables | Claims établissables, TCB, automatisation, compétences, reproductibilité |
 | Intégrité des preuves | Hashes, attestations signées, journaux de transparence, formats compatibles in-toto/SLSA | Liaison d'état, identité, révocation, offline, confidentialité, interopérabilité, charge |
 | Interface locale | Binaire unique, paquets plateformes, distribution source | Installation, reproductibilité, offline, confiance de mise à jour, plateformes |
 | Forge | Adaptateurs GitHub/GitLab/Forgejo/Gitea/Bitbucket ; protocoles génériques | Barrière requise, liaison état exact, contournements, stabilité API, auto-hébergement |

@@ -70,7 +70,7 @@ Ces sujets devront faire l'objet d'un amendement explicite et approuvé séparé
 
 ## 7. Travaux de formalisation
 
-Le modèle de cycle de vie de gouvernance et les tests de conformité devront représenter :
+Le premier modèle borné de transition d'autorité est fourni dans `formal/tla/GovCheckAuthority.tla` avec `formal/tla/GovCheckAuthority.cfg`. Il vérifie que chaque amendement est autorisé par l'autorité immédiatement précédente, que la chaîne autorité/révision reste continue et que l'autorité/révision courante correspond à la dernière décision enregistrée. Il ne modélise volontairement pas encore les autorités déléguées, le cycle de vie des dérogations, l'identité cryptographique, la validité en temps réel ni l'intégration au validateur des décisions de version. Le modèle de cycle de vie de gouvernance et les tests de conformité devront également représenter :
 
 - un principal racine configuré ;
 - l'adoption et la modification par ce seul principal ;

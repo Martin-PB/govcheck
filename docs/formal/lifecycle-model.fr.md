@@ -68,3 +68,8 @@ Le module TLA+ énonce également les obligations de théorème correspondantes 
 Exécuter TLC sur `GovCheckLifecycle.tla` avec `GovCheckLifecycle.cfg`, en utilisant une distribution TLA+ Tools locale et épinglée. Une exécution bornée réussie ne constitue ni une preuve de conformité de l’implémentation, ni une preuve de théorème, ni une démonstration de fidélité normative.
 
 Une release peut joindre un rapport de vérification généré et un manifeste de release. Ce manifeste doit identifier le tag et le commit de release, l’identifiant stable de l’artefact, son chemin exact et son empreinte, la version de TLC et des outils, l’empreinte de la configuration, le statut d’exécution et les nombres d’états/transitions lorsqu’ils sont disponibles. Les rapports générés sont des livrables de release, pas des fichiers source renommés manuellement. Le format du manifeste est défini dans `formal/schemas/release-manifest.schema.json` ; le catalogue des artefacts stables se trouve dans `formal/artifacts.json`.
+
+## Références bibliographiques
+
+- [R-05 — Modélisation par transitions d'états TLA+ / TLC](../references.fr.md#r-05)
+- [R-22 — Sémantiques natives Git et Pijul](../references.fr.md#r-22)

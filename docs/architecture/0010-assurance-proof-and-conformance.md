@@ -120,4 +120,13 @@ This document expands the distinctions in specifications 0002–0005 and archite
 
 ## Bibliographic references
 
-External references used in this record: [R-04 — Goal Structuring Notation assurance arguments](../references.md#r-04), [R-05 — TLA+ specification and TLC model checking](../references.md#r-05), [R-06 — in-toto software supply-chain provenance](../references.md#r-06), [R-20 — Lean theorem proving and proof-kernel boundary](../references.md#r-20).
+- [R-04 — Goal Structuring Notation assurance arguments](../references.md#r-04)
+- [R-05 — TLA+ and TLC state-transition modeling](../references.md#r-05)
+- [R-06 — in-toto software supply-chain provenance](../references.md#r-06)
+- [R-20 — Lean theorem proving and proof-kernel boundary](../references.md#r-20)
+- [R-33 — research review of security assurance cases](../references.md#r-33)
+- [R-34 — OMG Structured Assurance Case Metamodel (SACM)](../references.md#r-34)
+- [R-70 — ACCESS model-based assurance-case engineering](../references.md#r-70)
+- [R-71 — Assurance 2.0 and defeasible assurance arguments](../references.md#r-71)
+- [R-73 — OMG SACM 2.4 Beta 1 status and proposed constructs](../references.md#r-73)
+- [R-76 — Runtime Certification and runtime evidence](../references.md#r-76)

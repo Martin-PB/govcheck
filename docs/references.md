@@ -35,6 +35,7 @@
 | Document extraction | R-82 |
 | Cloud storage provider APIs | R-64 |
 | Browser-local persistence and WebAssembly | R-65 |
+| Domain semantic models, product quality and open-source compliance | R-94–R-100, R-102–R-103 |
 
 ## Full reference entries
 
@@ -66,6 +67,7 @@
 - **PEAK decision model:** R-74.
 - **Continuous monitoring and runtime assurance:** R-70, R-72, R-75–R-76.
 - **Assurance 2.0 and SACM evolution:** R-71, R-73.
+- **Domain semantics, product quality and open-source compliance (candidate sources):** R-94–R-100, R-102–R-103.
 
 ## Standards, government guidance and industry specifications
 
@@ -398,7 +400,7 @@
 
 <a id="r-35"></a>
 ### R-35 — Common Criteria (ISO/IEC 15408) and Common Evaluation Methodology
-- **Cited by:** [0007](architecture/0007-technology-decision-framework.md), [Spec 0005](specifications/0005-assurance-model.md)
+- **Cited by:** [0007](architecture/0007-technology-decision-framework.md), [Spec 0005](specifications/0005-assurance-model.md), [ADR 0002](decisions/0002-study-placement.md)
 
 - **Primary sources:** [ISO/IEC 15408-1:2026 (current edition of Part 1)](https://www.iso.org/standard/15408-1) · [Common Criteria Portal](https://www.commoncriteriaportal.org/) · [CC:2022 and CEM:2022 scheme publications](https://www.commoncriteriaportal.org/cc/index.cfm)
 - **Relevant concepts:** security functional requirements, security assurance requirements, evaluation methodology and Evaluation Assurance Levels (EALs).
@@ -407,7 +409,7 @@
 
 <a id="r-36"></a>
 ### R-36 — RTCA DO-178C / EUROCAE ED-12C airborne software assurance
-- **Cited by:** [0007](architecture/0007-technology-decision-framework.md), [Spec 0005](specifications/0005-assurance-model.md)
+- **Cited by:** [0007](architecture/0007-technology-decision-framework.md), [Spec 0005](specifications/0005-assurance-model.md), [ADR 0002](decisions/0002-study-placement.md)
 
 - **Primary sources:** [FAA AC 20-115D](https://www.faa.gov/airports/resources/advisory_circulars/index.cfm/go/document.information/documentNumber/20-115D) · [RTCA DO-178C overview and supplements](https://www.rtca.org/do-178/)
 - **Relevant concepts:** software life-cycle objectives, verification, independence, certification evidence and software levels (A–E); related supplements include DO-330, DO-331, DO-332 and DO-333.
@@ -416,7 +418,7 @@
 
 <a id="r-37"></a>
 ### R-37 — Alloy language and Analyzer
-- **Cited by:** [0007](architecture/0007-technology-decision-framework.md), [0009](architecture/0009-govcheck-design-discussion-record.md), [Spec 0005](specifications/0005-assurance-model.md)
+- **Cited by:** [0007](architecture/0007-technology-decision-framework.md), [0009](architecture/0009-govcheck-design-discussion-record.md), [Spec 0005](specifications/0005-assurance-model.md), [ADR 0002](decisions/0002-study-placement.md)
 
 - **Primary sources:** [Alloy project and documentation](https://alloytools.org/) · [Alloy Analyzer source repository](https://github.com/AlloyTools/org.alloytools.alloy)
 - **Relevant concepts:** relational modeling, bounded analysis, SAT-based instance finding and counterexample search; Alloy 6 adds mutable state and temporal operators.
@@ -425,7 +427,7 @@
 
 <a id="r-38"></a>
 ### R-38 — SPIN and Promela
-- **Cited by:** [0007](architecture/0007-technology-decision-framework.md), [Spec 0005](specifications/0005-assurance-model.md)
+- **Cited by:** [0007](architecture/0007-technology-decision-framework.md), [Spec 0005](specifications/0005-assurance-model.md), [ADR 0002](decisions/0002-study-placement.md)
 
 - **Primary source:** [SPIN Basic Manual and Promela documentation](https://spinroot.com/spin/Man/Manual.html)
 - **Relevant concepts:** modeling and verification of concurrent and distributed systems, asynchronous communication, invariants, deadlocks and temporal properties.
@@ -434,7 +436,7 @@
 
 <a id="r-39"></a>
 ### R-39 — Kani Rust Verifier
-- **Cited by:** [0007](architecture/0007-technology-decision-framework.md), [Spec 0005](specifications/0005-assurance-model.md)
+- **Cited by:** [0007](architecture/0007-technology-decision-framework.md), [Spec 0005](specifications/0005-assurance-model.md), [ADR 0002](decisions/0002-study-placement.md)
 
 - **Primary source:** [Kani documentation](https://model-checking.github.io/kani/)
 - **Relevant concepts:** bounded model checking of Rust programs, proof harnesses, assertions, undefined-behavior checks and counterexamples.
@@ -443,7 +445,7 @@
 
 <a id="r-40"></a>
 ### R-40 — Verus Rust verification
-- **Cited by:** [0007](architecture/0007-technology-decision-framework.md), [Spec 0005](specifications/0005-assurance-model.md)
+- **Cited by:** [0007](architecture/0007-technology-decision-framework.md), [Spec 0005](specifications/0005-assurance-model.md), [ADR 0002](decisions/0002-study-placement.md)
 
 - **Primary source:** [Verus tutorial and reference](https://verus-lang.github.io/verus/guide/)
 - **Relevant concepts:** static functional-correctness verification for Rust using specifications and computer-aided proofs.
@@ -452,7 +454,7 @@
 
 <a id="r-41"></a>
 ### R-41 — Dafny language and verifier
-- **Cited by:** [0007](architecture/0007-technology-decision-framework.md), [Spec 0005](specifications/0005-assurance-model.md)
+- **Cited by:** [0007](architecture/0007-technology-decision-framework.md), [Spec 0005](specifications/0005-assurance-model.md), [ADR 0002](decisions/0002-study-placement.md)
 
 - **Primary source:** [Dafny Reference Manual](https://dafny.org/dafny/DafnyRef/DafnyRef)
 - **Relevant concepts:** specification constructs, pre/postconditions, invariants, termination metrics, verification conditions and compilation.
@@ -461,7 +463,7 @@
 
 <a id="r-42"></a>
 ### R-42 — Coq / Rocq proof assistant
-- **Cited by:** [0007](architecture/0007-technology-decision-framework.md), [Spec 0005](specifications/0005-assurance-model.md)
+- **Cited by:** [0007](architecture/0007-technology-decision-framework.md), [Spec 0005](specifications/0005-assurance-model.md), [ADR 0002](decisions/0002-study-placement.md)
 
 - **Primary sources:** [Rocq documentation and reference manuals](https://rocq-prover.org/docs) · [versioned Coq documentation archive](https://docs.rocq-prover.org/)
 - **Relevant concepts:** dependent type theory, Gallina definitions and machine-checked proof terms.
@@ -470,7 +472,7 @@
 
 <a id="r-43"></a>
 ### R-43 — Isabelle theorem prover
-- **Cited by:** [0007](architecture/0007-technology-decision-framework.md), [Spec 0005](specifications/0005-assurance-model.md)
+- **Cited by:** [0007](architecture/0007-technology-decision-framework.md), [Spec 0005](specifications/0005-assurance-model.md), [ADR 0002](decisions/0002-study-placement.md)
 
 - **Primary source:** [Isabelle documentation, tutorials and reference manuals](https://www.isabelle.in.tum.de/documentation.html)
 - **Relevant concepts:** interactive theorem proving, Isabelle/HOL, formal specification and proof checking.
@@ -479,7 +481,7 @@
 
 <a id="r-44"></a>
 ### R-44 — KAOS and goal-oriented requirements engineering
-- **Cited by:** [0013](architecture/0013-governance-metamodel.md)
+- **Cited by:** [0013](architecture/0013-governance-metamodel.md), [ADR 0002](decisions/0002-study-placement.md)
 
 - **Primary source:** [Axel van Lamsweerde, Requirements Engineering: From System Goals to UML Models to Software Specifications (2009), UCLouvain record](https://research.dial.uclouvain.be/entities/publication/ddcd5cbc-c76d-4da2-bd29-509cbf0f9399)
 - **Relevant concepts:** goal refinement, obstacles, responsibility assignment and derivation from system goals to requirements and software specifications.
@@ -644,7 +646,7 @@
 ### R-62 — Cartocortex, MoriNet and SaussuNet integration sources
 - **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
 
-- **Primary sources:** [Cartocortex repository](https://github.com/complexus-lab/cartocortex) · [MoriNet repository](https://github.com/lejeunecedric/MoriNet) · [SaussuNet repository](https://github.com/lejeunecedric/SaussuNet) · [Cartocortex PR #9 — mind-map format panorama](https://github.com/complexus-lab/cartocortex/pull/9) · [Cartocortex PR #27 — OKF storage and graph-view study](https://github.com/complexus-lab/cartocortex/pull/27) · [Cartocortex PR #28 — CRDT, browser deployment and cloud-sync backlog](https://github.com/complexus-lab/cartocortex/pull/28)
+- **Primary sources:** [Cartocortex repository](https://github.com/complexus-lab/cartocortex) · [MoriNet repository](https://github.com/lejeunecedric/MoriNet) · [SaussuNet repository](https://github.com/lejeunecedric/SaussuNet) · [Cartocortex PR #27 — OKF storage and graph-view study](https://github.com/complexus-lab/cartocortex/pull/27) · [Cartocortex PR #28 — CRDT, browser deployment and cloud-sync backlog](https://github.com/complexus-lab/cartocortex/pull/28)
 - **Relevant concepts:** source repositories and reviewed design artifacts for the integration study; PR #27 is a study of OKF v0.2 storage/projections, while PR #28 contains proposed CRDT and real-time transport work.
 - **Use in GovCheck:** preserves the concrete project-level sources behind the initial PDF “Évaluer l’intégration des dépôts” (6 November 2026, 224 pages) and the discussion recorded by ADR 0002.
 - **Limit:** PR #27 is a study, not an executed implementation; PR #28 is a proposal/backlog and its transport study is explicitly not executed. Repository capabilities must be rechecked at the reviewed revision before claiming current behavior. The “CKO” namespace in the PDF is a proposal, not an adopted external standard.
@@ -912,7 +914,7 @@
 ## Reference discipline and unresolved provenance
 
 1. Prefer the standard body, publisher, official documentation or source repository over secondary summaries.
-2. Reference identifier R-12 was retired when its duplicate Scorecard entry was consolidated into R-08; do not reuse the retired identifier.
+2. R-12 was retired when its duplicate Scorecard entry was consolidated into R-08. R-101 was retired because it duplicated the NIST SP 800-218 source already maintained in R-02. Neither identifier may be reused.
 3. Pin code assessments. Writ and Privateer links identify the revisions reviewed in Architecture 0016; refresh the pins before claims about current behavior.
 4. Distinguish evidence classes. A standard, research paper, product documentation, source code, test result and model-checking report are different evidence types.
 5. No implied adoption. Inclusion means “relevant to assess,” not “selected,” “required,” “compatible” or “implemented.”
@@ -922,23 +924,23 @@
 
 <a id="r-94"></a>
 ### R-94 — OMG business decision, motivation and process standards
-- **Cited by:** [Architecture 0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
-- **Primary sources:** [OMG specifications catalogue](https://www.omg.org/specifications/) · [DMN 1.6](https://www.omg.org/spec/DMN/1.6/) · [DMN 1.7 Beta 1](https://www.omg.org/spec/DMN/) · [BPMN 2.0.2](https://www.omg.org/spec/BPMN/) · [CMMN 1.1](https://www.omg.org/spec/CMMN/1.1) · [Business Motivation Model 1.3](https://www.omg.org/spec/BMM/1.3/) · [SBVR 1.5](https://www.omg.org/spec/SBVR)
+- **Cited by:** no current record cites this candidate source.
+- **Primary sources:** [OMG specifications catalogue](https://www.omg.org/specifications/) · [DMN 1.6](https://www.omg.org/spec/DMN/1.6/) · [DMN 1.7 Beta 1](https://www.omg.org/spec/DMN/1.7/Beta1) · [BPMN 2.0.2](https://www.omg.org/spec/BPMN/) · [CMMN 1.1](https://www.omg.org/spec/CMMN/1.1) · [Business Motivation Model 1.3](https://www.omg.org/spec/BMM/1.3/) · [SBVR 1.5](https://www.omg.org/spec/SBVR)
 - **Relevant concepts:** decision requirements, decision tables and FEEL; process activities, events and gateways; adaptive case management; business goals and influencers; formal business vocabularies and rules.
-- **Use in GovCheck:** primary specifications for complementary decision-logic, process, case-management, motivation and business-rule candidates discussed in Architecture 0027.
+- **Use in GovCheck:** primary specifications for complementary decision-logic, process, case-management, motivation and business-rule candidates discussed in the project.
 - **Limit:** these specifications address different semantic layers. A decision result, process transition, case task or business rule does not itself confer repository authority, approval or risk acceptance. The OMG catalogue changes; use version-specific links for pinned baselines. Its September 2026 snapshot lists DMN 1.6 as formal and 1.7 Beta 1 as in process.
 
 <a id="r-95"></a>
 ### R-95 — OMG engineering, risk, testing, requirements, metrics and provenance models
-- **Cited by:** [Architecture 0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
-- **Primary sources:** [OMG specifications catalogue](https://www.omg.org/specifications/) · [RAAML 1.1](https://www.omg.org/spec/RAAML/1.1) · [RAAML 1.2 Beta 1](https://www.omg.org/spec/RAAML/1.2/Beta1) · [SysML v2](https://www.omg.org/spec/SysML/2.0) · [SysML v2 overview](https://www.omg.org/sysml/sysmlv2/) · [UTP 2.3 Beta 1](https://www.omg.org/spec/UTP2) · [ReqIF 1.2](https://www.omg.org/spec/ReqIF/1.2) · [Structured Metrics Metamodel 1.2](https://www.omg.org/spec/SMM/1.2) · [PPMN 1.0](https://www.omg.org/spec/PPMN/)
+- **Cited by:** no current record cites this candidate source.
+- **Primary sources:** [RAAML 1.1](https://www.omg.org/spec/RAAML/1.1) · [RAAML 1.2 Beta 1](https://www.omg.org/spec/RAAML/1.2/Beta1) · [SysML v2](https://www.omg.org/spec/SysML/2.0) · [SysML v2 overview](https://www.omg.org/sysml/sysmlv2/) · [UTP 2.3 Beta 1](https://www.omg.org/spec/UTP2) · [ReqIF 1.2](https://www.omg.org/spec/ReqIF/1.2) · [Structured Metrics Metamodel 1.2](https://www.omg.org/spec/SMM/1.2) · [PPMN 1.0](https://www.omg.org/spec/PPMN/)
 - **Relevant concepts:** risk/safety analysis; systems requirements, structure, behavior and verification; model-based test specification; requirements exchange; measurement definitions/results; provenance of entities, activities and agents.
-- **Use in GovCheck:** primary sources for engineering-domain candidates in the bootstrap inventory, including machine-readable model and exchange artifacts where published.
+- **Use in GovCheck:** primary sources for candidate engineering-domain models, including machine-readable model and exchange artifacts where published.
 - **Limit:** these models are not interchangeable and provide no common governance authority. Versions and maturity differ: RAAML 1.1 is formal and 1.2 Beta 1 is in process; UTP 2.3 is Beta 1; SysML 2.0, ReqIF 1.2, SMM 1.2 and PPMN 1.0 are formal catalogue entries. Verify pinned versions and implementation support before adoption.
 
 <a id="r-96"></a>
 ### R-96 — ISO/IEC/IEEE 42010:2022, architecture description
-- **Cited by:** [Architecture 0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
+- **Cited by:** no current record cites this candidate source.
 - **Primary source:** [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html)
 - **Relevant concepts:** requirements for architecture descriptions, description frameworks, viewpoints, model kinds and conformance.
 - **Use in GovCheck:** candidate normative foundation for structuring architecture descriptions, stakeholder concerns, views and viewpoints.
@@ -946,7 +948,7 @@
 
 <a id="r-97"></a>
 ### R-97 — ISO/IEC/IEEE 29148, requirements engineering
-- **Cited by:** [Architecture 0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
+- **Cited by:** no current record cites this candidate source.
 - **Primary sources:** [ISO/IEC/IEEE DIS 29148, third edition (2026)](https://www.iso.org/standard/94091.html) · [ISO/IEC/IEEE 29148:2018](https://www.iso.org/standard/72089.html)
 - **Relevant concepts:** lifecycle requirements-engineering processes, required information items and their contents, and guidance for requirements work across systems/software lifecycles.
 - **Use in GovCheck:** candidate process and information-item reference for requirements governance and traceability.
@@ -954,7 +956,7 @@
 
 <a id="r-98"></a>
 ### R-98 — ISO/IEC 25010:2023, product quality model
-- **Cited by:** [Architecture 0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
+- **Cited by:** no current record cites this candidate source.
 - **Primary source:** [ISO/IEC 25010:2023](https://www.iso.org/standard/78176.html)
 - **Relevant concepts:** product-quality characteristics and subcharacteristics used to specify, measure and evaluate ICT/software product quality.
 - **Use in GovCheck:** candidate shared quality vocabulary for quality requirements, test objectives, evaluation criteria and measurement planning.
@@ -962,7 +964,7 @@
 
 <a id="r-99"></a>
 ### R-99 — SPDX specification
-- **Cited by:** [Architecture 0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
+- **Cited by:** no current record cites this candidate source.
 - **Primary source:** [SPDX specifications catalogue](https://spdx.dev/use/specifications/)
 - **Relevant concepts:** standardized machine-readable representation of software components, packages, files, relationships, licensing and other supply-chain metadata. The catalogue identifies SPDX 3.0 as current at the research snapshot.
 - **Use in GovCheck:** candidate native format for SBOM and license/supply-chain metadata.
@@ -970,33 +972,25 @@
 
 <a id="r-100"></a>
 ### R-100 — CycloneDX specification
-- **Cited by:** [Architecture 0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
+- **Cited by:** no current record cites this candidate source.
 - **Primary source:** [CycloneDX specification overview](https://cyclonedx.org/specification/overview/)
 - **Relevant concepts:** extensible supply-chain object model for software/hardware components, services, dependencies, cryptographic assets, operational configurations and metadata; JSON, XML and Protocol Buffers representations.
-- **Use in GovCheck:** candidate SBOM and broader supply-chain exchange format, to assess alongside SPDX against actual repository/ecosystem needs.
+- **Use in GovCheck:** candidate SBOM and broader supply-chain exchange format, to assess alongside SPDX against actual needs.
 - **Limit:** format validity does not prove inventory completeness, component integrity, vulnerability absence or trustworthy build provenance. Pin the exact version and schema.
-
-<a id="r-101"></a>
-### R-101 — NIST SP 800-218, Secure Software Development Framework
-- **Cited by:** [Architecture 0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
-- **Primary source:** [NIST SP 800-218 final publication](https://csrc.nist.gov/pubs/sp/800/218/final)
-- **Relevant concepts:** high-level secure-development practices that can be integrated into different software lifecycle models, with a common vocabulary for producers and acquirers.
-- **Use in GovCheck:** candidate practice framework for secure-development capability selection and lifecycle assessment.
-- **Limit:** SSDF is practice guidance, not a complete machine-readable metamodel, executable policy, certification scheme or proof of effective implementation.
 
 <a id="r-102"></a>
 ### R-102 — W3C PROV family
-- **Cited by:** [Architecture 0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
+- **Cited by:** no current record cites this candidate source.
 - **Primary source:** [W3C PROV overview](https://www.w3.org/TR/prov-overview/)
 - **Relevant concepts:** interoperable provenance models for entities, activities, agents and derivation/attribution, with data model, ontology, constraints and serialization specifications.
-- **Use in GovCheck:** candidate vocabulary and representation family for provenance across decisions, source/generated artifacts, observations and evidence.
+- **Use in GovCheck:** candidate vocabulary and representation family for provenance across decisions, sources, generated artifacts, observations and evidence.
 - **Limit:** PROV records provenance relationships; it does not establish truth, admissibility, integrity or sufficiency, and does not provide repository governance authority.
 
 
 <a id="r-103"></a>
 ### R-103 — OpenChain: ISO/IEC 5230 and ISO/IEC 18974
-- **Cited by:** [Architecture 0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
+- **Cited by:** no current record cites this candidate source.
 - **Primary sources:** [ISO/IEC 5230:2020 — OpenChain Specification](https://www.iso.org/standard/81039.html) · [ISO/IEC 18974:2023 — OpenChain security assurance specification](https://www.iso.org/standard/86450.html) · [OpenChain standards and adoption guidance](https://openchainproject.org/get-started)
 - **Relevant concepts:** organizational requirements for open-source license-compliance programs (5230) and open-source security-assurance programs (18974), including policy, scope, roles, processes and retained verification material.
-- **Use in GovCheck:** candidate process/organizational standards for the open-source compliance and open-source security-assurance capabilities in the bootstrap inventory.
+- **Use in GovCheck:** candidate process/organizational standards for open-source compliance and open-source security-assurance capabilities.
 - **Limit:** these standards specify program requirements, not SBOM serialization, vulnerability-detection algorithms or proof that a particular component is safe. Conformance concerns the scoped organizational program and its verification materials; it must not be inferred from the presence of an SBOM or a scanner.

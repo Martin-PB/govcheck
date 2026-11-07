@@ -169,7 +169,7 @@ The tool should help users compare treatment options and their costs, operationa
 
 Risk acceptance does not make a threat disappear, validate a control, or turn unsupported claims into supported ones. It records a governed decision to operate with a known residual exposure. Assurance status and risk disposition must therefore remain separate but linked.
 
-## 6. Profile and generated tree
+## 5. Profile and generated tree
 
 The outcome is a versioned, machine-readable project profile plus a deterministic bootstrap plan. The profile records selected capabilities, explicit non-selections where relevant, rationale, context/assumptions, authority and profile/schema revisions. It is not a second normative source: normative rules remain in the canonical governance package.
 

@@ -141,4 +141,4 @@ This document does not provide a TLA+ specification, TLC results, theorem proofs
 
 ## Bibliographic references
 
-External references used in this record: [R-05](../references.md#r-05), [R-13](../references.md#r-13), [R-20](../references.md#r-20).
+External references used in this record: [R-05 — TLA+ specification and TLC model checking](../references.md#r-05), [R-13 — JSON Schema structural contracts](../references.md#r-13), [R-20 — Lean theorem proving and proof-kernel boundary](../references.md#r-20).

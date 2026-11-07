@@ -6,12 +6,12 @@
 |---|---|
 | Governance authority, separation of duties and secure development | R-01–R-03, R-11 |
 | Risk assessment, threat modeling and attack paths | R-27–R-32 |
-| Security assurance cases and metamodels | R-33–R-34 |
+| Security assurance cases and metamodels | R-04, R-33–R-34 |
 | PEAK decision model | R-74 |
 | Continuous monitoring and runtime assurance | R-70, R-72, R-75–R-76 |
 | Assurance 2.0 and SACM evolution | R-71, R-73 |
 | Assurance regimes and goal-oriented requirements | R-35–R-36, R-44, R-92 |
-| Model checking and program-verification alternatives | R-37–R-43, R-89–R-91 |
+| Model checking and program-verification alternatives | R-05, R-20, R-37–R-43, R-89–R-91 |
 | Evidence provenance and software supply chain | R-06–R-08 |
 | Policy engines, authorization and policy-model verification | R-09–R-10, R-88 |
 | Normative logic and deontic modalities | R-93 |

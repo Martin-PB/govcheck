@@ -16,6 +16,8 @@ A rule ID is immutable and never recycled. Rule wording, translations, scope and
 
 Distinguish at least: obligation, prohibition, permission, invariant/constraint, evidence requirement, process/approval requirement, and advisory guidance. Advisory guidance is explicitly non-normative. Absence of prohibition is not permission. A permission does not cancel an obligation or prohibition absent an explicit valid precedence relation.
 
+Deontic logic is a useful formal vocabulary for these normative modalities, but it does not define who may issue a rule, its scope, priority, delegation, exceptions, effective time or enforcement. Policy-model validation must also examine consistency, completeness and safety properties; validating the package schema alone is insufficient. See [R-93](../references.md#r-93) and [R-88](../references.md#r-88).
+
 ## Applicability and composition
 
 Evaluation context explicitly identifies repository and candidate states, governance revision, change, affected resources, actor class and declared environment facts. Mandatory foundations always apply. Profiles may refine or add constraints. Scoped rules apply only when their predicates match. A narrower scope cannot silently weaken a mandatory rule. Precedence is an explicit partial relation, never file order or “last wins”.

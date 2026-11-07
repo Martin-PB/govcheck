@@ -10,10 +10,11 @@
 | Modèle de décision PEAK | R-74 |
 | Surveillance continue et assurance à l'exécution | R-70, R-72, R-75–R-76 |
 | Assurance 2.0 et évolution de SACM | R-71, R-73 |
-| Régimes d'assurance et exigences orientées objectifs | R-35–R-36, R-44 |
-| Model checking et vérification de programmes candidates | R-37–R-43 |
+| Régimes d'assurance et exigences orientées objectifs | R-35–R-36, R-44, R-92 |
+| Model checking et vérification de programmes candidates | R-37–R-43, R-89–R-91 |
 | Provenance des preuves et chaîne d'approvisionnement logicielle | R-06–R-08 |
-| Moteurs de politiques et autorisation | R-09–R-10 |
+| Moteurs de politiques, autorisation et vérification de modèles | R-09–R-10, R-88 |
+| Logique normative et modalités déontiques | R-93 |
 | Schémas et contrats d'interface | R-13, R-16 |
 | Identité, versionnement, releases et reproductibilité des artefacts | R-14–R-15, R-21, R-23–R-26 |
 | Métadonnées de gouvernance et catalogues | R-17 |
@@ -46,9 +47,11 @@
 ## Utilisation rapide
 
 - **Autorité normative et séparation des tâches :** R-01, R-02, R-03.
-- **Modèles formels, preuves et arguments d'assurance :** R-04, R-05.
+- **Modèles formels, preuves et arguments d'assurance :** R-04, R-05, R-89–R-91.
 - **Provenance des preuves et chaîne d'approvisionnement logicielle :** R-06, R-07, R-08.
 - **Politiques exécutables et autorisation :** R-09, R-10.
+- **Vérification des modèles de politiques avant application :** R-88.
+- **Modalités normatives (obligation, permission, interdiction) :** R-93.
 - **Posture de sécurité et limites d'application :** R-03, R-08, R-18, R-19.
 - **Schémas canoniques, versionnement et identité des releases :** R-13, R-14, R-15, R-16.
 - **Patron externe de catalogue/gouvernance :** R-17.
@@ -58,6 +61,7 @@
 - **Représentation des connaissances et échange de données liées :** R-51–R-61, R-83–R-86.
 - **Sémantiques natives des VCS et adaptateurs de collaboration :** R-22.
 - **Modélisation des menaces, chemins d'attaque et gestion des risques :** R-27 à R-32.
+- **Modélisation des exigences orientée objectifs :** R-44, R-92.
 - **Dossiers d'assurance de sécurité et métamodèles :** R-33 à R-34.
 - **Modèle de décision PEAK :** R-74.
 - **Surveillance continue et assurance à l'exécution :** R-70, R-72, R-75 à R-76.

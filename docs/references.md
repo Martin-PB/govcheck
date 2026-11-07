@@ -759,6 +759,50 @@
 - **Use in GovCheck:** preserves the full source trail behind the format panorama cited by the initial 224-page integration assessment, including source code/fixtures and official vendor documentation.
 - **Limit:** PR #9 is an open documentation PR, not a format implementation or conformance suite. The panorama records evidence available at its review date (2026-10-18). FileInfo, blogs and community posts are secondary sources, not format specifications. A feature in a product UI does not prove lossless file interchange; the source PR and per-format fixtures must be rechecked before implementation decisions.
 
+
+
+<a id="r-70"></a>
+### R-70 — Policy-as-code and MCP tool-governance enforcement examples
+- **Primary sources:** [HashiCorp Sentinel documentation](https://developer.hashicorp.com/sentinel/docs) · [Consul MCP Gateway documentation](https://docs.hashicorp.com/consul/docs/agentic-mesh/mcp-gateway) · [GitLab agent tool governance and MCP server blocking](https://docs.gitlab.com/user/ai-governance/tool-governance/) · [Vectimus source repository](https://github.com/vectimus/vectimus)
+- **Relevant concepts:** policy-as-code, policy evaluation at infrastructure and agent-tool boundaries, MCP server allow/block controls, namespace-scoped governance, approval evidence, audit events and deterministic Cedar-based hooks.
+- **Use in GovCheck:** preserves the policy enforcement and MCP governance systems compared in the wider project discussions, alongside OPA (R-09) and Cedar (R-10).
+- **Limit:** Sentinel is an enterprise HashiCorp feature; Consul MCP Gateway documentation marks the feature beta. GitLab's blocking scope is product/version/surface-specific. Vectimus is a project repository whose security and performance claims are not independently established by its README. These examples do not imply selection, equivalence or GovCheck integration.
+
+<a id="r-71"></a>
+### R-71 — NIST OSCAL and the Continuous Compliance Framework (CCF)
+- **Primary sources:** [NIST OSCAL project](https://pages.nist.gov/OSCAL/) · [OSCAL source repository](https://github.com/usnistgov/OSCAL) · [Compliance Framework / CCF documentation](https://compliance-framework.github.io/docs/introduction) · [Compliance Framework repositories](https://github.com/compliance-framework)
+- **Relevant concepts:** machine-readable security-control catalogs, profiles, system security plans, assessment plans/results and structured compliance evidence in XML, JSON and YAML; continuous evidence collection and reporting.
+- **Use in GovCheck:** preserves the OSCAL and CCF options discussed for representing controls, collecting evidence and producing structured assessment outputs.
+- **Limit:** OSCAL is a set of information models/formats, not a complete compliance engine or proof of control effectiveness. CCF is a separate implementation that uses policy engines and collectors; its project claims are not a normative standard or independent certification. A GovCheck mapping would require explicit control semantics, evidence provenance and scope.
+
+<a id="r-72"></a>
+### R-72 — Agent sandboxing and runtime isolation: nono, Landlock and Docker Sandboxes
+- **Primary sources:** [nono project and security model](https://github.com/nolabs-ai/nono) · [nono documentation site](https://nono.sh/) · [Linux Landlock kernel documentation](https://docs.kernel.org/userspace-api/landlock.html) · [Docker Sandboxes documentation](https://docs.docker.com/ai/sandboxes/) · [Goose AI agent project](https://github.com/aaif-goose/goose)
+- **Relevant concepts:** per-tool capability scoping, filesystem/network restrictions, credential brokering, kernel-enforced unprivileged sandboxing, microVM isolation and agent runtime orchestration.
+- **Use in GovCheck:** preserves the runtime-isolation and agent-execution options discussed in the wider GovCheck/security architecture context. Goose is included as an agent harness example, not as a sandbox.
+- **Limit:** Landlock support and available restrictions depend on kernel configuration and ABI; it is one layer, not a complete VM/container boundary. nono and Docker Sandboxes have their own trust, policy and operational assumptions; vendor/project claims require independent testing. Goose is an agent runtime, not an authorization authority.
+
+<a id="r-73"></a>
+### R-73 — Matrix protocol and Element X client
+- **Primary sources:** [Matrix protocol specification](https://spec.matrix.org/latest/) · [Matrix specification source repository](https://github.com/matrix-org/matrix-spec) · [Element X on the Matrix.org ecosystem](https://matrix.org/ecosystem/clients/element-x/)
+- **Relevant concepts:** federated real-time communication, homeservers, rooms, event synchronization, end-to-end encryption and mobile Matrix client behavior.
+- **Use in GovCheck:** preserves the Matrix/Element X communication option discussed for agent and human collaboration.
+- **Limit:** Matrix is a communication protocol and ecosystem, not a governance or authorization model for GovCheck. Room membership and encryption do not by themselves establish project-level policy, agent identity binding or durable decision provenance.
+
+<a id="r-74"></a>
+### R-74 — SearXNG metasearch
+- **Primary source:** [SearXNG documentation](https://docs.searxng.org/)
+- **Relevant concepts:** self-hosted metasearch aggregation, configurable upstream search engines, privacy-oriented query handling and administration.
+- **Use in GovCheck:** preserves the self-hosted search service discussed as a source-discovery component in the wider project context.
+- **Limit:** SearXNG aggregates third-party search results; it does not validate source authority, freshness, accuracy or licensing. Search output must be resolved to and checked against primary sources.
+
+<a id="r-75"></a>
+### R-75 — Microsoft MarkItDown document-to-Markdown conversion
+- **Primary source:** [Microsoft MarkItDown source repository and documentation](https://github.com/microsoft/markitdown)
+- **Relevant concepts:** conversion of PDF, Office and other document formats into Markdown for indexing and text analysis.
+- **Use in GovCheck:** preserves the document-ingestion utility discussed for extracting and reviewing source material such as PDFs and office files.
+- **Limit:** MarkItDown performs I/O with the privileges of its current process. Its own documentation warns that untrusted inputs must be sanitized and conversion should run with the narrowest needed access. Conversion output is an extraction, not proof of source completeness or semantic fidelity.
+
 ## Reference discipline and unresolved provenance
 
 1. Prefer the standard body, publisher, official documentation or source repository over secondary summaries.

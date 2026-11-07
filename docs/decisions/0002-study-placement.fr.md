@@ -22,7 +22,7 @@ English: [ADR 0002](0002-study-placement.md).
 
 ## Artefact source et frontière des preuves
 
-L'artefact source initial de cet enregistrement est **« Évaluer l’intégration des dépôts.pdf »**, daté du 6 novembre 2026 et composé de 224 pages. Il est conservé dans la bibliothèque du projet et n'est pas copié dans ce dépôt. Ses sources externes, dépôts, pull requests, protocoles, vocabulaires et formats sont indexés en [R-35–R-69 et R-77–R-93](../references.fr.md) dans le catalogue central.
+L'artefact source initial de cet enregistrement est **« Évaluer l’intégration des dépôts.pdf »**, daté du 6 novembre 2026 et composé de 224 pages. Il est conservé dans la bibliothèque du projet et n'est pas copié dans ce dépôt. Ses sources externes, dépôts, pull requests, protocoles, vocabulaires et formats sont préservés dans le catalogue central ; les références directement pertinentes sont liées individuellement ci-dessous.
 
 Les artefacts Cartocortex examinés ont des statuts de preuve distincts : la PR #9 est un panorama documentaire ; la PR #27 est une étude sur le stockage/projection OKF explicitement marquée comme non exécutée ; la PR #28 est un backlog et une étude de transport explicitement non exécutés. Aucun de ces statuts ne prouve qu'un adaptateur, un CRDT, un transport, une synchronisation cloud ou un importeur de format proposé est implémenté ou accepté. Voir [R-62](../references.fr.md#r-62) et [R-69](../references.fr.md#r-69).
 
@@ -36,6 +36,16 @@ L'étude d'intégration et ses sources techniques externes sont cataloguées sé
 
 - [R-18 — Évaluation de Writ à partir des sources](../references.fr.md#r-18)
 - [R-19 — Évaluation de Privateer à partir des sources](../references.fr.md#r-19)
+- [R-35 — Common Criteria / ISO/IEC 15408 et évaluation EAL](../references.fr.md#r-35)
+- [R-36 — RTCA DO-178C / EUROCAE ED-12C et niveaux DAL](../references.fr.md#r-36)
+- [R-37 — Modélisation relationnelle Alloy](../references.fr.md#r-37)
+- [R-38 — Model checking SPIN / Promela](../references.fr.md#r-38)
+- [R-39 — Vérification de programmes Rust Kani](../references.fr.md#r-39)
+- [R-40 — Vérification Rust Verus](../references.fr.md#r-40)
+- [R-41 — Langage et vérificateur Dafny](../references.fr.md#r-41)
+- [R-42 — Assistant de preuve Coq / Rocq](../references.fr.md#r-42)
+- [R-43 — Assistant de preuve Isabelle](../references.fr.md#r-43)
+- [R-44 — KAOS et ingénierie des exigences orientée objectifs](../references.fr.md#r-44)
 - [R-45 — Fondements des CRDT](../references.fr.md#r-45)
 - [R-46 — Yjs et Yrs](../references.fr.md#r-46)
 - [R-47 — Automerge](../references.fr.md#r-47)

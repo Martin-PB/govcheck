@@ -1,269 +1,240 @@
-# 0025 — Observations en production, traçabilité des décisions PEAK et étude de SACM
+# 0025 — Observations transverses au cycle de vie, traçabilité décisionnelle PEAK et interopérabilité SACM
 
-**Statut :** étude et recommandation d'architecture soumises à revue ; ce document n'implémente ni pipeline d'observations en production, ni moteur de décision PEAK, ni sérialiseur SACM, ni mise à jour opérationnelle du modèle de menace.  
-**Langue :** le français est présenté ici ; voir la [version anglaise](0025-runtime-observations-peak-and-sacm.md).
+**Statut :** recherche et recommandation d'architecture proposées à revue. Ce document propose des liens sémantiques ; il ne prétend pas qu'une collecte opérationnelle, un processus PEAK, un import/export SACM ou une réévaluation automatisée soient implémentés.  
+**Langue :** l'anglais est la version par défaut ; voir la [version anglaise](0025-runtime-observations-peak-and-sacm.md).
 
-## 1. Conclusion exécutive
+## 1. Objet et périmètre
 
-GovCheck devrait relier les observations de production, l'évolution du modèle de menace, les arguments d'assurance et les décisions gouvernées sur le risque au moyen d'un modèle sémantique commun et typé. PEAK et SACM sont des apports complémentaires, pas des ontologies concurrentes :
+GovCheck a vocation à gouverner un dépôt logiciel pendant tout son cycle de vie : de l'intention du projet et de sa structure initiale aux exigences, à l'architecture, à l'implémentation, aux tests, à la vérification, aux revues, à l'acceptation des changements, aux publications, à l'exploitation, à la maintenance et, finalement, au retrait. Son objet est le dépôt gouverné et l'évolution de l'état du projet — pas la seule sécurité, ni une méthode d'ingénierie particulière.
 
-- **PEAK** est une grille d'analyse de décision : Problem, Experience, Assumptions et Knowledge sont examinés comme entrées d'un processus de décision ; celui-ci produit une solution et un risque assumé [R-74](../references.fr.md#r-74).
-- **SACM** est un métamodèle structuré de dossier d'assurance pour les affirmations, l'argumentation, les références aux preuves, les artefacts et la terminologie [R-34](../references.fr.md#r-34).
-- **GovCheck** doit conserver les sémantiques métier que ni PEAK ni SACM ne fournissent seuls : menaces, chemins d'attaque, contrôles, observations opérationnelles, fraîcheur des preuves, traitement du risque, autorité et décisions d'acceptation.
+Selon le projet, les sujets gouvernés peuvent notamment inclure :
 
-**Recommandation :** ne faire de PEAK ni de SACM l'ontologie canonique de gouvernance de GovCheck. Utiliser PEAK comme vue de projection des décisions gouvernées. Utiliser SACM comme représentation candidate d'interopérabilité et de dossier d'assurance, avec un profil/une extension GovCheck et un mapping qui préserve les pertes éventuelles. Conserver SACM 2.3 comme base formelle actuelle de compatibilité tout en évaluant la bêta 2.4 ; ne pas figer le modèle interne sur cette bêta.
+- objectifs, besoins des parties prenantes, exigences fonctionnelles et non fonctionnelles ;
+- architecture, interfaces, contraintes de conception et dette technique ;
+- pratiques d'implémentation, qualité du code et maintenabilité ;
+- tests, analyses statiques et dynamiques, model checking, vérification de programmes et preuve de théorèmes ;
+- dépendances, chaîne d'approvisionnement, reproductibilité et intégrité des builds ;
+- sécurité, vie privée, sûreté et résilience opérationnelle ;
+- documentation, licences, obligations légales ou réglementaires ;
+- gestion des changements, revues, approbations, publications, support et maintenance.
 
-Une observation peut modifier ce que nous savons du système et remettre en cause une hypothèse ; elle ne prouve pas à elle seule une attaque, n'établit pas un scénario de menace, ne détermine pas l'acceptabilité du risque et n'autorise pas une mesure de mitigation.
+Aucun projet n'est tenu d'adopter tous ces sujets ni toutes ces méthodes. Leur applicabilité et leur profondeur dépendent du contexte déclaré, du profil, des obligations et des décisions autorisées du projet. GovCheck doit rendre explicites les sélections, omissions, inconnues et leurs conséquences, plutôt que d'imposer une pile d'ingénierie universelle.
 
-## 2. Fondations GovCheck existantes
+Ce document traite de trois besoins liés mais distincts :
 
-Cette proposition doit étendre les concepts existants, pas les dupliquer :
+1. relier les observations issues du cycle de vie du dépôt et, le cas échéant, de l'exploitation du système au modèle gouverné du projet ;
+2. utiliser **PEAK** pour rendre traçables les éléments d'entrée, le raisonnement, la solution et le risque assumé d'une décision ;
+3. évaluer **SACM** comme représentation ou format d'échange possible pour les dossiers d'assurance.
 
-- L'architecture 0013 distingue déjà objectifs, exigences, normes, propriétés, contrats, modèles, artefacts d'implémentation, méthodes, témoins/éléments probants, affirmations, arguments et décisions/autorité. Elle impose des relations typées plutôt que des inférences fondées sur la proximité documentaire.
-- La spécification 0005 et le schéma proposé d'enregistrement des preuves séparent l'enregistrement d'une preuve de l'affirmation qu'il peut étayer/réfuter, de l'argument qui l'interprète et de la décision d'acceptation. Un enregistrement lie une observation, une exécution ou une dérivation à des sujets exacts, une méthode, un contexte, une provenance, des limites et des dépendances d'invalidation.
-- L'architecture 0021 définit affirmations, arguments, preuves, hypothèses, dépendances et décisions ; elle distingue le résultat d'une preuve de son admissibilité, de sa fraîcheur et de son authenticité. Elle impose de conserver les preuves historiques immuables et de créer de nouvelles observations lors d'une revalidation.
-- L'architecture 0017 distingue un élément probant/une observation comme instance/événement immuable, et non comme artefact logique versionné en SemVer.
-- L'architecture 0006 fournit les fondations du modèle de menace et de confiance ; l'architecture 0024 introduit l'assurance guidée par les menaces et le traitement des risques.
+PEAK et SACM ne répondent pas au même problème et ne sont pas des alternatives l'un à l'autre. Aucun des deux ne constitue GovCheck dans son ensemble.
 
-Ces fondations apportent déjà une grande partie du substrat sémantique nécessaire. Le lien manquant le plus important est un cycle de vie de l'observation opérationnelle de première classe et une projection explicite des entrées et sorties de décision.
+## 2. Fondations GovCheck à préserver
 
-## 3. PEAK : traçabilité des décisions, pas une nouvelle ontologie d'assurance
+Ce travail étend l'architecture existante ; il ne doit pas créer un modèle de gouvernance parallèle.
 
-Le modèle de décision PEAK présenté par Hoover, Rosso-Llopart et Taran identifie quatre dimensions d'entrée :
+- **Spécification 0002** définit le paquet canonique de gouvernance : identifiants stables des règles, règles typées, périmètre, applicabilité, composition, exceptions, profils et projections documentaires contrôlées.
+- **Spécification 0003** définit le cycle de vie des changements du dépôt indépendamment de Git, Pijul, d'une forge ou d'un produit CI. Les décisions lient des états exacts de base/candidat et de gouvernance ; acceptation et application sont distinctes.
+- **Spécification 0005** distingue affirmations, arguments, preuves, hypothèses, contexte, limites, classes de méthodes et acceptation. Tests, model checking, preuve de théorèmes, conformité de l'implémentation et fidélité normative ne sont pas interchangeables.
+- **Architecture 0013** fournit le vocabulaire conceptuel général reliant objectifs, exigences, normes, propriétés, contrats, modèles, artefacts d'implémentation, méthodes, preuves, affirmations, arguments et décisions autorisées.
+- **Architectures 0017 et 0021** traitent l'identité/révision des artefacts, la liaison des preuves, leur fraîcheur, l'invalidation des dépendances et les arguments d'assurance.
+- **Architecture 0024** propose un bootstrap guidé et non destructif dans lequel les projets sélectionnent des capacités et des méthodes d'assurance adaptées à leur contexte.
 
-| Élément PEAK | Signification | Projection GovCheck |
+Ces documents décrivent un socle général de gouvernance des dépôts. La sécurité et la modélisation des menaces sont des capacités métier importantes parmi d'autres ; elles ne sont pas le principe organisateur de toutes les autres capacités.
+
+## 3. PEAK : tracer le raisonnement qui conduit à une décision
+
+PEAK est utilisé ici dans son sens d'analyse de décision : **Problem, Experience, Assumptions et Knowledge** sont explicités comme éléments d'entrée d'une décision ; le processus consigne la **Solution** retenue et l'**Assumed Risk** [R-74](../references.fr.md#r-74).
+
+Une décision GovCheck peut exposer ces dimensions sans les transformer en quatre silos de données isolés :
+
+| Dimension PEAK | Question de traçabilité | Liens GovCheck possibles |
 |---|---|---|
-| **P — Problem** | Le problème à résoudre, avec exigences et contraintes | Question de décision, système/actif concerné, intérêts des parties prenantes, périmètre, objectifs et contraintes |
-| **E — Experience** | Compétences et expérience apportées à la décision | Incidents antérieurs pertinents, historique opérationnel, retours d'expérience, expertise et provenance/contexte de ces éléments |
-| **A — Assumptions** | Prémisses acceptées pour la décision | Enregistrements d'hypothèses explicites, avec responsable, périmètre, justification, confiance, validité, possibilité de surveillance et conditions de réfutation/réexamen |
-| **K — Knowledge** | Environnement et faits disponibles pour les décideurs | Faits d'architecture/configuration versionnés, normes, renseignement sur les menaces, observations et preuves admissibles |
+| **P — Problem** | Quel problème faut-il résoudre, dans quel périmètre et sous quelles contraintes ? | Objectif, exigence, problème, changement, artefact concerné, besoin d'une partie prenante |
+| **E — Experience** | Quelle expérience pertinente éclaire la décision ? | Décisions antérieures, incidents, défauts, historique des tests, expérience de maintenance, retours d'exploitation et expertise |
+| **A — Assumptions** | Quelles prémisses sont utilisées et sous quelles conditions ? | Hypothèses explicites avec responsable, périmètre, justification, validité, confiance et conditions de revue/réfutation |
+| **K — Knowledge** | Quelles informations sont disponibles pour les décideurs ? | Spécifications, architecture, mesures, résultats de tests, preuves, faits sur les dépendances, observations, normes et autres éléments admissibles |
+| **Solution** | Quelle option a été retenue, et pourquoi ? | Alternative retenue, alternatives rejetées, justification, plan d'implémentation ou de suivi |
+| **Assumed Risk** | Quelle incertitude ou exposition est consciemment conservée par ce choix ? | Arbitrages, risque résiduel, incertitude, conditions, responsable redevable et déclencheurs de revue |
 
-Le processus produit au minimum :
-- **Solution :** l'alternative retenue, le plan d'action/de mise en œuvre, les alternatives rejetées et la justification.
-- **Assumed risk / risque assumé :** l'exposition et l'incertitude acceptées en choisissant cette alternative, y compris le risque résiduel et ses conditions.
+PEAK n'est ni un mécanisme d'autorisation, ni une formule de risque, ni une notation de dossier d'assurance, ni un modèle du cycle de vie d'un dépôt. GovCheck doit fournir la gouvernance de la décision : identité, autorité, périmètre, participants, date, justification, liens vers les preuves, validité, revue et remplacement.
 
-PEAK ne prescrit ni schéma, ni modèle d'autorisation, ni formule de risque, ni vocabulaire de menace. Il doit donc être représenté comme une **vue de décision** sur les objets natifs de GovCheck, et non en créant quatre silos d'enregistrements P/E/A/K déconnectés.
+La même structure PEAK peut éclairer des décisions d'architecture, de maintenabilité, de stratégie de test, de mise à niveau des dépendances, de préparation d'une publication, de traitement de sécurité ou de gouvernance du projet. Son emploi doit être proportionné à l'importance et aux conséquences de la décision ; il ne doit pas devenir une formalité obligatoire pour chaque choix trivial.
 
-### 3.1 Exigences pour l'enregistrement d'une décision
+Une décision et un dossier d'assurance répondent à des questions différentes. Un enregistrement de décision explique ce qui a été examiné et choisi, y compris le risque assumé. Un dossier d'assurance explique pourquoi une affirmation délimitée devrait être crue, à partir d'un argument, d'hypothèses et de preuves. Une décision peut s'appuyer sur plusieurs dossiers d'assurance ; un dossier d'assurance peut éclairer plusieurs décisions. Leurs liens sont plusieurs-à-plusieurs et doivent être liés au contexte et aux révisions concernés.
 
-Une décision gouvernée devrait être liée à :
-- l'énoncé du problème, son périmètre, les sujets concernés et les contraintes ;
-- les alternatives examinées, y compris ne rien faire/différer le cas échéant ;
-- l'expérience et les connaissances pertinentes, avec sources et dates ;
-- les hypothèses utilisées, y compris celles qui restent non résolues ou contestées ;
-- les bénéfices attendus, coûts, compromis, incertitudes et conséquences ;
-- la solution retenue et ses conditions de mise en œuvre ;
-- le traitement du risque et l'énoncé du risque résiduel ;
-- le décideur, le fondement de son autorité, les réviseurs, la justification et la date de décision ;
-- le périmètre, la validité/expiration, la date de revue et les déclencheurs de réévaluation ;
-- les preuves et observations qui confirmeront, contesteront ou invalideront ultérieurement la décision.
+## 4. Les observations comme retour d'information sur le cycle de vie
 
-La décision est un événement immuable. Un contexte modifié, une nouvelle preuve ou une autorité différente crée une nouvelle évaluation/décision ou un événement de remplacement ; cela ne réécrit pas la justification historique. L'acceptation du risque est une disposition explicite et autorisée, pas une affirmation que le risque est absent ou que le système est sûr.
+GovCheck devrait pouvoir relier les observations à l'état exact du dépôt/projet ainsi qu'aux exigences, hypothèses, affirmations, méthodes, décisions et risques qu'elles peuvent affecter. Les sources d'observation ne se limitent pas à la télémétrie de production.
 
-### 3.2 PEAK et l'assurance répondent à des questions différentes
+Exemples :
 
-PEAK demande : **quelles entrées ont éclairé cette décision, quelle solution a été retenue et quel risque a été assumé ?**
+- échec de test, tendance de régression, test instable ou évolution de la couverture ;
+- constat d'analyse statique ou nouveau problème de maintenabilité ;
+- échec de reproductibilité d'un build ou changement de chaîne d'outils ;
+- publication d'une dépendance, annonce de fin de support, avis de vulnérabilité ou changement de licence ;
+- constat de revue, changement rejeté, rapport de défaut ou incident de support ;
+- dérive documentaire ou divergence entre spécification et implémentation ;
+- contre-exemple d'un modèle formel, obligation de preuve non satisfaite ou changement d'une dépendance de preuve ;
+- alerte d'exécution, dérive de déploiement, dégradation de service ou incident de sécurité.
 
-Un dossier d'assurance demande : **quelle affirmation est formulée, pourquoi devrait-on y croire, quelles preuves et hypothèses la soutiennent et qu'est-ce qui pourrait la réfuter ?**
+Ces observations peuvent remettre en cause une hypothèse, indiquer qu'une exigence n'est pas satisfaite, invalider une preuve, révéler un nouveau risque ou déclencher la revue d'une décision. Elles n'ont pas toutes la même valeur probante. Un échec de test ne prouve pas automatiquement un défaut général ; un avertissement d'analyse statique n'est pas automatiquement une vulnérabilité confirmée ; une variation de métrique ne constitue pas à elle seule une violation de gouvernance ; une alerte d'exécution n'est pas automatiquement un incident confirmé.
 
-Une décision peut référencer plusieurs dossiers d'assurance. Un dossier d'assurance peut éclairer plusieurs décisions. La relation doit rester plusieurs-à-plusieurs et liée au temps/contexte.
+### 4.1 Cycle général de retour
 
-## 4. Les observations de production comme retour vers les modèles de menace et d'assurance
+1. **Observer :** enregistrer un événement ou une observation provenant d'un outil, d'un artefact du dépôt, d'un réviseur, d'un opérateur ou d'une source externe.
+2. **Lier :** identifier le dépôt, l'artefact, la révision, l'environnement, la méthode et la fenêtre temporelle exacts.
+3. **Évaluer la qualité :** enregistrer provenance, intégrité, complétude, couverture, état de la source/de l'outil, incertitude et limites.
+4. **Interpréter :** relier l'observation aux exigences, propriétés, affirmations, hypothèses, dépendances, risques et décisions applicables.
+5. **Dériver un constat ou une hypothèse :** préserver la distinction entre observation brute, interprétation, cause suspectée et conclusion confirmée.
+6. **Évaluer l'impact :** identifier les preuves, affirmations, approbations, plans ou décisions qui peuvent nécessiter revalidation ou revue.
+7. **Décider :** laisser l'autorité compétente choisir d'enquêter, corriger, différer, accepter une déviation circonscrite, modifier une exigence ou prendre une autre mesure autorisée.
+8. **Vérifier la réponse :** enregistrer les preuves de suivi et déterminer si le résultat attendu a été obtenu.
 
-Les recommandations NIST sur la surveillance continue relient explicitement la visibilité permanente sur les actifs, menaces, vulnérabilités et efficacité des contrôles aux décisions de risque [R-75](../references.fr.md#r-75). Les travaux de Rushby sur la certification à l'exécution vont plus loin : les hypothèses utilisées dans un argument d'assurance peuvent être explicitées et surveillées en production ; les observations peuvent révéler des hypothèses violées ou des comportements anormaux [R-76](../references.fr.md#r-76). La recherche ACCESS démontre une approche fondée sur SACM dans laquelle les artefacts d'ingénierie et les dossiers d'assurance évoluent ensemble et où l'assurance peut être évaluée à partir de données d'exécution [R-70](../references.fr.md#r-70). Ericsson fournit un exemple industriel de télémétrie en production alimentant l'évolution des modèles de menace et l'analyse des contrôles [R-72](../references.fr.md#r-72).
+Ce cycle est indépendant du domaine. L'interprétation spécifique relève de la méthode ou de la capacité concernée. Par exemple, le retour vers le modèle de menace constitue un parcours spécialisé : des observations de sécurité en exploitation peuvent remettre en cause des hypothèses de menace ou l'efficacité des mesures, mais elles ne réécrivent pas silencieusement le modèle de menace et n'autorisent pas une remédiation. Le même schéma général s'applique à la qualité, à la maintenabilité, aux tests, aux dépendances, aux preuves et à la gouvernance des publications.
 
-GovCheck devrait prendre en charge cette boucle de retour :
+### 4.2 Enregistrements d'observation et de preuve
 
-1. **Observer :** collecter un événement/une observation brute provenant d'un capteur, moniteur, opérateur ou source externe identifié.
-2. **Lier :** identifier le système, le déploiement/la configuration, le composant, la fenêtre temporelle et le contexte de collecte exacts.
-3. **Évaluer la qualité de l'observation :** établir provenance de la source, intégrité, qualité de l'horloge, couverture, santé de la collecte, complétude et incertitude.
-4. **Interpréter :** corréler l'observation avec les actifs, frontières de confiance, menaces existantes, chemins d'attaque, faiblesses, contrôles et hypothèses.
-5. **Formuler une hypothèse :** enregistrer un indicateur candidat, une anomalie, un changement d'exposition, un scénario de menace ou une dégradation de contrôle. Conserver les explications alternatives et les contre-preuves.
-6. **Évaluer l'impact :** déterminer quelles hypothèses, affirmations, mesures de contrôle, évaluations de risque et décisions d'acceptation pourraient être contestées ou invalidées.
-7. **Décider :** un acteur autorisé choisit l'investigation, la surveillance, la mitigation, la récupération, la réévaluation du risque ou l'absence d'action, avec justification.
-8. **Valider la réponse :** capturer les observations ultérieures montrant si l'action a modifié l'exposition ou l'efficacité des contrôles ; préserver le contexte avant/après.
+Ne pas surcharger un même enregistrement avec l'observation brute, son interprétation et la conclusion d'assurance. Une séparation utile est :
 
-La boucle doit être déclenchée par les événements, mais ne doit pas s'auto-autoriser. Une détection automatisée peut proposer une hypothèse ou une réponse. Elle ne doit pas modifier silencieusement le modèle de menace normatif, déclarer un incident confirmé, accepter le risque résiduel ou appliquer une mesure lourde de conséquences sans l'autorité et la politique applicables.
+**Enregistrement d'événement/observation**
+- identité stable et révision du schéma ;
+- source/producteur, identité et version de l'outil ou du capteur ;
+- dates de l'événement, de l'observation et de l'ingestion, si pertinentes ;
+- liaison au sujet exact : dépôt, artefact, commit/révision, configuration, environnement et périmètre ;
+- méthode, invocation/configuration et résultat brut ou référence immuable/empreinte ;
+- provenance, intégrité, complétude, couverture et état de la source ;
+- incertitude, limites, classification/vie privée et métadonnées de conservation ;
+- liens vers les artefacts, exigences, affirmations, hypothèses, risques et décisions associés.
 
-### 4.1 Ne pas fusionner les étapes sémantiques
+**Enregistrement dérivé de constat/évaluation/preuve**
+- identifiants exacts des observations d'entrée et révision de la transformation/méthode ;
+- méthode d'interprétation et producteur/réviseur responsable ;
+- constat, hypothèse ou conclusion, avec alternatives et contre-preuves ;
+- périmètre, exigences, propriétés, affirmations, mesures ou décisions affectés ;
+- incertitude, limites, statut et conditions d'invalidation/réévaluation.
 
-| Étape | Signification | À ne pas confondre avec |
-|---|---|---|
-| Événement | Quelque chose qui est rapporté comme s'étant produit | Un fait vérifié ou une attaque |
-| Observation | Enregistrement lié à une source de ce qu'un collecteur/opérateur a perçu | L'interprétation de ces données |
-| Indicateur/anomalie | Caractéristique ou écart dérivé des observations | Une menace confirmée |
-| Hypothèse | Explication candidate, par exemple scénario de menace ou défaillance de contrôle | Une explication causale démontrée |
-| Évaluation | Analyse raisonnée de la plausibilité, de l'impact, de l'efficacité des contrôles et de l'incertitude | Une observation brute ou une décision autorisée |
-| Incident/constat confirmé | Conclusion atteinte selon une procédure explicite d'investigation/confirmation | Un soupçon généré par un modèle |
-| Décision | Choix autorisé concernant le traitement ou l'exploitation | L'évaluation elle-même |
+Une observation peut être utilisée comme preuve, mais elle n'est pas automatiquement admissible pour toute affirmation. Les sémantiques de la Spécification 0005 et de l'Architecture 0021 déterminent si une preuve est pertinente, suffisamment fiable, actuelle et dans le périmètre.
 
-L'absence d'alerte ne constitue pas une preuve d'absence, sauf si la couverture des capteurs, la santé de la collecte, la logique de détection et la fenêtre temporelle pertinente étayent cette inférence. Un capteur bruité ou compromis peut produire des observations trompeuses. Une observation de production peut contester une hypothèse de conception, mais aussi révéler une condition bénigne non modélisée.
+## 5. SACM : une représentation spécialisée des dossiers d'assurance
 
-### 4.2 Enregistrement d'observation : enveloppe sémantique minimale
+SACM (Structured Assurance Case Metamodel) traite de la structure et de l'échange des dossiers d'assurance : affirmations, argumentation, inférences, références de preuves, contexte, artefacts et terminologie [R-34](../references.fr.md#r-34). Sa contribution doit être évaluée dans ce périmètre précis.
 
-L'enregistrement de preuve existant convient aux observations utilisées comme preuves d'affirmations, mais il ne devrait pas être surchargé en devenant l'unique schéma de télémétrie/événement brut. Envisager deux types d'enregistrements liés :
+SACM n'est pas un concurrent de PEAK. PEAK aide à exposer les éléments de raisonnement et le risque assumé derrière une décision ; SACM représente des arguments d'assurance structurés. GovCheck peut utiliser les deux à des fins différentes tout en conservant ses propres sémantiques de gouvernance des dépôts.
 
-**Enregistrement d'événement/observation opérationnelle**
-- identifiant stable de l'événement/de l'observation et version du schéma ;
-- identité, version et configuration de la source/du capteur/collecteur, ainsi que provenance et confiance ;
-- heure de l'événement, heure observée, heure d'ingestion, source/qualité de l'horloge et métadonnées d'ordre/corrélation ;
-- liaison exacte au sujet : actif logique, instance de déploiement, composant, révision de configuration et environnement ;
-- type d'observation, méthode de collecte, périmètre, contenu brut ou référence immuable avec empreinte ;
-- état d'intégrité/authenticité, complétude, couverture, angles morts connus et preuve de santé de collecte ;
-- incertitude/confiance et limites, sans prétendre qu'un nombre de confiance est étalonné ;
-- classification vie privée/données, politique d'accès, conservation et métadonnées de caviardage ;
-- liens vers événements, observations, incidents, affirmations, hypothèses, menaces et contrôles connexes.
+### 5.1 Constructions utiles de SACM 2.3
 
-**Enregistrement d'évaluation/de preuve dérivée**
-- identifiants exacts des observations d'entrée et révision de la transformation/du modèle/de la règle ;
-- méthode d'inférence (règle, modèle statistique, évaluation d'analyste, corrélation ou investigation) ;
-- hypothèse candidate, explications alternatives et contre-preuves ;
-- périmètre, hypothèses, incertitude, limites et état du résultat ;
-- affirmations, scénarios de menace, chemins d'attaque, contrôles et décisions potentiellement affectés ;
-- exigences de revue/d'autorité et événements d'invalidation/réévaluation résultants.
+| Construction SACM | Usage potentiel dans GovCheck |
+|---|---|
+| AssuranceCasePackage | Regrouper un dossier d'assurance structuré et ses références |
+| Claim / Assertion | Représenter des affirmations délimitées et des états explicites : assumée, affirmée, à étayer ou réfutée |
+| ArgumentReasoning / AssertedInference | Représenter le raisonnement et les relations d'inférence |
+| AssertedEvidence / AssertedContext | Relier preuves et prémisses contextuelles à l'argumentation |
+| ArtifactReference / Artifact | Référencer des artefacts exacts du dépôt, spécifications, configurations, rapports et résultats |
+| Event / Activity / Technique / Participant / Resource | Décrire des événements pertinents du cycle de vie des artefacts et le contexte de production des preuves |
+| TerminologyPackage | Échanger une terminologie contrôlée |
+| Interfaces et bindings de packages | Relier des dossiers d'assurance modulaires |
 
-Cette séparation préserve le témoignage brut et rend l'interprétation reproductible. Une évaluation dérivée ne réécrit jamais son observation source. L'enregistrement de preuve existant peut référencer les deux comme artefacts probants et lier le soutien/la réfutation de l'affirmation résultante à des révisions exactes.
+Ces constructions peuvent réduire la quantité de mécanismes propres aux dossiers d'assurance que GovCheck devrait inventer. Elles n'établissent pas qu'une affirmation est vraie, qu'une preuve est fraîche, qu'une décision est autorisée ou qu'une implémentation est conforme à une spécification. Ces significations dépendent toujours des règles propres à GovCheck sur le périmètre, la provenance, l'autorité, le cycle de vie et l'évaluation.
 
-## 5. SACM 2.3 : ce qu'il apporte à GovCheck
+### 5.2 Frontière de SACM par rapport à GovCheck
 
-SACM 2.3 est nettement plus riche qu'une simple liste d'affirmations et de preuves. Le métamodèle officiel définit quatre points de conformité principaux et sépare les packages de dossier d'assurance, d'argumentation, d'artefacts et de terminologie [R-34](../references.fr.md#r-34).
+La comparaison est volontairement limitée à la **représentation des dossiers d'assurance**. La richesse des structures d'argumentation et de packages de SACM ne signifie pas qu'il serait plus riche que GovCheck dans son ensemble, ni qu'il pourrait le remplacer.
 
-### 5.1 Constructions utiles
+SACM ne définit pas la gouvernance complète d'un dépôt logiciel pendant son cycle de vie. Il ne fournit pas à lui seul l'autorité des règles canoniques de GovCheck, le cycle de vie des changements et de leur acceptation, le bootstrap et la sélection des capacités, la gouvernance des artefacts et versions, l'autorité et les délégations des acteurs, ni les politiques et méthodes propres aux domaines sélectionnés par un projet.
 
-| Construction SACM 2.3 | Apport | Utilisation GovCheck |
-|---|---|---|
-| AssuranceCasePackage | Conteneur échangeable de premier niveau pour argumentation, artefacts et terminologie | Regrouper un dossier d'assurance gouverné et son vocabulaire/références d'artefacts |
-| Claim / Assertion | Propositions explicites, y compris états déclaré/assumé/à étayer/axiomatique/réfuté | Représenter les affirmations d'assurance et les états explicites non développés/réfutés |
-| ArgumentReasoning | Description du raisonnement sous-jacent aux relations | Préserver la justification de l'inférence et la méthode argumentative |
-| AssertedInference | Relier prémisses et conclusions | Mapper les arêtes d'inférence typées |
-| AssertedEvidence | Relier les références d'artefacts aux affirmations/à l'argumentation | Mapper le soutien ou la contre-preuve d'une affirmation |
-| AssertedContext | Attacher des prémisses contextuelles | Mapper contexte système, hypothèses et contraintes |
-| ArtifactReference / Artifact | Référencer des preuves et artefacts d'ingénierie externes | Lier artefacts, configurations, modèles, rapports et observations GovCheck exacts |
-| Event | Enregistrer des événements du cycle de vie d'un artefact | Représenter potentiellement les événements de cycle de vie et les observations, avec extensions GovCheck |
-| Activity / Technique / Participant / Resource | Décrire travaux, méthodes, acteurs et ressources tangibles | Représenter le contexte de production des preuves et les participants de provenance |
-| ArtifactAssetRelationship | Relier des artefacts par des relations nommées et décrites | Fournir un pont général entre relations d'artefacts |
-| TerminologyPackage | Définir termes et expressions contrôlés | Publier le vocabulaire GovCheck et les correspondances PEAK/SACM |
-| Interfaces/bindings de packages | Échange modulaire et relations entre packages | Séparer les dossiers d'assurance par projet/composant et les lier explicitement |
+SACM ne définit pas non plus toutes les sémantiques métier dont les projets peuvent avoir besoin : politique de maintenabilité, stratégie et adéquation des tests, cycle de vie des dépendances, gouvernance des builds/publications, scénarios de menace, obligations de vie privée ou réponse opérationnelle. Il peut représenter des arguments d'assurance portant sur ces sujets, mais il ne fournit pas leurs modèles métier ni leurs politiques de décision.
 
-Le modèle n'est pas seulement une notation graphique : il dispose d'une représentation XMI normative exploitable par machine. SACM 2.3 inclut explicitement Event pour les événements du cycle de vie d'un artefact et ArtifactAssetRelationship pour les liens entre artefacts. Son vocabulaire de déclaration des affirmations distingue les affirmations assumées, affirmées, à étayer, axiomatiques et réfutées. Ces caractéristiques en font un candidat sérieux pour l'interopérabilité et la représentation structurée des arguments.
+Les constructions génériques de SACM sont donc des mappings ou structures d'échange possibles, pas des substituts aux concepts GovCheck. Tout mapping doit préserver la distinction entre affirmation, hypothèse, preuve, inférence, observation et décision autorisée.
 
-### 5.2 En quoi SACM est plus riche que la proposition GovCheck actuelle
+### 5.3 SACM 2.4
 
-SACM apporte des structures explicites et mûres de dossier d'assurance que la proposition actuelle 0013/0021 de GovCheck ne définit pas complètement :
-- packages de dossiers d'assurance modulaires réutilisables, interfaces et bindings de packages ;
-- packages distincts de terminologie, d'artefacts et d'argumentation ;
-- types explicites d'affirmations/relations d'inférence/preuve/contexte ;
-- états explicites de réfutation/contre-preuve et d'argument incomplet/à étayer ;
-- concepts de première classe pour artefacts, événements, activités, techniques, participants et ressources ;
-- format d'échange publié et points de conformité.
+À la date de ce document, l'OMG répertorie SACM 2.4 Beta 1 comme version en cours, tandis que 2.3 reste la version formelle [R-73](../references.fr.md#r-73). Le suivi des tickets de la bêta comprend des travaux sur les valeurs typées, les constructions d'évaluation, les jointures, la structure des packages et des relations d'artefacts plus précises. Ces évolutions méritent d'être suivies, mais la résolution de tickets d'une bêta ne constitue pas un contrat normatif final.
 
-GovCheck ne devrait pas recréer ces concepts à la légère. Un mapping ou une implémentation devrait réutiliser leurs sémantiques lorsqu'elles conviennent, et documenter les différences délibérées.
+GovCheck ne devrait pas figer son modèle canonique autour de SACM 2.3 ou 2.4. Si une capacité d'échange de dossiers d'assurance est implémentée, son adaptateur devra cibler une version/profil SACM explicitement choisi et enregistrer les mappings non pris en charge ou avec perte.
 
-### 5.3 Ce que SACM 2.3 ne fournit pas à GovCheck
+## 6. Architecture sémantique GovCheck : un socle commun, plusieurs domaines
 
-SACM est un métamodèle de dossier d'assurance, pas une ontologie complète de sécurité, de risque opérationnel ou de gouvernance. En particulier, il ne fournit pas à lui seul :
+L'architecture doit être **multidomaine et orientée capacités**, et non centrée sur la sécurité ni construite autour d'un métamodèle externe unique.
 
-- un modèle de menace métier : capacités adverses, sources de menace, techniques, chemins d'attaque, préconditions, exposition et sémantique des vulnérabilités ;
-- un cycle de vie des contrôles de sécurité : planifié, implémenté, configuré, testé, revu indépendamment, surveillé, dégradé et retiré ;
-- un contrat de télémétrie d'exécution avec identité du capteur, qualité de l'horloge, couverture de collecte, intégrité, classification vie privée et conservation des événements bruts ;
-- une distinction définie entre événement, observation, indicateur, hypothèse, menace évaluée, incident confirmé et risque ;
-- la sémantique d'évaluation et de traitement du risque, l'acceptation du risque résiduel, le propriétaire responsable, l'autorité d'approbation, l'expiration et les déclencheurs de réévaluation ;
-- le modèle complet d'entrées de décision PEAK et la traçabilité entre résultat de décision et risque assumé ;
-- la liaison exacte sujet/révision de GovCheck, la fraîcheur des preuves, l'invalidation des dépendances et la sémantique d'acceptation du cycle de vie ;
-- la vérification de provenance cryptographique, la politique de confiance ou le comportement d'application.
+Le modèle canonique de gouvernance GovCheck reste responsable des règles, de l'autorité, de l'applicabilité, du cycle de vie, des décisions et de la conformité. Les capacités métier ajoutent les concepts, relations, méthodes et exigences de preuve typés qui leur sont nécessaires. Un profil de projet sélectionne les capacités applicables et leurs dépendances ; il ne remplace pas le socle commun de gouvernance.
 
-Les Event et ArtifactAssetRelationship génériques de SACM sont des points d'extension utiles, pas des substituts à ces sémantiques métier. De même, une déclaration de Claim assumed n'est pas un enregistrement complet de gouvernance d'hypothèse avec propriétaire, périmètre, validité, moniteur, critères de réfutation et conséquences.
+Exemples de domaines de capacité :
 
-### 5.4 SACM 2.4 Beta modifie l'évaluation
+- **Produit et exigences :** besoins des parties prenantes, objectifs, exigences fonctionnelles, critères d'acceptation et traçabilité.
+- **Architecture et conception :** composants, interfaces, contraintes, décisions d'architecture et dette technique.
+- **Implémentation et maintenabilité :** propriété du code, contraintes de qualité, complexité, modularité, constats de maintenabilité et remédiation.
+- **Tests et validation :** plans et cas de test, suites, environnements, couverture, résultats, régressions et arguments d'adéquation.
+- **Méthodes formelles et preuves :** modèles, propriétés, hypothèses, exécutions de model checking, obligations de preuve, artefacts de preuve et relations de conformité.
+- **Dépendances et chaîne d'approvisionnement :** identité et versions des dépendances, provenance, licences, vulnérabilités, état du support et décisions de mise à niveau.
+- **Sécurité, vie privée et sûreté :** actifs, menaces, chemins d'attaque, mesures, exigences de vie privée, dangers et décisions de traitement.
+- **Documentation et conformité :** projections normatives, couverture documentaire, obligations, attestations et enregistrements de revue.
+- **Build, publication et exploitation :** reproductibilité, artefacts, manifestes de publication, état de déploiement, observations de service, support et retrait.
 
-À la date de ce document, OMG répertorie SACM 2.4 Beta 1 (septembre 2026) comme une bêta en cours, tandis que 2.3 reste la version formelle [R-73](../references.fr.md#r-73). Le suivi des tickets de la bêta montre des changements proposés/résolus qui répondent à plusieurs lacunes importantes de 2.3, notamment :
-- valeurs structurées typées et données liées à la force des preuves (SACM24-80) ;
-- constructions liées à l'évaluation (SACM24-75) ;
-- jointures pour combiner affirmations/preuves (SACM24-76) ;
-- références à un concept entier (SACM24-73) ;
-- marqueur needsDevelopment (SACM24-74) ;
-- structure des packages et propriété des domaines (SACM24-56) ;
-- cibles d'inférence/de preuve plus précises (SACM24-82).
+Ces domaines sont des frontières candidates, pas une taxonomie fixe et obligatoire. Certains projets les regrouperont ; d'autres auront besoin de domaines supplémentaires. Le modèle doit permettre des définitions de capacités explicites et des extensions versionnées sans que chaque domaine invente ses propres identités, provenance, décisions et sémantiques de cycle de vie incompatibles.
 
-C'est significatif : certains éléments qui pourraient autrement devenir des extensions GovCheck sont déjà étudiés dans la révision de SACM elle-même. Mais les résolutions de tickets d'une bêta ne constituent pas un contrat normatif final. GovCheck devrait suivre l'évolution de 2.4 et réévaluer son choix lorsqu'une version formelle et son modèle lisible par machine seront publiés.
+Les concepts transverses devraient inclure :
 
-## 6. Architecture sémantique proposée
+- identité stable, révision et état du cycle de vie ;
+- objectif, exigence, règle, propriété et contrat ;
+- acteur, rôle, autorité, délégation et approbation ;
+- artefact, dépendance, relation et liaison au sujet exact ;
+- méthode, exécution, observation, constat et preuve ;
+- hypothèse, incertitude, limite et contre-preuve ;
+- affirmation, argument, évaluation, risque et décision ;
+- applicabilité, validité, fraîcheur, invalidation et réévaluation ;
+- provenance, historique d'audit et projection documentaire contrôlée.
 
-Utiliser un **graphe métier GovCheck** comme couche sémantique faisant autorité, avec des adaptateurs/projections PEAK et SACM.
+Les relations typées relient le socle commun aux enregistrements métier : derivesFrom, refines, constrains, appliesTo, implementedBy, verifiedBy, testedBy, evidencedBy, supports, refutes, assumes, dependsOn, affects, invalidates, supersedes, reviewedBy et authorizedBy. Des relations propres à un domaine (par exemple threatens, mitigatedBy ou regresses) ne sont ajoutées qu'avec une sémantique explicite.
 
-### 6.1 Concepts métier fondamentaux
+### 6.1 Vues et interopérabilité
 
-Conserver au minimum des identités stables et des relations typées pour :
+- **Vue PEAK :** exposer le Problem, l'Experience, les Assumptions et le Knowledge qui éclairent une décision, puis sa Solution et son Assumed Risk.
+- **Adaptateur SACM :** échanger des dossiers d'assurance, préserver la sémantique des affirmations/arguments/preuves/contextes et signaler tout mapping non pris en charge ou avec perte.
+- **Vues métier :** présenter les exigences, artefacts, méthodes, preuves et décisions pertinents pour les tests, la maintenabilité, les preuves formelles, les dépendances, la sécurité ou toute autre capacité sélectionnée.
+- **Vue cycle de vie :** montrer comment intention du projet, exigences, architecture, implémentation, vérification, acceptation, publication, exploitation et maintenance s'articulent dans le temps.
+- **Vue de retour opérationnel :** montrer les observations, constats dérivés, hypothèses/affirmations/décisions affectées et réévaluations nécessaires.
 
-- **Contexte système :** projet, actif, composant, instance de déploiement, environnement, instantané de configuration et frontière de confiance.
-- **Modèle de menace :** source/acteur de menace, capacité, événement de menace, scénario, technique/chemin d'attaque, précondition, faiblesse, exposition et conséquence.
-- **Contrôle :** définition du contrôle, instance d'implémentation/configuration, responsable, état du cycle de vie, test/évaluation et statut de surveillance.
-- **Témoignage opérationnel :** événement, observation, capteur/collecteur, indicateur, anomalie, hypothèse, incident/constat et évaluation dérivée.
-- **Assurance :** affirmation, sous-affirmation, argument/raisonnement, hypothèse, preuve, contre-preuve/élément réfutant, méthode, périmètre, limite, revue et statut d'assurance.
-- **Risques et décisions :** évaluation du risque, option de traitement, risque résiduel, décision d'acceptation, autorité, propriétaire, alternatives, justification, validité, expiration et déclencheur de réévaluation.
-- **Provenance :** producteur/participant, activité, outil, source, horodatage, révisions exactes, empreinte, intégrité/authenticité, dérivation et remplacement.
+Ces vues sont des projections des enregistrements gouvernés, pas des sources de vérité concurrentes. Modifier une vue doit produire des changements GovCheck explicites et validés, avec l'autorité requise.
 
-### 6.2 Relations typées importantes
+## 7. Invariants transverses
 
-Le vocabulaire de relations devrait inclure au minimum :
+1. Toute observation, tout résultat et toute décision est lié à son sujet exact, sa révision, sa méthode, son périmètre et sa provenance.
+2. Les observations brutes et décisions historiques sont préservées ; les corrections et réinterprétations créent des enregistrements liés au lieu de réécrire silencieusement l'historique.
+3. Une observation n'est pas automatiquement un fait, un constat, une preuve pour une affirmation donnée ou une décision autorisée.
+4. Hypothèses, preuves, inférences, conclusions, incertitudes et limites restent distinguables dans tous les domaines.
+5. Une méthode n'établit que ce que permettent son périmètre, ses entrées, sa configuration, son exécution et son socle de confiance déclarés.
+6. La fraîcheur et l'invalidation des preuves suivent les dépendances déclarées ; un changement d'artefact, d'exigence, d'outil, d'environnement ou d'hypothèse déclenche la réévaluation appropriée, pas une remise à zéro globale et indifférenciée.
+7. Un résultat absent n'est pas un résultat positif. Inconnu, non applicable, non exécuté, non pris en charge, incomplet, échoué et réussi restent distincts.
+8. Une métrique ou un score agrégé ne doit pas masquer les preuves, hypothèses, incertitudes ou significations propres au domaine sous-jacents.
+9. Une décision enregistre son autorité, sa justification, son périmètre, ses alternatives, sa validité et ses conditions de revue. PEAK peut rendre son raisonnement lisible, mais ne confère aucune autorité.
+10. Les conclusions propres à un domaine ne modifient pas silencieusement les règles canoniques de gouvernance. Les changements normatifs suivent le cycle de vie gouverné.
+11. Un export/import SACM doit préserver le sens ou signaler explicitement les pertes ; un aller-retour syntaxique ne suffit pas.
+12. Les règles propres à la sécurité — par exemple revue du modèle de menace et acceptation du risque — s'appliquent dans leur domaine déclaré et ne deviennent pas des règles universelles pour des préoccupations sans rapport.
 
-- observedOn, collectedBy, derivedFrom, correlatedWith ;
-- indicates, hypothesizes, confirms, refutes, challenges ;
-- threatens, enables, requiresPrecondition, followsAttackStep ;
-- mitigatedBy, implementedAs, configuredBy, testedBy, monitoredBy ;
-- supports, refutes, contextualizes, assumes, inferredFrom ;
-- affectsClaim, invalidatesEvidence, invalidatesReview, triggersReassessment ;
-- assessedBy, treatedBy, acceptsResidualRisk, authorizedBy ;
-- supersedes, derivedFrom, revalidates.
+## 8. Recommandations et travaux par étapes
 
-Les relations doivent avoir leur propre identité, provenance, périmètre et, le cas échéant, intervalle de validité. Une arête générique non typée ou une étiquette textuelle ne suffit pas pour une interprétation normative.
+### Recommandations
 
-### 6.3 Règles de projection
-
-- **Projection PEAK :** afficher une décision et ses entrées liées Problem, Experience, Assumptions et Knowledge, puis sa Solution et son Assumed Risk. Chaque élément affiché renvoie à l'identité et à la révision canoniques GovCheck.
-- **Projection SACM :** mapper affirmations, raisonnements, inférences, preuves, contextes, artefacts et terminologie dans des packages SACM. Préserver les sémantiques propres à GovCheck dans une extension/profil avec espace de noms ou des enregistrements liés explicites. Les tests aller-retour doivent détecter toute sémantique perdue ou affaiblie.
-- **Projection du modèle de menace :** afficher les scénarios et chemins d'attaque de conception à côté des indicateurs/hypothèses dérivés des observations, en distinguant clairement possibilités modélisées, faits observés et constats confirmés.
-- **Projection opérationnelle :** montrer l'instantané courant du système/déploiement, la couverture des observations, l'état des contrôles, les hypothèses en attente, les affirmations d'assurance affectées et les décisions à réexaminer.
-
-La projection n'est pas la source de vérité. Une modification par l'utilisateur dans une vue PEAK ou SACM doit produire des changements explicites dans le domaine GovCheck, avec validation et contrôle d'autorité.
-
-## 7. Invariants sémantiques et contraintes de sûreté
-
-1. Les observations brutes sont immuables ; les corrections ou réinterprétations créent de nouveaux enregistrements liés à l'original.
-2. Une observation n'est pas automatiquement un fait, un indicateur, une hypothèse, un incident, une menace ou une évaluation du risque.
-3. Une hypothèse conserve les explications alternatives, le fondement du niveau de confiance, l'incertitude et les contre-preuves.
-4. L'absence d'observation n'implique pas l'absence de menace, sauf si la couverture de surveillance et la santé des capteurs étayent cette inférence.
-5. Les hypothèses sont des prémisses gouvernées de première classe, distinctes des preuves et du risque assumé.
-6. Les hypothèses surveillables sont liées à des prédicats explicites, une identité de moniteur, une couverture et une politique de réponse ; toutes les hypothèses ne sont pas surveillables.
-7. Une hypothèse violée ne conteste que les affirmations/décisions dont la clôture argumentative en dépend ; l'impact doit être tracé, pas deviné globalement.
-8. Une mise à jour du modèle de menace est versionnée et revue. Une observation peut proposer un nouveau scénario ou réviser sa plausibilité, mais ne modifie pas silencieusement la référence normative.
-9. L'efficacité d'un contrôle est circonscrite au déploiement, à la configuration, à la méthode et à la fenêtre temporelle testés/observés.
-10. Une décision d'acceptation du risque n'améliore pas le statut d'assurance, ne valide pas un contrôle et n'efface pas les contre-preuves.
-11. Une action en production exige une politique et une autorité explicites ; recommandations et prédictions ne sont pas des autorisations.
-12. Les décisions, observations, évaluations et états d'assurance historiques restent auditables après remplacement ou invalidation.
-
-## 8. Recommandation d'adoption et travaux par étapes
-
-### Recommandation
-
-- Conserver le graphe métier GovCheck et les sémantiques d'autorité de gouvernance comme éléments canoniques.
-- Adopter PEAK comme **vue de traçabilité des décisions** pour les décisions importantes de gouvernance/sécurité/risque, pas comme ontologie séparée ou règle de décision automatique.
-- Traiter SACM 2.3 comme première **cible d'interopérabilité** pour les structures de dossier d'assurance, pas comme métamodèle complet de GovCheck.
-- Suivre SACM 2.4 Beta 1 et éviter de finaliser les mappings sur les domaines actuellement modifiés avant la publication d'une version formelle 2.4.
-- Ajouter des sémantiques de profil/extension GovCheck uniquement lorsque la base SACM ne peut pas représenter le sens métier requis ; maintenir des mappings explicites qui préservent les pertes éventuelles.
+- Conserver le modèle de gouvernance et de cycle de vie de l'ensemble du dépôt comme principe organisateur de GovCheck.
+- Traiter les capacités métier comme composables et sélectionnables ; ne rendre obligatoires pour chaque projet ni la sécurité, ni les méthodes formelles, ni les tests, ni aucune discipline unique.
+- Utiliser PEAK comme méthode de raisonnement et de traçabilité des décisions lorsque leur importance le justifie. Ne pas le comparer à SACM.
+- Évaluer SACM uniquement pour le problème de représentation/échange des dossiers d'assurance. Ne pas le traiter comme métamodèle de GovCheck ni comme source de gouvernance du cycle de vie des dépôts.
+- Préserver la distinction entre gouvernance normative, méthodes métier, preuves, arguments d'assurance et décisions autorisées.
+- Garder un modèle extensible et neutre vis-à-vis des méthodes. Préférer des adaptateurs et mappings explicites plutôt que de forcer chaque discipline dans un standard externe unique.
 
 ### Séquence proposée
 
-1. **Spécification de mapping sémantique :** mapper 0013/0021 et les enregistrements de preuve GovCheck vers PEAK et SACM 2.3 ; consigner les concepts et cardinalités non mappés.
-2. **Contrat d'observation :** définir un schéma versionné d'observation/événement opérationnel distinct de l'enregistrement de preuve/évaluation dérivée ; inclure provenance, sujet exact, horloge/couverture, intégrité, incertitude et vie privée.
-3. **Contrat de retour vers le modèle de menace :** définir la transition observation → indicateur/hypothèse → proposition de modèle de menace → revue → mise à jour versionnée.
-4. **Contrat de décision :** définir les liens des entrées PEAK, alternatives, solution, risque assumé/résiduel, autorité, expiration et déclencheurs de réévaluation.
-5. **Prototype d'interopérabilité SACM :** importer/exporter un dossier d'assurance représentatif ; tester affirmations, hypothèses, contextes, contre-preuves, artefacts, événements, bindings de packages et extensions GovCheck pour détecter les pertes aller-retour.
-6. **Vérifications formelles :** modéliser invalidation/réévaluation et autorisation des décisions séparément de la détection. Ne pas fusionner tout le raisonnement de menace à l'exécution dans un seul modèle sujet à l'explosion d'états.
-7. **Pilote opérationnel :** commencer avec des observations synthétiques, puis une source de télémétrie non sensible et de périmètre limité. Ne pas automatiser de mitigation conséquente avant d'avoir démontré gestion des faux positifs, rollback, autorisation et préservation des preuves.
+1. **Cartographie des capacités du dépôt :** rapprocher la liste des domaines des spécifications, architectures, catalogue d'artefacts et capacités de bootstrap existants. Identifier recouvrements, omissions, dépendances et responsabilités.
+2. **Mapping sémantique transverse :** relier les concepts communs des documents 0002/0003/0005/0013/0017/0021 aux enregistrements propres aux domaines sans dupliquer identité, provenance, autorité ou cycle de vie.
+3. **Enregistrement de décision et vue PEAK :** définir les liens entre Problem, Experience, Assumptions, Knowledge, alternatives, Solution, Assumed Risk, autorité et réévaluation ultérieure.
+4. **Contrats observation/constat :** définir des enregistrements généraux d'événement/observation et de constat/preuve dérivé, avec liaison au sujet exact, provenance, incertitude, vie privée et invalidation.
+5. **Parcours de retour par domaine :** spécifier comment les observations mettent à jour l'évaluation pertinente — maintenabilité, adéquation des tests, état des dépendances ou hypothèses de menace — sans modifier silencieusement les règles normatives.
+6. **Prototype d'interopérabilité SACM :** mapper un dossier d'assurance représentatif, tester la préservation du sens et documenter les concepts non pris en charge. Garder ce travail dans le périmètre des dossiers d'assurance.
+7. **Modèles formels et tests :** vérifier les propriétés communes de cycle de vie telles que l'autorité, l'invalidation, la revue et l'acceptation, puis ajouter des propriétés propres aux domaines lorsque cela se justifie.
+8. **Intégration au bootstrap :** exposer les capacités métier et leurs dépendances dans le profil guidé, avec sélection, omission, migration et comportement non destructif explicites.
 
 ## 9. Limites et décisions non prises
 
-Ce document n'adopte pas SACM comme ontologie canonique de GovCheck, ne sélectionne pas de base de données graphe, ne prescrit pas de score de risque, ne définit pas de plateforme de télémétrie de production, n'autorise pas de remédiation autonome et ne prétend pas que la modélisation des menaces à l'exécution est implémentée. PEAK reste un cadre d'analyse de décision ; SACM reste un métamodèle de dossier d'assurance. Leurs rôles sont volontairement distincts.
+Ce document ne finalise pas une taxonomie universelle des domaines, ne sélectionne ni base graphe ni sérialisation, ne prescrit pas un score unique de qualité/risque, ne rend pas PEAK obligatoire pour chaque décision, n'adopte pas SACM comme modèle canonique et ne prétend pas que la collecte d'observations ou la réévaluation automatisée soient implémentées. Il ne rend obligatoires ni la sécurité ni la vérification formelle pour chaque dépôt.
 
-La question de conception immédiate n'est pas « quel modèle unique remplace tous les autres ? » mais « quelles sémantiques canoniques permettent de projeter les mêmes faits et décisions gouvernés dans des vues menace, opérationnelle, PEAK et SACM sans perdre provenance, incertitude, autorité ni signification ? »
+La question centrale est de savoir comment GovCheck peut gouverner un dépôt pendant tout son cycle de vie tout en permettant à différents domaines et méthodes d'ingénierie de coexister : des sémantiques communes d'identité, d'autorité, de provenance, de décision et de cycle de vie, avec des modèles et exigences de preuve propres aux domaines lorsque cela est réellement nécessaire. PEAK et SACM contribuent à deux parties distinctes de cette architecture ; aucun des deux ne la définit dans son ensemble.

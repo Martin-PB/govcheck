@@ -34,56 +34,56 @@ La présence d'une référence est descriptive, pas une adoption. Citer une mét
 - **Utilité :** préserver les sémantiques snapshot/commit de Git et celles de graphe de changements/patches, canaux et conflits de Pijul.
 - **Limite :** la documentation ne prouve pas qu'un adaptateur GovCheck est implémenté ; les adaptateurs exigent encore des contrats natifs et des tests de conformité.
 
-<a id="r-27"></a>
-## R-27 — Common Criteria / ISO/IEC 15408
+<a id="r-35"></a>
+## R-35 — Common Criteria / ISO/IEC 15408
 - **Sources primaires :** [Portail Common Criteria](https://www.commoncriteriaportal.org/) · [Publications CC:2022 et CEM:2022](https://www.commoncriteriaportal.org/cc/index.cfm)
 - **Utilité :** contexte pour l'évaluation de sécurité et les niveaux EAL.
 - **Limite :** les EAL sont des ensembles d'exigences d'évaluation, pas des grades génériques de maturité logicielle ni des paliers d'assurance GovCheck.
 
-<a id="r-28"></a>
-## R-28 — RTCA DO-178C / EUROCAE ED-12C
+<a id="r-36"></a>
+## R-36 — RTCA DO-178C / EUROCAE ED-12C
 - **Sources primaires :** [FAA AC 20-115D](https://www.faa.gov/airports/resources/advisory_circulars/index.cfm/go/document.information/documentNumber/20-115D) · [Présentation RTCA](https://www.rtca.org/do-178/)
 - **Utilité :** objectifs de cycle de vie logiciel aéronautique, vérification et preuves de certification.
 - **Limite :** norme d'assurance sectorielle dans un contexte de certification de navigabilité, pas réglementation logicielle générale.
 
-<a id="r-29"></a>
-## R-29 — Alloy
+<a id="r-37"></a>
+## R-37 — Alloy
 - **Sources primaires :** [Projet et documentation Alloy](https://alloytools.org/) · [Code source de l'analyseur](https://github.com/AlloyTools/org.alloytools.alloy)
 - **Utilité :** modélisation relationnelle, analyse bornée et recherche de contre-exemples.
 - **Limite :** les résultats dépendent des portées et hypothèses ; ils n'établissent pas la conformité de l'implémentation.
 
-<a id="r-30"></a>
-## R-30 — SPIN / Promela
+<a id="r-38"></a>
+## R-38 — SPIN / Promela
 - **Source primaire :** [Manuel SPIN](https://spinroot.com/spin/Man/Manual.html)
 - **Utilité :** modélisation et vérification de systèmes concurrents/distribués et de propriétés temporelles.
 - **Limite :** les résultats portent sur l'abstraction Promela et la configuration de recherche.
 
-<a id="r-31"></a>
-## R-31 — Kani
+<a id="r-39"></a>
+## R-39 — Kani
 - **Source primaire :** [Documentation Kani](https://model-checking.github.io/kani/)
 - **Utilité :** model checking borné de programmes Rust et harnesses de preuve.
 - **Limite :** fonctionnalités Rust et concurrence prises en charge limitées ; résultats dépendants des harnesses, bornes et toolchain.
 
-<a id="r-32"></a>
-## R-32 — Verus
+<a id="r-40"></a>
+## R-40 — Verus
 - **Source primaire :** [Tutoriel et référence Verus](https://verus-lang.github.io/verus/guide/)
 - **Utilité :** vérification statique de correction fonctionnelle pour Rust.
 - **Limite :** toutes les fonctionnalités/bibliothèques Rust ne sont pas prises en charge ; le vérificateur et la toolchain compilateur restent dans le socle de confiance.
 
-<a id="r-33"></a>
-## R-33 — Dafny
+<a id="r-41"></a>
+## R-41 — Dafny
 - **Source primaire :** [Manuel de référence Dafny](https://dafny.org/dafny/DafnyRef/DafnyRef)
 - **Utilité :** spécifications, pré/postconditions, invariants et vérification statique de programmes.
 - **Limite :** les affirmations vérifiées dépendent de la spécification Dafny et du vérificateur/backend de confiance.
 
-<a id="r-34"></a>
-## R-34 — Coq / Rocq
+<a id="r-42"></a>
+## R-42 — Coq / Rocq
 - **Sources primaires :** [Documentation Rocq](https://rocq-prover.org/docs) · [Documentation Coq versionnée](https://docs.rocq-prover.org/)
 - **Utilité :** preuve de théorèmes vérifiée par machine en théorie des types dépendants.
 - **Limite :** les résultats dépendent des définitions, axiomes, résultats importés et hypothèses du noyau/toolchain.
 
-<a id="r-35"></a>
-## R-35 — Isabelle
+<a id="r-43"></a>
+## R-43 — Isabelle
 - **Source primaire :** [Documentation Isabelle](https://www.isabelle.in.tum.de/documentation.html)
 - **Utilité :** preuve interactive de théorèmes et spécification formelle.
 - **Limite :** les résultats dépendent de la logique choisie, des théories importées, axiomes et environnement du prouveur.

@@ -12,7 +12,9 @@
 | Identité, versionnement, releases et reproductibilité des artefacts | R-14–R-15, R-21, R-23–R-26 |
 | Métadonnées de gouvernance et catalogues | R-17 |
 | Systèmes de workflow d'agents évalués comme fixtures | R-18–R-19 |
-| Sémantiques des VCS et collaboration | R-22 |\n| Modélisation des menaces, chemins d'attaque et gestion des risques | R-27–R-32 |\n| Dossiers d'assurance de sécurité et métamodèles | R-33–R-34 |
+| Sémantiques des VCS et collaboration | R-22 |
+| Modélisation des menaces, chemins d'attaque et gestion des risques | R-27–R-32 |
+| Dossiers d'assurance de sécurité et métamodèles | R-33–R-34 |
 
 ## Entrées bibliographiques détaillées
 
@@ -33,7 +35,9 @@
 - **Patron externe de catalogue/gouvernance :** R-17.
 - **Outils de workflow d'agents évalués, mais non adoptés :** R-18, R-19.
 - **Assistant de preuve et contrats d'interface :** R-20, R-21.
-- **Sémantiques natives des VCS et adaptateurs de collaboration :** R-22.\n- **Modélisation des menaces, chemins d'attaque et gestion des risques :** R-27 à R-32.\n- **Dossiers d'assurance de sécurité et métamodèles :** R-33 à R-34.
+- **Sémantiques natives des VCS et adaptateurs de collaboration :** R-22.
+- **Modélisation des menaces, chemins d'attaque et gestion des risques :** R-27 à R-32.
+- **Dossiers d'assurance de sécurité et métamodèles :** R-33 à R-34.
 
 ## Normes, recommandations publiques et spécifications industrielles
 
@@ -342,7 +346,8 @@
 - **Utilité pour GovCheck :** métamodèle comparatif possible pour les artefacts d'assurance typés et leur traçabilité, au-delà de documents narratifs libres.
 - **Limite :** SACM est un métamodèle, pas une méthode d'évaluation des risques, un oracle de vérité ni une preuve de suffisance des éléments probants. La version 2.4 est actuellement une bêta ; cette entrée renvoie à la version formelle 2.3 et ne recommande pas l'adoption de SACM.
 - **Cité par :** [0024](architecture/0024-project-bootstrap-and-assurance-profiles.fr.md) (affirmations d'assurance et preuves typées).
-\n## Discipline bibliographique et provenance non résolue
+
+## Discipline bibliographique et provenance non résolue
 
 1. Privilégier l'organisme normatif, l'éditeur, la documentation officielle ou le dépôt source plutôt que les résumés secondaires.
 2. L'identifiant R-12 a été retiré lors de la consolidation de son entrée Scorecard en doublon dans R-08 ; ne pas réutiliser cet identifiant retiré.

@@ -51,8 +51,8 @@ def catalogue_entries(path: Path, lang: str) -> dict[str, str]:
         if ref_id in entries:
             error(f"{path.relative_to(ROOT)}: duplicate entry {ref_id}")
         entries[ref_id] = part
-        if not CITED_RE[lang].search(part):
-            error(f"{path.relative_to(ROOT)}: {ref_id} has no Cited by field")
+        if len(CITED_RE[lang].findall(part)) != 1:
+            error(f"{path.relative_to(ROOT)}: {ref_id} must have exactly one Cited by field")
         if not re.search(r'https?://', part):
             error(f"{path.relative_to(ROOT)}: {ref_id} has no external source URL")
     return entries
@@ -98,11 +98,14 @@ def check_references(external: bool) -> int:
     markdown_files = sorted(DOCS.rglob("*.md"))
     source_docs = [p for p in markdown_files if p not in CATALOGUES.values()]
     citations: dict[str, set[str]] = defaultdict(set)
+    document_links: dict[str, dict[str, set[str]]] = defaultdict(dict)
     linked_urls: set[str] = set()
     for path in source_docs:
         text = path.read_text(encoding="utf-8")
         logical = logical_doc(path)
         linked_ids = {f"R-{m.group(2)}" for m in REF_LINK_RE.finditer(text)}
+        lang = "fr" if path.name.endswith(".fr.md") else "en"
+        document_links[logical][lang] = linked_ids
         mentioned_ids = {f"R-{n}" for n in re.findall(r'\bR-(\d{2})\b', text)}
         for ref_id in sorted(mentioned_ids - linked_ids):
             error(f"{path.relative_to(ROOT)}: mentions {ref_id} without a catalogue link")
@@ -110,6 +113,12 @@ def check_references(external: bool) -> int:
             if ref_id not in en or ref_id not in fr:
                 error(f"{path.relative_to(ROOT)}: link to missing entry {ref_id}")
             citations[ref_id].add(logical)
+    for logical, by_language in document_links.items():
+        if "en" in by_language and "fr" in by_language and by_language["en"] != by_language["fr"]:
+            error(
+                f"{logical}: EN/FR citation mismatch; "
+                f"EN={sorted(by_language['en'])}, FR={sorted(by_language['fr'])}"
+            )
     for lang, entries in (("en", en), ("fr", fr)):
         catalogue = CATALOGUES[lang]
         for ref_id, block in entries.items():
@@ -118,6 +127,10 @@ def check_references(external: bool) -> int:
             declared: set[str] = set()
             for target in re.findall(r'\[[^\]]+\]\(([^)]+)\)', line.group(1)):
                 parsed = urllib.parse.urlsplit(target)
+                if lang == "en" and parsed.path.endswith(".fr.md"):
+                    error(f"{catalogue.relative_to(ROOT)}: English backlink uses French document path {target}")
+                if lang == "fr" and not parsed.path.endswith(".fr.md"):
+                    error(f"{catalogue.relative_to(ROOT)}: French backlink uses English document path {target}")
                 path = (DOCS / urllib.parse.unquote(parsed.path)).resolve()
                 if not path.exists():
                     error(f"{catalogue.relative_to(ROOT)}: {ref_id} backlinks to missing document {target}")

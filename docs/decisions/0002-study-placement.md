@@ -22,7 +22,7 @@ French: [ADR 0002 (français)](0002-study-placement.fr.md).
 
 ## Source artifact and evidence boundary
 
-The initial source artifact for this record is **“Évaluer l’intégration des dépôts.pdf”**, dated 6 November 2026, 224 pages. It is retained in the project Library and is not copied into this repository. Its external sources, repositories, pull requests, protocols, vocabularies and format references are indexed in [R-35–R-69 and R-77–R-93](../references.md) through the central catalogue.
+The initial source artifact for this record is **“Évaluer l’intégration des dépôts.pdf”**, dated 6 November 2026, 224 pages. It is retained in the project Library and is not copied into this repository. Its external sources, repositories, pull requests, protocols, vocabularies and format references are preserved in the central catalogue; the directly relevant sources are linked individually below.
 
 The reviewed Cartocortex artifacts have different evidence status: PR #9 is a documentation panorama; PR #27 is an OKF storage/projection study explicitly marked as not executed; PR #28 is a backlog and transport study explicitly marked as not executed. None of these statuses establishes that a proposed adapter, CRDT, transport, cloud sync or format importer is implemented or accepted. See [R-62](../references.md#r-62) and [R-69](../references.md#r-69).
 
@@ -36,6 +36,16 @@ The integration study and its external technical sources are catalogued separate
 
 - [R-18 — Writ source-based assessment](../references.md#r-18)
 - [R-19 — Privateer source-based assessment](../references.md#r-19)
+- [R-35 — Common Criteria / ISO/IEC 15408 and EAL evaluation](../references.md#r-35)
+- [R-36 — RTCA DO-178C / EUROCAE ED-12C and DAL levels](../references.md#r-36)
+- [R-37 — Alloy relational modeling and analysis](../references.md#r-37)
+- [R-38 — SPIN / Promela model checking](../references.md#r-38)
+- [R-39 — Kani Rust program verification](../references.md#r-39)
+- [R-40 — Verus Rust verification](../references.md#r-40)
+- [R-41 — Dafny language and verifier](../references.md#r-41)
+- [R-42 — Coq / Rocq proof assistant](../references.md#r-42)
+- [R-43 — Isabelle theorem prover](../references.md#r-43)
+- [R-44 — KAOS and goal-oriented requirements engineering](../references.md#r-44)
 - [R-45 — CRDT foundations](../references.md#r-45)
 - [R-46 — Yjs and Yrs](../references.md#r-46)
 - [R-47 — Automerge](../references.md#r-47)

@@ -75,13 +75,25 @@ jobs:
           echo "936a262061c914694dfd669a543be24573c45d5aa0ff20a8b96b23d01e050e88  tla2tools.jar" | sha256sum -c -
           sha256sum tla2tools.jar | tee tla2tools.sha256
       - name: Run SANY parse check
-        run: java -cp tla2tools.jar tla2sany.SANY formal/tla/GovCheckLifecycle.tla
+        run: |
+          set -o pipefail
+          java -cp tla2tools.jar tla2sany.SANY formal/tla/GovCheckLifecycle.tla 2>&1 | tee sany-lifecycle-report.txt
+          if grep -Eq 'Semantic errors:|\*\*\* Errors:' sany-lifecycle-report.txt; then
+            echo "SANY reported semantic errors for GovCheckLifecycle.tla" >&2
+            exit 1
+          fi
       - name: Run TLC with pinned lifecycle configuration
         run: |
           set -o pipefail
           java -cp tla2tools.jar tlc2.TLC -config formal/tla/GovCheckLifecycle.cfg formal/tla/GovCheckLifecycle.tla 2>&1 | tee tlc-lifecycle-report.txt
       - name: Run SANY parse check for assurance model
-        run: java -cp tla2tools.jar tla2sany.SANY formal/tla/GovCheckAssurance.tla
+        run: |
+          set -o pipefail
+          java -cp tla2tools.jar tla2sany.SANY formal/tla/GovCheckAssurance.tla 2>&1 | tee sany-assurance-report.txt
+          if grep -Eq 'Semantic errors:|\*\*\* Errors:' sany-assurance-report.txt; then
+            echo "SANY reported semantic errors for GovCheckAssurance.tla" >&2
+            exit 1
+          fi
       - name: Run TLC with pinned assurance configuration
         run: |
           set -o pipefail
@@ -94,4 +106,6 @@ jobs:
           path: |
             tlc-lifecycle-report.txt
             tlc-assurance-report.txt
+            sany-lifecycle-report.txt
+            sany-assurance-report.txt
             tla2tools.sha256

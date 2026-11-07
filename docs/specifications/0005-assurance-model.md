@@ -72,3 +72,18 @@ Evidence declares dependencies. Changes, tool/key compromise, source correction 
 Report claims, status, evidence, assumptions, limitations, state binding, provenance, unresolved defeaters and exact acceptance decision. Distinguish not-run, not-applicable, unsupported, incomplete, failed and passed; avoid unexplained aggregate scores.
 
 A conforming implementation binds evidence to exact states/governance revisions, exposes assumptions/TCB, preserves contradictions and invalidations, distinguishes bounded from exhaustive exploration, accounts for proof axioms/kernel, and requires conformance evidence before implementation-level claims. No engine or proof infrastructure exists yet.
+
+## Bibliographic references
+
+- [R-05 — TLA+ and TLC state-transition modeling](../references.md#r-05)
+- [R-07 — SLSA software supply-chain assurance levels](../references.md#r-07)
+- [R-20 — Lean theorem prover](../references.md#r-20)
+- [R-27 — Common Criteria / ISO/IEC 15408 and EAL evaluation](../references.md#r-27)
+- [R-28 — RTCA DO-178C / EUROCAE ED-12C airborne software assurance](../references.md#r-28)
+- [R-29 — Alloy relational modeling and analysis](../references.md#r-29)
+- [R-30 — SPIN / Promela concurrent-system model checking](../references.md#r-30)
+- [R-31 — Kani Rust program verifier](../references.md#r-31)
+- [R-32 — Verus Rust verification](../references.md#r-32)
+- [R-33 — Dafny specification and program verifier](../references.md#r-33)
+- [R-34 — Coq / Rocq proof assistant](../references.md#r-34)
+- [R-35 — Isabelle theorem prover](../references.md#r-35)

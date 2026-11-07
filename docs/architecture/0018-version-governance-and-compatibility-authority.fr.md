@@ -149,7 +149,7 @@ Ce document ne prétend pas que GovCheck implémente un moteur de décision, un 
 - [Spécification 0005 — Assurance, affirmations et preuves](../specifications/0005-assurance-model.fr.md).
 - [Architecture 0012 — Autorité normative canonique](0012-normative-authority-and-documentation.fr.md).
 - [Architecture 0013 — Métamodèle de gouvernance](0013-governance-metamodel.fr.md).
-- [Semantic Versioning 2.0.0](https://semver.org/lang/fr/spec/v2.0.0.html) ; [R-24](../references.fr.md#r-24) ; [R-25](../references.fr.md#r-25) ; [R-23](../references.fr.md#r-23).
+- [Semantic Versioning 2.0.0](../references.fr.md#r-14) ; [R-24](../references.fr.md#r-24) ; [R-25](../references.fr.md#r-25) ; [R-23](../references.fr.md#r-23).
 
 Ces références éclairent la conception ; les règles d'autorité et de compatibilité présentées ici sont des propositions propres à GovCheck, et non des exigences imposées par ces standards.
 

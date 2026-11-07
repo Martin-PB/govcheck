@@ -136,6 +136,8 @@ SACM n'est pas un concurrent de PEAK. PEAK aide à exposer les éléments de rai
 
 Ces constructions peuvent réduire la quantité de mécanismes propres aux dossiers d'assurance que GovCheck devrait inventer. Elles n'établissent pas qu'une affirmation est vraie, qu'une preuve est fraîche, qu'une décision est autorisée ou qu'une implémentation est conforme à une spécification. Ces significations dépendent toujours des règles propres à GovCheck sur le périmètre, la provenance, l'autorité, le cycle de vie et l'évaluation.
 
+This table is illustrative and uses familiar 2.3-era names; it is not the 2.4 coverage inventory. The complete, version-pinned 2.4 Beta 1 metamodel inventory and its normative/non-normative conformance points are specified in Architecture 0026.
+
 ### 5.2 Frontière et composition avec GovCheck
 
 La distinction de périmètre est architecturale ; il ne s'agit ni d'une comparaison ni d'un classement. SACM gouverne la sémantique de la capacité « dossier d'assurance » ; GovCheck gouverne le dépôt et l'ensemble de son cycle de vie.

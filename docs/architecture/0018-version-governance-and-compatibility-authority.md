@@ -149,7 +149,7 @@ This record does not claim that GovCheck implements a decision engine, dependenc
 - [Specification 0005 — Assurance, Claims and Evidence](../specifications/0005-assurance-model.md).
 - [Architecture 0012 — Canonical normative authority](0012-normative-authority-and-documentation.md).
 - [Architecture 0013 — Governance metamodel](0013-governance-metamodel.md).
-- [Semantic Versioning 2.0.0]([R-14](../references.md#r-14)); [W3C PROV-O]([R-24](../references.md#r-24)); [DataCite Versioning]([R-25](../references.md#r-25)); [1EdTech Versioning Framework 1.0]([R-23](../references.md#r-23)).
+- [R-14](../references.md#r-14); [R-24](../references.md#r-24); [R-25](../references.md#r-25); [R-23](../references.md#r-23).
 
 External references inform the design; the authority and compatibility rules here are GovCheck proposals, not requirements imposed by those standards.
 

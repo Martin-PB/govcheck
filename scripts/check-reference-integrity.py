@@ -18,8 +18,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
 CATALOGUES = {"en": DOCS / "references.md", "fr": DOCS / "references.fr.md"}
-ANCHOR_RE = re.compile(r'<a id="r-(\d{2})"></a>')
-REF_LINK_RE = re.compile(r'\[[^\]]*\]\(([^)]+references(?:\.fr)?\.md#r-(\d{2})[^)]*)\)', re.I)
+ANCHOR_RE = re.compile(r'<a id="r-(\d{2,3})"></a>')
+REF_LINK_RE = re.compile(r'\[[^\]]*\]\(([^)]+references(?:\.fr)?\.md#r-(\d{2,3})[^)]*)\)', re.I)
 LINK_RE = re.compile(r'(?<!!)\[[^\]]*\]\(([^)]+)\)')
 URL_RE = re.compile(r'https?://[^\s)<>]+')
 CITED_RE = {
@@ -41,7 +41,7 @@ def logical_doc(path: Path) -> str:
 
 def catalogue_entries(path: Path, lang: str) -> dict[str, str]:
     text = path.read_text(encoding="utf-8")
-    parts = re.split(r'(?=<a id="r-\d{2}"></a>)', text)
+    parts = re.split(r'(?=<a id="r-\d{2,3}"></a>)', text)
     entries: dict[str, str] = {}
     for part in parts:
         match = ANCHOR_RE.search(part)
@@ -56,6 +56,24 @@ def catalogue_entries(path: Path, lang: str) -> dict[str, str]:
         if not re.search(r'https?://', part):
             error(f"{path.relative_to(ROOT)}: {ref_id} has no external source URL")
     return entries
+
+def thematic_index_ids(path: Path, lang: str) -> set[str]:
+    text = path.read_text(encoding="utf-8")
+    heading = "## Index thématique" if lang == "fr" else "## Thematic index"
+    if heading not in text:
+        error(f"{path.relative_to(ROOT)}: missing thematic index heading")
+        return set()
+    section = text.split(heading, 1)[1].split("\\n## ", 1)[0]
+    indexed: set[str] = set()
+    for first, last in re.findall(r"\\bR-(\\d{2,3})(?:\\s*[–-]\\s*R-(\\d{2,3}))?", section):
+        start = int(first)
+        end = int(last) if last else start
+        if end < start:
+            error(f"{path.relative_to(ROOT)}: reversed thematic index range R-{first}–R-{last}")
+            continue
+        for number in range(start, end + 1):
+            indexed.add(f"R-{number:02d}" if number < 100 else f"R-{number}")
+    return indexed
 
 def markdown_targets(text: str):
     for match in LINK_RE.finditer(text):
@@ -95,18 +113,31 @@ def check_references(external: bool) -> int:
     fr = catalogue_entries(CATALOGUES["fr"], "fr")
     if set(en) != set(fr):
         error(f"Catalogue IDs differ: EN-only={sorted(set(en)-set(fr))}; FR-only={sorted(set(fr)-set(en))}")
+    for lang, catalogue, entries in (("en", CATALOGUES["en"], en), ("fr", CATALOGUES["fr"], fr)):
+        indexed = thematic_index_ids(catalogue, lang)
+        if indexed != set(entries):
+            error(
+                f"{catalogue.relative_to(ROOT)}: thematic index mismatch; "
+                f"missing={sorted(set(entries)-indexed)}, unknown={sorted(indexed-set(entries))}"
+            )
     markdown_files = sorted(DOCS.rglob("*.md"))
     source_docs = [p for p in markdown_files if p not in CATALOGUES.values()]
     citations: dict[str, set[str]] = defaultdict(set)
     document_links: dict[str, dict[str, set[str]]] = defaultdict(dict)
     linked_urls: set[str] = set()
+    catalogue_urls = set(URL_RE.findall(CATALOGUES["en"].read_text(encoding="utf-8")))
+    for path in source_docs:
+        source_text = path.read_text(encoding="utf-8")
+        for url in URL_RE.findall(source_text):
+            if url not in catalogue_urls:
+                warning(f"{path.relative_to(ROOT)}: external URL is not present in the central catalogue: {url}")
     for path in source_docs:
         text = path.read_text(encoding="utf-8")
         logical = logical_doc(path)
         linked_ids = {f"R-{m.group(2)}" for m in REF_LINK_RE.finditer(text)}
         lang = "fr" if path.name.endswith(".fr.md") else "en"
         document_links[logical][lang] = linked_ids
-        mentioned_ids = {f"R-{n}" for n in re.findall(r'\bR-(\d{2})\b', text)}
+        mentioned_ids = {f"R-{n}" for n in re.findall(r'\bR-(\d{2,3})\b', text)}
         for ref_id in sorted(mentioned_ids - linked_ids):
             error(f"{path.relative_to(ROOT)}: mentions {ref_id} without a catalogue link")
         for ref_id in linked_ids:

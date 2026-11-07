@@ -41,3 +41,11 @@ The model is data, not executable code. No arbitrary repository policy scripts a
 ## Conformance targets
 
 An implementation must demonstrate stable IDs, deterministic composition, explicit conflict handling, bounded exceptions, fail-closed indeterminacy, semantic-version pinning, projection drift detection and reproducible explanations. These are targets, not current guarantees.
+
+## Bibliographic references
+
+- [R-01 — NIST SP 800-53 security and privacy controls](../references.md#r-01)
+- [R-09 — Open Policy Agent policy-decision engine](../references.md#r-09)
+- [R-10 — Cedar authorization language](../references.md#r-10)
+- [R-13 — JSON Schema structural contracts](../references.md#r-13)
+- [R-17 — typed governance metadata and traceable relationships](../references.md#r-17)

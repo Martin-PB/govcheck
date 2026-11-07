@@ -26,6 +26,12 @@
 | Adjacent GovCheck ecosystem repositories | R-68 |
 | Mind-map format panorama source inventory | R-69 |
 | Mind-map and graph interchange formats | R-63 |
+| Agent tool and MCP governance | R-70 |
+| Structured compliance models | R-71 |
+| Agent sandboxing and isolation | R-72 |
+| Matrix communication | R-73 |
+| Document search | R-74 |
+| Document extraction | R-75 |
 | Cloud storage provider APIs | R-64 |
 | Browser-local persistence and WebAssembly | R-65 |
 

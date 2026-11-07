@@ -7,6 +7,7 @@
 | Governance authority, separation of duties and secure development | R-01–R-03, R-11 |
 | Risk assessment, threat modeling and attack paths | R-27–R-32 |
 | Security assurance cases and metamodels | R-33–R-34 |
+| PEAK decisions, continuous observations and runtime assurance | R-67–R-73 |
 | Assurance regimes and goal-oriented requirements | R-35–R-36, R-44 |
 | Model checking and program-verification alternatives | R-37–R-43 |
 | Evidence provenance and software supply chain | R-06–R-08 |
@@ -45,6 +46,7 @@
 - **Native VCS semantics and collaboration adapters:** R-22.
 - **Threat modeling, attack paths and risk management:** R-27–R-32.
 - **Security assurance cases and metamodels:** R-33–R-34.
+- **PEAK decisions, continuous observations and runtime assurance:** R-67–R-73.
 
 ## Standards, government guidance and industry specifications
 
@@ -662,6 +664,67 @@
 - **Relevant concepts:** topic-based peer discovery, distributed hash-table rendezvous, UDP hole punching and encrypted peer connections.
 - **Use in GovCheck:** preserves the desktop peer-discovery alternative discussed in Cartocortex PR #28 alongside browser WebRTC signaling.
 - **Limit:** Hyperswarm/HyperDHT is a separate networking stack, not browser-native WebRTC signaling. DHT operation depends on bootstrap infrastructure and network reachability; peer discovery does not define application room authorization, membership policy or persistence.
+
+
+<a id="r-67"></a>
+### R-67 — Hoover, Rosso-Llopart and Taran, *Evaluating Project Decisions: Case Studies in Software Engineering* (2009/2010)
+- **Primary source:** [Publisher catalogue and sample chapter](https://www.informit.com/store/evaluating-project-decisions-case-studies-in-software-9780321544568)
+- **Bibliographic reference:** Carol L. Hoover, Mel Rosso-Llopart and Gil Taran, Addison-Wesley Professional, first published October 2009 (copyright 2010), ISBN 978-0-321-54456-8; Chapter 1, §1.3 introduces the PEAK decision model.
+- **Relevant concepts:** Problem, Experience, Assumptions and Knowledge as decision inputs; a decision process produces a solution and an assumed risk.
+- **Use in GovCheck:** supplies a decision-review lens for making the problem formulation, experiential basis, assumptions, factual knowledge, selected solution and accepted risk explicit and traceable.
+- **Limit:** PEAK is a decision model, not a threat taxonomy, assurance-case metamodel, risk-calculation algorithm or normative governance standard. It does not prescribe a serialization or authorization model.
+- **Cited by:** [0025](architecture/0025-runtime-observations-peak-and-sacm.md) (PEAK projection and governed decisions).
+
+<a id="r-68"></a>
+### R-68 — NIST SP 800-137, Information Security Continuous Monitoring (2011)
+- **Primary source:** [NIST publication](https://csrc.nist.gov/pubs/sp/800/137/final) · [DOI](https://doi.org/10.6028/NIST.SP.800-137)
+- **Relevant concepts:** continuous visibility into assets, threats, vulnerabilities and deployed-control effectiveness; monitoring aligned with organizational risk tolerance; response when observations show controls are inadequate.
+- **Use in GovCheck:** supports a production feedback loop in which observations update system posture, control assessments and risk decisions rather than leaving threat models frozen at design time.
+- **Limit:** monitoring data is not automatically a validated incident, threat or assurance conclusion. Coverage, collection integrity, context, uncertainty and control-monitor health must be assessed.
+- **Cited by:** [0025](architecture/0025-runtime-observations-peak-and-sacm.md) (production observations and continuous reassessment).
+
+<a id="r-69"></a>
+### R-69 — Rushby, “Runtime Certification” (RV 2008)
+- **Primary source:** [Author's paper, presented at the Eighth Workshop on Runtime Verification](https://citeseerx.ist.psu.edu/document?doi=c28045b0a573839028f6042870a3eccd8f9be748&repid=rep1&type=pdf)
+- **Bibliographic reference:** John Rushby, “Runtime Certification,” invited paper at RV 2008, Budapest, April 2008.
+- **Relevant concepts:** assurance cases as claims, evidence and arguments; monitoring assumptions and anomalies at runtime; using runtime verification as evidence; detecting violated environmental assumptions.
+- **Use in GovCheck:** directly supports linking declared assumptions to monitorable conditions and allowing production observations to challenge assumptions and trigger reassessment of assurance claims.
+- **Limit:** runtime monitors only establish properties within their formalized scope and observation boundary. An anomaly or assumption violation is not automatically a confirmed attack or proof of system failure.
+- **Cited by:** [0025](architecture/0025-runtime-observations-peak-and-sacm.md) (assumption monitoring and observation feedback).
+
+<a id="r-70"></a>
+### R-70 — Wei et al., “ACCESS: Assurance Case Centric Engineering of Safety-critical Systems” (2024)
+- **Primary source:** [Journal of Systems and Software article](https://doi.org/10.1016/j.jss.2024.112034) · [open repository copy](https://eprints.whiterose.ac.uk/id/eprint/211554/)
+- **Bibliographic reference:** Ran Wei, Simon Foster, Haitao Mei, Fang Yan, Ruizhe Yang, Ibrahim Habli, Colin O’Halloran, Nick Tudor, Tim Kelly and Yakoub Nemouchi, *Journal of Systems and Software* 213 (2024), article 112034.
+- **Relevant concepts:** model-based assurance cases using SACM; traceability to heterogeneous engineering artifacts; automated evaluation, change-impact analysis, formal-method evidence and dynamic runtime assurance-case evaluation.
+- **Use in GovCheck:** demonstrates a research-backed pattern for co-evolving assurance cases with engineering artifacts and evaluating their validity using runtime data.
+- **Limit:** the paper presents a methodology, prototype and case study, not a general-purpose production-ready security-risk governance engine. Its scope and tooling maturity must not be overstated.
+- **Cited by:** [0025](architecture/0025-runtime-observations-peak-and-sacm.md) (SACM evaluation and runtime assurance).
+
+<a id="r-71"></a>
+### R-71 — Bloomfield and Rushby, “Assurance 2.0: A Manifesto” (2021)
+- **Primary source:** [SRI author page and paper](https://www.csl.sri.com/users/rushby/abstracts/sss21) · [arXiv manuscript](https://arxiv.org/abs/2004.10474)
+- **Bibliographic reference:** Robin Bloomfield and John Rushby, *Systems and Covid-19: Proceedings of the 29th Safety-Critical Systems Symposium*, 2021, pp. 85–108.
+- **Relevant concepts:** stronger scrutiny of reasoning and evidence; explicit defeaters and counterevidence; assessment of evidence weight and discrimination between a claim and its negation.
+- **Use in GovCheck:** motivates explicit counterclaims, defeaters, contradictory observations and evidence-quality/strength assessments rather than a one-sided graph of supporting evidence.
+- **Limit:** Assurance 2.0 is an assurance approach/manifesto, not a complete operational event schema, risk-acceptance authority model or universal numeric scoring method.
+- **Cited by:** [0025](architecture/0025-runtime-observations-peak-and-sacm.md) (counterevidence, defeaters and evidence assessment).
+
+<a id="r-72"></a>
+### R-72 — Ericsson, “Runtime threat modeling for attack prediction and defense” (2025)
+- **Primary source:** [Ericsson engineering article](https://www.ericsson.com/en/blog/2025/12/runtime-threat-modeling-for-attack-prediction-and-defense)
+- **Relevant concepts:** combining telemetry, configuration state and asset/context changes with threat knowledge; observation-driven threat hypotheses; control-effectiveness assessment and feedback loops.
+- **Use in GovCheck:** industrial example of connecting production observability to evolving threat models and control assessment.
+- **Limit:** this is an industry engineering article focused on radio access networks, not a neutral standard or proof that predictive scores are calibrated. GovCheck should preserve provenance, uncertainty and human-governed decisions rather than importing its scoring/automation assumptions.
+- **Cited by:** [0025](architecture/0025-runtime-observations-peak-and-sacm.md) (runtime threat-model feedback).
+
+<a id="r-73"></a>
+### R-73 — OMG Structured Assurance Case Metamodel (SACM), Version 2.4 Beta 1 (September 2026)
+- **Primary source:** [OMG SACM specification status and 2.4 Beta 1 materials](https://www.omg.org/spec/SACM)
+- **Relevant concepts:** proposed extensions to SACM 2.3, including typed structured values/strengths, assessment-related constructs, joins, whole-concept references, development-state marking, and revised package/relationship semantics.
+- **Use in GovCheck:** essential comparison point before selecting an internal or interchange metamodel. The beta issue resolutions indicate which gaps in 2.3 the revision is attempting to address.
+- **Limit:** 2.4 is a beta, not a formal adopted specification. GovCheck must not treat its draft constructs as stable contracts or claim conformance to them. Preserve 2.3 as the current formal baseline pending final 2.4 review.
+- **Cited by:** [0025](architecture/0025-runtime-observations-peak-and-sacm.md) (SACM version comparison and adoption recommendation).
 
 ## Reference discipline and unresolved provenance
 

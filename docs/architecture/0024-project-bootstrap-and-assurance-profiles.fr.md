@@ -169,7 +169,7 @@ L'outil doit aider à comparer les options de traitement, leurs coûts, leur cha
 
 L'acceptation du risque ne fait pas disparaître une menace, ne valide pas une mesure et ne transforme pas une affirmation non étayée en affirmation étayée. Elle enregistre une décision gouvernée d'opérer avec une exposition résiduelle connue. Le statut d'assurance et le traitement du risque doivent donc rester distincts, mais reliés.
 
-## 6. Profil et arborescence générée
+## 5. Profil et arborescence générée
 
 Le résultat est un profil de projet lisible par machine et versionné, accompagné d'un plan de bootstrap déterministe. Le profil enregistre les capacités sélectionnées, les non-sélections explicites lorsque pertinentes, les justifications, le contexte/hypothèses, l'autorité et les révisions du profil/schéma. Il ne constitue pas une seconde source normative : les règles normatives restent dans le paquet canonique de gouvernance.
 

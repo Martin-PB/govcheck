@@ -10,6 +10,7 @@ on:
       - 'formal/artifacts.json'
       - 'docs/architecture/**'
       - 'docs/specifications/**'
+      - 'docs/references/**'
       - 'scripts/validate-version-governance.py'
       - 'tests/test_version_governance_validator.py'
       - 'scripts/render-lifecycle-diagram.py'

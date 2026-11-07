@@ -24,7 +24,7 @@ Ce document traite de trois besoins liés mais distincts :
 
 1. relier les observations issues du cycle de vie du dépôt et, le cas échéant, de l'exploitation du système au modèle gouverné du projet ;
 2. utiliser **PEAK** pour rendre traçables les éléments d'entrée, le raisonnement, la solution et le risque assumé d'une décision ;
-3. évaluer **SACM** comme représentation ou format d'échange possible pour les dossiers d'assurance.
+3. définir comment l'intégralité du métamodèle de dossiers d'assurance SACM est représentée et gouvernée comme une capacité dédiée de GovCheck, et comment elle se relie au modèle plus large de gouvernance des dépôts.
 
 PEAK et SACM ne répondent pas au même problème et ne sont pas des alternatives l'un à l'autre. Aucun des deux ne constitue GovCheck dans son ensemble.
 
@@ -115,13 +115,13 @@ Ne pas surcharger un même enregistrement avec l'observation brute, son interpr�
 
 Une observation peut être utilisée comme preuve, mais elle n'est pas automatiquement admissible pour toute affirmation. Les sémantiques de la Spécification 0005 et de l'Architecture 0021 déterminent si une preuve est pertinente, suffisamment fiable, actuelle et dans le périmètre.
 
-## 5. SACM : une représentation spécialisée des dossiers d'assurance
+## 5. SACM : une capacité complète d'assurance intégrée à GovCheck
 
-SACM (Structured Assurance Case Metamodel) traite de la structure et de l'échange des dossiers d'assurance : affirmations, argumentation, inférences, références de preuves, contexte, artefacts et terminologie [R-34](../references.fr.md#r-34). Sa contribution doit être évaluée dans ce périmètre précis.
+SACM (Structured Assurance Case Metamodel) définit un métamodèle structuré pour les dossiers d'assurance. GovCheck devrait prendre en charge l'intégralité du périmètre sémantique de SACM 2.4 Beta 1 comme capacité d'assurance dédiée, et non comme un simple adaptateur d'échange limité. L'architecture 0026 définit la cible : couverture complète du métamodèle normatif SACM et préservation fidèle des constructions complémentaires explicitement non normatives, avec version épinglée et conformité démontrée [R-34](../references.fr.md#r-34) [R-73](../references.fr.md#r-73).
 
-SACM n'est pas un concurrent de PEAK. PEAK aide à exposer les éléments de raisonnement et le risque assumé derrière une décision ; SACM représente des arguments d'assurance structurés. GovCheck peut utiliser les deux à des fins différentes tout en conservant ses propres sémantiques de gouvernance des dépôts. Les recherches sur l'ingénierie des dossiers d'assurance soulignent également l'importance des réfutations possibles, des contre-preuves et de la force des preuves — des sujets pertinents pour l'évaluation des arguments par GovCheck, que SACM soit ou non utilisé comme format d'échange [R-71](../references.fr.md#r-71).
+SACM n'est pas un concurrent de PEAK. PEAK aide à exposer les éléments de raisonnement et le risque assumé derrière une décision ; SACM représente des arguments d'assurance structurés. GovCheck peut utiliser les deux à des fins différentes tout en conservant ses propres sémantiques de gouvernance des dépôts. Les décisions PEAK peuvent référencer des dossiers et éléments SACM, et les claims SACM peuvent référencer des objectifs, exigences, révisions et preuves GovCheck au moyen de liens typés explicites. Les recherches sur l'ingénierie des dossiers d'assurance soulignent également l'importance des réfutations possibles, des contre-preuves et de la force des preuves — des sujets pertinents pour l'évaluation des arguments par GovCheck, que SACM soit ou non utilisé comme format d'échange [R-71](../references.fr.md#r-71).
 
-### 5.1 Constructions utiles de SACM 2.3
+### 5.1 Périmètre de la capacité SACM
 
 | Construction SACM | Usage potentiel dans GovCheck |
 |---|---|
@@ -136,21 +136,21 @@ SACM n'est pas un concurrent de PEAK. PEAK aide à exposer les éléments de rai
 
 Ces constructions peuvent réduire la quantité de mécanismes propres aux dossiers d'assurance que GovCheck devrait inventer. Elles n'établissent pas qu'une affirmation est vraie, qu'une preuve est fraîche, qu'une décision est autorisée ou qu'une implémentation est conforme à une spécification. Ces significations dépendent toujours des règles propres à GovCheck sur le périmètre, la provenance, l'autorité, le cycle de vie et l'évaluation.
 
-### 5.2 Frontière de SACM par rapport à GovCheck
+### 5.2 Frontière et composition avec GovCheck
 
-La comparaison est volontairement limitée à la **représentation des dossiers d'assurance**. La richesse des structures d'argumentation et de packages de SACM ne signifie pas qu'il serait plus riche que GovCheck dans son ensemble, ni qu'il pourrait le remplacer.
+La distinction de périmètre est architecturale ; il ne s'agit ni d'une comparaison ni d'un classement. SACM gouverne la sémantique de la capacité « dossier d'assurance » ; GovCheck gouverne le dépôt et l'ensemble de son cycle de vie.
 
 SACM ne définit pas la gouvernance complète d'un dépôt logiciel pendant son cycle de vie. Il ne fournit pas à lui seul l'autorité des règles canoniques de GovCheck, le cycle de vie des changements et de leur acceptation, le bootstrap et la sélection des capacités, la gouvernance des artefacts et versions, l'autorité et les délégations des acteurs, ni les politiques et méthodes propres aux domaines sélectionnés par un projet.
 
 SACM ne définit pas non plus toutes les sémantiques métier dont les projets peuvent avoir besoin : politique de maintenabilité, stratégie et adéquation des tests, cycle de vie des dépendances, gouvernance des builds/publications, scénarios de menace, obligations de vie privée ou réponse opérationnelle. Il peut représenter des arguments d'assurance portant sur ces sujets, mais il ne fournit pas leurs modèles métier ni leurs politiques de décision.
 
-Les constructions génériques de SACM sont donc des mappings ou structures d'échange possibles, pas des substituts aux concepts GovCheck. Tout mapping doit préserver la distinction entre affirmation, hypothèse, preuve, inférence, observation et décision autorisée.
+Les constructions SACM sont donc des éléments de premier ordre dans la capacité d'assurance, tandis que les concepts GovCheck transverses restent de premier ordre dans leurs propres domaines. Les mappings doivent préserver les distinctions entre claims, hypothèses, preuves, inférences, observations, exigences, constats, décisions et autorité. L'architecture 0026 définit la cible de couverture SACM complète et le contrat d'intégration entre modèles.
 
-### 5.3 SACM 2.4
+### 5.3 SACM 2.4 Beta 1 comme cible d'ingénierie épinglée
 
-À la date de ce document, l'OMG répertorie SACM 2.4 Beta 1 comme version en cours, tandis que 2.3 reste la version formelle [R-73](../references.fr.md#r-73). Le suivi des tickets de la bêta comprend des travaux sur les valeurs typées, les constructions d'évaluation, les jointures, la structure des packages et des relations d'artefacts plus précises. Ces évolutions méritent d'être suivies, mais la résolution de tickets d'une bêta ne constitue pas un contrat normatif final.
+L'OMG répertorie SACM 2.4 Beta 1 (septembre 2026) comme version en cours, tandis que 2.3 reste formelle [R-73](../references.fr.md#r-73). La bêta introduit ou clarifie l'alignement Foundation/MOF, la sémantique des packages, les sujets explicites des claims, le contexte argumentatif, les assessments, les joins, les descripteurs d'argumentation avancée, les valeurs nommées typées et les vues/diagrammes. Le suivi des tickets distingue également les changements du métamodèle normatif des constructions complémentaires non normatives.
 
-GovCheck ne devrait pas figer son modèle canonique autour de SACM 2.3 ou 2.4. Si une capacité d'échange de dossiers d'assurance est implémentée, son adaptateur devra cibler une version/profil SACM explicitement choisi et enregistrer les mappings non pris en charge ou avec perte.
+GovCheck devrait épingler le PDF Beta 1 exact et le métamodèle lisible par machine pour son prototype, préserver les distinctions de statut normatif et suivre la version finale 2.4 au moyen d'une migration explicite. La couverture complète et la stratégie de conformité sont spécifiées dans l'architecture 0026.
 
 ## 6. Architecture sémantique GovCheck : un socle commun, plusieurs domaines
 
@@ -189,7 +189,7 @@ Les relations typées relient le socle commun aux enregistrements métier : deri
 ### 6.1 Vues et interopérabilité
 
 - **Vue PEAK :** exposer le Problem, l'Experience, les Assumptions et le Knowledge qui éclairent une décision, puis sa Solution et son Assumed Risk.
-- **Adaptateur SACM :** échanger des dossiers d'assurance, préserver la sémantique des affirmations/arguments/preuves/contextes et signaler tout mapping non pris en charge ou avec perte.
+- **Capacité d'assurance SACM :** représenter et valider l'intégralité du métamodèle SACM épinglé ; préserver les constructions complémentaires non normatives et fournir un import/export/aller-retour sans perte des sémantiques natives SACM. Les liens vers le cycle de vie et les artefacts métier GovCheck restent explicites.
 - **Vues métier :** présenter les exigences, artefacts, méthodes, preuves et décisions pertinents pour les tests, la maintenabilité, les preuves formelles, les dépendances, la sécurité ou toute autre capacité sélectionnée.
 - **Vue cycle de vie :** montrer comment intention du projet, exigences, architecture, implémentation, vérification, acceptation, publication, exploitation et maintenance s'articulent dans le temps.
 - **Vue de retour opérationnel :** montrer les observations, constats dérivés, hypothèses/affirmations/décisions affectées et réévaluations nécessaires.
@@ -208,7 +208,7 @@ Ces vues sont des projections des enregistrements gouvernés, pas des sources de
 8. Une métrique ou un score agrégé ne doit pas masquer les preuves, hypothèses, incertitudes ou significations propres au domaine sous-jacents.
 9. Une décision enregistre son autorité, sa justification, son périmètre, ses alternatives, sa validité et ses conditions de revue. PEAK peut rendre son raisonnement lisible, mais ne confère aucune autorité.
 10. Les conclusions propres à un domaine ne modifient pas silencieusement les règles canoniques de gouvernance. Les changements normatifs suivent le cycle de vie gouverné.
-11. Un export/import SACM doit préserver le sens ou signaler explicitement les pertes ; un aller-retour syntaxique ne suffit pas.
+11. La capacité SACM de GovCheck doit préserver chaque construction du métamodèle SACM épinglé et signaler toute sémantique non prise en charge ; aucune construction normative SACM ne peut être supprimée ou simplifiée silencieusement.
 12. Les règles propres à la sécurité — par exemple revue du modèle de menace et acceptation du risque — s'appliquent dans leur domaine déclaré et ne deviennent pas des règles universelles pour des préoccupations sans rapport.
 
 ## 8. Recommandations et travaux par étapes
@@ -218,7 +218,7 @@ Ces vues sont des projections des enregistrements gouvernés, pas des sources de
 - Conserver le modèle de gouvernance et de cycle de vie de l'ensemble du dépôt comme principe organisateur de GovCheck.
 - Traiter les capacités métier comme composables et sélectionnables ; ne rendre obligatoires pour chaque projet ni la sécurité, ni les méthodes formelles, ni les tests, ni aucune discipline unique.
 - Utiliser PEAK comme méthode de raisonnement et de traçabilité des décisions lorsque leur importance le justifie. Ne pas le comparer à SACM.
-- Évaluer SACM uniquement pour le problème de représentation/échange des dossiers d'assurance. Ne pas le traiter comme métamodèle de GovCheck ni comme source de gouvernance du cycle de vie des dépôts.
+- Se conformer au métamodèle SACM dans la capacité dédiée aux dossiers d'assurance. Ne pas étendre le périmètre de SACM jusqu'à remplacer la gouvernance globale, l'autorité ou le cycle de vie des dépôts de GovCheck.
 - Préserver la distinction entre gouvernance normative, méthodes métier, preuves, arguments d'assurance et décisions autorisées.
 - Garder un modèle extensible et neutre vis-à-vis des méthodes. Préférer des adaptateurs et mappings explicites plutôt que de forcer chaque discipline dans un standard externe unique.
 
@@ -229,12 +229,12 @@ Ces vues sont des projections des enregistrements gouvernés, pas des sources de
 3. **Enregistrement de décision et vue PEAK :** définir les liens entre Problem, Experience, Assumptions, Knowledge, alternatives, Solution, Assumed Risk, autorité et réévaluation ultérieure.
 4. **Contrats observation/constat :** définir des enregistrements généraux d'événement/observation et de constat/preuve dérivé, avec liaison au sujet exact, provenance, incertitude, vie privée et invalidation.
 5. **Parcours de retour par domaine :** spécifier comment les observations mettent à jour l'évaluation pertinente — maintenabilité, adéquation des tests, état des dépendances ou hypothèses de menace — sans modifier silencieusement les règles normatives.
-6. **Prototype d'interopérabilité SACM :** mapper un dossier d'assurance représentatif, tester la préservation du sens et documenter les concepts non pris en charge. Garder ce travail dans le périmètre des dossiers d'assurance.
+6. **Prototype de conformité SACM :** dériver l'inventaire complet du métamodèle Beta 1, implémenter la matrice de couverture sémantique et tester l'import/représentation/export/aller-retour sans perte. Relier les dossiers d'assurance aux objectifs, exigences, artefacts, preuves, changements et décisions GovCheck par des mappings typés explicites.
 7. **Modèles formels et tests :** vérifier les propriétés communes de cycle de vie telles que l'autorité, l'invalidation, la revue et l'acceptation, puis ajouter des propriétés propres aux domaines lorsque cela se justifie.
 8. **Intégration au bootstrap :** exposer les capacités métier et leurs dépendances dans le profil guidé, avec sélection, omission, migration et comportement non destructif explicites.
 
 ## 9. Limites et décisions non prises
 
-Ce document ne finalise pas une taxonomie universelle des domaines, ne sélectionne ni base graphe ni sérialisation, ne prescrit pas un score unique de qualité/risque, ne rend pas PEAK obligatoire pour chaque décision, n'adopte pas SACM comme modèle canonique et ne prétend pas que la collecte d'observations ou la réévaluation automatisée soient implémentées. Il ne rend obligatoires ni la sécurité ni la vérification formelle pour chaque dépôt.
+Ce document ne finalise pas une taxonomie universelle des domaines, ne sélectionne ni base graphe ni sérialisation, ne prescrit pas un score unique de qualité/risque, ne rend pas PEAK obligatoire pour chaque décision, ne fait pas de SACM le métamodèle de toute la gouvernance du dépôt et ne prétend pas que la collecte d'observations ou la réévaluation automatisée soient implémentées. Il ne rend obligatoires ni la sécurité ni la vérification formelle pour chaque dépôt.
 
-La question centrale est de savoir comment GovCheck peut gouverner un dépôt pendant tout son cycle de vie tout en permettant à différents domaines et méthodes d'ingénierie de coexister : des sémantiques communes d'identité, d'autorité, de provenance, de décision et de cycle de vie, avec des modèles et exigences de preuve propres aux domaines lorsque cela est réellement nécessaire. PEAK et SACM contribuent à deux parties distinctes de cette architecture ; aucun des deux ne la définit dans son ensemble.
+La question centrale est de savoir comment GovCheck peut gouverner un dépôt pendant tout son cycle de vie tout en permettant à différents domaines et méthodes d'ingénierie de coexister : des sémantiques communes d'identité, d'autorité, de provenance, de décision et de cycle de vie, avec des modèles et exigences de preuve propres aux domaines lorsque cela est réellement nécessaire. PEAK contribue à la traçabilité décisionnelle ; SACM fournit le métamodèle des dossiers d'assurance dans son domaine. Aucun ne remplace l'architecture globale de gouvernance GovCheck.

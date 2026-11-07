@@ -92,7 +92,7 @@ Instruction explicite du propriétaire du projet dans la discussion de gouvernan
 
 - [NIST SP 800-53]([R-01](../references.fr.md#r-01)), notamment les concepts de séparation des tâches : un régime à autorité unique doit rendre explicite l'absence d'autorisation à deux personnes.
 - [Branches protégées GitHub]([R-03](../references.fr.md#r-03)) : les contrôles de dépôt et de fusion sont des paramètres d'application, pas la source de l'autorité normative.
-- Voir le [registre GovCheck des références](../references.fr.md) et sa [version anglaise](../references.fr.md). La décision consignée ici découle de l'instruction explicite du propriétaire du projet ; les sources externes ne l'autorisent pas.
+- Voir le [registre GovCheck des références](../references.fr.md) et sa [version anglaise](../references.md). La décision consignée ici découle de l'instruction explicite du propriétaire du projet ; les sources externes ne l'autorisent pas.
 
 
 ## Références bibliographiques

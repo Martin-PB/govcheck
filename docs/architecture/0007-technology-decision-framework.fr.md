@@ -50,3 +50,20 @@ Chaque ADR indique : question et urgence ; contraintes/portes ; alternatives, y 
 8. Choisir ensuite packaging et adaptateurs forge.
 
 Aucun langage, format de sérialisation, noyau formel, format de signature, licence ou dépendance n'est sélectionné ici.
+
+## Références bibliographiques
+
+- [R-05 — Modélisation par transitions d'états TLA+ / TLC](../references.fr.md#r-05)
+- [R-06 — Provenance de chaîne logicielle in-toto](../references.fr.md#r-06)
+- [R-07 — Assurance de chaîne logicielle SLSA](../references.fr.md#r-07)
+- [R-20 — Assistant de preuve Lean](../references.fr.md#r-20)
+- [R-22 — Sémantiques natives Git et Pijul](../references.fr.md#r-22)
+- [R-27 — Common Criteria / ISO/IEC 15408](../references.fr.md#r-27)
+- [R-28 — RTCA DO-178C / EUROCAE ED-12C](../references.fr.md#r-28)
+- [R-29 — Alloy](../references.fr.md#r-29)
+- [R-30 — SPIN / Promela](../references.fr.md#r-30)
+- [R-31 — Kani](../references.fr.md#r-31)
+- [R-32 — Verus](../references.fr.md#r-32)
+- [R-33 — Dafny](../references.fr.md#r-33)
+- [R-34 — Coq / Rocq](../references.fr.md#r-34)
+- [R-35 — Isabelle](../references.fr.md#r-35)

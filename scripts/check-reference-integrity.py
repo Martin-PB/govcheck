@@ -63,9 +63,9 @@ def thematic_index_ids(path: Path, lang: str) -> set[str]:
     if heading not in text:
         error(f"{path.relative_to(ROOT)}: missing thematic index heading")
         return set()
-    section = text.split(heading, 1)[1].split("\\n## ", 1)[0]
+    section = text.split(heading, 1)[1].split("\n## ", 1)[0]
     indexed: set[str] = set()
-    for first, last in re.findall(r"\\bR-(\\d{2,3})(?:\\s*[–-]\\s*R-(\\d{2,3}))?", section):
+    for first, last in re.findall(r"\bR-(\d{2,3})(?:\s*[–-]\s*R-(\d{2,3}))?", section):
         start = int(first)
         end = int(last) if last else start
         if end < start:

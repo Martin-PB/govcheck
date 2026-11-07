@@ -287,4 +287,4 @@ Ce document est une mémoire de conception et un index de décisions, pas une se
 - [R-18 — Évaluation de Writ comme fixture de workflow d'agent](../references.fr.md#r-18)
 - [R-19 — Évaluation de Privateer comme fixture de workflow d'agent](../references.fr.md#r-19)
 - [R-22 — Sémantiques natives Git et Pijul](../references.fr.md#r-22)
-- [R-29 — Modélisation relationnelle et analyse Alloy](../references.fr.md#r-29)
+- [R-29 — Modélisation relationnelle et analyse Alloy](../references.fr.md#r-37)

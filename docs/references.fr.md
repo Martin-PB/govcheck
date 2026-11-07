@@ -65,7 +65,7 @@
 
 <a id="r-01"></a>
 ### R-01 — NIST SP 800-53 Rev. 5, contrôles de sécurité et de confidentialité
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md), [0013](architecture/0013-governance-metamodel.fr.md), [0022](architecture/0022-governance-capability-audit.fr.md), [0023](architecture/0023-bootstrap-governance-authority.fr.md), [Spec 0002](specifications/0002-canonical-governance-model.fr.md)
 
 - **Source primaire :** [Publication NIST SP 800-53](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final)
 - **Concepts pertinents :** AC-5 (séparation des tâches), gestion des accès, auditabilité et responsabilité des contrôles.
@@ -75,7 +75,7 @@
 <a id="r-02"></a>
 
 ### R-02 — NIST SP 800-218, Secure Software Development Framework (SSDF) 1.1
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md), [0014](architecture/0014-governed-development-workflow.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md), [0022](architecture/0022-governance-capability-audit.fr.md)
 
 - **Sources primaires :** [Publication NIST](https://csrc.nist.gov/pubs/sp/800/218/final) · [DOI](https://doi.org/10.6028/NIST.SP.800-218)
 - **Concepts pertinents :** exigences et décisions de conception de sécurité documentées, pratiques de développement sécurisé, provenance et releases.
@@ -85,7 +85,7 @@
 <a id="r-03"></a>
 
 ### R-03 — Branches protégées et contrôles obligatoires GitHub
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [0014](architecture/0014-governed-development-workflow.fr.md), [0022](architecture/0022-governance-capability-audit.fr.md), [0023](architecture/0023-bootstrap-governance-authority.fr.md)
 
 - **Source primaire :** [Documentation des branches protégées](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)
 - **Concepts pertinents :** revues obligatoires, contrôles de statut, exceptions de contournement et restrictions de branche.
@@ -95,7 +95,7 @@
 <a id="r-04"></a>
 
 ### R-04 — Goal Structuring Notation (GSN), standard communautaire
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [0010](architecture/0010-assurance-proof-and-conformance.fr.md)
 
 - **Source primaire :** [Site officiel du standard GSN](https://scsc.uk/gsn)
 - **Concepts pertinents :** structuration des affirmations d'assurance, arguments, stratégies, contexte, hypothèses et preuves.
@@ -105,7 +105,7 @@
 <a id="r-05"></a>
 
 ### R-05 — TLA+ et TLC
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [0008](architecture/0008-formalization-and-conformance.fr.md), [0009](architecture/0009-govcheck-design-discussion-record.fr.md), [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0011](architecture/0011-lifecycle-model-assertion-audit.fr.md), [0020](architecture/0020-first-tlc-execution-record.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md), [ADR 0001](decisions/0001-bootstrap-boundaries.fr.md), [Spec 0003](specifications/0003-change-lifecycle.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md)
 
 - **Sources primaires :** [Publications de Lamport sur TLA](https://www.microsoft.com/en-us/research/people/lamport/publications/) · [Projet et documentation TLA+](https://lamport.azurewebsites.net/tla/tla.html)
 - **Référence académique :** Leslie Lamport, « The Temporal Logic of Actions », ACM Transactions on Programming Languages and Systems, 16(3), 1994, p. 872–923. [DOI](https://doi.org/10.1145/177492.177726)
@@ -116,7 +116,7 @@
 <a id="r-06"></a>
 
 ### R-06 — in-toto : intégrité de la chaîne d'approvisionnement logicielle
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md), [0007](architecture/0007-technology-decision-framework.fr.md), [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0014](architecture/0014-governed-development-workflow.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md)
 
 - **Sources primaires :** [Projet in-toto](https://in-toto.io/) · [Article USENIX Security 2019](https://ssl.engineering.nyu.edu/papers/torres-toto-usenix19.pdf)
 - **Référence académique :** Santiago Torres-Arias et al., « in-toto: Providing farm-to-table guarantees for bits and bytes », 28th USENIX Security Symposium, 2019.
@@ -127,7 +127,7 @@
 <a id="r-07"></a>
 
 ### R-07 — SLSA
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md), [0007](architecture/0007-technology-decision-framework.fr.md), [0014](architecture/0014-governed-development-workflow.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md)
 
 - **Source primaire :** [Spécification SLSA](https://slsa.dev/spec/)
 - **Concepts pertinents :** niveaux de chaîne d'approvisionnement logicielle, provenance et intégrité de construction.
@@ -137,7 +137,7 @@
 <a id="r-08"></a>
 
 ### R-08 — OpenSSF Scorecard
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md)
 
 - **Sources primaires :** [Page OpenSSF](https://openssf.org/projects/scorecard/) · [Dépôt Scorecard](https://github.com/ossf/scorecard)
 - **Concepts pertinents :** contrôles automatisés et réutilisables de certaines pratiques de sécurité open source.
@@ -147,7 +147,7 @@
 <a id="r-09"></a>
 
 ### R-09 — Open Policy Agent (OPA)
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [0012](architecture/0012-normative-authority-and-documentation.fr.md), [0013](architecture/0013-governance-metamodel.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md), [0022](architecture/0022-governance-capability-audit.fr.md), [Spec 0002](specifications/0002-canonical-governance-model.fr.md)
 
 - **Source primaire :** [Documentation officielle OPA](https://www.openpolicyagent.org/docs)
 - **Concepts pertinents :** séparation entre décision de politique et application ; évaluation d'entrées structurées par rapport à une politique.
@@ -157,7 +157,7 @@
 <a id="r-10"></a>
 
 ### R-10 — Langage d'autorisation Cedar
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [0012](architecture/0012-normative-authority-and-documentation.fr.md), [0013](architecture/0013-governance-metamodel.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md), [0022](architecture/0022-governance-capability-audit.fr.md), [Spec 0002](specifications/0002-canonical-governance-model.fr.md)
 
 - **Sources primaires :** [Référence du langage Cedar](https://docs.cedarpolicy.com/) · [Projet Cedar](https://www.cedarpolicy.com/)
 - **Concepts pertinents :** décisions d'autorisation typées portant sur principal/action/ressource/contexte et séparation de la logique d'autorisation de la logique applicative.
@@ -167,7 +167,7 @@
 <a id="r-11"></a>
 
 ### R-11 — NIST SSDF : page du projet
-- **Cité par :** [0013](architecture/0013-governance-metamodel.fr.md), [0022](architecture/0022-governance-capability-audit.fr.md)
+- **Cité par :** aucun document d’architecture, de spécification ou de décision ne cite actuellement cette source ; elle est conservée comme référence candidate.
 
 - **Source primaire :** [Projet NIST SSDF et publications](https://csrc.nist.gov/projects/ssdf)
 - **Concepts pertinents :** pratiques de développement sécurisé et correspondances avec des pratiques établies.
@@ -177,7 +177,7 @@
 <a id="r-13"></a>
 
 ### R-13 — JSON Schema Draft 2020-12
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [0008](architecture/0008-formalization-and-conformance.fr.md), [0011](architecture/0011-lifecycle-model-assertion-audit.fr.md), [0012](architecture/0012-normative-authority-and-documentation.fr.md), [0013](architecture/0013-governance-metamodel.fr.md), [Spec 0002](specifications/0002-canonical-governance-model.fr.md)
 
 - **Source primaire :** [Page officielle de la spécification](https://json-schema.org/draft/2020-12/)
 - **Concepts pertinents :** validation structurelle d'enregistrements lisibles par machine.
@@ -187,7 +187,7 @@
 <a id="r-14"></a>
 
 ### R-14 — Semantic Versioning 2.0.0
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md), [0018](architecture/0018-version-governance-and-compatibility-authority.fr.md), [0019](architecture/0019-catalogue-and-release-manifest-migration.fr.md)
 
 - **Source primaire :** [SemVer 2.0.0](https://semver.org/)
 - **Concepts pertinents :** MAJOR/MINOR/PATCH par rapport à une API publique et à un contrat de compatibilité déclarés ; les versions publiées sont immuables.
@@ -197,7 +197,7 @@
 <a id="r-15"></a>
 
 ### R-15 — Tags Git et releases
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md), [0018](architecture/0018-version-governance-and-compatibility-authority.fr.md), [0019](architecture/0019-catalogue-and-release-manifest-migration.fr.md)
 
 - **Sources primaires :** [Référence Git : étiquetage](https://git-scm.com/book/en/v2/Git-Basics-Tagging) · [GitHub Releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases)
 - **Concepts pertinents :** identification d'une révision source et publication des artefacts associés à une release.
@@ -207,7 +207,7 @@
 <a id="r-16"></a>
 
 ### R-16 — OpenAPI et contrats d'interface lisibles par machine
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** aucun document d’architecture, de spécification ou de décision ne cite actuellement cette source ; elle est conservée comme référence candidate.
 
 - **Source primaire :** [Spécification OpenAPI](https://spec.openapis.org/oas/latest.html)
 - **Concepts pertinents :** contrats d'interface lisibles par machine.
@@ -217,7 +217,7 @@
 <a id="r-17"></a>
 
 ### R-17 — Google Cloud Knowledge Catalog
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [0012](architecture/0012-normative-authority-and-documentation.fr.md), [0022](architecture/0022-governance-capability-audit.fr.md), [Spec 0002](specifications/0002-canonical-governance-model.fr.md)
 
 - **Source primaire :** [Documentation Knowledge Catalog](https://docs.cloud.google.com/knowledge-catalog/docs)
 - **Concepts pertinents :** métadonnées typées, entrées de catalogue, relations/traçabilité, métadonnées de gouvernance et découverte de contexte.
@@ -228,7 +228,7 @@
 
 <a id="r-18"></a>
 ### R-18 — Writ (infinri/Writ)
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [0009](architecture/0009-govcheck-design-discussion-record.fr.md), [0014](architecture/0014-governed-development-workflow.fr.md), [0016](architecture/0016-writ-privateer-assessment.fr.md), [0019](architecture/0019-catalogue-and-release-manifest-migration.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md)
 
 - **Sources primaires :** [Dépôt](https://github.com/infinri/Writ) · [Politique de sécurité à la révision étudiée](https://github.com/infinri/Writ/blob/ebdafe5450b201339f81e717ed104e6bcfd3fe3e/SECURITY.md) · [Contrat de session et de barrières](https://github.com/infinri/Writ/blob/ebdafe5450b201339f81e717ed104e6bcfd3fe3e/docs/reference/session-and-gates.md)
 - **Révision étudiée :** ebdafe5450b201339f81e717ed104e6bcfd3fe3e (revue consignée le 6 novembre 2026).
@@ -238,7 +238,7 @@
 <a id="r-19"></a>
 
 ### R-19 — Privateer (privateer-agent/privateer-agent)
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [0009](architecture/0009-govcheck-design-discussion-record.fr.md), [0014](architecture/0014-governed-development-workflow.fr.md), [0016](architecture/0016-writ-privateer-assessment.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md)
 
 - **Sources primaires :** [Dépôt](https://github.com/privateer-agent/privateer-agent) · [Politique de sécurité à la révision étudiée](https://github.com/privateer-agent/privateer-agent/blob/181a988e443fa6b6b4138fc349d1260c96408ad4/SECURITY.md) · [README à la révision étudiée](https://github.com/privateer-agent/privateer-agent/blob/181a988e443fa6b6b4138fc349d1260c96408ad4/README.md)
 - **Révision étudiée :** 181a988e443fa6b6b4138fc349d1260c96408ad4 (revue consignée le 6 novembre 2026).
@@ -247,7 +247,7 @@
 
 <a id="r-20"></a>
 ### R-20 — Lean
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [0008](architecture/0008-formalization-and-conformance.fr.md), [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [ADR 0001](decisions/0001-bootstrap-boundaries.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md)
 
 - **Source primaire :** [Référence du langage Lean](https://lean-lang.org/doc/reference/latest/)
 - **Concepts pertinents :** termes de preuve vérifiés par un petit noyau ; démonstration sous définitions, axiomes et hypothèses explicites.
@@ -257,7 +257,7 @@
 <a id="r-21"></a>
 
 ### R-21 — Guides de releases et de reproductibilité pour le logiciel de recherche
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** aucun document d’architecture, de spécification ou de décision ne cite actuellement cette source ; elle est conservée comme référence candidate.
 
 - **Source primaire :** [Software Sustainability Institute — guides et ressources](https://www.software.ac.uk/resources)
 - **Concepts pertinents :** pérennité du logiciel de recherche, citation, releases et reproductibilité.
@@ -267,7 +267,7 @@
 <a id="r-22"></a>
 
 ### R-22 — Sémantiques natives de Git et Pijul
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [0009](architecture/0009-govcheck-design-discussion-record.fr.md), [0011](architecture/0011-lifecycle-model-assertion-audit.fr.md), [0014](architecture/0014-governed-development-workflow.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md), [ADR 0001](decisions/0001-bootstrap-boundaries.fr.md), [Spec 0003](specifications/0003-change-lifecycle.fr.md), [Spec 0004](specifications/0004-vcs-collaboration-contracts.fr.md)
 
 - **Sources primaires :** [Documentation Git](https://git-scm.com/docs) · [Manuel Pijul : théorie](https://pijul.org/manual/theory) · [Canaux Pijul](https://pijul.org/manual/workflows/channels) · [Conflits Pijul](https://pijul.org/manual/conflicts.html)
 - **Concepts pertinents :** modèle de snapshots/commits et arbres de Git ; graphe de changements/patches, canaux et conflits de première classe de Pijul.
@@ -281,7 +281,7 @@
 <a id="r-23"></a>
 
 ### R-23 — IMS Global / 1EdTech : spécifications de versionnement
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md), [0018](architecture/0018-version-governance-and-compatibility-authority.fr.md)
 
 - **Source primaire :** [Spécifications 1EdTech](https://www.imsglobal.org/spec/versioning/v1) (anciennement IMS Global ; consulter la version précise avant d'invoquer une règle particulière).
 - **Concepts pertinents :** identifiants de version et conventions de compatibilité pour des artefacts structurés et publiés.
@@ -291,7 +291,7 @@
 <a id="r-24"></a>
 
 ### R-24 — W3C PROV-O
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md), [0018](architecture/0018-version-governance-and-compatibility-authority.fr.md)
 
 - **Source primaire :** [Recommandation W3C PROV-O](https://www.w3.org/TR/prov-o/).
 - **Concepts pertinents :** entités, activités, agents et relations de provenance.
@@ -301,7 +301,7 @@
 <a id="r-25"></a>
 
 ### R-25 — Guide de versionnement DataCite
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md), [0018](architecture/0018-version-governance-and-compatibility-authority.fr.md)
 
 - **Source primaire :** [Documentation DataCite sur le versionnement](https://support.datacite.org/docs/versioning).
 - **Concepts pertinents :** identification et relations entre versions de productions scientifiques citables.
@@ -311,7 +311,7 @@
 <a id="r-26"></a>
 
 ### R-26 — Étude sur le versionnement des données scientifiques (2024)
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md)
 
 - **Source primaire :** [Article Nature / Scientific Data](https://www.nature.com/articles/s41597-024-03153-y).
 - **Concepts pertinents :** pratiques de versionnement et de provenance des données scientifiques.
@@ -320,7 +320,7 @@
 
 <a id="r-27"></a>
 ### R-27 — NIST SP 800-30 Rev. 1, Guide pour la conduite des évaluations des risques
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md)
 
 - **Source primaire :** [Publication NIST](https://csrc.nist.gov/pubs/sp/800/30/r1/final) · [DOI](https://doi.org/10.6028/NIST.SP.800-30r1)
 - **Concepts pertinents :** sources et événements de menace, vulnérabilités, vraisemblance et impact, évaluation des risques, risque résiduel, hypothèses, justification et incertitude.
@@ -329,7 +329,7 @@
 
 <a id="r-28"></a>
 ### R-28 — NIST SP 800-160 Vol. 1 Rev. 1, Engineering Trustworthy Secure Systems
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md)
 
 - **Source primaire :** [Publication NIST](https://csrc.nist.gov/pubs/sp/800/160/v1/r1/final) · [DOI](https://doi.org/10.6028/NIST.SP.800-160v1r1)
 - **Concepts pertinents :** ingénierie de la sécurité des systèmes sur l'ensemble du cycle de vie ; besoins de protection des parties prenantes ; exigences, architecture, implémentation, vérification, validation et gestion des risques.
@@ -338,7 +338,7 @@
 
 <a id="r-29"></a>
 ### R-29 — ISO 31000:2018, Management du risque — Lignes directrices
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md)
 
 - **Source primaire :** [Page officielle de la norme ISO](https://www.iso.org/standard/31000)
 - **Concepts pertinents :** principes et cadre pour identifier, analyser, évaluer, traiter, surveiller, revoir et communiquer les risques.
@@ -347,7 +347,7 @@
 
 <a id="r-30"></a>
 ### R-30 — MITRE ATT&CK
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md)
 
 - **Source primaire :** [Base de connaissances MITRE ATT&CK](https://attack.mitre.org/) · [Guide de démarrage et d'utilisation](https://attack.mitre.org/resources/)
 - **Concepts pertinents :** tactiques et techniques adverses fondées sur des comportements observés ; correspondances entre techniques, plateformes et mesures d'atténuation.
@@ -356,7 +356,7 @@
 
 <a id="r-31"></a>
 ### R-31 — Microsoft Security Development Lifecycle : modélisation des menaces
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md)
 
 - **Source primaire :** [Guide Microsoft SDL sur la modélisation des menaces](https://www.microsoft.com/en-us/securityengineering/sdl/threatmodeling)
 - **Concepts pertinents :** exigences de sécurité, diagrammes de système et de flux de données, identification des menaces, atténuation et validation dans un processus itératif d'ingénierie.
@@ -365,7 +365,7 @@
 
 <a id="r-32"></a>
 ### R-32 — Bruce Schneier, « Attack Trees » (1999)
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md)
 
 - **Source primaire :** [Article du Dr. Dobb's Journal, archivé par Schneier](https://www.schneier.com/academic/archives/1999/12/attack_trees.html)
 - **Référence académique/technique :** Bruce Schneier, « Attack Trees », *Dr. Dobb's Journal*, décembre 1999.
@@ -375,7 +375,7 @@
 
 <a id="r-33"></a>
 ### R-33 — Mohamad, Steghöfer et Scandariato, « Security assurance cases—state of the art of an emerging approach » (2021)
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md)
 
 - **Source primaire :** [Article d'Empirical Software Engineering](https://doi.org/10.1007/s10664-021-09971-7)
 - **Référence académique :** Mazen Mohamad, Jan-Philipp Steghöfer et Riccardo Scandariato, *Empirical Software Engineering* 26, article 70 (2021).
@@ -385,7 +385,7 @@
 
 <a id="r-34"></a>
 ### R-34 — OMG Structured Assurance Case Metamodel (SACM)
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md)
 
 - **Source primaire :** [Famille de spécifications OMG SACM](https://www.omg.org/spec/SACM/) · [Version formelle 2.3](https://www.omg.org/spec/SACM/2.3)
 - **Concepts pertinents :** représentation exploitable par machine de structures de dossiers d'assurance et relations entre affirmations, argumentation, artefacts et preuves.
@@ -396,7 +396,7 @@
 
 <a id="r-35"></a>
 ### R-35 — Common Criteria (ISO/IEC 15408) et méthode commune d'évaluation
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md)
 
 - **Sources primaires :** [Portail Common Criteria](https://www.commoncriteriaportal.org/) · [Publications CC:2022 et CEM:2022](https://www.commoncriteriaportal.org/cc/index.cfm)
 - **Concepts pertinents :** exigences fonctionnelles de sécurité, exigences d'assurance, méthode d'évaluation et niveaux EAL (Evaluation Assurance Levels).
@@ -405,7 +405,7 @@
 
 <a id="r-36"></a>
 ### R-36 — RTCA DO-178C / EUROCAE ED-12C : assurance logicielle aéronautique
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md)
 
 - **Sources primaires :** [FAA AC 20-115D](https://www.faa.gov/airports/resources/advisory_circulars/index.cfm/go/document.information/documentNumber/20-115D) · [Présentation RTCA de DO-178C et de ses suppléments](https://www.rtca.org/do-178/)
 - **Concepts pertinents :** objectifs du cycle de vie logiciel, vérification, indépendance, preuves de certification et niveaux logiciels A–E ; suppléments associés : DO-330, DO-331, DO-332 et DO-333.
@@ -414,7 +414,7 @@
 
 <a id="r-37"></a>
 ### R-37 — Langage et analyseur Alloy
-- **Cité par :** [0005](specifications/0005-assurance-model.fr.md), [0007](architecture/0007-technology-decision-framework.fr.md), [0009](architecture/0009-govcheck-design-discussion-record.fr.md)
+- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [0009](architecture/0009-govcheck-design-discussion-record.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md)
 
 - **Sources primaires :** [Projet Alloy et documentation](https://alloytools.org/) · [Dépôt source de l'analyseur Alloy](https://github.com/AlloyTools/org.alloytools.alloy)
 - **Concepts pertinents :** modélisation relationnelle, analyse bornée, recherche d'instances par SAT et recherche de contre-exemples ; Alloy 6 ajoute états mutables et opérateurs temporels.
@@ -423,7 +423,7 @@
 
 <a id="r-38"></a>
 ### R-38 — SPIN et Promela
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md)
 
 - **Source primaire :** [Manuel SPIN et documentation Promela](https://spinroot.com/spin/Man/Manual.html)
 - **Concepts pertinents :** modélisation et vérification de systèmes concurrents/distribués, communication asynchrone, invariants, interblocages et propriétés temporelles.
@@ -432,7 +432,7 @@
 
 <a id="r-39"></a>
 ### R-39 — Vérificateur Rust Kani
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md)
 
 - **Source primaire :** [Documentation Kani](https://model-checking.github.io/kani/)
 - **Concepts pertinents :** model checking borné de programmes Rust, harnesses de preuve, assertions, détection de comportements indéfinis et contre-exemples.
@@ -441,7 +441,7 @@
 
 <a id="r-40"></a>
 ### R-40 — Vérification Rust avec Verus
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md)
 
 - **Source primaire :** [Tutoriel et référence Verus](https://verus-lang.github.io/verus/guide/)
 - **Concepts pertinents :** vérification statique de correction fonctionnelle de programmes Rust à l'aide de spécifications et de preuves assistées.
@@ -450,7 +450,7 @@
 
 <a id="r-41"></a>
 ### R-41 — Langage et vérificateur Dafny
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md)
 
 - **Source primaire :** [Manuel de référence Dafny](https://dafny.org/dafny/DafnyRef/DafnyRef)
 - **Concepts pertinents :** constructions de spécification, pré/postconditions, invariants, métriques de terminaison, conditions de vérification et compilation.
@@ -459,7 +459,7 @@
 
 <a id="r-42"></a>
 ### R-42 — Assistant de preuve Coq / Rocq
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md)
 
 - **Sources primaires :** [Documentation et manuels de référence Rocq](https://rocq-prover.org/docs) · [Archives de documentation Coq versionnée](https://docs.rocq-prover.org/)
 - **Concepts pertinents :** théorie des types dépendants, définitions Gallina et termes de preuve vérifiés par machine.
@@ -468,7 +468,7 @@
 
 <a id="r-43"></a>
 ### R-43 — Assistant de preuve Isabelle
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md)
 
 - **Source primaire :** [Documentation, tutoriels et manuels de référence Isabelle](https://www.isabelle.in.tum.de/documentation.html)
 - **Concepts pertinents :** preuve interactive de théorèmes, Isabelle/HOL, spécification formelle et vérification de preuves.
@@ -477,7 +477,7 @@
 
 <a id="r-44"></a>
 ### R-44 — KAOS et ingénierie des exigences orientée objectifs
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [0013](architecture/0013-governance-metamodel.fr.md)
 
 - **Source primaire :** [Axel van Lamsweerde, Requirements Engineering: From System Goals to UML Models to Software Specifications (2009), notice UCLouvain](https://research.dial.uclouvain.be/entities/publication/ddcd5cbc-c76d-4da2-bd29-509cbf0f9399)
 - **Concepts pertinents :** raffinement d'objectifs, obstacles, attribution des responsabilités et dérivation des objectifs système vers exigences et spécifications logicielles.
@@ -486,7 +486,7 @@
 
 <a id="r-45"></a>
 ### R-45 — Fondements des CRDT
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
 
 - **Source primaire :** [Shapiro, Preguiça, Baquero et Zawirski, « A comprehensive study of Convergent and Commutative Replicated Data Types » (rapport de recherche INRIA 7506, 2011)](https://dsf.berkeley.edu/cs286/papers/crdt-tr2011.pdf)
 - **Concepts pertinents :** types répliqués fondés sur l'état ou les opérations, conditions de convergence, réplication asynchrone et mises à jour concurrentes.
@@ -495,7 +495,7 @@
 
 <a id="r-46"></a>
 ### R-46 — Yjs et Yrs
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
 
 - **Sources primaires :** [Documentation Yjs](https://docs.yjs.dev/) · [Dépôt source Yjs](https://github.com/yjs/yjs) · [Port Rust Yrs](https://github.com/y-crdt/y-crdt)
 - **Concepts pertinents :** types de données CRDT partagés, mises à jour indépendantes du transport, fournisseurs de synchronisation et édition collaborative.
@@ -504,7 +504,7 @@
 
 <a id="r-47"></a>
 ### R-47 — Automerge
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
 
 - **Sources primaires :** [Documentation Automerge](https://automerge.org/docs/) · [Dépôt source Automerge](https://github.com/automerge/automerge)
 - **Concepts pertinents :** documents CRDT local-first, fusion de changements concurrents, historique et synchronisation indépendante du transport.
@@ -513,7 +513,7 @@
 
 <a id="r-48"></a>
 ### R-48 — CRDT Loro
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
 
 - **Sources primaires :** [Documentation Loro](https://loro.dev/docs) · [Concepts CRDT de Loro](https://www.loro.dev/docs/concepts/crdt) · [Dépôt source Loro](https://github.com/loro-dev/loro)
 - **Concepts pertinents :** arbres/listes déplaçables, CRDT de texte enrichi, synchronisation local-first, historique et retour dans le temps.
@@ -522,7 +522,7 @@
 
 <a id="r-49"></a>
 ### R-49 — Communication temps réel WebRTC
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
 
 - **Sources primaires :** [Recommandation W3C WebRTC 1.0](https://www.w3.org/TR/webrtc/) · [RFC 8835 — Transports pour WebRTC](https://www.rfc-editor.org/rfc/rfc8835.html)
 - **Concepts pertinents :** connexions pair-à-pair, canaux de données, sécurité des transports et interaction avec ICE, STUN et TURN.
@@ -531,7 +531,7 @@
 
 <a id="r-50"></a>
 ### R-50 — ICE, STUN, TURN et infrastructure de relais
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
 
 - **Sources primaires :** [RFC 8445 — ICE](https://www.rfc-editor.org/rfc/rfc8445.html) · [RFC 8489 — STUN](https://www.rfc-editor.org/rfc/rfc8489.html) · [RFC 8656 — TURN](https://www.rfc-editor.org/rfc/rfc8656.html) · [Implémentation de relais coturn](https://github.com/coturn/coturn)
 - **Concepts pertinents :** collecte de candidats et vérifications de connectivité, traversée NAT, allocation de relais et repli lorsque les chemins directs échouent.
@@ -540,7 +540,7 @@
 
 <a id="r-51"></a>
 ### R-51 — Open Knowledge Format (OKF) v0.2
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
 
 - **Sources primaires :** [Spécification canonique OKF v0.2](https://github.com/GoogleCloudPlatform/open-knowledge-format/blob/main/SPEC.md) · [Spécification OKF v0.2 dans l'ancien dépôt Knowledge Catalog](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md)
 - **Concepts pertinents :** bundles de connaissances portables fondés sur Markdown, frontmatter YAML, liens et métadonnées de provenance, confiance et cycle de vie.
@@ -549,7 +549,7 @@
 
 <a id="r-52"></a>
 ### R-52 — Modèle de données RDF 1.1
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
 
 - **Source primaire :** [W3C RDF 1.1 Concepts and Abstract Syntax](https://www.w3.org/TR/rdf11-concepts/)
 - **Concepts pertinents :** modèle de graphes et jeux de données fondé sur des triplets sujet–prédicat–objet et des IRI.
@@ -558,7 +558,7 @@
 
 <a id="r-53"></a>
 ### R-53 — SKOS
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
 
 - **Source primaire :** [Référence W3C SKOS](https://www.w3.org/TR/skos-reference/)
 - **Concepts pertinents :** concepts identifiés par URI, libellés, notations, schémas conceptuels, correspondances et relations sémantiques légères.
@@ -567,7 +567,7 @@
 
 <a id="r-54"></a>
 ### R-54 — Langage d'ontologie OWL 2
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
 
 - **Source primaire :** [W3C OWL 2 Structural Specification and Functional-Style Syntax](https://www.w3.org/TR/owl-syntax/)
 - **Concepts pertinents :** sémantique formellement définie pour classes, propriétés, individus et axiomes d'ontologie.
@@ -576,7 +576,7 @@
 
 <a id="r-55"></a>
 ### R-55 — SHACL
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
 
 - **Source primaire :** [W3C Shapes Constraint Language (SHACL)](https://www.w3.org/TR/shacl/)
 - **Concepts pertinents :** validation de graphes RDF selon des formes et contraintes déclarées.
@@ -585,7 +585,7 @@
 
 <a id="r-56"></a>
 ### R-56 — Termes de métadonnées Dublin Core
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
 
 - **Source primaire :** [Spécification DCMI Metadata Terms](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/)
 - **Concepts pertinents :** propriétés et classes de métadonnées générales pour décrire des ressources.
@@ -594,7 +594,7 @@
 
 <a id="r-57"></a>
 ### R-57 — Ontologie bibliographique BIBO
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
 
 - **Source primaire :** [Spécification DCMI BIBO](https://www.dublincore.org/specifications/bibo/bibo/)
 - **Concepts pertinents :** vocabulaire RDF pour ressources bibliographiques, citations et types de documents.
@@ -603,7 +603,7 @@
 
 <a id="r-58"></a>
 ### R-58 — Vocabulaire de catalogue de données (DCAT) 3
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
 
 - **Source primaire :** [Recommandation W3C DCAT 3](https://www.w3.org/TR/vocab-dcat-3/)
 - **Concepts pertinents :** descriptions interopérables de jeux de données, services de données, distributions et séries de jeux de données dans des catalogues.
@@ -612,7 +612,7 @@
 
 <a id="r-59"></a>
 ### R-59 — Modèle de données W3C Web Annotation
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
 
 - **Source primaire :** [W3C Web Annotation Data Model](https://www.w3.org/TR/annotation-model/)
 - **Concepts pertinents :** annotations, corps, cibles, sélecteurs et motivations pour annoter une ressource ou un fragment précis.
@@ -621,7 +621,7 @@
 
 <a id="r-60"></a>
 ### R-60 — ActivityStreams 2.0
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
 
 - **Source primaire :** [W3C ActivityStreams 2.0 Core](https://www.w3.org/TR/activitystreams-core/)
 - **Concepts pertinents :** vocabulaire et syntaxe JSON-LD pour acteurs, objets, activités, collections et interactions sociales.
@@ -630,7 +630,7 @@
 
 <a id="r-61"></a>
 ### R-61 — Ontologie P-Plan
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
 
 - **Source primaire :** [Spécification de l'ontologie P-Plan](https://www.opmw.org/model/p-plan/)
 - **Concepts pertinents :** représentation de plans abstraits et correspondance avec les traces PROV-O des processus exécutés.
@@ -639,7 +639,7 @@
 
 <a id="r-62"></a>
 ### R-62 — Sources d'intégration Cartocortex, MoriNet et SaussuNet
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
 
 - **Sources primaires :** [Dépôt Cartocortex](https://github.com/complexus-lab/cartocortex) · [Dépôt MoriNet](https://github.com/lejeunecedric/MoriNet) · [Dépôt SaussuNet](https://github.com/lejeunecedric/SaussuNet) · [PR Cartocortex #9 — panorama des formats de cartes mentales](https://github.com/complexus-lab/cartocortex/pull/9) · [PR Cartocortex #27 — étude OKF, stockage et vues graphe](https://github.com/complexus-lab/cartocortex/pull/27) · [PR Cartocortex #28 — backlog CRDT, navigateur et synchronisation cloud](https://github.com/complexus-lab/cartocortex/pull/28)
 - **Concepts pertinents :** dépôts sources et artefacts d'étude examinés ; la PR #27 étudie le stockage/projection OKF v0.2, tandis que la PR #28 contient des propositions de travail CRDT et de transport temps réel.
@@ -648,7 +648,7 @@
 
 <a id="r-63"></a>
 ### R-63 — Formats d'échange de cartes mentales et de graphes
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
 
 - **Sources primaires :** [Documentation Freeplane](https://docs.freeplane.org/) · [Projet FreeMind](https://freemind.sourceforge.io/wiki/index.php/Main_Page) · [XMind](https://xmind.app/) · [Spécification OPML 2.0](https://opml.org/spec2.opml) · [Spécification GraphML](https://graphml.graphdrawing.org/specification.html)
 - **Concepts pertinents :** échange de cartes mentales hiérarchiques, plans et graphes généraux, avec métadonnées et dispositions propres aux formats.
@@ -657,7 +657,7 @@
 
 <a id="r-64"></a>
 ### R-64 — API de stockage cloud et interopérabilité S3
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
 
 - **Sources primaires :** [Documentation et API Amazon S3](https://docs.aws.amazon.com/s3/) · [Interopérabilité Google Cloud Storage](https://docs.cloud.google.com/storage/docs/interoperability) · [Présentation de l'API Google Drive](https://developers.google.com/workspace/drive/api/guides/about-sdk) · [Ressource Drive Microsoft Graph](https://learn.microsoft.com/en-us/graph/api/drive-get?view=graph-rest-1.0) · [Introduction à Azure Blob Storage](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction) · [Documentation Hippius](https://docs.hippius.com/) · [Stockage objet compatible S3 Hippius](https://docs.hippius.com/storage/s3/)
 - **Concepts pertinents :** API de stockage objet, points de terminaison compatibles S3, API de disques cloud, périmètres OAuth/identifiants, synchronisation côté client et sémantiques propres aux fournisseurs.
@@ -666,7 +666,7 @@
 
 <a id="r-65"></a>
 ### R-65 — Accès aux fichiers du navigateur, persistance locale et WebAssembly
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
 
 - **Sources primaires :** [API File System MDN](https://developer.mozilla.org/en-US/docs/Web/API/File_System_API) · [Origin Private File System (OPFS) MDN](https://developer.mozilla.org/en-US/docs/Web/API/File_System_API/Origin_private_file_system) · [Indexed Database API 3.0 W3C](https://www.w3.org/TR/IndexedDB-3/) · [Spécifications WebAssembly](https://webassembly.org/specs/) · [WebAssembly System Interface (WASI)](https://github.com/WebAssembly/WASI)
 - **Concepts pertinents :** accès aux fichiers/répertoires avec autorisation utilisateur, stockage navigateur privé à l'origine, persistance IndexedDB et interfaces d'exécution WebAssembly.
@@ -675,7 +675,7 @@
 
 <a id="r-66"></a>
 ### R-66 — Découverte de pairs Hyperswarm et HyperDHT
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
 
 - **Sources primaires :** [Projet Hyperswarm](https://github.com/holepunchto/hyperswarm) · [Implémentation HyperDHT](https://github.com/holepunchto/hyperdht) · [Documentation de découverte de pairs Hyperswarm](https://docs.pears.com/p2p/reference/building-blocks/hyperswarm/)
 - **Concepts pertinents :** découverte de pairs par sujets, rendez-vous via table de hachage distribuée, UDP hole punching et connexions chiffrées entre pairs.
@@ -684,7 +684,7 @@
 
 <a id="r-67"></a>
 ### R-67 — WebDAV, Model Context Protocol et conventions de wiki Markdown
-- **Cité par :** [0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
 - **Sources primaires :** [RFC 4918 IETF — WebDAV](https://www.rfc-editor.org/rfc/rfc4918.html) · [Spécification MCP, version 2026-07-28](https://modelcontextprotocol.io/specification/2026-07-28/basic) · [Dépôt de la spécification MCP](https://github.com/modelcontextprotocol/modelcontextprotocol) · [Spécification CommonMark 0.31.2](https://spec.commonmark.org/0.31.2/) · [Documentation de syntaxe Markdown Obsidian](https://obsidian.md/help/syntax) · [Documentation mdBook](https://rust-lang.github.io/mdBook/)
 - **Concepts pertinents :** édition distante et verrouillage via HTTP (WebDAV), outils/ressources/prompts via MCP, syntaxe Markdown, extensions propres à Obsidian et publication de bases de connaissances Markdown avec mdBook.
 - **Utilité pour GovCheck :** conserve les protocoles externes et conventions documentaires explicitement nommés dans l'évaluation d'intégration pour l'ingestion de sources et l'exposition du wiki SaussuNet/MoriNet.
@@ -692,7 +692,7 @@
 
 <a id="r-68"></a>
 ### R-68 — Dépôts de l'écosystème GovCheck associés et examinés dans l'évaluation
-- **Cité par :** [0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
 - **Sources primaires :** [Pijulation](https://github.com/Martin-PB/Pijulation) · [Passerelle Git–Pijul](https://github.com/Martin-PB/passerelle-Git-Pijul)
 - **Concepts pertinents :** projets adjacents servant de contexte pour les sémantiques natives Git/Pijul, l'interopérabilité des graphes de patches, la gouvernance et les pratiques d'assurance formelle.
 - **Utilité pour GovCheck :** conserve les sources publiques de dépôts nommées dans l'évaluation initiale.
@@ -700,7 +700,7 @@
 
 <a id="r-69"></a>
 ### R-69 — Inventaire des sources sur les formats de cartes mentales et l'interopérabilité (PR #9)
-- **Cité par :** [0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
 - **Sources primaires du projet :** [PR Cartocortex #9 — panorama des formats de cartes mentales](https://github.com/complexus-lab/cartocortex/pull/9) · [PR Cartocortex #1](https://github.com/complexus-lab/cartocortex/pull/1) · [PR #3](https://github.com/complexus-lab/cartocortex/pull/3) · [PR #4](https://github.com/complexus-lab/cartocortex/pull/4) · [PR #5](https://github.com/complexus-lab/cartocortex/pull/5) · [PR #6](https://github.com/complexus-lab/cartocortex/pull/6) · [PR #8](https://github.com/complexus-lab/cartocortex/pull/8)
 - **Implémentations sources et fixtures :** [Code source Freeplane](https://github.com/freeplane/freeplane) · [Sérialiseurs/importeur WiseMapping](https://github.com/wisemapping/wisemapping-frontend) · [Fixture publique de sauvegarde Mindomo](https://github.com/aarontmaher/Lauburu-Monorepo) · [MultiMarkdown 6](https://github.com/fletcher/MultiMarkdown-6) · [Fixture de test SimpleMind](https://github.com/pahund/simple-mind-search) · [Exporteur xmind2smmx](https://github.com/BartRuSec/xmind2smmx) · [Lecteur/écrivain MCP SimpleMind](https://github.com/kharabiner/simplemind-mcp-server)
 - **Documentation des éditeurs et produits :** [Guide d'export XMind](https://xmind.com/fr/user-guide/export-new) · [Guide utilisateur MindManager 2017](https://www.mindmanager.com/static/mm/docs/MindManager_2017_User_Guide_EN.pdf) · [Intégrations Microsoft MindManager](https://www.mindmanager.com/en/integrations/microsoft/) · [Démarrage Mindomo](https://help.mindomo.com/getting-started/) · [Import Mindomo](https://help.mindomo.com/basics/import-mind-maps/) · [Export Mindomo](https://help.mindomo.com/basics/export-mind-maps/) · [FAQ compatibilité iThoughts de l'éditeur](https://www.toketaware.com/ithoughts-faq-compatibility) · [Export SimpleMind](https://simplemind.eu/faq/share-export-in-different-formats/) · [Fichiers importables SimpleMind](https://simplemind.eu/faq/what-files-can-simplemind-import/) · [Aide import/export SimpleMind](https://simplemind.eu/faq_group/share-export-and-import/) · [Export MindMeister](https://support.mindmeister.com/hc/en-us/articles/360017447280-Export-Your-Mind-Map) · [Export/Impression MindMeister iOS](https://support.mindmeister.com/hc/en-us/articles/115000807204-Export-or-Print-your-Map-on-iOS) · [Import MindMeister](https://support.mindmeister.com/hc/en-us/articles/360017498199-Import-Text-Files-and-Mind-Maps-into-MindMeister) · [Import Coggle](https://coggle.help/article/34-import-files-into-coggle) · [Article du blog Coggle sur l'import .mm](https://bloggle.coggle.it/post/129486892657/import-other-files-to-coggle) · [Export Coggle](https://coggle.help/article/20-export-options) · [Formats d'export pris en charge par Coggle](https://coggle.help/article/105-supported-export-formats) · [Aide Bubbl.us](https://bubbl.us/help/topics.htm) · [Import iMindMap vers Ayoa](https://support.ayoa.com/opening-imindmap-files-in-ayoa)
@@ -711,7 +711,7 @@
 
 <a id="r-70"></a>
 ### R-70 — Wei et al., « ACCESS: Assurance Case Centric Engineering of Safety-critical Systems » (2024)
-- **Cité par :** citation proposée dans [PR #22 — Architecture 0025](https://github.com/Martin-PB/govcheck/pull/22) (document absent de cette branche).
+- **Cité par :** [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md)
 - **Source primaire :** [Article du Journal of Systems and Software](https://doi.org/10.1016/j.jss.2024.112034) · [copie en accès ouvert](https://eprints.whiterose.ac.uk/id/eprint/211554/)
 - **Référence bibliographique :** Ran Wei, Simon Foster, Haitao Mei, Fang Yan, Ruizhe Yang, Ibrahim Habli, Colin O’Halloran, Nick Tudor, Tim Kelly et Yakoub Nemouchi, *Journal of Systems and Software* 213 (2024), article 112034.
 - **Concepts pertinents :** dossiers d'assurance fondés sur des modèles SACM ; traçabilité vers des artefacts d'ingénierie hétérogènes ; évaluation automatisée, analyse d'impact des changements, preuves de méthodes formelles et évaluation dynamique du dossier d'assurance en production.
@@ -720,7 +720,7 @@
 
 <a id="r-71"></a>
 ### R-71 — Bloomfield et Rushby, « Assurance 2.0: A Manifesto » (2021)
-- **Cité par :** citation proposée dans [PR #22 — Architecture 0025](https://github.com/Martin-PB/govcheck/pull/22) (document absent de cette branche).
+- **Cité par :** [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md)
 - **Source primaire :** [Page des auteurs chez SRI et article](https://www.csl.sri.com/users/rushby/abstracts/sss21) · [manuscrit arXiv](https://arxiv.org/abs/2004.10474)
 - **Référence bibliographique :** Robin Bloomfield et John Rushby, *Systems and Covid-19: Proceedings of the 29th Safety-Critical Systems Symposium*, 2021, p. 85–108.
 - **Concepts pertinents :** examen renforcé du raisonnement et des preuves ; explicitation des éléments réfutants (*defeaters*) et contre-preuves ; évaluation du poids des preuves et de leur capacité à distinguer une affirmation de sa négation.
@@ -729,7 +729,7 @@
 
 <a id="r-72"></a>
 ### R-72 — Ericsson, « Runtime threat modeling for attack prediction and defense » (2025)
-- **Cité par :** citation proposée dans [PR #22 — Architecture 0025](https://github.com/Martin-PB/govcheck/pull/22) (document absent de cette branche).
+- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md)
 - **Source primaire :** [Article d'ingénierie Ericsson](https://www.ericsson.com/en/blog/2025/12/runtime-threat-modeling-for-attack-prediction-and-defense)
 - **Concepts pertinents :** combinaison de télémétrie, état de configuration et changements d'actifs/contexte avec les connaissances sur les menaces ; hypothèses de menace issues des observations ; évaluation de l'efficacité des contrôles et boucles de retour.
 - **Utilité pour GovCheck :** exemple industriel reliant l'observabilité en production à l'évolution du modèle de menace et à l'évaluation des contrôles.
@@ -737,7 +737,7 @@
 
 <a id="r-73"></a>
 ### R-73 — OMG Structured Assurance Case Metamodel (SACM), version 2.4 Beta 1 (septembre 2026)
-- **Cité par :** citation proposée dans [PR #22 — Architecture 0025](https://github.com/Martin-PB/govcheck/pull/22) (document absent de cette branche).
+- **Cité par :** [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md)
 - **Source primaire :** [État de la spécification SACM et documents de la bêta 2.4 chez OMG](https://www.omg.org/spec/SACM)
 - **Concepts pertinents :** extensions proposées à SACM 2.3, notamment valeurs structurées/forces typées, constructions liées à l'évaluation, jointures, références à un concept entier, marquage de l'état de développement et révision de la sémantique des packages/relations.
 - **Utilité pour GovCheck :** point de comparaison indispensable avant de sélectionner un métamodèle interne ou d'échange. Les résolutions de tickets de la bêta indiquent quelles lacunes de 2.3 la révision tente de combler.
@@ -745,7 +745,7 @@
 
 <a id="r-74"></a>
 ### R-74 — Hoover, Rosso-Llopart et Taran, *Evaluating Project Decisions: Case Studies in Software Engineering* (2009/2010)
-- **Cité par :** citation proposée dans [PR #22 — Architecture 0025](https://github.com/Martin-PB/govcheck/pull/22) (document absent de cette branche).
+- **Cité par :** [0013](architecture/0013-governance-metamodel.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md)
 - **Source primaire :** [Catalogue de l'éditeur et extrait du chapitre](https://www.informit.com/store/evaluating-project-decisions-case-studies-in-software-9780321544568)
 - **Référence bibliographique :** Carol L. Hoover, Mel Rosso-Llopart et Gil Taran, Addison-Wesley Professional, première publication en octobre 2009 (copyright 2010), ISBN 978-0-321-54456-8 ; le chapitre 1, §1.3 présente le modèle de décision PEAK.
 - **Concepts pertinents :** Problem, Experience, Assumptions et Knowledge comme entrées de la décision ; un processus de décision produit une solution et un risque assumé.
@@ -754,7 +754,7 @@
 
 <a id="r-75"></a>
 ### R-75 — NIST SP 800-137, Information Security Continuous Monitoring (2011)
-- **Cité par :** citation proposée dans [PR #22 — Architecture 0025](https://github.com/Martin-PB/govcheck/pull/22) (document absent de cette branche).
+- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md)
 - **Source primaire :** [Publication NIST](https://csrc.nist.gov/pubs/sp/800/137/final) · [DOI](https://doi.org/10.6028/NIST.SP.800-137)
 - **Concepts pertinents :** visibilité continue sur les actifs, menaces, vulnérabilités et efficacité des contrôles déployés ; surveillance alignée sur la tolérance au risque ; réaction lorsque les observations montrent que les contrôles sont insuffisants.
 - **Utilité pour GovCheck :** étaye une boucle de retour en production dans laquelle les observations actualisent l'état du système, l'évaluation des contrôles et les décisions de risque, au lieu de figer le modèle de menace à la conception.
@@ -762,7 +762,7 @@
 
 <a id="r-76"></a>
 ### R-76 — Rushby, « Runtime Certification » (RV 2008)
-- **Cité par :** citation proposée dans [PR #22 — Architecture 0025](https://github.com/Martin-PB/govcheck/pull/22) (document absent de cette branche).
+- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md), [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md)
 - **Source primaire :** [Article de l'auteur, présenté au huitième atelier Runtime Verification](https://citeseerx.ist.psu.edu/document?doi=c28045b0a573839028f6042870a3eccd8f9be748&repid=rep1&type=pdf)
 - **Référence bibliographique :** John Rushby, « Runtime Certification », article invité à RV 2008, Budapest, avril 2008.
 - **Concepts pertinents :** dossiers d'assurance comme affirmations, preuves et arguments ; surveillance en exécution des hypothèses et anomalies ; utilisation de la vérification à l'exécution comme preuve ; détection de la violation d'hypothèses environnementales.
@@ -771,7 +771,7 @@
 
 <a id="r-77"></a>
 ### R-77 — Exemples d'application de politiques et de gouvernance des outils MCP
-- **Cité par :** [0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
 - **Sources primaires :** [Documentation HashiCorp Sentinel](https://developer.hashicorp.com/sentinel/docs) · [Documentation Consul MCP Gateway](https://docs.hashicorp.com/consul/docs/agentic-mesh/mcp-gateway) · [Gouvernance des outils agents et blocage des serveurs MCP GitLab](https://docs.gitlab.com/user/ai-governance/tool-governance/) · [Dépôt source Vectimus](https://github.com/vectimus/vectimus)
 - **Concepts pertinents :** politiques-as-code, évaluation des politiques aux frontières infrastructure et outils d'agents, autorisation/blocage de serveurs MCP, gouvernance par namespace, preuves d'approbation, événements d'audit et hooks Cedar déterministes.
 - **Utilité pour GovCheck :** conserve les systèmes d'application de politiques et de gouvernance MCP comparés dans les discussions élargies du projet, aux côtés d'OPA (R-09) et Cedar (R-10).
@@ -779,7 +779,7 @@
 
 <a id="r-78"></a>
 ### R-78 — NIST OSCAL et Continuous Compliance Framework (CCF)
-- **Cité par :** [0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
 - **Sources primaires :** [Projet NIST OSCAL](https://pages.nist.gov/OSCAL/) · [Dépôt source OSCAL](https://github.com/usnistgov/OSCAL) · [Documentation Compliance Framework / CCF](https://compliance-framework.github.io/docs/introduction) · [Dépôts Compliance Framework](https://github.com/compliance-framework)
 - **Concepts pertinents :** catalogues de contrôles de sécurité lisibles par machine, profils, plans de sécurité système, plans/résultats d'évaluation et preuves structurées en XML, JSON et YAML ; collecte continue de preuves et reporting.
 - **Utilité pour GovCheck :** conserve les options OSCAL et CCF discutées pour représenter les contrôles, collecter des preuves et produire des résultats d'évaluation structurés.
@@ -787,7 +787,7 @@
 
 <a id="r-79"></a>
 ### R-79 — Sandboxing et isolation à l'exécution des agents : nono, Landlock et Docker Sandboxes
-- **Cité par :** [0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
 - **Sources primaires :** [Projet nono et modèle de sécurité](https://github.com/nolabs-ai/nono) · [Site de documentation nono](https://nono.sh/) · [Documentation noyau Linux Landlock](https://docs.kernel.org/userspace-api/landlock.html) · [Documentation Docker Sandboxes](https://docs.docker.com/ai/sandboxes/) · [Projet d'agent IA Goose](https://github.com/aaif-goose/goose)
 - **Concepts pertinents :** portée de capacités par outil, restrictions de système de fichiers/réseau, courtage d'identifiants, sandboxing non privilégié imposé par le noyau, isolation microVM et orchestration de runtimes d'agents.
 - **Utilité pour GovCheck :** conserve les options d'isolation à l'exécution et d'exécution d'agents discutées dans le contexte élargi de l'architecture sécurité/GovCheck. Goose est inclus comme exemple de harness d'agent, pas comme sandbox.
@@ -795,7 +795,7 @@
 
 <a id="r-80"></a>
 ### R-80 — Protocole Matrix et client Element X
-- **Cité par :** [0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
 - **Sources primaires :** [Spécification du protocole Matrix](https://spec.matrix.org/latest/) · [Dépôt source de la spécification Matrix](https://github.com/matrix-org/matrix-spec) · [Element X dans l'écosystème Matrix.org](https://matrix.org/ecosystem/clients/element-x/)
 - **Concepts pertinents :** communication temps réel fédérée, homeservers, salons, synchronisation d'événements, chiffrement de bout en bout et comportement du client mobile Matrix.
 - **Utilité pour GovCheck :** conserve l'option de communication Matrix/Element X discutée pour la collaboration entre agents et humains.
@@ -803,7 +803,7 @@
 
 <a id="r-81"></a>
 ### R-81 — Métamoteur SearXNG
-- **Cité par :** [0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
 - **Source primaire :** [Documentation SearXNG](https://docs.searxng.org/)
 - **Concepts pertinents :** agrégation de métamoteur auto-hébergé, moteurs de recherche amont configurables, traitement des requêtes orienté confidentialité et administration.
 - **Utilité pour GovCheck :** conserve le service de recherche auto-hébergé discuté comme composant de découverte de sources dans le contexte élargi du projet.
@@ -811,7 +811,7 @@
 
 <a id="r-82"></a>
 ### R-82 — Conversion de documents vers Markdown avec Microsoft MarkItDown
-- **Cité par :** [0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
 - **Source primaire :** [Dépôt source et documentation Microsoft MarkItDown](https://github.com/microsoft/markitdown)
 - **Concepts pertinents :** conversion de PDF, documents Office et autres formats vers Markdown pour indexation et analyse textuelle.
 - **Utilité pour GovCheck :** conserve l'utilitaire d'ingestion documentaire discuté pour extraire et examiner des sources telles que PDF et documents bureautiques.

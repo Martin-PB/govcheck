@@ -18,10 +18,13 @@ ASSUME Versions # {}
 ASSUME Actors # {}
 ASSUME RootClaim \in Claims
 ASSUME LeafClaim \in (Claims \ {RootClaim})
+ASSUME Claims = {RootClaim, LeafClaim}
 ASSUME RootEvidence \in Evidence
 ASSUME LeafEvidence \in (Evidence \ {RootEvidence})
+ASSUME Evidence = {RootEvidence, LeafEvidence}
 ASSUME CandidateDependency \in Dependencies
 ASSUME PolicyDependency \in Dependencies
+ASSUME Dependencies = {CandidateDependency, PolicyDependency}
 ASSUME InitialVersion \in Versions
 ASSUME ProducerActor \in Actors
 ASSUME ReviewerActor \in Actors

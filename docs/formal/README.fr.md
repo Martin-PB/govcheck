@@ -21,3 +21,8 @@ Le diagramme est généré depuis `formal/lifecycle-transitions.json`. Le regist
 Le premier modèle couvre un changement abstrait, l’évaluation liée à un tuple, la publication de preuves, les approbations autorisées, l’acceptation, l’application du candidat exact, la mutation des entrées et les décisions terminales.
 
 **Statut de vérification :** spécification et configuration TLC ajoutées ; aucune exécution TLC ni aucun résultat de preuve ne sont revendiqués. Consulter le document du modèle pour les limites de l’abstraction et les raffinements nécessaires.
+
+
+## Registre de références
+
+Pour les fondements académiques et industriels, notamment les limites du model checking et la distinction entre provenance, preuve et autorité normative, voir le [registre GovCheck des références sur la gouvernance et l'assurance](../references/governance-and-assurance.fr.md) et sa [version anglaise](../references/governance-and-assurance.md).

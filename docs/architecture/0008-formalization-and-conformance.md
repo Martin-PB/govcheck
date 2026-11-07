@@ -138,3 +138,7 @@ Resolve these through focused ADRs after reviewing this plan. None blocks review
 ## Non-claims
 
 This document does not provide a TLA+ specification, TLC results, theorem proofs, executable tests, cryptographic design, implementation, or assurance that the listed properties currently hold. It is a traceable modeling and test-design plan.
+
+## Bibliographic references
+
+External references used in this record: [R-05](../references.md#r-05), [R-13](../references.md#r-13), [R-20](../references.md#r-20).

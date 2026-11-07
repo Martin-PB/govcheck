@@ -63,4 +63,4 @@ Define canonical serialization and duplicate-key handling; evaluator isolation a
 
 ## Bibliographic references
 
-External references used in this record: [R-01](../references.md#r-01), [R-02](../references.md#r-02), [R-06](../references.md#r-06), [R-07](../references.md#r-07).
+External references used in this record: [R-01 — NIST SP 800-53 security and privacy controls](../references.md#r-01), [R-02 — NIST secure software development practices](../references.md#r-02), [R-06 — in-toto software supply-chain provenance](../references.md#r-06), [R-07 — SLSA supply-chain assurance](../references.md#r-07).

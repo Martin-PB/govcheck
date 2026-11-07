@@ -129,6 +129,8 @@ def check_references(external: bool) -> int:
     for path in source_docs:
         source_text = path.read_text(encoding="utf-8")
         for url in URL_RE.findall(source_text):
+            if url.startswith("https://github.com/Martin-PB/govcheck/"):
+                continue  # Internal evidence links are not external source citations.
             if url not in catalogue_urls:
                 warning(f"{path.relative_to(ROOT)}: external URL is not present in the central catalogue: {url}")
     for path in source_docs:

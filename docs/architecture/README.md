@@ -25,7 +25,7 @@ Records 0009–0023 preserve design rationale, assurance distinctions, governanc
 
 ## Reference index
 
-Use the [single thematic and detailed reference catalogue](../references.md) ([Français](../references.fr.md)) records every external source, its use and limits, and links back to the internal records that cite it. Inclusion does not imply adoption or implementation.
+Use the [single thematic and detailed reference catalogue](../references.md) ([Français](../references.fr.md)) for external sources, their uses and limits, and backlinks to citing records. Follow the [reference-integrity maintenance guide](../reference-integrity.md) and run the offline checker before submitting catalogue changes. Inclusion does not imply adoption or implementation.
 
 ## Status
 

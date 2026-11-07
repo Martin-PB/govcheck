@@ -27,7 +27,7 @@ Les documents 0009–0021 préservent le raisonnement de conception et les disti
 
 Le [catalogue unique des références](../references.fr.md) ([English](../references.md)) rassemble les sources externes, leurs usages, leurs limites et les renvois vers les documents qui les citent. Suivre le [guide de maintenance de l'intégrité des références](../reference-integrity.md) et exécuter le contrôle hors ligne avant toute modification du catalogue. Une référence n'implique ni adoption ni implémentation.
 
-L'ADR 0004 consigne la décision d'adopter les documents d'architecture 0017 et 0018 comme politiques de gouvernance des versions par catégorie. Leur adoption normative dépend de la fusion préalable de la PR #21, puis de l'ADR 0004. Cela ne signifie pas que les schémas de décision de version, le résolveur d'autorité, l'évaluateur de compatibilité ou l'automatisation des releases sont implémentés. Les autres documents restent des propositions/documents de conception sauf indication contraire dans leur statut individuel.
+La PR #21 a été fusionnée et consigne le régime initial d'autorité de gouvernance. L'ADR 0004 propose désormais l'adoption des documents d'architecture 0017 et 0018 comme politiques de gouvernance des versions par catégorie. Leur adoption normative prendra effet à la fusion de l'ADR 0004. Cela ne signifie pas que les schémas de décision de version, le résolveur d'autorité, l'évaluateur de compatibilité ou l'automatisation des releases sont implémentés. Les autres documents restent des propositions/documents de conception sauf indication contraire dans leur statut individuel.
 
 ## Statut
 

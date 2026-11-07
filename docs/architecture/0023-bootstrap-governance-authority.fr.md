@@ -86,3 +86,10 @@ Cette décision établit la règle de gouvernance à modéliser. Elle ne préten
 
 Instruction explicite du propriétaire du projet dans la discussion de gouvernance GovCheck, le 07-11-2026 : « Pour l'instant, moi seul et je pourrai donc moi-même faire évoluer cette autorité. »
 
+
+
+## Références à l'appui de la décision d'autorité
+
+- [NIST SP 800-53](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final), notamment les concepts de séparation des tâches : un régime à autorité unique doit rendre explicite l'absence d'autorisation à deux personnes.
+- [Branches protégées GitHub](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches) : les contrôles de dépôt et de fusion sont des paramètres d'application, pas la source de l'autorité normative.
+- Voir le [registre GovCheck des références](../references/governance-and-assurance.fr.md) et sa [version anglaise](../references/governance-and-assurance.md). La décision consignée ici découle de l'instruction explicite du propriétaire du projet ; les sources externes ne l'autorisent pas.

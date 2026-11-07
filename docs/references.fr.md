@@ -45,6 +45,8 @@
 - **Limite :** un catalogue de contrôles n'est pas l'ontologie de GovCheck ; sélectionner un contrôle ne démontre pas son implémentation.
 
 <a id="r-02"></a>
+
+- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md), [0013](architecture/0013-governance-metamodel.fr.md), [0022](architecture/0022-governance-capability-audit.fr.md), [0023](architecture/0023-bootstrap-governance-authority.fr.md).
 ### R-02 — NIST SP 800-218, Secure Software Development Framework (SSDF) 1.1
 - **Sources primaires :** [Publication NIST](https://csrc.nist.gov/pubs/sp/800/218/final) · [DOI](https://doi.org/10.6028/NIST.SP.800-218)
 - **Concepts pertinents :** exigences et décisions de conception de sécurité documentées, pratiques de développement sécurisé, provenance et releases.
@@ -52,6 +54,8 @@
 - **Limite :** SSDF est un guide de pratiques, pas un prédicat formel d'acceptation ni une preuve de conformité. NIST a aussi publié un projet de SP 800-218 Rev. 1 / SSDF 1.2 ; respecter le statut de publication invoqué.
 
 <a id="r-03"></a>
+
+- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md), [0022](architecture/0022-governance-capability-audit.fr.md).
 ### R-03 — Branches protégées et contrôles obligatoires GitHub
 - **Source primaire :** [Documentation des branches protégées](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)
 - **Concepts pertinents :** revues obligatoires, contrôles de statut, exceptions de contournement et restrictions de branche.
@@ -59,6 +63,8 @@
 - **Limite :** les paramètres de la forge sont des mécanismes d'application, pas l'autorité normative. Les administrateurs et acteurs autorisés à contourner les règles restent dans le modèle de menace.
 
 <a id="r-04"></a>
+
+- **Cité par :** [0022](architecture/0022-governance-capability-audit.fr.md), [0023](architecture/0023-bootstrap-governance-authority.fr.md).
 ### R-04 — Goal Structuring Notation (GSN), standard communautaire
 - **Source primaire :** [Site officiel du standard GSN](https://scsc.uk/gsn)
 - **Concepts pertinents :** structuration des affirmations d'assurance, arguments, stratégies, contexte, hypothèses et preuves.
@@ -66,6 +72,8 @@
 - **Limite :** structurer un argument ne rend pas automatiquement ses prémisses vraies et ne remplace pas les prédicats vérifiables.
 
 <a id="r-05"></a>
+
+- **Cité par :** [0010](architecture/0010-assurance-proof-and-conformance.fr.md).
 ### R-05 — TLA+ et TLC
 - **Sources primaires :** [Publications de Lamport sur TLA](https://www.microsoft.com/en-us/research/people/lamport/publications/) · [Projet et documentation TLA+](https://lamport.azurewebsites.net/tla/tla.html)
 - **Référence académique :** Leslie Lamport, « The Temporal Logic of Actions », ACM Transactions on Programming Languages and Systems, 16(3), 1994, p. 872–923. [DOI](https://doi.org/10.1145/177492.177726)
@@ -74,6 +82,8 @@
 - **Limite :** un TLC terminé établit des propriétés uniquement pour le modèle, la configuration, les hypothèses et les bornes consignées ; il ne prouve ni le raffinement de l'implémentation ni la fidélité normative.
 
 <a id="r-06"></a>
+
+- **Cité par :** [0008](architecture/0008-formalization-and-conformance.fr.md), [0010](architecture/0010-assurance-proof-and-conformance.fr.md).
 ### R-06 — in-toto : intégrité de la chaîne d'approvisionnement logicielle
 - **Sources primaires :** [Projet in-toto](https://in-toto.io/) · [Article USENIX Security 2019](https://ssl.engineering.nyu.edu/papers/torres-toto-usenix19.pdf)
 - **Référence académique :** Santiago Torres-Arias et al., « in-toto: Providing farm-to-table guarantees for bits and bytes », 28th USENIX Security Symposium, 2019.
@@ -82,6 +92,8 @@
 - **Limite :** la provenance ne définit pas les règles normatives propres au dépôt et ne prouve pas la correction sémantique d'une étape enregistrée.
 
 <a id="r-07"></a>
+
+- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md), [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md).
 ### R-07 — SLSA
 - **Source primaire :** [Spécification SLSA](https://slsa.dev/spec/)
 - **Concepts pertinents :** niveaux de chaîne d'approvisionnement logicielle, provenance et intégrité de construction.
@@ -89,6 +101,8 @@
 - **Limite :** SLSA ne définit ni l'autorité canonique de GovCheck, ni sa politique d'exception, ni son cycle de vie, ni un dossier d'assurance complet.
 
 <a id="r-08"></a>
+
+- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md).
 ### R-08 — OpenSSF Scorecard
 - **Sources primaires :** [Page OpenSSF](https://openssf.org/projects/scorecard/) · [Dépôt Scorecard](https://github.com/ossf/scorecard)
 - **Concepts pertinents :** contrôles automatisés et réutilisables de certaines pratiques de sécurité open source.
@@ -96,6 +110,8 @@
 - **Limite :** un score n'est ni une évaluation complète de la gouvernance du dépôt, ni une preuve, ni une décision d'autorisation.
 
 <a id="r-09"></a>
+
+- **Cité par :** [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md).
 ### R-09 — Open Policy Agent (OPA)
 - **Source primaire :** [Documentation officielle OPA](https://www.openpolicyagent.org/docs)
 - **Concepts pertinents :** séparation entre décision de politique et application ; évaluation d'entrées structurées par rapport à une politique.
@@ -103,6 +119,8 @@
 - **Limite :** OPA n'est ni l'autorité normative de GovCheck, ni son moteur d'assurance, ni une preuve de résistance au contournement. Aucune dépendance n'est sélectionnée.
 
 <a id="r-10"></a>
+
+- **Cité par :** [0013](architecture/0013-governance-metamodel.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md), [0022](architecture/0022-governance-capability-audit.fr.md).
 ### R-10 — Langage d'autorisation Cedar
 - **Sources primaires :** [Référence du langage Cedar](https://docs.cedarpolicy.com/) · [Projet Cedar](https://www.cedarpolicy.com/)
 - **Concepts pertinents :** décisions d'autorisation typées portant sur principal/action/ressource/contexte et séparation de la logique d'autorisation de la logique applicative.
@@ -110,6 +128,8 @@
 - **Limite :** Cedar n'est pas un cycle de vie complet, un modèle de fraîcheur des preuves ou un dossier d'assurance. Aucune dépendance n'est sélectionnée.
 
 <a id="r-11"></a>
+
+- **Cité par :** [0013](architecture/0013-governance-metamodel.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md), [0022](architecture/0022-governance-capability-audit.fr.md).
 ### R-11 — NIST SSDF : page du projet
 - **Source primaire :** [Projet NIST SSDF et publications](https://csrc.nist.gov/projects/ssdf)
 - **Concepts pertinents :** pratiques de développement sécurisé et correspondances avec des pratiques établies.
@@ -117,6 +137,8 @@
 - **Limite :** utiliser la publication finale datée pour une affirmation portant sur une version précise ; ne pas confondre projet de révision et norme finale.
 
 <a id="r-13"></a>
+
+- **Cité par :** aucun document d'architecture ou de spécification ne cite actuellement cette source ; elle est conservée comme référence complémentaire.
 ### R-13 — JSON Schema Draft 2020-12
 - **Source primaire :** [Page officielle de la spécification](https://json-schema.org/draft/2020-12/)
 - **Concepts pertinents :** validation structurelle d'enregistrements lisibles par machine.
@@ -124,6 +146,8 @@
 - **Limite :** la validité du schéma n'établit ni autorisation, ni cohérence sémantique, ni vérité, ni adoption d'une politique, ni correction de l'évaluateur. Cette entrée ne le sélectionne pas comme format canonique.
 
 <a id="r-14"></a>
+
+- **Cité par :** [0008](architecture/0008-formalization-and-conformance.fr.md), [0013](architecture/0013-governance-metamodel.fr.md).
 ### R-14 — Semantic Versioning 2.0.0
 - **Source primaire :** [SemVer 2.0.0](https://semver.org/)
 - **Concepts pertinents :** MAJOR/MINOR/PATCH par rapport à une API publique et à un contrat de compatibilité déclarés ; les versions publiées sont immuables.
@@ -131,6 +155,8 @@
 - **Limite :** SemVer n'a pas de sens pour tous les artefacts de gouvernance. GovCheck évite de l'appliquer mécaniquement aux modèles, preuves, décisions ou événements.
 
 <a id="r-15"></a>
+
+- **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md), [0018](architecture/0018-version-governance-and-compatibility-authority.fr.md).
 ### R-15 — Tags Git et releases
 - **Sources primaires :** [Référence Git : étiquetage](https://git-scm.com/book/en/v2/Git-Basics-Tagging) · [GitHub Releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases)
 - **Concepts pertinents :** identification d'une révision source et publication des artefacts associés à une release.
@@ -138,6 +164,8 @@
 - **Limite :** un tag ou une release est un mécanisme d'identification/publication, pas la preuve qu'une vérification a été exécutée ou réussie.
 
 <a id="r-16"></a>
+
+- **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md), [0018](architecture/0018-version-governance-and-compatibility-authority.fr.md).
 ### R-16 — OpenAPI et contrats d'interface lisibles par machine
 - **Source primaire :** [Spécification OpenAPI](https://spec.openapis.org/oas/latest.html)
 - **Concepts pertinents :** contrats d'interface lisibles par machine.
@@ -145,12 +173,16 @@
 - **Limite :** la conformité d'une interface ne prouve ni les sémantiques d'autorisation, ni le comportement d'exécution, ni la correction de l'implémentation.
 
 <a id="r-17"></a>
+
+- **Cité par :** aucun document d'architecture ou de spécification ne cite actuellement cette source ; elle est conservée comme référence complémentaire.
 ### R-17 — Google Cloud Knowledge Catalog
 - **Source primaire :** [Documentation Knowledge Catalog](https://docs.cloud.google.com/knowledge-catalog/docs)
 - **Concepts pertinents :** métadonnées typées, entrées de catalogue, relations/traçabilité, métadonnées de gouvernance et découverte de contexte.
 - **Utilité pour GovCheck :** le patron transposable est celui des métadonnées obligatoires selon le type d'objet et des relations traçables entre objets gouvernés.
 - **Limite :** GovCheck n'est pas un catalogue de données. Ne pas importer l'architecture produit ni supposer que la présence de métadonnées équivaut à une autorité normative ou à une application effective.
 
+
+- **Cité par :** [0022](architecture/0022-governance-capability-audit.fr.md).
 ## Projets industriels évalués comme complémentaires, non adoptés
 
 <a id="r-18"></a>
@@ -161,6 +193,8 @@
 - **Limite :** Writ indique explicitement ne pas être un bac à sable ni une frontière de sécurité ; ses sorties ne sont ni l'autorité normative de GovCheck ni une décision d'acceptation indépendante. Voir l'architecture 0016.
 
 <a id="r-19"></a>
+
+- **Cité par :** [0016](architecture/0016-writ-privateer-assessment.fr.md).
 ### R-19 — Privateer (privateer-agent/privateer-agent)
 - **Sources primaires :** [Dépôt](https://github.com/privateer-agent/privateer-agent) · [Politique de sécurité à la révision étudiée](https://github.com/privateer-agent/privateer-agent/blob/181a988e443fa6b6b4138fc349d1260c96408ad4/SECURITY.md) · [README à la révision étudiée](https://github.com/privateer-agent/privateer-agent/blob/181a988e443fa6b6b4138fc349d1260c96408ad4/README.md)
 - **Révision étudiée :** 181a988e443fa6b6b4138fc349d1260c96408ad4 (revue consignée le 6 novembre 2026).
@@ -168,6 +202,8 @@
 - **Limite :** une barrière de permission, une fonctionnalité de provenance ou un avertissement de confidentialité ne remplace pas la gouvernance canonique ou une acceptation vérifiée indépendamment. Voir l'architecture 0016.
 
 <a id="r-22"></a>
+
+- **Cité par :** [0016](architecture/0016-writ-privateer-assessment.fr.md).
 ### R-22 — Sémantiques natives de Git et Pijul
 - **Sources primaires :** [Documentation Git](https://git-scm.com/docs) · [Manuel Pijul : théorie](https://pijul.org/manual/theory) · [Canaux Pijul](https://pijul.org/manual/workflows/channels) · [Conflits Pijul](https://pijul.org/manual/conflicts.html)
 - **Concepts pertinents :** modèle de snapshots/commits et arbres de Git ; graphe de changements/patches, canaux et conflits de première classe de Pijul.
@@ -176,6 +212,8 @@
 
 - [0004 — Contrats des adaptateurs VCS et collaboration](specifications/0004-vcs-collaboration-contracts.fr.md) : R-22.
 
+
+- **Cité par :** [0004](specifications/0004-vcs-collaboration-contracts.fr.md).
 ## Fondements académiques et assistant de preuve
 
 <a id="r-20"></a>
@@ -186,6 +224,8 @@
 - **Limite :** un théorème sur un prédicat ne prouve ni que le prédicat représente la politique approuvée ni que l'exécutable le raffine. Lean n'est pas sélectionné comme dépendance globale.
 
 <a id="r-21"></a>
+
+- **Cité par :** [0008](architecture/0008-formalization-and-conformance.fr.md), [0010](architecture/0010-assurance-proof-and-conformance.fr.md).
 ### R-21 — Guides de releases et de reproductibilité pour le logiciel de recherche
 - **Source primaire :** [Software Sustainability Institute — guides et ressources](https://www.software.ac.uk/resources)
 - **Concepts pertinents :** pérennité du logiciel de recherche, citation, releases et reproductibilité.
@@ -195,6 +235,8 @@
 
 
 <a id="r-23"></a>
+
+- **Cité par :** aucun document d'architecture ou de spécification ne cite actuellement cette source ; elle est conservée comme référence complémentaire.
 ### R-23 — IMS Global / 1EdTech : spécifications de versionnement
 - **Source primaire :** [Spécifications 1EdTech](https://www.imsglobal.org/spec/versioning/v1) (anciennement IMS Global ; consulter la version précise avant d'invoquer une règle particulière).
 - **Concepts pertinents :** identifiants de version et conventions de compatibilité pour des artefacts structurés et publiés.
@@ -203,6 +245,8 @@
 - **Cité par :** [Architecture 0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md), [Architecture 0018](architecture/0018-version-governance-and-compatibility-authority.fr.md).
 
 <a id="r-24"></a>
+
+- **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md), [0018](architecture/0018-version-governance-and-compatibility-authority.fr.md).
 ### R-24 — W3C PROV-O
 - **Source primaire :** [Recommandation W3C PROV-O](https://www.w3.org/TR/prov-o/).
 - **Concepts pertinents :** entités, activités, agents et relations de provenance.
@@ -211,6 +255,8 @@
 - **Cité par :** [Architecture 0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md), [Architecture 0018](architecture/0018-version-governance-and-compatibility-authority.fr.md).
 
 <a id="r-25"></a>
+
+- **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md), [0018](architecture/0018-version-governance-and-compatibility-authority.fr.md).
 ### R-25 — Guide de versionnement DataCite
 - **Source primaire :** [Documentation DataCite sur le versionnement](https://support.datacite.org/docs/versioning).
 - **Concepts pertinents :** identification et relations entre versions de productions scientifiques citables.
@@ -219,6 +265,8 @@
 - **Cité par :** [Architecture 0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md), [Architecture 0018](architecture/0018-version-governance-and-compatibility-authority.fr.md).
 
 <a id="r-26"></a>
+
+- **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md), [0018](architecture/0018-version-governance-and-compatibility-authority.fr.md).
 ### R-26 — Étude sur le versionnement des données scientifiques (2024)
 - **Source primaire :** [Article Nature / Scientific Data](https://www.nature.com/articles/s41597-024-03153-y).
 - **Concepts pertinents :** pratiques de versionnement et de provenance des données scientifiques.
@@ -226,6 +274,8 @@
 - **Limite :** une recherche propre à un domaine ne définit pas une règle normative de versionnement pour GovCheck.
 - **Cité par :** [Architecture 0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md).
 
+
+- **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md).
 ## Discipline bibliographique et provenance non résolue
 
 1. Privilégier l'organisme normatif, l'éditeur, la documentation officielle ou le dépôt source plutôt que les résumés secondaires.

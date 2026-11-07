@@ -1,4 +1,4 @@
-# 0025 — Cross-domain lifecycle observations, PEAK decision traceability and SACM interoperability
+# 0025 — Cross-domain lifecycle observations, PEAK decision traceability and SACM integration
 
 **Status:** research and architecture recommendation for review. This record proposes semantic connections; it does not claim that runtime collection, a PEAK workflow, SACM import/export or automated reassessment is implemented.  
 **Language:** English is the default; see the [French counterpart](0025-runtime-observations-peak-and-sacm.fr.md).
@@ -123,6 +123,8 @@ SACM is not a competitor to PEAK. PEAK helps expose the reasoning inputs and ass
 
 ### 5.1 SACM capability scope
 
+The following table is illustrative and uses familiar 2.3-era names; it is not the exhaustive 2.4 coverage inventory. The complete, version-pinned 2.4 Beta 1 metamodel inventory and its normative/non-normative conformance points are specified in Architecture 0026.
+
 | SACM construct | Potential GovCheck use |
 |---|---|
 | AssuranceCasePackage | Package a structured assurance case and its references |
@@ -188,7 +190,7 @@ Cross-cutting concepts should include:
 
 Typed relations connect the common foundation and domain records: derivesFrom, refines, constrains, appliesTo, implementedBy, verifiedBy, testedBy, evidencedBy, supports, refutes, assumes, dependsOn, affects, invalidates, supersedes, reviewedBy and authorizedBy. Domain-specific relations (for example threatens, mitigatedBy or regresses) are added only with explicit semantics.
 
-### 6.1 Views and interoperability
+### 6.1 Views and integration
 
 - **PEAK view:** expose the Problem, Experience, Assumptions and Knowledge informing a decision, then its Solution and Assumed Risk.
 - **SACM assurance capability:** represent and validate the complete pinned SACM metamodel; preserve non-normative supporting constructs and provide lossless import/export/round-trip for SACM-native semantics. Cross-links to GovCheck lifecycle and domain artifacts remain explicit.

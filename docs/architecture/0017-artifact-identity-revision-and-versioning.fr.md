@@ -1,6 +1,6 @@
 # 0017 — Identité, révision et politique de versionnement des artefacts
 
-**Statut :** l'adoption du versionnement catégoriel est consignée dans l'[ADR 0004](../decisions/0004-semantic-versioning-contracts.fr.md) ; son effet normatif dépend de la fusion préalable de la PR #21, puis de l'ADR 0004. SemVer n'est pas universel ; son application automatisée n'est pas encore implémentée.  
+**Statut :** l'adoption du versionnement catégoriel est consignée dans l'[ADR 0004](../decisions/0004-semantic-versioning-contracts.fr.md) ; son effet normatif dépend de la fusion de l'ADR 0004 ; la PR #21, qui établit le régime d'autorité, est déjà fusionnée. SemVer n'est pas universel ; son application automatisée n'est pas encore implémentée.  
 **Langue :** l'anglais est la langue par défaut ; la version anglaise est [ici](0017-artifact-identity-revision-and-versioning.md).  
 **Périmètre :** tous les artefacts et enregistrements gouvernés par GovCheck : artefacts normatifs, architecturaux, formels, d'implémentation, preuves, décisions et publications.
 

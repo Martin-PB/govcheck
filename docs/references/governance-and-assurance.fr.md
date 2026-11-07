@@ -147,6 +147,7 @@
 ## Discipline bibliographique et provenance non résolue
 
 1. Privilégier l'organisme normatif, l'éditeur, la documentation officielle ou le dépôt source plutôt que les résumés secondaires.
+2. L'identifiant R-12 a été retiré lors de la consolidation de son entrée Scorecard en doublon dans R-08 ; ne pas réutiliser cet identifiant retiré.
 2. Épingler les analyses de code. Les liens Writ et Privateer identifient les révisions examinées dans l'architecture 0016 ; les actualiser avant toute affirmation sur leur comportement courant.
 3. Distinguer les classes de preuve. Une norme, un article scientifique, une documentation produit, du code source, un résultat de test et un rapport de model checking sont des types de preuve différents.
 4. Aucune adoption implicite. La présence dans ce registre signifie « pertinent à évaluer », pas « sélectionné », « obligatoire », « compatible » ou « implémenté ».

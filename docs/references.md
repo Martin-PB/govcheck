@@ -167,7 +167,7 @@
 <a id="r-11"></a>
 
 ### R-11 — NIST SP 800-218 SSDF project page
-- **Cited by:** no current record on this branch cites this source.
+- **Cited by:** [0013](architecture/0013-governance-metamodel.md), [0022](architecture/0022-governance-capability-audit.md)
 
 - **Primary source:** [NIST SSDF project and publications](https://csrc.nist.gov/projects/ssdf)
 - **Relevant concepts:** secure development practices and mappings to established practices.

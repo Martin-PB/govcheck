@@ -77,3 +77,4 @@ Ontology vocabulary, serialization, graph representation, formal logic, query la
 ## Bibliographic references
 
 External references used in this record: [R-01 — NIST SP 800-53 security and privacy controls](../references.md#r-01), [R-09 — Open Policy Agent policy-decision engine](../references.md#r-09), [R-10 — Cedar authorization language](../references.md#r-10), [R-13 — JSON Schema structural contracts](../references.md#r-13).
+- [R-36 — KAOS and goal-oriented requirements engineering](../references.md#r-36)

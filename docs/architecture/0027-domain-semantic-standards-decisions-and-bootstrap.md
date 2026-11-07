@@ -269,18 +269,18 @@ This record does not adopt DMN, BPMN, CMMN, RAAML, SysML, UTP, PPMN, ReqIF, SPDX
 
 ## 11. Primary references and version-status snapshots
 
-The following primary sources were checked while preparing this record. Version/status is a dated research snapshot, not a promise to follow a moving latest-version URL:
+The primary sources consulted for this record are registered in the central bilingual reference catalogue. The identifiers below are stable catalogue references; the entries contain the official source links, scope, relevance and limitations. Version/status is a dated research snapshot, not a promise to follow a moving “latest” URL.
 
-- [OMG specifications catalogue](https://www.omg.org/specifications/) — DMN 1.6 formal and 1.7 Beta 1; RAAML 1.1 formal and 1.2 Beta 1; PPMN 1.0 formal; SACM 2.3 formal and 2.4 Beta 1; BPMN 2.0.2 formal; CMMN 1.1 formal; SysML 2.0 formal.
-- [OMG DMN 1.6](https://www.omg.org/spec/DMN/1.6/) and [DMN 1.7 Beta 1](https://www.omg.org/spec/DMN/).
-- [OMG BPMN](https://www.omg.org/spec/BPMN/) and [OMG CMMN](https://www.omg.org/cmmn/index.htm).
-- [OMG RAAML 1.2 Beta 1](https://www.omg.org/spec/RAAML/1.2/Beta1) and [RAAML 1.1](https://www.omg.org/spec/RAAML/1.1).
-- [OMG SysML v2](https://www.omg.org/spec/SysML/) and [SysML v2 overview](https://www.omg.org/sysml/sysmlv2/).
-- [OMG UTP 2](https://www.omg.org/spec/UTP2).
-- [OMG PPMN](https://www.omg.org/spec/PPMN/).
-- [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html), [ISO/IEC/IEEE 29148](https://www.iso.org/standard/94091.html), and [ISO/IEC 25010:2023](https://www.iso.org/standard/78176.html).
-- [SPDX specifications](https://spdx.dev/use/specifications/), [CycloneDX](https://cyclonedx.org/specification/), and [NIST SSDF SP 800-218](https://csrc.nist.gov/pubs/sp/800/218/final).
-- [W3C PROV overview](https://www.w3.org/TR/prov-overview/).
+- **OMG decision, motivation and process models:** R-94 (DMN, BPMN, CMMN, BMM and SBVR; includes the OMG catalogue and version-specific specifications).
+- **OMG engineering and domain models:** R-95 (RAAML, SysML v2, UTP 2, ReqIF, SMM and PPMN; includes the OMG catalogue and official specification pages).
+- **Architecture description:** R-96 (ISO/IEC/IEEE 42010:2022).
+- **Requirements engineering:** R-97 (ISO/IEC/IEEE 29148:2018 and the third-edition DIS status in 2026).
+- **Product quality:** R-98 (ISO/IEC 25010:2023).
+- **Software supply-chain inventory:** R-99 (SPDX 3.0) and R-100 (CycloneDX).
+- **Secure development practices:** R-101 (NIST SP 800-218 SSDF).
+- **Provenance:** R-102 (W3C PROV family).
+
+See [the central reference catalogue](../references.md) and its [French counterpart](../references.fr.md). The catalogue entries distinguish formal specifications from beta/draft versions and explain the limits of what each source establishes.
 
 ## 12. Relationships to existing GovCheck records
 

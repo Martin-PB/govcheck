@@ -27,12 +27,14 @@ Pour la reconstruction détaillée de ces distinctions (auto-certification vs v�
 
 ### Classes formelles et de gouvernance
 
-2. **Model checking :** exploration d'un modèle selon bornes/hypothèses (TLA+/TLC, Alloy, Spin) ; ne dit rien automatiquement de l'implémentation.
+2. **Model checking :** exploration d'un modèle selon bornes/hypothèses (TLA+/TLC, Alloy, Spin, CSP/FDR pour les modèles de processus concurrents) ; ne dit rien automatiquement de l'implémentation.
 3. **Vérification de programmes :** établit des propriétés du programme ou de ses spécifications dans un cadre logique précis (Kani, Verus, Dafny, Lean).
 4. **Preuve de théorème :** vérification d'une dérivation dans une logique/noyau (Lean, Coq, Isabelle) ; consigner axiomes, imports, hypothèses et échappements.
 5. **Conformité de l'implémentation :** relation et méthode explicites de raffinement/conformité entre programme et spécification.
 6. **Fidélité normative :** traçabilité entre règles approuvées, IDs formels et projections humaines fidèles.
 7. **Acceptation :** décision de gouvernance pour un candidat exact ; ne prouve pas que toutes les affirmations sont vraies.
+
+B et Z sont également des notations candidates de spécification/raffinement formels ; CSP/FDR est une famille d'algèbre de processus et de model checking pour la concurrence. Ces méthodes complètent les classes précédentes sans être interchangeables avec le model checking, la vérification de programmes, la preuve de théorèmes, la conformité de l'implémentation, la fidélité normative ou l'acceptation. Voir [R-89](../references.fr.md#r-89), [R-90](../references.fr.md#r-90) et [R-91](../references.fr.md#r-91).
 
 ## Chaîne de conformité prouvable (langage naturel → formel → implémentation)
 

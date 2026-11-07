@@ -280,3 +280,11 @@ Ordre recommandé : affiner les identités sémantiques et hypothèses sur les p
 ## 15. Gestion des évolutions de cette mémoire
 
 Ce document est une mémoire de conception et un index de décisions, pas une seconde spécification normative. Si une décision évolue, modifier d’abord l’ADR/la spécification/le modèle concerné, puis mettre à jour cette mémoire et sa version anglaise. Ne pas modifier silencieusement les décisions historiques : les remplacer par un ADR daté ou une révision explicite de spécification. Maintenir le statut d’implémentation et les affirmations de vérification alignés sur les preuves réellement présentes dans le dépôt.
+
+## Références bibliographiques
+
+- [R-05 — Modélisation par transitions d'états TLA+ / TLC](../references.fr.md#r-05)
+- [R-18 — Évaluation de Writ comme fixture de workflow d'agent](../references.fr.md#r-18)
+- [R-19 — Évaluation de Privateer comme fixture de workflow d'agent](../references.fr.md#r-19)
+- [R-22 — Sémantiques natives Git et Pijul](../references.fr.md#r-22)
+- [R-29 — Modélisation relationnelle et analyse Alloy](../references.fr.md#r-29)

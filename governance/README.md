@@ -2,7 +2,7 @@
 
 **Français :** [README.fr.md](README.fr.md)
 
-This folder is the **only** part of the GovCheck repository meant to be copied into another repository to govern it. Copy governance/ as-is into the target repository's root (or keep it as a subtree) and follow the bootstrap policy.
+This folder is the **only** part of the GovCheck repository meant to be copied into another repository to govern it. Run `python3 governance/bootstrap.py TARGET_DIR` (or copy governance/ as-is into the target repository's root) and follow the bootstrap policy.
 
 ## Contents (planned layout)
 

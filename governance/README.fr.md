@@ -2,7 +2,7 @@
 
 **English:** [README.md](README.md)
 
-Ce dossier est la **seule** partie du dépôt GovCheck destinée à être copiée dans un autre dépôt pour le gouverner. Copiez governance/ tel quel à la racine du dépôt cible (ou conservez-le en sous-arbre) et suivez la politique de bootstrap.
+Ce dossier est la **seule** partie du dépôt GovCheck destinée à être copiée dans un autre dépôt pour le gouverner. Exécutez `python3 governance/bootstrap.py DOSSIER_CIBLE` (ou copiez governance/ tel quel à la racine du dépôt cible) et suivez la politique de bootstrap.
 
 ## Contenu (arborescence prévue)
 

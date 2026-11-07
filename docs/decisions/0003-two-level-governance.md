@@ -1,29 +1,25 @@
-# ADR 0003 — Two-level governance: meta level and portable package
+# ADR 0003 — Two-level governance: product package and meta history
 
 **Status:** proposed. **French:** [0003 (français)](0003-two-level-governance.fr.md).
 
 ## Context
 
-GovCheck must govern its own repository (meta level: architecture records, decision register, deliberations) while also providing a ready-to-copy governance package for any other repository. Copying the whole repository would mix these two levels and leak GovCheck-specific history into governed repositories.
+GovCheck is itself code under development. The repository must therefore serve two purposes at once: (1) ship a governance package that can be copied into any new repository, and (2) keep the living history of GovCheck's own governance (records, ADRs, deliberations, specifics).
 
 ## Decision
 
-Split the repository into two levels:
+Maintain two living levels, updated together in the same pull request:
 
-1. **Meta level (repository root, not copied):** GovCheck's own governance history — docs/architecture/ records, docs/decisions/ ADRs, root README and AGENTS files.
-2. **Portable package (governance/, the only folder copied into a governed repository):** normative specifications, formal model and schemas, executable checks (CI workflow template, drift-check script), bootstrap policy, and guides/templates for the governed repository's own registers.
+1. **Product package (`governance/`):** the shippable governance code. It evolves with every PR and, at any commit, must form a coherent, self-contained setup for a new repository: specifications, formal model and schemas, executable checks (CI workflow template, drift check), bootstrap policy, decision-register guide and templates. It contains no GovCheck-specific history. A bootstrap script inside the package (`governance/bootstrap.py`) generates the target repository's tree from the package.
+2. **Meta level (repository root):** GovCheck's own living documents with their specifics — docs/architecture/ records, docs/decisions/ ADRs, root README and AGENTS files. This level records why and how the package evolves.
 
-Anti-duplication rules:
-
-- Normative and executable content has a single source of truth in governance/; the meta level references it by link, never by copy.
-- The package's decisions/ contains only a guide and a template for the governed repository's own decision register; GovCheck's ADRs stay at the meta level.
-- Exception: GitHub requires workflows at the repository root .github/workflows/. The root workflow and governance/.github/workflows/tla-check.yml are kept in sync by a check, with governance/ as the canonical source.
+Duplication rule: when a PR changes a normative document, both levels are updated in that PR — a generic version in governance/ (for governed repositories) and the specific living version at the meta level. A CI check verifies the two stay structurally aligned (same template sections), without requiring identical content. Exception: GitHub requires workflows at the repository root .github/workflows/, so the root workflow is generated from the package template by the bootstrap/sync check.
 
 ## Migration
 
-Phased, to avoid conflicts with open PRs #11/#12: this ADR and the package skeleton land first; docs/specifications/, docs/formal/, formal/, scripts/, docs/BOOTSTRAP_GOVERNANCE* and the CI workflow template are moved into governance/ once #11/#12 are merged, with internal links updated and the workflow sync check added.
+Phased: this ADR, the package skeleton and the bootstrap script land first (PR #20). Existing normative files (docs/specifications/, docs/formal/, formal/, scripts/, docs/BOOTSTRAP_GOVERNANCE*, CI template) are then duplicated into governance/ as generic versions, with the meta copies kept at the root; internal links updated; structural alignment check added.
 
 ## Consequences
 
-- Governing a new repository means copying exactly one folder: governance/.
-- The governed repository gets its own decision register (guided by the package template), independent of GovCheck's history.
+- Setting up governance in a new repository = run the package bootstrap script (or copy governance/), which produces the full tree.
+- The meta level remains the authoritative history of GovCheck itself and is never copied into governed repositories.

@@ -1,29 +1,25 @@
-# ADR 0003 — Gouvernance à deux niveaux : niveau méta et package portable
+# ADR 0003 — Gouvernance à deux niveaux : package produit et historique méta
 
 **Statut :** proposé. **English:** [0003](0003-two-level-governance.md).
 
 ## Contexte
 
-GovCheck doit se gouverner lui-même (niveau méta : enregistrements d'architecture, registre de décisions, délibérations) tout en fournissant un package de gouvernance prêt à copier pour tout autre dépôt. Copier le dépôt entier mélangerait ces deux niveaux et divulguerait l'historique propre à GovCheck dans les dépôts gouvernés.
+GovCheck est lui-même du code en développement. Le dépôt doit donc servir deux usages à la fois : (1) fournir un package de gouvernance copiable dans tout nouveau dépôt, et (2) conserver l'historique vivant de la gouvernance propre à GovCheck (records, ADR, délibérations, spécificités).
 
 ## Décision
 
-Séparer le dépôt en deux niveaux :
+Maintenir deux niveaux vivants, mis à jour ensemble dans la même pull request :
 
-1. **Niveau méta (racine du dépôt, non copiée)** : l'historique de gouvernance de GovCheck — enregistrements de docs/architecture/, ADR de docs/decisions/, README et fichiers AGENTS racine.
-2. **Package portable (governance/, seul dossier copié dans un dépôt gouverné)** : spécifications normatives, modèle formel et schémas, contrôles exécutables (gabarit de workflow CI, script de drift check), politique de bootstrap, et guides/gabarits pour les registres propres au dépôt gouverné.
+1. **Package produit (`governance/`) :** le code de gouvernance livrable. Il évolue à chaque PR et, à tout commit, doit former un ensemble cohérent et autonome pour un nouveau dépôt : spécifications, modèle formel et schémas, contrôles exécutables (gabarit de workflow CI, drift check), politique de bootstrap, guide et gabarits de registre de décisions. Il ne contient aucun historique propre à GovCheck. Un script de bootstrap dans le package (`governance/bootstrap.py`) génère l'arborescence du dépôt cible à partir du package.
+2. **Niveau méta (racine du dépôt) :** les documents vivants de GovCheck avec leurs spécificités — records de docs/architecture/, ADR de docs/decisions/, README et fichiers AGENTS racine. Ce niveau trace pourquoi et comment le package évolue.
 
-Règles anti-duplication :
-
-- Le contenu normatif et exécutable a une source unique dans governance/ ; le niveau méta y fait référence par lien, jamais par copie.
-- Le decisions/ du package ne contient qu'un guide et un gabarit pour le registre de décisions du dépôt gouverné ; les ADR de GovCheck restent au niveau méta.
-- Exception : GitHub exige que les workflows soient à la racine .github/workflows/. Le workflow racine et governance/.github/workflows/tla-check.yml sont maintenus synchronisés par un contrôle, governance/ étant la source canonique.
+Règle de duplication : quand une PR modifie un document normatif, les deux niveaux sont mis à jour dans cette même PR — version générique dans governance/ (pour les dépôts gouvernés) et version vivante spécifique au niveau méta. Un contrôle CI vérifie que les deux restent structurellement alignés (mêmes sections de gabarit), sans exiger un contenu identique. Exception : GitHub exige les workflows à la racine .github/workflows/, le workflow racine est donc généré depuis le gabarit du package par le contrôle de synchro.
 
 ## Migration
 
-Par phases, pour éviter les conflits avec les PR #11/#12 ouvertes : cet ADR et le squelette du package passent d'abord ; docs/specifications/, docs/formal/, formal/, scripts/, docs/BOOTSTRAP_GOVERNANCE* et le gabarit de workflow CI seront déplacés dans governance/ une fois #11/#12 fusionnées, avec mise à jour des liens internes et ajout du contrôle de synchro du workflow.
+Par phases : cet ADR, le squelette du package et le script de bootstrap passent d'abord (PR #20). Les fichiers normatifs existants (docs/specifications/, docs/formal/, formal/, scripts/, docs/BOOTSTRAP_GOVERNANCE*, gabarit CI) sont ensuite dupliqués dans governance/ en versions génériques, les copies méta restant à la racine ; liens internes mis à jour ; contrôle d'alignement structurel ajouté.
 
 ## Conséquences
 
-- Gouverner un nouveau dépôt signifie copier exactement un dossier : governance/.
-- Le dépôt gouverné tient son propre registre de décisions (guidé par le gabarit du package), indépendant de l'historique de GovCheck.
+- Mettre en place la gouvernance dans un nouveau dépôt = exécuter le script de bootstrap du package (ou copier governance/), qui produit toute l'arborescence.
+- Le niveau méta reste l'historique autoritaire de GovCheck lui-même et n'est jamais copié dans les dépôts gouvernés.

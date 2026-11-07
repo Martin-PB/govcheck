@@ -4,9 +4,9 @@
 
 ## 1. Scope and disambiguation
 
-“Writ” is an ambiguous product name. This assessment concerns [`infinri/Writ`]([R-18](../references.md#r-18)), described by its repository as a governance runtime for Claude Code. It does not assess the separate products at writ.now, withwrit.com, or usewrit.app.
+“Writ” is an ambiguous product name. This assessment concerns [`infinri/Writ`](../references.md#r-18), described by its repository as a governance runtime for Claude Code. It does not assess the separate products at writ.now, withwrit.com, or usewrit.app.
 
-Privateer here means [`privateer-agent/privateer-agent`]([R-19](../references.md#r-19)), a MIT-licensed, provider-agnostic distribution of the Pi coding agent. It does not mean unrelated products sharing the name.
+Privateer here means [`privateer-agent/privateer-agent`](../references.md#r-19), a MIT-licensed, provider-agnostic distribution of the Pi coding agent. It does not mean unrelated products sharing the name.
 
 Source snapshots reviewed:
 - Writ `main`: `ebdafe5450b201339f81e717ed104e6bcfd3fe3e` (3 November 2026).

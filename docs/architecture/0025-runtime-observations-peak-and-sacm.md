@@ -24,7 +24,7 @@ This record addresses three related but distinct needs:
 
 1. connect observations from the repository lifecycle and, where relevant, deployed operation to the governed project model;
 2. use **PEAK** to make the inputs, rationale, solution and assumed risk of decisions traceable;
-3. assess **SACM** as a possible representation/interchange format for assurance cases.
+3. define how the full SACM assurance-case metamodel is represented and governed as a dedicated GovCheck capability, and how it connects to the wider repository-governance model.
 
 PEAK and SACM do not solve the same problem and are not alternatives to one another. Neither is the whole of GovCheck.
 
@@ -115,13 +115,13 @@ Do not overload one record with raw observation, interpretation and assurance co
 
 An observation can be used as evidence, but it is not automatically admissible evidence for every claim. The existing Specification 0005 and Architecture 0021 semantics govern whether evidence is relevant, sufficiently trustworthy, current and within scope.
 
-## 5. SACM: a specialized assurance-case representation
+## 5. SACM: a complete assurance capability within GovCheck
 
-SACM (Structured Assurance Case Metamodel) addresses the structure and exchange of assurance cases: claims/assertions, argumentation, inference, evidence references, context, artifacts and terminology [R-34](../references.md#r-34). Its contribution should be evaluated within that specific scope.
+SACM (Structured Assurance Case Metamodel) defines a structured metamodel for assurance cases. GovCheck should support the full SACM 2.4 Beta 1 semantic scope as a dedicated assurance capability, not merely as a narrow interchange adapter. Architecture 0026 defines the target: complete coverage of SACM's normative metamodel and faithful preservation of the explicitly non-normative supporting constructs, with a pinned version and demonstrated conformance [R-34](../references.md#r-34) [R-73](../references.md#r-73).
 
-SACM is not a competitor to PEAK. PEAK helps expose the reasoning inputs and assumed risk behind a decision; SACM represents structured assurance arguments. GovCheck may use both for different purposes, while retaining its own repository-governance semantics. Research on assurance-case engineering also emphasizes explicit defeaters, counterevidence and the strength of evidence—concerns relevant to how GovCheck evaluates arguments, regardless of whether SACM is used as an interchange format [R-71](../references.md#r-71).
+SACM is not a competitor to PEAK. PEAK helps expose the reasoning inputs and assumed risk behind a decision; SACM represents structured assurance arguments. GovCheck may use both for different purposes, while retaining its own repository-governance semantics. PEAK decisions may refer to SACM cases and elements, and SACM claims may refer to GovCheck goals, requirements, revisions and evidence through explicit typed links. Research on assurance-case engineering also emphasizes explicit defeaters, counterevidence and the strength of evidence—concerns relevant to how GovCheck evaluates arguments, regardless of whether SACM is used as an interchange format [R-71](../references.md#r-71).
 
-### 5.1 Useful SACM 2.3 constructs
+### 5.1 SACM capability scope
 
 | SACM construct | Potential GovCheck use |
 |---|---|
@@ -136,21 +136,21 @@ SACM is not a competitor to PEAK. PEAK helps expose the reasoning inputs and ass
 
 These constructs may reduce the amount of assurance-case machinery GovCheck needs to invent. They do not establish that a claim is true, that evidence is fresh, that a decision is authorized, or that an implementation conforms to a specification. Those meanings still depend on GovCheck's own scope, provenance, authority, lifecycle and evaluation rules.
 
-### 5.2 SACM's boundary relative to GovCheck
+### 5.2 Boundary and composition with GovCheck
 
-The comparison here is deliberately limited to **assurance-case representation**. SACM's richer argumentation/package constructs should not be read as evidence that it is richer than, or a replacement for, GovCheck as a whole.
+The scope distinction is architectural, not a comparison or ranking. SACM governs the semantics of the assurance-case capability; GovCheck governs the repository and its full lifecycle.
 
 SACM does not define the complete governance of a software repository across its lifecycle. It does not by itself provide GovCheck's canonical rule authority, repository change/acceptance lifecycle, project bootstrap and capability selection, artifact/version governance, actor authority and delegation, or the domain-specific policies and methods a project may select.
 
 Nor does SACM define all the domain semantics that projects may need, such as maintainability policy, test strategy and adequacy, dependency lifecycle, build/release governance, security threat scenarios, privacy obligations or operational response. It can represent assurance arguments about such matters, but it does not supply those domain models and decision policies.
 
-The generic SACM constructs are therefore potential mappings or exchange structures, not substitutes for GovCheck concepts. Any mapping must preserve the distinction between a claim, an assumption, evidence, an inference, an observation and an authorized decision.
+SACM constructs are therefore first-class within the assurance capability, while cross-domain GovCheck concepts remain first-class in their own right. Mappings must preserve distinctions between claims, assumptions, evidence, inference, observation, requirement, finding, decision and authority. Architecture 0026 specifies the complete SACM coverage target and the cross-model integration contract.
 
-### 5.3 SACM 2.4
+### 5.3 SACM 2.4 Beta 1 as the pinned engineering target
 
-At the time of this record, OMG lists SACM 2.4 Beta 1 as in process while 2.3 remains the formal version [R-73](../references.md#r-73). The beta issue tracker includes work on typed values, assessment constructs, joins, package structure and more precise artifact relationships. These developments merit monitoring, but beta issue resolutions are not a final normative contract.
+OMG lists SACM 2.4 Beta 1 (September 2026) as an in-process version while 2.3 remains formal [R-73](../references.md#r-73). The beta introduces or clarifies Foundation/MOF alignment, package semantics, explicit claim subjects, argument context, assessments, joins, advanced argument descriptors, typed named values, and views/diagrams. The issue tracker also distinguishes normative metamodel changes from non-normative supporting constructs.
 
-GovCheck should not freeze its canonical model around SACM 2.3 or 2.4. If an assurance-case interchange capability is implemented, its adapter should target a deliberately selected SACM version/profile and record unsupported or lossy mappings.
+GovCheck should pin the exact Beta 1 PDF and machine-readable metamodel for its prototype, preserve normative status distinctions, and track the final 2.4 release through an explicit migration. The complete coverage and conformance strategy is specified in Architecture 0026.
 
 ## 6. GovCheck semantic architecture: a common foundation, multiple domains
 
@@ -189,7 +189,7 @@ Typed relations connect the common foundation and domain records: derivesFrom, r
 ### 6.1 Views and interoperability
 
 - **PEAK view:** expose the Problem, Experience, Assumptions and Knowledge informing a decision, then its Solution and Assumed Risk.
-- **SACM adapter:** exchange assurance cases, preserving claim/argument/evidence/context semantics and reporting any unsupported or lossy mapping.
+- **SACM assurance capability:** represent and validate the complete pinned SACM metamodel; preserve non-normative supporting constructs and provide lossless import/export/round-trip for SACM-native semantics. Cross-links to GovCheck lifecycle and domain artifacts remain explicit.
 - **Domain views:** present the relevant requirements, artifacts, methods, evidence and decisions for testing, maintainability, formal proof, dependencies, security or another selected capability.
 - **Lifecycle view:** show how project intent, requirements, architecture, implementation, verification, acceptance, release, operation and maintenance relate over time.
 - **Operational feedback view:** show observations, derived findings, affected assumptions/claims/decisions and required reassessments.
@@ -208,7 +208,7 @@ These are projections over governed records, not competing sources of truth. Edi
 8. A metric or aggregate score must not conceal its underlying evidence, assumptions, uncertainty or domain-specific meaning.
 9. A decision records its authority, rationale, scope, alternatives, validity and review conditions. PEAK can make its reasoning legible but does not grant authority.
 10. Domain-specific conclusions do not silently alter canonical governance rules. Normative changes follow the governed change lifecycle.
-11. SACM export/import must preserve meaning or explicitly report loss; syntactic round-tripping alone is insufficient.
+11. GovCheck's SACM capability must preserve every construct in its pinned SACM metamodel and report any unsupported semantics; no normative SACM construct may be silently dropped or simplified.
 12. Security-specific rules—such as threat-model review and risk acceptance—apply within their declared domain and do not become universal rules for unrelated project concerns.
 
 ## 8. Recommendations and staged work
@@ -218,7 +218,7 @@ These are projections over governed records, not competing sources of truth. Edi
 - Keep GovCheck's repository-wide governance and lifecycle model as the organizing foundation.
 - Treat domain capabilities as composable and selectable; do not make security, formal methods, tests or any single discipline mandatory for every project.
 - Use PEAK as a decision-reasoning and traceability method where decision significance warrants it. Do not compare it with SACM.
-- Evaluate SACM only for the assurance-case representation/interchange problem. Do not treat it as the GovCheck metamodel or as a source of repository lifecycle governance.
+- Conform to the SACM metamodel within the assurance-case capability. Do not expand SACM's scope to replace GovCheck's repository-wide governance, authority or lifecycle model.
 - Preserve the existing distinction between normative governance, domain methods, evidence, assurance arguments and authorized decisions.
 - Keep the model extensible and method-neutral. Prefer adapters and explicit mappings to forcing every discipline into one external standard.
 
@@ -229,12 +229,12 @@ These are projections over governed records, not competing sources of truth. Edi
 3. **Decision record and PEAK view:** define how Problem, Experience, Assumptions and Knowledge link to alternatives, Solution, Assumed Risk, authority and later reassessment.
 4. **Observation/finding contracts:** define general event/observation and derived finding/evidence records, with exact subject binding, provenance, uncertainty, privacy and invalidation.
 5. **Domain feedback patterns:** specify how observations update the relevant domain assessment—such as maintainability, test adequacy, dependency status or threat assumptions—without silently changing normative rules.
-6. **SACM interoperability prototype:** map one representative assurance case, test round-trip semantics and document unsupported concepts. Keep this work scoped to assurance cases.
+6. **SACM conformance prototype:** derive the complete Beta 1 metamodel inventory, implement the semantic coverage matrix, and test lossless import/representation/export/round-trip. Integrate assurance cases with GovCheck goals, requirements, artifacts, evidence, changes and decisions through explicit typed mappings.
 7. **Formal models and tests:** verify common lifecycle properties such as authority, invalidation, review and acceptance, then add domain-specific properties where justified.
 8. **Bootstrap integration:** expose domain capabilities and their dependencies through the guided profile, with explicit selection, omission, migration and non-destructive behavior.
 
 ## 9. Limits and non-decisions
 
-This record does not finalize a universal domain taxonomy, select a graph database or serialization, prescribe a single quality/risk score, mandate PEAK for every decision, adopt SACM as the canonical model, or claim that observation collection and automated reassessment are implemented. It does not make security or formal verification mandatory for every repository.
+This record does not finalize a universal domain taxonomy, select a graph database or serialization, prescribe a single quality/risk score, mandate PEAK for every decision, make SACM the repository-wide governance metamodel, or claim that observation collection and automated reassessment are implemented. It does not make security or formal verification mandatory for every repository.
 
-The central design question is how GovCheck can govern a repository across its full lifecycle while allowing different engineering domains and methods to coexist: shared identity, authority, provenance, decisions and lifecycle semantics, with domain-specific models and evidence requirements where they are actually needed. PEAK and SACM contribute to two distinct parts of that architecture; neither defines the whole.
+The central design question is how GovCheck can govern a repository across its full lifecycle while allowing different engineering domains and methods to coexist: shared identity, authority, provenance, decisions and lifecycle semantics, with domain-specific models and evidence requirements where they are actually needed. PEAK contributes decision traceability; SACM supplies the assurance-case metamodel within its domain. Neither replaces the wider GovCheck governance architecture.

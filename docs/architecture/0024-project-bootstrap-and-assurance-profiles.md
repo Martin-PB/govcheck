@@ -169,7 +169,7 @@ The tool should help users compare treatment options and their costs, operationa
 
 Risk acceptance does not make a threat disappear, validate a control, or turn unsupported claims into supported ones. It records a governed decision to operate with a known residual exposure. Assurance status and risk disposition must therefore remain separate but linked.
 
-## 5. Profile and generated tree
+## 6. Profile and generated tree
 
 The outcome is a versioned, machine-readable project profile plus a deterministic bootstrap plan. The profile records selected capabilities, explicit non-selections where relevant, rationale, context/assumptions, authority and profile/schema revisions. It is not a second normative source: normative rules remain in the canonical governance package.
 
@@ -200,7 +200,7 @@ Rules:
 5. Never claim that a generated skeleton is a functioning test suite, proof, security control or CI gate until it has been configured and executed.
 6. Directory names are an implementation detail. The profile's stable capability identifiers and typed artifact relationships are authoritative for planning.
 
-## 5. Capability dependencies and composition
+## 6. Capability dependencies and composition
 
 Capabilities form a typed dependency graph, not a set of independent booleans. Examples:
 
@@ -213,7 +213,7 @@ The resolver must detect missing dependencies, incompatible selections, unsuppor
 
 No project-specific formal method is a prerequisite of the governance core.
 
-## 6. Bootstrap lifecycle: inspect → decide → plan → review → apply → verify
+## 7. Bootstrap lifecycle: inspect → decide → plan → review → apply → verify
 
 The bootstrap must preserve ADR 0001's non-destructive lifecycle and make the decision stage explicit:
 
@@ -228,7 +228,7 @@ The plan must support preview/dry-run, machine-readable output, deterministic re
 
 For existing repositories, bootstrap is a migration assistant, not a reset command. It must detect drift and preserve user edits. Destructive cleanup requires a distinct, explicit operation and review.
 
-## 7. Evolution after bootstrap
+## 8. Evolution after bootstrap
 
 The profile is not a one-time questionnaire result. A project may later add or retire capabilities as its claims, risks, team or deployment context change.
 
@@ -243,7 +243,7 @@ A profile change must:
 
 Removing a formal method from the active profile does not erase historical proof artifacts or decisions. It changes future applicability and acceptance expectations only through an authorized, prospective decision.
 
-## 8. CLI and machine interface sketch
+## 9. CLI and machine interface sketch
 
 The precise command names remain open, but the workflow should support equivalents of:
 
@@ -256,7 +256,7 @@ The precise command names remain open, but the workflow should support equivalen
 
 These are interface sketches, not implemented commands or an approved CLI contract. Exact syntax, serialization and profile schema require a separate specification and prototype.
 
-## 9. Acceptance scenarios for a first prototype
+## 10. Acceptance scenarios for a first prototype
 
 A prototype should demonstrate at least:
 
@@ -274,7 +274,7 @@ A prototype should demonstrate at least:
 12. The prototype distinguishes unassessed, untreated, planned, implemented, tested, reviewed and monitored controls; it exposes uncovered paths and unsupported assumptions.
 13. Risk can be accepted only by an authorized owner with recorded rationale, scope, residual assessment and review/expiry conditions; acceptance never changes evidence status.
 
-## 10. Delivery sequence
+## 11. Delivery sequence
 
 1. Review this decision model and resolve terminology against Specifications 0002/0005 and Architecture 0013/0015/0021.
 2. Define stable capability identifiers, profile schema, dependency semantics and template-catalogue contract.
@@ -285,7 +285,7 @@ A prototype should demonstrate at least:
 
 Do not begin with a large GUI, hosted service, mandatory MCP server, plugin marketplace or a universal project template. The local executable remains the primary interface.
 
-## 11. Limits and status
+## 12. Limits and status
 
 This record defines a proposed experience and its safety properties. It does not select an implementation language, serialization format, concrete CLI syntax, test framework, theorem prover, model checker, directory catalogue or default project profile. It does not claim that any bootstrap functionality exists.
 

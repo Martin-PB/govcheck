@@ -53,3 +53,10 @@ Modifier d’abord Markdown en laissant la source canonique inchangée n’est p
 Source absente, ID dupliqué, référence non résolue, langage normatif ambigu, projections contradictoires ou sémantique non prise en charge ne sont pas des succès. Les cas obligatoires non résolus sont indéterminés et échouent de manière fermée, sauf exception valide et bornée. Le bootstrap reste non destructif : inspecter → planifier → appliquer, avec diff révisable et retour arrière.
 
 Ouvert : format/encodage/signatures canoniques ; marqueurs Markdown ; sections générées ; langage d’implémentation ; Lean/OPA/Cedar ; classificateur sémantique ; autorité distante. Ces choix exigent des prototypes ciblés.
+
+## Références bibliographiques
+
+- [R-09 — moteur de décision de politiques Open Policy Agent](../references.fr.md#r-09)
+- [R-10 — langage d’autorisation Cedar](../references.fr.md#r-10)
+- [R-13 — contrats structurels JSON Schema](../references.fr.md#r-13)
+- [R-17 — métadonnées de gouvernance typées et relations traçables](../references.fr.md#r-17)

@@ -116,3 +116,8 @@ Cette restitution développe les distinctions des spécifications 0002–0005 et
 
 - [Registre GovCheck des références sur la gouvernance et l'assurance](../references/governance-and-assurance.fr.md) : arguments d'assurance GSN, Lamport/TLA+, provenance in-toto et limites du noyau de preuve de Lean.
 - [Version anglaise](../references/governance-and-assurance.md).
+
+
+## Références bibliographiques
+
+Références externes utilisées dans ce document : [R-04](../references.fr.md#r-04), [R-05](../references.fr.md#r-05), [R-06](../references.fr.md#r-06), [R-20](../references.fr.md#r-20).

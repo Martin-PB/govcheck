@@ -19,7 +19,7 @@
 | Governance metadata and catalogues | R-17 |
 | Agent workflow systems assessed as fixtures | R-18–R-19 |
 | Version-control semantics | R-22 |
-| CRDTs, real-time collaboration and network transport | R-45–R-50, R-66 |
+| CRDTs, real-time collaboration and network transport | R-45–R-50, R-66, R-87 |
 | Knowledge representation and interoperability | R-51–R-61, R-83–R-86 |
 | Integration project repositories and studies | R-62 |
 | Integration protocols and document conventions | R-67 |

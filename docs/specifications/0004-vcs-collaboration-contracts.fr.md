@@ -36,5 +36,6 @@ Distinguer absence, non-prise-en-charge, indisponibilité, péremption, conflit,
 ## Références primaires
 
 - La documentation primaire de Git et Pijul est regroupée sous [R-22 dans le catalogue central des références](../references.fr.md#r-22).
+- [R-16 — contrats d'interface lisibles par machine OpenAPI](../references.fr.md#r-16) est une source candidate pour décrire une future interface HTTP uniquement ; cette spécification ne choisit pas OpenAPI et n'impose aucun adaptateur HTTP.
 
 Ces sources décrivent les sémantiques des VCS sous-jacents ; elles ne démontrent pas que les adaptateurs GovCheck sont implémentés ou conformes.

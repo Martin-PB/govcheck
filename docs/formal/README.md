@@ -48,4 +48,4 @@ The lifecycle diagram is generated from formal/lifecycle-transitions.json. The c
 
 ## Reference register
 
-For the academic and industrial foundations, including the limitations of model checking and the distinction between provenance, proof and policy authority, see the [governance and assurance reference register](../references/governance-and-assurance.md) and its [French version](../references/governance-and-assurance.fr.md).
+For the academic and industrial foundations, including the limitations of model checking and the distinction between provenance, proof and policy authority, see the [governance and assurance reference register](../references.md) and its [French version](../references.fr.md).

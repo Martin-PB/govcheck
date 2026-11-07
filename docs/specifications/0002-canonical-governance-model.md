@@ -21,7 +21,7 @@ GovCheck uses two distinct release contracts:
 
 Each contract has its own SemVer sequence, compatibility assessment, authorization and immutable release identity. A product release may include a particular governance-package release, but neither version is inferred from the other. A Git repository tag identifies a repository release/commit; it does not automatically assign either contract version.
 
-No product or package version is assigned by this specification. A first publication is an explicit initial-publication decision, not an invented MAJOR/MINOR/PATCH increment. A complete SemVer string has three numeric components (for example, **0.1.0**); shorthand such as **v0.1** is not a complete release identity.
+The planned first GovCheck product baseline is **0.1.0**; this is a target, not a published or authorized release. The reusable governance package has its own independent version sequence, whose first version remains unassigned. A first publication is an explicit initial-publication decision, not an invented MAJOR/MINOR/PATCH increment. A complete SemVer string has three numeric components (for example, **0.1.0**); shorthand such as **v0.1** is not a complete release identity.
 
 Before 1.0.0, the relevant contract is explicitly in initial development: under SemVer, anything may change and the public API should not be treated as stable. A change that breaks an already declared pre-1.0 contract still requires an explicit compatibility assessment, migration note and MINOR increment rather than a silent PATCH. Once a contract reaches 1.0.0, the normal MAJOR/MINOR/PATCH compatibility rules apply.
 

@@ -94,7 +94,82 @@ Pour chaque recommandation, afficher :
 
 Les recommandations sont consultatives, sauf si une contrainte légale/contractuelle applicable ou une politique de projet autorisée rend un contrôle obligatoire. GovCheck doit distinguer le choix du responsable, la recommandation de GovCheck et l'obligation normative.
 
-## 4. Profil et arborescence générée
+### 3.5 Assurance guidée par les menaces et traçabilité
+
+Le bootstrap doit relier le contexte du projet et les choix d'assurance à une analyse explicite des menaces et des risques. Il ne doit pas demander de sélectionner des outils isolément.
+
+Maintenir des relations typées et traçables entre, au minimum :
+
+- actifs et intérêts métier/opérationnels ;
+- objectifs de sécurité et de sûreté ;
+- sources/acteurs de menace, capacités et motivations lorsqu'elles sont connues ;
+- événements et scénarios de menace ;
+- techniques, préconditions et chemins d'attaque, frontières de confiance traversées ;
+- vulnérabilités, faiblesses et conditions d'exposition ;
+- mesures préventives, détectives, de réponse et de récupération ;
+- instances de mise en œuvre/configuration des mesures et responsables ;
+- affirmations d'assurance, hypothèses, preuves, limites et décisions de revue ;
+- risques résiduels, décisions de traitement, propriétaires du risque et déclencheurs de réexamen.
+
+Employer une terminologie précise dans l'interface. Une **menace** est une cause potentielle de dommage ; un **scénario de menace** décrit comment une source/un événement de menace pourrait affecter un actif dans un contexte donné ; un **chemin d'attaque** est une séquence réalisable à travers des composants, privilèges ou frontières de confiance ; une **vulnérabilité/faiblesse** est une condition pouvant permettre ou amplifier un événement. Ces notions sont liées, mais ne doivent pas être réduites à un seul champ binaire.
+
+Le graphe de traçabilité doit fonctionner dans les deux sens. Depuis un scénario de menace, l'utilisateur peut examiner les chemins, faiblesses, mesures, activités de vérification, preuves, risques résiduels et décisions responsables. Depuis une mesure ou une preuve, il peut voir quels scénarios et affirmations elle traite, sous quelles hypothèses et dans quel périmètre. Une mesure sans objectif ni scénario déclaré appelle une justification ; elle n'est pas automatiquement invalide, car elle peut relever de la défense en profondeur ou répondre à une obligation extérieure au jeu de menaces actuel.
+
+La couverture n'est pas un pourcentage unique et ne doit pas être présentée comme une preuve de sécurité. Faire notamment ressortir :
+- les scénarios sans traitement proposé ;
+- les chemins sans mesure efficace à une ou plusieurs étapes critiques ;
+- les mesures planifiées mais non mises en œuvre ;
+- les mesures mises en œuvre mais non testées ou autrement assurées ;
+- les preuves ne couvrant pas le déploiement/la configuration concernés ;
+- les affirmations dont les hypothèses ne sont pas vérifiées ou étayées ;
+- les preuves périmées, incomplètes, contestées ou produites par un composant non fiable ;
+- les risques acceptés sans responsable compétent, justification, périmètre ou condition de réexamen.
+
+Une mesure n'est pas « efficace » simplement parce qu'elle est documentée ou générée par le bootstrap. Distinguer les états proposés, mis en œuvre, configurés, testés/observés, revus indépendamment et surveillés en exploitation. Un test de mesure n'étaye que le périmètre et les conditions effectivement testés.
+
+### 3.6 Hypothèses, inférences et limites
+
+Tout argument d'assurance doit rendre son raisonnement inspectable :
+
+- **Hypothèse :** prémisse tenue pour acquise dans un argument délimité, avec source, responsable, périmètre, confiance, période de validité et conditions de réfutation/réexamen.
+- **Preuve :** observation, résultat de test, analyse, attestation ou démonstration produit dans des conditions déclarées.
+- **Inférence :** raisonnement explicite reliant hypothèses et preuves à une affirmation.
+- **Conclusion :** affirmation délimitée étayée par cet argument, et non garantie plus large.
+- **Limite/inconnu :** ce qui n'a pas été examiné, n'est pas établi ou dépend d'une prémisse non résolue.
+
+Montrer à l'utilisateur ce qui est supposé et ce qui peut en être déduit. Par exemple : « En supposant que le noyau de l'hôte et le compte administrateur soient fiables, cette politique de sandbox restreint les accès déclarés du worker au système de fichiers et au réseau » est nettement plus limité que « le worker est confiné ». Si l'administrateur de l'hôte fait partie du modèle de menace, le même argument n'établit aucune protection contre cet adversaire.
+
+Les hypothèses ne sont jamais silencieusement promues au rang de faits. Leur provenance et leur niveau de confiance doivent être visibles ; les hypothèses critiques devraient être associées à des actions de validation ou à une acceptation explicite par un responsable du risque autorisé. Inconnu ne signifie pas faux, et une hypothèse non vérifiée ne peut pas être affichée comme une preuve établie. Le bootstrap doit identifier le socle de confiance et les dépendances externes de chaque méthode d'assurance : runners de contrôle, compilateurs, model checkers, noyaux de preuve, systèmes de build, fournisseurs d'identité et points d'application, selon le cas.
+
+Le model checking ou la preuve de théorèmes peuvent établir des propriétés d'un modèle ou d'une dérivation sous les hypothèses et la formalisation retenues. Ils n'établissent pas automatiquement que le modèle couvre toutes les menaces pertinentes, que l'implémentation est conforme au modèle, que le déploiement correspond à la configuration analysée ou que les hypothèses restent vraies en exploitation. Tests, analyse statique, supervision opérationnelle et attestations externes ont leurs propres périmètres et dépendances de confiance. L'interface doit montrer cette chaîne plutôt que classer les méthodes par prestige.
+
+## 4. Évaluation et traitement des risques
+
+Le risque est contextuel et gradué, pas une propriété booléenne. GovCheck ne doit pas assimiler « une menace existe » à « le risque est inacceptable », ni « aucune menace n'est enregistrée » à « le système est sûr ».
+
+Pour chaque scénario, permettre une évaluation documentée de :
+- vraisemblance/plausibilité, avec fondement et incertitude de l'estimation ;
+- impact selon les dimensions pertinentes (confidentialité, intégrité, disponibilité, sûreté, vie privée, finances, droit, opérations ou réputation) ;
+- exposition, capacité de l'attaquant, préconditions et opportunité ;
+- mesures existantes et efficacité démontrée dans leur périmètre ;
+- risque inhérent avant mesures et risque résiduel après mesures ;
+- confiance dans l'évaluation et inconnues importantes.
+
+Ne pas imposer une fausse précision numérique. Les projets peuvent employer des échelles qualitatives, ordinales calibrées ou des méthodes quantitatives lorsqu'elles sont défendables. L'échelle choisie, ses définitions, règles d'agrégation et incertitudes doivent être explicites et versionnées. Éviter de multiplier des étiquettes ordinales arbitraires et de présenter le résultat comme un score de risque mathématiquement significatif. Les évaluations servent à prioriser les décisions ; elles ne sont pas des mesures objectives de la vérité.
+
+Pour chaque risque, guider le responsable parmi les options de traitement :
+- **éviter :** modifier ou supprimer l'activité, l'actif ou l'exposition à l'origine du risque ;
+- **réduire/atténuer :** introduire ou améliorer des mesures, puis évaluer leur mise en œuvre et leur efficacité ;
+- **transférer/partager :** répartir une partie des conséquences financières ou opérationnelles par contrat ou service, en précisant que la responsabilité et toutes les conséquences ne sont pas nécessairement transférées ;
+- **accepter/conserver :** conserver consciemment le risque résiduel dans le cadre d'une décision autorisée.
+
+L'acceptation n'est pas le choix par défaut en l'absence de mesures. Enregistrer le propriétaire du risque, l'autorité décisionnaire, la justification, les actifs/scénarios concernés, le niveau et l'incertitude du risque résiduel, les mesures compensatoires, le périmètre, la date, l'échéance ou date de revue et les déclencheurs de réévaluation (évolution d'architecture/dépendances/menaces, incident, nouvelle exposition, échec d'une mesure, changement d'hypothèse ou obligation réglementaire). Une acceptation peut être limitée dans le temps ou conditionnelle. Une personne ne peut accepter que dans les limites de son autorité enregistrée et de sa délégation. GovCheck ne doit déduire aucune acceptation du silence, d'une coche verte, d'une fusion ou de l'absence de remédiation.
+
+L'outil doit aider à comparer les options de traitement, leurs coûts, leur charge opérationnelle et l'exposition résiduelle. Il peut recommander des mesures supplémentaires ou une escalade, mais doit distinguer conseil, obligation et décision autorisée sur le risque. Un risque résiduel élevé peut être consciemment accepté lorsque l'autorité le permet ; l'interface ne doit ni le masquer ni présenter le projet comme sans risque. Inversement, une évaluation faible ou incertaine ne doit pas servir à écarter un scénario rare mais aux conséquences graves sans justification explicite.
+
+L'acceptation du risque ne fait pas disparaître une menace, ne valide pas une mesure et ne transforme pas une affirmation non étayée en affirmation étayée. Elle enregistre une décision gouvernée d'opérer avec une exposition résiduelle connue. Le statut d'assurance et le traitement du risque doivent donc rester distincts, mais reliés.
+
+## 5. Profil et arborescence générée
 
 Le résultat est un profil de projet lisible par machine et versionné, accompagné d'un plan de bootstrap déterministe. Le profil enregistre les capacités sélectionnées, les non-sélections explicites lorsque pertinentes, les justifications, le contexte/hypothèses, l'autorité et les révisions du profil/schéma. Il ne constitue pas une seconde source normative : les règles normatives restent dans le paquet canonique de gouvernance.
 
@@ -195,6 +270,9 @@ Un prototype devrait démontrer au minimum :
 8. Les mêmes réponses et le même état inspecté produisent une sortie de plan identique octet pour octet.
 9. Les contextes Git et Pijul préservent leurs identités et sémantiques d'état natives.
 10. Les réponses fournies par machine sont validées ; identifiants de capacité inconnus, dépendances manquantes et décisions contradictoires échouent de manière fermée avec explications exploitables.
+11. Les scénarios de menace sont traçables dans les deux sens à travers chemins d'attaque, faiblesses, mesures, affirmations d'assurance, hypothèses, preuves et décisions de risque résiduel.
+12. Le prototype distingue les mesures non évaluées, non traitées, planifiées, mises en œuvre, testées, revues et surveillées ; il expose les chemins non couverts et les hypothèses non étayées.
+13. Le risque ne peut être accepté que par un responsable autorisé, avec justification, périmètre, évaluation résiduelle et conditions de revue/expiration ; l'acceptation ne modifie jamais le statut des preuves.
 
 ## 10. Séquence de livraison
 

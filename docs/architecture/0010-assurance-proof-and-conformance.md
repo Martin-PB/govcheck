@@ -120,4 +120,4 @@ This document expands the distinctions in specifications 0002–0005 and archite
 
 ## Bibliographic references
 
-External references used in this record: [R-04](../references.md#r-04), [R-05](../references.md#r-05), [R-06](../references.md#r-06), [R-20](../references.md#r-20).
+External references used in this record: [R-04 — Goal Structuring Notation assurance arguments](../references.md#r-04), [R-05 — TLA+ specification and TLC model checking](../references.md#r-05), [R-06 — in-toto software supply-chain provenance](../references.md#r-06), [R-20 — Lean theorem proving and proof-kernel boundary](../references.md#r-20).

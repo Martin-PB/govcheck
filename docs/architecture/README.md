@@ -23,9 +23,9 @@ English is the default language. Each record has a French counterpart.
 
 Records 0009–0023 preserve design rationale, assurance distinctions, governance capability findings and the initial governance-authority decision. Record 0022 audits the gap between the governance designs and an adopted, executable canonical authority; its recommendations are proposals, not approved policy. Record 0021 proposes claims, argument, dependency and invalidation semantics; it remains to be model-checked and connected to the lifecycle. Record 0019 proposes a staged catalogue and release-manifest migration; it remains a proposal, not an implemented control or approved normative rule. Record 0017 proposes a category-specific policy separating logical identity, immutable revisions, contract compatibility versions, release identities and evidence/event instances. It does not make SemVer universal or turn proposals into implemented controls or approved normative rules.
 
-## Reference register
+## Reference index
 
-The [governance and assurance reference register](../references/governance-and-assurance.md) and its [French version](../references/governance-and-assurance.fr.md) collect primary standards, academic sources, official documentation and pinned source assessments. Inclusion does not imply adoption or implementation.
+Use the [thematic reference index](../references.md) ([Français](../references.fr.md)) to navigate the bibliography by domain. The [detailed, numbered register](../references/governance-and-assurance.md) ([Français](../references/governance-and-assurance.fr.md)) records each source, its relevance and its limitations. Inclusion does not imply adoption or implementation.
 
 ## Status
 

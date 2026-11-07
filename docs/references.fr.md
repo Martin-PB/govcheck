@@ -20,7 +20,7 @@
 | Systèmes de workflow d'agents évalués comme fixtures | R-18–R-19 |
 | Sémantiques de contrôle de version | R-22 |
 | CRDT, collaboration temps réel et transport réseau | R-45–R-50, R-66 |
-| Représentation des connaissances et interopérabilité | R-51–R-61 |
+| Représentation des connaissances et interopérabilité | R-51–R-61, R-83–R-86 |
 | Dépôts et études d'intégration | R-62 |
 | Protocoles d'intégration et conventions documentaires | R-67 |
 | Dépôts adjacents de l'écosystème GovCheck | R-68 |
@@ -596,7 +596,7 @@
 ### R-57 — Ontologie bibliographique BIBO
 - **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
 
-- **Source primaire :** [Spécification DCMI BIBO](https://www.dublincore.org/specifications/bibo/bibo/)
+- **Source primaire :** [Spécification DCMI BIBO](https://www.dublincore.org/specifications/bibo/bibo/) · [Projet du vocabulaire BIBO](https://dcmi.github.io/bibo/)
 - **Concepts pertinents :** vocabulaire RDF pour ressources bibliographiques, citations et types de documents.
 - **Utilité pour GovCheck :** vocabulaire complémentaire envisagé pour rapports, articles et objets bibliographiques dans l'étude d'intégration.
 - **Limite :** BIBO est une spécification communautaire DCMI, pas une recommandation ISO ou W3C ; ne la combiner avec des vocabulaires généraux que si nécessaire.
@@ -605,7 +605,7 @@
 ### R-58 — Vocabulaire de catalogue de données (DCAT) 3
 - **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
 
-- **Source primaire :** [Recommandation W3C DCAT 3](https://www.w3.org/TR/vocab-dcat-3/)
+- **Source primaire :** [Recommandation W3C DCAT 3](https://www.w3.org/TR/vocab-dcat-3/) · [Page de spécification W3C DCAT](https://www.w3.org/TR/vocab-dcat/)
 - **Concepts pertinents :** descriptions interopérables de jeux de données, services de données, distributions et séries de jeux de données dans des catalogues.
 - **Utilité pour GovCheck :** vocabulaire candidat pour cataloguer bundles et collections de connaissances dans l'étude d'intégration.
 - **Limite :** DCAT décrit des jeux de données/services catalogués ; il ne modélise ni toutes les sémantiques du contenu, ni permissions applicatives, ni édition collaborative.
@@ -623,7 +623,7 @@
 ### R-60 — ActivityStreams 2.0
 - **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
 
-- **Source primaire :** [W3C ActivityStreams 2.0 Core](https://www.w3.org/TR/activitystreams-core/)
+- **Source primaire :** [W3C ActivityStreams 2.0 Core](https://www.w3.org/TR/activitystreams-core/) · [Vocabulaire ActivityStreams 2.0](https://www.w3.org/TR/activitystreams-vocabulary/)
 - **Concepts pertinents :** vocabulaire et syntaxe JSON-LD pour acteurs, objets, activités, collections et interactions sociales.
 - **Utilité pour GovCheck :** envisagé pour représenter des activités/événements publiés lorsque le cas d'usage social s'y prête.
 - **Limite :** ActivityStreams n'est ni un registre de provenance, ni une garantie d'event sourcing, ni un modèle d'accès, ni un remplacement de PROV-O.
@@ -817,6 +817,38 @@
 - **Utilité pour GovCheck :** conserve l'utilitaire d'ingestion documentaire discuté pour extraire et examiner des sources telles que PDF et documents bureautiques.
 - **Limite :** MarkItDown effectue les E/S avec les privilèges du processus courant. Sa documentation avertit que les entrées non fiables doivent être assainies et que la conversion doit s'exécuter avec les accès les plus restreints nécessaires. La sortie convertie est une extraction, pas une preuve d'exhaustivité ou de fidélité sémantique.
 
+
+<a id="r-83"></a>
+### R-83 — JSON-LD 1.1
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Source primaire :** [Recommandation W3C JSON-LD 1.1](https://www.w3.org/TR/json-ld/)
+- **Concepts pertinents :** sérialisation JSON de données liées ; contextes, expansion des IRI, représentation de graphes et jeux de données, intégration à des systèmes et services utilisant déjà JSON.
+- **Utilité pour GovCheck :** syntaxe d'échange candidate pour les connaissances et métadonnées RDF lorsque l'outillage JSON et l'intégration aux services Web sont utiles.
+- **Limite :** JSON-LD est une syntaxe et un modèle de traitement, pas une ontologie métier, un langage de politiques ou un système de validation. Il ne décide pas quels vocabulaires ou énoncés sont appropriés.
+
+<a id="r-84"></a>
+### R-84 — Syntaxe Turtle de RDF 1.1
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Source primaire :** [Recommandation W3C RDF 1.1 Turtle](https://www.w3.org/TR/turtle/)
+- **Concepts pertinents :** syntaxe concrète compacte et textuelle pour exprimer des triplets et graphes RDF.
+- **Utilité pour GovCheck :** sérialisation lisible candidate pour les exemples, fixtures et échanges de graphes RDF.
+- **Limite :** Turtle est une syntaxe, pas un vocabulaire, une ontologie, un langage de contraintes ou une preuve de correction sémantique. Elle ne remplace pas le modèle de données abstrait RDF.
+
+<a id="r-85"></a>
+### R-85 — Ontologie SIOC Core
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Source primaire :** [Spécification de l'ontologie SIOC Core](https://rdfs.org/sioc/spec/)
+- **Concepts pertinents :** description sémantique de communautés en ligne, espaces de discussion, publications, utilisateurs/comptes et relations entre contenus communautaires.
+- **Utilité pour GovCheck :** vocabulaire candidat si les discussions, commentaires ou publications communautaires doivent être représentés de manière interopérable.
+- **Limite :** SIOC est une ontologie communautaire évolutive, pas un modèle d'autorisation ni un système complet de provenance. Elle ne remplace ni PROV-O pour la provenance des dérivations ni Web Annotation pour les annotations ciblées ; aucune adoption n'est implicite.
+
+<a id="r-86"></a>
+### R-86 — Schema.org DigitalDocument
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Source primaire :** [Type DigitalDocument de Schema.org](https://schema.org/DigitalDocument)
+- **Concepts pertinents :** description légère de documents numériques comme ressources Web, reliées aux métadonnées plus générales de CreativeWork.
+- **Utilité pour GovCheck :** vocabulaire généraliste candidat pour décrire des ressources documentaires lorsque ses propriétés correspondent au contexte d'échange.
+- **Limite :** Schema.org est un vocabulaire général de métadonnées Web, pas une ontologie de gouvernance, un système de contrôle d'accès, une règle d'admissibilité des preuves ou un remplacement de vocabulaires spécialisés. N'utiliser que les termes dont la sémantique convient.
 
 ## Discipline bibliographique et provenance non résolue
 

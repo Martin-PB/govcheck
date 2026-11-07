@@ -222,7 +222,7 @@
 - **Source primaire :** [Documentation Knowledge Catalog](https://docs.cloud.google.com/knowledge-catalog/docs)
 - **Concepts pertinents :** métadonnées typées, entrées de catalogue, relations/traçabilité, métadonnées de gouvernance et découverte de contexte.
 - **Utilité pour GovCheck :** le patron transposable est celui des métadonnées obligatoires selon le type d'objet et des relations traçables entre objets gouvernés.
-- **Limite :** il s'agit du produit de catalogue de données Google Cloud, et non de l'Open Knowledge Format (OKF), référencé séparément en R-43. GovCheck n'est pas un catalogue de données ; la présence de métadonnées n'équivaut ni à une autorité normative ni à une application effective.
+- **Limite :** il s'agit du produit de catalogue de données Google Cloud, et non de l'Open Knowledge Format (OKF), référencé séparément en R-51. GovCheck n'est pas un catalogue de données ; la présence de métadonnées n'équivaut ni à une autorité normative ni à une application effective.
 
 ## Projets industriels évalués comme complémentaires, non adoptés
 

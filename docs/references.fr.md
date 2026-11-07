@@ -218,8 +218,10 @@
 - [0010 — Assurance, témoignage, preuve et conformité](../architecture/0010-assurance-proof-and-conformance.md) : R-04, R-05, R-06, R-20.
 - [0013 — Métamodèle de gouvernance](../architecture/0013-governance-metamodel.md) : R-01, R-09, R-10, R-13.
 - [0015 — Plan de conformité et validation de la gouvernance](../architecture/0015-governance-conformance-and-validation-plan.md) : R-02, R-06, R-07, R-08, R-09, R-10.
-- [0016 — Évaluation de Writ et Privateer](../architecture/0016-writ-privateer-assessment.md) : R-18, R-19.
-- [0017–0019 — Identité, versionnement et manifeste de release](../architecture/README.md) : R-14, R-15, R-16.
+- [0016 — Évaluation de Writ et Privateer](../architecture/0016-writ-privateer-assessment.fr.md) : R-18, R-19.
+- [0017 — Identité, révision et versionnement](../architecture/0017-artifact-identity-revision-and-versioning.fr.md) : R-14, R-23–R-26.
+- [0018 — Gouvernance des versions et compatibilité](../architecture/0018-version-governance-and-compatibility-authority.fr.md) : R-14, R-23–R-25.
+- [0004 — Contrats des adaptateurs VCS et collaboration](../specifications/0004-vcs-collaboration-contracts.fr.md) : R-22.
 - [0022 — Audit des capacités de gouvernance](../architecture/0022-governance-capability-audit.md) : R-01, R-02, R-03, R-09, R-10, R-17.
 - [0023 — Décision d'amorçage de l'autorité](../architecture/0023-bootstrap-governance-authority.md) : R-01, R-03.
 

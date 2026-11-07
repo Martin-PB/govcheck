@@ -25,7 +25,7 @@ Records 0009–0023 preserve design rationale, assurance distinctions, governanc
 
 ## Reference index
 
-Use the [thematic reference index](../references.md) ([Français](../references.fr.md)) to navigate the bibliography by domain. The [detailed, numbered register](../references/governance-and-assurance.md) ([Français](../references/governance-and-assurance.fr.md)) records each source, its relevance and its limitations. Inclusion does not imply adoption or implementation.
+Use the [single thematic and detailed reference catalogue](../references.md) ([Français](../references.fr.md)) records every external source, its use and limits, and links back to the internal records that cite it. Inclusion does not imply adoption or implementation.
 
 ## Status
 

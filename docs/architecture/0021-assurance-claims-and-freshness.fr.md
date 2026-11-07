@@ -74,6 +74,22 @@ Le nouveau modèle govcheck.assurance est volontairement séparé et composable 
 
 Le pont d'intégration à implémenter ensuite est une relation de raffinement : Lifecycle.Accept est autorisé seulement si Assurance.ClaimStatus(root) = Supported, et l'identité de toutes les dépendances du claim est incluse dans le contexte d'évaluation. Le présent modèle ne prétend pas que ce pont existe déjà dans le module de cycle de vie.
 
+### 6.1 Observations en production, hypothèses et décisions PEAK
+
+Les observations en production sont des entrées de preuve, pas des constats, confirmations de menace ou décisions en elles-mêmes. Une observation destinée à affecter le modèle de menace ou un argument d'assurance doit conserver au minimum son sujet, l'identité de sa source/capteur, la date et la fenêtre de collecte, le périmètre, la provenance/intégrité, le contexte opérationnel, la couverture, la confiance ou l'incertitude et la fraîcheur.
+
+Distinguer les étapes sémantiques suivantes :
+
+- **Observation :** énoncé borné de ce qu'une source a rapporté ou mesuré.
+- **Constat ou hypothèse de menace :** interprétation d'une ou plusieurs observations, avec explications alternatives, confiance et éléments contradictoires.
+- **Hypothèse :** proposition versionnée avec périmètre, responsable, conditions de validité et, si possible, prédicat surveillable. Son état peut être étayé, contredit, inconnu ou périmé ; une observation ne réécrit pas silencieusement l'hypothèse.
+- **Affirmation d'assurance :** proposition dont les éléments de soutien et les réfutations sont évalués au regard des preuves et du sujet/révisions exacts.
+- **Décision :** réponse gouvernée aux preuves interprétées.
+
+PEAK fournit une structure de raisonnement décisionnel : Problem (problème), Experience (expérience), Assumptions (hypothèses) et Knowledge (connaissances) sont consignés comme entrées ; le processus de décision enregistre une Solution et un **risque assumé** comme sorties. Le risque assumé doit être explicite et traçable aux hypothèses, observations, affirmations, au périmètre, à la justification, au responsable redevable et aux conditions de réexamen/expiration. Un enregistrement PEAK n'autorise pas à lui seul l'acceptation de ce risque. L'acceptation du risque reste une décision gouvernée distincte prise par le principal autorisé.
+
+Une nouvelle observation peut déclencher une réévaluation, invalider ou nuancer une affirmation d'assurance, modifier l'état d'une hypothèse ou motiver une nouvelle décision. Elle ne doit pas confirmer automatiquement une attaque, modifier une règle normative, autoriser une mesure corrective ni accepter/révoquer un risque. Cette séparation distingue la surveillance à l'exécution, l'interprétation technique et l'autorité normative, tout en permettant au modèle de menace et au dossier d'assurance d'évoluer avec les preuves de production. Voir [R-72](../references.fr.md#r-72), [R-74](../references.fr.md#r-74), [R-75](../references.fr.md#r-75) et [R-76](../references.fr.md#r-76).
+
 ## 7. Assertions du modèle TLA+
 
 Le module formal/tla/GovCheckAssurance.tla et sa configuration bornée vérifient :

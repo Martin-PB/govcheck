@@ -87,3 +87,6 @@ Une implémentation conforme lie les preuves aux états/révisions exacts, expos
 - [R-41 — Spécification et vérification de programmes Dafny](../references.fr.md#r-41)
 - [R-42 — Assistant de preuve Coq / Rocq](../references.fr.md#r-42)
 - [R-43 — Assistant de preuve Isabelle](../references.fr.md#r-43)
+- [R-89 — spécification/raffinement formels par la méthode B et Atelier B](../references.fr.md#r-89)
+- [R-90 — notation de spécification formelle Z (ISO/IEC 13568)](../references.fr.md#r-90)
+- [R-91 — Communicating Sequential Processes et vérification de raffinement FDR](../references.fr.md#r-91)

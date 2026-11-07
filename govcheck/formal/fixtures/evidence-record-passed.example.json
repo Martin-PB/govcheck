@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "evidenceId": "evidence:unit:0001",
+  "claimIds": [
+    "claim:lifecycle:prepare"
+  ],
+  "subject": {
+    "kind": "formal-model",
+    "artifactId": "govcheck.lifecycle",
+    "revision": {
+      "vcs": "git",
+      "nativeId": "1111111111111111111111111111111111111111",
+      "repository": "https://example.invalid/govcheck"
+    }
+  },
+  "governance": {
+    "packageId": "govcheck.governance",
+    "packageRevision": {
+      "vcs": "git",
+      "nativeId": "2222222222222222222222222222222222222222"
+    },
+    "semanticsVersion": "1"
+  },
+  "specification": {
+    "artifactId": "govcheck.lifecycle-contract",
+    "revision": {
+      "vcs": "git",
+      "nativeId": "3333333333333333333333333333333333333333"
+    }
+  },
+  "method": {
+    "methodClass": "empirical-execution",
+    "empiricalSublevel": "unit",
+    "scope": "Synthetic unit test of the Prepare transition precondition.",
+    "assumptions": [
+      "The test fixture represents a bounded model state."
+    ],
+    "bounds": {
+      "historyLimit": 12
+    },
+    "limitations": [
+      "This fixture is illustrative and does not establish lifecycle conformance."
+    ]
+  },
+  "execution": {
+    "tool": {
+      "name": "synthetic-test-runner",
+      "version": "0.0.0"
+    },
+    "invocation": "synthetic-test-runner --case prepare-precondition",
+    "environment": {
+      "platform": "example"
+    },
+    "externalInputs": []
+  },
+  "result": {
+    "status": "passed",
+    "observedAt": "2026-11-06T00:00:00Z",
+    "summary": "Synthetic example only.",
+    "rawResult": {
+      "case": "prepare-precondition",
+      "passed": true
+    }
+  },
+  "provenance": {
+    "producer": {
+      "actorId": "synthetic-fixture",
+      "actorType": "service"
+    },
+    "recordedAt": "2026-11-06T00:00:01Z",
+    "sourceReferences": [
+      "https://example.invalid/govcheck/test-case"
+    ],
+    "integrity": {
+      "algorithm": "sha-256",
+      "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    }
+  },
+  "limitations": [
+    "Synthetic fixture; not evidence about the actual repository."
+  ],
+  "invalidationDependencies": []
+}

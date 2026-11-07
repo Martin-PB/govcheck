@@ -86,12 +86,6 @@
 - **Utilité pour GovCheck :** navigation complémentaire sur le statut des publications et profils SSDF.
 - **Limite :** utiliser la publication finale datée pour une affirmation portant sur une version précise ; ne pas confondre projet de révision et norme finale.
 
-### R-12 — OpenSSF Scorecard : signaux de posture de sécurité
-- **Source primaire :** [Projet Scorecard](https://github.com/ossf/scorecard)
-- **Concepts pertinents :** indicateurs de sécurité inspectables indépendamment.
-- **Utilité pour GovCheck :** adaptateur de preuve externe facultatif ; conserver le contrôle, la version, le sujet et le résultat brut plutôt que le seul score global.
-- **Limite :** les signaux peuvent être incomplets, contextuels ou erronés ; ils ne doivent pas remplacer les règles obligatoires du projet.
-
 ### R-13 — JSON Schema Draft 2020-12
 - **Source primaire :** [Page officielle de la spécification](https://json-schema.org/draft/2020-12/)
 - **Concepts pertinents :** validation structurelle d'enregistrements lisibles par machine.

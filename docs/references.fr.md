@@ -38,6 +38,7 @@
 | Modèles sémantiques de domaine, qualité et conformité open source | R-94–R-100, R-102–R-103 |
 | Interopérabilité des instructions d'agents et workflows pilotés par les spécifications | R-104 |
 | Recherches sur le policy-as-code et la gouvernance des agents à l'exécution | R-105 |
+| Sécurité des agents IA et de MCP — recommandations OWASP | R-106 |
 
 ## Entrées bibliographiques détaillées
 
@@ -72,6 +73,7 @@
 - **Modèles sémantiques de domaine, qualité produit et conformité open source (sources candidates) :** R-94–R-100, R-102–R-103.
 - **Instructions d'agents et workflows pilotés par spécifications :** R-104.
 - **Recherches sur le policy-as-code, l'assurance continue et la gouvernance MCP :** R-105.
+- **Sécurité des agents IA et de MCP :** R-106.
 
 ## Normes, recommandations publiques et spécifications industrielles
 
@@ -269,12 +271,12 @@
 <a id="r-21"></a>
 
 ### R-21 — Guides de releases et de reproductibilité pour le logiciel de recherche
-- **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md), [0018](architecture/0018-version-governance-and-compatibility-authority.fr.md)
+- **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md), [0018](architecture/0018-version-governance-and-compatibility-authority.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md)
 
-- **Source primaire :** [Software Sustainability Institute — guides et ressources](https://www.software.ac.uk/resources)
+- **Source primaire :** [Software Sustainability Institute — guides et ressources](https://www.software.ac.uk/resources) · [LUMC Research Software Guidelines — versionnement et releases](https://lumc-dcc.github.io/rs-guidelines/best-practices/versioning-releases/)
 - **Concepts pertinents :** pérennité du logiciel de recherche, citation, releases et reproductibilité.
-- **Utilité pour GovCheck :** appuie l'enregistrement des versions exactes des logiciels/outils et du contexte de release nécessaires à l'interprétation des preuves.
-- **Limite :** des recommandations générales ne remplacent pas un contrat concret de manifeste de release. Lier un guide précis lorsqu'une recommandation particulière est invoquée.
+- **Utilité pour GovCheck :** étaye l'enregistrement des versions exactes des outils et du contexte de release nécessaires à l'interprétation des preuves ; le guide LUMC distingue notamment SemVer pour les interfaces stables, CalVer pour les outils opérationnels et les tags utiles à la reproductibilité.
+- **Limite :** ces guides vivants sont des recommandations générales pour les logiciels de recherche, pas un contrat de manifeste de release ni une norme obligatoire. Le schéma de version doit rester adapté au type d'artefact et à la stabilité de son interface.
 
 <a id="r-22"></a>
 
@@ -655,6 +657,7 @@
 - **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
 
 - **Sources primaires :** [Dépôt Cartocortex](https://github.com/complexus-lab/cartocortex) · [Dépôt MoriNet](https://github.com/lejeunecedric/MoriNet) · [Dépôt SaussuNet](https://github.com/lejeunecedric/SaussuNet) · [PR Cartocortex #27 — étude OKF, stockage et vues graphe](https://github.com/complexus-lab/cartocortex/pull/27) · [PR Cartocortex #28 — backlog CRDT, navigateur et synchronisation cloud](https://github.com/complexus-lab/cartocortex/pull/28)
+- **URI d'espace de noms provisoire :** [Cartocortex Knowledge Ontology (CKO)](https://cartocortex.dev/ontology#) — identifiant de vocabulaire proposé dans le PDF, pas une norme ni une ontologie adoptée.
 - **Concepts pertinents :** dépôts sources et artefacts d'étude examinés ; la PR #27 étudie le stockage/projection OKF v0.2, tandis que la PR #28 contient des propositions de travail CRDT et de transport temps réel.
 - **Utilité pour GovCheck :** conserve les sources concrètes derrière le PDF initial « Évaluer l’intégration des dépôts » (6 novembre 2026, 224 pages) et la discussion enregistrée par l'ADR 0002.
 - **Limite :** la PR #27 est une étude, pas une implémentation exécutée ; la PR #28 est une proposition/backlog et son étude de transport est explicitement non exécutée. Les capacités des dépôts doivent être revérifiées à la révision examinée avant toute affirmation sur leur comportement courant. Le namespace « CKO » du PDF est une proposition, pas une norme externe adoptée.
@@ -1007,7 +1010,7 @@
 <a id="r-104"></a>
 ### R-104 — Formats d'instructions pour agents et workflows pilotés par les spécifications
 - **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
-- **Sources primaires :** [Format ouvert AGENTS.md](https://agents.md/) · [Référence des instructions personnalisées de VS Code](https://code.visualstudio.com/docs/agents/reference/custom-instructions-reference) · [Instructions de projet et prise en charge d'AGENTS.md dans Claude Code](https://code.claude.com/docs/en/memory) · [Guide Codex sur les workflows de développement](https://developers.openai.com/cookbook/examples/codex/iterating-development-workflows-with-codex) · [Dépôt GitHub Spec Kit](https://github.com/github/spec-kit) · [Documentation GitHub Spec Kit](https://github.github.com/spec-kit/)
+- **Sources primaires :** [Format ouvert AGENTS.md](https://agents.md/) · [Référence des instructions personnalisées de VS Code](https://code.visualstudio.com/docs/agents/reference/custom-instructions-reference) · [Sécurité du développement assisté par IA dans VS Code](https://code.visualstudio.com/docs/agents/run/security) · [Hooks d'agents dans VS Code](https://code.visualstudio.com/docs/agent-customization/hooks) · [Approbations et permissions dans VS Code](https://code.visualstudio.com/docs/agents/run/approvals) · [Instructions de projet et prise en charge d'AGENTS.md dans Claude Code](https://code.claude.com/docs/en/memory) · [Guide Codex sur les workflows de développement](https://developers.openai.com/cookbook/examples/codex/iterating-development-workflows-with-codex) · [Dépôt GitHub Spec Kit](https://github.com/github/spec-kit) · [Documentation GitHub Spec Kit](https://github.github.com/spec-kit/)
 - **Concepts pertinents :** instructions d'agent partagées au niveau du dépôt ; règles de découverte et de chargement propres à chaque environnement ; consignes de projet et règles ciblées par chemin ; workflows pilotés par les spécifications produisant plans, tâches et résultats révisables.
 - **Utilité pour GovCheck :** conserve les options d'instructions inter-agents et de workflows pilotés par les spécifications évoquées pour le bootstrap des dépôts et l'interopérabilité des agents.
 - **Limite :** AGENTS.md est une convention textuelle, pas une politique exécutoire ni une preuve du respect des consignes. La découverte et l'inclusion varient selon l'environnement et sa version ; la présence d'un fichier ne prouve pas qu'un agent le suit. Spec Kit est un outillage de workflow, pas une autorité normative, un dossier d'assurance ou une frontière de sécurité.
@@ -1020,4 +1023,13 @@
 - **Concepts pertinents :** adoption et maintenance empiriques du policy-as-code sur 10 560 fichiers et 499 dépôts ; interventions de gouvernance à plusieurs étapes du cycle de vie des agents ; traduction d'exigences de gouvernance en contrôles exécutables et preuves structurées ; application des politiques à la frontière des appels d'outils avec étiquettes de flux d'information inter-étapes et journaux d'audit.
 - **Utilité pour GovCheck :** conserve les résultats de recherche évoqués sur l'adoption du policy-as-code, la gouvernance par construction, l'assurance continue de l'IA et le contrôle des appels d'outils MCP.
 - **Limite :** ces publications sont des travaux de recherche, pas des normes ni des certifications indépendantes. Le jeu de données MSR est limité aux dépôts et outils échantillonnés ; CUGA est une contribution de recherche/démonstration ; Audit-as-Code se concentre sur l'assurance IA/MLOps ; l'évaluation du contrôle MCP est expérimentale et ne démontre pas une sécurité universelle en production. Aucune de ces sources n'implique une adoption ou une implémentation par GovCheck.
+
+
+<a id="r-106"></a>
+### R-106 — Recommandations OWASP pour la sécurité des agents IA et de MCP
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Source primaire :** [OWASP DevSecOps Guideline — AI Agent and MCP Security](https://owasp.github.io/DevSecOpsGuideline/2-Process/2-2-Develop/2-2-5-AI-Agent-and-MCP-Security/)
+- **Concepts pertinents :** politiques versionnées et testables pour les permissions des agents ; autorisation à une passerelle ou un proxy selon l'identité, l'outil et ses arguments ; permissions refusées par défaut ; identités à portée limitée et durée courte ; sandboxing et listes d'autorisation réseau ; validation de configuration et journalisation d'audit.
+- **Utilité pour GovCheck :** étaye la distinction entre les instructions en langage naturel destinées aux agents et les contrôles effectivement appliqués aux frontières des outils, des passerelles, des identités et du système d'exploitation.
+- **Limite :** il s'agit d'un guide d'ingénierie évolutif, pas d'une certification ni d'une preuve d'implémentation. Les recommandations doivent être adaptées au harness, à l'hôte d'exécution, à la surface des outils et au modèle de menace réels ; le guide ne démontre pas qu'un déploiement donné applique tous les contrôles cités.
 

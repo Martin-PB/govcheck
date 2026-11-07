@@ -54,6 +54,8 @@
 - **Patron externe de catalogue/gouvernance :** R-17.
 - **Outils de workflow d'agents évalués, mais non adoptés :** R-18, R-19.
 - **Assistant de preuve et contrats d'interface :** R-20, R-21.
+- **CRDT, transport pair-à-pair et découverte :** R-45–R-50, R-66, R-87.
+- **Représentation des connaissances et échange de données liées :** R-51–R-61, R-83–R-86.
 - **Sémantiques natives des VCS et adaptateurs de collaboration :** R-22.
 - **Modélisation des menaces, chemins d'attaque et gestion des risques :** R-27 à R-32.
 - **Dossiers d'assurance de sécurité et métamodèles :** R-33 à R-34.

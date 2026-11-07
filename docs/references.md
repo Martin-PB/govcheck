@@ -207,7 +207,7 @@
 <a id="r-16"></a>
 
 ### R-16 — OpenAPI and machine-readable interface contracts
-- **Cited by:** no current architecture, specification or decision record cites this source; retained as a candidate reference.
+- **Cited by:** [0004](specifications/0004-vcs-collaboration-contracts.md), [0014](architecture/0014-governed-development-workflow.md)
 
 - **Primary source:** [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
 - **Relevant concepts:** machine-readable interface contracts.
@@ -256,7 +256,7 @@
 <a id="r-21"></a>
 
 ### R-21 — Research software release and reproducibility guidance
-- **Cited by:** no current architecture, specification or decision record cites this source; retained as a candidate reference.
+- **Cited by:** [0017](architecture/0017-artifact-identity-revision-and-versioning.md), [0018](architecture/0018-version-governance-and-compatibility-authority.md)
 
 - **Primary source:** [Software Sustainability Institute — guides and resources](https://www.software.ac.uk/resources)
 - **Relevant concepts:** sustainable research software, citation, releases and reproducibility.

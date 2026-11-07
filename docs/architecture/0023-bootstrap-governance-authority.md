@@ -70,7 +70,7 @@ Those concerns must be addressed by a separately approved, explicit amendment (f
 
 ## 7. Formalization work
 
-The initial bounded authority-transition model is provided in `formal/tla/GovCheckAuthority.tla` with `formal/tla/GovCheckAuthority.cfg`. It checks that each amendment is authorized by the immediately preceding authority, that the authority/revision chain remains continuous, and that the current authority/revision match the last recorded decision. It deliberately does not yet model delegated authorities, exception lifecycles, cryptographic identity, wall-clock validity or integration with the version-decision validator. The governance lifecycle model and conformance tests should additionally represent:
+The initial bounded authority-transition model is provided in `formal/tla/GovCheckAuthority.tla` with `formal/tla/GovCheckAuthority.cfg`. It checks historical amendment attribution against the immediately preceding authority, continuity of authority/revision records, consistency of current state with the last record, and the append-only history transition. The TLC property checks that each transition preserves the complete prior history as a prefix. The model does **not** establish prospective effective-time semantics: records have no effective-time/sequence field, and it does not model prior decision validity. It also omits delegated authorities, exception lifecycles, cryptographic identity, wall-clock validity and integration with the version-decision validator. The governance lifecycle model and conformance tests should additionally represent:
 
 - one configured root principal;
 - adoption/amendment by that principal only;

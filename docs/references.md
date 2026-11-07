@@ -20,7 +20,7 @@
 | Agent workflow systems assessed as fixtures | R-18–R-19 |
 | Version-control semantics | R-22 |
 | CRDTs, real-time collaboration and network transport | R-45–R-50, R-66 |
-| Knowledge representation and interoperability | R-51–R-61 |
+| Knowledge representation and interoperability | R-51–R-61, R-83–R-86 |
 | Integration project repositories and studies | R-62 |
 | Integration protocols and document conventions | R-67 |
 | Adjacent GovCheck ecosystem repositories | R-68 |
@@ -547,7 +547,7 @@
 ### R-52 — RDF 1.1 data model
 - **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
 
-- **Primary source:** [W3C RDF 1.1 Concepts and Abstract Syntax](https://www.w3.org/TR/rdf11-concepts/)
+- **Primary source:** [W3C RDF 1.1 Concepts and Abstract Syntax](https://www.w3.org/TR/rdf11-concepts/) · [W3C RDF Primer](https://www.w3.org/TR/rdf-primer/)
 - **Relevant concepts:** graph and dataset data model based on subject–predicate–object triples and IRIs.
 - **Use in GovCheck:** foundational data model discussed for a possible shared knowledge representation across Cartocortex, MoriNet and SaussuNet.
 - **Limit:** RDF is a data model, not a domain ontology, storage engine, validation language or collaboration protocol.
@@ -565,7 +565,7 @@
 ### R-54 — OWL 2 Web Ontology Language
 - **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
 
-- **Primary source:** [W3C OWL 2 Structural Specification and Functional-Style Syntax](https://www.w3.org/TR/owl-syntax/)
+- **Primary source:** [W3C OWL 2 Structural Specification and Functional-Style Syntax](https://www.w3.org/TR/owl-syntax/) · [W3C OWL 2 Overview](https://www.w3.org/TR/owl-overview/)
 - **Relevant concepts:** formally defined ontology semantics for classes, properties, individuals and axioms.
 - **Use in GovCheck:** candidate semantic layer discussed alongside RDF and SKOS in the integration study.
 - **Limit:** OWL reasoning does not validate all application data constraints, preserve arbitrary source properties or provide workflow, access-control or synchronization behavior.
@@ -592,7 +592,7 @@
 ### R-57 — Bibliographic Ontology (BIBO)
 - **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
 
-- **Primary source:** [DCMI BIBO specification](https://www.dublincore.org/specifications/bibo/bibo/)
+- **Primary source:** [DCMI BIBO specification](https://www.dublincore.org/specifications/bibo/bibo/) · [BIBO vocabulary project](https://dcmi.github.io/bibo/)
 - **Relevant concepts:** RDF vocabulary for bibliographic resources, citations and document types.
 - **Use in GovCheck:** supplementary vocabulary considered for reports, articles and bibliographic objects in the integration study.
 - **Limit:** BIBO is a DCMI Community Specification, not an ISO or W3C Recommendation; it should be combined with broader metadata vocabularies only where needed.
@@ -601,7 +601,7 @@
 ### R-58 — Data Catalog Vocabulary (DCAT) 3
 - **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
 
-- **Primary source:** [W3C DCAT 3 Recommendation](https://www.w3.org/TR/vocab-dcat-3/)
+- **Primary source:** [W3C DCAT 3 Recommendation](https://www.w3.org/TR/vocab-dcat-3/) · [W3C DCAT specification landing page](https://www.w3.org/TR/vocab-dcat/)
 - **Relevant concepts:** interoperable descriptions of datasets, data services, distributions and dataset series in catalogs.
 - **Use in GovCheck:** candidate vocabulary for cataloguing knowledge bundles and collections in the integration study.
 - **Limit:** DCAT describes catalogued datasets/services; it does not model all content semantics, application permissions or collaborative editing.
@@ -619,7 +619,7 @@
 ### R-60 — ActivityStreams 2.0
 - **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
 
-- **Primary source:** [W3C ActivityStreams 2.0 Core](https://www.w3.org/TR/activitystreams-core/)
+- **Primary source:** [W3C ActivityStreams 2.0 Core](https://www.w3.org/TR/activitystreams-core/) · [ActivityStreams 2.0 Vocabulary](https://www.w3.org/TR/activitystreams-vocabulary/)
 - **Relevant concepts:** JSON-LD vocabulary and syntax for actors, objects, activities, collections and social interactions.
 - **Use in GovCheck:** considered for representing published activities/events where the social-activity use case fits.
 - **Limit:** ActivityStreams is not a provenance ledger, event-sourcing guarantee, access-control model or replacement for PROV-O.
@@ -813,6 +813,38 @@
 - **Use in GovCheck:** preserves the document-ingestion utility discussed for extracting and reviewing source material such as PDFs and office files.
 - **Limit:** MarkItDown performs I/O with the privileges of its current process. Its own documentation warns that untrusted inputs must be sanitized and conversion should run with the narrowest needed access. Conversion output is an extraction, not proof of source completeness or semantic fidelity.
 
+
+<a id="r-83"></a>
+### R-83 — JSON-LD 1.1
+- **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
+- **Primary source:** [W3C JSON-LD 1.1 Recommendation](https://www.w3.org/TR/json-ld/)
+- **Relevant concepts:** JSON-based serialization of linked data; contexts, IRI expansion, graph and dataset representation, and integration with deployed JSON-based systems.
+- **Use in GovCheck:** candidate interchange syntax for RDF-based knowledge and metadata when JSON-native tooling and web-service integration are useful.
+- **Limit:** JSON-LD is a serialization and processing model, not a domain ontology, policy language or validation system. It does not decide which vocabulary or assertions are appropriate.
+
+<a id="r-84"></a>
+### R-84 — RDF 1.1 Turtle syntax
+- **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
+- **Primary source:** [W3C RDF 1.1 Turtle Recommendation](https://www.w3.org/TR/turtle/)
+- **Relevant concepts:** compact, text-oriented concrete syntax for expressing RDF triples and graphs.
+- **Use in GovCheck:** candidate human-readable serialization for examples, fixtures and exchange of RDF graph data.
+- **Limit:** Turtle is a syntax, not a vocabulary, ontology, constraint language or proof of semantic correctness. It does not replace RDF's abstract data model.
+
+<a id="r-85"></a>
+### R-85 — SIOC Core Ontology
+- **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
+- **Primary source:** [SIOC Core Ontology Specification](https://rdfs.org/sioc/spec/)
+- **Relevant concepts:** semantic description of online communities, discussion spaces, posts, users/accounts and relationships between community content.
+- **Use in GovCheck:** candidate vocabulary if discussions, comments or community publications need interoperable semantic representation.
+- **Limit:** SIOC is an evolving community ontology, not an authorization model or a complete provenance system. It should not replace PROV-O for derivation provenance or Web Annotation for targeted annotations; no adoption is implied.
+
+<a id="r-86"></a>
+### R-86 — Schema.org DigitalDocument
+- **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
+- **Primary source:** [Schema.org DigitalDocument type](https://schema.org/DigitalDocument)
+- **Relevant concepts:** lightweight description of digital documents as web resources, including their relation to broader CreativeWork metadata.
+- **Use in GovCheck:** candidate general-purpose vocabulary for describing document resources when its properties fit the exchange context.
+- **Limit:** Schema.org is broad web metadata vocabulary, not a governance ontology, access-control system, evidence-admissibility rule or replacement for domain-specific vocabularies. Use only the terms that match the intended semantics.
 
 ## Reference discipline and unresolved provenance
 

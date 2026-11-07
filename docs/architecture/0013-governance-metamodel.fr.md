@@ -77,3 +77,4 @@ Vocabulaire ontologique, sérialisation, représentation du graphe, logique, lan
 ## Références bibliographiques
 
 Références externes utilisées dans ce document : [R-01 — contrôles NIST de sécurité et de confidentialité](../references.fr.md#r-01) ; [R-09 — moteur de décision de politiques Open Policy Agent](../references.fr.md#r-09) ; [R-10 — langage d’autorisation Cedar](../references.fr.md#r-10) ; [R-13 — contrats structurels JSON Schema](../references.fr.md#r-13).
+- [R-36 — KAOS et ingénierie des exigences orientée objectifs](../references.fr.md#r-36)

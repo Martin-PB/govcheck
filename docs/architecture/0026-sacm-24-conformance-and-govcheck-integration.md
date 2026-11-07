@@ -83,7 +83,24 @@ The 2.4 beta includes additional constructs/issues for:
 - **advanced argument support**, including argument strengths, inference kinds, truth values and undecidability;
 - **SACM views and diagrams**, including diagram/diagram-element structures and visual information.
 
-The OMG issue dispositions identify some of these as non-normative supporting constructs. GovCheck must preserve their status metadata and must not silently promote them into normative requirements or normative metamodel obligations. Where the specification's conformance clause distinguishes normative and non-normative elements, GovCheck must implement and report those conformance points separately.
+The OMG issue dispositions identify some of these as non-normative supporting constructs. In particular, SACM24-105 updates the conformance clause to include packaging, views/diagrams, and the non-normative joins, assessments and advanced arguments. GovCheck must preserve their status metadata and must not silently promote them into normative requirements or normative metamodel obligations. Where the specification's conformance clause distinguishes normative and non-normative elements, GovCheck must implement and report those conformance points separately.
+
+The beta issue trail gives a useful implementation checklist (issue identifiers are stable links in the [OMG closed-issue register](https://issues.omg.org/issues/spec/SACM?view=CLOSED)):
+
+| Beta work item | OMG issue | GovCheck coverage consequence |
+|---|---|---|
+| Foundation package and reusable base concepts | SACM24-5, SACM24-36 | Preserve the foundation layer and its embedding/alignment semantics. |
+| MOF alignment and explicit association ends/multiplicities | SACM24-55, SACM24-59 | Validate ownership, direction, multiplicity, redefinition, subset and namespace semantics. |
+| Package structure and package semantics | SACM24-56, SACM24-18, SACM24-11 | Implement the 2.4 package model; do not retain obsolete 2.3 package structures as equivalent. |
+| Explicit claim subject | SACM24-83 | Preserve the subject of claims, including references to SACM elements. |
+| Argument context | SACM24-81 | Preserve argument-context constructs and their non-normative status. |
+| Advanced argument concepts | SACM24-77 | Preserve strength, inference-kind, truth-value and undecidability descriptors. |
+| Assessment and nested assessment | SACM24-75 | Preserve assessment identity, rules, gaps and sub-assessments. |
+| Join semantics | SACM24-76 | Preserve join type, rule and source-selection semantics. |
+| Typed NamedValue | SACM24-80 | Preserve supported scalar/structured value types without flattening to strings. |
+| SACM views | SACM24-78 | Preserve views and their links to underlying model elements. |
+| Artifact relationships | SACM24-82 | Preserve precise relationship targets and semantics. |
+| Conformance clause and migration | SACM24-105, SACM24-98 | Separate conformance points and implement the documented 2.3-to-2.4 migration path. |
 
 ## 4. GovCheck-to-SACM integration contract
 

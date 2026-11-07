@@ -28,7 +28,7 @@ The metamodel preserves distinctions between intent, obligation, property, imple
 
 A requirement can refine into sub-requirements and link to properties. Properties are examined by methods; methods produce evidence; claims depend on evidence and assumptions. Relations are explicit, not inferred from document proximity or naming.
 
-Decision records should make their reasoning inputs inspectable. The PEAK model provides one useful scaffold: Problem, Experience, Assumptions and Knowledge are recorded separately before a solution and its accepted risk are evaluated. It complements the metamodel's typed links between decisions, assumptions, claims and evidence; it is not a risk score, an assurance argument, or a grant of authority. Assumptions remain falsifiable and observations may challenge them. See [R-74](../references.md#r-74).
+Decision records should make their reasoning inputs inspectable. The PEAK model provides one useful scaffold: Problem, Experience, Assumptions and Knowledge are recorded separately before a Solution and its Assumed Risk are recorded. The assumed-risk output should be linked to the relevant assumptions, observations and claims, with scope, rationale, accountable owner and review/expiry conditions. It is not itself authorization to accept the risk; acceptance remains a separate governed decision by the authorized principal. PEAK complements the metamodel's typed links between decisions, assumptions, claims and evidence; it is not a risk score or an assurance argument. Assumptions remain falsifiable and observations may challenge them. See [R-74](../references.md#r-74).
 
 ## Normative force
 

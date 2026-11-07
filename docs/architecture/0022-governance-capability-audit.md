@@ -135,11 +135,11 @@ The first implementation decision is therefore governance authority and adoption
 
 ## References supporting this audit
 
-- [NIST SP 800-53]([R-01](../references.md#r-01)): separation of duties and access-control governance.
-- [NIST SSDF]([R-02](../references.md#r-02)): traceable secure-development practices.
-- [GitHub protected branches]([R-03](../references.md#r-03)): practical enforcement boundary and bypass limitations.
-- [OPA]([R-09](../references.md#r-09)) and [Cedar]([R-10](../references.md#r-10)): policy-decision mechanisms, not complete governance or assurance systems.
-- [Google Cloud Knowledge Catalog]([R-17](../references.md#r-17)): inspiration limited to typed metadata and traceable relationships.
+- [R-01](../references.md#r-01): separation of duties and access-control governance.
+- [R-02](../references.md#r-02): traceable secure-development practices.
+- [R-03](../references.md#r-03): practical enforcement boundary and bypass limitations.
+- [R-09](../references.md#r-09) and [R-10](../references.md#r-10): policy-decision mechanisms, not complete governance or assurance systems.
+- [R-17](../references.md#r-17): inspiration limited to typed metadata and traceable relationships.
 - Full context and limitations: [governance and assurance reference register](../references.md) and [French register](../references.md).
 
 

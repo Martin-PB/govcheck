@@ -32,6 +32,19 @@
       },
       "revisionPolicy": "repository-history",
       "releaseBinding": "release-tag-and-commit"
+    },
+    {
+      "artifactId": "govcheck.authority",
+      "kind": "formal-model",
+      "title": "GovCheck bootstrap governance authority transition TLA+ model",
+      "source": "formal/tla/GovCheckAuthority.tla",
+      "configuration": "formal/tla/GovCheckAuthority.cfg",
+      "documentation": {
+        "en": "docs/architecture/0023-bootstrap-governance-authority.md",
+        "fr": "docs/architecture/0023-bootstrap-governance-authority.fr.md"
+      },
+      "revisionPolicy": "repository-history",
+      "releaseBinding": "release-tag-and-commit"
     }
   ]
 }

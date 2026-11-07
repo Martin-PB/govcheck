@@ -7,6 +7,10 @@ on:
       - 'formal/schemas/**'
       - 'formal/fixtures/**'
       - 'formal/lifecycle-transitions.json'
+      - 'formal/artifacts.json'
+      - 'docs/architecture/**'
+      - 'docs/specifications/**'
+      - 'docs/references/**'
       - 'scripts/validate-version-governance.py'
       - 'tests/test_version_governance_validator.py'
       - 'scripts/render-lifecycle-diagram.py'
@@ -19,6 +23,9 @@ on:
       - 'formal/schemas/**'
       - 'formal/fixtures/**'
       - 'formal/lifecycle-transitions.json'
+      - 'formal/artifacts.json'
+      - 'docs/architecture/**'
+      - 'docs/specifications/**'
       - 'scripts/validate-version-governance.py'
       - 'tests/test_version_governance_validator.py'
       - 'scripts/render-lifecycle-diagram.py'
@@ -67,7 +74,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        model: [GovCheckLifecycle, GovCheckAssurance]
+        model: [GovCheckLifecycle, GovCheckAssurance, GovCheckAuthority]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4

@@ -101,3 +101,8 @@ Before any production integration, test permission-gate defaults and bypasses, l
 - Privateer repository: https://github.com/privateer-agent/privateer-agent
 - Privateer security policy: https://github.com/privateer-agent/privateer-agent/blob/181a988e443fa6b6b4138fc349d1260c96408ad4/SECURITY.md
 - Privateer README and install verification instructions: https://github.com/privateer-agent/privateer-agent/blob/181a988e443fa6b6b4138fc349d1260c96408ad4/README.md
+
+
+## Cross-reference register
+
+The reviewed source revisions and security limits above are indexed as [R-18 Writ and R-19 Privateer](../references/governance-and-assurance.md). The register consolidates the primary links without changing the scope or conclusions of this source review. See also the [French register](../references/governance-and-assurance.fr.md).

@@ -101,3 +101,8 @@ Avant toute intégration en production, tester défauts et contournements de la 
 - Dépôt Privateer : https://github.com/privateer-agent/privateer-agent
 - Politique de sécurité Privateer : https://github.com/privateer-agent/privateer-agent/blob/181a988e443fa6b6b4138fc349d1260c96408ad4/SECURITY.md
 - README et instructions de vérification d’installation : https://github.com/privateer-agent/privateer-agent/blob/181a988e443fa6b6b4138fc349d1260c96408ad4/README.md
+
+
+## Registre de références
+
+Les révisions sources étudiées et leurs limites de sécurité sont indexées comme [R-18 Writ et R-19 Privateer](../references/governance-and-assurance.fr.md). Ce registre rassemble les liens primaires sans modifier les conclusions de cette revue. Voir aussi le [registre anglais](../references/governance-and-assurance.md).

@@ -31,3 +31,12 @@ Local hooks/wrappers can be bypassed by users with filesystem access. Strong sha
 ## Failure semantics and conformance
 
 Distinguish not-found, unsupported, unavailable, stale, conflict, authentication/authorization failure and malformed state. Mutations require explicit intent and preconditions; partial failure is never reported as atomic success. Contract tests cover dirty Git state/submodules, exact trees, Pijul graph/patch/conflict preservation, local-only operation, capability negotiation, stale races, apply preconditions and enforcement gaps. No adapters are implemented yet.
+
+
+## Primary references
+
+- [Git documentation](https://git-scm.com/docs) for Git's native repository, tree, commit and merge concepts.
+- [Pijul manual — theory](https://pijul.org/manual/theory), [channels](https://pijul.org/manual/workflows/channels) and [conflicts](https://pijul.org/manual/conflicts.html) for patch-graph identity, channel state and native conflict semantics.
+- The [GovCheck reference register](../references/governance-and-assurance.md) consolidates these sources as R-22 and records their limits.
+
+These sources describe the underlying VCS semantics; they do not establish that GovCheck's adapters are implemented or conformant.

@@ -118,3 +118,9 @@ Comparer selon complémentarité avec les six responsabilités, frontière de co
 ## Décisions différées
 
 Commandes CLI/dossier ; composition profils/modèles tâches ; première intégration forge et modèle de menace ; protocole qualification agents/indépendance ; adoption Writ/Privateer ; rôle justifié de Lean ; rétention/confidentialité/stockage protégé. Chacun nécessite ADR/prototype et preuves.
+
+
+## Références
+
+- [Registre GovCheck des références sur la gouvernance et l'assurance](../references/governance-and-assurance.fr.md) : NIST SSDF, in-toto/SLSA, OpenSSF Scorecard, OPA et Cedar, avec leur périmètre et leurs limites.
+- [Version anglaise](../references/governance-and-assurance.md).

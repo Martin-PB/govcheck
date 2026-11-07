@@ -1,11 +1,11 @@
-# 0024 — Project bootstrap, governance choices and assurance profiles
+# 0024 — Project bootstrap, governance choices and domain capability profiles
 
 **Status:** proposed product and architecture design for review; no interactive bootstrapper, profile schema, template engine or repository mutation command is implemented by this record.  
 **Language:** English is the default; see the [French counterpart](0024-project-bootstrap-and-assurance-profiles.fr.md).
 
 ## 1. Purpose
 
-A new repository should not begin with a generic, fully populated governance tree. GovCheck should guide the project owner through consequential governance and assurance decisions, explain the trade-offs, and then prepare a repository structure that reflects the choices actually made.
+A new repository should not begin with a generic, fully populated governance tree. GovCheck should guide the project owner through consequential governance, domain-capability and assurance decisions, explain the trade-offs, and then prepare a repository structure that reflects the choices actually made.
 
 The bootstrap experience has three responsibilities:
 
@@ -22,7 +22,7 @@ This design supplements, and does not silently amend, ADR 0001, Specification 00
 The following distinction is mandatory:
 
 - **GovCheck governance foundations are invariant.** Every governed repository has a canonical governance identity/profile, explicit applicability and decision semantics, and the ability to record assurance claims, evidence, provenance and uncertainty. Profiles may add constraints but cannot remove these foundations.
-- **Project assurance methods are configurable.** A project may select empirical tests, static analysis, model checking, program verification, theorem proving, implementation-conformance work, or combinations appropriate to its claims. Selecting no project-specific formal method is valid.
+- **Project domain capabilities and assurance methods are configurable.** A project may select capabilities for requirements, architecture, maintainability, testing, dependency governance, documentation, security, release or operations, and methods such as empirical tests, static analysis, model checking, program verification, theorem proving and implementation-conformance work where appropriate. Selecting no project-specific formal method is valid.
 - **A method is not a maturity tier.** Do not classify repositories as bronze/silver/gold or low/medium/high assurance based on size. Method selection is claim-, risk-, domain- and consequence-driven. Different claims in one repository may require different methods.
 - **No proof method is presumed superior for every claim.** Tests, static analysis, model checking, program verification and theorem proving establish different things. The bootstrap must explain what each method can and cannot establish, its assumptions, operating cost and maintenance burden.
 
@@ -60,7 +60,10 @@ Explain and let the owner decide, as applicable:
 - contribution and review policy;
 - exception/deviation authority, scope, expiry and compensating controls;
 - release, provenance and evidence-retention expectations;
-- security and incident-response governance.
+- quality, maintainability, testing and documentation expectations;
+- dependency, build and supply-chain governance;
+- security, privacy, safety and incident-response governance;
+- operational support, maintenance and retirement expectations.
 
 A choice such as "individual project" must not automatically imply that all changes are self-approved if the owner selects independent review. Authority and review are separate decisions.
 
@@ -94,11 +97,21 @@ For each recommendation, show:
 
 Recommendations are advisory unless an applicable legal/contractual constraint or an authorized project policy makes a control mandatory. GovCheck must distinguish owner choice, GovCheck recommendation, and normative obligation.
 
-### 3.5 Threat-led assurance and traceability
+### 3.5 Domain-specific assurance and traceability
 
-The bootstrap must connect project context and assurance choices to an explicit threat/risk analysis. It must not ask users to select tools in isolation. The workflow is informed by systems-security engineering guidance [R-28](../references.md#r-28), practical threat-modeling guidance [R-31](../references.md#r-31), and attacker-behavior/attack-tree techniques [R-30](../references.md#r-30) [R-32](../references.md#r-32); these are complementary inputs, not mandatory methods.
+For every selected domain capability, the bootstrap should connect project context and goals to applicable requirements, properties, affected artifacts, methods, evidence, findings and decisions. It must not ask users to select tools in isolation. A requirement without a verification or evaluation strategy remains visible; a test, metric or proof that is not linked to a relevant claim or requirement must not be presented as evidence of project conformity.
 
-Maintain traceable, typed relations across at least:
+A general traceability path may connect:
+
+`stakeholder need / goal → requirement / norm → property / acceptance criterion → architecture / implementation artifact → method / check → observation / evidence → finding / claim → review / decision`
+
+The path is not required to have identical granularity in every project. Missing links, unsupported inferences and unassessed areas must remain visible. The common semantics come from the GovCheck governance and assurance foundations; each domain supplies its own concepts and evaluation methods.
+
+#### Security and threat traceability as one domain
+
+Security is one important domain, not the template for all project concerns. When it is applicable, the workflow is informed by systems-security engineering guidance [R-28](../references.md#r-28), practical threat-modeling guidance [R-31](../references.md#r-31), and attacker-behavior/attack-tree techniques [R-30](../references.md#r-30) [R-32](../references.md#r-32); these are complementary inputs, not mandatory methods.
+
+For this domain, maintain traceable, typed relations across at least:
 
 - assets and business/operational interests;
 - security and safety objectives;
@@ -129,7 +142,7 @@ A control is not "effective" merely because it is documented or generated by boo
 
 ### 3.6 Assumptions, inference and limits
 
-Every assurance argument must make its reasoning inspectable. Security-assurance research and structured assurance-case work support explicit claims, context, assumptions, argument and evidence [R-33](../references.md#r-33) [R-34](../references.md#r-34); they do not remove the need to validate the argument:
+Every assurance argument, whatever its domain, must make its reasoning inspectable. Research on assurance cases and structured assurance metamodels supports explicit claims, context, assumptions, argument and evidence [R-33](../references.md#r-33) [R-34](../references.md#r-34); it does not remove the need to validate the argument:
 
 - **Assumption:** a premise taken as given for a bounded argument, with source, owner, scope, confidence, validity period and falsification/review conditions.
 - **Evidence:** an observation, test result, analysis, attestation or proof produced under declared conditions.
@@ -180,6 +193,12 @@ The generator uses capability declarations and dependencies rather than a single
 | Governance core (always) | canonical profile/configuration, governance explanation/projection, decision and change-lifecycle entry points |
 | Decision records | `docs/decisions/` and decision template |
 | Requirements traceability | `requirements/`, stable-ID conventions and traceability metadata |
+| Architecture/design governance | architecture decision records, component/interface inventories and constraint traceability |
+| Maintainability/code quality | selected analyzer/metric configuration, baseline, scoped findings and remediation records |
+| Dependency/supply-chain governance | dependency inventory, provenance/license/support review and upgrade decision records |
+| Documentation governance | documentation inventory, coverage/link checks and normative-projection metadata |
+| Build/release governance | reproducible-build declarations, release manifest and provenance/evidence references |
+| Operations/maintenance (where applicable) | operational review, support/incident records, maintenance plan and retirement decisions |
 | Unit/integration testing | `tests/`, selected test layout and documented commands |
 | Property-based testing | property-test structure and tool configuration |
 | Static analysis | selected analyzer configuration and check declarations |
@@ -207,7 +226,10 @@ Capabilities form a typed dependency graph, not a set of independent booleans. E
 - a TLA+ model-checking capability depends on a model artifact, a configuration, a pinned TLC invocation and a result-recording contract;
 - Lean theorem proving depends on a Lean project/toolchain declaration, proof sources, dependency pinning and a reproducible check command;
 - a requirement-to-test traceability capability depends on stable requirement/claim identities and typed evidence relations;
-- a release-provenance capability depends on exact source/release identity and a manifest/evidence record.
+- a release-provenance capability depends on exact source/release identity and a manifest/evidence record;
+- maintainability assessment depends on an identified source scope, selected method/tool, baseline and interpretation policy;
+- dependency governance depends on exact dependency identities/versions and the selected advisory, license or support-status sources;
+- documentation conformance depends on declared documentation obligations, source revisions and the selected coverage/link/projection checks.
 
 The resolver must detect missing dependencies, incompatible selections, unsupported combinations and cycles. It must explain the reason and propose a resolution; it must not silently enable extra capabilities. A capability may declare mandatory prerequisites, optional recommendations and conflicts separately.
 
@@ -273,6 +295,8 @@ A prototype should demonstrate at least:
 11. Threat scenarios can be traced through attack paths, weaknesses, controls, assurance claims, assumptions, evidence and residual-risk decisions in both directions.
 12. The prototype distinguishes unassessed, untreated, planned, implemented, tested, reviewed and monitored controls; it exposes uncovered paths and unsupported assumptions.
 13. Risk can be accepted only by an authorized owner with recorded rationale, scope, residual assessment and review/expiry conditions; acceptance never changes evidence status.
+14. A project selecting maintainability, dependency or documentation capabilities receives explicit scope, method and evidence expectations; the bootstrap must not imply that a metric, inventory or generated template alone establishes quality or conformity.
+15. A mixed-domain project can trace one change across affected requirements, architecture, tests, dependencies, maintainability findings and security obligations without collapsing their distinct evaluation semantics.
 
 ## 11. Delivery sequence
 

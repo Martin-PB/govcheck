@@ -279,6 +279,7 @@ Les sources primaires consultées pour ce document sont enregistrées dans le ca
 - **Inventaire de la chaîne d'approvisionnement logicielle :** R-99 (SPDX 3.0) et R-100 (CycloneDX).
 - **Pratiques de développement sécurisé :** R-101 (NIST SP 800-218 SSDF).
 - **Provenance :** R-102 (famille W3C PROV).
+- **Conformité open source et assurance de sécurité :** R-103 (ISO/IEC 5230 et ISO/IEC 18974).
 
 Voir [le catalogue central des références](../references.fr.md) et son [équivalent anglais](../references.md). Les entrées distinguent les spécifications formelles des versions bêta/projets et expliquent les limites de ce que chaque source permet d'établir.
 

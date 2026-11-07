@@ -25,7 +25,7 @@ Les documents 0009–0021 préservent le raisonnement de conception et les disti
 
 ## Registre de références
 
-Le [registre des références sur la gouvernance et l'assurance](../references/governance-and-assurance.fr.md) et sa [version anglaise](../references/governance-and-assurance.md) rassemblent normes primaires, sources académiques, documentations officielles et analyses de code épinglées. Une référence n'implique ni adoption ni implémentation.
+Le [registre des références sur la gouvernance et l'assurance](../references.fr.md) et sa [version anglaise](../references.fr.md) rassemblent normes primaires, sources académiques, documentations officielles et analyses de code épinglées. Une référence n'implique ni adoption ni implémentation.
 
 ## Statut
 

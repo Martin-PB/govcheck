@@ -79,4 +79,5 @@ Commencer par contrat CLI et dossier réduits, modèles de tâches et vecteurs d
 - [R-07 — assurance de chaîne logicielle SLSA](../references.fr.md#r-07)
 - [R-18 — évaluation de Writ à partir des sources pour les workflows d'agents](../references.fr.md#r-18)
 - [R-19 — évaluation de Privateer à partir des sources pour les workflows d'agents](../references.fr.md#r-19)
+- [R-16 — contrats d'interface lisibles par machine OpenAPI](../references.fr.md#r-16)
 - [R-22 — sémantiques natives Git et Pijul](../references.fr.md#r-22)

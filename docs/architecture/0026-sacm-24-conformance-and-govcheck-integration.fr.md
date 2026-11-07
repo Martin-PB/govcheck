@@ -100,6 +100,14 @@ La liste des tickets de la bêta fournit une checklist utile pour l'implémentat
 | NamedValue typé | SACM24-80 | Préserver les types de valeurs scalaires/structurées sans les aplatir en chaînes. |
 | Vues SACM | SACM24-78 | Préserver les vues et leurs liens vers les éléments du modèle sous-jacent. |
 | Relations entre artefacts | SACM24-82 | Préserver les cibles et sémantiques précises des relations. |
+| Types de déclaration des claims et suppression d'anciennes relations | SACM24-12, SACM24-15 | Préserver exactement le modèle 2.4 des types de déclaration et des relations ; ne pas émuler les constructions 2.3 supprimées. |
+| Identité du modèle et changements d'identité | SACM24-17, SACM24-41 | Préserver l'identité du modèle et la sémantique explicite de changement d'identité. |
+| Groupement et refactoring des packages | SACM24-16, SACM24-11 | Préserver les règles 2.4 de groupement et de propriété des packages. |
+| Références externes et sémantique des références d'artefacts | SACM24-10, SACM24-14 | Préserver les métadonnées de référence externe et la distinction exacte Artifact/ArtifactReference. |
+| Valeurs multilingues et expressions | SACM24-6, SACM24-37 | Préserver les valeurs tenant compte des langues et la distinction entre nom d'élément et contenu. |
+| Propriété des NamedValue et formes de valeurs supplémentaires | SACM24-72, SACM24-80 | Préserver propriété et valeurs typées sans les aplatir. |
+| Sémantique date/heure et durée | SACM24-39, SACM24-79 | Préserver formats de date, sémantique d'occurrence, durée et unités de temps. |
+| Complétude des claims/arguments et état de développement | SACM24-73, SACM24-74 | Préserver les constructions/états entirety et needs-development de la bêta tels qu'ils sont définis. |
 | Clause de conformité et migration | SACM24-105, SACM24-98 | Séparer les points de conformité et implémenter le parcours de migration 2.3 vers 2.4 documenté. |
 
 ## 4. Contrat d'intégration GovCheck–SACM

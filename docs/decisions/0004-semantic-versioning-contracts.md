@@ -1,6 +1,6 @@
 # ADR 0004 — Semantic versioning for GovCheck product and governance package
 
-**Status:** accepted by the designated normative authority on 2026-11-07. **French:** [0004 (français)](0004-semantic-versioning-contracts.fr.md).
+**Status:** proposed for adoption; records the project owner's explicit decision to adopt category-specific SemVer on 2026-11-07. **French:** [0004 (français)](0004-semantic-versioning-contracts.fr.md).
 
 ## Context
 
@@ -20,7 +20,7 @@ The repository also contains two distinct deliverables: the GovCheck product and
 5. **Preserve the category-specific regimes in Architecture 0017.** SemVer applies to a product/package/API/schema/model/profile/rule-set contract only when its consumer, scope, guarantees, compatibility relation and authorizing authority are declared. Individual rules, ADRs, decisions, exceptions, approvals, test executions, proof runs, observations, evidence items, reports and manifests are not independently assigned SemVer by default; they retain stable identities, immutable revisions/instances and provenance.
 6. **Keep all version axes separate.** Repository Git tags/commits identify repository releases/revisions. Product/package SemVer identifies compatibility contracts. JSON **schemaVersion** and **catalogueVersion** identify their respective serialization/registry formats. They are not interchangeable.
 7. **Require an explicit initial-publication decision.** Do not infer a first version from a branch, commit, date, package directory, schema marker or previous informal label. Do not invent historical versions or retroactive approvals. Bind each published version to an immutable revision and release manifest.
-8. **Apply Architecture 0018's governance process.** Every increment is assessed against the previously approved published contract and declared consumers. Compatibility uncertainty is **undetermined**, never an automatic PATCH. Authorization follows the subject-scoped authority regime in Architecture 0023; repository, merge and CI permissions alone do not confer normative authority.
+8. **Apply Architecture 0018's governance process.** Every increment is assessed against the previously approved published contract and declared consumers. Compatibility uncertainty is **undetermined**, never an automatic PATCH. Authorization follows the subject-scoped authority regime in [Architecture 0023](../architecture/0023-bootstrap-governance-authority.md); repository, merge and CI permissions alone do not confer normative authority.
 9. **Keep the reusable package and GovCheck's meta-history aligned.** Normative package changes must update the generic package contract and the corresponding GovCheck meta-level record in the same pull request, without copying GovCheck-specific decisions into governed repositories.
 
 ## Consequences

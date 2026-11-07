@@ -1,6 +1,6 @@
 # 0018 — Gouvernance des versions, compatibilité et autorité d'approbation
 
-**Statut :** l'adoption de la gouvernance des versions est consignée dans l'[ADR 0004](../decisions/0004-semantic-versioning-contracts.fr.md), selon le régime d'autorité proposé dans l'[Architecture 0023](0023-bootstrap-governance-authority.fr.md). Son effet normatif dépend de la fusion préalable de la PR #21, puis de l'ADR 0004. L'application automatisée n'est pas encore implémentée.  
+**Statut :** l'adoption de la gouvernance des versions est consignée dans l'[ADR 0004](../decisions/0004-semantic-versioning-contracts.fr.md), selon le régime d'autorité proposé dans l'[Architecture 0023](0023-bootstrap-governance-authority.fr.md). Son effet normatif dépend de la fusion de l'ADR 0004 ; la PR #21, qui établit le régime d'autorité, est déjà fusionnée. L'application automatisée n'est pas encore implémentée.  
 **Langue :** l'anglais est la langue par défaut ; voir la [version anglaise](0018-version-governance-and-compatibility-authority.md).
 
 ## 1. Objet et relation avec le document 0017

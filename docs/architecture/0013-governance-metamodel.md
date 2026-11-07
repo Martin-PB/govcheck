@@ -34,6 +34,8 @@ Decision records should make their reasoning inputs inspectable. The PEAK model 
 
 Distinguish obligation, prohibition, explicit permission, invariant/constraint, evidence requirement, process/approval requirement and non-binding recommendation. Absence of prohibition is not permission. A recommendation does not block acceptance. Defeasible rules require explicit priority/exception semantics; conflicts and unresolved precedence remain visible.
 
+Deontic logic can formalize modalities such as obligation, permission and prohibition, but it does not supply the authority, scope, priority, delegation, exception, effective-time, evidence or enforcement semantics of a governance system. Access-control policy/model verification should separately examine consistency, completeness and safety properties before an evaluator or enforcement point is tested. See [R-93](../references.md#r-93) and [R-88](../references.md#r-88).
+
 ## Scope, refinement and realizability
 
 Every object needs stable identity, evolution history, scope, provenance, owner/authority and typed relations. Applicability may depend on change type, affected components, threat class, deployment context, VCS capabilities or project profile. Profiles select obligations; they are not assurance tiers based on repository size.
@@ -42,7 +44,7 @@ Relations may include refines, derives-from, satisfies, constrains, conflicts-wi
 
 Consistency is not realizability: a logically consistent requirement set may still be impossible under resource, platform, timing or interface constraints. Analysis must distinguish contradiction, scope/precedence conflict, missing/circular refinement, infeasibility, underspecification and unsupported semantics.
 
-The metamodel should accommodate goal-oriented requirements (including KAOS/GORE-style refinement), deontic logic, temporal logic, predicate/relational logic and assume-guarantee contracts. These are conceptual families, not a commitment to one logic or toolchain.
+The metamodel should accommodate goal-oriented requirements (including KAOS/GORE-style refinement and iStar 2.0 actor/goal modeling), deontic logic, temporal logic, predicate/relational logic and assume-guarantee contracts. These are conceptual families, not a commitment to one logic or toolchain. See [R-92](../references.md#r-92) for iStar.
 
 ## Assurance traceability graph
 

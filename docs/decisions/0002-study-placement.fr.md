@@ -45,3 +45,6 @@ L'étude d'intégration et ses sources techniques externes sont cataloguées sé
 - [R-53 — Ontologie P-Plan](../references.fr.md#r-53)
 - [R-54 — Dépôts et PR #27/#28 Cartocortex, MoriNet et SaussuNet](../references.fr.md#r-54)
 - [R-55 — Formats d'échange de cartes mentales et de graphes](../references.fr.md#r-55)
+- [R-56 — API de stockage cloud et interopérabilité S3](../references.fr.md#r-56)
+- [R-57 — Accès aux fichiers du navigateur, persistance locale et WebAssembly](../references.fr.md#r-57)
+- [R-58 — Découverte de pairs Hyperswarm et HyperDHT](../references.fr.md#r-58)

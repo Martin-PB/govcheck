@@ -991,3 +991,12 @@
 - **Relevant concepts:** interoperable provenance models for entities, activities, agents and derivation/attribution, with data model, ontology, constraints and serialization specifications.
 - **Use in GovCheck:** candidate vocabulary and representation family for provenance across decisions, source/generated artifacts, observations and evidence.
 - **Limit:** PROV records provenance relationships; it does not establish truth, admissibility, integrity or sufficiency, and does not provide repository governance authority.
+
+
+<a id="r-103"></a>
+### R-103 — OpenChain: ISO/IEC 5230 and ISO/IEC 18974
+- **Cited by:** [Architecture 0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
+- **Primary sources:** [ISO/IEC 5230:2020 — OpenChain Specification](https://www.iso.org/standard/81039.html) · [ISO/IEC 18974:2023 — OpenChain security assurance specification](https://www.iso.org/standard/86450.html) · [OpenChain standards and adoption guidance](https://openchainproject.org/get-started)
+- **Relevant concepts:** organizational requirements for open-source license-compliance programs (5230) and open-source security-assurance programs (18974), including policy, scope, roles, processes and retained verification material.
+- **Use in GovCheck:** candidate process/organizational standards for the open-source compliance and open-source security-assurance capabilities in the bootstrap inventory.
+- **Limit:** these standards specify program requirements, not SBOM serialization, vulnerability-detection algorithms or proof that a particular component is safe. Conformance concerns the scoped organizational program and its verification materials; it must not be inferred from the presence of an SBOM or a scanner.

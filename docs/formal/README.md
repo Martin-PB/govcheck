@@ -25,6 +25,15 @@ The model records independent reviews with ReviewClaim; evidence republication, 
 
 The closure is an explicit model input and is checked against the child-claim graph. The first model uses conjunctive arguments only. It does not model external truth, cryptographic provenance, assumption discharge, distributed clocks, concurrency or implementation refinement.
 
+## Governance authority
+
+- [Bootstrap authority decision — English](../architecture/0023-bootstrap-governance-authority.md)
+- [Décision d'amorçage de l'autorité — français](../architecture/0023-bootstrap-governance-authority.fr.md)
+- [TLA+ authority-transition model](../../formal/tla/GovCheckAuthority.tla)
+- [TLC configuration](../../formal/tla/GovCheckAuthority.cfg)
+
+The authority model is a bounded transition model for the initial single-root regime. It checks that each amendment is made by the authority recorded immediately before it, that authority/revision transitions remain continuous, and that the current authority and revision match the last recorded decision. It does not yet model cryptographic identity, delegation records, wall-clock validity, exception lifecycles, or integration with the version-governance validator. Its finite TLC fixture is not evidence of production enforcement.
+
 ## Shared release evidence
 
 - [Stable artifact catalogue](../../formal/artifacts.json)
@@ -34,4 +43,4 @@ The lifecycle model is a source artifact with stable identifier govcheck.lifecyc
 
 The lifecycle diagram is generated from formal/lifecycle-transitions.json. The checker verifies operator-name coverage and generated-file freshness; it does not parse TLA+ semantics or prove that explanatory guards/effects faithfully describe operators.
 
-**Verification status:** both modules and TLC configurations are source artifacts. No SANY/TLC execution or proof result is claimed for the new assurance model. See each model document for scope, abstraction limits and required refinements.
+**Verification status:** the lifecycle and assurance modules, and the authority-transition module, are source artifacts checked by the formal workflow. Their TLC results establish properties only within their respective finite configurations; they do not prove implementation refinement or production enforcement. See each model document and its CI report for exact scope, state-space bounds, abstraction limits and required refinements.

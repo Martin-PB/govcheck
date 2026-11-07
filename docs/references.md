@@ -54,6 +54,8 @@
 - **External governance/catalogue pattern:** R-17.
 - **Candidate agent-workflow tools assessed, not adopted:** R-18, R-19.
 - **Proof assistant and interface contracts:** R-20, R-21.
+- **CRDTs, peer-to-peer transport and discovery:** R-45–R-50, R-66, R-87.
+- **Knowledge representation and linked-data interchange:** R-51–R-61, R-83–R-86.
 - **Native VCS semantics and collaboration adapters:** R-22.
 - **Threat modeling, attack paths and risk management:** R-27–R-32.
 - **Security assurance cases and metamodels:** R-33–R-34.

@@ -45,7 +45,7 @@ Run from the repository root:
 python3 scripts/check-reference-integrity.py
 ~~~
 
-This offline check verifies bilingual entry parity, source metadata, reference anchors, all local Markdown links, and both directions of document/catalogue traceability.
+This offline check verifies bilingual entry parity, EN/FR citation symmetry for paired records, source metadata, reference anchors, local Markdown links under docs/, and both directions of document/catalogue traceability.
 
 To additionally probe external URLs (network required; publisher-side blocking is reported as a warning):
 

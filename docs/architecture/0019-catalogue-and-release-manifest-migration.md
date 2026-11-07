@@ -72,3 +72,9 @@ This record does not choose a graph database, signature format, global release S
 - [Canonical Governance Model](../specifications/0002-canonical-governance-model.md).
 - [Change Lifecycle and Acceptance](../specifications/0003-change-lifecycle.md).
 - [Assurance, Claims and Evidence](../specifications/0005-assurance-model.md).
+
+## Bibliographic references
+
+- [R-14 — Semantic Versioning 2.0.0](../references.md#r-14)
+- [R-15 — Git tags and GitHub releases](../references.md#r-15)
+- [R-18 — Writ source-based assessment](../references.md#r-18)

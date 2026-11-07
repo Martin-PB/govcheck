@@ -35,6 +35,7 @@
 | Extraction de documents | R-82 |
 | API de stockage cloud | R-64 |
 | Persistance locale navigateur et WebAssembly | R-65 |
+| Modèles sémantiques de domaine, qualité et conformité open source | R-94–R-100, R-102–R-103 |
 
 ## Entrées bibliographiques détaillées
 
@@ -66,6 +67,7 @@
 - **Modèle de décision PEAK :** R-74.
 - **Surveillance continue et assurance à l'exécution :** R-70, R-72, R-75 à R-76.
 - **Assurance 2.0 et évolution de SACM :** R-71, R-73.
+- **Modèles sémantiques de domaine, qualité produit et conformité open source (sources candidates) :** R-94–R-100, R-102–R-103.
 
 ## Normes, recommandations publiques et spécifications industrielles
 
@@ -402,7 +404,7 @@
 
 <a id="r-35"></a>
 ### R-35 — Common Criteria (ISO/IEC 15408) et méthode commune d'évaluation
-- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md)
+- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md)
 
 - **Sources primaires :** [ISO/IEC 15408-1:2026 (édition actuelle de la partie 1)](https://www.iso.org/fr/standard/15408-1) · [Portail Common Criteria](https://www.commoncriteriaportal.org/) · [Publications du schéma CC:2022 et CEM:2022](https://www.commoncriteriaportal.org/cc/index.cfm)
 - **Concepts pertinents :** exigences fonctionnelles de sécurité, exigences d'assurance, méthode d'évaluation et niveaux EAL (Evaluation Assurance Levels).
@@ -411,7 +413,7 @@
 
 <a id="r-36"></a>
 ### R-36 — RTCA DO-178C / EUROCAE ED-12C : assurance logicielle aéronautique
-- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md)
+- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md)
 
 - **Sources primaires :** [FAA AC 20-115D](https://www.faa.gov/airports/resources/advisory_circulars/index.cfm/go/document.information/documentNumber/20-115D) · [Présentation RTCA de DO-178C et de ses suppléments](https://www.rtca.org/do-178/)
 - **Concepts pertinents :** objectifs du cycle de vie logiciel, vérification, indépendance, preuves de certification et niveaux logiciels A–E ; suppléments associés : DO-330, DO-331, DO-332 et DO-333.
@@ -420,7 +422,7 @@
 
 <a id="r-37"></a>
 ### R-37 — Langage et analyseur Alloy
-- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [0009](architecture/0009-govcheck-design-discussion-record.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md)
+- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [0009](architecture/0009-govcheck-design-discussion-record.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md)
 
 - **Sources primaires :** [Projet Alloy et documentation](https://alloytools.org/) · [Dépôt source de l'analyseur Alloy](https://github.com/AlloyTools/org.alloytools.alloy)
 - **Concepts pertinents :** modélisation relationnelle, analyse bornée, recherche d'instances par SAT et recherche de contre-exemples ; Alloy 6 ajoute états mutables et opérateurs temporels.
@@ -429,7 +431,7 @@
 
 <a id="r-38"></a>
 ### R-38 — SPIN et Promela
-- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md)
+- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md)
 
 - **Source primaire :** [Manuel SPIN et documentation Promela](https://spinroot.com/spin/Man/Manual.html)
 - **Concepts pertinents :** modélisation et vérification de systèmes concurrents/distribués, communication asynchrone, invariants, interblocages et propriétés temporelles.
@@ -438,7 +440,7 @@
 
 <a id="r-39"></a>
 ### R-39 — Vérificateur Rust Kani
-- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md)
+- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md)
 
 - **Source primaire :** [Documentation Kani](https://model-checking.github.io/kani/)
 - **Concepts pertinents :** model checking borné de programmes Rust, harnesses de preuve, assertions, détection de comportements indéfinis et contre-exemples.
@@ -447,7 +449,7 @@
 
 <a id="r-40"></a>
 ### R-40 — Vérification Rust avec Verus
-- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md)
+- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md)
 
 - **Source primaire :** [Tutoriel et référence Verus](https://verus-lang.github.io/verus/guide/)
 - **Concepts pertinents :** vérification statique de correction fonctionnelle de programmes Rust à l'aide de spécifications et de preuves assistées.
@@ -456,7 +458,7 @@
 
 <a id="r-41"></a>
 ### R-41 — Langage et vérificateur Dafny
-- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md)
+- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md)
 
 - **Source primaire :** [Manuel de référence Dafny](https://dafny.org/dafny/DafnyRef/DafnyRef)
 - **Concepts pertinents :** constructions de spécification, pré/postconditions, invariants, métriques de terminaison, conditions de vérification et compilation.
@@ -465,7 +467,7 @@
 
 <a id="r-42"></a>
 ### R-42 — Assistant de preuve Coq / Rocq
-- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md)
+- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md)
 
 - **Sources primaires :** [Documentation et manuels de référence Rocq](https://rocq-prover.org/docs) · [Archives de documentation Coq versionnée](https://docs.rocq-prover.org/)
 - **Concepts pertinents :** théorie des types dépendants, définitions Gallina et termes de preuve vérifiés par machine.
@@ -474,7 +476,7 @@
 
 <a id="r-43"></a>
 ### R-43 — Assistant de preuve Isabelle
-- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md)
+- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md)
 
 - **Source primaire :** [Documentation, tutoriels et manuels de référence Isabelle](https://www.isabelle.in.tum.de/documentation.html)
 - **Concepts pertinents :** preuve interactive de théorèmes, Isabelle/HOL, spécification formelle et vérification de preuves.
@@ -483,7 +485,7 @@
 
 <a id="r-44"></a>
 ### R-44 — KAOS et ingénierie des exigences orientée objectifs
-- **Cité par :** [0013](architecture/0013-governance-metamodel.fr.md)
+- **Cité par :** [0013](architecture/0013-governance-metamodel.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md)
 
 - **Source primaire :** [Axel van Lamsweerde, Requirements Engineering: From System Goals to UML Models to Software Specifications (2009), notice UCLouvain](https://research.dial.uclouvain.be/entities/publication/ddcd5cbc-c76d-4da2-bd29-509cbf0f9399)
 - **Concepts pertinents :** raffinement d'objectifs, obstacles, attribution des responsabilités et dérivation des objectifs système vers exigences et spécifications logicielles.
@@ -648,7 +650,7 @@
 ### R-62 — Sources d'intégration Cartocortex, MoriNet et SaussuNet
 - **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
 
-- **Sources primaires :** [Dépôt Cartocortex](https://github.com/complexus-lab/cartocortex) · [Dépôt MoriNet](https://github.com/lejeunecedric/MoriNet) · [Dépôt SaussuNet](https://github.com/lejeunecedric/SaussuNet) · [PR Cartocortex #9 — panorama des formats de cartes mentales](https://github.com/complexus-lab/cartocortex/pull/9) · [PR Cartocortex #27 — étude OKF, stockage et vues graphe](https://github.com/complexus-lab/cartocortex/pull/27) · [PR Cartocortex #28 — backlog CRDT, navigateur et synchronisation cloud](https://github.com/complexus-lab/cartocortex/pull/28)
+- **Sources primaires :** [Dépôt Cartocortex](https://github.com/complexus-lab/cartocortex) · [Dépôt MoriNet](https://github.com/lejeunecedric/MoriNet) · [Dépôt SaussuNet](https://github.com/lejeunecedric/SaussuNet) · [PR Cartocortex #27 — étude OKF, stockage et vues graphe](https://github.com/complexus-lab/cartocortex/pull/27) · [PR Cartocortex #28 — backlog CRDT, navigateur et synchronisation cloud](https://github.com/complexus-lab/cartocortex/pull/28)
 - **Concepts pertinents :** dépôts sources et artefacts d'étude examinés ; la PR #27 étudie le stockage/projection OKF v0.2, tandis que la PR #28 contient des propositions de travail CRDT et de transport temps réel.
 - **Utilité pour GovCheck :** conserve les sources concrètes derrière le PDF initial « Évaluer l’intégration des dépôts » (6 novembre 2026, 224 pages) et la discussion enregistrée par l'ADR 0002.
 - **Limite :** la PR #27 est une étude, pas une implémentation exécutée ; la PR #28 est une proposition/backlog et son étude de transport est explicitement non exécutée. Les capacités des dépôts doivent être revérifiées à la révision examinée avant toute affirmation sur leur comportement courant. Le namespace « CKO » du PDF est une proposition, pas une norme externe adoptée.
@@ -916,7 +918,7 @@
 ## Discipline bibliographique et provenance non résolue
 
 1. Privilégier l'organisme normatif, l'éditeur, la documentation officielle ou le dépôt source plutôt que les résumés secondaires.
-2. L'identifiant R-12 a été retiré lors de la consolidation de son entrée Scorecard en doublon dans R-08 ; ne pas réutiliser cet identifiant retiré.
+2. L'identifiant R-12 a été retiré lors de la consolidation de son entrée Scorecard en doublon dans R-08. R-101 a été retiré car il dupliquait la source NIST SP 800-218 déjà tenue dans R-02. Aucun de ces identifiants ne doit être réutilisé.
 3. Épingler les analyses de code. Les liens Writ et Privateer identifient les révisions examinées dans l'architecture 0016 ; les actualiser avant toute affirmation sur leur comportement courant.
 4. Distinguer les classes de preuve. Une norme, un article scientifique, une documentation produit, du code source, un résultat de test et un rapport de model checking sont des types de preuve différents.
 5. Aucune adoption implicite. La présence dans ce registre signifie « pertinent à évaluer », pas « sélectionné », « obligatoire », « compatible » ou « implémenté ».
@@ -926,23 +928,23 @@
 
 <a id="r-94"></a>
 ### R-94 — Référentiels OMG de décision métier, motivation et processus
-- **Cité par :** [Architecture 0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
-- **Sources primaires :** [Catalogue des spécifications OMG](https://www.omg.org/specifications/) · [DMN 1.6](https://www.omg.org/spec/DMN/1.6/) · [DMN 1.7 Beta 1](https://www.omg.org/spec/DMN/) · [BPMN 2.0.2](https://www.omg.org/spec/BPMN/) · [CMMN 1.1](https://www.omg.org/spec/CMMN/1.1) · [Business Motivation Model 1.3](https://www.omg.org/spec/BMM/1.3/) · [SBVR 1.5](https://www.omg.org/spec/SBVR)
+- **Cité par :** aucun record actuel ne cite cette source candidate.
+- **Sources primaires :** [Catalogue des spécifications OMG](https://www.omg.org/specifications/) · [DMN 1.6](https://www.omg.org/spec/DMN/1.6/) · [DMN 1.7 Beta 1](https://www.omg.org/spec/DMN/1.7/Beta1) · [BPMN 2.0.2](https://www.omg.org/spec/BPMN/) · [CMMN 1.1](https://www.omg.org/spec/CMMN/1.1) · [Business Motivation Model 1.3](https://www.omg.org/spec/BMM/1.3/) · [SBVR 1.5](https://www.omg.org/spec/SBVR)
 - **Concepts pertinents :** exigences de décision, tables de décision et FEEL ; activités, événements et passerelles de processus ; gestion adaptative de cas ; objectifs métier et facteurs d'influence ; vocabulaires et règles métier formels.
-- **Utilité pour GovCheck :** spécifications primaires des candidats complémentaires relatifs à la logique décisionnelle, aux processus, à la gestion de cas, à la motivation et aux règles métier de l'Architecture 0027.
+- **Utilité pour GovCheck :** spécifications primaires des candidats complémentaires relatifs à la logique décisionnelle, aux processus, à la gestion de cas, à la motivation et aux règles métier discutés dans le projet.
 - **Limite :** ces spécifications traitent de couches sémantiques différentes. Un résultat de décision, une transition de processus, une tâche de cas ou une règle métier ne confère pas à lui seul une autorité sur le dépôt, une approbation ou une acceptation du risque. Le catalogue OMG évolue ; utiliser des liens propres à chaque version pour les références épinglées. Son instantané de septembre 2026 indique DMN 1.6 comme formel et 1.7 Beta 1 comme en cours.
 
 <a id="r-95"></a>
 ### R-95 — Modèles OMG d'ingénierie, de risque, de test, d'exigences, de métriques et de provenance
-- **Cité par :** [Architecture 0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
-- **Sources primaires :** [Catalogue des spécifications OMG](https://www.omg.org/specifications/) · [RAAML 1.1](https://www.omg.org/spec/RAAML/1.1) · [RAAML 1.2 Beta 1](https://www.omg.org/spec/RAAML/1.2/Beta1) · [SysML v2](https://www.omg.org/spec/SysML/2.0) · [Présentation de SysML v2](https://www.omg.org/sysml/sysmlv2/) · [UTP 2.3 Beta 1](https://www.omg.org/spec/UTP2) · [ReqIF 1.2](https://www.omg.org/spec/ReqIF/1.2) · [Structured Metrics Metamodel 1.2](https://www.omg.org/spec/SMM/1.2) · [PPMN 1.0](https://www.omg.org/spec/PPMN/)
+- **Cité par :** aucun record actuel ne cite cette source candidate.
+- **Sources primaires :** [RAAML 1.1](https://www.omg.org/spec/RAAML/1.1) · [RAAML 1.2 Beta 1](https://www.omg.org/spec/RAAML/1.2/Beta1) · [SysML v2](https://www.omg.org/spec/SysML/2.0) · [Présentation de SysML v2](https://www.omg.org/sysml/sysmlv2/) · [UTP 2.3 Beta 1](https://www.omg.org/spec/UTP2) · [ReqIF 1.2](https://www.omg.org/spec/ReqIF/1.2) · [Structured Metrics Metamodel 1.2](https://www.omg.org/spec/SMM/1.2) · [PPMN 1.0](https://www.omg.org/spec/PPMN/)
 - **Concepts pertinents :** analyse structurée des risques et de la sécurité ; exigences, structure, comportement et vérification des systèmes ; spécification des tests fondée sur les modèles ; échange d'exigences ; définitions et résultats de mesure ; provenance des entités, activités et agents.
-- **Utilité pour GovCheck :** sources primaires des candidats couvrant les domaines d'ingénierie de l'inventaire du bootstrap, y compris les artefacts de modèle et d'échange lisibles par machine lorsqu'ils sont publiés.
+- **Utilité pour GovCheck :** sources primaires des candidats couvrant les domaines d'ingénierie, y compris les artefacts de modèle et d'échange lisibles par machine lorsqu'ils sont publiés.
 - **Limite :** ces modèles ne sont pas interchangeables et ne fournissent pas une autorité de gouvernance commune. Leurs versions et maturités diffèrent : RAAML 1.1 est formel tandis que 1.2 Beta 1 est en cours ; UTP 2.3 est Beta 1 ; SysML 2.0, ReqIF 1.2, SMM 1.2 et PPMN 1.0 sont des entrées formelles du catalogue. Vérifier la version épinglée et le support des outils avant adoption.
 
 <a id="r-96"></a>
 ### R-96 — ISO/IEC/IEEE 42010:2022, description d'architecture
-- **Cité par :** [Architecture 0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
+- **Cité par :** aucun record actuel ne cite cette source candidate.
 - **Source primaire :** [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html)
 - **Concepts pertinents :** exigences relatives aux descriptions d'architecture, cadres de description, points de vue, types de modèles et conformité.
 - **Utilité pour GovCheck :** fondement normatif candidat pour structurer les descriptions d'architecture, préoccupations des parties prenantes, vues et points de vue.
@@ -950,7 +952,7 @@
 
 <a id="r-97"></a>
 ### R-97 — ISO/IEC/IEEE 29148, ingénierie des exigences
-- **Cité par :** [Architecture 0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
+- **Cité par :** aucun record actuel ne cite cette source candidate.
 - **Sources primaires :** [ISO/IEC/IEEE DIS 29148, troisième édition (2026)](https://www.iso.org/standard/94091.html) · [ISO/IEC/IEEE 29148:2018](https://www.iso.org/standard/72089.html)
 - **Concepts pertinents :** processus du cycle de vie d'ingénierie des exigences, éléments d'information requis et leur contenu, recommandations pour les activités d'exigences des cycles de vie systèmes/logiciels.
 - **Utilité pour GovCheck :** référence candidate de processus et d'éléments d'information pour la gouvernance et la traçabilité des exigences.
@@ -958,7 +960,7 @@
 
 <a id="r-98"></a>
 ### R-98 — ISO/IEC 25010:2023, modèle de qualité du produit
-- **Cité par :** [Architecture 0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
+- **Cité par :** aucun record actuel ne cite cette source candidate.
 - **Source primaire :** [ISO/IEC 25010:2023](https://www.iso.org/standard/78176.html)
 - **Concepts pertinents :** caractéristiques et sous-caractéristiques de qualité utilisées pour spécifier, mesurer et évaluer la qualité des produits TIC et logiciels.
 - **Utilité pour GovCheck :** vocabulaire partagé candidat pour les exigences de qualité, objectifs de test, critères d'évaluation et planification des mesures.
@@ -966,7 +968,7 @@
 
 <a id="r-99"></a>
 ### R-99 — Spécification SPDX
-- **Cité par :** [Architecture 0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
+- **Cité par :** aucun record actuel ne cite cette source candidate.
 - **Source primaire :** [Catalogue des spécifications SPDX](https://spdx.dev/use/specifications/)
 - **Concepts pertinents :** représentation normalisée lisible par machine des composants logiciels, paquets, fichiers, relations, licences et autres métadonnées de chaîne d'approvisionnement. Le catalogue identifie SPDX 3.0 comme version courante à la date de l'instantané.
 - **Utilité pour GovCheck :** format natif candidat pour les SBOM et les métadonnées de licences/chaîne d'approvisionnement.
@@ -974,23 +976,15 @@
 
 <a id="r-100"></a>
 ### R-100 — Spécification CycloneDX
-- **Cité par :** [Architecture 0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
+- **Cité par :** aucun record actuel ne cite cette source candidate.
 - **Source primaire :** [Vue d'ensemble de la spécification CycloneDX](https://cyclonedx.org/specification/overview/)
 - **Concepts pertinents :** modèle extensible de chaîne d'approvisionnement couvrant composants logiciels/matériels, services, dépendances, actifs cryptographiques, configurations opérationnelles et métadonnées ; représentations JSON, XML et Protocol Buffers.
-- **Utilité pour GovCheck :** format d'échange candidat pour les SBOM et les informations plus larges de chaîne d'approvisionnement, à évaluer avec SPDX selon les besoins réels du dépôt et de son écosystème.
+- **Utilité pour GovCheck :** format d'échange candidat pour les SBOM et les informations plus larges de chaîne d'approvisionnement, à évaluer avec SPDX selon les besoins réels.
 - **Limite :** la validité du format ne prouve ni l'exhaustivité de l'inventaire, ni l'intégrité des composants, ni l'absence de vulnérabilités, ni une provenance de build fiable. Épingler la version et le schéma exacts.
-
-<a id="r-101"></a>
-### R-101 — NIST SP 800-218, Secure Software Development Framework
-- **Cité par :** [Architecture 0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
-- **Source primaire :** [Publication finale NIST SP 800-218](https://csrc.nist.gov/pubs/sp/800/218/final)
-- **Concepts pertinents :** pratiques de haut niveau de développement logiciel sécurisé, intégrables à différents modèles de cycle de vie logiciel, avec un vocabulaire commun pour producteurs et acquéreurs.
-- **Utilité pour GovCheck :** cadre de pratiques candidat pour la sélection de capacités de développement sécurisé et l'évaluation du cycle de vie.
-- **Limite :** SSDF est un guide de pratiques, pas un métamodèle complet lisible par machine, une politique exécutable, un schéma de certification ou une preuve d'application efficace.
 
 <a id="r-102"></a>
 ### R-102 — Famille W3C PROV
-- **Cité par :** [Architecture 0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
+- **Cité par :** aucun record actuel ne cite cette source candidate.
 - **Source primaire :** [Vue d'ensemble W3C PROV](https://www.w3.org/TR/prov-overview/)
 - **Concepts pertinents :** famille de modèles de provenance interopérables couvrant entités, activités, agents et relations de dérivation/attribution, avec modèle de données, ontologie, contraintes et spécifications de sérialisation.
 - **Utilité pour GovCheck :** vocabulaire et famille de représentations candidates pour la provenance des décisions, sources, artefacts générés, observations et preuves.
@@ -999,8 +993,8 @@
 
 <a id="r-103"></a>
 ### R-103 — OpenChain : ISO/IEC 5230 et ISO/IEC 18974
-- **Cité par :** [Architecture 0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
+- **Cité par :** aucun record actuel ne cite cette source candidate.
 - **Sources primaires :** [ISO/IEC 5230:2020 — spécification OpenChain](https://www.iso.org/standard/81039.html) · [ISO/IEC 18974:2023 — spécification OpenChain d'assurance de sécurité](https://www.iso.org/standard/86450.html) · [Normes et guide d'adoption OpenChain](https://openchainproject.org/get-started)
 - **Concepts pertinents :** exigences organisationnelles relatives aux programmes de conformité des licences open source (5230) et d'assurance de sécurité open source (18974), notamment politique, périmètre, rôles, processus et éléments de vérification conservés.
-- **Utilité pour GovCheck :** normes candidates de processus et d'organisation pour les capacités de conformité open source et d'assurance de sécurité open source de l'inventaire du bootstrap.
+- **Utilité pour GovCheck :** normes candidates de processus et d'organisation pour les capacités de conformité open source et d'assurance de sécurité open source.
 - **Limite :** ces normes spécifient des exigences de programme ; elles ne définissent ni sérialisation SBOM, ni algorithmes de détection des vulnérabilités, ni preuve qu'un composant donné est sûr. La conformité porte sur le programme organisationnel délimité et ses éléments de vérification ; elle ne se déduit ni de la présence d'un SBOM ni de celle d'un scanner.

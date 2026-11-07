@@ -1,6 +1,6 @@
 # 0018 — Version governance, compatibility and approval authority
 
-**Status:** adopted version-governance policy under [ADR 0004](../decisions/0004-semantic-versioning-contracts.md), using the authority regime recorded in [Architecture 0023](0023-bootstrap-governance-authority-decision.md). Automated enforcement is not yet implemented.  
+**Status:** version-governance adoption is recorded in [ADR 0004](../decisions/0004-semantic-versioning-contracts.md), using the authority regime proposed in [Architecture 0023](0023-bootstrap-governance-authority.md). Its normative effect is contingent on merging PR #21 first and then ADR 0004. Automated enforcement is not yet implemented.  
 **Language:** English is the default; see the [French counterpart](0018-version-governance-and-compatibility-authority.fr.md).
 
 ## 1. Purpose and relationship to 0017

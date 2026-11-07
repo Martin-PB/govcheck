@@ -380,7 +380,7 @@
 ## Sources complémentaires retrouvées dans les discussions sur l'assurance et l'intégration
 
 <a id="r-35"></a>
-### R-43 — Common Criteria (ISO/IEC 15408) et méthode commune d'évaluation
+### R-35 — Common Criteria (ISO/IEC 15408) et méthode commune d'évaluation
 - **Cité par :** [0005](specifications/0005-assurance-model.fr.md), [0007](architecture/0007-technology-decision-framework.fr.md)
 
 - **Sources primaires :** [Portail Common Criteria](https://www.commoncriteriaportal.org/) · [Publications CC:2022 et CEM:2022](https://www.commoncriteriaportal.org/cc/index.cfm)
@@ -389,7 +389,7 @@
 - **Limite :** les EAL sont des ensembles d'exigences d'assurance dans le régime Common Criteria, pas des niveaux génériques de maturité logicielle ni des paliers d'assurance GovCheck. Le périmètre et la cible d'évaluation comptent.
 
 <a id="r-36"></a>
-### R-44 — RTCA DO-178C / EUROCAE ED-12C : assurance logicielle aéronautique
+### R-36 — RTCA DO-178C / EUROCAE ED-12C : assurance logicielle aéronautique
 - **Cité par :** [0005](specifications/0005-assurance-model.fr.md), [0007](architecture/0007-technology-decision-framework.fr.md)
 
 - **Sources primaires :** [FAA AC 20-115D](https://www.faa.gov/airports/resources/advisory_circulars/index.cfm/go/document.information/documentNumber/20-115D) · [Présentation RTCA de DO-178C et de ses suppléments](https://www.rtca.org/do-178/)
@@ -398,7 +398,7 @@
 - **Limite :** DO-178C est une norme d'assurance logicielle aéronautique dans un contexte de certification de navigabilité. La circulaire FAA AC 20-115D décrit un moyen acceptable, pas le seul moyen ni une réglementation logicielle générale. La présentation publique RTCA ne reproduit pas la norme complète.
 
 <a id="r-37"></a>
-### R-45 — Langage et analyseur Alloy
+### R-37 — Langage et analyseur Alloy
 - **Cité par :** [0005](specifications/0005-assurance-model.fr.md), [0007](architecture/0007-technology-decision-framework.fr.md)
 
 - **Sources primaires :** [Projet Alloy et documentation](https://alloytools.org/) · [Dépôt source de l'analyseur Alloy](https://github.com/AlloyTools/org.alloytools.alloy)
@@ -407,7 +407,7 @@
 - **Limite :** les résultats dépendent des portées, bornes et hypothèses déclarées ; l'analyse Alloy ne prouve pas l'implémentation sans argument distinct de raffinement/conformité.
 
 <a id="r-38"></a>
-### R-46 — SPIN et Promela
+### R-38 — SPIN et Promela
 - **Cité par :** [0005](specifications/0005-assurance-model.fr.md), [0007](architecture/0007-technology-decision-framework.fr.md)
 
 - **Source primaire :** [Manuel SPIN et documentation Promela](https://spinroot.com/spin/Man/Manual.html)
@@ -416,7 +416,7 @@
 - **Limite :** la vérification porte sur l'abstraction Promela et le mode/options de recherche retenus ; elle n'établit ni conformité de l'implémentation ni fidélité normative.
 
 <a id="r-39"></a>
-### R-47 — Vérificateur Rust Kani
+### R-39 — Vérificateur Rust Kani
 - **Cité par :** [0005](specifications/0005-assurance-model.fr.md), [0007](architecture/0007-technology-decision-framework.fr.md)
 
 - **Source primaire :** [Documentation Kani](https://model-checking.github.io/kani/)
@@ -425,7 +425,7 @@
 - **Limite :** les fonctionnalités Rust prises en charge et la couverture de la concurrence sont limitées ; un harness réussi établit seulement les propriétés modélisées avec les bornes et la toolchain configurées.
 
 <a id="r-40"></a>
-### R-48 — Vérification Rust avec Verus
+### R-40 — Vérification Rust avec Verus
 - **Cité par :** [0005](specifications/0005-assurance-model.fr.md), [0007](architecture/0007-technology-decision-framework.fr.md)
 
 - **Source primaire :** [Tutoriel et référence Verus](https://verus-lang.github.io/verus/guide/)
@@ -434,7 +434,7 @@
 - **Limite :** Verus ne prend pas en charge toutes les fonctionnalités et bibliothèques Rust et ne prétend vérifier ni les compilateurs Rust/LLVM ni lui-même ; les composants de confiance et constructions non prises en charge restent pertinents.
 
 <a id="r-41"></a>
-### R-49 — Langage et vérificateur Dafny
+### R-41 — Langage et vérificateur Dafny
 - **Cité par :** [0005](specifications/0005-assurance-model.fr.md), [0007](architecture/0007-technology-decision-framework.fr.md)
 
 - **Source primaire :** [Manuel de référence Dafny](https://dafny.org/dafny/DafnyRef/DafnyRef)
@@ -443,7 +443,7 @@
 - **Limite :** les affirmations vérifiées dépendent des spécifications Dafny, du vérificateur et de la toolchain ; elles ne valident pas que la spécification représente la politique approuvée.
 
 <a id="r-42"></a>
-### R-50 — Assistant de preuve Coq / Rocq
+### R-42 — Assistant de preuve Coq / Rocq
 - **Cité par :** [0005](specifications/0005-assurance-model.fr.md), [0007](architecture/0007-technology-decision-framework.fr.md)
 
 - **Sources primaires :** [Documentation et manuels de référence Rocq](https://rocq-prover.org/docs) · [Archives de documentation Coq versionnée](https://docs.rocq-prover.org/)
@@ -452,7 +452,7 @@
 - **Limite :** une dérivation vérifiée établit un théorème sous ses définitions, axiomes, résultats importés et hypothèses du noyau/toolchain ; elle n'établit pas l'adéquation normative.
 
 <a id="r-43"></a>
-### R-51 — Assistant de preuve Isabelle
+### R-43 — Assistant de preuve Isabelle
 - **Cité par :** [0005](specifications/0005-assurance-model.fr.md), [0007](architecture/0007-technology-decision-framework.fr.md)
 
 - **Source primaire :** [Documentation, tutoriels et manuels de référence Isabelle](https://www.isabelle.in.tum.de/documentation.html)
@@ -461,7 +461,7 @@
 - **Limite :** les résultats dépendent de la logique, des théories importées, des axiomes et de l'environnement de preuve ; aucune intégration Isabelle n'est sélectionnée.
 
 <a id="r-44"></a>
-### R-52 — KAOS et ingénierie des exigences orientée objectifs
+### R-44 — KAOS et ingénierie des exigences orientée objectifs
 - **Cité par :** [0013](architecture/0013-governance-metamodel.fr.md)
 
 - **Source primaire :** [Axel van Lamsweerde, Requirements Engineering: From System Goals to UML Models to Software Specifications (2009), notice UCLouvain](https://research.dial.uclouvain.be/entities/publication/ddcd5cbc-c76d-4da2-bd29-509cbf0f9399)
@@ -470,7 +470,7 @@
 - **Limite :** méthode d'ingénierie des exigences et source académique ; ce n'est ni une ontologie GovCheck adoptée ni un langage de politiques exécutable.
 
 <a id="r-45"></a>
-### R-53 — Fondements des CRDT
+### R-45 — Fondements des CRDT
 - **Cité par :** [0002](decisions/0002-study-placement.fr.md)
 
 - **Source primaire :** [Shapiro, Preguiça, Baquero et Zawirski, « A comprehensive study of Convergent and Commutative Replicated Data Types » (rapport de recherche INRIA 7506, 2011)](https://dsf.berkeley.edu/cs286/papers/crdt-tr2011.pdf)
@@ -479,7 +479,7 @@
 - **Limite :** la convergence ne préserve pas à elle seule l'intention utilisateur, ne définit ni autorisation, ni transport/persistance, et ne garantit pas la préservation des invariants métier.
 
 <a id="r-46"></a>
-### R-54 — Yjs et Yrs
+### R-46 — Yjs et Yrs
 - **Cité par :** [0002](decisions/0002-study-placement.fr.md)
 
 - **Sources primaires :** [Documentation Yjs](https://docs.yjs.dev/) · [Dépôt source Yjs](https://github.com/yjs/yjs) · [Port Rust Yrs](https://github.com/y-crdt/y-crdt)
@@ -488,7 +488,7 @@
 - **Limite :** le comportement d'une bibliothèque ne choisit ni le modèle de données applicatif ni l'architecture de transport ; les déplacements d'arbres, undo/redo, persistance et migrations propres à Cartocortex exigent des tests distincts.
 
 <a id="r-47"></a>
-### R-55 — Automerge
+### R-47 — Automerge
 - **Cité par :** [0002](decisions/0002-study-placement.fr.md)
 
 - **Sources primaires :** [Documentation Automerge](https://automerge.org/docs/) · [Dépôt source Automerge](https://github.com/automerge/automerge)
@@ -497,7 +497,7 @@
 - **Limite :** la fusion CRDT ne préserve pas automatiquement l'intention métier ni les permissions ; réseau et stockage doivent être évalués séparément.
 
 <a id="r-48"></a>
-### R-56 — CRDT Loro
+### R-48 — CRDT Loro
 - **Cité par :** [0002](decisions/0002-study-placement.fr.md)
 
 - **Sources primaires :** [Documentation Loro](https://loro.dev/docs) · [Concepts CRDT de Loro](https://www.loro.dev/docs/concepts/crdt) · [Dépôt source Loro](https://github.com/loro-dev/loro)
@@ -506,7 +506,7 @@
 - **Limite :** la matrice de fonctionnalités du projet ne constitue pas une évaluation indépendante d'adéquation ; tester identité, déplacement/suppression, undo/redo et persistance de Cartocortex avant sélection.
 
 <a id="r-49"></a>
-### R-57 — Communication temps réel WebRTC
+### R-49 — Communication temps réel WebRTC
 - **Cité par :** [0002](decisions/0002-study-placement.fr.md)
 
 - **Sources primaires :** [Recommandation W3C WebRTC 1.0](https://www.w3.org/TR/webrtc/) · [RFC 8835 — Transports pour WebRTC](https://www.rfc-editor.org/rfc/rfc8835.html)
@@ -515,7 +515,7 @@
 - **Limite :** WebRTC ne définit ni signalisation applicative, ni autorisation des salles, ni sémantique CRDT, ni persistance. Pair-à-pair ne signifie pas sans infrastructure ni sans métadonnées.
 
 <a id="r-50"></a>
-### R-58 — ICE, STUN, TURN et infrastructure de relais
+### R-50 — ICE, STUN, TURN et infrastructure de relais
 - **Cité par :** [0002](decisions/0002-study-placement.fr.md)
 
 - **Sources primaires :** [RFC 8445 — ICE](https://www.rfc-editor.org/rfc/rfc8445.html) · [RFC 8489 — STUN](https://www.rfc-editor.org/rfc/rfc8489.html) · [RFC 8656 — TURN](https://www.rfc-editor.org/rfc/rfc8656.html) · [Implémentation de relais coturn](https://github.com/coturn/coturn)
@@ -524,7 +524,7 @@
 - **Limite :** STUN seul n'est pas une solution de traversée NAT ; TURN relaie le trafic et introduit disponibilité, coût, confidentialité et contraintes opérationnelles. L'estimation approximative d'usage du relais dans le PDF est une affirmation d'étude, pas une garantie protocolaire.
 
 <a id="r-51"></a>
-### R-59 — Open Knowledge Format (OKF) v0.2
+### R-51 — Open Knowledge Format (OKF) v0.2
 - **Cité par :** [0002](decisions/0002-study-placement.fr.md)
 
 - **Sources primaires :** [Spécification canonique OKF v0.2](https://github.com/GoogleCloudPlatform/open-knowledge-format/blob/main/SPEC.md) · [Spécification OKF v0.2 dans l'ancien dépôt Knowledge Catalog](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md)
@@ -533,7 +533,7 @@
 - **Limite :** OKF est une convention légère de bundle de connaissances, pas une ontologie de graphe, un modèle de disposition de carte mentale, un CRDT, un protocole de transport ou une norme de gouvernance GovCheck. L'ancien chemin Knowledge Catalog est un instantané gelé ; le dépôt dédié est canonique.
 
 <a id="r-52"></a>
-### R-60 — Modèle de données RDF 1.1
+### R-52 — Modèle de données RDF 1.1
 - **Cité par :** [0002](decisions/0002-study-placement.fr.md)
 
 - **Source primaire :** [W3C RDF 1.1 Concepts and Abstract Syntax](https://www.w3.org/TR/rdf11-concepts/)
@@ -542,7 +542,7 @@
 - **Limite :** RDF est un modèle de données, pas une ontologie métier, un moteur de stockage, un langage de validation ou un protocole de collaboration.
 
 <a id="r-53"></a>
-### R-61 — SKOS
+### R-53 — SKOS
 - **Cité par :** [0002](decisions/0002-study-placement.fr.md)
 
 - **Source primaire :** [Référence W3C SKOS](https://www.w3.org/TR/skos-reference/)
@@ -551,7 +551,7 @@
 - **Limite :** SKOS n'est ni un modèle général d'objets applicatifs ni un substitut aux axiomes OWL, contraintes SHACL ou mécanismes de collaboration CRDT.
 
 <a id="r-54"></a>
-### R-62 — Langage d'ontologie OWL 2
+### R-54 — Langage d'ontologie OWL 2
 - **Cité par :** [0002](decisions/0002-study-placement.fr.md)
 
 - **Source primaire :** [W3C OWL 2 Structural Specification and Functional-Style Syntax](https://www.w3.org/TR/owl-syntax/)
@@ -560,7 +560,7 @@
 - **Limite :** le raisonnement OWL ne valide pas toutes les contraintes de données applicatives, ne préserve pas automatiquement toutes les propriétés des sources et ne fournit ni workflow, ni contrôle d'accès, ni synchronisation.
 
 <a id="r-55"></a>
-### R-63 — SHACL
+### R-55 — SHACL
 - **Cité par :** [0002](decisions/0002-study-placement.fr.md)
 
 - **Source primaire :** [W3C Shapes Constraint Language (SHACL)](https://www.w3.org/TR/shacl/)
@@ -569,7 +569,7 @@
 - **Limite :** la validation SHACL ne prouve ni vérité sémantique, ni authenticité de provenance, ni autorisation, ni conformité de l'implémentation de transformation.
 
 <a id="r-56"></a>
-### R-64 — Termes de métadonnées Dublin Core
+### R-56 — Termes de métadonnées Dublin Core
 - **Cité par :** [0002](decisions/0002-study-placement.fr.md)
 
 - **Source primaire :** [Spécification DCMI Metadata Terms](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/)
@@ -578,7 +578,7 @@
 - **Limite :** les termes Dublin Core ne définissent ni modèle métier complet, ni politique d'identité, ni sémantique de contrôle d'accès ou règles de validation.
 
 <a id="r-57"></a>
-### R-65 — Ontologie bibliographique BIBO
+### R-57 — Ontologie bibliographique BIBO
 - **Cité par :** [0002](decisions/0002-study-placement.fr.md)
 
 - **Source primaire :** [Spécification DCMI BIBO](https://www.dublincore.org/specifications/bibo/bibo/)
@@ -587,7 +587,7 @@
 - **Limite :** BIBO est une spécification communautaire DCMI, pas une recommandation ISO ou W3C ; ne la combiner avec des vocabulaires généraux que si nécessaire.
 
 <a id="r-58"></a>
-### R-66 — Vocabulaire de catalogue de données (DCAT) 3
+### R-58 — Vocabulaire de catalogue de données (DCAT) 3
 - **Cité par :** [0002](decisions/0002-study-placement.fr.md)
 
 - **Source primaire :** [Recommandation W3C DCAT 3](https://www.w3.org/TR/vocab-dcat-3/)
@@ -596,7 +596,7 @@
 - **Limite :** DCAT décrit des jeux de données/services catalogués ; il ne modélise ni toutes les sémantiques du contenu, ni permissions applicatives, ni édition collaborative.
 
 <a id="r-59"></a>
-### R-67 — Modèle de données W3C Web Annotation
+### R-59 — Modèle de données W3C Web Annotation
 - **Cité par :** [0002](decisions/0002-study-placement.fr.md)
 
 - **Source primaire :** [W3C Web Annotation Data Model](https://www.w3.org/TR/annotation-model/)
@@ -605,7 +605,7 @@
 - **Limite :** Web Annotation ne définit ni graphe de connaissances complet, ni protocole de coédition temps réel, ni politique d'autorisation.
 
 <a id="r-60"></a>
-### R-68 — ActivityStreams 2.0
+### R-60 — ActivityStreams 2.0
 - **Cité par :** [0002](decisions/0002-study-placement.fr.md)
 
 - **Source primaire :** [W3C ActivityStreams 2.0 Core](https://www.w3.org/TR/activitystreams-core/)
@@ -614,7 +614,7 @@
 - **Limite :** ActivityStreams n'est ni un registre de provenance, ni une garantie d'event sourcing, ni un modèle d'accès, ni un remplacement de PROV-O.
 
 <a id="r-61"></a>
-### R-69 — Ontologie P-Plan
+### R-61 — Ontologie P-Plan
 - **Cité par :** [0002](decisions/0002-study-placement.fr.md)
 
 - **Source primaire :** [Spécification de l'ontologie P-Plan](https://www.opmw.org/model/p-plan/)
@@ -623,7 +623,7 @@
 - **Limite :** P-Plan est une ontologie de domaine étendant PROV-O, pas un moteur de workflow général ni une recommandation W3C.
 
 <a id="r-62"></a>
-### R-70 — Sources d'intégration Cartocortex, MoriNet et SaussuNet
+### R-62 — Sources d'intégration Cartocortex, MoriNet et SaussuNet
 - **Cité par :** [0002](decisions/0002-study-placement.fr.md)
 
 - **Sources primaires :** [Dépôt Cartocortex](https://github.com/complexus-lab/cartocortex) · [Dépôt MoriNet](https://github.com/lejeunecedric/MoriNet) · [Dépôt SaussuNet](https://github.com/lejeunecedric/SaussuNet) · [PR Cartocortex #27 — étude OKF, stockage et vues graphe](https://github.com/complexus-lab/cartocortex/pull/27) · [PR Cartocortex #28 — backlog CRDT, navigateur et synchronisation cloud](https://github.com/complexus-lab/cartocortex/pull/28)
@@ -632,7 +632,7 @@
 - **Limite :** la PR #27 est une étude, pas une implémentation exécutée ; la PR #28 est une proposition/backlog et son étude de transport est explicitement non exécutée. Les capacités des dépôts doivent être revérifiées à la révision examinée avant toute affirmation sur leur comportement courant. Le namespace « CKO » du PDF est une proposition, pas une norme externe adoptée.
 
 <a id="r-63"></a>
-### R-71 — Formats d'échange de cartes mentales et de graphes
+### R-63 — Formats d'échange de cartes mentales et de graphes
 - **Cité par :** [0002](decisions/0002-study-placement.fr.md)
 
 - **Sources primaires :** [Documentation Freeplane](https://docs.freeplane.org/) · [Projet FreeMind](https://freemind.sourceforge.io/wiki/index.php/Main_Page) · [XMind](https://xmind.app/) · [Spécification OPML 2.0](https://opml.org/spec2.opml) · [Spécification GraphML](http://graphml.graphdrawing.org/specification.html)
@@ -641,7 +641,7 @@
 - **Limite :** ces formats ont des capacités expressives et conventions de métadonnées différentes. Un parsing réussi n'est pas une conversion sémantique sans perte ; il faut des fixtures par format et des rapports de perte explicites.
 
 <a id="r-64"></a>
-### R-72 — API de stockage cloud et interopérabilité S3
+### R-64 — API de stockage cloud et interopérabilité S3
 - **Cité par :** [0002](decisions/0002-study-placement.fr.md)
 
 - **Sources primaires :** [Documentation et API Amazon S3](https://docs.aws.amazon.com/s3/) · [Interopérabilité Google Cloud Storage](https://docs.cloud.google.com/storage/docs/interoperability) · [Présentation de l'API Google Drive](https://developers.google.com/workspace/drive/api/guides/about-sdk) · [Ressource Drive Microsoft Graph](https://learn.microsoft.com/en-us/graph/api/drive-get?view=graph-rest-1.0) · [Introduction à Azure Blob Storage](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction) · [Documentation Hippius](https://docs.hippius.com/) · [Stockage objet compatible S3 Hippius](https://docs.hippius.com/storage/s3/advanced)
@@ -650,7 +650,7 @@
 - **Limite :** « compatible S3 » ne signifie pas sémantiques, cohérence, IAM, versionnement, événements ou multipart identiques. Les API ont des modèles d'authentification et de permission distincts. Il s'agissait de candidats de backlog, pas de fournisseurs sélectionnés ou d'intégrations implémentées.
 
 <a id="r-65"></a>
-### R-73 — Accès aux fichiers du navigateur, persistance locale et WebAssembly
+### R-65 — Accès aux fichiers du navigateur, persistance locale et WebAssembly
 - **Cité par :** [0002](decisions/0002-study-placement.fr.md)
 
 - **Sources primaires :** [API File System MDN](https://developer.mozilla.org/en-US/docs/Web/API/File_System_API) · [Origin Private File System (OPFS) MDN](https://developer.mozilla.org/en-US/docs/Web/API/File_System_API/Origin_private_file_system) · [Indexed Database API 3.0 W3C](https://www.w3.org/TR/IndexedDB-3/) · [Spécifications WebAssembly](https://webassembly.org/specs/) · [WebAssembly System Interface (WASI)](https://github.com/WebAssembly/WASI)
@@ -659,7 +659,7 @@
 - **Limite :** les API navigateur ont des contraintes de prise en charge, permission, contexte sécurisé et quota ; OPFS est privé à l'origine et n'est pas un répertoire visible de l'utilisateur. WASI est une interface système pour runtimes WebAssembly, pas un contournement des permissions du système de fichiers du navigateur. La PR décrit une proposition/backlog, pas un déploiement testé.
 
 <a id="r-66"></a>
-### R-74 — Découverte de pairs Hyperswarm et HyperDHT
+### R-66 — Découverte de pairs Hyperswarm et HyperDHT
 - **Cité par :** [0002](decisions/0002-study-placement.fr.md)
 
 - **Sources primaires :** [Projet Hyperswarm](https://github.com/holepunchto/hyperswarm) · [Implémentation HyperDHT](https://github.com/holepunchto/hyperdht) · [Documentation de découverte de pairs Hyperswarm](https://docs.pears.com/p2p/reference/building-blocks/hyperswarm/)

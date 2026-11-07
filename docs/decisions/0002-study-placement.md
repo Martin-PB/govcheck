@@ -45,3 +45,6 @@ The integration study and its external technical sources are catalogued separate
 - [R-53 — P-Plan ontology](../references.md#r-53)
 - [R-54 — Cartocortex, MoriNet and SaussuNet repositories and PRs #27/#28](../references.md#r-54)
 - [R-55 — Mind-map and graph interchange formats](../references.md#r-55)
+- [R-56 — Cloud storage APIs and S3 interoperability](../references.md#r-56)
+- [R-57 — Browser file access, local persistence and WebAssembly](../references.md#r-57)
+- [R-58 — Hyperswarm and HyperDHT peer discovery](../references.md#r-58)

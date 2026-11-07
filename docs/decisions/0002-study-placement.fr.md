@@ -47,4 +47,6 @@ L'étude d'intégration et ses sources techniques externes sont cataloguées sé
 - [R-63 — Formats d'échange de cartes mentales et de graphes](../references.fr.md#r-63)
 - [R-64 — API de stockage cloud et interopérabilité S3](../references.fr.md#r-64)
 - [R-65 — Accès aux fichiers du navigateur, persistance locale et WebAssembly](../references.fr.md#r-65)
-- [R-66 — Découverte de pairs Hyperswarm et HyperDHT](../references.fr.md#r-66)
+- [R-66 — Découverte de pairs Hyperswarm et HyperDHT](../references.fr.md#r-66)- [R-67 — WebDAV, Model Context Protocol et conventions de wiki Markdown](../references.fr.md#r-67)
+- [R-68 — Dépôts de l'écosystème GovCheck associés et examinés](../references.fr.md#r-68)
+- [R-69 — Inventaire des sources sur les formats de cartes mentales et l'interopérabilité](../references.fr.md#r-69)

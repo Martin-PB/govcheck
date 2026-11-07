@@ -43,4 +43,5 @@ Future tests and formal models must cover illegal transitions, stale evidence, p
 
 ## Bibliographic references
 
+- [R-05 — TLA+ and TLC state-transition modeling](../references.md#r-05)
 - [R-22 — Native Git and Pijul semantics](../references.md#r-22)

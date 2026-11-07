@@ -21,3 +21,9 @@ Le diagramme est généré depuis `formal/lifecycle-transitions.json`. Le regist
 Le premier modèle couvre un changement abstrait, l'évaluation liée à un tuple, la publication de preuves, les approbations autorisées, l'acceptation, l'application du candidat exact, la mutation des entrées et les décisions terminales.
 
 **Statut de vérification :** spécification et configuration TLC ajoutées ; aucune exécution TLC ni aucun résultat de preuve ne sont revendiqués. Consulter le document du modèle pour les limites de l'abstraction et les raffinements nécessaires.
+
+## Références bibliographiques
+
+- [R-05 — TLA+ et TLC](../references.fr.md#r-05)
+- [R-20 — Assistant de preuve Lean](../references.fr.md#r-20)
+- [R-22 — Sémantiques natives de Git et Pijul](../references.fr.md#r-22)

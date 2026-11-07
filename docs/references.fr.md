@@ -245,20 +245,6 @@
 - **Utilité pour GovCheck :** fixture candidate d'interopérabilité avec un harness d'agent fondé sur Pi.
 - **Limite :** une barrière de permission, une fonctionnalité de provenance ou un avertissement de confidentialité ne remplace pas la gouvernance canonique ou une acceptation vérifiée indépendamment. Voir l'architecture 0016.
 
-<a id="r-22"></a>
-
-### R-22 — Sémantiques natives de Git et Pijul
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
-
-- **Sources primaires :** [Documentation Git](https://git-scm.com/docs) · [Manuel Pijul : théorie](https://pijul.org/manual/theory) · [Canaux Pijul](https://pijul.org/manual/workflows/channels) · [Conflits Pijul](https://pijul.org/manual/conflicts.html)
-- **Concepts pertinents :** modèle de snapshots/commits et arbres de Git ; graphe de changements/patches, canaux et conflits de première classe de Pijul.
-- **Utilité pour GovCheck :** justifie la frontière explicite des adaptateurs VCS et l'obligation de représenter l'identité du candidat, les conflits et l'application selon les sémantiques natives plutôt que de tout forcer dans une abstraction inspirée de Git.
-- **Limite :** la documentation des projets décrit leurs sémantiques visées ; GovCheck doit encore fournir contrats d'adaptateur et tests de conformité. Cette référence ne prouve pas qu'un adaptateur est implémenté.
-
-- [0004 — Contrats des adaptateurs VCS et collaboration](specifications/0004-vcs-collaboration-contracts.fr.md) : R-22.
-
-## Fondements académiques et assistant de preuve
-
 <a id="r-20"></a>
 ### R-20 — Lean
 - **Cité par :** aucune référence actuelle dans les documents de cette branche.
@@ -277,6 +263,20 @@
 - **Concepts pertinents :** pérennité du logiciel de recherche, citation, releases et reproductibilité.
 - **Utilité pour GovCheck :** appuie l'enregistrement des versions exactes des logiciels/outils et du contexte de release nécessaires à l'interprétation des preuves.
 - **Limite :** des recommandations générales ne remplacent pas un contrat concret de manifeste de release. Lier un guide précis lorsqu'une recommandation particulière est invoquée.
+
+<a id="r-22"></a>
+
+### R-22 — Sémantiques natives de Git et Pijul
+- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+
+- **Sources primaires :** [Documentation Git](https://git-scm.com/docs) · [Manuel Pijul : théorie](https://pijul.org/manual/theory) · [Canaux Pijul](https://pijul.org/manual/workflows/channels) · [Conflits Pijul](https://pijul.org/manual/conflicts.html)
+- **Concepts pertinents :** modèle de snapshots/commits et arbres de Git ; graphe de changements/patches, canaux et conflits de première classe de Pijul.
+- **Utilité pour GovCheck :** justifie la frontière explicite des adaptateurs VCS et l'obligation de représenter l'identité du candidat, les conflits et l'application selon les sémantiques natives plutôt que de tout forcer dans une abstraction inspirée de Git.
+- **Limite :** la documentation des projets décrit leurs sémantiques visées ; GovCheck doit encore fournir contrats d'adaptateur et tests de conformité. Cette référence ne prouve pas qu'un adaptateur est implémenté.
+
+- [0004 — Contrats des adaptateurs VCS et collaboration](specifications/0004-vcs-collaboration-contracts.fr.md) : R-22.
+
+## Fondements académiques et assistant de preuve
 
 <a id="r-23"></a>
 
@@ -682,31 +682,32 @@
 - **Utilité pour GovCheck :** conserve l'alternative de découverte de pairs pour application desktop discutée dans la PR Cartocortex #28, à côté de la signalisation WebRTC dans les navigateurs.
 - **Limite :** Hyperswarm/HyperDHT est une pile réseau distincte, pas une signalisation WebRTC native au navigateur. Le DHT dépend d'une infrastructure de bootstrap et de la joignabilité réseau ; la découverte de pairs ne définit ni autorisation des salles, ni politique de membres, ni persistance.
 
-<a id="r-74"></a>
-### R-74 — Hoover, Rosso-Llopart et Taran, *Evaluating Project Decisions: Case Studies in Software Engineering* (2009/2010)
-- **Cité par :** citation proposée dans [PR #22 — Architecture 0025](https://github.com/Martin-PB/govcheck/pull/22) (document absent de cette branche).
-- **Source primaire :** [Catalogue de l'éditeur et extrait du chapitre](https://www.informit.com/store/evaluating-project-decisions-case-studies-in-software-9780321544568)
-- **Référence bibliographique :** Carol L. Hoover, Mel Rosso-Llopart et Gil Taran, Addison-Wesley Professional, première publication en octobre 2009 (copyright 2010), ISBN 978-0-321-54456-8 ; le chapitre 1, §1.3 présente le modèle de décision PEAK.
-- **Concepts pertinents :** Problem, Experience, Assumptions et Knowledge comme entrées de la décision ; un processus de décision produit une solution et un risque assumé.
-- **Utilité pour GovCheck :** fournit une grille d'examen des décisions pour rendre explicites et traçables la formulation du problème, l'expérience mobilisée, les hypothèses, les connaissances factuelles, la solution retenue et le risque accepté.
-- **Limite :** PEAK est un modèle de décision, pas une taxonomie des menaces, un métamodèle de dossier d'assurance, un algorithme de calcul du risque ou une norme de gouvernance. Il ne prescrit ni sérialisation ni modèle d'autorisation.
+<a id="r-67"></a>
+### R-67 — WebDAV, Model Context Protocol et conventions de wiki Markdown
+- **Cité par :** [0002](decisions/0002-study-placement.fr.md)
+- **Sources primaires :** [RFC 4918 IETF — WebDAV](https://www.rfc-editor.org/rfc/rfc4918.html) · [Spécification MCP, version 2026-07-28](https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/docs/specification/2026-07-28/basic/index.mdx) · [Dépôt de la spécification MCP](https://github.com/modelcontextprotocol/modelcontextprotocol) · [Spécification CommonMark 0.31.2](https://spec.commonmark.org/0.31.2/) · [Documentation de syntaxe Markdown Obsidian](https://obsidian.md/help/syntax) · [Documentation mdBook](https://rust-lang.github.io/mdBook/)
+- **Concepts pertinents :** édition distante et verrouillage via HTTP (WebDAV), outils/ressources/prompts via MCP, syntaxe Markdown, extensions propres à Obsidian et publication de bases de connaissances Markdown avec mdBook.
+- **Utilité pour GovCheck :** conserve les protocoles externes et conventions documentaires explicitement nommés dans l'évaluation d'intégration pour l'ingestion de sources et l'exposition du wiki SaussuNet/MoriNet.
+- **Limite :** WebDAV et MCP sont des protocoles distincts avec des modèles de sécurité et d'autorisation différents. CommonMark est une base, pas le dialecte Obsidian complet. Le PDF décrit des interfaces et une intégration visée ; il ne prouve pas que chaque adaptateur ou chemin serveur est implémenté ou sécurisé.
 
-<a id="r-75"></a>
-### R-75 — NIST SP 800-137, Information Security Continuous Monitoring (2011)
-- **Cité par :** citation proposée dans [PR #22 — Architecture 0025](https://github.com/Martin-PB/govcheck/pull/22) (document absent de cette branche).
-- **Source primaire :** [Publication NIST](https://csrc.nist.gov/pubs/sp/800/137/final) · [DOI](https://doi.org/10.6028/NIST.SP.800-137)
-- **Concepts pertinents :** visibilité continue sur les actifs, menaces, vulnérabilités et efficacité des contrôles déployés ; surveillance alignée sur la tolérance au risque ; réaction lorsque les observations montrent que les contrôles sont insuffisants.
-- **Utilité pour GovCheck :** étaye une boucle de retour en production dans laquelle les observations actualisent l'état du système, l'évaluation des contrôles et les décisions de risque, au lieu de figer le modèle de menace à la conception.
-- **Limite :** les données de surveillance ne constituent pas automatiquement un incident validé, une menace ou une conclusion d'assurance. Couverture, intégrité de collecte, contexte, incertitude et santé des mécanismes de surveillance doivent être évalués.
+<a id="r-68"></a>
+### R-68 — Dépôts de l'écosystème GovCheck associés et examinés dans l'évaluation
+- **Cité par :** [0002](decisions/0002-study-placement.fr.md)
+- **Sources primaires :** [Pijulation](https://github.com/Martin-PB/Pijulation) · [Passerelle Git–Pijul](https://github.com/Martin-PB/passerelle-Git-Pijul)
+- **Concepts pertinents :** projets adjacents servant de contexte pour les sémantiques natives Git/Pijul, l'interopérabilité des graphes de patches, la gouvernance et les pratiques d'assurance formelle.
+- **Utilité pour GovCheck :** conserve les sources publiques de dépôts nommées dans l'évaluation initiale.
+- **Limite :** l'évaluation examinait aussi des dépôts privés ; leurs noms et URL ne sont volontairement pas reproduits dans ce catalogue public. « Mix », « CCOp Agent » et un dépôt autonome distinct nommé « Nix » n'ont pas été identifiés de façon univoque ; aucun lien supposé n'est fourni. Cette entrée fournit du contexte, elle ne fait pas de ces projets des dépendances de GovCheck.
 
-<a id="r-76"></a>
-### R-76 — Rushby, « Runtime Certification » (RV 2008)
-- **Cité par :** citation proposée dans [PR #22 — Architecture 0025](https://github.com/Martin-PB/govcheck/pull/22) (document absent de cette branche).
-- **Source primaire :** [Article de l'auteur, présenté au huitième atelier Runtime Verification](https://citeseerx.ist.psu.edu/document?doi=c28045b0a573839028f6042870a3eccd8f9be748&repid=rep1&type=pdf)
-- **Référence bibliographique :** John Rushby, « Runtime Certification », article invité à RV 2008, Budapest, avril 2008.
-- **Concepts pertinents :** dossiers d'assurance comme affirmations, preuves et arguments ; surveillance en exécution des hypothèses et anomalies ; utilisation de la vérification à l'exécution comme preuve ; détection de la violation d'hypothèses environnementales.
-- **Utilité pour GovCheck :** justifie directement de relier les hypothèses déclarées à des conditions surveillables et de permettre aux observations de production de les contester et de déclencher la réévaluation des affirmations d'assurance.
-- **Limite :** les moniteurs à l'exécution n'établissent que des propriétés dans leur périmètre formalisé et leur frontière d'observation. Une anomalie ou une hypothèse violée ne constitue pas automatiquement une attaque confirmée ni une preuve de défaillance du système.
+<a id="r-69"></a>
+### R-69 — Inventaire des sources sur les formats de cartes mentales et l'interopérabilité (PR #9)
+- **Cité par :** [0002](decisions/0002-study-placement.fr.md)
+- **Sources primaires du projet :** [PR Cartocortex #9 — panorama des formats de cartes mentales](https://github.com/complexus-lab/cartocortex/pull/9) · [PR Cartocortex #1](https://github.com/complexus-lab/cartocortex/pull/1) · [PR #3](https://github.com/complexus-lab/cartocortex/pull/3) · [PR #4](https://github.com/complexus-lab/cartocortex/pull/4) · [PR #5](https://github.com/complexus-lab/cartocortex/pull/5) · [PR #6](https://github.com/complexus-lab/cartocortex/pull/6) · [PR #8](https://github.com/complexus-lab/cartocortex/pull/8)
+- **Implémentations sources et fixtures :** [Code source Freeplane](https://github.com/freeplane/freeplane) · [Sérialiseurs/importeur WiseMapping](https://github.com/wisemapping/wisemapping-frontend) · [Fixture publique de sauvegarde Mindomo](https://github.com/aarontmaher/Lauburu-Monorepo) · [MultiMarkdown 6](https://github.com/fletcher/MultiMarkdown-6) · [Fixture de test SimpleMind](https://github.com/pahund/simple-mind-search) · [Exporteur xmind2smmx](https://github.com/BartRuSec/xmind2smmx) · [Lecteur/écrivain MCP SimpleMind](https://github.com/kharabiner/simplemind-mcp-server)
+- **Documentation des éditeurs et produits :** [Guide d'export XMind](https://xmind.com/fr/user-guide/export-new) · [Guide utilisateur MindManager 2017](https://www.mindmanager.com/static/mm/docs/MindManager_2017_User_Guide_EN.pdf) · [Intégrations Microsoft MindManager](https://www.mindmanager.com/en/integrations/microsoft/) · [Démarrage Mindomo](https://help.mindomo.com/getting-started/) · [Import Mindomo](https://help.mindomo.com/basics/import-mind-maps/) · [Export Mindomo](https://help.mindomo.com/basics/export-mind-maps/) · [FAQ compatibilité iThoughts de l'éditeur](https://www.toketaware.com/ithoughts-faq-compatibility) · [Export SimpleMind](https://simplemind.eu/faq/share-export-in-different-formats/) · [Fichiers importables SimpleMind](https://simplemind.eu/faq/what-files-can-simplemind-import/) · [Aide import/export SimpleMind](https://simplemind.eu/faq_group/share-export-and-import/) · [Export MindMeister](https://support.mindmeister.com/hc/en-us/articles/360017447280-Export-Your-Mind-Map) · [Export/Impression MindMeister iOS](https://support.mindmeister.com/hc/en-us/articles/115000807204-Export-or-Print-your-Map-on-iOS) · [Import MindMeister](https://support.mindmeister.com/hc/en-us/articles/360017498199-Import-Text-Files-and-Mind-Maps-into-MindMeister) · [Import Coggle](https://coggle.help/article/34-import-files-into-coggle) · [Article du blog Coggle sur l'import .mm](https://bloggle.coggle.it/post/129486892657/import-other-files-to-coggle) · [Export Coggle](https://coggle.help/article/20-export-options) · [Formats d'export pris en charge par Coggle](https://coggle.help/article/105-supported-export-formats) · [Aide Bubbl.us](https://bubbl.us/help/topics.htm) · [Import iMindMap vers Ayoa](https://support.ayoa.com/opening-imindmap-files-in-ayoa)
+- **Références secondaires et non normatives :** [Aide export XMind non vérifiée comme source éditeur](https://xmind-help.github.io/en/export.html) · [FileInfo .mind](https://fileinfo.com/extension/mind) · [FileInfo .imx](https://fileinfo.com/extension/imx) · [File-Extensions .nm5](https://www.file-extensions.org/nm5-file-extension) · [Comparatif d'import/export Mind Mapping Software](https://mindmappingsoftwareblog.com/wp-content/99nc2r/MMS_Import_Export_Comparison.pdf) · [Demande d'export Lucidchart sur le forum communautaire](https://community.lucid.co/ideas/exporting-mind-maps-created-in-lucidchart-to-microsoft-powerpoint-or-word-374) · [Panorama d'export Lucidchart](https://mindmap.guide/post/7-amazing-enterprise-mindmap-tools-with-powerful-export-options/) · [Article sur l'export de tâches MindManager](https://sociamind.com/2015/11/04/exporting-a-simple-task-table-or-to-do-list-from-mindmanager/) · [Présentation de fonctionnalités Bubbl.us](https://edrawmind.wondershare.com/mind-map/bubble-us-mind-map.html)
+- **Concepts pertinents :** capacités d'import/export, conteneurs de fichiers, contenu sémantique des cartes, structures d'outline et de graphe, intégrations bureautiques, sérialiseurs au niveau source et fixtures de fichiers réels.
+- **Utilité pour GovCheck :** conserve la chaîne complète des sources derrière le panorama des formats cité par l'évaluation initiale de 224 pages, y compris code/fixtures et documentation officielle des éditeurs.
+- **Limite :** la PR #9 est une PR documentaire ouverte, pas une implémentation de formats ni une suite de conformité. Le panorama enregistre les preuves disponibles à sa date de revue (2026-10-18). FileInfo, blogs et forums communautaires sont des sources secondaires, pas des spécifications de formats. Une fonctionnalité dans l'interface d'un produit ne prouve pas un échange de fichiers sans perte ; la PR source et les fixtures de chaque format doivent être revérifiées avant toute décision d'implémentation.
 
 <a id="r-70"></a>
 ### R-70 — Wei et al., « ACCESS: Assurance Case Centric Engineering of Safety-critical Systems » (2024)
@@ -742,32 +743,31 @@
 - **Utilité pour GovCheck :** point de comparaison indispensable avant de sélectionner un métamodèle interne ou d'échange. Les résolutions de tickets de la bêta indiquent quelles lacunes de 2.3 la révision tente de combler.
 - **Limite :** la version 2.4 est une bêta, pas une spécification formelle adoptée. GovCheck ne doit pas traiter ses constructions provisoires comme des contrats stables ni revendiquer sa conformité. Conserver 2.3 comme base formelle actuelle en attendant l'examen de la version finale 2.4.
 
-<a id="r-67"></a>
-### R-67 — WebDAV, Model Context Protocol et conventions de wiki Markdown
-- **Cité par :** [0002](decisions/0002-study-placement.fr.md)
-- **Sources primaires :** [RFC 4918 IETF — WebDAV](https://www.rfc-editor.org/rfc/rfc4918.html) · [Spécification MCP, version 2026-07-28](https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/docs/specification/2026-07-28/basic/index.mdx) · [Dépôt de la spécification MCP](https://github.com/modelcontextprotocol/modelcontextprotocol) · [Spécification CommonMark 0.31.2](https://spec.commonmark.org/0.31.2/) · [Documentation de syntaxe Markdown Obsidian](https://obsidian.md/help/syntax) · [Documentation mdBook](https://rust-lang.github.io/mdBook/)
-- **Concepts pertinents :** édition distante et verrouillage via HTTP (WebDAV), outils/ressources/prompts via MCP, syntaxe Markdown, extensions propres à Obsidian et publication de bases de connaissances Markdown avec mdBook.
-- **Utilité pour GovCheck :** conserve les protocoles externes et conventions documentaires explicitement nommés dans l'évaluation d'intégration pour l'ingestion de sources et l'exposition du wiki SaussuNet/MoriNet.
-- **Limite :** WebDAV et MCP sont des protocoles distincts avec des modèles de sécurité et d'autorisation différents. CommonMark est une base, pas le dialecte Obsidian complet. Le PDF décrit des interfaces et une intégration visée ; il ne prouve pas que chaque adaptateur ou chemin serveur est implémenté ou sécurisé.
+<a id="r-74"></a>
+### R-74 — Hoover, Rosso-Llopart et Taran, *Evaluating Project Decisions: Case Studies in Software Engineering* (2009/2010)
+- **Cité par :** citation proposée dans [PR #22 — Architecture 0025](https://github.com/Martin-PB/govcheck/pull/22) (document absent de cette branche).
+- **Source primaire :** [Catalogue de l'éditeur et extrait du chapitre](https://www.informit.com/store/evaluating-project-decisions-case-studies-in-software-9780321544568)
+- **Référence bibliographique :** Carol L. Hoover, Mel Rosso-Llopart et Gil Taran, Addison-Wesley Professional, première publication en octobre 2009 (copyright 2010), ISBN 978-0-321-54456-8 ; le chapitre 1, §1.3 présente le modèle de décision PEAK.
+- **Concepts pertinents :** Problem, Experience, Assumptions et Knowledge comme entrées de la décision ; un processus de décision produit une solution et un risque assumé.
+- **Utilité pour GovCheck :** fournit une grille d'examen des décisions pour rendre explicites et traçables la formulation du problème, l'expérience mobilisée, les hypothèses, les connaissances factuelles, la solution retenue et le risque accepté.
+- **Limite :** PEAK est un modèle de décision, pas une taxonomie des menaces, un métamodèle de dossier d'assurance, un algorithme de calcul du risque ou une norme de gouvernance. Il ne prescrit ni sérialisation ni modèle d'autorisation.
 
-<a id="r-68"></a>
-### R-68 — Dépôts de l'écosystème GovCheck associés et examinés dans l'évaluation
-- **Cité par :** [0002](decisions/0002-study-placement.fr.md)
-- **Sources primaires :** [Pijulation](https://github.com/Martin-PB/Pijulation) · [Passerelle Git–Pijul](https://github.com/Martin-PB/passerelle-Git-Pijul)
-- **Concepts pertinents :** projets adjacents servant de contexte pour les sémantiques natives Git/Pijul, l'interopérabilité des graphes de patches, la gouvernance et les pratiques d'assurance formelle.
-- **Utilité pour GovCheck :** conserve les sources publiques de dépôts nommées dans l'évaluation initiale.
-- **Limite :** l'évaluation examinait aussi des dépôts privés ; leurs noms et URL ne sont volontairement pas reproduits dans ce catalogue public. « Mix », « CCOp Agent » et un dépôt autonome distinct nommé « Nix » n'ont pas été identifiés de façon univoque ; aucun lien supposé n'est fourni. Cette entrée fournit du contexte, elle ne fait pas de ces projets des dépendances de GovCheck.
+<a id="r-75"></a>
+### R-75 — NIST SP 800-137, Information Security Continuous Monitoring (2011)
+- **Cité par :** citation proposée dans [PR #22 — Architecture 0025](https://github.com/Martin-PB/govcheck/pull/22) (document absent de cette branche).
+- **Source primaire :** [Publication NIST](https://csrc.nist.gov/pubs/sp/800/137/final) · [DOI](https://doi.org/10.6028/NIST.SP.800-137)
+- **Concepts pertinents :** visibilité continue sur les actifs, menaces, vulnérabilités et efficacité des contrôles déployés ; surveillance alignée sur la tolérance au risque ; réaction lorsque les observations montrent que les contrôles sont insuffisants.
+- **Utilité pour GovCheck :** étaye une boucle de retour en production dans laquelle les observations actualisent l'état du système, l'évaluation des contrôles et les décisions de risque, au lieu de figer le modèle de menace à la conception.
+- **Limite :** les données de surveillance ne constituent pas automatiquement un incident validé, une menace ou une conclusion d'assurance. Couverture, intégrité de collecte, contexte, incertitude et santé des mécanismes de surveillance doivent être évalués.
 
-<a id="r-69"></a>
-### R-69 — Inventaire des sources sur les formats de cartes mentales et l'interopérabilité (PR #9)
-- **Cité par :** [0002](decisions/0002-study-placement.fr.md)
-- **Sources primaires du projet :** [PR Cartocortex #9 — panorama des formats de cartes mentales](https://github.com/complexus-lab/cartocortex/pull/9) · [PR Cartocortex #1](https://github.com/complexus-lab/cartocortex/pull/1) · [PR #3](https://github.com/complexus-lab/cartocortex/pull/3) · [PR #4](https://github.com/complexus-lab/cartocortex/pull/4) · [PR #5](https://github.com/complexus-lab/cartocortex/pull/5) · [PR #6](https://github.com/complexus-lab/cartocortex/pull/6) · [PR #8](https://github.com/complexus-lab/cartocortex/pull/8)
-- **Implémentations sources et fixtures :** [Code source Freeplane](https://github.com/freeplane/freeplane) · [Sérialiseurs/importeur WiseMapping](https://github.com/wisemapping/wisemapping-frontend) · [Fixture publique de sauvegarde Mindomo](https://github.com/aarontmaher/Lauburu-Monorepo) · [MultiMarkdown 6](https://github.com/fletcher/MultiMarkdown-6) · [Fixture de test SimpleMind](https://github.com/pahund/simple-mind-search) · [Exporteur xmind2smmx](https://github.com/BartRuSec/xmind2smmx) · [Lecteur/écrivain MCP SimpleMind](https://github.com/kharabiner/simplemind-mcp-server)
-- **Documentation des éditeurs et produits :** [Guide d'export XMind](https://xmind.com/fr/user-guide/export-new) · [Guide utilisateur MindManager 2017](https://www.mindmanager.com/static/mm/docs/MindManager_2017_User_Guide_EN.pdf) · [Intégrations Microsoft MindManager](https://www.mindmanager.com/en/integrations/microsoft/) · [Démarrage Mindomo](https://help.mindomo.com/getting-started/) · [Import Mindomo](https://help.mindomo.com/basics/import-mind-maps/) · [Export Mindomo](https://help.mindomo.com/basics/export-mind-maps/) · [FAQ compatibilité iThoughts de l'éditeur](https://www.toketaware.com/ithoughts-faq-compatibility) · [Export SimpleMind](https://simplemind.eu/faq/share-export-in-different-formats/) · [Fichiers importables SimpleMind](https://simplemind.eu/faq/what-files-can-simplemind-import/) · [Aide import/export SimpleMind](https://simplemind.eu/faq_group/share-export-and-import/) · [Export MindMeister](https://support.mindmeister.com/hc/en-us/articles/360017447280-Export-Your-Mind-Map) · [Export/Impression MindMeister iOS](https://support.mindmeister.com/hc/en-us/articles/115000807204-Export-or-Print-your-Map-on-iOS) · [Import MindMeister](https://support.mindmeister.com/hc/en-us/articles/360017498199-Import-Text-Files-and-Mind-Maps-into-MindMeister) · [Import Coggle](https://coggle.help/article/34-import-files-into-coggle) · [Article du blog Coggle sur l'import .mm](https://bloggle.coggle.it/post/129486892657/import-other-files-to-coggle) · [Export Coggle](https://coggle.help/article/20-export-options) · [Formats d'export pris en charge par Coggle](https://coggle.help/article/105-supported-export-formats) · [Aide Bubbl.us](https://bubbl.us/help/topics.htm) · [Import iMindMap vers Ayoa](https://support.ayoa.com/opening-imindmap-files-in-ayoa)
-- **Références secondaires et non normatives :** [Aide export XMind non vérifiée comme source éditeur](https://xmind-help.github.io/en/export.html) · [FileInfo .mind](https://fileinfo.com/extension/mind) · [FileInfo .imx](https://fileinfo.com/extension/imx) · [File-Extensions .nm5](https://www.file-extensions.org/nm5-file-extension) · [Comparatif d'import/export Mind Mapping Software](https://mindmappingsoftwareblog.com/wp-content/99nc2r/MMS_Import_Export_Comparison.pdf) · [Demande d'export Lucidchart sur le forum communautaire](https://community.lucid.co/ideas/exporting-mind-maps-created-in-lucidchart-to-microsoft-powerpoint-or-word-374) · [Panorama d'export Lucidchart](https://mindmap.guide/post/7-amazing-enterprise-mindmap-tools-with-powerful-export-options/) · [Article sur l'export de tâches MindManager](https://sociamind.com/2015/11/04/exporting-a-simple-task-table-or-to-do-list-from-mindmanager/) · [Présentation de fonctionnalités Bubbl.us](https://edrawmind.wondershare.com/mind-map/bubble-us-mind-map.html)
-- **Concepts pertinents :** capacités d'import/export, conteneurs de fichiers, contenu sémantique des cartes, structures d'outline et de graphe, intégrations bureautiques, sérialiseurs au niveau source et fixtures de fichiers réels.
-- **Utilité pour GovCheck :** conserve la chaîne complète des sources derrière le panorama des formats cité par l'évaluation initiale de 224 pages, y compris code/fixtures et documentation officielle des éditeurs.
-- **Limite :** la PR #9 est une PR documentaire ouverte, pas une implémentation de formats ni une suite de conformité. Le panorama enregistre les preuves disponibles à sa date de revue (2026-10-18). FileInfo, blogs et forums communautaires sont des sources secondaires, pas des spécifications de formats. Une fonctionnalité dans l'interface d'un produit ne prouve pas un échange de fichiers sans perte ; la PR source et les fixtures de chaque format doivent être revérifiées avant toute décision d'implémentation.
+<a id="r-76"></a>
+### R-76 — Rushby, « Runtime Certification » (RV 2008)
+- **Cité par :** citation proposée dans [PR #22 — Architecture 0025](https://github.com/Martin-PB/govcheck/pull/22) (document absent de cette branche).
+- **Source primaire :** [Article de l'auteur, présenté au huitième atelier Runtime Verification](https://citeseerx.ist.psu.edu/document?doi=c28045b0a573839028f6042870a3eccd8f9be748&repid=rep1&type=pdf)
+- **Référence bibliographique :** John Rushby, « Runtime Certification », article invité à RV 2008, Budapest, avril 2008.
+- **Concepts pertinents :** dossiers d'assurance comme affirmations, preuves et arguments ; surveillance en exécution des hypothèses et anomalies ; utilisation de la vérification à l'exécution comme preuve ; détection de la violation d'hypothèses environnementales.
+- **Utilité pour GovCheck :** justifie directement de relier les hypothèses déclarées à des conditions surveillables et de permettre aux observations de production de les contester et de déclencher la réévaluation des affirmations d'assurance.
+- **Limite :** les moniteurs à l'exécution n'établissent que des propriétés dans leur périmètre formalisé et leur frontière d'observation. Une anomalie ou une hypothèse violée ne constitue pas automatiquement une attaque confirmée ni une preuve de défaillance du système.
 
 <a id="r-77"></a>
 ### R-77 — Exemples d'application de politiques et de gouvernance des outils MCP
@@ -816,6 +816,7 @@
 - **Concepts pertinents :** conversion de PDF, documents Office et autres formats vers Markdown pour indexation et analyse textuelle.
 - **Utilité pour GovCheck :** conserve l'utilitaire d'ingestion documentaire discuté pour extraire et examiner des sources telles que PDF et documents bureautiques.
 - **Limite :** MarkItDown effectue les E/S avec les privilèges du processus courant. Sa documentation avertit que les entrées non fiables doivent être assainies et que la conversion doit s'exécuter avec les accès les plus restreints nécessaires. La sortie convertie est une extraction, pas une preuve d'exhaustivité ou de fidélité sémantique.
+
 
 ## Discipline bibliographique et provenance non résolue
 

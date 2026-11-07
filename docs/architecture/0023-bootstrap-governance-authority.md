@@ -70,7 +70,7 @@ Those concerns must be addressed by a separately approved, explicit amendment (f
 
 ## 7. Formalization work
 
-The governance lifecycle model and conformance tests should represent:
+The initial bounded authority-transition model is provided in `formal/tla/GovCheckAuthority.tla` with `formal/tla/GovCheckAuthority.cfg`. It checks that each amendment is authorized by the immediately preceding authority, that the authority/revision chain remains continuous, and that the current authority/revision match the last recorded decision. It deliberately does not yet model delegated authorities, exception lifecycles, cryptographic identity, wall-clock validity or integration with the version-decision validator. The governance lifecycle model and conformance tests should additionally represent:
 
 - one configured root principal;
 - adoption/amendment by that principal only;

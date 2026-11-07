@@ -83,7 +83,24 @@ La bêta 2.4 comprend des constructions et tickets complémentaires concernant :
 - **argumentation avancée**, notamment forces d'argument, types d'inférence, valeurs de vérité et indécidabilité ;
 - **vues et diagrammes SACM**, notamment structures de diagrammes/éléments de diagramme et informations visuelles.
 
-Les dispositions des tickets OMG identifient certaines de ces constructions comme des éléments complémentaires non normatifs. GovCheck doit préserver leurs métadonnées de statut et ne doit pas les promouvoir silencieusement en exigences normatives ou en obligations normatives du métamodèle. Lorsque la clause de conformité distingue les éléments normatifs et non normatifs, GovCheck doit implémenter et rapporter ces points de conformité séparément.
+Les dispositions des tickets OMG identifient certaines de ces constructions comme des éléments complémentaires non normatifs. En particulier, SACM24-105 met à jour la clause de conformité pour inclure le paquetage, les vues/diagrammes et les joins, assessments et arguments avancés non normatifs. GovCheck doit préserver leurs métadonnées de statut et ne doit pas les promouvoir silencieusement en exigences normatives ou en obligations normatives du métamodèle. Lorsque la clause de conformité distingue les éléments normatifs et non normatifs, GovCheck doit implémenter et rapporter ces points de conformité séparément.
+
+La liste des tickets de la bêta fournit une checklist utile pour l'implémentation (les identifiants sont des liens stables dans le [registre des tickets OMG clos](https://issues.omg.org/issues/spec/SACM?view=CLOSED)) :
+
+| Sujet de la bêta | Ticket OMG | Conséquence pour la couverture GovCheck |
+|---|---|---|
+| Paquet Foundation et concepts de base réutilisables | SACM24-5, SACM24-36 | Préserver la couche Foundation et ses sémantiques d'alignement/incorporation. |
+| Alignement MOF et extrémités/multiplicités explicites | SACM24-55, SACM24-59 | Valider propriété, direction, multiplicité, redéfinition, sous-ensemble et espace de noms. |
+| Structure et sémantique des packages | SACM24-56, SACM24-18, SACM24-11 | Implémenter le modèle 2.4 ; ne pas conserver les anciennes structures 2.3 comme équivalentes. |
+| Sujet explicite des claims | SACM24-83 | Préserver le sujet des claims, y compris les références à des éléments SACM. |
+| Contexte de l'argument | SACM24-81 | Préserver les constructions de contexte argumentatif et leur statut non normatif. |
+| Concepts d'argumentation avancée | SACM24-77 | Préserver force, type d'inférence, valeur de vérité et indécidabilité. |
+| Assessment et assessments imbriqués | SACM24-75 | Préserver identité, règles, lacunes et sous-évaluations. |
+| Sémantique des joins | SACM24-76 | Préserver type de jointure, règle et sémantique de sélection des sources. |
+| NamedValue typé | SACM24-80 | Préserver les types de valeurs scalaires/structurées sans les aplatir en chaînes. |
+| Vues SACM | SACM24-78 | Préserver les vues et leurs liens vers les éléments du modèle sous-jacent. |
+| Relations entre artefacts | SACM24-82 | Préserver les cibles et sémantiques précises des relations. |
+| Clause de conformité et migration | SACM24-105, SACM24-98 | Séparer les points de conformité et implémenter le parcours de migration 2.3 vers 2.4 documenté. |
 
 ## 4. Contrat d'intégration GovCheck–SACM
 

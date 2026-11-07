@@ -20,6 +20,9 @@
 | CRDTs, real-time collaboration and network transport | R-45–R-50, R-66 |
 | Knowledge representation and interoperability | R-51–R-61 |
 | Integration project repositories and studies | R-62 |
+| Integration protocols and document conventions | R-67 |
+| Adjacent GovCheck ecosystem repositories | R-68 |
+| Mind-map format panorama source inventory | R-69 |
 | Mind-map and graph interchange formats | R-63 |
 | Cloud storage provider APIs | R-64 |
 | Browser-local persistence and WebAssembly | R-65 |
@@ -624,9 +627,9 @@
 ### R-62 — Cartocortex, MoriNet and SaussuNet integration sources
 - **Cited by:** [0002](decisions/0002-study-placement.md)
 
-- **Primary sources:** [Cartocortex repository](https://github.com/complexus-lab/cartocortex) · [MoriNet repository](https://github.com/lejeunecedric/MoriNet) · [SaussuNet repository](https://github.com/lejeunecedric/SaussuNet) · [Cartocortex PR #27 — OKF storage and graph-view study](https://github.com/complexus-lab/cartocortex/pull/27) · [Cartocortex PR #28 — CRDT, browser deployment and cloud-sync backlog](https://github.com/complexus-lab/cartocortex/pull/28)
+- **Primary sources:** [Cartocortex repository](https://github.com/complexus-lab/cartocortex) · [MoriNet repository](https://github.com/lejeunecedric/MoriNet) · [SaussuNet repository](https://github.com/lejeunecedric/SaussuNet) · [Cartocortex PR #9 — mind-map format panorama](https://github.com/complexus-lab/cartocortex/pull/9) · [Cartocortex PR #27 — OKF storage and graph-view study](https://github.com/complexus-lab/cartocortex/pull/27) · [Cartocortex PR #28 — CRDT, browser deployment and cloud-sync backlog](https://github.com/complexus-lab/cartocortex/pull/28)
 - **Relevant concepts:** source repositories and reviewed design artifacts for the integration study; PR #27 is a study of OKF v0.2 storage/projections, while PR #28 contains proposed CRDT and real-time transport work.
-- **Use in GovCheck:** preserves the concrete project-level sources behind the initial 224-page integration assessment and the discussion recorded by ADR 0002.
+- **Use in GovCheck:** preserves the concrete project-level sources behind the initial PDF “Évaluer l’intégration des dépôts” (6 November 2026, 224 pages) and the discussion recorded by ADR 0002.
 - **Limit:** PR #27 is a study, not an executed implementation; PR #28 is a proposal/backlog and its transport study is explicitly not executed. Repository capabilities must be rechecked at the reviewed revision before claiming current behavior. The “CKO” namespace in the PDF is a proposal, not an adopted external standard.
 
 <a id="r-63"></a>

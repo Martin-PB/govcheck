@@ -34,8 +34,17 @@ The study also names B, Z, CSP, iStar and deontic logic as candidate formalisms,
 
 The integration study and its external technical sources are catalogued separately so the study is not mistaken for an implementation or adoption decision:
 
+- [R-03 — GitHub protected-branch controls](../references.md#r-03)
+- [R-05 — TLA+ specification and TLC model checking](../references.md#r-05)
+- [R-06 — in-toto provenance framework](../references.md#r-06)
+- [R-07 — SLSA software supply-chain framework](../references.md#r-07)
+- [R-08 — OpenSSF Scorecard and Best Practices Badge](../references.md#r-08)
+- [R-09 — Open Policy Agent and Rego](../references.md#r-09)
+- [R-10 — Cedar authorization language and verification-guided development](../references.md#r-10)
 - [R-18 — Writ source-based assessment](../references.md#r-18)
 - [R-19 — Privateer source-based assessment](../references.md#r-19)
+- [R-20 — Lean proof assistant](../references.md#r-20)
+- [R-22 — Native Git/Pijul semantics and Nest hosting](../references.md#r-22)
 - [R-35 — Common Criteria / ISO/IEC 15408 and EAL evaluation](../references.md#r-35)
 - [R-36 — RTCA DO-178C / EUROCAE ED-12C and DAL levels](../references.md#r-36)
 - [R-37 — Alloy relational modeling and analysis](../references.md#r-37)
@@ -88,3 +97,5 @@ The integration study and its external technical sources are catalogued separate
 - [R-91 — Communicating Sequential Processes and FDR](../references.md#r-91)
 - [R-92 — iStar 2.0 goal-oriented requirements modeling](../references.md#r-92)
 - [R-93 — deontic logic and normative modalities](../references.md#r-93)
+- [R-104 — Agent instruction formats and spec-driven workflows](../references.md#r-104)
+- [R-105 — Policy-as-code, continuous assurance and agent-governance research](../references.md#r-105)

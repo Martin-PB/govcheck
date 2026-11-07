@@ -6,7 +6,7 @@ The catalogue is a maintained, bilingual evidence index, not an adoption list or
 
 - [English catalogue](references.md) is the default presentation.
 - [Catalogue français](references.fr.md) is its semantic counterpart.
-- Every source has a stable R-XX identifier. Retired identifiers are never reused.
+- The bilingual catalogues contain 103 active entries: R-01–R-11, R-13–R-100 and R-102–R-105. R-12 and R-101 are retired and must never be reused. R-101 was consolidated into R-02 because both represented NIST SP 800-218.
 - Each entry records primary sources, relevant concepts, the specific GovCheck use and explicit limitations.
 - Each architecture record, decision or specification links to the exact catalogue anchor it uses.
 - Each catalogue entry's **Cited by / Cité par** field links back to every document that cites it.
@@ -20,8 +20,10 @@ The catalogue preserves sources discussed in that study and in subsequent GovChe
 - CRDT foundations and implementations (Yjs/Yrs, Automerge, Loro), y-webrtc, WebTorrent, WebRTC, ICE, STUN, TURN, Hyperswarm/HyperDHT and peer discovery;
 - OKF, RDF, OWL, SKOS, SHACL, JSON-LD, Turtle, PROV-O, Dublin Core, BIBO, DCAT, Web Annotation, ActivityStreams, SIOC, P-Plan and Schema.org;
 - mind-map interchange formats and import/export tools;
+- cross-agent instruction formats and spec-driven workflows (AGENTS.md, VS Code, Codex, Claude Code and GitHub Spec Kit);
 - risk and threat modeling, NIST SP 800-192 access-control policy/model verification, B and Z formal specification, CSP/FDR process modeling, iStar goal modeling, deontic logic, assurance cases, PEAK decision reasoning, continuous monitoring and runtime assurance. The approximate TURN-relay percentage repeated in the source study is explicitly unverified and must be validated with deployment telemetry;
-- Git/Pijul semantics, policy engines, software-supply-chain provenance, agent workflow and isolation references.
+- Git/Pijul/Nest semantics, policy engines and OPA tool calling, software-supply-chain provenance, agent workflow and isolation references;
+- research on CUGA, Audit-as-Code, empirical policy-as-code adoption and runtime enforcement for MCP-based agents.
 
 A reference is not an endorsement. A proposal, backlog, research prototype, beta specification, product page and normative standard have different evidence status. Each entry states its own limitations. A named protocol or library in the catalogue does not imply that GovCheck, Cartocortex, MoriNet or SaussuNet implements or adopts it.
 
@@ -35,6 +37,8 @@ When a document uses an external source:
 5. update **Cited by / Cité par** in both catalogues;
 6. never reuse a retired identifier.
 
+Candidate sources that have not yet been used by a record may remain in the catalogue with an explicit “no current record cites” field. Never link a **Cited by / Cité par** field to a record absent from the same branch. R-94–R-100 and R-102–R-103 are retained candidate sources from the domain-semantic/bootstrap inventory; they are not adoption decisions and have no citing record on this branch.
+
 Do not add a reference merely because a technology name appears. Record it when the source materially supports a claim, comparison, interface or documented research trail. Conversely, do not let a source disappear merely because its associated option was not selected.
 
 ## Automated integrity check
@@ -45,7 +49,7 @@ Run from the repository root:
 python3 scripts/check-reference-integrity.py
 ~~~
 
-This offline check verifies bilingual entry parity, EN/FR citation symmetry for paired records, source metadata, reference anchors, local Markdown links under docs/, and both directions of document/catalogue traceability.
+This offline check verifies bilingual entry parity, two- and three-digit reference identifiers, thematic-index coverage, EN/FR citation symmetry for paired records, source metadata, reference anchors, local Markdown links under docs/, and both directions of document/catalogue traceability. It also warns when a source document contains an external URL that is not represented in the central catalogue.
 
 To additionally probe external URLs (network required; publisher-side blocking is reported as a warning):
 

@@ -6,7 +6,7 @@ The catalogue is a maintained, bilingual evidence index, not an adoption list or
 
 - [English catalogue](references.md) is the default presentation.
 - [Catalogue français](references.fr.md) is its semantic counterpart.
-- The bilingual catalogues contain 103 active entries. Two identifiers are retired and must never be reused; the later retired identifier was consolidated into the canonical NIST SP 800-218 entry because it duplicated the same source.
+- The bilingual catalogues contain 104 active entries. Two identifiers are retired and must never be reused; the later retired identifier was consolidated into the canonical NIST SP 800-218 entry because it duplicated the same source.
 - Each entry records primary sources, relevant concepts, the specific GovCheck use and explicit limitations.
 - Each architecture record, decision or specification links to the exact catalogue anchor it uses.
 - Each catalogue entry's **Cited by / Cité par** field links back to every document that cites it.
@@ -23,7 +23,8 @@ The catalogue preserves sources discussed in that study and in subsequent GovChe
 - cross-agent instruction formats and spec-driven workflows (AGENTS.md, VS Code, Codex, Claude Code and GitHub Spec Kit);
 - risk and threat modeling, NIST SP 800-192 access-control policy/model verification, B and Z formal specification, CSP/FDR process modeling, iStar goal modeling, deontic logic, assurance cases, PEAK decision reasoning, continuous monitoring and runtime assurance. The approximate TURN-relay percentage repeated in the source study is explicitly unverified and must be validated with deployment telemetry;
 - Git/Pijul/Nest semantics, policy engines and OPA tool calling, software-supply-chain provenance, agent workflow and isolation references;
-- research on CUGA, Audit-as-Code, empirical policy-as-code adoption and runtime enforcement for MCP-based agents.
+- research on CUGA, Audit-as-Code, empirical policy-as-code adoption and runtime enforcement for MCP-based agents;
+- OWASP guidance for agent/MCP security and LUMC research-software versioning/release guidance.
 
 A reference is not an endorsement. A proposal, backlog, research prototype, beta specification, product page and normative standard have different evidence status. Each entry states its own limitations. A named protocol or library in the catalogue does not imply that GovCheck, Cartocortex, MoriNet or SaussuNet implements or adopts it.
 

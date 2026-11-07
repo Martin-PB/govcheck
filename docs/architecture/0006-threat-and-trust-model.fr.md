@@ -63,4 +63,4 @@ Définir sérialisation canonique et clés dupliquées ; isolation/limites de l'
 
 ## Références bibliographiques
 
-Références externes utilisées dans ce document : [R-01](../references.fr.md#r-01), [R-02](../references.fr.md#r-02), [R-06](../references.fr.md#r-06), [R-07](../references.fr.md#r-07).
+Références externes utilisées dans ce document : [R-01 — contrôles NIST de sécurité et de confidentialité](../references.fr.md#r-01) ; [R-02 — pratiques NIST de développement logiciel sécurisé](../references.fr.md#r-02) ; [R-06 — provenance de chaîne d’approvisionnement in-toto](../references.fr.md#r-06) ; [R-07 — assurance de chaîne d’approvisionnement SLSA](../references.fr.md#r-07).

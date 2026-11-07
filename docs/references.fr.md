@@ -20,6 +20,9 @@
 | CRDT, collaboration temps réel et transport réseau | R-45–R-50, R-66 |
 | Représentation des connaissances et interopérabilité | R-51–R-61 |
 | Dépôts et études d'intégration | R-62 |
+| Protocoles d'intégration et conventions documentaires | R-67 |
+| Dépôts adjacents de l'écosystème GovCheck | R-68 |
+| Sources du panorama des formats de cartes mentales | R-69 |
 | Formats d'échange de cartes mentales et de graphes | R-63 |
 | API de stockage cloud | R-64 |
 | Persistance locale navigateur et WebAssembly | R-65 |
@@ -628,9 +631,9 @@
 ### R-62 — Sources d'intégration Cartocortex, MoriNet et SaussuNet
 - **Cité par :** [0002](decisions/0002-study-placement.fr.md)
 
-- **Sources primaires :** [Dépôt Cartocortex](https://github.com/complexus-lab/cartocortex) · [Dépôt MoriNet](https://github.com/lejeunecedric/MoriNet) · [Dépôt SaussuNet](https://github.com/lejeunecedric/SaussuNet) · [PR Cartocortex #27 — étude OKF, stockage et vues graphe](https://github.com/complexus-lab/cartocortex/pull/27) · [PR Cartocortex #28 — backlog CRDT, navigateur et synchronisation cloud](https://github.com/complexus-lab/cartocortex/pull/28)
+- **Sources primaires :** [Dépôt Cartocortex](https://github.com/complexus-lab/cartocortex) · [Dépôt MoriNet](https://github.com/lejeunecedric/MoriNet) · [Dépôt SaussuNet](https://github.com/lejeunecedric/SaussuNet) · [PR Cartocortex #9 — panorama des formats de cartes mentales](https://github.com/complexus-lab/cartocortex/pull/9) · [PR Cartocortex #27 — étude OKF, stockage et vues graphe](https://github.com/complexus-lab/cartocortex/pull/27) · [PR Cartocortex #28 — backlog CRDT, navigateur et synchronisation cloud](https://github.com/complexus-lab/cartocortex/pull/28)
 - **Concepts pertinents :** dépôts sources et artefacts d'étude examinés ; la PR #27 étudie le stockage/projection OKF v0.2, tandis que la PR #28 contient des propositions de travail CRDT et de transport temps réel.
-- **Utilité pour GovCheck :** conserve les sources concrètes derrière l'étude d'intégration initiale de 224 pages et la discussion enregistrée par l'ADR 0002.
+- **Utilité pour GovCheck :** conserve les sources concrètes derrière le PDF initial « Évaluer l’intégration des dépôts » (6 novembre 2026, 224 pages) et la discussion enregistrée par l'ADR 0002.
 - **Limite :** la PR #27 est une étude, pas une implémentation exécutée ; la PR #28 est une proposition/backlog et son étude de transport est explicitement non exécutée. Les capacités des dépôts doivent être revérifiées à la révision examinée avant toute affirmation sur leur comportement courant. Le namespace « CKO » du PDF est une proposition, pas une norme externe adoptée.
 
 <a id="r-63"></a>

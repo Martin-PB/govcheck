@@ -207,7 +207,7 @@
 <a id="r-16"></a>
 
 ### R-16 — OpenAPI et contrats d'interface lisibles par machine
-- **Cité par :** aucun document d’architecture, de spécification ou de décision ne cite actuellement cette source ; elle est conservée comme référence candidate.
+- **Cité par :** [0004](specifications/0004-vcs-collaboration-contracts.fr.md), [0014](architecture/0014-governed-development-workflow.fr.md)
 
 - **Source primaire :** [Spécification OpenAPI](https://spec.openapis.org/oas/latest.html)
 - **Concepts pertinents :** contrats d'interface lisibles par machine.
@@ -257,7 +257,7 @@
 <a id="r-21"></a>
 
 ### R-21 — Guides de releases et de reproductibilité pour le logiciel de recherche
-- **Cité par :** aucun document d’architecture, de spécification ou de décision ne cite actuellement cette source ; elle est conservée comme référence candidate.
+- **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md), [0018](architecture/0018-version-governance-and-compatibility-authority.fr.md)
 
 - **Source primaire :** [Software Sustainability Institute — guides et ressources](https://www.software.ac.uk/resources)
 - **Concepts pertinents :** pérennité du logiciel de recherche, citation, releases et reproductibilité.

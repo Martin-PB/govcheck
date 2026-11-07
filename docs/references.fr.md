@@ -1030,8 +1030,8 @@
 <a id="r-106"></a>
 ### R-106 — Recommandations OWASP pour la sécurité des agents IA et de MCP
 - **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
-- **Source primaire :** [OWASP DevSecOps Guideline — AI Agent and MCP Security](https://owasp.github.io/DevSecOpsGuideline/2-Process/2-2-Develop/2-2-5-AI-Agent-and-MCP-Security/)
-- **Concepts pertinents :** politiques versionnées et testables pour les permissions des agents ; autorisation à une passerelle ou un proxy selon l'identité, l'outil et ses arguments ; permissions refusées par défaut ; identités à portée limitée et durée courte ; sandboxing et listes d'autorisation réseau ; validation de configuration et journalisation d'audit.
+- **Source primaire :** [OWASP DevSecOps Guideline — AI Agent and MCP Security](https://owasp.github.io/DevSecOpsGuideline/2-Process/2-2-Develop/2-2-5-AI-Agent-and-MCP-Security/) · [Sécurité OWASP des IDE et du développement assisté par IA](https://owasp.github.io/DevSecOpsGuideline/2-Process/2-2-Develop/2-2-2-IDE-and-AI-assisted-development/)
+- **Concepts pertinents :** politiques versionnées et testables pour les permissions des agents ; autorisation à une passerelle ou un proxy selon l'identité, l'outil et ses arguments ; permissions refusées par défaut ; identités à portée limitée et durée courte ; sandboxing et listes d'autorisation réseau ; configuration d'agent revue comme du code ; validation de configuration et journalisation d'audit.
 - **Utilité pour GovCheck :** étaye la distinction entre les instructions en langage naturel destinées aux agents et les contrôles effectivement appliqués aux frontières des outils, des passerelles, des identités et du système d'exploitation.
 - **Limite :** il s'agit d'un guide d'ingénierie évolutif, pas d'une certification ni d'une preuve d'implémentation. Les recommandations doivent être adaptées au harness, à l'hôte d'exécution, à la surface des outils et au modèle de menace réels ; le guide ne démontre pas qu'un déploiement donné applique tous les contrôles cités.
 

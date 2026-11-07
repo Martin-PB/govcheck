@@ -131,3 +131,13 @@ Ajouter des vecteurs de conformité positifs et négatifs indépendants du langa
 GovCheck a déjà conçu une grande partie du vocabulaire de gouvernance et documenté plusieurs principes de sûreté importants. La prochaine capacité substantielle n'est pas un nouveau métamodèle général : c'est un petit paquet canonique de gouvernance, accompagné d'une sémantique explicite de l'autorité/délégation et des dérogations, validée entre enregistrements et formalisée sur son cycle de vie.
 
 La première décision d'implémentation porte donc sur l'autorité et l'adoption de la gouvernance — pas sur le choix d'une interface de catalogue, d'une plateforme d'ontologie ou d'un moteur générique de workflow.
+
+
+## Références à l'appui de cet audit
+
+- [NIST SP 800-53](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final) : séparation des tâches et gouvernance des accès.
+- [NIST SSDF](https://csrc.nist.gov/pubs/sp/800/218/final) : pratiques traçables de développement sécurisé.
+- [Branches protégées GitHub](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches) : point d'application pratique et limites de contournement.
+- [OPA](https://www.openpolicyagent.org/docs) et [Cedar](https://docs.cedarpolicy.com/) : mécanismes de décision de politique, pas des systèmes complets de gouvernance ou d'assurance.
+- [Google Cloud Knowledge Catalog](https://docs.cloud.google.com/knowledge-catalog/docs) : inspiration limitée aux métadonnées typées et aux relations traçables.
+- Contexte et limites : [registre GovCheck des références](../references/governance-and-assurance.fr.md) et [version anglaise](../references/governance-and-assurance.md).

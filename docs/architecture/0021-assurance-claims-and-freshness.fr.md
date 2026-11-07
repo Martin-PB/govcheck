@@ -100,3 +100,10 @@ Il ne choisit ni format canonique, ni ontologie, ni moteur de règles, ni assist
 ## 9. Vérification et statut
 
 Le module et la configuration sont des sources formelles proposées. Ils doivent être analysés par SANY puis explorés par TLC avec une version épinglée. Aucun résultat SANY/TLC n'est revendiqué par cette proposition. Les tests structurels et la revue du source ne remplacent pas l'exécution de TLC. La CI hébergée n'est pas déclenchée dans cette contribution ; les contrôles devront être exécutés selon l'autorisation du mainteneur et les instructions du dépôt.
+
+## Références bibliographiques
+
+- [R-05 — Modélisation par transitions d'états TLA+ / TLC](../references.fr.md#r-05)
+- [R-09 — Moteur de décision de politiques Open Policy Agent](../references.fr.md#r-09)
+- [R-18 — Évaluation de Writ à partir des sources](../references.fr.md#r-18)
+- [R-22 — Sémantiques natives Git et Pijul](../references.fr.md#r-22)

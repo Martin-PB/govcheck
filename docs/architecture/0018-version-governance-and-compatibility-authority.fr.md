@@ -1,6 +1,6 @@
 # 0018 — Gouvernance des versions, compatibilité et autorité d'approbation
 
-**Statut :** proposition de gouvernance soumise à la revue des mainteneurs et de l'autorité de gouvernance. Ce document ne désigne pas une autorité absente du modèle canonique, n'adopte pas le document 0017 et ne prétend pas que les contrôles existent déjà.  
+**Statut :** politique de gouvernance des versions adoptée par l'[ADR 0004](../decisions/0004-semantic-versioning-contracts.fr.md), selon le régime d'autorité enregistré dans l'[Architecture 0023](0023-bootstrap-governance-authority-decision.fr.md). L'application automatisée n'est pas encore implémentée.  
 **Langue :** l'anglais est la langue par défaut ; voir la [version anglaise](0018-version-governance-and-compatibility-authority.md).
 
 ## 1. Objet et relation avec le document 0017

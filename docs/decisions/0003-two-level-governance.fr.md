@@ -23,3 +23,7 @@ Par phases : cet ADR, le squelette du package et le script de bootstrap passent 
 
 - Mettre en place la gouvernance dans un nouveau dépôt = exécuter le script de bootstrap du package (ou copier govcheck/), qui produit toute l'arborescence.
 - Le niveau méta reste l'historique autoritaire de GovCheck lui-même et n'est jamais copié dans les dépôts gouvernés.
+
+## Références bibliographiques
+
+- [R-107 — Emplacement et syntaxe des workflows GitHub Actions](../references.fr.md#r-107)

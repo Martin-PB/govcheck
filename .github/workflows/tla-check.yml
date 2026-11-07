@@ -71,7 +71,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        model: [GovCheckLifecycle, GovCheckAssurance]
+        model: [GovCheckLifecycle, GovCheckAssurance, GovCheckAuthority]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4

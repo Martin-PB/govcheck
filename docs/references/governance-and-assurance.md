@@ -15,6 +15,7 @@
 - **External governance/catalogue pattern:** R-17.
 - **Candidate agent-workflow tools assessed, not adopted:** R-18, R-19.
 - **Proof assistant and interface contracts:** R-20, R-21.
+- **Native VCS semantics and collaboration adapters:** R-22.
 
 ## Standards, government guidance and industry specifications
 
@@ -116,6 +117,14 @@
 - **Use in GovCheck:** the transferable pattern is type-specific mandatory metadata and traceable relationships between governed objects.
 - **Limit:** GovCheck is not a data catalog. Do not import the product architecture or assume metadata presence equals normative authority or enforcement.
 
+### R-22 — Native Git and Pijul semantics
+- **Primary sources:** [Git documentation](https://git-scm.com/docs) · [Pijul manual: theory](https://pijul.org/manual/theory) · [Pijul channels](https://pijul.org/manual/workflows/channels) · [Pijul conflicts](https://pijul.org/manual/conflicts.html)
+- **Relevant concepts:** Git's snapshot/commit and tree model; Pijul's change/patch graph, channels and first-class conflicts.
+- **Use in GovCheck:** supports the explicit VCS-adapter boundary and the requirement that candidate identity, conflict detection and application be represented using native semantics rather than forced into one shared Git-shaped abstraction.
+- **Limit:** vendor documentation explains the systems' intended semantics; GovCheck still needs adapter contracts and conformance tests. This reference does not establish that either adapter is implemented.
+
+- [0004 — VCS and Collaboration Adapter Contracts](../specifications/0004-vcs-collaboration-contracts.md): R-22.
+
 ## Academic foundations and assurance
 
 ### R-18 — Writ (infinri/Writ)
@@ -146,11 +155,11 @@
 
 1. Prefer the standard body, publisher, official documentation or source repository over secondary summaries.
 2. Reference identifier R-12 was retired when its duplicate Scorecard entry was consolidated into R-08; do not reuse the retired identifier.
-2. Pin code assessments. Writ and Privateer links identify the revisions reviewed in Architecture 0016; refresh the pins before claims about current behavior.
-3. Distinguish evidence classes. A standard, research paper, product documentation, source code, test result and model-checking report are different evidence types.
-4. No implied adoption. Inclusion means “relevant to assess,” not “selected,” “required,” “compatible” or “implemented.”
-5. No invented bibliography. The prior discussion mentioned “Agent Package Manager” but did not preserve a unique, verified project URL. It is intentionally not cited as an identified product until its identity is established.
-6. Keep links close to claims. Architecture records should link to the few sources that support their specific claim and point here for the wider bibliography.
+3. Pin code assessments. Writ and Privateer links identify the revisions reviewed in Architecture 0016; refresh the pins before claims about current behavior.
+4. Distinguish evidence classes. A standard, research paper, product documentation, source code, test result and model-checking report are different evidence types.
+5. No implied adoption. Inclusion means “relevant to assess,” not “selected,” “required,” “compatible” or “implemented.”
+6. No invented bibliography. The prior discussion mentioned “Agent Package Manager” but did not preserve a unique, verified project URL. It is intentionally not cited as an identified product until its identity is established.
+7. Keep links close to claims. Architecture records should link to the few sources that support their specific claim and point here for the wider bibliography.
 
 ## Mapped architecture records
 
@@ -164,11 +173,3 @@
 - [0022 — Governance capability audit](../architecture/0022-governance-capability-audit.md): R-01, R-02, R-03, R-09, R-10, R-17.
 - [0023 — Bootstrap governance authority](../architecture/0023-bootstrap-governance-authority.md): R-01, R-03.
 
-
-### R-22 — Native Git and Pijul semantics
-- **Primary sources:** [Git documentation](https://git-scm.com/docs) · [Pijul manual: theory](https://pijul.org/manual/theory) · [Pijul channels](https://pijul.org/manual/workflows/channels) · [Pijul conflicts](https://pijul.org/manual/conflicts.html)
-- **Relevant concepts:** Git's snapshot/commit and tree model; Pijul's change/patch graph, channels and first-class conflicts.
-- **Use in GovCheck:** supports the explicit VCS-adapter boundary and the requirement that candidate identity, conflict detection and application be represented using native semantics rather than forced into one shared Git-shaped abstraction.
-- **Limit:** vendor documentation explains the systems' intended semantics; GovCheck still needs adapter contracts and conformance tests. This reference does not establish that either adapter is implemented.
-
-- [0004 — VCS and Collaboration Adapter Contracts](../specifications/0004-vcs-collaboration-contracts.md): R-22.

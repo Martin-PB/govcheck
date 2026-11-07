@@ -72,3 +72,18 @@ Chaque preuve déclare ses dépendances. Modification, compromission d'outil/cl�
 Rapporter claims, statut, preuves, hypothèses, limites, état lié, provenance, réfutations non résolues et décision exacte. Distinguer non exécuté, non applicable, non pris en charge, incomplet, échoué et réussi ; éviter les scores opaques.
 
 Une implémentation conforme lie les preuves aux états/révisions exacts, expose hypothèses/TCB, conserve contradictions et invalidations, distingue exploration bornée/exhaustive, comptabilise axiomes/noyau et exige des preuves de conformité avant toute affirmation sur le programme. Aucun moteur ni dispositif de preuve n'existe encore.
+
+## Références bibliographiques
+
+- [R-05 — Modélisation par transitions d'états TLA+ / TLC](../references.fr.md#r-05)
+- [R-07 — Niveaux d'assurance de la chaîne logicielle SLSA](../references.fr.md#r-07)
+- [R-20 — Assistant de preuve Lean](../references.fr.md#r-20)
+- [R-27 — Common Criteria / ISO/IEC 15408 et évaluation EAL](../references.fr.md#r-27)
+- [R-28 — Assurance logicielle aéronautique RTCA DO-178C / EUROCAE ED-12C](../references.fr.md#r-28)
+- [R-29 — Modélisation relationnelle et analyse Alloy](../references.fr.md#r-29)
+- [R-30 — Model checking de systèmes concurrents SPIN / Promela](../references.fr.md#r-30)
+- [R-31 — Vérificateur de programmes Rust Kani](../references.fr.md#r-31)
+- [R-32 — Vérification Rust Verus](../references.fr.md#r-32)
+- [R-33 — Spécification et vérification de programmes Dafny](../references.fr.md#r-33)
+- [R-34 — Assistant de preuve Coq / Rocq](../references.fr.md#r-34)
+- [R-35 — Assistant de preuve Isabelle](../references.fr.md#r-35)

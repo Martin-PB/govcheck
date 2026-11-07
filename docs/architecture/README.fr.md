@@ -23,6 +23,10 @@ L'anglais est la langue par défaut. Chaque document d'architecture possède une
 
 Les documents 0009–0021 préservent le raisonnement de conception et les distinctions d'assurance. Le document 0021 propose une sémantique des claims, arguments, dépendances et invalidations ; elle reste à vérifier formellement et à relier au cycle de vie. Le document 0019 propose une migration progressive du catalogue et du manifeste de release ; il reste une proposition, pas un contrôle implémenté ni une règle normative approuvée. Les documents 0017 et 0018 proposent respectivement une politique de versionnement des artefacts par catégorie et le processus d'autorité/compatibilité associé. Ils n'imposent pas SemVer universellement et ne transforment pas les propositions en contrôles implémentés ou règles normatives approuvées.
 
+## Registre de références
+
+Le [registre des références sur la gouvernance et l'assurance](../references/governance-and-assurance.fr.md) et sa [version anglaise](../references/governance-and-assurance.md) rassemblent normes primaires, sources académiques, documentations officielles et analyses de code épinglées. Une référence n'implique ni adoption ni implémentation.
+
 ## Statut
 
 Le document 0022 audite les capacités et lacunes de gouvernance. Le document 0023 consigne la décision initiale d'autorité unique ; son intégration au registre et sa formalisation exécutable restent à réaliser.

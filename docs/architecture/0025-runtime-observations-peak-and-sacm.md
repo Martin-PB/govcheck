@@ -1,269 +1,240 @@
-# 0025 — Runtime observations, PEAK decision traceability and SACM assessment
+# 0025 — Cross-domain lifecycle observations, PEAK decision traceability and SACM interoperability
 
-**Status:** research and architecture recommendation for review; no runtime observation pipeline, PEAK decision engine, SACM serializer or production threat-model updater is implemented by this record.  
+**Status:** research and architecture recommendation for review. This record proposes semantic connections; it does not claim that runtime collection, a PEAK workflow, SACM import/export or automated reassessment is implemented.  
 **Language:** English is the default; see the [French counterpart](0025-runtime-observations-peak-and-sacm.fr.md).
 
-## 1. Executive conclusion
+## 1. Purpose and scope
 
-GovCheck should connect production observations, threat-model evolution, assurance arguments and governed risk decisions through a shared, typed semantic model. PEAK and SACM are complementary inputs, not competing ontologies:
+GovCheck is intended to govern a software repository throughout its lifecycle: from project intent and initial structure, through requirements, architecture, implementation, testing, verification, review, change acceptance, release, operation, maintenance and eventual retirement. Its subject is the governed repository and its evolving project state—not security alone, and not a particular engineering method.
 
-- **PEAK** is a decision-analysis lens: Problem, Experience, Assumptions and Knowledge are examined as inputs to a decision process; the process yields a solution and an assumed risk [R-74](../references.md#r-74).
-- **SACM** is a structured assurance-case metamodel for claims, argumentation, evidence references, artifacts and terminology [R-34](../references.md#r-34).
-- **GovCheck** must retain the domain semantics neither provides as a complete package: threats, attack paths, controls, operational observations, evidence freshness, risk treatment, authority and acceptance decisions.
+The concerns governed by a project may include, as applicable:
 
-**Recommendation:** adopt neither PEAK nor SACM as GovCheck's canonical governance ontology. Use PEAK as a projection/view over governed decision records. Use SACM as a candidate interchange and assurance-case representation, with a GovCheck profile/extension and a loss-aware mapping. Preserve SACM 2.3 as the current formal compatibility baseline while evaluating 2.4 Beta 1; do not freeze the internal model to the beta.
+- goals, stakeholder needs, functional and non-functional requirements;
+- architecture, interfaces, design constraints and technical debt;
+- implementation practices, code quality and maintainability;
+- tests, static and dynamic analysis, model checking, program verification and theorem proving;
+- dependencies, supply chain, reproducibility and build integrity;
+- security, privacy, safety and operational resilience;
+- documentation, licensing, legal or regulatory obligations;
+- change management, reviews, approvals, releases, support and maintenance.
 
-An observation can change what we know about a system and challenge an assumption; it does not, by itself, prove an attack, establish a threat scenario, determine risk acceptability or authorize a mitigation.
+No project is required to adopt every concern or every method. Applicability and depth depend on the project's declared context, profile, obligations and authorized decisions. GovCheck must make selections, omissions, unknowns and their consequences explicit rather than imposing a universal engineering stack.
 
-## 2. Existing GovCheck foundations
+This record addresses three related but distinct needs:
 
-This proposal should extend, not duplicate, existing concepts:
+1. connect observations from the repository lifecycle and, where relevant, deployed operation to the governed project model;
+2. use **PEAK** to make the inputs, rationale, solution and assumed risk of decisions traceable;
+3. assess **SACM** as a possible representation/interchange format for assurance cases.
 
-- Architecture 0013 already distinguishes goals, requirements, norms, properties, contracts, models, implementation artifacts, methods, witnesses/evidence, claims, arguments and decisions/authority. It requires typed relations rather than inference from document proximity.
-- Specification 0005 and the proposed evidence record already separate an evidence record from the claim it may support/refute, the argument that interprets it, and the acceptance decision. An evidence record binds an observation, execution or derivation to exact subjects, method, context, provenance, limitations and invalidation dependencies.
-- Architecture 0021 defines claims, arguments, evidence, assumptions, dependencies and decisions; it distinguishes evidence outcome from admissibility, freshness and authenticity. It requires immutable historical evidence and new observations for revalidation.
-- Architecture 0017 distinguishes an evidence item/observation as an immutable instance/event, not a SemVer-versioned logical artifact.
-- Architecture 0006 supplies the threat and trust foundations; Architecture 0024 introduces threat-led assurance and risk treatment.
+PEAK and SACM do not solve the same problem and are not alternatives to one another. Neither is the whole of GovCheck.
 
-These foundations already provide much of the required semantic substrate. The important missing connection is a first-class operational observation lifecycle and an explicit decision-input/decision-output projection.
+## 2. GovCheck foundations to preserve
 
-## 3. PEAK: decision traceability, not another assurance ontology
+This work extends the existing architecture; it must not create a parallel governance model.
 
-The PEAK decision model in Hoover, Rosso-Llopart and Taran identifies four input dimensions:
+- **Specification 0002** defines the canonical governance package: stable rule identities, typed rules, scope, applicability, composition, exceptions, profiles and controlled documentation projections.
+- **Specification 0003** defines the repository change lifecycle independently of Git, Pijul, a forge or a CI product. Decisions bind exact base/candidate and governance states; acceptance and application are distinct.
+- **Specification 0005** distinguishes claims, arguments, evidence, assumptions, context, limitations, method classes and acceptance. Tests, model checking, theorem proving, implementation conformance and normative fidelity are not interchangeable.
+- **Architecture 0013** supplies the broad conceptual vocabulary linking goals, requirements, norms, properties, contracts, models, implementation artifacts, methods, evidence, claims, arguments and authorized decisions.
+- **Architectures 0017 and 0021** address artifact identity/revision, evidence binding, freshness, dependency invalidation and assurance arguments.
+- **Architecture 0024** proposes a guided, non-destructive bootstrap in which projects select capabilities and assurance methods according to their context.
 
-| PEAK element | Meaning | GovCheck projection |
+These documents describe a general repository-governance foundation. Security and threat modelling are important domain capabilities within it, not the organizing principle for every other capability.
+
+## 3. PEAK: trace the reasoning behind a decision
+
+PEAK is used here in its decision-analysis sense: **Problem, Experience, Assumptions and Knowledge** are made explicit as inputs to a decision; the decision process records the selected **Solution** and the **Assumed Risk** [R-74](../references.md#r-74).
+
+A GovCheck decision can expose these dimensions without turning them into four isolated data silos:
+
+| PEAK dimension | Decision-traceability question | Possible GovCheck links |
 |---|---|---|
-| **P — Problem** | The issue to be resolved, with requirements and constraints | Decision question, affected system/asset, stakeholder concerns, scope, objectives and constraints |
-| **E — Experience** | Skills and experience brought to the decision | Relevant prior incidents, operational history, lessons learned, expertise and their provenance/context |
-| **A — Assumptions** | Premises accepted for the decision | Explicit assumption records, with owner, scope, rationale, confidence, validity, monitorability and falsification/review conditions |
-| **K — Knowledge** | Environment and facts available to decision-makers | Versioned architecture/configuration facts, standards, threat intelligence, observations and admissible evidence |
+| **P — Problem** | What needs to be decided, and within what scope and constraints? | Goal, requirement, issue, change, affected artifact, stakeholder need |
+| **E — Experience** | What relevant experience informs the decision? | Prior decisions, incidents, defects, test history, maintenance experience, operational lessons and expertise |
+| **A — Assumptions** | Which premises are being relied upon, and under what conditions? | Explicit assumptions with owner, scope, rationale, validity, confidence and review/falsification conditions |
+| **K — Knowledge** | What information is available to the decision-makers? | Specifications, architecture, measurements, test results, proofs, dependency facts, observations, standards and other admissible evidence |
+| **Solution** | What option was selected, and why? | Selected alternative, rejected alternatives, rationale, implementation or follow-up plan |
+| **Assumed Risk** | What uncertainty or exposure is knowingly retained by choosing it? | Trade-offs, residual risk, uncertainty, conditions, accountable owner and review triggers |
 
-The process produces at least:
-- **Solution:** the selected alternative, implementation/action plan, rejected alternatives and rationale.
-- **Assumed risk:** the exposure and uncertainty accepted by selecting that alternative, including residual risk and any conditions.
+PEAK is not an authorization mechanism, risk formula, assurance-case notation or repository lifecycle model. GovCheck must supply the governance around a decision: identity, authority, scope, participants, time, rationale, evidence links, validity, review and supersession.
 
-PEAK does not prescribe a schema, authorization model, risk formula or threat vocabulary. It should therefore be represented as a **decision view** over native GovCheck objects, not by making P/E/A/K four new disconnected record silos.
+The same PEAK structure can be useful for decisions about architecture, maintainability, testing strategy, dependency upgrades, release readiness, security treatment or project governance. Its use should be proportional to the importance and consequences of the decision; it should not become mandatory paperwork for every trivial choice.
 
-### 3.1 Decision record requirements
+A decision and an assurance case answer different questions. A decision record explains what was considered and chosen, including assumed risk. An assurance case explains why a scoped claim should be believed, based on argument, assumptions and evidence. One decision may use several assurance cases; one assurance case may inform several decisions. Their links are many-to-many and must be bound to context and revision.
 
-A governed decision should bind:
-- the problem statement, scope, affected subjects and constraints;
-- alternatives considered, including do-nothing/defer where relevant;
-- relevant experience and knowledge, with sources and dates;
-- assumptions relied upon, including unresolved and disputed assumptions;
-- expected benefits, costs, trade-offs, uncertainty and consequences;
-- selected solution and implementation conditions;
-- risk treatment and residual-risk statement;
-- decision owner, authority basis, reviewers, rationale and decision time;
-- scope, validity/expiry, review date and reassessment triggers;
-- evidence and observations that later confirm, challenge or invalidate the decision.
+## 4. Observations as lifecycle feedback
 
-The decision is an immutable event. A changed context, new evidence or changed authority creates a new assessment/decision or a superseding event; it does not rewrite the historical rationale. Risk acceptance is an explicit authorized disposition, not a claim that risk is absent or the system is safe.
+GovCheck should be able to relate observations to the exact project/repository state and to the requirements, assumptions, claims, methods, decisions and risks they may affect. The observation sources are not limited to production telemetry.
 
-### 3.2 PEAK and assurance are different questions
+Examples include:
 
-PEAK asks: **what inputs informed this decision, what solution was selected, and what risk was assumed?**
+- a test failure, regression trend, flaky test or changed coverage;
+- a static-analysis finding or a newly detected maintainability issue;
+- a build reproducibility failure or a changed toolchain;
+- a dependency release, end-of-life notice, vulnerability advisory or license change;
+- a review finding, rejected change, defect report or support incident;
+- documentation drift or a mismatch between specification and implementation;
+- a formal-model counterexample, failed proof obligation or changed proof dependency;
+- a runtime alert, deployment drift, service degradation or security incident.
 
-An assurance case asks: **what claim is being made, why should it be believed, what evidence and assumptions support it, and what could defeat it?**
+These observations may challenge an assumption, indicate that a requirement is not met, invalidate evidence, reveal a new risk, or trigger a review of a decision. They do not all have the same evidential meaning. A test failure is not automatically proof of a general defect; a static-analysis warning is not automatically a confirmed vulnerability; a metric change is not by itself a governance violation; and a runtime alert is not automatically a confirmed incident.
 
-A single decision can reference several assurance cases. An assurance case can inform multiple decisions. Keep the relation many-to-many and time/context-bound.
+### 4.1 A general feedback cycle
 
-## 4. Production observations as feedback into threat and assurance models
+1. **Observe:** record an event or observation from a tool, repository artifact, reviewer, operator or external source.
+2. **Bind:** identify the exact repository, artifact, revision, environment, method and relevant time window.
+3. **Assess quality:** record provenance, integrity, completeness, coverage, tool/source health, uncertainty and limitations.
+4. **Interpret:** relate the observation to applicable requirements, properties, claims, assumptions, dependencies, risks and decisions.
+5. **Derive a finding or hypothesis:** preserve the distinction between raw observation, interpretation, suspected cause and confirmed conclusion.
+6. **Assess impact:** identify which evidence, claims, approvals, plans or decisions may need revalidation or review.
+7. **Decide:** let the competent authority choose whether to investigate, correct, defer, accept a bounded deviation, change a requirement or take another authorized action.
+8. **Verify the response:** record follow-up evidence and whether the intended result was achieved.
 
-NIST continuous-monitoring guidance explicitly connects ongoing visibility into assets, threats, vulnerabilities and deployed-control effectiveness with risk decisions [R-75](../references.md#r-75). Rushby's runtime-certification work goes further: assumptions used by an assurance argument can be made explicit and monitored during operation; observations can expose violated assumptions or anomalous behavior [R-76](../references.md#r-76). The ACCESS research demonstrates a SACM-based approach in which engineering artifacts and assurance cases co-evolve and assurance can be evaluated using runtime data [R-70](../references.md#r-70). Ericsson provides an industry example of runtime telemetry feeding evolving threat models and control analysis [R-72](../references.md#r-72).
+This cycle is domain-neutral. Domain-specific interpretation remains with the relevant method or capability. For example, threat-model feedback is one specialized path: operational security observations may challenge threat assumptions or control effectiveness, but they do not silently rewrite the threat model or authorize remediation. The same general pattern applies to quality, maintainability, tests, dependencies, proof and release governance.
 
-GovCheck should support this feedback cycle:
+### 4.2 Observation and evidence records
 
-1. **Observe:** collect a raw event/observation from a named sensor, monitor, operator or external source.
-2. **Bind:** identify the exact system, deployment/configuration, component, time window and collection context.
-3. **Assess observation quality:** establish source provenance, integrity, clock quality, coverage, collection health, completeness and uncertainty.
-4. **Interpret:** correlate the observation with assets, trust boundaries, existing threats, attack paths, weaknesses, controls and assumptions.
-5. **Form a hypothesis:** record a candidate indicator, anomaly, exposure change, threat scenario or control degradation. Preserve alternative explanations and counterevidence.
-6. **Evaluate impact:** determine which assumptions, claims, controls, risk assessments and accepted-risk decisions may be challenged or invalidated.
-7. **Decide:** an authorized actor chooses investigation, monitoring, mitigation, recovery, risk re-assessment or no action, with rationale.
-8. **Validate response:** capture subsequent observations showing whether the action changed exposure or control effectiveness; preserve the before/after context.
+Do not overload one record with raw observation, interpretation and assurance conclusion. A useful separation is:
 
-The loop should be event-driven but not self-authorizing. Automated detection may propose a hypothesis or response. It must not silently amend the normative threat model, declare an incident confirmed, accept residual risk or apply a consequential control without the applicable authority and policy.
+**Observation/event record**
+- stable identity and schema revision;
+- source/producer, tool or sensor identity and version;
+- event, observation and ingestion times where relevant;
+- exact subject binding: repository, artifact, commit/revision, configuration, environment and scope;
+- method, invocation/configuration and raw result or immutable reference/digest;
+- provenance, integrity, completeness, coverage and source health;
+- uncertainty, limitations, privacy/classification and retention metadata;
+- links to related artifacts, requirements, claims, assumptions, risks and decisions.
 
-### 4.1 Do not collapse these semantic stages
+**Derived finding/assessment/evidence record**
+- exact input observation IDs and transformation/method revision;
+- interpretation method and responsible producer/reviewer;
+- finding, hypothesis or conclusion, with alternatives and counterevidence;
+- affected scope, requirements, properties, claims, controls or decisions;
+- uncertainty, limitations, status and invalidation/reassessment conditions.
 
-| Stage | Meaning | Must not be confused with |
-|---|---|---|
-| Event | Something reported to have happened | A verified fact or attack |
-| Observation | A source-bound record of what a collector/operator perceived | The interpretation of that data |
-| Indicator/anomaly | A feature or deviation derived from observations | A confirmed threat |
-| Hypothesis | A candidate explanation, such as a threat scenario or control failure | A proven causal explanation |
-| Assessment | A reasoned evaluation of plausibility, impact, control effectiveness and uncertainty | A raw observation or authorized decision |
-| Incident/confirmed finding | A conclusion reached under an explicit investigation/confirmation procedure | A model-generated suspicion |
-| Decision | An authorized choice about treatment or operation | The assessment itself |
+An observation can be used as evidence, but it is not automatically admissible evidence for every claim. The existing Specification 0005 and Architecture 0021 semantics govern whether evidence is relevant, sufficiently trustworthy, current and within scope.
 
-A missing alert is not evidence of absence unless sensor coverage, collection health, detection logic and the relevant time window are themselves established. A noisy or compromised sensor can produce misleading observations. A production observation can challenge a design assumption, but it may also reveal an unmodelled benign condition.
+## 5. SACM: a specialized assurance-case representation
 
-### 4.2 Observation record: minimum semantic envelope
+SACM (Structured Assurance Case Metamodel) addresses the structure and exchange of assurance cases: claims/assertions, argumentation, inference, evidence references, context, artifacts and terminology [R-34](../references.md#r-34). Its contribution should be evaluated within that specific scope.
 
-The existing evidence record is suitable for observations used as evidence for claims, but it should not be overloaded as the sole raw telemetry/event schema. Consider two linked record types:
+SACM is not a competitor to PEAK. PEAK helps expose the reasoning inputs and assumed risk behind a decision; SACM represents structured assurance arguments. GovCheck may use both for different purposes, while retaining its own repository-governance semantics.
 
-**Operational observation/event record**
-- stable event/observation ID and schema version;
-- source/sensor/collector identity, version, configuration and trust/provenance;
-- event time, observed time, ingestion time, clock source/quality and ordering/correlation metadata;
-- exact subject binding: logical asset, deployment instance, component, configuration revision and environment;
-- observation type, collection method, scope, raw payload or immutable reference plus digest;
-- integrity/authenticity status, completeness, coverage, known blind spots and collection-health evidence;
-- uncertainty/confidence and limitations, without pretending that a confidence number is calibrated;
-- privacy/data classification, access policy, retention and redaction metadata;
-- links to related events, observations, incidents, claims, assumptions, threats and controls.
+### 5.1 Useful SACM 2.3 constructs
 
-**Derived assessment/evidence record**
-- exact input observation IDs and transformation/model/rule revision;
-- inference method (rule, statistical model, analyst assessment, correlation or investigation);
-- candidate hypothesis, alternative explanations and counterevidence;
-- scope, assumptions, uncertainty, limitations and result state;
-- claims, threat scenarios, attack paths, controls and decisions potentially affected;
-- reviewer/authority requirements and resulting invalidation/reassessment events.
+| SACM construct | Potential GovCheck use |
+|---|---|
+| AssuranceCasePackage | Package a structured assurance case and its references |
+| Claim / Assertion | Represent scoped claims and explicit states such as assumed, asserted, needing support or defeated |
+| ArgumentReasoning / AssertedInference | Represent reasoning and inference relationships |
+| AssertedEvidence / AssertedContext | Link evidence and contextual premises to argumentation |
+| ArtifactReference / Artifact | Reference exact repository artifacts, specifications, configurations, reports and results |
+| Event / Activity / Technique / Participant / Resource | Describe relevant artifact lifecycle events and evidence-production context |
+| TerminologyPackage | Exchange controlled terminology |
+| Package interfaces and bindings | Relate modular assurance cases |
 
-This split preserves raw testimony and makes interpretation reproducible. A derived assessment never rewrites its source observation. The existing evidence record can reference both as evidence artifacts and bind the resulting claim support/refutation to exact revisions.
+These constructs may reduce the amount of assurance-case machinery GovCheck needs to invent. They do not establish that a claim is true, that evidence is fresh, that a decision is authorized, or that an implementation conforms to a specification. Those meanings still depend on GovCheck's own scope, provenance, authority, lifecycle and evaluation rules.
 
-## 5. SACM 2.3: what it gives GovCheck
+### 5.2 SACM's boundary relative to GovCheck
 
-SACM 2.3 is substantially richer than a simple claim/evidence list. The official metamodel defines four main compliance points and separates packages for assurance cases, argumentation, artifacts and terminology [R-34](../references.md#r-34).
+The comparison here is deliberately limited to **assurance-case representation**. SACM's richer argumentation/package constructs should not be read as evidence that it is richer than, or a replacement for, GovCheck as a whole.
 
-### 5.1 Useful constructs
+SACM does not define the complete governance of a software repository across its lifecycle. It does not by itself provide GovCheck's canonical rule authority, repository change/acceptance lifecycle, project bootstrap and capability selection, artifact/version governance, actor authority and delegation, or the domain-specific policies and methods a project may select.
 
-| SACM 2.3 construct | Contribution | GovCheck use |
-|---|---|---|
-| AssuranceCasePackage | Exchangeable top-level container for argumentation, artifacts and terminology | Package a governed assurance case and its vocabulary/artifact references |
-| Claim / Assertion | Explicit propositions, including declared/assumed/needs-support/axiomatic/defeated states | Represent assurance claims and explicit undeveloped/defeated states |
-| ArgumentReasoning | Description of the reasoning behind relationships | Preserve inference rationale and argument method |
-| AssertedInference | Connect premises and conclusions | Map typed inference edges |
-| AssertedEvidence | Relate artifact references to claims/argumentation | Map evidence-to-claim support or counterevidence |
-| AssertedContext | Attach contextual premises | Map system context, assumptions and constraints |
-| ArtifactReference / Artifact | Refer to external evidence and engineering artifacts | Link exact GovCheck artifacts, configurations, models, reports and observations |
-| Event | Record events in an artifact lifecycle | Potential representation of lifecycle events and observations, with GovCheck extensions |
-| Activity / Technique / Participant / Resource | Describe work, methods, actors and tangible resources | Represent evidence production context and provenance participants |
-| ArtifactAssetRelationship | Link artifact assets with named/description-bearing relationships | Provide a general artifact relationship bridge |
-| TerminologyPackage | Define controlled terms and expressions | Publish GovCheck vocabulary and PEAK/SACM mappings |
-| Package interfaces/bindings | Modular exchange and relationships between packages | Separate assurance cases by project/component and bind them explicitly |
+Nor does SACM define all the domain semantics that projects may need, such as maintainability policy, test strategy and adequacy, dependency lifecycle, build/release governance, security threat scenarios, privacy obligations or operational response. It can represent assurance arguments about such matters, but it does not supply those domain models and decision policies.
 
-The model is not merely diagram notation: it has a normative machine-readable XMI representation. SACM 2.3 explicitly includes Event for artifact lifecycle happenings and ArtifactAssetRelationship for links between artifact assets. Its claim declaration vocabulary distinguishes assumed, asserted, needs-support, axiomatic and defeated claims. These features make it a serious candidate for interchange and structured argument representation.
+The generic SACM constructs are therefore potential mappings or exchange structures, not substitutes for GovCheck concepts. Any mapping must preserve the distinction between a claim, an assumption, evidence, an inference, an observation and an authorized decision.
 
-### 5.2 Where SACM is richer than the current GovCheck proposal
+### 5.3 SACM 2.4
 
-SACM contributes mature, explicit assurance-case structures that GovCheck's current 0013/0021 proposal does not fully define:
-- reusable modular assurance-case packages and package interfaces/bindings;
-- distinct terminology, artifact and argumentation packages;
-- explicit assertion/inference/evidence/context relationship types;
-- explicit defeated/counterevidence and incomplete/needs-support states;
-- first-class artifact, event, activity, technique, participant and resource concepts;
-- a published interchange format and conformance points.
+At the time of this record, OMG lists SACM 2.4 Beta 1 as in process while 2.3 remains the formal version [R-73](../references.md#r-73). The beta issue tracker includes work on typed values, assessment constructs, joins, package structure and more precise artifact relationships. These developments merit monitoring, but beta issue resolutions are not a final normative contract.
 
-GovCheck should not recreate these concepts casually. A mapping or implementation should reuse their semantics where they fit, and document deliberate differences.
+GovCheck should not freeze its canonical model around SACM 2.3 or 2.4. If an assurance-case interchange capability is implemented, its adapter should target a deliberately selected SACM version/profile and record unsupported or lossy mappings.
 
-### 5.3 What SACM 2.3 does not supply for GovCheck
+## 6. GovCheck semantic architecture: a common foundation, multiple domains
 
-SACM is an assurance-case metamodel, not a complete security, operational-risk or governance ontology. In particular, it does not by itself provide:
+The architecture should be **multi-domain and capability-oriented**, not security-centred and not built around one external metamodel.
 
-- a domain threat model: adversary capabilities, threat sources, attack techniques, attack paths, preconditions, exposure and vulnerability semantics;
-- a security-control lifecycle: planned, implemented, configured, tested, independently reviewed, monitored, degraded and retired;
-- a runtime telemetry contract with sensor identity, clock quality, collection coverage, integrity, privacy classification and raw-event retention;
-- a defined distinction between event, observation, indicator, hypothesis, assessed threat, confirmed incident and risk;
-- risk assessment and treatment semantics, residual-risk acceptance, accountable risk owner, approval authority, expiry and reassessment triggers;
-- the full PEAK decision-input model and decision-outcome/risk-assumption traceability;
-- GovCheck's exact subject/revision binding, evidence freshness, dependency invalidation and lifecycle acceptance semantics;
-- cryptographic provenance verification, trust policy or enforcement behavior.
+The canonical GovCheck governance model remains responsible for rules, authority, applicability, lifecycle, decisions and conformance. Domain capabilities add typed concepts, relations, methods and evidence requirements where needed. A project profile selects applicable capabilities and their dependencies; it does not replace the common governance foundation.
 
-SACM's generic Event and ArtifactAssetRelationship are useful extension points, not substitutes for these domain semantics. Similarly, an assumed Claim declaration is not a complete assumption governance record with owner, scope, validity, monitor, falsification criteria and consequences.
+Illustrative capability domains include:
 
-### 5.4 SACM 2.4 Beta changes the assessment
+- **Product and requirements:** stakeholder needs, goals, functional requirements, acceptance criteria and traceability.
+- **Architecture and design:** components, interfaces, constraints, architectural decisions and technical debt.
+- **Implementation and maintainability:** code ownership, quality constraints, complexity, modularity, maintainability findings and remediation.
+- **Testing and validation:** test plans, cases, suites, environments, coverage, results, regressions and adequacy arguments.
+- **Formal methods and proof:** models, properties, assumptions, model-checking runs, proof obligations, proof artifacts and conformance relations.
+- **Dependencies and supply chain:** dependency identity, versions, provenance, licenses, vulnerabilities, support status and upgrade decisions.
+- **Security, privacy and safety:** assets, threats, attack paths, controls, privacy requirements, hazards and treatment decisions.
+- **Documentation and compliance:** normative projections, documentation coverage, obligations, attestations and review records.
+- **Build, release and operations:** reproducibility, artifacts, release manifests, deployment state, service observations, support and retirement.
 
-As of this record, OMG lists SACM 2.4 Beta 1 (September 2026) as an in-process beta, while 2.3 remains the formal version [R-73](../references.md#r-73). The beta issue tracker shows proposed/resolved changes addressing several important 2.3 gaps, including:
-- typed structured values and strength-related data (SACM24-80);
-- assessment-related constructs (SACM24-75);
-- joins for combining assertions/evidence (SACM24-76);
-- whole-concept references (SACM24-73);
-- a needsDevelopment marker (SACM24-74);
-- package structure and domain ownership (SACM24-56);
-- more precise inference/evidence targets (SACM24-82).
+These are candidate domain boundaries, not a mandatory fixed taxonomy. Some projects will combine them; others will need additional domains. The model must permit explicit capability definitions and versioned extensions without making each domain invent its own incompatible identity, provenance, decision and evidence system.
 
-This is significant: some things that might otherwise become GovCheck extensions are being considered by the SACM revision itself. But beta issue dispositions are not a final normative contract. GovCheck should track the 2.4 evolution and reassess when a formal release and machine-readable model are published.
+Cross-cutting concepts should include:
 
-## 6. Proposed semantic architecture
+- stable identity, revision and lifecycle state;
+- goal, requirement, rule, property and contract;
+- actor, role, authority, delegation and approval;
+- artifact, dependency, relation and exact subject binding;
+- method, execution, observation, finding and evidence;
+- assumption, uncertainty, limitation and counterevidence;
+- claim, argument, assessment, risk and decision;
+- applicability, validity, freshness, invalidation and reassessment;
+- provenance, audit history and controlled documentation projection.
 
-Use a **GovCheck domain graph** as the authoritative semantic layer, with adapters/projections for PEAK and SACM.
+Typed relations connect the common foundation and domain records: derivesFrom, refines, constrains, appliesTo, implementedBy, verifiedBy, testedBy, evidencedBy, supports, refutes, assumes, dependsOn, affects, invalidates, supersedes, reviewedBy and authorizedBy. Domain-specific relations (for example threatens, mitigatedBy or regresses) are added only with explicit semantics.
 
-### 6.1 Core domain concepts
+### 6.1 Views and interoperability
 
-At minimum, keep stable identities and typed relations for:
+- **PEAK view:** expose the Problem, Experience, Assumptions and Knowledge informing a decision, then its Solution and Assumed Risk.
+- **SACM adapter:** exchange assurance cases, preserving claim/argument/evidence/context semantics and reporting any unsupported or lossy mapping.
+- **Domain views:** present the relevant requirements, artifacts, methods, evidence and decisions for testing, maintainability, formal proof, dependencies, security or another selected capability.
+- **Lifecycle view:** show how project intent, requirements, architecture, implementation, verification, acceptance, release, operation and maintenance relate over time.
+- **Operational feedback view:** show observations, derived findings, affected assumptions/claims/decisions and required reassessments.
 
-- **System context:** project, asset, component, deployment instance, environment, configuration snapshot and trust boundary.
-- **Threat model:** threat source/actor, capability, threat event, scenario, attack technique/path, precondition, weakness, exposure and consequence.
-- **Control:** control definition, implementation/configuration instance, owner, lifecycle state, test/assessment and monitoring status.
-- **Operational testimony:** event, observation, sensor/collector, indicator, anomaly, hypothesis, incident/finding and derived assessment.
-- **Assurance:** claim, subclaim, argument/reasoning, assumption, evidence, counterevidence/defeater, method, scope, limitation, review and assurance status.
-- **Risk and decisions:** risk assessment, treatment option, residual risk, acceptance decision, authority, owner, alternatives, rationale, validity, expiry and reassessment trigger.
-- **Provenance:** producer/participant, activity, tool, source, timestamp, exact revisions, digest, integrity/authenticity, derivation and supersession.
+These are projections over governed records, not competing sources of truth. Editing a view must result in explicit, validated GovCheck changes with the required authority.
 
-### 6.2 Important typed relations
+## 7. Cross-domain invariants
 
-The relation vocabulary should include, at least:
+1. Every observation, result and decision is bound to its exact subject, revision, method, scope and provenance.
+2. Raw observations and historical decisions are preserved; corrections and reinterpretations create linked records rather than silently rewriting history.
+3. An observation is not automatically a fact, a finding, evidence for a particular claim, or an authorized decision.
+4. Assumptions, evidence, inference, conclusion, uncertainty and limitation remain distinguishable in every domain.
+5. A method establishes only what its declared scope, inputs, configuration, execution and trusted base support.
+6. Evidence freshness and invalidation follow declared dependencies; a changed artifact, requirement, tool, environment or assumption triggers the appropriate reassessment, not an indiscriminate global reset.
+7. A missing result is not a passing result. Unknown, not applicable, not run, unsupported, incomplete, failed and passed remain distinct.
+8. A metric or aggregate score must not conceal its underlying evidence, assumptions, uncertainty or domain-specific meaning.
+9. A decision records its authority, rationale, scope, alternatives, validity and review conditions. PEAK can make its reasoning legible but does not grant authority.
+10. Domain-specific conclusions do not silently alter canonical governance rules. Normative changes follow the governed change lifecycle.
+11. SACM export/import must preserve meaning or explicitly report loss; syntactic round-tripping alone is insufficient.
+12. Security-specific rules—such as threat-model review and risk acceptance—apply within their declared domain and do not become universal rules for unrelated project concerns.
 
-- observedOn, collectedBy, derivedFrom, correlatedWith;
-- indicates, hypothesizes, confirms, refutes, challenges;
-- threatens, enables, requiresPrecondition, followsAttackStep;
-- mitigatedBy, implementedAs, configuredBy, testedBy, monitoredBy;
-- supports, refutes, contextualizes, assumes, inferredFrom;
-- affectsClaim, invalidatesEvidence, invalidatesReview, triggersReassessment;
-- assessedBy, treatedBy, acceptsResidualRisk, authorizedBy;
-- supersedes, derivedFrom, revalidates.
+## 8. Recommendations and staged work
 
-Relations must carry their own identity, provenance, scope and (where relevant) validity interval. A generic untyped edge or a textual label is insufficient for normative interpretation.
+### Recommendations
 
-### 6.3 Projection rules
-
-- **PEAK projection:** render a decision and its linked Problem, Experience, Assumptions and Knowledge inputs, then its selected Solution and Assumed Risk. Each displayed item links to its canonical GovCheck identity and revision.
-- **SACM projection:** map claims, reasoning, inference, evidence, context, artifacts and terminology into SACM packages. Preserve GovCheck-only semantics in a namespaced extension/profile or explicit linked records. Round-trip tests must detect any dropped or weakened semantics.
-- **Threat-model projection:** display design-time scenarios and attack paths alongside observation-derived indicators/hypotheses, clearly distinguishing modeled possibilities from observed facts and confirmed findings.
-- **Operational projection:** show the current system/deployment snapshot, observation coverage, control state, outstanding hypotheses, affected assurance claims and decisions requiring review.
-
-The projection is not the source of truth. A user editing a PEAK or SACM view must produce explicit GovCheck domain changes with validation and authority checks.
-
-## 7. Semantic invariants and safety constraints
-
-1. Raw observations are immutable; corrections or reinterpretations create new records linked to the original.
-2. An observation is not automatically a fact, indicator, hypothesis, incident, threat or risk assessment.
-3. A hypothesis retains alternative explanations, confidence basis, uncertainty and counterevidence.
-4. No observation absence implies absence of a threat unless monitoring coverage and sensor health support that inference.
-5. Assumptions are first-class governed premises, distinct from evidence and from assumed risk.
-6. Monitorable assumptions link to explicit predicates, monitor identity, coverage and response policy; not every assumption is monitorable.
-7. A violated assumption challenges only the claims/decisions whose argument closure depends on it; impact must be traced, not guessed globally.
-8. A threat-model update is versioned and reviewed. An observation can propose a new scenario or revise plausibility, but does not silently change the normative baseline.
-9. Control effectiveness is scoped to the tested/observed deployment, configuration, method and time window.
-10. A risk acceptance decision does not improve assurance status, validate a control or erase counterevidence.
-11. A production action requires explicit policy and authority; recommendations and predictions are not authorization.
-12. Historical decisions, observations, assessments and assurance states remain auditable after supersession or invalidation.
-
-## 8. Adoption recommendation and staged work
-
-### Recommendation
-
-- Keep GovCheck's domain graph and governance authority semantics canonical.
-- Adopt PEAK as a required **decision-traceability view** for material governance/security/risk decisions, not as a separate ontology or automatic decision rule.
-- Treat SACM 2.3 as the first **interchange target** for assurance-case structures, not as the entire GovCheck metamodel.
-- Track SACM 2.4 Beta 1 and avoid finalizing mappings for areas currently changing until a formal 2.4 release is available.
-- Add GovCheck profile/extension semantics only where the SACM base cannot represent the required domain meaning; keep mappings explicit and loss-aware.
+- Keep GovCheck's repository-wide governance and lifecycle model as the organizing foundation.
+- Treat domain capabilities as composable and selectable; do not make security, formal methods, tests or any single discipline mandatory for every project.
+- Use PEAK as a decision-reasoning and traceability method where decision significance warrants it. Do not compare it with SACM.
+- Evaluate SACM only for the assurance-case representation/interchange problem. Do not treat it as the GovCheck metamodel or as a source of repository lifecycle governance.
+- Preserve the existing distinction between normative governance, domain methods, evidence, assurance arguments and authorized decisions.
+- Keep the model extensible and method-neutral. Prefer adapters and explicit mappings to forcing every discipline into one external standard.
 
 ### Proposed sequence
 
-1. **Semantic mapping specification:** map GovCheck 0013/0021 and evidence records to PEAK and SACM 2.3; record unmapped concepts and cardinalities.
-2. **Observation contract:** define a versioned operational observation/event schema separately from the derived evidence/assessment record; include provenance, exact subject, clock/coverage, integrity, uncertainty and privacy.
-3. **Threat-feedback contract:** define the transition from observation to indicator/hypothesis, threat-model proposal, review and versioned update.
-4. **Decision contract:** define PEAK input links, alternatives, solution, assumed/residual risk, authority, expiry and reassessment triggers.
-5. **SACM interoperability prototype:** export/import a representative assurance case; test claims, assumptions, contexts, counterevidence, artifacts, events, package bindings and GovCheck extensions for round-trip loss.
-6. **Formal checks:** model invalidation/reassessment and decision authorization separately from detection. Do not combine all runtime threat reasoning into one state-explosion-prone model.
-7. **Operational pilot:** use synthetic observations first, then a bounded non-sensitive telemetry source. Do not automate consequential mitigation before false-positive handling, rollback, authorization and evidence preservation are demonstrated.
+1. **Repository-wide capability map:** reconcile the domain list with existing specifications, architecture records, artifact catalogue and bootstrap capabilities. Identify overlaps, omissions, dependencies and ownership.
+2. **Cross-domain semantic mapping:** map the common concepts in 0002/0003/0005/0013/0017/0021 to domain-specific records without duplicating identity, provenance, authority or lifecycle semantics.
+3. **Decision record and PEAK view:** define how Problem, Experience, Assumptions and Knowledge link to alternatives, Solution, Assumed Risk, authority and later reassessment.
+4. **Observation/finding contracts:** define general event/observation and derived finding/evidence records, with exact subject binding, provenance, uncertainty, privacy and invalidation.
+5. **Domain feedback patterns:** specify how observations update the relevant domain assessment—such as maintainability, test adequacy, dependency status or threat assumptions—without silently changing normative rules.
+6. **SACM interoperability prototype:** map one representative assurance case, test round-trip semantics and document unsupported concepts. Keep this work scoped to assurance cases.
+7. **Formal models and tests:** verify common lifecycle properties such as authority, invalidation, review and acceptance, then add domain-specific properties where justified.
+8. **Bootstrap integration:** expose domain capabilities and their dependencies through the guided profile, with explicit selection, omission, migration and non-destructive behavior.
 
 ## 9. Limits and non-decisions
 
-This record does not adopt SACM as the canonical GovCheck ontology, select a graph database, prescribe a risk score, define a production telemetry platform, authorize autonomous remediation or claim that runtime threat modeling is implemented. PEAK remains a decision-analysis framework; SACM remains an assurance-case metamodel. Their roles are deliberately distinct.
+This record does not finalize a universal domain taxonomy, select a graph database or serialization, prescribe a single quality/risk score, mandate PEAK for every decision, adopt SACM as the canonical model, or claim that observation collection and automated reassessment are implemented. It does not make security or formal verification mandatory for every repository.
 
-The immediate design question is not “which single model replaces the others?” It is “what canonical semantics allow us to project the same governed facts and decisions into threat, runtime, PEAK and SACM views without losing provenance, uncertainty, authority or meaning?”
+The central design question is how GovCheck can govern a repository across its full lifecycle while allowing different engineering domains and methods to coexist: shared identity, authority, provenance, decisions and lifecycle semantics, with domain-specific models and evidence requirements where they are actually needed. PEAK and SACM contribute to two distinct parts of that architecture; neither defines the whole.

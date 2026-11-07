@@ -497,10 +497,10 @@
 ### R-46 — Yjs et Yrs
 - **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
 
-- **Sources primaires :** [Documentation Yjs](https://docs.yjs.dev/) · [Dépôt source Yjs](https://github.com/yjs/yjs) · [Port Rust Yrs](https://github.com/y-crdt/y-crdt) · [Fournisseur WebRTC y-webrtc et implémentation de signalisation](https://github.com/yjs/y-webrtc)
+- **Sources primaires :** [Documentation Yjs](https://docs.yjs.dev/) · [Dépôt source Yjs](https://github.com/yjs/yjs) · [Fournisseur WebRTC y-webrtc et implémentation de signalisation](https://github.com/yjs/y-webrtc) · [Port Rust Yrs](https://github.com/y-crdt/y-crdt) · [Fournisseur WebRTC y-webrtc et implémentation de signalisation](https://github.com/yjs/y-webrtc)
 - **Concepts pertinents :** types de données CRDT partagés, mises à jour indépendantes du transport, fournisseurs de synchronisation et édition collaborative.
 - **Utilité pour GovCheck :** famille d'implémentations candidate explicitement comparée dans l'étude de transport/backlog de la PR Cartocortex #28.
-- **Limite :** le comportement d'une bibliothèque ne choisit ni le modèle de données applicatif ni l'architecture de transport ; les déplacements d'arbres, undo/redo, persistance et migrations propres à Cartocortex exigent des tests distincts.
+- **Limite :** le comportement d'une bibliothèque ne choisit ni le modèle de données applicatif ni l'architecture de transport ; les déplacements d'arbres, undo/redo, persistance et migrations propres à Cartocortex exigent des tests distincts. Le fournisseur y-webrtc documente une topologie maillée, une limite par défaut de connexions et des serveurs de signalisation configurables ; son mot de passe de salon et ses garanties déclarées ne constituent pas un audit de sécurité indépendant. La montée en charge et le contrôle d'accès doivent être testés séparément.
 
 <a id="r-47"></a>
 ### R-47 — Automerge

@@ -872,7 +872,7 @@
 <a id="r-89"></a>
 ### R-89 — B Method and Atelier B
 - **Cited by:** [ADR 0002](decisions/0002-study-placement.md), [0005](specifications/0005-assurance-model.md), [0007](architecture/0007-technology-decision-framework.md)
-- **Primary sources:** [J.-R. Abrial, The B-Book (Cambridge University Press)](https://www.cambridge.org/core/books/bbook/D0FA939B9F72E49DBA14BA0F68491118) · [Atelier B B-method presentation and documentation](https://www.atelierb.eu/en/presentation-of-the-b-method/)
+- **Primary sources:** [J.-R. Abrial, The B-Book (Cambridge University Press)](https://www.cambridge.org/core/books/abs/bbook/frontmatter/20E71F1E161387417D3E347D07E247A6) · [Atelier B presentation of the B method](https://www.atelierb.eu/en/presentation-of-the-b-method/) · [Atelier B online documentation](https://www.atelierb.eu/en/atelier-b-tools/online-documentation/)
 - **Relevant concepts:** set-theoretic formal specification, abstract machines, invariants, generalized substitutions, proof obligations, refinement and construction of implementations from progressively refined models.
 - **Use in GovCheck:** preserves B as a candidate formal-specification/refinement method in the wider assurance-method inventory, especially where state and invariant preservation are central.
 - **Limit:** proving B-model obligations does not by itself establish that natural-language requirements are complete, that the model captures the intended system, or that generated/handwritten code and runtime behavior conform. No B toolchain is selected or adopted.

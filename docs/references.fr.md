@@ -19,7 +19,7 @@
 | Métadonnées de gouvernance et catalogues | R-17 |
 | Systèmes de workflow d'agents évalués comme fixtures | R-18–R-19 |
 | Sémantiques de contrôle de version | R-22 |
-| CRDT, collaboration temps réel et transport réseau | R-45–R-50, R-66 |
+| CRDT, collaboration temps réel et transport réseau | R-45–R-50, R-66, R-87 |
 | Représentation des connaissances et interopérabilité | R-51–R-61, R-83–R-86 |
 | Dépôts et études d'intégration | R-62 |
 | Protocoles d'intégration et conventions documentaires | R-67 |

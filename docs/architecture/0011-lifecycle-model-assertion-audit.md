@@ -118,3 +118,9 @@ A structural check of a model source is not model checking. A TLC run is not the
 9. Only then report the specific assurance claims supported by the resulting artifacts.
 
 No step in this sequence should be described as completed until its execution evidence is committed or attached to the corresponding release.
+
+## Bibliographic references
+
+- [R-05 — TLA+ and TLC state-transition modeling](../references.md#r-05)
+- [R-13 — JSON Schema structural contracts](../references.md#r-13)
+- [R-22 — Native Git and Pijul semantics](../references.md#r-22)

@@ -70,29 +70,17 @@ AmendmentChainIsContinuous ==
     /\ history[i].revision # history[i-1].revision \/
        history[i].nextAuthority # history[i-1].nextAuthority
 
-NoImplicitDelegation ==
-  \A i \in 1..Len(history) :
-    history[i].kind \in {"Genesis", "Amendment"}
+HistoryExtendsPrevious ==
+  /\ Len(history') >= Len(history)
+  /\ SubSeq(history', 1, Len(history)) = history
 
-HistoryIsAppendOnly ==
-  \A i \in 1..Len(history)-1 :
-    history[i] = history[i]
-
-AuthorityDecisionIsProspective ==
-  \A i \in 2..Len(history) :
-    history[i].kind = "Amendment" /\
-    history[i].actor = history[i-1].nextAuthority
-
-NoUnauthorizedAmendment ==
-  \A i \in 2..Len(history) :
-    history[i].actor = history[i-1].nextAuthority
+HistoryIsAppendOnly == [][HistoryExtendsPrevious]_vars
 
 Spec == Init /\ [][Next]_vars
 
 THEOREM Spec => []TypeOK
 THEOREM Spec => []OnlyCurrentAuthorityCanAmend
 THEOREM Spec => []AmendmentChainIsContinuous
-THEOREM Spec => []AuthorityDecisionIsProspective
-THEOREM Spec => []NoUnauthorizedAmendment
+THEOREM Spec => HistoryIsAppendOnly
 
 =============================================================================

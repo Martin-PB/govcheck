@@ -168,3 +168,10 @@
 - [0017–0019 — Artifact identity, version governance and release manifest](../architecture/README.md): R-14, R-15, R-16.
 - [0022 — Governance capability audit](../architecture/0022-governance-capability-audit.md): R-01, R-02, R-03, R-09, R-10, R-17.
 - [0023 — Bootstrap governance authority](../architecture/0023-bootstrap-governance-authority.md): R-01, R-03.
+
+
+### R-22 — Native Git and Pijul semantics
+- **Primary sources:** [Git documentation](https://git-scm.com/docs) · [Pijul manual: theory](https://pijul.org/manual/theory) · [Pijul channels](https://pijul.org/manual/workflows/channels) · [Pijul conflicts](https://pijul.org/manual/conflicts.html)
+- **Relevant concepts:** Git's snapshot/commit and tree model; Pijul's change/patch graph, channels and first-class conflicts.
+- **Use in GovCheck:** supports the explicit VCS-adapter boundary and the requirement that candidate identity, conflict detection and application be represented using native semantics rather than forced into one shared Git-shaped abstraction.
+- **Limit:** vendor documentation explains the systems' intended semantics; GovCheck still needs adapter contracts and conformance tests. This reference does not establish that either adapter is implemented.

@@ -129,3 +129,5 @@ Commandes CLI/dossier ; composition profils/modèles tâches ; première intégr
 ## Références bibliographiques
 
 Références externes utilisées dans ce document : [R-02 — pratiques NIST de développement logiciel sécurisé](../references.fr.md#r-02) ; [R-06 — provenance de chaîne d’approvisionnement in-toto](../references.fr.md#r-06) ; [R-07 — assurance de chaîne d’approvisionnement SLSA](../references.fr.md#r-07) ; [R-08 — posture de sécurité OpenSSF Scorecard](../references.fr.md#r-08) ; [R-09 — moteur de décision de politiques Open Policy Agent](../references.fr.md#r-09) ; [R-10 — langage d’autorisation Cedar](../references.fr.md#r-10).
+- [R-88 — vérification NIST SP 800-192 des modèles/politiques de contrôle d'accès](../references.fr.md#r-88)
+- [R-93 — logique déontique et modalités normatives](../references.fr.md#r-93)

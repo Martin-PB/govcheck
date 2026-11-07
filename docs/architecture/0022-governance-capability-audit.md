@@ -131,3 +131,13 @@ Add language-neutral positive and negative conformance vectors for missing autho
 GovCheck has already designed much of the governance vocabulary and documented several important safety principles. The next substantial capability is not another broad metamodel: it is a small canonical governance package plus explicit authority/delegation and exception semantics, validated across records and formally modelled through its lifecycle.
 
 The first implementation decision is therefore governance authority and adoption—not the choice of a catalogue UI, ontology platform or generic workflow engine.
+
+
+## References supporting this audit
+
+- [NIST SP 800-53](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final): separation of duties and access-control governance.
+- [NIST SSDF](https://csrc.nist.gov/pubs/sp/800/218/final): traceable secure-development practices.
+- [GitHub protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches): practical enforcement boundary and bypass limitations.
+- [OPA](https://www.openpolicyagent.org/docs) and [Cedar](https://docs.cedarpolicy.com/): policy-decision mechanisms, not complete governance or assurance systems.
+- [Google Cloud Knowledge Catalog](https://docs.cloud.google.com/knowledge-catalog/docs): inspiration limited to typed metadata and traceable relationships.
+- Full context and limitations: [governance and assurance reference register](../references/governance-and-assurance.md) and [French register](../references/governance-and-assurance.fr.md).

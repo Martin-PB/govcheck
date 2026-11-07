@@ -493,10 +493,10 @@
 ### R-46 — Yjs and Yrs
 - **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
 
-- **Primary sources:** [Yjs documentation](https://docs.yjs.dev/) · [Yjs source repository](https://github.com/yjs/yjs) · [y-webrtc provider and signaling implementation](https://github.com/yjs/y-webrtc) · [Yrs Rust port](https://github.com/y-crdt/y-crdt) · [y-webrtc provider and signaling implementation](https://github.com/yjs/y-webrtc)
+- **Primary sources:** [Yjs documentation](https://docs.yjs.dev/) · [Yjs source repository](https://github.com/yjs/yjs) · [y-webrtc provider and signaling implementation](https://github.com/yjs/y-webrtc) · [y-webrtc provider and signaling implementation](https://github.com/yjs/y-webrtc) · [Yrs Rust port](https://github.com/y-crdt/y-crdt) · [y-webrtc provider and signaling implementation](https://github.com/yjs/y-webrtc)
 - **Relevant concepts:** shared CRDT data types, transport-independent updates, synchronization providers and collaborative editing.
 - **Use in GovCheck:** candidate implementation family explicitly compared in the Cartocortex PR #28 transport/backlog study.
-- **Limit:** library behavior does not select an application data model or transport architecture; Cartocortex-specific tree moves, undo/redo, persistence and migration require separate conformance tests.
+- **Limit:** library behavior does not select an application data model or transport architecture; Cartocortex-specific tree moves, undo/redo, persistence and migration require separate conformance tests. The y-webrtc provider documents a mesh topology, a default connection cap and configurable signaling servers; its room password and stated protections are not an independent security audit. Scalability and access control require separate tests.
 
 <a id="r-47"></a>
 ### R-47 — Automerge

@@ -12,7 +12,9 @@
 | Artifact identity, versioning, releases and reproducibility | R-14–R-15, R-21, R-23–R-26 |
 | Governance metadata and catalogues | R-17 |
 | Agent workflow systems assessed as fixtures | R-18–R-19 |
-| Version-control semantics and collaboration | R-22 |\n| Threat modeling, attack paths and risk management | R-27–R-32 |\n| Security assurance cases and metamodels | R-33–R-34 |
+| Version-control semantics and collaboration | R-22 |
+| Threat modeling, attack paths and risk management | R-27–R-32 |
+| Security assurance cases and metamodels | R-33–R-34 |
 
 ## Full reference entries
 
@@ -33,7 +35,9 @@
 - **External governance/catalogue pattern:** R-17.
 - **Candidate agent-workflow tools assessed, not adopted:** R-18, R-19.
 - **Proof assistant and interface contracts:** R-20, R-21.
-- **Native VCS semantics and collaboration adapters:** R-22.\n- **Threat modeling, attack paths and risk management:** R-27–R-32.\n- **Security assurance cases and metamodels:** R-33–R-34.
+- **Native VCS semantics and collaboration adapters:** R-22.
+- **Threat modeling, attack paths and risk management:** R-27–R-32.
+- **Security assurance cases and metamodels:** R-33–R-34.
 
 ## Standards, government guidance and industry specifications
 
@@ -332,7 +336,8 @@
 - **Use in GovCheck:** candidate comparative metamodel for typed assurance artifacts and traceability, beyond free-form narrative documents.
 - **Limit:** SACM is a metamodel, not a risk-assessment method, truth oracle or proof of evidence sufficiency. Version 2.4 is currently a beta; this entry points to the formal 2.3 version and does not recommend adopting SACM.
 - **Cited by:** [0024](architecture/0024-project-bootstrap-and-assurance-profiles.md) (typed assurance claims and evidence).
-\n## Reference discipline and unresolved provenance
+
+## Reference discipline and unresolved provenance
 
 1. Prefer the standard body, publisher, official documentation or source repository over secondary summaries.
 2. Reference identifier R-12 was retired when its duplicate Scorecard entry was consolidated into R-08; do not reuse the retired identifier.

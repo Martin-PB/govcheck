@@ -136,6 +136,8 @@ SACM is not a competitor to PEAK. PEAK helps expose the reasoning inputs and ass
 
 These constructs may reduce the amount of assurance-case machinery GovCheck needs to invent. They do not establish that a claim is true, that evidence is fresh, that a decision is authorized, or that an implementation conforms to a specification. Those meanings still depend on GovCheck's own scope, provenance, authority, lifecycle and evaluation rules.
 
+This table is illustrative and uses familiar 2.3-era names; it is not the 2.4 coverage inventory. The complete, version-pinned 2.4 Beta 1 metamodel inventory and its normative/non-normative conformance points are specified in Architecture 0026.
+
 ### 5.2 Boundary and composition with GovCheck
 
 The scope distinction is architectural, not a comparison or ranking. SACM governs the semantics of the assurance-case capability; GovCheck governs the repository and its full lifecycle.

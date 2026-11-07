@@ -63,4 +63,16 @@ Définir sérialisation canonique et clés dupliquées ; isolation/limites de l'
 
 ## Références bibliographiques
 
-Références externes utilisées dans ce document : [R-01 — contrôles NIST de sécurité et de confidentialité](../references.fr.md#r-01) ; [R-02 — pratiques NIST de développement logiciel sécurisé](../references.fr.md#r-02) ; [R-06 — provenance de chaîne d’approvisionnement in-toto](../references.fr.md#r-06) ; [R-07 — assurance de chaîne d’approvisionnement SLSA](../references.fr.md#r-07).
+- [R-01 — contrôles NIST SP 800-53 de sécurité et de confidentialité](../references.fr.md#r-01)
+- [R-02 — pratiques de développement sécurisé NIST SP 800-218](../references.fr.md#r-02)
+- [R-06 — provenance de chaîne logicielle in-toto](../references.fr.md#r-06)
+- [R-07 — assurance de chaîne logicielle SLSA](../references.fr.md#r-07)
+- [R-27 — évaluation des risques NIST SP 800-30](../references.fr.md#r-27)
+- [R-28 — ingénierie des systèmes dignes de confiance NIST SP 800-160](../references.fr.md#r-28)
+- [R-29 — lignes directrices de gestion des risques ISO 31000](../references.fr.md#r-29)
+- [R-30 — tactiques et techniques adverses MITRE ATT&CK](../references.fr.md#r-30)
+- [R-31 — modélisation des menaces Microsoft SDL](../references.fr.md#r-31)
+- [R-32 — méthode des arbres d'attaque de Schneier](../references.fr.md#r-32)
+- [R-72 — modélisation des menaces à partir d'observations en production](../references.fr.md#r-72)
+- [R-75 — surveillance continue de la sécurité NIST](../references.fr.md#r-75)
+- [R-76 — certification à l'exécution et surveillance des hypothèses](../references.fr.md#r-76)

@@ -22,7 +22,7 @@ English: [ADR 0002](0002-study-placement.md).
 
 ## Artefact source et frontière des preuves
 
-L'artefact source initial de cet enregistrement est **« Évaluer l’intégration des dépôts.pdf »**, daté du 6 novembre 2026 et composé de 224 pages. Il est conservé dans la bibliothèque du projet et n'est pas copié dans ce dépôt. Ses sources externes, dépôts, pull requests, protocoles, vocabulaires et formats sont indexés en [R-35–R-75](../references.fr.md) dans le catalogue central.
+L'artefact source initial de cet enregistrement est **« Évaluer l’intégration des dépôts.pdf »**, daté du 6 novembre 2026 et composé de 224 pages. Il est conservé dans la bibliothèque du projet et n'est pas copié dans ce dépôt. Ses sources externes, dépôts, pull requests, protocoles, vocabulaires et formats sont indexés en [R-35–R-82](../references.fr.md) dans le catalogue central.
 
 Les artefacts Cartocortex examinés ont des statuts de preuve distincts : la PR #9 est un panorama documentaire ouvert ; la PR #27 est une étude ouverte sur le stockage/projection OKF explicitement marquée comme non exécutée ; la PR #28 est un backlog et une étude de transport ouverts, eux aussi explicitement non exécutés. Aucun de ces statuts ne prouve qu'un adaptateur, un CRDT, un transport, une synchronisation cloud ou un importeur de format proposé est implémenté ou accepté. Voir [R-62](../references.fr.md#r-62) et [R-69](../references.fr.md#r-69).
 
@@ -56,9 +56,9 @@ L'étude d'intégration et ses sources techniques externes sont cataloguées sé
 - [R-66 — Découverte de pairs Hyperswarm et HyperDHT](../references.fr.md#r-66)- [R-67 — WebDAV, Model Context Protocol et conventions de wiki Markdown](../references.fr.md#r-67)
 - [R-68 — Dépôts de l'écosystème GovCheck associés et examinés](../references.fr.md#r-68)
 - [R-69 — Inventaire des sources sur les formats de cartes mentales et l'interopérabilité](../references.fr.md#r-69)
-- [R-70 — Gouvernance des politiques et des outils MCP](../references.fr.md#r-70)
-- [R-71 — NIST OSCAL et Continuous Compliance Framework](../references.fr.md#r-71)
-- [R-72 — Sandboxing et isolation à l'exécution des agents](../references.fr.md#r-72)
-- [R-73 — Protocole Matrix et client Element X](../references.fr.md#r-73)
-- [R-74 — Métamoteur SearXNG](../references.fr.md#r-74)
-- [R-75 — Conversion de documents Microsoft MarkItDown](../references.fr.md#r-75)
+- [R-77 — Gouvernance des politiques et des outils MCP](../references.fr.md#r-77)
+- [R-78 — NIST OSCAL et Continuous Compliance Framework](../references.fr.md#r-78)
+- [R-79 — Sandboxing et isolation à l'exécution des agents](../references.fr.md#r-79)
+- [R-80 — Protocole Matrix et client Element X](../references.fr.md#r-80)
+- [R-81 — Métamoteur SearXNG](../references.fr.md#r-81)
+- [R-82 — Conversion de documents Microsoft MarkItDown](../references.fr.md#r-82)

@@ -6,12 +6,12 @@
 |---|---|
 | Autorité de gouvernance, séparation des tâches et développement sécurisé | R-01–R-03, R-11 |
 | Évaluation des risques, modélisation des menaces et chemins d'attaque | R-27–R-32 |
-| Dossiers d'assurance de sécurité et métamodèles | R-33–R-34 |
+| Dossiers d'assurance de sécurité et métamodèles | R-04, R-33–R-34 |
 | Modèle de décision PEAK | R-74 |
 | Surveillance continue et assurance à l'exécution | R-70, R-72, R-75–R-76 |
 | Assurance 2.0 et évolution de SACM | R-71, R-73 |
 | Régimes d'assurance et exigences orientées objectifs | R-35–R-36, R-44, R-92 |
-| Model checking et vérification de programmes candidates | R-37–R-43, R-89–R-91 |
+| Model checking et vérification de programmes candidates | R-05, R-20, R-37–R-43, R-89–R-91 |
 | Provenance des preuves et chaîne d'approvisionnement logicielle | R-06–R-08 |
 | Moteurs de politiques, autorisation et vérification de modèles | R-09–R-10, R-88 |
 | Logique normative et modalités déontiques | R-93 |

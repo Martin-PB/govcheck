@@ -140,9 +140,9 @@ The first implementation decision is therefore governance authority and adoption
 - [R-03](../references.md#r-03): practical enforcement boundary and bypass limitations.
 - [R-09](../references.md#r-09) and [R-10](../references.md#r-10): policy-decision mechanisms, not complete governance or assurance systems.
 - [R-17](../references.md#r-17): inspiration limited to typed metadata and traceable relationships.
-- Full context and limitations: [governance and assurance reference register](../references.md) and [French register](../references.md).
+- Full bibliography, thematic index and source limitations: [central reference catalogue](../references.md) and [French central reference catalogue](../references.fr.md).
 
 
 ## Bibliographic references
 
-External sources cited by this record: [R-01](../references.md#r-01), [R-02](../references.md#r-02), [R-03](../references.md#r-03), [R-09](../references.md#r-09), [R-10](../references.md#r-10), [R-17](../references.md#r-17).
+External sources cited by this record: [R-01 — separation of duties and access-control governance](../references.md#r-01), [R-02 — secure-development practices and traceability](../references.md#r-02), [R-03 — enforcement boundaries and bypass limitations](../references.md#r-03), [R-09 — Open Policy Agent policy-decision engine](../references.md#r-09), [R-10 — Cedar policy language and authorization model](../references.md#r-10), and [R-17 — typed governance metadata and traceable relationships](../references.md#r-17).

@@ -158,7 +158,7 @@
 - **Use in GovCheck:** supports the explicit VCS-adapter boundary and the requirement that candidate identity, conflict detection and application be represented using native semantics rather than forced into one shared Git-shaped abstraction.
 - **Limit:** vendor documentation explains the systems' intended semantics; GovCheck still needs adapter contracts and conformance tests. This reference does not establish that either adapter is implemented.
 
-- [0004 — VCS and Collaboration Adapter Contracts](../specifications/0004-vcs-collaboration-contracts.md): R-22.
+- [0004 — VCS and Collaboration Adapter Contracts](specifications/0004-vcs-collaboration-contracts.md): R-22.
 
 ## Academic foundations and assurance
 
@@ -198,7 +198,7 @@
 - **Relevant concepts:** version identifiers and compatibility conventions for structured, published artifacts.
 - **Use in GovCheck:** comparative input to the category-specific artifact-versioning analysis in Architecture 0017–0018.
 - **Limit:** a domain-specific education-technology specification family, not a universal governance-artifact versioning standard.
-- **Cited by:** [Architecture 0017](../architecture/0017-artifact-identity-revision-and-versioning.md), [Architecture 0018](../architecture/0018-version-governance-and-compatibility-authority.md).
+- **Cited by:** [Architecture 0017](architecture/0017-artifact-identity-revision-and-versioning.md), [Architecture 0018](architecture/0018-version-governance-and-compatibility-authority.md).
 
 <a id="r-24"></a>
 ### R-24 — W3C PROV-O
@@ -206,7 +206,7 @@
 - **Relevant concepts:** entities, activities, agents and provenance relations.
 - **Use in GovCheck:** vocabulary for provenance and relationships between artifacts, activities and responsible agents.
 - **Limit:** an ontology does not itself provide repository policy, identity assurance or enforcement.
-- **Cited by:** [Architecture 0017](../architecture/0017-artifact-identity-revision-and-versioning.md), [Architecture 0018](../architecture/0018-version-governance-and-compatibility-authority.md).
+- **Cited by:** [Architecture 0017](architecture/0017-artifact-identity-revision-and-versioning.md), [Architecture 0018](architecture/0018-version-governance-and-compatibility-authority.md).
 
 <a id="r-25"></a>
 ### R-25 — DataCite versioning guidance
@@ -214,7 +214,7 @@
 - **Relevant concepts:** identifying and relating versions of citable research outputs.
 - **Use in GovCheck:** informs the distinction between a persistent logical artifact identity and individually identified versions.
 - **Limit:** guidance for research outputs is not a general policy for all software and governance artifacts.
-- **Cited by:** [Architecture 0017](../architecture/0017-artifact-identity-revision-and-versioning.md), [Architecture 0018](../architecture/0018-version-governance-and-compatibility-authority.md).
+- **Cited by:** [Architecture 0017](architecture/0017-artifact-identity-revision-and-versioning.md), [Architecture 0018](architecture/0018-version-governance-and-compatibility-authority.md).
 
 <a id="r-26"></a>
 ### R-26 — Scientific Data versioning study (2024)
@@ -222,7 +222,7 @@
 - **Relevant concepts:** versioning and provenance practices for scientific data.
 - **Use in GovCheck:** comparative research input to the artifact identity and versioning discussion.
 - **Limit:** domain-specific research does not establish a normative versioning rule for GovCheck.
-- **Cited by:** [Architecture 0017](../architecture/0017-artifact-identity-revision-and-versioning.md).
+- **Cited by:** [Architecture 0017](architecture/0017-artifact-identity-revision-and-versioning.md).
 
 ## Reference discipline and unresolved provenance
 
@@ -236,15 +236,15 @@
 
 ## Mapped architecture records
 
-- [0006 — Threat and trust model](../architecture/0006-threat-and-trust-model.md): R-01, R-02, R-06, R-07.
-- [0008 — Formalization and conformance plan](../architecture/0008-formalization-and-conformance.md): R-05, R-13, R-20.
-- [0010 — Assurance, testimony, proof and conformance](../architecture/0010-assurance-proof-and-conformance.md): R-04, R-05, R-06, R-20.
-- [0013 — Governance metamodel](../architecture/0013-governance-metamodel.md): R-01, R-09, R-10, R-13.
-- [0015 — Governance conformance and validation plan](../architecture/0015-governance-conformance-and-validation-plan.md): R-02, R-06, R-07, R-08, R-09, R-10.
-- [0016 — Writ and Privateer assessment](../architecture/0016-writ-privateer-assessment.md): R-18, R-19.
-- [0017 — Artifact identity, revision and versioning](../architecture/0017-artifact-identity-revision-and-versioning.md): R-14, R-23–R-26.
-- [0018 — Version governance and compatibility](../architecture/0018-version-governance-and-compatibility-authority.md): R-14, R-23–R-25.
-- [0004 — VCS and collaboration adapter contracts](../specifications/0004-vcs-collaboration-contracts.md): R-22.
-- [0022 — Governance capability audit](../architecture/0022-governance-capability-audit.md): R-01, R-02, R-03, R-09, R-10, R-17.
-- [0023 — Bootstrap governance authority](../architecture/0023-bootstrap-governance-authority.md): R-01, R-03.
+- [0006 — Threat and trust model](architecture/0006-threat-and-trust-model.md): R-01, R-02, R-06, R-07.
+- [0008 — Formalization and conformance plan](architecture/0008-formalization-and-conformance.md): R-05, R-13, R-20.
+- [0010 — Assurance, testimony, proof and conformance](architecture/0010-assurance-proof-and-conformance.md): R-04, R-05, R-06, R-20.
+- [0013 — Governance metamodel](architecture/0013-governance-metamodel.md): R-01, R-09, R-10, R-13.
+- [0015 — Governance conformance and validation plan](architecture/0015-governance-conformance-and-validation-plan.md): R-02, R-06, R-07, R-08, R-09, R-10.
+- [0016 — Writ and Privateer assessment](architecture/0016-writ-privateer-assessment.md): R-18, R-19.
+- [0017 — Artifact identity, revision and versioning](architecture/0017-artifact-identity-revision-and-versioning.md): R-14, R-23–R-26.
+- [0018 — Version governance and compatibility](architecture/0018-version-governance-and-compatibility-authority.md): R-14, R-23–R-25.
+- [0004 — VCS and collaboration adapter contracts](specifications/0004-vcs-collaboration-contracts.md): R-22.
+- [0022 — Governance capability audit](architecture/0022-governance-capability-audit.md): R-01, R-02, R-03, R-09, R-10, R-17.
+- [0023 — Bootstrap governance authority](architecture/0023-bootstrap-governance-authority.md): R-01, R-03.
 

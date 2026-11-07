@@ -217,7 +217,9 @@
 - [0013 — Governance metamodel](../architecture/0013-governance-metamodel.md): R-01, R-09, R-10, R-13.
 - [0015 — Governance conformance and validation plan](../architecture/0015-governance-conformance-and-validation-plan.md): R-02, R-06, R-07, R-08, R-09, R-10.
 - [0016 — Writ and Privateer assessment](../architecture/0016-writ-privateer-assessment.md): R-18, R-19.
-- [0017–0019 — Artifact identity, version governance and release manifest](../architecture/README.md): R-14, R-15, R-16.
+- [0017 — Artifact identity, revision and versioning](../architecture/0017-artifact-identity-revision-and-versioning.md): R-14, R-23–R-26.
+- [0018 — Version governance and compatibility](../architecture/0018-version-governance-and-compatibility-authority.md): R-14, R-23–R-25.
+- [0004 — VCS and collaboration adapter contracts](../specifications/0004-vcs-collaboration-contracts.md): R-22.
 - [0022 — Governance capability audit](../architecture/0022-governance-capability-audit.md): R-01, R-02, R-03, R-09, R-10, R-17.
 - [0023 — Bootstrap governance authority](../architecture/0023-bootstrap-governance-authority.md): R-01, R-03.
 

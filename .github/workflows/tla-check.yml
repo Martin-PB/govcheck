@@ -7,6 +7,8 @@ on:
       - 'formal/schemas/**'
       - 'formal/fixtures/**'
       - 'formal/lifecycle-transitions.json'
+      - 'docs/architecture/**'
+      - 'docs/specifications/**'
       - 'scripts/validate-version-governance.py'
       - 'tests/test_version_governance_validator.py'
       - 'scripts/render-lifecycle-diagram.py'

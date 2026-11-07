@@ -145,6 +145,7 @@
 ## Reference discipline and unresolved provenance
 
 1. Prefer the standard body, publisher, official documentation or source repository over secondary summaries.
+2. Reference identifier R-12 was retired when its duplicate Scorecard entry was consolidated into R-08; do not reuse the retired identifier.
 2. Pin code assessments. Writ and Privateer links identify the revisions reviewed in Architecture 0016; refresh the pins before claims about current behavior.
 3. Distinguish evidence classes. A standard, research paper, product documentation, source code, test result and model-checking report are different evidence types.
 4. No implied adoption. Inclusion means “relevant to assess,” not “selected,” “required,” “compatible” or “implemented.”

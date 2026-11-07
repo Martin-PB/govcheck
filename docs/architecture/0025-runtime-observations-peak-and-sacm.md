@@ -7,7 +7,7 @@
 
 GovCheck should connect production observations, threat-model evolution, assurance arguments and governed risk decisions through a shared, typed semantic model. PEAK and SACM are complementary inputs, not competing ontologies:
 
-- **PEAK** is a decision-analysis lens: Problem, Experience, Assumptions and Knowledge are examined as inputs to a decision process; the process yields a solution and an assumed risk [R-67](../references.md#r-67).
+- **PEAK** is a decision-analysis lens: Problem, Experience, Assumptions and Knowledge are examined as inputs to a decision process; the process yields a solution and an assumed risk [R-74](../references.md#r-74).
 - **SACM** is a structured assurance-case metamodel for claims, argumentation, evidence references, artifacts and terminology [R-34](../references.md#r-34).
 - **GovCheck** must retain the domain semantics neither provides as a complete package: threats, attack paths, controls, operational observations, evidence freshness, risk treatment, authority and acceptance decisions.
 
@@ -70,7 +70,7 @@ A single decision can reference several assurance cases. An assurance case can i
 
 ## 4. Production observations as feedback into threat and assurance models
 
-NIST continuous-monitoring guidance explicitly connects ongoing visibility into assets, threats, vulnerabilities and deployed-control effectiveness with risk decisions [R-68](../references.md#r-68). Rushby's runtime-certification work goes further: assumptions used by an assurance argument can be made explicit and monitored during operation; observations can expose violated assumptions or anomalous behavior [R-69](../references.md#r-69). The ACCESS research demonstrates a SACM-based approach in which engineering artifacts and assurance cases co-evolve and assurance can be evaluated using runtime data [R-70](../references.md#r-70). Ericsson provides an industry example of runtime telemetry feeding evolving threat models and control analysis [R-72](../references.md#r-72).
+NIST continuous-monitoring guidance explicitly connects ongoing visibility into assets, threats, vulnerabilities and deployed-control effectiveness with risk decisions [R-75](../references.md#r-75). Rushby's runtime-certification work goes further: assumptions used by an assurance argument can be made explicit and monitored during operation; observations can expose violated assumptions or anomalous behavior [R-76](../references.md#r-76). The ACCESS research demonstrates a SACM-based approach in which engineering artifacts and assurance cases co-evolve and assurance can be evaluated using runtime data [R-70](../references.md#r-70). Ericsson provides an industry example of runtime telemetry feeding evolving threat models and control analysis [R-72](../references.md#r-72).
 
 GovCheck should support this feedback cycle:
 

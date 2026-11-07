@@ -16,7 +16,7 @@
 
 ## Full reference entries
 
-# GovCheck reference catalogue: governance, assurance and formal methods
+## Detailed source register
 
 **Purpose.** This register consolidates academic, standards-body, industrial-documentation and source-code references used to motivate GovCheck's repository-governance design. It is a navigational bibliography, not a normative policy or adoption decision.
 

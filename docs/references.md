@@ -222,7 +222,7 @@
 - **Primary source:** [Knowledge Catalog documentation](https://docs.cloud.google.com/knowledge-catalog/docs)
 - **Relevant concepts:** typed metadata, catalogue entries, relationships/lineage, governance metadata and context discovery.
 - **Use in GovCheck:** the transferable pattern is type-specific mandatory metadata and traceable relationships between governed objects.
-- **Limit:** this is Google Cloud's data-catalog product, not Open Knowledge Format (OKF), which is catalogued separately as R-43. GovCheck is not a data catalog; metadata presence does not equal normative authority or enforcement.
+- **Limit:** this is Google Cloud's data-catalog product, not Open Knowledge Format (OKF), which is catalogued separately as R-51. GovCheck is not a data catalog; metadata presence does not equal normative authority or enforcement.
 
 <a id="r-18"></a>
 ### R-18 — Writ (infinri/Writ)

@@ -28,7 +28,7 @@ The repository also contains two distinct deliverables: the GovCheck product and
 - Architecture 0017 and 0018 are adopted as the category-specific versioning and version-governance policies, with this ADR resolving their former proposed status.
 - Specification 0002 now explicitly distinguishes the reusable governance-package contract from the GovCheck product release contract. This does not adopt the whole canonical governance model or claim an evaluator exists.
 - Existing **catalogueVersion: 1**, **schemaVersion: 1**, Git tags and historical revisions retain their current meanings. No existing value is renamed or retroactively converted to SemVer.
-- No product or package version is assigned by this ADR. Each first release requires its own initial-publication decision, declared contract, authority approval and immutable release binding.
+- The planned first GovCheck product baseline is **0.1.0**; this is not a published or authorized release. The reusable governance package has an independent version sequence and no version is assigned here. Each first release requires its own initial-publication decision, declared contract, authority approval and immutable release binding.
 - The version-decision/dependency schemas and validator remain separate implementation work. Their structural validity cannot establish semantic compatibility or authority.
 - PR #21 has been merged. Its [Architecture 0023](../architecture/0023-bootstrap-governance-authority.md) record is now present on main and provides the authority basis for review of this ADR.
 

@@ -16,3 +16,5 @@ These are proposed architecture contracts for maintainer review, not implemented
 The specifications define semantics and conformance targets. They do not claim that GovCheck currently has an evaluator, lifecycle engine, Git/Pijul adapters, forge enforcement, model checking, theorem proofs, or implementation-conformance evidence.
 
 The next engineering phase should derive executable conformance tests and formal models, then resolve technology choices using the architecture decision framework.
+
+External standards, methods and project sources are indexed in the [central reference catalogue](../references.md) ([French](../references.fr.md)); inclusion does not imply adoption.

@@ -900,7 +900,7 @@
 <a id="r-92"></a>
 ### R-92 — Modélisation des exigences orientée objectifs iStar 2.0
 - **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [0013](architecture/0013-governance-metamodel.fr.md)
-- **Sources primaires :** [Dalpiaz, Franch et Horkoff, iStar 2.0 Language Guide (arXiv:1605.07767)](https://arxiv.org/abs/1605.07767) · [Guide communautaire du langage iStar](https://sites.google.com/site/istarlanguage/)
+- **Source primaire :** [Dalpiaz, Franch et Horkoff, iStar 2.0 Language Guide (arXiv:1605.07767)](https://arxiv.org/abs/1605.07767)
 - **Concepts pertinents :** modélisation des objectifs centrée sur les acteurs, dépendances intentionnelles et sociales, objectifs, qualités, tâches et ressources ; vocabulaire commun pour l'ingénierie des exigences orientée objectifs.
 - **Utilité pour GovCheck :** conserve iStar comme complément candidat à KAOS/GORE pour relier objectifs des parties prenantes, acteurs, dépendances et exigences dérivées.
 - **Limite :** le guide décrit un langage de base défini par une communauté et indique qu'il est destiné à évoluer. La modélisation d'objectifs ne prouve pas la faisabilité, ne résout pas l'autorité normative, ne vérifie pas l'implémentation et ne quantifie pas le risque assumé. Aucun outil ni notation iStar n'est choisi.

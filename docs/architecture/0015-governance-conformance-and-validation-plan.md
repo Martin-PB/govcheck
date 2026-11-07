@@ -129,3 +129,5 @@ CLI commands/dossier serialization; profile composition/task schema; first forge
 ## Bibliographic references
 
 External references used in this record: [R-02 — NIST secure software development practices](../references.md#r-02), [R-06 — in-toto software supply-chain provenance](../references.md#r-06), [R-07 — SLSA supply-chain assurance](../references.md#r-07), [R-08 — OpenSSF Scorecard security posture](../references.md#r-08), [R-09 — Open Policy Agent policy-decision engine](../references.md#r-09), [R-10 — Cedar authorization language](../references.md#r-10).
+- [R-88 — NIST SP 800-192 access-control policy/model verification](../references.md#r-88)
+- [R-93 — deontic logic and normative modalities](../references.md#r-93)

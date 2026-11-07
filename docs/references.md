@@ -12,7 +12,7 @@
 | Artifact identity, versioning, releases and reproducibility | R-14–R-15, R-21, R-23–R-26 |
 | Governance metadata and catalogues | R-17 |
 | Agent workflow systems assessed as fixtures | R-18–R-19 |
-| Version-control semantics and collaboration | R-22 |
+| Version-control semantics and collaboration | R-22 |\n| Threat modeling, attack paths and risk management | R-27–R-32 |\n| Security assurance cases and metamodels | R-33–R-34 |
 
 ## Full reference entries
 
@@ -33,7 +33,7 @@
 - **External governance/catalogue pattern:** R-17.
 - **Candidate agent-workflow tools assessed, not adopted:** R-18, R-19.
 - **Proof assistant and interface contracts:** R-20, R-21.
-- **Native VCS semantics and collaboration adapters:** R-22.
+- **Native VCS semantics and collaboration adapters:** R-22.\n- **Threat modeling, attack paths and risk management:** R-27–R-32.\n- **Security assurance cases and metamodels:** R-33–R-34.
 
 ## Standards, government guidance and industry specifications
 
@@ -266,7 +266,73 @@
 - **Limit:** domain-specific research does not establish a normative versioning rule for GovCheck.
 - **Cited by:** [Architecture 0017](architecture/0017-artifact-identity-revision-and-versioning.md).
 
-## Reference discipline and unresolved provenance
+
+<a id="r-27"></a>
+### R-27 — NIST SP 800-30 Rev. 1, Guide for Conducting Risk Assessments
+- **Primary source:** [NIST publication](https://csrc.nist.gov/pubs/sp/800/30/r1/final) · [DOI](https://doi.org/10.6028/NIST.SP.800-30r1)
+- **Relevant concepts:** threat sources and events, vulnerabilities, likelihood and impact, risk assessment, residual risk, assumptions, rationale and uncertainty.
+- **Use in GovCheck:** supports scenario-based assessment that records how likelihood/plausibility is derived, the impact dimensions considered, safeguards already in place, uncertainty and the rationale for the result.
+- **Limit:** NIST SP 800-30 is risk-assessment guidance, not a universal quantitative formula or a requirement to use a particular scoring scale. GovCheck must not turn illustrative scales into calibrated measurements.
+- **Cited by:** [0024](architecture/0024-project-bootstrap-and-assurance-profiles.md) (risk assessment and treatment).
+
+<a id="r-28"></a>
+### R-28 — NIST SP 800-160 Vol. 1 Rev. 1, Engineering Trustworthy Secure Systems
+- **Primary source:** [NIST publication](https://csrc.nist.gov/pubs/sp/800/160/v1/r1/final) · [DOI](https://doi.org/10.6028/NIST.SP.800-160v1r1)
+- **Relevant concepts:** systems security engineering across the lifecycle; stakeholder protection needs; requirements, architecture, implementation, verification, validation and risk management.
+- **Use in GovCheck:** supports connecting protection needs and security requirements to architecture, controls, verification evidence and lifecycle decisions rather than treating threat analysis as a one-off questionnaire.
+- **Limit:** the publication is engineering guidance, not a repository governance schema or proof that a particular system satisfies its security requirements.
+- **Cited by:** [0024](architecture/0024-project-bootstrap-and-assurance-profiles.md) (threat-led assurance, traceability and lifecycle).
+
+<a id="r-29"></a>
+### R-29 — ISO 31000:2018, Risk management — Guidelines
+- **Primary source:** [ISO standard landing page](https://www.iso.org/standard/31000)
+- **Relevant concepts:** principles and framework for identifying, analysing, evaluating, treating, monitoring, reviewing and communicating risk.
+- **Use in GovCheck:** provides a general risk-management reference for keeping assessment, treatment, acceptance, monitoring and review connected to governance and decision-making.
+- **Limit:** ISO 31000 is generic guidance, not a cybersecurity threat taxonomy or a prescribed risk-calculation algorithm. The full standard is not reproduced here.
+- **Cited by:** [0024](architecture/0024-project-bootstrap-and-assurance-profiles.md) (risk treatment and review).
+
+<a id="r-30"></a>
+### R-30 — MITRE ATT&CK
+- **Primary source:** [MITRE ATT&CK knowledge base](https://attack.mitre.org/) · [Getting started and usage guidance](https://attack.mitre.org/resources/)
+- **Relevant concepts:** adversary tactics and techniques grounded in observed behavior; mappings between techniques, platforms and mitigations.
+- **Use in GovCheck:** optional vocabulary and evidence source for enriching threat scenarios and attack-path analysis, and for checking whether proposed controls address known adversary behaviors.
+- **Limit:** ATT&CK is not an exhaustive threat model, likelihood estimator, vulnerability database or proof of exploitability. A technique mapping does not establish that a technique is feasible in the project's context or that a mitigation is effective.
+- **Cited by:** [0024](architecture/0024-project-bootstrap-and-assurance-profiles.md) (threat scenarios and attack paths).
+
+<a id="r-31"></a>
+### R-31 — Microsoft Security Development Lifecycle: Threat Modeling
+- **Primary source:** [Microsoft SDL threat-modeling guidance](https://www.microsoft.com/en-us/securityengineering/sdl/threatmodeling)
+- **Relevant concepts:** security requirements, system/data-flow diagrams, threat identification, mitigation and validation as an iterative engineering process.
+- **Use in GovCheck:** industry example for guiding project owners through a repeatable threat-modeling workflow that links architecture and trust boundaries to mitigations and validation.
+- **Limit:** Microsoft's workflow is a practical method, not a complete risk-governance or assurance-case standard. Its examples and tool are not mandatory GovCheck dependencies.
+- **Cited by:** [0024](architecture/0024-project-bootstrap-and-assurance-profiles.md) (guided threat modeling).
+
+<a id="r-32"></a>
+### R-32 — Bruce Schneier, “Attack Trees” (1999)
+- **Primary source:** [Dr. Dobb's Journal article, archived by Schneier](https://www.schneier.com/academic/archives/1999/12/attack_trees.html)
+- **Academic/technical reference:** Bruce Schneier, “Attack Trees,” Dr. Dobb's Journal, December 1999.
+- **Relevant concepts:** hierarchical decomposition of attacker goals into alternative or conjunctive sub-goals; reasoning about attack feasibility and cost.
+- **Use in GovCheck:** foundational technique for representing attack paths and alternative ways to reach a harmful objective, and for relating mitigations to specific path steps.
+- **Limit:** attack trees are models whose completeness and parameter estimates require justification. Costs or probabilities assigned to nodes must not be treated as objective without calibrated evidence.
+- **Cited by:** [0024](architecture/0024-project-bootstrap-and-assurance-profiles.md) (attack paths and coverage gaps).
+
+<a id="r-33"></a>
+### R-33 — Mohamad, Steghöfer and Scandariato, “Security assurance cases—state of the art of an emerging approach” (2021)
+- **Primary source:** [Empirical Software Engineering article](https://doi.org/10.1007/s10664-021-09971-7)
+- **Academic reference:** Mazen Mohamad, Jan-Philipp Steghöfer and Riccardo Scandariato, *Empirical Software Engineering* 26, article 70 (2021).
+- **Relevant concepts:** systematic literature review of 51 studies on security assurance cases; structured claims, argumentation, assumptions, context and evidence; state of validation and tool support.
+- **Use in GovCheck:** supports keeping claims, assumptions, context, inference and evidence explicit, while treating assurance-case construction and maintenance as an engineering activity requiring validation.
+- **Limit:** the review reports an immature research/practice landscape and gaps in validation and tool support; it does not establish that adopting an assurance-case notation automatically produces a valid security argument.
+- **Cited by:** [0024](architecture/0024-project-bootstrap-and-assurance-profiles.md) (assumptions, inference, evidence and assurance limits).
+
+<a id="r-34"></a>
+### R-34 — OMG Structured Assurance Case Metamodel (SACM)
+- **Primary source:** [OMG SACM specification family](https://www.omg.org/spec/SACM/) · [formal version 2.3](https://www.omg.org/spec/SACM/2.3)
+- **Relevant concepts:** machine-processable representation of assurance-case structures and relationships between claims, argumentation, artifacts and evidence.
+- **Use in GovCheck:** candidate comparative metamodel for typed assurance artifacts and traceability, beyond free-form narrative documents.
+- **Limit:** SACM is a metamodel, not a risk-assessment method, truth oracle or proof of evidence sufficiency. Version 2.4 is currently a beta; this entry points to the formal 2.3 version and does not recommend adopting SACM.
+- **Cited by:** [0024](architecture/0024-project-bootstrap-and-assurance-profiles.md) (typed assurance claims and evidence).
+\n## Reference discipline and unresolved provenance
 
 1. Prefer the standard body, publisher, official documentation or source repository over secondary summaries.
 2. Reference identifier R-12 was retired when its duplicate Scorecard entry was consolidated into R-08; do not reuse the retired identifier.

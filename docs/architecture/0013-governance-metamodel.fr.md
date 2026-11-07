@@ -72,3 +72,8 @@ Les mainteneurs doivent adopter et enregistrer ces identifiants avant qu’ils n
 ## Choix ouverts
 
 Vocabulaire ontologique, sérialisation, représentation du graphe, logique, langage de requête, assistant de preuve et algorithme de validation restent ouverts. Prototyper identité stable, relations typées, provenance, périmètre, composition, traces d’explication et échec déterministe avant de choisir une ontologie ou pile de preuve volumineuse.
+
+
+## Références bibliographiques
+
+Références externes utilisées dans ce document : [R-01](../references.fr.md#r-01), [R-09](../references.fr.md#r-09), [R-10](../references.fr.md#r-10), [R-13](../references.fr.md#r-13).

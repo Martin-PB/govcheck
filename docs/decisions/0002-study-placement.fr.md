@@ -22,7 +22,7 @@ English: [ADR 0002](0002-study-placement.md).
 
 ## Artefact source et frontière des preuves
 
-L'artefact source initial de cet enregistrement est **« Évaluer l’intégration des dépôts.pdf »**, daté du 6 novembre 2026 et composé de 224 pages. Il est conservé dans la bibliothèque du projet et n'est pas copié dans ce dépôt. Ses sources externes, dépôts, pull requests, protocoles, vocabulaires et formats sont indexés en [R-37–R-69](../references.fr.md) dans le catalogue central.
+L'artefact source initial de cet enregistrement est **« Évaluer l’intégration des dépôts.pdf »**, daté du 6 novembre 2026 et composé de 224 pages. Il est conservé dans la bibliothèque du projet et n'est pas copié dans ce dépôt. Ses sources externes, dépôts, pull requests, protocoles, vocabulaires et formats sont indexés en [R-35–R-69](../references.fr.md) dans le catalogue central.
 
 Les artefacts Cartocortex examinés ont des statuts de preuve distincts : la PR #9 est un panorama documentaire ouvert ; la PR #27 est une étude ouverte sur le stockage/projection OKF explicitement marquée comme non exécutée ; la PR #28 est un backlog et une étude de transport ouverts, eux aussi explicitement non exécutés. Aucun de ces statuts ne prouve qu'un adaptateur, un CRDT, un transport, une synchronisation cloud ou un importeur de format proposé est implémenté ou accepté. Voir [R-62](../references.fr.md#r-62) et [R-69](../references.fr.md#r-69).
 

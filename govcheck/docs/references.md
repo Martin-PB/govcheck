@@ -34,56 +34,56 @@ Inclusion is descriptive, not adoption. A cited method or standard does not impl
 - **Use:** preserve snapshot/commit semantics for Git and change/patch-graph, channel and conflict semantics for Pijul.
 - **Limit:** documentation does not establish that a GovCheck adapter is implemented; adapters still require native contracts and conformance tests.
 
-<a id="r-27"></a>
-## R-27 — Common Criteria / ISO/IEC 15408
+<a id="r-35"></a>
+## R-35 — Common Criteria / ISO/IEC 15408
 - **Primary sources:** [Common Criteria Portal](https://www.commoncriteriaportal.org/) · [CC:2022 and CEM:2022 publications](https://www.commoncriteriaportal.org/cc/index.cfm)
 - **Use:** context for security evaluation and Evaluation Assurance Levels.
 - **Limit:** EALs are evaluation packages, not generic software maturity grades or GovCheck assurance tiers.
 
-<a id="r-28"></a>
-## R-28 — RTCA DO-178C / EUROCAE ED-12C
+<a id="r-36"></a>
+## R-36 — RTCA DO-178C / EUROCAE ED-12C
 - **Primary sources:** [FAA AC 20-115D](https://www.faa.gov/airports/resources/advisory_circulars/index.cfm/go/document.information/documentNumber/20-115D) · [RTCA overview](https://www.rtca.org/do-178/)
 - **Use:** aviation-specific software life-cycle objectives, verification and certification evidence.
 - **Limit:** this is a sector-specific assurance standard in an airworthiness certification context, not a general software regulation.
 
-<a id="r-29"></a>
-## R-29 — Alloy
+<a id="r-37"></a>
+## R-37 — Alloy
 - **Primary sources:** [Alloy project and documentation](https://alloytools.org/) · [Analyzer source](https://github.com/AlloyTools/org.alloytools.alloy)
 - **Use:** relational modeling, bounded analysis and counterexample search.
 - **Limit:** results depend on scopes and assumptions; they do not establish implementation conformance.
 
-<a id="r-30"></a>
-## R-30 — SPIN / Promela
+<a id="r-38"></a>
+## R-38 — SPIN / Promela
 - **Primary source:** [SPIN manual](https://spinroot.com/spin/Man/Manual.html)
 - **Use:** modeling and verification of concurrent/distributed systems and temporal properties.
 - **Limit:** results apply to the Promela abstraction and search configuration.
 
-<a id="r-31"></a>
-## R-31 — Kani
+<a id="r-39"></a>
+## R-39 — Kani
 - **Primary source:** [Kani documentation](https://model-checking.github.io/kani/)
 - **Use:** bounded model checking of Rust programs and proof harnesses.
 - **Limit:** supported Rust features and concurrency coverage are bounded; results depend on harnesses, bounds and toolchain.
 
-<a id="r-32"></a>
-## R-32 — Verus
+<a id="r-40"></a>
+## R-40 — Verus
 - **Primary source:** [Verus tutorial and reference](https://verus-lang.github.io/verus/guide/)
 - **Use:** static functional-correctness verification for Rust.
 - **Limit:** not all Rust features/libraries are supported; the verifier and compiler toolchain remain part of the trust base.
 
-<a id="r-33"></a>
-## R-33 — Dafny
+<a id="r-41"></a>
+## R-41 — Dafny
 - **Primary source:** [Dafny Reference Manual](https://dafny.org/dafny/DafnyRef/DafnyRef)
 - **Use:** specifications, pre/postconditions, invariants and static program verification.
 - **Limit:** verified claims are relative to the Dafny specification and trusted verifier/backend.
 
-<a id="r-34"></a>
-## R-34 — Coq / Rocq
+<a id="r-42"></a>
+## R-42 — Coq / Rocq
 - **Primary sources:** [Rocq documentation](https://rocq-prover.org/docs) · [versioned Coq documentation](https://docs.rocq-prover.org/)
 - **Use:** machine-checked theorem proving in dependent type theory.
 - **Limit:** results depend on definitions, axioms, imported results and kernel/toolchain assumptions.
 
-<a id="r-35"></a>
-## R-35 — Isabelle
+<a id="r-43"></a>
+## R-43 — Isabelle
 - **Primary source:** [Isabelle documentation](https://www.isabelle.in.tum.de/documentation.html)
 - **Use:** interactive theorem proving and formal specification.
 - **Limit:** results depend on the selected logic, theory imports, axioms and prover environment.

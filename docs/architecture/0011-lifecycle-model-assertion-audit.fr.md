@@ -111,3 +111,9 @@ Un contrôle structurel du source n'est pas du model checking. TLC n'est pas une
 9. Ne rapporter ensuite que les affirmations d'assurance effectivement étayées par les artefacts.
 
 Aucune étape ne doit être déclarée achevée avant que sa preuve d'exécution soit commise ou jointe à la release correspondante.
+
+## Références bibliographiques
+
+- [R-05 — Modélisation par transitions d'états TLA+ / TLC](../references.fr.md#r-05)
+- [R-13 — Contrats structurels JSON Schema](../references.fr.md#r-13)
+- [R-22 — Sémantiques natives Git et Pijul](../references.fr.md#r-22)

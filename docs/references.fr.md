@@ -5,21 +5,21 @@
 | Thème | Entrées |
 |---|---|
 | Autorité de gouvernance, séparation des tâches et développement sécurisé | R-01–R-03, R-11 |
-| Dossiers d'assurance, arguments de sûreté et méthodes formelles | R-04–R-05, R-20, R-27–R-36 |
+| Dossiers d'assurance, régimes d'assurance et exigences orientées objectifs | R-04–R-05, R-20, R-27–R-28, R-36 |
 | Model checking et vérification de programmes candidates | R-29–R-35 |
 | Provenance des preuves et chaîne d'approvisionnement logicielle | R-06–R-08 |
 | Moteurs de politiques et autorisation | R-09–R-10 |
 | Schémas et contrats d'interface | R-13, R-16 |
-| Identité, versionnement, releases et reproductibilité des artefacts | R-14–R-16, R-21, R-23–R-26 |
+| Identité, versionnement, releases et reproductibilité des artefacts | R-14–R-15, R-21, R-23–R-26 |
 | Métadonnées de gouvernance et catalogues | R-17 |
 | Systèmes de workflow d'agents évalués comme fixtures | R-18–R-19 |
-| Sémantiques des VCS et collaboration | R-22, R-37–R-42 |
+| Sémantiques de contrôle de version | R-22 |
+| CRDT, collaboration temps réel et transport réseau | R-37–R-42, R-58 |
 | Représentation des connaissances et interopérabilité | R-43–R-53 |
 | Dépôts et études d'intégration | R-54 |
-| Formats d'échange de cartes mentales et graphes | R-55 |
+| Formats d'échange de cartes mentales et de graphes | R-55 |
 | API de stockage cloud | R-56 |
-| Persistance navigateur et WebAssembly | R-57 |
-| Découverte de pairs desktop et DHT | R-58 |
+| Persistance locale navigateur et WebAssembly | R-57 |
 
 ## Entrées bibliographiques détaillées
 

@@ -18,8 +18,14 @@ English is the default language. Each record has a French counterpart.
 - [0019 — Artifact catalogue and release-manifest evolution](0019-catalogue-and-release-manifest-migration.md) · [Français](0019-catalogue-and-release-manifest-migration.fr.md)
 - [0020 — First recorded TLC execution on the lifecycle model](0020-first-tlc-execution-record.md) · [Français](0020-first-tlc-execution-record.fr.md)
 - [0021 — Assurance claims, arguments and evidence freshness](0021-assurance-claims-and-freshness.md) · [Français](0021-assurance-claims-and-freshness.fr.md)
+- [0022 — Governance capability audit](0022-governance-capability-audit.md) · [Français](0022-governance-capability-audit.fr.md)
+- [0023 — Bootstrap governance authority decision](0023-bootstrap-governance-authority.md) · [Français](0023-bootstrap-governance-authority.fr.md)
 
-Records 0009–0021 preserve design rationale and assurance distinctions. Record 0021 proposes claims, argument, dependency and invalidation semantics; it remains to be model-checked and connected to the lifecycle. Record 0019 proposes a staged catalogue and release-manifest migration; it remains a proposal, not an implemented control or approved normative rule. Record 0017 proposes a category-specific policy separating logical identity, immutable revisions, contract compatibility versions, release identities and evidence/event instances. It does not make SemVer universal or turn proposals into implemented controls or approved normative rules.
+Records 0009–0023 preserve design rationale, assurance distinctions, governance capability findings and the initial governance-authority decision. Record 0022 audits the gap between the governance designs and an adopted, executable canonical authority; its recommendations are proposals, not approved policy. Record 0021 proposes claims, argument, dependency and invalidation semantics; it remains to be model-checked and connected to the lifecycle. Record 0019 proposes a staged catalogue and release-manifest migration; it remains a proposal, not an implemented control or approved normative rule. Record 0017 proposes a category-specific policy separating logical identity, immutable revisions, contract compatibility versions, release identities and evidence/event instances. It does not make SemVer universal or turn proposals into implemented controls or approved normative rules.
+
+## Reference index
+
+Use the [single thematic and detailed reference catalogue](../references.md) ([Français](../references.fr.md)) for external sources, their uses and limits, and backlinks to citing records. Follow the [reference-integrity maintenance guide](../reference-integrity.md) and run the offline checker before submitting catalogue changes. Inclusion does not imply adoption or implementation.
 
 ## Status
 

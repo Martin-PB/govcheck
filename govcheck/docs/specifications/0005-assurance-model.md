@@ -72,3 +72,18 @@ Evidence declares dependencies. Changes, tool/key compromise, source correction 
 Report claims, status, evidence, assumptions, limitations, state binding, provenance, unresolved defeaters and exact acceptance decision. Distinguish not-run, not-applicable, unsupported, incomplete, failed and passed; avoid unexplained aggregate scores.
 
 A conforming implementation binds evidence to exact states/governance revisions, exposes assumptions/TCB, preserves contradictions and invalidations, distinguishes bounded from exhaustive exploration, accounts for proof axioms/kernel, and requires conformance evidence before implementation-level claims. No engine or proof infrastructure exists yet.
+
+## Bibliographic references
+
+- [R-05 — TLA+ and TLC](../references.md#r-05)
+- [R-07 — SLSA](../references.md#r-07)
+- [R-20 — Lean](../references.md#r-20)
+- [R-35 — Common Criteria / ISO/IEC 15408](../references.md#r-43)
+- [R-36 — RTCA DO-178C / EUROCAE ED-12C](../references.md#r-36)
+- [R-37 — Alloy](../references.md#r-37)
+- [R-38 — SPIN / Promela](../references.md#r-38)
+- [R-39 — Kani](../references.md#r-39)
+- [R-40 — Verus](../references.md#r-40)
+- [R-41 — Dafny](../references.md#r-41)
+- [R-42 — Coq / Rocq](../references.md#r-42)
+- [R-43 — Isabelle](../references.md#r-43)

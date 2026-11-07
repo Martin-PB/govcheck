@@ -61,3 +61,10 @@ Changing Markdown first while leaving the canonical source unchanged is not a va
 Missing source, duplicate IDs, unresolved references, ambiguous normative text, contradictory projections or unsupported semantics are not success. Mandatory unresolved cases are indeterminate and fail closed unless a valid bounded exception applies. Bootstrap remains non-destructive: inspect → plan → apply, with reviewable diff and rollback.
 
 Open: canonical format/encoding/signatures; Markdown markers; which sections are generated; implementation language; use of Lean/OPA/Cedar; semantic classifier; need for remote authority. These require focused prototypes.
+
+## Bibliographic references
+
+- [R-09 — Open Policy Agent policy-decision engine](../references.md#r-09)
+- [R-10 — Cedar authorization language](../references.md#r-10)
+- [R-13 — JSON Schema structural contracts](../references.md#r-13)
+- [R-17 — typed governance metadata and traceable relationships](../references.md#r-17)

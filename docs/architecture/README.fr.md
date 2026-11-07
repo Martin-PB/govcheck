@@ -18,9 +18,17 @@ L'anglais est la langue par défaut. Chaque document d'architecture possède une
 - [0019 — Évolution du catalogue d'artefacts et du manifeste de release](0019-catalogue-and-release-manifest-migration.fr.md) · [English](0019-catalogue-and-release-manifest-migration.md)
 - [0020 — Première exécution enregistrée de TLC sur le modèle de cycle de vie](0020-first-tlc-execution-record.fr.md) · [English](0020-first-tlc-execution-record.md)
 - [0021 — Affirmations, arguments et fraîcheur des preuves](0021-assurance-claims-and-freshness.fr.md) · [English](0021-assurance-claims-and-freshness.md)
+- [0022 — Audit des capacités de gouvernance](0022-governance-capability-audit.fr.md) · [English](0022-governance-capability-audit.md)
+- [0023 — Décision d'amorçage de l'autorité de gouvernance](0023-bootstrap-governance-authority.fr.md) · [English](0023-bootstrap-governance-authority.md)
 
 Les documents 0009–0021 préservent le raisonnement de conception et les distinctions d'assurance. Le document 0021 propose une sémantique des claims, arguments, dépendances et invalidations ; elle reste à vérifier formellement et à relier au cycle de vie. Le document 0019 propose une migration progressive du catalogue et du manifeste de release ; il reste une proposition, pas un contrôle implémenté ni une règle normative approuvée. Les documents 0017 et 0018 proposent respectivement une politique de versionnement des artefacts par catégorie et le processus d'autorité/compatibilité associé. Ils n'imposent pas SemVer universellement et ne transforment pas les propositions en contrôles implémentés ou règles normatives approuvées.
 
+## Registre de références
+
+Le [catalogue unique des références](../references.fr.md) ([English](../references.md)) rassemble les sources externes, leurs usages, leurs limites et les renvois vers les documents qui les citent. Suivre le [guide de maintenance de l'intégrité des références](../reference-integrity.md) et exécuter le contrôle hors ligne avant toute modification du catalogue. Une référence n'implique ni adoption ni implémentation.
+
 ## Statut
+
+Le document 0022 audite les capacités et lacunes de gouvernance. Le document 0023 consigne la décision initiale d'autorité unique ; son intégration au registre et sa formalisation exécutable restent à réaliser.
 
 Ces documents sont des propositions et mémoires de conception, sauf indication contraire. Ils ne prouvent ni contrôles implémentés, ni propriétés de sécurité vérifiées, ni adoption technologique. Lire statut, périmètre et limites de chaque document.

@@ -72,3 +72,9 @@ Ce document ne choisit ni base de données de graphe, ni format de signature, ni
 - [Modèle canonique de gouvernance](../specifications/0002-canonical-governance-model.fr.md).
 - [Cycle de vie et acceptation des changements](../specifications/0003-change-lifecycle.fr.md).
 - [Assurance, affirmations et preuves](../specifications/0005-assurance-model.fr.md).
+
+## Références bibliographiques
+
+- [R-14 — Semantic Versioning 2.0.0](../references.fr.md#r-14)
+- [R-15 — Tags Git et releases GitHub](../references.fr.md#r-15)
+- [R-18 — Évaluation de Writ à partir des sources](../references.fr.md#r-18)

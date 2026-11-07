@@ -70,3 +70,14 @@ Le dossier/historique préserve décisions, justifications, alternatives accept�
 Une CLI locale ne peut empêcher un contributeur privilégié de contourner hooks ou modifier les fichiers. L’application partagée exige une frontière de confiance qui empêche l’application et revérifie le candidat exact. Signaler un échec ne bloque pas l’application. Les inconnues obligatoires restent inconnues ; demander clarification ou exception gouvernée, ne jamais l’inventer.
 
 Commencer par contrat CLI et dossier réduits, modèles de tâches et vecteurs de conformité indépendants du langage. Valider sur dépôts représentatifs et plusieurs harness avant adaptateurs/intégration distante. Ne pas attendre chaque preuve formelle, mais préserver identités et traçabilité.
+
+## Références bibliographiques
+
+- [R-02 — pratiques de développement sécurisé NIST SP 800-218](../references.fr.md#r-02)
+- [R-03 — application des branches protégées GitHub et limites de contournement](../references.fr.md#r-03)
+- [R-06 — provenance de chaîne d'approvisionnement in-toto](../references.fr.md#r-06)
+- [R-07 — assurance de chaîne logicielle SLSA](../references.fr.md#r-07)
+- [R-18 — évaluation de Writ à partir des sources pour les workflows d'agents](../references.fr.md#r-18)
+- [R-19 — évaluation de Privateer à partir des sources pour les workflows d'agents](../references.fr.md#r-19)
+- [R-16 — contrats d'interface lisibles par machine OpenAPI](../references.fr.md#r-16)
+- [R-22 — sémantiques natives Git et Pijul](../references.fr.md#r-22)

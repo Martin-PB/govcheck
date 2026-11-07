@@ -21,3 +21,17 @@ Le diagramme est généré depuis `formal/lifecycle-transitions.json`. Le regist
 Le premier modèle couvre un changement abstrait, l’évaluation liée à un tuple, la publication de preuves, les approbations autorisées, l’acceptation, l’application du candidat exact, la mutation des entrées et les décisions terminales.
 
 **Statut de vérification :** spécification et configuration TLC ajoutées ; aucune exécution TLC ni aucun résultat de preuve ne sont revendiqués. Consulter le document du modèle pour les limites de l’abstraction et les raffinements nécessaires.
+
+
+## Autorité de gouvernance
+
+- [Décision d'amorçage de l'autorité — français](../architecture/0023-bootstrap-governance-authority.fr.md)
+- [Bootstrap authority decision — anglais](../architecture/0023-bootstrap-governance-authority.md)
+- [Modèle TLA+ de transition d'autorité](../../formal/tla/GovCheckAuthority.tla)
+- [Configuration TLC](../../formal/tla/GovCheckAuthority.cfg)
+
+Le modèle est une abstraction à transitions bornées du régime initial à racine unique. Il vérifie l'attribution historique des amendements à l'autorité immédiatement précédente, la continuité de la chaîne autorité/révision, la cohérence de l'état courant avec le dernier enregistrement et la propriété temporelle append-only (l'historique antérieur reste un préfixe exact après chaque transition). Il n'encode pas de positions d'entrée en vigueur : il ne vérifie donc ni l'effet prospectif ni la préservation de la validité des décisions antérieures. Il abstrait l'identité des principaux et ne modélise pas les délégations, l'identité cryptographique, la validité en temps réel, le cycle de vie des dérogations ni l'intégration au validateur de gouvernance des versions. Le fixture TLC fini ne prouve pas l'application en production.
+
+## Registre de références
+
+Pour les fondements académiques et industriels, notamment les limites du model checking et la distinction entre provenance, preuve et autorité normative, voir le [registre GovCheck des références sur la gouvernance et l'assurance](../references.fr.md) et sa [version anglaise](../references.md).

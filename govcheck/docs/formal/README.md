@@ -34,3 +34,9 @@ The lifecycle model is a source artifact with stable identifier govcheck.lifecyc
 The lifecycle diagram is generated from formal/lifecycle-transitions.json. The checker verifies operator-name coverage and generated-file freshness; it does not parse TLA+ semantics or prove that explanatory guards/effects faithfully describe operators.
 
 **Verification status:** both modules and TLC configurations are source artifacts. No SANY/TLC execution or proof result is claimed for the new assurance model. See each model document for scope, abstraction limits and required refinements.
+
+## Bibliographic references
+
+- [R-05 — TLA+ and TLC](../references.md#r-05)
+- [R-20 — Lean theorem prover](../references.md#r-20)
+- [R-22 — Native Git and Pijul semantics](../references.md#r-22)

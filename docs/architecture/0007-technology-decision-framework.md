@@ -21,9 +21,10 @@ Reject or defer a candidate if it:
 | Decision | Candidate families to compare (illustrative, not exhaustive) | Evaluation criteria |
 |---|---|---|
 | Implementation language | Rust, Go, OCaml, Haskell, Kotlin/JVM, Python | Static guarantees, portability, binary size, startup, ecosystem, contributors, FFI, supply-chain, long-term maintenance |
+| Requirements modeling | KAOS/GORE, iStar 2.0, structured goal/actor models | Goal decomposition, actor dependencies, traceability to norms/properties, stakeholder validation, semantic drift |
 | Canonical serialization | JSON + JSON Schema, YAML subset, TOML, CBOR, custom canonical encoding | Determinism, duplicate-key policy, canonical bytes, schema evolution, comments/human authoring, tooling, signature compatibility |
 | Rule semantics | Fixed typed predicates, restricted expression DSL, logic/rule engine | Decidability/bounds, explainability, compositionality, safe evaluation, formalization, extensibility |
-| Formal analysis | TLA+, Alloy, PlusCal, Lean, Coq, Isabelle, executable state machines | Which claims each method can establish, TCB, automation, contributor skills, reproducibility |
+| Formal analysis | TLA+, Alloy, PlusCal, SPIN, CSP/FDR, B, Z, Lean, Coq, Isabelle, executable state machines | Which claims each method can establish, TCB, automation, contributor skills, reproducibility |
 | Evidence integrity | Content hashes, signed attestations, transparency logs, in-toto/SLSA-compatible statements | State binding, identity, revocation, offline use, privacy, interoperability, operational burden |
 | Local interface | Single binary, platform packages, source distribution | Installation, reproducibility, offline operation, update trust, platform coverage |
 | Forge integration | GitHub/GitLab/Forgejo/Gitea/Bitbucket adapters; generic status/check protocols | Required gate capability, exact state binding, bypass visibility, API stability, self-hosting |
@@ -50,3 +51,23 @@ Each ADR states: question and why now; constraints/gates; alternatives including
 8. Only then select packaging and forge adapters.
 
 No language, serialization, formal kernel, signature format, license or dependency has been selected by this framework.
+
+## Bibliographic references
+
+- [R-05 — TLA+ and TLC state-transition modeling](../references.md#r-05)
+- [R-06 — in-toto software supply-chain provenance](../references.md#r-06)
+- [R-07 — SLSA supply-chain assurance](../references.md#r-07)
+- [R-20 — Lean theorem prover](../references.md#r-20)
+- [R-22 — Native Git and Pijul semantics](../references.md#r-22)
+- [R-35 — Common Criteria / ISO/IEC 15408](../references.md#r-35)
+- [R-36 — RTCA DO-178C / EUROCAE ED-12C](../references.md#r-36)
+- [R-37 — Alloy](../references.md#r-37)
+- [R-38 — SPIN / Promela](../references.md#r-38)
+- [R-39 — Kani](../references.md#r-39)
+- [R-40 — Verus](../references.md#r-40)
+- [R-41 — Dafny](../references.md#r-41)
+- [R-42 — Coq / Rocq](../references.md#r-42)
+- [R-43 — Isabelle](../references.md#r-43)
+- [R-89 — B Method and Atelier B formal specification/refinement](../references.md#r-89)
+- [R-90 — Z formal specification notation (ISO/IEC 13568)](../references.md#r-90)
+- [R-91 — Communicating Sequential Processes and FDR refinement checking](../references.md#r-91)

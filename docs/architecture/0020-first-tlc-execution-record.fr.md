@@ -18,3 +18,7 @@
 - `MODEL_CHECKED` ne couvre que le modèle TLA+ et la configuration TLC enregistrés. Cela n'établit pas la conformité de l'implémentation, et le modèle documente lui-même ses limites d'abstraction dans `docs/formal/lifecycle-model.fr.md`.
 - Le résultat est lié à la version exacte de l'outil, à la configuration et à la révision du modèle ci-dessus ; il n'est pas transférable à d'autres révisions.
 - Les exécutions antérieures du même workflow sur la PR #10 ont échoué au téléchargement de l'outil (asset mutable de la release v1.8.0) ; ces échecs sont notés ici par honnêteté et ne sont pas des résultats de model checking.
+
+## Références bibliographiques
+
+- [R-05 — modélisation par transitions d'états TLA+ / TLC](../references.fr.md#r-05)

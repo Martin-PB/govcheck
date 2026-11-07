@@ -70,3 +70,14 @@ The dossier/history preserves decisions, rationale, accepted/rejected alternativ
 A local CLI cannot stop a privileged contributor bypassing local hooks or editing files. Shared enforcement requires a trusted integration boundary able to prevent application and recheck the exact candidate. Reporting failure is not blocking application. Mandatory unknowns remain unknown; request clarification or a governed exception, never invent one.
 
 Start with a small CLI contract and dossier, task templates and language-neutral conformance vectors. Validate against representative repositories and different agent harnesses before optional adapters/remote integration. Do not wait for every formal proof, but preserve stable identities and traceability.
+
+## Bibliographic references
+
+- [R-02 — NIST SP 800-218 secure software development practices](../references.md#r-02)
+- [R-03 — GitHub protected-branch enforcement and bypass limitations](../references.md#r-03)
+- [R-06 — in-toto software supply-chain provenance](../references.md#r-06)
+- [R-07 — SLSA software supply-chain assurance](../references.md#r-07)
+- [R-18 — Writ source-based agent-workflow assessment](../references.md#r-18)
+- [R-19 — Privateer source-based agent-workflow assessment](../references.md#r-19)
+- [R-16 — OpenAPI machine-readable interface contracts](../references.md#r-16)
+- [R-22 — native Git and Pijul semantics](../references.md#r-22)

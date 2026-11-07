@@ -4,9 +4,9 @@
 
 ## 1. Scope and disambiguation
 
-“Writ” is an ambiguous product name. This assessment concerns [`infinri/Writ`](https://github.com/infinri/Writ), described by its repository as a governance runtime for Claude Code. It does not assess the separate products at writ.now, withwrit.com, or usewrit.app.
+“Writ” is an ambiguous product name. This assessment concerns [`infinri/Writ`](../references.md#r-18), described by its repository as a governance runtime for Claude Code. It does not assess the separate products at writ.now, withwrit.com, or usewrit.app.
 
-Privateer here means [`privateer-agent/privateer-agent`](https://github.com/privateer-agent/privateer-agent), a MIT-licensed, provider-agnostic distribution of the Pi coding agent. It does not mean unrelated products sharing the name.
+Privateer here means [`privateer-agent/privateer-agent`](../references.md#r-19), a MIT-licensed, provider-agnostic distribution of the Pi coding agent. It does not mean unrelated products sharing the name.
 
 Source snapshots reviewed:
 - Writ `main`: `ebdafe5450b201339f81e717ed104e6bcfd3fe3e` (3 November 2026).
@@ -95,9 +95,8 @@ Before any production integration, test permission-gate defaults and bypasses, l
 
 ## Sources
 
-- Writ repository and architecture: https://github.com/infinri/Writ
-- Writ security policy: https://github.com/infinri/Writ/blob/ebdafe5450b201339f81e717ed104e6bcfd3fe3e/SECURITY.md
-- Writ session/gate contract: https://github.com/infinri/Writ/blob/ebdafe5450b201339f81e717ed104e6bcfd3fe3e/docs/reference/session-and-gates.md
-- Privateer repository: https://github.com/privateer-agent/privateer-agent
-- Privateer security policy: https://github.com/privateer-agent/privateer-agent/blob/181a988e443fa6b6b4138fc349d1260c96408ad4/SECURITY.md
-- Privateer README and install verification instructions: https://github.com/privateer-agent/privateer-agent/blob/181a988e443fa6b6b4138fc349d1260c96408ad4/README.md
+The primary source URLs, pinned revisions and reviewed documents are maintained in the [central reference catalogue](../references.md), entries R-18 and R-19. This record links to those entries rather than duplicating external URLs.
+
+## Bibliographic references
+
+External sources cited by this record: [R-18](../references.md#r-18), [R-19](../references.md#r-19).

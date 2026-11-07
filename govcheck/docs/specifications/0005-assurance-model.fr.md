@@ -72,3 +72,18 @@ Chaque preuve déclare ses dépendances. Modification, compromission d'outil/cl�
 Rapporter claims, statut, preuves, hypothèses, limites, état lié, provenance, réfutations non résolues et décision exacte. Distinguer non exécuté, non applicable, non pris en charge, incomplet, échoué et réussi ; éviter les scores opaques.
 
 Une implémentation conforme lie les preuves aux états/révisions exacts, expose hypothèses/TCB, conserve contradictions et invalidations, distingue exploration bornée/exhaustive, comptabilise axiomes/noyau et exige des preuves de conformité avant toute affirmation sur le programme. Aucun moteur ni dispositif de preuve n'existe encore.
+
+## Références bibliographiques
+
+- [R-05 — TLA+ et TLC](../references.fr.md#r-05)
+- [R-07 — SLSA](../references.fr.md#r-07)
+- [R-20 — Lean](../references.fr.md#r-20)
+- [R-35 — Common Criteria / ISO/IEC 15408](../references.fr.md#r-35)
+- [R-36 — RTCA DO-178C / EUROCAE ED-12C](../references.fr.md#r-36)
+- [R-37 — Alloy](../references.fr.md#r-37)
+- [R-38 — SPIN / Promela](../references.fr.md#r-38)
+- [R-39 — Kani](../references.fr.md#r-39)
+- [R-40 — Verus](../references.fr.md#r-40)
+- [R-41 — Dafny](../references.fr.md#r-41)
+- [R-42 — Coq / Rocq](../references.fr.md#r-42)
+- [R-43 — Isabelle](../references.fr.md#r-43)

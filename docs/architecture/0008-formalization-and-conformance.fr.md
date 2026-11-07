@@ -138,3 +138,7 @@ Ces décisions seront traitées par des ADR ciblées après revue du présent pl
 ## Ce que ce document n’affirme pas
 
 Ce document ne fournit ni spécification TLA+, ni résultats TLC, ni preuve de théorème, ni tests exécutables, ni conception cryptographique, ni implémentation, ni assurance que les propriétés listées sont actuellement satisfaites. Il s’agit d’un plan traçable de modélisation et de conception des tests.
+
+## Références bibliographiques
+
+Références externes utilisées dans ce document : [R-05 — spécification TLA+ et model checking TLC](../references.fr.md#r-05) ; [R-13 — contrats structurels JSON Schema](../references.fr.md#r-13) ; [R-20 — démonstration de théorèmes Lean et frontière du noyau de preuve](../references.fr.md#r-20).

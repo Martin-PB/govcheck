@@ -27,12 +27,14 @@ For the detailed reconstruction of these distinctions (self-certification vs ver
 
 ### Formal and governance classes
 
-2. **Model checking:** explores a formal model under declared bounds/assumptions (TLA+/TLC, Alloy, Spin); says nothing automatically about implementation.
+2. **Model checking:** explores a formal model under declared bounds/assumptions (TLA+/TLC, Alloy, Spin, CSP/FDR for concurrent-process models); says nothing automatically about implementation.
 3. **Program verification:** establishes properties of the program or its specifications in a precise logical setting (Kani, Verus, Dafny, Lean).
 4. **Theorem proving:** checker validates a derivation in a specified logic/kernel (Lean, Coq, Isabelle); record axioms, imports, assumptions and escape hatches.
 5. **Implementation conformance:** requires explicit refinement/conformance relation and method between implementation and specification.
 6. **Normative fidelity:** establishes traceability from approved normative rules to formal rule IDs and faithful human-readable projections.
 7. **Acceptance:** governance decision that required claims/evidence/approvals satisfy the predicate for an exact candidate; not proof that all claims are true.
+
+B and Z are also candidate formal-specification/refinement notations; CSP/FDR is a process-algebra/model-checking family for concurrency. They complement but are not interchangeable with model checking, program verification, theorem proving, implementation conformance, normative fidelity or acceptance. See [R-89](../references.md#r-89), [R-90](../references.md#r-90) and [R-91](../references.md#r-91).
 
 ## Provable conformance chain (natural language → formal → implementation)
 
@@ -72,3 +74,21 @@ Evidence declares dependencies. Changes, tool/key compromise, source correction 
 Report claims, status, evidence, assumptions, limitations, state binding, provenance, unresolved defeaters and exact acceptance decision. Distinguish not-run, not-applicable, unsupported, incomplete, failed and passed; avoid unexplained aggregate scores.
 
 A conforming implementation binds evidence to exact states/governance revisions, exposes assumptions/TCB, preserves contradictions and invalidations, distinguishes bounded from exhaustive exploration, accounts for proof axioms/kernel, and requires conformance evidence before implementation-level claims. No engine or proof infrastructure exists yet.
+
+## Bibliographic references
+
+- [R-05 — TLA+ and TLC state-transition modeling](../references.md#r-05)
+- [R-07 — SLSA software supply-chain assurance levels](../references.md#r-07)
+- [R-20 — Lean theorem prover](../references.md#r-20)
+- [R-35 — Common Criteria / ISO/IEC 15408 and EAL evaluation](../references.md#r-35)
+- [R-36 — RTCA DO-178C / EUROCAE ED-12C airborne software assurance](../references.md#r-36)
+- [R-37 — Alloy relational modeling and analysis](../references.md#r-37)
+- [R-38 — SPIN / Promela concurrent-system model checking](../references.md#r-38)
+- [R-39 — Kani Rust program verifier](../references.md#r-39)
+- [R-40 — Verus Rust verification](../references.md#r-40)
+- [R-41 — Dafny specification and program verifier](../references.md#r-41)
+- [R-42 — Coq / Rocq proof assistant](../references.md#r-42)
+- [R-43 — Isabelle theorem prover](../references.md#r-43)
+- [R-89 — B Method and Atelier B formal specification/refinement](../references.md#r-89)
+- [R-90 — Z formal specification notation (ISO/IEC 13568)](../references.md#r-90)
+- [R-91 — Communicating Sequential Processes and FDR refinement checking](../references.md#r-91)

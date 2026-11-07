@@ -40,3 +40,8 @@ L'acceptation locale suit le même prédicat mais signale l'absence d'applicatio
 Évolution de base, rebase et changement de graphe/canal Pijul exigent une analyse de validité par l'adaptateur ; la similarité textuelle ne suffit pas. Les approbations sont liées aux révisions exactes. L'audit logique est append-only ; une correction ajoute un événement.
 
 Les futurs tests/modèles formels couvriront transitions illégales, preuves périmées, mutation après approbation, changement de gouvernance, application exacte, approbations concurrentes, usage local, sûreté et vivacité. Aucun moteur de cycle de vie n'existe encore.
+
+## Références bibliographiques
+
+- [R-05 — modélisation par transitions d'états TLA+ / TLC](../references.fr.md#r-05)
+- [R-22 — sémantiques natives Git et Pijul](../references.fr.md#r-22)

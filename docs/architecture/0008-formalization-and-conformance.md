@@ -138,3 +138,7 @@ Resolve these through focused ADRs after reviewing this plan. None blocks review
 ## Non-claims
 
 This document does not provide a TLA+ specification, TLC results, theorem proofs, executable tests, cryptographic design, implementation, or assurance that the listed properties currently hold. It is a traceable modeling and test-design plan.
+
+## Bibliographic references
+
+External references used in this record: [R-05 — TLA+ specification and TLC model checking](../references.md#r-05), [R-13 — JSON Schema structural contracts](../references.md#r-13), [R-20 — Lean theorem proving and proof-kernel boundary](../references.md#r-20).

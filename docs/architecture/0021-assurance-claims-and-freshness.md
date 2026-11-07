@@ -74,6 +74,22 @@ The new govcheck.assurance model is deliberately separate and composable:
 
 The integration bridge to implement next is a refinement relation: Lifecycle.Accept is enabled only if Assurance.ClaimStatus(root) = Supported, and every claim dependency identity is included in the evaluation context. This proposal does not claim that this bridge already exists in the lifecycle module.
 
+### 6.1 Production observations, assumptions and PEAK decision records
+
+Production observations are evidence inputs, not findings, threat confirmations or decisions by themselves. An observation intended to affect the threat model or an assurance argument should retain at least its subject, source/sensor identity, collection time and window, scope, provenance/integrity, operational context, coverage, confidence or uncertainty, and freshness.
+
+Keep the following semantic steps distinct:
+
+- **Observation:** a bounded statement about what a source reported or measured.
+- **Finding or threat hypothesis:** an interpretation of one or more observations, with alternative explanations, confidence and counterevidence.
+- **Assumption:** a versioned proposition with scope, owner, validity conditions and, where possible, a monitorable predicate. Its status may be supported, contradicted, unknown or stale; an observation does not silently rewrite the assumption.
+- **Assurance claim:** a proposition whose support and defeaters are evaluated against evidence and the exact subject/revisions.
+- **Decision:** a governed response to the interpreted evidence.
+
+PEAK supplies a decision-reasoning structure: Problem, Experience, Assumptions and Knowledge are recorded as inputs; the decision process records a Solution and an **Assumed Risk** as outputs. The assumed risk must be explicit and traceable to the relevant assumptions, observations, claims, scope, rationale, accountable owner and review/expiry conditions. A PEAK record is not itself authorization to accept that risk. Risk acceptance remains a separate governed decision by the authorized principal.
+
+A new observation may trigger reassessment, invalidate or qualify an assurance claim, change an assumption's status, or motivate a new decision. It must not automatically confirm an attack, alter a normative rule, authorize a mitigation, or accept/revoke risk. This preserves the distinction between runtime monitoring, technical interpretation and normative authority while allowing the threat model and assurance case to evolve with production evidence. See [R-72](../references.md#r-72), [R-74](../references.md#r-74), [R-75](../references.md#r-75) and [R-76](../references.md#r-76).
+
 ## 7. TLA+ assertions
 
 formal/tla/GovCheckAssurance.tla and its bounded configuration check:
@@ -100,3 +116,19 @@ It selects no canonical format, ontology, policy engine or proof assistant. It c
 ## 9. Verification status
 
 The module and configuration are proposed formal source artifacts. They must be parsed by SANY and explored by TLC with a pinned version. No SANY/TLC result is claimed by this proposal. Structural tests and source review do not replace TLC execution. Hosted CI is not triggered by this contribution; checks must be run according to maintainer authorization and repository instructions.
+
+## Bibliographic references
+
+- [R-05 — TLA+ and TLC state-transition modeling](../references.md#r-05)
+- [R-09 — Open Policy Agent policy-decision engine](../references.md#r-09)
+- [R-18 — Writ source-based assessment](../references.md#r-18)
+- [R-22 — Native Git and Pijul semantics](../references.md#r-22)
+- [R-33 — research review of security assurance cases](../references.md#r-33)
+- [R-34 — OMG Structured Assurance Case Metamodel (SACM)](../references.md#r-34)
+- [R-70 — ACCESS model-based assurance-case engineering](../references.md#r-70)
+- [R-71 — Assurance 2.0 and defeasible assurance arguments](../references.md#r-71)
+- [R-72 — runtime threat modeling from production observations](../references.md#r-72)
+- [R-73 — OMG SACM 2.4 Beta 1 status and proposed constructs](../references.md#r-73)
+- [R-74 — PEAK project-decision model](../references.md#r-74)
+- [R-75 — NIST continuous security monitoring](../references.md#r-75)
+- [R-76 — Runtime Certification and assumption monitoring](../references.md#r-76)

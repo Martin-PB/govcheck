@@ -28,9 +28,13 @@ The metamodel preserves distinctions between intent, obligation, property, imple
 
 A requirement can refine into sub-requirements and link to properties. Properties are examined by methods; methods produce evidence; claims depend on evidence and assumptions. Relations are explicit, not inferred from document proximity or naming.
 
+Decision records should make their reasoning inputs inspectable. The PEAK model provides one useful scaffold: Problem, Experience, Assumptions and Knowledge are recorded separately before a Solution and its Assumed Risk are recorded. The assumed-risk output should be linked to the relevant assumptions, observations and claims, with scope, rationale, accountable owner and review/expiry conditions. It is not itself authorization to accept the risk; acceptance remains a separate governed decision by the authorized principal. PEAK complements the metamodel's typed links between decisions, assumptions, claims and evidence; it is not a risk score or an assurance argument. Assumptions remain falsifiable and observations may challenge them. See [R-74](../references.md#r-74).
+
 ## Normative force
 
 Distinguish obligation, prohibition, explicit permission, invariant/constraint, evidence requirement, process/approval requirement and non-binding recommendation. Absence of prohibition is not permission. A recommendation does not block acceptance. Defeasible rules require explicit priority/exception semantics; conflicts and unresolved precedence remain visible.
+
+Deontic logic can formalize modalities such as obligation, permission and prohibition, but it does not supply the authority, scope, priority, delegation, exception, effective-time, evidence or enforcement semantics of a governance system. Access-control policy/model verification should separately examine consistency, completeness and safety properties before an evaluator or enforcement point is tested. See [R-93](../references.md#r-93) and [R-88](../references.md#r-88).
 
 ## Scope, refinement and realizability
 
@@ -40,7 +44,7 @@ Relations may include refines, derives-from, satisfies, constrains, conflicts-wi
 
 Consistency is not realizability: a logically consistent requirement set may still be impossible under resource, platform, timing or interface constraints. Analysis must distinguish contradiction, scope/precedence conflict, missing/circular refinement, infeasibility, underspecification and unsupported semantics.
 
-The metamodel should accommodate goal-oriented requirements (including KAOS/GORE-style refinement), deontic logic, temporal logic, predicate/relational logic and assume-guarantee contracts. These are conceptual families, not a commitment to one logic or toolchain.
+The metamodel should accommodate goal-oriented requirements (including KAOS/GORE-style refinement and iStar 2.0 actor/goal modeling), deontic logic, temporal logic, predicate/relational logic and assume-guarantee contracts. These are conceptual families, not a commitment to one logic or toolchain. See [R-92](../references.md#r-92) for iStar.
 
 ## Assurance traceability graph
 
@@ -72,3 +76,16 @@ Maintainers must adopt and register these IDs before they become binding rules.
 ## Open choices
 
 Ontology vocabulary, serialization, graph representation, formal logic, query language, proof assistant and validation algorithm remain open. Prototype stable identity, typed relations, provenance, scope, composition, explanation traces and deterministic failure behavior before selecting a large ontology or proof stack.
+
+
+## Bibliographic references
+
+- [R-01 — NIST SP 800-53 security and privacy controls](../references.md#r-01)
+- [R-09 — Open Policy Agent policy-decision engine](../references.md#r-09)
+- [R-10 — Cedar authorization language](../references.md#r-10)
+- [R-13 — JSON Schema structural contracts](../references.md#r-13)
+- [R-44 — KAOS and goal-oriented requirements engineering](../references.md#r-44)
+- [R-74 — PEAK project-decision model](../references.md#r-74)
+- [R-88 — NIST SP 800-192 access-control policy/model verification](../references.md#r-88)
+- [R-92 — iStar 2.0 goal-oriented requirements modeling](../references.md#r-92)
+- [R-93 — deontic logic and normative modalities](../references.md#r-93)

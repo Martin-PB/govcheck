@@ -23,7 +23,7 @@ Ce document définit comment choisir sans imposer prématurément une pile. Chaq
 | Langage | Rust, Go, OCaml, Haskell, Kotlin/JVM, Python | Garanties statiques, portabilité, taille/démarrage, écosystème, contributeurs, FFI, chaîne d'approvisionnement, maintenance |
 | Sérialisation canonique | JSON + JSON Schema, sous-ensemble YAML, TOML, CBOR, encodage canonique spécifique | Déterminisme, doublons, octets canoniques, évolution du schéma, commentaires/édition, outils, signatures |
 | Sémantique | Prédicats typés fixes, DSL restreint, moteur logique/règles | Décidabilité/bornes, explicabilité, composition, sûreté, formalisation, extensibilité |
-| Analyse formelle | TLA+, Alloy, PlusCal, Lean, Coq, Isabelle, machines à états exécutables | Claims établissables, TCB, automatisation, compétences, reproductibilité |
+| Analyse formelle | TLA+, Alloy, PlusCal, SPIN, CSP/FDR, B, Z, Lean, Coq, Isabelle, machines à états exécutables | Claims établissables, TCB, automatisation, compétences, reproductibilité |
 | Intégrité des preuves | Hashes, attestations signées, journaux de transparence, formats compatibles in-toto/SLSA | Liaison d'état, identité, révocation, offline, confidentialité, interopérabilité, charge |
 | Interface locale | Binaire unique, paquets plateformes, distribution source | Installation, reproductibilité, offline, confiance de mise à jour, plateformes |
 | Forge | Adaptateurs GitHub/GitLab/Forgejo/Gitea/Bitbucket ; protocoles génériques | Barrière requise, liaison état exact, contournements, stabilité API, auto-hébergement |
@@ -50,3 +50,23 @@ Chaque ADR indique : question et urgence ; contraintes/portes ; alternatives, y 
 8. Choisir ensuite packaging et adaptateurs forge.
 
 Aucun langage, format de sérialisation, noyau formel, format de signature, licence ou dépendance n'est sélectionné ici.
+
+## Références bibliographiques
+
+- [R-05 — Modélisation par transitions d'états TLA+ / TLC](../references.fr.md#r-05)
+- [R-06 — Provenance de chaîne logicielle in-toto](../references.fr.md#r-06)
+- [R-07 — Assurance de chaîne logicielle SLSA](../references.fr.md#r-07)
+- [R-20 — Assistant de preuve Lean](../references.fr.md#r-20)
+- [R-22 — Sémantiques natives Git et Pijul](../references.fr.md#r-22)
+- [R-35 — Common Criteria / ISO/IEC 15408](../references.fr.md#r-35)
+- [R-36 — RTCA DO-178C / EUROCAE ED-12C](../references.fr.md#r-36)
+- [R-37 — Alloy](../references.fr.md#r-37)
+- [R-38 — SPIN / Promela](../references.fr.md#r-38)
+- [R-39 — Kani](../references.fr.md#r-39)
+- [R-40 — Verus](../references.fr.md#r-40)
+- [R-41 — Dafny](../references.fr.md#r-41)
+- [R-42 — Coq / Rocq](../references.fr.md#r-42)
+- [R-43 — Isabelle](../references.fr.md#r-43)
+- [R-89 — spécification/raffinement formels par la méthode B et Atelier B](../references.fr.md#r-89)
+- [R-90 — notation de spécification formelle Z (ISO/IEC 13568)](../references.fr.md#r-90)
+- [R-91 — Communicating Sequential Processes et vérification de raffinement FDR](../references.fr.md#r-91)

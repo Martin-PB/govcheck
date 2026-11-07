@@ -57,6 +57,9 @@ Exécuter les mêmes classes de tâches avec plusieurs agents/harness si possibl
 
 1. Découvrir gouvernance valide ; signaler absence sans inventer de défauts.
 2. IDs dupliqués, références non résolues et constructions normatives non prises en charge échouent ou deviennent indéterminés.
+
+La validation des politiques doit dépasser la validation du schéma et l'exécution à l'exécution : vérifier cohérence, complétude, obligations contradictoires, interactions de priorité/exception et propriétés de sûreté, et dériver des tests du modèle de politique lorsque c'est pertinent. NIST SP 800-192 est une référence méthodologique pour ce travail, pas la preuve que GovCheck le réalise déjà. Les modalités déontiques ne remplacent pas le modèle distinct d'autorité et de précédence. Voir [R-88](../references.fr.md#r-88) et [R-93](../references.fr.md#r-93).
+
 3. Détecter règles obligatoires contradictoires ; l’ordre des fichiers ne tranche pas.
 4. Absence d’interdiction ≠ permission.
 5. Signaler Markdown ajoutant une obligation non enregistrée.
@@ -118,3 +121,16 @@ Comparer selon complémentarité avec les six responsabilités, frontière de co
 ## Décisions différées
 
 Commandes CLI/dossier ; composition profils/modèles tâches ; première intégration forge et modèle de menace ; protocole qualification agents/indépendance ; adoption Writ/Privateer ; rôle justifié de Lean ; rétention/confidentialité/stockage protégé. Chacun nécessite ADR/prototype et preuves.
+
+
+## Références
+
+- [Registre GovCheck des références sur la gouvernance et l'assurance](../references.fr.md) : NIST SSDF, in-toto/SLSA, OpenSSF Scorecard, OPA et Cedar, avec leur périmètre et leurs limites.
+- [Version anglaise](../references.md).
+
+
+## Références bibliographiques
+
+Références externes utilisées dans ce document : [R-02 — pratiques NIST de développement logiciel sécurisé](../references.fr.md#r-02) ; [R-06 — provenance de chaîne d’approvisionnement in-toto](../references.fr.md#r-06) ; [R-07 — assurance de chaîne d’approvisionnement SLSA](../references.fr.md#r-07) ; [R-08 — posture de sécurité OpenSSF Scorecard](../references.fr.md#r-08) ; [R-09 — moteur de décision de politiques Open Policy Agent](../references.fr.md#r-09) ; [R-10 — langage d’autorisation Cedar](../references.fr.md#r-10).
+- [R-88 — vérification NIST SP 800-192 des modèles/politiques de contrôle d'accès](../references.fr.md#r-88)
+- [R-93 — logique déontique et modalités normatives](../references.fr.md#r-93)

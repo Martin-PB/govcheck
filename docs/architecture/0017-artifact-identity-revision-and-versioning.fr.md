@@ -317,10 +317,23 @@ En cas de conflit, l'autorité normative approuvée existante prévaut jusqu'à 
 
 ## 12. Références externes
 
-- [Semantic Versioning 2.0.0](https://semver.org/lang/fr/spec/v2.0.0.html) : exige une API publique déclarée et définit l'immutabilité des versions publiées ainsi que les incréments fondés sur la compatibilité.
-- [Cadre de versionnement 1EdTech 1.0](https://www.imsglobal.org/spec/versioning/v1) : applique séparément les principes dérivés de SemVer aux spécifications, documents, artefacts de spécification, modèles de données et logiciels.
-- [W3C PROV-O](https://www.w3.org/TR/prov-o/) : vocabulaire de provenance pour les entités, activités, agents et dérivations ; il complète le versionnement sans le remplacer.
-- [DataCite — Versioning](https://support.datacite.org/docs/versioning) : distingue versions, identifiants associés et enregistrements conceptuels ; les responsables déterminent ce qui constitue une version majeure/mineure.
-- [Scientific Data (2024), cadre de versionnement des jeux de données](https://www.nature.com/articles/s41597-024-03153-y) : traitement propre au domaine des révisions de jeux de données et de la reproductibilité.
+- [Semantic Versioning 2.0.0](../references.fr.md#r-14) : exige une API publique déclarée et définit l'immutabilité des versions publiées ainsi que les incréments fondés sur la compatibilité.
+- [R-23](../references.fr.md#r-23) : applique séparément les principes dérivés de SemVer aux spécifications, documents, artefacts de spécification, modèles de données et logiciels.
+- [R-24](../references.fr.md#r-24) : vocabulaire de provenance pour les entités, activités, agents et dérivations ; il complète le versionnement sans le remplacer.
+- [R-25](../references.fr.md#r-25) : distingue versions, identifiants associés et enregistrements conceptuels ; les responsables déterminent ce qui constitue une version majeure/mineure.
+- [R-26](../references.fr.md#r-26) : traitement propre au domaine des révisions de jeux de données et de la reproductibilité.
 
 Ces références étayent la distinction entre versionnement de compatibilité, identité de révision et provenance. Elles ne prescrivent pas les classifications d'artefacts de GovCheck : celles-ci sont les propositions spécifiques au projet exposées ci-dessus.
+
+
+## Références bibliographiques
+
+Références externes citées dans ce document :
+
+- [R-14 — Semantic Versioning 2.0.0 et compatibilité des versions](../references.fr.md#r-14)
+- [R-15 — tags Git et releases GitHub](../references.fr.md#r-15)
+- [R-23 — spécifications de versionnement 1EdTech](../references.fr.md#r-23)
+- [R-24 — ontologie de provenance W3C PROV-O](../references.fr.md#r-24)
+- [R-25 — recommandations de versionnement DataCite](../references.fr.md#r-25)
+- [R-26 — étude du versionnement des données scientifiques](../references.fr.md#r-26)
+- [R-21 — recommandations de release et de reproductibilité des logiciels de recherche](../references.fr.md#r-21)

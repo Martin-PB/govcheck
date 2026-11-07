@@ -18,3 +18,7 @@
 - `MODEL_CHECKED` covers only the recorded TLA+ model and TLC configuration. It does not establish implementation conformance, and the model itself documents its abstraction limits in `docs/formal/lifecycle-model.md`.
 - The result is bound to the exact tool version, configuration and model revision above; it is not transferable to other revisions.
 - Earlier runs of the same workflow on PR #10 failed at tool download (mutable v1.8.0 release asset); those failures are recorded here for honesty and are not model-check results.
+
+## Bibliographic references
+
+- [R-05 — TLA+ and TLC state-transition modeling](../references.md#r-05)

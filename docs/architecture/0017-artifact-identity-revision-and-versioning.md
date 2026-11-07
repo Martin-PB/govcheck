@@ -317,10 +317,15 @@ If a conflict is found, the existing approved normative authority prevails until
 
 ## 12. External references
 
-- [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html): requires a declared public API and defines immutable published versions and compatibility-based increments.
-- [1EdTech Versioning Framework 1.0](https://www.imsglobal.org/spec/versioning/v1): applies SemVer-derived principles separately to specifications, documentation, specification artifacts, data models and software.
-- [W3C PROV-O](https://www.w3.org/TR/prov-o/): provenance vocabulary for entities, activities, agents and derivation; it complements rather than replaces versioning.
-- [DataCite — Versioning](https://support.datacite.org/docs/versioning): distinguishes versions, related identifiers and concept-level records; stewards determine what counts as major/minor.
-- [Scientific Data (2024), dataset versioning framework](https://www.nature.com/articles/s41597-024-03153-y): domain-specific treatment of dataset revisions and reproducibility.
+- [R-14](../references.md#r-14): requires a declared public API and defines immutable published versions and compatibility-based increments.
+- [R-23](../references.md#r-23): applies SemVer-derived principles separately to specifications, documentation, specification artifacts, data models and software.
+- [R-24](../references.md#r-24): provenance vocabulary for entities, activities, agents and derivation; it complements rather than replaces versioning.
+- [R-25](../references.md#r-25): distinguishes versions, related identifiers and concept-level records; stewards determine what counts as major/minor.
+- [R-26](../references.md#r-26): domain-specific treatment of dataset revisions and reproducibility.
 
 These references support the distinction between compatibility versioning, revision identity and provenance. They do not prescribe GovCheck's artifact classifications; those are project-specific proposals above.
+
+
+## Bibliographic references
+
+External sources cited by this record: [R-14](../references.md#r-14), [R-15](../references.md#r-15), [R-23](../references.md#r-23), [R-24](../references.md#r-24), [R-25](../references.md#r-25), [R-26](../references.md#r-26), [R-21 — research-software release and reproducibility guidance](../references.md#r-21).

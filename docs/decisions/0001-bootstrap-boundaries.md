@@ -38,3 +38,9 @@ Implementation language and distribution; canonical data/rule format; formalizat
 Changes to these boundaries require a superseding ADR. Do not silently rewrite this historical decision.
 
 French: [ADR 0001 (français)](0001-bootstrap-boundaries.fr.md).
+
+## Bibliographic references
+
+- [R-05 — TLA+ and TLC state-transition modeling](../references.md#r-05)
+- [R-20 — Lean theorem prover](../references.md#r-20)
+- [R-22 — Native Git and Pijul semantics](../references.md#r-22)

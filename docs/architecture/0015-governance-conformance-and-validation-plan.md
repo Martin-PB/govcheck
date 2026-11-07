@@ -57,6 +57,9 @@ Run the same task classes with more than one agent/harness where available. Reco
 
 1. Valid governance is discovered; missing governance is reported without invented defaults.
 2. Duplicate IDs, unresolved references and unsupported normative constructs fail or become indeterminate.
+
+Policy validation must go beyond schema validation and runtime execution: check consistency, completeness, contradictory obligations, priority/exception interactions and safety properties, and derive tests from the policy model where appropriate. NIST SP 800-192 is a methodological reference for this work, not evidence that GovCheck already performs it. Deontic modalities do not replace the separate authority and precedence model. See [R-88](../references.md#r-88) and [R-93](../references.md#r-93).
+
 3. Contradictory mandatory rules are detected; file order does not resolve them.
 4. Absence of prohibition is not permission.
 5. Markdown adding an unregistered obligation is reported.
@@ -118,3 +121,16 @@ Compare on complementarity to the six responsibilities, narrow trust boundary, l
 ## Deferred decisions
 
 CLI commands/dossier serialization; profile composition/task schema; first forge/team integration and threat model; agent qualification protocol/independence thresholds; Writ/Privateer adoption; Lean's justified role; operational retention/privacy/protected evidence storage. Each needs a focused ADR/prototype and evidence.
+
+
+## References
+
+- [GovCheck governance and assurance reference register](../references.md): NIST SSDF, in-toto/SLSA, OpenSSF Scorecard, OPA and Cedar, with scope and non-claims for each.
+- [French reference register](../references.fr.md).
+
+
+## Bibliographic references
+
+External references used in this record: [R-02 — NIST secure software development practices](../references.md#r-02), [R-06 — in-toto software supply-chain provenance](../references.md#r-06), [R-07 — SLSA supply-chain assurance](../references.md#r-07), [R-08 — OpenSSF Scorecard security posture](../references.md#r-08), [R-09 — Open Policy Agent policy-decision engine](../references.md#r-09), [R-10 — Cedar authorization language](../references.md#r-10).
+- [R-88 — NIST SP 800-192 access-control policy/model verification](../references.md#r-88)
+- [R-93 — deontic logic and normative modalities](../references.md#r-93)

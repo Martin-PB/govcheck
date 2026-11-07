@@ -4,9 +4,9 @@
 
 ## 1. Périmètre et désambiguïsation
 
-Le nom « Writ » est ambigu. Cette évaluation concerne [`infinri/Writ`](https://github.com/infinri/Writ), décrit par son dépôt comme un runtime de gouvernance pour Claude Code. Elle n’évalue pas les produits distincts writ.now, withwrit.com ou usewrit.app.
+Le nom « Writ » est ambigu. Cette évaluation concerne [`infinri/Writ`](../references.fr.md#r-18), décrit par son dépôt comme un runtime de gouvernance pour Claude Code. Elle n’évalue pas les produits distincts writ.now, withwrit.com ou usewrit.app.
 
-Privateer désigne ici [`privateer-agent/privateer-agent`](https://github.com/privateer-agent/privateer-agent), une distribution MIT et multi-fournisseurs de l’agent de programmation Pi. Il ne s’agit pas d’autres produits portant le même nom.
+Privateer désigne ici [`privateer-agent/privateer-agent`](../references.fr.md#r-19), une distribution MIT et multi-fournisseurs de l’agent de programmation Pi. Il ne s’agit pas d’autres produits portant le même nom.
 
 Instantanés examinés :
 - Writ `main` : `ebdafe5450b201339f81e717ed104e6bcfd3fe3e` (3 novembre 2026).
@@ -95,9 +95,8 @@ Avant toute intégration en production, tester défauts et contournements de la 
 
 ## Sources
 
-- Dépôt et architecture Writ : https://github.com/infinri/Writ
-- Politique de sécurité Writ : https://github.com/infinri/Writ/blob/ebdafe5450b201339f81e717ed104e6bcfd3fe3e/SECURITY.md
-- Contrat de session/barrières Writ : https://github.com/infinri/Writ/blob/ebdafe5450b201339f81e717ed104e6bcfd3fe3e/docs/reference/session-and-gates.md
-- Dépôt Privateer : https://github.com/privateer-agent/privateer-agent
-- Politique de sécurité Privateer : https://github.com/privateer-agent/privateer-agent/blob/181a988e443fa6b6b4138fc349d1260c96408ad4/SECURITY.md
-- README et instructions de vérification d’installation : https://github.com/privateer-agent/privateer-agent/blob/181a988e443fa6b6b4138fc349d1260c96408ad4/README.md
+Les URL des sources primaires, révisions épinglées et documents examinés sont maintenus dans le [catalogue central des références](../references.fr.md), entrées R-18 et R-19. Ce document renvoie vers ces entrées sans dupliquer les URL externes.
+
+## Références bibliographiques
+
+Références externes citées dans ce document : [R-18](../references.fr.md#r-18), [R-19](../references.fr.md#r-19).

@@ -38,3 +38,9 @@ Langage et distribution ; format des données/règles ; stratégie de formalisat
 Toute évolution de ces frontières exige une ADR qui remplace celle-ci. Ne pas réécrire silencieusement cette décision historique.
 
 English: [ADR 0001](0001-bootstrap-boundaries.md).
+
+## Références bibliographiques
+
+- [R-05 — Modélisation par transitions d'états TLA+ / TLC](../references.fr.md#r-05)
+- [R-20 — Assistant de preuve Lean](../references.fr.md#r-20)
+- [R-22 — Sémantiques natives Git et Pijul](../references.fr.md#r-22)

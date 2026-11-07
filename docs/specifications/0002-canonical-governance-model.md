@@ -49,3 +49,5 @@ An implementation must demonstrate stable IDs, deterministic composition, explic
 - [R-10 — Cedar authorization language](../references.md#r-10)
 - [R-13 — JSON Schema structural contracts](../references.md#r-13)
 - [R-17 — typed governance metadata and traceable relationships](../references.md#r-17)
+- [R-88 — NIST SP 800-192 access-control policy/model verification](../references.md#r-88)
+- [R-93 — deontic logic and normative modalities](../references.md#r-93)

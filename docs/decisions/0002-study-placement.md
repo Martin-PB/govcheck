@@ -22,7 +22,7 @@ French: [ADR 0002 (français)](0002-study-placement.fr.md).
 
 ## Source artifact and evidence boundary
 
-The initial source artifact for this record is **“Évaluer l’intégration des dépôts.pdf”**, dated 6 November 2026, 224 pages. It is retained in the project Library and is not copied into this repository. Its external sources, repositories, pull requests, protocols, vocabularies and format references are indexed in [R-35–R-69](../references.md) through the central catalogue.
+The initial source artifact for this record is **“Évaluer l’intégration des dépôts.pdf”**, dated 6 November 2026, 224 pages. It is retained in the project Library and is not copied into this repository. Its external sources, repositories, pull requests, protocols, vocabularies and format references are indexed in [R-35–R-75](../references.md) through the central catalogue.
 
 The reviewed Cartocortex artifacts have different evidence status: PR #9 is an open documentation panorama; PR #27 is an open OKF storage/projection study explicitly marked as not executed; PR #28 is an open backlog and transport study explicitly marked as not executed. None of these statuses establishes that a proposed adapter, CRDT, transport, cloud sync or format importer is implemented or accepted. See [R-62](../references.md#r-62) and [R-69](../references.md#r-69).
 
@@ -56,3 +56,9 @@ The integration study and its external technical sources are catalogued separate
 - [R-66 — Hyperswarm and HyperDHT peer discovery](../references.md#r-66)- [R-67 — WebDAV, Model Context Protocol and Markdown wiki conventions](../references.md#r-67)
 - [R-68 — Related GovCheck ecosystem repositories](../references.md#r-68)
 - [R-69 — Cartocortex mind-map format and tool interoperability source inventory](../references.md#r-69)
+- [R-70 — Policy-as-code and MCP tool governance](../references.md#r-70)
+- [R-71 — NIST OSCAL and Continuous Compliance Framework](../references.md#r-71)
+- [R-72 — Agent sandboxing and runtime isolation](../references.md#r-72)
+- [R-73 — Matrix protocol and Element X client](../references.md#r-73)
+- [R-74 — SearXNG metasearch](../references.md#r-74)
+- [R-75 — Microsoft MarkItDown document conversion](../references.md#r-75)

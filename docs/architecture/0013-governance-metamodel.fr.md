@@ -84,3 +84,6 @@ Vocabulaire ontologique, sérialisation, représentation du graphe, logique, lan
 - [R-13 — contrats structurels JSON Schema](../references.fr.md#r-13)
 - [R-44 — KAOS et ingénierie des exigences orientée objectifs](../references.fr.md#r-44)
 - [R-74 — modèle PEAK de décision de projet](../references.fr.md#r-74)
+- [R-88 — vérification NIST SP 800-192 des modèles/politiques de contrôle d'accès](../references.fr.md#r-88)
+- [R-92 — modélisation des exigences orientée objectifs iStar 2.0](../references.fr.md#r-92)
+- [R-93 — logique déontique et modalités normatives](../references.fr.md#r-93)

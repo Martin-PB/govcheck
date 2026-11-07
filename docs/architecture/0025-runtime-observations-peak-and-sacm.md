@@ -90,7 +90,7 @@ These observations may challenge an assumption, indicate that a requirement is n
 7. **Decide:** let the competent authority choose whether to investigate, correct, defer, accept a bounded deviation, change a requirement or take another authorized action.
 8. **Verify the response:** record follow-up evidence and whether the intended result was achieved.
 
-This cycle is domain-neutral. Domain-specific interpretation remains with the relevant method or capability. For example, threat-model feedback is one specialized path: operational security observations may challenge threat assumptions or control effectiveness, but they do not silently rewrite the threat model or authorize remediation. The same general pattern applies to quality, maintainability, tests, dependencies, proof and release governance.
+This cycle is domain-neutral. Domain-specific interpretation remains with the relevant method or capability. For example, threat-model feedback is one specialized path: operational security observations may challenge threat assumptions or control effectiveness, but they do not silently rewrite the threat model or authorize remediation. Continuous-monitoring guidance, runtime-certification research and industry runtime-threat-modelling work illustrate this security-specific path [R-75](../references.md#r-75) [R-76](../references.md#r-76) [R-72](../references.md#r-72). The ACCESS research also illustrates the use of runtime data in evolving SACM-based assurance cases [R-70](../references.md#r-70). The same general pattern applies to quality, maintainability, tests, dependencies, proof and release governance.
 
 ### 4.2 Observation and evidence records
 
@@ -119,7 +119,7 @@ An observation can be used as evidence, but it is not automatically admissible e
 
 SACM (Structured Assurance Case Metamodel) addresses the structure and exchange of assurance cases: claims/assertions, argumentation, inference, evidence references, context, artifacts and terminology [R-34](../references.md#r-34). Its contribution should be evaluated within that specific scope.
 
-SACM is not a competitor to PEAK. PEAK helps expose the reasoning inputs and assumed risk behind a decision; SACM represents structured assurance arguments. GovCheck may use both for different purposes, while retaining its own repository-governance semantics.
+SACM is not a competitor to PEAK. PEAK helps expose the reasoning inputs and assumed risk behind a decision; SACM represents structured assurance arguments. GovCheck may use both for different purposes, while retaining its own repository-governance semantics. Research on assurance-case engineering also emphasizes explicit defeaters, counterevidence and the strength of evidence—concerns relevant to how GovCheck evaluates arguments, regardless of whether SACM is used as an interchange format [R-71](../references.md#r-71).
 
 ### 5.1 Useful SACM 2.3 constructs
 

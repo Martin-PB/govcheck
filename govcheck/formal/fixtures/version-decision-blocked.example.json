@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "decisionId": "example:version:govcheck.lifecycle:001",
+  "artifactId": "govcheck.lifecycle",
+  "contractId": "govcheck.lifecycle-contract",
+  "previous": null,
+  "candidateRevision": {
+    "vcs": "git",
+    "nativeId": "0000000000000000000000000000000000000000",
+    "repository": "https://example.invalid/govcheck",
+    "path": "formal/tla/GovCheckLifecycle.tla"
+  },
+  "proposedContractVersion": null,
+  "compatibility": {
+    "classification": "undetermined",
+    "rationale": "Synthetic fixture: no compatibility conclusion has been established.",
+    "changedGuarantees": [],
+    "affectedConsumers": [],
+    "counterexamples": [],
+    "uncertainties": [
+      "The designated contract-version authority has not been established."
+    ]
+  },
+  "decision": {
+    "outcome": "blocked",
+    "decidedAt": "2026-01-01T00:00:00Z",
+    "conditions": [
+      "Resolve the authority under the canonical governance model before authorization."
+    ]
+  },
+  "roles": {
+    "proposer": {
+      "actorId": "fixture-author",
+      "actorType": "person",
+      "displayName": "Synthetic example"
+    }
+  },
+  "provenance": {
+    "recordedAt": "2026-01-01T00:00:00Z",
+    "recordedBy": {
+      "actorId": "fixture-generator",
+      "actorType": "service"
+    },
+    "sourceReferences": []
+  }
+}

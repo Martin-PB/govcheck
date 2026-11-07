@@ -196,7 +196,7 @@
 
 <a id="r-23"></a>
 ### R-23 — IMS Global / 1EdTech : spécifications de versionnement
-- **Source primaire :** [Spécifications 1EdTech](https://www.1edtech.org/standards) (anciennement IMS Global ; consulter la version précise avant d'invoquer une règle particulière).
+- **Source primaire :** [Spécifications 1EdTech](https://www.imsglobal.org/spec/versioning/v1) (anciennement IMS Global ; consulter la version précise avant d'invoquer une règle particulière).
 - **Concepts pertinents :** identifiants de version et conventions de compatibilité pour des artefacts structurés et publiés.
 - **Utilité pour GovCheck :** élément comparatif de l'analyse du versionnement par catégorie dans les architectures 0017–0018.
 - **Limite :** famille de spécifications propre aux technologies éducatives, pas norme universelle de versionnement des artefacts de gouvernance.
@@ -238,15 +238,15 @@
 
 ## Documents d'architecture associés
 
-- [0006 — Modèle de menace et de confiance](../architecture/0006-threat-and-trust-model.md) : R-01, R-02, R-06, R-07.
-- [0008 — Plan de formalisation et de conformité](../architecture/0008-formalization-and-conformance.md) : R-05, R-13, R-20.
-- [0010 — Assurance, témoignage, preuve et conformité](../architecture/0010-assurance-proof-and-conformance.md) : R-04, R-05, R-06, R-20.
-- [0013 — Métamodèle de gouvernance](../architecture/0013-governance-metamodel.md) : R-01, R-09, R-10, R-13.
-- [0015 — Plan de conformité et validation de la gouvernance](../architecture/0015-governance-conformance-and-validation-plan.md) : R-02, R-06, R-07, R-08, R-09, R-10.
+- [0006 — Modèle de menace et de confiance](../architecture/0006-threat-and-trust-model.fr.md) : R-01, R-02, R-06, R-07.
+- [0008 — Plan de formalisation et de conformité](../architecture/0008-formalization-and-conformance.fr.md) : R-05, R-13, R-20.
+- [0010 — Assurance, témoignage, preuve et conformité](../architecture/0010-assurance-proof-and-conformance.fr.md) : R-04, R-05, R-06, R-20.
+- [0013 — Métamodèle de gouvernance](../architecture/0013-governance-metamodel.fr.md) : R-01, R-09, R-10, R-13.
+- [0015 — Plan de conformité et validation de la gouvernance](../architecture/0015-governance-conformance-and-validation-plan.fr.md) : R-02, R-06, R-07, R-08, R-09, R-10.
 - [0016 — Évaluation de Writ et Privateer](../architecture/0016-writ-privateer-assessment.fr.md) : R-18, R-19.
 - [0017 — Identité, révision et versionnement](../architecture/0017-artifact-identity-revision-and-versioning.fr.md) : R-14, R-23–R-26.
 - [0018 — Gouvernance des versions et compatibilité](../architecture/0018-version-governance-and-compatibility-authority.fr.md) : R-14, R-23–R-25.
 - [0004 — Contrats des adaptateurs VCS et collaboration](../specifications/0004-vcs-collaboration-contracts.fr.md) : R-22.
-- [0022 — Audit des capacités de gouvernance](../architecture/0022-governance-capability-audit.md) : R-01, R-02, R-03, R-09, R-10, R-17.
-- [0023 — Décision d'amorçage de l'autorité](../architecture/0023-bootstrap-governance-authority.md) : R-01, R-03.
+- [0022 — Audit des capacités de gouvernance](../architecture/0022-governance-capability-audit.fr.md) : R-01, R-02, R-03, R-09, R-10, R-17.
+- [0023 — Décision d'amorçage de l'autorité](../architecture/0023-bootstrap-governance-authority.fr.md) : R-01, R-03.
 

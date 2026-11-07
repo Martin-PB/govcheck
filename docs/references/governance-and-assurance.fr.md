@@ -170,3 +170,10 @@
 - [0017–0019 — Identité, versionnement et manifeste de release](../architecture/README.md) : R-14, R-15, R-16.
 - [0022 — Audit des capacités de gouvernance](../architecture/0022-governance-capability-audit.md) : R-01, R-02, R-03, R-09, R-10, R-17.
 - [0023 — Décision d'amorçage de l'autorité](../architecture/0023-bootstrap-governance-authority.md) : R-01, R-03.
+
+
+### R-22 — Sémantiques natives de Git et Pijul
+- **Sources primaires :** [Documentation Git](https://git-scm.com/docs) · [Manuel Pijul : théorie](https://pijul.org/manual/theory) · [Canaux Pijul](https://pijul.org/manual/workflows/channels) · [Conflits Pijul](https://pijul.org/manual/conflicts.html)
+- **Concepts pertinents :** modèle de snapshots/commits et arbres de Git ; graphe de changements/patches, canaux et conflits de première classe de Pijul.
+- **Utilité pour GovCheck :** justifie la frontière explicite des adaptateurs VCS et l'obligation de représenter l'identité du candidat, les conflits et l'application selon les sémantiques natives plutôt que de tout forcer dans une abstraction inspirée de Git.
+- **Limite :** la documentation des projets décrit leurs sémantiques visées ; GovCheck doit encore fournir contrats d'adaptateur et tests de conformité. Cette référence ne prouve pas qu'un adaptateur est implémenté.

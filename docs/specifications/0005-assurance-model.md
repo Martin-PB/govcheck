@@ -27,12 +27,14 @@ For the detailed reconstruction of these distinctions (self-certification vs ver
 
 ### Formal and governance classes
 
-2. **Model checking:** explores a formal model under declared bounds/assumptions (TLA+/TLC, Alloy, Spin); says nothing automatically about implementation.
+2. **Model checking:** explores a formal model under declared bounds/assumptions (TLA+/TLC, Alloy, Spin, CSP/FDR for concurrent-process models); says nothing automatically about implementation.
 3. **Program verification:** establishes properties of the program or its specifications in a precise logical setting (Kani, Verus, Dafny, Lean).
 4. **Theorem proving:** checker validates a derivation in a specified logic/kernel (Lean, Coq, Isabelle); record axioms, imports, assumptions and escape hatches.
 5. **Implementation conformance:** requires explicit refinement/conformance relation and method between implementation and specification.
 6. **Normative fidelity:** establishes traceability from approved normative rules to formal rule IDs and faithful human-readable projections.
 7. **Acceptance:** governance decision that required claims/evidence/approvals satisfy the predicate for an exact candidate; not proof that all claims are true.
+
+B and Z are also candidate formal-specification/refinement notations; CSP/FDR is a process-algebra/model-checking family for concurrency. They complement but are not interchangeable with model checking, program verification, theorem proving, implementation conformance, normative fidelity or acceptance. See [R-89](../references.md#r-89), [R-90](../references.md#r-90) and [R-91](../references.md#r-91).
 
 ## Provable conformance chain (natural language → formal → implementation)
 

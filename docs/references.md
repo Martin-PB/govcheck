@@ -496,6 +496,7 @@
 - **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
 
 - **Primary sources:** [Yjs documentation](https://docs.yjs.dev/) · [Yjs source repository](https://github.com/yjs/yjs) · [y-webrtc provider and signaling implementation](https://github.com/yjs/y-webrtc) · [Yrs Rust port](https://github.com/y-crdt/y-crdt)
+- **Supplementary article:** [Serverless Yjs signaling architecture](https://medium.com/collaborne-engineering/serverless-yjs-72d0a84326a2) (design exploration, not a protocol specification).
 - **Relevant concepts:** shared CRDT data types, transport-independent updates, synchronization providers and collaborative editing.
 - **Use in GovCheck:** candidate implementation family explicitly compared in the Cartocortex PR #28 transport/backlog study.
 - **Limit:** library behavior does not select an application data model or transport architecture; Cartocortex-specific tree moves, undo/redo, persistence and migration require separate conformance tests. The y-webrtc provider documents a mesh topology, a default connection cap and configurable signaling servers; its room password and stated protections are not an independent security audit. Scalability and access control require separate tests.

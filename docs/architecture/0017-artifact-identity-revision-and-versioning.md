@@ -1,6 +1,6 @@
 # 0017 — Artifact identity, revision and versioning policy
 
-**Status:** proposed governance policy for maintainer review. It does not adopt SemVer globally, select a canonical serialization, or claim that versioning controls are implemented.  
+**Status:** adopted category-specific versioning policy under [ADR 0004](../decisions/0004-semantic-versioning-contracts.md). SemVer is not universal; automated enforcement is not yet implemented.  
 **Language:** English is the default; the French counterpart is [0017 (français)](0017-artifact-identity-revision-and-versioning.fr.md).  
 **Scope:** all governed artifacts and records in GovCheck, including normative, architectural, formal, implementation, evidence, decision and publication artifacts.
 

@@ -124,3 +124,8 @@ CLI commands/dossier serialization; profile composition/task schema; first forge
 
 - [GovCheck governance and assurance reference register](../references/governance-and-assurance.md): NIST SSDF, in-toto/SLSA, OpenSSF Scorecard, OPA and Cedar, with scope and non-claims for each.
 - [French reference register](../references/governance-and-assurance.fr.md).
+
+
+## Bibliographic references
+
+External references used in this record: [R-02](../references.md#r-02), [R-06](../references.md#r-06), [R-07](../references.md#r-07), [R-08](../references.md#r-08), [R-09](../references.md#r-09), [R-10](../references.md#r-10).

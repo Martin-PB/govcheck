@@ -398,10 +398,10 @@
 ### R-35 — Common Criteria (ISO/IEC 15408) et méthode commune d'évaluation
 - **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md)
 
-- **Sources primaires :** [Portail Common Criteria](https://www.commoncriteriaportal.org/) · [Publications CC:2022 et CEM:2022](https://www.commoncriteriaportal.org/cc/index.cfm)
+- **Sources primaires :** [ISO/IEC 15408-1:2026 (édition actuelle de la partie 1)](https://www.iso.org/fr/standard/15408-1) · [Portail Common Criteria](https://www.commoncriteriaportal.org/) · [Publications du schéma CC:2022 et CEM:2022](https://www.commoncriteriaportal.org/cc/index.cfm)
 - **Concepts pertinents :** exigences fonctionnelles de sécurité, exigences d'assurance, méthode d'évaluation et niveaux EAL (Evaluation Assurance Levels).
 - **Utilité pour GovCheck :** contextualise le vocabulaire d'assurance explicitement distingué des classes de méthodes de GovCheck dans la spécification 0005.
-- **Limite :** les EAL sont des ensembles d'exigences d'assurance dans le régime Common Criteria, pas des niveaux génériques de maturité logicielle ni des paliers d'assurance GovCheck. Le périmètre et la cible d'évaluation comptent.
+- **Limite :** les EAL sont des ensembles d'exigences d'assurance dans le régime Common Criteria, pas des niveaux génériques de maturité logicielle ni des paliers d'assurance GovCheck. Le périmètre et la cible d'évaluation comptent. ISO/IEC 15408-1:2026 est l'édition actuelle de la partie 1 ; le portail Common Criteria publie séparément les documents du schéma CC:2022/CEM:2022. Ne pas déduire qu'une révision d'une partie ISO modifie automatiquement l'ensemble du schéma ou les règles de certification.
 
 <a id="r-36"></a>
 ### R-36 — RTCA DO-178C / EUROCAE ED-12C : assurance logicielle aéronautique

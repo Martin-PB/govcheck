@@ -124,3 +124,8 @@ Commandes CLI/dossier ; composition profils/modèles tâches ; première intégr
 
 - [Registre GovCheck des références sur la gouvernance et l'assurance](../references/governance-and-assurance.fr.md) : NIST SSDF, in-toto/SLSA, OpenSSF Scorecard, OPA et Cedar, avec leur périmètre et leurs limites.
 - [Version anglaise](../references/governance-and-assurance.md).
+
+
+## Références bibliographiques
+
+Références externes utilisées dans ce document : [R-02](../references.fr.md#r-02), [R-06](../references.fr.md#r-06), [R-07](../references.fr.md#r-07), [R-08](../references.fr.md#r-08), [R-09](../references.fr.md#r-09), [R-10](../references.fr.md#r-10).

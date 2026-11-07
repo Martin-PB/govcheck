@@ -7,7 +7,9 @@
 | Governance authority, separation of duties and secure development | R-01–R-03, R-11 |
 | Risk assessment, threat modeling and attack paths | R-27–R-32 |
 | Security assurance cases and metamodels | R-33–R-34 |
-| PEAK decisions, continuous observations and runtime assurance | R-67–R-73 |
+| PEAK decision model | R-74 |
+| Continuous monitoring and runtime assurance | R-70, R-72, R-75–R-76 |
+| Assurance 2.0 and SACM evolution | R-71, R-73 |
 | Assurance regimes and goal-oriented requirements | R-35–R-36, R-44 |
 | Model checking and program-verification alternatives | R-37–R-43 |
 | Evidence provenance and software supply chain | R-06–R-08 |
@@ -49,7 +51,9 @@
 - **Native VCS semantics and collaboration adapters:** R-22.
 - **Threat modeling, attack paths and risk management:** R-27–R-32.
 - **Security assurance cases and metamodels:** R-33–R-34.
-- **PEAK decisions, continuous observations and runtime assurance:** R-67–R-73.
+- **PEAK decision model:** R-74.
+- **Continuous monitoring and runtime assurance:** R-70, R-72, R-75–R-76.
+- **Assurance 2.0 and SACM evolution:** R-71, R-73.
 
 ## Standards, government guidance and industry specifications
 
@@ -669,8 +673,8 @@
 - **Limit:** Hyperswarm/HyperDHT is a separate networking stack, not browser-native WebRTC signaling. DHT operation depends on bootstrap infrastructure and network reachability; peer discovery does not define application room authorization, membership policy or persistence.
 
 
-<a id="r-67"></a>
-### R-67 — Hoover, Rosso-Llopart and Taran, *Evaluating Project Decisions: Case Studies in Software Engineering* (2009/2010)
+<a id="r-74"></a>
+### R-74 — Hoover, Rosso-Llopart and Taran, *Evaluating Project Decisions: Case Studies in Software Engineering* (2009/2010)
 - **Primary source:** [Publisher catalogue and sample chapter](https://www.informit.com/store/evaluating-project-decisions-case-studies-in-software-9780321544568)
 - **Bibliographic reference:** Carol L. Hoover, Mel Rosso-Llopart and Gil Taran, Addison-Wesley Professional, first published October 2009 (copyright 2010), ISBN 978-0-321-54456-8; Chapter 1, §1.3 introduces the PEAK decision model.
 - **Relevant concepts:** Problem, Experience, Assumptions and Knowledge as decision inputs; a decision process produces a solution and an assumed risk.
@@ -678,16 +682,16 @@
 - **Limit:** PEAK is a decision model, not a threat taxonomy, assurance-case metamodel, risk-calculation algorithm or normative governance standard. It does not prescribe a serialization or authorization model.
 - **Cited by:** [0025](architecture/0025-runtime-observations-peak-and-sacm.md) (PEAK projection and governed decisions).
 
-<a id="r-68"></a>
-### R-68 — NIST SP 800-137, Information Security Continuous Monitoring (2011)
+<a id="r-75"></a>
+### R-75 — NIST SP 800-137, Information Security Continuous Monitoring (2011)
 - **Primary source:** [NIST publication](https://csrc.nist.gov/pubs/sp/800/137/final) · [DOI](https://doi.org/10.6028/NIST.SP.800-137)
 - **Relevant concepts:** continuous visibility into assets, threats, vulnerabilities and deployed-control effectiveness; monitoring aligned with organizational risk tolerance; response when observations show controls are inadequate.
 - **Use in GovCheck:** supports a production feedback loop in which observations update system posture, control assessments and risk decisions rather than leaving threat models frozen at design time.
 - **Limit:** monitoring data is not automatically a validated incident, threat or assurance conclusion. Coverage, collection integrity, context, uncertainty and control-monitor health must be assessed.
 - **Cited by:** [0025](architecture/0025-runtime-observations-peak-and-sacm.md) (production observations and continuous reassessment).
 
-<a id="r-69"></a>
-### R-69 — Rushby, “Runtime Certification” (RV 2008)
+<a id="r-76"></a>
+### R-76 — Rushby, “Runtime Certification” (RV 2008)
 - **Primary source:** [Author's paper, presented at the Eighth Workshop on Runtime Verification](https://citeseerx.ist.psu.edu/document?doi=c28045b0a573839028f6042870a3eccd8f9be748&repid=rep1&type=pdf)
 - **Bibliographic reference:** John Rushby, “Runtime Certification,” invited paper at RV 2008, Budapest, April 2008.
 - **Relevant concepts:** assurance cases as claims, evidence and arguments; monitoring assumptions and anomalies at runtime; using runtime verification as evidence; detecting violated environmental assumptions.

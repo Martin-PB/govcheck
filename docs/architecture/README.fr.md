@@ -25,7 +25,7 @@ Les documents 0009–0021 préservent le raisonnement de conception et les disti
 
 ## Registre de références
 
-Le [catalogue unique des références](../references.fr.md) ([English](../references.md)) rassemble les sources externes par thématique et renvoie vers les documents internes qui les citent. Une référence n'implique ni adoption ni implémentation.
+Le [catalogue unique des références](../references.fr.md) ([English](../references.md)) rassemble les sources externes, leurs usages, leurs limites et les renvois vers les documents qui les citent. Suivre le [guide de maintenance de l'intégrité des références](../reference-integrity.md) et exécuter le contrôle hors ligne avant toute modification du catalogue. Une référence n'implique ni adoption ni implémentation.
 
 ## Statut
 

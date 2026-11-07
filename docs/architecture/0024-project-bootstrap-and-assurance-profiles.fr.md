@@ -1,11 +1,11 @@
-# 0024 — Bootstrap de projet, choix de gouvernance et profils d'assurance
+# 0024 — Bootstrap de projet, choix de gouvernance et profils de capacités métier
 
 **Statut :** proposition de conception produit et architecture soumise à revue ; ce document n'implémente ni assistant interactif, ni schéma de profil, ni moteur de modèles, ni commande de modification de dépôt.  
 **Langue :** l'anglais est la langue par défaut ; voir le [document anglais](0024-project-bootstrap-and-assurance-profiles.md).
 
 ## 1. Objectif
 
-Un nouveau dépôt ne devrait pas commencer par une arborescence générique et entièrement peuplée. GovCheck doit guider le responsable du projet dans des décisions importantes de gouvernance et d'assurance, expliquer les compromis, puis préparer une structure de dépôt correspondant aux choix réellement effectués.
+Un nouveau dépôt ne devrait pas commencer par une arborescence générique et entièrement peuplée. GovCheck doit guider le responsable du projet dans des décisions importantes de gouvernance, de capacités métier et d'assurance, expliquer les compromis, puis préparer une structure de dépôt correspondant aux choix réellement effectués.
 
 Le bootstrap a trois responsabilités :
 
@@ -22,7 +22,7 @@ Cette conception complète, sans les modifier silencieusement, l'ADR 0001, la sp
 La distinction suivante est obligatoire :
 
 - **Les fondations de gouvernance GovCheck sont invariantes.** Chaque dépôt gouverné possède une identité/profil canonique de gouvernance, des sémantiques explicites d'applicabilité et de décision, et la capacité d'enregistrer affirmations d'assurance, preuves, provenance et incertitude. Les profils peuvent ajouter des contraintes, jamais supprimer ces fondations.
-- **Les méthodes d'assurance du projet sont configurables.** Un projet peut sélectionner des tests empiriques, de l'analyse statique, du model checking, de la vérification de programmes, de la preuve de théorèmes, des travaux de conformité de l'implémentation, ou des combinaisons adaptées à ses affirmations. Ne sélectionner aucune méthode formelle propre au projet est valide.
+- **Les capacités métier et méthodes d'assurance du projet sont configurables.** Un projet peut sélectionner des capacités concernant les exigences, l'architecture, la maintenabilité, les tests, la gouvernance des dépendances, la documentation, la sécurité, les publications ou l'exploitation, ainsi que des méthodes telles que tests empiriques, analyse statique, model checking, vérification de programmes, preuve de théorèmes et travaux de conformité de l'implémentation lorsque cela est pertinent. Ne sélectionner aucune méthode formelle propre au projet est valide.
 - **Une méthode n'est pas un niveau de maturité.** Ne pas classer les dépôts en bronze/argent/or ou assurance faible/moyenne/élevée selon leur taille. Le choix des méthodes dépend des affirmations, des risques, du domaine et des conséquences. Différentes affirmations d'un même dépôt peuvent nécessiter différentes méthodes.
 - **Aucune méthode de preuve n'est présumée supérieure pour toutes les affirmations.** Tests, analyse statique, model checking, vérification de programmes et preuve de théorèmes établissent des choses différentes. Le bootstrap doit expliquer ce que chaque méthode peut ou ne peut pas établir, ses hypothèses, son coût opérationnel et sa charge de maintenance.
 
@@ -60,7 +60,10 @@ Expliquer et permettre au responsable de décider, selon le cas :
 - politique de contribution et de revue ;
 - autorité des exceptions/dérogations, périmètre, expiration et mesures compensatoires ;
 - attentes de publication, provenance et conservation des preuves ;
-- gouvernance de sécurité et réponse aux incidents.
+- attentes de qualité, maintenabilité, tests et documentation ;
+- gouvernance des dépendances, des builds et de la chaîne d'approvisionnement ;
+- gouvernance de sécurité, vie privée, sûreté et réponse aux incidents ;
+- support opérationnel, maintenance et retrait.
 
 Un choix tel que « projet individuel » ne doit pas impliquer automatiquement que tous les changements sont auto-approuvés si le responsable choisit une revue indépendante. Autorité et revue sont deux décisions distinctes.
 
@@ -94,11 +97,21 @@ Pour chaque recommandation, afficher :
 
 Les recommandations sont consultatives, sauf si une contrainte légale/contractuelle applicable ou une politique de projet autorisée rend un contrôle obligatoire. GovCheck doit distinguer le choix du responsable, la recommandation de GovCheck et l'obligation normative.
 
-### 3.5 Assurance guidée par les menaces et traçabilité
+### 3.5 Assurance par domaine et traçabilité
 
-Le bootstrap doit relier le contexte du projet et les choix d'assurance à une analyse explicite des menaces et des risques. Il ne doit pas demander de sélectionner des outils isolément. Le parcours s'appuie sur les guides d'ingénierie de la sécurité des systèmes [R-28](../references.fr.md#r-28), la pratique de modélisation des menaces [R-31](../references.fr.md#r-31), ainsi que les techniques de comportement adverse et d'arbres d'attaque [R-30](../references.fr.md#r-30) [R-32](../references.fr.md#r-32) ; ces références sont complémentaires et ne constituent pas des méthodes obligatoires.
+Pour chaque capacité métier sélectionnée, le bootstrap doit relier le contexte et les objectifs du projet aux exigences, propriétés, artefacts concernés, méthodes, preuves, constats et décisions applicables. Il ne doit pas demander de sélectionner des outils isolément. Une exigence sans stratégie de vérification ou d'évaluation reste visible ; un test, une métrique ou une preuve qui n'est relié à aucune affirmation ou exigence pertinente ne doit pas être présenté comme une preuve de conformité du projet.
 
-Maintenir des relations typées et traçables entre, au minimum :
+Un parcours général de traçabilité peut relier :
+
+`besoin / objectif → exigence / norme → propriété / critère d'acceptation → artefact d'architecture / d'implémentation → méthode / contrôle → observation / preuve → constat / affirmation → revue / décision`
+
+Le niveau de détail n'a pas à être identique pour tous les projets. Les liens manquants, inférences non étayées et domaines non évalués doivent rester visibles. Les sémantiques communes proviennent des fondations de gouvernance et d'assurance de GovCheck ; chaque domaine apporte ses concepts et méthodes d'évaluation propres.
+
+#### Sécurité et traçabilité des menaces comme un domaine parmi d'autres
+
+La sécurité est un domaine important, mais elle ne constitue pas le modèle de tous les sujets du projet. Lorsqu'elle est applicable, le parcours s'appuie sur les guides d'ingénierie de la sécurité des systèmes [R-28](../references.fr.md#r-28), la pratique de modélisation des menaces [R-31](../references.fr.md#r-31), ainsi que les techniques de comportement adverse et d'arbres d'attaque [R-30](../references.fr.md#r-30) [R-32](../references.fr.md#r-32) ; ces références sont complémentaires et ne constituent pas des méthodes obligatoires.
+
+Pour ce domaine, maintenir des relations typées et traçables entre, au minimum :
 
 - actifs et intérêts métier/opérationnels ;
 - objectifs de sécurité et de sûreté ;
@@ -129,7 +142,7 @@ Une mesure n'est pas « efficace » simplement parce qu'elle est documentée ou 
 
 ### 3.6 Hypothèses, inférences et limites
 
-Tout argument d'assurance doit rendre son raisonnement inspectable. La recherche sur les dossiers d'assurance de sécurité et les métamodèles structurés appuie l'explicitation des affirmations, du contexte, des hypothèses, de l'argumentation et des preuves [R-33](../references.fr.md#r-33) [R-34](../references.fr.md#r-34) ; elle ne dispense pas de valider l'argument :
+Tout argument d'assurance, quel que soit son domaine, doit rendre son raisonnement inspectable. La recherche sur les dossiers d'assurance et les métamodèles structurés appuie l'explicitation des affirmations, du contexte, des hypothèses, de l'argumentation et des preuves [R-33](../references.fr.md#r-33) [R-34](../references.fr.md#r-34) ; elle ne dispense pas de valider l'argument :
 
 - **Hypothèse :** prémisse tenue pour acquise dans un argument délimité, avec source, responsable, périmètre, confiance, période de validité et conditions de réfutation/réexamen.
 - **Preuve :** observation, résultat de test, analyse, attestation ou démonstration produit dans des conditions déclarées.
@@ -180,6 +193,12 @@ Le générateur s'appuie sur des déclarations de capacités et leurs dépendanc
 | Socle de gouvernance (toujours) | configuration/profil canonique, explication/projection de gouvernance, points d'entrée pour décisions et cycle de vie des changements |
 | Enregistrements de décisions | `docs/decisions/` et modèle de décision |
 | Traçabilité des exigences | `requirements/`, conventions d'ID stable et métadonnées de traçabilité |
+| Gouvernance de l'architecture/conception | décisions d'architecture, inventaires des composants/interfaces et traçabilité des contraintes |
+| Maintenabilité/qualité du code | configuration des analyseurs/métriques, référence initiale, constats circonscrits et enregistrements de remédiation |
+| Gouvernance des dépendances/chaîne d'approvisionnement | inventaire des dépendances, revue de provenance/licence/support et décisions de mise à niveau |
+| Gouvernance documentaire | inventaire documentaire, contrôles de couverture/liens et métadonnées des projections normatives |
+| Gouvernance des builds/publications | déclarations de reproductibilité, manifeste de publication et références de provenance/preuves |
+| Exploitation/maintenance (si applicable) | revue opérationnelle, enregistrements de support/incidents, plan de maintenance et décisions de retrait |
 | Tests unitaires/d'intégration | `tests/`, structure de tests sélectionnée et commandes documentées |
 | Tests fondés sur les propriétés | structure de tests de propriétés et configuration d'outils |
 | Analyse statique | configuration de l'analyseur sélectionné et déclarations de contrôles |
@@ -207,7 +226,10 @@ Les capacités forment un graphe de dépendances typées, pas un ensemble de boo
 - une capacité de model checking TLA+ dépend d'un artefact modèle, d'une configuration, d'une invocation TLC épinglée et d'un contrat d'enregistrement du résultat ;
 - la preuve de théorèmes Lean dépend d'une déclaration de projet/chaîne d'outils Lean, de sources de preuve, de l'épinglage des dépendances et d'une commande reproductible de vérification ;
 - une capacité de traçabilité exigence-vers-test dépend d'identités stables d'exigences/affirmations et de relations typées vers les preuves ;
-- une capacité de provenance de publication dépend de l'identité exacte de la source/publication et d'un enregistrement manifeste/preuve.
+- une capacité de provenance de publication dépend de l'identité exacte de la source/publication et d'un enregistrement manifeste/preuve ;
+- l'évaluation de la maintenabilité dépend d'un périmètre de sources identifié, d'une méthode/outil sélectionné, d'une référence initiale et d'une politique d'interprétation ;
+- la gouvernance des dépendances dépend des identités/versions exactes des dépendances et des sources sélectionnées pour les avis, licences ou états de support ;
+- la conformité documentaire dépend des obligations documentaires déclarées, des révisions sources et des contrôles sélectionnés de couverture/liens/projections.
 
 Le résolveur doit détecter les dépendances manquantes, sélections incompatibles, combinaisons non prises en charge et cycles. Il doit en expliquer la raison et proposer une résolution ; il ne doit pas activer silencieusement des capacités supplémentaires. Une capacité peut déclarer séparément des prérequis obligatoires, recommandations facultatives et conflits.
 
@@ -273,6 +295,8 @@ Un prototype devrait démontrer au minimum :
 11. Les scénarios de menace sont traçables dans les deux sens à travers chemins d'attaque, faiblesses, mesures, affirmations d'assurance, hypothèses, preuves et décisions de risque résiduel.
 12. Le prototype distingue les mesures non évaluées, non traitées, planifiées, mises en œuvre, testées, revues et surveillées ; il expose les chemins non couverts et les hypothèses non étayées.
 13. Le risque ne peut être accepté que par un responsable autorisé, avec justification, périmètre, évaluation résiduelle et conditions de revue/expiration ; l'acceptation ne modifie jamais le statut des preuves.
+14. Un projet qui sélectionne des capacités de maintenabilité, de dépendances ou de documentation reçoit des attentes explicites de périmètre, de méthode et de preuve ; le bootstrap ne doit pas laisser croire qu'une métrique, un inventaire ou un modèle généré suffit à établir la qualité ou la conformité.
+15. Un projet multidomaine peut tracer un même changement à travers les exigences, l'architecture, les tests, les dépendances, les constats de maintenabilité et les obligations de sécurité concernés, sans fusionner leurs sémantiques d'évaluation distinctes.
 
 ## 11. Séquence de livraison
 

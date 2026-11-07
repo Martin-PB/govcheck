@@ -763,6 +763,50 @@
 - **Utilité pour GovCheck :** conserve la chaîne complète des sources derrière le panorama des formats cité par l'évaluation initiale de 224 pages, y compris code/fixtures et documentation officielle des éditeurs.
 - **Limite :** la PR #9 est une PR documentaire ouverte, pas une implémentation de formats ni une suite de conformité. Le panorama enregistre les preuves disponibles à sa date de revue (2026-10-18). FileInfo, blogs et forums communautaires sont des sources secondaires, pas des spécifications de formats. Une fonctionnalité dans l'interface d'un produit ne prouve pas un échange de fichiers sans perte ; la PR source et les fixtures de chaque format doivent être revérifiées avant toute décision d'implémentation.
 
+
+
+<a id="r-70"></a>
+### R-70 — Exemples d'application de politiques et de gouvernance des outils MCP
+- **Sources primaires :** [Documentation HashiCorp Sentinel](https://developer.hashicorp.com/sentinel/docs) · [Documentation Consul MCP Gateway](https://docs.hashicorp.com/consul/docs/agentic-mesh/mcp-gateway) · [Gouvernance des outils agents et blocage des serveurs MCP GitLab](https://docs.gitlab.com/user/ai-governance/tool-governance/) · [Dépôt source Vectimus](https://github.com/vectimus/vectimus)
+- **Concepts pertinents :** politiques-as-code, évaluation des politiques aux frontières infrastructure et outils d'agents, autorisation/blocage de serveurs MCP, gouvernance par namespace, preuves d'approbation, événements d'audit et hooks Cedar déterministes.
+- **Utilité pour GovCheck :** conserve les systèmes d'application de politiques et de gouvernance MCP comparés dans les discussions élargies du projet, aux côtés d'OPA (R-09) et Cedar (R-10).
+- **Limite :** Sentinel est une fonctionnalité HashiCorp Enterprise ; la documentation Consul MCP Gateway indique un statut bêta. Le périmètre de blocage GitLab dépend du produit, de la version et de la surface. Les affirmations de sécurité et de performance de Vectimus ne sont pas établies indépendamment par son README. Ces exemples n'impliquent ni sélection, ni équivalence, ni intégration à GovCheck.
+
+<a id="r-71"></a>
+### R-71 — NIST OSCAL et Continuous Compliance Framework (CCF)
+- **Sources primaires :** [Projet NIST OSCAL](https://pages.nist.gov/OSCAL/) · [Dépôt source OSCAL](https://github.com/usnistgov/OSCAL) · [Documentation Compliance Framework / CCF](https://compliance-framework.github.io/docs/introduction) · [Dépôts Compliance Framework](https://github.com/compliance-framework)
+- **Concepts pertinents :** catalogues de contrôles de sécurité lisibles par machine, profils, plans de sécurité système, plans/résultats d'évaluation et preuves structurées en XML, JSON et YAML ; collecte continue de preuves et reporting.
+- **Utilité pour GovCheck :** conserve les options OSCAL et CCF discutées pour représenter les contrôles, collecter des preuves et produire des résultats d'évaluation structurés.
+- **Limite :** OSCAL est un ensemble de modèles/formats d'information, pas un moteur complet de conformité ni une preuve d'efficacité des contrôles. CCF est une implémentation distincte qui utilise des moteurs de politiques et des collecteurs ; ses affirmations ne constituent ni une norme normative ni une certification indépendante. Un mapping GovCheck exigerait sémantique explicite des contrôles, provenance des preuves et périmètre.
+
+<a id="r-72"></a>
+### R-72 — Sandboxing et isolation à l'exécution des agents : nono, Landlock et Docker Sandboxes
+- **Sources primaires :** [Projet nono et modèle de sécurité](https://github.com/nolabs-ai/nono) · [Site de documentation nono](https://nono.sh/) · [Documentation noyau Linux Landlock](https://docs.kernel.org/userspace-api/landlock.html) · [Documentation Docker Sandboxes](https://docs.docker.com/ai/sandboxes/) · [Projet d'agent IA Goose](https://github.com/aaif-goose/goose)
+- **Concepts pertinents :** portée de capacités par outil, restrictions de système de fichiers/réseau, courtage d'identifiants, sandboxing non privilégié imposé par le noyau, isolation microVM et orchestration de runtimes d'agents.
+- **Utilité pour GovCheck :** conserve les options d'isolation à l'exécution et d'exécution d'agents discutées dans le contexte élargi de l'architecture sécurité/GovCheck. Goose est inclus comme exemple de harness d'agent, pas comme sandbox.
+- **Limite :** le support Landlock et les restrictions disponibles dépendent de la configuration du noyau et de l'ABI ; c'est une couche, pas une frontière VM/conteneur complète. nono et Docker Sandboxes ont leurs propres hypothèses de confiance, politiques et exploitation ; les affirmations des projets/fournisseurs exigent des tests indépendants. Goose est un runtime d'agent, pas une autorité d'autorisation.
+
+<a id="r-73"></a>
+### R-73 — Protocole Matrix et client Element X
+- **Sources primaires :** [Spécification du protocole Matrix](https://spec.matrix.org/latest/) · [Dépôt source de la spécification Matrix](https://github.com/matrix-org/matrix-spec) · [Element X dans l'écosystème Matrix.org](https://matrix.org/ecosystem/clients/element-x/)
+- **Concepts pertinents :** communication temps réel fédérée, homeservers, salons, synchronisation d'événements, chiffrement de bout en bout et comportement du client mobile Matrix.
+- **Utilité pour GovCheck :** conserve l'option de communication Matrix/Element X discutée pour la collaboration entre agents et humains.
+- **Limite :** Matrix est un protocole et un écosystème de communication, pas un modèle de gouvernance ou d'autorisation GovCheck. L'appartenance à un salon et le chiffrement n'établissent pas à eux seuls une politique au niveau projet, le lien d'identité d'agent ou la provenance durable des décisions.
+
+<a id="r-74"></a>
+### R-74 — Métamoteur SearXNG
+- **Source primaire :** [Documentation SearXNG](https://docs.searxng.org/)
+- **Concepts pertinents :** agrégation de métamoteur auto-hébergé, moteurs de recherche amont configurables, traitement des requêtes orienté confidentialité et administration.
+- **Utilité pour GovCheck :** conserve le service de recherche auto-hébergé discuté comme composant de découverte de sources dans le contexte élargi du projet.
+- **Limite :** SearXNG agrège des résultats de moteurs tiers ; il ne valide ni autorité, ni fraîcheur, ni exactitude, ni licence des sources. Les résultats doivent être résolus et vérifiés auprès de sources primaires.
+
+<a id="r-75"></a>
+### R-75 — Conversion de documents vers Markdown avec Microsoft MarkItDown
+- **Source primaire :** [Dépôt source et documentation Microsoft MarkItDown](https://github.com/microsoft/markitdown)
+- **Concepts pertinents :** conversion de PDF, documents Office et autres formats vers Markdown pour indexation et analyse textuelle.
+- **Utilité pour GovCheck :** conserve l'utilitaire d'ingestion documentaire discuté pour extraire et examiner des sources telles que PDF et documents bureautiques.
+- **Limite :** MarkItDown effectue les E/S avec les privilèges du processus courant. Sa documentation avertit que les entrées non fiables doivent être assainies et que la conversion doit s'exécuter avec les accès les plus restreints nécessaires. La sortie convertie est une extraction, pas une preuve d'exhaustivité ou de fidélité sémantique.
+
 ## Discipline bibliographique et provenance non résolue
 
 1. Privilégier l'organisme normatif, l'éditeur, la documentation officielle ou le dépôt source plutôt que les résumés secondaires.

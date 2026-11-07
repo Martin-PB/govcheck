@@ -551,7 +551,7 @@
 ### R-52 — Modèle de données RDF 1.1
 - **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
 
-- **Source primaire :** [W3C RDF 1.1 Concepts and Abstract Syntax](https://www.w3.org/TR/rdf11-concepts/)
+- **Source primaire :** [Concepts et syntaxe abstraite W3C RDF 1.1](https://www.w3.org/TR/rdf11-concepts/) · [Guide d'introduction W3C RDF](https://www.w3.org/TR/rdf-primer/)
 - **Concepts pertinents :** modèle de graphes et jeux de données fondé sur des triplets sujet–prédicat–objet et des IRI.
 - **Utilité pour GovCheck :** modèle de données fondamental discuté pour une représentation de connaissances partagée entre Cartocortex, MoriNet et SaussuNet.
 - **Limite :** RDF est un modèle de données, pas une ontologie métier, un moteur de stockage, un langage de validation ou un protocole de collaboration.
@@ -569,7 +569,7 @@
 ### R-54 — Langage d'ontologie OWL 2
 - **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
 
-- **Source primaire :** [W3C OWL 2 Structural Specification and Functional-Style Syntax](https://www.w3.org/TR/owl-syntax/)
+- **Source primaire :** [Spécification structurelle et syntaxe fonctionnelle W3C OWL 2](https://www.w3.org/TR/owl-syntax/) · [Vue d'ensemble W3C OWL 2](https://www.w3.org/TR/owl-overview/)
 - **Concepts pertinents :** sémantique formellement définie pour classes, propriétés, individus et axiomes d'ontologie.
 - **Utilité pour GovCheck :** couche sémantique candidate discutée aux côtés de RDF et SKOS dans l'étude d'intégration.
 - **Limite :** le raisonnement OWL ne valide pas toutes les contraintes de données applicatives, ne préserve pas automatiquement toutes les propriétés des sources et ne fournit ni workflow, ni contrôle d'accès, ni synchronisation.

@@ -145,7 +145,7 @@ Le model checking ou la preuve de théorèmes peuvent établir des propriétés 
 
 ## 4. Évaluation et traitement des risques
 
-Le risque est contextuel et gradué, pas une propriété booléenne. GovCheck ne doit pas assimiler « une menace existe » à « le risque est inacceptable », ni « aucune menace n'est enregistrée » à « le système est sûr ».
+Le risque est contextuel et gradué, pas une propriété booléenne. GovCheck ne doit pas assimiler « une menace existe » à « le risque est inacceptable », ni « aucune menace n'est enregistrée » à « le système est sûr ». Les guides d'évaluation et de gestion des risques fournissent des fondements de processus utiles [R-27](../references.fr.md#r-27) [R-29](../references.fr.md#r-29), tandis que l'ingénierie de la sécurité des systèmes relie les décisions de risque au cycle de vie [R-28](../references.fr.md#r-28).
 
 Pour chaque scénario, permettre une évaluation documentée de :
 - vraisemblance/plausibilité, avec fondement et incertitude de l'estimation ;

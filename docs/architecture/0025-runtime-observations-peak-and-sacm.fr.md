@@ -7,7 +7,7 @@
 
 GovCheck devrait relier les observations de production, l'évolution du modèle de menace, les arguments d'assurance et les décisions gouvernées sur le risque au moyen d'un modèle sémantique commun et typé. PEAK et SACM sont des apports complémentaires, pas des ontologies concurrentes :
 
-- **PEAK** est une grille d'analyse de décision : Problem, Experience, Assumptions et Knowledge sont examinés comme entrées d'un processus de décision ; celui-ci produit une solution et un risque assumé [R-67](../references.fr.md#r-67).
+- **PEAK** est une grille d'analyse de décision : Problem, Experience, Assumptions et Knowledge sont examinés comme entrées d'un processus de décision ; celui-ci produit une solution et un risque assumé [R-74](../references.fr.md#r-74).
 - **SACM** est un métamodèle structuré de dossier d'assurance pour les affirmations, l'argumentation, les références aux preuves, les artefacts et la terminologie [R-34](../references.fr.md#r-34).
 - **GovCheck** doit conserver les sémantiques métier que ni PEAK ni SACM ne fournissent seuls : menaces, chemins d'attaque, contrôles, observations opérationnelles, fraîcheur des preuves, traitement du risque, autorité et décisions d'acceptation.
 
@@ -70,7 +70,7 @@ Une décision peut référencer plusieurs dossiers d'assurance. Un dossier d'ass
 
 ## 4. Les observations de production comme retour vers les modèles de menace et d'assurance
 
-Les recommandations NIST sur la surveillance continue relient explicitement la visibilité permanente sur les actifs, menaces, vulnérabilités et efficacité des contrôles aux décisions de risque [R-68](../references.fr.md#r-68). Les travaux de Rushby sur la certification à l'exécution vont plus loin : les hypothèses utilisées dans un argument d'assurance peuvent être explicitées et surveillées en production ; les observations peuvent révéler des hypothèses violées ou des comportements anormaux [R-69](../references.fr.md#r-69). La recherche ACCESS démontre une approche fondée sur SACM dans laquelle les artefacts d'ingénierie et les dossiers d'assurance évoluent ensemble et où l'assurance peut être évaluée à partir de données d'exécution [R-70](../references.fr.md#r-70). Ericsson fournit un exemple industriel de télémétrie en production alimentant l'évolution des modèles de menace et l'analyse des contrôles [R-72](../references.fr.md#r-72).
+Les recommandations NIST sur la surveillance continue relient explicitement la visibilité permanente sur les actifs, menaces, vulnérabilités et efficacité des contrôles aux décisions de risque [R-75](../references.fr.md#r-75). Les travaux de Rushby sur la certification à l'exécution vont plus loin : les hypothèses utilisées dans un argument d'assurance peuvent être explicitées et surveillées en production ; les observations peuvent révéler des hypothèses violées ou des comportements anormaux [R-76](../references.fr.md#r-76). La recherche ACCESS démontre une approche fondée sur SACM dans laquelle les artefacts d'ingénierie et les dossiers d'assurance évoluent ensemble et où l'assurance peut être évaluée à partir de données d'exécution [R-70](../references.fr.md#r-70). Ericsson fournit un exemple industriel de télémétrie en production alimentant l'évolution des modèles de menace et l'analyse des contrôles [R-72](../references.fr.md#r-72).
 
 GovCheck devrait prendre en charge cette boucle de retour :
 

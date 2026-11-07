@@ -922,3 +922,76 @@
 5. Aucune adoption implicite. La présence dans ce registre signifie « pertinent à évaluer », pas « sélectionné », « obligatoire », « compatible » ou « implémenté ».
 6. Pas de bibliographie inventée. La discussion précédente mentionnait « Agent Package Manager », mais n'a pas conservé d'URL unique et vérifiée du projet. Il n'est volontairement pas cité comme produit identifié avant établissement de son identité exacte.
 7. Garder les liens près des affirmations. Les documents d'architecture doivent lier les sources qui étayent directement leurs affirmations et renvoyer ici pour la bibliographie plus large.
+
+
+<a id="r-94"></a>
+### R-94 — Référentiels OMG de décision métier, motivation et processus
+- **Cité par :** [Architecture 0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
+- **Sources primaires :** [Catalogue des spécifications OMG](https://www.omg.org/specifications/) · [DMN 1.6](https://www.omg.org/spec/DMN/1.6/) · [DMN 1.7 Beta 1](https://www.omg.org/spec/DMN/) · [BPMN 2.0.2](https://www.omg.org/spec/BPMN/) · [CMMN 1.1](https://www.omg.org/spec/CMMN/1.1) · [Business Motivation Model 1.3](https://www.omg.org/spec/BMM/1.3/) · [SBVR 1.5](https://www.omg.org/spec/SBVR)
+- **Concepts pertinents :** exigences de décision, tables de décision et FEEL ; activités, événements et passerelles de processus ; gestion adaptative de cas ; objectifs métier et facteurs d'influence ; vocabulaires et règles métier formels.
+- **Utilité pour GovCheck :** spécifications primaires des candidats complémentaires relatifs à la logique décisionnelle, aux processus, à la gestion de cas, à la motivation et aux règles métier de l'Architecture 0027.
+- **Limite :** ces spécifications traitent de couches sémantiques différentes. Un résultat de décision, une transition de processus, une tâche de cas ou une règle métier ne confère pas à lui seul une autorité sur le dépôt, une approbation ou une acceptation du risque. Le catalogue OMG évolue ; utiliser des liens propres à chaque version pour les références épinglées. Son instantané de septembre 2026 indique DMN 1.6 comme formel et 1.7 Beta 1 comme en cours.
+
+<a id="r-95"></a>
+### R-95 — Modèles OMG d'ingénierie, de risque, de test, d'exigences, de métriques et de provenance
+- **Cité par :** [Architecture 0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
+- **Sources primaires :** [Catalogue des spécifications OMG](https://www.omg.org/specifications/) · [RAAML 1.1](https://www.omg.org/spec/RAAML/1.1) · [RAAML 1.2 Beta 1](https://www.omg.org/spec/RAAML/1.2/Beta1) · [SysML v2](https://www.omg.org/spec/SysML/2.0) · [Présentation de SysML v2](https://www.omg.org/sysml/sysmlv2/) · [UTP 2.3 Beta 1](https://www.omg.org/spec/UTP2) · [ReqIF 1.2](https://www.omg.org/spec/ReqIF/1.2) · [Structured Metrics Metamodel 1.2](https://www.omg.org/spec/SMM/1.2) · [PPMN 1.0](https://www.omg.org/spec/PPMN/)
+- **Concepts pertinents :** analyse structurée des risques et de la sécurité ; exigences, structure, comportement et vérification des systèmes ; spécification des tests fondée sur les modèles ; échange d'exigences ; définitions et résultats de mesure ; provenance des entités, activités et agents.
+- **Utilité pour GovCheck :** sources primaires des candidats couvrant les domaines d'ingénierie de l'inventaire du bootstrap, y compris les artefacts de modèle et d'échange lisibles par machine lorsqu'ils sont publiés.
+- **Limite :** ces modèles ne sont pas interchangeables et ne fournissent pas une autorité de gouvernance commune. Leurs versions et maturités diffèrent : RAAML 1.1 est formel tandis que 1.2 Beta 1 est en cours ; UTP 2.3 est Beta 1 ; SysML 2.0, ReqIF 1.2, SMM 1.2 et PPMN 1.0 sont des entrées formelles du catalogue. Vérifier la version épinglée et le support des outils avant adoption.
+
+<a id="r-96"></a>
+### R-96 — ISO/IEC/IEEE 42010:2022, description d'architecture
+- **Cité par :** [Architecture 0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
+- **Source primaire :** [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html)
+- **Concepts pertinents :** exigences relatives aux descriptions d'architecture, cadres de description, points de vue, types de modèles et conformité.
+- **Utilité pour GovCheck :** fondement normatif candidat pour structurer les descriptions d'architecture, préoccupations des parties prenantes, vues et points de vue.
+- **Limite :** elle ne prescrit ni processus d'architecture, ni langage de modélisation, ni notation, ni outil, ni format d'enregistrement ; ce n'est pas un langage universel de modélisation d'architecture.
+
+<a id="r-97"></a>
+### R-97 — ISO/IEC/IEEE 29148, ingénierie des exigences
+- **Cité par :** [Architecture 0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
+- **Sources primaires :** [ISO/IEC/IEEE DIS 29148, troisième édition (2026)](https://www.iso.org/standard/94091.html) · [ISO/IEC/IEEE 29148:2018](https://www.iso.org/standard/72089.html)
+- **Concepts pertinents :** processus du cycle de vie d'ingénierie des exigences, éléments d'information requis et leur contenu, recommandations pour les activités d'exigences des cycles de vie systèmes/logiciels.
+- **Utilité pour GovCheck :** référence candidate de processus et d'éléments d'information pour la gouvernance et la traçabilité des exigences.
+- **Limite :** la troisième édition était un projet de norme internationale (DIS) au stade enquête en septembre 2026, pas une norme internationale publiée. L'édition 2018 reste l'édition publiée précédente jusqu'à son remplacement formel. Ne pas présenter le DIS comme une norme finale.
+
+<a id="r-98"></a>
+### R-98 — ISO/IEC 25010:2023, modèle de qualité du produit
+- **Cité par :** [Architecture 0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
+- **Source primaire :** [ISO/IEC 25010:2023](https://www.iso.org/standard/78176.html)
+- **Concepts pertinents :** caractéristiques et sous-caractéristiques de qualité utilisées pour spécifier, mesurer et évaluer la qualité des produits TIC et logiciels.
+- **Utilité pour GovCheck :** vocabulaire partagé candidat pour les exigences de qualité, objectifs de test, critères d'évaluation et planification des mesures.
+- **Limite :** un modèle de qualité produit n'est ni un processus complet de management de la qualité, ni un catalogue de métriques, ni une implémentation de mesure, ni une preuve de qualité du produit.
+
+<a id="r-99"></a>
+### R-99 — Spécification SPDX
+- **Cité par :** [Architecture 0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
+- **Source primaire :** [Catalogue des spécifications SPDX](https://spdx.dev/use/specifications/)
+- **Concepts pertinents :** représentation normalisée lisible par machine des composants logiciels, paquets, fichiers, relations, licences et autres métadonnées de chaîne d'approvisionnement. Le catalogue identifie SPDX 3.0 comme version courante à la date de l'instantané.
+- **Utilité pour GovCheck :** format natif candidat pour les SBOM et les métadonnées de licences/chaîne d'approvisionnement.
+- **Limite :** un document SPDX ne prouve ni l'exhaustivité de l'inventaire, ni l'innocuité des composants, ni la fiabilité de la provenance, ni la bonne exécution des obligations de licence.
+
+<a id="r-100"></a>
+### R-100 — Spécification CycloneDX
+- **Cité par :** [Architecture 0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
+- **Source primaire :** [Vue d'ensemble de la spécification CycloneDX](https://cyclonedx.org/specification/overview/)
+- **Concepts pertinents :** modèle extensible de chaîne d'approvisionnement couvrant composants logiciels/matériels, services, dépendances, actifs cryptographiques, configurations opérationnelles et métadonnées ; représentations JSON, XML et Protocol Buffers.
+- **Utilité pour GovCheck :** format d'échange candidat pour les SBOM et les informations plus larges de chaîne d'approvisionnement, à évaluer avec SPDX selon les besoins réels du dépôt et de son écosystème.
+- **Limite :** la validité du format ne prouve ni l'exhaustivité de l'inventaire, ni l'intégrité des composants, ni l'absence de vulnérabilités, ni une provenance de build fiable. Épingler la version et le schéma exacts.
+
+<a id="r-101"></a>
+### R-101 — NIST SP 800-218, Secure Software Development Framework
+- **Cité par :** [Architecture 0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
+- **Source primaire :** [Publication finale NIST SP 800-218](https://csrc.nist.gov/pubs/sp/800/218/final)
+- **Concepts pertinents :** pratiques de haut niveau de développement logiciel sécurisé, intégrables à différents modèles de cycle de vie logiciel, avec un vocabulaire commun pour producteurs et acquéreurs.
+- **Utilité pour GovCheck :** cadre de pratiques candidat pour la sélection de capacités de développement sécurisé et l'évaluation du cycle de vie.
+- **Limite :** SSDF est un guide de pratiques, pas un métamodèle complet lisible par machine, une politique exécutable, un schéma de certification ou une preuve d'application efficace.
+
+<a id="r-102"></a>
+### R-102 — Famille W3C PROV
+- **Cité par :** [Architecture 0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
+- **Source primaire :** [Vue d'ensemble W3C PROV](https://www.w3.org/TR/prov-overview/)
+- **Concepts pertinents :** famille de modèles de provenance interopérables couvrant entités, activités, agents et relations de dérivation/attribution, avec modèle de données, ontologie, contraintes et spécifications de sérialisation.
+- **Utilité pour GovCheck :** vocabulaire et famille de représentations candidates pour la provenance des décisions, sources, artefacts générés, observations et preuves.
+- **Limite :** PROV enregistre des relations de provenance ; il n'établit ni vérité, ni admissibilité, ni intégrité, ni suffisance des informations enregistrées, et ne fournit pas d'autorité de gouvernance du dépôt.

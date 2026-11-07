@@ -67,3 +67,6 @@ No language, serialization, formal kernel, signature format, license or dependen
 - [R-41 — Dafny](../references.md#r-41)
 - [R-42 — Coq / Rocq](../references.md#r-42)
 - [R-43 — Isabelle](../references.md#r-43)
+- [R-89 — B Method and Atelier B formal specification/refinement](../references.md#r-89)
+- [R-90 — Z formal specification notation (ISO/IEC 13568)](../references.md#r-90)
+- [R-91 — Communicating Sequential Processes and FDR refinement checking](../references.md#r-91)

@@ -149,10 +149,15 @@ Ce document ne prétend pas que GovCheck implémente un moteur de décision, un 
 - [Spécification 0005 — Assurance, affirmations et preuves](../specifications/0005-assurance-model.fr.md).
 - [Architecture 0012 — Autorité normative canonique](0012-normative-authority-and-documentation.fr.md).
 - [Architecture 0013 — Métamodèle de gouvernance](0013-governance-metamodel.fr.md).
-- [Semantic Versioning 2.0.0](https://semver.org/lang/fr/spec/v2.0.0.html) ; [W3C PROV-O](https://www.w3.org/TR/prov-o/) ; [DataCite — Versioning](https://support.datacite.org/docs/versioning) ; [1EdTech Versioning Framework 1.0](https://www.imsglobal.org/spec/versioning/v1).
+- [Semantic Versioning 2.0.0](https://semver.org/lang/fr/spec/v2.0.0.html) ; [W3C PROV-O]([R-24](../references.fr.md#r-24)) ; [DataCite — Versioning]([R-25](../references.fr.md#r-25)) ; [1EdTech Versioning Framework 1.0]([R-23](../references.fr.md#r-23)).
 
 Ces références éclairent la conception ; les règles d'autorité et de compatibilité présentées ici sont des propositions propres à GovCheck, et non des exigences imposées par ces standards.
 
 ## Modèle machine-readable
 
 Un premier brouillon non normatif des enregistrements machine-readable est maintenu dans [formal/schemas/README.md](../../formal/schemas/README.md). Il sépare les événements de décision de version des relations de dépendance liées à des révisions précises. Ces schémas restent des propositions : ils ne désignent pas l'autorité, ne prouvent pas la compatibilité et n'implémentent pas l'invalidation.
+
+
+## Références bibliographiques
+
+Références externes citées dans ce document : [R-14](../references.fr.md#r-14), [R-23](../references.fr.md#r-23), [R-24](../references.fr.md#r-24), [R-25](../references.fr.md#r-25).

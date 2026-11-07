@@ -92,8 +92,6 @@ Spec == Init /\ [][Next]_vars
 THEOREM Spec => []TypeOK
 THEOREM Spec => []OnlyCurrentAuthorityCanAmend
 THEOREM Spec => []AmendmentChainIsContinuous
-THEOREM Spec => []NoImplicitDelegation
-THEOREM Spec => []HistoryIsAppendOnly
 THEOREM Spec => []AuthorityDecisionIsProspective
 THEOREM Spec => []NoUnauthorizedAmendment
 

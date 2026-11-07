@@ -20,7 +20,7 @@ The catalogue preserves sources discussed in that study and in subsequent GovChe
 - CRDT foundations and implementations (Yjs/Yrs, Automerge, Loro), y-webrtc, WebTorrent, WebRTC, ICE, STUN, TURN, Hyperswarm/HyperDHT and peer discovery;
 - OKF, RDF, OWL, SKOS, SHACL, JSON-LD, Turtle, PROV-O, Dublin Core, BIBO, DCAT, Web Annotation, ActivityStreams, SIOC, P-Plan and Schema.org;
 - mind-map interchange formats and import/export tools;
-- risk and threat modeling, assurance cases, PEAK decision reasoning, continuous monitoring and runtime assurance. The approximate TURN-relay percentage repeated in the source study is explicitly unverified and must be validated with deployment telemetry;
+- risk and threat modeling, NIST SP 800-192 access-control policy/model verification, B and Z formal specification, CSP/FDR process modeling, iStar goal modeling, deontic logic, assurance cases, PEAK decision reasoning, continuous monitoring and runtime assurance. The approximate TURN-relay percentage repeated in the source study is explicitly unverified and must be validated with deployment telemetry;
 - Git/Pijul semantics, policy engines, software-supply-chain provenance, agent workflow and isolation references.
 
 A reference is not an endorsement. A proposal, backlog, research prototype, beta specification, product page and normative standard have different evidence status. Each entry states its own limitations. A named protocol or library in the catalogue does not imply that GovCheck, Cartocortex, MoriNet or SaussuNet implements or adopts it.

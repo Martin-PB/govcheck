@@ -72,6 +72,8 @@ La spécification 0002 décrit identité du paquet, identifiants stables des rè
 
 La documentation des schémas précise que la validation structurelle n'établit ni l'autorité ni la correction sémantique, et que les décisions de version autorisées restent `unknown` tant que la délégation ne peut pas être résolue à partir d'un registre d'autorité adopté. C'est une posture correcte de blocage par défaut, mais cela signifie que les enregistrements actuels ne suffisent pas encore à décider opérationnellement une approbation.
 
+L'audit ne trouve pas non plus de vérification des modèles de politiques de contrôle d'accès selon une démarche de type NIST SP 800-192 : cohérence, complétude, propriétés de sûreté et dérivation systématique de tests ne sont pas actuellement établies. Le vocabulaire obligation/permission/interdiction est documenté, mais aucun raisonnement déontique ni moteur de résolution des conflits normatifs n'est implémenté. L'évaluation de règles exécutables de type OPA/Cedar ne prouverait pas à elle seule leur correction normative. Voir [R-88](../references.fr.md#r-88) et [R-93](../references.fr.md#r-93).
+
 ## 5. Ce qu'il faut reprendre de Knowledge Catalog — et seulement cela
 
 Le motif transposable utile est celui des **métadonnées de gouvernance obligatoires selon le type d'objet**, pas l'architecture produit de catalogue de données de Google.

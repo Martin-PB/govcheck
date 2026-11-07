@@ -21,9 +21,10 @@ Reject or defer a candidate if it:
 | Decision | Candidate families to compare (illustrative, not exhaustive) | Evaluation criteria |
 |---|---|---|
 | Implementation language | Rust, Go, OCaml, Haskell, Kotlin/JVM, Python | Static guarantees, portability, binary size, startup, ecosystem, contributors, FFI, supply-chain, long-term maintenance |
+| Requirements modeling | KAOS/GORE, iStar 2.0, structured goal/actor models | Goal decomposition, actor dependencies, traceability to norms/properties, stakeholder validation, semantic drift |
 | Canonical serialization | JSON + JSON Schema, YAML subset, TOML, CBOR, custom canonical encoding | Determinism, duplicate-key policy, canonical bytes, schema evolution, comments/human authoring, tooling, signature compatibility |
 | Rule semantics | Fixed typed predicates, restricted expression DSL, logic/rule engine | Decidability/bounds, explainability, compositionality, safe evaluation, formalization, extensibility |
-| Formal analysis | TLA+, Alloy, PlusCal, Lean, Coq, Isabelle, executable state machines | Which claims each method can establish, TCB, automation, contributor skills, reproducibility |
+| Formal analysis | TLA+, Alloy, PlusCal, SPIN, CSP/FDR, B, Z, Lean, Coq, Isabelle, executable state machines | Which claims each method can establish, TCB, automation, contributor skills, reproducibility |
 | Evidence integrity | Content hashes, signed attestations, transparency logs, in-toto/SLSA-compatible statements | State binding, identity, revocation, offline use, privacy, interoperability, operational burden |
 | Local interface | Single binary, platform packages, source distribution | Installation, reproducibility, offline operation, update trust, platform coverage |
 | Forge integration | GitHub/GitLab/Forgejo/Gitea/Bitbucket adapters; generic status/check protocols | Required gate capability, exact state binding, bypass visibility, API stability, self-hosting |

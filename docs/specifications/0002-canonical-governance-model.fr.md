@@ -39,3 +39,11 @@ Une projection indique révision canonique et version du générateur/vérificat
 Le modèle est une donnée, pas du code : aucun script arbitraire du dépôt n'est exécuté. Tout futur langage d'expression sera typé, borné, déterministe et limité en ressources. Les faits externes portent source et fraîcheur ; le modèle ne prouve pas leur vérité. Sérialisation, schéma, langage d'expression, canonicalisation, signatures et distribution restent à décider après comparaison.
 
 Une implémentation devra démontrer IDs stables, composition déterministe, conflits explicites, exceptions bornées, blocage en cas d'indétermination, versions épinglées, détection de dérive et explications reproductibles. Ce sont des objectifs, pas des garanties actuelles.
+
+## Références bibliographiques
+
+- [R-01 — contrôles NIST SP 800-53 de sécurité et de confidentialité](../references.fr.md#r-01)
+- [R-09 — moteur de décision de politiques Open Policy Agent](../references.fr.md#r-09)
+- [R-10 — langage d’autorisation Cedar](../references.fr.md#r-10)
+- [R-13 — contrats structurels JSON Schema](../references.fr.md#r-13)
+- [R-17 — métadonnées de gouvernance typées et relations traçables](../references.fr.md#r-17)

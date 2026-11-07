@@ -5,7 +5,7 @@
 | Theme | Entries |
 |---|---|
 | Governance authority, separation of duties and secure development | R-01–R-03, R-11 |
-| Assurance cases, safety arguments and formal methods | R-04–R-05, R-20, R-27–R-36 |
+| Assurance cases, assurance regimes and goal-oriented requirements | R-04–R-05, R-20, R-27–R-28, R-36 |
 | Model checking and program-verification alternatives | R-29–R-35 |
 | Evidence provenance and software supply chain | R-06–R-08 |
 | Policy engines and authorization | R-09–R-10 |
@@ -13,13 +13,13 @@
 | Artifact identity, versioning, releases and reproducibility | R-14–R-15, R-21, R-23–R-26 |
 | Governance metadata and catalogues | R-17 |
 | Agent workflow systems assessed as fixtures | R-18–R-19 |
-| Version-control semantics and collaboration | R-22, R-37–R-42, R-54 |
+| Version-control semantics | R-22 |
+| CRDTs, real-time collaboration and network transport | R-37–R-42, R-58 |
 | Knowledge representation and interoperability | R-43–R-53 |
 | Integration project repositories and studies | R-54 |
 | Mind-map and graph interchange formats | R-55 |
 | Cloud storage provider APIs | R-56 |
 | Browser-local persistence and WebAssembly | R-57 |
-| Desktop peer discovery and DHT | R-58 |
 
 ## Full reference entries
 

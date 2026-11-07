@@ -67,3 +67,4 @@ The integration study and its external technical sources are catalogued separate
 - [R-84 — RDF 1.1 Turtle syntax](../references.md#r-84)
 - [R-85 — SIOC online-community ontology](../references.md#r-85)
 - [R-86 — Schema.org DigitalDocument vocabulary](../references.md#r-86)
+- [R-87 — WebTorrent browser peer-to-peer transport and discovery](../references.md#r-87)

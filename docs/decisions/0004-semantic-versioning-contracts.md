@@ -30,7 +30,7 @@ The repository also contains two distinct deliverables: the GovCheck product and
 - Existing **catalogueVersion: 1**, **schemaVersion: 1**, Git tags and historical revisions retain their current meanings. No existing value is renamed or retroactively converted to SemVer.
 - No product or package version is assigned by this ADR. Each first release requires its own initial-publication decision, declared contract, authority approval and immutable release binding.
 - The version-decision/dependency schemas and validator remain separate implementation work. Their structural validity cannot establish semantic compatibility or authority.
-- This decision depends on PR #21, which records the current bootstrap authority regime in Architecture 0023. Merge that authority record before this ADR.
+- PR #21 has been merged. Its [Architecture 0023](../architecture/0023-bootstrap-governance-authority.md) record is now present on main and provides the authority basis for review of this ADR.
 
 ## References
 

@@ -194,7 +194,7 @@
 
 <a id="r-23"></a>
 ### R-23 — IMS Global / 1EdTech versioning specifications
-- **Primary source:** [1EdTech specifications](https://www.1edtech.org/standards) (formerly IMS Global; consult the specific versioning specification before relying on a particular rule).
+- **Primary source:** [1EdTech specifications](https://www.imsglobal.org/spec/versioning/v1) (formerly IMS Global; consult the specific versioning specification before relying on a particular rule).
 - **Relevant concepts:** version identifiers and compatibility conventions for structured, published artifacts.
 - **Use in GovCheck:** comparative input to the category-specific artifact-versioning analysis in Architecture 0017–0018.
 - **Limit:** a domain-specific education-technology specification family, not a universal governance-artifact versioning standard.

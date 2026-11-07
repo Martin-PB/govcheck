@@ -167,7 +167,7 @@
 <a id="r-11"></a>
 
 ### R-11 — NIST SSDF : page du projet
-- **Cité par :** aucune référence actuelle dans les documents de cette branche.
+- **Cité par :** [0013](architecture/0013-governance-metamodel.fr.md), [0022](architecture/0022-governance-capability-audit.fr.md)
 
 - **Source primaire :** [Projet NIST SSDF et publications](https://csrc.nist.gov/projects/ssdf)
 - **Concepts pertinents :** pratiques de développement sécurisé et correspondances avec des pratiques établies.

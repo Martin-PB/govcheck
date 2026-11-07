@@ -97,4 +97,4 @@ Explicit instruction from the project owner in the GovCheck governance discussio
 
 ## Bibliographic references
 
-External sources cited by this record: [R-01](../references.md#r-01), [R-03](../references.md#r-03).
+External sources cited by this record: [R-01 — NIST SP 800-53 separation-of-duties and access-control controls](../references.md#r-01), and [R-03 — GitHub protected-branch enforcement and bypass limitations](../references.md#r-03).

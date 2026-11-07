@@ -857,6 +857,54 @@
 - **Use in GovCheck:** preserves WebTorrent as a transport/discovery option discussed in the Cartocortex PR #28 transport study, distinct from y-webrtc and Hyperswarm/HyperDHT.
 - **Limit:** WebTorrent is a content-sharing protocol and implementation, not a generic presence or CRDT synchronization service. Browser WebTorrent peers communicate only with compatible WebTorrent/WebRTC clients; discovery, room security, application authorization and persistence must be addressed separately. No adoption is implied.
 
+<a id="r-88"></a>
+### R-88 — NIST SP 800-192: Verification and Test Methods for Access Control Policies/Models
+- **Cited by:** [ADR 0002](decisions/0002-study-placement.md), [0013](architecture/0013-governance-metamodel.md), [0015](architecture/0015-governance-conformance-and-validation-plan.md), [0022](architecture/0022-governance-capability-audit.md), [Spec 0002](specifications/0002-canonical-governance-model.md)
+- **Primary sources:** [NIST SP 800-192 publication record](https://csrc.nist.gov/pubs/sp/800/192/final) · [NIST DOI](https://doi.org/10.6028/NIST.SP.800-192)
+- **Relevant concepts:** verification and testing of access-control policies and models; inconsistency, incompleteness, safety requirements, black-box/white-box model checks and tests derived from policy models.
+- **Use in GovCheck:** direct support for validating normative policy models before testing their evaluators or enforcement mechanisms. An executable policy is not necessarily a correct, complete or coherent policy.
+- **Limit:** the publication focuses on access-control policies/models and their implementations. It is not a complete governance metamodel, an authorization language, or evidence that OPA/Cedar policies are verified by GovCheck.
+
+<a id="r-89"></a>
+### R-89 — B Method and Atelier B
+- **Cited by:** [ADR 0002](decisions/0002-study-placement.md), [0005](specifications/0005-assurance-model.md), [0007](architecture/0007-technology-decision-framework.md)
+- **Primary sources:** [J.-R. Abrial, The B-Book (Cambridge University Press)](https://www.cambridge.org/core/books/bbook/D0FA939B9F72E49DBA14BA0F68491118) · [Atelier B B-method presentation and documentation](https://www.atelierb.eu/en/presentation-of-the-b-method/)
+- **Relevant concepts:** set-theoretic formal specification, abstract machines, invariants, generalized substitutions, proof obligations, refinement and construction of implementations from progressively refined models.
+- **Use in GovCheck:** preserves B as a candidate formal-specification/refinement method in the wider assurance-method inventory, especially where state and invariant preservation are central.
+- **Limit:** proving B-model obligations does not by itself establish that natural-language requirements are complete, that the model captures the intended system, or that generated/handwritten code and runtime behavior conform. No B toolchain is selected or adopted.
+
+<a id="r-90"></a>
+### R-90 — Z formal specification notation (ISO/IEC 13568:2002)
+- **Cited by:** [ADR 0002](decisions/0002-study-placement.md), [0005](specifications/0005-assurance-model.md), [0007](architecture/0007-technology-decision-framework.md)
+- **Primary sources:** [ISO/IEC 13568:2002 — Z syntax, type system and semantics](https://www.iso.org/standard/21573.html) · [Technical Corrigendum 1:2007](https://www.iso.org/standard/46112.html)
+- **Relevant concepts:** mathematical notation for formal specifications; syntax, type system, semantics and a toolkit of mathematical operators.
+- **Use in GovCheck:** records Z as a candidate formal-specification notation for precise state/data constraints and abstract system descriptions.
+- **Limit:** ISO/IEC 13568 standardizes the notation's syntax, type system and semantics; it explicitly does not prescribe a method for using Z. A notation standard is not a proof of a particular model or its refinement to implementation. The ISO record states that the 2002 edition was reviewed and confirmed in 2026.
+
+<a id="r-91"></a>
+### R-91 — Communicating Sequential Processes (CSP) and FDR
+- **Cited by:** [ADR 0002](decisions/0002-study-placement.md), [0005](specifications/0005-assurance-model.md), [0007](architecture/0007-technology-decision-framework.md)
+- **Primary sources:** [C. A. R. Hoare, Communicating Sequential Processes (Oxford electronic edition)](https://www.cs.ox.ac.uk/ucs/hoarebook.pdf) · [FDR4 model checker documentation](https://cocotec.io/fdr/manual/index.html)
+- **Relevant concepts:** process algebra for communicating concurrent components; traces, failures and divergences; refinement checking, deadlock/livelock and safety/liveness analysis with FDR.
+- **Use in GovCheck:** candidate formalism for concurrency and interaction models where process behavior and refinement are the claim under review.
+- **Limit:** CSP/FDR addresses concurrent process behavior; it is not a general-purpose governance policy language, an implementation proof for arbitrary code, or a substitute for lifecycle/authority modeling. The CSP here is Hoare's process algebra, not the unrelated CSP educational edition name used by Atelier B.
+
+<a id="r-92"></a>
+### R-92 — iStar 2.0 goal-oriented requirements modeling
+- **Cited by:** [ADR 0002](decisions/0002-study-placement.md), [0013](architecture/0013-governance-metamodel.md)
+- **Primary sources:** [Dalpiaz, Franch and Horkoff, iStar 2.0 Language Guide (arXiv:1605.07767)](https://arxiv.org/abs/1605.07767) · [iStar language community guide](https://sites.google.com/site/istarlanguage/)
+- **Relevant concepts:** actor-centered goal modeling, intentional and social dependencies, goals, qualities, tasks and resources; a shared core vocabulary for goal-oriented requirements engineering.
+- **Use in GovCheck:** preserves iStar as a candidate complement to KAOS/GORE for relating stakeholder goals, actors, dependencies and derived requirements.
+- **Limit:** the guide describes a community-defined core language and notes its intended evolution. Goal modeling does not itself prove feasibility, resolve normative authority, verify implementation or quantify accepted risk. No iStar tool or notation is selected.
+
+<a id="r-93"></a>
+### R-93 — Deontic logic and normative modalities
+- **Cited by:** [ADR 0002](decisions/0002-study-placement.md), [0013](architecture/0013-governance-metamodel.md), [0015](architecture/0015-governance-conformance-and-validation-plan.md), [0022](architecture/0022-governance-capability-audit.md), [Spec 0002](specifications/0002-canonical-governance-model.md)
+- **Primary sources:** [G. H. von Wright, “Deontic Logic”, Mind (1951)](https://doi.org/10.1093/mind/LX.237.1) · [Stanford Encyclopedia of Philosophy, Deontic Logic](https://plato.stanford.edu/entries/logic-deontic/)
+- **Relevant concepts:** formal reasoning about obligation, permission, prohibition, optionality, omission and related normative statuses.
+- **Use in GovCheck:** provides a logical vocabulary for expressing obligations, permissions and prohibitions in a normative governance model, and for distinguishing these modalities from descriptive facts.
+- **Limit:** deontic logic alone does not define who has authority to issue a rule, its scope, priority, delegation, exception, effective time, evidence or enforcement. Standard systems also have known paradoxes and expressive limitations; the logic must be embedded in a richer, explicitly governed model.
+
 ## Reference discipline and unresolved provenance
 
 1. Prefer the standard body, publisher, official documentation or source repository over secondary summaries.

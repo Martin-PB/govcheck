@@ -43,4 +43,5 @@ Les futurs tests/modèles formels couvriront transitions illégales, preuves pé
 
 ## Références bibliographiques
 
-- [R-22 — Sémantiques natives Git et Pijul](../references.fr.md#r-22)
+- [R-05 — modélisation par transitions d'états TLA+ / TLC](../references.fr.md#r-05)
+- [R-22 — sémantiques natives Git et Pijul](../references.fr.md#r-22)

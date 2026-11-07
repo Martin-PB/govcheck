@@ -140,9 +140,9 @@ La première décision d'implémentation porte donc sur l'autorité et l'adoptio
 - [R-03](../references.fr.md#r-03) : point d'application pratique et limites de contournement.
 - [R-09](../references.fr.md#r-09) et [R-10](../references.fr.md#r-10) : mécanismes de décision de politique, pas des systèmes complets de gouvernance ou d'assurance.
 - [R-17](../references.fr.md#r-17) : inspiration limitée aux métadonnées typées et aux relations traçables.
-- Contexte et limites : [registre GovCheck des références](../references.fr.md) et [version anglaise](../references.fr.md).
+- Bibliographie complète, index thématique et limites des sources : [catalogue central des références](../references.fr.md) et [version anglaise du catalogue central](../references.md).
 
 
 ## Références bibliographiques
 
-Références externes citées dans ce document : [R-01](../references.fr.md#r-01), [R-02](../references.fr.md#r-02), [R-03](../references.fr.md#r-03), [R-09](../references.fr.md#r-09), [R-10](../references.fr.md#r-10), [R-17](../references.fr.md#r-17).
+Références externes citées dans ce document : [R-01 — séparation des responsabilités et gouvernance des accès](../references.fr.md#r-01), [R-02 — pratiques de développement sécurisé et traçabilité](../references.fr.md#r-02), [R-03 — limites des mécanismes d'application et possibilités de contournement](../references.fr.md#r-03), [R-09 — moteur de décision de politiques Open Policy Agent](../references.fr.md#r-09), [R-10 — langage de politiques et modèle d'autorisation Cedar](../references.fr.md#r-10), et [R-17 — métadonnées de gouvernance typées et relations traçables](../references.fr.md#r-17).

@@ -167,3 +167,4 @@ Références externes citées dans ce document :
 - [R-23 — spécifications de versionnement 1EdTech](../references.fr.md#r-23)
 - [R-24 — ontologie de provenance W3C PROV-O](../references.fr.md#r-24)
 - [R-25 — recommandations de versionnement DataCite](../references.fr.md#r-25)
+- [R-21 — recommandations de release et de reproductibilité des logiciels de recherche](../references.fr.md#r-21)

@@ -39,6 +39,7 @@
 | Interopérabilité des instructions d'agents et workflows pilotés par les spécifications | R-104 |
 | Recherches sur le policy-as-code et la gouvernance des agents à l'exécution | R-105 |
 | Sécurité des agents IA et de MCP — recommandations OWASP | R-106 |
+| Emplacement et syntaxe des workflows GitHub Actions | R-107 |
 
 ## Entrées bibliographiques détaillées
 
@@ -74,6 +75,7 @@
 - **Instructions d'agents et workflows pilotés par spécifications :** R-104.
 - **Recherches sur le policy-as-code, l'assurance continue et la gouvernance MCP :** R-105.
 - **Sécurité des agents IA et de MCP :** R-106.
+- **Emplacement des workflows GitHub Actions :** R-107.
 
 ## Normes, recommandations publiques et spécifications industrielles
 
@@ -1033,3 +1035,10 @@
 - **Utilité pour GovCheck :** étaye la distinction entre les instructions en langage naturel destinées aux agents et les contrôles effectivement appliqués aux frontières des outils, des passerelles, des identités et du système d'exploitation.
 - **Limite :** il s'agit d'un guide d'ingénierie évolutif, pas d'une certification ni d'une preuve d'implémentation. Les recommandations doivent être adaptées au harness, à l'hôte d'exécution, à la surface des outils et au modèle de menace réels ; le guide ne démontre pas qu'un déploiement donné applique tous les contrôles cités.
 
+<a id="r-107"></a>
+### R-107 — Emplacement et syntaxe des workflows GitHub Actions
+- **Cité par :** [ADR 0003](decisions/0003-two-level-governance.fr.md)
+- **Sources primaires :** [Syntaxe des workflows GitHub Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax) · [Concepts des workflows GitHub Actions](https://docs.github.com/en/actions/concepts/workflows-and-actions/workflows)
+- **Concepts pertinents :** les définitions de workflows GitHub Actions sont des fichiers YAML placés dans le répertoire `.github/workflows/` à la racine du dépôt ; GitHub découvre les workflows à cet emplacement et les évalue en fonction des événements du dépôt.
+- **Utilité pour GovCheck :** étaye la contrainte de l'ADR 0003 selon laquelle le contenu réutilisable du package produit ne peut pas, à lui seul, déplacer un workflow GitHub Actions : le processus de bootstrap/synchronisation doit matérialiser le workflow au chemin requis à la racine du dépôt.
+- **Limite :** il s'agit d'une contrainte de la plateforme GitHub Actions, pas d'une exigence générale de CI/CD. Elle ne démontre ni que le workflow est activé, fiable, protégé contre les contournements, correctement configuré ou exécuté avec succès.

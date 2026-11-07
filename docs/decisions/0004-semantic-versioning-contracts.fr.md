@@ -30,7 +30,7 @@ Le dépôt contient également deux livrables distincts : le produit GovCheck et
 - Les valeurs existantes **catalogueVersion: 1**, **schemaVersion: 1**, les tags Git et les révisions historiques conservent leur signification actuelle. Aucune valeur existante n'est renommée ni convertie rétroactivement en SemVer.
 - Cet ADR n'attribue aucune version au produit ni au package. Chaque première release exige sa propre décision d'initial publication, un contrat déclaré, l'approbation de l'autorité et un lien immuable vers la publication.
 - Les schémas de décision de version/dépendance et leur validateur constituent un travail d'implémentation distinct. Leur validité structurelle ne peut établir la compatibilité sémantique ni l'autorité.
-- Cette décision dépend de la PR #21, qui enregistre le régime d'autorité initial dans l'Architecture 0023. Fusionner cet enregistrement d'autorité avant cet ADR.
+- La PR #21 a été fusionnée. Son enregistrement [Architecture 0023](../architecture/0023-bootstrap-governance-authority.fr.md) figure désormais dans main et fournit le fondement d'autorité pour la revue de cet ADR.
 
 ## Références
 

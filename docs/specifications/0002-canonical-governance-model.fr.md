@@ -47,3 +47,5 @@ Une implémentation devra démontrer IDs stables, composition déterministe, con
 - [R-10 — langage d’autorisation Cedar](../references.fr.md#r-10)
 - [R-13 — contrats structurels JSON Schema](../references.fr.md#r-13)
 - [R-17 — métadonnées de gouvernance typées et relations traçables](../references.fr.md#r-17)
+- [R-88 — vérification NIST SP 800-192 des modèles/politiques de contrôle d'accès](../references.fr.md#r-88)
+- [R-93 — logique déontique et modalités normatives](../references.fr.md#r-93)

@@ -63,4 +63,16 @@ Define canonical serialization and duplicate-key handling; evaluator isolation a
 
 ## Bibliographic references
 
-External references used in this record: [R-01 — NIST SP 800-53 security and privacy controls](../references.md#r-01), [R-02 — NIST secure software development practices](../references.md#r-02), [R-06 — in-toto software supply-chain provenance](../references.md#r-06), [R-07 — SLSA supply-chain assurance](../references.md#r-07).
+- [R-01 — NIST SP 800-53 security and privacy controls](../references.md#r-01)
+- [R-02 — NIST SP 800-218 secure software development practices](../references.md#r-02)
+- [R-06 — in-toto software supply-chain provenance](../references.md#r-06)
+- [R-07 — SLSA software supply-chain assurance](../references.md#r-07)
+- [R-27 — NIST SP 800-30 risk assessment](../references.md#r-27)
+- [R-28 — NIST SP 800-160 trustworthy secure-systems engineering](../references.md#r-28)
+- [R-29 — ISO 31000 risk-management guidelines](../references.md#r-29)
+- [R-30 — MITRE ATT&CK adversary tactics and techniques](../references.md#r-30)
+- [R-31 — Microsoft SDL threat-modeling guidance](../references.md#r-31)
+- [R-32 — Schneier attack-tree method](../references.md#r-32)
+- [R-72 — Runtime threat modeling from production observations](../references.md#r-72)
+- [R-75 — NIST continuous security monitoring](../references.md#r-75)
+- [R-76 — Runtime certification and monitoring assumptions](../references.md#r-76)

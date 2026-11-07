@@ -317,7 +317,7 @@ En cas de conflit, l'autorité normative approuvée existante prévaut jusqu'à 
 
 ## 12. Références externes
 
-- [Semantic Versioning 2.0.0](https://semver.org/lang/fr/spec/v2.0.0.html) : exige une API publique déclarée et définit l'immutabilité des versions publiées ainsi que les incréments fondés sur la compatibilité.
+- [Semantic Versioning 2.0.0](../references.fr.md#r-14) : exige une API publique déclarée et définit l'immutabilité des versions publiées ainsi que les incréments fondés sur la compatibilité.
 - [R-23](../references.fr.md#r-23) : applique séparément les principes dérivés de SemVer aux spécifications, documents, artefacts de spécification, modèles de données et logiciels.
 - [R-24](../references.fr.md#r-24) : vocabulaire de provenance pour les entités, activités, agents et dérivations ; il complète le versionnement sans le remplacer.
 - [R-25](../references.fr.md#r-25) : distingue versions, identifiants associés et enregistrements conceptuels ; les responsables déterminent ce qui constitue une version majeure/mineure.

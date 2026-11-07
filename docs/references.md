@@ -10,10 +10,11 @@
 | PEAK decision model | R-74 |
 | Continuous monitoring and runtime assurance | R-70, R-72, R-75–R-76 |
 | Assurance 2.0 and SACM evolution | R-71, R-73 |
-| Assurance regimes and goal-oriented requirements | R-35–R-36, R-44 |
-| Model checking and program-verification alternatives | R-37–R-43 |
+| Assurance regimes and goal-oriented requirements | R-35–R-36, R-44, R-92 |
+| Model checking and program-verification alternatives | R-37–R-43, R-89–R-91 |
 | Evidence provenance and software supply chain | R-06–R-08 |
-| Policy engines and authorization | R-09–R-10 |
+| Policy engines, authorization and policy-model verification | R-09–R-10, R-88 |
+| Normative logic and deontic modalities | R-93 |
 | Schemas and interface contracts | R-13, R-16 |
 | Artifact identity, versioning, releases and reproducibility | R-14–R-15, R-21, R-23–R-26 |
 | Governance metadata and catalogues | R-17 |
@@ -46,9 +47,11 @@
 ## How to use these references
 
 - **Normative authority and separation of duties:** R-01, R-02, R-03.
-- **Formal models, proofs and assurance arguments:** R-04, R-05.
+- **Formal models, proofs and assurance arguments:** R-04, R-05, R-89–R-91.
 - **Evidence provenance and software supply chain:** R-06, R-07, R-08.
 - **Executable policy and authorization:** R-09, R-10.
+- **Policy-model verification before enforcement:** R-88.
+- **Normative modalities (obligation, permission, prohibition):** R-93.
 - **Repository security posture and enforcement boundary:** R-03, R-08, R-18, R-19.
 - **Canonical schemas, versioning and release identity:** R-13, R-14, R-15, R-16.
 - **External governance/catalogue pattern:** R-17.
@@ -58,6 +61,7 @@
 - **Knowledge representation and linked-data interchange:** R-51–R-61, R-83–R-86.
 - **Native VCS semantics and collaboration adapters:** R-22.
 - **Threat modeling, attack paths and risk management:** R-27–R-32.
+- **Goal-oriented requirements modeling:** R-44, R-92.
 - **Security assurance cases and metamodels:** R-33–R-34.
 - **PEAK decision model:** R-74.
 - **Continuous monitoring and runtime assurance:** R-70, R-72, R-75–R-76.

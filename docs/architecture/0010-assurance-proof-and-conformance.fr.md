@@ -120,4 +120,4 @@ Cette restitution développe les distinctions des spécifications 0002–0005 et
 
 ## Références bibliographiques
 
-Références externes utilisées dans ce document : [R-04](../references.fr.md#r-04), [R-05](../references.fr.md#r-05), [R-06](../references.fr.md#r-06), [R-20](../references.fr.md#r-20).
+Références externes utilisées dans ce document : [R-04 — arguments d’assurance selon Goal Structuring Notation](../references.fr.md#r-04) ; [R-05 — spécification TLA+ et model checking TLC](../references.fr.md#r-05) ; [R-06 — provenance de chaîne d’approvisionnement in-toto](../references.fr.md#r-06) ; [R-20 — démonstration de théorèmes Lean et frontière du noyau de preuve](../references.fr.md#r-20).

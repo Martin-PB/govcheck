@@ -100,6 +100,14 @@ The beta issue trail gives a useful implementation checklist (issue identifiers 
 | Typed NamedValue | SACM24-80 | Preserve supported scalar/structured value types without flattening to strings. |
 | SACM views | SACM24-78 | Preserve views and their links to underlying model elements. |
 | Artifact relationships | SACM24-82 | Preserve precise relationship targets and semantics. |
+| Claim declaration kinds and removal of obsolete relationship constructs | SACM24-12, SACM24-15 | Preserve the exact 2.4 declaration-kind and relationship model; do not emulate removed 2.3 constructs. |
+| Model identity and identity changes | SACM24-17, SACM24-41 | Preserve model identity and explicit identity-change semantics. |
+| Grouping and package refactoring | SACM24-16, SACM24-11 | Preserve the 2.4 grouping and package ownership rules. |
+| External references and artifact-reference semantics | SACM24-10, SACM24-14 | Preserve external-reference metadata and exact Artifact/ArtifactReference distinctions. |
+| Multilingual and expression values | SACM24-6, SACM24-37 | Preserve language-aware values and the distinction between element name and content. |
+| NamedValue ownership and additional value forms | SACM24-72, SACM24-80 | Preserve ownership and typed values rather than flattening them. |
+| Date/time and duration semantics | SACM24-39, SACM24-79 | Preserve date formats, occurrence semantics, duration and time units. |
+| Claim/argument completeness and development state | SACM24-73, SACM24-74 | Preserve the beta's entirety and needs-development constructs/states as defined. |
 | Conformance clause and migration | SACM24-105, SACM24-98 | Separate conformance points and implement the documented 2.3-to-2.4 migration path. |
 
 ## 4. GovCheck-to-SACM integration contract

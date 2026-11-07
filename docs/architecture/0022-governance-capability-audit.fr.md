@@ -146,3 +146,5 @@ La première décision d'implémentation porte donc sur l'autorité et l'adoptio
 ## Références bibliographiques
 
 Références externes citées dans ce document : [R-01 — séparation des responsabilités et gouvernance des accès](../references.fr.md#r-01), [R-02 — pratiques de développement sécurisé et traçabilité](../references.fr.md#r-02), [R-03 — limites des mécanismes d'application et possibilités de contournement](../references.fr.md#r-03), [R-09 — moteur de décision de politiques Open Policy Agent](../references.fr.md#r-09), [R-10 — langage de politiques et modèle d'autorisation Cedar](../references.fr.md#r-10), et [R-17 — métadonnées de gouvernance typées et relations traçables](../references.fr.md#r-17).
+- [R-88 — vérification NIST SP 800-192 des modèles/politiques de contrôle d'accès](../references.fr.md#r-88)
+- [R-93 — logique déontique et modalités normatives](../references.fr.md#r-93)

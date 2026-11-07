@@ -4,9 +4,9 @@
 
 ## 1. Périmètre et désambiguïsation
 
-Le nom « Writ » est ambigu. Cette évaluation concerne [`infinri/Writ`]([R-18](../references.fr.md#r-18)), décrit par son dépôt comme un runtime de gouvernance pour Claude Code. Elle n’évalue pas les produits distincts writ.now, withwrit.com ou usewrit.app.
+Le nom « Writ » est ambigu. Cette évaluation concerne [`infinri/Writ`](../references.fr.md#r-18), décrit par son dépôt comme un runtime de gouvernance pour Claude Code. Elle n’évalue pas les produits distincts writ.now, withwrit.com ou usewrit.app.
 
-Privateer désigne ici [`privateer-agent/privateer-agent`]([R-19](../references.fr.md#r-19)), une distribution MIT et multi-fournisseurs de l’agent de programmation Pi. Il ne s’agit pas d’autres produits portant le même nom.
+Privateer désigne ici [`privateer-agent/privateer-agent`](../references.fr.md#r-19), une distribution MIT et multi-fournisseurs de l’agent de programmation Pi. Il ne s’agit pas d’autres produits portant le même nom.
 
 Instantanés examinés :
 - Writ `main` : `ebdafe5450b201339f81e717ed104e6bcfd3fe3e` (3 novembre 2026).

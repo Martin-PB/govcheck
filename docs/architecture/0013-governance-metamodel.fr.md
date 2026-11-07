@@ -28,6 +28,8 @@ Le métamodèle préserve les distinctions entre intention, obligation, proprié
 
 Une exigence se raffine en sous-exigences et se relie à des propriétés. Les propriétés sont examinées par des méthodes ; les méthodes produisent des preuves ; les affirmations dépendent de preuves et d’hypothèses. Les relations sont explicites, pas déduites de la proximité documentaire ou du nommage.
 
+Les enregistrements de décision doivent rendre leurs éléments de raisonnement inspectables. Le modèle PEAK fournit un cadre utile : Problem (problème), Experience (expérience), Assumptions (hypothèses) et Knowledge (connaissances) sont consignés séparément avant d'évaluer une solution et le risque accepté. Il complète les relations typées du métamodèle entre décisions, hypothèses, affirmations et preuves ; ce n'est ni un score de risque, ni un argument d'assurance, ni une attribution d'autorité. Les hypothèses restent réfutables et les observations peuvent les remettre en cause. Voir [R-74](../references.fr.md#r-74).
+
 ## Force normative
 
 Distinguer obligation, interdiction, permission explicite, invariant/contrainte, exigence de preuve, exigence de processus/approbation et recommandation non contraignante. L’absence d’interdiction ne vaut pas permission. Une recommandation ne bloque pas l’acceptation. Les règles dérogeables exigent une sémantique explicite de priorité/exception ; conflits et précédences non résolues restent visibles.
@@ -76,5 +78,9 @@ Vocabulaire ontologique, sérialisation, représentation du graphe, logique, lan
 
 ## Références bibliographiques
 
-Références externes utilisées dans ce document : [R-01 — contrôles NIST de sécurité et de confidentialité](../references.fr.md#r-01) ; [R-09 — moteur de décision de politiques Open Policy Agent](../references.fr.md#r-09) ; [R-10 — langage d’autorisation Cedar](../references.fr.md#r-10) ; [R-13 — contrats structurels JSON Schema](../references.fr.md#r-13).
+- [R-01 — contrôles NIST de sécurité et de confidentialité](../references.fr.md#r-01)
+- [R-09 — moteur de décision de politiques Open Policy Agent](../references.fr.md#r-09)
+- [R-10 — langage d’autorisation Cedar](../references.fr.md#r-10)
+- [R-13 — contrats structurels JSON Schema](../references.fr.md#r-13)
 - [R-44 — KAOS et ingénierie des exigences orientée objectifs](../references.fr.md#r-44)
+- [R-74 — modèle PEAK de décision de projet](../references.fr.md#r-74)

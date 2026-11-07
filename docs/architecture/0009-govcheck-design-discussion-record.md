@@ -287,4 +287,4 @@ This document is a consolidated rationale and decision index, not a second norma
 - [R-18 — Writ agent-workflow fixture assessment](../references.md#r-18)
 - [R-19 — Privateer agent-workflow fixture assessment](../references.md#r-19)
 - [R-22 — Native Git and Pijul semantics](../references.md#r-22)
-- [R-29 — Alloy relational modeling and analysis](../references.md#r-29)
+- [R-37 — Alloy relational modeling and analysis](../references.md#r-37)

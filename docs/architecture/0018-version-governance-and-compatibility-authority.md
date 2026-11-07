@@ -160,4 +160,4 @@ A non-normative first draft of the machine-readable records is maintained in [fo
 
 ## Bibliographic references
 
-External sources cited by this record: [R-14, [R-15](../references.md#r-15)](../references.md#r-14), [R-23](../references.md#r-23), [R-24](../references.md#r-24), [R-25](../references.md#r-25).
+External sources cited by this record: [R-14](../references.md#r-14), [R-15](../references.md#r-15), [R-23](../references.md#r-23), [R-24](../references.md#r-24), [R-25](../references.md#r-25).

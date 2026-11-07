@@ -3,7 +3,7 @@ EXTENDS Naturals
 
 CONSTANTS
   Claims, Evidence, Dependencies, Versions, Actors, AuthorizedReviewers,
-  RootClaim, ClaimChildren, ClaimEvidence, ClaimEvidenceClosure, ClaimClosure,
+  RootClaim, ClaimEdge, ClaimEvidence, ClaimEvidenceClosure, ClaimClosure,
   ClaimRank, ClaimDependencies, ClaimProducer, ClaimReviewer, EvidenceDependencies,
   InitialVersions, InitialEvidenceVersions, InitialEvidenceOutcomes,
   InitialEvidenceExpiry, MaxTime, NoSnapshot
@@ -14,13 +14,13 @@ EvidenceOutcomes ==
 
 ASSUME Claims # {}
 
-Children(c) == ClaimChildren[c]
+Children(c) == {child \in Claims : ClaimEdge[c][child]}
 ASSUME Evidence # {}
 ASSUME Dependencies # {}
 ASSUME Versions # {}
 ASSUME RootClaim \in Claims
 ASSUME AuthorizedReviewers \subseteq Actors
-ASSUME ClaimChildren \in [Claims -> SUBSET Claims]
+ASSUME ClaimEdge \in [Claims -> [Claims -> BOOLEAN]]
 ASSUME ClaimEvidence \in [Claims -> SUBSET Evidence]
 ASSUME ClaimEvidenceClosure \in [Claims -> SUBSET Evidence]
 ASSUME ClaimClosure \in [Claims -> SUBSET Claims]

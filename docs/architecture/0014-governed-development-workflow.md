@@ -79,4 +79,5 @@ Start with a small CLI contract and dossier, task templates and language-neutral
 - [R-07 — SLSA software supply-chain assurance](../references.md#r-07)
 - [R-18 — Writ source-based agent-workflow assessment](../references.md#r-18)
 - [R-19 — Privateer source-based agent-workflow assessment](../references.md#r-19)
+- [R-16 — OpenAPI machine-readable interface contracts](../references.md#r-16)
 - [R-22 — native Git and Pijul semantics](../references.md#r-22)

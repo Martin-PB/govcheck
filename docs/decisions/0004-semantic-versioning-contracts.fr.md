@@ -1,6 +1,6 @@
 # ADR 0004 — Versionnement sémantique du produit GovCheck et du package de gouvernance
 
-**Statut :** accepté par l'autorité normative désignée le 2026-11-07. **English:** [0004](0004-semantic-versioning-contracts.md).
+**Statut :** proposé à l'adoption ; consigne la décision explicite du propriétaire du projet d'adopter SemVer par catégorie le 07-11-2026. **English:** [0004](0004-semantic-versioning-contracts.md).
 
 ## Contexte
 

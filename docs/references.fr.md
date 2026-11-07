@@ -16,7 +16,7 @@
 
 ## Entrées bibliographiques détaillées
 
-# Catalogue des références externes GovCheck : gouvernance, assurance et méthodes formelles
+## Registre détaillé des sources
 
 **Objet.** Ce fichier est la bibliographie française unique de GovCheck. Il rassemble les références académiques, normatives, industrielles et les sources de code qui étayent la conception du projet. C'est une bibliographie de navigation, pas une politique normative ni une décision d'adoption.
 

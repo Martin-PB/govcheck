@@ -93,7 +93,9 @@ Il s'agit de lots de travail proposés, pas de changements de politique déjà a
 
 ### G0 — Adopter et identifier l'autorité normative
 
-Déterminer qui possède l'autorité sur le modèle canonique de gouvernance et comment la délégation est représentée. Adopter la spécification 0002 et les parties pertinentes de 0012/0013 par une décision explicite. D'ici là, les documents restent des propositions et aucun validateur ne doit déduire l'autorité de la propriété du dépôt, d'une fusion de PR ou de l'état CI.
+**Décision initiale désormais consignée dans le document 0023 :** un seul principal, `Martin-PB`, détient actuellement l'autorité normative et peut modifier lui-même le régime d'autorité. Aucun pouvoir n'est déduit de la propriété du dépôt, d'une fusion de PR ou de l'état CI. La décision est versionnée, prospective et peut être amendée explicitement par son détenteur.
+
+Il reste à traduire cette décision en enregistrements canoniques, validation et modèle formel. Le document 0023 distingue aussi autorisation normative, revue technique et exécution, et rend explicite l'absence de séparation des personnes pour l'adoption dans le régime initial.
 
 ### G1 — Définir les enregistrements canoniques minimaux
 

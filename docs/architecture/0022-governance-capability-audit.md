@@ -107,7 +107,7 @@ Add cross-record validation for authority scope, delegation validity, actor-role
 
 ### G3 — Formalize the governance lifecycle
 
-Add a bounded TLA+ model for propose → assess → authorize/reject → publish → supersede/revoke, including scoped delegation, independent review, expiring exceptions and concurrent/stale decisions. Add explicit invariants for no self-authorization where prohibited, no out-of-scope authorization, no expired/revoked exception, and no retroactive mutation of a published policy.
+A first bounded model of the single-root authority amendment chain is now included in `formal/tla/GovCheckAuthority.tla`; it checks prior-authority authorization, chain continuity and binding of current authority/revision to the last decision. It is intentionally narrower than a complete governance lifecycle and is included in the formal CI matrix. The next model extension is propose → assess → authorize/reject → publish → supersede/revoke, including scoped delegation, independent technical review, expiring exceptions and concurrent/stale decisions. Add explicit invariants for no self-authorization where prohibited, no out-of-scope authorization, no expired/revoked exception, and no retroactive mutation of a published policy.
 
 ### G4 — Connect governance to assurance and application
 

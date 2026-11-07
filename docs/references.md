@@ -14,9 +14,12 @@
 | Governance metadata and catalogues | R-17 |
 | Agent workflow systems assessed as fixtures | R-18–R-19 |
 | Version-control semantics and collaboration | R-22, R-37–R-42, R-54 |
-| Knowledge representation and interoperability | R-43–R-55 |
-| Threat modeling, attack paths and risk management | R-27–R-32 |
-| Security assurance cases and metamodels | R-33–R-34 |
+| Knowledge representation and interoperability | R-43–R-53 |
+| Integration project repositories and studies | R-54 |
+| Mind-map and graph interchange formats | R-55 |
+| Cloud storage provider APIs | R-56 |
+| Browser-local persistence and WebAssembly | R-57 |
+| Desktop peer discovery and DHT | R-58 |
 
 ## Full reference entries
 
@@ -457,7 +460,7 @@
 
 <a id="r-43"></a>
 ### R-43 — Open Knowledge Format (OKF) v0.2
-- **Primary sources:** [Canonical OKF specification repository](https://github.com/GoogleCloudPlatform/open-knowledge-format) · [OKF v0.2 specification in the original Knowledge Catalog repository](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md)
+- **Primary sources:** [Canonical OKF v0.2 specification](https://github.com/GoogleCloudPlatform/open-knowledge-format/blob/main/SPEC.md) · [OKF v0.2 specification in the original Knowledge Catalog repository](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md)
 - **Relevant concepts:** portable knowledge bundles built from Markdown, YAML frontmatter, links, provenance, trust and lifecycle metadata.
 - **Use in GovCheck:** source of the OKF storage and mind-map projection study in Cartocortex PR #27; it is the specific meaning of “OKF” in that discussion.
 - **Limit:** OKF is a lightweight knowledge-bundle convention, not a graph ontology, mind-map layout model, CRDT, transport protocol or GovCheck governance standard. The old Knowledge Catalog path is a frozen snapshot; use the dedicated repository as canonical.
@@ -545,6 +548,29 @@
 - **Relevant concepts:** exchange of hierarchical mind maps, outlines and general graph structures, including format-specific metadata and layout information.
 - **Use in GovCheck:** records the FreeMind, Freeplane, XMind, OPML and GraphML formats explicitly considered for SaussuNet import/export and Cartocortex visualization.
 - **Limit:** these formats have different expressive power and metadata conventions. A successful parse is not lossless semantic round-tripping; conversion requires per-format fixtures and explicit loss reports.
+
+
+
+<a id="r-56"></a>
+### R-56 — Cloud storage APIs and S3 interoperability
+- **Primary sources:** [Amazon S3 documentation and API](https://docs.aws.amazon.com/s3/) · [Google Cloud Storage interoperability](https://docs.cloud.google.com/storage/docs/interoperability) · [Google Drive API overview](https://developers.google.com/workspace/drive/api/guides/about-sdk) · [Microsoft Graph Drive resource](https://learn.microsoft.com/en-us/graph/api/drive-get?view=graph-rest-1.0) · [Azure Blob Storage introduction](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction) · [Hippius documentation](https://docs.hippius.com/) · [Hippius S3-compatible object storage](https://docs.hippius.com/storage/s3/advanced)
+- **Relevant concepts:** object-storage APIs, S3-compatible endpoints, cloud-drive APIs, OAuth/credential scopes, client-side synchronization and provider-specific semantics.
+- **Use in GovCheck:** preserves the storage-provider integration candidates named in Cartocortex PR #28: Amazon S3, Google Cloud Storage interoperability, Google Drive, OneDrive/Microsoft Graph, Azure Blob Storage and Hippius.
+- **Limit:** “S3-compatible” does not mean identical semantics, consistency, IAM, versioning, eventing or multipart behavior. Provider APIs have distinct authentication and permission models. These were backlog candidates, not selected providers or implemented integrations.
+
+<a id="r-57"></a>
+### R-57 — Browser file access, local persistence and WebAssembly
+- **Primary sources:** [MDN File System API](https://developer.mozilla.org/en-US/docs/Web/API/File_System_API) · [MDN Origin Private File System (OPFS)](https://developer.mozilla.org/en-US/docs/Web/API/File_System_API/Origin_private_file_system) · [W3C Indexed Database API 3.0](https://www.w3.org/TR/IndexedDB-3/) · [WebAssembly specifications](https://webassembly.org/specs/) · [WebAssembly System Interface (WASI)](https://github.com/WebAssembly/WASI)
+- **Relevant concepts:** user-mediated access to local files/directories, origin-private browser storage, IndexedDB persistence and WebAssembly execution interfaces.
+- **Use in GovCheck:** preserves the browser-local deployment and persistence candidates named in Cartocortex PR #28, including File System Access, OPFS, IndexedDB and the conditional use of WebAssembly/WASI to reuse Rust code.
+- **Limit:** browser APIs have support, permission, secure-context and quota constraints; OPFS is origin-private and not a user-visible directory. WASI is a system interface for WebAssembly runtimes, not a browser file-system permission bypass. The PR describes a proposed study/backlog, not a tested deployment.
+
+<a id="r-58"></a>
+### R-58 — Hyperswarm and HyperDHT peer discovery
+- **Primary sources:** [Hyperswarm project](https://github.com/holepunchto/hyperswarm) · [HyperDHT implementation](https://github.com/holepunchto/hyperdht) · [Hyperswarm peer-discovery documentation](https://docs.pears.com/p2p/reference/building-blocks/hyperswarm/)
+- **Relevant concepts:** topic-based peer discovery, distributed hash-table rendezvous, UDP hole punching and encrypted peer connections.
+- **Use in GovCheck:** preserves the desktop peer-discovery alternative discussed in Cartocortex PR #28 alongside browser WebRTC signaling.
+- **Limit:** Hyperswarm/HyperDHT is a separate networking stack, not browser-native WebRTC signaling. DHT operation depends on bootstrap infrastructure and network reachability; peer discovery does not define application room authorization, membership policy or persistence.
 
 ## Reference discipline and unresolved provenance
 

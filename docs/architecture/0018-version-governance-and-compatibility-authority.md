@@ -149,10 +149,15 @@ This record does not claim that GovCheck implements a decision engine, dependenc
 - [Specification 0005 — Assurance, Claims and Evidence](../specifications/0005-assurance-model.md).
 - [Architecture 0012 — Canonical normative authority](0012-normative-authority-and-documentation.md).
 - [Architecture 0013 — Governance metamodel](0013-governance-metamodel.md).
-- [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html); [W3C PROV-O](https://www.w3.org/TR/prov-o/); [DataCite Versioning](https://support.datacite.org/docs/versioning); [1EdTech Versioning Framework 1.0](https://www.imsglobal.org/spec/versioning/v1).
+- [Semantic Versioning 2.0.0]([R-14](../references.md#r-14)); [W3C PROV-O]([R-24](../references.md#r-24)); [DataCite Versioning]([R-25](../references.md#r-25)); [1EdTech Versioning Framework 1.0]([R-23](../references.md#r-23)).
 
 External references inform the design; the authority and compatibility rules here are GovCheck proposals, not requirements imposed by those standards.
 
 ## Machine-readable design
 
 A non-normative first draft of the machine-readable records is maintained in [formal/schemas/README.md](../../formal/schemas/README.md). It separates version-decision events from revision-bound dependency edges. These schemas remain proposals: they do not establish authority, prove compatibility or implement invalidation.
+
+
+## Bibliographic references
+
+External sources cited by this record: [R-14](../references.md#r-14), [R-23](../references.md#r-23), [R-24](../references.md#r-24), [R-25](../references.md#r-25).

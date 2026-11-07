@@ -47,4 +47,6 @@ The integration study and its external technical sources are catalogued separate
 - [R-63 — Mind-map and graph interchange formats](../references.md#r-63)
 - [R-64 — Cloud storage APIs and S3 interoperability](../references.md#r-64)
 - [R-65 — Browser file access, local persistence and WebAssembly](../references.md#r-65)
-- [R-66 — Hyperswarm and HyperDHT peer discovery](../references.md#r-66)
+- [R-66 — Hyperswarm and HyperDHT peer discovery](../references.md#r-66)- [R-67 — WebDAV, Model Context Protocol and Markdown wiki conventions](../references.md#r-67)
+- [R-68 — Related GovCheck ecosystem repositories](../references.md#r-68)
+- [R-69 — Cartocortex mind-map format and tool interoperability source inventory](../references.md#r-69)

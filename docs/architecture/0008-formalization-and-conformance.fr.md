@@ -141,4 +141,4 @@ Ce document ne fournit ni spécification TLA+, ni résultats TLC, ni preuve de t
 
 ## Références bibliographiques
 
-Références externes utilisées dans ce document : [R-05](../references.fr.md#r-05), [R-13](../references.fr.md#r-13), [R-20](../references.fr.md#r-20).
+Références externes utilisées dans ce document : [R-05 — spécification TLA+ et model checking TLC](../references.fr.md#r-05) ; [R-13 — contrats structurels JSON Schema](../references.fr.md#r-13) ; [R-20 — démonstration de théorèmes Lean et frontière du noyau de preuve](../references.fr.md#r-20).

@@ -67,3 +67,4 @@ L'étude d'intégration et ses sources techniques externes sont cataloguées sé
 - [R-84 — syntaxe Turtle de RDF 1.1](../references.fr.md#r-84)
 - [R-85 — ontologie SIOC des communautés en ligne](../references.fr.md#r-85)
 - [R-86 — vocabulaire Schema.org DigitalDocument](../references.fr.md#r-86)
+- [R-87 — transport et découverte pair-à-pair WebTorrent dans le navigateur](../references.fr.md#r-87)

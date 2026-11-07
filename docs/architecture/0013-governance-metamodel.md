@@ -72,3 +72,8 @@ Maintainers must adopt and register these IDs before they become binding rules.
 ## Open choices
 
 Ontology vocabulary, serialization, graph representation, formal logic, query language, proof assistant and validation algorithm remain open. Prototype stable identity, typed relations, provenance, scope, composition, explanation traces and deterministic failure behavior before selecting a large ontology or proof stack.
+
+
+## Bibliographic references
+
+External references used in this record: [R-01](../references.md#r-01), [R-09](../references.md#r-09), [R-10](../references.md#r-10), [R-13](../references.md#r-13).

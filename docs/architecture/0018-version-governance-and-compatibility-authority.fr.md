@@ -160,4 +160,10 @@ Un premier brouillon non normatif des enregistrements machine-readable est maint
 
 ## Références bibliographiques
 
-Références externes citées dans ce document : [R-14](../references.fr.md#r-14), [R-23](../references.fr.md#r-23), [R-24](../references.fr.md#r-24), [R-25](../references.fr.md#r-25).
+Références externes citées dans ce document :
+
+- [R-14 — Semantic Versioning 2.0.0 et compatibilité des versions](../references.fr.md#r-14)
+- [R-15 — tags Git et releases GitHub](../references.fr.md#r-15)
+- [R-23 — spécifications de versionnement 1EdTech](../references.fr.md#r-23)
+- [R-24 — ontologie de provenance W3C PROV-O](../references.fr.md#r-24)
+- [R-25 — recommandations de versionnement DataCite](../references.fr.md#r-25)

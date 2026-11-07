@@ -20,6 +20,12 @@ Studies, assessments and comparative analyses are **architecture records** place
 
 French: [ADR 0002 (français)](0002-study-placement.fr.md).
 
+## Source artifact and evidence boundary
+
+The initial source artifact for this record is **“Évaluer l’intégration des dépôts.pdf”**, dated 6 November 2026, 224 pages. It is retained in the project Library and is not copied into this repository. Its external sources, repositories, pull requests, protocols, vocabularies and format references are indexed in [R-37–R-69](../references.md) through the central catalogue.
+
+The reviewed Cartocortex artifacts have different evidence status: PR #9 is an open documentation panorama; PR #27 is an open OKF storage/projection study explicitly marked as not executed; PR #28 is an open backlog and transport study explicitly marked as not executed. None of these statuses establishes that a proposed adapter, CRDT, transport, cloud sync or format importer is implemented or accepted. See [R-62](../references.md#r-62) and [R-69](../references.md#r-69).
+
 ## Bibliographic references
 
 The integration study and its external technical sources are catalogued separately so the study is not mistaken for an implementation or adoption decision:

@@ -3,7 +3,7 @@ EXTENDS Naturals
 
 CONSTANTS
   Claims, Evidence, Dependencies, Versions, Actors, AuthorizedReviewers,
-  RootClaim, ClaimEdges, ClaimEvidence, ClaimEvidenceClosure, ClaimClosure,
+  RootClaim, ClaimChildren, ClaimEvidence, ClaimEvidenceClosure, ClaimClosure,
   ClaimRank, ClaimDependencies, ClaimProducer, ClaimReviewer, EvidenceDependencies,
   InitialVersions, InitialEvidenceVersions, InitialEvidenceOutcomes,
   InitialEvidenceExpiry, MaxTime, NoSnapshot
@@ -13,12 +13,14 @@ EvidenceOutcomes ==
    "Incomplete", "Conflict"}
 
 ASSUME Claims # {}
+
+Children(c) == ClaimChildren[c]
 ASSUME Evidence # {}
 ASSUME Dependencies # {}
 ASSUME Versions # {}
 ASSUME RootClaim \in Claims
 ASSUME AuthorizedReviewers \subseteq Actors
-ASSUME ClaimEdges \subseteq (Claims \X Claims)
+ASSUME ClaimChildren \in [Claims -> SUBSET Claims]
 ASSUME ClaimEvidence \in [Claims -> SUBSET Evidence]
 ASSUME ClaimEvidenceClosure \in [Claims -> SUBSET Evidence]
 ASSUME ClaimClosure \in [Claims -> SUBSET Claims]
@@ -53,8 +55,6 @@ VARIABLES
 vars ==
   <<currentVersions, evidenceOutcomes, evidenceVersions, evidenceExpiry,
     revokedEvidence, reviewedClaims, now, accepted, acceptedDependencyVersions>>
-
-Children(c) == {child \in Claims : <<c, child>> \in ClaimEdges}
 
 EvidenceStale(e) ==
   \/ e \in revokedEvidence

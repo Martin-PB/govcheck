@@ -646,7 +646,7 @@
 ### R-63 — Mind-map and graph interchange formats
 - **Cited by:** no current record on this branch cites this source.
 
-- **Primary sources:** [Freeplane documentation](https://docs.freeplane.org/) · [FreeMind project](https://freemind.sourceforge.io/wiki/index.php/Main_Page) · [XMind](https://xmind.app/) · [OPML 2.0 specification](https://opml.org/spec2.opml) · [GraphML specification](http://graphml.graphdrawing.org/specification.html)
+- **Primary sources:** [Freeplane documentation](https://docs.freeplane.org/) · [FreeMind project](https://freemind.sourceforge.io/wiki/index.php/Main_Page) · [XMind](https://xmind.app/) · [OPML 2.0 specification](https://opml.org/spec2.opml) · [GraphML specification](https://graphml.graphdrawing.org/specification.html)
 - **Relevant concepts:** exchange of hierarchical mind maps, outlines and general graph structures, including format-specific metadata and layout information.
 - **Use in GovCheck:** records the FreeMind, Freeplane, XMind, OPML and GraphML formats explicitly considered for SaussuNet import/export and Cartocortex visualization.
 - **Limit:** these formats have different expressive power and metadata conventions. A successful parse is not lossless semantic round-tripping; conversion requires per-format fixtures and explicit loss reports.
@@ -655,7 +655,7 @@
 ### R-64 — Cloud storage APIs and S3 interoperability
 - **Cited by:** no current record on this branch cites this source.
 
-- **Primary sources:** [Amazon S3 documentation and API](https://docs.aws.amazon.com/s3/) · [Google Cloud Storage interoperability](https://docs.cloud.google.com/storage/docs/interoperability) · [Google Drive API overview](https://developers.google.com/workspace/drive/api/guides/about-sdk) · [Microsoft Graph Drive resource](https://learn.microsoft.com/en-us/graph/api/drive-get?view=graph-rest-1.0) · [Azure Blob Storage introduction](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction) · [Hippius documentation](https://docs.hippius.com/) · [Hippius S3-compatible object storage](https://docs.hippius.com/storage/s3/advanced)
+- **Primary sources:** [Amazon S3 documentation and API](https://docs.aws.amazon.com/s3/) · [Google Cloud Storage interoperability](https://docs.cloud.google.com/storage/docs/interoperability) · [Google Drive API overview](https://developers.google.com/workspace/drive/api/guides/about-sdk) · [Microsoft Graph Drive resource](https://learn.microsoft.com/en-us/graph/api/drive-get?view=graph-rest-1.0) · [Azure Blob Storage introduction](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction) · [Hippius documentation](https://docs.hippius.com/) · [Hippius S3-compatible object storage](https://docs.hippius.com/storage/s3/)
 - **Relevant concepts:** object-storage APIs, S3-compatible endpoints, cloud-drive APIs, OAuth/credential scopes, client-side synchronization and provider-specific semantics.
 - **Use in GovCheck:** preserves the storage-provider integration candidates named in Cartocortex PR #28: Amazon S3, Google Cloud Storage interoperability, Google Drive, OneDrive/Microsoft Graph, Azure Blob Storage and Hippius.
 - **Limit:** “S3-compatible” does not mean identical semantics, consistency, IAM, versioning, eventing or multipart behavior. Provider APIs have distinct authentication and permission models. These were backlog candidates, not selected providers or implemented integrations.

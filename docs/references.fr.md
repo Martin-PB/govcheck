@@ -497,7 +497,7 @@
 ### R-46 — Yjs et Yrs
 - **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
 
-- **Sources primaires :** [Documentation Yjs](https://docs.yjs.dev/) · [Dépôt source Yjs](https://github.com/yjs/yjs) · [Port Rust Yrs](https://github.com/y-crdt/y-crdt)
+- **Sources primaires :** [Documentation Yjs](https://docs.yjs.dev/) · [Dépôt source Yjs](https://github.com/yjs/yjs) · [Port Rust Yrs](https://github.com/y-crdt/y-crdt) · [Fournisseur WebRTC y-webrtc et implémentation de signalisation](https://github.com/yjs/y-webrtc)
 - **Concepts pertinents :** types de données CRDT partagés, mises à jour indépendantes du transport, fournisseurs de synchronisation et édition collaborative.
 - **Utilité pour GovCheck :** famille d'implémentations candidate explicitement comparée dans l'étude de transport/backlog de la PR Cartocortex #28.
 - **Limite :** le comportement d'une bibliothèque ne choisit ni le modèle de données applicatif ni l'architecture de transport ; les déplacements d'arbres, undo/redo, persistance et migrations propres à Cartocortex exigent des tests distincts.
@@ -536,7 +536,7 @@
 - **Sources primaires :** [RFC 8445 — ICE](https://www.rfc-editor.org/rfc/rfc8445.html) · [RFC 8489 — STUN](https://www.rfc-editor.org/rfc/rfc8489.html) · [RFC 8656 — TURN](https://www.rfc-editor.org/rfc/rfc8656.html) · [Implémentation de relais coturn](https://github.com/coturn/coturn)
 - **Concepts pertinents :** collecte de candidats et vérifications de connectivité, traversée NAT, allocation de relais et repli lorsque les chemins directs échouent.
 - **Utilité pour GovCheck :** documente la pile protocolaire précise derrière les mentions STUN/TURN de l'étude Cartocortex.
-- **Limite :** STUN seul n'est pas une solution de traversée NAT ; TURN relaie le trafic et introduit disponibilité, coût, confidentialité et contraintes opérationnelles. L'estimation approximative d'usage du relais dans le PDF est une affirmation d'étude, pas une garantie protocolaire.
+- **Limite :** STUN seul n'est pas une solution de traversée NAT ; TURN relaie le trafic et introduit disponibilité, coût, confidentialité et contraintes opérationnelles. L'estimation approximative de 10–20 % d'usage du relais dans le PDF n'est étayée ni par les RFC citées ni par une source de mesure indépendante identifiée dans cet audit ; la traiter comme une hypothèse de planification à valider par la télémétrie de déploiement, pas comme un taux général WebRTC.
 
 <a id="r-51"></a>
 ### R-51 — Open Knowledge Format (OKF) v0.2
@@ -851,7 +851,7 @@
 - **Limite :** Schema.org est un vocabulaire général de métadonnées Web, pas une ontologie de gouvernance, un système de contrôle d'accès, une règle d'admissibilité des preuves ou un remplacement de vocabulaires spécialisés. N'utiliser que les termes dont la sémantique convient.
 
 <a id="r-87"></a>
-### R-87 — WebTorrent browser peer-to-peer transport and discovery
+### R-87 — Transport et découverte pair-à-pair WebTorrent dans le navigateur
 - **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
 - **Source primaire :** [Dépôt officiel WebTorrent](https://github.com/webtorrent/webtorrent) · [Site et documentation WebTorrent](https://webtorrent.io/)
 - **Concepts pertinents :** client BitTorrent pour navigateur et Node.js ; transport pair-à-pair par canaux de données WebRTC dans le navigateur ; découverte par trackers, DHT, découverte locale et échange de pairs.

@@ -3,7 +3,7 @@ EXTENDS Naturals
 
 CONSTANTS
   Claims, Evidence, Dependencies, Versions, Actors, AuthorizedReviewers,
-  RootClaim, ClaimChildren, ClaimEvidence, ClaimEvidenceClosure, ClaimClosure,
+  RootClaim, ClaimEdges, ClaimEvidence, ClaimEvidenceClosure, ClaimClosure,
   ClaimRank, ClaimDependencies, ClaimProducer, ClaimReviewer, EvidenceDependencies,
   InitialVersions, InitialEvidenceVersions, InitialEvidenceOutcomes,
   InitialEvidenceExpiry, MaxTime, NoSnapshot
@@ -18,7 +18,7 @@ ASSUME Dependencies # {}
 ASSUME Versions # {}
 ASSUME RootClaim \in Claims
 ASSUME AuthorizedReviewers \subseteq Actors
-ASSUME ClaimChildren \in [Claims -> SUBSET Claims]
+ASSUME ClaimEdges \subseteq (Claims \X Claims)
 ASSUME ClaimEvidence \in [Claims -> SUBSET Evidence]
 ASSUME ClaimEvidenceClosure \in [Claims -> SUBSET Evidence]
 ASSUME ClaimClosure \in [Claims -> SUBSET Claims]
@@ -34,14 +34,14 @@ ASSUME MaxTime \in Nat
 ASSUME InitialEvidenceExpiry \in [Evidence -> 0..MaxTime]
 
 ASSUME \A c \in Claims :
-  \A child \in ClaimChildren[c] : ClaimRank[child] < ClaimRank[c]
+  \A child \in Children(c) : ClaimRank[child] < ClaimRank[c]
 ASSUME \A c \in Claims :
   ClaimEvidenceClosure[c] =
     ClaimEvidence[c] \cup
-      UNION {ClaimEvidenceClosure[child] : child \in ClaimChildren[c]}
+      UNION {ClaimEvidenceClosure[child] : child \in Children(c)}
 ASSUME \A c \in Claims :
   ClaimClosure[c] =
-    {c} \cup UNION {ClaimClosure[child] : child \in ClaimChildren[c]}
+    {c} \cup UNION {ClaimClosure[child] : child \in Children(c)}
 ASSUME \A c \in Claims :
   ClaimDependencies[c] =
     UNION {EvidenceDependencies[e] : e \in ClaimEvidenceClosure[c]}
@@ -53,6 +53,8 @@ VARIABLES
 vars ==
   <<currentVersions, evidenceOutcomes, evidenceVersions, evidenceExpiry,
     revokedEvidence, reviewedClaims, now, accepted, acceptedDependencyVersions>>
+
+Children(c) == {child \in Claims : <<c, child>> \in ClaimEdges}
 
 EvidenceStale(e) ==
   \/ e \in revokedEvidence
@@ -231,14 +233,14 @@ TypeOK ==
 
 ArgumentGraphWellFormed ==
   /\ \A c \in Claims :
-       \A child \in ClaimChildren[c] : ClaimRank[child] < ClaimRank[c]
+       \A child \in Children(c) : ClaimRank[child] < ClaimRank[c]
   /\ \A c \in Claims :
        ClaimEvidenceClosure[c] =
          ClaimEvidence[c] \cup
-           UNION {ClaimEvidenceClosure[child] : child \in ClaimChildren[c]}
+           UNION {ClaimEvidenceClosure[child] : child \in Children(c)}
   /\ \A c \in Claims :
        ClaimClosure[c] =
-         {c} \cup UNION {ClaimClosure[child] : child \in ClaimChildren[c]}
+         {c} \cup UNION {ClaimClosure[child] : child \in Children(c)}
   /\ \A c \in Claims :
        ClaimDependencies[c] =
          UNION {EvidenceDependencies[e] : e \in ClaimEvidenceClosure[c]}

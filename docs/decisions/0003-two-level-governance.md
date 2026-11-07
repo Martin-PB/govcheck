@@ -23,3 +23,7 @@ Phased: this ADR, the package skeleton and the bootstrap script land first (PR #
 
 - Setting up governance in a new repository = run the package bootstrap script (or copy govcheck/), which produces the full tree.
 - The meta level remains the authoritative history of GovCheck itself and is never copied into governed repositories.
+
+## Bibliographic references
+
+- [R-107 — GitHub Actions workflow location and syntax](../references.md#r-107)

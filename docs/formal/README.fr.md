@@ -34,4 +34,4 @@ Le modèle est une abstraction à transitions bornées du régime initial à rac
 
 ## Registre de références
 
-Pour les fondements académiques et industriels, notamment les limites du model checking et la distinction entre provenance, preuve et autorité normative, voir le [registre GovCheck des références sur la gouvernance et l'assurance](../references/governance-and-assurance.fr.md) et sa [version anglaise](../references/governance-and-assurance.md).
+Pour les fondements académiques et industriels, notamment les limites du model checking et la distinction entre provenance, preuve et autorité normative, voir le [registre GovCheck des références sur la gouvernance et l'assurance](../references.fr.md) et sa [version anglaise](../references.md).

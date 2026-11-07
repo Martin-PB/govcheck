@@ -26,6 +26,12 @@
 | Dépôts adjacents de l'écosystème GovCheck | R-68 |
 | Sources du panorama des formats de cartes mentales | R-69 |
 | Formats d'échange de cartes mentales et de graphes | R-63 |
+| Gouvernance des outils agents et MCP | R-70 |
+| Modèles de conformité structurés | R-71 |
+| Sandboxing et isolation des agents | R-72 |
+| Communication Matrix | R-73 |
+| Recherche documentaire | R-74 |
+| Extraction de documents | R-75 |
 | API de stockage cloud | R-64 |
 | Persistance locale navigateur et WebAssembly | R-65 |
 

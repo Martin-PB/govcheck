@@ -36,5 +36,6 @@ Distinguish not-found, unsupported, unavailable, stale, conflict, authentication
 ## Primary references
 
 - Git and Pijul primary documentation are catalogued under [R-22 in the central reference catalogue](../references.md#r-22).
+- [R-16 — OpenAPI machine-readable interface contracts](../references.md#r-16) is a candidate source for a future HTTP interface description only; this specification does not select OpenAPI or require an HTTP adapter.
 
 These sources describe the underlying VCS semantics; they do not establish that GovCheck's adapters are implemented or conformant.

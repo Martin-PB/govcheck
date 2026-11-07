@@ -20,7 +20,7 @@ DOCS = ROOT / "docs"
 CATALOGUES = {"en": DOCS / "references.md", "fr": DOCS / "references.fr.md"}
 ANCHOR_RE = re.compile(r'<a id="r-(\d{2})"></a>')
 REF_LINK_RE = re.compile(r'\[[^\]]*\]\(([^)]+references(?:\.fr)?\.md#r-(\d{2})[^)]*)\)', re.I)
-LINK_RE = re.compile(r'(?<!!) \[[^\]]*\]\(([^)]+)\)')
+LINK_RE = re.compile(r'(?<!!)\[[^\]]*\]\(([^)]+)\)')
 URL_RE = re.compile(r'https?://[^\s)<>]+')
 CITED_RE = {
     "en": re.compile(r'^- \*\*Cited by:\*\*\s*(.*)$', re.M),

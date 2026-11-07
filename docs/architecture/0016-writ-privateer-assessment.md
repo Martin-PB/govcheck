@@ -95,18 +95,7 @@ Before any production integration, test permission-gate defaults and bypasses, l
 
 ## Sources
 
-- Writ repository and architecture: [R-18](../references.md#r-18)
-- Writ security policy: [R-18](../references.md#r-18)/blob/ebdafe5450b201339f81e717ed104e6bcfd3fe3e/SECURITY.md
-- Writ session/gate contract: [R-18](../references.md#r-18)/blob/ebdafe5450b201339f81e717ed104e6bcfd3fe3e/docs/reference/session-and-gates.md
-- Privateer repository: [R-19](../references.md#r-19)
-- Privateer security policy: [R-19](../references.md#r-19)/blob/181a988e443fa6b6b4138fc349d1260c96408ad4/SECURITY.md
-- Privateer README and install verification instructions: [R-19](../references.md#r-19)/blob/181a988e443fa6b6b4138fc349d1260c96408ad4/README.md
-
-
-## Cross-reference register
-
-The reviewed source revisions and security limits above are indexed as [R-18 Writ and R-19 Privateer](../references.md). The register consolidates the primary links without changing the scope or conclusions of this source review. See also the [French register](../references.md).
-
+The primary source URLs, pinned revisions and reviewed documents are maintained in the [central reference catalogue](../references.md), entries R-18 and R-19. This record links to those entries rather than duplicating external URLs.
 
 ## Bibliographic references
 

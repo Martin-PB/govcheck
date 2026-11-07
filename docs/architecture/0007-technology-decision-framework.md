@@ -50,3 +50,20 @@ Each ADR states: question and why now; constraints/gates; alternatives including
 8. Only then select packaging and forge adapters.
 
 No language, serialization, formal kernel, signature format, license or dependency has been selected by this framework.
+
+## Bibliographic references
+
+- [R-05 — TLA+ and TLC state-transition modeling](../references.md#r-05)
+- [R-06 — in-toto software supply-chain provenance](../references.md#r-06)
+- [R-07 — SLSA supply-chain assurance](../references.md#r-07)
+- [R-20 — Lean theorem prover](../references.md#r-20)
+- [R-22 — Native Git and Pijul semantics](../references.md#r-22)
+- [R-27 — Common Criteria / ISO/IEC 15408](../references.md#r-27)
+- [R-28 — RTCA DO-178C / EUROCAE ED-12C](../references.md#r-28)
+- [R-29 — Alloy](../references.md#r-29)
+- [R-30 — SPIN / Promela](../references.md#r-30)
+- [R-31 — Kani](../references.md#r-31)
+- [R-32 — Verus](../references.md#r-32)
+- [R-33 — Dafny](../references.md#r-33)
+- [R-34 — Coq / Rocq](../references.md#r-34)
+- [R-35 — Isabelle](../references.md#r-35)

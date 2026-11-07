@@ -850,6 +850,14 @@
 - **Utilité pour GovCheck :** vocabulaire généraliste candidat pour décrire des ressources documentaires lorsque ses propriétés correspondent au contexte d'échange.
 - **Limite :** Schema.org est un vocabulaire général de métadonnées Web, pas une ontologie de gouvernance, un système de contrôle d'accès, une règle d'admissibilité des preuves ou un remplacement de vocabulaires spécialisés. N'utiliser que les termes dont la sémantique convient.
 
+<a id="r-87"></a>
+### R-87 — WebTorrent browser peer-to-peer transport and discovery
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Source primaire :** [Dépôt officiel WebTorrent](https://github.com/webtorrent/webtorrent) · [Site et documentation WebTorrent](https://webtorrent.io/)
+- **Concepts pertinents :** client BitTorrent pour navigateur et Node.js ; transport pair-à-pair par canaux de données WebRTC dans le navigateur ; découverte par trackers, DHT, découverte locale et échange de pairs.
+- **Utilité pour GovCheck :** conserve WebTorrent comme option de découverte/transport évoquée dans l'étude de transport de Cartocortex PR #28, distincte de y-webrtc et de Hyperswarm/HyperDHT.
+- **Limite :** WebTorrent est un protocole et une implémentation de partage de contenus, pas un service générique de présence ou de synchronisation CRDT. Les pairs navigateur WebTorrent ne communiquent qu'avec des clients compatibles WebTorrent/WebRTC ; découverte, sécurité des salons, autorisation métier et persistance doivent être traitées séparément. Aucune adoption n'est implicite.
+
 ## Discipline bibliographique et provenance non résolue
 
 1. Privilégier l'organisme normatif, l'éditeur, la documentation officielle ou le dépôt source plutôt que les résumés secondaires.

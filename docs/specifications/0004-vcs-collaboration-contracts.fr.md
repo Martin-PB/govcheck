@@ -35,8 +35,6 @@ Distinguer absence, non-prise-en-charge, indisponibilité, péremption, conflit,
 
 ## Références primaires
 
-- [Documentation Git](https://git-scm.com/docs) pour les concepts natifs de dépôt, arbre, commit et fusion de Git.
-- [Manuel Pijul — théorie](https://pijul.org/manual/theory), [R-22](../references.fr.md#r-22) et [conflits](https://pijul.org/manual/conflicts.html) pour l'identité du graphe de patches, l'état des canaux et les sémantiques natives des conflits.
-- Le [registre de références GovCheck](../references.fr.md) rassemble ces sources sous R-22 et explicite leurs limites.
+- La documentation primaire de Git et Pijul est regroupée sous [R-22 dans le catalogue central des références](../references.fr.md#r-22).
 
 Ces sources décrivent les sémantiques des VCS sous-jacents ; elles ne démontrent pas que les adaptateurs GovCheck sont implémentés ou conformes.

@@ -107,7 +107,7 @@ Ajouter une validation inter-enregistrements du périmètre d'autorité, de la v
 
 ### G3 — Formaliser le cycle de vie de la gouvernance
 
-Ajouter un modèle TLA+ borné pour proposer → évaluer → autoriser/rejeter → publier → remplacer/révoquer, avec délégation limitée, revue indépendante, dérogations expirables et décisions concurrentes/obsolètes. Ajouter des invariants explicites : pas d'auto-autorisation lorsqu'elle est interdite, pas d'autorisation hors périmètre, pas de dérogation expirée/révoquée, pas de mutation rétroactive d'une politique publiée.
+Un premier modèle borné de la chaîne d'amendement de l'autorité racine unique figure désormais dans `formal/tla/GovCheckAuthority.tla` ; il vérifie l'autorisation par l'autorité précédente, la continuité de la chaîne et la liaison de l'autorité/révision courante à la dernière décision. Il est volontairement plus restreint qu'un cycle de vie complet de gouvernance et figure dans la matrice CI formelle. La prochaine extension portera sur proposer → évaluer → autoriser/rejeter → publier → remplacer/révoquer, avec délégation limitée, revue technique indépendante, dérogations expirables et décisions concurrentes/obsolètes. Ajouter des invariants explicites : pas d'auto-autorisation lorsqu'elle est interdite, pas d'autorisation hors périmètre, pas de dérogation expirée/révoquée, pas de mutation rétroactive d'une politique publiée.
 
 ### G4 — Relier gouvernance, assurance et application
 

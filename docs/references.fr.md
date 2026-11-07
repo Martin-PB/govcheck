@@ -876,7 +876,7 @@
 <a id="r-89"></a>
 ### R-89 — Méthode B et Atelier B
 - **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [0005](specifications/0005-assurance-model.fr.md), [0007](architecture/0007-technology-decision-framework.fr.md)
-- **Sources primaires :** [J.-R. Abrial, The B-Book (Cambridge University Press)](https://www.cambridge.org/core/books/bbook/D0FA939B9F72E49DBA14BA0F68491118) · [Présentation et documentation de la méthode B par Atelier B](https://www.atelierb.eu/en/presentation-of-the-b-method/)
+- **Sources primaires :** [J.-R. Abrial, The B-Book (Cambridge University Press)](https://www.cambridge.org/core/books/abs/bbook/frontmatter/20E71F1E161387417D3E347D07E247A6) · [Présentation de la méthode B par Atelier B](https://www.atelierb.eu/methode-formelle/) · [Documentation en ligne d'Atelier B](https://www.atelierb.eu/en/atelier-b-tools/online-documentation/)
 - **Concepts pertinents :** spécification formelle en théorie des ensembles, machines abstraites, invariants, substitutions généralisées, obligations de preuve, raffinement et construction d'implémentations à partir de modèles progressivement raffinés.
 - **Utilité pour GovCheck :** conserve B comme méthode candidate de spécification/raffinement formels dans l'inventaire général des méthodes d'assurance, notamment lorsque l'état et la préservation des invariants sont centraux.
 - **Limite :** prouver les obligations d'un modèle B n'établit pas à lui seul que les exigences en langage naturel sont complètes, que le modèle décrit le système voulu, ni que le code généré/écrit et le comportement à l'exécution sont conformes. Aucun outillage B n'est choisi ou adopté.

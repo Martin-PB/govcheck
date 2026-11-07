@@ -72,6 +72,8 @@ Specification 0002 describes package identity, stable rule IDs, typed rules, app
 
 The schema documentation states that structural validation does not establish authority or semantic correctness, and that authorized version decisions remain `unknown` until delegation can be resolved against an adopted authority registry. This is the correct fail-closed posture, but it means approval is not yet operationally decidable from the current records alone.
 
+The audit also found no NIST SP 800-192-style verification of access-control policy models: consistency, completeness, safety properties and systematic derivation of tests are not currently established. The obligation/permission/prohibition vocabulary is documented, but no deontic reasoning or normative conflict-resolution engine is implemented. OPA/Cedar-style evaluation of executable rules would not by itself establish their normative correctness. See [R-88](../references.md#r-88) and [R-93](../references.md#r-93).
+
 ## 5. What to take from Knowledge Catalog — narrowly
 
 The useful transferable pattern is **type-specific mandatory governance metadata**, not Google's data-catalog product architecture.

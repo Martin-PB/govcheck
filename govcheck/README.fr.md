@@ -6,7 +6,7 @@ Ce dossier est la **seule** partie du dépôt GovCheck destinée à être copié
 
 ## Versions de publication indépendantes
 
-La release du dépôt, celle du produit GovCheck et celle du package de gouvernance réutilisable **govcheck/** sont des identités distinctes. Le produit et le package possèdent des contrats SemVer indépendants ; une release du produit peut épingler une release du package, mais ne lui attribue ni n'incrémente sa version. Aucune première version du produit ou du package n'est déclarée avant la décision d'initial publication et l'existence d'un manifeste de release immuable. Voir l'ADR 0004 et les Architectures 0017–0018 du dépôt.
+La release du dépôt, celle du produit GovCheck et celle du package de gouvernance réutilisable **govcheck/** sont des identités distinctes. Le produit et le package possèdent des contrats SemVer indépendants ; une release du produit peut épingler une release du package, mais ne lui attribue ni n'incrémente sa version. La première version cible prévue du produit GovCheck est **0.1.0** ; elle n'est ni publiée ni autorisée à ce stade. La première version du package réutilisable est indépendante et reste à attribuer jusqu'à sa propre décision d'initial publication et à l'existence d'un manifeste de release immuable. Voir l'ADR 0004 et les Architectures 0017–0018 du dépôt.
 
 
 ## Contenu (arborescence prévue)

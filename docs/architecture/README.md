@@ -27,6 +27,8 @@ Records 0009–0023 preserve design rationale, assurance distinctions, governanc
 
 Use the [single thematic and detailed reference catalogue](../references.md) ([Français](../references.fr.md)) for external sources, their uses and limits, and backlinks to citing records. Follow the [reference-integrity maintenance guide](../reference-integrity.md) and run the offline checker before submitting catalogue changes. Inclusion does not imply adoption or implementation.
 
+Architecture Records 0017 and 0018 are adopted version-governance policies under ADR 0004. Their adoption does not mean that the version-decision schemas, authority resolver, compatibility evaluator or release automation are implemented. Other records remain proposals/design records unless their individual status says otherwise.
+
 ## Status
 
 Architecture records are proposals/design records unless stated otherwise. They are not evidence of implemented controls, verified security properties or technology adoption. Read each record's status, scope and limits.

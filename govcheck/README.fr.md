@@ -4,6 +4,11 @@
 
 Ce dossier est la **seule** partie du dépôt GovCheck destinée à être copiée dans un autre dépôt pour le gouverner. Exécutez `python3 govcheck/bootstrap.py DOSSIER_CIBLE` (ou copiez govcheck/ tel quel à la racine du dépôt cible) et suivez la politique de bootstrap.
 
+## Versions de publication indépendantes
+
+La release du dépôt, celle du produit GovCheck et celle du package de gouvernance réutilisable **govcheck/** sont des identités distinctes. Le produit et le package possèdent des contrats SemVer indépendants ; une release du produit peut épingler une release du package, mais ne lui attribue ni n'incrémente sa version. Aucune première version du produit ou du package n'est déclarée avant la décision d'initial publication et l'existence d'un manifeste de release immuable. Voir l'ADR 0004 et les Architectures 0017–0018 du dépôt.
+
+
 ## Contenu (arborescence prévue)
 
 - specifications/ — spécifications normatives de gouvernance (bilingues, anglais par défaut)

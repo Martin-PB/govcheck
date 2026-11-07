@@ -12,7 +12,7 @@
 | Identité, versionnement, releases et reproductibilité des artefacts | R-14–R-15, R-21, R-23–R-26 |
 | Métadonnées de gouvernance et catalogues | R-17 |
 | Systèmes de workflow d'agents évalués comme fixtures | R-18–R-19 |
-| Sémantiques des VCS et collaboration | R-22 |
+| Sémantiques des VCS et collaboration | R-22 |\n| Modélisation des menaces, chemins d'attaque et gestion des risques | R-27–R-32 |\n| Dossiers d'assurance de sécurité et métamodèles | R-33–R-34 |
 
 ## Entrées bibliographiques détaillées
 
@@ -33,7 +33,7 @@
 - **Patron externe de catalogue/gouvernance :** R-17.
 - **Outils de workflow d'agents évalués, mais non adoptés :** R-18, R-19.
 - **Assistant de preuve et contrats d'interface :** R-20, R-21.
-- **Sémantiques natives des VCS et adaptateurs de collaboration :** R-22.
+- **Sémantiques natives des VCS et adaptateurs de collaboration :** R-22.\n- **Modélisation des menaces, chemins d'attaque et gestion des risques :** R-27 à R-32.\n- **Dossiers d'assurance de sécurité et métamodèles :** R-33 à R-34.
 
 ## Normes, recommandations publiques et spécifications industrielles
 
@@ -276,7 +276,73 @@
 
 
 - **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md).
-## Discipline bibliographique et provenance non résolue
+
+<a id="r-27"></a>
+### R-27 — NIST SP 800-30 Rev. 1, Guide pour la conduite des évaluations des risques
+- **Source primaire :** [Publication NIST](https://csrc.nist.gov/pubs/sp/800/30/r1/final) · [DOI](https://doi.org/10.6028/NIST.SP.800-30r1)
+- **Concepts pertinents :** sources et événements de menace, vulnérabilités, vraisemblance et impact, évaluation des risques, risque résiduel, hypothèses, justification et incertitude.
+- **Utilité pour GovCheck :** étaye une évaluation par scénario qui consigne la manière dont la plausibilité est estimée, les dimensions d'impact considérées, les mesures déjà en place, l'incertitude et la justification du résultat.
+- **Limite :** NIST SP 800-30 est un guide d'évaluation des risques, pas une formule quantitative universelle ni une obligation d'utiliser une échelle particulière. GovCheck ne doit pas transformer des échelles illustratives en mesures étalonnées.
+- **Cité par :** [0024](architecture/0024-project-bootstrap-and-assurance-profiles.fr.md) (évaluation et traitement des risques).
+
+<a id="r-28"></a>
+### R-28 — NIST SP 800-160 Vol. 1 Rev. 1, Engineering Trustworthy Secure Systems
+- **Source primaire :** [Publication NIST](https://csrc.nist.gov/pubs/sp/800/160/v1/r1/final) · [DOI](https://doi.org/10.6028/NIST.SP.800-160v1r1)
+- **Concepts pertinents :** ingénierie de la sécurité des systèmes sur l'ensemble du cycle de vie ; besoins de protection des parties prenantes ; exigences, architecture, implémentation, vérification, validation et gestion des risques.
+- **Utilité pour GovCheck :** appuie le lien entre besoins de protection, exigences de sécurité, architecture, contrôles, preuves de vérification et décisions de cycle de vie, plutôt qu'une analyse de menaces réduite à un questionnaire ponctuel.
+- **Limite :** cette publication est un guide d'ingénierie, pas un schéma de gouvernance de dépôt ni une preuve qu'un système donné satisfait ses exigences de sécurité.
+- **Cité par :** [0024](architecture/0024-project-bootstrap-and-assurance-profiles.fr.md) (assurance guidée par les menaces, traçabilité et cycle de vie).
+
+<a id="r-29"></a>
+### R-29 — ISO 31000:2018, Management du risque — Lignes directrices
+- **Source primaire :** [Page officielle de la norme ISO](https://www.iso.org/standard/31000)
+- **Concepts pertinents :** principes et cadre pour identifier, analyser, évaluer, traiter, surveiller, revoir et communiquer les risques.
+- **Utilité pour GovCheck :** référence générale de gestion des risques pour maintenir l'évaluation, le traitement, l'acceptation, la surveillance et la revue dans un même processus de gouvernance et de décision.
+- **Limite :** ISO 31000 fournit des lignes directrices génériques, pas une taxonomie des menaces cyber ni un algorithme prescrit de calcul du risque. Le texte intégral de la norme n'est pas reproduit ici.
+- **Cité par :** [0024](architecture/0024-project-bootstrap-and-assurance-profiles.fr.md) (traitement et revue des risques).
+
+<a id="r-30"></a>
+### R-30 — MITRE ATT&CK
+- **Source primaire :** [Base de connaissances MITRE ATT&CK](https://attack.mitre.org/) · [Guide de démarrage et d'utilisation](https://attack.mitre.org/resources/)
+- **Concepts pertinents :** tactiques et techniques adverses fondées sur des comportements observés ; correspondances entre techniques, plateformes et mesures d'atténuation.
+- **Utilité pour GovCheck :** vocabulaire et source de preuves facultatifs pour enrichir les scénarios de menace et l'analyse des chemins d'attaque, et examiner si les contrôles proposés répondent à des comportements adverses connus.
+- **Limite :** ATT&CK n'est ni un modèle exhaustif des menaces, ni un estimateur de vraisemblance, ni une base de vulnérabilités, ni une preuve d'exploitabilité. Une correspondance avec une technique ne démontre ni sa faisabilité dans le contexte du projet ni l'efficacité d'une mesure d'atténuation.
+- **Cité par :** [0024](architecture/0024-project-bootstrap-and-assurance-profiles.fr.md) (scénarios de menace et chemins d'attaque).
+
+<a id="r-31"></a>
+### R-31 — Microsoft Security Development Lifecycle : modélisation des menaces
+- **Source primaire :** [Guide Microsoft SDL sur la modélisation des menaces](https://www.microsoft.com/en-us/securityengineering/sdl/threatmodeling)
+- **Concepts pertinents :** exigences de sécurité, diagrammes de système et de flux de données, identification des menaces, atténuation et validation dans un processus itératif d'ingénierie.
+- **Utilité pour GovCheck :** exemple industriel d'un parcours répétable de modélisation des menaces reliant architecture et frontières de confiance aux mesures d'atténuation et à leur validation.
+- **Limite :** le processus Microsoft est une méthode pratique, pas une norme complète de gouvernance des risques ou de dossier d'assurance. Ses exemples et son outil ne sont pas des dépendances obligatoires de GovCheck.
+- **Cité par :** [0024](architecture/0024-project-bootstrap-and-assurance-profiles.fr.md) (modélisation guidée des menaces).
+
+<a id="r-32"></a>
+### R-32 — Bruce Schneier, « Attack Trees » (1999)
+- **Source primaire :** [Article du Dr. Dobb's Journal, archivé par Schneier](https://www.schneier.com/academic/archives/1999/12/attack_trees.html)
+- **Référence académique/technique :** Bruce Schneier, « Attack Trees », *Dr. Dobb's Journal*, décembre 1999.
+- **Concepts pertinents :** décomposition hiérarchique des objectifs d'un attaquant en sous-objectifs alternatifs ou conjoints ; raisonnement sur la faisabilité et le coût d'une attaque.
+- **Utilité pour GovCheck :** technique fondatrice pour représenter les chemins d'attaque et les différentes manières d'atteindre un objectif nuisible, et relier les mesures d'atténuation aux étapes précises d'un chemin.
+- **Limite :** les arbres d'attaque sont des modèles dont l'exhaustivité et les estimations de paramètres doivent être justifiées. Les coûts ou probabilités attribués aux nœuds ne doivent pas être considérés comme objectifs sans données étalonnées.
+- **Cité par :** [0024](architecture/0024-project-bootstrap-and-assurance-profiles.fr.md) (chemins d'attaque et lacunes de couverture).
+
+<a id="r-33"></a>
+### R-33 — Mohamad, Steghöfer et Scandariato, « Security assurance cases—state of the art of an emerging approach » (2021)
+- **Source primaire :** [Article d'Empirical Software Engineering](https://doi.org/10.1007/s10664-021-09971-7)
+- **Référence académique :** Mazen Mohamad, Jan-Philipp Steghöfer et Riccardo Scandariato, *Empirical Software Engineering* 26, article 70 (2021).
+- **Concepts pertinents :** revue systématique de 51 études sur les dossiers d'assurance de sécurité ; affirmations structurées, argumentation, hypothèses, contexte et preuves ; état de la validation et des outils.
+- **Utilité pour GovCheck :** justifie de rendre explicites affirmations, hypothèses, contexte, inférences et preuves, tout en traitant la construction et la maintenance d'un dossier d'assurance comme une activité d'ingénierie qui doit être validée.
+- **Limite :** la revue constate un domaine encore immature et des lacunes de validation et de support outillé ; elle ne démontre pas que l'adoption d'une notation de dossier d'assurance produit automatiquement un argument de sécurité valide.
+- **Cité par :** [0024](architecture/0024-project-bootstrap-and-assurance-profiles.fr.md) (hypothèses, inférences, preuves et limites de l'assurance).
+
+<a id="r-34"></a>
+### R-34 — OMG Structured Assurance Case Metamodel (SACM)
+- **Source primaire :** [Famille de spécifications OMG SACM](https://www.omg.org/spec/SACM/) · [Version formelle 2.3](https://www.omg.org/spec/SACM/2.3)
+- **Concepts pertinents :** représentation exploitable par machine de structures de dossiers d'assurance et relations entre affirmations, argumentation, artefacts et preuves.
+- **Utilité pour GovCheck :** métamodèle comparatif possible pour les artefacts d'assurance typés et leur traçabilité, au-delà de documents narratifs libres.
+- **Limite :** SACM est un métamodèle, pas une méthode d'évaluation des risques, un oracle de vérité ni une preuve de suffisance des éléments probants. La version 2.4 est actuellement une bêta ; cette entrée renvoie à la version formelle 2.3 et ne recommande pas l'adoption de SACM.
+- **Cité par :** [0024](architecture/0024-project-bootstrap-and-assurance-profiles.fr.md) (affirmations d'assurance et preuves typées).
+\n## Discipline bibliographique et provenance non résolue
 
 1. Privilégier l'organisme normatif, l'éditeur, la documentation officielle ou le dépôt source plutôt que les résumés secondaires.
 2. L'identifiant R-12 a été retiré lors de la consolidation de son entrée Scorecard en doublon dans R-08 ; ne pas réutiliser cet identifiant retiré.

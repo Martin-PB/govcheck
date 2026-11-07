@@ -35,8 +35,8 @@ Distinguish not-found, unsupported, unavailable, stale, conflict, authentication
 
 ## Primary references
 
-- [Git documentation](https://git-scm.com/docs) for Git's native repository, tree, commit and merge concepts.
-- [Pijul manual — theory](https://pijul.org/manual/theory), [channels](https://pijul.org/manual/workflows/channels) and [conflicts](https://pijul.org/manual/conflicts.html) for patch-graph identity, channel state and native conflict semantics.
+- [R-22](../references.md#r-22) for Git's native repository, tree, commit and merge concepts.
+- [R-22](../references.md#r-22), [R-22](../references.md#r-22) and [R-22](../references.md#r-22) for patch-graph identity, channel state and native conflict semantics.
 - The [GovCheck reference register](../references.md) consolidates these sources as R-22 and records their limits.
 
 These sources describe the underlying VCS semantics; they do not establish that GovCheck's adapters are implemented or conformant.

@@ -32,7 +32,7 @@ The closure is an explicit model input and is checked against the child-claim gr
 - [TLA+ authority-transition model](../../formal/tla/GovCheckAuthority.tla)
 - [TLC configuration](../../formal/tla/GovCheckAuthority.cfg)
 
-The authority model is a bounded transition model for the initial single-root regime. It checks that each amendment is made by the authority recorded immediately before it, that authority/revision transitions remain continuous, and that the current authority and revision match the last recorded decision. It does not yet model cryptographic identity, delegation records, wall-clock validity, exception lifecycles, or integration with the version-governance validator. Its finite TLC fixture is not evidence of production enforcement.
+The authority model is a bounded transition model for the initial single-root regime. It checks historical amendment attribution to the immediately preceding authority, continuity of the authority/revision chain, consistency of current state with the last record, and the temporal append-only property (the previous history remains an exact prefix after every transition). The model does not encode effective-time positions, so it does not verify prospective effect or preservation of prior decision validity. It also abstracts principal identity, and does not model delegation records, cryptographic identity, wall-clock validity, exception lifecycles, or integration with the version-governance validator. Its finite TLC fixture is not evidence of production enforcement.
 
 ## Shared release evidence
 

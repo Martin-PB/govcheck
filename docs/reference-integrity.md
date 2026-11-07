@@ -6,7 +6,7 @@ The catalogue is a maintained, bilingual evidence index, not an adoption list or
 
 - [English catalogue](references.md) is the default presentation.
 - [Catalogue français](references.fr.md) is its semantic counterpart.
-- Every source has a stable R-XX identifier. Retired identifiers are never reused (R-12 is retired).
+- Every source has a stable R-XX identifier. Retired identifiers are never reused.
 - Each entry records primary sources, relevant concepts, the specific GovCheck use and explicit limitations.
 - Each architecture record, decision or specification links to the exact catalogue anchor it uses.
 - Each catalogue entry's **Cited by / Cité par** field links back to every document that cites it.

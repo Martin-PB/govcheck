@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/GOVERNED_REPO/blob/main/formal/schemas/dependency-edge.schema.json",
+  "title": "GovCheck revision-bound dependency edge",
+  "description": "A typed, directed relation between exact artifact revisions. This schema validates record shape, not semantic impact or graph acyclicity.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "edgeId",
+    "relation",
+    "source",
+    "target",
+    "provenance"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "edgeId": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{2,127}$"
+    },
+    "relation": {
+      "enum": [
+        "depends-on",
+        "conforms-to",
+        "refines",
+        "derived-from",
+        "verifies",
+        "tests",
+        "supports",
+        "refutes",
+        "supersedes",
+        "published-with"
+      ]
+    },
+    "source": {
+      "$ref": "#/$defs/artifactRevision"
+    },
+    "target": {
+      "$ref": "#/$defs/artifactRevision"
+    },
+    "scope": {
+      "type": "string",
+      "description": "Optional statement of the precise claim, property, interface or subset covered by this edge."
+    },
+    "criticality": {
+      "enum": [
+        "blocking",
+        "material",
+        "informational"
+      ]
+    },
+    "validity": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "active",
+            "review-required",
+            "stale-invalid",
+            "superseded",
+            "revoked"
+          ]
+        },
+        "since": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "until": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "supersededBy": {
+          "type": "string"
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "recordedAt",
+        "recordedBy"
+      ],
+      "properties": {
+        "recordedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "recordedBy": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceReference": {
+          "type": "string",
+          "format": "uri-reference"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "artifactRevision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "artifactId",
+        "revision"
+      ],
+      "properties": {
+        "artifactId": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9][a-z0-9-]*)+$"
+        },
+        "revision": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "vcs",
+            "nativeId"
+          ],
+          "properties": {
+            "vcs": {
+              "enum": [
+                "git",
+                "pijul",
+                "other"
+              ]
+            },
+            "nativeId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "repository": {
+              "type": "string",
+              "format": "uri-reference"
+            },
+            "path": {
+              "type": "string"
+            },
+            "contentDigest": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "algorithm",
+                "value"
+              ],
+              "properties": {
+                "algorithm": {
+                  "const": "sha-256"
+                },
+                "value": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                }
+              }
+            }
+          }
+        },
+        "contractId": {
+          "type": "string"
+        },
+        "contractVersion": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-((?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*))*))?(?:\\+([0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*))?$"
+        }
+      }
+    }
+  }
+}

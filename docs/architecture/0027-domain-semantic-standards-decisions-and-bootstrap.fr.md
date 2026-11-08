@@ -271,15 +271,15 @@ Ce document n'adopte pas DMN, BPMN, CMMN, RAAML, SysML, UTP, PPMN, ReqIF, SPDX, 
 
 Les sources primaires consultées pour ce document sont enregistrées dans le catalogue central bilingue des références. Les identifiants ci-dessous sont des références stables du catalogue ; les entrées contiennent les liens officiels, le périmètre, la pertinence et les limites. Les versions/statuts sont un instantané de recherche daté, pas un engagement à suivre une URL « latest » mouvante.
 
-- **Modèles OMG de décision, motivation et processus :** R-94 (DMN, BPMN, CMMN, BMM et SBVR ; inclut le catalogue OMG et les spécifications propres à chaque version).
-- **Modèles OMG d'ingénierie et domaines :** R-95 (RAAML, SysML v2, UTP 2, ReqIF, SMM et PPMN ; inclut le catalogue OMG et les pages officielles des spécifications).
-- **Description d'architecture :** R-96 (ISO/IEC/IEEE 42010:2022).
-- **Ingénierie des exigences :** R-97 (ISO/IEC/IEEE 29148:2018 et statut du DIS de troisième édition en 2026).
-- **Qualité du produit :** R-98 (ISO/IEC 25010:2023).
-- **Inventaire de la chaîne d'approvisionnement logicielle :** R-99 (SPDX 3.0) et R-100 (CycloneDX).
-- **Pratiques de développement sécurisé :** R-101 (NIST SP 800-218 SSDF).
-- **Provenance :** R-102 (famille W3C PROV).
-- **Conformité open source et assurance de sécurité :** R-103 (ISO/IEC 5230 et ISO/IEC 18974).
+- **Modèles OMG de décision, motivation et processus :** [R-94](../references.fr.md#r-94) (DMN, BPMN, CMMN, BMM et SBVR ; inclut le catalogue OMG et les spécifications propres à chaque version).
+- **Modèles OMG d'ingénierie et domaines :** [R-95](../references.fr.md#r-95) (RAAML, SysML v2, UTP 2, ReqIF, SMM et PPMN ; inclut le catalogue OMG et les pages officielles des spécifications).
+- **Description d'architecture :** [R-96](../references.fr.md#r-96) (ISO/IEC/IEEE 42010:2022).
+- **Ingénierie des exigences :** [R-97](../references.fr.md#r-97) (ISO/IEC/IEEE 29148:2018 et statut du DIS de troisième édition en 2026).
+- **Qualité du produit :** [R-98](../references.fr.md#r-98) (ISO/IEC 25010:2023).
+- **Inventaire de la chaîne d'approvisionnement logicielle :** [R-99](../references.fr.md#r-99) (SPDX 3.0) et [R-100](../references.fr.md#r-100) (CycloneDX).
+- **Pratiques de développement sécurisé :** [R-02](../references.fr.md#r-02) (NIST SP 800-218 SSDF).
+- **Provenance :** [R-102](../references.fr.md#r-102) (famille W3C PROV).
+- **Conformité open source et assurance de sécurité :** [R-103](../references.fr.md#r-103) (ISO/IEC 5230 et ISO/IEC 18974).
 
 Voir [le catalogue central des références](../references.fr.md) et son [équivalent anglais](../references.md). Les entrées distinguent les spécifications formelles des versions bêta/projets et expliquent les limites de ce que chaque source permet d'établir.
 

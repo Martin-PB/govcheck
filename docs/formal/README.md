@@ -46,6 +46,10 @@ The lifecycle diagram is generated from formal/lifecycle-transitions.json. The c
 **Verification status:** the lifecycle and assurance modules, and the authority-transition module, are source artifacts checked by the formal workflow. Their TLC results establish properties only within their respective finite configurations; they do not prove implementation refinement or production enforcement. See each model document and its CI report for exact scope, state-space bounds, abstraction limits and required refinements.
 
 
+## CI verification boundaries
+
+The repository-level verification partition and its formal routing model are documented in [Architecture 0029](../architecture/0029-concern-scoped-ci-and-formal-verification-boundaries.md) ([French](../architecture/0029-concern-scoped-ci-and-formal-verification-boundaries.fr.md)). The CI routing model is `formal/tla/CICheckRouting.tla`; it is checked only when its own policy inputs change. Ordinary documentation changes do not trigger it or the product TLC models unless they are explicitly declared semantic inputs to a model.
+
 ## Reference register
 
 For the academic and industrial foundations, including the limitations of model checking and the distinction between provenance, proof and policy authority, see the [governance and assurance reference register](../references.md) and its [French version](../references.fr.md).

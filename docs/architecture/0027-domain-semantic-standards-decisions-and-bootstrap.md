@@ -123,7 +123,7 @@ The following is an initial, deliberately broad discovery inventory, not an adop
 | Provenance | OMG PPMN; W3C PROV family | Provenance/pedigree models for entities, activities, agents, derivations and responsibility across artifacts and processes. | PPMN and PROV are complementary candidates, not assumed substitutes. OMG catalog lists PPMN 1.0 formal (September 2026); W3C PROV includes PROV-DM, PROV-O, PROV-XML and constraints. |
 | Supply-chain inventory | SPDX; CycloneDX | Machine-readable software/component inventories, licenses, relationships, vulnerabilities, services and related supply-chain information. | Choose formats according to use cases and ecosystem; SBOM presence is not proof of component safety or complete provenance. SPDX 3.0 is current in its specification catalogue; pin CycloneDX version separately. |
 | Secure development | NIST SSDF (SP 800-218) | Secure-development practices and outcomes across the software lifecycle. | Practice framework, not a complete machine-readable metamodel or executable policy language. |
-| Open-source compliance | OpenChain ISO/IEC 5230; ISO/IEC 18974 | Formal program requirements for open-source license compliance and security assurance. | Organizational/process standards; program scope and verification materials matter. Conformance claims require evidence; see R-103. |
+| Open-source compliance | OpenChain ISO/IEC 5230; ISO/IEC 18974 | Formal program requirements for open-source license compliance and security assurance. | Organizational/process standards; program scope and verification materials matter. Conformance claims require evidence; see [R-103](../references.md#r-103). |
 | Semantic governance and constraints | RDF, OWL 2, SKOS, SHACL, JSON-LD, W3C PROV | Vocabularies, ontologies, constraints and linked-data representations for cross-domain semantic integration. | Use only where their graph/ontology semantics add value; do not impose an RDF knowledge graph as a prerequisite. |
 | Business motivation and rules | OMG BMM, SBVR and DMN | Motivation/goals/influencers, business vocabulary/rules, and decision logic. | Complementary layers; do not conflate motivation, policy authority, vocabulary and executable decision logic. |
 
@@ -271,15 +271,15 @@ This record does not adopt DMN, BPMN, CMMN, RAAML, SysML, UTP, PPMN, ReqIF, SPDX
 
 The primary sources consulted for this record are registered in the central bilingual reference catalogue. The identifiers below are stable catalogue references; the entries contain the official source links, scope, relevance and limitations. Version/status is a dated research snapshot, not a promise to follow a moving “latest” URL.
 
-- **OMG decision, motivation and process models:** R-94 (DMN, BPMN, CMMN, BMM and SBVR; includes the OMG catalogue and version-specific specifications).
-- **OMG engineering and domain models:** R-95 (RAAML, SysML v2, UTP 2, ReqIF, SMM and PPMN; includes the OMG catalogue and official specification pages).
-- **Architecture description:** R-96 (ISO/IEC/IEEE 42010:2022).
-- **Requirements engineering:** R-97 (ISO/IEC/IEEE 29148:2018 and the third-edition DIS status in 2026).
-- **Product quality:** R-98 (ISO/IEC 25010:2023).
-- **Software supply-chain inventory:** R-99 (SPDX 3.0) and R-100 (CycloneDX).
-- **Secure development practices:** R-101 (NIST SP 800-218 SSDF).
-- **Provenance:** R-102 (W3C PROV family).
-- **Open-source compliance and security assurance:** R-103 (ISO/IEC 5230 and ISO/IEC 18974).
+- **OMG decision, motivation and process models:** [R-94](../references.md#r-94) (DMN, BPMN, CMMN, BMM and SBVR; includes the OMG catalogue and version-specific specifications).
+- **OMG engineering and domain models:** [R-95](../references.md#r-95) (RAAML, SysML v2, UTP 2, ReqIF, SMM and PPMN; includes the OMG catalogue and official specification pages).
+- **Architecture description:** [R-96](../references.md#r-96) (ISO/IEC/IEEE 42010:2022).
+- **Requirements engineering:** [R-97](../references.md#r-97) (ISO/IEC/IEEE 29148:2018 and the third-edition DIS status in 2026).
+- **Product quality:** [R-98](../references.md#r-98) (ISO/IEC 25010:2023).
+- **Software supply-chain inventory:** [R-99](../references.md#r-99) (SPDX 3.0) and [R-100](../references.md#r-100) (CycloneDX).
+- **Secure development practices:** [R-02](../references.md#r-02) (NIST SP 800-218 SSDF).
+- **Provenance:** [R-102](../references.md#r-102) (W3C PROV family).
+- **Open-source compliance and security assurance:** [R-103](../references.md#r-103) (ISO/IEC 5230 and ISO/IEC 18974).
 
 See [the central reference catalogue](../references.md) and its [French counterpart](../references.fr.md). The catalogue entries distinguish formal specifications from beta/draft versions and explain the limits of what each source establishes.
 

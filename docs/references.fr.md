@@ -91,7 +91,7 @@
 <a id="r-02"></a>
 
 ### R-02 — NIST SP 800-218, Secure Software Development Framework (SSDF) 1.1
-- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md), [0014](architecture/0014-governed-development-workflow.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md), [0022](architecture/0022-governance-capability-audit.fr.md)
+- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md), [0014](architecture/0014-governed-development-workflow.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md), [0022](architecture/0022-governance-capability-audit.fr.md) · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
 
 - **Sources primaires :** [Publication NIST](https://csrc.nist.gov/pubs/sp/800/218/final) · [DOI](https://doi.org/10.6028/NIST.SP.800-218)
 - **Concepts pertinents :** exigences et décisions de conception de sécurité documentées, pratiques de développement sécurisé, provenance et releases.
@@ -203,7 +203,7 @@
 <a id="r-14"></a>
 
 ### R-14 — Semantic Versioning 2.0.0
-- **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md), [0018](architecture/0018-version-governance-and-compatibility-authority.fr.md), [0019](architecture/0019-catalogue-and-release-manifest-migration.fr.md)
+- **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md), [0018](architecture/0018-version-governance-and-compatibility-authority.fr.md), [0019](architecture/0019-catalogue-and-release-manifest-migration.fr.md) · [ADR 0004](decisions/0004-semantic-versioning-contracts.fr.md)
 
 - **Source primaire :** [SemVer 2.0.0](https://semver.org/)
 - **Concepts pertinents :** MAJOR/MINOR/PATCH par rapport à une API publique et à un contrat de compatibilité déclarés ; les versions publiées sont immuables.
@@ -213,7 +213,7 @@
 <a id="r-15"></a>
 
 ### R-15 — Tags Git et releases
-- **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md), [0018](architecture/0018-version-governance-and-compatibility-authority.fr.md), [0019](architecture/0019-catalogue-and-release-manifest-migration.fr.md)
+- **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md), [0018](architecture/0018-version-governance-and-compatibility-authority.fr.md), [0019](architecture/0019-catalogue-and-release-manifest-migration.fr.md) · [ADR 0004](decisions/0004-semantic-versioning-contracts.fr.md)
 
 - **Sources primaires :** [Référence Git : étiquetage](https://git-scm.com/book/en/v2/Git-Basics-Tagging) · [GitHub Releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases)
 - **Concepts pertinents :** identification d'une révision source et publication des artefacts associés à une release.
@@ -297,7 +297,7 @@
 <a id="r-23"></a>
 
 ### R-23 — IMS Global / 1EdTech : spécifications de versionnement
-- **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md), [0018](architecture/0018-version-governance-and-compatibility-authority.fr.md)
+- **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md), [0018](architecture/0018-version-governance-and-compatibility-authority.fr.md) · [ADR 0004](decisions/0004-semantic-versioning-contracts.fr.md)
 
 - **Source primaire :** [Spécifications 1EdTech](https://www.imsglobal.org/spec/versioning/v1) (anciennement IMS Global ; consulter la version précise avant d'invoquer une règle particulière).
 - **Concepts pertinents :** identifiants de version et conventions de compatibilité pour des artefacts structurés et publiés.
@@ -336,7 +336,7 @@
 
 <a id="r-27"></a>
 ### R-27 — NIST SP 800-30 Rev. 1, Guide pour la conduite des évaluations des risques
-- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md)
+- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md) · [0024](architecture/0024-project-bootstrap-and-assurance-profiles.fr.md)
 
 - **Source primaire :** [Publication NIST](https://csrc.nist.gov/pubs/sp/800/30/r1/final) · [DOI](https://doi.org/10.6028/NIST.SP.800-30r1)
 - **Concepts pertinents :** sources et événements de menace, vulnérabilités, vraisemblance et impact, évaluation des risques, risque résiduel, hypothèses, justification et incertitude.
@@ -345,7 +345,7 @@
 
 <a id="r-28"></a>
 ### R-28 — NIST SP 800-160 Vol. 1 Rev. 1, Engineering Trustworthy Secure Systems
-- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md)
+- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md) · [0024](architecture/0024-project-bootstrap-and-assurance-profiles.fr.md)
 
 - **Source primaire :** [Publication NIST](https://csrc.nist.gov/pubs/sp/800/160/v1/r1/final) · [DOI](https://doi.org/10.6028/NIST.SP.800-160v1r1)
 - **Concepts pertinents :** ingénierie de la sécurité des systèmes sur l'ensemble du cycle de vie ; besoins de protection des parties prenantes ; exigences, architecture, implémentation, vérification, validation et gestion des risques.
@@ -354,7 +354,7 @@
 
 <a id="r-29"></a>
 ### R-29 — ISO 31000:2018, Management du risque — Lignes directrices
-- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md)
+- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md) · [0024](architecture/0024-project-bootstrap-and-assurance-profiles.fr.md)
 
 - **Source primaire :** [Page officielle de la norme ISO](https://www.iso.org/standard/31000)
 - **Concepts pertinents :** principes et cadre pour identifier, analyser, évaluer, traiter, surveiller, revoir et communiquer les risques.
@@ -363,7 +363,7 @@
 
 <a id="r-30"></a>
 ### R-30 — MITRE ATT&CK
-- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md)
+- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md) · [0024](architecture/0024-project-bootstrap-and-assurance-profiles.fr.md)
 
 - **Source primaire :** [Base de connaissances MITRE ATT&CK](https://attack.mitre.org/) · [Guide de démarrage et d'utilisation](https://attack.mitre.org/resources/)
 - **Concepts pertinents :** tactiques et techniques adverses fondées sur des comportements observés ; correspondances entre techniques, plateformes et mesures d'atténuation.
@@ -372,7 +372,7 @@
 
 <a id="r-31"></a>
 ### R-31 — Microsoft Security Development Lifecycle : modélisation des menaces
-- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md)
+- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md) · [0024](architecture/0024-project-bootstrap-and-assurance-profiles.fr.md)
 
 - **Source primaire :** [Guide Microsoft SDL sur la modélisation des menaces](https://www.microsoft.com/en-us/securityengineering/sdl/threatmodeling)
 - **Concepts pertinents :** exigences de sécurité, diagrammes de système et de flux de données, identification des menaces, atténuation et validation dans un processus itératif d'ingénierie.
@@ -381,7 +381,7 @@
 
 <a id="r-32"></a>
 ### R-32 — Bruce Schneier, « Attack Trees » (1999)
-- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md)
+- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md) · [0024](architecture/0024-project-bootstrap-and-assurance-profiles.fr.md)
 
 - **Source primaire :** [Article du Dr. Dobb's Journal, archivé par Schneier](https://www.schneier.com/academic/archives/1999/12/attack_trees.html)
 - **Référence académique/technique :** Bruce Schneier, « Attack Trees », *Dr. Dobb's Journal*, décembre 1999.
@@ -391,7 +391,7 @@
 
 <a id="r-33"></a>
 ### R-33 — Mohamad, Steghöfer et Scandariato, « Security assurance cases—state of the art of an emerging approach » (2021)
-- **Cité par :** [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md)
+- **Cité par :** [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md) · [0024](architecture/0024-project-bootstrap-and-assurance-profiles.fr.md)
 
 - **Source primaire :** [Article d'Empirical Software Engineering](https://doi.org/10.1007/s10664-021-09971-7)
 - **Référence académique :** Mazen Mohamad, Jan-Philipp Steghöfer et Riccardo Scandariato, *Empirical Software Engineering* 26, article 70 (2021).
@@ -401,7 +401,7 @@
 
 <a id="r-34"></a>
 ### R-34 — OMG Structured Assurance Case Metamodel (SACM)
-- **Cité par :** [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md)
+- **Cité par :** [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md) · [0024](architecture/0024-project-bootstrap-and-assurance-profiles.fr.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.fr.md)
 
 - **Source primaire :** [Famille de spécifications OMG SACM](https://www.omg.org/spec/SACM/) · [Version formelle 2.3](https://www.omg.org/spec/SACM/2.3)
 - **Concepts pertinents :** représentation exploitable par machine de structures de dossiers d'assurance et relations entre affirmations, argumentation, artefacts et preuves.
@@ -729,7 +729,7 @@
 
 <a id="r-70"></a>
 ### R-70 — Wei et al., « ACCESS: Assurance Case Centric Engineering of Safety-critical Systems » (2024)
-- **Cité par :** [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md)
+- **Cité par :** [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.fr.md)
 - **Source primaire :** [Article du Journal of Systems and Software](https://doi.org/10.1016/j.jss.2024.112034) · [copie en accès ouvert](https://eprints.whiterose.ac.uk/id/eprint/211554/)
 - **Référence bibliographique :** Ran Wei, Simon Foster, Haitao Mei, Fang Yan, Ruizhe Yang, Ibrahim Habli, Colin O’Halloran, Nick Tudor, Tim Kelly et Yakoub Nemouchi, *Journal of Systems and Software* 213 (2024), article 112034.
 - **Concepts pertinents :** dossiers d'assurance fondés sur des modèles SACM ; traçabilité vers des artefacts d'ingénierie hétérogènes ; évaluation automatisée, analyse d'impact des changements, preuves de méthodes formelles et évaluation dynamique du dossier d'assurance en production.
@@ -738,7 +738,7 @@
 
 <a id="r-71"></a>
 ### R-71 — Bloomfield et Rushby, « Assurance 2.0: A Manifesto » (2021)
-- **Cité par :** [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md)
+- **Cité par :** [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.fr.md)
 - **Source primaire :** [Page des auteurs chez SRI et article](https://www.csl.sri.com/users/rushby/abstracts/sss21) · [manuscrit arXiv](https://arxiv.org/abs/2004.10474)
 - **Référence bibliographique :** Robin Bloomfield et John Rushby, *Systems and Covid-19: Proceedings of the 29th Safety-Critical Systems Symposium*, 2021, p. 85–108.
 - **Concepts pertinents :** examen renforcé du raisonnement et des preuves ; explicitation des éléments réfutants (*defeaters*) et contre-preuves ; évaluation du poids des preuves et de leur capacité à distinguer une affirmation de sa négation.
@@ -747,7 +747,7 @@
 
 <a id="r-72"></a>
 ### R-72 — Ericsson, « Runtime threat modeling for attack prediction and defense » (2025)
-- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md)
+- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.fr.md)
 - **Source primaire :** [Article d'ingénierie Ericsson](https://www.ericsson.com/en/blog/2025/12/runtime-threat-modeling-for-attack-prediction-and-defense)
 - **Concepts pertinents :** combinaison de télémétrie, état de configuration et changements d'actifs/contexte avec les connaissances sur les menaces ; hypothèses de menace issues des observations ; évaluation de l'efficacité des contrôles et boucles de retour.
 - **Utilité pour GovCheck :** exemple industriel reliant l'observabilité en production à l'évolution du modèle de menace et à l'évaluation des contrôles.
@@ -755,7 +755,7 @@
 
 <a id="r-73"></a>
 ### R-73 — OMG Structured Assurance Case Metamodel (SACM), version 2.4 Beta 1 (septembre 2026)
-- **Cité par :** [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md)
+- **Cité par :** [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.fr.md)
 - **Source primaire :** [État de la spécification SACM et documents de la bêta 2.4 chez OMG](https://www.omg.org/spec/SACM)
 - **Concepts pertinents :** extensions proposées à SACM 2.3, notamment valeurs structurées/forces typées, constructions liées à l'évaluation, jointures, références à un concept entier, marquage de l'état de développement et révision de la sémantique des packages/relations.
 - **Utilité pour GovCheck :** point de comparaison indispensable avant de sélectionner un métamodèle interne ou d'échange. Les résolutions de tickets de la bêta indiquent quelles lacunes de 2.3 la révision tente de combler.
@@ -763,7 +763,7 @@
 
 <a id="r-74"></a>
 ### R-74 — Hoover, Rosso-Llopart et Taran, *Evaluating Project Decisions: Case Studies in Software Engineering* (2009/2010)
-- **Cité par :** [0013](architecture/0013-governance-metamodel.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md)
+- **Cité par :** [0013](architecture/0013-governance-metamodel.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.fr.md)
 - **Sources primaires :** [Section PEAK du chapitre 1 (InformIT)](https://www.informit.com/articles/article.aspx?p=1409781&seqNum=3) · [Page du livre chez l'éditeur O’Reilly](https://www.oreilly.com/library/view/evaluating-project-decisions/9780321685629/)
 - **Référence bibliographique :** Carol L. Hoover, Mel Rosso-Llopart et Gil Taran, Addison-Wesley Professional, première publication en octobre 2009 (copyright 2010), ISBN 978-0-321-54456-8 ; le chapitre 1, §1.3 présente le modèle de décision PEAK.
 - **Concepts pertinents :** Problem, Experience, Assumptions et Knowledge comme entrées de la décision ; un processus de décision produit une solution et un risque assumé.
@@ -772,7 +772,7 @@
 
 <a id="r-75"></a>
 ### R-75 — NIST SP 800-137, Information Security Continuous Monitoring (2011)
-- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md)
+- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.fr.md)
 - **Source primaire :** [Publication NIST](https://csrc.nist.gov/pubs/sp/800/137/final) · [DOI](https://doi.org/10.6028/NIST.SP.800-137)
 - **Concepts pertinents :** visibilité continue sur les actifs, menaces, vulnérabilités et efficacité des contrôles déployés ; surveillance alignée sur la tolérance au risque ; réaction lorsque les observations montrent que les contrôles sont insuffisants.
 - **Utilité pour GovCheck :** étaye une boucle de retour en production dans laquelle les observations actualisent l'état du système, l'évaluation des contrôles et les décisions de risque, au lieu de figer le modèle de menace à la conception.
@@ -780,7 +780,7 @@
 
 <a id="r-76"></a>
 ### R-76 — Rushby, « Runtime Certification » (RV 2008)
-- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md), [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md)
+- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md), [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.fr.md)
 - **Source primaire :** [Article de l'auteur, présenté au huitième atelier Runtime Verification](https://citeseerx.ist.psu.edu/document?doi=c28045b0a573839028f6042870a3eccd8f9be748&repid=rep1&type=pdf)
 - **Référence bibliographique :** John Rushby, « Runtime Certification », article invité à RV 2008, Budapest, avril 2008.
 - **Concepts pertinents :** dossiers d'assurance comme affirmations, preuves et arguments ; surveillance en exécution des hypothèses et anomalies ; utilisation de la vérification à l'exécution comme preuve ; détection de la violation d'hypothèses environnementales.
@@ -937,7 +937,7 @@
 
 <a id="r-94"></a>
 ### R-94 — Référentiels OMG de décision métier, motivation et processus
-- **Cité par :** aucun record actuel ne cite cette source candidate.
+- **Cité par :** aucun record actuel ne cite cette source candidate. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
 - **Sources primaires :** [Catalogue des spécifications OMG](https://www.omg.org/specifications/) · [DMN 1.6](https://www.omg.org/spec/DMN/1.6/) · [DMN 1.7 Beta 1](https://www.omg.org/spec/DMN/1.7/Beta1) · [BPMN 2.0.2](https://www.omg.org/spec/BPMN/) · [CMMN 1.1](https://www.omg.org/spec/CMMN/1.1) · [Business Motivation Model 1.3](https://www.omg.org/spec/BMM/1.3/) · [SBVR 1.5](https://www.omg.org/spec/SBVR)
 - **Concepts pertinents :** exigences de décision, tables de décision et FEEL ; activités, événements et passerelles de processus ; gestion adaptative de cas ; objectifs métier et facteurs d'influence ; vocabulaires et règles métier formels.
 - **Utilité pour GovCheck :** spécifications primaires des candidats complémentaires relatifs à la logique décisionnelle, aux processus, à la gestion de cas, à la motivation et aux règles métier discutés dans le projet.
@@ -945,7 +945,7 @@
 
 <a id="r-95"></a>
 ### R-95 — Modèles OMG d'ingénierie, de risque, de test, d'exigences, de métriques et de provenance
-- **Cité par :** aucun record actuel ne cite cette source candidate.
+- **Cité par :** aucun record actuel ne cite cette source candidate. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
 - **Sources primaires :** [RAAML 1.1](https://www.omg.org/spec/RAAML/1.1) · [RAAML 1.2 Beta 1](https://www.omg.org/spec/RAAML/1.2/Beta1) · [SysML v2](https://www.omg.org/spec/SysML/2.0) · [Présentation de SysML v2](https://www.omg.org/sysml/sysmlv2/) · [UTP 2.3 Beta 1](https://www.omg.org/spec/UTP2) · [ReqIF 1.2](https://www.omg.org/spec/ReqIF/1.2) · [Structured Metrics Metamodel 1.2](https://www.omg.org/spec/SMM/1.2) · [PPMN 1.0](https://www.omg.org/spec/PPMN/)
 - **Concepts pertinents :** analyse structurée des risques et de la sécurité ; exigences, structure, comportement et vérification des systèmes ; spécification des tests fondée sur les modèles ; échange d'exigences ; définitions et résultats de mesure ; provenance des entités, activités et agents.
 - **Utilité pour GovCheck :** sources primaires des candidats couvrant les domaines d'ingénierie, y compris les artefacts de modèle et d'échange lisibles par machine lorsqu'ils sont publiés.
@@ -953,7 +953,7 @@
 
 <a id="r-96"></a>
 ### R-96 — ISO/IEC/IEEE 42010:2022, description d'architecture
-- **Cité par :** aucun record actuel ne cite cette source candidate.
+- **Cité par :** aucun record actuel ne cite cette source candidate. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
 - **Source primaire :** [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html)
 - **Concepts pertinents :** exigences relatives aux descriptions d'architecture, cadres de description, points de vue, types de modèles et conformité.
 - **Utilité pour GovCheck :** fondement normatif candidat pour structurer les descriptions d'architecture, préoccupations des parties prenantes, vues et points de vue.
@@ -961,7 +961,7 @@
 
 <a id="r-97"></a>
 ### R-97 — ISO/IEC/IEEE 29148, ingénierie des exigences
-- **Cité par :** aucun record actuel ne cite cette source candidate.
+- **Cité par :** aucun record actuel ne cite cette source candidate. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
 - **Sources primaires :** [ISO/IEC/IEEE DIS 29148, troisième édition (2026)](https://www.iso.org/standard/94091.html) · [ISO/IEC/IEEE 29148:2018](https://www.iso.org/standard/72089.html)
 - **Concepts pertinents :** processus du cycle de vie d'ingénierie des exigences, éléments d'information requis et leur contenu, recommandations pour les activités d'exigences des cycles de vie systèmes/logiciels.
 - **Utilité pour GovCheck :** référence candidate de processus et d'éléments d'information pour la gouvernance et la traçabilité des exigences.
@@ -969,7 +969,7 @@
 
 <a id="r-98"></a>
 ### R-98 — ISO/IEC 25010:2023, modèle de qualité du produit
-- **Cité par :** aucun record actuel ne cite cette source candidate.
+- **Cité par :** aucun record actuel ne cite cette source candidate. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
 - **Source primaire :** [ISO/IEC 25010:2023](https://www.iso.org/standard/78176.html)
 - **Concepts pertinents :** caractéristiques et sous-caractéristiques de qualité utilisées pour spécifier, mesurer et évaluer la qualité des produits TIC et logiciels.
 - **Utilité pour GovCheck :** vocabulaire partagé candidat pour les exigences de qualité, objectifs de test, critères d'évaluation et planification des mesures.
@@ -977,7 +977,7 @@
 
 <a id="r-99"></a>
 ### R-99 — Spécification SPDX
-- **Cité par :** aucun record actuel ne cite cette source candidate.
+- **Cité par :** aucun record actuel ne cite cette source candidate. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
 - **Source primaire :** [Catalogue des spécifications SPDX](https://spdx.dev/use/specifications/)
 - **Concepts pertinents :** représentation normalisée lisible par machine des composants logiciels, paquets, fichiers, relations, licences et autres métadonnées de chaîne d'approvisionnement. Le catalogue identifie SPDX 3.0 comme version courante à la date de l'instantané.
 - **Utilité pour GovCheck :** format natif candidat pour les SBOM et les métadonnées de licences/chaîne d'approvisionnement.
@@ -985,7 +985,7 @@
 
 <a id="r-100"></a>
 ### R-100 — Spécification CycloneDX
-- **Cité par :** aucun record actuel ne cite cette source candidate.
+- **Cité par :** aucun record actuel ne cite cette source candidate. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
 - **Source primaire :** [Vue d'ensemble de la spécification CycloneDX](https://cyclonedx.org/specification/overview/)
 - **Concepts pertinents :** modèle extensible de chaîne d'approvisionnement couvrant composants logiciels/matériels, services, dépendances, actifs cryptographiques, configurations opérationnelles et métadonnées ; représentations JSON, XML et Protocol Buffers.
 - **Utilité pour GovCheck :** format d'échange candidat pour les SBOM et les informations plus larges de chaîne d'approvisionnement, à évaluer avec SPDX selon les besoins réels.
@@ -993,7 +993,7 @@
 
 <a id="r-102"></a>
 ### R-102 — Famille W3C PROV
-- **Cité par :** aucun record actuel ne cite cette source candidate.
+- **Cité par :** aucun record actuel ne cite cette source candidate. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
 - **Source primaire :** [Vue d'ensemble W3C PROV](https://www.w3.org/TR/prov-overview/)
 - **Concepts pertinents :** famille de modèles de provenance interopérables couvrant entités, activités, agents et relations de dérivation/attribution, avec modèle de données, ontologie, contraintes et spécifications de sérialisation.
 - **Utilité pour GovCheck :** vocabulaire et famille de représentations candidates pour la provenance des décisions, sources, artefacts générés, observations et preuves.
@@ -1002,7 +1002,7 @@
 
 <a id="r-103"></a>
 ### R-103 — OpenChain : ISO/IEC 5230 et ISO/IEC 18974
-- **Cité par :** aucun record actuel ne cite cette source candidate.
+- **Cité par :** aucun record actuel ne cite cette source candidate. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
 - **Sources primaires :** [ISO/IEC 5230:2020 — spécification OpenChain](https://www.iso.org/standard/81039.html) · [ISO/IEC 18974:2023 — spécification OpenChain d'assurance de sécurité](https://www.iso.org/standard/86450.html) · [Normes et guide d'adoption OpenChain](https://openchainproject.org/get-started)
 - **Concepts pertinents :** exigences organisationnelles relatives aux programmes de conformité des licences open source (5230) et d'assurance de sécurité open source (18974), notamment politique, périmètre, rôles, processus et éléments de vérification conservés.
 - **Utilité pour GovCheck :** normes candidates de processus et d'organisation pour les capacités de conformité open source et d'assurance de sécurité open source.

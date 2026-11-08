@@ -78,7 +78,7 @@ A conforming implementation binds evidence to exact states/governance revisions,
 - [R-05 — TLA+ and TLC](../references.md#r-05)
 - [R-07 — SLSA](../references.md#r-07)
 - [R-20 — Lean](../references.md#r-20)
-- [R-35 — Common Criteria / ISO/IEC 15408](../references.md#r-43)
+- [R-35 — Common Criteria / ISO/IEC 15408](../references.md#r-35)
 - [R-36 — RTCA DO-178C / EUROCAE ED-12C](../references.md#r-36)
 - [R-37 — Alloy](../references.md#r-37)
 - [R-38 — SPIN / Promela](../references.md#r-38)

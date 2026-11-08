@@ -5,6 +5,7 @@ Categories ==
   {"LifecycleSource", "LifecycleConfig", "LifecycleSemantics",
    "AssuranceSource", "AssuranceConfig", "AssuranceSemantics",
    "AuthoritySource", "AuthorityConfig", "AuthoritySemantics",
+   "LifecycleWorkflow", "AssuranceWorkflow", "AuthorityWorkflow",
    "SharedTLCWorkflow", "UnrelatedArchitecture", "OrdinaryDocumentation"}
 
 ModelSpecific ==
@@ -20,11 +21,11 @@ Next == UNCHANGED vars
 Spec == Init /\ [][Next]_vars
 
 LifecycleInputs ==
-  {"LifecycleSource", "LifecycleConfig", "LifecycleSemantics"}
+  {"LifecycleSource", "LifecycleConfig", "LifecycleSemantics", "LifecycleWorkflow"}
 AssuranceInputs ==
-  {"AssuranceSource", "AssuranceConfig", "AssuranceSemantics"}
+  {"AssuranceSource", "AssuranceConfig", "AssuranceSemantics", "AssuranceWorkflow"}
 AuthorityInputs ==
-  {"AuthoritySource", "AuthorityConfig", "AuthoritySemantics"}
+  {"AuthoritySource", "AuthorityConfig", "AuthoritySemantics", "AuthorityWorkflow"}
 
 RunLifecycle == changed \cap (LifecycleInputs \cup {"SharedTLCWorkflow"}) # {}
 RunAssurance == changed \cap (AssuranceInputs \cup {"SharedTLCWorkflow"}) # {}

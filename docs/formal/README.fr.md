@@ -32,6 +32,10 @@ Le premier modèle couvre un changement abstrait, l’évaluation liée à un tu
 
 Le modèle est une abstraction à transitions bornées du régime initial à racine unique. Il vérifie l'attribution historique des amendements à l'autorité immédiatement précédente, la continuité de la chaîne autorité/révision, la cohérence de l'état courant avec le dernier enregistrement et la propriété temporelle append-only (l'historique antérieur reste un préfixe exact après chaque transition). Il n'encode pas de positions d'entrée en vigueur : il ne vérifie donc ni l'effet prospectif ni la préservation de la validité des décisions antérieures. Il abstrait l'identité des principaux et ne modélise pas les délégations, l'identité cryptographique, la validité en temps réel, le cycle de vie des dérogations ni l'intégration au validateur de gouvernance des versions. Le fixture TLC fini ne prouve pas l'application en production.
 
+## Périmètres de vérification CI
+
+La partition des vérifications du dépôt et son modèle formel de routage sont décrits dans [l'Architecture 0029](../architecture/0029-concern-scoped-ci-and-formal-verification-boundaries.fr.md) ([English](../architecture/0029-concern-scoped-ci-and-formal-verification-boundaries.md)). Le modèle de routage CI est `formal/tla/CICheckRouting.tla` ; il n'est vérifié que lorsque ses propres entrées de politique changent. Les modifications documentaires ordinaires ne déclenchent ni ce modèle ni les modèles TLC produit, sauf si elles sont explicitement déclarées comme entrées sémantiques d'un modèle.
+
 ## Registre de références
 
 Pour les fondements académiques et industriels, notamment les limites du model checking et la distinction entre provenance, preuve et autorité normative, voir le [registre GovCheck des références sur la gouvernance et l'assurance](../references.fr.md) et sa [version anglaise](../references.md).

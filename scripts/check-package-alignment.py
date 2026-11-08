@@ -56,8 +56,17 @@ def headings(text):
     return out
 
 
+def normalize_heading(title):
+    """Normalize typographic apostrophe variants without changing displayed headings."""
+    return title.replace("\\u2018", "'").replace("\\u2019", "'").replace("\\u02bc", "'")
+
+
 def template_headings(text):
-    return [title for _, title in headings(text) if not REFERENCE_HEADING.search(title)]
+    return [
+        normalize_heading(title)
+        for _, title in headings(text)
+        if not REFERENCE_HEADING.search(title)
+    ]
 
 
 def reference_ids(text):

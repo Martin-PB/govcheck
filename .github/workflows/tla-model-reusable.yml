@@ -1,0 +1,53 @@
+name: Reusable TLC model verification
+
+on:
+  workflow_call:
+    inputs:
+      model:
+        description: TLA+ module name without extension
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: TLC — ${{ inputs.model }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Download pinned tla2tools (v1.7.4, checksum-verified)
+        run: |
+          curl -fsSL -o tla2tools.jar https://downloads.sourceforge.net/project/tlaplus.mirror/v1.7.4/tla2tools.jar
+          echo "936a262061c914694dfd669a543be24573c45d5aa0ff20a8b96b23d01e050e88  tla2tools.jar" | sha256sum -c -
+          sha256sum tla2tools.jar | tee tla2tools.sha256
+      - name: Run SANY parse and semantic check
+        env:
+          MODEL: ${{ inputs.model }}
+        run: |
+          set -o pipefail
+          java -cp tla2tools.jar tla2sany.SANY "formal/tla/${MODEL}.tla" 2>&1 | tee "sany-${MODEL}.txt"
+          if grep -Eq 'Semantic errors:|\\*\\*\\* Errors:' "sany-${MODEL}.txt"; then
+            echo "SANY reported semantic errors for ${MODEL}.tla" >&2
+            exit 1
+          fi
+      - name: Run TLC model checking
+        env:
+          MODEL: ${{ inputs.model }}
+        run: |
+          set -o pipefail
+          java -XX:+UseParallelGC -cp tla2tools.jar tlc2.TLC -workers 4 -config "formal/tla/${MODEL}.cfg" "formal/tla/${MODEL}.tla" 2>&1 | tee "tlc-${MODEL}.txt"
+      - name: Upload model-checking report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tlc-report-${{ inputs.model }}
+          path: |
+            sany-${{ inputs.model }}.txt
+            tlc-${{ inputs.model }}.txt
+            tla2tools.sha256

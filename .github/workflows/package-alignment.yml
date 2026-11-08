@@ -1,0 +1,37 @@
+name: Package alignment check
+
+# Meta-level CI enforcing ADR 0003: the govcheck/ product package and the meta level
+# must stay structurally aligned (same template sections, shared reference IDs,
+# workflow job coverage, package purity). Root-only workflows are allowlisted inside
+# the script (META_ONLY_WORKFLOWS).
+
+on:
+  pull_request:
+    paths:
+      - 'govcheck/**'
+      - 'docs/**'
+      - 'formal/**'
+      - 'scripts/**'
+      - '.github/workflows/**'
+  push:
+    branches: [main]
+    paths:
+      - 'govcheck/**'
+      - 'docs/**'
+      - 'formal/**'
+      - 'scripts/**'
+      - '.github/workflows/**'
+
+permissions:
+  contents: read
+
+jobs:
+  package-alignment:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check structural alignment between govcheck/ and the meta level (ADR 0003)
+        run: python3 scripts/check-package-alignment.py

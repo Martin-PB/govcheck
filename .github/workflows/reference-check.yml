@@ -1,0 +1,32 @@
+name: Reference integrity check
+
+# Meta-level CI for the reference catalogue and the documents citing it.
+# Runs scripts/check-reference-integrity.py (offline mode: local links and anchors
+# only). The --external option, which also probes remote URLs, is for local use.
+
+on:
+  pull_request:
+    paths:
+      - 'docs/**'
+      - 'scripts/check-reference-integrity.py'
+      - '.github/workflows/reference-check.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'docs/**'
+      - 'scripts/check-reference-integrity.py'
+      - '.github/workflows/reference-check.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  reference-integrity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check reference integrity (offline)
+        run: python3 scripts/check-reference-integrity.py

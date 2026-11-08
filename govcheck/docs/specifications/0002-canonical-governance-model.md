@@ -12,6 +12,21 @@ A governance package contains: package identity and semantic version; stable rul
 
 A rule ID is immutable and never recycled. Rule wording, translations, scope and predicates may evolve, but semantic changes require review and traceability. Removed rules remain addressable through tombstones or supersession records.
 
+## Package and product version contracts
+
+GovCheck uses two distinct release contracts:
+
+- **GovCheck product** (**govcheck.product**): the complete distributable product and its declared public interfaces, including the executable/CLI and supported integration surfaces when published.
+- **Reusable governance package** (**govcheck.governance-package**): the independently consumable package under **govcheck/**, copied or bootstrapped into governed repositories. Its contract is the governance model, rules, profiles, bootstrap behavior and supported package interfaces.
+
+Each contract has its own SemVer sequence, compatibility assessment, authorization and immutable release identity. A product release may include a particular governance-package release, but neither version is inferred from the other. A Git repository tag identifies a repository release/commit; it does not automatically assign either contract version.
+
+The planned first GovCheck product baseline is **0.1.0**; this is a target, not a published or authorized release. The reusable governance package has its own independent version sequence, whose first version remains unassigned. A first publication is an explicit initial-publication decision, not an invented MAJOR/MINOR/PATCH increment. A complete SemVer string has three numeric components (for example, **0.1.0**); shorthand such as **v0.1** is not a complete release identity.
+
+Before 1.0.0, the relevant contract is explicitly in initial development: under SemVer, anything may change and the public API should not be treated as stable. A change that breaks an already declared pre-1.0 contract still requires an explicit compatibility assessment, migration note and MINOR increment rather than a silent PATCH. Once a contract reaches 1.0.0, the normal MAJOR/MINOR/PATCH compatibility rules apply.
+
+The product and package may evolve at different rates. A change to GovCheck's own CLI can increment the product contract without changing the governance package. A change to a normative rule package can increment the governance-package contract without requiring a product increment if the product interface and guarantees are unchanged. Schema-format markers, artifact revisions, ADRs, executions, evidence and decisions remain governed by their own identity rules; they are not assigned SemVer merely because they are part of a release.
+
 ## Rule semantics
 
 Distinguish at least: obligation, prohibition, permission, invariant/constraint, evidence requirement, process/approval requirement, and advisory guidance. Advisory guidance is explicitly non-normative. Absence of prohibition is not permission. A permission does not cancel an obligation or prohibition absent an explicit valid precedence relation.

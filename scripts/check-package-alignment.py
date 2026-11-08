@@ -2,9 +2,12 @@
 """Structural alignment check between the govcheck/ product package and the meta level.
 
 Implements the alignment rule of ADR 0003 (two-level governance): when a PR changes a
-normative document, both levels are updated in the same PR, and a CI check verifies that
-they stay structurally aligned (same template sections) without requiring identical
-content. Standard library only; run from anywhere inside the repository checkout.
+normative document, both levels are updated in the same PR. Structural alignment is
+declared in docs/template-manifest.json, not inferred: every section of every paired
+normative document is classified as "package" (indispensable: present at both levels,
+same relative order), "optionnel" (may appear on either side) or "meta-only" (meta
+level only, never copied into the package). Sections absent from the manifest default
+to "package". Standard library only; run from anywhere inside the repository checkout.
 
 Checks:
 1. govcheck/bootstrap.py and govcheck/README.md exist.
@@ -12,11 +15,10 @@ Checks:
 3. govcheck/decisions/ and govcheck/docs/architecture/ contain only guide/template
    files (README*/TEMPLATE*), never GovCheck-specific numbered records.
 4. Paired normative markdown exists with the same file names on both levels
-   (docs/specifications/, docs/formal/, docs/BOOTSTRAP_GOVERNANCE*). For each pair, the
-   package heading sequence, ignoring reference-register sections, must be an ordered
-   subsequence of the meta heading sequence: the meta level may add meta-level sections
-   (governance authority, bibliographic references), the package must not invent
-   sections absent from the meta level.
+   (docs/specifications/, docs/formal/, docs/BOOTSTRAP_GOVERNANCE*), is fully covered
+   by docs/template-manifest.json, and each pair satisfies the manifest: "package"
+   sections on both sides in the same relative order, "meta-only" sections never in
+   the package, "optionnel" sections allowed on either side.
 5. Reference catalogues (docs/references*.md vs govcheck/docs/references*.md) are
    compared by reference ID: every package ID must exist in the meta catalogue.
 6. Workflows: every workflow in govcheck/.github/workflows/ has a root counterpart in
@@ -28,20 +30,18 @@ Exit code 0 when aligned, 1 otherwise, with one line per violation.
 
 from __future__ import annotations
 
+import json
 import re
 import sys
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 PACKAGE = REPO_ROOT / "govcheck"
+MANIFEST = REPO_ROOT / "docs" / "template-manifest.json"
 
 # Root workflows that intentionally have no package counterpart (meta-level only).
 META_ONLY_WORKFLOWS = {"reference-check.yml", "package-alignment.yml"}
 
-# Reference-register headings are excluded from the template-section comparison: the
-# meta level appends bibliographic references and the package may carry its own
-# (smaller) catalogue section.
-REFERENCE_HEADING = re.compile(r"reference|bibliograph", re.IGNORECASE)
 HEADING = re.compile(r"^(#{1,6})\s+(.*?)\s*$")
 ANCHOR_ID = re.compile(r'id="([^"]+)"')
 GUIDE_FILE = re.compile(r"^(README|TEMPLATE)(\.fr)?\.md$")
@@ -61,12 +61,12 @@ def normalize_heading(title):
     return title.replace("\u2018", "'").replace("\u2019", "'").replace("\u02bc", "'")
 
 
-def template_headings(text):
-    return [
-        normalize_heading(title)
-        for _, title in headings(text)
-        if not REFERENCE_HEADING.search(title)
-    ]
+def read(path):
+    return path.read_text(encoding="utf-8")
+
+
+def section_titles(path):
+    return [normalize_heading(t) for _, t in headings(read(path))]
 
 
 def reference_ids(text):
@@ -78,15 +78,6 @@ def reference_ids(text):
     for m in ANCHOR_ID.finditer(text):
         ids.add(m.group(1).lower())
     return ids
-
-
-def is_subsequence(small, big):
-    it = iter(big)
-    return all(any(x == y for y in it) for x in small)
-
-
-def read(path):
-    return path.read_text(encoding="utf-8")
 
 
 def job_ids(workflow_text):
@@ -103,6 +94,79 @@ def job_ids(workflow_text):
             if m:
                 ids.add(m.group(1))
     return ids
+
+
+def actual_pairs(errors):
+    """Paired normative markdown: (meta_path, package_path, meta_rel) triples."""
+    pairs = []
+    for meta_dir, pkg_dir in (
+        ("docs/specifications", "govcheck/docs/specifications"),
+        ("docs/formal", "govcheck/docs/formal"),
+    ):
+        meta = REPO_ROOT / meta_dir
+        pkg = REPO_ROOT / pkg_dir
+        if not meta.is_dir() or not pkg.is_dir():
+            errors.append("missing directory pair " + meta_dir + " / " + pkg_dir)
+            continue
+        meta_files = {f.name for f in meta.iterdir() if f.suffix == ".md"}
+        pkg_files = {f.name for f in pkg.iterdir() if f.suffix == ".md"}
+        for name in sorted(meta_files - pkg_files):
+            errors.append(pkg_dir + "/" + name + " missing (present at meta level)")
+        for name in sorted(pkg_files - meta_files):
+            errors.append(meta_dir + "/" + name + " missing (present in package)")
+        for name in sorted(meta_files & pkg_files):
+            pairs.append((meta / name, pkg / name, meta_dir + "/" + name))
+    for name in ("BOOTSTRAP_GOVERNANCE.md", "BOOTSTRAP_GOVERNANCE.fr.md"):
+        pairs.append((REPO_ROOT / "docs" / name, PACKAGE / "docs" / name, "docs/" + name))
+    return pairs
+
+
+def check_manifest(errors, pairs):
+    if not MANIFEST.is_file():
+        errors.append("missing docs/template-manifest.json")
+        return
+    try:
+        manifest = json.loads(read(MANIFEST))
+    except (OSError, ValueError) as e:
+        errors.append("cannot parse docs/template-manifest.json: " + str(e))
+        return
+    cfg_pairs = manifest.get("pairs", {})
+    actual_rels = {rel for _, _, rel in pairs}
+    for rel in sorted(set(cfg_pairs) - actual_rels):
+        errors.append("manifest declares a pair that does not exist: " + rel)
+    for rel in sorted(actual_rels - set(cfg_pairs)):
+        errors.append("paired file missing from docs/template-manifest.json: " + rel)
+    for meta_f, pkg_f, rel in pairs:
+        cfg = cfg_pairs.get(rel, {})
+        meta_only = {normalize_heading(t) for t in cfg.get("meta_only", [])}
+        optional = {normalize_heading(t) for t in cfg.get("optional", [])}
+        if not meta_f.is_file() or not pkg_f.is_file():
+            errors.append("unpaired file: " + rel)
+            continue
+        pkg_rel = pkg_f.relative_to(REPO_ROOT).as_posix()
+        mh = section_titles(meta_f)
+        ph = section_titles(pkg_f)
+        status = {t: "package" for t in set(mh) | set(ph)}
+        for t in meta_only:
+            status[t] = "meta-only"
+        for t in optional:
+            status[t] = "optionnel"
+        for t in mh:
+            st = status.get(t, "package")
+            if st == "package" and t not in ph:
+                errors.append(pkg_rel + ": section 'package' missing in package: " + repr(t))
+            if st == "meta-only" and t in ph:
+                errors.append(pkg_rel + ": section 'meta-only' present in package: " + repr(t))
+        for t in ph:
+            st = status.get(t, "package")
+            if st == "package" and t not in mh:
+                errors.append(rel + ": section 'package' absent at meta level: " + repr(t))
+            if st == "meta-only":
+                errors.append(pkg_rel + ": section 'meta-only' present in package: " + repr(t))
+        common_meta = [t for t in mh if t in ph]
+        common_pkg = [t for t in ph if t in mh]
+        if common_meta != common_pkg:
+            errors.append(pkg_rel + ": relative order of shared sections differs from meta level")
 
 
 def main():
@@ -134,40 +198,8 @@ def main():
             if f.is_file() and not GUIDE_FILE.match(f.name):
                 errors.append(sub + "/ must contain only guide/template files, found " + f.name)
 
-    # 4. Paired normative markdown.
-    pairs = []
-    for meta_dir, pkg_dir in (
-        ("docs/specifications", "govcheck/docs/specifications"),
-        ("docs/formal", "govcheck/docs/formal"),
-    ):
-        meta = REPO_ROOT / meta_dir
-        pkg = REPO_ROOT / pkg_dir
-        if not meta.is_dir() or not pkg.is_dir():
-            errors.append("missing directory pair " + meta_dir + " / " + pkg_dir)
-            continue
-        meta_files = {f.name for f in meta.iterdir() if f.suffix == ".md"}
-        pkg_files = {f.name for f in pkg.iterdir() if f.suffix == ".md"}
-        for name in sorted(meta_files - pkg_files):
-            errors.append(pkg_dir + "/" + name + " missing (present at meta level)")
-        for name in sorted(pkg_files - meta_files):
-            errors.append(meta_dir + "/" + name + " missing (present in package)")
-        for name in sorted(meta_files & pkg_files):
-            pairs.append((meta / name, pkg / name))
-    for name in ("BOOTSTRAP_GOVERNANCE.md", "BOOTSTRAP_GOVERNANCE.fr.md"):
-        pairs.append((REPO_ROOT / "docs" / name, PACKAGE / "docs" / name))
-
-    for meta_f, pkg_f in pairs:
-        if not meta_f.is_file() or not pkg_f.is_file():
-            errors.append("unpaired file: " + pkg_f.name)
-            continue
-        meta_h = template_headings(read(meta_f))
-        pkg_h = template_headings(read(pkg_f))
-        if not is_subsequence(pkg_h, meta_h):
-            errors.append(
-                "template mismatch for " + str(pkg_f.relative_to(REPO_ROOT))
-                + ": package sections " + repr(pkg_h)
-                + " are not an ordered subsequence of meta sections " + repr(meta_h)
-            )
+    # 4. Manifest-declared structural alignment of paired normative markdown.
+    check_manifest(errors, actual_pairs(errors))
 
     # 5. Reference catalogues compared by ID.
     for name in ("references.md", "references.fr.md"):
@@ -204,7 +236,7 @@ def main():
         for e in errors:
             print(" - " + e)
         return 1
-    print("Package alignment check passed (ADR 0003 structural alignment).")
+    print("Package alignment check passed (ADR 0003 manifest-declared template).")
     return 0
 
 

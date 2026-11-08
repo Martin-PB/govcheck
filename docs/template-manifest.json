@@ -1,0 +1,72 @@
+{
+  "_comment": "Template manifest for the ADR 0003 structural alignment check (scripts/check-package-alignment.py). Key = meta path of a paired normative document. meta_only = sections allowed only at the meta level (never copied into govcheck/); optional = sections that may appear on either side; every other section defaults to 'package' (indispensable: present at both levels, same relative order). Changing a status is a PR touching this manifest, both levels and ADR 0003 together.",
+  "pairs": {
+    "docs/BOOTSTRAP_GOVERNANCE.md": {},
+    "docs/BOOTSTRAP_GOVERNANCE.fr.md": {},
+    "docs/formal/README.md": {
+      "meta_only": [
+        "Governance authority",
+        "Reference register"
+      ],
+      "optional": [
+        "Bibliographic references"
+      ]
+    },
+    "docs/formal/README.fr.md": {
+      "meta_only": [
+        "Autorité de gouvernance",
+        "Registre de références"
+      ],
+      "optional": [
+        "Références bibliographiques"
+      ]
+    },
+    "docs/formal/lifecycle-model.md": {
+      "optional": [
+        "Bibliographic references"
+      ]
+    },
+    "docs/formal/lifecycle-model.fr.md": {
+      "optional": [
+        "Références bibliographiques"
+      ]
+    },
+    "docs/specifications/0002-canonical-governance-model.md": {
+      "optional": [
+        "Bibliographic references"
+      ]
+    },
+    "docs/specifications/0002-canonical-governance-model.fr.md": {
+      "optional": [
+        "Références bibliographiques"
+      ]
+    },
+    "docs/specifications/0003-change-lifecycle.md": {
+      "optional": [
+        "Bibliographic references"
+      ]
+    },
+    "docs/specifications/0003-change-lifecycle.fr.md": {
+      "optional": [
+        "Références bibliographiques"
+      ]
+    },
+    "docs/specifications/0004-vcs-collaboration-contracts.md": {
+      "optional": [
+        "Primary references"
+      ]
+    },
+    "docs/specifications/0004-vcs-collaboration-contracts.fr.md": {
+      "optional": [
+        "Références primaires"
+      ]
+    },
+    "docs/specifications/0005-assurance-model.md": {},
+    "docs/specifications/0005-assurance-model.fr.md": {},
+    "docs/specifications/README.md": {
+      "optional": [
+        "External references"
+      ]
+    }
+  }
+}

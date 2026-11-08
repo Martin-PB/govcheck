@@ -1,0 +1,26 @@
+name: TLC — authority model
+
+on:
+  pull_request:
+    paths:
+      - 'formal/tla/GovCheckAuthority.tla'
+      - 'formal/tla/GovCheckAuthority.cfg'
+      - 'docs/architecture/0023-bootstrap-governance-authority.md'
+      - 'docs/architecture/0023-bootstrap-governance-authority.fr.md'
+      - '.github/workflows/tla-authority.yml'
+      - '.github/workflows/tla-model-reusable.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'formal/tla/GovCheckAuthority.tla'
+      - 'formal/tla/GovCheckAuthority.cfg'
+      - 'docs/architecture/0023-bootstrap-governance-authority.md'
+      - 'docs/architecture/0023-bootstrap-governance-authority.fr.md'
+      - '.github/workflows/tla-authority.yml'
+      - '.github/workflows/tla-model-reusable.yml'
+
+jobs:
+  authority:
+    uses: ./.github/workflows/tla-model-reusable.yml
+    with:
+      model: GovCheckAuthority

@@ -235,7 +235,8 @@ def main():
     if root_wf.is_dir():
         root_names = {f.name for f in root_wf.iterdir() if f.suffix in {".yml", ".yaml"}}
     for name in sorted(pkg_names - root_names):
-        errors.append("package workflow " + name + " has no root counterpart")
+        if name not in PACKAGE_TEMPLATE_WORKFLOWS:
+            errors.append("package workflow " + name + " has no root counterpart and is not a package template")
     for name in sorted(root_names - pkg_names):
         if name not in META_ONLY_WORKFLOWS:
             errors.append("root workflow " + name + " has no package counterpart and is not in META_ONLY_WORKFLOWS")

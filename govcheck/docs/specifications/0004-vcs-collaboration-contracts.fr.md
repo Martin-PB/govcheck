@@ -31,3 +31,9 @@ Hooks et wrappers locaux sont contournables par qui accède au système de fichi
 ## Échecs et conformité
 
 Distinguer absence, non-prise-en-charge, indisponibilité, péremption, conflit, échec d'authentification/autorisation et état mal formé. Toute mutation exige intention et préconditions ; un échec partiel n'est jamais un succès atomique. Les tests couvriront état Git sale/sous-modules, arbres exacts, graphe/patches/conflits Pijul, usage local, capacités, courses, préconditions et lacunes d'application. Aucun adaptateur n'est implémenté.
+
+## Références primaires
+
+- La documentation primaire de Git et Pijul est regroupée sous [R-22 dans le catalogue de références du package](../references.fr.md#r-22).
+
+Ces sources décrivent les sémantiques des VCS sous-jacents ; elles ne démontrent pas que les adaptateurs GovCheck sont implémentés ou conformes.

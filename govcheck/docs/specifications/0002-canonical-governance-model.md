@@ -56,3 +56,7 @@ The model is data, not executable code. No arbitrary repository policy scripts a
 ## Conformance targets
 
 An implementation must demonstrate stable IDs, deterministic composition, explicit conflict handling, bounded exceptions, fail-closed indeterminacy, semantic-version pinning, projection drift detection and reproducible explanations. These are targets, not current guarantees.
+
+## Bibliographic references
+
+See the [package reference catalogue](../references.md) for the sources shipped with this package.

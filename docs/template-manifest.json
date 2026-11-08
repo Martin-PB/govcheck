@@ -6,7 +6,8 @@
     "docs/formal/README.md": {
       "meta_only": [
         "Governance authority",
-        "Reference register"
+        "Reference register",
+        "CI verification boundaries"
       ],
       "optional": [
         "Bibliographic references"
@@ -15,7 +16,8 @@
     "docs/formal/README.fr.md": {
       "meta_only": [
         "Autorité de gouvernance",
-        "Registre de références"
+        "Registre de références",
+        "Périmètres de vérification CI"
       ],
       "optional": [
         "Références bibliographiques"

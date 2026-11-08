@@ -1,0 +1,24 @@
+name: TLC — CI routing policy
+
+on:
+  pull_request:
+    paths:
+      - 'formal/tla/CICheckRouting.tla'
+      - 'formal/tla/CICheckRouting.cfg'
+      - '.github/workflows/ci-routing-model.yml'
+      - '.github/workflows/tla-model-reusable.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'formal/tla/CICheckRouting.tla'
+      - 'formal/tla/CICheckRouting.cfg'
+      - '.github/workflows/ci-routing-model.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  routing-policy:
+    uses: ./.github/workflows/tla-model-reusable.yml
+    with:
+      model: CICheckRouting

@@ -1,0 +1,26 @@
+name: TLC — lifecycle model
+
+on:
+  pull_request:
+    paths:
+      - 'formal/tla/GovCheckLifecycle.tla'
+      - 'formal/tla/GovCheckLifecycle.cfg'
+      - 'docs/formal/lifecycle-model.md'
+      - 'docs/formal/lifecycle-model.fr.md'
+      - '.github/workflows/tla-lifecycle.yml'
+      - '.github/workflows/tla-model-reusable.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'formal/tla/GovCheckLifecycle.tla'
+      - 'formal/tla/GovCheckLifecycle.cfg'
+      - 'docs/formal/lifecycle-model.md'
+      - 'docs/formal/lifecycle-model.fr.md'
+      - '.github/workflows/tla-lifecycle.yml'
+      - '.github/workflows/tla-model-reusable.yml'
+
+jobs:
+  lifecycle:
+    uses: ./.github/workflows/tla-model-reusable.yml
+    with:
+      model: GovCheckLifecycle

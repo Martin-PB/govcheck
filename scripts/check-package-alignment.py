@@ -40,7 +40,20 @@ PACKAGE = REPO_ROOT / "govcheck"
 MANIFEST = REPO_ROOT / "docs" / "template-manifest.json"
 
 # Root workflows that intentionally have no package counterpart (meta-level only).
-META_ONLY_WORKFLOWS = {"reference-check.yml", "package-alignment.yml"}
+META_ONLY_WORKFLOWS = {
+    "reference-check.yml",
+    "package-alignment.yml",
+    "ci-routing-model.yml",
+    "lifecycle-diagram.yml",
+    "tla-assurance.yml",
+    "tla-authority.yml",
+    "tla-lifecycle.yml",
+    "tla-model-reusable.yml",
+    "version-governance.yml",
+}
+
+# Product-package workflow templates are intentionally not executable at the meta level.
+PACKAGE_TEMPLATE_WORKFLOWS = {"tla-check.yml"}
 
 HEADING = re.compile(r"^(#{1,6})\s+(.*?)\s*$")
 ANCHOR_ID = re.compile(r'id="([^"]+)"')
@@ -222,7 +235,8 @@ def main():
     if root_wf.is_dir():
         root_names = {f.name for f in root_wf.iterdir() if f.suffix in {".yml", ".yaml"}}
     for name in sorted(pkg_names - root_names):
-        errors.append("package workflow " + name + " has no root counterpart")
+        if name not in PACKAGE_TEMPLATE_WORKFLOWS:
+            errors.append("package workflow " + name + " has no root counterpart and is not a package template")
     for name in sorted(root_names - pkg_names):
         if name not in META_ONLY_WORKFLOWS:
             errors.append("root workflow " + name + " has no package counterpart and is not in META_ONLY_WORKFLOWS")

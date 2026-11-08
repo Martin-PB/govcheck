@@ -1,0 +1,26 @@
+name: TLC — assurance model
+
+on:
+  pull_request:
+    paths:
+      - 'formal/tla/GovCheckAssurance.tla'
+      - 'formal/tla/GovCheckAssurance.cfg'
+      - 'docs/architecture/0021-assurance-claims-and-freshness.md'
+      - 'docs/architecture/0021-assurance-claims-and-freshness.fr.md'
+      - '.github/workflows/tla-assurance.yml'
+      - '.github/workflows/tla-model-reusable.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'formal/tla/GovCheckAssurance.tla'
+      - 'formal/tla/GovCheckAssurance.cfg'
+      - 'docs/architecture/0021-assurance-claims-and-freshness.md'
+      - 'docs/architecture/0021-assurance-claims-and-freshness.fr.md'
+      - '.github/workflows/tla-assurance.yml'
+      - '.github/workflows/tla-model-reusable.yml'
+
+jobs:
+  assurance:
+    uses: ./.github/workflows/tla-model-reusable.yml
+    with:
+      model: GovCheckAssurance

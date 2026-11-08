@@ -1,0 +1,34 @@
+name: Version governance validator
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate-version-governance.py'
+      - 'tests/test_version_governance_validator.py'
+      - 'formal/schemas/**'
+      - 'formal/artifacts.json'
+      - '.github/workflows/version-governance.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/validate-version-governance.py'
+      - 'tests/test_version_governance_validator.py'
+      - 'formal/schemas/**'
+      - 'formal/artifacts.json'
+      - '.github/workflows/version-governance.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  python-validator:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run version-governance validator unit tests
+        run: python3 -m unittest discover -s tests -p 'test_version_governance_validator.py' -v
+      - name: Compile validator and tests
+        run: python3 -m py_compile scripts/validate-version-governance.py tests/test_version_governance_validator.py

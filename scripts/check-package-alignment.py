@@ -58,7 +58,7 @@ def headings(text):
 
 def normalize_heading(title):
     """Normalize typographic apostrophe variants without changing displayed headings."""
-    return title.replace("\\u2018", "'").replace("\\u2019", "'").replace("\\u02bc", "'")
+    return title.replace("\u2018", "'").replace("\u2019", "'").replace("\u02bc", "'")
 
 
 def template_headings(text):

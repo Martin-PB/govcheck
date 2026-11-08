@@ -40,7 +40,7 @@ PACKAGE = REPO_ROOT / "govcheck"
 MANIFEST = REPO_ROOT / "docs" / "template-manifest.json"
 
 # Root workflows that intentionally have no package counterpart (meta-level only).
-META_ONLY_WORKFLOWS = {"reference-check.yml", "package-alignment.yml"}
+META_ONLY_WORKFLOWS = {\n    "reference-check.yml",\n    "package-alignment.yml",\n    "ci-routing-model.yml",\n    "lifecycle-diagram.yml",\n    "tla-assurance.yml",\n    "tla-authority.yml",\n    "tla-lifecycle.yml",\n    "tla-model-reusable.yml",\n    "version-governance.yml",\n}\n\n# Product-package workflow templates are intentionally not executable at the meta level.\nPACKAGE_TEMPLATE_WORKFLOWS = {"tla-check.yml"}
 
 HEADING = re.compile(r"^(#{1,6})\s+(.*?)\s*$")
 ANCHOR_ID = re.compile(r'id="([^"]+)"')

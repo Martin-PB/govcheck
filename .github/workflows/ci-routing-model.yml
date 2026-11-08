@@ -6,6 +6,7 @@ on:
       - 'formal/tla/CICheckRouting.tla'
       - 'formal/tla/CICheckRouting.cfg'
       - '.github/workflows/ci-routing-model.yml'
+      - '.github/workflows/tla-model-reusable.yml'
   push:
     branches: [main]
     paths:

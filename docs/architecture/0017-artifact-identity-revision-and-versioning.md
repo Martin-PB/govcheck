@@ -1,6 +1,6 @@
 # 0017 — Artifact identity, revision and versioning policy
 
-**Status:** category-specific versioning adoption is recorded in [ADR 0004](../decisions/0004-semantic-versioning-contracts.md); its normative effect is contingent on merging ADR 0004; PR #21, which establishes the authority baseline, is already merged. SemVer is not universal; automated enforcement is not yet implemented.  
+**Status:** adopted by [ADR 0004](../decisions/0004-semantic-versioning-contracts.md). SemVer is not universal; automated enforcement is not yet implemented.
 **Language:** English is the default; the French counterpart is [0017 (français)](0017-artifact-identity-revision-and-versioning.fr.md).  
 **Scope:** all governed artifacts and records in GovCheck, including normative, architectural, formal, implementation, evidence, decision and publication artifacts.
 
@@ -16,7 +16,7 @@ A version number cannot answer all three questions. A Git commit, content digest
 
 **SemVer is a compatibility vocabulary, not a universal identity scheme and not a measure of importance, maturity, correctness or approval.** It is applicable only where an artifact exposes a declared contract to identifiable consumers and the project can define backward compatibility for that contract. Where that test fails, GovCheck MUST use stable logical identity, immutable revisions/instances and explicit provenance instead of inventing MAJOR.MINOR.PATCH semantics.
 
-This document is a policy proposal. It does not itself make a proposed contract binding. Adoption requires an authorized governance decision and any required update to the canonical governance model.
+The category-specific policy in this record is adopted by ADR 0004. This does not automatically publish or approve any individual product, package, API, schema, model, profile or rule-set contract; each such contract still requires its own declared scope, consumers, compatibility assessment and authorized publication decision.
 
 ## 2. Terms and distinct identity axes
 
@@ -286,7 +286,7 @@ Automation can validate identity, schema shape, linkage, digest binding, declare
 
 ## 10. Adoption and migration
 
-This proposal MUST NOT be treated as binding until approved by the designated GovCheck authority and incorporated into the canonical governance authority under the normal change lifecycle.
+The category-specific policy in this record is adopted by ADR 0004. Individual contracts and future changes remain subject to the applicable scope-specific authority, compatibility assessment and approval process.
 
 Adoption should proceed without retroactively inventing SemVer histories:
 
@@ -313,7 +313,7 @@ This policy elaborates, but does not silently replace:
 - [Architecture 0013 — Governance metamodel](0013-governance-metamodel.md): typed artifact categories and relations.
 - [Architecture 0015 — Governance conformance and validation plan](0015-governance-conformance-and-validation-plan.md): future validation responsibilities.
 
-If a conflict is found, the existing approved normative authority prevails until an authorized change resolves it. This document remains a proposal until adopted.
+If a conflict is found, the existing approved normative authority prevails until an authorized change resolves it. The category-specific policy in this document is adopted by ADR 0004.
 
 ## 12. External references
 

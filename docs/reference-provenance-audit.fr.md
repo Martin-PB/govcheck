@@ -13,7 +13,7 @@ L'audit prend également en compte les revues critiques externes consignées dan
 ## 2. Provenance et évolutions du catalogue
 
 - Le catalogue comptait 105 entrées actives au début de cet audit.
-- Le catalogue bilingue compte désormais **124 entrées actives**.
+- Le catalogue bilingue compte désormais **125 entrées actives**.
 - Vingt nouvelles entrées ont été ajoutées (R-108–R-127), tandis que le doublon R-102 a été retiré et consolidé dans R-24. Les identifiants R-12 et R-101, déjà retirés, le restent. Aucun identifiant retiré n'est réutilisé.
 - Neuf entrées comportaient une mention contradictoire d'absence de citation alors qu'elles renvoyaient à l'Architecture 0027. Cette mention a été supprimée pour R-94–R-100, R-102 et R-103 ; R-102 a ensuite été consolidée dans R-24.
 - R-24 couvre désormais la famille W3C PROV et conserve les liens vers la recommandation PROV-O et la vue d'ensemble de la famille. R-102 est retirée.
@@ -37,7 +37,7 @@ L'audit prend également en compte les revues critiques externes consignées dan
 | Candidats en sémantique métier, processus, exigences, qualité et ingénierie | R-74, R-94–R-100, R-103, R-114, R-123–R-126 |
 | Formats d'instructions d'agents, outils de workflow et emplacement des workflows GitHub Actions | R-18–R-19, R-104, R-107 |
 
-Le catalogue conserve également les sources ajoutées à partir des revues critiques : gittuf, SLSA Source Track, Gemara, exigences de soumission Gerrit, Minder, Allstar, Conftest, CUE, OpenSSF Privateer, SLSA Verification Summary Attestation (VSA), Sigstore, Symboleo, Catala, Event Calculus, vérification à l'exécution et GitHub CODEOWNERS (R-112–R-127).
+Le catalogue conserve également les sources ajoutées à partir des revues critiques : gittuf, SLSA Source Track, Gemara, exigences de soumission Gerrit, Minder, Allstar, Conftest, CUE, OpenSSF Privateer, SLSA Verification Summary Attestation (VSA), Sigstore, Symboleo, Catala, Event Calculus, vérification à l'exécution et GitHub CODEOWNERS et CEL (R-112–R-128).
 
 ## 4. Distinctions sémantiques préservées
 

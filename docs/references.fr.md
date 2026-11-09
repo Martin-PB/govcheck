@@ -146,7 +146,7 @@
 <a id="r-06"></a>
 
 ### R-06 — in-toto : intégrité de la chaîne d'approvisionnement logicielle
-- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md), [0007](architecture/0007-technology-decision-framework.fr.md), [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0014](architecture/0014-governed-development-workflow.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md), [0007](architecture/0007-technology-decision-framework.fr.md), [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0014](architecture/0014-governed-development-workflow.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md), [comparaison des systèmes](research/comparative-governance-landscape.fr.md)
 
 - **Sources primaires :** [Projet in-toto](https://in-toto.io/) · [Article USENIX Security 2019](https://ssl.engineering.nyu.edu/papers/torres-toto-usenix19.pdf)
 - **Référence académique :** Santiago Torres-Arias et al., « in-toto: Providing farm-to-table guarantees for bits and bytes », 28th USENIX Security Symposium, 2019.
@@ -177,7 +177,7 @@
 <a id="r-09"></a>
 
 ### R-09 — Open Policy Agent (OPA)
-- **Cité par :** [0012](architecture/0012-normative-authority-and-documentation.fr.md), [0013](architecture/0013-governance-metamodel.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md), [0022](architecture/0022-governance-capability-audit.fr.md), [Spec 0002](specifications/0002-canonical-governance-model.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [0012](architecture/0012-normative-authority-and-documentation.fr.md), [0013](architecture/0013-governance-metamodel.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md), [0022](architecture/0022-governance-capability-audit.fr.md), [Spec 0002](specifications/0002-canonical-governance-model.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md), [comparaison des systèmes](research/comparative-governance-landscape.fr.md)
 
 - **Source primaire :** [Documentation officielle OPA](https://www.openpolicyagent.org/docs)
 - **Concepts pertinents :** séparation entre décision de politique et application ; évaluation d'entrées structurées par rapport à une politique.
@@ -187,7 +187,7 @@
 <a id="r-10"></a>
 
 ### R-10 — Langage d'autorisation Cedar
-- **Cité par :** [0012](architecture/0012-normative-authority-and-documentation.fr.md), [0013](architecture/0013-governance-metamodel.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md), [0022](architecture/0022-governance-capability-audit.fr.md), [Spec 0002](specifications/0002-canonical-governance-model.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [0012](architecture/0012-normative-authority-and-documentation.fr.md), [0013](architecture/0013-governance-metamodel.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md), [0022](architecture/0022-governance-capability-audit.fr.md), [Spec 0002](specifications/0002-canonical-governance-model.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md), [comparaison des systèmes](research/comparative-governance-landscape.fr.md)
 
 - **Sources primaires :** [Référence du langage Cedar](https://docs.cedarpolicy.com/) · [Projet Cedar](https://www.cedarpolicy.com/) · [Article OOPSLA 2024](https://doi.org/10.1145/3649835) · [FSE Companion 2024 : How We Built Cedar](https://doi.org/10.1145/3663529.3663854) · [prépublication arXiv](https://arxiv.org/abs/2407.01688)
 - **Concepts pertinents :** décisions d'autorisation typées portant sur principal/action/ressource/contexte et séparation de la logique d'autorisation de la logique applicative.
@@ -415,7 +415,7 @@
 
 <a id="r-34"></a>
 ### R-34 — OMG Structured Assurance Case Metamodel (SACM)
-- **Cité par :** [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md) · [0024](architecture/0024-project-bootstrap-and-assurance-profiles.fr.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.fr.md)
+- **Cité par :** [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md) · [0024](architecture/0024-project-bootstrap-and-assurance-profiles.fr.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.fr.md), [comparaison des systèmes](research/comparative-governance-landscape.fr.md)
 
 - **Source primaire :** [Famille de spécifications OMG SACM](https://www.omg.org/spec/SACM/) · [Version formelle 2.3](https://www.omg.org/spec/SACM/2.3)
 - **Concepts pertinents :** représentation exploitable par machine de structures de dossiers d'assurance et relations entre affirmations, argumentation, artefacts et preuves.
@@ -752,7 +752,7 @@
 
 <a id="r-71"></a>
 ### R-71 — Bloomfield et Rushby, « Assurance 2.0: A Manifesto » (2021)
-- **Cité par :** [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.fr.md)
+- **Cité par :** [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.fr.md), [comparaison des systèmes](research/comparative-governance-landscape.fr.md)
 - **Source primaire :** [Page des auteurs chez SRI et article](https://www.csl.sri.com/users/rushby/abstracts/sss21) · [manuscrit arXiv](https://arxiv.org/abs/2004.10474)
 - **Référence bibliographique :** Robin Bloomfield et John Rushby, *Systems and Covid-19: Proceedings of the 29th Safety-Critical Systems Symposium*, 2021, p. 85–108.
 - **Concepts pertinents :** examen renforcé du raisonnement et des preuves ; explicitation des éléments réfutants (*defeaters*) et contre-preuves ; évaluation du poids des preuves et de leur capacité à distinguer une affirmation de sa négation.
@@ -1132,7 +1132,7 @@
 
 <a id="r-118"></a>
 ### R-118 — Tests de politiques avec Conftest
-- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [comparaison des systèmes](research/comparative-governance-landscape.fr.md)
 - **Sources primaires :** [Documentation Conftest](https://www.conftest.dev/) · [Dépôt source Conftest](https://github.com/open-policy-agent/conftest) · [Documentation Open Policy Agent](https://www.openpolicyagent.org/docs)
 - **Concepts pertinents :** test de données et configurations structurées au moyen de politiques écrites en Rego, notamment pour l'infrastructure et les configurations de déploiement.
 - **Utilité pour GovCheck :** adaptateur candidat ou exécuteur de tests réutilisable lorsque les contrôles déclarés d'un projet portent sur des configurations structurées.
@@ -1216,7 +1216,7 @@
 
 <a id="r-128"></a>
 ### R-128 — Common Expression Language (CEL)
-- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [comparaison des systèmes](research/comparative-governance-landscape.fr.md)
 - **Sources primaires :** [Présentation et définition du langage CEL](https://cel.dev/overview/cel-overview) · [Dépôt de spécification CEL](https://github.com/cel-expr/cel-spec)
 - **Concepts pertinents :** langage d'expression portable, sans effets de bord et à terminaison garantie, conçu pour l'intégration et l'évaluation de politiques ; expressions typées avec AST défini et représentation sérialisée interopérable.
 - **Utilité pour GovCheck :** langage d'expression candidat pour évaluer des prédicats bornés de gouvernance de dépôt, à comparer à Rego, Cedar, Prolog et CUE.
@@ -1233,7 +1233,7 @@
 
 <a id="r-130"></a>
 ### R-130 — Moteur de politiques Kyverno
-- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [comparaison des systèmes](research/comparative-governance-landscape.fr.md)
 - **Sources primaires :** [Documentation Kyverno](https://kyverno.io/docs/) · [Vue d'ensemble des types de politiques](https://kyverno.io/docs/policy-types/overview/) · [Dépôt source Kyverno](https://github.com/kyverno/kyverno)
 - **Concepts pertinents :** validation déclarative de politiques, mutation, génération, suppression et vérification d'images pour ressources Kubernetes et charges JSON prises en charge ; les types de politiques actuels utilisent CEL.
 - **Utilité pour GovCheck :** comparateur adjacent de policy-as-code et de contrôle d'admission ; pertinent pour l'interaction entre contrôles déclaratifs, évaluateurs et points d'application.

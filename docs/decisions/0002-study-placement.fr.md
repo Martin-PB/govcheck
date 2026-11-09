@@ -128,3 +128,4 @@ L'étude d'intégration et ses sources techniques externes sont cataloguées sé
 - [R-132 — Gating de fusion Zuul et Bors](../references.fr.md#r-132)
 - [R-133 — Théories formelles des patches](../references.fr.md#r-133)
 - [R-134 — Standard Goal Structuring Notation (GSN)](../references.fr.md#r-134)
+- [R-135 — Vérification NIST SP 800-192 des politiques de contrôle d'accès](../references.fr.md#r-135)

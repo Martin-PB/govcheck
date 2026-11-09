@@ -28,11 +28,11 @@ GovCheck ne devrait pas réimplémenter chaque système adjacent. Son rôle pote
 
 | Concept GovCheck | Contribution externe candidate | Frontière à préserver |
 |---|---|---|
-| Identité de source/révision et provenance | gittuf ; SLSA Source ; in-toto/VSA ; Sigstore | Vérifier digest du sujet, identité du signataire/vérificateur, racine de confiance, type de prédicat, périmètre de ressource et fraîcheur. Une signature ou attestation ne prouve ni la vérité de l'affirmation ni la correction du vérificateur. |
-| Définition et catégories des contrôles | Gemara ; OSPS Baseline ; Security Insights | Préserver version de la source, identifiants des contrôles, applicabilité et pertes de correspondance. Un catalogue de contrôles n'est pas un résultat d'évaluation. |
-| Exécution et évaluation des contrôles | Privateer ; OPA/Rego ; Cedar ; CEL ; Conftest ; Kyverno | Préserver version de l'évaluateur, révision de politique, entrées, résultat déterministe, état non résolu et provenance des preuves. |
-| Intégration et acceptation des changements | Gerrit ; règles d'approbation GitLab ; Zuul/Bors ; files de fusion des forges | Évaluer le candidat exact d'intégration ; distinguer approbation, résultat CI, satisfaction de politique et acceptation finale autorisée. |
-| Argument d'assurance | SACM ; GSN ; Assurance 2.0 ; argumentation éliminative | Préserver affirmations, contextes, hypothèses, stratégies, preuves, contre-preuves, défaiteurs et justification du niveau de confiance. Un graphe bien formé n'est pas automatiquement valide. |
+| Identité de source/révision et provenance | gittuf ; SLSA Source ; in-toto ([R-06](../references.fr.md#r-06))/VSA ([R-121](../references.fr.md#r-121)) ; Sigstore ([R-122](../references.fr.md#r-122)) | Vérifier digest du sujet, identité du signataire/vérificateur, racine de confiance, type de prédicat, périmètre de ressource et fraîcheur. Une signature ou attestation ne prouve ni la vérité de l'affirmation ni la correction du vérificateur. |
+| Définition et catégories des contrôles | Gemara ([R-114](../references.fr.md#r-114)) ; OSPS Baseline ([R-110](../references.fr.md#r-110)) ; Security Insights ([R-109](../references.fr.md#r-109)) | Préserver version de la source, identifiants des contrôles, applicabilité et pertes de correspondance. Un catalogue de contrôles n'est pas un résultat d'évaluation. |
+| Exécution et évaluation des contrôles | Privateer ([R-120](../references.fr.md#r-120)) ; OPA/Rego ([R-09](../references.fr.md#r-09)) ; Cedar ([R-10](../references.fr.md#r-10)) ; CEL ([R-128](../references.fr.md#r-128)) ; Conftest ([R-118](../references.fr.md#r-118)) ; Kyverno ([R-130](../references.fr.md#r-130)) | Préserver version de l'évaluateur, révision de politique, entrées, résultat déterministe, état non résolu et provenance des preuves. |
+| Intégration et acceptation des changements | Gerrit ([R-115](../references.fr.md#r-115)) ; règles d'approbation GitLab ([R-131](../references.fr.md#r-131)) ; Zuul/Bors ([R-132](../references.fr.md#r-132)) ; files de fusion des forges | Évaluer le candidat exact d'intégration ; distinguer approbation, résultat CI, satisfaction de politique et acceptation finale autorisée. |
+| Argument d'assurance | SACM ([R-34](../references.fr.md#r-34)) ; GSN ([R-134](../references.fr.md#r-134)) ; Assurance 2.0 ([R-71](../references.fr.md#r-71)) ; argumentation éliminative ([R-129](../references.fr.md#r-129)) | Préserver affirmations, contextes, hypothèses, stratégies, preuves, contre-preuves, défaiteurs et justification du niveau de confiance. Un graphe bien formé n'est pas automatiquement valide. |
 
 ## 4. Distinctions que GovCheck doit préserver
 
@@ -51,9 +51,17 @@ Cette contribution reste une hypothèse de conception tant qu'une tranche vertic
 
 ## 6. Sources
 
+- [in-toto](../references.fr.md#r-06)
 - [gittuf](../references.fr.md#r-112)
 - [SLSA Source Track](../references.fr.md#r-113)
 - [Gemara](../references.fr.md#r-114)
+- [OPA](../references.fr.md#r-09)
+- [Cedar](../references.fr.md#r-10)
+- [CEL](../references.fr.md#r-128)
+- [Conftest](../references.fr.md#r-118)
+- [Kyverno](../references.fr.md#r-130)
+- [SACM](../references.fr.md#r-34)
+- [Assurance 2.0](../references.fr.md#r-71)
 - [Exigences de soumission Gerrit](../references.fr.md#r-115)
 - [OpenSSF Privateer](../references.fr.md#r-120)
 - [OpenSSF Security Insights](../references.fr.md#r-109) et [OSPS Baseline](../references.fr.md#r-110)

@@ -13,7 +13,7 @@ The catalogue is a maintained, bilingual evidence index, not an adoption list or
 
 ## Status and provenance
 
-The initial integration study, **“Évaluer l’intégration des dépôts.pdf”** (6 November 2026, 224 pages), is retained in the project Library and is not duplicated in this repository. Its placement and evidence boundary are recorded in [ADR 0002](decisions/0002-study-placement.md) and [ADR 0002 (français)](decisions/0002-study-placement.fr.md).
+The initial integration study, **“Évaluer l’intégration des dépôts.pdf”** (6 November 2026, 224 pages), is retained in the project Library and is not duplicated in this repository. Its placement and evidence boundary are recorded in [ADR 0002](decisions/0002-study-placement.md) and [ADR 0002 (français)](decisions/0002-study-placement.fr.md). The source reconciliation is maintained in the [reference provenance audit](reference-provenance-audit.md).
 
 The catalogue preserves sources discussed in that study and in subsequent GovCheck design discussions, including:
 - the Cartocortex, MoriNet and SaussuNet repositories and their PRs #9, #27 and #28;

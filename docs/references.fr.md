@@ -47,6 +47,7 @@
 | Langages d'expression pour politiques et prédicats | R-128 |
 | Argumentation d'assurance, moteurs de politiques, gating et théorie des patches | R-129–R-133 |
 | Notation d'argumentation d'assurance GSN | R-134 |
+| Vérification des politiques et modèles de contrôle d'accès | R-135 |
 
 ## Entrées bibliographiques détaillées
 
@@ -90,6 +91,7 @@
 - **Langages d'expression pour politiques et prédicats :** R-128.
 - **Argumentation d'assurance, moteurs de politiques, gating et théorie des patches :** R-129–R-133.
 - **Notation d'argumentation d'assurance GSN :** R-134.
+- **Vérification des politiques et modèles de contrôle d'accès :** R-135.
 
 ## Normes, recommandations publiques et spécifications industrielles
 
@@ -1271,4 +1273,13 @@
 - **Concepts pertinents :** arguments structurés graphiquement de sécurité/assurance utilisant buts, stratégies, solutions/éléments de preuve, contextes, hypothèses et justifications ; structures d'argument modulaires et métamodèle étendant SACM.
 - **Utilité pour GovCheck :** notation candidate de dossier d'assurance et référence d'interopérabilité à comparer à SACM et Assurance 2.0.
 - **Limite :** GSN structure un argument ; il ne rend pas l'argument vrai et ne garantit pas la suffisance des preuves. La notation et les recommandations du standard doivent être distinguées de la correspondance entre GSN et le métamodèle SACM. GovCheck doit préserver défaiteurs, contre-preuves, incertitude et provenance des preuves plutôt que d'assimiler un diagramme bien formé à une assurance valide.
+
+
+<a id="r-135"></a>
+### R-135 — NIST SP 800-192, vérification et tests des politiques et modèles de contrôle d'accès
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Sources primaires :** [Publication NIST SP 800-192](https://csrc.nist.gov/pubs/sp/800/192/final) · [DOI](https://doi.org/10.6028/NIST.SP.800-192)
+- **Concepts pertinents :** vérification et tests des politiques et modèles de contrôle d'accès ; détection des incohérences, incomplétudes, permissions involontaires et écarts entre intention de politique et implémentation.
+- **Utilité pour GovCheck :** source directe du principe selon lequel une politique exécutable n'est pas nécessairement une politique correcte. Elle étaye la vérification des modèles de politique et de leur correspondance avec les exigences avant de se fier à leur implémentation d'application.
+- **Limite :** la publication porte sur les politiques et modèles de contrôle d'accès. Elle ne définit ni métamodèle général de gouvernance ni processus complet de cycle de vie/assurance ; les techniques doivent être choisies selon le langage de politique et le contexte du système.
 

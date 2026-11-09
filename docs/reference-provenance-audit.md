@@ -8,7 +8,7 @@ The primary historical source is **“Évaluer l’intégration des dépôts.pdf
 
 The PDF covers several project streams before and alongside the GovCheck-specific design: Cartocortex, MoriNet and SaussuNet; a NixOS SecOps agent stack; and then the GovCheck governance/bootstrap discussion. GovCheck becomes explicit at approximately page 133. The earlier project contexts remain relevant where they supply repositories, formats, protocols and interoperability sources behind the initial assessment.
 
-The audit also considers external critical reviews in GitHub issues #23 and #26 and the consolidated tracker in issue #30. These reviews are comparative inputs, not decisions adopted automatically by GovCheck.
+The audit also considers external critical reviews in GitHub issues #23 and #26 the consolidated tracker in issue #30, and the multilingual governance review in issue #33. These reviews are comparative inputs, not decisions adopted automatically by GovCheck.
 
 ## 2. Provenance and catalogue changes
 
@@ -37,6 +37,7 @@ The audit also considers external critical reviews in GitHub issues #23 and #26 
 | Software-supply-chain provenance, artifact identity, attestations, signing and source/build assurance | [R-06](references.md#r-06)–[R-08](references.md#r-08), [R-14](references.md#r-14)–[R-15](references.md#r-15), [R-21](references.md#r-21), [R-23](references.md#r-23)–[R-26](references.md#r-26), [R-108](references.md#r-108), [R-112](references.md#r-112)–[R-113](references.md#r-113), [R-121](references.md#r-121)–[R-122](references.md#r-122) |
 | Project security declarations, baselines, repository checks and assessment tools | [R-08](references.md#r-08), [R-109](references.md#r-109)–[R-120](references.md#r-120), [R-127](references.md#r-127) |
 | Decision/process/requirements/quality and engineering-domain candidates | [R-74](references.md#r-74), [R-94](references.md#r-94)–[R-100](references.md#r-100), [R-103](references.md#r-103), [R-114](references.md#r-114), [R-123](references.md#r-123)–[R-126](references.md#r-126), [R-128](references.md#r-128) |
+| Multilingual documentation synchronization and language identifiers | [R-136](references.md#r-136)–[R-144](references.md#r-144) |
 | Agent-instruction formats, workflow tools and GitHub Actions placement | [R-18](references.md#r-18)–[R-19](references.md#r-19), [R-104](references.md#r-104), [R-107](references.md#r-107) |
 
 The catalogue also preserves the additional sources recovered from the critical reviews: gittuf, SLSA Source Track, Gemara, Gerrit submit requirements, Minder, Allstar, Conftest, CUE, OpenSSF Privateer, SLSA Verification Summary Attestation (VSA), Sigstore, Symboleo, Catala, Event Calculus, runtime verification and GitHub CODEOWNERS, CEL, eliminative argumentation, Kyverno, GitLab approval rules, Zuul/Bors, formal patch theory, GSN and NIST SP 800-192 ([R-112](references.md#r-112)–[R-135](references.md#r-135)).

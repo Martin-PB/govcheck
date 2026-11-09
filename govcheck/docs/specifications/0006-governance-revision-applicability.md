@@ -113,6 +113,4 @@ No choice among these is silently adopted by this specification.
 ## References
 
 - [R-05 — TLA+ and TLC state-transition modeling](../references.md#r-05)
-- [R-17 — typed governance metadata and traceable relations](../references.md#r-17)
 - [R-22 — native Git and Pijul semantics](../references.md#r-22)
-- [R-88 — NIST SP 800-192 policy/model verification](../references.md#r-88)

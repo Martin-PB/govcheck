@@ -43,6 +43,7 @@
 | Graphes de métadonnées de chaîne d'approvisionnement et posture de sécurité des projets | R-108–R-111 |
 | Gouvernance Git indépendante de la forge, provenance source, Gemara et outils de contrôle de dépôt | R-112–R-120 |
 | Attestations, signatures, contrats formels et surveillance temporelle | R-121–R-126 |
+| Responsabilité par fichier et revue par propriétaires de code | R-127 |
 
 ## Entrées bibliographiques détaillées
 
@@ -82,6 +83,7 @@
 - **Graphes de chaîne d'approvisionnement, déclarations de sécurité et référentiels de bonnes pratiques :** R-108–R-111.
 - **Gouvernance Git, provenance source et outils d'évaluation de dépôt candidats :** R-112–R-120.
 - **Attestations, signatures, contrats formels et surveillance temporelle :** R-121–R-126.
+- **Responsabilité par fichier et revue par propriétaires de code :** R-127.
 
 ## Normes, recommandations publiques et spécifications industrielles
 
@@ -1194,4 +1196,14 @@
 - **Concepts pertinents :** surveillance formelle de traces d'exécution observées par rapport à des spécifications temporelles ; instrumentation et collecte d'événements ; verdicts en présence d'observations incomplètes, imprécises ou incertaines.
 - **Utilité pour GovCheck :** méthode candidate pour évaluer des propriétés temporelles du cycle de vie à partir d'événements de gouvernance enregistrés, en explicitant l'observabilité et l'incertitude des traces.
 - **Limite :** la vérification à l'exécution évalue les traces observées, pas toutes les exécutions possibles. Des événements manquants, retardés, ambigus ou non fiables peuvent rendre le verdict indéterminé ; une preuve de surveillance n'est ni du model checking ni une preuve de théorème.
+
+
+
+<a id="r-127"></a>
+### R-127 — GitHub CODEOWNERS et revue obligatoire par les propriétaires de code
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Source primaire :** [Documentation GitHub : About code owners](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners)
+- **Concepts pertinents :** attribution de chemins à des personnes ou équipes responsables ; demandes automatiques de revue ; possibilité d'exiger l'approbation d'un propriétaire de code via la protection de branche.
+- **Utilité pour GovCheck :** exemple propre à une plateforme d'attribution de responsabilité par périmètre de fichiers et d'orientation des revues, pertinent pour la séparation des tâches et l'acceptation tenant compte des propriétaires.
+- **Limite :** CODEOWNERS est une fonctionnalité GitHub, pas un modèle d'autorité indépendant des forges. L'orientation des revues ne constitue pas à elle seule une approbation indépendante, une preuve de compétence du relecteur ni un contrôle complet de séparation des tâches ; les propriétaires doivent disposer d'un accès en écriture et l'approbation d'un seul propriétaire correspondant peut suffire.
 

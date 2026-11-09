@@ -32,3 +32,8 @@ GovCheck's own governance history (architecture records, ADRs, deliberations) li
     python3 govcheck/check.py --tree . --base main --candidate HEAD
 
 Each rule returns `pass`, `fail` or `unknown`. The overall result is `fail` if any rule fails, otherwise `unknown` if any rule is unknown, otherwise `pass` (fail-closed: `unknown` never counts as a success). The exit code is 0 only when the overall result is `pass`. The rules span the three assurance classes: decidable (license presence, bilingual decision pairs, manifest-declared package pairs, reference-catalogue integrity), attested (independent review) and not verifiable offline (TLC evidence freshness). Unit tests live in `tests/test_govcheck_check.py`.
+
+
+### Recorded attestations (independent review)
+
+In git mode (`--base/--candidate`), the `independent-review` rule becomes `pass` when a JSON record in `docs/attestations/*.json` carries `"decision": "accept"`, the exact full SHA of the candidate revision in `candidate_rev`, and a `reviewer` identity distinct from the candidate commit author. Otherwise the rule stays `unknown` (fail-closed).

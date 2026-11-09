@@ -31,3 +31,8 @@ L'historique de gouvernance propre `2021` GovCheck (records d'architecture, ADR,
     python3 govcheck/check.py --tree . --base main --candidate HEAD
 
 Chaque r`2019`gle renvoie `pass`, `fail` ou `unknown`. Le r`2019`sultat global est `fail` si une r`2019`gle `2019`choue, sinon `unknown` si une r`2019`gle est inconnue, sinon `pass` (fermeture par l'`2019`chec : `unknown` n'est jamais un succ`2019`s). Le code de sortie est 0 uniquement lorsque le r`2019`sultat global est `pass`. Les r`2019`gles couvrent les trois classes d'assurance : d`2019`cidable (pr`2019`sence de la licence, paires de d`2019`cisions bilingues, paires de paquet d`2019`clar`2019`es par le manifeste, int`2019`grit`2019` du catalogue de r`2019`f`2019`rences), attest`2019`e (revue ind`2019`pendante) et non v`2019`rifiable hors ligne (fra`2019`cheur des preuves TLC). Les tests unitaires sont dans `tests/test_govcheck_check.py`.
+
+
+### Attestations enregistr`2019`es (revue ind`2019`pendante)
+
+En mode git (`--base/--candidate`), la r`2019`gle `independent-review` renvoie `pass` quand un enregistrement JSON dans `docs/attestations/*.json` porte `"decision": "accept"`, le SHA complet exact de la r`2019`vision candidate dans `candidate_rev`, et un `reviewer` distinct de l'auteur du commit candidate. Sinon la r`2019`gle reste `unknown` (fermeture par l'`2019`chec).

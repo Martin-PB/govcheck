@@ -35,6 +35,10 @@ Each specification has an English and French version. They define proposed contr
 
 The design rationale, assurance distinctions, lifecycle-model audit, canonical documentation authority, governance metamodel, development workflow and ecosystem assessments are indexed in [docs/architecture](docs/architecture/README.md).
 
+## Governed work portfolio
+
+The repository-backed [Governed Work Portfolio](docs/work-portfolio/README.md) is the canonical home for work-item identity, lifecycle and traceability. GitHub Issues/Projects remain coordination adapters during migration; see [Architecture 0028](docs/architecture/0028-governed-work-portfolio-and-issue-tracker-boundary.md) and [Architecture 0030](docs/architecture/0030-repository-backed-work-portfolio-and-recoverable-history.md).
+
 ## Decisions and next phase
 
 [ADR 0001](docs/decisions/0001-bootstrap-boundaries.md) records the accepted bootstrap boundaries. Remaining decisions include implementation language, canonical serialization/schema, expression language, formal kernel, cryptographic approach, and dependency strategy. These should be resolved through explicit comparative analysis before implementation.

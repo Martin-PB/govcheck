@@ -1145,7 +1145,7 @@
 
 <a id="r-120"></a>
 ### R-120 — OpenSSF Privateer security and compliance evaluation framework
-- **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
+- **Cited by:** [0016](architecture/0016-writ-privateer-assessment.md), [ADR 0002](decisions/0002-study-placement.md)
 - **Primary sources:** [OpenSSF announcement and project description](https://openssf.org/blog/2026/10/13/introducing-privateer-ai-assisted-security-compliance-evaluation-framework-joins-the-openssf-sandbox/) · [Privateer documentation](https://privateerproj.com/)
 - **Relevant concepts:** plugin-based evaluation of source code, repository configuration and deployed systems against separately maintained control catalogs; deterministic checks, optional AI-assisted evidence review and structured evaluation outcomes.
 - **Use in GovCheck:** direct comparator and potential complementary evaluator for security/compliance controls, especially its separation between control catalogs and evaluation plugins.

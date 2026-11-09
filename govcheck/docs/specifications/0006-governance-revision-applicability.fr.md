@@ -113,6 +113,4 @@ Aucun de ces choix n'est adopté implicitement.
 ## Références
 
 - [R-05 — modélisation des transitions TLA+ et TLC](../references.fr.md#r-05)
-- [R-17 — métadonnées de gouvernance typées et relations traçables](../references.fr.md#r-17)
 - [R-22 — sémantiques natives Git et Pijul](../references.fr.md#r-22)
-- [R-88 — vérification des politiques/modèles NIST SP 800-192](../references.fr.md#r-88)

@@ -48,6 +48,7 @@
 | Argumentation d'assurance, moteurs de politiques, gating et théorie des patches | R-129–R-133 |
 | Notation d'argumentation d'assurance GSN | R-134 |
 | Vérification des politiques et modèles de contrôle d'accès | R-135 |
+| Synchronisation documentaire multilingue et identifiants de langue | R-136–R-144 |
 
 ## Entrées bibliographiques détaillées
 
@@ -92,6 +93,7 @@
 - **Argumentation d'assurance, moteurs de politiques, gating et théorie des patches :** R-129–R-133.
 - **Notation d'argumentation d'assurance GSN :** R-134.
 - **Vérification des politiques et modèles de contrôle d'accès :** R-135.
+- **Synchronisation documentaire multilingue et identifiants de langue :** R-136–R-144.
 
 ## Normes, recommandations publiques et spécifications industrielles
 
@@ -1282,4 +1284,77 @@
 - **Concepts pertinents :** vérification et tests des politiques et modèles de contrôle d'accès ; détection des incohérences, incomplétudes, permissions involontaires et écarts entre intention de politique et implémentation.
 - **Utilité pour GovCheck :** source directe du principe selon lequel une politique exécutable n'est pas nécessairement une politique correcte. Elle étaye la vérification des modèles de politique et de leur correspondance avec les exigences avant de se fier à leur implémentation d'application.
 - **Limite :** la publication porte sur les politiques et modèles de contrôle d'accès. Elle ne définit ni métamodèle général de gouvernance ni processus complet de cycle de vie/assurance ; les techniques doivent être choisies selon le langage de politique et le contexte du système.
+
+
+<a id="r-136"></a>
+### R-136 — Suivi de la révision source des traductions MDN
+- **Cité par :** [Recherche multilingue de l'issue 0033](research/multilingual-documentation-practices.fr.md)
+- **Sources primaires :** [Dépôt MDN translated-content](https://github.com/mdn/translated-content) · [Discussion sur l10n.sourceCommit](https://github.com/orgs/mdn/discussions/129) · [Exemple de modification des métadonnées sourceCommit](https://github.com/mdn/translated-content/pull/36282)
+- **Concepts pertinents :** métadonnées par fichier indiquant le commit source suivi par une traduction ; identification de la révision source d'une page traduite ; fraîcheur mesurée par rapport aux changements sources plutôt que par les seules dates.
+- **Utilité pour GovCheck :** précédent candidat pour les métadonnées de provenance des traductions et la détection des traductions périmées.
+- **Limite :** l'adoption est incomplète chez MDN et un marqueur fondé sur le commit est spécifique à Git. La prise en charge de Git et Pijul par GovCheck peut exiger un digest de contenu ou une autre identité indépendante du VCS. Une révision source identique n'établit ni la qualité ni l'équivalence sémantique de la traduction.
+
+<a id="r-137"></a>
+### R-137 — Workflow de localisation Kubernetes
+- **Cité par :** [Recherche multilingue de l'issue 0033](research/multilingual-documentation-practices.fr.md)
+- **Sources primaires :** [Guide de contribution à la localisation Kubernetes](https://www.kubernetes.io/docs/contribute/localization/) · [Automatisation centrée sur l'humain pour la localisation Kubernetes à l'ère de l'IA (2026)](https://www.k8s.dev/blog/2026/06/26/human-centered-automation-kubernetes-localization-ai-era/)
+- **Concepts pertinents :** correction de la source en premier, triage des traductions, revue humaine, seuils de publication par langue et rapports déterministes qui soutiennent les décisions humaines sans les remplacer.
+- **Utilité pour GovCheck :** précédent de processus candidat pour le statut des traductions, leur revue et le traitement des contenus périmés.
+- **Limite :** l'approche de triage 2026 est un prototype/rapport de pratique, pas une spécification normative complète de localisation. Elle ne tranche pas la primauté linguistique ni les règles d'authenticité des contenus de GovCheck.
+
+<a id="r-138"></a>
+### R-138 — Recommandations de synchronisation des traductions Vue
+- **Cité par :** [Recherche multilingue de l'issue 0033](research/multilingual-documentation-practices.fr.md)
+- **Source primaire :** [Guides de traduction Vue](https://github.com/vuejs-translations/guidelines)
+- **Concepts pertinents :** synchronisation amont, suivi de révision source, discipline de glossaire et pull requests de traduction avec diffs examinables.
+- **Utilité pour GovCheck :** précédent de workflow candidat pour maintenir des versions linguistiques parallèles et enregistrer leur filiation source.
+- **Limite :** le workflow est propre à un dépôt/une communauté et ne définit ni autorité normative ni modèle de contenu indépendant de la langue.
+
+<a id="r-139"></a>
+### R-139 — Workflow de traduction de la documentation React
+- **Cité par :** [Recherche multilingue de l'issue 0033](research/multilingual-documentation-practices.fr.md)
+- **Source primaire :** [Dépôt de traduction de la documentation React](https://github.com/lex111/reactjs.org-translation)
+- **Concepts pertinents :** dépôt/fork de traduction séparé, synchronisation amont et pull requests exposant l'écart entre source et traduction.
+- **Utilité pour GovCheck :** exemple comparatif de synchronisation par dépôt et par langue.
+- **Limite :** le dépôt cité est un fork/workflow de traduction, pas un protocole canonique de localisation. Son état de maintenance et son lien avec la source actuelle de la documentation React doivent être vérifiés avant réutilisation.
+
+<a id="r-140"></a>
+### R-140 — Comprehensive Rust et mdbook-i18n-helpers
+- **Cité par :** [Recherche multilingue de l'issue 0033](research/multilingual-documentation-practices.fr.md)
+- **Sources primaires :** [Instructions de traduction Comprehensive Rust](https://github.com/google/comprehensive-rust/blob/main/TRANSLATIONS.md) · [mdbook-i18n-helpers](https://github.com/google/mdbook-i18n-helpers)
+- **Concepts pertinents :** segments gettext/PO, synchronisation via msgmerge, marqueurs fuzzy pour les traductions modifiées et obsolètes pour les segments sources supprimés.
+- **Utilité pour GovCheck :** modèle candidat de synchronisation au niveau segment, notamment lorsque des unités sémantiques stables sont plus utiles que la fraîcheur de fichiers entiers.
+- **Limite :** extraction des segments et génération de documentation ajoutent des contraintes d'outillage. Les identifiants Markdown/ADR et l'identité source indépendante du VCS de GovCheck peuvent exiger une autre unité de synchronisation.
+
+<a id="r-141"></a>
+### R-141 — Framework de traduction po4a
+- **Cité par :** [Recherche multilingue de l'issue 0033](research/multilingual-documentation-practices.fr.md)
+- **Sources primaires :** [Manuel po4a](https://manpages.ubuntu.com/manpages/resolute/man1/po4a.1p.html) · [Projet po4a](https://po4a.org/)
+- **Concepts pertinents :** traduction par paragraphes/segments via fichiers PO ; statut fuzzy lorsque le texte source change ; documents traduits générés et seuils configurables de complétude.
+- **Utilité pour GovCheck :** précédent candidat pour préférer un document source exact à une traduction périmée et suivre l'état de traduction à une granularité inférieure au fichier.
+- **Limite :** la génération et l'extraction de segments peuvent compliquer la revue du Markdown structuré, des blocs de code, ancres et identifiants de gouvernance stables. Le seuil documenté de 80 % est une politique d'outil, pas une exigence GovCheck.
+
+<a id="r-142"></a>
+### R-142 — Internationalisation Docusaurus
+- **Cité par :** [Recherche multilingue de l'issue 0033](research/multilingual-documentation-practices.fr.md)
+- **Source primaire :** [Introduction à l'i18n de Docusaurus](https://docusaurus.io/docs/i18n/introduction)
+- **Concepts pertinents :** arborescence par locale, organisation des ressources traduites et repli sur la langue source lorsqu'une ressource localisée manque.
+- **Utilité pour GovCheck :** précédent candidat pour l'organisation des locales et le comportement explicite de repli.
+- **Limite :** Docusaurus ne fournit pas de suivi sémantique natif de la fraîcheur de chaque document traduit ; celle-ci dépend de Git, de services externes ou d'outils propres au projet.
+
+<a id="r-143"></a>
+### R-143 — Recommandations Microsoft sur les traductions comme artefacts versionnés
+- **Cité par :** [Recherche multilingue de l'issue 0033](research/multilingual-documentation-practices.fr.md)
+- **Source primaire :** [Rethinking documentation translation: treating translations as versioned artifacts](https://techcommunity.microsoft.com/t5/microsoft-developer-community/rethinking-documentation-translation-treating-translations-as/ba-p/4491755)
+- **Concepts pertinents :** état de traduction comme métadonnée d'artefact versionné ; distinction entre correction d'une traduction et synchronisation avec sa source ; rapport d'état laissant les jugements de qualité aux humains.
+- **Utilité pour GovCheck :** précédent conceptuel pour traiter fraîcheur et qualité linguistique comme propriétés distinctes.
+- **Limite :** il s'agit d'un article de conception/pratique, pas de la preuve d'une implémentation complète de synchronisation en production. Ses recommandations doivent être validées face aux contraintes VCS et documentaires normatives de GovCheck.
+
+<a id="r-144"></a>
+### R-144 — Balises de langue BCP 47
+- **Cité par :** [Recherche multilingue de l'issue 0033](research/multilingual-documentation-practices.fr.md)
+- **Sources primaires :** [RFC 5646 : Tags for Identifying Languages](https://www.rfc-editor.org/rfc/rfc5646) · [Registre IANA des sous-étiquettes de langue](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry)
+- **Concepts pertinents :** balises normalisées identifiant langue, écriture, région et variantes ; sous-étiquettes issues d'un registre.
+- **Utilité pour GovCheck :** identifiants de langue canoniques candidats pour les métadonnées de traduction et la prise en charge future de plusieurs langues.
+- **Limite :** BCP 47 identifie les langues ; il ne définit ni la primauté de la langue source, ni la qualité d'une traduction, ni son état de synchronisation ou son authenticité normative.
 

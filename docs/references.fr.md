@@ -1079,7 +1079,7 @@
 
 <a id="r-111"></a>
 ### R-111 — Programme OpenSSF Best Practices Badge
-- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [reference provenance audit](reference-provenance-audit.md), [audit de provenance](reference-provenance-audit.fr.md)
 - **Sources primaires :** [Programme OpenSSF Best Practices Badge](https://openssf.org/projects/best-practices-badge/) · [Service Best Practices Badge](https://bestpractices.dev/)
 - **Concepts pertinents :** auto-évaluation volontaire des pratiques des projets open source, notamment gouvernance, contribution, tests, documentation, sécurité et releases ; le programme comprend des critères distincts de la série Metal et de l'OSPS Baseline.
 - **Utilité pour GovCheck :** conserve le programme de badge étudié comme checklist réutilisable et vocabulaire externe d'évaluation des pratiques d'un dépôt.
@@ -1288,7 +1288,7 @@
 
 <a id="r-136"></a>
 ### R-136 — Suivi de la révision source des traductions MDN
-- **Cité par :** [Recherche multilingue de l'issue 0033](research/multilingual-documentation-practices.fr.md)
+- **Cité par :** [Recherche multilingue de l'issue 0033](research/multilingual-documentation-practices.fr.md), [reference provenance audit](reference-provenance-audit.md), [audit de provenance](reference-provenance-audit.fr.md)
 - **Sources primaires :** [Dépôt MDN translated-content](https://github.com/mdn/translated-content) · [Discussion sur l10n.sourceCommit](https://github.com/orgs/mdn/discussions/129) · [Exemple de modification des métadonnées sourceCommit](https://github.com/mdn/translated-content/pull/36282)
 - **Concepts pertinents :** métadonnées par fichier indiquant le commit source suivi par une traduction ; identification de la révision source d'une page traduite ; fraîcheur mesurée par rapport aux changements sources plutôt que par les seules dates.
 - **Utilité pour GovCheck :** précédent candidat pour les métadonnées de provenance des traductions et la détection des traductions périmées.
@@ -1352,7 +1352,7 @@
 
 <a id="r-144"></a>
 ### R-144 — Balises de langue BCP 47
-- **Cité par :** [Recherche multilingue de l'issue 0033](research/multilingual-documentation-practices.fr.md)
+- **Cité par :** [Recherche multilingue de l'issue 0033](research/multilingual-documentation-practices.fr.md), [reference provenance audit](reference-provenance-audit.md), [audit de provenance](reference-provenance-audit.fr.md)
 - **Sources primaires :** [RFC 5646 : Tags for Identifying Languages](https://www.rfc-editor.org/rfc/rfc5646) · [Registre IANA des sous-étiquettes de langue](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry)
 - **Concepts pertinents :** balises normalisées identifiant langue, écriture, région et variantes ; sous-étiquettes issues d'un registre.
 - **Utilité pour GovCheck :** identifiants de langue canoniques candidats pour les métadonnées de traduction et la prise en charge future de plusieurs langues.

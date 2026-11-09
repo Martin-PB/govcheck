@@ -43,13 +43,25 @@ Cette configuration finie permet au plus deux amendements après la genèse et t
 
 Les invariants vérifiés couvrent le typage, l'unicité des révisions, la continuité prédécesseur/position d'effet, l'autorisation par l'autorité applicable à la position de décision, l'utilisation de la révision antérieure applicable, l'absence d'auto-autorisation, la publication strictement postérieure à l'autorisation, la préservation des liaisons historiques et la liaison entre évaluation et décision. La propriété temporelle vérifie la préservation par préfixe des historiques de gouvernance et de décisions.
 
-## 5. Première tentative échouée et correction
+## 5. Nouvelle vérification sur la tête finale de la PR
+
+La tête finale de la PR a été vérifiée à nouveau après l'ajout de l'enregistrement de preuve et du journal du portefeuille :
+
+- **Commit source final :** `e2f1b638a79c2a2f04b90d2ef85e6dd761a611eb`.
+- **Commit de fusion de test :** `9fbeb85` (fusion avec la base `d04a6dd02d5bdda0b40e4aa740475a8e554e63d7`).
+- **Workflow/job :** [exécution 42660278801](https://github.com/Martin-PB/govcheck/actions/runs/42660278801), job `129309691476`.
+- **Résultat :** SANY et TLC ont réussi à nouveau avec le même espace fini entièrement exploré : 20 785 états générés, 18 067 distincts, 0 restant ; aucune erreur.
+- **Artefact :** [rapport TLC de la tête finale](https://github.com/Martin-PB/govcheck/actions/runs/42660278801/artifacts/13693439123).
+
+La première exécution réussie ci-dessous reste la première exécution consignée. Cette nouvelle vérification lie les mêmes blobs du modèle et de la configuration au candidat final de la PR.
+
+## 6. Première tentative échouée et correction
 
 La première tentative TLC sur le commit source `eba2a74ec790c013e65f4301a203063d22885943` a échoué après la réussite de SANY. TLC a révélé un défaut d'expression dans le modèle : une expression `CHOOSE` sélectionnait un indice d'évaluation/décision, puis le modèle tentait de lire directement un champ d'enregistrement sur cet entier. Le modèle a été corrigé pour indexer explicitement la séquence correspondante. L'exécution réussie ci-dessus porte sur le commit corrigé `3a8d0176...`.
 
 Cette correction est préservée dans l'historique de la branche ; l'exécution échouée n'est pas présentée comme un succès.
 
-## 6. Interprétation et limites
+## 7. Interprétation et limites
 
 Il s'agit d'une **preuve issue du model checking**, pas d'une preuve de théorème. TLC a exploré le graphe complet des états atteignables de ce modèle/configuration finis sans trouver de violation des propriétés configurées. Cela ne prouve pas :
 - la correction pour des historiques, ensembles de principaux, candidats ou révisions non bornés ;
@@ -62,7 +74,7 @@ Il s'agit d'une **preuve issue du model checking**, pas d'une preuve de théorè
 
 Le modèle maintient volontairement l'autorité racine constante. Succession/délégation et récupération d'urgence exigent des décisions et extensions distinctes. Le mécanisme canonique d'ordre des événements et le protocole de publication persistante restent également ouverts.
 
-## 7. Documents liés
+## 8. Documents liés
 
 - [Spécification 0006 — Applicabilité des révisions de gouvernance](../specifications/0006-governance-revision-applicability.fr.md)
 - [Spécification 0003 — Cycle de vie des changements](../specifications/0003-change-lifecycle.fr.md)

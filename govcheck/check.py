@@ -23,7 +23,7 @@ import sys
 from pathlib import Path
 
 TOOL = "govcheck"
-VERSION = "0.1.0-slice"
+VERSION = "0.2.0-slice"
 
 ANCHOR_RE = re.compile(r'<a id="r-(\d{2,3})"></a>', re.I)
 MENTION_RE = re.compile(r"\bR-(\d{2,3})\b")
@@ -31,12 +31,14 @@ REF_LINK_RE = re.compile(r"\[[^\]]*\]\(([^)]*references(?:\.fr)?\.md#r-(\d{2,3})
 
 LICENSE_NAMES = ("LICENSE", "LICENSE.md", "LICENCE", "LICENCE.md")
 CATALOGUES = ("docs/references.md", "docs/references.fr.md")
+ATTESTATION_DIR = "docs/attestations"
 
 
 class Ctx:
-    def __init__(self, tree: Path, changed):
+    def __init__(self, tree: Path, changed, git=None):
         self.tree = tree
         self.changed = changed
+        self.git = git or {}
 
     def read(self, rel: str) -> str:
         return (self.tree / rel).read_text(encoding="utf-8")
@@ -132,10 +134,47 @@ def rule_tla_freshness(ctx: Ctx):
     return ("unknown", True, ["changes under formal/tla/ require fresh TLC evidence bound to the candidate revision; not verifiable offline"])
 
 
+def load_attestations(ctx: Ctx):
+    """Recorded human attestations in docs/attestations/*.json.
+
+    A record is valid for a candidate revision when it carries that exact
+    revision in candidate_rev and a reviewer identity distinct from the
+    candidate author.
+    """
+    d = ctx.tree / ATTESTATION_DIR
+    if not d.is_dir():
+        return []
+    records = []
+    for p in sorted(d.glob("*.json")):
+        try:
+            rec = json.loads(p.read_text(encoding="utf-8"))
+        except ValueError:
+            continue
+        if isinstance(rec, dict):
+            rec["_file"] = p.name
+            records.append(rec)
+    return records
+
+
 def rule_independent_review(ctx: Ctx):
     if ctx.changed is None or not ctx.changed:
         return ("pass", False, ["no candidate diff supplied; rule not applicable"])
-    return ("unknown", True, ["acceptance requires a recorded human attestation by an identity distinct from the author; not machine-checkable"])
+    candidate_rev = ctx.git.get("candidate_rev", "")
+    author = ctx.git.get("author", "")
+    for rec in load_attestations(ctx):
+        if rec.get("decision") != "accept":
+            continue
+        if candidate_rev and rec.get("candidate_rev") != candidate_rev:
+            continue
+        reviewer = str(rec.get("reviewer", "")).strip()
+        if not reviewer:
+            continue
+        if author and reviewer == author:
+            continue
+        return ("pass", True, [
+            "recorded attestation by " + reviewer + " for revision " + (candidate_rev or "(unspecified)") + " (" + rec.get("_file", "") + ")"
+        ])
+    return ("unknown", True, ["acceptance requires a recorded human attestation by an identity distinct from the author, bound to the candidate revision; none found"])
 
 
 RULES = [
@@ -148,8 +187,8 @@ RULES = [
 ]
 
 
-def evaluate(tree: Path, changed=None) -> dict:
-    ctx = Ctx(tree, changed)
+def evaluate(tree: Path, changed=None, git=None) -> dict:
+    ctx = Ctx(tree, changed, git)
     rules = []
     for r in RULES:
         result, applies, reasons = r["fn"](ctx)
@@ -179,6 +218,26 @@ def git_changed(tree: Path, base: str, candidate: str):
     return set(proc.stdout.split())
 
 
+def git_author(tree: Path, rev: str):
+    proc = subprocess.run(
+        ["git", "-C", str(tree), "log", "-1", "--format=%an <%ae>", rev],
+        capture_output=True, text=True,
+    )
+    if proc.returncode != 0:
+        raise SystemExit("git log failed: " + proc.stderr.strip())
+    return proc.stdout.strip()
+
+
+def git_full_sha(tree: Path, rev: str):
+    proc = subprocess.run(
+        ["git", "-C", str(tree), "rev-parse", rev],
+        capture_output=True, text=True,
+    )
+    if proc.returncode != 0:
+        raise SystemExit("git rev-parse failed: " + proc.stderr.strip())
+    return proc.stdout.strip()
+
+
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description="First executable GovCheck slice.")
     parser.add_argument("--tree", default=".")
@@ -196,13 +255,20 @@ def main(argv=None) -> int:
         return 2
     tree = Path(args.tree).resolve()
     changed = git_changed(tree, args.base, args.candidate) if args.base else None
-    report = evaluate(tree, changed)
-    report["candidate"]["base"] = args.base
-    report["candidate"]["candidate_rev"] = args.candidate
+    git = None
+    if args.base:
+        git = {
+            "base": args.base,
+            "candidate_rev": git_full_sha(tree, args.candidate),
+            "author": git_author(tree, args.candidate),
+        }
+    report = evaluate(tree, changed, git)
+    if git:
+        report["candidate"]["base"] = git["base"]
+        report["candidate"]["candidate_rev"] = git["candidate_rev"]
     text = json.dumps(report, indent=2, ensure_ascii=False)
     if args.out:
-        Path(args.out).write_text(text + "
-", encoding="utf-8")
+        Path(args.out).write_text(text + "\n", encoding="utf-8")
     print("govcheck " + VERSION + " -- overall: " + report["overall"].upper())
     for x in report["rules"]:
         line = "  [" + x["result"].upper() + "] " + x["id"] + " (" + x["class"] + ")"

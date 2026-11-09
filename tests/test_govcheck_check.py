@@ -40,6 +40,17 @@ def build_tree(root: Path) -> None:
         )
 
 
+def add_attestation(root: Path, reviewer="Bob <bob@example.org>", rev="deadbeef" * 5, decision="accept") -> None:
+    d = root / "docs" / "attestations"
+    d.mkdir(parents=True, exist_ok=True)
+    (d / "0001.json").write_text(json.dumps({
+        "decision": decision,
+        "candidate_rev": rev,
+        "reviewer": reviewer,
+        "date": "2026-11-09",
+    }), encoding="utf-8")
+
+
 class EvaluateTests(unittest.TestCase):
     def run_cli(self, root, extra=None):
         buf = io.StringIO()
@@ -125,6 +136,48 @@ class EvaluateTests(unittest.TestCase):
             self.assertEqual(report["tool"], "govcheck")
             self.assertEqual(report["overall"], "pass")
             self.assertEqual(len(report["rules"]), 6)
+
+    def test_review_unknown_without_attestation(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            build_tree(root)
+            git = {"candidate_rev": "a" * 40, "author": "Alice <alice@example.org>"}
+            report = check.evaluate(root, changed={"docs/specifications/0001-a.md"}, git=git)
+            rule = next(r for r in report["rules"] if r["id"] == "independent-review")
+            self.assertEqual(rule["result"], "unknown")
+            self.assertEqual(rule["applies"], True)
+
+    def test_review_passes_with_distinct_reviewer_attestation(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            build_tree(root)
+            rev = "a" * 40
+            add_attestation(root, reviewer="Bob <bob@example.org>", rev=rev)
+            git = {"candidate_rev": rev, "author": "Alice <alice@example.org>"}
+            report = check.evaluate(root, changed={"x.md"}, git=git)
+            rule = next(r for r in report["rules"] if r["id"] == "independent-review")
+            self.assertEqual(rule["result"], "pass")
+
+    def test_review_ignores_attestation_by_the_author(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            build_tree(root)
+            rev = "a" * 40
+            add_attestation(root, reviewer="Alice <alice@example.org>", rev=rev)
+            git = {"candidate_rev": rev, "author": "Alice <alice@example.org>"}
+            report = check.evaluate(root, changed={"x.md"}, git=git)
+            rule = next(r for r in report["rules"] if r["id"] == "independent-review")
+            self.assertEqual(rule["result"], "unknown")
+
+    def test_review_ignores_attestation_for_other_revision(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            build_tree(root)
+            add_attestation(root, reviewer="Bob <bob@example.org>", rev="b" * 40)
+            git = {"candidate_rev": "a" * 40, "author": "Alice <alice@example.org>"}
+            report = check.evaluate(root, changed={"x.md"}, git=git)
+            rule = next(r for r in report["rules"] if r["id"] == "independent-review")
+            self.assertEqual(rule["result"], "unknown")
 
 
 if __name__ == "__main__":

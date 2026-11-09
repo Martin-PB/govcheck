@@ -6,7 +6,7 @@ Le catalogue est un index bilingue de sources et de provenance ; ce n'est ni une
 
 - Le [catalogue anglais](references.md) est la présentation par défaut.
 - Le [catalogue français](references.fr.md) en est le pendant sémantique.
-- Les deux catalogues contiennent 131 entrées actives. Trois identifiants ont été retirés et ne doivent jamais être réutilisés : R-12 (doublon Scorecard consolidé dans R-08), R-101 (doublon NIST SP 800-218 consolidé dans R-02) et R-102 (famille W3C PROV consolidée dans R-24).
+- Les deux catalogues contiennent 131 entrées actives. Trois identifiants ont été retirés et ne doivent jamais être réutilisés : retired identifier 12 (doublon Scorecard consolidé dans [R-08](references.fr.md#r-08)), retired identifier 101 (doublon NIST SP 800-218 consolidé dans [R-02](references.fr.md#r-02)) et retired identifier 102 (famille W3C PROV consolidée dans [R-24](references.fr.md#r-24)).
 - Chaque entrée indique les sources primaires, les concepts pertinents, l'usage précis pour GovCheck et les limites.
 - Chaque dossier d'architecture, décision ou spécification renvoie à l'ancre exacte du catalogue qu'il utilise.
 - Le champ **Cited by / Cité par** de chaque entrée renvoie vers tous les documents qui la citent.

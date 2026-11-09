@@ -2,10 +2,11 @@
 EXTENDS Naturals, Sequences, FiniteSets
 
 CONSTANTS
-  Principals, RootPrincipal, GovernanceRevisions, Candidates,
+  Principals, RootPrincipal, InitialGovernanceRevision, GovernanceRevisions, Candidates,
   EvaluationIds, DecisionIds, HistoryLimit
 
 ASSUME RootPrincipal \in Principals
+ASSUME InitialGovernanceRevision \in GovernanceRevisions
 ASSUME HistoryLimit >= 2
 
 VARIABLES currentAuthority, currentGovernance, position,
@@ -14,7 +15,7 @@ vars == <<currentAuthority, currentGovernance, position,
           governanceHistory, evaluations, decisions, pendingPublication>>
 
 GenesisRecord ==
-  [ revision |-> CHOOSE r \in GovernanceRevisions : TRUE,
+  [ revision |-> InitialGovernanceRevision,
     predecessor |-> "NoRevision",
     authority |-> RootPrincipal,
     effectivePosition |-> 0,

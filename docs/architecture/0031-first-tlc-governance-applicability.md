@@ -43,13 +43,25 @@ The finite configuration permits at most two governance amendments after genesis
 
 The checked invariants cover type correctness, unique governance revisions, predecessor/effective-position continuity, authorization by the authority applicable at the decision position, use of the applicable prior governance revision, no self-authorization, publication strictly after authorization, preservation of historical decision bindings, and evaluation-to-decision binding. The temporal property checks prefix preservation of governance and decision histories.
 
-## 5. Failed first attempt and correction
+## 5. Final PR-head revalidation
+
+The final PR head was checked again after the evidence record and portfolio journal were added:
+
+- **Final source commit:** `e2f1b638a79c2a2f04b90d2ef85e6dd761a611eb`.
+- **Merge-test commit:** `9fbeb85` (merged with base `d04a6dd02d5bdda0b40e4aa740475a8e554e63d7`).
+- **Workflow/job:** [run 42660278801](https://github.com/Martin-PB/govcheck/actions/runs/42660278801), job `129309691476`.
+- **Result:** SANY and TLC passed again with the same complete finite state-space result: 20,785 generated, 18,067 distinct, 0 remaining; no error found.
+- **Artifact:** [final-head TLC report](https://github.com/Martin-PB/govcheck/actions/runs/42660278801/artifacts/13693439123).
+
+The original successful execution below remains the first recorded run. This revalidation binds the same model/configuration blobs to the final PR candidate.
+
+## 6. Failed first attempt and correction
 
 The first TLC attempt on source commit `eba2a74ec790c013e65f4301a203063d22885943` failed after SANY succeeded. TLC exposed a model-expression defect: a `CHOOSE` expression selected an evaluation/decision index, but the model then attempted to read a record field directly from that integer. The model was corrected to index the corresponding sequence explicitly. The successful execution above checks the corrected source commit `3a8d0176...`.
 
 This correction is preserved in branch history; the failed run is not represented as a passing result.
 
-## 6. Interpretation and limits
+## 7. Interpretation and limits
 
 This is **model-checking evidence**, not a theorem proof. It establishes that TLC explored the complete reachable state graph of this finite model/configuration without finding a violation of the configured properties. It does not prove:
 - correctness for unbounded histories, principal sets, candidates or governance revisions;
@@ -62,7 +74,7 @@ This is **model-checking evidence**, not a theorem proof. It establishes that TL
 
 The model deliberately holds the root authority constant. Authority succession/delegation and emergency recovery require separate decisions and extensions. The canonical event-order mechanism and persistent publication protocol also remain open.
 
-## 7. Related records
+## 8. Related records
 
 - [Specification 0006 — Governance revision applicability](../specifications/0006-governance-revision-applicability.md)
 - [Specification 0003 — Change lifecycle](../specifications/0003-change-lifecycle.md)

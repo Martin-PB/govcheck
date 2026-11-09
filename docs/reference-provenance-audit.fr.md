@@ -8,7 +8,7 @@ La source historique principale est **« Évaluer l’intégration des dépôts.
 
 Le PDF couvre plusieurs fils de projets avant et parallèlement à la conception propre à GovCheck : Cartocortex, MoriNet et SaussuNet ; une pile d'agent SecOps NixOS ; puis la gouvernance et le bootstrap GovCheck. GovCheck devient explicite vers la page 133. Les contextes antérieurs restent pertinents lorsqu'ils apportent les dépôts, formats, protocoles et références d'interopérabilité qui sous-tendent l'étude initiale.
 
-L'audit prend également en compte les revues critiques externes consignées dans les issues GitHub #23 et #26 ainsi que le suivi consolidé de l'issue #30. Ces revues sont des apports comparatifs ; leurs recommandations ne deviennent pas automatiquement des décisions adoptées par GovCheck.
+L'audit prend également en compte les revues critiques externes consignées dans les issues GitHub #23 et #26 ainsi que le suivi consolidé de l'issue #30 et la revue de gouvernance multilingue de l'issue #33. Ces revues sont des apports comparatifs ; leurs recommandations ne deviennent pas automatiquement des décisions adoptées par GovCheck.
 
 ## 2. Provenance et évolutions du catalogue
 
@@ -37,6 +37,7 @@ L'audit prend également en compte les revues critiques externes consignées dan
 | Provenance de chaîne d'approvisionnement, identité d'artefact, attestations, signatures et assurance des sources/builds | [R-06](references.fr.md#r-06)–[R-08](references.fr.md#r-08), [R-14](references.fr.md#r-14)–[R-15](references.fr.md#r-15), [R-21](references.fr.md#r-21), [R-23](references.fr.md#r-23)–[R-26](references.fr.md#r-26), [R-108](references.fr.md#r-108), [R-112](references.fr.md#r-112)–[R-113](references.fr.md#r-113), [R-121](references.fr.md#r-121)–[R-122](references.fr.md#r-122) |
 | Déclarations de sécurité de projets, référentiels, contrôles de dépôts et outils d'évaluation | [R-08](references.fr.md#r-08), [R-109](references.fr.md#r-109)–[R-120](references.fr.md#r-120), [R-127](references.fr.md#r-127) |
 | Candidats en sémantique métier, processus, exigences, qualité et ingénierie | [R-74](references.fr.md#r-74), [R-94](references.fr.md#r-94)–[R-100](references.fr.md#r-100), [R-103](references.fr.md#r-103), [R-114](references.fr.md#r-114), [R-123](references.fr.md#r-123)–[R-126](references.fr.md#r-126), [R-128](references.fr.md#r-128) |
+| Synchronisation documentaire multilingue et identifiants de langue | [R-136](references.fr.md#r-136)–[R-144](references.fr.md#r-144) |
 | Formats d'instructions d'agents, outils de workflow et emplacement des workflows GitHub Actions | [R-18](references.fr.md#r-18)–[R-19](references.fr.md#r-19), [R-104](references.fr.md#r-104), [R-107](references.fr.md#r-107) |
 
 Le catalogue conserve également les sources ajoutées à partir des revues critiques : gittuf, SLSA Source Track, Gemara, exigences de soumission Gerrit, Minder, Allstar, Conftest, CUE, OpenSSF Privateer, SLSA Verification Summary Attestation (VSA), Sigstore, Symboleo, Catala, Event Calculus, vérification à l'exécution et GitHub CODEOWNERS, CEL, argumentation éliminative, Kyverno, règles d'approbation GitLab, Zuul/Bors, théorie formelle des patches, GSN et NIST SP 800-192 ([R-112](references.fr.md#r-112)–[R-135](references.fr.md#r-135)).

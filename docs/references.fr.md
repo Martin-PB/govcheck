@@ -45,6 +45,7 @@
 | Attestations, signatures, contrats formels et surveillance temporelle | R-121–R-126 |
 | Responsabilité par fichier et revue par propriétaires de code | R-127 |
 | Langages d'expression pour politiques et prédicats | R-128 |
+| Argumentation d'assurance, moteurs de politiques, gating et théorie des patches | R-129–R-133 |
 
 ## Entrées bibliographiques détaillées
 
@@ -86,6 +87,7 @@
 - **Attestations, signatures, contrats formels et surveillance temporelle :** R-121–R-126.
 - **Responsabilité par fichier et revue par propriétaires de code :** R-127.
 - **Langages d'expression pour politiques et prédicats :** R-128.
+- **Argumentation d'assurance, moteurs de politiques, gating et théorie des patches :** R-129–R-133.
 
 ## Normes, recommandations publiques et spécifications industrielles
 
@@ -1217,4 +1219,45 @@
 - **Concepts pertinents :** langage d'expression portable, sans effets de bord et à terminaison garantie, conçu pour l'intégration et l'évaluation de politiques ; expressions typées avec AST défini et représentation sérialisée interopérable.
 - **Utilité pour GovCheck :** langage d'expression candidat pour évaluer des prédicats bornés de gouvernance de dépôt, à comparer à Rego, Cedar, Prolog et CUE.
 - **Limite :** CEL est un langage d'expression, pas un métamodèle de gouvernance, un modèle d'autorité ou un format de preuve. L'application hôte définit les variables/fonctions disponibles et les frontières de confiance ; la réussite de l'évaluation n'établit pas que les entrées sont complètes ou fiables.
+
+
+<a id="r-129"></a>
+### R-129 — Argumentation éliminative pour la confiance dans les dossiers d'assurance
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Source primaire :** [Goodenough, Weinstock et Klein, « Eliminative Argumentation: A Basis for Arguing Confidence in System Properties » (CMU/SEI-2015-TR-005)](https://insights.sei.cmu.edu/library/eliminative-argumentation-a-basis-for-arguing-confidence-in-system-properties/)
+- **Concepts pertinents :** évaluation de la confiance dans les arguments d'un dossier d'assurance par l'identification et l'élimination d'explications alternatives et de contre-arguments, plutôt que par la seule accumulation d'éléments favorables.
+- **Utilité pour GovCheck :** complète Assurance 2.0 (R-71) et éclaire le traitement des défaiteurs, contre-preuves et niveaux de confiance des arguments.
+- **Limite :** il s'agit d'une méthode d'argumentation d'assurance, pas d'une politique de dépôt, d'un schéma de preuve ni d'un algorithme numérique de confiance. Les jugements de confiance dépendent du périmètre de l'argument, des hypothèses et de la qualité des alternatives examinées.
+
+<a id="r-130"></a>
+### R-130 — Moteur de politiques Kyverno
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Sources primaires :** [Documentation Kyverno](https://kyverno.io/docs/) · [Vue d'ensemble des types de politiques](https://kyverno.io/docs/policy-types/overview/) · [Dépôt source Kyverno](https://github.com/kyverno/kyverno)
+- **Concepts pertinents :** validation déclarative de politiques, mutation, génération, suppression et vérification d'images pour ressources Kubernetes et charges JSON prises en charge ; les types de politiques actuels utilisent CEL.
+- **Utilité pour GovCheck :** comparateur adjacent de policy-as-code et de contrôle d'admission ; pertinent pour l'interaction entre contrôles déclaratifs, évaluateurs et points d'application.
+- **Limite :** Kyverno est principalement un moteur de politiques Kubernetes, pas un métamodèle général de gouvernance de dépôt ni une autorité d'acceptation indépendante des forges. L'évaluation dépend du contexte de ressource fourni et de l'intégration au cluster.
+
+<a id="r-131"></a>
+### R-131 — Règles et politiques d'approbation des merge requests GitLab
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Sources primaires :** [Règles d'approbation des merge requests GitLab](https://docs.gitlab.com/user/project/merge_requests/approvals/rules/) · [Paramètres d'approbation](https://docs.gitlab.com/user/project/merge_requests/approvals/settings/) · [Politiques d'approbation des merge requests](https://docs.gitlab.com/user/application_security/policies/merge_request_approval_policies/)
+- **Concepts pertinents :** nombre d'approbations obligatoires configurable, approbateurs éligibles, approbation des propriétaires de code, prévention de l'auto-approbation par l'auteur/committer et exigences d'approbation pilotées par des politiques.
+- **Utilité pour GovCheck :** comparateur propre à une forge pour la séparation des tâches et les conditions programmables d'acceptation à la frontière de fusion.
+- **Limite :** le comportement et la disponibilité dépendent du niveau GitLab, des paramètres projet/groupe/instance et des droits de surcharge. Ces contrôles ne fournissent pas un modèle d'autorité indépendant des forges et n'établissent pas indépendamment la compétence du relecteur.
+
+<a id="r-132"></a>
+### R-132 — Systèmes de gating de fusion Zuul et Bors
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Sources primaires :** [Documentation du gating de projet Zuul](https://zuul-ci.org/docs/zuul/latest/gating.html) · [Présentation de Zuul](https://zuul-ci.org/docs/zuul/latest/about.html) · [Documentation Bors-NG](https://bors.tech/documentation/index.html) · [Conception de Rust Bors](https://github.com/rust-lang/bors/blob/main/docs/design.md)
+- **Concepts pertinents :** test d'états futurs proposés du dépôt, regroupement et intégration tenant compte des dépendances, branches de staging et files de fusion pour éviter les courses d'intégration et les ruptures de la branche principale.
+- **Utilité pour GovCheck :** comparateurs industriels de workflows d'acceptation testant le candidat exact d'intégration plutôt que seulement la tête isolée d'une pull request.
+- **Limite :** Zuul et Bors sont des systèmes d'orchestration CI/intégration, pas des autorités normatives de gouvernance ni des moteurs de dossier d'assurance. Bors-NG est archivé et son instance publique est en cours de retrait ; le distinguer du projet Rust Bors plus récent et des files de fusion natives des plateformes.
+
+<a id="r-133"></a>
+### R-133 — Théories formelles des patches : Darcs, Camp et théorie homotopique des patches
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Sources primaires :** [Théorie des patches de Darcs](https://darcs.net/Theory) · [Jacobson, « A Formalization of Darcs Patch Theory Using Inverse Semigroups »](https://ww3.math.ucla.edu/camreport/cam09-83.pdf) · [Lynagh, « Camp Patch Theory »](https://archives.haskell.org/projects.haskell.org/camp/files/theory.pdf) · [Angiuli et al., « Homotopical Patch Theory »](https://doi.org/10.1017/S0956796816000198)
+- **Concepts pertinents :** commutation, inversion et conflits de patches ; représentations algébriques et higher-inductive du changement ; conditions sous lesquelles la réorganisation des patches préserve le sens du dépôt.
+- **Utilité pour GovCheck :** fondement de recherche pour traiter les sémantiques de patches de Pijul/Darcs comme distinctes des sémantiques Git de snapshots/commits et concevoir des adaptateurs VCS sans aplatir leur sens.
+- **Limite :** ces travaux concernent différents systèmes de patches et modèles formels ; ils n'établissent pas que leurs sémantiques se transfèrent directement à Pijul ou Git. Un adaptateur GovCheck exige un mapping explicite et des tests de conformité face au comportement réel de chaque VCS.
 

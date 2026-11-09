@@ -18,3 +18,5 @@ The specifications define semantics and conformance targets. They do not claim t
 The next engineering phase should derive executable conformance tests and formal models, then resolve technology choices using the architecture decision framework.
 
 External standards, methods and project sources are indexed in the [central reference catalogue](../references.md) ([French](../references.fr.md)). Follow the [reference-integrity maintenance guide](../reference-integrity.md) and run the offline checker before changing references; inclusion does not imply adoption.
+
+The governed work portfolio is maintained in the repository at [docs/work-portfolio/](../work-portfolio/README.md), with the portfolio lifecycle and issue-tracker boundary in [Architecture 0028](../architecture/0028-governed-work-portfolio-and-issue-tracker-boundary.md) and the repository-backed registry/revision contract in [Architecture 0030](../architecture/0030-repository-backed-work-portfolio-and-recoverable-history.md) ([French](../architecture/0030-repository-backed-work-portfolio-and-recoverable-history.fr.md)). GitHub Issues and Projects remain adapters, not canonical governance records.

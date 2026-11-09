@@ -45,13 +45,13 @@ Les invariants vérifiés couvrent le typage, l'unicité des révisions, la cont
 
 ## 5. Nouvelle vérification sur la tête finale de la PR
 
-La tête finale de la PR a été vérifiée à nouveau après l'ajout de l'enregistrement de preuve et du journal du portefeuille :
+La tête finale de la PR a été vérifiée à nouveau après l'ajout de l'enregistrement de preuve et du journal du portefeuille ; l'exécution ci-dessous est la revérification la plus récente consignée :
 
-- **Commit source final :** `e2f1b638a79c2a2f04b90d2ef85e6dd761a611eb`.
-- **Commit de fusion de test :** `9fbeb85` (fusion avec la base `d04a6dd02d5bdda0b40e4aa740475a8e554e63d7`).
-- **Workflow/job :** [exécution 42660278801](https://github.com/Martin-PB/govcheck/actions/runs/42660278801), job `129309691476`.
+- **Commit source final :** `ff4a1457335d7a2600f2bb12850b74926ba6304b`.
+- **Commit de fusion de test :** `7cd7732` (fusion avec la base `d04a6dd02d5bdda0b40e4aa740475a8e554e63d7`).
+- **Workflow/job :** [exécution 42660448408](https://github.com/Martin-PB/govcheck/actions/runs/42660448408), job `129310275465`.
 - **Résultat :** SANY et TLC ont réussi à nouveau avec le même espace fini entièrement exploré : 20 785 états générés, 18 067 distincts, 0 restant ; aucune erreur.
-- **Artefact :** [rapport TLC de la tête finale](https://github.com/Martin-PB/govcheck/actions/runs/42660278801/artifacts/13693439123).
+- **Artefact :** [rapport TLC de la tête finale](https://github.com/Martin-PB/govcheck/actions/runs/42660448408/artifacts/13694860086).
 
 La première exécution réussie ci-dessous reste la première exécution consignée. Cette nouvelle vérification lie les mêmes blobs du modèle et de la configuration au candidat final de la PR.
 

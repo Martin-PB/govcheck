@@ -151,7 +151,7 @@ This record does not claim that GovCheck implements a decision engine, dependenc
 - [Architecture 0013 — Governance metamodel](0013-governance-metamodel.md).
 - [R-14](../references.md#r-14); [R-24](../references.md#r-24); [R-25](../references.md#r-25); [R-23](../references.md#r-23).
 
-External references inform the design; the authority and compatibility rules here are GovCheck proposals, not requirements imposed by those standards.
+External references inform the design; the authority and compatibility rules adopted here are GovCheck project policy, not requirements imposed by those standards.
 
 ## Machine-readable design
 

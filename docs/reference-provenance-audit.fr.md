@@ -41,7 +41,21 @@ L'audit prend également en compte les revues critiques externes consignées dan
 
 Le catalogue conserve également les sources ajoutées à partir des revues critiques : gittuf, SLSA Source Track, Gemara, exigences de soumission Gerrit, Minder, Allstar, Conftest, CUE, OpenSSF Privateer, SLSA Verification Summary Attestation (VSA), Sigstore, Symboleo, Catala, Event Calculus, vérification à l'exécution et GitHub CODEOWNERS, CEL, argumentation éliminative, Kyverno, règles d'approbation GitLab, Zuul/Bors, théorie formelle des patches, GSN et NIST SP 800-192 ([R-112](references.fr.md#r-112)–[R-135](references.fr.md#r-135)).
 
-## 4. Distinctions sémantiques préservées
+
+## 4. Repères de pagination du PDF
+
+Les repères suivants relient des passages notables de la discussion au catalogue. Ils facilitent la navigation, mais ne remplacent pas la vérification de l'édition/version exacte de chaque source.
+
+- **Pages 31–49 :** RDF, composition d'ontologies, ingestion de cartes mentales, validation de graphes et vocabulaires du Web sémantique — [R-51](references.fr.md#r-51)–[R-61](references.fr.md#r-61), [R-63](references.fr.md#r-63), [R-83](references.fr.md#r-83)–[R-86](references.fr.md#r-86).
+- **Pages 33–34 :** distinction entre le modèle graphe de RDF et la coédition temps réel fondée sur des CRDT — [R-45](references.fr.md#r-45)–[R-50](references.fr.md#r-50), [R-66](references.fr.md#r-66), [R-87](references.fr.md#r-87).
+- **Section du projet NixOS SecOps :** isolation d'agents locaux et comparaison de sandboxes/outils, notamment nono, Landlock, Goose, mcp-nixos, SmolVM et Nixi — [R-79](references.fr.md#r-79) couvre les mécanismes transverses de sandboxing et d'agents ; les autres dépendances propres au projet restent une question de périmètre ci-dessous.
+- **Page 117 :** NIST SP 800-192 et nécessité de vérifier les modèles de politique, pas seulement d'exécuter les politiques — [R-135](references.fr.md#r-135), avec OPA/Rego [R-09](references.fr.md#r-09), Cedar [R-10](references.fr.md#r-10) et Sentinel [R-77](references.fr.md#r-77).
+- **Pages 154–156 :** SLSA, in-toto, GUAC, OpenSSF Scorecard, Best Practices Badge, Security Insights et OSPS Baseline — [R-06](references.fr.md#r-06)–[R-08](references.fr.md#r-08), [R-108](references.fr.md#r-108)–[R-111](references.fr.md#r-111).
+- **Page 178 :** Writ et Privateer sont présentés comme outils complémentaires de workflow et d'évaluation de conformité ; Agent Package Manager est nommé sans identité résoluble — [R-18](references.fr.md#r-18), [R-120](references.fr.md#r-120) ; voir les notes sur les identités non résolues ci-dessous.
+- **Pages 188–200 :** bootstrap GovCheck, autorité locale au dépôt, frontière d'acceptation, adaptateurs Git/Pijul et forges locales/d'équipe — [R-05](references.fr.md#r-05), [R-20](references.fr.md#r-20), [R-68](references.fr.md#r-68), [R-133](references.fr.md#r-133).
+- **Pages 219–220 :** identité des artefacts, chemins stables, releases, tags et politique de versionnement — [R-14](references.fr.md#r-14), [R-15](references.fr.md#r-15), [R-21](references.fr.md#r-21), [R-23](references.fr.md#r-23)–[R-26](references.fr.md#r-26).
+
+## 5. Distinctions sémantiques préservées
 
 - SACM 2.3 est la base formelle consignée en [R-34](references.fr.md#r-34) ; SACM 2.4 Beta 1 est une proposition en cours, enregistrée séparément en [R-73](references.fr.md#r-73). Aucun des deux n'est automatiquement adopté comme métamodèle général de gouvernance du dépôt GovCheck.
 - PEAK ([R-74](references.fr.md#r-74)) est un modèle de raisonnement décisionnel autour du problème, de l'expérience, des hypothèses et des connaissances ; ce n'est pas SACM et il ne remplace pas le modèle de dossier d'assurance.
@@ -51,7 +65,7 @@ Le catalogue conserve également les sources ajoutées à partir des revues crit
 - GitHub CODEOWNERS, Allstar et la protection de branche GitHub sont des mécanismes propres à une plateforme ; ils ne définissent pas un modèle d'autorité indépendant des forges.
 - Une source évoquée dans la discussion peut être conservée comme contexte historique sans devenir une dépendance adoptée, une exigence normative ou une affirmation d'implémentation.
 
-## 5. Identités de sources et provenances non résolues
+## 6. Identités de sources et provenances non résolues
 
 Les éléments suivants ne peuvent pas recevoir une fiche source unique et fiable sans information complémentaire :
 
@@ -62,7 +76,7 @@ Les éléments suivants ne peuvent pas recevoir une fiche source unique et fiabl
 
 Ce sont des lacunes de provenance, pas des blocages pour les corrections actuelles du catalogue. Elles ne doivent être résolues que si les concepts correspondants restent pertinents pour GovCheck.
 
-## 6. État des vérifications et travaux restants
+## 7. État des vérifications et travaux restants
 
 Les modifications du dépôt sont enregistrées sur la branche d'audit, mais les contrôles suivants **n'ont pas été exécutés** dans cet environnement :
 
@@ -73,7 +87,7 @@ Aucun workflow GitHub Actions n'a été déclenché. La première commande doit 
 
 L'inventaire des sources du PDF est maintenant largement rapproché du catalogue et des revues critiques, mais une dernière passe page par page sur tout le contexte précédant GovCheck reste nécessaire avant de prétendre à une couverture exhaustive de chaque source mentionnée dans les 224 pages.
 
-## 7. Règle de maintenance
+## 8. Règle de maintenance
 
 Pour chaque source réellement utilisée par un document GovCheck :
 1. maintenir une seule entrée canonique R-XX, avec identité de la source primaire et version/statut ;

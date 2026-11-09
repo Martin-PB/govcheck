@@ -49,6 +49,7 @@
 | Notation d'argumentation d'assurance GSN | R-134 |
 | Vérification des politiques et modèles de contrôle d'accès | R-135 |
 | Synchronisation documentaire multilingue et identifiants de langue | R-136–R-144 |
+| Plateformes de traduction citées mais non évaluées | R-145–R-146 |
 
 ## Entrées bibliographiques détaillées
 
@@ -94,6 +95,7 @@
 - **Notation d'argumentation d'assurance GSN :** R-134.
 - **Vérification des politiques et modèles de contrôle d'accès :** R-135.
 - **Synchronisation documentaire multilingue et identifiants de langue :** R-136–R-144.
+- **Plateformes de traduction citées mais non évaluées :** R-145–R-146.
 
 ## Normes, recommandations publiques et spécifications industrielles
 
@@ -1357,4 +1359,21 @@
 - **Concepts pertinents :** balises normalisées identifiant langue, écriture, région et variantes ; sous-étiquettes issues d'un registre.
 - **Utilité pour GovCheck :** identifiants de langue canoniques candidats pour les métadonnées de traduction et la prise en charge future de plusieurs langues.
 - **Limite :** BCP 47 identifie les langues ; il ne définit ni la primauté de la langue source, ni la qualité d'une traduction, ni son état de synchronisation ou son authenticité normative.
+
+
+<a id="r-145"></a>
+### R-145 — Plateforme de localisation Weblate
+- **Cité par :** [Pratiques documentaires multilingues](research/multilingual-documentation-practices.fr.md)
+- **Sources primaires :** [Documentation Weblate](https://docs.weblate.org/) · [Projet Weblate](https://weblate.org/)
+- **Concepts pertinents :** gestion collaborative des traductions, mémoire de traduction et glossaires, intégration aux dépôts et suivi du statut des traductions.
+- **Utilité pour GovCheck :** plateforme nommée dans la revue de gouvernance multilingue comme solution à considérer uniquement si un adaptateur facultatif de traduction devient nécessaire.
+- **Limite :** Weblate n'a pas été évalué dans la revue. C'est une plateforme de traduction, pas un modèle de gouvernance faisant autorité ; son exploitation hébergée ne doit pas devenir une dépendance de GovCheck.
+
+<a id="r-146"></a>
+### R-146 — Plateforme de localisation Crowdin
+- **Cité par :** [Pratiques documentaires multilingues](research/multilingual-documentation-practices.fr.md)
+- **Sources primaires :** [Documentation Crowdin](https://support.crowdin.com/) · [Plateforme Crowdin](https://crowdin.com/)
+- **Concepts pertinents :** localisation collaborative, workflows de traduction, glossaire/mémoire de traduction et intégrations avec les dépôts documentaires.
+- **Utilité pour GovCheck :** plateforme nommée dans la revue de gouvernance multilingue comme solution à considérer uniquement si un adaptateur facultatif de traduction devient nécessaire.
+- **Limite :** Crowdin n'a pas été évalué dans la revue. C'est une plateforme de traduction, pas un modèle de gouvernance faisant autorité ; son exploitation hébergée ne doit pas devenir une dépendance de GovCheck.
 

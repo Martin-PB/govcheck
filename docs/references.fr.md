@@ -42,6 +42,7 @@
 | Emplacement et syntaxe des workflows GitHub Actions | R-107 |
 | Graphes de métadonnées de chaîne d'approvisionnement et posture de sécurité des projets | R-108–R-111 |
 | Gouvernance Git indépendante de la forge, provenance source, Gemara et outils de contrôle de dépôt | R-112–R-120 |
+| Attestations, signatures, contrats formels et surveillance temporelle | R-121–R-126 |
 
 ## Entrées bibliographiques détaillées
 
@@ -80,6 +81,7 @@
 - **Emplacement des workflows GitHub Actions :** R-107.
 - **Graphes de chaîne d'approvisionnement, déclarations de sécurité et référentiels de bonnes pratiques :** R-108–R-111.
 - **Gouvernance Git, provenance source et outils d'évaluation de dépôt candidats :** R-112–R-120.
+- **Attestations, signatures, contrats formels et surveillance temporelle :** R-121–R-126.
 
 ## Normes, recommandations publiques et spécifications industrielles
 
@@ -1152,3 +1154,53 @@
 - **Concepts pertinents :** évaluation par plugins du code source, de la configuration des dépôts et des systèmes déployés par rapport à des catalogues de contrôles maintenus séparément ; contrôles déterministes, revue facultative de preuves assistée par IA et résultats d'évaluation structurés.
 - **Utilité pour GovCheck :** comparateur direct et évaluateur potentiellement complémentaire de contrôles de sécurité/conformité, notamment pour la séparation entre catalogues de contrôles et plugins d'évaluation.
 - **Limite :** Privateer évalue des contrôles ; ce n'est ni l'autorité canonique de gouvernance de GovCheck ni un moteur complet de cycle de vie des changements. Une revue assistée par IA n'est pas une preuve ; les constats non résolus doivent rester incertains ou nécessiter une revue humaine. Ce projet est distinct de la distribution de l'agent de programmation Pi cataloguée en R-19.
+
+
+<a id="r-121"></a>
+### R-121 — Attestation récapitulative de vérification SLSA (VSA)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Source primaire :** [Verification Summary Attestation SLSA v1.2](https://slsa.dev/spec/v1.2/verification_summary)
+- **Concepts pertinents :** attestation in-toto signée résumant l'évaluation d'un artefact par un vérificateur selon une politique et indiquant résultat, niveaux SLSA vérifiés, identité du vérificateur et URI de ressource.
+- **Utilité pour GovCheck :** format d'attestation compact candidat pour communiquer des résultats d'évaluation vérifiables indépendamment sans exiger de chaque consommateur qu'il rejoue tous les contrôles sous-jacents.
+- **Limite :** une VSA transfère la confiance au vérificateur ; elle ne protège pas contre un vérificateur compromis ou malveillant. Les consommateurs doivent vérifier signature, digest du sujet, type de prédicat, identité du vérificateur, ressource visée, résultat et niveau exigé. Une VSA n'est ni une preuve de théorème ni un certificat universel de conformité.
+
+<a id="r-122"></a>
+### R-122 — Signature d'artefacts et transparence avec Sigstore
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Sources primaires :** [Documentation Sigstore](https://docs.sigstore.dev/) · [Signature et vérification avec Cosign](https://docs.sigstore.dev/cosign/signing/overview/) · [Organisation source Sigstore](https://github.com/sigstore)
+- **Concepts pertinents :** signatures d'artefacts liées à une identité au moyen de certificats de courte durée, enregistrement dans un journal de transparence et bundles vérifiables pour artefacts logiciels et attestations.
+- **Utilité pour GovCheck :** mécanisme complémentaire candidat pour signer et vérifier rapports d'assurance, attestations et artefacts de release.
+- **Limite :** une signature valide établit l'intégrité et une identité de signature sous une racine de confiance configurée ; elle n'établit ni la vérité de l'affirmation signée, ni la correction de la politique, ni la suffisance des preuves. Fournisseur d'identité, racine de confiance, journal de transparence et politique de vérification restent des dépendances de confiance explicites.
+
+<a id="r-123"></a>
+### R-123 — Langage formel de spécification contractuelle Symboleo
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Source primaire :** [Parvizimosaed et al., « Specification and analysis of legal contracts with Symboleo » (2022)](https://doi.org/10.1007/s10270-022-01053-6)
+- **Concepts pertinents :** spécification formelle de contrats comme ensembles d'obligations et de pouvoirs, avec sémantique logique sur des statecharts décrivant la durée de vie des contrats, obligations et pouvoirs.
+- **Utilité pour GovCheck :** comparateur de recherche pour représenter des engagements normatifs, pouvoirs et exécutions conformes dans un langage formel structuré.
+- **Limite :** Symboleo cible les contrats juridiques/commerciaux, pas la gouvernance de dépôts logiciels. Son traitement des permissions, autorités, exceptions et rôles institutionnels doit être évalué avant toute réutilisation conceptuelle ; ce n'est pas un langage adopté par GovCheck.
+
+<a id="r-124"></a>
+### R-124 — Langage Catala de programmation littéraire des textes législatifs
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Sources primaires :** [Dépôt du langage Catala](https://github.com/CatalaLang/catala) · [Livre et documentation Catala](https://book.catala-lang.org/)
+- **Concepts pertinents :** langage spécifique permettant de dériver des algorithmes à partir de textes législatifs, de relier dispositions sources et définitions exécutables, et de générer des représentations lisibles par des experts.
+- **Utilité pour GovCheck :** comparateur pour la traçabilité entre sources normatives en langage naturel, règles structurées, interprétation exécutable et revue par des experts du domaine.
+- **Limite :** Catala est conçu pour la législation socio-fiscale et ne définit ni gouvernance de dépôts logiciels, ni autorité des contributeurs, ni acceptation des changements. Ses garanties et sa sémantique formelle sont propres à son domaine et ne doivent pas être généralisées sans analyse.
+
+<a id="r-125"></a>
+### R-125 — Event Calculus
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Sources primaires :** [Shanahan, « The Event Calculus Explained »](https://www.doc.ic.ac.uk/~mpsha/ECExplained.pdf) · [Formalisation tensorielle publiée à IJCAI 2024](https://doi.org/10.24963/ijcai.2024/397)
+- **Concepts pertinents :** représentation logique des événements, actions et propriétés variant dans le temps (fluents), y compris le raisonnement sur les effets, la concurrence et les changements temporels.
+- **Utilité pour GovCheck :** formalisme candidat à comparer pour le raisonnement temporel sur les événements de gouvernance et les transitions du cycle de vie.
+- **Limite :** Event Calculus désigne une famille de formalisations avec variantes et hypothèses distinctes. Ce n'est ni un modèle prêt à l'emploi du cycle de vie d'un dépôt, ni un système d'autorisation ou une politique d'acceptation ; une variante et une sémantique concrètes devraient être choisies.
+
+<a id="r-126"></a>
+### R-126 — Vérification à l'exécution et surveillance des traces
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Sources primaires :** [Taleb, Hallé et Khoury, « Uncertainty in runtime verification: A survey » (2023)](https://doi.org/10.1016/j.cosrev.2023.100594) · [Havelund, Reger et Roșu, « Runtime Verification: Past Experiences and Future Projections »](https://havelund.com/Publications/lncs-10000.pdf)
+- **Concepts pertinents :** surveillance formelle de traces d'exécution observées par rapport à des spécifications temporelles ; instrumentation et collecte d'événements ; verdicts en présence d'observations incomplètes, imprécises ou incertaines.
+- **Utilité pour GovCheck :** méthode candidate pour évaluer des propriétés temporelles du cycle de vie à partir d'événements de gouvernance enregistrés, en explicitant l'observabilité et l'incertitude des traces.
+- **Limite :** la vérification à l'exécution évalue les traces observées, pas toutes les exécutions possibles. Des événements manquants, retardés, ambigus ou non fiables peuvent rendre le verdict indéterminé ; une preuve de surveillance n'est ni du model checking ni une preuve de théorème.
+

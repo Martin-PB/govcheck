@@ -101,7 +101,6 @@ The integration study and its external technical sources are catalogued separate
 - [R-104 — Agent instruction formats and spec-driven workflows](../references.md#r-104)
 - [R-105 — Policy-as-code, continuous assurance and agent-governance research](../references.md#r-105)
 - [R-106 — OWASP guidance for AI-agent and MCP security](../references.md#r-106)
-- [R-106 — OWASP guidance for AI-agent and MCP security](../references.md#r-106)
 - [R-108 — GUAC software-supply-chain knowledge graph](../references.md#r-108)
 - [R-109 — OpenSSF Security Insights Specification](../references.md#r-109)
 - [R-110 — OpenSSF OSPS Baseline](../references.md#r-110)

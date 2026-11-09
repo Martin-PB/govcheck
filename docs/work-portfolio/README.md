@@ -93,6 +93,6 @@ No prevention, immutability or enforcement is claimed until tests and/or formal 
 - [Specification 0004](../specifications/0004-vcs-collaboration-contracts.md).
 - [Architecture 0017](../architecture/0017-artifact-identity-revision-and-versioning.md) and [ADR 0004 / Architecture 0018](../architecture/0018-version-governance-and-compatibility-authority.md).
 - [Architecture 0012](../architecture/0012-normative-authority-and-documentation.md).
-- [Reference catalogue](../references.md), notably R-24 (PROV provenance vocabulary), where applicable.
+- [Reference catalogue](../references.md), notably [R-24](../references.md#r-24) (PROV provenance vocabulary), where applicable.
 
 A reference does not imply adoption, implementation or assurance.

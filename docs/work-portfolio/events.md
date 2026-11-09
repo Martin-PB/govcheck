@@ -61,3 +61,16 @@
 - **Evidence:** [workflow run](https://github.com/Martin-PB/govcheck/actions/runs/42659943881), [job report artifact](https://github.com/Martin-PB/govcheck/actions/runs/42659943881/artifacts/13693473469), Architecture 0031 EN/FR.
 - **Disposition:** finite model-checking evidence only. It does not prove unbounded correctness, theorem validity, implementation refinement, cryptographic identity, distributed consensus or operational enforcement. Authority #41 and normative adoption of Specification 0006 remain open.
 - **Correction history:** the initial TLC attempt exposed a CHOOSE/indexing defect after SANY passed; the model was corrected and this event records only the subsequent successful run.
+
+
+## WP-EVT-000005 — Final PR-head model-checking revalidation
+
+- **Subject:** govcheck.work.governance-revision-temporal-applicability
+- **Event type:** final-candidate-model-checking-revalidated
+- **Recorded:** 2026-11-09
+- **Candidate source commit:** e2f1b638a79c2a2f04b90d2ef85e6dd761a611eb.
+- **Merge-test commit:** 9fbeb85, merged against base d04a6dd02d5bdda0b40e4aa740475a8e554e63d7.
+- **Workflow/job:** [run 42660278801](https://github.com/Martin-PB/govcheck/actions/runs/42660278801), job 129309691476.
+- **Result:** SANY/TLC success; 20,785 generated states, 18,067 distinct states, 0 remaining; no error found. The model/configuration blobs are unchanged from the first successful run.
+- **Artifact:** [final-head report](https://github.com/Martin-PB/govcheck/actions/runs/42660278801/artifacts/13693439123).
+- **Disposition:** confirms the formal result on the final PR candidate; the same finite-model and non-implementation-proof limits apply.

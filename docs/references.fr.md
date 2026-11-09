@@ -40,6 +40,7 @@
 | Recherches sur le policy-as-code et la gouvernance des agents à l'exécution | R-105 |
 | Sécurité des agents IA et de MCP — recommandations OWASP | R-106 |
 | Emplacement et syntaxe des workflows GitHub Actions | R-107 |
+| Graphes de métadonnées de chaîne d'approvisionnement et posture de sécurité des projets | R-108–R-111 |
 
 ## Entrées bibliographiques détaillées
 
@@ -76,6 +77,7 @@
 - **Recherches sur le policy-as-code, l'assurance continue et la gouvernance MCP :** R-105.
 - **Sécurité des agents IA et de MCP :** R-106.
 - **Emplacement des workflows GitHub Actions :** R-107.
+- **Graphes de chaîne d'approvisionnement, déclarations de sécurité et référentiels de bonnes pratiques :** R-108–R-111.
 
 ## Normes, recommandations publiques et spécifications industrielles
 
@@ -1042,3 +1044,36 @@
 - **Concepts pertinents :** les définitions de workflows GitHub Actions sont des fichiers YAML placés dans le répertoire `.github/workflows/` à la racine du dépôt ; GitHub découvre les workflows à cet emplacement et les évalue en fonction des événements du dépôt.
 - **Utilité pour GovCheck :** étaye la contrainte de l'ADR 0003 selon laquelle le contenu réutilisable du package produit ne peut pas, à lui seul, déplacer un workflow GitHub Actions : le processus de bootstrap/synchronisation doit matérialiser le workflow au chemin requis à la racine du dépôt.
 - **Limite :** il s'agit d'une contrainte de la plateforme GitHub Actions, pas d'une exigence générale de CI/CD. Elle ne démontre ni que le workflow est activé, fiable, protégé contre les contournements, correctement configuré ou exécuté avec succès.
+
+
+<a id="r-108"></a>
+### R-108 — GUAC : Graph for Understanding Artifact Composition
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Sources primaires :** [Projet GUAC de l'OpenSSF](https://openssf.org/guac/) · [Dépôt source GUAC](https://github.com/guacsec/guac) · [Documentation GUAC](https://docs.guac.sh/guac/)
+- **Concepts pertinents :** agrégation et normalisation de métadonnées de chaîne d'approvisionnement logicielle, notamment SBOM, attestations, vulnérabilités, artefacts, paquets et relations dans un graphe interrogeable.
+- **Utilité pour GovCheck :** conserve la comparaison de GUAC dans l'étude initiale comme exemple de couche de synthèse au-dessus d'éléments de preuve hétérogènes de la chaîne d'approvisionnement.
+- **Limite :** GUAC est un projet OpenSSF en évolution, pas une autorité de gouvernance des dépôts ni un moteur de preuve. Un graphe de métadonnées fournies n'établit ni leur exhaustivité, ni leur véracité, ni l'authenticité de leur provenance, ni l'efficacité des contrôles.
+
+<a id="r-109"></a>
+### R-109 — Spécification OpenSSF Security Insights
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Sources primaires :** [Spécification Security Insights](https://security-insights.openssf.org/) · [Documentation du schéma](https://security-insights.openssf.org/schema.html) · [Dépôt source officiel](https://github.com/ossf/security-insights)
+- **Concepts pertinents :** déclaration YAML lisible par machine des pratiques de sécurité d'un projet, des métadonnées de dépôt, des modalités de signalement des vulnérabilités, des politiques et des ressources justificatives.
+- **Utilité pour GovCheck :** conserve le format étudié comme candidat pour des déclarations interopérables de sécurité des projets et des données d'entrée pour l'évaluation.
+- **Limite :** le fichier constitue une déclaration des mainteneurs à un instant donné, associée à un commit ou à une release. La validité du schéma et l'auto-déclaration ne vérifient pas indépendamment l'efficacité ou l'application actuelle des pratiques déclarées.
+
+<a id="r-110"></a>
+### R-110 — Référentiel OpenSSF Open Source Project Security (OSPS) Baseline
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Sources primaires :** [OSPS Baseline](https://baseline.openssf.org/) · [Dépôt source officiel](https://github.com/ossf/security-baseline)
+- **Concepts pertinents :** référentiel versionné d'exigences de sécurité actionnables pour les projets open source, organisé par maturité, familles de contrôles et définitions lisibles par machine.
+- **Utilité pour GovCheck :** conserve ce référentiel comme source candidate d'exigences de sécurité réutilisables et de critères d'évaluation au niveau d'un projet.
+- **Limite :** il s'agit d'un référentiel centré sur la sécurité, pas d'un modèle complet de gouvernance du cycle de vie. Ses niveaux de maturité et ses contrôles ne sont pas des niveaux universels de GovCheck ; leur présence ne signifie pas que GovCheck les adopte ou les impose. Épingler la version exacte lors d'une évaluation de conformité.
+
+<a id="r-111"></a>
+### R-111 — Programme OpenSSF Best Practices Badge
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Sources primaires :** [Programme OpenSSF Best Practices Badge](https://openssf.org/projects/best-practices-badge/) · [Service Best Practices Badge](https://bestpractices.dev/)
+- **Concepts pertinents :** auto-évaluation volontaire des pratiques des projets open source, notamment gouvernance, contribution, tests, documentation, sécurité et releases ; le programme comprend des critères distincts de la série Metal et de l'OSPS Baseline.
+- **Utilité pour GovCheck :** conserve le programme de badge étudié comme checklist réutilisable et vocabulaire externe d'évaluation des pratiques d'un dépôt.
+- **Limite :** le badge n'est ni une preuve formelle, ni un audit indépendant de chaque affirmation, ni une spécification complète de gouvernance. L'auto-certification et le niveau du badge ne doivent pas être confondus avec une conformité vérifiée ou une acceptation GovCheck.

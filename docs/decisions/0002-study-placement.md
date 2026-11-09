@@ -122,3 +122,8 @@ The integration study and its external technical sources are catalogued separate
 - [R-126 — Runtime verification and trace monitoring](../references.md#r-126)
 - [R-127 — GitHub CODEOWNERS and code-owner review](../references.md#r-127)
 - [R-128 — Common Expression Language (CEL)](../references.md#r-128)
+- [R-129 — Eliminative Argumentation](../references.md#r-129)
+- [R-130 — Kyverno policy engine](../references.md#r-130)
+- [R-131 — GitLab merge-request approval rules](../references.md#r-131)
+- [R-132 — Zuul and Bors merge-gating systems](../references.md#r-132)
+- [R-133 — Formal theories of patches](../references.md#r-133)

@@ -46,6 +46,7 @@
 | File ownership and code-owner review | R-127 |
 | Policy and predicate expression languages | R-128 |
 | Assurance argumentation, policy engines, gating and patch theory | R-129–R-133 |
+| GSN assurance-argument notation | R-134 |
 
 ## Full reference entries
 
@@ -88,6 +89,7 @@
 - **File ownership and code-owner review:** R-127.
 - **Policy and predicate expression languages:** R-128.
 - **Assurance argumentation, policy engines, gating and patch theory:** R-129–R-133.
+- **GSN assurance-argument notation:** R-134.
 
 ## Standards, government guidance and industry specifications
 
@@ -1259,4 +1261,13 @@
 - **Relevant concepts:** patch commutation, inverse and conflict operations; algebraic and higher-inductive representations of change; conditions under which patch reordering preserves repository meaning.
 - **Use in GovCheck:** research foundation for treating Pijul/Darcs-style patch semantics as distinct from Git snapshot/commit semantics and for designing VCS-specific adapters without flattening their meaning.
 - **Limit:** these works address different patch systems and formal models; they do not establish that their semantics can be transferred directly to Pijul or Git. A GovCheck adapter needs an explicit mapping and conformance tests against each VCS's actual behavior.
+
+
+<a id="r-134"></a>
+### R-134 — Goal Structuring Notation (GSN) Standard
+- **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
+- **Primary sources:** [GSN Standard Working Group and current standard (Version 3)](https://www.scsc.uk/gsn-standard) · [GSN Community Standard Version 3 publication record](https://mail.scsc.uk/resources/citation_r1386.html) · [GSN metamodel and SACM mapping](https://www.scsc.uk/gsn-meta-model)
+- **Relevant concepts:** structured graphical safety/assurance arguments using goals, strategies, solutions/evidence, contexts, assumptions and justifications; modular argument structures and a metamodel extending SACM.
+- **Use in GovCheck:** candidate assurance-case notation and interoperability reference alongside SACM and Assurance 2.0.
+- **Limit:** GSN structures an argument; it does not make the argument true or evidence sufficient. The standard's notation and guidance must be distinguished from the GSN-to-SACM metamodel mapping. GovCheck must preserve defeaters, counterevidence, uncertainty and evidence provenance rather than equating a well-formed diagram with assurance.
 

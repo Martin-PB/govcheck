@@ -121,3 +121,4 @@ L'étude d'intégration et ses sources techniques externes sont cataloguées sé
 - [R-125 — Event Calculus](../references.fr.md#r-125)
 - [R-126 — Vérification à l'exécution et surveillance de traces](../references.fr.md#r-126)
 - [R-127 — GitHub CODEOWNERS et revue par propriétaires de code](../references.fr.md#r-127)
+- [R-128 — Common Expression Language (CEL)](../references.fr.md#r-128)

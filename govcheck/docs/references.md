@@ -6,7 +6,7 @@ Inclusion is descriptive, not adoption. A cited method or standard does not impl
 
 <a id="r-05"></a>
 ## R-05 — TLA+ and TLC
-- **Cited by:** [Specification 0005](specifications/0005-assurance-model.md), [formal models README](formal/README.md)
+- **Cited by:** [Specification 0005](specifications/0005-assurance-model.md), [Specification 0006](specifications/0006-governance-revision-applicability.md), [formal models README](formal/README.md)
 
 - **Primary sources:** [Lamport's TLA publications](https://www.microsoft.com/en-us/research/people/lamport/publications/) · [TLA+ project and documentation](https://lamport.azurewebsites.net/tla/tla.html) · [TLA paper DOI](https://doi.org/10.1145/177492.177726)
 - **Use:** state-transition specifications, invariants, temporal properties and model checking.
@@ -38,7 +38,7 @@ Inclusion is descriptive, not adoption. A cited method or standard does not impl
 
 <a id="r-22"></a>
 ## R-22 — Native Git and Pijul semantics
-- **Cited by:** [formal models README](formal/README.md)
+- **Cited by:** [formal models README](formal/README.md), [Specification 0006](specifications/0006-governance-revision-applicability.md)
 
 - **Primary sources:** [Git documentation](https://git-scm.com/docs) · [Pijul theory](https://pijul.org/manual/theory) · [Pijul channels](https://pijul.org/manual/workflows/channels) · [Pijul conflicts](https://pijul.org/manual/conflicts.html)
 - **Use:** preserve snapshot/commit semantics for Git and change/patch-graph, channel and conflict semantics for Pijul.

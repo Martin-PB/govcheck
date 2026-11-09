@@ -44,6 +44,7 @@
 | Forge-independent Git governance, source provenance, Gemara and repository-control tools | R-112–R-120 |
 | Attestations, signing, formal contracts and temporal monitoring | R-121–R-126 |
 | File ownership and code-owner review | R-127 |
+| Policy and predicate expression languages | R-128 |
 
 ## Full reference entries
 
@@ -84,6 +85,7 @@
 - **Git governance, source provenance and candidate repository-assessment tools:** R-112–R-120.
 - **Attestations, artifact signing, formal contracts and temporal monitoring:** R-121–R-126.
 - **File ownership and code-owner review:** R-127.
+- **Policy and predicate expression languages:** R-128.
 
 ## Standards, government guidance and industry specifications
 
@@ -1205,4 +1207,13 @@
 - **Relevant concepts:** path-based assignment of individuals or teams as code owners; automatic review requests; optional branch-protection requirement for code-owner approval.
 - **Use in GovCheck:** platform-specific example of file-scope responsibility and review routing, relevant to separation of duties and ownership-aware acceptance.
 - **Limit:** CODEOWNERS is a GitHub feature, not a forge-neutral authority model. Review routing is not itself independent approval, proof of reviewer competence or a complete separation-of-duties control; owners need write access, and any one matching owner may satisfy the approval requirement.
+
+
+<a id="r-128"></a>
+### R-128 — Common Expression Language (CEL)
+- **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
+- **Primary sources:** [CEL overview and language definition](https://cel.dev/overview/cel-overview) · [CEL specification repository](https://github.com/cel-expr/cel-spec)
+- **Relevant concepts:** portable, side-effect-free, terminating expression language designed for embedding and policy evaluation; typed expressions with a defined AST and interoperable serialized representation.
+- **Use in GovCheck:** candidate expression language for evaluating bounded repository-governance predicates, considered alongside Rego, Cedar, Prolog and CUE.
+- **Limit:** CEL is an expression language, not a governance metamodel, authority model or evidence format. Its host application defines available variables/functions and trust boundaries; evaluation success does not establish that inputs are complete or trustworthy.
 

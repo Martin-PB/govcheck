@@ -2,37 +2,36 @@
 
 **English:** [README.md](README.md)
 
-Ce dossier est la **seule** partie du d`2019`p`2019`t GovCheck destin`2019`e `2021` `2019`tre copi`2019`e dans un autre d`2019`p`2019`t pour le gouverner. Ex`2019`cutez `python3 govcheck/bootstrap.py DOSSIER_CIBLE` (ou copiez govcheck/ tel quel `2021` la racine du d`2019`p`2019`t cible) et suivez la politique de bootstrap.
+Ce dossier est la **seule** partie du d\u00e9p\u2019t GovCheck destin\u00e9e \u2019 \u2019tre copi\u00e9e dans un autre d\u00e9p\u2019t pour le gouverner. Ex\u00e9cutez `python3 govcheck/bootstrap.py DOSSIER_CIBLE` (ou copiez govcheck/ tel quel \u00e0 la racine du d\u00e9p\u2019t cible) et suivez la politique de bootstrap.
 
-## Versions de publication ind`2019`pendantes
+## Versions de publication ind\u00e9pendantes
 
-La release du d`2019`p`2019`t, celle du produit GovCheck et celle du package de gouvernance r`2019`utilisable **govcheck/** sont des identit`2019`s distinctes. Le produit et le package poss`2019`dent des contrats SemVer ind`2019`pendants ; une release du produit peut `2019`pinger une release du package, mais ne lui attribue ni n'incr`2019`mente sa version. La premi`2019`re version cible pr`2019`vue du produit GovCheck est **0.1.0** ; elle n'est ni publi`2019`e ni autoris`2019`e `2021` ce stade. La premi`2019`re version du package r`2019`utilisable est ind`2019`pendante et reste `2021` attribuer jusqu'`2019` sa propre d`2019`cision d'initial publication et `2021` l'existence d'un manifeste de release immuable. Voir l'ADR 0004 et les Architectures 0017`2013`0018 du d`2019`p`2019`t.
+La release du d\u00e9p\u2019t, celle du produit GovCheck et celle du package de gouvernance r\u00e9utilisable **govcheck/** sont des identit\u00e9s distinctes. Le produit et le package poss\u00e8dent des contrats SemVer ind\u00e9pendants ; une release du produit peut \u2019pinger une release du package, mais ne lui attribue ni n’incr\u00e9mente sa version. La premi\u00e8re version cible pr\u00e9vue du produit GovCheck est **0.1.0** ; elle n’est ni publi\u00e9e ni autoris\u00e9e \u00e0 ce stade. La premi\u00e8re version du package r\u00e9utilisable est ind\u00e9pendante et reste \u00e0 attribuer jusqu’\u2019 sa propre d\u00e9cision d’initial publication et \u00e0 l’existence d’un manifeste de release immuable. Voir l’ADR 0004 et les Architectures 0017\u20140018 du d\u00e9p\u2019t.
 
-## Contenu (arborescence pr`2019`vue)
+## Contenu (arborescence pr\u00e9vue)
 
-- specifications/ `2014` sp`2019`cifications normatives de gouvernance (bilingues, anglais par d`2019`faut)
-- formal/ `2014` mod`2019`le de cycle de vie (TLA+), registre de transitions, catalogue d'artefacts, sch`2019`mas JSON
-- docs/formal/ `2014` documentation du mod`2019`le de cycle de vie et diagramme g`2019`n`2019`r`2019`
-- scripts/ `2014` g`2019`n`2019`rateur d`2019`terministe du diagramme et contr`2019`le de drift
-- .github/workflows/ `2014` gabarit de workflow CI (synchronis`2019` avec le d`2019`p`2019`t m`2019`ta par un contr`2019`le)
-- BOOTSTRAP_GOVERNANCE.md `2014` politique de bootstrap temporaire
-- decisions/ `2014` guide et gabarit pour le registre de d`2019`cisions **propre au d`2019`p`2019`t cible** (aucune d`2019`cision de GovCheck ici)
-- docs/architecture/ `2014` guide pour les enregistrements d'architecture propres au d`2019`p`2019`t cible
+- specifications/ \u2014 sp\u00e9cifications normatives de gouvernance (bilingues, anglais par d\u00e9faut)
+- formal/ \u2014 mod\u00e8le de cycle de vie (TLA+), registre de transitions, catalogue d’artefacts, sch\u00e9mas JSON
+- docs/formal/ \u2014 documentation du mod\u00e8le de cycle de vie et diagramme g\u00e9n\u00e9r\u00e9
+- scripts/ \u2014 g\u00e9n\u00e9rateur d\u00e9terministe du diagramme et contr\u00f4le de drift
+- .github/workflows/ \u2014 gabarit de workflow CI (synchronis\u00e9 avec le d\u00e9p\u2019t m\u00e9ta par un contr\u00f4le)
+- BOOTSTRAP_GOVERNANCE.md \u2014 politique de bootstrap temporaire
+- decisions/ \u2014 guide et gabarit pour le registre de d\u00e9cisions **propre au d\u00e9p\u2019t cible** (aucune d\u00e9cision de GovCheck ici)
+- docs/architecture/ \u2014 guide pour les enregistrements d’architecture propres au d\u00e9p\u2019t cible
 
 ## Deux niveaux
 
-L'historique de gouvernance propre `2021` GovCheck (records d'architecture, ADR, d`2019`lib`2019`rations) vit au niveau m`2019`ta du d`2019`p`2019`t GovCheck et n'est d`2019`lib`2019`r`2019`ment **pas** inclus dans ce package. Voir l'ADR 0003 dans le d`2019`p`2019`t GovCheck.
+L’historique de gouvernance propre \u00e0 GovCheck (records d’architecture, ADR, d\u00e9lib\u00e9rations) vit au niveau m\u00e9ta du d\u00e9p\u2019t GovCheck et n’est d\u00e9lib\u00e9r\u00e9ment **pas** inclus dans ce package. Voir l’ADR 0003 dans le d\u00e9p\u2019t GovCheck.
 
-## V`2019`rifier un d`2019`p`2019`t (premi`2019`re tranche ex`2019`cutable)
+## V\u00e9rifier un d\u00e9p\u2019t (premi\u00e8re tranche ex\u00e9cutable)
 
-`govcheck/check.py` est la premi`2019`re commande ex`2019`cutable de GovCheck. Elle `2019`value un ensemble fixe de r`2019`gles sur l'arborescence d'un d`2019`p`2019`t et produit un rapport JSON d`2019`terministe, ind`2019`pendant de la langue :
+`govcheck/check.py` est la premi\u00e8re commande ex\u00e9cutable de GovCheck. Elle \u00e9value un ensemble fixe de r\u00e8gles sur l’arborescence d’un d\u00e9p\u2019t et produit un rapport JSON d\u00e9terministe, ind\u00e9pendant de la langue :
 
     python3 govcheck/check.py --tree . [--out report.json]
     python3 govcheck/check.py --tree . --base main --candidate HEAD
 
-Chaque r`2019`gle renvoie `pass`, `fail` ou `unknown`. Le r`2019`sultat global est `fail` si une r`2019`gle `2019`choue, sinon `unknown` si une r`2019`gle est inconnue, sinon `pass` (fermeture par l'`2019`chec : `unknown` n'est jamais un succ`2019`s). Le code de sortie est 0 uniquement lorsque le r`2019`sultat global est `pass`. Les r`2019`gles couvrent les trois classes d'assurance : d`2019`cidable (pr`2019`sence de la licence, paires de d`2019`cisions bilingues, paires de paquet d`2019`clar`2019`es par le manifeste, int`2019`grit`2019` du catalogue de r`2019`f`2019`rences), attest`2019`e (revue ind`2019`pendante) et non v`2019`rifiable hors ligne (fra`2019`cheur des preuves TLC). Les tests unitaires sont dans `tests/test_govcheck_check.py`.
+Chaque r\u00e8gle renvoie `pass`, `fail` ou `unknown`. Le r\u00e9sultat global est `fail` si une r\u00e8gle \u00e9choue, sinon `unknown` si une r\u00e8gle est inconnue, sinon `pass` (fermeture par l’\u00e9chec : `unknown` n’est jamais un succ\u00e8s). Le code de sortie est 0 uniquement lorsque le r\u00e9sultat global est `pass`. Les r\u00e8gles couvrent les trois classes d’assurance : d\u00e9cidable (pr\u00e9sence de la licence, paires de d\u00e9cisions bilingues, paires de paquet d\u00e9clar\u00e9es par le manifeste, int\u00e9grit\u00e9 du catalogue de r\u00e9f\u00e9rences), attest\u00e9e (revue ind\u00e9pendante) et non v\u00e9rifiable hors ligne (fra\u00eecheur des preuves TLC). Les tests unitaires sont dans `tests/test_govcheck_check.py`.
 
+### Attestations enregistr\u00e9es (revue ind\u00e9pendante)
 
-### Attestations enregistr`2019`es (revue ind`2019`pendante)
-
-En mode git (`--base/--candidate`), la r`2019`gle `independent-review` renvoie `pass` quand un enregistrement JSON dans `docs/attestations/*.json` porte `"decision": "accept"`, le SHA complet exact de la r`2019`vision candidate dans `candidate_rev`, et un `reviewer` distinct de l'auteur du commit candidate. Sinon la r`2019`gle reste `unknown` (fermeture par l'`2019`chec).
+En mode git (`--base/--candidate`), la r\u00e8gle `independent-review` renvoie `pass` quand un enregistrement JSON dans `docs/attestations/*.json` porte `"decision": "accept"`, le SHA complet exact de la r\u00e9vision candidate dans `candidate_rev`, et un `reviewer` distinct de l’auteur du commit candidate. Sinon la r\u00e8gle reste `unknown` (fermeture par l’\u00e9chec).

@@ -39,7 +39,7 @@ When a document uses an external source:
 5. update **Cited by / Cité par** in both catalogues;
 6. never reuse a retired identifier.
 
-Candidate sources that have not yet been used by a record may remain in the catalogue with an explicit “no current record cites” field. Never link a **Cited by / Cité par** field to a record absent from the same branch. The domain-semantic/bootstrap sources R-94–R-100 and R-103 are cited by Architecture 0027 as candidate inputs; they remain research candidates, not adoption decisions. Their catalogue backlinks identify the architecture record that discusses them.
+Candidate sources that have not yet been used by a record may remain in the catalogue with an explicit “no current record cites” field. Never link a **Cited by / Cité par** field to a record absent from the same branch. The domain-semantic/bootstrap sources [R-94](references.md#r-94)–[R-100](references.md#r-100) and [R-103](references.md#r-103) are cited by Architecture 0027 as candidate inputs; they remain research candidates, not adoption decisions. Their catalogue backlinks identify the architecture record that discusses them.
 
 Do not add a reference merely because a technology name appears. Record it when the source materially supports a claim, comparison, interface or documented research trail. Conversely, do not let a source disappear merely because its associated option was not selected.
 

@@ -307,7 +307,7 @@
 
 <a id="r-24"></a>
 ### R-24 — W3C PROV-O
-- **Cited by:** [0017](architecture/0017-artifact-identity-revision-and-versioning.md), [0018](architecture/0018-version-governance-and-compatibility-authority.md) · [ADR 0004](decisions/0004-semantic-versioning-contracts.md)
+- **Cited by:** [0017](architecture/0017-artifact-identity-revision-and-versioning.md), [0018](architecture/0018-version-governance-and-compatibility-authority.md) · [ADR 0004](decisions/0004-semantic-versioning-contracts.md) · [Work portfolio](work-portfolio/README.md)
 
 - **Primary source:** [W3C PROV-O recommendation](https://www.w3.org/TR/prov-o/).
 - **Relevant concepts:** entities, activities, agents and provenance relations.

@@ -208,7 +208,7 @@
 - **Primary source:** [SemVer 2.0.0](https://semver.org/)
 - **Relevant concepts:** MAJOR/MINOR/PATCH relative to a declared public API and compatibility contract; published versions are immutable.
 - **Use in GovCheck:** informs the distinction between artifact identity, immutable revision, contract compatibility and release identity.
-- **Limit:** SemVer is not meaningful for every governance artifact. GovCheck's category-specific versioning proposal avoids applying it mechanically to models, evidence instances, decisions or events.
+- **Limit:** SemVer is not meaningful for every governance artifact. GovCheck's adopted category-specific versioning policy avoids applying it mechanically to models, evidence instances, decisions or events.
 
 <a id="r-15"></a>
 

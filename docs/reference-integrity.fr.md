@@ -6,7 +6,7 @@ Le catalogue est un index bilingue de sources et de provenance ; ce n'est ni une
 
 - Le [catalogue anglais](references.md) est la présentation par défaut.
 - Le [catalogue français](references.fr.md) en est le pendant sémantique.
-- Les deux catalogues contiennent 132 entrées actives. Trois identifiants ont été retirés et ne doivent jamais être réutilisés : identifiant 12 retiré (doublon Scorecard consolidé dans [R-08](references.fr.md#r-08)), identifiant 101 retiré (doublon NIST SP 800-218 consolidé dans [R-02](references.fr.md#r-02)) et identifiant 102 retiré (famille W3C PROV consolidée dans [R-24](references.fr.md#r-24)).
+- Les deux catalogues contiennent 141 entrées actives. Trois identifiants ont été retirés et ne doivent jamais être réutilisés : identifiant 12 retiré (doublon Scorecard consolidé dans [R-08](references.fr.md#r-08)), identifiant 101 retiré (doublon NIST SP 800-218 consolidé dans [R-02](references.fr.md#r-02)) et identifiant 102 retiré (famille W3C PROV consolidée dans [R-24](references.fr.md#r-24)).
 - Chaque entrée indique les sources primaires, les concepts pertinents, l'usage précis pour GovCheck et les limites.
 - Chaque dossier d'architecture, décision ou spécification renvoie à l'ancre exacte du catalogue qu'il utilise.
 - Le champ **Cited by / Cité par** de chaque entrée renvoie vers tous les documents qui la citent. Les sources candidates [R-94](references.fr.md#r-94)–[R-100](references.fr.md#r-100) et [R-103](references.fr.md#r-103) sont discutées dans l'Architecture 0027 sans être adoptées.
@@ -27,7 +27,7 @@ Lorsqu'un document utilise une source externe :
 5. mettre à jour **Cited by / Cité par** dans les deux catalogues ;
 6. ne jamais réutiliser un identifiant retiré.
 
-CEL est également conservé comme langage d'expression candidat, sans décision d'adoption. Les revues ont aussi conduit à cataloguer l'argumentation éliminative, Kyverno, les règles d'approbation GitLab, Zuul/Bors, les théories formelles des patches, le standard GSN et NIST SP 800-192.
+CEL est également conservé comme langage d'expression candidat, sans décision d'adoption. Les revues ont aussi conduit à cataloguer l'argumentation éliminative, Kyverno, les règles d'approbation GitLab, Zuul/Bors, les théories formelles des patches, le standard GSN et NIST SP 800-192, ainsi que les pratiques de synchronisation multilingue de MDN, Kubernetes, Vue, React, Comprehensive Rust, po4a, Docusaurus, Microsoft et BCP 47.
 
 Les sources candidates qui ne sont pas encore utilisées par un document peuvent rester dans le catalogue si leur statut de source non citée est explicite. Ne jamais faire pointer un champ **Cited by / Cité par** vers un document absent de la branche.
 

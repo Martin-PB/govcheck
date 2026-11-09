@@ -12,7 +12,7 @@ L'anglais est la langue par défaut. Chaque document d'architecture possède une
 - [0013 — Métamodèle de gouvernance](0013-governance-metamodel.fr.md) · [English](0013-governance-metamodel.md)
 - [0014 — Flux de développement gouverné et responsabilités](0014-governed-development-workflow.fr.md) · [English](0014-governed-development-workflow.md)
 - [0015 — Outil de conformité de gouvernance et plan de validation](0015-governance-conformance-and-validation-plan.fr.md) · [English](0015-governance-conformance-and-validation-plan.md)
-- [0016 — Évaluation de Writ et Privateer fondée sur leurs sources](0016-writ-privateer-assessment.fr.md) · [English](0016-writ-privateer-assessment.md)
+- [0016 — Évaluation de Writ, Pi Privateer et OpenSSF Privateer fondée sur leurs sources](0016-writ-privateer-assessment.fr.md) · [English](0016-writ-privateer-assessment.md)
 - [0017 — Identité, révision et politique de versionnement des artefacts](0017-artifact-identity-revision-and-versioning.fr.md) · [English](0017-artifact-identity-revision-and-versioning.md)
 - [0018 — Gouvernance des versions, compatibilité et autorité d'approbation](0018-version-governance-and-compatibility-authority.fr.md) · [English](0018-version-governance-and-compatibility-authority.md)
 - [0019 — Évolution du catalogue d'artefacts et du manifeste de release](0019-catalogue-and-release-manifest-migration.fr.md) · [English](0019-catalogue-and-release-manifest-migration.md)

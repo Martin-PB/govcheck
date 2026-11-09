@@ -49,7 +49,7 @@
 
 ## Registre détaillé des sources
 
-**Objet.** Ce fichier est la bibliographie française unique de GovCheck. Il rassemble les références académiques, normatives, industrielles et les sources de code qui étayent la conception du projet. C'est une bibliographie de navigation, pas une politique normative ni une décision d'adoption.
+**Objet.** Ce fichier est la bibliographie française unique de GovCheck. Il rassemble les références académiques, normatives, industrielles et les sources de code qui étayent la conception du projet. C'est une bibliographie de navigation, pas une politique normative ni une décision d'adoption. Voir l'[audit de provenance des références](reference-provenance-audit.fr.md) pour le rapprochement avec le PDF initial de 224 pages et les revues critiques.
 
 **Règle de sélection.** Privilégier les publications primaires, organismes de normalisation, documentations officielles et révisions de code épinglées. Chaque référence n'étaye que le point explicitement indiqué ; elle ne prouve ni que GovCheck implémente la capacité, ni que l'outil cité convient comme dépendance.
 

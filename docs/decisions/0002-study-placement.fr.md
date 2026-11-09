@@ -101,7 +101,6 @@ L'étude d'intégration et ses sources techniques externes sont cataloguées sé
 - [R-104 — Formats d'instructions pour agents et workflows pilotés par les spécifications](../references.fr.md#r-104)
 - [R-105 — Recherches sur le policy-as-code, l'assurance continue et la gouvernance des agents](../references.fr.md#r-105)
 - [R-106 — Recommandations OWASP pour la sécurité des agents IA et de MCP](../references.fr.md#r-106)
-- [R-106 — Recommandations OWASP pour la sécurité des agents IA et de MCP](../references.fr.md#r-106)
 - [R-108 — Graphe de chaîne d'approvisionnement GUAC](../references.fr.md#r-108)
 - [R-109 — Spécification OpenSSF Security Insights](../references.fr.md#r-109)
 - [R-110 — Référentiel OpenSSF OSPS Baseline](../references.fr.md#r-110)

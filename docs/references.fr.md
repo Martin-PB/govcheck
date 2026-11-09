@@ -303,7 +303,7 @@
 <a id="r-23"></a>
 
 ### R-23 — IMS Global / 1EdTech : spécifications de versionnement
-- **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md), [0018](architecture/0018-version-governance-and-compatibility-authority.fr.md) · [ADR 0004](decisions/0004-semantic-versioning-contracts.fr.md)
+- **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md), [0018](architecture/0018-version-governance-and-compatibility-authority.fr.md), [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md) · [ADR 0004](decisions/0004-semantic-versioning-contracts.fr.md)
 
 - **Source primaire :** [Spécifications 1EdTech](https://www.imsglobal.org/spec/versioning/v1) (anciennement IMS Global ; consulter la version précise avant d'invoquer une règle particulière).
 - **Concepts pertinents :** identifiants de version et conventions de compatibilité pour des artefacts structurés et publiés.
@@ -312,7 +312,7 @@
 
 <a id="r-24"></a>
 
-### R-24 — W3C PROV-O
+### R-24 — Famille W3C PROV (PROV-O)
 - **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md), [0018](architecture/0018-version-governance-and-compatibility-authority.fr.md) · [ADR 0004](decisions/0004-semantic-versioning-contracts.fr.md)
 
 - **Sources primaires :** [Vue d'ensemble W3C PROV](https://www.w3.org/TR/prov-overview/) · [Recommandation W3C PROV-O](https://www.w3.org/TR/prov-o/).

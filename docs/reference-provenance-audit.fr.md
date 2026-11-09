@@ -6,7 +6,7 @@
 
 La source historique principale est **« Évaluer l’intégration des dépôts.pdf »**, datée du 6 novembre 2026 et longue de 224 pages. Elle est conservée dans la bibliothèque du projet plutôt que copiée dans le dépôt. Elle a été créée pour transporter une longue discussion de conception avec ChatGPT vers une nouvelle conversation ; elle constitue donc une archive de discussions, décisions, propositions rejetées, hypothèses et sources externes citées — pas une norme externe ni une autorité normative en elle-même.
 
-Le PDF couvre d'abord des travaux d'intégration connexes (notamment Cartocortex, MoriNet et SaussuNet), avant la conception et le bootstrap propres à GovCheck. Le contenu spécifiquement consacré à GovCheck devient explicite vers la page 133. Le contexte antérieur reste pertinent lorsqu'il apporte les dépôts, formats, protocoles et références d'interopérabilité qui sous-tendent l'étude initiale.
+Le PDF couvre plusieurs fils de projets avant et parallèlement à la conception propre à GovCheck : Cartocortex, MoriNet et SaussuNet ; une pile d'agent SecOps NixOS ; puis la gouvernance et le bootstrap GovCheck. GovCheck devient explicite vers la page 133. Les contextes antérieurs restent pertinents lorsqu'ils apportent les dépôts, formats, protocoles et références d'interopérabilité qui sous-tendent l'étude initiale. Le contenu spécifiquement consacré à GovCheck devient explicite vers la page 133. Le contexte antérieur reste pertinent lorsqu'il apporte les dépôts, formats, protocoles et références d'interopérabilité qui sous-tendent l'étude initiale.
 
 L'audit prend également en compte les revues critiques externes consignées dans les issues GitHub #23 et #26 ainsi que le suivi consolidé de l'issue #30. Ces revues sont des apports comparatifs ; leurs recommandations ne deviennent pas automatiquement des décisions adoptées par GovCheck.
 
@@ -58,6 +58,7 @@ Les éléments suivants ne peuvent pas recevoir une fiche source unique et fiabl
 1. **Tarski** apparaît comme référence possible à un vérificateur/noyau dans la discussion, mais le projet, l'article ou l'outil exact n'est pas identifiable de façon univoque dans le contexte conservé. Aucun URL ni dépendance n'est deviné.
 2. **Agent Package Manager** est mentionné dans la discussion précédente sans identité de produit ni URL vérifiée. Il reste volontairement sans lien.
 3. **EPIC** apparaît dans le contexte ultérieur du projet comme référence possible de modélisation de décision, mais le framework/la publication exact n'est identifié ni dans le PDF initial ni dans le catalogue actuel. Il ne faut pas le deviner.
+4. Le PDF contient aussi des dépendances d'implémentation propres au projet NixOS SecOps : **mcp-nixos, SmolVM, Nixi, nixpkgs, Lanzaboote, microvm.nix et QEMU**. R-79 couvre déjà les références transverses au sandboxing et aux agents nono, Landlock et Goose. Les autres éléments n'ont pas encore reçu d'identifiant GovCheck car ils peuvent être des dépendances de ce projet distinct plutôt que des sources utilisées matériellement par GovCheck.
 
 Ce sont des lacunes de provenance, pas des blocages pour les corrections actuelles du catalogue. Elles ne doivent être résolues que si les concepts correspondants restent pertinents pour GovCheck.
 

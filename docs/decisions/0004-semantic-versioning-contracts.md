@@ -1,6 +1,6 @@
 # ADR 0004 — Semantic versioning for GovCheck product and governance package
 
-**Status:** proposed for adoption; records the project owner's explicit decision to adopt category-specific SemVer on 2026-11-07. **French:** [0004 (français)](0004-semantic-versioning-contracts.fr.md).
+**Status:** adopted; records the project owner's explicit decision to adopt category-specific SemVer on 2026-11-07. **French:** [0004 (français)](0004-semantic-versioning-contracts.fr.md).
 
 ## Context
 
@@ -25,7 +25,7 @@ The repository also contains two distinct deliverables: the GovCheck product and
 
 ## Consequences
 
-- When this ADR is merged, Architecture 0017 and 0018 will be adopted as the category-specific versioning and version-governance policies, resolving their former proposed status.
+- This ADR adopts Architecture 0017 and 0018 as the category-specific versioning and version-governance policies; their former proposed status is resolved.
 - Specification 0002 now explicitly distinguishes the reusable governance-package contract from the GovCheck product release contract. This does not adopt the whole canonical governance model or claim an evaluator exists.
 - Existing **catalogueVersion: 1**, **schemaVersion: 1**, Git tags and historical revisions retain their current meanings. No existing value is renamed or retroactively converted to SemVer.
 - The planned first GovCheck product baseline is **0.1.0**; this is not a published or authorized release. The reusable governance package has an independent version sequence and no version is assigned here. Each first release requires its own initial-publication decision, declared contract, authority approval and immutable release binding.
@@ -42,3 +42,7 @@ The repository also contains two distinct deliverables: the GovCheck product and
 - [R-14 — Semantic Versioning 2.0.0](../references.md#r-14).
 - [R-15 — Git tags and GitHub releases](../references.md#r-15).
 - [R-23 — 1EdTech Versioning Framework](../references.md#r-23).
+- [R-21 — Research software release and reproducibility guidance](../references.md#r-21).
+- [R-24 — W3C PROV-O](../references.md#r-24).
+- [R-25 — DataCite versioning recommendations](../references.md#r-25).
+- [R-26 — Scientific Data versioning study (2024)](../references.md#r-26).

@@ -1,6 +1,6 @@
 # 0018 — Gouvernance des versions, compatibilité et autorité d'approbation
 
-**Statut :** l'adoption de la gouvernance des versions est consignée dans l'[ADR 0004](../decisions/0004-semantic-versioning-contracts.fr.md), selon le régime d'autorité proposé dans l'[Architecture 0023](0023-bootstrap-governance-authority.fr.md). Son effet normatif dépend de la fusion de l'ADR 0004 ; la PR #21, qui établit le régime d'autorité, est déjà fusionnée. L'application automatisée n'est pas encore implémentée.  
+**Statut :** adopté par l’[ADR 0004](../decisions/0004-semantic-versioning-contracts.fr.md), selon le régime d’autorité consigné dans l’[Architecture 0023](0023-bootstrap-governance-authority.fr.md). L’application automatisée n’est pas encore implémentée.
 **Langue :** l'anglais est la langue par défaut ; voir la [version anglaise](0018-version-governance-and-compatibility-authority.md).
 
 ## 1. Objet et relation avec le document 0017
@@ -16,7 +16,7 @@ Six identités doivent rester distinctes :
 - **Identité de release :** publication liée aux identités exactes des sources et du manifeste.
 - **Identité d'instance :** exécution, observation, approbation ou décision particulière.
 
-Aucun de ces nombres ne mesure la maturité, l'assurance, l'approbation ou la correction. Tant qu'ils ne sont pas adoptés selon le processus canonique de gouvernance, les documents 0017 et 0018 restent des propositions. La fusion d'une documentation ne lui confère pas à elle seule une force normative, sauf disposition explicite du modèle canonique et enregistrement de la décision.
+Aucun de ces nombres ne mesure la maturité, l'assurance, l'approbation ou la correction. L'ADR 0004 adopte la politique par catégorie du document 0017 et le processus de gouvernance des versions du présent document. La fusion d'autres documents ne leur confère pas à elle seule une force normative ; les contrats et changements individuels restent soumis à l'autorité, au périmètre et à l'approbation qui leur sont applicables.
 
 ## 2. Modèle d'autorité
 
@@ -151,7 +151,7 @@ Ce document ne prétend pas que GovCheck implémente un moteur de décision, un 
 - [Architecture 0013 — Métamodèle de gouvernance](0013-governance-metamodel.fr.md).
 - [Semantic Versioning 2.0.0](../references.fr.md#r-14) ; [R-24](../references.fr.md#r-24) ; [R-25](../references.fr.md#r-25) ; [R-23](../references.fr.md#r-23).
 
-Ces références éclairent la conception ; les règles d'autorité et de compatibilité présentées ici sont des propositions propres à GovCheck, et non des exigences imposées par ces standards.
+Ces références éclairent la conception ; les règles d'autorité et de compatibilité adoptées ici relèvent de la politique propre à GovCheck, et non d'exigences imposées par ces standards.
 
 ## Modèle machine-readable
 

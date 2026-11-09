@@ -1,6 +1,6 @@
 # ADR 0004 — Versionnement sémantique du produit GovCheck et du package de gouvernance
 
-**Statut :** proposé à l'adoption ; consigne la décision explicite du propriétaire du projet d'adopter SemVer par catégorie le 07-11-2026. **English:** [0004](0004-semantic-versioning-contracts.md).
+**Statut :** adopté ; consigne la décision explicite du propriétaire du projet d'adopter SemVer par catégorie le 07-11-2026. **English:** [0004](0004-semantic-versioning-contracts.md).
 
 ## Contexte
 
@@ -25,7 +25,7 @@ Le dépôt contient également deux livrables distincts : le produit GovCheck et
 
 ## Conséquences
 
-- À la fusion de cet ADR, les Architectures 0017 et 0018 seront adoptées comme politiques de versionnement catégoriel et de gouvernance des versions ; cet ADR résoudra leur ancien statut de proposition.
+- Cet ADR adopte les Architectures 0017 et 0018 comme politiques de versionnement catégoriel et de gouvernance des versions ; leur ancien statut de proposition est résolu.
 - La Spécification 0002 distingue désormais explicitement le contrat du package de gouvernance réutilisable et le contrat de release du produit GovCheck. Cela n'adopte pas l'intégralité du modèle canonique de gouvernance et ne prétend pas qu'un évaluateur existe.
 - Les valeurs existantes **catalogueVersion: 1**, **schemaVersion: 1**, les tags Git et les révisions historiques conservent leur signification actuelle. Aucune valeur existante n'est renommée ni convertie rétroactivement en SemVer.
 - La première version cible prévue du produit GovCheck est **0.1.0** ; elle n'est ni publiée ni autorisée à ce stade. Le package de gouvernance réutilisable possède une séquence indépendante et aucune version ne lui est attribuée ici. Chaque première release exige sa propre décision d'initial publication, un contrat déclaré, l'approbation de l'autorité et un lien immuable vers la publication.
@@ -42,3 +42,7 @@ Le dépôt contient également deux livrables distincts : le produit GovCheck et
 - [R-14 — Semantic Versioning 2.0.0](../references.fr.md#r-14).
 - [R-15 — Tags Git et releases GitHub](../references.fr.md#r-15).
 - [R-23 — Cadre de versionnement 1EdTech](../references.fr.md#r-23).
+- [R-21 — recommandations de release et de reproductibilité des logiciels de recherche](../references.fr.md#r-21).
+- [R-24 — ontologie de provenance W3C PROV-O](../references.fr.md#r-24).
+- [R-25 — recommandations de versionnement DataCite](../references.fr.md#r-25).
+- [R-26 — étude du versionnement des données scientifiques](../references.fr.md#r-26).

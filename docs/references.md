@@ -208,7 +208,7 @@
 - **Primary source:** [SemVer 2.0.0](https://semver.org/)
 - **Relevant concepts:** MAJOR/MINOR/PATCH relative to a declared public API and compatibility contract; published versions are immutable.
 - **Use in GovCheck:** informs the distinction between artifact identity, immutable revision, contract compatibility and release identity.
-- **Limit:** SemVer is not meaningful for every governance artifact. GovCheck's category-specific versioning proposal avoids applying it mechanically to models, evidence instances, decisions or events.
+- **Limit:** SemVer is not meaningful for every governance artifact. GovCheck's adopted category-specific versioning policy avoids applying it mechanically to models, evidence instances, decisions or events.
 
 <a id="r-15"></a>
 
@@ -272,7 +272,7 @@
 <a id="r-21"></a>
 
 ### R-21 — Research software release and reproducibility guidance
-- **Cited by:** [0017](architecture/0017-artifact-identity-revision-and-versioning.md), [0018](architecture/0018-version-governance-and-compatibility-authority.md), [ADR 0002](decisions/0002-study-placement.md)
+- **Cited by:** [0017](architecture/0017-artifact-identity-revision-and-versioning.md), [0018](architecture/0018-version-governance-and-compatibility-authority.md), [ADR 0002](decisions/0002-study-placement.md) · [ADR 0004](decisions/0004-semantic-versioning-contracts.md)
 
 - **Primary source:** [Software Sustainability Institute — guides and resources](https://www.software.ac.uk/resources) · [LUMC Research Software Guidelines — versioning and releases](https://lumc-dcc.github.io/rs-guidelines/best-practices/versioning-releases/)
 - **Relevant concepts:** sustainable research software, citation, releases and reproducibility.
@@ -305,7 +305,7 @@
 
 <a id="r-24"></a>
 ### R-24 — W3C PROV-O
-- **Cited by:** [0017](architecture/0017-artifact-identity-revision-and-versioning.md), [0018](architecture/0018-version-governance-and-compatibility-authority.md)
+- **Cited by:** [0017](architecture/0017-artifact-identity-revision-and-versioning.md), [0018](architecture/0018-version-governance-and-compatibility-authority.md) · [ADR 0004](decisions/0004-semantic-versioning-contracts.md)
 
 - **Primary source:** [W3C PROV-O recommendation](https://www.w3.org/TR/prov-o/).
 - **Relevant concepts:** entities, activities, agents and provenance relations.
@@ -314,7 +314,7 @@
 
 <a id="r-25"></a>
 ### R-25 — DataCite versioning guidance
-- **Cited by:** [0017](architecture/0017-artifact-identity-revision-and-versioning.md), [0018](architecture/0018-version-governance-and-compatibility-authority.md)
+- **Cited by:** [0017](architecture/0017-artifact-identity-revision-and-versioning.md), [0018](architecture/0018-version-governance-and-compatibility-authority.md) · [ADR 0004](decisions/0004-semantic-versioning-contracts.md)
 
 - **Primary source:** [DataCite documentation on versioning](https://support.datacite.org/docs/versioning).
 - **Relevant concepts:** identifying and relating versions of citable research outputs.
@@ -323,7 +323,7 @@
 
 <a id="r-26"></a>
 ### R-26 — Scientific Data versioning study (2024)
-- **Cited by:** [0017](architecture/0017-artifact-identity-revision-and-versioning.md)
+- **Cited by:** [0017](architecture/0017-artifact-identity-revision-and-versioning.md) · [ADR 0004](decisions/0004-semantic-versioning-contracts.md)
 
 - **Primary source:** [Nature / Scientific Data article](https://www.nature.com/articles/s41597-024-03153-y).
 - **Relevant concepts:** versioning and provenance practices for scientific data.

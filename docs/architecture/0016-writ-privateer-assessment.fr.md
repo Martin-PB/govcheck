@@ -1,4 +1,4 @@
-# 0016 — Évaluation de Writ et Privateer fondée sur leurs sources
+# 0016 — Évaluation de Writ, Pi Privateer et OpenSSF Privateer fondée sur leurs sources
 
 **Statut :** revue circonscrite des dépôts publics identifiés ci-dessous, dans leur état de branche par défaut au 6 novembre 2026. Ce n’est ni un audit de sécurité, ni une reproduction indépendante, ni une décision d’adoption. **English:** [0016](0016-writ-privateer-assessment.md).
 
@@ -6,7 +6,7 @@
 
 Le nom « Writ » est ambigu. Cette évaluation concerne [`infinri/Writ`](../references.fr.md#r-18), décrit par son dépôt comme un runtime de gouvernance pour Claude Code. Elle n’évalue pas les produits distincts writ.now, withwrit.com ou usewrit.app.
 
-Privateer désigne ici [`privateer-agent/privateer-agent`](../references.fr.md#r-19), une distribution MIT et multi-fournisseurs de l’agent de programmation Pi. Il ne s’agit pas d’autres produits portant le même nom.
+Le nom Privateer désigne ici deux projets distincts : [`privateer-agent/privateer-agent`](../references.fr.md#r-19), une distribution MIT de l’agent de programmation Pi, et l'[évaluateur OpenSSF Privateer](../references.fr.md#r-120). Ils ne doivent pas être confondus.
 
 Instantanés examinés :
 - Writ `main` : `ebdafe5450b201339f81e717ed104e6bcfd3fe3e` (3 novembre 2026).
@@ -70,7 +70,26 @@ Privateer est un **candidat de harness pour tester l’interopérabilité**, pas
 
 Avant toute intégration en production, tester défauts et contournements de la barrière, frontières locales/réseau, routage fournisseur et sortie des données, propagation MCP/sous-agents, identité de session/preuve, contrôles provenance/dépendances et distinction exacte entre exécution locale et hébergée.
 
-## 4. Adéquation comparative
+## 4. OpenSSF Privateer : l'évaluateur distinct de sécurité/conformité
+
+Il s'agit d'un projet distinct de la distribution de l'agent de programmation Pi examinée à la section 3 et cataloguée en R-19. L'OpenSSF a annoncé le 13 octobre 2026 l'entrée de ce projet Privateer dans son Sandbox.
+
+Le projet décrit un framework d'évaluation par plugins du code source, de la configuration des dépôts et des systèmes déployés par rapport à des catalogues de contrôles maintenus séparément. Les contrôles déterministes sont exécutés en premier ; une revue facultative assistée par LLM peut examiner certaines preuves rédigées par des humains que les contrôles déterministes ne savent pas résoudre. Les cas non résolus sont représentés par **Needs Review**, la décision finale restant humaine. La présentation de l'OpenSSF indique également que Privateer utilise les schémas Gemara pour ses journaux d'évaluation structurés et que son plugin GitHub peut lire les déclarations Security Insights.
+
+### Rôle potentiel aux côtés de GovCheck
+
+OpenSSF Privateer est un comparateur bien plus proche de la **fonction d'évaluation des contrôles et d'examen des preuves** de GovCheck que la distribution de l'agent Pi. Il pourrait être utile comme :
+- évaluateur facultatif de certains contrôles de sécurité/conformité ;
+- source d'éléments de preuve d'évaluation structurés ;
+- point de comparaison pour séparer catalogues de contrôles, plugins d'évaluation et interopérabilité GRC via Gemara.
+
+Il ne doit devenir ni l'autorité canonique de gouvernance de GovCheck, ni remplacer son cycle de vie des changements, son modèle d'autorité/délégation, l'identité des changements indépendante du VCS, ses sémantiques d'assurance ou son prédicat d'acceptation. Un résultat Privateer est une sortie d'évaluation dont la provenance, la version du plugin, la révision du catalogue de contrôles, les entrées et l'incertitude doivent être conservées et évaluées. Une évaluation assistée par LLM n'est pas une preuve et ne doit pas transformer silencieusement l'incertitude en succès.
+
+### Limites de l'évaluation
+
+Il s'agit d'une revue circonscrite de l'annonce OpenSSF et de la documentation du projet, pas d'un audit du code source ni d'une reproduction indépendante. Le projet vient d'entrer dans le Sandbox OpenSSF ; son écosystème de plugins, sa couverture et sa maturité opérationnelle doivent être validés séparément avant toute décision d'intégration.
+
+## 5. Adéquation comparative
 
 | Dimension | Cible GovCheck | Writ (`infinri/Writ`) | Privateer (`privateer-agent/privateer-agent`) |
 |---|---|---|---|
@@ -84,7 +103,7 @@ Avant toute intégration en production, tester défauts et contournements de la 
 | Hypothèse d’intégration | Cœur gouvernance/dossier | Adaptateur facultatif Claude Code / source de preuves | Fixture d’agent Pi / source de preuves facultative |
 | Décision | Produit central | Ne pas adopter comme cœur ni lui attribuer une garantie de bac à sable | Ne pas adopter comme moteur de gouvernance central |
 
-## 5. Recommandation
+## 6. Recommandation
 
 1. **Conserver la frontière produit GovCheck.** Aucun des deux projets ne remplace modèle canonique, dossier d’assurance ou acceptation du candidat exact.
 2. **Les utiliser comme fixtures de test, pas comme dépendances.** Writ teste l’application des règles au moment des outils ; Privateer teste l’interopérabilité d’un agent Pi et sa barrière de permissions.
@@ -95,8 +114,8 @@ Avant toute intégration en production, tester défauts et contournements de la 
 
 ## Sources
 
-Les URL des sources primaires, révisions épinglées et documents examinés sont maintenus dans le [catalogue central des références](../references.fr.md), entrées R-18 et R-19. Ce document renvoie vers ces entrées sans dupliquer les URL externes.
+Les URL des sources primaires, révisions épinglées et documents examinés sont maintenus dans le [catalogue central des références](../references.fr.md), entrées R-18, R-19 et R-120. Ce document renvoie vers ces entrées sans dupliquer les URL externes.
 
 ## Références bibliographiques
 
-Références externes citées dans ce document : [R-18](../references.fr.md#r-18), [R-19](../references.fr.md#r-19).
+Références externes citées dans ce document : [R-18](../references.fr.md#r-18), [R-19](../references.fr.md#r-19), [R-120](../references.fr.md#r-120).

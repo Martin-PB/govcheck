@@ -1,4 +1,4 @@
-# 0016 — Source-based assessment of Writ and Privateer
+# 0016 — Source-based assessment of Writ, Pi Privateer and OpenSSF Privateer
 
 **Status:** bounded source review of the public repositories identified below, using their default-branch state as of 6 November 2026. This is not a security audit, independent reproduction, or adoption decision. **French:** [0016 (français)](0016-writ-privateer-assessment.fr.md).
 
@@ -6,7 +6,7 @@
 
 “Writ” is an ambiguous product name. This assessment concerns [`infinri/Writ`](../references.md#r-18), described by its repository as a governance runtime for Claude Code. It does not assess the separate products at writ.now, withwrit.com, or usewrit.app.
 
-Privateer here means [`privateer-agent/privateer-agent`](../references.md#r-19), a MIT-licensed, provider-agnostic distribution of the Pi coding agent. It does not mean unrelated products sharing the name.
+The name Privateer refers to two distinct projects in this assessment: [`privateer-agent/privateer-agent`](../references.md#r-19), a MIT-licensed distribution of the Pi coding agent, and the separate [OpenSSF Privateer evaluator](../references.md#r-120). They must not be conflated.
 
 Source snapshots reviewed:
 - Writ `main`: `ebdafe5450b201339f81e717ed104e6bcfd3fe3e` (3 November 2026).
@@ -70,7 +70,26 @@ Privateer is a **candidate agent harness for interoperability testing**, not a G
 
 Before any production integration, test permission-gate defaults and bypasses, local/network boundaries, provider routing and data egress, MCP/sub-agent propagation, session/evidence identity, dependency/provenance checks, and the exact local versus hosted execution mode.
 
-## 4. Comparative fit
+## 4. OpenSSF Privateer: the separate security/compliance evaluator
+
+This is a distinct project from the Pi coding-agent distribution reviewed in section 3 and catalogued as R-19. The OpenSSF announced on 13 October 2026 that this Privateer had entered the OpenSSF Sandbox.
+
+The project describes a plugin-based evaluation framework for source code, repository configuration and deployed systems against separately maintained control catalogs. Deterministic checks run first; optional LLM-assisted review can examine selected human-written evidence that deterministic checks cannot resolve. Unresolved cases are represented as **Needs Review**, leaving the final decision to a human. The OpenSSF description also states that Privateer uses Gemara schemas for structured evaluation logs and that its GitHub repository plugin can read Security Insights declarations.
+
+### Potential role alongside GovCheck
+
+OpenSSF Privateer is a much closer comparator for GovCheck's **control evaluation and evidence assessment** than the Pi-agent distribution. It may be useful as:
+- an optional evaluator for selected security/compliance controls;
+- a source of structured evaluation evidence;
+- a comparison point for separating control catalogs, evaluator plugins and GRC interoperability through Gemara.
+
+It must not become GovCheck's canonical governance authority or replace GovCheck's change lifecycle, authority/delegation, VCS-neutral change identity, assurance semantics or acceptance predicate. A Privateer result is an evaluation output whose provenance, plugin version, control-catalog revision, inputs and uncertainty must be retained and assessed. An LLM-assisted assessment is not a proof and must not silently convert uncertainty into success.
+
+### Assessment limits
+
+This is a bounded review of the OpenSSF announcement and project documentation, not a source-code audit or independent reproduction. The project is newly admitted to the OpenSSF Sandbox; its plugin ecosystem, coverage and operational maturity require separate validation before any integration decision.
+
+## 5. Comparative fit
 
 | Dimension | GovCheck target | Writ (`infinri/Writ`) | Privateer (`privateer-agent/privateer-agent`) |
 |---|---|---|---|
@@ -84,7 +103,7 @@ Before any production integration, test permission-gate defaults and bypasses, l
 | Best integration hypothesis | Core governance evaluator/dossier | Optional Claude Code workflow adapter / evidence source | Optional Pi-based agent test fixture / evidence source |
 | Decision | Core product | Do not adopt as core or claim sandbox guarantees | Do not adopt as core governance engine |
 
-## 5. Recommendation
+## 6. Recommendation
 
 1. **Keep GovCheck's product boundary unchanged.** Neither project replaces the canonical governance model, assurance dossier or exact-candidate acceptance logic.
 2. **Use both as test fixtures, not dependencies.** Writ probes tool-time workflow enforcement; Privateer probes Pi-based agent interoperability and permission-gate behavior.
@@ -95,8 +114,8 @@ Before any production integration, test permission-gate defaults and bypasses, l
 
 ## Sources
 
-The primary source URLs, pinned revisions and reviewed documents are maintained in the [central reference catalogue](../references.md), entries R-18 and R-19. This record links to those entries rather than duplicating external URLs.
+The primary source URLs, pinned revisions and reviewed documents are maintained in the [central reference catalogue](../references.md), entries R-18, R-19 and R-120. This record links to those entries rather than duplicating external URLs.
 
 ## Bibliographic references
 
-External sources cited by this record: [R-18](../references.md#r-18), [R-19](../references.md#r-19).
+External sources cited by this record: [R-18](../references.md#r-18), [R-19](../references.md#r-19), [R-120](../references.md#r-120).

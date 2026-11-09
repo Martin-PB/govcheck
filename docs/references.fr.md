@@ -35,17 +35,27 @@
 | Extraction de documents | R-82 |
 | API de stockage cloud | R-64 |
 | Persistance locale navigateur et WebAssembly | R-65 |
-| Modèles sémantiques de domaine, qualité et conformité open source | R-94–R-100, R-102–R-103 |
+| Modèles sémantiques de domaine, qualité et conformité open source | R-94–R-100, R-103 |
 | Interopérabilité des instructions d'agents et workflows pilotés par les spécifications | R-104 |
 | Recherches sur le policy-as-code et la gouvernance des agents à l'exécution | R-105 |
 | Sécurité des agents IA et de MCP — recommandations OWASP | R-106 |
 | Emplacement et syntaxe des workflows GitHub Actions | R-107 |
+| Graphes de métadonnées de chaîne d'approvisionnement et posture de sécurité des projets | R-108–R-111 |
+| Gouvernance Git indépendante de la forge, provenance source, Gemara et outils de contrôle de dépôt | R-112–R-120 |
+| Attestations, signatures, contrats formels et surveillance temporelle | R-121–R-126 |
+| Responsabilité par fichier et revue par propriétaires de code | R-127 |
+| Langages d'expression pour politiques et prédicats | R-128 |
+| Argumentation d'assurance, moteurs de politiques, gating et théorie des patches | R-129–R-133 |
+| Notation d'argumentation d'assurance GSN | R-134 |
+| Vérification des politiques et modèles de contrôle d'accès | R-135 |
+| Synchronisation documentaire multilingue et identifiants de langue | R-136–R-144 |
+| Plateformes de traduction citées mais non évaluées | R-145–R-146 |
 
 ## Entrées bibliographiques détaillées
 
 ## Registre détaillé des sources
 
-**Objet.** Ce fichier est la bibliographie française unique de GovCheck. Il rassemble les références académiques, normatives, industrielles et les sources de code qui étayent la conception du projet. C'est une bibliographie de navigation, pas une politique normative ni une décision d'adoption.
+**Objet.** Ce fichier est la bibliographie française unique de GovCheck. Il rassemble les références académiques, normatives, industrielles et les sources de code qui étayent la conception du projet. C'est une bibliographie de navigation, pas une politique normative ni une décision d'adoption. Voir l'[audit de provenance des références](reference-provenance-audit.fr.md) pour le rapprochement avec le PDF initial de 224 pages et les revues critiques.
 
 **Règle de sélection.** Privilégier les publications primaires, organismes de normalisation, documentations officielles et révisions de code épinglées. Chaque référence n'étaye que le point explicitement indiqué ; elle ne prouve ni que GovCheck implémente la capacité, ni que l'outil cité convient comme dépendance.
 
@@ -76,6 +86,16 @@
 - **Recherches sur le policy-as-code, l'assurance continue et la gouvernance MCP :** R-105.
 - **Sécurité des agents IA et de MCP :** R-106.
 - **Emplacement des workflows GitHub Actions :** R-107.
+- **Graphes de chaîne d'approvisionnement, déclarations de sécurité et référentiels de bonnes pratiques :** R-108–R-111.
+- **Gouvernance Git, provenance source et outils d'évaluation de dépôt candidats :** R-112–R-120.
+- **Attestations, signatures, contrats formels et surveillance temporelle :** R-121–R-126.
+- **Responsabilité par fichier et revue par propriétaires de code :** R-127.
+- **Langages d'expression pour politiques et prédicats :** R-128.
+- **Argumentation d'assurance, moteurs de politiques, gating et théorie des patches :** R-129–R-133.
+- **Notation d'argumentation d'assurance GSN :** R-134.
+- **Vérification des politiques et modèles de contrôle d'accès :** R-135.
+- **Synchronisation documentaire multilingue et identifiants de langue :** R-136–R-144.
+- **Plateformes de traduction citées mais non évaluées :** R-145–R-146.
 
 ## Normes, recommandations publiques et spécifications industrielles
 
@@ -91,7 +111,7 @@
 <a id="r-02"></a>
 
 ### R-02 — NIST SP 800-218, Secure Software Development Framework (SSDF) 1.1
-- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md), [0014](architecture/0014-governed-development-workflow.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md), [0022](architecture/0022-governance-capability-audit.fr.md) · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
+- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md), [0014](architecture/0014-governed-development-workflow.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md), [0022](architecture/0022-governance-capability-audit.fr.md) · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md), [reference integrity guide](reference-integrity.fr.md), [guide d'intégrité](reference-integrity.fr.md)
 
 - **Sources primaires :** [Publication NIST](https://csrc.nist.gov/pubs/sp/800/218/final) · [DOI](https://doi.org/10.6028/NIST.SP.800-218)
 - **Concepts pertinents :** exigences et décisions de conception de sécurité documentées, pratiques de développement sécurisé, provenance et releases.
@@ -121,7 +141,7 @@
 <a id="r-05"></a>
 
 ### R-05 — TLA+ et TLC
-- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [0008](architecture/0008-formalization-and-conformance.fr.md), [0009](architecture/0009-govcheck-design-discussion-record.fr.md), [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0011](architecture/0011-lifecycle-model-assertion-audit.fr.md), [0020](architecture/0020-first-tlc-execution-record.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md), [ADR 0001](decisions/0001-bootstrap-boundaries.fr.md), [Spec 0003](specifications/0003-change-lifecycle.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md), [Modèle de cycle de vie formel](formal/lifecycle-model.fr.md)
+- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [0008](architecture/0008-formalization-and-conformance.fr.md), [0009](architecture/0009-govcheck-design-discussion-record.fr.md), [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0011](architecture/0011-lifecycle-model-assertion-audit.fr.md), [0020](architecture/0020-first-tlc-execution-record.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md), [ADR 0001](decisions/0001-bootstrap-boundaries.fr.md), [Spec 0003](specifications/0003-change-lifecycle.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md), [Modèle de cycle de vie formel](formal/lifecycle-model.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
 
 - **Sources primaires :** [Publications de Lamport sur TLA](https://www.microsoft.com/en-us/research/people/lamport/publications/) · [Projet et documentation TLA+](https://lamport.azurewebsites.net/tla/tla.html)
 - **Référence académique :** Leslie Lamport, « The Temporal Logic of Actions », ACM Transactions on Programming Languages and Systems, 16(3), 1994, p. 872–923. [DOI](https://doi.org/10.1145/177492.177726)
@@ -132,7 +152,7 @@
 <a id="r-06"></a>
 
 ### R-06 — in-toto : intégrité de la chaîne d'approvisionnement logicielle
-- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md), [0007](architecture/0007-technology-decision-framework.fr.md), [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0014](architecture/0014-governed-development-workflow.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md), [0007](architecture/0007-technology-decision-framework.fr.md), [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0014](architecture/0014-governed-development-workflow.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md), [comparaison des systèmes](research/comparative-governance-landscape.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md), 
 
 - **Sources primaires :** [Projet in-toto](https://in-toto.io/) · [Article USENIX Security 2019](https://ssl.engineering.nyu.edu/papers/torres-toto-usenix19.pdf)
 - **Référence académique :** Santiago Torres-Arias et al., « in-toto: Providing farm-to-table guarantees for bits and bytes », 28th USENIX Security Symposium, 2019.
@@ -142,7 +162,7 @@
 
 <a id="r-07"></a>
 
-### R-07 — SLSA
+### R-07 — SLSA Build Track
 - **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md), [0007](architecture/0007-technology-decision-framework.fr.md), [0014](architecture/0014-governed-development-workflow.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md)
 
 - **Source primaire :** [Spécification SLSA](https://slsa.dev/spec/)
@@ -153,7 +173,7 @@
 <a id="r-08"></a>
 
 ### R-08 — OpenSSF Scorecard
-- **Cité par :** [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md), [reference integrity guide](reference-integrity.fr.md), [guide d'intégrité](reference-integrity.fr.md)
 
 - **Sources primaires :** [Page OpenSSF](https://openssf.org/projects/scorecard/) · [Dépôt Scorecard](https://github.com/ossf/scorecard)
 - **Concepts pertinents :** contrôles automatisés et réutilisables de certaines pratiques de sécurité open source.
@@ -163,7 +183,7 @@
 <a id="r-09"></a>
 
 ### R-09 — Open Policy Agent (OPA)
-- **Cité par :** [0012](architecture/0012-normative-authority-and-documentation.fr.md), [0013](architecture/0013-governance-metamodel.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md), [0022](architecture/0022-governance-capability-audit.fr.md), [Spec 0002](specifications/0002-canonical-governance-model.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [0012](architecture/0012-normative-authority-and-documentation.fr.md), [0013](architecture/0013-governance-metamodel.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md), [0022](architecture/0022-governance-capability-audit.fr.md), [Spec 0002](specifications/0002-canonical-governance-model.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md), [comparaison des systèmes](research/comparative-governance-landscape.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md), 
 
 - **Source primaire :** [Documentation officielle OPA](https://www.openpolicyagent.org/docs)
 - **Concepts pertinents :** séparation entre décision de politique et application ; évaluation d'entrées structurées par rapport à une politique.
@@ -173,7 +193,7 @@
 <a id="r-10"></a>
 
 ### R-10 — Langage d'autorisation Cedar
-- **Cité par :** [0012](architecture/0012-normative-authority-and-documentation.fr.md), [0013](architecture/0013-governance-metamodel.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md), [0022](architecture/0022-governance-capability-audit.fr.md), [Spec 0002](specifications/0002-canonical-governance-model.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [0012](architecture/0012-normative-authority-and-documentation.fr.md), [0013](architecture/0013-governance-metamodel.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md), [0022](architecture/0022-governance-capability-audit.fr.md), [Spec 0002](specifications/0002-canonical-governance-model.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md), [comparaison des systèmes](research/comparative-governance-landscape.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md), 
 
 - **Sources primaires :** [Référence du langage Cedar](https://docs.cedarpolicy.com/) · [Projet Cedar](https://www.cedarpolicy.com/) · [Article OOPSLA 2024](https://doi.org/10.1145/3649835) · [FSE Companion 2024 : How We Built Cedar](https://doi.org/10.1145/3663529.3663854) · [prépublication arXiv](https://arxiv.org/abs/2407.01688)
 - **Concepts pertinents :** décisions d'autorisation typées portant sur principal/action/ressource/contexte et séparation de la logique d'autorisation de la logique applicative.
@@ -203,7 +223,7 @@
 <a id="r-14"></a>
 
 ### R-14 — Semantic Versioning 2.0.0
-- **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md), [0018](architecture/0018-version-governance-and-compatibility-authority.fr.md), [0019](architecture/0019-catalogue-and-release-manifest-migration.fr.md) · [ADR 0004](decisions/0004-semantic-versioning-contracts.fr.md)
+- **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md), [0018](architecture/0018-version-governance-and-compatibility-authority.fr.md), [0019](architecture/0019-catalogue-and-release-manifest-migration.fr.md) · [ADR 0004](decisions/0004-semantic-versioning-contracts.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
 
 - **Source primaire :** [SemVer 2.0.0](https://semver.org/)
 - **Concepts pertinents :** MAJOR/MINOR/PATCH par rapport à une API publique et à un contrat de compatibilité déclarés ; les versions publiées sont immuables.
@@ -213,7 +233,7 @@
 <a id="r-15"></a>
 
 ### R-15 — Tags Git et releases
-- **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md), [0018](architecture/0018-version-governance-and-compatibility-authority.fr.md), [0019](architecture/0019-catalogue-and-release-manifest-migration.fr.md) · [ADR 0004](decisions/0004-semantic-versioning-contracts.fr.md)
+- **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md), [0018](architecture/0018-version-governance-and-compatibility-authority.fr.md), [0019](architecture/0019-catalogue-and-release-manifest-migration.fr.md) · [ADR 0004](decisions/0004-semantic-versioning-contracts.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
 
 - **Sources primaires :** [Référence Git : étiquetage](https://git-scm.com/book/en/v2/Git-Basics-Tagging) · [GitHub Releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases)
 - **Concepts pertinents :** identification d'une révision source et publication des artefacts associés à une release.
@@ -244,7 +264,7 @@
 
 <a id="r-18"></a>
 ### R-18 — Writ (infinri/Writ)
-- **Cité par :** [0009](architecture/0009-govcheck-design-discussion-record.fr.md), [0014](architecture/0014-governed-development-workflow.fr.md), [0016](architecture/0016-writ-privateer-assessment.fr.md), [0019](architecture/0019-catalogue-and-release-manifest-migration.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [0009](architecture/0009-govcheck-design-discussion-record.fr.md), [0014](architecture/0014-governed-development-workflow.fr.md), [0016](architecture/0016-writ-privateer-assessment.fr.md), [0019](architecture/0019-catalogue-and-release-manifest-migration.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
 
 - **Sources primaires :** [Dépôt](https://github.com/infinri/Writ) · [Politique de sécurité à la révision étudiée](https://github.com/infinri/Writ/blob/ebdafe5450b201339f81e717ed104e6bcfd3fe3e/SECURITY.md) · [Contrat de session et de barrières](https://github.com/infinri/Writ/blob/ebdafe5450b201339f81e717ed104e6bcfd3fe3e/docs/reference/session-and-gates.md)
 - **Révision étudiée :** ebdafe5450b201339f81e717ed104e6bcfd3fe3e (revue consignée le 6 novembre 2026).
@@ -253,8 +273,8 @@
 
 <a id="r-19"></a>
 
-### R-19 — Privateer (privateer-agent/privateer-agent)
-- **Cité par :** [0009](architecture/0009-govcheck-design-discussion-record.fr.md), [0014](architecture/0014-governed-development-workflow.fr.md), [0016](architecture/0016-writ-privateer-assessment.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md)
+### R-19 — Distribution de l'agent Pi Privateer (privateer-agent/privateer-agent)
+- **Cité par :** [0009](architecture/0009-govcheck-design-discussion-record.fr.md), [0014](architecture/0014-governed-development-workflow.fr.md), [0016](architecture/0016-writ-privateer-assessment.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
 
 - **Sources primaires :** [Dépôt](https://github.com/privateer-agent/privateer-agent) · [Politique de sécurité à la révision étudiée](https://github.com/privateer-agent/privateer-agent/blob/181a988e443fa6b6b4138fc349d1260c96408ad4/SECURITY.md) · [README à la révision étudiée](https://github.com/privateer-agent/privateer-agent/blob/181a988e443fa6b6b4138fc349d1260c96408ad4/README.md)
 - **Révision étudiée :** 181a988e443fa6b6b4138fc349d1260c96408ad4 (revue consignée le 6 novembre 2026).
@@ -263,7 +283,7 @@
 
 <a id="r-20"></a>
 ### R-20 — Lean
-- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [0008](architecture/0008-formalization-and-conformance.fr.md), [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [ADR 0001](decisions/0001-bootstrap-boundaries.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [0008](architecture/0008-formalization-and-conformance.fr.md), [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [ADR 0001](decisions/0001-bootstrap-boundaries.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
 
 - **Source primaire :** [Référence du langage Lean](https://lean-lang.org/doc/reference/latest/)
 - **Concepts pertinents :** termes de preuve vérifiés par un petit noyau ; démonstration sous définitions, axiomes et hypothèses explicites.
@@ -273,7 +293,7 @@
 <a id="r-21"></a>
 
 ### R-21 — Guides de releases et de reproductibilité pour le logiciel de recherche
-- **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md), [0018](architecture/0018-version-governance-and-compatibility-authority.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md) · [ADR 0004](decisions/0004-semantic-versioning-contracts.fr.md)
+- **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md), [0018](architecture/0018-version-governance-and-compatibility-authority.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md) · [ADR 0004](decisions/0004-semantic-versioning-contracts.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
 
 - **Source primaire :** [Software Sustainability Institute — guides et ressources](https://www.software.ac.uk/resources) · [LUMC Research Software Guidelines — versionnement et releases](https://lumc-dcc.github.io/rs-guidelines/best-practices/versioning-releases/)
 - **Concepts pertinents :** pérennité du logiciel de recherche, citation, releases et reproductibilité.
@@ -297,7 +317,7 @@
 <a id="r-23"></a>
 
 ### R-23 — IMS Global / 1EdTech : spécifications de versionnement
-- **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md), [0018](architecture/0018-version-governance-and-compatibility-authority.fr.md) · [ADR 0004](decisions/0004-semantic-versioning-contracts.fr.md)
+- **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md), [0018](architecture/0018-version-governance-and-compatibility-authority.fr.md), · [ADR 0004](decisions/0004-semantic-versioning-contracts.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
 
 - **Source primaire :** [Spécifications 1EdTech](https://www.imsglobal.org/spec/versioning/v1) (anciennement IMS Global ; consulter la version précise avant d'invoquer une règle particulière).
 - **Concepts pertinents :** identifiants de version et conventions de compatibilité pour des artefacts structurés et publiés.
@@ -306,11 +326,11 @@
 
 <a id="r-24"></a>
 
-### R-24 — W3C PROV-O
-- **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md), [0018](architecture/0018-version-governance-and-compatibility-authority.fr.md) · [ADR 0004](decisions/0004-semantic-versioning-contracts.fr.md)
+### R-24 — Famille W3C PROV (PROV-O)
+- **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md), [0018](architecture/0018-version-governance-and-compatibility-authority.fr.md), [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md) · [ADR 0004](decisions/0004-semantic-versioning-contracts.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md), [reference integrity guide](reference-integrity.fr.md), [guide d'intégrité](reference-integrity.fr.md)
 
-- **Source primaire :** [Recommandation W3C PROV-O](https://www.w3.org/TR/prov-o/).
-- **Concepts pertinents :** entités, activités, agents et relations de provenance.
+- **Sources primaires :** [Vue d'ensemble W3C PROV](https://www.w3.org/TR/prov-overview/) · [Recommandation W3C PROV-O](https://www.w3.org/TR/prov-o/).
+- **Concepts pertinents :** famille de provenance W3C : modèle de données PROV-DM, ontologie PROV-O, PROV-Constraints, notation PROV-N et sérialisations associées ; entités, activités, agents et relations de dérivation/attribution.
 - **Utilité pour GovCheck :** vocabulaire de provenance et relations entre artefacts, activités et agents responsables.
 - **Limite :** une ontologie ne fournit à elle seule ni politique de dépôt, ni assurance d'identité, ni mécanisme d'application.
 
@@ -327,7 +347,7 @@
 <a id="r-26"></a>
 
 ### R-26 — Étude sur le versionnement des données scientifiques (2024)
-- **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md) · [ADR 0004](decisions/0004-semantic-versioning-contracts.fr.md)
+- **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md) · [ADR 0004](decisions/0004-semantic-versioning-contracts.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
 
 - **Source primaire :** [Article Nature / Scientific Data](https://www.nature.com/articles/s41597-024-03153-y).
 - **Concepts pertinents :** pratiques de versionnement et de provenance des données scientifiques.
@@ -336,7 +356,7 @@
 
 <a id="r-27"></a>
 ### R-27 — NIST SP 800-30 Rev. 1, Guide pour la conduite des évaluations des risques
-- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md) · [0024](architecture/0024-project-bootstrap-and-assurance-profiles.fr.md)
+- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md) · [0024](architecture/0024-project-bootstrap-and-assurance-profiles.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
 
 - **Source primaire :** [Publication NIST](https://csrc.nist.gov/pubs/sp/800/30/r1/final) · [DOI](https://doi.org/10.6028/NIST.SP.800-30r1)
 - **Concepts pertinents :** sources et événements de menace, vulnérabilités, vraisemblance et impact, évaluation des risques, risque résiduel, hypothèses, justification et incertitude.
@@ -391,7 +411,7 @@
 
 <a id="r-33"></a>
 ### R-33 — Mohamad, Steghöfer et Scandariato, « Security assurance cases—state of the art of an emerging approach » (2021)
-- **Cité par :** [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md) · [0024](architecture/0024-project-bootstrap-and-assurance-profiles.fr.md)
+- **Cité par :** [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md) · [0024](architecture/0024-project-bootstrap-and-assurance-profiles.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
 
 - **Source primaire :** [Article d'Empirical Software Engineering](https://doi.org/10.1007/s10664-021-09971-7)
 - **Référence académique :** Mazen Mohamad, Jan-Philipp Steghöfer et Riccardo Scandariato, *Empirical Software Engineering* 26, article 70 (2021).
@@ -401,7 +421,7 @@
 
 <a id="r-34"></a>
 ### R-34 — OMG Structured Assurance Case Metamodel (SACM)
-- **Cité par :** [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md) · [0024](architecture/0024-project-bootstrap-and-assurance-profiles.fr.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.fr.md)
+- **Cité par :** [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md) · [0024](architecture/0024-project-bootstrap-and-assurance-profiles.fr.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.fr.md), [comparaison des systèmes](research/comparative-governance-landscape.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md), 
 
 - **Source primaire :** [Famille de spécifications OMG SACM](https://www.omg.org/spec/SACM/) · [Version formelle 2.3](https://www.omg.org/spec/SACM/2.3)
 - **Concepts pertinents :** représentation exploitable par machine de structures de dossiers d'assurance et relations entre affirmations, argumentation, artefacts et preuves.
@@ -421,7 +441,7 @@
 
 <a id="r-36"></a>
 ### R-36 — RTCA DO-178C / EUROCAE ED-12C : assurance logicielle aéronautique
-- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
 
 - **Sources primaires :** [FAA AC 20-115D](https://www.faa.gov/airports/resources/advisory_circulars/index.cfm/go/document.information/documentNumber/20-115D) · [Présentation RTCA de DO-178C et de ses suppléments](https://www.rtca.org/do-178/)
 - **Concepts pertinents :** objectifs du cycle de vie logiciel, vérification, indépendance, preuves de certification et niveaux logiciels A–E ; suppléments associés : DO-330, DO-331, DO-332 et DO-333.
@@ -430,7 +450,7 @@
 
 <a id="r-37"></a>
 ### R-37 — Langage et analyseur Alloy
-- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [0009](architecture/0009-govcheck-design-discussion-record.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [0009](architecture/0009-govcheck-design-discussion-record.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
 
 - **Sources primaires :** [Projet Alloy et documentation](https://alloytools.org/) · [Dépôt source de l'analyseur Alloy](https://github.com/AlloyTools/org.alloytools.alloy)
 - **Concepts pertinents :** modélisation relationnelle, analyse bornée, recherche d'instances par SAT et recherche de contre-exemples ; Alloy 6 ajoute états mutables et opérateurs temporels.
@@ -484,7 +504,7 @@
 
 <a id="r-43"></a>
 ### R-43 — Assistant de preuve Isabelle
-- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
 
 - **Source primaire :** [Documentation, tutoriels et manuels de référence Isabelle](https://www.isabelle.in.tum.de/documentation.html)
 - **Concepts pertinents :** preuve interactive de théorèmes, Isabelle/HOL, spécification formelle et vérification de preuves.
@@ -502,7 +522,7 @@
 
 <a id="r-45"></a>
 ### R-45 — Fondements des CRDT
-- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
 
 - **Source primaire :** [Shapiro, Preguiça, Baquero et Zawirski, « A comprehensive study of Convergent and Commutative Replicated Data Types » (rapport de recherche INRIA 7506, 2011)](https://dsf.berkeley.edu/cs286/papers/crdt-tr2011.pdf)
 - **Concepts pertinents :** types répliqués fondés sur l'état ou les opérations, conditions de convergence, réplication asynchrone et mises à jour concurrentes.
@@ -548,7 +568,7 @@
 
 <a id="r-50"></a>
 ### R-50 — ICE, STUN, TURN et infrastructure de relais
-- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
 
 - **Sources primaires :** [RFC 8445 — ICE](https://www.rfc-editor.org/rfc/rfc8445.html) · [RFC 8489 — STUN](https://www.rfc-editor.org/rfc/rfc8489.html) · [RFC 8656 — TURN](https://www.rfc-editor.org/rfc/rfc8656.html) · [Implémentation de relais coturn](https://github.com/coturn/coturn)
 - **Concepts pertinents :** collecte de candidats et vérifications de connectivité, traversée NAT, allocation de relais et repli lorsque les chemins directs échouent.
@@ -557,7 +577,7 @@
 
 <a id="r-51"></a>
 ### R-51 — Open Knowledge Format (OKF) v0.2
-- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
 
 - **Sources primaires :** [Spécification canonique OKF v0.2](https://github.com/GoogleCloudPlatform/open-knowledge-format/blob/main/SPEC.md) · [Spécification OKF v0.2 dans l'ancien dépôt Knowledge Catalog](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md)
 - **Concepts pertinents :** bundles de connaissances portables fondés sur Markdown, frontmatter YAML, liens et métadonnées de provenance, confiance et cycle de vie.
@@ -647,7 +667,7 @@
 
 <a id="r-61"></a>
 ### R-61 — Ontologie P-Plan
-- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
 
 - **Source primaire :** [Spécification de l'ontologie P-Plan](https://www.opmw.org/model/p-plan/)
 - **Concepts pertinents :** représentation de plans abstraits et correspondance avec les traces PROV-O des processus exécutés.
@@ -656,7 +676,7 @@
 
 <a id="r-62"></a>
 ### R-62 — Sources d'intégration Cartocortex, MoriNet et SaussuNet
-- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
 
 - **Sources primaires :** [Dépôt Cartocortex](https://github.com/complexus-lab/cartocortex) · [Dépôt MoriNet](https://github.com/lejeunecedric/MoriNet) · [Dépôt SaussuNet](https://github.com/lejeunecedric/SaussuNet) · [PR Cartocortex #27 — étude OKF, stockage et vues graphe](https://github.com/complexus-lab/cartocortex/pull/27) · [PR Cartocortex #28 — backlog CRDT, navigateur et synchronisation cloud](https://github.com/complexus-lab/cartocortex/pull/28)
 - **URI d'espace de noms provisoire :** [Cartocortex Knowledge Ontology (CKO)](https://cartocortex.dev/ontology#) — identifiant de vocabulaire proposé dans le PDF, pas une norme ni une ontologie adoptée.
@@ -666,7 +686,7 @@
 
 <a id="r-63"></a>
 ### R-63 — Formats d'échange de cartes mentales et de graphes
-- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
 
 - **Sources primaires :** [Documentation Freeplane](https://docs.freeplane.org/) · [Projet FreeMind](https://freemind.sourceforge.io/wiki/index.php/Main_Page) · [XMind](https://xmind.app/) · [Spécification OPML 2.0](https://opml.org/spec2.opml) · [Spécification GraphML](https://graphml.graphdrawing.org/specification.html)
 - **Concepts pertinents :** échange de cartes mentales hiérarchiques, plans et graphes généraux, avec métadonnées et dispositions propres aux formats.
@@ -693,7 +713,7 @@
 
 <a id="r-66"></a>
 ### R-66 — Découverte de pairs Hyperswarm et HyperDHT
-- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
 
 - **Sources primaires :** [Projet Hyperswarm](https://github.com/holepunchto/hyperswarm) · [Implémentation HyperDHT](https://github.com/holepunchto/hyperdht) · [Documentation de découverte de pairs Hyperswarm](https://docs.pears.com/p2p/reference/building-blocks/hyperswarm/)
 - **Concepts pertinents :** découverte de pairs par sujets, rendez-vous via table de hachage distribuée, UDP hole punching et connexions chiffrées entre pairs.
@@ -710,7 +730,7 @@
 
 <a id="r-68"></a>
 ### R-68 — Dépôts de l'écosystème GovCheck associés et examinés dans l'évaluation
-- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
 - **Sources primaires :** [Pijulation](https://github.com/Martin-PB/Pijulation) · [Passerelle Git–Pijul](https://github.com/Martin-PB/passerelle-Git-Pijul)
 - **Concepts pertinents :** projets adjacents servant de contexte pour les sémantiques natives Git/Pijul, l'interopérabilité des graphes de patches, la gouvernance et les pratiques d'assurance formelle.
 - **Utilité pour GovCheck :** conserve les sources publiques de dépôts nommées dans l'évaluation initiale.
@@ -718,7 +738,7 @@
 
 <a id="r-69"></a>
 ### R-69 — Inventaire des sources sur les formats de cartes mentales et l'interopérabilité (PR #9)
-- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
 - **Sources primaires du projet :** [PR Cartocortex #9 — panorama des formats de cartes mentales](https://github.com/complexus-lab/cartocortex/pull/9) · [PR Cartocortex #1](https://github.com/complexus-lab/cartocortex/pull/1) · [PR #3](https://github.com/complexus-lab/cartocortex/pull/3) · [PR #4](https://github.com/complexus-lab/cartocortex/pull/4) · [PR #5](https://github.com/complexus-lab/cartocortex/pull/5) · [PR #6](https://github.com/complexus-lab/cartocortex/pull/6) · [PR #8](https://github.com/complexus-lab/cartocortex/pull/8)
 - **Implémentations sources et fixtures :** [Code source Freeplane](https://github.com/freeplane/freeplane) · [Sérialiseurs/importeur WiseMapping](https://github.com/wisemapping/wisemapping-frontend) · [Fixture publique de sauvegarde Mindomo](https://github.com/aarontmaher/Lauburu-Monorepo) · [MultiMarkdown 6](https://github.com/fletcher/MultiMarkdown-6) · [Fixture de test SimpleMind](https://github.com/pahund/simple-mind-search) · [Exporteur xmind2smmx](https://github.com/BartRuSec/xmind2smmx) · [Lecteur/écrivain MCP SimpleMind](https://github.com/kharabiner/simplemind-mcp-server)
 - **Documentation des éditeurs et produits :** [Guide d'export XMind](https://xmind.com/fr/user-guide/export-new) · [Guide utilisateur MindManager 2017](https://www.mindmanager.com/static/mm/docs/MindManager_2017_User_Guide_EN.pdf) · [Intégrations Microsoft MindManager](https://www.mindmanager.com/en/integrations/microsoft/) · [Démarrage Mindomo](https://help.mindomo.com/getting-started/) · [Import Mindomo](https://help.mindomo.com/basics/import-mind-maps/) · [Export Mindomo](https://help.mindomo.com/basics/export-mind-maps/) · [FAQ compatibilité iThoughts de l'éditeur](https://www.toketaware.com/ithoughts-faq-compatibility) · [Export SimpleMind](https://simplemind.eu/faq/share-export-in-different-formats/) · [Fichiers importables SimpleMind](https://simplemind.eu/faq/what-files-can-simplemind-import/) · [Aide import/export SimpleMind](https://simplemind.eu/faq_group/share-export-and-import/) · [Export MindMeister](https://support.mindmeister.com/hc/en-us/articles/360017447280-Export-Your-Mind-Map) · [Export/Impression MindMeister iOS](https://support.mindmeister.com/hc/en-us/articles/115000807204-Export-or-Print-your-Map-on-iOS) · [Import MindMeister](https://support.mindmeister.com/hc/en-us/articles/360017498199-Import-Text-Files-and-Mind-Maps-into-MindMeister) · [Import Coggle](https://coggle.help/article/34-import-files-into-coggle) · [Article du blog Coggle sur l'import .mm](https://bloggle.coggle.it/post/129486892657/import-other-files-to-coggle) · [Export Coggle](https://coggle.help/article/20-export-options) · [Formats d'export pris en charge par Coggle](https://coggle.help/article/105-supported-export-formats) · [Aide Bubbl.us](https://bubbl.us/help/topics.htm) · [Import iMindMap vers Ayoa](https://support.ayoa.com/opening-imindmap-files-in-ayoa)
@@ -729,7 +749,7 @@
 
 <a id="r-70"></a>
 ### R-70 — Wei et al., « ACCESS: Assurance Case Centric Engineering of Safety-critical Systems » (2024)
-- **Cité par :** [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.fr.md)
+- **Cité par :** [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
 - **Source primaire :** [Article du Journal of Systems and Software](https://doi.org/10.1016/j.jss.2024.112034) · [copie en accès ouvert](https://eprints.whiterose.ac.uk/id/eprint/211554/)
 - **Référence bibliographique :** Ran Wei, Simon Foster, Haitao Mei, Fang Yan, Ruizhe Yang, Ibrahim Habli, Colin O’Halloran, Nick Tudor, Tim Kelly et Yakoub Nemouchi, *Journal of Systems and Software* 213 (2024), article 112034.
 - **Concepts pertinents :** dossiers d'assurance fondés sur des modèles SACM ; traçabilité vers des artefacts d'ingénierie hétérogènes ; évaluation automatisée, analyse d'impact des changements, preuves de méthodes formelles et évaluation dynamique du dossier d'assurance en production.
@@ -738,7 +758,7 @@
 
 <a id="r-71"></a>
 ### R-71 — Bloomfield et Rushby, « Assurance 2.0: A Manifesto » (2021)
-- **Cité par :** [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.fr.md)
+- **Cité par :** [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.fr.md), [comparaison des systèmes](research/comparative-governance-landscape.fr.md), 
 - **Source primaire :** [Page des auteurs chez SRI et article](https://www.csl.sri.com/users/rushby/abstracts/sss21) · [manuscrit arXiv](https://arxiv.org/abs/2004.10474)
 - **Référence bibliographique :** Robin Bloomfield et John Rushby, *Systems and Covid-19: Proceedings of the 29th Safety-Critical Systems Symposium*, 2021, p. 85–108.
 - **Concepts pertinents :** examen renforcé du raisonnement et des preuves ; explicitation des éléments réfutants (*defeaters*) et contre-preuves ; évaluation du poids des preuves et de leur capacité à distinguer une affirmation de sa négation.
@@ -755,15 +775,15 @@
 
 <a id="r-73"></a>
 ### R-73 — OMG Structured Assurance Case Metamodel (SACM), version 2.4 Beta 1 (septembre 2026)
-- **Cité par :** [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.fr.md)
-- **Source primaire :** [État de la spécification SACM et documents de la bêta 2.4 chez OMG](https://www.omg.org/spec/SACM)
+- **Cité par :** [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
+- **Source primaire :** [État de la spécification SACM et documents de la bêta 2.4 chez OMG](https://www.omg.org/spec/SACM) · [Registre OMG des tickets clos](https://issues.omg.org/issues/spec/SACM?view=CLOSED) · [Registre OMG de tous les tickets](https://issues.omg.org/issues/spec/SACM?view=ALL)
 - **Concepts pertinents :** extensions proposées à SACM 2.3, notamment valeurs structurées/forces typées, constructions liées à l'évaluation, jointures, références à un concept entier, marquage de l'état de développement et révision de la sémantique des packages/relations.
 - **Utilité pour GovCheck :** point de comparaison indispensable avant de sélectionner un métamodèle interne ou d'échange. Les résolutions de tickets de la bêta indiquent quelles lacunes de 2.3 la révision tente de combler.
 - **Limite :** la version 2.4 est une bêta, pas une spécification formelle adoptée. GovCheck ne doit pas traiter ses constructions provisoires comme des contrats stables ni revendiquer sa conformité. Conserver 2.3 comme base formelle actuelle en attendant l'examen de la version finale 2.4.
 
 <a id="r-74"></a>
 ### R-74 — Hoover, Rosso-Llopart et Taran, *Evaluating Project Decisions: Case Studies in Software Engineering* (2009/2010)
-- **Cité par :** [0013](architecture/0013-governance-metamodel.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.fr.md)
+- **Cité par :** [0013](architecture/0013-governance-metamodel.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
 - **Sources primaires :** [Section PEAK du chapitre 1 (InformIT)](https://www.informit.com/articles/article.aspx?p=1409781&seqNum=3) · [Page du livre chez l'éditeur O’Reilly](https://www.oreilly.com/library/view/evaluating-project-decisions/9780321685629/)
 - **Référence bibliographique :** Carol L. Hoover, Mel Rosso-Llopart et Gil Taran, Addison-Wesley Professional, première publication en octobre 2009 (copyright 2010), ISBN 978-0-321-54456-8 ; le chapitre 1, §1.3 présente le modèle de décision PEAK.
 - **Concepts pertinents :** Problem, Experience, Assumptions et Knowledge comme entrées de la décision ; un processus de décision produit une solution et un risque assumé.
@@ -780,7 +800,7 @@
 
 <a id="r-76"></a>
 ### R-76 — Rushby, « Runtime Certification » (RV 2008)
-- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md), [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.fr.md)
+- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md), [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
 - **Source primaire :** [Article de l'auteur, présenté au huitième atelier Runtime Verification](https://citeseerx.ist.psu.edu/document?doi=c28045b0a573839028f6042870a3eccd8f9be748&repid=rep1&type=pdf)
 - **Référence bibliographique :** John Rushby, « Runtime Certification », article invité à RV 2008, Budapest, avril 2008.
 - **Concepts pertinents :** dossiers d'assurance comme affirmations, preuves et arguments ; surveillance en exécution des hypothèses et anomalies ; utilisation de la vérification à l'exécution comme preuve ; détection de la violation d'hypothèses environnementales.
@@ -789,7 +809,7 @@
 
 <a id="r-77"></a>
 ### R-77 — Exemples d'application de politiques et de gouvernance des outils MCP
-- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
 - **Sources primaires :** [Documentation HashiCorp Sentinel](https://developer.hashicorp.com/sentinel/docs) · [Documentation Consul MCP Gateway](https://docs.hashicorp.com/consul/docs/agentic-mesh/mcp-gateway) · [Gouvernance des outils agents et blocage des serveurs MCP GitLab](https://docs.gitlab.com/user/ai-governance/tool-governance/) · [Dépôt source Vectimus](https://github.com/vectimus/vectimus) · [Documentation OPA Agent Tool Calling](https://www.openpolicyagent.org/docs/agent-tool-calling)
 - **Concepts pertinents :** politiques-as-code, évaluation des politiques aux frontières infrastructure et outils d'agents, autorisation/blocage de serveurs MCP, gouvernance par namespace, preuves d'approbation, événements d'audit et hooks Cedar déterministes.
 - **Utilité pour GovCheck :** conserve les systèmes d'application de politiques et de gouvernance MCP comparés dans les discussions élargies du projet, aux côtés d'OPA (R-09) et Cedar (R-10).
@@ -797,7 +817,7 @@
 
 <a id="r-78"></a>
 ### R-78 — NIST OSCAL et Continuous Compliance Framework (CCF)
-- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
 - **Sources primaires :** [Projet NIST OSCAL](https://pages.nist.gov/OSCAL/) · [Dépôt source OSCAL](https://github.com/usnistgov/OSCAL) · [Documentation Compliance Framework / CCF](https://compliance-framework.github.io/docs/introduction) · [Dépôts Compliance Framework](https://github.com/compliance-framework)
 - **Concepts pertinents :** catalogues de contrôles de sécurité lisibles par machine, profils, plans de sécurité système, plans/résultats d'évaluation et preuves structurées en XML, JSON et YAML ; collecte continue de preuves et reporting.
 - **Utilité pour GovCheck :** conserve les options OSCAL et CCF discutées pour représenter les contrôles, collecter des preuves et produire des résultats d'évaluation structurés.
@@ -805,7 +825,7 @@
 
 <a id="r-79"></a>
 ### R-79 — Sandboxing et isolation à l'exécution des agents : nono, Landlock et Docker Sandboxes
-- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
 - **Sources primaires :** [Projet nono et modèle de sécurité](https://github.com/nolabs-ai/nono) · [Site de documentation nono](https://nono.sh/) · [Documentation noyau Linux Landlock](https://docs.kernel.org/userspace-api/landlock.html) · [Documentation Docker Sandboxes](https://docs.docker.com/ai/sandboxes/) · [Projet d'agent IA Goose](https://github.com/aaif-goose/goose)
 - **Concepts pertinents :** portée de capacités par outil, restrictions de système de fichiers/réseau, courtage d'identifiants, sandboxing non privilégié imposé par le noyau, isolation microVM et orchestration de runtimes d'agents.
 - **Utilité pour GovCheck :** conserve les options d'isolation à l'exécution et d'exécution d'agents discutées dans le contexte élargi de l'architecture sécurité/GovCheck. Goose est inclus comme exemple de harness d'agent, pas comme sandbox.
@@ -838,7 +858,7 @@
 
 <a id="r-83"></a>
 ### R-83 — JSON-LD 1.1
-- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
 - **Source primaire :** [Recommandation W3C JSON-LD 1.1](https://www.w3.org/TR/json-ld/)
 - **Concepts pertinents :** sérialisation JSON de données liées ; contextes, expansion des IRI, représentation de graphes et jeux de données, intégration à des systèmes et services utilisant déjà JSON.
 - **Utilité pour GovCheck :** syntaxe d'échange candidate pour les connaissances et métadonnées RDF lorsque l'outillage JSON et l'intégration aux services Web sont utiles.
@@ -862,7 +882,7 @@
 
 <a id="r-86"></a>
 ### R-86 — Schema.org DigitalDocument
-- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
 - **Source primaire :** [Type DigitalDocument de Schema.org](https://schema.org/DigitalDocument)
 - **Concepts pertinents :** description légère de documents numériques comme ressources Web, reliées aux métadonnées plus générales de CreativeWork.
 - **Utilité pour GovCheck :** vocabulaire généraliste candidat pour décrire des ressources documentaires lorsque ses propriétés correspondent au contexte d'échange.
@@ -870,7 +890,7 @@
 
 <a id="r-87"></a>
 ### R-87 — Transport et découverte pair-à-pair WebTorrent dans le navigateur
-- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
 - **Source primaire :** [Dépôt officiel WebTorrent](https://github.com/webtorrent/webtorrent) · [Site et documentation WebTorrent](https://webtorrent.io/)
 - **Concepts pertinents :** client BitTorrent pour navigateur et Node.js ; transport pair-à-pair par canaux de données WebRTC dans le navigateur ; découverte par trackers, DHT, découverte locale et échange de pairs.
 - **Utilité pour GovCheck :** conserve WebTorrent comme option de découverte/transport évoquée dans l'étude de transport de Cartocortex PR #28, distincte de y-webrtc et de Hyperswarm/HyperDHT.
@@ -878,7 +898,7 @@
 
 <a id="r-88"></a>
 ### R-88 — NIST SP 800-192 : méthodes de vérification et de test des politiques/modèles de contrôle d'accès
-- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [0013](architecture/0013-governance-metamodel.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md), [0022](architecture/0022-governance-capability-audit.fr.md), [Spec 0002](specifications/0002-canonical-governance-model.fr.md)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [0013](architecture/0013-governance-metamodel.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md), [0022](architecture/0022-governance-capability-audit.fr.md), [Spec 0002](specifications/0002-canonical-governance-model.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
 - **Sources primaires :** [Notice de publication NIST SP 800-192](https://csrc.nist.gov/pubs/sp/800/192/final) · [DOI NIST](https://doi.org/10.6028/NIST.SP.800-192)
 - **Concepts pertinents :** vérification et test de politiques et modèles de contrôle d'accès ; incohérence, incomplétude, exigences de sûreté, vérification de modèles en boîte noire/boîte blanche et tests dérivés des modèles de politiques.
 - **Utilité pour GovCheck :** justifie directement la validation des modèles de politiques normatives avant de tester leurs évaluateurs ou mécanismes d'application. Une politique exécutable n'est pas nécessairement correcte, complète ou cohérente.
@@ -886,7 +906,7 @@
 
 <a id="r-89"></a>
 ### R-89 — Méthode B et Atelier B
-- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [0005](specifications/0005-assurance-model.fr.md), [0007](architecture/0007-technology-decision-framework.fr.md)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [0005](specifications/0005-assurance-model.fr.md), [0007](architecture/0007-technology-decision-framework.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
 - **Sources primaires :** [J.-R. Abrial, The B-Book (Cambridge University Press)](https://www.cambridge.org/core/books/abs/bbook/frontmatter/20E71F1E161387417D3E347D07E247A6) · [Présentation de la méthode B par Atelier B](https://www.atelierb.eu/methode-formelle/) · [Documentation en ligne d'Atelier B](https://www.atelierb.eu/en/atelier-b-tools/online-documentation/)
 - **Concepts pertinents :** spécification formelle en théorie des ensembles, machines abstraites, invariants, substitutions généralisées, obligations de preuve, raffinement et construction d'implémentations à partir de modèles progressivement raffinés.
 - **Utilité pour GovCheck :** conserve B comme méthode candidate de spécification/raffinement formels dans l'inventaire général des méthodes d'assurance, notamment lorsque l'état et la préservation des invariants sont centraux.
@@ -918,7 +938,7 @@
 
 <a id="r-93"></a>
 ### R-93 — Logique déontique et modalités normatives
-- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [0013](architecture/0013-governance-metamodel.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md), [0022](architecture/0022-governance-capability-audit.fr.md), [Spec 0002](specifications/0002-canonical-governance-model.fr.md)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [0013](architecture/0013-governance-metamodel.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md), [0022](architecture/0022-governance-capability-audit.fr.md), [Spec 0002](specifications/0002-canonical-governance-model.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
 - **Sources primaires :** [G. H. von Wright, « Deontic Logic », Mind (1951)](https://doi.org/10.1093/mind/LX.237.1) · [Stanford Encyclopedia of Philosophy, Deontic Logic](https://plato.stanford.edu/entries/logic-deontic/)
 - **Concepts pertinents :** raisonnement formel sur obligation, permission, interdiction, optionalité, omission et autres statuts normatifs.
 - **Utilité pour GovCheck :** fournit un vocabulaire logique pour exprimer obligations, permissions et interdictions dans un modèle normatif de gouvernance, et les distinguer des faits descriptifs.
@@ -929,15 +949,15 @@
 1. Privilégier l'organisme normatif, l'éditeur, la documentation officielle ou le dépôt source plutôt que les résumés secondaires.
 2. L'identifiant R-12 a été retiré lors de la consolidation de son entrée Scorecard en doublon dans R-08. R-101 a été retiré car il dupliquait la source NIST SP 800-218 déjà tenue dans R-02. Aucun de ces identifiants ne doit être réutilisé.
 3. Épingler les analyses de code. Les liens Writ et Privateer identifient les révisions examinées dans l'architecture 0016 ; les actualiser avant toute affirmation sur leur comportement courant.
-4. Distinguer les classes de preuve. Une norme, un article scientifique, une documentation produit, du code source, un résultat de test et un rapport de model checking sont des types de preuve différents.
-5. Aucune adoption implicite. La présence dans ce registre signifie « pertinent à évaluer », pas « sélectionné », « obligatoire », « compatible » ou « implémenté ».
-6. Pas de bibliographie inventée. La discussion précédente mentionnait « Agent Package Manager », mais n'a pas conservé d'URL unique et vérifiée du projet. Il n'est volontairement pas cité comme produit identifié avant établissement de son identité exacte.
-7. Garder les liens près des affirmations. Les documents d'architecture doivent lier les sources qui étayent directement leurs affirmations et renvoyer ici pour la bibliographie plus large.
+5. Distinguer les classes de preuve. Une norme, un article scientifique, une documentation produit, du code source, un résultat de test et un rapport de model checking sont des types de preuve différents.
+6. Aucune adoption implicite. La présence dans ce registre signifie « pertinent à évaluer », pas « sélectionné », « obligatoire », « compatible » ou « implémenté ».
+7. Pas de bibliographie inventée. La discussion précédente mentionnait « Agent Package Manager », mais n'a pas conservé d'URL unique et vérifiée du projet. Il n'est volontairement pas cité comme produit identifié avant établissement de son identité exacte.
+8. Garder les liens près des affirmations. Les documents d'architecture doivent lier les sources qui étayent directement leurs affirmations et renvoyer ici pour la bibliographie plus large.
 
 
 <a id="r-94"></a>
 ### R-94 — Référentiels OMG de décision métier, motivation et processus
-- **Cité par :** aucun record actuel ne cite cette source candidate. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
+- **Cité par :** [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md), [reference integrity guide](reference-integrity.fr.md), [guide d'intégrité](reference-integrity.fr.md)
 - **Sources primaires :** [Catalogue des spécifications OMG](https://www.omg.org/specifications/) · [DMN 1.6](https://www.omg.org/spec/DMN/1.6/) · [DMN 1.7 Beta 1](https://www.omg.org/spec/DMN/1.7/Beta1) · [BPMN 2.0.2](https://www.omg.org/spec/BPMN/) · [CMMN 1.1](https://www.omg.org/spec/CMMN/1.1) · [Business Motivation Model 1.3](https://www.omg.org/spec/BMM/1.3/) · [SBVR 1.5](https://www.omg.org/spec/SBVR)
 - **Concepts pertinents :** exigences de décision, tables de décision et FEEL ; activités, événements et passerelles de processus ; gestion adaptative de cas ; objectifs métier et facteurs d'influence ; vocabulaires et règles métier formels.
 - **Utilité pour GovCheck :** spécifications primaires des candidats complémentaires relatifs à la logique décisionnelle, aux processus, à la gestion de cas, à la motivation et aux règles métier discutés dans le projet.
@@ -945,7 +965,7 @@
 
 <a id="r-95"></a>
 ### R-95 — Modèles OMG d'ingénierie, de risque, de test, d'exigences, de métriques et de provenance
-- **Cité par :** aucun record actuel ne cite cette source candidate. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
+- **Cité par :** [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
 - **Sources primaires :** [RAAML 1.1](https://www.omg.org/spec/RAAML/1.1) · [RAAML 1.2 Beta 1](https://www.omg.org/spec/RAAML/1.2/Beta1) · [SysML v2](https://www.omg.org/spec/SysML/2.0) · [Présentation de SysML v2](https://www.omg.org/sysml/sysmlv2/) · [UTP 2.3 Beta 1](https://www.omg.org/spec/UTP2) · [ReqIF 1.2](https://www.omg.org/spec/ReqIF/1.2) · [Structured Metrics Metamodel 1.2](https://www.omg.org/spec/SMM/1.2) · [PPMN 1.0](https://www.omg.org/spec/PPMN/)
 - **Concepts pertinents :** analyse structurée des risques et de la sécurité ; exigences, structure, comportement et vérification des systèmes ; spécification des tests fondée sur les modèles ; échange d'exigences ; définitions et résultats de mesure ; provenance des entités, activités et agents.
 - **Utilité pour GovCheck :** sources primaires des candidats couvrant les domaines d'ingénierie, y compris les artefacts de modèle et d'échange lisibles par machine lorsqu'ils sont publiés.
@@ -953,7 +973,7 @@
 
 <a id="r-96"></a>
 ### R-96 — ISO/IEC/IEEE 42010:2022, description d'architecture
-- **Cité par :** aucun record actuel ne cite cette source candidate. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
+- **Cité par :** [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
 - **Source primaire :** [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html)
 - **Concepts pertinents :** exigences relatives aux descriptions d'architecture, cadres de description, points de vue, types de modèles et conformité.
 - **Utilité pour GovCheck :** fondement normatif candidat pour structurer les descriptions d'architecture, préoccupations des parties prenantes, vues et points de vue.
@@ -961,7 +981,7 @@
 
 <a id="r-97"></a>
 ### R-97 — ISO/IEC/IEEE 29148, ingénierie des exigences
-- **Cité par :** aucun record actuel ne cite cette source candidate. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
+- **Cité par :** [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
 - **Sources primaires :** [ISO/IEC/IEEE DIS 29148, troisième édition (2026)](https://www.iso.org/standard/94091.html) · [ISO/IEC/IEEE 29148:2018](https://www.iso.org/standard/72089.html)
 - **Concepts pertinents :** processus du cycle de vie d'ingénierie des exigences, éléments d'information requis et leur contenu, recommandations pour les activités d'exigences des cycles de vie systèmes/logiciels.
 - **Utilité pour GovCheck :** référence candidate de processus et d'éléments d'information pour la gouvernance et la traçabilité des exigences.
@@ -969,7 +989,7 @@
 
 <a id="r-98"></a>
 ### R-98 — ISO/IEC 25010:2023, modèle de qualité du produit
-- **Cité par :** aucun record actuel ne cite cette source candidate. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
+- **Cité par :** [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
 - **Source primaire :** [ISO/IEC 25010:2023](https://www.iso.org/standard/78176.html)
 - **Concepts pertinents :** caractéristiques et sous-caractéristiques de qualité utilisées pour spécifier, mesurer et évaluer la qualité des produits TIC et logiciels.
 - **Utilité pour GovCheck :** vocabulaire partagé candidat pour les exigences de qualité, objectifs de test, critères d'évaluation et planification des mesures.
@@ -977,7 +997,7 @@
 
 <a id="r-99"></a>
 ### R-99 — Spécification SPDX
-- **Cité par :** aucun record actuel ne cite cette source candidate. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
+- **Cité par :** [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
 - **Source primaire :** [Catalogue des spécifications SPDX](https://spdx.dev/use/specifications/)
 - **Concepts pertinents :** représentation normalisée lisible par machine des composants logiciels, paquets, fichiers, relations, licences et autres métadonnées de chaîne d'approvisionnement. Le catalogue identifie SPDX 3.0 comme version courante à la date de l'instantané.
 - **Utilité pour GovCheck :** format natif candidat pour les SBOM et les métadonnées de licences/chaîne d'approvisionnement.
@@ -985,24 +1005,15 @@
 
 <a id="r-100"></a>
 ### R-100 — Spécification CycloneDX
-- **Cité par :** aucun record actuel ne cite cette source candidate. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
+- **Cité par :** [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md), [reference integrity guide](reference-integrity.fr.md), [guide d'intégrité](reference-integrity.fr.md)
 - **Source primaire :** [Vue d'ensemble de la spécification CycloneDX](https://cyclonedx.org/specification/overview/)
 - **Concepts pertinents :** modèle extensible de chaîne d'approvisionnement couvrant composants logiciels/matériels, services, dépendances, actifs cryptographiques, configurations opérationnelles et métadonnées ; représentations JSON, XML et Protocol Buffers.
 - **Utilité pour GovCheck :** format d'échange candidat pour les SBOM et les informations plus larges de chaîne d'approvisionnement, à évaluer avec SPDX selon les besoins réels.
 - **Limite :** la validité du format ne prouve ni l'exhaustivité de l'inventaire, ni l'intégrité des composants, ni l'absence de vulnérabilités, ni une provenance de build fiable. Épingler la version et le schéma exacts.
 
-<a id="r-102"></a>
-### R-102 — Famille W3C PROV
-- **Cité par :** aucun record actuel ne cite cette source candidate. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
-- **Source primaire :** [Vue d'ensemble W3C PROV](https://www.w3.org/TR/prov-overview/)
-- **Concepts pertinents :** famille de modèles de provenance interopérables couvrant entités, activités, agents et relations de dérivation/attribution, avec modèle de données, ontologie, contraintes et spécifications de sérialisation.
-- **Utilité pour GovCheck :** vocabulaire et famille de représentations candidates pour la provenance des décisions, sources, artefacts générés, observations et preuves.
-- **Limite :** PROV enregistre des relations de provenance ; il n'établit ni vérité, ni admissibilité, ni intégrité, ni suffisance des informations enregistrées, et ne fournit pas d'autorité de gouvernance du dépôt.
-
-
 <a id="r-103"></a>
 ### R-103 — OpenChain : ISO/IEC 5230 et ISO/IEC 18974
-- **Cité par :** aucun record actuel ne cite cette source candidate. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
+- **Cité par :** [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md), [reference integrity guide](reference-integrity.fr.md), [guide d'intégrité](reference-integrity.fr.md)
 - **Sources primaires :** [ISO/IEC 5230:2020 — spécification OpenChain](https://www.iso.org/standard/81039.html) · [ISO/IEC 18974:2023 — spécification OpenChain d'assurance de sécurité](https://www.iso.org/standard/86450.html) · [Normes et guide d'adoption OpenChain](https://openchainproject.org/get-started)
 - **Concepts pertinents :** exigences organisationnelles relatives aux programmes de conformité des licences open source (5230) et d'assurance de sécurité open source (18974), notamment politique, périmètre, rôles, processus et éléments de vérification conservés.
 - **Utilité pour GovCheck :** normes candidates de processus et d'organisation pour les capacités de conformité open source et d'assurance de sécurité open source.
@@ -1011,7 +1022,7 @@
 
 <a id="r-104"></a>
 ### R-104 — Formats d'instructions pour agents et workflows pilotés par les spécifications
-- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
 - **Sources primaires :** [Format ouvert AGENTS.md](https://agents.md/) · [Référence des instructions personnalisées de VS Code](https://code.visualstudio.com/docs/agents/reference/custom-instructions-reference) · [Sécurité du développement assisté par IA dans VS Code](https://code.visualstudio.com/docs/agents/run/security) · [Hooks d'agents dans VS Code](https://code.visualstudio.com/docs/agent-customization/hooks) · [Approbations et permissions dans VS Code](https://code.visualstudio.com/docs/agents/run/approvals) · [Instructions de projet et prise en charge d'AGENTS.md dans Claude Code](https://code.claude.com/docs/en/memory) · [Guide Codex sur les workflows de développement](https://developers.openai.com/cookbook/examples/codex/iterating-development-workflows-with-codex) · [Dépôt GitHub Spec Kit](https://github.com/github/spec-kit) · [Documentation GitHub Spec Kit](https://github.github.com/spec-kit/)
 - **Concepts pertinents :** instructions d'agent partagées au niveau du dépôt ; règles de découverte et de chargement propres à chaque environnement ; consignes de projet et règles ciblées par chemin ; workflows pilotés par les spécifications produisant plans, tâches et résultats révisables.
 - **Utilité pour GovCheck :** conserve les options d'instructions inter-agents et de workflows pilotés par les spécifications évoquées pour le bootstrap des dépôts et l'interopérabilité des agents.
@@ -1029,7 +1040,7 @@
 
 <a id="r-106"></a>
 ### R-106 — Recommandations OWASP pour la sécurité des agents IA et de MCP
-- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
 - **Source primaire :** [OWASP DevSecOps Guideline — AI Agent and MCP Security](https://owasp.github.io/DevSecOpsGuideline/2-Process/2-2-Develop/2-2-5-AI-Agent-and-MCP-Security/) · [Sécurité OWASP des IDE et du développement assisté par IA](https://owasp.github.io/DevSecOpsGuideline/2-Process/2-2-Develop/2-2-2-IDE-and-AI-assisted-development/)
 - **Concepts pertinents :** politiques versionnées et testables pour les permissions des agents ; autorisation à une passerelle ou un proxy selon l'identité, l'outil et ses arguments ; permissions refusées par défaut ; identités à portée limitée et durée courte ; sandboxing et listes d'autorisation réseau ; configuration d'agent revue comme du code ; validation de configuration et journalisation d'audit.
 - **Utilité pour GovCheck :** étaye la distinction entre les instructions en langage naturel destinées aux agents et les contrôles effectivement appliqués aux frontières des outils, des passerelles, des identités et du système d'exploitation.
@@ -1037,8 +1048,332 @@
 
 <a id="r-107"></a>
 ### R-107 — Emplacement et syntaxe des workflows GitHub Actions
-- **Cité par :** [ADR 0003](decisions/0003-two-level-governance.fr.md)
+- **Cité par :** [ADR 0003](decisions/0003-two-level-governance.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
 - **Sources primaires :** [Syntaxe des workflows GitHub Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax) · [Concepts des workflows GitHub Actions](https://docs.github.com/en/actions/concepts/workflows-and-actions/workflows)
 - **Concepts pertinents :** les définitions de workflows GitHub Actions sont des fichiers YAML placés dans le répertoire `.github/workflows/` à la racine du dépôt ; GitHub découvre les workflows à cet emplacement et les évalue en fonction des événements du dépôt.
 - **Utilité pour GovCheck :** étaye la contrainte de l'ADR 0003 selon laquelle le contenu réutilisable du package produit ne peut pas, à lui seul, déplacer un workflow GitHub Actions : le processus de bootstrap/synchronisation doit matérialiser le workflow au chemin requis à la racine du dépôt.
 - **Limite :** il s'agit d'une contrainte de la plateforme GitHub Actions, pas d'une exigence générale de CI/CD. Elle ne démontre ni que le workflow est activé, fiable, protégé contre les contournements, correctement configuré ou exécuté avec succès.
+
+
+<a id="r-108"></a>
+### R-108 — GUAC : Graph for Understanding Artifact Composition
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
+- **Sources primaires :** [Projet GUAC de l'OpenSSF](https://openssf.org/guac/) · [Dépôt source GUAC](https://github.com/guacsec/guac) · [Documentation GUAC](https://docs.guac.sh/guac/)
+- **Concepts pertinents :** agrégation et normalisation de métadonnées de chaîne d'approvisionnement logicielle, notamment SBOM, attestations, vulnérabilités, artefacts, paquets et relations dans un graphe interrogeable.
+- **Utilité pour GovCheck :** conserve la comparaison de GUAC dans l'étude initiale comme exemple de couche de synthèse au-dessus d'éléments de preuve hétérogènes de la chaîne d'approvisionnement.
+- **Limite :** GUAC est un projet OpenSSF en évolution, pas une autorité de gouvernance des dépôts ni un moteur de preuve. Un graphe de métadonnées fournies n'établit ni leur exhaustivité, ni leur véracité, ni l'authenticité de leur provenance, ni l'efficacité des contrôles.
+
+<a id="r-109"></a>
+### R-109 — Spécification OpenSSF Security Insights
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [comparaison des systèmes](research/comparative-governance-landscape.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md), 
+- **Sources primaires :** [Spécification Security Insights](https://security-insights.openssf.org/) · [Documentation du schéma](https://security-insights.openssf.org/schema.html) · [Dépôt source officiel](https://github.com/ossf/security-insights)
+- **Concepts pertinents :** déclaration YAML lisible par machine des pratiques de sécurité d'un projet, des métadonnées de dépôt, des modalités de signalement des vulnérabilités, des politiques et des ressources justificatives.
+- **Utilité pour GovCheck :** conserve le format étudié comme candidat pour des déclarations interopérables de sécurité des projets et des données d'entrée pour l'évaluation.
+- **Limite :** le fichier constitue une déclaration des mainteneurs à un instant donné, associée à un commit ou à une release. La validité du schéma et l'auto-déclaration ne vérifient pas indépendamment l'efficacité ou l'application actuelle des pratiques déclarées.
+
+<a id="r-110"></a>
+### R-110 — Référentiel OpenSSF Open Source Project Security (OSPS) Baseline
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [comparaison des systèmes](research/comparative-governance-landscape.fr.md), 
+- **Sources primaires :** [OSPS Baseline](https://baseline.openssf.org/) · [Dépôt source officiel](https://github.com/ossf/security-baseline)
+- **Concepts pertinents :** référentiel versionné d'exigences de sécurité actionnables pour les projets open source, organisé par maturité, familles de contrôles et définitions lisibles par machine.
+- **Utilité pour GovCheck :** conserve ce référentiel comme source candidate d'exigences de sécurité réutilisables et de critères d'évaluation au niveau d'un projet.
+- **Limite :** il s'agit d'un référentiel centré sur la sécurité, pas d'un modèle complet de gouvernance du cycle de vie. Ses niveaux de maturité et ses contrôles ne sont pas des niveaux universels de GovCheck ; leur présence ne signifie pas que GovCheck les adopte ou les impose. Épingler la version exacte lors d'une évaluation de conformité.
+
+<a id="r-111"></a>
+### R-111 — Programme OpenSSF Best Practices Badge
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
+- **Sources primaires :** [Programme OpenSSF Best Practices Badge](https://openssf.org/projects/best-practices-badge/) · [Service Best Practices Badge](https://bestpractices.dev/)
+- **Concepts pertinents :** auto-évaluation volontaire des pratiques des projets open source, notamment gouvernance, contribution, tests, documentation, sécurité et releases ; le programme comprend des critères distincts de la série Metal et de l'OSPS Baseline.
+- **Utilité pour GovCheck :** conserve le programme de badge étudié comme checklist réutilisable et vocabulaire externe d'évaluation des pratiques d'un dépôt.
+- **Limite :** le badge n'est ni une preuve formelle, ni un audit indépendant de chaque affirmation, ni une spécification complète de gouvernance. L'auto-certification et le niveau du badge ne doivent pas être confondus avec une conformité vérifiée ou une acceptation GovCheck.
+
+
+<a id="r-112"></a>
+### R-112 — gittuf : sécurité de dépôts Git indépendante de la plateforme
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [comparaison des systèmes](research/comparative-governance-landscape.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md), 
+- **Sources primaires :** [Documentation du projet gittuf](https://gittuf.dev/) · [Dépôt source gittuf](https://github.com/gittuf/gittuf) · [Page du projet OpenSSF](https://openssf.org/projects/gittuf/)
+- **Concepts pertinents :** métadonnées de politique résidant dans le dépôt et authentifiées cryptographiquement ; racine de confiance et administrateurs délégués ; autorisation et application de politiques vérifiables indépendamment sur les changements Git.
+- **Utilité pour GovCheck :** comparateur direct et mécanisme d'application potentiellement complémentaire pour les dépôts Git, notamment lorsque la vérification des politiques doit être indépendante de la forge.
+- **Limite :** gittuf est spécifique à Git et encore en bêta ; il ne fournit pas la gouvernance générale du cycle de vie, le dossier d'assurance, les profils de projet ni les sémantiques Pijul de GovCheck. Sa politique ne remplace pas le modèle canonique de gouvernance GovCheck.
+
+<a id="r-113"></a>
+### R-113 — SLSA Source Track
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [comparaison des systèmes](research/comparative-governance-landscape.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md), 
+- **Source primaire :** [Tracks SLSA v1.2](https://slsa.dev/spec/v1.2/tracks)
+- **Concepts pertinents :** confiance croissante dans la création et l'intégrité des révisions de code source, avec des attestations que les consommateurs peuvent évaluer par rapport aux attentes définies par le propriétaire du dépôt.
+- **Utilité pour GovCheck :** référence complémentaire pour la provenance du code source et l'assurance des systèmes de contrôle de version, distincte du SLSA Build Track.
+- **Limite :** le Source Track ne définit ni métamodèle général de gouvernance de dépôt, ni cycle de vie des changements, ni modèle d'autorité/délégation, ni preuve de correction sémantique. Ses garanties dépendent du processus et des contrôles techniques définis par le dépôt.
+
+<a id="r-114"></a>
+### R-114 — Modèle d'ingénierie GRC Gemara
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [comparaison des systèmes](research/comparative-governance-landscape.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md), 
+- **Sources primaires :** [Projet Gemara de l'OpenSSF](https://openssf.org/projects/gemara/) · [Modèle et schémas Gemara](https://github.com/ossf/gemara)
+- **Concepts pertinents :** modèle catégoriel des activités de gouvernance, de risque et de conformité et schémas interopérables pour catalogues de contrôles, évaluations et éléments de preuve.
+- **Utilité pour GovCheck :** vocabulaire externe candidat pour les contrôles et les preuves, et modèle d'interopérabilité à comparer pour séparer définition des contrôles, évaluation et production de preuves.
+- **Limite :** Gemara n'est pas automatiquement l'autorité canonique de GovCheck ni un modèle complet du cycle de vie des changements de dépôt. Toute correspondance doit préserver l'autorité, l'applicabilité, les exceptions, l'identité des changements indépendante du VCS et les distinctions d'assurance propres à GovCheck.
+
+<a id="r-115"></a>
+### R-115 — Exigences de soumission de Gerrit Code Review
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [comparaison des systèmes](research/comparative-governance-landscape.fr.md), 
+- **Sources primaires :** [Documentation des exigences de soumission Gerrit](https://gerrit-review.googlesource.com/Documentation/config-submit-requirements.html) · [Projet Gerrit](https://www.gerritcodereview.com/)
+- **Concepts pertinents :** prédicats configurables déterminant quand un changement relu peut être soumis, notamment votes, labels, résultats CI et règles fournies par des plugins.
+- **Utilité pour GovCheck :** précédent industriel de conditions d'acceptation programmables à la frontière d'intégration d'un changement.
+- **Limite :** Gerrit est une plateforme de revue de code et de collaboration, pas une autorité de gouvernance indépendante de la forge. Les anciennes règles Prolog de soumission sont dépréciées au profit des submit requirements ; ne pas présenter Prolog comme le mécanisme actuellement recommandé.
+
+<a id="r-116"></a>
+### R-116 — OpenSSF Minder
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Sources primaires :** [Projet OpenSSF Minder](https://openssf.org/projects/minder/) · [Dépôt source Minder](https://github.com/ossf/minder)
+- **Concepts pertinents :** enrôlement de dépôts, contrôles de posture de sécurité, configuration de politiques, alertes et remédiations automatisées sélectionnées sur des dépôts et artefacts.
+- **Utilité pour GovCheck :** projet adjacent et source potentielle de contrôles de sécurité de dépôt réutilisables ou de modèles d'intégration.
+- **Limite :** Minder se concentre sur la posture de sécurité et les risques de chaîne d'approvisionnement, pas sur les sémantiques complètes du cycle de vie et de l'assurance de dépôts logiciels arbitraires. Ses résultats ne constituent ni preuve formelle ni acceptation GovCheck.
+
+<a id="r-117"></a>
+### R-117 — OpenSSF Allstar
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Sources primaires :** [Projet OpenSSF Allstar](https://openssf.org/allstar/) · [Dépôt source Allstar](https://github.com/ossf/allstar)
+- **Concepts pertinents :** contrôles continus des paramètres de dépôts et d'organisations GitHub par rapport à des politiques de sécurité déclarées, avec signalement par issue et remédiations sélectionnées.
+- **Utilité pour GovCheck :** exemple adjacent de surveillance automatisée de la configuration des dépôts et d'action corrective.
+- **Limite :** Allstar est spécifique à GitHub. L'application GitHub hébergée par OpenSSF a été retirée ; l'utilisation actuelle exige une exploitation auto-hébergée (par exemple comme GitHub Action ou service). Ce n'est ni une autorité de gouvernance portable ni un évaluateur général d'acceptation.
+
+<a id="r-118"></a>
+### R-118 — Tests de politiques avec Conftest
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [comparaison des systèmes](research/comparative-governance-landscape.fr.md), 
+- **Sources primaires :** [Documentation Conftest](https://www.conftest.dev/) · [Dépôt source Conftest](https://github.com/open-policy-agent/conftest) · [Documentation Open Policy Agent](https://www.openpolicyagent.org/docs)
+- **Concepts pertinents :** test de données et configurations structurées au moyen de politiques écrites en Rego, notamment pour l'infrastructure et les configurations de déploiement.
+- **Utilité pour GovCheck :** adaptateur candidat ou exécuteur de tests réutilisable lorsque les contrôles déclarés d'un projet portent sur des configurations structurées.
+- **Limite :** Conftest évalue des données fournies par rapport à des politiques Rego ; il ne définit pas la signification normative complète, le cycle de vie, l'autorité, la provenance des preuves ou le modèle d'acceptation d'un dépôt.
+
+<a id="r-119"></a>
+### R-119 — Langage de configuration et de contraintes CUE
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Sources primaires :** [Documentation CUE](https://cuelang.org/docs/) · [Dépôt source CUE](https://github.com/cue-lang/cue)
+- **Concepts pertinents :** langage unifié de données et de contraintes pour définir, valider, composer et générer des configurations et données structurées.
+- **Utilité pour GovCheck :** candidat pour les données canoniques riches en schémas et contraintes ; à comparer à JSON Schema, CEL et aux approches alignées sur Gemara.
+- **Limite :** CUE est un choix de langage et d'outillage, pas un métamodèle de gouvernance ni un modèle d'autorité. Son emploi doit préserver les distinctions sémantiques entre règles, preuves, model checking, décisions et risques acceptés.
+
+<a id="r-120"></a>
+### R-120 — Cadre d'évaluation de sécurité et de conformité OpenSSF Privateer
+- **Cité par :** [0016](architecture/0016-writ-privateer-assessment.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md), [comparaison des systèmes](research/comparative-governance-landscape.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md), 
+- **Sources primaires :** [Annonce et présentation du projet par l'OpenSSF](https://openssf.org/blog/2026/10/13/introducing-privateer-ai-assisted-security-compliance-evaluation-framework-joins-the-openssf-sandbox/) · [Documentation Privateer](https://privateerproj.com/)
+- **Concepts pertinents :** évaluation par plugins du code source, de la configuration des dépôts et des systèmes déployés par rapport à des catalogues de contrôles maintenus séparément ; contrôles déterministes, revue facultative de preuves assistée par IA et résultats d'évaluation structurés.
+- **Utilité pour GovCheck :** comparateur direct et évaluateur potentiellement complémentaire de contrôles de sécurité/conformité, notamment pour la séparation entre catalogues de contrôles et plugins d'évaluation.
+- **Limite :** Privateer évalue des contrôles ; ce n'est ni l'autorité canonique de gouvernance de GovCheck ni un moteur complet de cycle de vie des changements. Une revue assistée par IA n'est pas une preuve ; les constats non résolus doivent rester incertains ou nécessiter une revue humaine. Ce projet est distinct de la distribution de l'agent de programmation Pi cataloguée en R-19.
+
+
+<a id="r-121"></a>
+### R-121 — Attestation récapitulative de vérification SLSA (VSA)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [comparaison des systèmes](research/comparative-governance-landscape.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md), 
+- **Source primaire :** [Verification Summary Attestation SLSA v1.2](https://slsa.dev/spec/v1.2/verification_summary)
+- **Concepts pertinents :** attestation in-toto signée résumant l'évaluation d'un artefact par un vérificateur selon une politique et indiquant résultat, niveaux SLSA vérifiés, identité du vérificateur et URI de ressource.
+- **Utilité pour GovCheck :** format d'attestation compact candidat pour communiquer des résultats d'évaluation vérifiables indépendamment sans exiger de chaque consommateur qu'il rejoue tous les contrôles sous-jacents.
+- **Limite :** une VSA transfère la confiance au vérificateur ; elle ne protège pas contre un vérificateur compromis ou malveillant. Les consommateurs doivent vérifier signature, digest du sujet, type de prédicat, identité du vérificateur, ressource visée, résultat et niveau exigé. Une VSA n'est ni une preuve de théorème ni un certificat universel de conformité.
+
+<a id="r-122"></a>
+### R-122 — Signature d'artefacts et transparence avec Sigstore
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [comparaison des systèmes](research/comparative-governance-landscape.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md), 
+- **Sources primaires :** [Documentation Sigstore](https://docs.sigstore.dev/) · [Signature et vérification avec Cosign](https://docs.sigstore.dev/cosign/signing/overview/) · [Organisation source Sigstore](https://github.com/sigstore)
+- **Concepts pertinents :** signatures d'artefacts liées à une identité au moyen de certificats de courte durée, enregistrement dans un journal de transparence et bundles vérifiables pour artefacts logiciels et attestations.
+- **Utilité pour GovCheck :** mécanisme complémentaire candidat pour signer et vérifier rapports d'assurance, attestations et artefacts de release.
+- **Limite :** une signature valide établit l'intégrité et une identité de signature sous une racine de confiance configurée ; elle n'établit ni la vérité de l'affirmation signée, ni la correction de la politique, ni la suffisance des preuves. Fournisseur d'identité, racine de confiance, journal de transparence et politique de vérification restent des dépendances de confiance explicites.
+
+<a id="r-123"></a>
+### R-123 — Langage formel de spécification contractuelle Symboleo
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
+- **Source primaire :** [Parvizimosaed et al., « Specification and analysis of legal contracts with Symboleo » (2022)](https://doi.org/10.1007/s10270-022-01053-6)
+- **Concepts pertinents :** spécification formelle de contrats comme ensembles d'obligations et de pouvoirs, avec sémantique logique sur des statecharts décrivant la durée de vie des contrats, obligations et pouvoirs.
+- **Utilité pour GovCheck :** comparateur de recherche pour représenter des engagements normatifs, pouvoirs et exécutions conformes dans un langage formel structuré.
+- **Limite :** Symboleo cible les contrats juridiques/commerciaux, pas la gouvernance de dépôts logiciels. Son traitement des permissions, autorités, exceptions et rôles institutionnels doit être évalué avant toute réutilisation conceptuelle ; ce n'est pas un langage adopté par GovCheck.
+
+<a id="r-124"></a>
+### R-124 — Langage Catala de programmation littéraire des textes législatifs
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Sources primaires :** [Dépôt du langage Catala](https://github.com/CatalaLang/catala) · [Livre et documentation Catala](https://book.catala-lang.org/)
+- **Concepts pertinents :** langage spécifique permettant de dériver des algorithmes à partir de textes législatifs, de relier dispositions sources et définitions exécutables, et de générer des représentations lisibles par des experts.
+- **Utilité pour GovCheck :** comparateur pour la traçabilité entre sources normatives en langage naturel, règles structurées, interprétation exécutable et revue par des experts du domaine.
+- **Limite :** Catala est conçu pour la législation socio-fiscale et ne définit ni gouvernance de dépôts logiciels, ni autorité des contributeurs, ni acceptation des changements. Ses garanties et sa sémantique formelle sont propres à son domaine et ne doivent pas être généralisées sans analyse.
+
+<a id="r-125"></a>
+### R-125 — Event Calculus
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Sources primaires :** [Shanahan, « The Event Calculus Explained »](https://www.doc.ic.ac.uk/~mpsha/ECExplained.pdf) · [Formalisation tensorielle publiée à IJCAI 2024](https://doi.org/10.24963/ijcai.2024/397)
+- **Concepts pertinents :** représentation logique des événements, actions et propriétés variant dans le temps (fluents), y compris le raisonnement sur les effets, la concurrence et les changements temporels.
+- **Utilité pour GovCheck :** formalisme candidat à comparer pour le raisonnement temporel sur les événements de gouvernance et les transitions du cycle de vie.
+- **Limite :** Event Calculus désigne une famille de formalisations avec variantes et hypothèses distinctes. Ce n'est ni un modèle prêt à l'emploi du cycle de vie d'un dépôt, ni un système d'autorisation ou une politique d'acceptation ; une variante et une sémantique concrètes devraient être choisies.
+
+<a id="r-126"></a>
+### R-126 — Vérification à l'exécution et surveillance des traces
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
+- **Sources primaires :** [Taleb, Hallé et Khoury, « Uncertainty in runtime verification: A survey » (2023)](https://doi.org/10.1016/j.cosrev.2023.100594) · [Havelund, Reger et Roșu, « Runtime Verification: Past Experiences and Future Projections »](https://havelund.com/Publications/lncs-10000.pdf)
+- **Concepts pertinents :** surveillance formelle de traces d'exécution observées par rapport à des spécifications temporelles ; instrumentation et collecte d'événements ; verdicts en présence d'observations incomplètes, imprécises ou incertaines.
+- **Utilité pour GovCheck :** méthode candidate pour évaluer des propriétés temporelles du cycle de vie à partir d'événements de gouvernance enregistrés, en explicitant l'observabilité et l'incertitude des traces.
+- **Limite :** la vérification à l'exécution évalue les traces observées, pas toutes les exécutions possibles. Des événements manquants, retardés, ambigus ou non fiables peuvent rendre le verdict indéterminé ; une preuve de surveillance n'est ni du model checking ni une preuve de théorème.
+
+
+
+<a id="r-127"></a>
+### R-127 — GitHub CODEOWNERS et revue obligatoire par les propriétaires de code
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
+- **Source primaire :** [Documentation GitHub : About code owners](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners)
+- **Concepts pertinents :** attribution de chemins à des personnes ou équipes responsables ; demandes automatiques de revue ; possibilité d'exiger l'approbation d'un propriétaire de code via la protection de branche.
+- **Utilité pour GovCheck :** exemple propre à une plateforme d'attribution de responsabilité par périmètre de fichiers et d'orientation des revues, pertinent pour la séparation des tâches et l'acceptation tenant compte des propriétaires.
+- **Limite :** CODEOWNERS est une fonctionnalité GitHub, pas un modèle d'autorité indépendant des forges. L'orientation des revues ne constitue pas à elle seule une approbation indépendante, une preuve de compétence du relecteur ni un contrôle complet de séparation des tâches ; les propriétaires doivent disposer d'un accès en écriture et l'approbation d'un seul propriétaire correspondant peut suffire.
+
+
+<a id="r-128"></a>
+### R-128 — Common Expression Language (CEL)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [comparaison des systèmes](research/comparative-governance-landscape.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md), 
+- **Sources primaires :** [Présentation et définition du langage CEL](https://cel.dev/overview/cel-overview) · [Dépôt de spécification CEL](https://github.com/cel-expr/cel-spec)
+- **Concepts pertinents :** langage d'expression portable, sans effets de bord et à terminaison garantie, conçu pour l'intégration et l'évaluation de politiques ; expressions typées avec AST défini et représentation sérialisée interopérable.
+- **Utilité pour GovCheck :** langage d'expression candidat pour évaluer des prédicats bornés de gouvernance de dépôt, à comparer à Rego, Cedar, Prolog et CUE.
+- **Limite :** CEL est un langage d'expression, pas un métamodèle de gouvernance, un modèle d'autorité ou un format de preuve. L'application hôte définit les variables/fonctions disponibles et les frontières de confiance ; la réussite de l'évaluation n'établit pas que les entrées sont complètes ou fiables.
+
+
+<a id="r-129"></a>
+### R-129 — Argumentation éliminative pour la confiance dans les dossiers d'assurance
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [comparaison des systèmes](research/comparative-governance-landscape.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md), 
+- **Source primaire :** [Goodenough, Weinstock et Klein, « Eliminative Argumentation: A Basis for Arguing Confidence in System Properties » (CMU/SEI-2015-TR-005)](https://insights.sei.cmu.edu/library/eliminative-argumentation-a-basis-for-arguing-confidence-in-system-properties/)
+- **Concepts pertinents :** évaluation de la confiance dans les arguments d'un dossier d'assurance par l'identification et l'élimination d'explications alternatives et de contre-arguments, plutôt que par la seule accumulation d'éléments favorables.
+- **Utilité pour GovCheck :** complète Assurance 2.0 (R-71) et éclaire le traitement des défaiteurs, contre-preuves et niveaux de confiance des arguments.
+- **Limite :** il s'agit d'une méthode d'argumentation d'assurance, pas d'une politique de dépôt, d'un schéma de preuve ni d'un algorithme numérique de confiance. Les jugements de confiance dépendent du périmètre de l'argument, des hypothèses et de la qualité des alternatives examinées.
+
+<a id="r-130"></a>
+### R-130 — Moteur de politiques Kyverno
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [comparaison des systèmes](research/comparative-governance-landscape.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md), 
+- **Sources primaires :** [Documentation Kyverno](https://kyverno.io/docs/) · [Vue d'ensemble des types de politiques](https://kyverno.io/docs/policy-types/overview/) · [Dépôt source Kyverno](https://github.com/kyverno/kyverno)
+- **Concepts pertinents :** validation déclarative de politiques, mutation, génération, suppression et vérification d'images pour ressources Kubernetes et charges JSON prises en charge ; les types de politiques actuels utilisent CEL.
+- **Utilité pour GovCheck :** comparateur adjacent de policy-as-code et de contrôle d'admission ; pertinent pour l'interaction entre contrôles déclaratifs, évaluateurs et points d'application.
+- **Limite :** Kyverno est principalement un moteur de politiques Kubernetes, pas un métamodèle général de gouvernance de dépôt ni une autorité d'acceptation indépendante des forges. L'évaluation dépend du contexte de ressource fourni et de l'intégration au cluster.
+
+<a id="r-131"></a>
+### R-131 — Règles et politiques d'approbation des merge requests GitLab
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [comparaison des systèmes](research/comparative-governance-landscape.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md), 
+- **Sources primaires :** [Règles d'approbation des merge requests GitLab](https://docs.gitlab.com/user/project/merge_requests/approvals/rules/) · [Paramètres d'approbation](https://docs.gitlab.com/user/project/merge_requests/approvals/settings/) · [Politiques d'approbation des merge requests](https://docs.gitlab.com/user/application_security/policies/merge_request_approval_policies/)
+- **Concepts pertinents :** nombre d'approbations obligatoires configurable, approbateurs éligibles, approbation des propriétaires de code, prévention de l'auto-approbation par l'auteur/committer et exigences d'approbation pilotées par des politiques.
+- **Utilité pour GovCheck :** comparateur propre à une forge pour la séparation des tâches et les conditions programmables d'acceptation à la frontière de fusion.
+- **Limite :** le comportement et la disponibilité dépendent du niveau GitLab, des paramètres projet/groupe/instance et des droits de surcharge. Ces contrôles ne fournissent pas un modèle d'autorité indépendant des forges et n'établissent pas indépendamment la compétence du relecteur.
+
+<a id="r-132"></a>
+### R-132 — Systèmes de gating de fusion Zuul et Bors
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [comparaison des systèmes](research/comparative-governance-landscape.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md), 
+- **Sources primaires :** [Documentation du gating de projet Zuul](https://zuul-ci.org/docs/zuul/latest/gating.html) · [Présentation de Zuul](https://zuul-ci.org/docs/zuul/latest/about.html) · [Documentation Bors-NG](https://bors.tech/documentation/index.html) · [Conception de Rust Bors](https://github.com/rust-lang/bors/blob/main/docs/design.md)
+- **Concepts pertinents :** test d'états futurs proposés du dépôt, regroupement et intégration tenant compte des dépendances, branches de staging et files de fusion pour éviter les courses d'intégration et les ruptures de la branche principale.
+- **Utilité pour GovCheck :** comparateurs industriels de workflows d'acceptation testant le candidat exact d'intégration plutôt que seulement la tête isolée d'une pull request.
+- **Limite :** Zuul et Bors sont des systèmes d'orchestration CI/intégration, pas des autorités normatives de gouvernance ni des moteurs de dossier d'assurance. Bors-NG est archivé et son instance publique est en cours de retrait ; le distinguer du projet Rust Bors plus récent et des files de fusion natives des plateformes.
+
+<a id="r-133"></a>
+### R-133 — Théories formelles des patches : Darcs, Camp et théorie homotopique des patches
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
+- **Sources primaires :** [Théorie des patches de Darcs](https://darcs.net/Theory) · [Jacobson, « A Formalization of Darcs Patch Theory Using Inverse Semigroups »](https://ww3.math.ucla.edu/camreport/cam09-83.pdf) · [Lynagh, « Camp Patch Theory »](https://archives.haskell.org/projects.haskell.org/camp/files/theory.pdf) · [Angiuli et al., « Homotopical Patch Theory »](https://doi.org/10.1017/S0956796816000198)
+- **Concepts pertinents :** commutation, inversion et conflits de patches ; représentations algébriques et higher-inductive du changement ; conditions sous lesquelles la réorganisation des patches préserve le sens du dépôt.
+- **Utilité pour GovCheck :** fondement de recherche pour traiter les sémantiques de patches de Pijul/Darcs comme distinctes des sémantiques Git de snapshots/commits et concevoir des adaptateurs VCS sans aplatir leur sens.
+- **Limite :** ces travaux concernent différents systèmes de patches et modèles formels ; ils n'établissent pas que leurs sémantiques se transfèrent directement à Pijul ou Git. Un adaptateur GovCheck exige un mapping explicite et des tests de conformité face au comportement réel de chaque VCS.
+
+
+<a id="r-134"></a>
+### R-134 — Standard Goal Structuring Notation (GSN)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [comparaison des systèmes](research/comparative-governance-landscape.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md), 
+- **Sources primaires :** [Groupe de travail GSN et standard actuel (version 3)](https://www.scsc.uk/gsn-standard) · [Notice de publication du GSN Community Standard Version 3](https://mail.scsc.uk/resources/citation_r1386.html) · [Métamodèle GSN et correspondance SACM](https://www.scsc.uk/gsn-meta-model)
+- **Concepts pertinents :** arguments structurés graphiquement de sécurité/assurance utilisant buts, stratégies, solutions/éléments de preuve, contextes, hypothèses et justifications ; structures d'argument modulaires et métamodèle étendant SACM.
+- **Utilité pour GovCheck :** notation candidate de dossier d'assurance et référence d'interopérabilité à comparer à SACM et Assurance 2.0.
+- **Limite :** GSN structure un argument ; il ne rend pas l'argument vrai et ne garantit pas la suffisance des preuves. La notation et les recommandations du standard doivent être distinguées de la correspondance entre GSN et le métamodèle SACM. GovCheck doit préserver défaiteurs, contre-preuves, incertitude et provenance des preuves plutôt que d'assimiler un diagramme bien formé à une assurance valide.
+
+
+<a id="r-135"></a>
+### R-135 — NIST SP 800-192, vérification et tests des politiques et modèles de contrôle d'accès
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
+- **Sources primaires :** [Publication NIST SP 800-192](https://csrc.nist.gov/pubs/sp/800/192/final) · [DOI](https://doi.org/10.6028/NIST.SP.800-192)
+- **Concepts pertinents :** vérification et tests des politiques et modèles de contrôle d'accès ; détection des incohérences, incomplétudes, permissions involontaires et écarts entre intention de politique et implémentation.
+- **Utilité pour GovCheck :** source directe du principe selon lequel une politique exécutable n'est pas nécessairement une politique correcte. Elle étaye la vérification des modèles de politique et de leur correspondance avec les exigences avant de se fier à leur implémentation d'application.
+- **Limite :** la publication porte sur les politiques et modèles de contrôle d'accès. Elle ne définit ni métamodèle général de gouvernance ni processus complet de cycle de vie/assurance ; les techniques doivent être choisies selon le langage de politique et le contexte du système.
+
+
+<a id="r-136"></a>
+### R-136 — Suivi de la révision source des traductions MDN
+- **Cité par :** [Recherche multilingue de l'issue 0033](research/multilingual-documentation-practices.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
+- **Sources primaires :** [Dépôt MDN translated-content](https://github.com/mdn/translated-content) · [Discussion sur l10n.sourceCommit](https://github.com/orgs/mdn/discussions/129) · [Exemple de modification des métadonnées sourceCommit](https://github.com/mdn/translated-content/pull/36282)
+- **Concepts pertinents :** métadonnées par fichier indiquant le commit source suivi par une traduction ; identification de la révision source d'une page traduite ; fraîcheur mesurée par rapport aux changements sources plutôt que par les seules dates.
+- **Utilité pour GovCheck :** précédent candidat pour les métadonnées de provenance des traductions et la détection des traductions périmées.
+- **Limite :** l'adoption est incomplète chez MDN et un marqueur fondé sur le commit est spécifique à Git. La prise en charge de Git et Pijul par GovCheck peut exiger un digest de contenu ou une autre identité indépendante du VCS. Une révision source identique n'établit ni la qualité ni l'équivalence sémantique de la traduction.
+
+<a id="r-137"></a>
+### R-137 — Workflow de localisation Kubernetes
+- **Cité par :** [Recherche multilingue de l'issue 0033](research/multilingual-documentation-practices.fr.md)
+- **Sources primaires :** [Guide de contribution à la localisation Kubernetes](https://www.kubernetes.io/docs/contribute/localization/) · [Automatisation centrée sur l'humain pour la localisation Kubernetes à l'ère de l'IA (2026)](https://www.k8s.dev/blog/2026/06/26/human-centered-automation-kubernetes-localization-ai-era/)
+- **Concepts pertinents :** correction de la source en premier, triage des traductions, revue humaine, seuils de publication par langue et rapports déterministes qui soutiennent les décisions humaines sans les remplacer.
+- **Utilité pour GovCheck :** précédent de processus candidat pour le statut des traductions, leur revue et le traitement des contenus périmés.
+- **Limite :** l'approche de triage 2026 est un prototype/rapport de pratique, pas une spécification normative complète de localisation. Elle ne tranche pas la primauté linguistique ni les règles d'authenticité des contenus de GovCheck.
+
+<a id="r-138"></a>
+### R-138 — Recommandations de synchronisation des traductions Vue
+- **Cité par :** [Recherche multilingue de l'issue 0033](research/multilingual-documentation-practices.fr.md)
+- **Source primaire :** [Guides de traduction Vue](https://github.com/vuejs-translations/guidelines)
+- **Concepts pertinents :** synchronisation amont, suivi de révision source, discipline de glossaire et pull requests de traduction avec diffs examinables.
+- **Utilité pour GovCheck :** précédent de workflow candidat pour maintenir des versions linguistiques parallèles et enregistrer leur filiation source.
+- **Limite :** le workflow est propre à un dépôt/une communauté et ne définit ni autorité normative ni modèle de contenu indépendant de la langue.
+
+<a id="r-139"></a>
+### R-139 — Workflow de traduction de la documentation React
+- **Cité par :** [Recherche multilingue de l'issue 0033](research/multilingual-documentation-practices.fr.md)
+- **Source primaire :** [Dépôt de traduction de la documentation React](https://github.com/lex111/reactjs.org-translation)
+- **Concepts pertinents :** dépôt/fork de traduction séparé, synchronisation amont et pull requests exposant l'écart entre source et traduction.
+- **Utilité pour GovCheck :** exemple comparatif de synchronisation par dépôt et par langue.
+- **Limite :** le dépôt cité est un fork/workflow de traduction, pas un protocole canonique de localisation. Son état de maintenance et son lien avec la source actuelle de la documentation React doivent être vérifiés avant réutilisation.
+
+<a id="r-140"></a>
+### R-140 — Comprehensive Rust et mdbook-i18n-helpers
+- **Cité par :** [Recherche multilingue de l'issue 0033](research/multilingual-documentation-practices.fr.md)
+- **Sources primaires :** [Instructions de traduction Comprehensive Rust](https://github.com/google/comprehensive-rust/blob/main/TRANSLATIONS.md) · [mdbook-i18n-helpers](https://github.com/google/mdbook-i18n-helpers)
+- **Concepts pertinents :** segments gettext/PO, synchronisation via msgmerge, marqueurs fuzzy pour les traductions modifiées et obsolètes pour les segments sources supprimés.
+- **Utilité pour GovCheck :** modèle candidat de synchronisation au niveau segment, notamment lorsque des unités sémantiques stables sont plus utiles que la fraîcheur de fichiers entiers.
+- **Limite :** extraction des segments et génération de documentation ajoutent des contraintes d'outillage. Les identifiants Markdown/ADR et l'identité source indépendante du VCS de GovCheck peuvent exiger une autre unité de synchronisation.
+
+<a id="r-141"></a>
+### R-141 — Framework de traduction po4a
+- **Cité par :** [Recherche multilingue de l'issue 0033](research/multilingual-documentation-practices.fr.md)
+- **Sources primaires :** [Manuel po4a](https://manpages.ubuntu.com/manpages/resolute/man1/po4a.1p.html) · [Projet po4a](https://po4a.org/)
+- **Concepts pertinents :** traduction par paragraphes/segments via fichiers PO ; statut fuzzy lorsque le texte source change ; documents traduits générés et seuils configurables de complétude.
+- **Utilité pour GovCheck :** précédent candidat pour préférer un document source exact à une traduction périmée et suivre l'état de traduction à une granularité inférieure au fichier.
+- **Limite :** la génération et l'extraction de segments peuvent compliquer la revue du Markdown structuré, des blocs de code, ancres et identifiants de gouvernance stables. Le seuil documenté de 80 % est une politique d'outil, pas une exigence GovCheck.
+
+<a id="r-142"></a>
+### R-142 — Internationalisation Docusaurus
+- **Cité par :** [Recherche multilingue de l'issue 0033](research/multilingual-documentation-practices.fr.md)
+- **Source primaire :** [Introduction à l'i18n de Docusaurus](https://docusaurus.io/docs/i18n/introduction)
+- **Concepts pertinents :** arborescence par locale, organisation des ressources traduites et repli sur la langue source lorsqu'une ressource localisée manque.
+- **Utilité pour GovCheck :** précédent candidat pour l'organisation des locales et le comportement explicite de repli.
+- **Limite :** Docusaurus ne fournit pas de suivi sémantique natif de la fraîcheur de chaque document traduit ; celle-ci dépend de Git, de services externes ou d'outils propres au projet.
+
+<a id="r-143"></a>
+### R-143 — Recommandations Microsoft sur les traductions comme artefacts versionnés
+- **Cité par :** [Recherche multilingue de l'issue 0033](research/multilingual-documentation-practices.fr.md)
+- **Source primaire :** [Rethinking documentation translation: treating translations as versioned artifacts](https://techcommunity.microsoft.com/t5/microsoft-developer-community/rethinking-documentation-translation-treating-translations-as/ba-p/4491755)
+- **Concepts pertinents :** état de traduction comme métadonnée d'artefact versionné ; distinction entre correction d'une traduction et synchronisation avec sa source ; rapport d'état laissant les jugements de qualité aux humains.
+- **Utilité pour GovCheck :** précédent conceptuel pour traiter fraîcheur et qualité linguistique comme propriétés distinctes.
+- **Limite :** il s'agit d'un article de conception/pratique, pas de la preuve d'une implémentation complète de synchronisation en production. Ses recommandations doivent être validées face aux contraintes VCS et documentaires normatives de GovCheck.
+
+<a id="r-144"></a>
+### R-144 — Balises de langue BCP 47
+- **Cité par :** [Recherche multilingue de l'issue 0033](research/multilingual-documentation-practices.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
+- **Sources primaires :** [RFC 5646 : Tags for Identifying Languages](https://www.rfc-editor.org/rfc/rfc5646) · [Registre IANA des sous-étiquettes de langue](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry)
+- **Concepts pertinents :** balises normalisées identifiant langue, écriture, région et variantes ; sous-étiquettes issues d'un registre.
+- **Utilité pour GovCheck :** identifiants de langue canoniques candidats pour les métadonnées de traduction et la prise en charge future de plusieurs langues.
+- **Limite :** BCP 47 identifie les langues ; il ne définit ni la primauté de la langue source, ni la qualité d'une traduction, ni son état de synchronisation ou son authenticité normative.
+
+
+<a id="r-145"></a>
+### R-145 — Plateforme de localisation Weblate
+- **Cité par :** [Pratiques documentaires multilingues](research/multilingual-documentation-practices.fr.md), [pratiques documentaires multilingues](research/multilingual-documentation-practices.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
+- **Sources primaires :** [Documentation Weblate](https://docs.weblate.org/) · [Projet Weblate](https://weblate.org/)
+- **Concepts pertinents :** gestion collaborative des traductions, mémoire de traduction et glossaires, intégration aux dépôts et suivi du statut des traductions.
+- **Utilité pour GovCheck :** plateforme nommée dans la revue de gouvernance multilingue comme solution à considérer uniquement si un adaptateur facultatif de traduction devient nécessaire.
+- **Limite :** Weblate n'a pas été évalué dans la revue. C'est une plateforme de traduction, pas un modèle de gouvernance faisant autorité ; son exploitation hébergée ne doit pas devenir une dépendance de GovCheck.
+
+<a id="r-146"></a>
+### R-146 — Plateforme de localisation Crowdin
+- **Cité par :** [Pratiques documentaires multilingues](research/multilingual-documentation-practices.fr.md), [pratiques documentaires multilingues](research/multilingual-documentation-practices.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
+- **Sources primaires :** [Documentation Crowdin](https://support.crowdin.com/) · [Plateforme Crowdin](https://crowdin.com/)
+- **Concepts pertinents :** localisation collaborative, workflows de traduction, glossaire/mémoire de traduction et intégrations avec les dépôts documentaires.
+- **Utilité pour GovCheck :** plateforme nommée dans la revue de gouvernance multilingue comme solution à considérer uniquement si un adaptateur facultatif de traduction devient nécessaire.
+- **Limite :** Crowdin n'a pas été évalué dans la revue. C'est une plateforme de traduction, pas un modèle de gouvernance faisant autorité ; son exploitation hébergée ne doit pas devenir une dépendance de GovCheck.
+

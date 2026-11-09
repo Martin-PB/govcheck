@@ -278,7 +278,7 @@ The primary sources consulted for this record are registered in the central bili
 - **Product quality:** [R-98](../references.md#r-98) (ISO/IEC 25010:2023).
 - **Software supply-chain inventory:** [R-99](../references.md#r-99) (SPDX 3.0) and [R-100](../references.md#r-100) (CycloneDX).
 - **Secure development practices:** [R-02](../references.md#r-02) (NIST SP 800-218 SSDF).
-- **Provenance:** [R-102](../references.md#r-102) (W3C PROV family).
+- **Provenance:** [R-24](../references.md#r-24) (W3C PROV family).
 - **Open-source compliance and security assurance:** [R-103](../references.md#r-103) (ISO/IEC 5230 and ISO/IEC 18974).
 
 See [the central reference catalogue](../references.md) and its [French counterpart](../references.fr.md). The catalogue entries distinguish formal specifications from beta/draft versions and explain the limits of what each source establishes.

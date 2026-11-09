@@ -35,7 +35,7 @@
 | Document extraction | R-82 |
 | Cloud storage provider APIs | R-64 |
 | Browser-local persistence and WebAssembly | R-65 |
-| Domain semantic models, product quality and open-source compliance | R-94–R-100, R-102–R-103 |
+| Domain semantic models, product quality and open-source compliance | R-94–R-100, R-103 |
 | Agent-instruction interoperability and spec-driven workflows | R-104 |
 | Policy-as-code and runtime agent-governance research | R-105 |
 | OWASP guidance for AI-agent and MCP security | R-106 |
@@ -313,8 +313,8 @@
 ### R-24 — W3C PROV-O
 - **Cited by:** [0017](architecture/0017-artifact-identity-revision-and-versioning.md), [0018](architecture/0018-version-governance-and-compatibility-authority.md) · [ADR 0004](decisions/0004-semantic-versioning-contracts.md)
 
-- **Primary source:** [W3C PROV-O recommendation](https://www.w3.org/TR/prov-o/).
-- **Relevant concepts:** entities, activities, agents and provenance relations.
+- **Primary sources:** [W3C PROV overview](https://www.w3.org/TR/prov-overview/) · [W3C PROV-O recommendation](https://www.w3.org/TR/prov-o/).
+- **Relevant concepts:** the W3C provenance family: PROV-DM data model, PROV-O ontology, PROV-Constraints, PROV-N notation and related serializations; entities, activities, agents and derivation/attribution relations.
 - **Use in GovCheck:** vocabulary for provenance and relationships between artifacts, activities and responsible agents.
 - **Limit:** an ontology does not itself provide repository policy, identity assurance or enforcement.
 
@@ -930,11 +930,12 @@
 
 1. Prefer the standard body, publisher, official documentation or source repository over secondary summaries.
 2. R-12 was retired when its duplicate Scorecard entry was consolidated into R-08. R-101 was retired because it duplicated the NIST SP 800-218 source already maintained in R-02. Neither identifier may be reused.
-3. Pin code assessments. Writ and Privateer links identify the revisions reviewed in Architecture 0016; refresh the pins before claims about current behavior.
-4. Distinguish evidence classes. A standard, research paper, product documentation, source code, test result and model-checking report are different evidence types.
-5. No implied adoption. Inclusion means “relevant to assess,” not “selected,” “required,” “compatible” or “implemented.”
-6. No invented bibliography. The prior discussion mentioned “Agent Package Manager” but did not preserve a unique, verified project URL. It is intentionally not cited as an identified product until its identity is established.
-7. Keep links close to claims. Architecture records should link to the few sources that support their specific claim and point here for the wider bibliography.
+3. R-102 was retired and consolidated into R-24, which now covers the W3C PROV family and retains both the PROV-O Recommendation and family overview. Do not reuse R-102.
+4. Pin code assessments. Writ and Privateer links identify the revisions reviewed in Architecture 0016; refresh the pins before claims about current behavior.
+5. Distinguish evidence classes. A standard, research paper, product documentation, source code, test result and model-checking report are different evidence types.
+6. No implied adoption. Inclusion means “relevant to assess,” not “selected,” “required,” “compatible” or “implemented.”
+7. No invented bibliography. The prior discussion mentioned “Agent Package Manager” but did not preserve a unique, verified project URL. It is intentionally not cited as an identified product until its identity is established.
+8. Keep links close to claims. Architecture records should link to the few sources that support their specific claim and point here for the wider bibliography.
 
 
 <a id="r-94"></a>
@@ -992,15 +993,6 @@
 - **Relevant concepts:** extensible supply-chain object model for software/hardware components, services, dependencies, cryptographic assets, operational configurations and metadata; JSON, XML and Protocol Buffers representations.
 - **Use in GovCheck:** candidate SBOM and broader supply-chain exchange format, to assess alongside SPDX against actual needs.
 - **Limit:** format validity does not prove inventory completeness, component integrity, vulnerability absence or trustworthy build provenance. Pin the exact version and schema.
-
-<a id="r-102"></a>
-### R-102 — W3C PROV family
-- **Cited by:** [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
-- **Primary source:** [W3C PROV overview](https://www.w3.org/TR/prov-overview/)
-- **Relevant concepts:** interoperable provenance models for entities, activities, agents and derivation/attribution, with data model, ontology, constraints and serialization specifications.
-- **Use in GovCheck:** candidate vocabulary and representation family for provenance across decisions, sources, generated artifacts, observations and evidence.
-- **Limit:** PROV records provenance relationships; it does not establish truth, admissibility, integrity or sufficiency, and does not provide repository governance authority.
-
 
 <a id="r-103"></a>
 ### R-103 — OpenChain: ISO/IEC 5230 and ISO/IEC 18974

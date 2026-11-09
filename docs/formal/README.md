@@ -34,6 +34,14 @@ The closure is an explicit model input and is checked against the child-claim gr
 
 The authority model is a bounded transition model for the initial single-root regime. It checks historical amendment attribution to the immediately preceding authority, continuity of the authority/revision chain, consistency of current state with the last record, and the temporal append-only property (the previous history remains an exact prefix after every transition). The model does not encode effective-time positions, so it does not verify prospective effect or preservation of prior decision validity. It also abstracts principal identity, and does not model delegation records, cryptographic identity, wall-clock validity, exception lifecycles, or integration with the version-governance validator. Its finite TLC fixture is not evidence of production enforcement.
 
+## Governance revision applicability
+
+- [Specification 0006 — Governance revision applicability](../specifications/0006-governance-revision-applicability.md) · [French](../specifications/0006-governance-revision-applicability.fr.md)
+- [TLA+ module](../../formal/tla/GovCheckGovernanceApplicability.tla)
+- [TLC configuration](../../formal/tla/GovCheckGovernanceApplicability.cfg)
+
+This separate bounded model links each evaluation to the governance revision effective at its event position, requires authorization by the authority recorded for that position, and permits publication only at a later position. It preserves historical decision bindings and rejects stale evaluations at authorization. It does not yet model authority changes/delegation, distributed consensus, cryptographic identity, full multi-writer concurrency or implementation refinement. Its TLC run is evidence about this finite abstraction only.
+
 ## Shared release evidence
 
 - [Stable artifact catalogue](../../formal/artifacts.json)

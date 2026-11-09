@@ -25,6 +25,10 @@ Chaque transition est un événement auditable avec acteur, date, état d'entré
 
 Aucune transition ne découle d'un nom de branche, label PR, statut CI ou message de chat. L'autorité d'approbation vient de la gouvernance, pas de la forge.
 
+## Applicabilité de la révision de gouvernance
+
+La révision exacte applicable à une évaluation ou une décision est résolue depuis l'historique canonique des événements de gouvernance et ses positions d'effet. Un candidat qui modifie la gouvernance est évalué et autorisé sous la révision antérieure applicable ; sa révision résultante ne peut prendre effet que par un événement ultérieur explicite de publication. Les décisions historiques conservent leur liaison de gouvernance d'origine. Une applicabilité absente, ambiguë, contradictoire ou périmée bloque l'acceptation. Voir la [Spécification 0006 — Applicabilité des révisions de gouvernance et autorisation temporelle](0006-governance-revision-applicability.fr.md) et sa [version anglaise](0006-governance-revision-applicability.md).
+
 ## Fraîcheur des preuves
 
 Chaque preuve lie IDs de claims/règles, identité du sujet, empreintes base/candidat, révision/sémantique de gouvernance, révision de spécification, méthode/outil/version/configuration/portée, hypothèses/environnement/entrées externes, résultat/date/provenance et référence d'intégrité. Toute modification d'une dépendance déclarée invalide la preuve. L'historique est conservé ; une revalidation est nécessaire. Une réévaluation n'efface jamais un échec antérieur.

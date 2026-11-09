@@ -123,7 +123,7 @@
 <a id="r-05"></a>
 
 ### R-05 — TLA+ et TLC
-- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [0008](architecture/0008-formalization-and-conformance.fr.md), [0009](architecture/0009-govcheck-design-discussion-record.fr.md), [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0011](architecture/0011-lifecycle-model-assertion-audit.fr.md), [0020](architecture/0020-first-tlc-execution-record.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md), [ADR 0001](decisions/0001-bootstrap-boundaries.fr.md), [Spec 0003](specifications/0003-change-lifecycle.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md), [Modèle de cycle de vie formel](formal/lifecycle-model.fr.md)
+- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [0008](architecture/0008-formalization-and-conformance.fr.md), [0009](architecture/0009-govcheck-design-discussion-record.fr.md), [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0011](architecture/0011-lifecycle-model-assertion-audit.fr.md), [0020](architecture/0020-first-tlc-execution-record.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md), [ADR 0001](decisions/0001-bootstrap-boundaries.fr.md), [Spec 0003](specifications/0003-change-lifecycle.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md), [Spec 0006](specifications/0006-governance-revision-applicability.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md), [Modèle de cycle de vie formel](formal/lifecycle-model.fr.md)
 
 - **Sources primaires :** [Publications de Lamport sur TLA](https://www.microsoft.com/en-us/research/people/lamport/publications/) · [Projet et documentation TLA+](https://lamport.azurewebsites.net/tla/tla.html)
 - **Référence académique :** Leslie Lamport, « The Temporal Logic of Actions », ACM Transactions on Programming Languages and Systems, 16(3), 1994, p. 872–923. [DOI](https://doi.org/10.1145/177492.177726)
@@ -235,7 +235,7 @@
 <a id="r-17"></a>
 
 ### R-17 — Google Cloud Knowledge Catalog
-- **Cité par :** [0012](architecture/0012-normative-authority-and-documentation.fr.md), [0022](architecture/0022-governance-capability-audit.fr.md), [Spec 0002](specifications/0002-canonical-governance-model.fr.md)
+- **Cité par :** [0012](architecture/0012-normative-authority-and-documentation.fr.md), [0022](architecture/0022-governance-capability-audit.fr.md), [Spec 0002](specifications/0002-canonical-governance-model.fr.md), [Spec 0006](specifications/0006-governance-revision-applicability.fr.md)
 
 - **Source primaire :** [Documentation Knowledge Catalog](https://docs.cloud.google.com/knowledge-catalog/docs)
 - **Concepts pertinents :** métadonnées typées, entrées de catalogue, relations/traçabilité, métadonnées de gouvernance et découverte de contexte.
@@ -285,7 +285,7 @@
 <a id="r-22"></a>
 
 ### R-22 — Sémantiques natives de Git et Pijul
-- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [0009](architecture/0009-govcheck-design-discussion-record.fr.md), [0011](architecture/0011-lifecycle-model-assertion-audit.fr.md), [0014](architecture/0014-governed-development-workflow.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md), [ADR 0001](decisions/0001-bootstrap-boundaries.fr.md), [Spec 0003](specifications/0003-change-lifecycle.fr.md), [Spec 0004](specifications/0004-vcs-collaboration-contracts.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md), [Modèle de cycle de vie formel](formal/lifecycle-model.fr.md)
+- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [0009](architecture/0009-govcheck-design-discussion-record.fr.md), [0011](architecture/0011-lifecycle-model-assertion-audit.fr.md), [0014](architecture/0014-governed-development-workflow.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md), [ADR 0001](decisions/0001-bootstrap-boundaries.fr.md), [Spec 0003](specifications/0003-change-lifecycle.fr.md), [Spec 0004](specifications/0004-vcs-collaboration-contracts.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md), [Modèle de cycle de vie formel](formal/lifecycle-model.fr.md), [Spec 0006](specifications/0006-governance-revision-applicability.fr.md)
 
 - **Sources primaires :** [Documentation Git](https://git-scm.com/docs) · [Manuel Pijul : théorie](https://pijul.org/manual/theory) · [Canaux Pijul](https://pijul.org/manual/workflows/channels) · [Conflits Pijul](https://pijul.org/manual/conflicts.html) · [Projet Pijul](https://pijul.org/) · [Service d'hébergement Nest](https://nest.pijul.com/) · [Dépôt source de Nest](https://nest.pijul.com/pijul/nest/tree)
 - **Concepts pertinents :** modèle d'instantanés/commits et arbres de Git ; graphe de changements/patchs, canaux et conflits de première classe de Pijul ; Nest comme plateforme d'hébergement de dépôts Pijul.
@@ -880,7 +880,7 @@
 
 <a id="r-88"></a>
 ### R-88 — NIST SP 800-192 : méthodes de vérification et de test des politiques/modèles de contrôle d'accès
-- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [0013](architecture/0013-governance-metamodel.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md), [0022](architecture/0022-governance-capability-audit.fr.md), [Spec 0002](specifications/0002-canonical-governance-model.fr.md)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [0013](architecture/0013-governance-metamodel.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md), [0022](architecture/0022-governance-capability-audit.fr.md), [Spec 0002](specifications/0002-canonical-governance-model.fr.md), [Spec 0006](specifications/0006-governance-revision-applicability.fr.md)
 - **Sources primaires :** [Notice de publication NIST SP 800-192](https://csrc.nist.gov/pubs/sp/800/192/final) · [DOI NIST](https://doi.org/10.6028/NIST.SP.800-192)
 - **Concepts pertinents :** vérification et test de politiques et modèles de contrôle d'accès ; incohérence, incomplétude, exigences de sûreté, vérification de modèles en boîte noire/boîte blanche et tests dérivés des modèles de politiques.
 - **Utilité pour GovCheck :** justifie directement la validation des modèles de politiques normatives avant de tester leurs évaluateurs ou mécanismes d'application. Une politique exécutable n'est pas nécessairement correcte, complète ou cohérente.

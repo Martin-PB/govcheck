@@ -14,7 +14,7 @@ The audit also considers external critical reviews in GitHub issues #23 and #26 
 
 - The catalogue had 105 active entries at the start of this audit.
 - The current bilingual catalogue has **125 active entries**.
-- Twenty-one new source entries were added (R-108–R-128), while duplicate R-102 was retired and consolidated into R-24. Previously retired R-12 and R-101 remain retired. No retired identifier is reused.
+- Twenty-seven new source entries were added (R-108–R-134), while duplicate R-102 was retired and consolidated into R-24. Previously retired R-12 and R-101 remain retired. No retired identifier is reused.
 - Nine entries had contradictory “no current record cites” wording despite linking to Architecture 0027. The wording was removed from R-94–R-100, R-102 and R-103; R-102 was subsequently consolidated into R-24.
 - R-24 now covers the W3C PROV family and retains both the PROV-O Recommendation and the family overview. R-102 is retired.
 - The name **Privateer** was ambiguous. R-19 now identifies the privateer-agent/privateer-agent Pi coding-agent distribution. R-120 separately identifies the OpenSSF security/compliance evaluator. Architecture 0016 distinguishes and assesses both.
@@ -37,7 +37,7 @@ The audit also considers external critical reviews in GitHub issues #23 and #26 
 | Decision/process/requirements/quality and engineering-domain candidates | R-74, R-94–R-100, R-103, R-114, R-123–R-126 |
 | Agent-instruction formats, workflow tools and GitHub Actions placement | R-18–R-19, R-104, R-107 |
 
-The catalogue also preserves the additional sources recovered from the critical reviews: gittuf, SLSA Source Track, Gemara, Gerrit submit requirements, Minder, Allstar, Conftest, CUE, OpenSSF Privateer, SLSA Verification Summary Attestation (VSA), Sigstore, Symboleo, Catala, Event Calculus, runtime verification and GitHub CODEOWNERS and CEL (R-112–R-128).
+The catalogue also preserves the additional sources recovered from the critical reviews: gittuf, SLSA Source Track, Gemara, Gerrit submit requirements, Minder, Allstar, Conftest, CUE, OpenSSF Privateer, SLSA Verification Summary Attestation (VSA), Sigstore, Symboleo, Catala, Event Calculus, runtime verification and GitHub CODEOWNERS, CEL, eliminative argumentation, Kyverno, GitLab approval rules, Zuul/Bors, formal patch theory and GSN (R-112–R-134).
 
 ## 4. Semantic boundaries retained
 

@@ -42,6 +42,7 @@
 | GitHub Actions workflow location and syntax | R-107 |
 | Supply-chain metadata graphs and project security posture | R-108–R-111 |
 | Forge-independent Git governance, source provenance, Gemara and repository-control tools | R-112–R-120 |
+| Attestations, signing, formal contracts and temporal monitoring | R-121–R-126 |
 
 ## Full reference entries
 
@@ -80,6 +81,7 @@
 - **GitHub Actions workflow placement:** R-107.
 - **Supply-chain knowledge graphs, security declarations and best-practice baselines:** R-108–R-111.
 - **Git governance, source provenance and candidate repository-assessment tools:** R-112–R-120.
+- **Attestations, artifact signing, formal contracts and temporal monitoring:** R-121–R-126.
 
 ## Standards, government guidance and industry specifications
 
@@ -1150,3 +1152,53 @@
 - **Relevant concepts:** plugin-based evaluation of source code, repository configuration and deployed systems against separately maintained control catalogs; deterministic checks, optional AI-assisted evidence review and structured evaluation outcomes.
 - **Use in GovCheck:** direct comparator and potential complementary evaluator for security/compliance controls, especially its separation between control catalogs and evaluation plugins.
 - **Limit:** Privateer evaluates controls; it is not GovCheck's canonical governance authority or complete change-lifecycle engine. AI-assisted review is not proof, and unresolved findings must remain uncertain or require human review. This project is distinct from the Pi coding-agent distribution catalogued as R-19.
+
+
+<a id="r-121"></a>
+### R-121 — SLSA Verification Summary Attestation (VSA)
+- **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
+- **Primary source:** [SLSA v1.2 Verification Summary Attestation](https://slsa.dev/spec/v1.2/verification_summary)
+- **Relevant concepts:** signed in-toto attestation summarizing that a verifier evaluated an artifact against a policy and reporting verification result, verified SLSA levels, verifier identity and resource URI.
+- **Use in GovCheck:** candidate compact attestation format for communicating independently verifiable evaluation results without requiring every consumer to replay all underlying checks.
+- **Limit:** a VSA transfers trust to the verifier; it does not protect against a compromised or malicious verifier. Consumers must validate signature, subject digest, predicate type, verifier identity, intended resource, result and required level. A VSA is not itself a theorem proof or universal compliance certificate.
+
+<a id="r-122"></a>
+### R-122 — Sigstore artifact signing and transparency
+- **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
+- **Primary sources:** [Sigstore documentation](https://docs.sigstore.dev/) · [Cosign signing and verification](https://docs.sigstore.dev/cosign/signing/overview/) · [Sigstore source organization](https://github.com/sigstore)
+- **Relevant concepts:** identity-bound artifact signatures using short-lived certificates, transparency-log recording, and verifiable bundles for software artifacts and attestations.
+- **Use in GovCheck:** candidate complementary mechanism for signing and verifying assurance reports, attestations and release artifacts.
+- **Limit:** a valid signature establishes integrity and a signing identity under a configured trust root; it does not establish that the signed claim is true, the policy is correct or the evidence is sufficient. Identity issuer, trust root, transparency log and verification policy remain explicit trust dependencies.
+
+<a id="r-123"></a>
+### R-123 — Symboleo formal language for contract specification
+- **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
+- **Primary source:** [Parvizimosaed et al., “Specification and analysis of legal contracts with Symboleo” (2022)](https://doi.org/10.1007/s10270-022-01053-6)
+- **Relevant concepts:** formal specification of contracts as obligations and powers, with logical semantics over statecharts describing contract, obligation and power lifetimes.
+- **Use in GovCheck:** research comparator for representing normative commitments, powers and compliant executions in a structured formal language.
+- **Limit:** Symboleo targets legal/business contracts, not repository governance. Its treatment of permissions, authorities, exceptions and institutional roles must be evaluated before any conceptual reuse; it is not an adopted GovCheck language.
+
+<a id="r-124"></a>
+### R-124 — Catala legislative literate-programming language
+- **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
+- **Primary sources:** [Catala language repository](https://github.com/CatalaLang/catala) · [Catala book and documentation](https://book.catala-lang.org/)
+- **Relevant concepts:** domain-specific language for deriving algorithms from legislative texts, linking source provisions to executable definitions and generating human-readable representations for expert review.
+- **Use in GovCheck:** comparator for traceability between natural-language normative sources, structured rules, executable interpretation and domain-expert review.
+- **Limit:** Catala is designed for socio-fiscal legislation and does not define software-repository governance, contributor authority or change acceptance. Its assurance claims and formal semantics are domain-specific and must not be generalized without analysis.
+
+<a id="r-125"></a>
+### R-125 — Event Calculus
+- **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
+- **Primary sources:** [Shanahan, “The Event Calculus Explained”](https://www.doc.ic.ac.uk/~mpsha/ECExplained.pdf) · [IJCAI 2024 tensor-based formalization](https://doi.org/10.24963/ijcai.2024/397)
+- **Relevant concepts:** logic-based representation of events, actions and time-varying properties (fluents), including reasoning about effects, concurrency and change over time.
+- **Use in GovCheck:** candidate formalism to compare for temporal reasoning about governance events and lifecycle transitions.
+- **Limit:** Event Calculus is a family of formalizations with different variants and assumptions. It is not a ready-made repository lifecycle model, authorization system or acceptance policy; a concrete variant and semantics would need to be selected.
+
+<a id="r-126"></a>
+### R-126 — Runtime verification and monitoring of execution traces
+- **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
+- **Primary sources:** [Taleb, Hallé and Khoury, “Uncertainty in runtime verification: A survey” (2023)](https://doi.org/10.1016/j.cosrev.2023.100594) · [Havelund, Reger and Roșu, “Runtime Verification: Past Experiences and Future Projections”](https://havelund.com/Publications/lncs-10000.pdf)
+- **Relevant concepts:** formal monitoring of observed execution traces against temporal specifications; instrumentation and event collection; verdicts under incomplete, imprecise or uncertain observations.
+- **Use in GovCheck:** candidate method for evaluating temporal lifecycle properties over recorded governance events, while making observability and trace uncertainty explicit.
+- **Limit:** runtime verification evaluates observed traces, not all possible executions. Missing, delayed, ambiguous or untrusted events can make verdicts inconclusive; monitoring evidence is not model checking or theorem proof.
+

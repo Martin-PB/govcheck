@@ -49,6 +49,7 @@
 | GSN assurance-argument notation | R-134 |
 | Access-control policy and model verification | R-135 |
 | Multilingual documentation synchronization and language identifiers | R-136–R-144 |
+| Mentioned but unevaluated translation platforms | R-145–R-146 |
 
 ## Full reference entries
 
@@ -94,6 +95,7 @@
 - **GSN assurance-argument notation:** R-134.
 - **Access-control policy and model verification:** R-135.
 - **Multilingual documentation synchronization and language identifiers:** R-136–R-144.
+- **Mentioned but unevaluated translation platforms:** R-145–R-146.
 
 ## Standards, government guidance and industry specifications
 
@@ -1356,4 +1358,21 @@
 - **Relevant concepts:** standardized language tags for identifying language, script, region and variants; registry-backed subtags.
 - **Use in GovCheck:** candidate canonical language identifiers for translation metadata and future multi-language support.
 - **Limit:** BCP 47 identifies languages; it does not define source-language primacy, translation quality, synchronization state or normative authenticity.
+
+
+<a id="r-145"></a>
+### R-145 — Weblate localization platform
+- **Cited by:** [Multilingual documentation practices](research/multilingual-documentation-practices.md)
+- **Primary sources:** [Weblate documentation](https://docs.weblate.org/) · [Weblate project](https://weblate.org/)
+- **Relevant concepts:** collaborative translation management, translation-memory and glossary workflows, repository integration and translation status.
+- **Use in GovCheck:** named in the multilingual governance review as a platform to consider only if an optional translation adapter is ever needed.
+- **Limit:** Weblate was not evaluated in the review. It is a translation platform, not a source-of-truth governance model; hosted operation must not become a GovCheck dependency.
+
+<a id="r-146"></a>
+### R-146 — Crowdin localization platform
+- **Cited by:** [Multilingual documentation practices](research/multilingual-documentation-practices.md)
+- **Primary sources:** [Crowdin documentation](https://support.crowdin.com/) · [Crowdin platform](https://crowdin.com/)
+- **Relevant concepts:** collaborative localization, translation workflows, glossary/translation memory and integrations with documentation repositories.
+- **Use in GovCheck:** named in the multilingual governance review as a platform to consider only if an optional translation adapter is ever needed.
+- **Limit:** Crowdin was not evaluated in the review. It is a translation platform, not a source-of-truth governance model; hosted operation must not become a GovCheck dependency.
 

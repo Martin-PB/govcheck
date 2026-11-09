@@ -123,7 +123,7 @@
 <a id="r-05"></a>
 
 ### R-05 — TLA+ and TLC
-- **Cited by:** [0007](architecture/0007-technology-decision-framework.md), [0008](architecture/0008-formalization-and-conformance.md), [0009](architecture/0009-govcheck-design-discussion-record.md), [0010](architecture/0010-assurance-proof-and-conformance.md), [0011](architecture/0011-lifecycle-model-assertion-audit.md), [0020](architecture/0020-first-tlc-execution-record.md), [0021](architecture/0021-assurance-claims-and-freshness.md), [ADR 0001](decisions/0001-bootstrap-boundaries.md), [Spec 0003](specifications/0003-change-lifecycle.md), [Spec 0005](specifications/0005-assurance-model.md), [ADR 0002](decisions/0002-study-placement.md), [Formal lifecycle model](formal/lifecycle-model.md)
+- **Cited by:** [0007](architecture/0007-technology-decision-framework.md), [0008](architecture/0008-formalization-and-conformance.md), [0009](architecture/0009-govcheck-design-discussion-record.md), [0010](architecture/0010-assurance-proof-and-conformance.md), [0011](architecture/0011-lifecycle-model-assertion-audit.md), [0020](architecture/0020-first-tlc-execution-record.md), [0021](architecture/0021-assurance-claims-and-freshness.md), [ADR 0001](decisions/0001-bootstrap-boundaries.md), [Spec 0003](specifications/0003-change-lifecycle.md), [Spec 0005](specifications/0005-assurance-model.md), [Spec 0006](specifications/0006-governance-revision-applicability.md), [ADR 0002](decisions/0002-study-placement.md), [Formal lifecycle model](formal/lifecycle-model.md)
 
 - **Primary sources:** [Lamport's publications on TLA](https://www.microsoft.com/en-us/research/people/lamport/publications/) · [TLA+ project and documentation](https://lamport.azurewebsites.net/tla/tla.html)
 - **Academic reference:** Leslie Lamport, “The Temporal Logic of Actions,” ACM Transactions on Programming Languages and Systems, 16(3), 1994, pp. 872–923. [DOI](https://doi.org/10.1145/177492.177726)
@@ -235,7 +235,7 @@
 <a id="r-17"></a>
 
 ### R-17 — Google Cloud Knowledge Catalog
-- **Cited by:** [0012](architecture/0012-normative-authority-and-documentation.md), [0022](architecture/0022-governance-capability-audit.md), [Spec 0002](specifications/0002-canonical-governance-model.md)
+- **Cited by:** [0012](architecture/0012-normative-authority-and-documentation.md), [0022](architecture/0022-governance-capability-audit.md), [Spec 0002](specifications/0002-canonical-governance-model.md), [Spec 0006](specifications/0006-governance-revision-applicability.md)
 
 - **Primary source:** [Knowledge Catalog documentation](https://docs.cloud.google.com/knowledge-catalog/docs)
 - **Relevant concepts:** typed metadata, catalogue entries, relationships/lineage, governance metadata and context discovery.
@@ -284,7 +284,7 @@
 <a id="r-22"></a>
 
 ### R-22 — Native Git and Pijul semantics
-- **Cited by:** [0007](architecture/0007-technology-decision-framework.md), [0009](architecture/0009-govcheck-design-discussion-record.md), [0011](architecture/0011-lifecycle-model-assertion-audit.md), [0014](architecture/0014-governed-development-workflow.md), [0021](architecture/0021-assurance-claims-and-freshness.md), [ADR 0001](decisions/0001-bootstrap-boundaries.md), [Spec 0003](specifications/0003-change-lifecycle.md), [Spec 0004](specifications/0004-vcs-collaboration-contracts.md), [ADR 0002](decisions/0002-study-placement.md), [Formal lifecycle model](formal/lifecycle-model.md)
+- **Cited by:** [0007](architecture/0007-technology-decision-framework.md), [0009](architecture/0009-govcheck-design-discussion-record.md), [0011](architecture/0011-lifecycle-model-assertion-audit.md), [0014](architecture/0014-governed-development-workflow.md), [0021](architecture/0021-assurance-claims-and-freshness.md), [ADR 0001](decisions/0001-bootstrap-boundaries.md), [Spec 0003](specifications/0003-change-lifecycle.md), [Spec 0004](specifications/0004-vcs-collaboration-contracts.md), [ADR 0002](decisions/0002-study-placement.md), [Formal lifecycle model](formal/lifecycle-model.md), [Spec 0006](specifications/0006-governance-revision-applicability.md)
 
 - **Primary sources:** [Git documentation](https://git-scm.com/docs) · [Pijul manual: theory](https://pijul.org/manual/theory) · [Pijul channels](https://pijul.org/manual/workflows/channels) · [Pijul conflicts](https://pijul.org/manual/conflicts.html) · [Pijul project](https://pijul.org/) · [Nest hosting service](https://nest.pijul.com/) · [Nest source repository](https://nest.pijul.com/pijul/nest/tree)
 - **Relevant concepts:** Git's snapshot/commit and tree model; Pijul's change/patch graph, channels and first-class conflicts; Nest as a Pijul repository-hosting platform.
@@ -876,7 +876,7 @@
 
 <a id="r-88"></a>
 ### R-88 — NIST SP 800-192: Verification and Test Methods for Access Control Policies/Models
-- **Cited by:** [ADR 0002](decisions/0002-study-placement.md), [0013](architecture/0013-governance-metamodel.md), [0015](architecture/0015-governance-conformance-and-validation-plan.md), [0022](architecture/0022-governance-capability-audit.md), [Spec 0002](specifications/0002-canonical-governance-model.md)
+- **Cited by:** [ADR 0002](decisions/0002-study-placement.md), [0013](architecture/0013-governance-metamodel.md), [0015](architecture/0015-governance-conformance-and-validation-plan.md), [0022](architecture/0022-governance-capability-audit.md), [Spec 0002](specifications/0002-canonical-governance-model.md), [Spec 0006](specifications/0006-governance-revision-applicability.md)
 - **Primary sources:** [NIST SP 800-192 publication record](https://csrc.nist.gov/pubs/sp/800/192/final) · [NIST DOI](https://doi.org/10.6028/NIST.SP.800-192)
 - **Relevant concepts:** verification and testing of access-control policies and models; inconsistency, incompleteness, safety requirements, black-box/white-box model checks and tests derived from policy models.
 - **Use in GovCheck:** direct support for validating normative policy models before testing their evaluators or enforcement mechanisms. An executable policy is not necessarily a correct, complete or coherent policy.

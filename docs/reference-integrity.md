@@ -6,7 +6,7 @@ The catalogue is a maintained, bilingual evidence index, not an adoption list or
 
 - [English catalogue](references.md) is the default presentation.
 - [Catalogue français](references.fr.md) is its semantic counterpart.
-- The bilingual catalogues contain 105 active entries. Two identifiers are retired and must never be reused; the later retired identifier was consolidated into the canonical NIST SP 800-218 entry because it duplicated the same source.
+- The bilingual catalogues contain 118 active entries. Two identifiers are retired and must never be reused; the later retired identifier was consolidated into the canonical NIST SP 800-218 entry because it duplicated the same source.
 - Each entry records primary sources, relevant concepts, the specific GovCheck use and explicit limitations.
 - Each architecture record, decision or specification links to the exact catalogue anchor it uses.
 - Each catalogue entry's **Cited by / Cité par** field links back to every document that cites it.
@@ -38,7 +38,7 @@ When a document uses an external source:
 5. update **Cited by / Cité par** in both catalogues;
 6. never reuse a retired identifier.
 
-Candidate sources that have not yet been used by a record may remain in the catalogue with an explicit “no current record cites” field. Never link a **Cited by / Cité par** field to a record absent from the same branch. The domain-semantic/bootstrap candidate sources near the end of the catalogue are retained as unreferenced candidates; they are not adoption decisions and have no citing record on this branch.
+Candidate sources that have not yet been used by a record may remain in the catalogue with an explicit “no current record cites” field. Never link a **Cited by / Cité par** field to a record absent from the same branch. The domain-semantic/bootstrap sources R-94–R-103 are cited by Architecture 0027 as candidate inputs; they remain research candidates, not adoption decisions. Their catalogue backlinks identify the architecture record that discusses them.
 
 Do not add a reference merely because a technology name appears. Record it when the source materially supports a claim, comparison, interface or documented research trail. Conversely, do not let a source disappear merely because its associated option was not selected.
 

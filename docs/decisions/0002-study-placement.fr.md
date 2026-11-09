@@ -121,3 +121,4 @@ L'étude d'intégration et ses sources techniques externes sont cataloguées sé
 - [R-124 — Programmation littéraire législative Catala](../references.fr.md#r-124)
 - [R-125 — Event Calculus](../references.fr.md#r-125)
 - [R-126 — Vérification à l'exécution et surveillance de traces](../references.fr.md#r-126)
+- [R-127 — GitHub CODEOWNERS et revue par propriétaires de code](../references.fr.md#r-127)

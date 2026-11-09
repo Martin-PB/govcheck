@@ -323,7 +323,7 @@ En cas de conflit, l'autorité normative approuvée existante prévaut jusqu'à 
 - [R-25](../references.fr.md#r-25) : distingue versions, identifiants associés et enregistrements conceptuels ; les responsables déterminent ce qui constitue une version majeure/mineure.
 - [R-26](../references.fr.md#r-26) : traitement propre au domaine des révisions de jeux de données et de la reproductibilité.
 
-Ces références étayent la distinction entre versionnement de compatibilité, identité de révision et provenance. Elles ne prescrivent pas les classifications d'artefacts de GovCheck : celles-ci sont les propositions spécifiques au projet exposées ci-dessus.
+Ces références étayent la distinction entre versionnement de compatibilité, identité de révision et provenance. Elles ne prescrivent pas les classifications d'artefacts de GovCheck : celles-ci relèvent de la politique propre au projet adoptée par l'ADR 0004.
 
 
 ## Références bibliographiques

@@ -298,7 +298,7 @@
 <a id="r-23"></a>
 
 ### R-23 — IMS Global / 1EdTech versioning specifications
-- **Cited by:** [0017](architecture/0017-artifact-identity-revision-and-versioning.md), [0018](architecture/0018-version-governance-and-compatibility-authority.md) · [ADR 0004](decisions/0004-semantic-versioning-contracts.md) · [Work portfolio](work-portfolio/README.md)
+- **Cited by:** [0017](architecture/0017-artifact-identity-revision-and-versioning.md), [0018](architecture/0018-version-governance-and-compatibility-authority.md) · [ADR 0004](decisions/0004-semantic-versioning-contracts.md)
 
 - **Primary source:** [1EdTech specifications](https://www.imsglobal.org/spec/versioning/v1) (formerly IMS Global; consult the specific versioning specification before relying on a particular rule).
 - **Relevant concepts:** version identifiers and compatibility conventions for structured, published artifacts.
@@ -307,7 +307,7 @@
 
 <a id="r-24"></a>
 ### R-24 — W3C PROV-O
-- **Cited by:** [0017](architecture/0017-artifact-identity-revision-and-versioning.md), [0018](architecture/0018-version-governance-and-compatibility-authority.md) · [ADR 0004](decisions/0004-semantic-versioning-contracts.md)
+- **Cited by:** [0017](architecture/0017-artifact-identity-revision-and-versioning.md), [0018](architecture/0018-version-governance-and-compatibility-authority.md) · [ADR 0004](decisions/0004-semantic-versioning-contracts.md) · [Work portfolio](work-portfolio/README.md)
 
 - **Primary source:** [W3C PROV-O recommendation](https://www.w3.org/TR/prov-o/).
 - **Relevant concepts:** entities, activities, agents and provenance relations.

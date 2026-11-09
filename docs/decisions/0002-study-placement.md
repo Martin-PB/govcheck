@@ -121,3 +121,4 @@ The integration study and its external technical sources are catalogued separate
 - [R-124 — Catala legislative literate programming](../references.md#r-124)
 - [R-125 — Event Calculus](../references.md#r-125)
 - [R-126 — Runtime verification and trace monitoring](../references.md#r-126)
+- [R-127 — GitHub CODEOWNERS and code-owner review](../references.md#r-127)

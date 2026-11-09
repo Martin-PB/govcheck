@@ -30,3 +30,18 @@
 - **Rationale:** make the transition discoverable while preserving the existing GitHub coordination dossiers and their histories.
 - **Related records:** PR #89; work-items.md; README.md; Architecture 0030.
 - **Known limitations:** issue edits are still performed through GitHub's native mutable API; no automatic synchronization, tamper-proof issue history or registry enforcement is claimed.
+
+
+## WP-EVT-000003 — Governance revision applicability specification and model prepared
+
+- **Subject:** govcheck.work.governance-revision-temporal-applicability
+- **Event type:** specification-and-model-prepared
+- **Recorded:** 2026-11-09
+- **Actor/provenance:** maintainer instruction to proceed with the #86 work item; technical artifacts prepared by an automated assistant through the GitHub repository integration.
+- **Base:** main after merge of PR #89; exact branch base is recorded in the pull request comparison.
+- **Candidate:** branch work/governance-revision-applicability; exact commits are preserved by branch and PR history.
+- **Scope:** add Specification 0006 in English/French; refine Specification 0003; add a separate bounded governance-applicability TLA+ module/configuration; add the reusable package counterpart; integrate catalogue backlinks, indexes and scoped TLC workflow.
+- **Disposition:** proposed technical contract and model for review. This event does not adopt the specification, amend Architecture 0023, or authorize a governance regime change. Decision #41 remains reserved to the designated authority.
+- **Rationale:** the existing authority and lifecycle models did not bind a decision position to the unique governance revision effective at that position. The new model isolates this missing temporal applicability contract without claiming that either existing model already provides it.
+- **Related records:** Issues #41 and #86; Specification 0006; formal/tla/GovCheckGovernanceApplicability.tla; Architecture 0023; PR for work/governance-revision-applicability.
+- **Known limitations:** TLC has not yet been executed for this candidate; the model is finite and does not establish cryptographic identity, distributed consensus, implementation refinement, complete multi-writer concurrency, delegation or forge enforcement.

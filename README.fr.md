@@ -35,6 +35,10 @@ Chaque spécification existe en anglais et en français. Elles définissent des 
 
 Le raisonnement de conception, les distinctions d'assurance, l'audit du modèle de cycle de vie, l'autorité documentaire canonique, le métamodèle, le flux de développement et les évaluations de l'écosystème sont indexés dans [docs/architecture](docs/architecture/README.fr.md).
 
+## Portefeuille de travaux gouverné
+
+Le [portefeuille de travaux gouverné](docs/work-portfolio/README.fr.md) dans le dépôt constitue le point d'ancrage canonique des identités, du cycle de vie et de la traçabilité des travaux. GitHub Issues/Projects restent des adaptateurs de coordination pendant la migration. Voir les architectures [0028](docs/architecture/0028-governed-work-portfolio-and-issue-tracker-boundary.fr.md) et [0030](docs/architecture/0030-repository-backed-work-portfolio-and-recoverable-history.fr.md).
+
 ## Décisions et suite
 
 [ADR 0001](docs/decisions/0001-bootstrap-boundaries.fr.md) consigne les frontières du bootstrap. Restent à décider : langage d'implémentation, format/schéma canonique, langage d'expression, noyau formel, approche cryptographique et stratégie de dépendances. Ces choix doivent faire l'objet d'une analyse comparative explicite avant l'implémentation.

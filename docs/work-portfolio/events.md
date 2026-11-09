@@ -45,3 +45,19 @@
 - **Rationale:** the existing authority and lifecycle models did not bind a decision position to the unique governance revision effective at that position. The new model isolates this missing temporal applicability contract without claiming that either existing model already provides it.
 - **Related records:** Issues #41 and #86; Specification 0006; formal/tla/GovCheckGovernanceApplicability.tla; Architecture 0023; PR for work/governance-revision-applicability.
 - **Known limitations:** TLC has not yet been executed for this candidate; the model is finite and does not establish cryptographic identity, distributed consensus, implementation refinement, complete multi-writer concurrency, delegation or forge enforcement.
+
+
+## WP-EVT-000004 — Governance applicability model checked successfully
+
+- **Subject:** govcheck.work.governance-revision-temporal-applicability
+- **Event type:** model-checking-completed
+- **Recorded:** 2026-11-09
+- **Actor/provenance:** hosted GitHub Actions run authorized for this public repository; workflow executed automatically on PR #90.
+- **Source commit:** 3a8d0176bff8783e25103a4603bb4eea06664cee.
+- **Merge-test commit:** e226461 (PR merge test against base d04a6dd02d5bdda0b40e4aa740475a8e554e63d7).
+- **Model/configuration:** formal/tla/GovCheckGovernanceApplicability.tla and .cfg; blob SHAs 43743eac208f9faf9a844ae35c55ceb6e2b74239 and 54d7387bfe577c5bd9152c7427fc5410c4a00db2.
+- **Toolchain:** SANY 2.1; TLC 2.19; Java Temurin 17.0.21+9; tla2tools v1.7.4 SHA-256 936a262061c914694dfd669a543be24573c45d5aa0ff20a8b96b23d01e050e88; 4 workers.
+- **Result:** no error/counterexample; 20,785 states generated, 18,067 distinct states, zero states remaining. Configured invariants and temporal property AppendOnly completed.
+- **Evidence:** [workflow run](https://github.com/Martin-PB/govcheck/actions/runs/42659943881), [job report artifact](https://github.com/Martin-PB/govcheck/actions/runs/42659943881/artifacts/13693473469), Architecture 0031 EN/FR.
+- **Disposition:** finite model-checking evidence only. It does not prove unbounded correctness, theorem validity, implementation refinement, cryptographic identity, distributed consensus or operational enforcement. Authority #41 and normative adoption of Specification 0006 remain open.
+- **Correction history:** the initial TLC attempt exposed a CHOOSE/indexing defect after SANY passed; the model was corrected and this event records only the subsequent successful run.

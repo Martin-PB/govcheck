@@ -1,6 +1,6 @@
 # 0017 — Identité, révision et politique de versionnement des artefacts
 
-**Statut :** l'adoption du versionnement catégoriel est consignée dans l'[ADR 0004](../decisions/0004-semantic-versioning-contracts.fr.md) ; son effet normatif dépend de la fusion de l'ADR 0004 ; la PR #21, qui établit le régime d'autorité, est déjà fusionnée. SemVer n'est pas universel ; son application automatisée n'est pas encore implémentée.  
+**Statut :** adopté par l’[ADR 0004](../decisions/0004-semantic-versioning-contracts.fr.md). SemVer n’est pas universel ; son application automatisée n’est pas encore implémentée.
 **Langue :** l'anglais est la langue par défaut ; la version anglaise est [ici](0017-artifact-identity-revision-and-versioning.md).  
 **Périmètre :** tous les artefacts et enregistrements gouvernés par GovCheck : artefacts normatifs, architecturaux, formels, d'implémentation, preuves, décisions et publications.
 
@@ -16,7 +16,7 @@ Un numéro de version ne répond pas à ces trois questions. Un commit Git, une 
 
 **SemVer est un vocabulaire de compatibilité, pas un système universel d'identité ni une mesure d'importance, de maturité, de correction ou d'approbation.** Il ne s'applique que lorsqu'un artefact expose un contrat déclaré à des consommateurs identifiables et que le projet peut définir la compatibilité ascendante de ce contrat. Lorsque ce test échoue, GovCheck doit utiliser une identité logique stable, des révisions/instances immuables et une provenance explicite, plutôt que d'inventer une sémantique MAJOR.MINOR.PATCH.
 
-Ce document est une proposition de politique. Il ne rend pas à lui seul un contrat proposé obligatoire. Son adoption exige une décision de gouvernance prise par l'autorité habilitée et, le cas échéant, une mise à jour de l'autorité canonique de gouvernance.
+La politique par catégorie décrite dans ce document est adoptée par l'ADR 0004. Cela ne publie ni n'approuve automatiquement un contrat particulier de produit, package, API, schéma, modèle, profil ou ensemble de règles ; chacun exige toujours son propre périmètre déclaré, ses consommateurs, une évaluation de compatibilité et une décision de publication prise par l'autorité habilitée.
 
 ## 2. Termes et axes d'identité distincts
 
@@ -286,7 +286,7 @@ L'automatisation peut valider l'identité, la structure des schémas, les liens,
 
 ## 10. Adoption et migration
 
-Cette proposition ne doit pas être considérée comme obligatoire avant son approbation par l'autorité GovCheck désignée et son incorporation dans l'autorité canonique de gouvernance selon le cycle de vie normal des changements.
+La politique par catégorie décrite dans ce document est adoptée par l'ADR 0004. Les contrats individuels et les changements futurs restent soumis à l'autorité compétente pour leur périmètre, à une évaluation de compatibilité et au processus d'approbation applicable.
 
 L'adoption doit se faire sans inventer rétroactivement d'historiques SemVer :
 
@@ -313,7 +313,7 @@ Cette politique développe, sans les remplacer silencieusement :
 - [Architecture 0013 — Métamodèle de gouvernance](0013-governance-metamodel.fr.md) : catégories d'artefacts et relations typées.
 - [Architecture 0015 — Plan de conformité et de validation](0015-governance-conformance-and-validation-plan.fr.md) : futures responsabilités de validation.
 
-En cas de conflit, l'autorité normative approuvée existante prévaut jusqu'à ce qu'un changement autorisé le résolve. Ce document reste une proposition jusqu'à son adoption.
+En cas de conflit, l'autorité normative approuvée existante prévaut jusqu'à ce qu'un changement autorisé le résolve. La politique par catégorie de ce document est adoptée par l'ADR 0004.
 
 ## 12. Références externes
 

@@ -776,7 +776,7 @@
 <a id="r-73"></a>
 ### R-73 — OMG Structured Assurance Case Metamodel (SACM), version 2.4 Beta 1 (septembre 2026)
 - **Cité par :** [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.fr.md), [reference provenance audit](reference-provenance-audit.fr.md), [audit de provenance](reference-provenance-audit.fr.md)
-- **Source primaire :** [État de la spécification SACM et documents de la bêta 2.4 chez OMG](https://www.omg.org/spec/SACM)
+- **Source primaire :** [État de la spécification SACM et documents de la bêta 2.4 chez OMG](https://www.omg.org/spec/SACM) · [Registre OMG des tickets clos](https://issues.omg.org/issues/spec/SACM?view=CLOSED) · [Registre OMG de tous les tickets](https://issues.omg.org/issues/spec/SACM?view=ALL)
 - **Concepts pertinents :** extensions proposées à SACM 2.3, notamment valeurs structurées/forces typées, constructions liées à l'évaluation, jointures, références à un concept entier, marquage de l'état de développement et révision de la sémantique des packages/relations.
 - **Utilité pour GovCheck :** point de comparaison indispensable avant de sélectionner un métamodèle interne ou d'échange. Les résolutions de tickets de la bêta indiquent quelles lacunes de 2.3 la révision tente de combler.
 - **Limite :** la version 2.4 est une bêta, pas une spécification formelle adoptée. GovCheck ne doit pas traiter ses constructions provisoires comme des contrats stables ni revendiquer sa conformité. Conserver 2.3 comme base formelle actuelle en attendant l'examen de la version finale 2.4.

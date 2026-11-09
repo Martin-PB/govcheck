@@ -38,7 +38,7 @@ The integration study and its external technical sources are catalogued separate
 - [R-05 — TLA+ specification and TLC model checking](../references.md#r-05)
 - [R-06 — in-toto provenance framework](../references.md#r-06)
 - [R-07 — SLSA software supply-chain framework](../references.md#r-07)
-- [R-08 — OpenSSF Scorecard and Best Practices Badge](../references.md#r-08)
+- [R-08 — OpenSSF Scorecard](../references.md#r-08) · [R-111 — OpenSSF Best Practices Badge](../references.md#r-111)
 - [R-09 — Open Policy Agent and Rego](../references.md#r-09)
 - [R-10 — Cedar authorization language and verification-guided development](../references.md#r-10)
 - [R-18 — Writ source-based assessment](../references.md#r-18)

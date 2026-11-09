@@ -43,6 +43,7 @@
 | Supply-chain metadata graphs and project security posture | R-108–R-111 |
 | Forge-independent Git governance, source provenance, Gemara and repository-control tools | R-112–R-120 |
 | Attestations, signing, formal contracts and temporal monitoring | R-121–R-126 |
+| File ownership and code-owner review | R-127 |
 
 ## Full reference entries
 
@@ -82,6 +83,7 @@
 - **Supply-chain knowledge graphs, security declarations and best-practice baselines:** R-108–R-111.
 - **Git governance, source provenance and candidate repository-assessment tools:** R-112–R-120.
 - **Attestations, artifact signing, formal contracts and temporal monitoring:** R-121–R-126.
+- **File ownership and code-owner review:** R-127.
 
 ## Standards, government guidance and industry specifications
 
@@ -1193,4 +1195,14 @@
 - **Relevant concepts:** formal monitoring of observed execution traces against temporal specifications; instrumentation and event collection; verdicts under incomplete, imprecise or uncertain observations.
 - **Use in GovCheck:** candidate method for evaluating temporal lifecycle properties over recorded governance events, while making observability and trace uncertainty explicit.
 - **Limit:** runtime verification evaluates observed traces, not all possible executions. Missing, delayed, ambiguous or untrusted events can make verdicts inconclusive; monitoring evidence is not model checking or theorem proof.
+
+
+
+<a id="r-127"></a>
+### R-127 — GitHub CODEOWNERS and required code-owner review
+- **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
+- **Primary source:** [GitHub documentation: About code owners](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners)
+- **Relevant concepts:** path-based assignment of individuals or teams as code owners; automatic review requests; optional branch-protection requirement for code-owner approval.
+- **Use in GovCheck:** platform-specific example of file-scope responsibility and review routing, relevant to separation of duties and ownership-aware acceptance.
+- **Limit:** CODEOWNERS is a GitHub feature, not a forge-neutral authority model. Review routing is not itself independent approval, proof of reviewer competence or a complete separation-of-duties control; owners need write access, and any one matching owner may satisfy the approval requirement.
 

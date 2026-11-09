@@ -65,7 +65,11 @@ This model allows deterministic checks of structure, identifiers, anchors, links
 
 The existing project discussion uses both AGENTS.md and the preferred agent.md naming convention. The canonical operational filename must be confirmed before a translation rule is adopted. Do not create parallel operational files under names that agents may automatically load.
 
-## 7. Sources
+## 7. Mentioned but not evaluated platforms
+
+Weblate ([R-145](../references.md#r-145)) and Crowdin ([R-146](../references.md#r-146)) were mentioned in issue #33 but not evaluated beyond their appearance in the Docusaurus discussion. They are preserved as unevaluated candidates, not recommendations or dependencies.
+
+## 8. Sources
 
 - [MDN translated-content](../references.md#r-136)
 - [Kubernetes localization](../references.md#r-137)
@@ -73,3 +77,4 @@ The existing project discussion uses both AGENTS.md and the preferred agent.md n
 - [Comprehensive Rust](../references.md#r-140), [po4a](../references.md#r-141) and [Docusaurus](../references.md#r-142)
 - [Microsoft translation-as-artifact guidance](../references.md#r-143)
 - [BCP 47](../references.md#r-144)
+- [Weblate](../references.md#r-145) and [Crowdin](../references.md#r-146)

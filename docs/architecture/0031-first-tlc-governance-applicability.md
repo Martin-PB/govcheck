@@ -45,13 +45,13 @@ The checked invariants cover type correctness, unique governance revisions, pred
 
 ## 5. Final PR-head revalidation
 
-The final PR head was checked again after the evidence record and portfolio journal were added:
+The final PR head was checked again after the evidence record and portfolio journal were added, and the run below is the latest recorded revalidation:
 
-- **Final source commit:** `e2f1b638a79c2a2f04b90d2ef85e6dd761a611eb`.
-- **Merge-test commit:** `9fbeb85` (merged with base `d04a6dd02d5bdda0b40e4aa740475a8e554e63d7`).
-- **Workflow/job:** [run 42660278801](https://github.com/Martin-PB/govcheck/actions/runs/42660278801), job `129309691476`.
+- **Final source commit:** `ff4a1457335d7a2600f2bb12850b74926ba6304b`.
+- **Merge-test commit:** `7cd7732` (merged with base `d04a6dd02d5bdda0b40e4aa740475a8e554e63d7`).
+- **Workflow/job:** [run 42660448408](https://github.com/Martin-PB/govcheck/actions/runs/42660448408), job `129310275465`.
 - **Result:** SANY and TLC passed again with the same complete finite state-space result: 20,785 generated, 18,067 distinct, 0 remaining; no error found.
-- **Artifact:** [final-head TLC report](https://github.com/Martin-PB/govcheck/actions/runs/42660278801/artifacts/13693439123).
+- **Artifact:** [final-head TLC report](https://github.com/Martin-PB/govcheck/actions/runs/42660448408/artifacts/13694860086).
 
 The original successful execution below remains the first recorded run. This revalidation binds the same model/configuration blobs to the final PR candidate.
 

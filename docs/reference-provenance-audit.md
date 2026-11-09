@@ -13,8 +13,8 @@ The audit also considers external critical reviews in GitHub issues #23 and #26 
 ## 2. Provenance and catalogue changes
 
 - The catalogue had 105 active entries at the start of this audit.
-- The current bilingual catalogue has **132 active entries**.
-- Twenty-eight new source entries were added ([R-108](references.md#r-108)–[R-135](references.md#r-135)), while duplicate identifier 102 was retired and consolidated into [R-24](references.md#r-24). Identifiers 12 and 101 were already retired. No retired identifier is reused.
+- The current bilingual catalogue has **141 active entries**.
+- Thirty-seven new source entries were added ([R-108](references.md#r-108)–[R-144](references.md#r-144)), while duplicate identifier 102 was retired and consolidated into [R-24](references.md#r-24). Identifiers 12 and 101 were already retired. No retired identifier is reused.
 - Nine entries had contradictory “no current record cites” wording despite linking to Architecture 0027. The wording was removed from [R-94](references.md#r-94)–[R-100](references.md#r-100), retired identifier 102 and [R-103](references.md#r-103); retired identifier 102 was subsequently consolidated into [R-24](references.md#r-24).
 - [R-24](references.md#r-24) now covers the W3C PROV family and retains both the PROV-O Recommendation and the family overview. retired identifier 102 is retired.
 - The name **Privateer** was ambiguous. [R-19](references.md#r-19) now identifies the privateer-agent/privateer-agent Pi coding-agent distribution. [R-120](references.md#r-120) separately identifies the OpenSSF security/compliance evaluator. Architecture 0016 distinguishes and assesses both.

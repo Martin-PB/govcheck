@@ -127,3 +127,4 @@ The integration study and its external technical sources are catalogued separate
 - [R-131 — GitLab merge-request approval rules](../references.md#r-131)
 - [R-132 — Zuul and Bors merge-gating systems](../references.md#r-132)
 - [R-133 — Formal theories of patches](../references.md#r-133)
+- [R-134 — Goal Structuring Notation (GSN) Standard](../references.md#r-134)

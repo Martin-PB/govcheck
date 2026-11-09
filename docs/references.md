@@ -47,6 +47,7 @@
 | Policy and predicate expression languages | R-128 |
 | Assurance argumentation, policy engines, gating and patch theory | R-129–R-133 |
 | GSN assurance-argument notation | R-134 |
+| Access-control policy and model verification | R-135 |
 
 ## Full reference entries
 
@@ -90,6 +91,7 @@
 - **Policy and predicate expression languages:** R-128.
 - **Assurance argumentation, policy engines, gating and patch theory:** R-129–R-133.
 - **GSN assurance-argument notation:** R-134.
+- **Access-control policy and model verification:** R-135.
 
 ## Standards, government guidance and industry specifications
 
@@ -1270,4 +1272,13 @@
 - **Relevant concepts:** structured graphical safety/assurance arguments using goals, strategies, solutions/evidence, contexts, assumptions and justifications; modular argument structures and a metamodel extending SACM.
 - **Use in GovCheck:** candidate assurance-case notation and interoperability reference alongside SACM and Assurance 2.0.
 - **Limit:** GSN structures an argument; it does not make the argument true or evidence sufficient. The standard's notation and guidance must be distinguished from the GSN-to-SACM metamodel mapping. GovCheck must preserve defeaters, counterevidence, uncertainty and evidence provenance rather than equating a well-formed diagram with assurance.
+
+
+<a id="r-135"></a>
+### R-135 — NIST SP 800-192, Verification and Testing of Access Control Policies and Models
+- **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
+- **Primary sources:** [NIST SP 800-192 publication](https://csrc.nist.gov/pubs/sp/800/192/final) · [DOI](https://doi.org/10.6028/NIST.SP.800-192)
+- **Relevant concepts:** verification and testing of access-control policies and models; detecting inconsistency, incompleteness, unintended permissions and mismatches between policy intent and implementation.
+- **Use in GovCheck:** direct source for the principle that executable policy is not necessarily correct policy. It supports checking policy models and their correspondence to requirements before relying on their enforcement implementation.
+- **Limit:** the publication focuses on access-control policies and models. It does not define a general governance metamodel or a complete lifecycle/assurance process; its techniques must be selected according to the policy language and system context.
 

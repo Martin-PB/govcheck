@@ -313,7 +313,7 @@
 
 <a id="r-24"></a>
 ### R-24 — W3C PROV family (PROV-O)
-- **Cited by:** [0017](architecture/0017-artifact-identity-revision-and-versioning.md), [0018](architecture/0018-version-governance-and-compatibility-authority.md) · [ADR 0004](decisions/0004-semantic-versioning-contracts.md)
+- **Cited by:** [0017](architecture/0017-artifact-identity-revision-and-versioning.md), [0018](architecture/0018-version-governance-and-compatibility-authority.md), [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md) · [ADR 0004](decisions/0004-semantic-versioning-contracts.md)
 
 - **Primary sources:** [W3C PROV overview](https://www.w3.org/TR/prov-overview/) · [W3C PROV-O recommendation](https://www.w3.org/TR/prov-o/).
 - **Relevant concepts:** the W3C provenance family: PROV-DM data model, PROV-O ontology, PROV-Constraints, PROV-N notation and related serializations; entities, activities, agents and derivation/attribution relations.

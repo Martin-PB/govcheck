@@ -151,7 +151,7 @@ Ce document ne prétend pas que GovCheck implémente un moteur de décision, un 
 - [Architecture 0013 — Métamodèle de gouvernance](0013-governance-metamodel.fr.md).
 - [Semantic Versioning 2.0.0](../references.fr.md#r-14) ; [R-24](../references.fr.md#r-24) ; [R-25](../references.fr.md#r-25) ; [R-23](../references.fr.md#r-23).
 
-Ces références éclairent la conception ; les règles d'autorité et de compatibilité présentées ici sont des propositions propres à GovCheck, et non des exigences imposées par ces standards.
+Ces références éclairent la conception ; les règles d'autorité et de compatibilité adoptées ici relèvent de la politique propre à GovCheck, et non d'exigences imposées par ces standards.
 
 ## Modèle machine-readable
 

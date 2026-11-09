@@ -27,6 +27,7 @@ English is the default language. Each record has a French counterpart.
 - [0028 — Governed work portfolio and issue-tracker boundary](0028-governed-work-portfolio-and-issue-tracker-boundary.md) · [Français](0028-governed-work-portfolio-and-issue-tracker-boundary.fr.md)
 - [0029 — Concern-scoped CI and formal verification boundaries](0029-concern-scoped-ci-and-formal-verification-boundaries.md) · [Français](0029-concern-scoped-ci-and-formal-verification-boundaries.fr.md)
 - [0030 — Repository-backed governed work portfolio and recoverable revision history](0030-repository-backed-work-portfolio-and-recoverable-history.md) · [Français](0030-repository-backed-work-portfolio-and-recoverable-history.fr.md)
+- [0031 — First TLC execution of the governance-applicability model](0031-first-tlc-governance-applicability.md) · [Français](0031-first-tlc-governance-applicability.fr.md)
 
 Architecture 0028 defines the portfolio lifecycle and the issue-tracker boundary. Architecture 0030 adds the repository-backed registry, stable work-item identity, append-preserving logical events, native VCS revision binding, migration rules and explicit limitations of the initial history/recovery mechanism. Neither record claims that a registry engine, tamper-proof journal, automatic adapter synchronization or enforcement service is implemented.
 

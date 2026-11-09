@@ -19,7 +19,7 @@ La [version anglaise du registre](work-items.md) contient l'inventaire détaill�
 
 ## Dispositions importantes
 
-- #41 est le fil de décision sur la révision de gouvernance applicable ; #86 en porte le travail de spécification technique associé.
+- #41 est le fil de décision sur la révision de gouvernance applicable ; #86 porte la spécification technique associée. La spécification 0006 bilingue et un modèle TLA+ borné dédié sont préparés à la revue ; l'exécution formelle et la décision du mainteneur restent en attente. #41 n'est pas adopté par ce travail technique.
 - #33 reste un candidat atomique, sans décomposition artificielle.
 - #46 est considéré terminé à la suite de la PR #39 fusionnée et de l'ADR 0005 ; sa clôture GitHub est différée jusqu'à l'acceptation de la migration du registre.
 - #61 est un doublon historique remplacé par #62.

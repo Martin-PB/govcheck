@@ -45,6 +45,7 @@
 | Attestations, signing, formal contracts and temporal monitoring | R-121–R-126 |
 | File ownership and code-owner review | R-127 |
 | Policy and predicate expression languages | R-128 |
+| Assurance argumentation, policy engines, gating and patch theory | R-129–R-133 |
 
 ## Full reference entries
 
@@ -86,6 +87,7 @@
 - **Attestations, artifact signing, formal contracts and temporal monitoring:** R-121–R-126.
 - **File ownership and code-owner review:** R-127.
 - **Policy and predicate expression languages:** R-128.
+- **Assurance argumentation, policy engines, gating and patch theory:** R-129–R-133.
 
 ## Standards, government guidance and industry specifications
 
@@ -1216,4 +1218,45 @@
 - **Relevant concepts:** portable, side-effect-free, terminating expression language designed for embedding and policy evaluation; typed expressions with a defined AST and interoperable serialized representation.
 - **Use in GovCheck:** candidate expression language for evaluating bounded repository-governance predicates, considered alongside Rego, Cedar, Prolog and CUE.
 - **Limit:** CEL is an expression language, not a governance metamodel, authority model or evidence format. Its host application defines available variables/functions and trust boundaries; evaluation success does not establish that inputs are complete or trustworthy.
+
+
+<a id="r-129"></a>
+### R-129 — Eliminative Argumentation for assurance-case confidence
+- **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
+- **Primary source:** [Goodenough, Weinstock and Klein, “Eliminative Argumentation: A Basis for Arguing Confidence in System Properties” (CMU/SEI-2015-TR-005)](https://insights.sei.cmu.edu/library/eliminative-argumentation-a-basis-for-arguing-confidence-in-system-properties/)
+- **Relevant concepts:** confidence in assurance-case arguments assessed by identifying and eliminating alternative explanations and counterarguments, rather than merely accumulating supporting evidence.
+- **Use in GovCheck:** complements Assurance 2.0 (R-71) and informs treatment of defeaters, counterevidence and argument confidence.
+- **Limit:** this is an assurance argumentation method, not a repository policy, evidence schema or numeric confidence algorithm. Confidence judgments remain dependent on argument scope, assumptions and the quality of considered alternatives.
+
+<a id="r-130"></a>
+### R-130 — Kyverno policy engine
+- **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
+- **Primary sources:** [Kyverno documentation](https://kyverno.io/docs/) · [Policy types overview](https://kyverno.io/docs/policy-types/overview/) · [Kyverno source repository](https://github.com/kyverno/kyverno)
+- **Relevant concepts:** declarative policy validation, mutation, generation, deletion and image verification for Kubernetes resources and supported JSON payloads; current policy types use CEL.
+- **Use in GovCheck:** adjacent policy-as-code and admission-control comparator; relevant to the interaction between declarative controls, evaluators and enforcement points.
+- **Limit:** Kyverno is primarily a Kubernetes policy engine, not a general repository-governance metamodel or forge-neutral change-acceptance authority. Policy evaluation depends on the supplied resource context and cluster integration.
+
+<a id="r-131"></a>
+### R-131 — GitLab merge-request approval rules and policies
+- **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
+- **Primary sources:** [GitLab merge-request approval rules](https://docs.gitlab.com/user/project/merge_requests/approvals/rules/) · [Approval settings](https://docs.gitlab.com/user/project/merge_requests/approvals/settings/) · [Merge-request approval policies](https://docs.gitlab.com/user/application_security/policies/merge_request_approval_policies/)
+- **Relevant concepts:** configurable required approvals, eligible approvers, code-owner approval, prevention of author/committer self-approval and policy-driven approval requirements.
+- **Use in GovCheck:** forge-specific comparator for separation of duties and programmable acceptance conditions at the merge boundary.
+- **Limit:** behavior and availability depend on GitLab tier, project/group/instance settings and override permissions. These controls do not provide a forge-neutral authority model or independently establish reviewer competence.
+
+<a id="r-132"></a>
+### R-132 — Zuul and Bors merge-gating systems
+- **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
+- **Primary sources:** [Zuul project-gating documentation](https://zuul-ci.org/docs/zuul/latest/gating.html) · [Zuul project overview](https://zuul-ci.org/docs/zuul/latest/about.html) · [Bors-NG documentation](https://bors.tech/documentation/index.html) · [Rust Bors design](https://github.com/rust-lang/bors/blob/main/docs/design.md)
+- **Relevant concepts:** testing proposed future repository states, batching and dependency-aware integration, staging branches and merge queues to prevent integration races and broken mainline states.
+- **Use in GovCheck:** industrial comparators for acceptance workflows that test the exact integration candidate rather than only the isolated pull-request head.
+- **Limit:** Zuul and Bors are CI/integration orchestration systems, not normative governance authorities or assurance-case engines. Bors-NG is archived and its public instance is being phased out; distinguish it from the newer Rust Bors project and from platform-native merge queues.
+
+<a id="r-133"></a>
+### R-133 — Formal theories of patches: Darcs, Camp and homotopical patch theory
+- **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
+- **Primary sources:** [Darcs patch theory](https://darcs.net/Theory) · [Jacobson, “A Formalization of Darcs Patch Theory Using Inverse Semigroups”](https://ww3.math.ucla.edu/camreport/cam09-83.pdf) · [Lynagh, “Camp Patch Theory”](https://archives.haskell.org/projects.haskell.org/camp/files/theory.pdf) · [Angiuli et al., “Homotopical Patch Theory”](https://doi.org/10.1017/S0956796816000198)
+- **Relevant concepts:** patch commutation, inverse and conflict operations; algebraic and higher-inductive representations of change; conditions under which patch reordering preserves repository meaning.
+- **Use in GovCheck:** research foundation for treating Pijul/Darcs-style patch semantics as distinct from Git snapshot/commit semantics and for designing VCS-specific adapters without flattening their meaning.
+- **Limit:** these works address different patch systems and formal models; they do not establish that their semantics can be transferred directly to Pijul or Git. A GovCheck adapter needs an explicit mapping and conformance tests against each VCS's actual behavior.
 

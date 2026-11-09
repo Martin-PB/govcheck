@@ -93,6 +93,6 @@ Aucune prévention, immutabilité ou application effective n'est revendiquée ta
 - [Spécification 0004](../specifications/0004-vcs-collaboration-contracts.fr.md).
 - [Architecture 0017](../architecture/0017-artifact-identity-revision-and-versioning.fr.md) et [ADR 0004 / Architecture 0018](../architecture/0018-version-governance-and-compatibility-authority.fr.md).
 - [Architecture 0012](../architecture/0012-normative-authority-and-documentation.fr.md).
-- [Catalogue des références](../references.fr.md), notamment R-24 (vocabulaire de provenance PROV), lorsque pertinent.
+- [Catalogue des références](../references.fr.md), notamment [R-24](../references.fr.md#r-24) (vocabulaire de provenance PROV), lorsque pertinent.
 
 Une référence n'implique ni adoption, ni implémentation, ni assurance.

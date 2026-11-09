@@ -44,6 +44,7 @@
 | Gouvernance Git indépendante de la forge, provenance source, Gemara et outils de contrôle de dépôt | R-112–R-120 |
 | Attestations, signatures, contrats formels et surveillance temporelle | R-121–R-126 |
 | Responsabilité par fichier et revue par propriétaires de code | R-127 |
+| Langages d'expression pour politiques et prédicats | R-128 |
 
 ## Entrées bibliographiques détaillées
 
@@ -84,6 +85,7 @@
 - **Gouvernance Git, provenance source et outils d'évaluation de dépôt candidats :** R-112–R-120.
 - **Attestations, signatures, contrats formels et surveillance temporelle :** R-121–R-126.
 - **Responsabilité par fichier et revue par propriétaires de code :** R-127.
+- **Langages d'expression pour politiques et prédicats :** R-128.
 
 ## Normes, recommandations publiques et spécifications industrielles
 
@@ -1206,4 +1208,13 @@
 - **Concepts pertinents :** attribution de chemins à des personnes ou équipes responsables ; demandes automatiques de revue ; possibilité d'exiger l'approbation d'un propriétaire de code via la protection de branche.
 - **Utilité pour GovCheck :** exemple propre à une plateforme d'attribution de responsabilité par périmètre de fichiers et d'orientation des revues, pertinent pour la séparation des tâches et l'acceptation tenant compte des propriétaires.
 - **Limite :** CODEOWNERS est une fonctionnalité GitHub, pas un modèle d'autorité indépendant des forges. L'orientation des revues ne constitue pas à elle seule une approbation indépendante, une preuve de compétence du relecteur ni un contrôle complet de séparation des tâches ; les propriétaires doivent disposer d'un accès en écriture et l'approbation d'un seul propriétaire correspondant peut suffire.
+
+
+<a id="r-128"></a>
+### R-128 — Common Expression Language (CEL)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Sources primaires :** [Présentation et définition du langage CEL](https://cel.dev/overview/cel-overview) · [Dépôt de spécification CEL](https://github.com/cel-expr/cel-spec)
+- **Concepts pertinents :** langage d'expression portable, sans effets de bord et à terminaison garantie, conçu pour l'intégration et l'évaluation de politiques ; expressions typées avec AST défini et représentation sérialisée interopérable.
+- **Utilité pour GovCheck :** langage d'expression candidat pour évaluer des prédicats bornés de gouvernance de dépôt, à comparer à Rego, Cedar, Prolog et CUE.
+- **Limite :** CEL est un langage d'expression, pas un métamodèle de gouvernance, un modèle d'autorité ou un format de preuve. L'application hôte définit les variables/fonctions disponibles et les frontières de confiance ; la réussite de l'évaluation n'établit pas que les entrées sont complètes ou fiables.
 

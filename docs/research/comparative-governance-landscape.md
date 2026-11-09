@@ -28,11 +28,11 @@ GovCheck should not reimplement every adjacent system. Its potential role is to 
 
 | GovCheck concept | Candidate external contribution | Boundary to preserve |
 |---|---|---|
-| Source/revision identity and provenance | gittuf; SLSA Source; in-toto/VSA; Sigstore | Verify subject digest, signer/verifier identity, trust root, predicate type, resource scope and freshness. A signature or attestation proves neither claim truth nor verifier correctness. |
-| Control definitions and categories | Gemara; OSPS Baseline; Security Insights | Preserve source version, control identifiers, applicability and mapping loss. A control catalog is not an assessment result. |
-| Control execution and evaluation | Privateer; OPA/Rego; Cedar; CEL; Conftest; Kyverno | Preserve evaluator version, policy revision, inputs, deterministic result, unresolved state and evidence provenance. |
-| Change integration and acceptance | Gerrit; GitLab approval rules; Zuul/Bors; forge-native merge queues | Evaluate the exact integration candidate; distinguish approval, CI result, policy satisfaction and final authorized acceptance. |
-| Assurance argument | SACM; GSN; Assurance 2.0; Eliminative Argumentation | Preserve claims, context, assumptions, strategies, evidence, counterevidence, defeaters and confidence rationale. A well-formed assurance graph is not automatically sound. |
+| Source/revision identity and provenance | gittuf; SLSA Source; in-toto ([R-06](../references.md#r-06))/VSA ([R-121](../references.md#r-121)); Sigstore ([R-122](../references.md#r-122)) | Verify subject digest, signer/verifier identity, trust root, predicate type, resource scope and freshness. A signature or attestation proves neither claim truth nor verifier correctness. |
+| Control definitions and categories | Gemara ([R-114](../references.md#r-114)); OSPS Baseline ([R-110](../references.md#r-110)); Security Insights ([R-109](../references.md#r-109)) | Preserve source version, control identifiers, applicability and mapping loss. A control catalog is not an assessment result. |
+| Control execution and evaluation | Privateer ([R-120](../references.md#r-120)); OPA/Rego ([R-09](../references.md#r-09)); Cedar ([R-10](../references.md#r-10)); CEL ([R-128](../references.md#r-128)); Conftest ([R-118](../references.md#r-118)); Kyverno ([R-130](../references.md#r-130)) | Preserve evaluator version, policy revision, inputs, deterministic result, unresolved state and evidence provenance. |
+| Change integration and acceptance | Gerrit ([R-115](../references.md#r-115)); GitLab approval rules ([R-131](../references.md#r-131)); Zuul/Bors ([R-132](../references.md#r-132)); forge-native merge queues | Evaluate the exact integration candidate; distinguish approval, CI result, policy satisfaction and final authorized acceptance. |
+| Assurance argument | SACM ([R-34](../references.md#r-34)); GSN ([R-134](../references.md#r-134)); Assurance 2.0 ([R-71](../references.md#r-71)); Eliminative Argumentation ([R-129](../references.md#r-129)) | Preserve claims, context, assumptions, strategies, evidence, counterevidence, defeaters and confidence rationale. A well-formed assurance graph is not automatically sound. |
 
 ## 4. Distinctions GovCheck must preserve
 
@@ -51,9 +51,17 @@ That contribution remains a design hypothesis until a narrow vertical slice demo
 
 ## 6. Sources
 
+- [in-toto](../references.md#r-06)
 - [gittuf](../references.md#r-112)
 - [SLSA Source Track](../references.md#r-113)
 - [Gemara](../references.md#r-114)
+- [OPA](../references.md#r-09)
+- [Cedar](../references.md#r-10)
+- [CEL](../references.md#r-128)
+- [Conftest](../references.md#r-118)
+- [Kyverno](../references.md#r-130)
+- [SACM](../references.md#r-34)
+- [Assurance 2.0](../references.md#r-71)
 - [Gerrit submit requirements](../references.md#r-115)
 - [OpenSSF Privateer](../references.md#r-120)
 - [OpenSSF Security Insights](../references.md#r-109) and [OSPS Baseline](../references.md#r-110)

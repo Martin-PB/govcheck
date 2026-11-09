@@ -13,8 +13,8 @@ The audit also considers external critical reviews in GitHub issues #23 and #26 
 ## 2. Provenance and catalogue changes
 
 - The catalogue had 105 active entries at the start of this audit.
-- The current bilingual catalogue has **125 active entries**.
-- Twenty-seven new source entries were added ([R-108](references.md#r-108)–[R-134](references.md#r-134)), while duplicate retired identifier 102 was retired and consolidated into [R-24](references.md#r-24). Previously retired retired identifier 12 and retired identifier 101 remain retired. No retired identifier is reused.
+- The current bilingual catalogue has **132 active entries**.
+- Twenty-eight new source entries were added ([R-108](references.md#r-108)–[R-135](references.md#r-135)), while duplicate identifier 102 was retired and consolidated into [R-24](references.md#r-24). Identifiers 12 and 101 were already retired. No retired identifier is reused.
 - Nine entries had contradictory “no current record cites” wording despite linking to Architecture 0027. The wording was removed from [R-94](references.md#r-94)–[R-100](references.md#r-100), retired identifier 102 and [R-103](references.md#r-103); retired identifier 102 was subsequently consolidated into [R-24](references.md#r-24).
 - [R-24](references.md#r-24) now covers the W3C PROV family and retains both the PROV-O Recommendation and the family overview. retired identifier 102 is retired.
 - The name **Privateer** was ambiguous. [R-19](references.md#r-19) now identifies the privateer-agent/privateer-agent Pi coding-agent distribution. [R-120](references.md#r-120) separately identifies the OpenSSF security/compliance evaluator. Architecture 0016 distinguishes and assesses both.
@@ -39,7 +39,7 @@ The audit also considers external critical reviews in GitHub issues #23 and #26 
 | Decision/process/requirements/quality and engineering-domain candidates | [R-74](references.md#r-74), [R-94](references.md#r-94)–[R-100](references.md#r-100), [R-103](references.md#r-103), [R-114](references.md#r-114), [R-123](references.md#r-123)–[R-126](references.md#r-126), [R-128](references.md#r-128) |
 | Agent-instruction formats, workflow tools and GitHub Actions placement | [R-18](references.md#r-18)–[R-19](references.md#r-19), [R-104](references.md#r-104), [R-107](references.md#r-107) |
 
-The catalogue also preserves the additional sources recovered from the critical reviews: gittuf, SLSA Source Track, Gemara, Gerrit submit requirements, Minder, Allstar, Conftest, CUE, OpenSSF Privateer, SLSA Verification Summary Attestation (VSA), Sigstore, Symboleo, Catala, Event Calculus, runtime verification and GitHub CODEOWNERS, CEL, eliminative argumentation, Kyverno, GitLab approval rules, Zuul/Bors, formal patch theory and GSN ([R-112](references.md#r-112)–[R-134](references.md#r-134)).
+The catalogue also preserves the additional sources recovered from the critical reviews: gittuf, SLSA Source Track, Gemara, Gerrit submit requirements, Minder, Allstar, Conftest, CUE, OpenSSF Privateer, SLSA Verification Summary Attestation (VSA), Sigstore, Symboleo, Catala, Event Calculus, runtime verification and GitHub CODEOWNERS, CEL, eliminative argumentation, Kyverno, GitLab approval rules, Zuul/Bors, formal patch theory, GSN and NIST SP 800-192 ([R-112](references.md#r-112)–[R-135](references.md#r-135)).
 
 ## 4. Semantic boundaries retained
 

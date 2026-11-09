@@ -46,6 +46,7 @@
 | Responsabilité par fichier et revue par propriétaires de code | R-127 |
 | Langages d'expression pour politiques et prédicats | R-128 |
 | Argumentation d'assurance, moteurs de politiques, gating et théorie des patches | R-129–R-133 |
+| Notation d'argumentation d'assurance GSN | R-134 |
 
 ## Entrées bibliographiques détaillées
 
@@ -88,6 +89,7 @@
 - **Responsabilité par fichier et revue par propriétaires de code :** R-127.
 - **Langages d'expression pour politiques et prédicats :** R-128.
 - **Argumentation d'assurance, moteurs de politiques, gating et théorie des patches :** R-129–R-133.
+- **Notation d'argumentation d'assurance GSN :** R-134.
 
 ## Normes, recommandations publiques et spécifications industrielles
 
@@ -1260,4 +1262,13 @@
 - **Concepts pertinents :** commutation, inversion et conflits de patches ; représentations algébriques et higher-inductive du changement ; conditions sous lesquelles la réorganisation des patches préserve le sens du dépôt.
 - **Utilité pour GovCheck :** fondement de recherche pour traiter les sémantiques de patches de Pijul/Darcs comme distinctes des sémantiques Git de snapshots/commits et concevoir des adaptateurs VCS sans aplatir leur sens.
 - **Limite :** ces travaux concernent différents systèmes de patches et modèles formels ; ils n'établissent pas que leurs sémantiques se transfèrent directement à Pijul ou Git. Un adaptateur GovCheck exige un mapping explicite et des tests de conformité face au comportement réel de chaque VCS.
+
+
+<a id="r-134"></a>
+### R-134 — Standard Goal Structuring Notation (GSN)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Sources primaires :** [Groupe de travail GSN et standard actuel (version 3)](https://www.scsc.uk/gsn-standard) · [Notice de publication du GSN Community Standard Version 3](https://mail.scsc.uk/resources/citation_r1386.html) · [Métamodèle GSN et correspondance SACM](https://www.scsc.uk/gsn-meta-model)
+- **Concepts pertinents :** arguments structurés graphiquement de sécurité/assurance utilisant buts, stratégies, solutions/éléments de preuve, contextes, hypothèses et justifications ; structures d'argument modulaires et métamodèle étendant SACM.
+- **Utilité pour GovCheck :** notation candidate de dossier d'assurance et référence d'interopérabilité à comparer à SACM et Assurance 2.0.
+- **Limite :** GSN structure un argument ; il ne rend pas l'argument vrai et ne garantit pas la suffisance des preuves. La notation et les recommandations du standard doivent être distinguées de la correspondance entre GSN et le métamodèle SACM. GovCheck doit préserver défaiteurs, contre-preuves, incertitude et provenance des preuves plutôt que d'assimiler un diagramme bien formé à une assurance valide.
 

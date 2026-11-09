@@ -41,7 +41,21 @@ The audit also considers external critical reviews in GitHub issues #23 and #26 
 
 The catalogue also preserves the additional sources recovered from the critical reviews: gittuf, SLSA Source Track, Gemara, Gerrit submit requirements, Minder, Allstar, Conftest, CUE, OpenSSF Privateer, SLSA Verification Summary Attestation (VSA), Sigstore, Symboleo, Catala, Event Calculus, runtime verification and GitHub CODEOWNERS, CEL, eliminative argumentation, Kyverno, GitLab approval rules, Zuul/Bors, formal patch theory, GSN and NIST SP 800-192 ([R-112](references.md#r-112)–[R-135](references.md#r-135)).
 
-## 4. Semantic boundaries retained
+
+## 4. PDF page landmarks
+
+The following page landmarks connect notable discussion passages to the catalogue. They are navigation aids, not a substitute for checking the exact source edition/version.
+
+- **Pages 31–49:** RDF, ontology composition, mind-map ingestion, graph validation and semantic-web vocabularies — [R-51](references.md#r-51)–[R-61](references.md#r-61), [R-63](references.md#r-63), [R-83](references.md#r-83)–[R-86](references.md#r-86).
+- **Pages 33–34:** distinction between RDF's graph model and CRDT-based real-time co-editing — [R-45](references.md#r-45)–[R-50](references.md#r-50), [R-66](references.md#r-66), [R-87](references.md#r-87).
+- **NixOS SecOps project section:** local agent isolation and sandbox/tool comparisons, including nono, Landlock, Goose, mcp-nixos, SmolVM and Nixi — [R-79](references.md#r-79) covers the cross-project sandbox and agent mechanisms; other project-specific dependencies remain a scope question below.
+- **Page 117:** NIST SP 800-192 and the requirement to verify policy models, not merely execute policies — [R-135](references.md#r-135), alongside OPA/Rego [R-09](references.md#r-09), Cedar [R-10](references.md#r-10) and Sentinel [R-77](references.md#r-77).
+- **Pages 154–156:** SLSA, in-toto, GUAC, OpenSSF Scorecard, Best Practices Badge, Security Insights and OSPS Baseline — [R-06](references.md#r-06)–[R-08](references.md#r-08), [R-108](references.md#r-108)–[R-111](references.md#r-111).
+- **Page 178:** Writ and Privateer are discussed as complementary workflow and compliance-evaluation tools; Agent Package Manager is named without a resolvable identity — [R-18](references.md#r-18), [R-120](references.md#r-120); see the unresolved identity notes below.
+- **Pages 188–200:** GovCheck bootstrap, repository-local authority, acceptance boundary, Git/Pijul adapters and local/team forges — [R-05](references.md#r-05), [R-20](references.md#r-20), [R-68](references.md#r-68), [R-133](references.md#r-133).
+- **Pages 219–220:** artifact identity, stable paths, releases, tags and versioning policy — [R-14](references.md#r-14), [R-15](references.md#r-15), [R-21](references.md#r-21), [R-23](references.md#r-23)–[R-26](references.md#r-26).
+
+## 5. Semantic boundaries retained
 
 - SACM 2.3 is the formal specification baseline recorded in [R-34](references.md#r-34); SACM 2.4 Beta 1 is a draft candidate recorded separately in [R-73](references.md#r-73). Neither is automatically adopted as GovCheck’s repository-wide governance metamodel.
 - PEAK ([R-74](references.md#r-74)) is a decision-reasoning model for problem, experience, assumptions and knowledge; it is not SACM and does not replace the assurance-case model.
@@ -51,7 +65,7 @@ The catalogue also preserves the additional sources recovered from the critical 
 - GitHub CODEOWNERS, Allstar and GitHub branch protection are platform-specific mechanisms; they do not define a forge-neutral authority model.
 - A source mentioned in the discussion can be retained as historical context without becoming an adopted dependency, normative requirement or implementation claim.
 
-## 5. Unresolved source identity and provenance
+## 6. Unresolved source identity and provenance
 
 The following items cannot be assigned a reliable, unique source record without further information:
 
@@ -62,7 +76,7 @@ The following items cannot be assigned a reliable, unique source record without 
 
 These are provenance gaps, not blockers to the current catalogue corrections. They should be resolved only if the corresponding concepts remain relevant to GovCheck.
 
-## 6. Verification status and remaining work
+## 7. Verification status and remaining work
 
 The repository changes are committed on the audit branch, but the following checks have **not** been executed in this environment:
 
@@ -73,7 +87,7 @@ No GitHub Actions workflow was triggered. The first command must be run locally 
 
 The PDF source inventory is now substantially reconciled with the catalogue and the critical reviews, but a final page-by-page provenance pass over all pre-GovCheck context remains necessary before claiming exhaustive coverage of every source mentioned anywhere in the 224-page PDF.
 
-## 7. Maintenance rule
+## 8. Maintenance rule
 
 For every source materially used by a GovCheck record:
 1. maintain one canonical R-XX entry, with primary source identity and version/status;

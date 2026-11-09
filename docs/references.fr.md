@@ -273,7 +273,7 @@
 <a id="r-21"></a>
 
 ### R-21 — Guides de releases et de reproductibilité pour le logiciel de recherche
-- **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md), [0018](architecture/0018-version-governance-and-compatibility-authority.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md), [0018](architecture/0018-version-governance-and-compatibility-authority.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md) · [ADR 0004](decisions/0004-semantic-versioning-contracts.fr.md)
 
 - **Source primaire :** [Software Sustainability Institute — guides et ressources](https://www.software.ac.uk/resources) · [LUMC Research Software Guidelines — versionnement et releases](https://lumc-dcc.github.io/rs-guidelines/best-practices/versioning-releases/)
 - **Concepts pertinents :** pérennité du logiciel de recherche, citation, releases et reproductibilité.
@@ -307,7 +307,7 @@
 <a id="r-24"></a>
 
 ### R-24 — W3C PROV-O
-- **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md), [0018](architecture/0018-version-governance-and-compatibility-authority.fr.md)
+- **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md), [0018](architecture/0018-version-governance-and-compatibility-authority.fr.md) · [ADR 0004](decisions/0004-semantic-versioning-contracts.fr.md)
 
 - **Source primaire :** [Recommandation W3C PROV-O](https://www.w3.org/TR/prov-o/).
 - **Concepts pertinents :** entités, activités, agents et relations de provenance.
@@ -317,7 +317,7 @@
 <a id="r-25"></a>
 
 ### R-25 — Guide de versionnement DataCite
-- **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md), [0018](architecture/0018-version-governance-and-compatibility-authority.fr.md)
+- **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md), [0018](architecture/0018-version-governance-and-compatibility-authority.fr.md) · [ADR 0004](decisions/0004-semantic-versioning-contracts.fr.md)
 
 - **Source primaire :** [Documentation DataCite sur le versionnement](https://support.datacite.org/docs/versioning).
 - **Concepts pertinents :** identification et relations entre versions de productions scientifiques citables.
@@ -327,7 +327,7 @@
 <a id="r-26"></a>
 
 ### R-26 — Étude sur le versionnement des données scientifiques (2024)
-- **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md)
+- **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md) · [ADR 0004](decisions/0004-semantic-versioning-contracts.fr.md)
 
 - **Source primaire :** [Article Nature / Scientific Data](https://www.nature.com/articles/s41597-024-03153-y).
 - **Concepts pertinents :** pratiques de versionnement et de provenance des données scientifiques.

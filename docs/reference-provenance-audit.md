@@ -6,7 +6,7 @@
 
 The primary historical source is **“Évaluer l’intégration des dépôts.pdf”**, dated 6 November 2026, 224 pages. It is retained in the project Library rather than copied into the repository. It was created to carry a long ChatGPT design discussion into a new conversation; it is therefore a record of discussion, decisions, rejected proposals, hypotheses and cited external material—not an external standard or normative authority by itself.
 
-The PDF covers adjacent integration work (including Cartocortex, MoriNet and SaussuNet) before the GovCheck-specific design and bootstrap discussion. GovCheck becomes explicit at approximately page 133. The earlier context remains relevant where it supplies repositories, formats, protocols and interoperability sources behind the initial assessment.
+The PDF covers several project streams before and alongside the GovCheck-specific design: Cartocortex, MoriNet and SaussuNet; a NixOS SecOps agent stack; and then the GovCheck governance/bootstrap discussion. GovCheck becomes explicit at approximately page 133. The earlier project contexts remain relevant where they supply repositories, formats, protocols and interoperability sources behind the initial assessment. GovCheck becomes explicit at approximately page 133. The earlier context remains relevant where it supplies repositories, formats, protocols and interoperability sources behind the initial assessment.
 
 The audit also considers external critical reviews in GitHub issues #23 and #26 and the consolidated tracker in issue #30. These reviews are comparative inputs, not decisions adopted automatically by GovCheck.
 

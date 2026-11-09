@@ -1,6 +1,6 @@
 # 0018 — Version governance, compatibility and approval authority
 
-**Status:** version-governance adoption is recorded in [ADR 0004](../decisions/0004-semantic-versioning-contracts.md), using the authority regime proposed in [Architecture 0023](0023-bootstrap-governance-authority.md). Its normative effect is contingent on merging ADR 0004; PR #21, which establishes the authority baseline, is already merged. Automated enforcement is not yet implemented.  
+**Status:** adopted by [ADR 0004](../decisions/0004-semantic-versioning-contracts.md), using the authority regime recorded in [Architecture 0023](0023-bootstrap-governance-authority.md). Automated enforcement is not yet implemented.
 **Language:** English is the default; see the [French counterpart](0018-version-governance-and-compatibility-authority.fr.md).
 
 ## 1. Purpose and relationship to 0017
@@ -16,7 +16,7 @@ Keep six identities distinct:
 - **Release identity:** publication bound to exact source and manifest identities.
 - **Instance identity:** one execution, observation, approval or decision.
 
-None measures maturity, assurance, approval or correctness. Until adopted through the canonical governance process, 0017 and this record remain proposals. Merging documentation does not itself confer normative force unless the canonical model explicitly grants that effect and the decision is recorded.
+None measures maturity, assurance, approval or correctness. ADR 0004 adopts the category-specific policy in 0017 and the version-governance process in this record. Merging other documentation does not by itself confer normative force; individual contracts and changes still require the authority, scope and approval applicable to them.
 
 ## 2. Authority model
 

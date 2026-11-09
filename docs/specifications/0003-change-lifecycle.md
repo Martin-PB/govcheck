@@ -25,6 +25,10 @@ Every transition is an explicit auditable event with actor, time, input/output s
 
 No transition is inferred from branch names, PR labels, CI status or chat messages. Approval authority comes from governance, not forge convention.
 
+## Governance revision applicability
+
+The exact governance revision applicable to an evaluation or decision is resolved from the canonical governance event history and its effective positions. A candidate that changes governance is evaluated and authorized under the prior applicable revision; its resulting revision can take effect only through a later explicit publication event. Historical decisions retain their original governance binding. Missing, ambiguous, conflicting or stale applicability blocks acceptance. See [Specification 0006 — Governance revision applicability and temporal authorization](0006-governance-revision-applicability.md) and its [French counterpart](0006-governance-revision-applicability.fr.md).
+
 ## Evidence freshness
 
 Each evidence item binds claim/rule IDs, subject identity, base/candidate fingerprints, governance revision/semantics, specification revision, method/tool/version/configuration/scope, assumptions/environment/external inputs, result/time/provenance and integrity reference. Changes to a declared dependency (candidate, base, governance, evaluator, tool, assumptions or external facts) invalidate evidence. Old evidence remains in history but cannot support a new state without revalidation. Re-evaluation never erases prior failures.

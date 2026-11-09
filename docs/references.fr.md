@@ -41,6 +41,7 @@
 | Sécurité des agents IA et de MCP — recommandations OWASP | R-106 |
 | Emplacement et syntaxe des workflows GitHub Actions | R-107 |
 | Graphes de métadonnées de chaîne d'approvisionnement et posture de sécurité des projets | R-108–R-111 |
+| Gouvernance Git indépendante de la forge, provenance source, Gemara et outils de contrôle de dépôt | R-112–R-120 |
 
 ## Entrées bibliographiques détaillées
 
@@ -78,6 +79,7 @@
 - **Sécurité des agents IA et de MCP :** R-106.
 - **Emplacement des workflows GitHub Actions :** R-107.
 - **Graphes de chaîne d'approvisionnement, déclarations de sécurité et référentiels de bonnes pratiques :** R-108–R-111.
+- **Gouvernance Git, provenance source et outils d'évaluation de dépôt candidats :** R-112–R-120.
 
 ## Normes, recommandations publiques et spécifications industrielles
 
@@ -144,7 +146,7 @@
 
 <a id="r-07"></a>
 
-### R-07 — SLSA
+### R-07 — SLSA Build Track
 - **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md), [0007](architecture/0007-technology-decision-framework.fr.md), [0014](architecture/0014-governed-development-workflow.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md)
 
 - **Source primaire :** [Spécification SLSA](https://slsa.dev/spec/)
@@ -255,7 +257,7 @@
 
 <a id="r-19"></a>
 
-### R-19 — Privateer (privateer-agent/privateer-agent)
+### R-19 — Distribution de l'agent Pi Privateer (privateer-agent/privateer-agent)
 - **Cité par :** [0009](architecture/0009-govcheck-design-discussion-record.fr.md), [0014](architecture/0014-governed-development-workflow.fr.md), [0016](architecture/0016-writ-privateer-assessment.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md)
 
 - **Sources primaires :** [Dépôt](https://github.com/privateer-agent/privateer-agent) · [Politique de sécurité à la révision étudiée](https://github.com/privateer-agent/privateer-agent/blob/181a988e443fa6b6b4138fc349d1260c96408ad4/SECURITY.md) · [README à la révision étudiée](https://github.com/privateer-agent/privateer-agent/blob/181a988e443fa6b6b4138fc349d1260c96408ad4/README.md)
@@ -1077,3 +1079,76 @@
 - **Concepts pertinents :** auto-évaluation volontaire des pratiques des projets open source, notamment gouvernance, contribution, tests, documentation, sécurité et releases ; le programme comprend des critères distincts de la série Metal et de l'OSPS Baseline.
 - **Utilité pour GovCheck :** conserve le programme de badge étudié comme checklist réutilisable et vocabulaire externe d'évaluation des pratiques d'un dépôt.
 - **Limite :** le badge n'est ni une preuve formelle, ni un audit indépendant de chaque affirmation, ni une spécification complète de gouvernance. L'auto-certification et le niveau du badge ne doivent pas être confondus avec une conformité vérifiée ou une acceptation GovCheck.
+
+
+<a id="r-112"></a>
+### R-112 — gittuf : sécurité de dépôts Git indépendante de la plateforme
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Sources primaires :** [Documentation du projet gittuf](https://gittuf.dev/) · [Dépôt source gittuf](https://github.com/gittuf/gittuf) · [Page du projet OpenSSF](https://openssf.org/projects/gittuf/)
+- **Concepts pertinents :** métadonnées de politique résidant dans le dépôt et authentifiées cryptographiquement ; racine de confiance et administrateurs délégués ; autorisation et application de politiques vérifiables indépendamment sur les changements Git.
+- **Utilité pour GovCheck :** comparateur direct et mécanisme d'application potentiellement complémentaire pour les dépôts Git, notamment lorsque la vérification des politiques doit être indépendante de la forge.
+- **Limite :** gittuf est spécifique à Git et encore en bêta ; il ne fournit pas la gouvernance générale du cycle de vie, le dossier d'assurance, les profils de projet ni les sémantiques Pijul de GovCheck. Sa politique ne remplace pas le modèle canonique de gouvernance GovCheck.
+
+<a id="r-113"></a>
+### R-113 — SLSA Source Track
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Source primaire :** [Tracks SLSA v1.2](https://slsa.dev/spec/v1.2/tracks)
+- **Concepts pertinents :** confiance croissante dans la création et l'intégrité des révisions de code source, avec des attestations que les consommateurs peuvent évaluer par rapport aux attentes définies par le propriétaire du dépôt.
+- **Utilité pour GovCheck :** référence complémentaire pour la provenance du code source et l'assurance des systèmes de contrôle de version, distincte du SLSA Build Track.
+- **Limite :** le Source Track ne définit ni métamodèle général de gouvernance de dépôt, ni cycle de vie des changements, ni modèle d'autorité/délégation, ni preuve de correction sémantique. Ses garanties dépendent du processus et des contrôles techniques définis par le dépôt.
+
+<a id="r-114"></a>
+### R-114 — Modèle d'ingénierie GRC Gemara
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Sources primaires :** [Projet Gemara de l'OpenSSF](https://openssf.org/projects/gemara/) · [Modèle et schémas Gemara](https://github.com/ossf/gemara)
+- **Concepts pertinents :** modèle catégoriel des activités de gouvernance, de risque et de conformité et schémas interopérables pour catalogues de contrôles, évaluations et éléments de preuve.
+- **Utilité pour GovCheck :** vocabulaire externe candidat pour les contrôles et les preuves, et modèle d'interopérabilité à comparer pour séparer définition des contrôles, évaluation et production de preuves.
+- **Limite :** Gemara n'est pas automatiquement l'autorité canonique de GovCheck ni un modèle complet du cycle de vie des changements de dépôt. Toute correspondance doit préserver l'autorité, l'applicabilité, les exceptions, l'identité des changements indépendante du VCS et les distinctions d'assurance propres à GovCheck.
+
+<a id="r-115"></a>
+### R-115 — Exigences de soumission de Gerrit Code Review
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Sources primaires :** [Documentation des exigences de soumission Gerrit](https://gerrit-review.googlesource.com/Documentation/config-submit-requirements.html) · [Projet Gerrit](https://www.gerritcodereview.com/)
+- **Concepts pertinents :** prédicats configurables déterminant quand un changement relu peut être soumis, notamment votes, labels, résultats CI et règles fournies par des plugins.
+- **Utilité pour GovCheck :** précédent industriel de conditions d'acceptation programmables à la frontière d'intégration d'un changement.
+- **Limite :** Gerrit est une plateforme de revue de code et de collaboration, pas une autorité de gouvernance indépendante de la forge. Les anciennes règles Prolog de soumission sont dépréciées au profit des submit requirements ; ne pas présenter Prolog comme le mécanisme actuellement recommandé.
+
+<a id="r-116"></a>
+### R-116 — OpenSSF Minder
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Sources primaires :** [Projet OpenSSF Minder](https://openssf.org/projects/minder/) · [Dépôt source Minder](https://github.com/ossf/minder)
+- **Concepts pertinents :** enrôlement de dépôts, contrôles de posture de sécurité, configuration de politiques, alertes et remédiations automatisées sélectionnées sur des dépôts et artefacts.
+- **Utilité pour GovCheck :** projet adjacent et source potentielle de contrôles de sécurité de dépôt réutilisables ou de modèles d'intégration.
+- **Limite :** Minder se concentre sur la posture de sécurité et les risques de chaîne d'approvisionnement, pas sur les sémantiques complètes du cycle de vie et de l'assurance de dépôts logiciels arbitraires. Ses résultats ne constituent ni preuve formelle ni acceptation GovCheck.
+
+<a id="r-117"></a>
+### R-117 — OpenSSF Allstar
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Sources primaires :** [Projet OpenSSF Allstar](https://openssf.org/allstar/) · [Dépôt source Allstar](https://github.com/ossf/allstar)
+- **Concepts pertinents :** contrôles continus des paramètres de dépôts et d'organisations GitHub par rapport à des politiques de sécurité déclarées, avec signalement par issue et remédiations sélectionnées.
+- **Utilité pour GovCheck :** exemple adjacent de surveillance automatisée de la configuration des dépôts et d'action corrective.
+- **Limite :** Allstar est spécifique à GitHub. L'application GitHub hébergée par OpenSSF a été retirée ; l'utilisation actuelle exige une exploitation auto-hébergée (par exemple comme GitHub Action ou service). Ce n'est ni une autorité de gouvernance portable ni un évaluateur général d'acceptation.
+
+<a id="r-118"></a>
+### R-118 — Tests de politiques avec Conftest
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Sources primaires :** [Documentation Conftest](https://www.conftest.dev/) · [Dépôt source Conftest](https://github.com/open-policy-agent/conftest) · [Documentation Open Policy Agent](https://www.openpolicyagent.org/docs)
+- **Concepts pertinents :** test de données et configurations structurées au moyen de politiques écrites en Rego, notamment pour l'infrastructure et les configurations de déploiement.
+- **Utilité pour GovCheck :** adaptateur candidat ou exécuteur de tests réutilisable lorsque les contrôles déclarés d'un projet portent sur des configurations structurées.
+- **Limite :** Conftest évalue des données fournies par rapport à des politiques Rego ; il ne définit pas la signification normative complète, le cycle de vie, l'autorité, la provenance des preuves ou le modèle d'acceptation d'un dépôt.
+
+<a id="r-119"></a>
+### R-119 — Langage de configuration et de contraintes CUE
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Sources primaires :** [Documentation CUE](https://cuelang.org/docs/) · [Dépôt source CUE](https://github.com/cue-lang/cue)
+- **Concepts pertinents :** langage unifié de données et de contraintes pour définir, valider, composer et générer des configurations et données structurées.
+- **Utilité pour GovCheck :** candidat pour les données canoniques riches en schémas et contraintes ; à comparer à JSON Schema, CEL et aux approches alignées sur Gemara.
+- **Limite :** CUE est un choix de langage et d'outillage, pas un métamodèle de gouvernance ni un modèle d'autorité. Son emploi doit préserver les distinctions sémantiques entre règles, preuves, model checking, décisions et risques acceptés.
+
+<a id="r-120"></a>
+### R-120 — Cadre d'évaluation de sécurité et de conformité OpenSSF Privateer
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Sources primaires :** [Annonce et présentation du projet par l'OpenSSF](https://openssf.org/blog/2026/10/13/introducing-privateer-ai-assisted-security-compliance-evaluation-framework-joins-the-openssf-sandbox/) · [Documentation Privateer](https://privateerproj.com/)
+- **Concepts pertinents :** évaluation par plugins du code source, de la configuration des dépôts et des systèmes déployés par rapport à des catalogues de contrôles maintenus séparément ; contrôles déterministes, revue facultative de preuves assistée par IA et résultats d'évaluation structurés.
+- **Utilité pour GovCheck :** comparateur direct et évaluateur potentiellement complémentaire de contrôles de sécurité/conformité, notamment pour la séparation entre catalogues de contrôles et plugins d'évaluation.
+- **Limite :** Privateer évalue des contrôles ; ce n'est ni l'autorité canonique de gouvernance de GovCheck ni un moteur complet de cycle de vie des changements. Une revue assistée par IA n'est pas une preuve ; les constats non résolus doivent rester incertains ou nécessiter une revue humaine. Ce projet est distinct de la distribution de l'agent de programmation Pi cataloguée en R-19.

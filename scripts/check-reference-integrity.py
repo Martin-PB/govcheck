@@ -19,7 +19,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
 CATALOGUES = {"en": DOCS / "references.md", "fr": DOCS / "references.fr.md"}
 ANCHOR_RE = re.compile(r'<a id="r-(\d{2,3})"></a>')
-REF_LINK_RE = re.compile(r'\[[^\]]*\]\(([^)]+references(?:\.fr)?\.md#r-(\d{2,3})[^)]*)\)', re.I)
+REF_LINK_RE = re.compile(r'\[[^\]]*\]\(([^)]*references(?:\.fr)?\.md#r-(\d{2,3})[^)]*)\)', re.I)
 LINK_RE = re.compile(r'(?<!!)\[[^\]]*\]\(([^)]+)\)')
 URL_RE = re.compile(r'https?://[^\s)<>]+')
 CITED_RE = {

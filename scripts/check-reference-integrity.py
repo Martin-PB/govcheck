@@ -172,6 +172,13 @@ def check_references(external: bool) -> int:
             expected = citations.get(ref_id, set())
             if declared != expected:
                 error(f"{catalogue.relative_to(ROOT)}: {ref_id} backlink mismatch; declared={sorted(declared)}, actual={sorted(expected)}")
+            no_citation_marker = (
+                bool(re.search(r"\\bno current record cites\\b", line.group(1), re.I))
+                if lang == "en"
+                else bool(re.search(r"\\baucun record actuel ne cite\\b", line.group(1), re.I))
+            )
+            if expected and no_citation_marker:
+                error(f"{catalogue.relative_to(ROOT)}: {ref_id} says it has no citing record but links to {sorted(expected)}")
             linked_urls.update(URL_RE.findall(block))
     check_local_links(markdown_files)
     if external:

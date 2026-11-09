@@ -40,6 +40,7 @@
 | Policy-as-code and runtime agent-governance research | R-105 |
 | OWASP guidance for AI-agent and MCP security | R-106 |
 | GitHub Actions workflow location and syntax | R-107 |
+| Supply-chain metadata graphs and project security posture | R-108–R-111 |
 
 ## Full reference entries
 
@@ -76,6 +77,7 @@
 - **Policy-as-code, continuous assurance and MCP governance research:** R-105.
 - **AI-agent and MCP security guidance:** R-106.
 - **GitHub Actions workflow placement:** R-107.
+- **Supply-chain knowledge graphs, security declarations and best-practice baselines:** R-108–R-111.
 
 ## Standards, government guidance and industry specifications
 
@@ -1040,3 +1042,36 @@
 - **Use in GovCheck:** supports the ADR 0003 constraint that reusable product-package content cannot by itself relocate a GitHub Actions workflow: the bootstrap/synchronization process must materialize the workflow at the required repository-root path.
 - **Limit:** this is a GitHub Actions platform constraint, not a general CI/CD requirement. It does not establish that a workflow is enabled, trusted, protected from bypass, correctly configured or successfully executed.
 
+
+
+<a id="r-108"></a>
+### R-108 — GUAC: Graph for Understanding Artifact Composition
+- **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
+- **Primary sources:** [OpenSSF GUAC project](https://openssf.org/guac/) · [GUAC source repository](https://github.com/guacsec/guac) · [GUAC documentation](https://docs.guac.sh/guac/)
+- **Relevant concepts:** aggregation and normalization of software-supply-chain metadata, including SBOMs, attestations, vulnerabilities, artifacts, packages and their relationships in a queryable graph.
+- **Use in GovCheck:** preserves the GUAC comparison from the initial study as an example of a synthesis layer over heterogeneous supply-chain evidence.
+- **Limit:** GUAC is an evolving OpenSSF project, not a repository-governance authority or proof engine. A graph of supplied metadata does not establish completeness, truth, provenance authenticity or control effectiveness.
+
+<a id="r-109"></a>
+### R-109 — OpenSSF Security Insights Specification
+- **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
+- **Primary sources:** [Security Insights specification](https://security-insights.openssf.org/) · [schema documentation](https://security-insights.openssf.org/schema.html) · [official source repository](https://github.com/ossf/security-insights)
+- **Relevant concepts:** a machine-readable YAML report of project security practices, repository metadata, vulnerability-reporting arrangements, policies and supporting resources.
+- **Use in GovCheck:** preserves the format considered for interoperable project-security declarations and evidence inputs.
+- **Limit:** the file is a maintainer-reported snapshot associated with a commit or release. Schema validity and self-reporting do not independently verify that the declared practices are effective or currently enforced.
+
+<a id="r-110"></a>
+### R-110 — OpenSSF Open Source Project Security (OSPS) Baseline
+- **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
+- **Primary sources:** [OSPS Baseline](https://baseline.openssf.org/) · [official source repository](https://github.com/ossf/security-baseline)
+- **Relevant concepts:** versioned, maturity-oriented baseline of actionable security requirements for open-source projects, with control families and machine-readable definitions.
+- **Use in GovCheck:** preserves the baseline considered as a candidate source of reusable project-level security requirements and assessment criteria.
+- **Limit:** it is a security-focused baseline, not a complete lifecycle-governance model. Its maturity levels and controls are not universal GovCheck tiers, and inclusion does not mean GovCheck adopts or requires them. Pin the exact baseline version when assessing conformance.
+
+<a id="r-111"></a>
+### R-111 — OpenSSF Best Practices Badge Program
+- **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
+- **Primary sources:** [OpenSSF Best Practices Badge program](https://openssf.org/projects/best-practices-badge/) · [Best Practices Badge service](https://bestpractices.dev/)
+- **Relevant concepts:** voluntary self-assessment of open-source project practices, including project governance, contribution processes, testing, documentation, security and release practices; the program includes distinct Metal-series and OSPS Baseline criteria.
+- **Use in GovCheck:** preserves the badge program considered as a reusable checklist and external assessment vocabulary for repository practices.
+- **Limit:** the badge is not a formal proof, independent audit of every claim or complete governance specification. Self-certification and badge level must not be conflated with verified compliance or GovCheck acceptance.

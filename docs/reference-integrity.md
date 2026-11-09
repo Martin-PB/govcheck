@@ -50,7 +50,7 @@ Run from the repository root:
 python3 scripts/check-reference-integrity.py
 ~~~
 
-This offline check verifies bilingual entry parity, two- and three-digit reference identifiers, thematic-index coverage, EN/FR citation symmetry for paired records, source metadata, reference anchors, local Markdown links under docs/, and both directions of document/catalogue traceability. It also warns when a source document contains an external URL that is not represented in the central catalogue.
+This offline check verifies bilingual entry parity, two- and three-digit reference identifiers, thematic-index coverage, EN/FR citation symmetry for paired records, source metadata, reference anchors, local Markdown links under docs/, both directions of document/catalogue traceability, and consistency between an entry's no-citation marker and its declared backlinks. It also warns when a source document contains an external URL that is not represented in the central catalogue.
 
 To additionally probe external URLs (network required; publisher-side blocking is reported as a warning):
 

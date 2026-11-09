@@ -14,35 +14,35 @@ The audit also considers external critical reviews in GitHub issues #23 and #26 
 
 - The catalogue had 105 active entries at the start of this audit.
 - The current bilingual catalogue has **125 active entries**.
-- Twenty-seven new source entries were added (R-108–R-134), while duplicate R-102 was retired and consolidated into R-24. Previously retired R-12 and R-101 remain retired. No retired identifier is reused.
-- Nine entries had contradictory “no current record cites” wording despite linking to Architecture 0027. The wording was removed from R-94–R-100, R-102 and R-103; R-102 was subsequently consolidated into R-24.
-- R-24 now covers the W3C PROV family and retains both the PROV-O Recommendation and the family overview. R-102 is retired.
-- The name **Privateer** was ambiguous. R-19 now identifies the privateer-agent/privateer-agent Pi coding-agent distribution. R-120 separately identifies the OpenSSF security/compliance evaluator. Architecture 0016 distinguishes and assesses both.
+- Twenty-seven new source entries were added ([R-108](references.md#r-108)–[R-134](references.md#r-134)), while duplicate retired identifier 102 was retired and consolidated into [R-24](references.md#r-24). Previously retired retired identifier 12 and retired identifier 101 remain retired. No retired identifier is reused.
+- Nine entries had contradictory “no current record cites” wording despite linking to Architecture 0027. The wording was removed from [R-94](references.md#r-94)–[R-100](references.md#r-100), retired identifier 102 and [R-103](references.md#r-103); retired identifier 102 was subsequently consolidated into [R-24](references.md#r-24).
+- [R-24](references.md#r-24) now covers the W3C PROV family and retains both the PROV-O Recommendation and the family overview. retired identifier 102 is retired.
+- The name **Privateer** was ambiguous. [R-19](references.md#r-19) now identifies the privateer-agent/privateer-agent Pi coding-agent distribution. [R-120](references.md#r-120) separately identifies the OpenSSF security/compliance evaluator. Architecture 0016 distinguishes and assesses both.
 - The checker now detects a contradiction where an entry says no record cites it while also declaring backlinks. The integrity guide documents this check.
 
 ## 3. Source coverage map
 
 | Discussion area | Catalogue coverage |
 |---|---|
-| Cartocortex, MoriNet, SaussuNet, reviewed PRs and adjacent GovCheck repositories | R-62, R-68, R-69 |
-| Mind-map interchange, serializers, import/export fixtures and vendor documentation | R-63, R-69 |
-| CRDTs, Yjs/Yrs, Automerge, Loro, WebRTC, ICE/STUN/TURN, WebTorrent, Hyperswarm/HyperDHT | R-45–R-50, R-66, R-87 |
-| OKF, RDF, SKOS, OWL, SHACL, JSON-LD, PROV, Dublin Core, BIBO, DCAT, Web Annotation, ActivityStreams, SIOC, P-Plan and Schema.org | R-24, R-51–R-61, R-83–R-86 |
-| Assurance cases, SACM 2.3 and 2.4 Beta 1, Assurance 2.0, PEAK and runtime assurance | R-33–R-34, R-70–R-76 |
-| Model checking, proof assistants and alternative formal methods (TLA+, Lean, Alloy, B, Z, CSP/FDR, iStar, deontic logic) | R-05, R-20, R-37–R-43, R-89–R-93 |
-| Threat/risk methods, access-control policy verification and structured compliance | R-27–R-36, R-78, R-88 |
-| Policy engines, agent/MCP enforcement, sandboxing and agent instructions | R-09–R-10, R-77, R-79, R-104–R-106 |
-| Software-supply-chain provenance, artifact identity, attestations, signing and source/build assurance | R-06–R-08, R-14–R-15, R-21, R-23–R-26, R-108, R-112–R-113, R-121–R-122 |
-| Project security declarations, baselines, repository checks and assessment tools | R-08, R-109–R-120, R-127 |
-| Decision/process/requirements/quality and engineering-domain candidates | R-74, R-94–R-100, R-103, R-114, R-123–R-126 |
-| Agent-instruction formats, workflow tools and GitHub Actions placement | R-18–R-19, R-104, R-107 |
+| Cartocortex, MoriNet, SaussuNet, reviewed PRs and adjacent GovCheck repositories | [R-62](references.md#r-62), [R-68](references.md#r-68), [R-69](references.md#r-69) |
+| Mind-map interchange, serializers, import/export fixtures and vendor documentation | [R-63](references.md#r-63), [R-69](references.md#r-69) |
+| CRDTs, Yjs/Yrs, Automerge, Loro, WebRTC, ICE/STUN/TURN, WebTorrent, Hyperswarm/HyperDHT | [R-45](references.md#r-45)–[R-50](references.md#r-50), [R-66](references.md#r-66), [R-87](references.md#r-87) |
+| OKF, RDF, SKOS, OWL, SHACL, JSON-LD, PROV, Dublin Core, BIBO, DCAT, Web Annotation, ActivityStreams, SIOC, P-Plan and Schema.org | [R-24](references.md#r-24), [R-51](references.md#r-51)–[R-61](references.md#r-61), [R-83](references.md#r-83)–[R-86](references.md#r-86) |
+| Assurance cases, SACM 2.3 and 2.4 Beta 1, Assurance 2.0, PEAK and runtime assurance | [R-33](references.md#r-33)–[R-34](references.md#r-34), [R-70](references.md#r-70)–[R-76](references.md#r-76) |
+| Model checking, proof assistants and alternative formal methods (TLA+, Lean, Alloy, B, Z, CSP/FDR, iStar, deontic logic) | [R-05](references.md#r-05), [R-20](references.md#r-20), [R-37](references.md#r-37)–[R-43](references.md#r-43), [R-89](references.md#r-89)–[R-93](references.md#r-93) |
+| Threat/risk methods, access-control policy verification and structured compliance | [R-27](references.md#r-27)–[R-36](references.md#r-36), [R-78](references.md#r-78), [R-88](references.md#r-88) |
+| Policy engines, agent/MCP enforcement, sandboxing and agent instructions | [R-09](references.md#r-09)–[R-10](references.md#r-10), [R-77](references.md#r-77), [R-79](references.md#r-79), [R-104](references.md#r-104)–[R-106](references.md#r-106) |
+| Software-supply-chain provenance, artifact identity, attestations, signing and source/build assurance | [R-06](references.md#r-06)–[R-08](references.md#r-08), [R-14](references.md#r-14)–[R-15](references.md#r-15), [R-21](references.md#r-21), [R-23](references.md#r-23)–[R-26](references.md#r-26), [R-108](references.md#r-108), [R-112](references.md#r-112)–[R-113](references.md#r-113), [R-121](references.md#r-121)–[R-122](references.md#r-122) |
+| Project security declarations, baselines, repository checks and assessment tools | [R-08](references.md#r-08), [R-109](references.md#r-109)–[R-120](references.md#r-120), [R-127](references.md#r-127) |
+| Decision/process/requirements/quality and engineering-domain candidates | [R-74](references.md#r-74), [R-94](references.md#r-94)–[R-100](references.md#r-100), [R-103](references.md#r-103), [R-114](references.md#r-114), [R-123](references.md#r-123)–[R-126](references.md#r-126) |
+| Agent-instruction formats, workflow tools and GitHub Actions placement | [R-18](references.md#r-18)–[R-19](references.md#r-19), [R-104](references.md#r-104), [R-107](references.md#r-107) |
 
-The catalogue also preserves the additional sources recovered from the critical reviews: gittuf, SLSA Source Track, Gemara, Gerrit submit requirements, Minder, Allstar, Conftest, CUE, OpenSSF Privateer, SLSA Verification Summary Attestation (VSA), Sigstore, Symboleo, Catala, Event Calculus, runtime verification and GitHub CODEOWNERS, CEL, eliminative argumentation, Kyverno, GitLab approval rules, Zuul/Bors, formal patch theory and GSN (R-112–R-134).
+The catalogue also preserves the additional sources recovered from the critical reviews: gittuf, SLSA Source Track, Gemara, Gerrit submit requirements, Minder, Allstar, Conftest, CUE, OpenSSF Privateer, SLSA Verification Summary Attestation (VSA), Sigstore, Symboleo, Catala, Event Calculus, runtime verification and GitHub CODEOWNERS, CEL, eliminative argumentation, Kyverno, GitLab approval rules, Zuul/Bors, formal patch theory and GSN ([R-112](references.md#r-112)–[R-134](references.md#r-134)).
 
 ## 4. Semantic boundaries retained
 
-- SACM 2.3 is the formal specification baseline recorded in R-34; SACM 2.4 Beta 1 is a draft candidate recorded separately in R-73. Neither is automatically adopted as GovCheck’s repository-wide governance metamodel.
-- PEAK (R-74) is a decision-reasoning model for problem, experience, assumptions and knowledge; it is not SACM and does not replace the assurance-case model.
+- SACM 2.3 is the formal specification baseline recorded in [R-34](references.md#r-34); SACM 2.4 Beta 1 is a draft candidate recorded separately in [R-73](references.md#r-73). Neither is automatically adopted as GovCheck’s repository-wide governance metamodel.
+- PEAK ([R-74](references.md#r-74)) is a decision-reasoning model for problem, experience, assumptions and knowledge; it is not SACM and does not replace the assurance-case model.
 - Tests, runtime observations, model checking, program verification, theorem proof, conformance claims and acceptance decisions remain distinct evidence/assurance categories.
 - A VSA or signed attestation delegates trust to a verifier; it does not prove that the verifier is trustworthy or that a claim is true.
 - Security baselines and repository-assessment tools are candidates for selectable controls, not universal GovCheck tiers or mandatory dependencies.

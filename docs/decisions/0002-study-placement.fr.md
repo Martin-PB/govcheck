@@ -38,7 +38,7 @@ L'étude d'intégration et ses sources techniques externes sont cataloguées sé
 - [R-05 — Spécification TLA+ et model checking TLC](../references.fr.md#r-05)
 - [R-06 — Cadre de provenance in-toto](../references.fr.md#r-06)
 - [R-07 — Cadre SLSA de sécurité de la chaîne d'approvisionnement](../references.fr.md#r-07)
-- [R-08 — OpenSSF Scorecard et Best Practices Badge](../references.fr.md#r-08)
+- [R-08 — OpenSSF Scorecard](../references.fr.md#r-08) · [R-111 — OpenSSF Best Practices Badge](../references.fr.md#r-111)
 - [R-09 — Open Policy Agent et langage Rego](../references.fr.md#r-09)
 - [R-10 — Langage d'autorisation Cedar et développement guidé par la vérification](../references.fr.md#r-10)
 - [R-18 — Évaluation de Writ à partir des sources](../references.fr.md#r-18)

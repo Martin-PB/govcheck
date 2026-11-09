@@ -36,6 +36,8 @@ The authority model is a bounded transition model for the initial single-root re
 
 ## Governance revision applicability
 
+- [First TLC execution record — Architecture 0031](../architecture/0031-first-tlc-governance-applicability.md) · [French](../architecture/0031-first-tlc-governance-applicability.fr.md)
+
 - [Specification 0006 — Governance revision applicability](../specifications/0006-governance-revision-applicability.md) · [French](../specifications/0006-governance-revision-applicability.fr.md)
 - [TLA+ module](../../formal/tla/GovCheckGovernanceApplicability.tla)
 - [TLC configuration](../../formal/tla/GovCheckGovernanceApplicability.cfg)

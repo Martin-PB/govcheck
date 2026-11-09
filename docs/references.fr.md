@@ -1363,7 +1363,7 @@
 
 <a id="r-145"></a>
 ### R-145 — Plateforme de localisation Weblate
-- **Cité par :** [Pratiques documentaires multilingues](research/multilingual-documentation-practices.fr.md)
+- **Cité par :** [Pratiques documentaires multilingues](research/multilingual-documentation-practices.fr.md), [pratiques documentaires multilingues](research/multilingual-documentation-practices.fr.md), [reference provenance audit](reference-provenance-audit.md), [audit de provenance](reference-provenance-audit.fr.md)
 - **Sources primaires :** [Documentation Weblate](https://docs.weblate.org/) · [Projet Weblate](https://weblate.org/)
 - **Concepts pertinents :** gestion collaborative des traductions, mémoire de traduction et glossaires, intégration aux dépôts et suivi du statut des traductions.
 - **Utilité pour GovCheck :** plateforme nommée dans la revue de gouvernance multilingue comme solution à considérer uniquement si un adaptateur facultatif de traduction devient nécessaire.
@@ -1371,7 +1371,7 @@
 
 <a id="r-146"></a>
 ### R-146 — Plateforme de localisation Crowdin
-- **Cité par :** [Pratiques documentaires multilingues](research/multilingual-documentation-practices.fr.md)
+- **Cité par :** [Pratiques documentaires multilingues](research/multilingual-documentation-practices.fr.md), [pratiques documentaires multilingues](research/multilingual-documentation-practices.fr.md), [reference provenance audit](reference-provenance-audit.md), [audit de provenance](reference-provenance-audit.fr.md)
 - **Sources primaires :** [Documentation Crowdin](https://support.crowdin.com/) · [Plateforme Crowdin](https://crowdin.com/)
 - **Concepts pertinents :** localisation collaborative, workflows de traduction, glossaire/mémoire de traduction et intégrations avec les dépôts documentaires.
 - **Utilité pour GovCheck :** plateforme nommée dans la revue de gouvernance multilingue comme solution à considérer uniquement si un adaptateur facultatif de traduction devient nécessaire.

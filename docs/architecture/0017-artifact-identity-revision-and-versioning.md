@@ -323,7 +323,7 @@ If a conflict is found, the existing approved normative authority prevails until
 - [R-25](../references.md#r-25): distinguishes versions, related identifiers and concept-level records; stewards determine what counts as major/minor.
 - [R-26](../references.md#r-26): domain-specific treatment of dataset revisions and reproducibility.
 
-These references support the distinction between compatibility versioning, revision identity and provenance. They do not prescribe GovCheck's artifact classifications; those are project-specific policy adopted by ADR 0004.
+These references support the distinction between compatibility versioning, revision identity and provenance. They do not prescribe GovCheck's artifact classifications; those classifications are part of the project-specific policy adopted by ADR 0004.
 
 
 ## Bibliographic references

@@ -66,7 +66,7 @@ Authorize(evalId, actor) ==
   /\ evalId \in {evaluations[i].id : i \in 1..Len(evaluations)}
   /\ actor \in Principals
   /\ actor = currentAuthority
-  /\ LET e == CHOOSE i \in 1..Len(evaluations) : evaluations[i].id = evalId
+  /\ LET e == evaluations[CHOOSE i \in 1..Len(evaluations) : evaluations[i].id = evalId]
      IN
        /\ e.baseGovernance = currentGovernance
        /\ e.resultingGovernance # "NoRevision"
@@ -87,7 +87,7 @@ Publish ==
   /\ Len(governanceHistory) < HistoryLimit
   /\ pendingPublication # "NoDecision"
   /\ pendingPublication \in {decisions[i].id : i \in 1..Len(decisions)}
-  /\ LET d == CHOOSE i \in 1..Len(decisions) : decisions[i].id = pendingPublication
+  /\ LET d == decisions[CHOOSE i \in 1..Len(decisions) : decisions[i].id = pendingPublication]
      IN
        /\ d.governanceAtDecision = currentGovernance
        /\ d.resultingGovernance \notin {governanceHistory[i].revision : i \in 1..Len(governanceHistory)}

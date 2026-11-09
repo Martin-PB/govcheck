@@ -37,8 +37,10 @@ Le raisonnement de conception, les distinctions d'assurance, l'audit du modèle 
 
 ## Décisions et suite
 
-[ADR 0001](docs/decisions/0001-bootstrap-boundaries.fr.md) consigne les frontières du bootstrap. Restent à décider : langage d'implémentation, format/schéma canonique, langage d'expression, noyau formel, approche cryptographique, licence et stratégie de dépendances. Ces choix doivent faire l'objet d'une analyse comparative explicite avant l'implémentation.
+[ADR 0001](docs/decisions/0001-bootstrap-boundaries.fr.md) consigne les frontières du bootstrap. Restent à décider : langage d'implémentation, format/schéma canonique, langage d'expression, noyau formel, approche cryptographique et stratégie de dépendances. Ces choix doivent faire l'objet d'une analyse comparative explicite avant l'implémentation.
 
 ## Licence
 
-Aucune licence n'a été choisie. Aucune permission de réutilisation, modification ou redistribution ne doit être présumée.
+GovCheck est placé sous la [licence Apache, version 2.0](LICENSE). Copyright 2026 Martin Pruvost-Beaurain.
+
+Toute redistribution de GovCheck ou d'une œuvre dérivée doit inclure la [LICENSE](LICENSE) et l'attribution figurant dans le fichier [NOTICE](NOTICE). La décision et ses limites sont consignées dans l'[ADR 0005](docs/decisions/0005-license-apache-2-0-with-individual-attribution.fr.md).

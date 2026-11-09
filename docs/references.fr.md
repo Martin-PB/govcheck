@@ -40,6 +40,7 @@
 | Recherches sur le policy-as-code et la gouvernance des agents à l'exécution | R-105 |
 | Sécurité des agents IA et de MCP — recommandations OWASP | R-106 |
 | Emplacement et syntaxe des workflows GitHub Actions | R-107 |
+| Licences open source et attribution | R-108 |
 
 ## Entrées bibliographiques détaillées
 
@@ -76,6 +77,7 @@
 - **Recherches sur le policy-as-code, l'assurance continue et la gouvernance MCP :** R-105.
 - **Sécurité des agents IA et de MCP :** R-106.
 - **Emplacement des workflows GitHub Actions :** R-107.
+- **Licences open source et attribution :** R-108.
 
 ## Normes, recommandations publiques et spécifications industrielles
 
@@ -1042,3 +1044,12 @@
 - **Concepts pertinents :** les définitions de workflows GitHub Actions sont des fichiers YAML placés dans le répertoire `.github/workflows/` à la racine du dépôt ; GitHub découvre les workflows à cet emplacement et les évalue en fonction des événements du dépôt.
 - **Utilité pour GovCheck :** étaye la contrainte de l'ADR 0003 selon laquelle le contenu réutilisable du package produit ne peut pas, à lui seul, déplacer un workflow GitHub Actions : le processus de bootstrap/synchronisation doit matérialiser le workflow au chemin requis à la racine du dépôt.
 - **Limite :** il s'agit d'une contrainte de la plateforme GitHub Actions, pas d'une exigence générale de CI/CD. Elle ne démontre ni que le workflow est activé, fiable, protégé contre les contournements, correctement configuré ou exécuté avec succès.
+
+
+<a id="r-108"></a>
+### R-108 — Licence Apache 2.0 et compatibilité avec la GPL
+- **Cité par :** [ADR 0005](decisions/0005-license-apache-2-0-with-individual-attribution.fr.md)
+- **Sources primaires :** [Licence Apache, version 2.0](https://www.apache.org/licenses/LICENSE-2.0) · [fichier texte de la licence](https://www.apache.org/licenses/LICENSE-2.0.txt) · [Apache Software Foundation — compatibilité avec la GPL](https://www.apache.org/licenses/GPL-compatibility.html)
+- **Concepts pertinents :** conditions de redistribution de la section 4, dont la conservation des mentions de droit d'auteur et d'attribution et la reproduction des mentions d'attribution du fichier NOTICE dans les distributions de l'œuvre ou d'œuvres dérivées ; conditions de contribution de la section 5 ; absence de licence sur les marques à la section 6 ; compatibilité à sens unique avec la GPLv3 et incompatibilité avec la GPLv2 selon l'analyse de la FSF.
+- **Utilité pour GovCheck :** étaye le choix de l'ADR 0005 (Apache 2.0 avec une attribution individuelle dans le NOTICE) et sa règle selon laquelle les outils sous GPL restent des programmes externes, jamais des composants embarqués ou liés.
+- **Limite :** il s'agit du texte de la licence et de la position de la fondation qui la publie sur la compatibilité, pas d'un avis juridique. Les obligations d'attribution naissent de la redistribution ; la licence n'exige aucune attribution pour un usage interne ou un usage réseau sans redistribution.

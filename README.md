@@ -37,8 +37,10 @@ The design rationale, assurance distinctions, lifecycle-model audit, canonical d
 
 ## Decisions and next phase
 
-[ADR 0001](docs/decisions/0001-bootstrap-boundaries.md) records the accepted bootstrap boundaries. Remaining decisions include implementation language, canonical serialization/schema, expression language, formal kernel, cryptographic approach, license, and dependency strategy. These should be resolved through explicit comparative analysis before implementation.
+[ADR 0001](docs/decisions/0001-bootstrap-boundaries.md) records the accepted bootstrap boundaries. Remaining decisions include implementation language, canonical serialization/schema, expression language, formal kernel, cryptographic approach, and dependency strategy. These should be resolved through explicit comparative analysis before implementation.
 
 ## License
 
-No license has been selected yet. Until one is added, the repository should not be assumed to grant permission to reuse, modify, or redistribute its contents.
+GovCheck is licensed under the [Apache License, Version 2.0](LICENSE). Copyright 2026 Martin Pruvost-Beaurain.
+
+Any redistribution of GovCheck or of a derivative work must include the [LICENSE](LICENSE) and the attribution in the [NOTICE](NOTICE) file. See [ADR 0005](docs/decisions/0005-license-apache-2-0-with-individual-attribution.md) for the decision and its limits.

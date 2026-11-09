@@ -40,6 +40,7 @@
 | Policy-as-code and runtime agent-governance research | R-105 |
 | OWASP guidance for AI-agent and MCP security | R-106 |
 | GitHub Actions workflow location and syntax | R-107 |
+| Open-source licensing and attribution | R-108 |
 
 ## Full reference entries
 
@@ -76,6 +77,7 @@
 - **Policy-as-code, continuous assurance and MCP governance research:** R-105.
 - **AI-agent and MCP security guidance:** R-106.
 - **GitHub Actions workflow placement:** R-107.
+- **Open-source licensing and attribution:** R-108.
 
 ## Standards, government guidance and industry specifications
 
@@ -1040,3 +1042,11 @@
 - **Use in GovCheck:** supports the ADR 0003 constraint that reusable product-package content cannot by itself relocate a GitHub Actions workflow: the bootstrap/synchronization process must materialize the workflow at the required repository-root path.
 - **Limit:** this is a GitHub Actions platform constraint, not a general CI/CD requirement. It does not establish that a workflow is enabled, trusted, protected from bypass, correctly configured or successfully executed.
 
+
+<a id="r-108"></a>
+### R-108 — Apache License 2.0 and GPL compatibility
+- **Cited by:** [ADR 0005](decisions/0005-license-apache-2-0-with-individual-attribution.md)
+- **Primary sources:** [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0) · [plain-text license file](https://www.apache.org/licenses/LICENSE-2.0.txt) · [Apache Software Foundation — GPL compatibility](https://www.apache.org/licenses/GPL-compatibility.html)
+- **Relevant concepts:** redistribution conditions of section 4, including retention of copyright and attribution notices and reproduction of the NOTICE file's attribution notices in distributions of the Work or Derivative Works; contribution terms of section 5; absence of trademark grant in section 6; one-way compatibility with GPLv3 and incompatibility with GPLv2 as assessed by the FSF.
+- **Use in GovCheck:** supports ADR 0005's choice of Apache 2.0 with an individual NOTICE attribution, and its rule that GPL-licensed tools remain external programs rather than embedded or linked components.
+- **Limit:** this is the license text and the licensor foundation's own compatibility statement, not legal advice. Attribution obligations are triggered by redistribution; the license does not require attribution for internal use or network use without redistribution.

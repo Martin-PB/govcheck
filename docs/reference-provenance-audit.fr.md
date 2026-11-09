@@ -14,35 +14,35 @@ L'audit prend également en compte les revues critiques externes consignées dan
 
 - Le catalogue comptait 105 entrées actives au début de cet audit.
 - Le catalogue bilingue compte désormais **125 entrées actives**.
-- Vingt-sept nouvelles entrées ont été ajoutées (R-108–R-134), tandis que le doublon R-102 a été retiré et consolidé dans R-24. Les identifiants R-12 et R-101, déjà retirés, le restent. Aucun identifiant retiré n'est réutilisé.
-- Neuf entrées comportaient une mention contradictoire d'absence de citation alors qu'elles renvoyaient à l'Architecture 0027. Cette mention a été supprimée pour R-94–R-100, R-102 et R-103 ; R-102 a ensuite été consolidée dans R-24.
-- R-24 couvre désormais la famille W3C PROV et conserve les liens vers la recommandation PROV-O et la vue d'ensemble de la famille. R-102 est retirée.
-- Le nom **Privateer** était ambigu. R-19 identifie désormais la distribution de l'agent de programmation Pi privateer-agent/privateer-agent. R-120 identifie séparément l'évaluateur de sécurité/conformité de l'OpenSSF. L'Architecture 0016 distingue et évalue les deux projets.
+- Vingt-sept nouvelles entrées ont été ajoutées ([R-108](references.fr.md#r-108)–[R-134](references.fr.md#r-134)), tandis que le doublon retired identifier 102 a été retiré et consolidé dans [R-24](references.fr.md#r-24). Les identifiants retired identifier 12 et retired identifier 101, déjà retirés, le restent. Aucun identifiant retiré n'est réutilisé.
+- Neuf entrées comportaient une mention contradictoire d'absence de citation alors qu'elles renvoyaient à l'Architecture 0027. Cette mention a été supprimée pour [R-94](references.fr.md#r-94)–[R-100](references.fr.md#r-100), retired identifier 102 et [R-103](references.fr.md#r-103) ; retired identifier 102 a ensuite été consolidée dans [R-24](references.fr.md#r-24).
+- [R-24](references.fr.md#r-24) couvre désormais la famille W3C PROV et conserve les liens vers la recommandation PROV-O et la vue d'ensemble de la famille. retired identifier 102 est retirée.
+- Le nom **Privateer** était ambigu. [R-19](references.fr.md#r-19) identifie désormais la distribution de l'agent de programmation Pi privateer-agent/privateer-agent. [R-120](references.fr.md#r-120) identifie séparément l'évaluateur de sécurité/conformité de l'OpenSSF. L'Architecture 0016 distingue et évalue les deux projets.
 - Le script de contrôle détecte désormais la contradiction entre une mention d'absence de citation et la présence de renvois inverses. Le guide d'intégrité documente ce contrôle.
 
 ## 3. Cartographie des sources
 
 | Domaine de discussion | Couverture du catalogue |
 |---|---|
-| Cartocortex, MoriNet, SaussuNet, PR examinées et dépôts GovCheck connexes | R-62, R-68, R-69 |
-| Formats de cartes mentales, sérialiseurs, fixtures d'import/export et documentation éditeur | R-63, R-69 |
-| CRDT, Yjs/Yrs, Automerge, Loro, WebRTC, ICE/STUN/TURN, WebTorrent, Hyperswarm/HyperDHT | R-45–R-50, R-66, R-87 |
-| OKF, RDF, SKOS, OWL, SHACL, JSON-LD, PROV, Dublin Core, BIBO, DCAT, Web Annotation, ActivityStreams, SIOC, P-Plan et Schema.org | R-24, R-51–R-61, R-83–R-86 |
-| Dossiers d'assurance, SACM 2.3 et 2.4 Beta 1, Assurance 2.0, PEAK et assurance à l'exécution | R-33–R-34, R-70–R-76 |
-| Model checking, assistants de preuve et méthodes formelles alternatives (TLA+, Lean, Alloy, B, Z, CSP/FDR, iStar, logique déontique) | R-05, R-20, R-37–R-43, R-89–R-93 |
-| Méthodes de menace/risque, vérification des politiques de contrôle d'accès et conformité structurée | R-27–R-36, R-78, R-88 |
-| Moteurs de politiques, application des règles aux agents/MCP, sandboxing et instructions d'agents | R-09–R-10, R-77, R-79, R-104–R-106 |
-| Provenance de chaîne d'approvisionnement, identité d'artefact, attestations, signatures et assurance des sources/builds | R-06–R-08, R-14–R-15, R-21, R-23–R-26, R-108, R-112–R-113, R-121–R-122 |
-| Déclarations de sécurité de projets, référentiels, contrôles de dépôts et outils d'évaluation | R-08, R-109–R-120, R-127 |
-| Candidats en sémantique métier, processus, exigences, qualité et ingénierie | R-74, R-94–R-100, R-103, R-114, R-123–R-126 |
-| Formats d'instructions d'agents, outils de workflow et emplacement des workflows GitHub Actions | R-18–R-19, R-104, R-107 |
+| Cartocortex, MoriNet, SaussuNet, PR examinées et dépôts GovCheck connexes | [R-62](references.fr.md#r-62), [R-68](references.fr.md#r-68), [R-69](references.fr.md#r-69) |
+| Formats de cartes mentales, sérialiseurs, fixtures d'import/export et documentation éditeur | [R-63](references.fr.md#r-63), [R-69](references.fr.md#r-69) |
+| CRDT, Yjs/Yrs, Automerge, Loro, WebRTC, ICE/STUN/TURN, WebTorrent, Hyperswarm/HyperDHT | [R-45](references.fr.md#r-45)–[R-50](references.fr.md#r-50), [R-66](references.fr.md#r-66), [R-87](references.fr.md#r-87) |
+| OKF, RDF, SKOS, OWL, SHACL, JSON-LD, PROV, Dublin Core, BIBO, DCAT, Web Annotation, ActivityStreams, SIOC, P-Plan et Schema.org | [R-24](references.fr.md#r-24), [R-51](references.fr.md#r-51)–[R-61](references.fr.md#r-61), [R-83](references.fr.md#r-83)–[R-86](references.fr.md#r-86) |
+| Dossiers d'assurance, SACM 2.3 et 2.4 Beta 1, Assurance 2.0, PEAK et assurance à l'exécution | [R-33](references.fr.md#r-33)–[R-34](references.fr.md#r-34), [R-70](references.fr.md#r-70)–[R-76](references.fr.md#r-76) |
+| Model checking, assistants de preuve et méthodes formelles alternatives (TLA+, Lean, Alloy, B, Z, CSP/FDR, iStar, logique déontique) | [R-05](references.fr.md#r-05), [R-20](references.fr.md#r-20), [R-37](references.fr.md#r-37)–[R-43](references.fr.md#r-43), [R-89](references.fr.md#r-89)–[R-93](references.fr.md#r-93) |
+| Méthodes de menace/risque, vérification des politiques de contrôle d'accès et conformité structurée | [R-27](references.fr.md#r-27)–[R-36](references.fr.md#r-36), [R-78](references.fr.md#r-78), [R-88](references.fr.md#r-88) |
+| Moteurs de politiques, application des règles aux agents/MCP, sandboxing et instructions d'agents | [R-09](references.fr.md#r-09)–[R-10](references.fr.md#r-10), [R-77](references.fr.md#r-77), [R-79](references.fr.md#r-79), [R-104](references.fr.md#r-104)–[R-106](references.fr.md#r-106) |
+| Provenance de chaîne d'approvisionnement, identité d'artefact, attestations, signatures et assurance des sources/builds | [R-06](references.fr.md#r-06)–[R-08](references.fr.md#r-08), [R-14](references.fr.md#r-14)–[R-15](references.fr.md#r-15), [R-21](references.fr.md#r-21), [R-23](references.fr.md#r-23)–[R-26](references.fr.md#r-26), [R-108](references.fr.md#r-108), [R-112](references.fr.md#r-112)–[R-113](references.fr.md#r-113), [R-121](references.fr.md#r-121)–[R-122](references.fr.md#r-122) |
+| Déclarations de sécurité de projets, référentiels, contrôles de dépôts et outils d'évaluation | [R-08](references.fr.md#r-08), [R-109](references.fr.md#r-109)–[R-120](references.fr.md#r-120), [R-127](references.fr.md#r-127) |
+| Candidats en sémantique métier, processus, exigences, qualité et ingénierie | [R-74](references.fr.md#r-74), [R-94](references.fr.md#r-94)–[R-100](references.fr.md#r-100), [R-103](references.fr.md#r-103), [R-114](references.fr.md#r-114), [R-123](references.fr.md#r-123)–[R-126](references.fr.md#r-126) |
+| Formats d'instructions d'agents, outils de workflow et emplacement des workflows GitHub Actions | [R-18](references.fr.md#r-18)–[R-19](references.fr.md#r-19), [R-104](references.fr.md#r-104), [R-107](references.fr.md#r-107) |
 
-Le catalogue conserve également les sources ajoutées à partir des revues critiques : gittuf, SLSA Source Track, Gemara, exigences de soumission Gerrit, Minder, Allstar, Conftest, CUE, OpenSSF Privateer, SLSA Verification Summary Attestation (VSA), Sigstore, Symboleo, Catala, Event Calculus, vérification à l'exécution et GitHub CODEOWNERS, CEL, argumentation éliminative, Kyverno, règles d'approbation GitLab, Zuul/Bors, théorie formelle des patches et GSN (R-112–R-134).
+Le catalogue conserve également les sources ajoutées à partir des revues critiques : gittuf, SLSA Source Track, Gemara, exigences de soumission Gerrit, Minder, Allstar, Conftest, CUE, OpenSSF Privateer, SLSA Verification Summary Attestation (VSA), Sigstore, Symboleo, Catala, Event Calculus, vérification à l'exécution et GitHub CODEOWNERS, CEL, argumentation éliminative, Kyverno, règles d'approbation GitLab, Zuul/Bors, théorie formelle des patches et GSN ([R-112](references.fr.md#r-112)–[R-134](references.fr.md#r-134)).
 
 ## 4. Distinctions sémantiques préservées
 
-- SACM 2.3 est la base formelle consignée en R-34 ; SACM 2.4 Beta 1 est une proposition en cours, enregistrée séparément en R-73. Aucun des deux n'est automatiquement adopté comme métamodèle général de gouvernance du dépôt GovCheck.
-- PEAK (R-74) est un modèle de raisonnement décisionnel autour du problème, de l'expérience, des hypothèses et des connaissances ; ce n'est pas SACM et il ne remplace pas le modèle de dossier d'assurance.
+- SACM 2.3 est la base formelle consignée en [R-34](references.fr.md#r-34) ; SACM 2.4 Beta 1 est une proposition en cours, enregistrée séparément en [R-73](references.fr.md#r-73). Aucun des deux n'est automatiquement adopté comme métamodèle général de gouvernance du dépôt GovCheck.
+- PEAK ([R-74](references.fr.md#r-74)) est un modèle de raisonnement décisionnel autour du problème, de l'expérience, des hypothèses et des connaissances ; ce n'est pas SACM et il ne remplace pas le modèle de dossier d'assurance.
 - Tests, observations à l'exécution, model checking, vérification de programmes, preuve de théorème, affirmations de conformité et décisions d'acceptation restent des catégories distinctes.
 - Une VSA ou une attestation signée délègue la confiance à un vérificateur ; elle ne prouve pas que le vérificateur est digne de confiance ni que l'affirmation est vraie.
 - Les référentiels de sécurité et outils d'évaluation de dépôts sont des candidats pour des contrôles sélectionnables, pas des niveaux universels GovCheck ni des dépendances obligatoires.

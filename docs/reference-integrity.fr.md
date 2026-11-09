@@ -6,7 +6,7 @@ Le catalogue est un index bilingue de sources et de provenance ; ce n'est ni une
 
 - Le [catalogue anglais](references.md) est la présentation par défaut.
 - Le [catalogue français](references.fr.md) en est le pendant sémantique.
-- Les deux catalogues contiennent 124 entrées actives. Trois identifiants ont été retirés et ne doivent jamais être réutilisés : R-12 (doublon Scorecard consolidé dans R-08), R-101 (doublon NIST SP 800-218 consolidé dans R-02) et R-102 (famille W3C PROV consolidée dans R-24).
+- Les deux catalogues contiennent 125 entrées actives. Trois identifiants ont été retirés et ne doivent jamais être réutilisés : R-12 (doublon Scorecard consolidé dans R-08), R-101 (doublon NIST SP 800-218 consolidé dans R-02) et R-102 (famille W3C PROV consolidée dans R-24).
 - Chaque entrée indique les sources primaires, les concepts pertinents, l'usage précis pour GovCheck et les limites.
 - Chaque dossier d'architecture, décision ou spécification renvoie à l'ancre exacte du catalogue qu'il utilise.
 - Le champ **Cited by / Cité par** de chaque entrée renvoie vers tous les documents qui la citent.
@@ -26,6 +26,8 @@ Lorsqu'un document utilise une source externe :
 4. ajouter un lien direct vers l'ancre dans les documents anglais et français qui la citent ;
 5. mettre à jour **Cited by / Cité par** dans les deux catalogues ;
 6. ne jamais réutiliser un identifiant retiré.
+
+CEL est également conservé comme langage d'expression candidat, sans décision d'adoption.
 
 Les sources candidates qui ne sont pas encore utilisées par un document peuvent rester dans le catalogue si leur statut de source non citée est explicite. Ne jamais faire pointer un champ **Cited by / Cité par** vers un document absent de la branche.
 

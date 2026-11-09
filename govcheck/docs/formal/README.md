@@ -24,6 +24,14 @@ The model records independent reviews with ReviewClaim; evidence republication, 
 
 The closure is an explicit model input and is checked against the child-claim graph. The first model uses conjunctive arguments only. It does not model external truth, cryptographic provenance, assumption discharge, distributed clocks, concurrency or implementation refinement.
 
+## Governance revision applicability
+
+- [Specification 0006](../specifications/0006-governance-revision-applicability.md) · [French](../specifications/0006-governance-revision-applicability.fr.md)
+- [TLA+ module](../../formal/tla/GovCheckGovernanceApplicability.tla)
+- [TLC configuration](../../formal/tla/GovCheckGovernanceApplicability.cfg)
+
+This bounded model binds evaluations to the governance revision effective at their event position, requires authorization by the authority recorded for that position, publishes only prospectively, preserves historical decision bindings and rejects stale evaluations. It does not establish implementation refinement, cryptographic identity, distributed consensus or complete concurrent-writer behavior.
+
 ## Shared release evidence
 
 - [Stable artifact catalogue](../../formal/artifacts.json)

@@ -1078,7 +1078,7 @@
 
 <a id="r-111"></a>
 ### R-111 — OpenSSF Best Practices Badge Program
-- **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
+- **Cited by:** [ADR 0002](decisions/0002-study-placement.md), [reference provenance audit](reference-provenance-audit.md), [audit de provenance](reference-provenance-audit.fr.md)
 - **Primary sources:** [OpenSSF Best Practices Badge program](https://openssf.org/projects/best-practices-badge/) · [Best Practices Badge service](https://bestpractices.dev/)
 - **Relevant concepts:** voluntary self-assessment of open-source project practices, including project governance, contribution processes, testing, documentation, security and release practices; the program includes distinct Metal-series and OSPS Baseline criteria.
 - **Use in GovCheck:** preserves the badge program considered as a reusable checklist and external assessment vocabulary for repository practices.
@@ -1287,7 +1287,7 @@
 
 <a id="r-136"></a>
 ### R-136 — MDN translated-content source revision tracking
-- **Cited by:** [Issue 0033 multilingual research](research/multilingual-documentation-practices.md)
+- **Cited by:** [Issue 0033 multilingual research](research/multilingual-documentation-practices.md), [reference provenance audit](reference-provenance-audit.md), [audit de provenance](reference-provenance-audit.fr.md)
 - **Primary sources:** [MDN translated-content repository](https://github.com/mdn/translated-content) · [l10n.sourceCommit discussion](https://github.com/orgs/mdn/discussions/129) · [example sourceCommit metadata change](https://github.com/mdn/translated-content/pull/36282)
 - **Relevant concepts:** per-file source-commit metadata for translations; identifying which source revision a translated page follows; freshness measured against source changes rather than only dates.
 - **Use in GovCheck:** candidate precedent for translation provenance metadata and stale-translation detection.
@@ -1351,7 +1351,7 @@
 
 <a id="r-144"></a>
 ### R-144 — BCP 47 language tags
-- **Cited by:** [Issue 0033 multilingual research](research/multilingual-documentation-practices.md)
+- **Cited by:** [Issue 0033 multilingual research](research/multilingual-documentation-practices.md), [reference provenance audit](reference-provenance-audit.md), [audit de provenance](reference-provenance-audit.fr.md)
 - **Primary sources:** [RFC 5646: Tags for Identifying Languages](https://www.rfc-editor.org/rfc/rfc5646) · [IANA Language Subtag Registry](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry)
 - **Relevant concepts:** standardized language tags for identifying language, script, region and variants; registry-backed subtags.
 - **Use in GovCheck:** candidate canonical language identifiers for translation metadata and future multi-language support.

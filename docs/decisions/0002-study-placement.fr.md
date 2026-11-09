@@ -127,3 +127,4 @@ L'étude d'intégration et ses sources techniques externes sont cataloguées sé
 - [R-131 — Règles d'approbation des merge requests GitLab](../references.fr.md#r-131)
 - [R-132 — Gating de fusion Zuul et Bors](../references.fr.md#r-132)
 - [R-133 — Théories formelles des patches](../references.fr.md#r-133)
+- [R-134 — Standard Goal Structuring Notation (GSN)](../references.fr.md#r-134)

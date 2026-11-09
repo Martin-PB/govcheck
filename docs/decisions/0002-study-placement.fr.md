@@ -122,3 +122,8 @@ L'étude d'intégration et ses sources techniques externes sont cataloguées sé
 - [R-126 — Vérification à l'exécution et surveillance de traces](../references.fr.md#r-126)
 - [R-127 — GitHub CODEOWNERS et revue par propriétaires de code](../references.fr.md#r-127)
 - [R-128 — Common Expression Language (CEL)](../references.fr.md#r-128)
+- [R-129 — Argumentation éliminative](../references.fr.md#r-129)
+- [R-130 — Moteur de politiques Kyverno](../references.fr.md#r-130)
+- [R-131 — Règles d'approbation des merge requests GitLab](../references.fr.md#r-131)
+- [R-132 — Gating de fusion Zuul et Bors](../references.fr.md#r-132)
+- [R-133 — Théories formelles des patches](../references.fr.md#r-133)

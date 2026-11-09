@@ -13,8 +13,8 @@ L'audit prend également en compte les revues critiques externes consignées dan
 ## 2. Provenance et évolutions du catalogue
 
 - Le catalogue comptait 105 entrées actives au début de cet audit.
-- Le catalogue bilingue compte désormais **132 entrées actives**.
-- Vingt-huit nouvelles entrées ont été ajoutées ([R-108](references.fr.md#r-108)–[R-135](references.fr.md#r-135)), tandis que le doublon 102 a été retiré et consolidé dans [R-24](references.fr.md#r-24). Les identifiants 12 et 101 étaient déjà retirés. Aucun identifiant retiré n'est réutilisé.
+- Le catalogue bilingue compte désormais **141 entrées actives**.
+- Trente-sept nouvelles entrées ont été ajoutées ([R-108](references.fr.md#r-108)–[R-144](references.fr.md#r-144)), tandis que le doublon 102 a été retiré et consolidé dans [R-24](references.fr.md#r-24). Les identifiants 12 et 101 étaient déjà retirés. Aucun identifiant retiré n'est réutilisé.
 - Neuf entrées comportaient une mention contradictoire d'absence de citation alors qu'elles renvoyaient à l'Architecture 0027. Cette mention a été supprimée pour [R-94](references.fr.md#r-94)–[R-100](references.fr.md#r-100), retired identifier 102 et [R-103](references.fr.md#r-103) ; retired identifier 102 a ensuite été consolidée dans [R-24](references.fr.md#r-24).
 - [R-24](references.fr.md#r-24) couvre désormais la famille W3C PROV et conserve les liens vers la recommandation PROV-O et la vue d'ensemble de la famille. retired identifier 102 est retirée.
 - Le nom **Privateer** était ambigu. [R-19](references.fr.md#r-19) identifie désormais la distribution de l'agent de programmation Pi privateer-agent/privateer-agent. [R-120](references.fr.md#r-120) identifie séparément l'évaluateur de sécurité/conformité de l'OpenSSF. L'Architecture 0016 distingue et évalue les deux projets.

@@ -35,7 +35,7 @@
 | Extraction de documents | R-82 |
 | API de stockage cloud | R-64 |
 | Persistance locale navigateur et WebAssembly | R-65 |
-| Modèles sémantiques de domaine, qualité et conformité open source | R-94–R-100, R-102–R-103 |
+| Modèles sémantiques de domaine, qualité et conformité open source | R-94–R-100, R-103 |
 | Interopérabilité des instructions d'agents et workflows pilotés par les spécifications | R-104 |
 | Recherches sur le policy-as-code et la gouvernance des agents à l'exécution | R-105 |
 | Sécurité des agents IA et de MCP — recommandations OWASP | R-106 |
@@ -315,8 +315,8 @@
 ### R-24 — W3C PROV-O
 - **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md), [0018](architecture/0018-version-governance-and-compatibility-authority.fr.md) · [ADR 0004](decisions/0004-semantic-versioning-contracts.fr.md)
 
-- **Source primaire :** [Recommandation W3C PROV-O](https://www.w3.org/TR/prov-o/).
-- **Concepts pertinents :** entités, activités, agents et relations de provenance.
+- **Sources primaires :** [Vue d'ensemble W3C PROV](https://www.w3.org/TR/prov-overview/) · [Recommandation W3C PROV-O](https://www.w3.org/TR/prov-o/).
+- **Concepts pertinents :** famille de provenance W3C : modèle de données PROV-DM, ontologie PROV-O, PROV-Constraints, notation PROV-N et sérialisations associées ; entités, activités, agents et relations de dérivation/attribution.
 - **Utilité pour GovCheck :** vocabulaire de provenance et relations entre artefacts, activités et agents responsables.
 - **Limite :** une ontologie ne fournit à elle seule ni politique de dépôt, ni assurance d'identité, ni mécanisme d'application.
 
@@ -935,10 +935,10 @@
 1. Privilégier l'organisme normatif, l'éditeur, la documentation officielle ou le dépôt source plutôt que les résumés secondaires.
 2. L'identifiant R-12 a été retiré lors de la consolidation de son entrée Scorecard en doublon dans R-08. R-101 a été retiré car il dupliquait la source NIST SP 800-218 déjà tenue dans R-02. Aucun de ces identifiants ne doit être réutilisé.
 3. Épingler les analyses de code. Les liens Writ et Privateer identifient les révisions examinées dans l'architecture 0016 ; les actualiser avant toute affirmation sur leur comportement courant.
-4. Distinguer les classes de preuve. Une norme, un article scientifique, une documentation produit, du code source, un résultat de test et un rapport de model checking sont des types de preuve différents.
-5. Aucune adoption implicite. La présence dans ce registre signifie « pertinent à évaluer », pas « sélectionné », « obligatoire », « compatible » ou « implémenté ».
-6. Pas de bibliographie inventée. La discussion précédente mentionnait « Agent Package Manager », mais n'a pas conservé d'URL unique et vérifiée du projet. Il n'est volontairement pas cité comme produit identifié avant établissement de son identité exacte.
-7. Garder les liens près des affirmations. Les documents d'architecture doivent lier les sources qui étayent directement leurs affirmations et renvoyer ici pour la bibliographie plus large.
+5. Distinguer les classes de preuve. Une norme, un article scientifique, une documentation produit, du code source, un résultat de test et un rapport de model checking sont des types de preuve différents.
+6. Aucune adoption implicite. La présence dans ce registre signifie « pertinent à évaluer », pas « sélectionné », « obligatoire », « compatible » ou « implémenté ».
+7. Pas de bibliographie inventée. La discussion précédente mentionnait « Agent Package Manager », mais n'a pas conservé d'URL unique et vérifiée du projet. Il n'est volontairement pas cité comme produit identifié avant établissement de son identité exacte.
+8. Garder les liens près des affirmations. Les documents d'architecture doivent lier les sources qui étayent directement leurs affirmations et renvoyer ici pour la bibliographie plus large.
 
 
 <a id="r-94"></a>
@@ -996,15 +996,6 @@
 - **Concepts pertinents :** modèle extensible de chaîne d'approvisionnement couvrant composants logiciels/matériels, services, dépendances, actifs cryptographiques, configurations opérationnelles et métadonnées ; représentations JSON, XML et Protocol Buffers.
 - **Utilité pour GovCheck :** format d'échange candidat pour les SBOM et les informations plus larges de chaîne d'approvisionnement, à évaluer avec SPDX selon les besoins réels.
 - **Limite :** la validité du format ne prouve ni l'exhaustivité de l'inventaire, ni l'intégrité des composants, ni l'absence de vulnérabilités, ni une provenance de build fiable. Épingler la version et le schéma exacts.
-
-<a id="r-102"></a>
-### R-102 — Famille W3C PROV
-- **Cité par :** [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
-- **Source primaire :** [Vue d'ensemble W3C PROV](https://www.w3.org/TR/prov-overview/)
-- **Concepts pertinents :** famille de modèles de provenance interopérables couvrant entités, activités, agents et relations de dérivation/attribution, avec modèle de données, ontologie, contraintes et spécifications de sérialisation.
-- **Utilité pour GovCheck :** vocabulaire et famille de représentations candidates pour la provenance des décisions, sources, artefacts générés, observations et preuves.
-- **Limite :** PROV enregistre des relations de provenance ; il n'établit ni vérité, ni admissibilité, ni intégrité, ni suffisance des informations enregistrées, et ne fournit pas d'autorité de gouvernance du dépôt.
-
 
 <a id="r-103"></a>
 ### R-103 — OpenChain : ISO/IEC 5230 et ISO/IEC 18974

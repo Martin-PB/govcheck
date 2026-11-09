@@ -49,7 +49,7 @@
 
 ## Detailed source register
 
-**Purpose.** This register consolidates academic, standards-body, industrial-documentation and source-code references used to motivate GovCheck's repository-governance design. It is a navigational bibliography, not a normative policy or adoption decision.
+**Purpose.** This register consolidates academic, standards-body, industrial-documentation and source-code references used to motivate GovCheck's repository-governance design. It is a navigational bibliography, not a normative policy or adoption decision. See the [reference provenance audit](reference-provenance-audit.md) for reconciliation with the initial 224-page discussion PDF and the critical reviews.
 
 **Selection rule.** Prefer primary publications, standards, official project documentation and pinned source revisions. A reference supports only the specific point stated here; it does not establish that GovCheck implements the capability or that a referenced tool is suitable as a dependency.
 

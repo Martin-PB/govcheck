@@ -69,6 +69,16 @@
       "optional": [
         "External references"
       ]
+    },
+    "docs/specifications/0006-governance-revision-applicability.md": {
+      "optional": [
+        "References"
+      ]
+    },
+    "docs/specifications/0006-governance-revision-applicability.fr.md": {
+      "optional": [
+        "Références"
+      ]
     }
   }
 }

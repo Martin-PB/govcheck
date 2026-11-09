@@ -22,6 +22,14 @@ Le premier modèle couvre un changement abstrait, l'évaluation liée à un tupl
 
 **Statut de vérification :** spécification et configuration TLC ajoutées ; aucune exécution TLC ni aucun résultat de preuve ne sont revendiqués. Consulter le document du modèle pour les limites de l'abstraction et les raffinements nécessaires.
 
+## Applicabilité des révisions de gouvernance
+
+- [Spécification 0006](../specifications/0006-governance-revision-applicability.fr.md) · [English](../specifications/0006-governance-revision-applicability.md)
+- [Module TLA+](../../formal/tla/GovCheckGovernanceApplicability.tla)
+- [Configuration TLC](../../formal/tla/GovCheckGovernanceApplicability.cfg)
+
+Ce modèle borné lie les évaluations à la révision effective à leur position d'événement, exige l'autorisation de l'autorité enregistrée, ne publie que prospectivement, préserve les décisions historiques et rejette les évaluations périmées. Il n'établit ni le raffinement de l'implémentation, ni l'identité cryptographique, ni le consensus distribué, ni la gestion complète des écritures concurrentes.
+
 ## Références bibliographiques
 
 - [R-05 — TLA+ et TLC](../references.fr.md#r-05)

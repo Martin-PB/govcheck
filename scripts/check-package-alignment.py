@@ -46,6 +46,7 @@ META_ONLY_WORKFLOWS = {
     "ci-routing-model.yml",
     "lifecycle-diagram.yml",
     "tla-assurance.yml",
+    "tla-governance-applicability.yml",
     "tla-authority.yml",
     "tla-lifecycle.yml",
     "tla-model-reusable.yml",

@@ -32,6 +32,16 @@ Le premier modèle couvre un changement abstrait, l’évaluation liée à un tu
 
 Le modèle est une abstraction à transitions bornées du régime initial à racine unique. Il vérifie l'attribution historique des amendements à l'autorité immédiatement précédente, la continuité de la chaîne autorité/révision, la cohérence de l'état courant avec le dernier enregistrement et la propriété temporelle append-only (l'historique antérieur reste un préfixe exact après chaque transition). Il n'encode pas de positions d'entrée en vigueur : il ne vérifie donc ni l'effet prospectif ni la préservation de la validité des décisions antérieures. Il abstrait l'identité des principaux et ne modélise pas les délégations, l'identité cryptographique, la validité en temps réel, le cycle de vie des dérogations ni l'intégration au validateur de gouvernance des versions. Le fixture TLC fini ne prouve pas l'application en production.
 
+## Applicabilité des révisions de gouvernance
+
+- [Premier enregistrement d'exécution TLC — Architecture 0031](../architecture/0031-first-tlc-governance-applicability.fr.md) · [English](../architecture/0031-first-tlc-governance-applicability.md)
+
+- [Spécification 0006 — Applicabilité des révisions de gouvernance](../specifications/0006-governance-revision-applicability.fr.md) · [English](../specifications/0006-governance-revision-applicability.md)
+- [Module TLA+](../../formal/tla/GovCheckGovernanceApplicability.tla)
+- [Configuration TLC](../../formal/tla/GovCheckGovernanceApplicability.cfg)
+
+Ce modèle borné distinct lie chaque évaluation à la révision de gouvernance effective à sa position d'événement, exige l'autorisation de l'autorité enregistrée à cette position et ne permet la publication qu'à une position ultérieure. Il préserve les liens des décisions historiques et rejette les évaluations périmées lors de l'autorisation. Il ne modélise pas encore les changements/délégations d'autorité, le consensus distribué, l'identité cryptographique, toute la concurrence multi-écrivain ou le raffinement de l'implémentation. Son exécution TLC constitue une preuve relative à cette abstraction finie uniquement.
+
 ## Périmètres de vérification CI
 
 La partition des vérifications du dépôt et son modèle formel de routage sont décrits dans [l'Architecture 0029](../architecture/0029-concern-scoped-ci-and-formal-verification-boundaries.fr.md) ([English](../architecture/0029-concern-scoped-ci-and-formal-verification-boundaries.md)). Le modèle de routage CI est `formal/tla/CICheckRouting.tla` ; il n'est vérifié que lorsque ses propres entrées de politique changent. Les modifications documentaires ordinaires ne déclenchent ni ce modèle ni les modèles TLC produit, sauf si elles sont explicitement déclarées comme entrées sémantiques d'un modèle.

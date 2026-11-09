@@ -65,7 +65,11 @@ Ce modèle permet des contrôles déterministes de structure, identifiants, ancr
 
 La discussion du projet utilise à la fois AGENTS.md et la convention préférée agent.md. Le nom canonique du fichier d'instructions opérationnelles doit être confirmé avant d'adopter une règle de traduction. Ne pas créer de fichiers opérationnels parallèles sous des noms que des agents pourraient charger automatiquement.
 
-## 7. Sources
+## 7. Plateformes mentionnées mais non évaluées
+
+Weblate ([R-145](../references.fr.md#r-145)) et Crowdin ([R-146](../references.fr.md#r-146)) ont été mentionnés dans l'issue #33, sans évaluation au-delà de leur apparition dans la discussion Docusaurus. Ils sont conservés comme candidats non évalués, pas comme recommandations ou dépendances.
+
+## 8. Sources
 
 - [MDN translated-content](../references.fr.md#r-136)
 - [Localisation Kubernetes](../references.fr.md#r-137)
@@ -73,3 +77,4 @@ La discussion du projet utilise à la fois AGENTS.md et la convention préféré
 - [Comprehensive Rust](../references.fr.md#r-140), [po4a](../references.fr.md#r-141) et [Docusaurus](../references.fr.md#r-142)
 - [Recommandations Microsoft sur les traductions comme artefacts](../references.fr.md#r-143)
 - [BCP 47](../references.fr.md#r-144)
+- [Weblate](../references.fr.md#r-145) et [Crowdin](../references.fr.md#r-146)

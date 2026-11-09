@@ -34,6 +34,8 @@ Le modèle est une abstraction à transitions bornées du régime initial à rac
 
 ## Applicabilité des révisions de gouvernance
 
+- [Premier enregistrement d'exécution TLC — Architecture 0031](../architecture/0031-first-tlc-governance-applicability.fr.md) · [English](../architecture/0031-first-tlc-governance-applicability.md)
+
 - [Spécification 0006 — Applicabilité des révisions de gouvernance](../specifications/0006-governance-revision-applicability.fr.md) · [English](../specifications/0006-governance-revision-applicability.md)
 - [Module TLA+](../../formal/tla/GovCheckGovernanceApplicability.tla)
 - [Configuration TLC](../../formal/tla/GovCheckGovernanceApplicability.cfg)

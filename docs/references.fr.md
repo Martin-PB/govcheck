@@ -937,7 +937,7 @@
 
 <a id="r-94"></a>
 ### R-94 — Référentiels OMG de décision métier, motivation et processus
-- **Cité par :** aucun record actuel ne cite cette source candidate. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
+- **Cité par :** [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
 - **Sources primaires :** [Catalogue des spécifications OMG](https://www.omg.org/specifications/) · [DMN 1.6](https://www.omg.org/spec/DMN/1.6/) · [DMN 1.7 Beta 1](https://www.omg.org/spec/DMN/1.7/Beta1) · [BPMN 2.0.2](https://www.omg.org/spec/BPMN/) · [CMMN 1.1](https://www.omg.org/spec/CMMN/1.1) · [Business Motivation Model 1.3](https://www.omg.org/spec/BMM/1.3/) · [SBVR 1.5](https://www.omg.org/spec/SBVR)
 - **Concepts pertinents :** exigences de décision, tables de décision et FEEL ; activités, événements et passerelles de processus ; gestion adaptative de cas ; objectifs métier et facteurs d'influence ; vocabulaires et règles métier formels.
 - **Utilité pour GovCheck :** spécifications primaires des candidats complémentaires relatifs à la logique décisionnelle, aux processus, à la gestion de cas, à la motivation et aux règles métier discutés dans le projet.
@@ -945,7 +945,7 @@
 
 <a id="r-95"></a>
 ### R-95 — Modèles OMG d'ingénierie, de risque, de test, d'exigences, de métriques et de provenance
-- **Cité par :** aucun record actuel ne cite cette source candidate. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
+- **Cité par :** [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
 - **Sources primaires :** [RAAML 1.1](https://www.omg.org/spec/RAAML/1.1) · [RAAML 1.2 Beta 1](https://www.omg.org/spec/RAAML/1.2/Beta1) · [SysML v2](https://www.omg.org/spec/SysML/2.0) · [Présentation de SysML v2](https://www.omg.org/sysml/sysmlv2/) · [UTP 2.3 Beta 1](https://www.omg.org/spec/UTP2) · [ReqIF 1.2](https://www.omg.org/spec/ReqIF/1.2) · [Structured Metrics Metamodel 1.2](https://www.omg.org/spec/SMM/1.2) · [PPMN 1.0](https://www.omg.org/spec/PPMN/)
 - **Concepts pertinents :** analyse structurée des risques et de la sécurité ; exigences, structure, comportement et vérification des systèmes ; spécification des tests fondée sur les modèles ; échange d'exigences ; définitions et résultats de mesure ; provenance des entités, activités et agents.
 - **Utilité pour GovCheck :** sources primaires des candidats couvrant les domaines d'ingénierie, y compris les artefacts de modèle et d'échange lisibles par machine lorsqu'ils sont publiés.
@@ -953,7 +953,7 @@
 
 <a id="r-96"></a>
 ### R-96 — ISO/IEC/IEEE 42010:2022, description d'architecture
-- **Cité par :** aucun record actuel ne cite cette source candidate. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
+- **Cité par :** [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
 - **Source primaire :** [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html)
 - **Concepts pertinents :** exigences relatives aux descriptions d'architecture, cadres de description, points de vue, types de modèles et conformité.
 - **Utilité pour GovCheck :** fondement normatif candidat pour structurer les descriptions d'architecture, préoccupations des parties prenantes, vues et points de vue.
@@ -961,7 +961,7 @@
 
 <a id="r-97"></a>
 ### R-97 — ISO/IEC/IEEE 29148, ingénierie des exigences
-- **Cité par :** aucun record actuel ne cite cette source candidate. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
+- **Cité par :** [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
 - **Sources primaires :** [ISO/IEC/IEEE DIS 29148, troisième édition (2026)](https://www.iso.org/standard/94091.html) · [ISO/IEC/IEEE 29148:2018](https://www.iso.org/standard/72089.html)
 - **Concepts pertinents :** processus du cycle de vie d'ingénierie des exigences, éléments d'information requis et leur contenu, recommandations pour les activités d'exigences des cycles de vie systèmes/logiciels.
 - **Utilité pour GovCheck :** référence candidate de processus et d'éléments d'information pour la gouvernance et la traçabilité des exigences.
@@ -969,7 +969,7 @@
 
 <a id="r-98"></a>
 ### R-98 — ISO/IEC 25010:2023, modèle de qualité du produit
-- **Cité par :** aucun record actuel ne cite cette source candidate. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
+- **Cité par :** [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
 - **Source primaire :** [ISO/IEC 25010:2023](https://www.iso.org/standard/78176.html)
 - **Concepts pertinents :** caractéristiques et sous-caractéristiques de qualité utilisées pour spécifier, mesurer et évaluer la qualité des produits TIC et logiciels.
 - **Utilité pour GovCheck :** vocabulaire partagé candidat pour les exigences de qualité, objectifs de test, critères d'évaluation et planification des mesures.
@@ -977,7 +977,7 @@
 
 <a id="r-99"></a>
 ### R-99 — Spécification SPDX
-- **Cité par :** aucun record actuel ne cite cette source candidate. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
+- **Cité par :** [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
 - **Source primaire :** [Catalogue des spécifications SPDX](https://spdx.dev/use/specifications/)
 - **Concepts pertinents :** représentation normalisée lisible par machine des composants logiciels, paquets, fichiers, relations, licences et autres métadonnées de chaîne d'approvisionnement. Le catalogue identifie SPDX 3.0 comme version courante à la date de l'instantané.
 - **Utilité pour GovCheck :** format natif candidat pour les SBOM et les métadonnées de licences/chaîne d'approvisionnement.
@@ -985,7 +985,7 @@
 
 <a id="r-100"></a>
 ### R-100 — Spécification CycloneDX
-- **Cité par :** aucun record actuel ne cite cette source candidate. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
+- **Cité par :** [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
 - **Source primaire :** [Vue d'ensemble de la spécification CycloneDX](https://cyclonedx.org/specification/overview/)
 - **Concepts pertinents :** modèle extensible de chaîne d'approvisionnement couvrant composants logiciels/matériels, services, dépendances, actifs cryptographiques, configurations opérationnelles et métadonnées ; représentations JSON, XML et Protocol Buffers.
 - **Utilité pour GovCheck :** format d'échange candidat pour les SBOM et les informations plus larges de chaîne d'approvisionnement, à évaluer avec SPDX selon les besoins réels.
@@ -993,7 +993,7 @@
 
 <a id="r-102"></a>
 ### R-102 — Famille W3C PROV
-- **Cité par :** aucun record actuel ne cite cette source candidate. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
+- **Cité par :** [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
 - **Source primaire :** [Vue d'ensemble W3C PROV](https://www.w3.org/TR/prov-overview/)
 - **Concepts pertinents :** famille de modèles de provenance interopérables couvrant entités, activités, agents et relations de dérivation/attribution, avec modèle de données, ontologie, contraintes et spécifications de sérialisation.
 - **Utilité pour GovCheck :** vocabulaire et famille de représentations candidates pour la provenance des décisions, sources, artefacts générés, observations et preuves.
@@ -1002,7 +1002,7 @@
 
 <a id="r-103"></a>
 ### R-103 — OpenChain : ISO/IEC 5230 et ISO/IEC 18974
-- **Cité par :** aucun record actuel ne cite cette source candidate. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
+- **Cité par :** [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
 - **Sources primaires :** [ISO/IEC 5230:2020 — spécification OpenChain](https://www.iso.org/standard/81039.html) · [ISO/IEC 18974:2023 — spécification OpenChain d'assurance de sécurité](https://www.iso.org/standard/86450.html) · [Normes et guide d'adoption OpenChain](https://openchainproject.org/get-started)
 - **Concepts pertinents :** exigences organisationnelles relatives aux programmes de conformité des licences open source (5230) et d'assurance de sécurité open source (18974), notamment politique, périmètre, rôles, processus et éléments de vérification conservés.
 - **Utilité pour GovCheck :** normes candidates de processus et d'organisation pour les capacités de conformité open source et d'assurance de sécurité open source.

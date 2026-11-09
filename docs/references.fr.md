@@ -1059,7 +1059,7 @@
 
 <a id="r-109"></a>
 ### R-109 — Spécification OpenSSF Security Insights
-- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [comparaison des systèmes](research/comparative-governance-landscape.fr.md)
 - **Sources primaires :** [Spécification Security Insights](https://security-insights.openssf.org/) · [Documentation du schéma](https://security-insights.openssf.org/schema.html) · [Dépôt source officiel](https://github.com/ossf/security-insights)
 - **Concepts pertinents :** déclaration YAML lisible par machine des pratiques de sécurité d'un projet, des métadonnées de dépôt, des modalités de signalement des vulnérabilités, des politiques et des ressources justificatives.
 - **Utilité pour GovCheck :** conserve le format étudié comme candidat pour des déclarations interopérables de sécurité des projets et des données d'entrée pour l'évaluation.
@@ -1067,7 +1067,7 @@
 
 <a id="r-110"></a>
 ### R-110 — Référentiel OpenSSF Open Source Project Security (OSPS) Baseline
-- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [comparaison des systèmes](research/comparative-governance-landscape.fr.md)
 - **Sources primaires :** [OSPS Baseline](https://baseline.openssf.org/) · [Dépôt source officiel](https://github.com/ossf/security-baseline)
 - **Concepts pertinents :** référentiel versionné d'exigences de sécurité actionnables pour les projets open source, organisé par maturité, familles de contrôles et définitions lisibles par machine.
 - **Utilité pour GovCheck :** conserve ce référentiel comme source candidate d'exigences de sécurité réutilisables et de critères d'évaluation au niveau d'un projet.
@@ -1084,7 +1084,7 @@
 
 <a id="r-112"></a>
 ### R-112 — gittuf : sécurité de dépôts Git indépendante de la plateforme
-- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [comparaison des systèmes](research/comparative-governance-landscape.fr.md)
 - **Sources primaires :** [Documentation du projet gittuf](https://gittuf.dev/) · [Dépôt source gittuf](https://github.com/gittuf/gittuf) · [Page du projet OpenSSF](https://openssf.org/projects/gittuf/)
 - **Concepts pertinents :** métadonnées de politique résidant dans le dépôt et authentifiées cryptographiquement ; racine de confiance et administrateurs délégués ; autorisation et application de politiques vérifiables indépendamment sur les changements Git.
 - **Utilité pour GovCheck :** comparateur direct et mécanisme d'application potentiellement complémentaire pour les dépôts Git, notamment lorsque la vérification des politiques doit être indépendante de la forge.
@@ -1092,7 +1092,7 @@
 
 <a id="r-113"></a>
 ### R-113 — SLSA Source Track
-- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [comparaison des systèmes](research/comparative-governance-landscape.fr.md)
 - **Source primaire :** [Tracks SLSA v1.2](https://slsa.dev/spec/v1.2/tracks)
 - **Concepts pertinents :** confiance croissante dans la création et l'intégrité des révisions de code source, avec des attestations que les consommateurs peuvent évaluer par rapport aux attentes définies par le propriétaire du dépôt.
 - **Utilité pour GovCheck :** référence complémentaire pour la provenance du code source et l'assurance des systèmes de contrôle de version, distincte du SLSA Build Track.
@@ -1100,7 +1100,7 @@
 
 <a id="r-114"></a>
 ### R-114 — Modèle d'ingénierie GRC Gemara
-- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [comparaison des systèmes](research/comparative-governance-landscape.fr.md)
 - **Sources primaires :** [Projet Gemara de l'OpenSSF](https://openssf.org/projects/gemara/) · [Modèle et schémas Gemara](https://github.com/ossf/gemara)
 - **Concepts pertinents :** modèle catégoriel des activités de gouvernance, de risque et de conformité et schémas interopérables pour catalogues de contrôles, évaluations et éléments de preuve.
 - **Utilité pour GovCheck :** vocabulaire externe candidat pour les contrôles et les preuves, et modèle d'interopérabilité à comparer pour séparer définition des contrôles, évaluation et production de preuves.
@@ -1108,7 +1108,7 @@
 
 <a id="r-115"></a>
 ### R-115 — Exigences de soumission de Gerrit Code Review
-- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [comparaison des systèmes](research/comparative-governance-landscape.fr.md)
 - **Sources primaires :** [Documentation des exigences de soumission Gerrit](https://gerrit-review.googlesource.com/Documentation/config-submit-requirements.html) · [Projet Gerrit](https://www.gerritcodereview.com/)
 - **Concepts pertinents :** prédicats configurables déterminant quand un changement relu peut être soumis, notamment votes, labels, résultats CI et règles fournies par des plugins.
 - **Utilité pour GovCheck :** précédent industriel de conditions d'acceptation programmables à la frontière d'intégration d'un changement.
@@ -1148,7 +1148,7 @@
 
 <a id="r-120"></a>
 ### R-120 — Cadre d'évaluation de sécurité et de conformité OpenSSF Privateer
-- **Cité par :** [0016](architecture/0016-writ-privateer-assessment.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [0016](architecture/0016-writ-privateer-assessment.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md), [comparaison des systèmes](research/comparative-governance-landscape.fr.md)
 - **Sources primaires :** [Annonce et présentation du projet par l'OpenSSF](https://openssf.org/blog/2026/10/13/introducing-privateer-ai-assisted-security-compliance-evaluation-framework-joins-the-openssf-sandbox/) · [Documentation Privateer](https://privateerproj.com/)
 - **Concepts pertinents :** évaluation par plugins du code source, de la configuration des dépôts et des systèmes déployés par rapport à des catalogues de contrôles maintenus séparément ; contrôles déterministes, revue facultative de preuves assistée par IA et résultats d'évaluation structurés.
 - **Utilité pour GovCheck :** comparateur direct et évaluateur potentiellement complémentaire de contrôles de sécurité/conformité, notamment pour la séparation entre catalogues de contrôles et plugins d'évaluation.
@@ -1157,7 +1157,7 @@
 
 <a id="r-121"></a>
 ### R-121 — Attestation récapitulative de vérification SLSA (VSA)
-- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [comparaison des systèmes](research/comparative-governance-landscape.fr.md)
 - **Source primaire :** [Verification Summary Attestation SLSA v1.2](https://slsa.dev/spec/v1.2/verification_summary)
 - **Concepts pertinents :** attestation in-toto signée résumant l'évaluation d'un artefact par un vérificateur selon une politique et indiquant résultat, niveaux SLSA vérifiés, identité du vérificateur et URI de ressource.
 - **Utilité pour GovCheck :** format d'attestation compact candidat pour communiquer des résultats d'évaluation vérifiables indépendamment sans exiger de chaque consommateur qu'il rejoue tous les contrôles sous-jacents.
@@ -1165,7 +1165,7 @@
 
 <a id="r-122"></a>
 ### R-122 — Signature d'artefacts et transparence avec Sigstore
-- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [comparaison des systèmes](research/comparative-governance-landscape.fr.md)
 - **Sources primaires :** [Documentation Sigstore](https://docs.sigstore.dev/) · [Signature et vérification avec Cosign](https://docs.sigstore.dev/cosign/signing/overview/) · [Organisation source Sigstore](https://github.com/sigstore)
 - **Concepts pertinents :** signatures d'artefacts liées à une identité au moyen de certificats de courte durée, enregistrement dans un journal de transparence et bundles vérifiables pour artefacts logiciels et attestations.
 - **Utilité pour GovCheck :** mécanisme complémentaire candidat pour signer et vérifier rapports d'assurance, attestations et artefacts de release.
@@ -1225,7 +1225,7 @@
 
 <a id="r-129"></a>
 ### R-129 — Argumentation éliminative pour la confiance dans les dossiers d'assurance
-- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [comparaison des systèmes](research/comparative-governance-landscape.fr.md)
 - **Source primaire :** [Goodenough, Weinstock et Klein, « Eliminative Argumentation: A Basis for Arguing Confidence in System Properties » (CMU/SEI-2015-TR-005)](https://insights.sei.cmu.edu/library/eliminative-argumentation-a-basis-for-arguing-confidence-in-system-properties/)
 - **Concepts pertinents :** évaluation de la confiance dans les arguments d'un dossier d'assurance par l'identification et l'élimination d'explications alternatives et de contre-arguments, plutôt que par la seule accumulation d'éléments favorables.
 - **Utilité pour GovCheck :** complète Assurance 2.0 (R-71) et éclaire le traitement des défaiteurs, contre-preuves et niveaux de confiance des arguments.
@@ -1241,7 +1241,7 @@
 
 <a id="r-131"></a>
 ### R-131 — Règles et politiques d'approbation des merge requests GitLab
-- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [comparaison des systèmes](research/comparative-governance-landscape.fr.md)
 - **Sources primaires :** [Règles d'approbation des merge requests GitLab](https://docs.gitlab.com/user/project/merge_requests/approvals/rules/) · [Paramètres d'approbation](https://docs.gitlab.com/user/project/merge_requests/approvals/settings/) · [Politiques d'approbation des merge requests](https://docs.gitlab.com/user/application_security/policies/merge_request_approval_policies/)
 - **Concepts pertinents :** nombre d'approbations obligatoires configurable, approbateurs éligibles, approbation des propriétaires de code, prévention de l'auto-approbation par l'auteur/committer et exigences d'approbation pilotées par des politiques.
 - **Utilité pour GovCheck :** comparateur propre à une forge pour la séparation des tâches et les conditions programmables d'acceptation à la frontière de fusion.
@@ -1249,7 +1249,7 @@
 
 <a id="r-132"></a>
 ### R-132 — Systèmes de gating de fusion Zuul et Bors
-- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [comparaison des systèmes](research/comparative-governance-landscape.fr.md)
 - **Sources primaires :** [Documentation du gating de projet Zuul](https://zuul-ci.org/docs/zuul/latest/gating.html) · [Présentation de Zuul](https://zuul-ci.org/docs/zuul/latest/about.html) · [Documentation Bors-NG](https://bors.tech/documentation/index.html) · [Conception de Rust Bors](https://github.com/rust-lang/bors/blob/main/docs/design.md)
 - **Concepts pertinents :** test d'états futurs proposés du dépôt, regroupement et intégration tenant compte des dépendances, branches de staging et files de fusion pour éviter les courses d'intégration et les ruptures de la branche principale.
 - **Utilité pour GovCheck :** comparateurs industriels de workflows d'acceptation testant le candidat exact d'intégration plutôt que seulement la tête isolée d'une pull request.
@@ -1266,7 +1266,7 @@
 
 <a id="r-134"></a>
 ### R-134 — Standard Goal Structuring Notation (GSN)
-- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [comparaison des systèmes](research/comparative-governance-landscape.fr.md)
 - **Sources primaires :** [Groupe de travail GSN et standard actuel (version 3)](https://www.scsc.uk/gsn-standard) · [Notice de publication du GSN Community Standard Version 3](https://mail.scsc.uk/resources/citation_r1386.html) · [Métamodèle GSN et correspondance SACM](https://www.scsc.uk/gsn-meta-model)
 - **Concepts pertinents :** arguments structurés graphiquement de sécurité/assurance utilisant buts, stratégies, solutions/éléments de preuve, contextes, hypothèses et justifications ; structures d'argument modulaires et métamodèle étendant SACM.
 - **Utilité pour GovCheck :** notation candidate de dossier d'assurance et référence d'interopérabilité à comparer à SACM et Assurance 2.0.

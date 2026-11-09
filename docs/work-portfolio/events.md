@@ -74,3 +74,16 @@
 - **Result:** SANY/TLC success; 20,785 generated states, 18,067 distinct states, 0 remaining; no error found. The model/configuration blobs are unchanged from the first successful run.
 - **Artifact:** [final-head report](https://github.com/Martin-PB/govcheck/actions/runs/42660278801/artifacts/13693439123).
 - **Disposition:** confirms the formal result on the final PR candidate; the same finite-model and non-implementation-proof limits apply.
+
+
+## WP-EVT-000006 — Latest PR-head verification recorded
+
+- **Subject:** govcheck.work.governance-revision-temporal-applicability
+- **Event type:** final-head-model-checking-revalidated
+- **Recorded:** 2026-11-09
+- **Candidate source commit:** ff4a1457335d7a2600f2bb12850b74926ba6304b.
+- **Merge-test commit:** 7cd7732, merged against base d04a6dd02d5bdda0b40e4aa740475a8e554e63d7.
+- **Workflow/job:** [run 42660448408](https://github.com/Martin-PB/govcheck/actions/runs/42660448408), job 129310275465.
+- **Result:** SANY/TLC success; 20,785 generated states, 18,067 distinct states, 0 remaining; no error found.
+- **Artifact:** [latest TLC report](https://github.com/Martin-PB/govcheck/actions/runs/42660448408/artifacts/13694860086).
+- **Disposition:** same model/configuration blobs and finite-state result; no additional assurance claim beyond bounded model checking.

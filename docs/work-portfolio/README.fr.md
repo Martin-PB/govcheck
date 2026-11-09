@@ -29,7 +29,7 @@ Un lien vers une issue est une provenance et une correspondance d'adaptateur, pa
 
 ## Registre courant
 
-- [Registre des éléments de travail](work-items.md) — import initial des issues #33, #41–#77 et #86, avec identifiants stables, correspondances et dispositions.
+- [Registre des éléments de travail](work-items.fr.md) — import initial des issues #33, #41–#77 et #86, avec identifiants stables, correspondances et dispositions.
 - [Journal des événements](events.md) — journal logique append-only.
 - [Version anglaise](README.md).
 

@@ -278,7 +278,7 @@ Les sources primaires consultées pour ce document sont enregistrées dans le ca
 - **Qualité du produit :** [R-98](../references.fr.md#r-98) (ISO/IEC 25010:2023).
 - **Inventaire de la chaîne d'approvisionnement logicielle :** [R-99](../references.fr.md#r-99) (SPDX 3.0) et [R-100](../references.fr.md#r-100) (CycloneDX).
 - **Pratiques de développement sécurisé :** [R-02](../references.fr.md#r-02) (NIST SP 800-218 SSDF).
-- **Provenance :** [R-102](../references.fr.md#r-102) (famille W3C PROV).
+- **Provenance :** [R-24](../references.fr.md#r-24) (famille W3C PROV).
 - **Conformité open source et assurance de sécurité :** [R-103](../references.fr.md#r-103) (ISO/IEC 5230 et ISO/IEC 18974).
 
 Voir [le catalogue central des références](../references.fr.md) et son [équivalent anglais](../references.md). Les entrées distinguent les spécifications formelles des versions bêta/projets et expliquent les limites de ce que chaque source permet d'établir.

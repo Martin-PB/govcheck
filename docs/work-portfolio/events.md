@@ -183,3 +183,15 @@
 - **Report:** [Architecture 0034](../architecture/0034-canonical-journal-recovery-model.md). Uploaded artifact ID `13778403717`, SHA-256 `0fe3148982524a25336674718505b02fd786953bd000d9b06ae016ec4987d00b`.
 - **Scope/limits:** finite two-event trace with one serialized writer, one durable journal, crash-before/after-commit transitions, recovery-to-head action, rollback restoring earlier content under a new event/revision, and passive Git/Pijul replica observations. This is bounded safety/model-checking evidence only; authorization is abstracted by upstream models, and eventual recovery, storage-engine durability, torn writes, multi-writer consensus, divergent-replica reconciliation and implementation refinement are not established.
 - **Disposition:** technical model-checking evidence; no implementation claim, normative adoption or issue closure.
+
+
+## WP-EVT-000013 — Canonical journal and VCS adapter protocol specification proposed
+
+- **Subject:** `govcheck.spec.canonical-journal-protocol`
+- **Event type:** `technical-contract-proposed`
+- **Recorded:** 2026-11-10
+- **Candidate:** PR #100, branch `work/issue-86-journal-protocol-spec`, based on PR #99.
+- **Scope:** bilingual Specification 0007 defines technology-neutral event identity/envelopes, compare-and-append linearization, durable commit/idempotent retry, crash recovery, distinct evaluation/authorization/publication acts, VCS provenance-only adapters, replica reconciliation, blocking result vocabulary and twelve conformance scenarios.
+- **Authority boundary:** the specification elaborates the eleven owner-selected design inputs without re-arbitration. It is a proposal only; no normative adoption, database/serialization/crypto/consensus choice, production implementation or issue closure is inferred.
+- **Related records:** Specifications 0006/0007; Architectures 0032–0034; R-05 and R-22.
+- **Known limits:** protocol semantics and conformance targets only. No storage engine, adapter, executable conformance harness or implementation refinement is delivered by this event.

@@ -20,6 +20,7 @@
 | Governance metadata and catalogues | R-17 |
 | Agent workflow systems assessed as fixtures | R-18–R-19 |
 | Version-control semantics | R-22 |
+| Alternative VCS, forges and CI platforms (Pijul CLI, GitLab, Woodpecker, SourceHut, Fossil) | R-109–R-113 |
 | CRDTs, real-time collaboration and network transport | R-45–R-50, R-66, R-87 |
 | Knowledge representation and interoperability | R-51–R-61, R-83–R-86 |
 | Integration project repositories and studies | R-62 |
@@ -284,7 +285,7 @@
 <a id="r-22"></a>
 
 ### R-22 — Native Git and Pijul semantics
-- **Cited by:** [0007](architecture/0007-technology-decision-framework.md), [0009](architecture/0009-govcheck-design-discussion-record.md), [0011](architecture/0011-lifecycle-model-assertion-audit.md), [0014](architecture/0014-governed-development-workflow.md), [0021](architecture/0021-assurance-claims-and-freshness.md), [ADR 0001](decisions/0001-bootstrap-boundaries.md), [Spec 0003](specifications/0003-change-lifecycle.md), [Spec 0004](specifications/0004-vcs-collaboration-contracts.md), [ADR 0002](decisions/0002-study-placement.md), [Formal lifecycle model](formal/lifecycle-model.md), [Spec 0006](specifications/0006-governance-revision-applicability.md)
+- **Cited by:** [0007](architecture/0007-technology-decision-framework.md), [0009](architecture/0009-govcheck-design-discussion-record.md), [0011](architecture/0011-lifecycle-model-assertion-audit.md), [0014](architecture/0014-governed-development-workflow.md), [0021](architecture/0021-assurance-claims-and-freshness.md), [ADR 0001](decisions/0001-bootstrap-boundaries.md), [Spec 0003](specifications/0003-change-lifecycle.md), [Spec 0004](specifications/0004-vcs-collaboration-contracts.md), [ADR 0002](decisions/0002-study-placement.md), [Formal lifecycle model](formal/lifecycle-model.md), [Spec 0006](specifications/0006-governance-revision-applicability.md), [ADR 0006](decisions/0006-vcs-forge-portability.md)
 
 - **Primary sources:** [Git documentation](https://git-scm.com/docs) · [Pijul manual: theory](https://pijul.org/manual/theory) · [Pijul channels](https://pijul.org/manual/workflows/channels) · [Pijul conflicts](https://pijul.org/manual/conflicts.html) · [Pijul project](https://pijul.org/) · [Nest hosting service](https://nest.pijul.com/) · [Nest source repository](https://nest.pijul.com/pijul/nest/tree)
 - **Relevant concepts:** Git's snapshot/commit and tree model; Pijul's change/patch graph, channels and first-class conflicts; Nest as a Pijul repository-hosting platform.
@@ -1050,3 +1051,51 @@
 - **Relevant concepts:** redistribution conditions of section 4, including retention of copyright and attribution notices and reproduction of the NOTICE file's attribution notices in distributions of the Work or Derivative Works; contribution terms of section 5; absence of trademark grant in section 6; one-way compatibility with GPLv3 and incompatibility with GPLv2 as assessed by the FSF.
 - **Use in GovCheck:** supports ADR 0005's choice of Apache 2.0 with an individual NOTICE attribution, and its rule that GPL-licensed tools remain external programs rather than embedded or linked components.
 - **Limit:** this is the license text and the licensor foundation's own compatibility statement, not legal advice. Attribution obligations are triggered by redistribution; the license does not require attribution for internal use or network use without redistribution.
+
+## VCS, forge and CI platform documentation (portability evidence)
+
+<a id="r-109"></a>
+### R-109 — Pijul command reference (diff, change, log)
+- **Cited by:** [ADR 0006](decisions/0006-vcs-forge-portability.md)
+
+- **Primary sources:** [pijul diff](https://pijul.org/manual/reference/diff.html) · [pijul change](https://pijul.org/manual/reference/change.html) · [pijul log JSON output (forum discussion)](https://discourse.pijul.org/t/how-to-efficiently-query-dependencies-for-all-changes/862)
+- **Relevant concepts:** change identifiers are base32 hashes addressable by unambiguous prefix; `pijul diff --channel <CHANNEL>` compares a channel or the working copy; `pijul log --output-format json` exposes machine-readable history; `pijul change <HASH>` shows the author and date of a single change.
+- **Use in GovCheck:** grounds the PijulAdapter mapping of the three VCS-adapter operations (list_changed, resolve_rev, author_of) proposed in ADR 0006.
+- **Limit:** vendor manual plus a community forum thread; the JSON output format is documented only in that thread, so its stability must be pinned by conformance tests if an adapter is implemented.
+
+<a id="r-110"></a>
+### R-110 — GitLab CI and SLSA level 3 provenance
+- **Cited by:** [ADR 0006](decisions/0006-vcs-forge-portability.md)
+
+- **Primary source:** [GitLab Docs — SLSA level 3](https://docs.gitlab.com/ci/pipeline_security/slsa/level_3/)
+- **Relevant concepts:** merge-request pipelines as a portable enforcement point on GitLab; native SLSA provenance attestations emitted by GitLab CI jobs.
+- **Use in GovCheck:** shows that the GitHub-specific anchoring of ADR 0006's CI gate (required status checks, Actions) has a GitLab counterpart (pipelines must succeed, MR approvals, verifiable SLSA attestations).
+- **Limit:** platform documentation; it does not establish that any GovCheck deployment uses GitLab or that emitted attestations are verified.
+
+<a id="r-111"></a>
+### R-111 — Woodpecker CI for Forgejo/Gitea
+- **Cited by:** [ADR 0006](decisions/0006-vcs-forge-portability.md)
+
+- **Primary source:** [Woodpecker CI — Forgejo configuration](https://woodpecker-ci.org/docs/next/administration/configuration/forges/forgejo)
+- **Relevant concepts:** container-based CI running against Forgejo/Gitea instances (including Codeberg); pipeline manifests under `.woodpecker/`.
+- **Use in GovCheck:** supports portability of the blocking-check + report-only-check pipeline to a forge without GitHub Actions.
+- **Limit:** documentation of one CI system; Woodpecker and Forgejo versions must be pinned before relying on the integration.
+
+<a id="r-112"></a>
+### R-112 — SourceHut forge
+- **Cited by:** [ADR 0006](decisions/0006-vcs-forge-portability.md)
+
+- **Primary source:** [SourceHut](https://sourcehut.org/)
+- **Relevant concepts:** git and Mercurial hosting, patch-based review by email, builds.sr.ht CI, mailing lists as the coordination/tracker surface.
+- **Use in GovCheck:** example of a forge whose review and tracker model is not pull-request based, informing the forge-adapter layer of ADR 0006.
+- **Limit:** project page; the email-driven workflow must be evaluated against team conventions before any adoption.
+
+<a id="r-113"></a>
+### R-113 — Fossil SCM self-contained forge
+- **Cited by:** [ADR 0006](decisions/0006-vcs-forge-portability.md)
+
+- **Primary source:** [Fossil web interface](https://fossil-scm.org/home/doc/2026-06-23/www/webui.wiki)
+- **Relevant concepts:** single-binary DVCS with built-in ticketing, wiki, forum and timeline served over HTTP; check-in hashes as revision identity; external CI.
+- **Use in GovCheck:** shows a VCS with a native tracker (tickets) but no native required-status-check concept, informing the transposability matrix in ADR 0006.
+- **Limit:** vendor documentation; Fossil's CI integration is external and must be evaluated separately.
+

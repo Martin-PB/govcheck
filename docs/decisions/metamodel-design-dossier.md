@@ -236,7 +236,7 @@ The reference catalogue is the canonical source register. This section summarize
 - [R-92 — iStar 2.0](../references.md#r-92)
 - [R-94–R-98 — OMG semantic models, ISO architecture, requirements and quality references](../references.md#r-94)
 - [R-102 — W3C PROV family](../references.md#r-102)
-- [R-114 — Probabilistic, fuzzy and state-transition modelling](../references.md#r-114) (catalogued in the parallel research PR #105; confirm integration before treating it as present on the default branch).
+- [R-114 — Probabilistic, fuzzy and state-transition modelling](https://github.com/Martin-PB/govcheck/blob/docs/research-assurance-dynamics-2026-11/docs/references.md#r-114) (catalogued in the parallel research PR #105; confirm integration before treating it as present on the default branch).
 
 The source catalogue records status and limitations. Presence in the catalogue is not adoption. In particular, SACM 2.4 Beta 1 is an engineering target for full semantic coverage and interoperability, not a claim that the beta is a final standard or that SACM replaces the GovCheck core.
 

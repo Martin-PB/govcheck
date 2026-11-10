@@ -120,9 +120,9 @@
       "status": "bounded-design-model; SANY-parsed-and-TLC-model-checked",
       "verification": {
         "architectureRecord": "docs/architecture/0034-canonical-journal-recovery-model.md",
-        "workflowRunId": 42848709804,
-        "jobId": 129943126960,
-        "checkedCommit": "a5c9845b1df7a36c9b1f23af0a28bdabdd4300f3",
+        "workflowRunId": 42849634866,
+        "jobId": 129946416981,
+        "checkedCommit": "8ace02658a9f349db57e937c697e66c7b779aaa8",
         "modelGitBlob": "f99b33f510f3350f7ee1dc2ecc4b13a216d64ab6",
         "configurationGitBlob": "43102a4fc3c17a0656ccfe71d34642457d85737a",
         "result": "no-counterexample",
@@ -138,8 +138,8 @@
           "java": "Temurin 17.0.21+9",
           "workers": 4
         },
-        "artifactId": 13778403717,
-        "artifactSha256": "0fe3148982524a25336674718505b02fd786953bd000d9b06ae016ec4987d00b",
+        "artifactId": 13778459512,
+        "artifactSha256": "8ce7414863ef57725e7ae36e3055d10edb21571feb62c35d9fae68228a96b94c",
         "invariants": [
           "TypeOK",
           "UniqueEventAndRevisionIds",

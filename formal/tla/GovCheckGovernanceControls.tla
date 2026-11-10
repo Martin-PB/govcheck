@@ -254,7 +254,7 @@ TypeOK ==
       [candidate : Candidates, evaluator : {ShadowEvaluator},
        result : {"Pass", "Fail", "Unknown", "Conflict"}, comparedAt : Nat]
   /\ exceptions \in [ExceptionIds ->
-      [status : {"Unused"}, requirement : Requirements, reason : {"None"},
+      [status : {"Unused"}, requirement : Requirements, reason : {"None", "OperationalNeed", "TemporaryConstraint"},
        grantedAt : Nat, expiresAt : Nat, statusDetail : {"Unused", "Active", "Revoked"}]]
   /\ authorizations \in [AuthorizationIds ->
       [status : {"Unused", "Authorized"}, evaluationId : EvaluationIds,

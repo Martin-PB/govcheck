@@ -32,6 +32,20 @@
       },
       "revisionPolicy": "repository-history",
       "releaseBinding": "release-tag-and-commit"
+    },
+    {
+      "artifactId": "govcheck.governance-controls",
+      "kind": "formal-model",
+      "title": "GovCheck evaluator authority, exception and revocation controls TLA+ model",
+      "source": "formal/tla/GovCheckGovernanceControls.tla",
+      "configuration": "formal/tla/GovCheckGovernanceControls.cfg",
+      "documentation": {
+        "en": "docs/formal/README.md",
+        "fr": "docs/formal/README.fr.md"
+      },
+      "revisionPolicy": "repository-history",
+      "releaseBinding": "release-tag-and-commit",
+      "status": "bounded-design-model; awaiting-SANY-and-TLC-check"
     }
   ]
 }

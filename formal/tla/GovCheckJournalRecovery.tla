@@ -15,7 +15,7 @@ Genesis ==
 
 Init ==
   /\ journal = <<Genesis>>
-  /\ pending = "None"
+  /\ pending.status = "None"
   /\ appliedPosition = 0
   /\ replicaObservations = [r \in ReplicaIds |-> 0]
   /\ crashed = FALSE
@@ -32,18 +32,18 @@ Prepare(eventId, revisionId, content, source) ==
   /\ source \in {"authority", "git", "pijul", "other"}
   /\ ~\E i \in 1..Len(journal) :
        journal[i].eventId = eventId \/ journal[i].revisionId = revisionId
-  /\ pending' = [eventId |-> eventId, revisionId |-> revisionId,
+  /\ pending' = [status |-> "Prepared", eventId |-> eventId, revisionId |-> revisionId,
                   predecessor |-> JournalHead.revisionId, content |-> content,
                   kind |-> "change", source |-> source]
   /\ UNCHANGED <<journal, appliedPosition, replicaObservations, crashed>>
 
 CommitDurably ==
-  /\ ~crashed /\ pending # "None"
+  /\ ~crashed /\ pending.status = "Prepared"
   /\ journal' = Append(journal,
        [position |-> HeadPosition + 1, eventId |-> pending.eventId,
         revisionId |-> pending.revisionId, predecessor |-> pending.predecessor,
         content |-> pending.content, kind |-> pending.kind, source |-> pending.source])
-  /\ pending' = "None"
+  /\ pending' = UnusedPending
   /\ UNCHANGED <<appliedPosition, replicaObservations, crashed>>
 
 ApplyCommitted ==

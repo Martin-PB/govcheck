@@ -45,7 +45,7 @@
       },
       "revisionPolicy": "repository-history",
       "releaseBinding": "release-tag-and-commit",
-      "status": "bounded-design-model; awaiting-SANY-and-TLC-check"
+      "status": "bounded-design-model; SANY-and-TLC-checked"
     }
   ]
 }

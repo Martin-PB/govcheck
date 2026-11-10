@@ -7,7 +7,6 @@ These specifications complete the initial architecture-design pass. English is t
 3. [0004 — VCS and Collaboration Adapter Contracts](0004-vcs-collaboration-contracts.md) · [Français](0004-vcs-collaboration-contracts.fr.md)
 4. [0005 — Assurance, Claims and Evidence](0005-assurance-model.md) · [Français](0005-assurance-model.fr.md)
 5. [0006 — Governance Revision Applicability and Temporal Authorization](0006-governance-revision-applicability.md) · [Français](0006-governance-revision-applicability.fr.md)
-5. [0006 — Governance Revision Applicability and Temporal Authorization](0006-governance-revision-applicability.md) · [Français](0006-governance-revision-applicability.fr.md)
 
 Threat analysis and technology-selection process: [Architecture design](../architecture/README.md) · [Français](../architecture/README.fr.md).
 

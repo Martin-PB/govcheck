@@ -81,3 +81,8 @@ Le modèle maintient volontairement l'autorité racine constante. Succession/dé
 - [Architecture 0023 — Décision d'amorçage de l'autorité](0023-bootstrap-governance-authority.fr.md)
 - [Issue #86 — Travail de spécification technique](https://github.com/Martin-PB/govcheck/issues/86)
 - [Issue #41 — Décision d'autorité parente](https://github.com/Martin-PB/govcheck/issues/41)
+
+
+## Compte rendu ultérieur de l'arbitrage de l'autorité
+
+Les onze choix du propriétaire du projet pour l'issue #41 sont consignés dans le [compte rendu de séance 0008](../decisions/0008-governance-applicability-arbitration-session.fr.md). Ils n'étendent pas rétroactivement le modèle vérifié pour ce rapport et ne modifient pas le résultat consigné. Les propriétés supplémentaires sélectionnées et les lacunes de couverture du modèle sont énumérées dans ce compte rendu et dans la Spécification 0006 §7. Aucune nouvelle exécution TLC n'est revendiquée ici.

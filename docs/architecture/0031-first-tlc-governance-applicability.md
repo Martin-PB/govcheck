@@ -81,3 +81,8 @@ The model deliberately holds the root authority constant. Authority succession/d
 - [Architecture 0023 — Bootstrap governance authority](0023-bootstrap-governance-authority.md)
 - [Issue #86 — Technical specification work](https://github.com/Martin-PB/govcheck/issues/86)
 - [Issue #41 — Parent authority decision](https://github.com/Martin-PB/govcheck/issues/41)
+
+
+## Subsequent authority arbitration record
+
+The project owner's eleven selections for issue #41 are recorded in [Decision-session record 0008](../decisions/0008-governance-applicability-arbitration-session.md). They do not retroactively expand the model checked for this report or change its recorded result. The additional selected properties and the model's remaining coverage gaps are enumerated in that session record and in Specification 0006 §7. No new TLC run is claimed here.

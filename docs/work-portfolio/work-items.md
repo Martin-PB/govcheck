@@ -93,3 +93,11 @@ Source issue descriptions and discussions remain preserved on GitHub and are lin
 The import captures identity, intent, classification and traceability; it does not copy every comment or intermediate discussion message into canonical records. Those conversations remain at their source URLs as provenance, not adopted decisions. Unresolved recommendations remain candidates or unknown until separately qualified.
 
 This is not yet a live two-way adapter. Mismatches must be reviewed; GitHub must not silently overwrite the repository register.
+
+
+## Issue #41 / #86 synchronization note — 2026-11-10
+
+- **#41:** the eleven authority-selected arbitration outcomes are recorded in [decision-session record 0008](../decisions/0008-governance-applicability-arbitration-session.md). They are session choices pending the applicable formal adoption event; the issue remains open and no normative adoption is inferred.
+- **#86:** PR [#90](https://github.com/Martin-PB/govcheck/pull/90) is merged into `main` (merge commit `5af21e58ef597480061a2712aaf94a3e2980ba7f`). The technical contract and bounded model are therefore integrated; the issue's earlier statements that TLC execution/review are pending are stale. The successful finite TLC result and its limitations are recorded in Architecture 0031 and WP-EVT-000004–000007.
+- **Formalization update:** a separate bounded design model `formal/tla/GovCheckCanonicalPublication.tla` now covers compare-and-append against a captured head, stale authorization rejection, separate evaluation/authorization/publication actions and append-only history. It is registered as `govcheck.canonical-publication` and routed to the TLC workflow. It was parsed by SANY 2.1 and checked by TLC 2.19 in workflow run [42815445104](https://github.com/Martin-PB/govcheck/actions/runs/42815445104): 84,307 states generated, 56,895 distinct, zero remaining, no counterexample; all eight invariants and temporal property `AppendOnly` passed. See Architecture 0032 for exact provenance and limits.
+- **Remaining work:** complete model coverage for evaluator transitions, revocation/requalification, exceptions, unknown/conflict, rollback and recovery; execute TLC locally without spending Actions credits; define executable journal/adapter/concurrency contracts and conformance tests. No implementation is claimed.

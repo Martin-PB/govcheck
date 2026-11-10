@@ -27,7 +27,7 @@ Aucune transition ne découle d'un nom de branche, label PR, statut CI ou messag
 
 ## Applicabilité de la révision de gouvernance
 
-La révision applicable à une évaluation ou une décision est résolue depuis l'historique canonique des événements et les positions d'effet. Un candidat modifiant la gouvernance est évalué et autorisé sous la révision antérieure ; sa révision résultante ne prend effet que par un événement ultérieur explicite de publication. Les décisions historiques conservent leur liaison d'origine. Une applicabilité absente, ambiguë, contradictoire ou périmée bloque l'acceptation. Voir la [Spécification 0006](0006-governance-revision-applicability.fr.md).
+La révision exacte applicable à une évaluation ou une décision est résolue depuis l'historique canonique des événements de gouvernance et ses positions d'effet. Un candidat qui modifie la gouvernance est évalué et autorisé sous la révision antérieure applicable ; sa révision résultante ne peut prendre effet que par un événement ultérieur explicite de publication. Les décisions historiques conservent leur liaison de gouvernance d'origine. Une applicabilité absente, ambiguë, contradictoire ou périmée bloque l'acceptation. Voir la [Spécification 0006 — Applicabilité des révisions de gouvernance et autorisation temporelle](0006-governance-revision-applicability.fr.md) et sa [version anglaise](0006-governance-revision-applicability.md).
 
 ## Fraîcheur des preuves
 
@@ -44,3 +44,15 @@ L'acceptation locale suit le même prédicat mais signale l'absence d'applicatio
 Évolution de base, rebase et changement de graphe/canal Pijul exigent une analyse de validité par l'adaptateur ; la similarité textuelle ne suffit pas. Les approbations sont liées aux révisions exactes. L'audit logique est append-only ; une correction ajoute un événement.
 
 Les futurs tests/modèles formels couvriront transitions illégales, preuves périmées, mutation après approbation, changement de gouvernance, application exacte, approbations concurrentes, usage local, sûreté et vivacité. Aucun moteur de cycle de vie n'existe encore.
+
+## Références bibliographiques
+
+- [R-05 — modélisation par transitions d'états TLA+ / TLC](../references.fr.md#r-05)
+- [R-22 — sémantiques natives Git et Pijul](../references.fr.md#r-22)
+
+
+## Compte rendu de l'arbitrage sur l'applicabilité de la gouvernance
+
+Les onze résultats sélectionnés par le propriétaire du projet pour l'issue #41 sont consignés, avec leur statut explicite d'adoption en attente, dans le [compte rendu de séance 0008](../decisions/0008-governance-applicability-arbitration-session.fr.md). Ils précisent que le journal canonique du cycle de vie est logique et sérialisé avec contrôle de concurrence ; les objets VCS natifs ne fournissent que transport/provenance ; la publication est l'événement d'effet ; l'ancien évaluateur reste seul faisant autorité pendant la migration d'évaluateur ; révocation et requalification historique sont distinctes ; les exceptions sont bornées et les exigences non dérogeables protégées ; unknown et conflict sont deux états bloquants distincts ; les évaluations périmées sont conservées mais inutilisables pour de nouvelles transitions ; les publications concurrentes sont sérialisées ; un retour arrière crée une nouvelle révision ; enfin, évaluation, autorisation et publication restent trois actes logiques distincts même si l'exécution technique est atomique.
+
+Il s'agit d'un compte rendu de l'orientation d'arbitrage sélectionnée, pas d'une adoption normative ni d'une revendication d'implémentation. Voir la Spécification 0006 et le [compte rendu 0008](../decisions/0008-governance-applicability-arbitration-session.fr.md).

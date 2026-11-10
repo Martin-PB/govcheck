@@ -49,3 +49,10 @@ Future tests and formal models must cover illegal transitions, stale evidence, p
 
 - [R-05 — TLA+ and TLC state-transition modeling](../references.md#r-05)
 - [R-22 — Native Git and Pijul semantics](../references.md#r-22)
+
+
+## Governance applicability arbitration record
+
+The project owner's eleven selected outcomes for issue #41 are recorded, with explicit pending-adoption status, in [Decision-session record 0008](../decisions/0008-governance-applicability-arbitration-session.md). They clarify that the canonical lifecycle journal is logical and serialized with concurrency control; native VCS objects provide transport/provenance only; publication is the effective event; the prior evaluator remains authoritative during evaluator migration; revocation and historical requalification are separate; exceptions are bounded and non-derogable requirements remain protected; unknown and conflict are distinct blocking states; stale evaluations are retained but unusable for new transitions; competing publications serialize; rollback creates a new revision; and evaluation, authorization and publication remain distinct logical acts even when technically atomic.
+
+This is a record of selected arbitration direction, not normative adoption or an implementation claim. See Specification 0006 and [record 0008](../decisions/0008-governance-applicability-arbitration-session.md).

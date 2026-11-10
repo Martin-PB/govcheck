@@ -164,7 +164,7 @@ AuthorizeWithoutException(evaluationId, authorizationId) ==
   /\ authorizations' = [authorizations EXCEPT
        ![authorizationId] = [status |-> "Authorized",
          evaluationId |-> evaluationId, baseRevision |-> head,
-         basePosition |-> position, exceptionId |-> "NoException"]]
+         basePosition |-> position, exceptionId |-> NoException]]
   /\ UNCHANGED <<head, position, journal, evaluations, shadowEvaluations,
                   exceptions, authorityRevoked, revocationPosition,
                   decisions, requalifications>>
@@ -250,7 +250,7 @@ TypeOK ==
   /\ head \in GovernanceRevisions
   /\ position \in Nat
   /\ journal \in Seq([kind : {"Genesis", "Publication", "AuthorityRevocation"},
-      revision : GovernanceRevisions, predecessor : GovernanceRevisions \cup {"NoRevision"},
+      revision : GovernanceRevisions, predecessor : GovernanceRevisions \cup {NoRevision},
       content : Contents, position : Nat])
   /\ evaluations \in [EvaluationIds ->
       [status : {"Unused", "Ready", "Stale"}, candidate : Candidates,
@@ -266,7 +266,7 @@ TypeOK ==
   /\ authorizations \in [AuthorizationIds ->
       [status : {"Unused", "Authorized"}, evaluationId : EvaluationIds,
        baseRevision : GovernanceRevisions, basePosition : Nat,
-       exceptionId : ExceptionIds \cup {"NoException"}]]
+       exceptionId : ExceptionIds \cup {NoException}]]
   /\ authorityRevoked \in BOOLEAN
   /\ revocationPosition \in Nat \cup {"NotRevoked"}
   /\ decisions \in Seq([kind : {"AuthorizedPublication"},

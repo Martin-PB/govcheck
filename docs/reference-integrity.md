@@ -6,7 +6,7 @@ The catalogue is a maintained, bilingual evidence index, not an adoption list or
 
 - [English catalogue](references.md) is the default presentation.
 - [Catalogue français](references.fr.md) is its semantic counterpart.
-- The bilingual catalogues contain 105 active entries. Two identifiers are retired and must never be reused; the later retired identifier was consolidated into the canonical NIST SP 800-218 entry because it duplicated the same source.
+- The bilingual catalogues contain 111 entries (identifiers up to R-113). Two identifiers are retired and must never be reused; the later retired identifier was consolidated into the canonical NIST SP 800-218 entry because it duplicated the same source.
 - Each entry records primary sources, relevant concepts, the specific GovCheck use and explicit limitations.
 - Each architecture record, decision or specification links to the exact catalogue anchor it uses.
 - Each catalogue entry's **Cited by / Cité par** field links back to every document that cites it.

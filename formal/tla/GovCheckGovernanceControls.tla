@@ -172,6 +172,9 @@ Publish(authorizationId, newRevision) ==
   /\ ~authorityRevoked
   /\ authorizations[authorizationId].baseRevision = head
   /\ authorizations[authorizationId].basePosition = position
+  /\ (authorizations[authorizationId].exceptionId = "NoException" \/\
+       ExceptionUsable(authorizations[authorizationId].exceptionId,
+         evaluations[authorizations[authorizationId].evaluationId].requirement))
   /\ newRevision \in GovernanceRevisions
   /\ newRevision # head
   /\ ~\E i \in 1..Len(journal) : journal[i].revision = newRevision
@@ -201,6 +204,7 @@ MarkStale(evaluationId) ==
 
 RequalifyHistorical(decisionIndex, outcome) ==
   /\ decisionIndex \in 1..Len(decisions)
+  /\ Len(requalifications) < 2
   /\ outcome \in {"Confirmed", "Disputed", "Invalidated"}
   /\ requalifications' = Append(requalifications,
        [decisionIndex |-> decisionIndex,

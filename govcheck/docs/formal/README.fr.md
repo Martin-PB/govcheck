@@ -58,3 +58,13 @@ Ce modèle de conception borné sépare l'évaluation du candidat, l'autorisatio
 - [Catalogue stable des artefacts](../../formal/artifacts.json) — `govcheck.governance-controls`
 
 Ce modèle borné conserve l'évaluateur reconnu par la gouvernance antérieure comme seul évaluateur faisant autorité ; le remplaçant proposé ne produit que des résultats comparatifs. Il distingue `Pass`, `Fail`, `Unknown` et `Conflict`, bloque les deux derniers, borne et revalide les exceptions dérogeables, exclut les exigences non dérogeables, enregistre la révocation prospective et préserve les décisions historiques avec requalification séparée. SANY 2.1 et TLC 2.19 ont réussi sur la tête de PR vérifiée `86713a99574c085ee5a41a71e70f93ab7ce4a831` (checkout CI `1f387b8f6019db545ccd50d55fd9c7cc0d704d80`) : 2 826 117 états générés, 1 026 484 distincts, zéro restant, profondeur 12 ; les neuf invariants et `AppendOnly` ont réussi. Ce résultat ne couvre pas le stockage durable, la reprise après panne, les adaptateurs VCS, le consensus distribué ni le raffinement de l'implémentation.
+
+
+## Durabilité et reprise du journal canonique
+
+- [Architecture 0034 — modèle et limites](../architecture/0034-canonical-journal-recovery-model.fr.md) · [English](../architecture/0034-canonical-journal-recovery-model.md)
+- [Module TLA+](../../formal/tla/GovCheckJournalRecovery.tla)
+- [Configuration TLC](../../formal/tla/GovCheckJournalRecovery.cfg)
+- [Catalogue stable des artefacts](../../formal/artifacts.json) — `govcheck.journal-recovery`
+
+Le modèle distingue l'état volatil en attente du journal durable append-only. L'ajout durable constitue le point de commit ; la reprise rejoue jusqu'à la tête durable. Un rollback ajoute un nouvel événement et une nouvelle révision dont le contenu est restauré depuis une position antérieure. Les observations de répliques Git/Pijul sont des positions passives de provenance/réplication et ne peuvent établir l'ordre normatif. Le modèle est borné et ne spécifie pas un moteur de stockage ni ne prouve la sûreté après panne d'une implémentation. La vérification TLC est en attente de la fin du workflow enregistré.

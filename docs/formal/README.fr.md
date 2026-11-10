@@ -52,6 +52,16 @@ Ce modèle borné distinct lie chaque évaluation à la révision de gouvernance
 
 Ce modèle de conception borné sépare l'évaluation du candidat, l'autorisation et la publication. L'autorisation est liée à la révision et à la position de tête évaluées ; la publication n'ajoute au journal que si cette base est toujours courante. Il exprime l'unicité des identités de révision, la continuité des prédécesseurs, une publication par prédécesseur canonique, la liaison autorisation/évaluation, l'autorisation préalable à la publication et l'exclusion des bases périmées. La configuration TLC demande également la propriété temporelle append-only. **Statut de vérification corrigé :** le modèle et la configuration exacts ont réussi TLC ; consulter l'Architecture 0032 pour la révision vérifiée et le résultat fini. Les lacunes d'implémentation restantes ne sont pas couvertes par ce modèle.
 
+
+## Contrôles des évaluateurs, exceptions et révocation
+
+- [Module TLA+](../../formal/tla/GovCheckGovernanceControls.tla)
+- [Configuration TLC](../../formal/tla/GovCheckGovernanceControls.cfg)
+- [Architecture 0033 — résultat TLC](../architecture/0033-governance-evaluator-exception-revocation-model.fr.md)
+- [Catalogue stable des artefacts](../../formal/artifacts.json) — `govcheck.governance-controls`
+
+Ce modèle borné conserve l'évaluateur reconnu par la gouvernance antérieure comme seul évaluateur faisant autorité ; le remplaçant proposé ne produit que des résultats comparatifs. Il distingue `Pass`, `Fail`, `Unknown` et `Conflict`, bloque les deux derniers, borne et revalide les exceptions dérogeables, exclut les exigences non dérogeables, enregistre la révocation prospective et préserve les décisions historiques avec requalification séparée. SANY 2.1 et TLC 2.19 ont réussi sur la tête de PR vérifiée `86713a99574c085ee5a41a71e70f93ab7ce4a831` (checkout CI `1f387b8f6019db545ccd50d55fd9c7cc0d704d80`) : 2 826 117 états générés, 1 026 484 distincts, zéro restant, profondeur 12 ; les neuf invariants et `AppendOnly` ont réussi. Ce résultat ne couvre pas le stockage durable, la reprise après panne, les adaptateurs VCS, le consensus distribué ni le raffinement de l'implémentation.
+
 ## Périmètres de vérification CI
 
 La partition des vérifications du dépôt et son modèle formel de routage sont décrits dans [l'Architecture 0029](../architecture/0029-concern-scoped-ci-and-formal-verification-boundaries.fr.md) ([English](../architecture/0029-concern-scoped-ci-and-formal-verification-boundaries.md)). Le modèle de routage CI est `formal/tla/CICheckRouting.tla` ; il n'est vérifié que lorsque ses propres entrées de politique changent. Les modifications documentaires ordinaires ne déclenchent ni ce modèle ni les modèles TLC produit, sauf si elles sont explicitement déclarées comme entrées sémantiques d'un modèle.

@@ -361,3 +361,7 @@ Les énoncés suivants sont des propositions d'invariants pour l'analyse d'impac
 Ce document est une déclaration détaillée de l'intention produit et une base de refonte architecturale. Il n'est pas en lui-même un ADR, une politique normative du dépôt, un plan d'implémentation approuvé ou une preuve qu'une capacité existe. Le processus d'autorité de gouvernance actuel reste applicable. Dans l'organisation actuelle du projet, seul le propriétaire du dépôt peut approuver les évolutions de son orientation normative.
 
 Tout changement futur dérivé de cette intention doit préserver la distinction entre décisions du propriétaire, propositions de conception, recommandations, affirmations issues de sources externes, résultats de modèles formels et comportements effectivement implémentés.
+
+## Analyse d'impact
+
+Voir l'[analyse d'impact de l'intention produit](product-intent-impact-analysis.fr.md) ([English](product-intent-impact-analysis.md)) pour la première réconciliation de cette intention avec les ADR, architectures, spécifications et frontières produit existants. Il s'agit d'un audit de travail, pas d'un acte d'adoption.

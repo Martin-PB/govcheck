@@ -24,6 +24,23 @@ The repository release, the GovCheck product release and the reusable **govcheck
 
 GovCheck's own governance history (architecture records, ADRs, deliberations) lives at the meta level of the GovCheck repository and is deliberately **not** part of this package. See ADR 0003 in the GovCheck repository.
 
+## Bootstrapping an existing repository (inspect / plan / apply)
+
+`govcheck/bootstrap.py` also adopts GovCheck into an existing, non-empty repository without destroying anything:
+
+    python3 govcheck/bootstrap.py inspect TARGET [--out report.json]
+    python3 govcheck/bootstrap.py plan TARGET [--capabilities check,docs] [--out plan.json]
+    python3 govcheck/bootstrap.py apply TARGET [--capabilities check,docs] [--plan plan.json] [--out result.json]
+    python3 govcheck/bootstrap.py rollback TARGET [--out result.json]
+
+- `inspect` reports the package identity (version label plus SHA-256 digest of the package tree), whether the target exists, is empty and is a git repository, which package parts are already present and which paths would conflict. It never mutates the target.
+- `plan` produces a deterministic JSON plan of actions (`create`, `identical`, `conflict`) with no side effect; running it twice on an unchanged target yields byte-identical output.
+- `apply` writes only `create` actions: existing files are never overwritten, conflicts are preserved and reported. Applying twice is idempotent (the second run creates nothing). With `--plan`, apply first verifies that the plan still matches the target and aborts with exit code 2 otherwise, so only reviewed changes are applied.
+- The package identity is recorded in a package-owned marker, `.govcheck-bootstrap.json`, at the target root (version, digest, installed files with digests, preserved conflicts). `rollback` deletes exactly the installed files whose content still matches the recorded digest and then the marker; that is the documented rollback path. Upgrading means re-running `apply` with a newer package: user-modified files are never overwritten and appear as conflicts.
+- `--capabilities` selects which package parts to install (`check`, `decisions`, `docs`, `formal`, `readme`, `scripts`, `workflows`; default: all of them).
+
+The legacy form `python3 govcheck/bootstrap.py TARGET_DIR` still initializes an empty repository and refuses non-empty targets. Unit tests live in `tests/test_govcheck_bootstrap.py`.
+
 ## Checking a repository (first executable slice)
 
 `govcheck/check.py` is the first executable GovCheck command. It evaluates a fixed rule set on a repository tree and emits a deterministic, language-independent JSON report:

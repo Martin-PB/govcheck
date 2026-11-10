@@ -73,7 +73,7 @@ Absence d'autorité, historique ambigu, applicabilité inconnue, autorité révo
 
 ### 3.6 Autorité et séparation des responsabilités
 
-L'Architecture 0023 consigne actuellement un principal racine unique, the configured root principal, et accepte explicitement que ce même principal propose et autorise un changement. Cette spécification ne modifie pas ce régime.
+L'Architecture 0023 consigne actuellement un principal racine unique, le principal racine configuré, et accepte explicitement que ce même principal propose et autorise un changement. Cette spécification ne modifie pas ce régime.
 
 L'implémentation DOIT distinguer proposant/producteur, réviseur/évaluateur technique, autorité normative et publieur/exécutant. Lorsque proposant et autorité sont le même principal, l'enregistrement DOIT le révéler. Il NE DOIT PAS revendiquer une approbation indépendante ou une séparation à deux personnes. Administration du dépôt, droit de fusion et CI ne constituent pas une autorité normative.
 

@@ -52,7 +52,7 @@ Init ==
                    predecessor |-> NoRevision, content |-> CHOOSE c \in Contents : TRUE,
                    position |-> 0]>>
   /\ evaluations = [e \in EvaluationIds |-> UnusedEvaluation]
-  /\ shadowEvaluations = {}
+  /\ shadowEvaluations = <<>>
   /\ exceptions = [x \in ExceptionIds |-> UnusedException]
   /\ authorizations = [a \in AuthorizationIds |-> UnusedAuthorization]
   /\ authorityRevoked = FALSE
@@ -78,9 +78,12 @@ Evaluate(candidate, evaluationId, result) ==
 ShadowEvaluate(candidate, result) ==
   /\ candidate \in Candidates
   /\ result \in {"Pass", "Fail", "Unknown", "Conflict"}
-  /\ shadowEvaluations' = shadowEvaluations \cup
-       {[candidate |-> candidate, evaluator |-> ShadowEvaluator,
-         result |-> result, comparedAt |-> position]}
+  /\ Len(shadowEvaluations) < 2
+  /\ ~\E i \in 1..Len(shadowEvaluations) :
+       shadowEvaluations[i].candidate = candidate
+  /\ shadowEvaluations' = Append(shadowEvaluations,
+       [candidate |-> candidate, evaluator |-> ShadowEvaluator,
+        result |-> result, comparedAt |-> position])
   /\ UNCHANGED <<head, position, journal, evaluations, exceptions,
                   authorizations, authorityRevoked, revocationPosition,
                   decisions, requalifications>>
@@ -257,9 +260,9 @@ TypeOK ==
        evaluator : Principals, baseRevision : GovernanceRevisions,
        basePosition : Nat, result : {"Pass", "Fail", "Unknown", "Conflict"},
        requirement : Requirements]]
-  /\ shadowEvaluations \subseteq
+  /\ shadowEvaluations \in Seq(
       [candidate : Candidates, evaluator : {ShadowEvaluator},
-       result : {"Pass", "Fail", "Unknown", "Conflict"}, comparedAt : Nat]
+       result : {"Pass", "Fail", "Unknown", "Conflict"}, comparedAt : Nat])
   /\ exceptions \in [ExceptionIds ->
       [status : {"Unused", "Active"}, requirement : Requirements, reason : {"None", "OperationalNeed", "TemporaryConstraint"},
        grantedAt : Nat, expiresAt : Nat, statusDetail : {"Unused", "Active", "Revoked"}]]

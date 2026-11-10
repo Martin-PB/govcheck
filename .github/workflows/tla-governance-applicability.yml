@@ -9,6 +9,8 @@ on:
       - 'formal/tla/GovCheckCanonicalPublication.cfg'
       - 'formal/tla/GovCheckGovernanceControls.tla'
       - 'formal/tla/GovCheckGovernanceControls.cfg'
+      - 'formal/tla/GovCheckJournalRecovery.tla'
+      - 'formal/tla/GovCheckJournalRecovery.cfg'
       - 'docs/specifications/0006-governance-revision-applicability.md'
       - 'docs/specifications/0006-governance-revision-applicability.fr.md'
       - '.github/workflows/tla-governance-applicability.yml'
@@ -20,6 +22,10 @@ on:
       - 'formal/tla/GovCheckGovernanceApplicability.cfg'
       - 'formal/tla/GovCheckCanonicalPublication.tla'
       - 'formal/tla/GovCheckCanonicalPublication.cfg'
+      - 'formal/tla/GovCheckGovernanceControls.tla'
+      - 'formal/tla/GovCheckGovernanceControls.cfg'
+      - 'formal/tla/GovCheckJournalRecovery.tla'
+      - 'formal/tla/GovCheckJournalRecovery.cfg'
       - 'docs/specifications/0006-governance-revision-applicability.md'
       - 'docs/specifications/0006-governance-revision-applicability.fr.md'
       - '.github/workflows/tla-governance-applicability.yml'
@@ -40,3 +46,8 @@ jobs:
     uses: ./.github/workflows/tla-model-reusable.yml
     with:
       model: GovCheckGovernanceControls
+
+  journal-recovery:
+    uses: ./.github/workflows/tla-model-reusable.yml
+    with:
+      model: GovCheckJournalRecovery

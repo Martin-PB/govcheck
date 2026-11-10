@@ -172,7 +172,7 @@ Publish(authorizationId, newRevision) ==
   /\ ~authorityRevoked
   /\ authorizations[authorizationId].baseRevision = head
   /\ authorizations[authorizationId].basePosition = position
-  /\ (authorizations[authorizationId].exceptionId = "NoException" \/\
+  /\ (authorizations[authorizationId].exceptionId = "NoException" \/
        ExceptionUsable(authorizations[authorizationId].exceptionId,
          evaluations[authorizations[authorizationId].evaluationId].requirement))
   /\ newRevision \in GovernanceRevisions

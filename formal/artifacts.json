@@ -117,7 +117,41 @@
       },
       "revisionPolicy": "repository-history",
       "releaseBinding": "release-tag-and-commit",
-      "status": "bounded-design-model; TLC verification pending"
+      "status": "bounded-design-model; SANY-parsed-and-TLC-model-checked",
+      "verification": {
+        "architectureRecord": "docs/architecture/0034-canonical-journal-recovery-model.md",
+        "workflowRunId": 42848709804,
+        "jobId": 129943126960,
+        "checkedCommit": "a5c9845b1df7a36c9b1f23af0a28bdabdd4300f3",
+        "modelGitBlob": "f99b33f510f3350f7ee1dc2ecc4b13a216d64ab6",
+        "configurationGitBlob": "43102a4fc3c17a0656ccfe71d34642457d85737a",
+        "result": "no-counterexample",
+        "statesGenerated": 178549,
+        "distinctStates": 38434,
+        "statesRemaining": 0,
+        "graphDepth": 9,
+        "toolchain": {
+          "sany": "2.1",
+          "tlc": "2.19",
+          "tla2tools": "1.7.4",
+          "tla2toolsSha256": "936a262061c914694dfd669a543be24573c45d5aa0ff20a8b96b23d01e050e88",
+          "java": "Temurin 17.0.21+9",
+          "workers": 4
+        },
+        "artifactId": 13778403717,
+        "artifactSha256": "0fe3148982524a25336674718505b02fd786953bd000d9b06ae016ec4987d00b",
+        "invariants": [
+          "TypeOK",
+          "UniqueEventAndRevisionIds",
+          "PositionAndPredecessorContinuity",
+          "RollbackRestoresContentAsNewEvent",
+          "VCSObservationIsNonAuthoritative",
+          "AppliedStateIsDurable"
+        ],
+        "properties": [
+          "AppendOnly"
+        ]
+      }
     }
   ]
 }

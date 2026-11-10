@@ -193,5 +193,5 @@
 - **Candidate:** PR #100, branch `work/issue-86-journal-protocol-spec`, based on PR #99.
 - **Scope:** bilingual Specification 0007 defines technology-neutral event identity/envelopes, compare-and-append linearization, durable commit/idempotent retry, crash recovery, distinct evaluation/authorization/publication acts, VCS provenance-only adapters, replica reconciliation, blocking result vocabulary and twelve conformance scenarios.
 - **Authority boundary:** the specification elaborates the eleven owner-selected design inputs without re-arbitration. It is a proposal only; no normative adoption, database/serialization/crypto/consensus choice, production implementation or issue closure is inferred.
-- **Related records:** Specifications 0006/0007; Architectures 0032–0034; R-05 and R-22.
+- **Related records:** Specifications 0006/0007; Architectures 0032–0034; [R-05](../references.md#r-05) and [R-22](../references.md#r-22).
 - **Known limits:** protocol semantics and conformance targets only. No storage engine, adapter, executable conformance harness or implementation refinement is delivered by this event.

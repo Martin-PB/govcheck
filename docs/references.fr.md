@@ -43,6 +43,14 @@
 | Emplacement et syntaxe des workflows GitHub Actions | R-107 |
 | Licences open source et attribution | R-108 |
 | Intention du dépôt, cycle de vie et ingénierie des exigences | R-114–R-118, R-121–R-122 |
+| Description d'architecture et justification de conception | R-123, R-130–R-131 |
+| Échange d'exigences et traçabilité du cycle de vie | R-124–R-125, R-128–R-129 |
+| Structures de dossiers d'assurance et provenance | R-126–R-127, R-132 |
+| Processus d'architecture et éléments d'information du cycle de vie | R-133–R-134 |
+| Qualité du produit, ingénierie de sécurité et mesure des objectifs | R-135–R-137 |
+| Gestion de configuration et applicabilité des révisions | R-138 |
+| Cycle de vie d'assurance de sécurité et de sûreté | R-136, R-139–R-140 |
+| Alignement des objectifs et mesure des résultats | R-137, R-141 |
 | Modélisation des systèmes et métamodèles de dossiers d'assurance | R-119–R-120 |
 
 ## Entrées bibliographiques détaillées
@@ -1106,7 +1114,7 @@
 
 <a id="r-114"></a>
 ### R-114 — Anthropic AI-native SDLC Playbook : documents d'intention du dépôt et des changements
-- **Cité par :** [ADR 0009](decisions/0009-intent-record-and-authority.fr.md), [intention GovCheck](intent.fr.md), [analyse d'impact de l'intention](intent-impact-analysis.fr.md)
+- **Cité par :** [ADR 0009](decisions/0009-intent-record-and-authority.fr.md), [intention GovCheck](intent.fr.md), [analyse d'impact de l'intention](intent-impact-analysis.fr.md) · [Étude des relations intention-assurance](research/intent-relationship-model-survey.fr.md)
 - **Source primaire :** [Anthropic, The AI-native SDLC Playbook](https://claude.com/resources/articles/the-ai-native-sdlc-playbook)
 - **Concepts pertinents :** fichier `intent.md` versionné et lisible par les humains, préservant le problème d'origine, le résultat attendu, les utilisateurs/systèmes, les contraintes et questions ouvertes ; spécification et planification d'implémentation en aval.
 - **Utilité pour GovCheck :** précédent industriel le plus proche pour le nom et le rôle conceptuel d'`intent.md` au niveau du dépôt.
@@ -1114,7 +1122,7 @@
 
 <a id="r-115"></a>
 ### R-115 — ISO/IEC/IEEE 15288:2023, Ingénierie des systèmes et du logiciel — Processus du cycle de vie du système
-- **Cité par :** [ADR 0009](decisions/0009-intent-record-and-authority.fr.md), [analyse d'impact de l'intention](intent-impact-analysis.fr.md)
+- **Cité par :** [ADR 0009](decisions/0009-intent-record-and-authority.fr.md), [analyse d'impact de l'intention](intent-impact-analysis.fr.md) · [Étude des relations intention-assurance](research/intent-relationship-model-survey.fr.md)
 - **Source primaire :** [ISO/IEC/IEEE 15288:2023](https://www.iso.org/fr/standard/81702.html)
 - **Concepts pertinents :** cadre de processus couvrant conception, développement, production, utilisation, soutien et retrait ; application itérative et récursive ; participation des parties prenantes et échange d'informations.
 - **Utilité pour GovCheck :** soutient la modélisation de l'intention, des exigences, décisions, réalisations et assurances comme préoccupations du cycle de vie plutôt que comme pipeline de bootstrap ponctuel.
@@ -1122,7 +1130,7 @@
 
 <a id="r-116"></a>
 ### R-116 — ISO/IEC/IEEE 29148, ingénierie des exigences
-- **Cité par :** [ADR 0009](decisions/0009-intent-record-and-authority.fr.md), [analyse d'impact de l'intention](intent-impact-analysis.fr.md)
+- **Cité par :** [ADR 0009](decisions/0009-intent-record-and-authority.fr.md), [analyse d'impact de l'intention](intent-impact-analysis.fr.md) · [Étude des relations intention-assurance](research/intent-relationship-model-survey.fr.md)
 - **Sources primaires :** [ISO/IEC/IEEE 29148:2018](https://www.iso.org/standard/72089.html) · [ISO/IEC/IEEE DIS 29148, édition 3](https://www.iso.org/fr/standard/94091.html)
 - **Concepts pertinents :** processus et éléments d'information d'ingénierie des exigences ; dérivation, allocation, validation, vérification et traçabilité bidirectionnelle des besoins et exigences sur le cycle de vie.
 - **Utilité pour GovCheck :** référence normative pour distinguer intention/besoins et exigences et définir les relations de dérivation, allocation, validation et analyse d'impact.
@@ -1130,7 +1138,7 @@
 
 <a id="r-117"></a>
 ### R-117 — NASA Systems Engineering Handbook : attentes des parties prenantes et gestion des exigences
-- **Cité par :** [ADR 0009](decisions/0009-intent-record-and-authority.fr.md), [analyse d'impact de l'intention](intent-impact-analysis.fr.md)
+- **Cité par :** [ADR 0009](decisions/0009-intent-record-and-authority.fr.md), [analyse d'impact de l'intention](intent-impact-analysis.fr.md) · [Étude des relations intention-assurance](research/intent-relationship-model-survey.fr.md)
 - **Sources primaires :** [Définition des attentes des parties prenantes NASA](https://www.nasa.gov/reference/4-1-stakeholder-expectations-definition/) · [Gestion des exigences NASA](https://www.nasa.gov/reference/6-2-requirements-management/) · [NASA Systems Engineering Handbook](https://science.nasa.gov/wp-content/uploads/2023/04/nasa_systems_engineering_handbook_0.pdf)
 - **Concepts pertinents :** attentes des parties prenantes, ConOps, buts/objectifs, décisions de conception itératives, décomposition/allocation des exigences, traçabilité bidirectionnelle, vérification de conception, vérification et validation du produit.
 - **Utilité pour GovCheck :** soutient la traçabilité ascendante/descendante et les contrôles de cohérence entre attentes, exigences, architecture/conception et vérification/validation.
@@ -1138,7 +1146,7 @@
 
 <a id="r-118"></a>
 ### R-118 — Étude systématique de l'ingénierie des exigences orientée objectifs et réflexion 2026
-- **Cité par :** [ADR 0009](decisions/0009-intent-record-and-authority.fr.md), [analyse d'impact de l'intention](intent-impact-analysis.fr.md)
+- **Cité par :** [ADR 0009](decisions/0009-intent-record-and-authority.fr.md), [analyse d'impact de l'intention](intent-impact-analysis.fr.md) · [Étude des relations intention-assurance](research/intent-relationship-model-survey.fr.md)
 - **Source primaire :** [A systematic mapping of goal-oriented requirements engineering: reflections, impact, and the way forward](https://link.springer.com/article/10.1007/s00766-026-00476-7)
 - **Contexte académique :** retour sur l'étude systématique étendue couvrant 246 publications GORE jusqu'en 2015 et examen de son influence et de son adoption ultérieures.
 - **Concepts pertinents :** objectifs, raffinements ET/OU, opérationnalisation, acteurs, dépendances, objectifs qualitatifs/softgoals, compromis et cadres KAOS, iStar, GRL et Tropos.
@@ -1147,7 +1155,7 @@
 
 <a id="r-119"></a>
 ### R-119 — OMG Systems Modeling Language (SysML) v2.0
-- **Cité par :** [ADR 0009](decisions/0009-intent-record-and-authority.fr.md), [analyse d'impact de l'intention](intent-impact-analysis.fr.md)
+- **Cité par :** [ADR 0009](decisions/0009-intent-record-and-authority.fr.md), [analyse d'impact de l'intention](intent-impact-analysis.fr.md) · [Étude des relations intention-assurance](research/intent-relationship-model-survey.fr.md)
 - **Source primaire :** [Spécification OMG SysML](https://www.omg.org/spec/SysML)
 - **Concepts pertinents :** modélisation normalisée des systèmes couvrant exigences, comportement, structure, analyse et vérification ; relations de modèle et interopérabilité par API normalisées.
 - **Utilité pour GovCheck :** source candidate pour des relations typées entre exigences, éléments de modèle, conception et vérification, et d'éventuels profils d'échange.
@@ -1155,7 +1163,7 @@
 
 <a id="r-120"></a>
 ### R-120 — OMG Structured Assurance Case Metamodel (SACM) 2.3
-- **Cité par :** [ADR 0009](decisions/0009-intent-record-and-authority.fr.md), [analyse d'impact de l'intention](intent-impact-analysis.fr.md)
+- **Cité par :** [ADR 0009](decisions/0009-intent-record-and-authority.fr.md), [analyse d'impact de l'intention](intent-impact-analysis.fr.md) · [Étude des relations intention-assurance](research/intent-relationship-model-survey.fr.md)
 - **Source primaire :** [Spécification OMG SACM 2.3](https://www.omg.org/spec/SACM/)
 - **Concepts pertinents :** affirmations, argumentation, références d'artefacts, preuves/contexte affirmés, raisonnement, contre-affirmations/contre-preuves et packages d'arguments modulaires.
 - **Utilité pour GovCheck :** modèle spécialisé normalisé pour le sous-graphe d'assurance et ses relations entre arguments et éléments d'évidence.
@@ -1163,7 +1171,7 @@
 
 <a id="r-121"></a>
 ### R-121 — Cadre du gouvernement britannique pour les registres de décisions d'architecture (2025)
-- **Cité par :** [ADR 0009](decisions/0009-intent-record-and-authority.fr.md), [analyse d'impact de l'intention](intent-impact-analysis.fr.md)
+- **Cité par :** [ADR 0009](decisions/0009-intent-record-and-authority.fr.md), [analyse d'impact de l'intention](intent-impact-analysis.fr.md) · [Étude des relations intention-assurance](research/intent-relationship-model-survey.fr.md)
 - **Source primaire :** [UK Government ADR Framework](https://www.gov.uk/government/publications/architectural-decision-record-framework)
 - **Concepts pertinents :** contexte, décision, conséquences, niveau de décision approprié, visibilité, traçabilité et équilibre entre autonomie et responsabilité.
 - **Utilité pour GovCheck :** soutient les registres de décisions séparément autorisés qui expliquent comment exigences, contraintes et alternatives d'architecture ont été arbitrées.
@@ -1176,3 +1184,155 @@
 - **Concepts pertinents :** format ouvert publié et convention pour un fichier `INTENT.md` au niveau du dépôt, combinant présentation du produit, personas, releases, user stories et critères d'acceptation.
 - **Utilité pour GovCheck :** point de comparaison pour un format publié existant nommé `INTENT.md` et son périmètre.
 - **Limite :** son modèle de contenu regroupé n'est pas adopté par GovCheck ; aucune conformité ou compatibilité n'est revendiquée.
+
+<a id="r-123"></a>
+### R-123 — ISO/IEC/IEEE 42010:2022, description de l'architecture
+- **Cité par :** [Étude des relations intention-assurance](research/intent-relationship-model-survey.fr.md)
+- **Source primaire :** [ISO/IEC/IEEE 42010:2022](https://www.iso.org/fr/standard/74393.html)
+- **Concepts pertinents :** descriptions d'architecture et leurs éléments ; parties prenantes, préoccupations, points de vue, vues, types de modèles, correspondances et justifications/décisions d'architecture.
+- **Utilité pour GovCheck :** éclaire les relations entre parties prenantes, préoccupations, modèles d'architecture, spécifications et justifications de décision.
+- **Limite :** spécifie la structure et l'expression des descriptions d'architecture, pas les processus, méthodes, notations, outils ou supports de stockage ; ce n'est pas un métamodèle complet de gouvernance du cycle de vie.
+
+<a id="r-124"></a>
+### R-124 — OMG Requirements Interchange Format (ReqIF) 1.2
+- **Cité par :** [Étude des relations intention-assurance](research/intent-relationship-model-survey.fr.md)
+- **Source primaire :** [OMG ReqIF 1.2](https://www.omg.org/spec/ReqIF/)
+- **Concepts pertinents :** échange normalisé d'informations d'exigences, objets d'exigence, attributs, types, relations et schémas XML lisibles par machine.
+- **Utilité pour GovCheck :** mapping d'échange candidat pour les exigences et leurs relations structurées.
+- **Limite :** l'échange d'exigences n'est pas la sémantique du cycle de vie ; ReqIF ne définit pas les sémantiques d'intention, d'autorité des décisions ou d'assurance de GovCheck.
+
+<a id="r-125"></a>
+### R-125 — OASIS OSLC Requirements Management 2.1
+- **Cité par :** [Étude des relations intention-assurance](research/intent-relationship-model-survey.fr.md)
+- **Sources primaires :** [OSLC RM 2.1, partie 1 — Spécification](https://docs.oasis-open-projects.org/oslc-op/rm/v2.1/ps01/requirements-management-spec.html) · [Archives des standards OASIS](https://www.oasis-open.org/standards/)
+- **Concepts pertinents :** ressources de gestion des exigences, collections, propriétés et relations de ressources représentées par des propriétés/triples RDF ; intégration d'outils du cycle de vie.
+- **Utilité pour GovCheck :** modèle candidat de liens de ressources typés interopérables et d'échange entre outils du cycle de vie.
+- **Limite :** interface d'intégration du domaine de gestion des exigences, pas sémantique complète des objectifs, décisions, architectures ou assurances.
+
+<a id="r-126"></a>
+### R-126 — Goal Structuring Notation (GSN) Community Standard, version 3
+- **Cité par :** [Étude des relations intention-assurance](research/intent-relationship-model-survey.fr.md)
+- **Source primaire :** [Safety-Critical Systems Club — standard GSN](https://scsc.uk/gsn-standard)
+- **Concepts pertinents :** arguments d'ingénierie structurés avec objectifs/affirmations, stratégies, contextes, hypothèses, justifications et solutions/éléments d'évidence.
+- **Utilité pour GovCheck :** mapping candidat pour les structures d'argumentation d'assurance et la décomposition explicite des affirmations.
+- **Limite :** standard communautaire de notation d'argument, pas métamodèle complet de cycle de vie, exigences ou gouvernance.
+
+<a id="r-127"></a>
+### R-127 — W3C PROV-O : ontologie PROV
+- **Cité par :** [Étude des relations intention-assurance](research/intent-relationship-model-survey.fr.md)
+- **Source primaire :** [Recommandation W3C PROV-O](https://www.w3.org/TR/prov-o/)
+- **Concepts pertinents :** entités, activités et agents de provenance ; dérivation, attribution, association, génération, usage et invalidation.
+- **Utilité pour GovCheck :** couche de provenance candidate pour identifier qui/quoi a produit ou dérivé un artefact/une assertion et comment la provenance se relie aux événements du cycle de vie.
+- **Limite :** vocabulaire générique de provenance ; il ne fournit pas les sémantiques métier de l'intention, des exigences, décisions ou affirmations d'assurance.
+
+<a id="r-128"></a>
+### R-128 — Revue systématique de la traçabilité pré-spécification des exigences (2024)
+- **Cité par :** [Étude des relations intention-assurance](research/intent-relationship-model-survey.fr.md)
+- **Source primaire :** [Mucha, Kaufmann et Riehle, Requirements Engineering (2024)](https://link.springer.com/article/10.1007/s00766-023-00412-z)
+- **Concepts pertinents :** traçabilité entre exigences et origines antérieures à la spécification formelle, notamment entretiens de parties prenantes, comptes rendus et systèmes historiques ; revue de 77 articles publiés entre 1992 et 2022.
+- **Utilité pour GovCheck :** soutient les liens explicites vers les origines et signale que la traçabilité besoin/intention-vers-exigence est moins étudiée que la traçabilité aval.
+- **Limite :** revue systématique de la traçabilité pré-exigences, pas ontologie universelle des relations ni schéma normatif.
+
+<a id="r-129"></a>
+### R-129 — Technologies de traçabilité des exigences et transfert technologique : revue systématique (2018)
+- **Cité par :** [Étude des relations intention-assurance](research/intent-relationship-model-survey.fr.md)
+- **Source primaire :** [Journal of Systems and Software, DOI 10.1016/j.jss.2018.09.001](https://doi.org/10.1016/j.jss.2018.09.001)
+- **Concepts pertinents :** revue systématique de 114 articles (2006–2016), évaluation de 83 études empiriques, défis de traçabilité et catégories technologiques.
+- **Utilité pour GovCheck :** fonde la nécessité d'évaluer les techniques de traçabilité, leur coût de maintenance et leur efficacité empirique au lieu de supposer que les liens sont simples ou auto-entretenus.
+- **Limite :** revue des technologies de traçabilité et de leur transfert, pas métamodèle normatif.
+
+<a id="r-130"></a>
+### R-130 — Modèle Architecture Rationale and Elements Linkage (AREL)
+- **Cité par :** [Étude des relations intention-assurance](research/intent-relationship-model-survey.fr.md)
+- **Source primaire :** [A rationale-based architecture model for design traceability and reasoning, Journal of Systems and Software (2007)](https://www.sciencedirect.com/science/article/pii/S0164121206002287)
+- **Concepts pertinents :** relie exigences, contraintes et hypothèses aux éléments d'architecture au moyen des décisions et justifications ; soutient raisonnement de conception et analyse d'impact.
+- **Utilité pour GovCheck :** éclaire les liens médiés par les décisions entre exigences, hypothèses, alternatives, éléments d'architecture et impacts de changement.
+- **Limite :** modèle de recherche sur les justifications d'architecture, pas standard universel de cycle de vie ou de gouvernance.
+
+<a id="r-131"></a>
+### R-131 — On the Semantics of Architectural Decisions
+- **Cité par :** [Étude des relations intention-assurance](research/intent-relationship-model-survey.fr.md)
+- **Source primaire :** [On the Semantics of Architectural Decisions](https://doi.org/10.1142/S0218194016500145)
+- **Concepts pertinents :** sémantique ensembliste des décisions d'architecture et relations explicites entre éléments de décision.
+- **Utilité pour GovCheck :** base académique candidate pour des objets décision typés et des sémantiques relationnelles formelles.
+- **Limite :** concerne les modèles de décision d'architecture ; ne définit pas le cycle complet intention-assurance de GovCheck.
+
+<a id="r-132"></a>
+### R-132 — Cadre caractéristiques, spécification et évidence pour communiquer les justifications de conception (2024)
+- **Cité par :** [Étude des relations intention-assurance](research/intent-relationship-model-survey.fr.md)
+- **Source primaire :** [Design Science, DOI 10.1017/dsj.2024.19](https://www.cambridge.org/core/journals/design-science/article/feature-specification-and-evidence-framework-for-communicating-design-rationale/324229D6DCBE5CE472AA3F47BC35665D)
+- **Concepts pertinents :** justification de conception comme raisons, justification, alternatives, compromis et argumentation ; communication entre caractéristiques, spécifications et éléments d'évidence.
+- **Utilité pour GovCheck :** éclaire la structure de la justification des décisions et les liens entre caractéristiques de conception, spécifications et éléments d'évidence.
+- **Limite :** cadre de recherche pour la communication des justifications de conception, pas standard général de gouvernance logicielle.
+
+<a id="r-133"></a>
+### R-133 — ISO/IEC/IEEE 42020:2019, processus d'architecture
+- **Cité par :** [Étude des relations intention-assurance](research/intent-relationship-model-survey.fr.md)
+- **Source primaire :** [ISO/IEC/IEEE 42020:2019](https://www.iso.org/standard/68982.html)
+- **Concepts pertinents :** processus de gouvernance et de gestion de collections d'architectures et d'entités architecturées, applicables pendant le cycle de vie des architectures et entre projets.
+- **Utilité pour GovCheck :** complète le modèle de description ISO 42010 par des processus de cycle de vie pour la gouvernance d'architecture, les décisions et les changements.
+- **Limite :** norme de processus d'architecture ; elle ne définit pas le métamodèle GovCheck d'intention, exigences, autorité ou assurance.
+
+<a id="r-134"></a>
+### R-134 — ISO/IEC/IEEE 15289:2019, éléments d'information du cycle de vie
+- **Cité par :** [Étude des relations intention-assurance](research/intent-relationship-model-survey.fr.md)
+- **Source primaire :** [ISO/IEC/IEEE 15289:2019](https://www.iso.org/standard/74909.html)
+- **Concepts pertinents :** finalité et contenu des éléments d'information/documentation du cycle de vie, organisés par types génériques de documents et finalité spécifique ; revue et confirmation comme version courante en 2025.
+- **Utilité pour GovCheck :** éclaire la distinction entre finalité/contenu d'un élément d'information, nom de fichier et support ; fournit des indications de contenu plutôt qu'une convention universelle de nommage.
+- **Limite :** suppose des processus de cycle de vie alignés sur ISO/IEC/IEEE 12207/15288 ; ne prescrit ni le graphe sémantique GovCheck ni le nom obligatoire `intent.md`. Un projet de révision est actif ; le statut devra être revérifié avant adoption.
+
+<a id="r-135"></a>
+### R-135 — ISO/IEC 25010:2023, modèle de qualité du produit
+- **Cité par :** [Étude des relations intention-assurance](research/intent-relationship-model-survey.fr.md)
+- **Source primaire :** [ISO/IEC 25010:2023](https://www.iso.org/standard/78176.html)
+- **Concepts pertinents :** caractéristiques et sous-caractéristiques de qualité du produit utilisées comme modèle de référence pour spécifier, mesurer et évaluer la qualité sur le cycle de vie.
+- **Utilité pour GovCheck :** source candidate pour relier objectifs qualité et exigences aux caractéristiques de qualité, mesures, objectifs de test, critères d'acceptation et assurance.
+- **Limite :** modèle de qualité du produit, pas métamodèle général d'intention/objectifs/décisions ; les caractéristiques nécessitent une sélection et interprétation adaptées au contexte.
+
+<a id="r-136"></a>
+### R-136 — NIST SP 800-160 Vol. 1 Rev. 1, Engineering Trustworthy Secure Systems
+- **Cité par :** [Étude des relations intention-assurance](research/intent-relationship-model-survey.fr.md)
+- **Source primaire :** [NIST SP 800-160 Vol. 1 Rev. 1 (2022)](https://csrc.nist.gov/pubs/sp/800/160/v1/r1/final)
+- **Concepts pertinents :** ingénierie de sécurité des systèmes sur tout le cycle de vie ; besoins de protection, préoccupations des parties prenantes, exigences de sécurité, risques, architecture/conception de sécurité, vérification, validation et assurance.
+- **Utilité pour GovCheck :** met à l'épreuve le modèle de relations dans le domaine de l'ingénierie de sécurité, où besoins de protection et exigences dérivées des risques doivent être reliés à l'architecture, l'implémentation et l'assurance.
+- **Limite :** guide d'ingénierie de sécurité des systèmes fiables, pas métamodèle universel de dépôt logiciel ni processus GovCheck obligatoire.
+
+<a id="r-137"></a>
+### R-137 — Paradigme Goal-Question-Metric (GQM)
+- **Cité par :** [Étude des relations intention-assurance](research/intent-relationship-model-survey.fr.md)
+- **Source primaire :** [Basili, Goal Question Metric Paradigm (rapport technique de l'Université du Maryland)](https://www.cs.umd.edu/~basili/publications/technical/T89.pdf)
+- **Concepts pertinents :** conception de la mesure descendante : définir des objectifs, dériver les questions qui opérationnalisent l'évaluation, puis choisir les métriques et interpréter les observations dans leur contexte.
+- **Utilité pour GovCheck :** famille candidate de relations entre objectifs/résultats, questions, mesures, observations et évaluation, sans métriques universelles détachées du contexte.
+- **Limite :** paradigme de mesure, pas métamodèle complet des exigences ou de l'assurance ; les métriques exigent une interprétation contextuelle et ne sont pas les objectifs eux-mêmes.
+
+<a id="r-138"></a>
+### R-138 — ISO 10007:2017, lignes directrices pour la gestion de la configuration
+- **Cité par :** [Étude des relations intention-assurance](research/intent-relationship-model-survey.fr.md)
+- **Source primaire :** [ISO 10007:2017](https://www.iso.org/standard/70400.html)
+- **Concepts pertinents :** gestion de configuration en soutien des produits et services de la conception au retrait ; identification de configuration, maîtrise des modifications, comptabilisation d'état et lignes directrices d'audit.
+- **Utilité pour GovCheck :** éclaire liaison aux révisions, baselines, autorisation des changements, comptabilisation d'état et validité temporelle des relations et éléments d'évidence.
+- **Limite :** lignes directrices de gestion de configuration dans les systèmes de management de la qualité, pas ontologie complète des relations du cycle de vie ; le statut courant et les révisions doivent être vérifiés avant toute adoption normative.
+
+<a id="r-139"></a>
+### R-139 — Health and Safety Executive britannique : lignes directrices sur le cycle de vie de la sécurité fonctionnelle
+- **Cité par :** [Étude des relations intention-assurance](research/intent-relationship-model-survey.fr.md)
+- **Source primaire :** [HSE — Functional safety](https://www.hse.gov.uk/eci/functional.htm)
+- **Concepts pertinents :** analyse des dangers et des risques ; dérivation d'exigences de réduction du risque ; allocation à des systèmes instrumentés de sécurité ou autres mesures ; spécification, conception, implémentation, validation, exploitation, maintenance, modification et retrait des systèmes de sécurité ; évaluation de sécurité fonctionnelle.
+- **Utilité pour GovCheck :** exemple industriel/réglementaire de traçabilité des dangers et risques vers objectifs/exigences de sécurité, allocation, réalisation, vérification/validation et changements opérationnels.
+- **Limite :** guide pour les secteurs de sécurité fonctionnelle et systèmes liés à la sécurité, pas cycle de vie logiciel universel ni processus obligatoire pour tout dépôt.
+
+<a id="r-140"></a>
+### R-140 — Security assurance cases : revue systématique de l'état de l'art (2021)
+- **Cité par :** [Étude des relations intention-assurance](research/intent-relationship-model-survey.fr.md)
+- **Source primaire :** [Security assurance cases—state of the art of an emerging approach](https://link.springer.com/article/10.1007/s10664-021-09971-7)
+- **Concepts pertinents :** revue systématique de 51 articles sur les dossiers d'assurance de sécurité, arguments structurés et éléments d'évidence pour raisonner sur la posture de sécurité d'un système.
+- **Utilité pour GovCheck :** soutient le traitement des affirmations de sécurité par dossiers d'assurance et souligne la nécessité d'étudier construction, maintenance, validation et outillage.
+- **Limite :** la revue décrit un domaine immature, avec un soutien limité aux praticiens, à la validation et à l'outillage ; les dossiers d'assurance de sécurité ne sont pas universellement requis pour tous les logiciels.
+
+<a id="r-141"></a>
+### R-141 — GQM+Strategies : alignement des stratégies organisationnelles et des objectifs logiciels
+- **Cité par :** [Étude des relations intention-assurance](research/intent-relationship-model-survey.fr.md)
+- **Source primaire :** [Basili et al., GQM+Strategies: A Comprehensive Methodology for Aligning Business Strategies with Software Measurement](https://arxiv.org/abs/1402.0292)
+- **Concepts pertinents :** liens explicites entre objectifs organisationnels, stratégies, objectifs logiciels, facteurs contextuels, hypothèses, scénarios et objectifs de mesure.
+- **Utilité pour GovCheck :** modèle candidat pour relier les objectifs du dépôt à des objectifs/stratégies plus larges, préserver contexte et hypothèses, et relier objectifs à des mesures observables.
+- **Limite :** méthodologie d'alignement des objectifs et de mesure, pas métamodèle général de gouvernance ou d'assurance ; les objectifs organisationnels/commerciaux ne conviennent pas toujours aux dépôts non commerciaux.

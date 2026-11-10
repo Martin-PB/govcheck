@@ -43,6 +43,14 @@
 | GitHub Actions workflow location and syntax | R-107 |
 | Open-source licensing and attribution | R-108 |
 | Repository intent, lifecycle and requirements engineering | R-114–R-118, R-121–R-122 |
+| Architecture description and design rationale | R-123, R-130–R-131 |
+| Requirements exchange and lifecycle traceability | R-124–R-125, R-128–R-129 |
+| Assurance case structures and provenance | R-126–R-127, R-132 |
+| Architecture processes and lifecycle information items | R-133–R-134 |
+| Product quality, security engineering and goal measurement | R-135–R-137 |
+| Configuration management and revision applicability | R-138 |
+| Safety and security assurance lifecycle | R-136, R-139–R-140 |
+| Goal alignment and outcome measurement | R-137, R-141 |
 | System modeling and assurance-case metamodels | R-119–R-120 |
 
 ## Full reference entries
@@ -1105,7 +1113,7 @@
 
 <a id="r-114"></a>
 ### R-114 — Anthropic AI-native SDLC Playbook: repository/change intent records
-- **Cited by:** [ADR 0009](decisions/0009-intent-record-and-authority.md), [GovCheck intent](intent.md), [intent impact analysis](intent-impact-analysis.md)
+- **Cited by:** [ADR 0009](decisions/0009-intent-record-and-authority.md), [GovCheck intent](intent.md), [intent impact analysis](intent-impact-analysis.md) · [Intent relationship survey](research/intent-relationship-model-survey.md)
 - **Primary source:** [Anthropic, The AI-native SDLC Playbook](https://claude.com/resources/articles/the-ai-native-sdlc-playbook)
 - **Relevant concepts:** a versioned, human-readable `intent.md` preserving the originating problem, expected outcome, users/systems, constraints and open questions; downstream specification and implementation planning; intent retained as traceable context.
 - **Use in GovCheck:** closest industrial precedent for the name and conceptual role of repository-level `intent.md`.
@@ -1113,7 +1121,7 @@
 
 <a id="r-115"></a>
 ### R-115 — ISO/IEC/IEEE 15288:2023, Systems and software engineering — System life cycle processes
-- **Cited by:** [ADR 0009](decisions/0009-intent-record-and-authority.md), [intent impact analysis](intent-impact-analysis.md)
+- **Cited by:** [ADR 0009](decisions/0009-intent-record-and-authority.md), [intent impact analysis](intent-impact-analysis.md) · [Intent relationship survey](research/intent-relationship-model-survey.md)
 - **Primary source:** [ISO/IEC/IEEE 15288:2023](https://www.iso.org/standard/81702.html)
 - **Relevant concepts:** lifecycle-process framework spanning conception, development, production, utilization, support and retirement; iterative and recursive application; stakeholder involvement and information exchange.
 - **Use in GovCheck:** supports modeling intent, requirements, decisions, realization and assurance as lifecycle concerns rather than a one-time bootstrap pipeline.
@@ -1121,7 +1129,7 @@
 
 <a id="r-116"></a>
 ### R-116 — ISO/IEC/IEEE 29148 requirements engineering
-- **Cited by:** [ADR 0009](decisions/0009-intent-record-and-authority.md), [intent impact analysis](intent-impact-analysis.md)
+- **Cited by:** [ADR 0009](decisions/0009-intent-record-and-authority.md), [intent impact analysis](intent-impact-analysis.md) · [Intent relationship survey](research/intent-relationship-model-survey.md)
 - **Primary sources:** [ISO/IEC/IEEE 29148:2018](https://www.iso.org/standard/72089.html) · [ISO/IEC/IEEE DIS 29148 edition 3](https://www.iso.org/standard/94091.html)
 - **Relevant concepts:** requirements-engineering processes and information items; derivation, allocation, validation, verification and bidirectional traceability of needs and requirements throughout the lifecycle.
 - **Use in GovCheck:** standards reference for distinguishing intent/needs from requirements and defining derivation, allocation, validation and change-impact relations.
@@ -1129,7 +1137,7 @@
 
 <a id="r-117"></a>
 ### R-117 — NASA Systems Engineering Handbook: stakeholder expectations and requirements management
-- **Cited by:** [ADR 0009](decisions/0009-intent-record-and-authority.md), [intent impact analysis](intent-impact-analysis.md)
+- **Cited by:** [ADR 0009](decisions/0009-intent-record-and-authority.md), [intent impact analysis](intent-impact-analysis.md) · [Intent relationship survey](research/intent-relationship-model-survey.md)
 - **Primary sources:** [NASA stakeholder expectations definition](https://www.nasa.gov/reference/4-1-stakeholder-expectations-definition/) · [NASA requirements management](https://www.nasa.gov/reference/6-2-requirements-management/) · [NASA Systems Engineering Handbook](https://science.nasa.gov/wp-content/uploads/2023/04/nasa_systems_engineering_handbook_0.pdf)
 - **Relevant concepts:** stakeholder expectations, ConOps, goals/objectives, iterative design decisions, requirement decomposition/allocation, bidirectional traceability, design verification, product verification and validation.
 - **Use in GovCheck:** supports upward/downward traceability and consistency checks across expectations, requirements, architecture/design and verification/validation.
@@ -1137,7 +1145,7 @@
 
 <a id="r-118"></a>
 ### R-118 — Goal-oriented Requirements Engineering systematic mapping and 2026 reflection
-- **Cited by:** [ADR 0009](decisions/0009-intent-record-and-authority.md), [intent impact analysis](intent-impact-analysis.md)
+- **Cited by:** [ADR 0009](decisions/0009-intent-record-and-authority.md), [intent impact analysis](intent-impact-analysis.md) · [Intent relationship survey](research/intent-relationship-model-survey.md)
 - **Primary source:** [A systematic mapping of goal-oriented requirements engineering: reflections, impact, and the way forward](https://link.springer.com/article/10.1007/s00766-026-00476-7)
 - **Academic background:** reflects on the extended systematic mapping study covering 246 GORE publications up to 2015 and examines subsequent influence and adoption.
 - **Relevant concepts:** goals, AND/OR refinement, operationalization, actors, dependencies, quality goals/softgoals, trade-offs, KAOS, iStar, GRL and Tropos.
@@ -1146,7 +1154,7 @@
 
 <a id="r-119"></a>
 ### R-119 — OMG Systems Modeling Language (SysML) v2.0
-- **Cited by:** [ADR 0009](decisions/0009-intent-record-and-authority.md), [intent impact analysis](intent-impact-analysis.md)
+- **Cited by:** [ADR 0009](decisions/0009-intent-record-and-authority.md), [intent impact analysis](intent-impact-analysis.md) · [Intent relationship survey](research/intent-relationship-model-survey.md)
 - **Primary source:** [OMG SysML specification](https://www.omg.org/spec/SysML)
 - **Relevant concepts:** standardized systems modeling for requirements, behavior, structure, analysis and verification; model relationships and interoperability through standardized APIs.
 - **Use in GovCheck:** candidate source for typed relationships among requirements, model elements, design and verification, and possible exchange/mapping profiles.
@@ -1154,7 +1162,7 @@
 
 <a id="r-120"></a>
 ### R-120 — OMG Structured Assurance Case Metamodel (SACM) 2.3
-- **Cited by:** [ADR 0009](decisions/0009-intent-record-and-authority.md), [intent impact analysis](intent-impact-analysis.md)
+- **Cited by:** [ADR 0009](decisions/0009-intent-record-and-authority.md), [intent impact analysis](intent-impact-analysis.md) · [Intent relationship survey](research/intent-relationship-model-survey.md)
 - **Primary source:** [OMG SACM 2.3 specification](https://www.omg.org/spec/SACM/)
 - **Relevant concepts:** claims, argumentation, artifact references, asserted evidence/context, reasoning, counter-claims/counter-evidence and modular argument packages.
 - **Use in GovCheck:** specialized standardized model for the assurance subgraph and argument/evidence relationships.
@@ -1162,7 +1170,7 @@
 
 <a id="r-121"></a>
 ### R-121 — UK Government Architectural Decision Record Framework (2025)
-- **Cited by:** [ADR 0009](decisions/0009-intent-record-and-authority.md), [intent impact analysis](intent-impact-analysis.md)
+- **Cited by:** [ADR 0009](decisions/0009-intent-record-and-authority.md), [intent impact analysis](intent-impact-analysis.md) · [Intent relationship survey](research/intent-relationship-model-survey.md)
 - **Primary source:** [UK Government ADR Framework](https://www.gov.uk/government/publications/architectural-decision-record-framework)
 - **Relevant concepts:** context, decision, consequences, appropriate decision-making level, visibility, traceability and autonomy balanced with accountability.
 - **Use in GovCheck:** supports separately authorized decision records explaining how requirements, constraints and architecture alternatives were resolved.
@@ -1175,3 +1183,155 @@
 - **Relevant concepts:** published open format and convention for a repository-level `INTENT.md` that combines product overview, personas, releases, user stories and acceptance criteria.
 - **Use in GovCheck:** comparison point for an existing published `INTENT.md` format and its scope.
 - **Limit:** its bundled content model is not adopted by GovCheck; GovCheck does not claim conformance or compatibility.
+
+<a id="r-123"></a>
+### R-123 — ISO/IEC/IEEE 42010:2022, Architecture description
+- **Cited by:** [Intent relationship survey](research/intent-relationship-model-survey.md)
+- **Primary source:** [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html)
+- **Relevant concepts:** architecture descriptions and their elements; stakeholders, concerns, viewpoints, views, model kinds, correspondences and architecture rationale/decisions.
+- **Use in GovCheck:** informs relations among stakeholders, concerns, architecture models, specifications and decision rationale.
+- **Limit:** specifies architecture-description structure and expression, not architecture processes, methods, notations, tools or storage media; it is not a complete lifecycle-governance metamodel.
+
+<a id="r-124"></a>
+### R-124 — OMG Requirements Interchange Format (ReqIF) 1.2
+- **Cited by:** [Intent relationship survey](research/intent-relationship-model-survey.md)
+- **Primary source:** [OMG ReqIF 1.2](https://www.omg.org/spec/ReqIF/)
+- **Relevant concepts:** standardized interchange of requirements information, requirement objects, attributes, types, relations and machine-readable XML schemas.
+- **Use in GovCheck:** candidate interchange mapping for requirements and their structured relationships.
+- **Limit:** requirements interchange is not the same as lifecycle semantics; ReqIF does not define GovCheck intent, decision authority or assurance semantics.
+
+<a id="r-125"></a>
+### R-125 — OASIS OSLC Requirements Management 2.1
+- **Cited by:** [Intent relationship survey](research/intent-relationship-model-survey.md)
+- **Primary sources:** [OSLC RM 2.1 Part 1 — Specification](https://docs.oasis-open-projects.org/oslc-op/rm/v2.1/ps01/requirements-management-spec.html) · [OASIS standards archive](https://www.oasis-open.org/standards/)
+- **Relevant concepts:** requirements-management resources, collections, resource properties and relationships represented as RDF properties/triples; lifecycle-tool integration.
+- **Use in GovCheck:** candidate model for interoperable typed resource links and exchange between lifecycle tools.
+- **Limit:** an integration interface for the requirements-management domain, not a complete semantics for goals, decisions, architecture or assurance.
+
+<a id="r-126"></a>
+### R-126 — Goal Structuring Notation (GSN) Community Standard, Version 3
+- **Cited by:** [Intent relationship survey](research/intent-relationship-model-survey.md)
+- **Primary source:** [Safety-Critical Systems Club — GSN Standard](https://scsc.uk/gsn-standard)
+- **Relevant concepts:** structured engineering arguments with goals/claims, strategies, contexts, assumptions, justifications and solutions/evidence.
+- **Use in GovCheck:** candidate mapping for assurance-argument structures and explicit claim decomposition.
+- **Limit:** a community standard for argument notation, not a full lifecycle, requirements or governance metamodel.
+
+<a id="r-127"></a>
+### R-127 — W3C PROV-O: The PROV Ontology
+- **Cited by:** [Intent relationship survey](research/intent-relationship-model-survey.md)
+- **Primary source:** [W3C PROV-O Recommendation](https://www.w3.org/TR/prov-o/)
+- **Relevant concepts:** provenance entities, activities and agents; derivation, attribution, association, generation, usage and invalidation.
+- **Use in GovCheck:** candidate provenance layer for who/what produced or derived an artefact/assertion and how provenance is related to lifecycle events.
+- **Limit:** generic provenance vocabulary; it does not supply domain-specific semantics for intent, requirements, decisions or assurance claims.
+
+<a id="r-128"></a>
+### R-128 — A systematic literature review of pre-requirements specification traceability (2024)
+- **Cited by:** [Intent relationship survey](research/intent-relationship-model-survey.md)
+- **Primary source:** [Mucha, Kaufmann and Riehle, Requirements Engineering (2024)](https://link.springer.com/article/10.1007/s00766-023-00412-z)
+- **Relevant concepts:** traceability from requirements to their origins before formal requirements specification, including stakeholder interviews, meeting records and legacy systems; review of 77 papers published 1992–2022.
+- **Use in GovCheck:** supports explicit origin links and warns that intent/need-to-requirement traceability is under-researched relative to downstream traceability.
+- **Limit:** systematic review of pre-requirements traceability, not a universal relationship ontology or normative schema.
+
+<a id="r-129"></a>
+### R-129 — Requirements traceability technologies and technology transfer decision support: a systematic review (2018)
+- **Cited by:** [Intent relationship survey](research/intent-relationship-model-survey.md)
+- **Primary source:** [Journal of Systems and Software, DOI 10.1016/j.jss.2018.09.001](https://doi.org/10.1016/j.jss.2018.09.001)
+- **Relevant concepts:** systematic review of 114 papers (2006–2016), assessment of 83 empirical studies, traceability challenges and technology categories.
+- **Use in GovCheck:** grounds the need to evaluate traceability techniques, maintenance cost and empirical effectiveness rather than assume links are easy or self-maintaining.
+- **Limit:** review of traceability technologies and transfer, not a normative metamodel.
+
+<a id="r-130"></a>
+### R-130 — Architecture Rationale and Elements Linkage (AREL) model
+- **Cited by:** [Intent relationship survey](research/intent-relationship-model-survey.md)
+- **Primary source:** [A rationale-based architecture model for design traceability and reasoning, Journal of Systems and Software (2007)](https://www.sciencedirect.com/science/article/pii/S0164121206002287)
+- **Relevant concepts:** links requirements, constraints and assumptions to architecture elements through decisions and rationale; supports design reasoning and change-impact analysis.
+- **Use in GovCheck:** informs decision-mediated links among requirements, assumptions, alternatives, architecture elements and change impacts.
+- **Limit:** a research model for architecture rationale, not a universal lifecycle or governance standard.
+
+<a id="r-131"></a>
+### R-131 — On the Semantics of Architectural Decisions
+- **Cited by:** [Intent relationship survey](research/intent-relationship-model-survey.md)
+- **Primary source:** [On the Semantics of Architectural Decisions](https://doi.org/10.1142/S0218194016500145)
+- **Relevant concepts:** set-theoretic semantics for architectural decisions and explicit relationships among decision elements.
+- **Use in GovCheck:** candidate academic basis for typed decision objects and formal relation semantics.
+- **Limit:** concerns architectural-decision models; it does not define the full GovCheck intent-to-assurance lifecycle.
+
+<a id="r-132"></a>
+### R-132 — Feature, specification and evidence framework for communicating design rationale (2024)
+- **Cited by:** [Intent relationship survey](research/intent-relationship-model-survey.md)
+- **Primary source:** [Design Science, DOI 10.1017/dsj.2024.19](https://www.cambridge.org/core/journals/design-science/article/feature-specification-and-evidence-framework-for-communicating-design-rationale/324229D6DCBE5CE472AA3F47BC35665D)
+- **Relevant concepts:** design rationale as reasons, justification, alternatives, trade-offs and argumentation; communication between features, specifications and evidence.
+- **Use in GovCheck:** informs the structure of decision rationale and the links between design features, specifications and supporting evidence.
+- **Limit:** a research framework for design-rationale communication, not a general software-governance standard.
+
+<a id="r-133"></a>
+### R-133 — ISO/IEC/IEEE 42020:2019, Architecture processes
+- **Cited by:** [Intent relationship survey](research/intent-relationship-model-survey.md)
+- **Primary source:** [ISO/IEC/IEEE 42020:2019](https://www.iso.org/standard/68982.html)
+- **Relevant concepts:** processes for governance and management of architecture collections and architecting entities, applicable throughout architecture lifecycles and across projects.
+- **Use in GovCheck:** complements ISO 42010's description model with lifecycle processes for architecture governance, decision and change activities.
+- **Limit:** architecture-process standard; it does not define GovCheck's repository intent, requirements, authority or assurance metamodel.
+
+<a id="r-134"></a>
+### R-134 — ISO/IEC/IEEE 15289:2019, Life-cycle information items
+- **Cited by:** [Intent relationship survey](research/intent-relationship-model-survey.md)
+- **Primary source:** [ISO/IEC/IEEE 15289:2019](https://www.iso.org/standard/74909.html)
+- **Relevant concepts:** purpose and content of life-cycle information items/documentation, organized by generic document types and specific purpose; reviewed and confirmed current in 2025.
+- **Use in GovCheck:** informs the separation of information-item purpose/content from file naming and media; it provides content guidance rather than a universal filename convention.
+- **Limit:** assumes lifecycle processes aligned with ISO/IEC/IEEE 12207/15288; it does not prescribe GovCheck's semantic graph or a mandatory `intent.md` filename. A revision project is active, so status should be rechecked when adopting.
+
+<a id="r-135"></a>
+### R-135 — ISO/IEC 25010:2023, Product quality model
+- **Cited by:** [Intent relationship survey](research/intent-relationship-model-survey.md)
+- **Primary source:** [ISO/IEC 25010:2023](https://www.iso.org/standard/78176.html)
+- **Relevant concepts:** product-quality characteristics and subcharacteristics used as a reference model for specifying, measuring and evaluating quality throughout the lifecycle.
+- **Use in GovCheck:** candidate source for linking quality goals and requirements to quality characteristics, measures, testing objectives, acceptance criteria and assurance.
+- **Limit:** a product-quality model, not a general intent/goal/decision metamodel; its characteristics require context-sensitive selection and interpretation.
+
+<a id="r-136"></a>
+### R-136 — NIST SP 800-160 Vol. 1 Rev. 1, Engineering Trustworthy Secure Systems
+- **Cited by:** [Intent relationship survey](research/intent-relationship-model-survey.md)
+- **Primary source:** [NIST SP 800-160 Vol. 1 Rev. 1 (2022)](https://csrc.nist.gov/pubs/sp/800/160/v1/r1/final)
+- **Relevant concepts:** systems security engineering across the system lifecycle; protection needs, stakeholder concerns, security requirements, risk, security architecture/design, verification, validation and assurance.
+- **Use in GovCheck:** tests the relationship model against security engineering, where stakeholder protection needs and risk-derived requirements must connect to architecture, implementation and assurance.
+- **Limit:** security-engineering guidance for trustworthy systems, not a universal software repository metamodel or mandatory GovCheck process.
+
+<a id="r-137"></a>
+### R-137 — Goal-Question-Metric (GQM) paradigm
+- **Cited by:** [Intent relationship survey](research/intent-relationship-model-survey.md)
+- **Primary source:** [Basili, Goal Question Metric Paradigm (University of Maryland technical report)](https://www.cs.umd.edu/~basili/publications/technical/T89.pdf)
+- **Relevant concepts:** top-down measurement design: define goals, derive questions that operationalize assessment, then select metrics and interpret observations in context.
+- **Use in GovCheck:** candidate relation family linking goals/outcomes to questions, measures, observations and evaluation, while avoiding universal metrics detached from context.
+- **Limit:** a measurement paradigm, not a complete requirements or assurance metamodel; metrics require contextual interpretation and are not goals themselves.
+
+<a id="r-138"></a>
+### R-138 — ISO 10007:2017, Configuration management guidelines
+- **Cited by:** [Intent relationship survey](research/intent-relationship-model-survey.md)
+- **Primary source:** [ISO 10007:2017](https://www.iso.org/standard/70400.html)
+- **Relevant concepts:** configuration management supporting products and services from conception through retirement; configuration identification, change control, status accounting and audit guidance.
+- **Use in GovCheck:** informs revision binding, baselines, change authorization, status accounting and temporal validity of relationships and evidence.
+- **Limit:** guidance for configuration management within quality-management systems, not a full lifecycle relationship ontology; current edition status and revision activity must be checked before normative adoption.
+
+<a id="r-139"></a>
+### R-139 — UK Health and Safety Executive: functional safety lifecycle guidance
+- **Cited by:** [Intent relationship survey](research/intent-relationship-model-survey.md)
+- **Primary source:** [HSE — Functional safety](https://www.hse.gov.uk/eci/functional.htm)
+- **Relevant concepts:** hazard and risk assessment; deriving risk-reduction requirements; allocating requirements to safety instrumented systems or other measures; specifying, designing, implementing, validating, operating, maintaining, modifying and decommissioning safety systems; functional-safety assessment.
+- **Use in GovCheck:** industrial/regulatory lifecycle example of traceability from hazards and risks through safety goals/requirements, allocation, realization, verification/validation and operational change.
+- **Limit:** guidance for functional-safety sectors and safety-related systems, not a universal software lifecycle or a mandatory process for every repository.
+
+<a id="r-140"></a>
+### R-140 — Security assurance cases: state of the art systematic literature review (2021)
+- **Cited by:** [Intent relationship survey](research/intent-relationship-model-survey.md)
+- **Primary source:** [Security assurance cases—state of the art of an emerging approach](https://link.springer.com/article/10.1007/s10664-021-09971-7)
+- **Relevant concepts:** systematic review of 51 papers on security assurance cases, structured arguments and evidence for reasoning about system security posture.
+- **Use in GovCheck:** supports assurance-case treatment of security claims and highlights the need to examine case construction, maintenance, validation and tool support.
+- **Limit:** the review reports an immature field with limited practitioner support, validation and tooling; security assurance cases are not universally required for all software.
+
+<a id="r-141"></a>
+### R-141 — GQM+Strategies: aligning organizational strategies and software goals
+- **Cited by:** [Intent relationship survey](research/intent-relationship-model-survey.md)
+- **Primary source:** [Basili et al., GQM+Strategies: A Comprehensive Methodology for Aligning Business Strategies with Software Measurement](https://arxiv.org/abs/1402.0292)
+- **Relevant concepts:** explicit links between organizational goals, strategies, software goals, context factors, assumptions, scenarios and measurement goals.
+- **Use in GovCheck:** candidate model for relating repository goals to broader goals and strategies, preserving context and assumptions, and linking goals to observable measures.
+- **Limit:** a goal-alignment and measurement methodology, not a general repository governance or assurance metamodel; organizational/business goals are not always appropriate for non-commercial repositories.

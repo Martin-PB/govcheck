@@ -42,3 +42,7 @@ Le [catalogue unique des références](../references.fr.md) ([English](../refere
 ## Statut
 
 Les documents d'architecture sont des propositions/mémoires de conception, sauf indication contraire dans leur statut individuel. Ils ne prouvent ni contrôles implémentés, ni propriétés de sécurité vérifiées, ni adoption technologique. Lire le statut, le périmètre et les limites de chaque document.
+
+## Réconciliation de l'intention
+
+L'[analyse d'impact de l'intention](../intent-impact-analysis.fr.md) ([English](../intent-impact-analysis.md)) met en correspondance l'orientation produit élargie avec les architectures/spécifications existantes et identifie l'audit complémentaire. Il s'agit d'une analyse de travail, pas d'un acte d'adoption.

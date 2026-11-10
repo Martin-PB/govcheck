@@ -56,7 +56,7 @@ Init ==
   /\ exceptions = [x \in ExceptionIds |-> UnusedException]
   /\ authorizations = [a \in AuthorizationIds |-> UnusedAuthorization]
   /\ authorityRevoked = FALSE
-  /\ revocationPosition = NotRevoked
+  /\ revocationPosition \in {NotRevoked, 0, 1, 2, 3, 4, 5, 6, 7, 8}
   /\ decisions = <<>>
   /\ requalifications = <<>>
 
@@ -268,7 +268,7 @@ TypeOK ==
        baseRevision : GovernanceRevisions, basePosition : Nat,
        exceptionId : ExceptionIds \cup {NoException}]]
   /\ authorityRevoked \in BOOLEAN
-  /\ revocationPosition \in Nat \cup {"NotRevoked"}
+  /\ revocationPosition \in {NotRevoked, 0, 1, 2, 3, 4, 5, 6, 7, 8}
   /\ decisions \in Seq([kind : {"AuthorizedPublication"},
        governanceRevision : GovernanceRevisions, resultingRevision : GovernanceRevisions,
        evaluationId : EvaluationIds, position : Nat])
@@ -311,7 +311,7 @@ NonDerogableNeverExcepted ==
       exceptions[x].requirement \notin NonDerogableRequirements
 
 RevocationIsProspective ==
-  authorityRevoked => revocationPosition \in Nat /\ revocationPosition > 0
+  authorityRevoked => revocationPosition \in {1, 2, 3, 4, 5, 6, 7, 8}
 
 HistoricalDecisionsPreserved ==
   \A i \in 1..Len(requalifications) :

@@ -52,6 +52,10 @@ The exact module/configuration passed SANY 2.1 and TLC 2.19 on PR #99 head `a5c9
 
 This is finite model-checking evidence for these exact source/configuration identities. It is not theorem proof, implementation verification or evidence of storage-engine durability. The model checks safety and append-only history; it does not assert eventual recovery under fairness. The authorization and evaluator controls are abstracted to the upstream governance/publication models and are not re-proved here.
 
+
+
+Final PR-head revalidation: the same module/configuration blobs were rechecked on the final documentation/package head `8ace02658a9f349db57e937c697e66c7b779aaa8` in [workflow run 42849634866](https://github.com/Martin-PB/govcheck/actions/runs/42849634866), job `129946416981`. The result was identical: 178,549 generated / 38,434 distinct states, zero remaining, depth 9; all six invariants and `AppendOnly` passed. Final-head report artifact ID `13778459512`, SHA-256 `8ce7414863ef57725e7ae36e3055d10edb21571feb62c35d9fae68228a96b94c`. All eight configured PR checks passed on that final head.
+
 ## 5. Related contract and references
 
 This model complements [Specification 0006](../specifications/0006-governance-revision-applicability.md), [Architecture 0032](0032-canonical-publication-model-checking.md) and [Architecture 0033](0033-governance-evaluator-exception-revocation-model.md). Its conceptual foundations are catalogued under [R-05 — TLA+ and TLC](../references.md#r-05) and [R-22 — native Git and Pijul semantics](../references.md#r-22).

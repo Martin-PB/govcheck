@@ -13,9 +13,15 @@ Genesis ==
    predecessor |-> "NoRevision", content |-> InitialContent,
    kind |-> "genesis", source |-> "authority"]
 
+UnusedPending ==
+  [status |-> "None", eventId |-> CHOOSE e \in EventIds : TRUE,
+   revisionId |-> CHOOSE r \in RevisionIds : TRUE,
+   predecessor |-> "rev0", content |-> InitialContent,
+   kind |-> "change", source |-> "authority"]
+
 Init ==
   /\ journal = <<Genesis>>
-  /\ pending.status = "None"
+  /\ pending = UnusedPending
   /\ appliedPosition = 0
   /\ replicaObservations = [r \in ReplicaIds |-> 0]
   /\ crashed = FALSE
@@ -25,7 +31,7 @@ HeadPosition == Len(journal) - 1
 ContentAt(position) == journal[position + 1].content
 
 Prepare(eventId, revisionId, content, source) ==
-  /\ ~crashed /\ pending = "None"
+  /\ ~crashed /\ pending.status = "None"
   /\ Len(journal) - 1 < MaxEvents
   /\ eventId \in EventIds /\ revisionId \in RevisionIds
   /\ content \in Contents
@@ -54,14 +60,14 @@ ApplyCommitted ==
 Crash ==
   /\ ~crashed
   /\ crashed' = TRUE
-  /\ pending' = "None"
+  /\ pending' = UnusedPending
   /\ UNCHANGED <<journal, appliedPosition, replicaObservations>>
 
 Recover ==
   /\ crashed
   /\ crashed' = FALSE
   /\ appliedPosition' = HeadPosition
-  /\ pending' = "None"
+  /\ pending' = UnusedPending
   /\ UNCHANGED <<journal, replicaObservations>>
 
 ObserveReplica(replica, position) ==
@@ -71,7 +77,7 @@ ObserveReplica(replica, position) ==
   /\ UNCHANGED <<journal, pending, appliedPosition, crashed>>
 
 Rollback(eventId, revisionId, source, targetPosition) ==
-  /\ ~crashed /\ pending = "None"
+  /\ ~crashed /\ pending.status = "None"
   /\ Len(journal) - 1 < MaxEvents
   /\ targetPosition \in 0..HeadPosition
   /\ eventId \in EventIds /\ revisionId \in RevisionIds
@@ -104,10 +110,10 @@ TypeOK ==
        predecessor : RevisionIds \cup {"NoRevision"}, content : Contents,
        kind : {"genesis", "change", "rollback"},
        source : {"authority", "git", "pijul", "other"}])
-  /\ (pending = "None" \/ pending \in
-       [eventId : EventIds, revisionId : RevisionIds, predecessor : RevisionIds,
-        content : Contents, kind : {"change", "rollback"},
-        source : {"authority", "git", "pijul", "other"}])
+  /\ pending \in [status : {"None", "Prepared"}, eventId : EventIds,
+       revisionId : RevisionIds, predecessor : RevisionIds \cup {"rev0"},
+       content : Contents, kind : {"change", "rollback"},
+       source : {"authority", "git", "pijul", "other"}]
   /\ appliedPosition \in 0..HeadPosition
   /\ replicaObservations \in [ReplicaIds -> 0..HeadPosition]
   /\ crashed \in BOOLEAN

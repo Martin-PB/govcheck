@@ -106,3 +106,8 @@ This is not yet a live two-way adapter. Mismatches must be reviewed; GitHub must
 ## Issue #86 — technical progress update — 2026-11-10
 
 The eleven owner-selected outcomes remain settled technical inputs; no re-arbitration or normative adoption is implied. PR #98 adds the bounded evaluator/exception/revocation model (Architecture 0033). PR #99 adds the separate canonical journal durability/recovery/rollback model (Architecture 0034): the exact finite model passed SANY/TLC with 178,549 generated / 38,434 distinct states, zero remaining, six invariants and `AppendOnly` (WP-EVT-000012). These results do not establish implementation or production durability. Remaining work includes actual journal/persistence design and implementation, compare-and-append integration, crash-safe storage semantics, Git/Pijul provenance adapters and divergent-replica reconciliation, executable conformance tests and refinement evidence. #86 remains open.
+
+
+## Issue #86 — journal protocol contract proposed — 2026-11-10
+
+A bilingual, technology-neutral Specification 0007 is now proposed in PR #100. It defines journal event identity/envelopes, compare-and-append, durable commit and idempotent retry, crash recovery, the distinct evaluation/authorization/publication acts, VCS provenance-only adapters, replica reconciliation, blocking result vocabulary and twelve semantic conformance scenarios. It deliberately selects no storage engine, serialization, hash/signature scheme, consensus product, VCS or forge. The contract remains proposed for review and is not normatively adopted. It is intended to guide subsequent executable conformance fixtures and implementation work; #86 remains open.

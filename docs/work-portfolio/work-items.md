@@ -111,3 +111,8 @@ The eleven owner-selected outcomes remain settled technical inputs; no re-arbitr
 ## Issue #86 — journal protocol contract proposed — 2026-11-10
 
 A bilingual, technology-neutral Specification 0007 is now proposed in PR #100. It defines journal event identity/envelopes, compare-and-append, durable commit and idempotent retry, crash recovery, the distinct evaluation/authorization/publication acts, VCS provenance-only adapters, replica reconciliation, blocking result vocabulary and twelve semantic conformance scenarios. It deliberately selects no storage engine, serialization, hash/signature scheme, consensus product, VCS or forge. The contract remains proposed for review and is not normatively adopted. It is intended to guide subsequent executable conformance fixtures and implementation work; #86 remains open.
+
+
+## Issue #86 — review clarifications proposed — 2026-11-10
+
+PR [#104](https://github.com/Martin-PB/govcheck/pull/104), stacked on PR #100, addresses review gaps in the proposed journal protocol: explicit journal-scope identity without fixing repository/domain cardinality, genesis trust-anchor binding, minimum integrity/authenticity properties, exact idempotency-key semantics and retention, and primary references R-142–R-144. It also corrects the Architecture 0034 EN/FR description of the fairness assumption versus checked liveness properties. These are technical clarifications only; Specification 0007 remains proposed and no normative adoption or implementation is claimed. #86 remains open.

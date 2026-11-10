@@ -1,12 +1,12 @@
 # Specification 0006 — Governance revision applicability and temporal authorization
 
-**Status:** reusable proposed contract for maintainer review; it does not claim an implementation. **French:** [0006](0006-governance-revision-applicability.fr.md).
+**Status:** proposed contract for maintainer review; it does not adopt or amend the authority decision in Architecture 0023, and it does not claim an implementation. **French:** [0006](0006-governance-revision-applicability.fr.md).
 
 ## 1. Purpose and scope
 
 This specification defines how a change evaluation identifies the governance revision that is authorized to evaluate it, especially when the candidate also changes governance, policy, rules, models or evaluators.
 
-It refines [Specification 0003](0003-change-lifecycle.md) and the canonical governance model in [Specification 0002](0002-canonical-governance-model.md). Governed repositories define their own authorized principal and authority regime; this contract does not select one.
+It refines [Specification 0003](0003-change-lifecycle.md), [Architecture 0012](../architecture/0012-normative-authority-and-documentation.md), [Architecture 0017](../architecture/0017-artifact-identity-revision-and-versioning.md), [Architecture 0018](../architecture/0018-version-governance-and-compatibility-authority.md), and the current authority regime in [Architecture 0023](../architecture/0023-bootstrap-governance-authority.md).
 
 This is a semantic contract, not a serialization or implementation choice. It does not require wall-clock timestamps, Git commit ancestry, a particular database, forge, Lean, production TLA+, or signature technology.
 
@@ -73,7 +73,7 @@ Missing authority, ambiguous history, unknown applicability, revoked authority, 
 
 ### 3.6 Authority and separation of concerns
 
-The applicable repository governance profile defines the authorized principal(s) and whether a proposer may also authorize. This specification does not select or amend that regime.
+Architecture 0023 records a repository-specific root principal and explicitly accepts that the same principal may propose and authorize a change. A generated package must define its own root principal and authority regime; this reusable specification does not prescribe a personal identity.
 
 Implementations MUST distinguish proposer/producer, technical reviewer/evaluator, normative authorizer and publisher/executor. Where proposer and authorizer may be the same principal, the record MUST disclose this. It MUST NOT claim independent approval or two-person separation. Repository administration, merge permission and CI execution are not normative authority.
 
@@ -113,4 +113,21 @@ No choice among these is silently adopted by this specification.
 ## References
 
 - [R-05 — TLA+ and TLC state-transition modeling](../references.md#r-05)
+- [R-17 — typed governance metadata and traceable relations](../references.md#r-17)
 - [R-22 — native Git and Pijul semantics](../references.md#r-22)
+- [R-88 — NIST SP 800-192 policy/model verification](../references.md#r-88)
+
+
+## 7. Authority-selected arbitration direction — pending formal adoption
+
+The project owner selected the eleven outcomes recorded with provenance in [Decision-session record 0008](../decisions/0008-governance-applicability-arbitration-session.md). This section records their technical consequences; it does not convert the session into normative adoption. Until a separate adoption event is recorded under the applicable prior governance revision, the requirements below remain an authority-selected proposal.
+
+The selected direction is: (1) a canonical logical journal with serialized append and concurrency control; (2) Git, Pijul and other VCS/forges are transport/provenance adapters, not normative ordering authorities; (3) publication is the first event governed by the resulting revision and is authorized under the prior revision; (4) the prior-governance evaluator remains authoritative while a proposed replacement may run comparatively; (5) revocation is prospective, with separate historical requalification; (6) exceptions are explicit, justified, bounded, attributable, traceable and revocable, while designated requirements are non-derogable; (7) `unknown` and `conflict` are distinct blocking states, both requiring explicit resolution and neither bypassable by exception; (8) stale evaluations remain historical but cannot support a new transition; (9) at most one publication succeeds from a canonical predecessor, and displaced candidates require re-evaluation; (10) rollback creates a new immutable revision even when restoring earlier content; and (11) evaluation, authorization and publication are distinct logical acts even when an adapter executes them in one atomic technical transaction.
+
+### 7.1 Formalization obligations not yet covered by the current TLC model
+
+The previously checked [GovCheckGovernanceApplicability.tla](../../formal/tla/GovCheckGovernanceApplicability.tla) remains limited to its recorded finite applicability abstraction. A separate bounded design model, [GovCheckCanonicalPublication.tla](../../formal/tla/GovCheckCanonicalPublication.tla), has since been added. It models a finite set of prepared evaluations, authorization bound to the captured canonical head, distinct publication as the append/effect action, rejection of stale authorization after the head advances, unique revision identities, predecessor continuity and append-only history. It is routed to the TLC workflow as a separate job.
+
+**The new canonical-publication model has not yet been parsed or checked by TLC.** The earlier Architecture 0031 result applies only to the exact original model/configuration; it must not be attributed to the new model. Remaining formalization gaps include explicit stale-result/reconciliation records, durable journal storage and crash recovery, VCS adapter provenance and divergent replicas, evaluator identity and comparative replacement evaluation, dependency-complete staleness, revocation and historical requalification, exception lifecycle and non-derogable rules, distinct unknown/conflict resolution, rollback content restoration under a new revision, and atomic technical execution preserving three logical acts. Neither model establishes implementation or enforcement.
+
+The detailed selected outcomes and provenance are maintained in the [English](../decisions/0008-governance-applicability-arbitration-session.md) and [French](../decisions/0008-governance-applicability-arbitration-session.fr.md) session records.

@@ -87,3 +87,55 @@
 - **Result:** SANY/TLC success; 20,785 generated states, 18,067 distinct states, 0 remaining; no error found.
 - **Artifact:** [latest TLC report](https://github.com/Martin-PB/govcheck/actions/runs/42660448408/artifacts/13694860086).
 - **Disposition:** same model/configuration blobs and finite-state result; no additional assurance claim beyond bounded model checking.
+
+
+## WP-EVT-000007 — PR #90 merged into main
+
+- **Subject:** govcheck.work.governance-revision-temporal-applicability
+- **Event type:** technical-proposal-merged
+- **Recorded:** 2026-11-09
+- **Actor/provenance:** GitHub merge record for [PR #90](https://github.com/Martin-PB/govcheck/pull/90).
+- **Base:** `main`; merge commit `5af21e58ef597480061a2712aaf94a3e2980ba7f`.
+- **Candidate:** `work/governance-revision-applicability`, final PR head `4aeb1b6ff1088e95dc6346452491eee4dd1c750d`.
+- **Scope:** merge Specification 0006 EN/FR, refinement of Specification 0003, bounded applicability model/configuration, package copies, indexes, reference backlinks and Architecture 0031 EN/FR.
+- **Disposition:** technical proposal merged. Merge does not adopt Specification 0006, decide issue #41, or claim implementation. The recorded TLC result remains limited to the exact finite model/configuration described by Architecture 0031.
+- **Related records:** PR #90; Issues #41 and #86; Specifications 0003 and 0006; Architecture 0031.
+- **Known limitations:** issue #86 and issue #41 bodies still require synchronization; the model's documented limits remain in force.
+
+## WP-EVT-000008 — Issue #41 arbitration session choices recorded
+
+- **Subject:** govcheck.work.governance-revision-temporal-applicability
+- **Event type:** authority-arbitration-session-recorded
+- **Recorded:** 2026-11-10
+- **Actor/provenance:** explicit selections by the project owner in the guided arbitration session for issue #41; full bilingual record in [Decision-session record 0008](../decisions/0008-governance-applicability-arbitration-session.md) and its [French counterpart](../decisions/0008-governance-applicability-arbitration-session.fr.md).
+- **Scope:** eleven selected outcomes covering canonical journal ordering, VCS adapter role, publication effect, evaluator transition, revocation/requalification, exceptions, unknown/conflict, stale evaluations, concurrent publication, rollback and logical act separation.
+- **Disposition:** session choices recorded for technical formalization. This event is not a normative adoption event, does not amend Architecture 0023 and does not authorize implementation beyond the separate task/PR review process.
+- **Related records:** Issue #41; Issue #86; Specifications 0003 and 0006; session record 0008.
+- **Known limitations:** the current bounded TLA+ model does not cover all eleven selected outcomes. Additional modeling, local verification and implementation/conformance evidence remain outstanding.
+
+
+## WP-EVT-000009 — Canonical publication model added (verification pending)
+
+- **Subject:** govcheck.work.governance-revision-temporal-applicability
+- **Event type:** formal-design-model-added
+- **Recorded:** 2026-11-10
+- **Actor/provenance:** technical formalization of the eleven user-selected arbitration outcomes recorded in decision-session record 0008.
+- **Artifact:** `formal/tla/GovCheckCanonicalPublication.tla`, configuration `formal/tla/GovCheckCanonicalPublication.cfg`, stable artifact ID `govcheck.canonical-publication` in `formal/artifacts.json`.
+- **Scope:** finite compare-and-append against a captured canonical head; evaluation, authorization and publication as distinct actions; stale-base authorization rejection; unique revision identities; predecessor continuity; one publication per canonical predecessor; authorization/evaluation binding; append-only temporal property.
+- **CI routing:** the governance-applicability TLC workflow now invokes both the prior applicability model and this model when the relevant model inputs change. No workflow was triggered by this change.
+- **Verification status:** not yet parsed or checked by TLC. No state-space count, pass result or model-checking claim is made for this artifact.
+- **Known exclusions:** evaluator replacement/comparison, revocation and historical requalification, exceptions, unknown/conflict resolution, rollback content restoration, VCS replica reconciliation, crash recovery and implementation refinement remain outside this model.
+- **Disposition:** design artifact added for review only. It does not adopt the arbitration choices, implement a journal or establish production enforcement.
+
+
+## WP-EVT-000010 — Canonical publication model checked by TLC
+
+- **Subject:** govcheck.canonical-publication
+- **Event type:** bounded-formal-model-checking-completed
+- **Recorded:** 2026-11-10
+- **Workflow:** GitHub Actions run [42815445104](https://github.com/Martin-PB/govcheck/actions/runs/42815445104), job `canonical-publication / TLC — GovCheckCanonicalPublication` (job ID `129827237434`).
+- **Checked revision:** commit `8c77aeac1ef89e2c6dc7463a65af0f9151fa1bb9`; model Git blob `8daef42732223b10142df1c899fc789361ac35ea`; configuration Git blob `c535470350360c7e4e54b7026144a23943affb1a`.
+- **Toolchain:** SANY 2.1; TLC 2.19; tla2tools v1.7.4 (SHA-256 `936a262061c914694dfd669a543be24573c45d5aa0ff20a8b96b23d01e050e88`); Temurin Java 17.0.21+9; four workers.
+- **Result:** SANY parse/semantic check passed; TLC reported no error. 84,307 states generated, 56,895 distinct states, zero remaining; complete graph depth 9. Eight configured invariants and temporal property `AppendOnly` passed.
+- **Report:** [Architecture 0032](../architecture/0032-canonical-publication-model-checking.md). Uploaded artifact ID `13763874296`, SHA-256 `eeb439ae60fa0c251a349d19cb89e65f7bd55aa856be29f86fd379aea3e83981`.
+- **Interpretation:** bounded model-checking evidence only for the exact finite model/configuration and toolchain. It is not theorem proof, implementation verification, or evidence for unbounded/distributed behavior. Normative adoption of the eleven arbitration choices remains pending.

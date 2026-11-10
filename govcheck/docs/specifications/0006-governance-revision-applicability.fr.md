@@ -1,12 +1,12 @@
 # Spécification 0006 — Applicabilité des révisions de gouvernance et autorisation temporelle
 
-**Statut :** contrat réutilisable proposé à la revue ; il ne prétend pas décrire une implémentation. **English:** [0006](0006-governance-revision-applicability.md).
+**Statut :** contrat proposé à la revue du mainteneur ; il n'adopte ni ne modifie la décision d'autorité de l'Architecture 0023 et ne prétend pas décrire une implémentation. **English:** [0006](0006-governance-revision-applicability.md).
 
 ## 1. Objet et périmètre
 
 Cette spécification définit comment une évaluation identifie la révision de gouvernance autorisée à évaluer un changement, en particulier lorsque le candidat modifie également la gouvernance, les politiques, les règles, les modèles ou les évaluateurs.
 
-Elle précise les [Spécifications 0002](0002-canonical-governance-model.fr.md) et [0003](0003-change-lifecycle.fr.md). Chaque dépôt gouverné définit ses propres principaux autorisés et son régime d'autorité ; ce contrat n'en sélectionne aucun.
+Elle précise la [Spécification 0003](0003-change-lifecycle.fr.md), les [Architectures 0012](../architecture/0012-normative-authority-and-documentation.fr.md), [0017](../architecture/0017-artifact-identity-revision-and-versioning.fr.md), [0018](../architecture/0018-version-governance-and-compatibility-authority.fr.md) et le régime actuel consigné dans l'[Architecture 0023](../architecture/0023-bootstrap-governance-authority.fr.md).
 
 Il s'agit d'un contrat sémantique, pas d'un choix de sérialisation ou d'implémentation. Il n'impose ni horodatage mural, ni ascendance Git, ni base de données, forge, Lean, TLA+ en production ou technologie de signature.
 
@@ -73,7 +73,7 @@ Absence d'autorité, historique ambigu, applicabilité inconnue, autorité révo
 
 ### 3.6 Autorité et séparation des responsabilités
 
-Le profil de gouvernance applicable au dépôt définit le ou les principaux autorisés et précise si un proposant peut également autoriser. Cette spécification ne sélectionne ni ne modifie ce régime.
+L'Architecture 0023 consigne un principal racine propre au dépôt et accepte explicitement que ce même principal propose et autorise un changement. Un paquet généré doit définir son propre principal racine et son régime d'autorité ; cette spécification réutilisable ne prescrit aucune identité personnelle.
 
 L'implémentation DOIT distinguer proposant/producteur, réviseur/évaluateur technique, autorité normative et publieur/exécutant. Lorsque proposant et autorité sont le même principal, l'enregistrement DOIT le révéler. Il NE DOIT PAS revendiquer une approbation indépendante ou une séparation à deux personnes. Administration du dépôt, droit de fusion et CI ne constituent pas une autorité normative.
 
@@ -113,4 +113,21 @@ Aucun de ces choix n'est adopté implicitement.
 ## Références
 
 - [R-05 — modélisation des transitions TLA+ et TLC](../references.fr.md#r-05)
+- [R-17 — métadonnées de gouvernance typées et relations traçables](../references.fr.md#r-17)
 - [R-22 — sémantiques natives Git et Pijul](../references.fr.md#r-22)
+- [R-88 — vérification des politiques/modèles NIST SP 800-192](../references.fr.md#r-88)
+
+
+## 7. Orientation d'arbitrage sélectionnée par l'autorité — adoption formelle en attente
+
+Le propriétaire du projet a sélectionné les onze résultats consignés avec leur provenance dans le [compte rendu de séance 0008](../decisions/0008-governance-applicability-arbitration-session.fr.md). Cette section enregistre leurs conséquences techniques ; elle ne transforme pas la séance en adoption normative. Tant qu'un événement d'adoption distinct n'est pas enregistré sous la révision de gouvernance antérieure applicable, les exigences ci-dessous restent une proposition sélectionnée par l'autorité.
+
+L'orientation retenue est la suivante : (1) journal logique canonique avec ajout sérialisé et contrôle de concurrence ; (2) Git, Pijul et les autres VCS/forges sont des adaptateurs de transport/provenance, pas des autorités d'ordre normatif ; (3) la publication est le premier événement régi par la révision résultante et reste autorisée sous la révision antérieure ; (4) l'évaluateur reconnu par la gouvernance antérieure reste seul faisant autorité, tandis que le remplaçant proposé peut être exécuté à titre comparatif ; (5) révocation prospective avec requalification historique distincte ; (6) exceptions explicites, justifiées, bornées, attribuables, traçables et révocables, certaines exigences étant non dérogeables ; (7) `unknown` et `conflict` sont deux états distincts et bloquants, nécessitant une résolution explicite et ne pouvant être contournés par exception ; (8) les évaluations périmées restent historiques mais ne peuvent plus soutenir une nouvelle transition ; (9) au plus une publication réussit depuis un prédécesseur canonique et les candidats déplacés doivent être réévalués ; (10) un retour arrière crée une nouvelle révision immuable même si son contenu restaure un état antérieur ; (11) évaluation, autorisation et publication sont trois actes logiques distincts, même si un adaptateur les exécute dans une transaction technique atomique.
+
+### 7.1 Obligations de formalisation non encore couvertes par le modèle TLC actuel
+
+Le modèle [GovCheckGovernanceApplicability.tla](../../formal/tla/GovCheckGovernanceApplicability.tla), précédemment vérifié, reste limité à son abstraction finie d'applicabilité consignée. Un second modèle de conception borné, [GovCheckCanonicalPublication.tla](../../formal/tla/GovCheckCanonicalPublication.tla), a depuis été ajouté. Il modélise un ensemble fini d'évaluations préparées, une autorisation liée à la tête canonique capturée, une publication distincte comme action d'ajout/effet, le rejet d'une autorisation périmée après l'avancement de la tête, l'unicité des identités de révision, la continuité des prédécesseurs et l'historique append-only. Il est routé vers le workflow TLC comme tâche distincte.
+
+**Le nouveau modèle de publication canonique n'a pas encore été analysé syntaxiquement ni vérifié par TLC.** Le résultat antérieur de l'Architecture 0031 ne s'applique qu'au modèle/configuration originaux exacts ; il ne doit pas être attribué au nouveau modèle. Les lacunes de formalisation restantes comprennent les enregistrements explicites de résultat périmé/réconciliation, le stockage durable du journal et la reprise après panne, la provenance des adaptateurs VCS et les répliques divergentes, l'identité de l'évaluateur et l'évaluation comparative d'un remplaçant, la péremption complète selon les dépendances, la révocation et la requalification historique, le cycle de vie des exceptions et les règles non dérogeables, la résolution distincte de unknown/conflict, la restauration de contenu par une nouvelle révision et l'exécution technique atomique préservant trois actes logiques. Aucun des deux modèles n'établit l'implémentation ni l'application effective.
+
+Les résultats retenus et leur provenance détaillée figurent dans les comptes rendus de séance [anglais](../decisions/0008-governance-applicability-arbitration-session.md) et [français](../decisions/0008-governance-applicability-arbitration-session.fr.md).

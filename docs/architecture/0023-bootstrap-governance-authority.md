@@ -1,6 +1,6 @@
 # 0023 — Bootstrap governance authority decision
 
-**Status:** decision recorded from the project owner's explicit instruction on 2026-11-07; proposed for adoption through this pull request. It does not claim that an authority registry or enforcement engine is implemented.  
+**Status:** decision recorded from the project owner's explicit instruction on 2026-11-07. The decision's provenance is the explicit instruction, not repository merge status; any formal adoption event and effective governance revision must be recorded separately. It does not claim that an authority registry or enforcement engine is implemented.  
 **Scope:** GovCheck's canonical governance authority.
 
 ## 1. Decision

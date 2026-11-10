@@ -5,6 +5,8 @@ on:
     paths:
       - 'formal/tla/GovCheckGovernanceApplicability.tla'
       - 'formal/tla/GovCheckGovernanceApplicability.cfg'
+      - 'formal/tla/GovCheckCanonicalPublication.tla'
+      - 'formal/tla/GovCheckCanonicalPublication.cfg'
       - 'docs/specifications/0006-governance-revision-applicability.md'
       - 'docs/specifications/0006-governance-revision-applicability.fr.md'
       - '.github/workflows/tla-governance-applicability.yml'
@@ -14,6 +16,8 @@ on:
     paths:
       - 'formal/tla/GovCheckGovernanceApplicability.tla'
       - 'formal/tla/GovCheckGovernanceApplicability.cfg'
+      - 'formal/tla/GovCheckCanonicalPublication.tla'
+      - 'formal/tla/GovCheckCanonicalPublication.cfg'
       - 'docs/specifications/0006-governance-revision-applicability.md'
       - 'docs/specifications/0006-governance-revision-applicability.fr.md'
       - '.github/workflows/tla-governance-applicability.yml'
@@ -24,3 +28,8 @@ jobs:
     uses: ./.github/workflows/tla-model-reusable.yml
     with:
       model: GovCheckGovernanceApplicability
+
+  canonical-publication:
+    uses: ./.github/workflows/tla-model-reusable.yml
+    with:
+      model: GovCheckCanonicalPublication

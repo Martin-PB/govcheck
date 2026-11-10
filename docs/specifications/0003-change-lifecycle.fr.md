@@ -49,3 +49,10 @@ Les futurs tests/modèles formels couvriront transitions illégales, preuves pé
 
 - [R-05 — modélisation par transitions d'états TLA+ / TLC](../references.fr.md#r-05)
 - [R-22 — sémantiques natives Git et Pijul](../references.fr.md#r-22)
+
+
+## Compte rendu de l'arbitrage sur l'applicabilité de la gouvernance
+
+Les onze résultats sélectionnés par le propriétaire du projet pour l'issue #41 sont consignés, avec leur statut explicite d'adoption en attente, dans le [compte rendu de séance 0008](../decisions/0008-governance-applicability-arbitration-session.fr.md). Ils précisent que le journal canonique du cycle de vie est logique et sérialisé avec contrôle de concurrence ; les objets VCS natifs ne fournissent que transport/provenance ; la publication est l'événement d'effet ; l'ancien évaluateur reste seul faisant autorité pendant la migration d'évaluateur ; révocation et requalification historique sont distinctes ; les exceptions sont bornées et les exigences non dérogeables protégées ; unknown et conflict sont deux états bloquants distincts ; les évaluations périmées sont conservées mais inutilisables pour de nouvelles transitions ; les publications concurrentes sont sérialisées ; un retour arrière crée une nouvelle révision ; enfin, évaluation, autorisation et publication restent trois actes logiques distincts même si l'exécution technique est atomique.
+
+Il s'agit d'un compte rendu de l'orientation d'arbitrage sélectionnée, pas d'une adoption normative ni d'une revendication d'implémentation. Voir la Spécification 0006 et le [compte rendu 0008](../decisions/0008-governance-applicability-arbitration-session.fr.md).

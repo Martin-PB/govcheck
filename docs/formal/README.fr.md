@@ -1,6 +1,6 @@
 # Modèles formels
 
-Les travaux formels de GovCheck sont développés progressivement et restent distincts de toute affirmation relative à l’implémentation.
+Les travaux formels de GovCheck sont développés progressivement et restent distincts de toute affirmation relative à l’implémentation. Ils s'appuient sur [R-05 — TLA+ et TLC](../references.fr.md#r-05) et [R-22 — Sémantiques natives de Git et Pijul](../references.fr.md#r-22).
 
 ## Cycle de vie
 
@@ -41,6 +41,16 @@ Le modèle est une abstraction à transitions bornées du régime initial à rac
 - [Configuration TLC](../../formal/tla/GovCheckGovernanceApplicability.cfg)
 
 Ce modèle borné distinct lie chaque évaluation à la révision de gouvernance effective à sa position d'événement, exige l'autorisation de l'autorité enregistrée à cette position et ne permet la publication qu'à une position ultérieure. Il préserve les liens des décisions historiques et rejette les évaluations périmées lors de l'autorisation. Il ne modélise pas encore les changements/délégations d'autorité, le consensus distribué, l'identité cryptographique, toute la concurrence multi-écrivain ou le raffinement de l'implémentation. Son exécution TLC constitue une preuve relative à cette abstraction finie uniquement.
+
+## Publication canonique de la gouvernance
+
+- [Compte rendu d'arbitrage sur l'applicabilité — français](../decisions/0008-governance-applicability-arbitration-session.fr.md) · [English](../decisions/0008-governance-applicability-arbitration-session.md)
+- [Module TLA+ de publication canonique](../../formal/tla/GovCheckCanonicalPublication.tla)
+- [Configuration TLC](../../formal/tla/GovCheckCanonicalPublication.cfg)
+- [Résultat TLC consigné — Architecture 0032](../architecture/0032-canonical-publication-model-checking.fr.md)
+- [Entrée du catalogue stable des artefacts](../../formal/artifacts.json) — `govcheck.canonical-publication`
+
+Ce modèle de conception borné sépare l'évaluation du candidat, l'autorisation et la publication. L'autorisation est liée à la révision et à la position de tête évaluées ; la publication n'ajoute au journal que si cette base est toujours courante. Il exprime l'unicité des identités de révision, la continuité des prédécesseurs, une publication par prédécesseur canonique, la liaison autorisation/évaluation, l'autorisation préalable à la publication et l'exclusion des bases périmées. La configuration TLC demande également la propriété temporelle append-only. **Ce modèle n'a pas encore été analysé syntaxiquement ni vérifié par TLC.** Il ne modélise pas les répliques/adaptateurs VCS, le remplacement d'évaluateur, la révocation, les exceptions, la résolution de unknown/conflict, la restauration du contenu lors d'un rollback, la reprise après panne ni le raffinement de l'implémentation. Sa présence dans l'arbre source ne constitue pas un élément de preuve par model checking.
 
 ## Périmètres de vérification CI
 

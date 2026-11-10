@@ -19,7 +19,7 @@ La [version anglaise du registre](work-items.md) contient l'inventaire détaill�
 
 ## Dispositions importantes
 
-- #41 est le fil de décision sur la révision de gouvernance applicable ; #86 porte la spécification technique associée. La spécification 0006 bilingue et un modèle TLA+ borné dédié sont préparés à la revue ; l'exécution formelle et la décision du mainteneur restent en attente. #41 n'est pas adopté par ce travail technique.
+- #41 est le fil de décision sur la révision de gouvernance applicable ; #86 porte la spécification technique associée. Le compte rendu bilingue 0008 consigne les onze choix en attente d'adoption normative. Un second modèle borné `GovCheckCanonicalPublication.tla` couvre désormais le compare-and-append, le rejet des autorisations périmées et la séparation des trois actes ; il est enregistré dans le catalogue et routé vers le workflow TLC, et a été analysé par SANY 2.1 puis vérifié par TLC 2.19 dans l'exécution [42815445104](https://github.com/Martin-PB/govcheck/actions/runs/42815445104) : 84 307 états générés, 56 895 distincts, aucun restant et aucun contre-exemple ; les huit invariants et la propriété temporelle `AppendOnly` ont réussi. Voir l'Architecture 0032 pour la provenance exacte et les limites. #41 n'est pas adopté par ce travail technique.
 - #33 reste un candidat atomique, sans décomposition artificielle.
 - #46 est considéré terminé à la suite de la PR #39 fusionnée et de l'ADR 0005 ; sa clôture GitHub est différée jusqu'à l'acceptation de la migration du registre.
 - #61 est un doublon historique remplacé par #62.

@@ -1,6 +1,6 @@
 # 0023 — Décision d'amorçage de l'autorité de gouvernance
 
-**Statut :** décision consignée à partir de l'instruction explicite du propriétaire du projet le 07-11-2026 ; proposée à l'adoption par cette pull request. Elle ne prétend pas qu'un registre d'autorité ou un moteur d'application est implémenté.  
+**Statut :** décision consignée à partir de l'instruction explicite du propriétaire du projet le 07-11-2026. La provenance de la décision est cette instruction explicite, et non l'état de fusion du dépôt ; tout événement d'adoption formelle et toute révision de gouvernance prenant effet doivent être consignés séparément. Elle ne prétend pas qu'un registre d'autorité ou un moteur d'application est implémenté.  
 **Périmètre :** autorité canonique de gouvernance de GovCheck.
 
 ## 1. Décision

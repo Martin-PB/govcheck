@@ -45,6 +45,51 @@
       },
       "revisionPolicy": "repository-history",
       "releaseBinding": "release-tag-and-commit"
+    },
+    {
+      "artifactId": "govcheck.canonical-publication",
+      "kind": "formal-model",
+      "title": "GovCheck canonical governance publication and compare-and-append model",
+      "source": "formal/tla/GovCheckCanonicalPublication.tla",
+      "configuration": "formal/tla/GovCheckCanonicalPublication.cfg",
+      "documentation": {
+        "en": "docs/decisions/0008-governance-applicability-arbitration-session.md",
+        "fr": "docs/decisions/0008-governance-applicability-arbitration-session.fr.md"
+      },
+      "revisionPolicy": "repository-history",
+      "releaseBinding": "release-tag-and-commit",
+      "status": "bounded-design-model; SANY-parsed-and-TLC-model-checked",
+      "verification": {
+        "architectureRecord": "docs/architecture/0032-canonical-publication-model-checking.md",
+        "workflowRunId": 42815445104,
+        "checkedCommit": "8c77aeac1ef89e2c6dc7463a65af0f9151fa1bb9",
+        "modelGitBlob": "8daef42732223b10142df1c899fc789361ac35ea",
+        "configurationGitBlob": "c535470350360c7e4e54b7026144a23943affb1a",
+        "result": "no-counterexample",
+        "statesGenerated": 84307,
+        "distinctStates": 56895,
+        "statesRemaining": 0,
+        "toolchain": {
+          "sany": "2.1",
+          "tlc": "2.19",
+          "tla2tools": "1.7.4",
+          "tla2toolsSha256": "936a262061c914694dfd669a543be24573c45d5aa0ff20a8b96b23d01e050e88",
+          "java": "Temurin 17.0.21+9",
+          "workers": 4
+        },
+        "artifactId": 13763874296,
+        "artifactSha256": "eeb439ae60fa0c251a349d19cb89e65f7bd55aa856be29f86fd379aea3e83981",
+        "invariants": [
+          "TypeOK",
+          "UniqueRevisions",
+          "ContinuousPredecessors",
+          "OnePublicationPerCanonicalPosition",
+          "AuthorizationBoundToEvaluation",
+          "PublicationIsEffectPoint",
+          "PublishedOnlyIfAuthorized",
+          "NoStalePublication"
+        ]
+      }
     }
   ]
 }

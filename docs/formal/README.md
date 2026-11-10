@@ -1,6 +1,6 @@
 # Formal models
 
-GovCheck's formal work is developed incrementally and remains separate from implementation claims.
+GovCheck's formal work is developed incrementally and remains separate from implementation claims. It draws on [R-05 — TLA+ and TLC](../references.md#r-05) and [R-22 — Native Git and Pijul semantics](../references.md#r-22).
 
 ## Lifecycle
 
@@ -43,6 +43,16 @@ The authority model is a bounded transition model for the initial single-root re
 - [TLC configuration](../../formal/tla/GovCheckGovernanceApplicability.cfg)
 
 This separate bounded model links each evaluation to the governance revision effective at its event position, requires authorization by the authority recorded for that position, and permits publication only at a later position. It preserves historical decision bindings and rejects stale evaluations at authorization. It does not yet model authority changes/delegation, distributed consensus, cryptographic identity, full multi-writer concurrency or implementation refinement. Its TLC run is evidence about this finite abstraction only.
+
+## Canonical governance publication
+
+- [Governance applicability arbitration record — English](../decisions/0008-governance-applicability-arbitration-session.md) · [French](../decisions/0008-governance-applicability-arbitration-session.fr.md)
+- [Canonical publication TLA+ module](../../formal/tla/GovCheckCanonicalPublication.tla)
+- [TLC configuration](../../formal/tla/GovCheckCanonicalPublication.cfg)
+- [Recorded TLC result — Architecture 0032](../architecture/0032-canonical-publication-model-checking.md)
+- [Stable artifact catalogue entry](../../formal/artifacts.json) — `govcheck.canonical-publication`
+
+This bounded design model separates candidate evaluation, authorization and publication. Authorization is bound to the evaluated head revision and position; publication appends only while that base remains current. It expresses revision-identity uniqueness, predecessor continuity, one publication per canonical predecessor, authorization/evaluation binding, publication authorization and stale-base exclusion. The TLC configuration also requests the append-only temporal property. **This model has not yet been parsed or checked by TLC.** It does not model VCS replicas/adapters, evaluator replacement, revocation, exceptions, unknown/conflict resolution, rollback content restoration, crash recovery or implementation refinement. Its presence in the source tree is not verification evidence.
 
 ## Shared release evidence
 

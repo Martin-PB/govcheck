@@ -1,6 +1,6 @@
 # Architecture 0034 — Canonical journal durability, recovery and rollback model
 
-**Status:** bounded TLA+ design model; verification pending. This record is not an implementation claim, normative adoption, or proof of operational durability. **French:** [0034](0034-canonical-journal-recovery-model.fr.md).
+**Status:** bounded TLA+ design model; SANY/TLC checked for the exact finite configuration. This is not implementation evidence or normative adoption. This record is not an implementation claim, normative adoption, or proof of operational durability. **French:** [0034](0034-canonical-journal-recovery-model.fr.md).
 
 ## 1. Purpose
 
@@ -36,6 +36,21 @@ This is a small finite transition abstraction, not a storage-engine specificatio
 The model's recovery action is an abstract replay-to-head operation. It does not prove that a concrete implementation can reconstruct all materialized state, nor that external side effects are idempotent. The bounded content/revision/event domains do not establish unbounded correctness.
 
 TLC results, when available, are model-checking evidence for the exact checked module/configuration only. They are not theorem proof, implementation verification, or production assurance.
+
+
+
+## 6. TLC verification evidence
+
+The exact module/configuration passed SANY 2.1 and TLC 2.19 on PR #99 head `a5c9845b1df7a36c9b1f23af0a28bdabdd4300f3` (CI merge checkout recorded by workflow run [42848709804](https://github.com/Martin-PB/govcheck/actions/runs/42848709804)).
+
+- Module Git blob: `f99b33f510f3350f7ee1dc2ecc4b13a216d64ab6`.
+- Configuration Git blob: `43102a4fc3c17a0656ccfe71d34642457d85737a`.
+- Result: 178,549 states generated, 38,434 distinct, zero remaining; complete graph depth 9.
+- Six configured invariants and temporal property `AppendOnly` passed; no counterexample was found.
+- Job: `129943126960`; uploaded report artifact ID `13778403717`, ZIP SHA-256 `0fe3148982524a25336674718505b02fd786953bd000d9b06ae016ec4987d00b`.
+- Toolchain: tla2tools v1.7.4 (SHA-256 `936a262061c914694dfd669a543be24573c45d5aa0ff20a8b96b23d01e050e88`), SANY 2.1, TLC 2.19, Temurin Java 17.0.21+9, four workers.
+
+This is finite model-checking evidence for these exact source/configuration identities. It is not theorem proof, implementation verification or evidence of storage-engine durability. The model checks safety and append-only history; it does not assert eventual recovery under fairness. The authorization and evaluator controls are abstracted to the upstream governance/publication models and are not re-proved here.
 
 ## 5. Related contract and references
 

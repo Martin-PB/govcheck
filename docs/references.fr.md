@@ -104,7 +104,7 @@
 <a id="r-03"></a>
 
 ### R-03 — Branches protégées et contrôles obligatoires GitHub
-- **Cité par :** [0014](architecture/0014-governed-development-workflow.fr.md), [0022](architecture/0022-governance-capability-audit.fr.md), [0023](architecture/0023-bootstrap-governance-authority.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [0014](architecture/0014-governed-development-workflow.fr.md), [0022](architecture/0022-governance-capability-audit.fr.md), [0023](architecture/0023-bootstrap-governance-authority.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md), [ADR 0007](decisions/0007-mandatory-sources.fr.md)
 
 - **Source primaire :** [Documentation des branches protégées](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)
 - **Concepts pertinents :** revues obligatoires, contrôles de statut, exceptions de contournement et restrictions de branche.
@@ -135,7 +135,7 @@
 <a id="r-06"></a>
 
 ### R-06 — in-toto : intégrité de la chaîne d'approvisionnement logicielle
-- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md), [0007](architecture/0007-technology-decision-framework.fr.md), [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0014](architecture/0014-governed-development-workflow.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md), [0007](architecture/0007-technology-decision-framework.fr.md), [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0014](architecture/0014-governed-development-workflow.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md), [ADR 0007](decisions/0007-mandatory-sources.fr.md)
 
 - **Sources primaires :** [Projet in-toto](https://in-toto.io/) · [Article USENIX Security 2019](https://ssl.engineering.nyu.edu/papers/torres-toto-usenix19.pdf)
 - **Référence académique :** Santiago Torres-Arias et al., « in-toto: Providing farm-to-table guarantees for bits and bytes », 28th USENIX Security Symposium, 2019.
@@ -310,7 +310,7 @@
 <a id="r-24"></a>
 
 ### R-24 — W3C PROV-O
-- **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md), [0018](architecture/0018-version-governance-and-compatibility-authority.fr.md) · [ADR 0004](decisions/0004-semantic-versioning-contracts.fr.md) · [Portefeuille de travaux](work-portfolio/README.fr.md)
+- **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md), [0018](architecture/0018-version-governance-and-compatibility-authority.fr.md) · [ADR 0004](decisions/0004-semantic-versioning-contracts.fr.md) · [Portefeuille de travaux](work-portfolio/README.fr.md), [ADR 0007](decisions/0007-mandatory-sources.fr.md)
 
 - **Source primaire :** [Recommandation W3C PROV-O](https://www.w3.org/TR/prov-o/).
 - **Concepts pertinents :** entités, activités, agents et relations de provenance.

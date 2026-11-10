@@ -104,7 +104,7 @@
 <a id="r-03"></a>
 
 ### R-03 — GitHub protected branches and required status checks
-- **Cited by:** [0014](architecture/0014-governed-development-workflow.md), [0022](architecture/0022-governance-capability-audit.md), [0023](architecture/0023-bootstrap-governance-authority.md), [ADR 0002](decisions/0002-study-placement.md)
+- **Cited by:** [0014](architecture/0014-governed-development-workflow.md), [0022](architecture/0022-governance-capability-audit.md), [0023](architecture/0023-bootstrap-governance-authority.md), [ADR 0002](decisions/0002-study-placement.md), [ADR 0007](decisions/0007-mandatory-sources.md)
 
 - **Primary source:** [About protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)
 - **Relevant concepts:** required reviews, required status checks, bypass lists and branch restrictions.
@@ -135,7 +135,7 @@
 <a id="r-06"></a>
 
 ### R-06 — in-toto: software supply-chain integrity
-- **Cited by:** [0006](architecture/0006-threat-and-trust-model.md), [0007](architecture/0007-technology-decision-framework.md), [0010](architecture/0010-assurance-proof-and-conformance.md), [0014](architecture/0014-governed-development-workflow.md), [0015](architecture/0015-governance-conformance-and-validation-plan.md), [ADR 0002](decisions/0002-study-placement.md)
+- **Cited by:** [0006](architecture/0006-threat-and-trust-model.md), [0007](architecture/0007-technology-decision-framework.md), [0010](architecture/0010-assurance-proof-and-conformance.md), [0014](architecture/0014-governed-development-workflow.md), [0015](architecture/0015-governance-conformance-and-validation-plan.md), [ADR 0002](decisions/0002-study-placement.md), [ADR 0007](decisions/0007-mandatory-sources.md)
 
 - **Primary sources:** [in-toto project](https://in-toto.io/) · [USENIX Security 2019 paper](https://ssl.engineering.nyu.edu/papers/torres-toto-usenix19.pdf)
 - **Academic reference:** Santiago Torres-Arias et al., “in-toto: Providing farm-to-table guarantees for bits and bytes,” 28th USENIX Security Symposium, 2019.
@@ -308,7 +308,7 @@
 
 <a id="r-24"></a>
 ### R-24 — W3C PROV-O
-- **Cited by:** [0017](architecture/0017-artifact-identity-revision-and-versioning.md), [0018](architecture/0018-version-governance-and-compatibility-authority.md) · [ADR 0004](decisions/0004-semantic-versioning-contracts.md) · [Work portfolio](work-portfolio/README.md)
+- **Cited by:** [0017](architecture/0017-artifact-identity-revision-and-versioning.md), [0018](architecture/0018-version-governance-and-compatibility-authority.md) · [ADR 0004](decisions/0004-semantic-versioning-contracts.md) · [Work portfolio](work-portfolio/README.md), [ADR 0007](decisions/0007-mandatory-sources.md)
 
 - **Primary source:** [W3C PROV-O recommendation](https://www.w3.org/TR/prov-o/).
 - **Relevant concepts:** entities, activities, agents and provenance relations.

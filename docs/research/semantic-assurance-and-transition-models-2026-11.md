@@ -60,7 +60,7 @@ Provisional recommendation: a generic core for claims, assumptions, arguments, e
 ### Sources on probability, fuzzy logic and assurance confidence
 
 - Graydon & Holloway, “An investigation of proposed techniques for quantifying confidence in assurance arguments,” *Safety Science* 92 (2017): https://doi.org/10.1016/j.ssci.2016.09.014. Reviews quantitative confidence techniques and cautions about implausible results and insufficient empirical validation for general critical-decision use.
-- “A probabilistic model of belief in safety cases,” *Safety Science* 138 (2021), 105187: https://doi.org/10.1016/j.ssci.2021.09.014. (Verify DOI before formal catalogue adoption; the discussion source used DOI 10.1016/j.ssci.2021.09.014.) Illustrates a Bayesian-network approach, not universal suitability.
+- “A probabilistic model of belief in safety cases,” *Safety Science* 138 (2021), 105187: https://doi.org/10.1016/j.ssci.2021.105187. Illustrates a Bayesian-network approach, not universal suitability.
 - NIST Engineering Statistics Handbook, Bayesian reliability evaluation: https://www.itl.nist.gov/div898/handbook/apr/section1/apr1a.htm.
 - Johanyák & Zlatko (2025), “A comprehensive survey on Fuzzy logic applications in software requirements engineering”: https://doi.org/10.47833/2025.2.CSC.008.
 - Yen, Tiao & Liu (1996), “A Systematic Tradeoff Methodology for Acquiring and Validating Imprecise Requirements”: https://doi.org/10.1109/FUZZY.1996.551766.

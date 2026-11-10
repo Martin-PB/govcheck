@@ -52,6 +52,10 @@ Le module et la configuration exacts ont réussi SANY 2.1 et TLC 2.19 sur la tê
 
 Il s'agit d'éléments de model checking finis pour ces identités exactes de source et de configuration. Ce n'est ni une preuve de théorème, ni une vérification de l'implémentation, ni une preuve de durabilité d'un moteur de stockage. Le modèle vérifie des propriétés de sûreté et l'historique append-only ; il n'affirme pas la reprise éventuelle sous équité. L'autorisation et les contrôles d'évaluateur sont abstraits par les modèles amont de gouvernance/publication et ne sont pas revérifiés ici.
 
+
+
+Revalidation de la tête finale de PR : les mêmes blobs du module et de la configuration ont été revérifiés sur la tête finale documentation/package `8ace02658a9f349db57e937c697e66c7b779aaa8` dans le [workflow 42849634866](https://github.com/Martin-PB/govcheck/actions/runs/42849634866), job `129946416981`. Le résultat est identique : 178 549 états générés / 38 434 distincts, zéro restant, profondeur 9 ; les six invariants et `AppendOnly` ont réussi. Artefact du rapport de la tête finale ID `13778459512`, SHA-256 `8ce7414863ef57725e7ae36e3055d10edb21571feb62c35d9fae68228a96b94c`. Les huit vérifications configurées de la PR ont toutes réussi sur cette tête finale.
+
 ## 5. Contrat et références associés
 
 Ce modèle complète la [Spécification 0006](../specifications/0006-governance-revision-applicability.fr.md), l'[Architecture 0032](0032-canonical-publication-model-checking.fr.md) et l'[Architecture 0033](0033-governance-evaluator-exception-revocation-model.fr.md). Ses fondements conceptuels sont catalogués sous [R-05 — TLA+ et TLC](../references.fr.md#r-05) et [R-22 — sémantiques natives de Git et Pijul](../references.fr.md#r-22).

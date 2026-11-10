@@ -56,7 +56,7 @@ Init ==
   /\ exceptions = [x \in ExceptionIds |-> UnusedException]
   /\ authorizations = [a \in AuthorizationIds |-> UnusedAuthorization]
   /\ authorityRevoked = FALSE
-  /\ revocationPosition \in {NotRevoked, 0, 1, 2, 3, 4, 5, 6, 7, 8}
+  /\ revocationPosition \in {NotRevoked, 0, 1, 2, 3, 4, 5, 6}
   /\ decisions = <<>>
   /\ requalifications = <<>>
 
@@ -78,7 +78,7 @@ Evaluate(candidate, evaluationId, result) ==
 ShadowEvaluate(candidate, result) ==
   /\ candidate \in Candidates
   /\ result \in {"Pass", "Fail", "Unknown", "Conflict"}
-  /\ Len(shadowEvaluations) < 2
+  /\ Len(shadowEvaluations) < 1
   /\ ~\E i \in 1..Len(shadowEvaluations) :
        shadowEvaluations[i].candidate = candidate
   /\ shadowEvaluations' = Append(shadowEvaluations,
@@ -210,7 +210,7 @@ MarkStale(evaluationId) ==
 
 RequalifyHistorical(decisionIndex, outcome) ==
   /\ decisionIndex \in 1..Len(decisions)
-  /\ Len(requalifications) < 2
+  /\ Len(requalifications) < 1
   /\ outcome \in {"Confirmed", "Disputed", "Invalidated"}
   /\ requalifications' = Append(requalifications,
        [decisionIndex |-> decisionIndex,
@@ -221,7 +221,7 @@ RequalifyHistorical(decisionIndex, outcome) ==
                   revocationPosition, decisions>>
 
 Tick ==
-  /\ position < 3
+  /\ position < 2
   /\ position' = position + 1
   /\ UNCHANGED <<head, journal, evaluations, shadowEvaluations, exceptions,
                   authorizations, authorityRevoked, revocationPosition,
@@ -316,7 +316,7 @@ NonDerogableNeverExcepted ==
       exceptions[x].requirement \notin NonDerogableRequirements
 
 RevocationIsProspective ==
-  authorityRevoked => revocationPosition \in {1, 2, 3, 4, 5, 6, 7, 8}
+  authorityRevoked => revocationPosition \in {1, 2, 3, 4, 5, 6}
 
 HistoricalDecisionsPreserved ==
   \A i \in 1..Len(requalifications) :

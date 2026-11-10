@@ -44,6 +44,7 @@ META_ONLY_WORKFLOWS = {
     "reference-check.yml",
     "package-alignment.yml",
     "ci-routing-model.yml",
+    "govcheck-check.yml",
     "lifecycle-diagram.yml",
     "tla-assurance.yml",
     "tla-governance-applicability.yml",

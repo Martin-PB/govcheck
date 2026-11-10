@@ -1,0 +1,51 @@
+name: GovCheck check slice (report-only)
+
+# Meta-level CI dogfooding the first executable GovCheck slice (govcheck/check.py).
+# Hosted CI on this public repository was explicitly authorized by the maintainer
+# on 2026-11-09 (recorded in issue #88). Report-only: unit tests are blocking,
+# the check report never fails the build while the slice is young (an overall
+# `unknown` is fail-closed, not a success).
+
+on:
+  pull_request:
+    paths:
+      - 'govcheck/**'
+      - 'tests/**'
+      - 'scripts/**'
+      - '.github/workflows/govcheck-check.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'govcheck/**'
+      - 'tests/**'
+      - 'scripts/**'
+      - '.github/workflows/govcheck-check.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  govcheck-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Unit tests of the check slice (blocking)
+        run: python3 -m unittest discover -s tests -v
+      - name: Run govcheck check on the candidate (report-only)
+        continue-on-error: true
+        run: |
+          python3 govcheck/check.py --tree . --base origin/main --candidate HEAD --out govcheck-report.json || true
+      - name: Show the JSON report
+        if: always()
+        run: cat govcheck-report.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: govcheck-report
+          path: govcheck-report.json
+          retention-days: 30

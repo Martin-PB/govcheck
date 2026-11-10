@@ -22,10 +22,10 @@ Evaluation, authorization and publication remain distinct logical acts in the un
 - **TLC configuration:** `formal/tla/GovCheckGovernanceControls.cfg`
 - **Git blob — module:** `b237fa3bc939c711f0510c4aeca1346c8e50264f`
 - **Git blob — configuration:** `9e8f48d409eeb31adaf22890bbb8ff90674aa96a`
-- **Checked PR head:** `86713a99574c085ee5a41a71e70f93ab7ce4a831`
-- **CI merge checkout:** `1f387b8f6019db545ccd50d55fd9c7cc0d704d80`
-- **TLC workflow run:** [42825118727](https://github.com/Martin-PB/govcheck/actions/runs/42825118727)
-- **TLC job:** `129860312738`
+- **Checked PR head:** `01d9f0e4147d50a1daaa3ca03487c0be22770c7b`
+- **CI merge checkout:** `41d61b314e81c433e7d5337408d67bd7af703d50`
+- **TLC workflow run:** [42826055617](https://github.com/Martin-PB/govcheck/actions/runs/42826055617)
+- **TLC job:** `129863528869`
 - **TLA tools:** tla2tools v1.7.4, SHA-256 `936a262061c914694dfd669a543be24573c45d5aa0ff20a8b96b23d01e050e88`
 - **SANY:** 2.1
 - **TLC:** 2.19

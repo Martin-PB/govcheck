@@ -1,6 +1,6 @@
 # Architecture 0034 — Modèle de durabilité, reprise et rollback du journal canonique
 
-**Statut :** modèle de conception TLA+ borné ; vérification en attente. Ce document ne constitue ni une affirmation d'implémentation, ni une adoption normative, ni une preuve de durabilité opérationnelle. **English:** [0034](0034-canonical-journal-recovery-model.md).
+**Statut :** modèle de conception TLA+ borné ; vérifié par SANY/TLC pour la configuration finie exacte. Il ne s'agit ni d'une preuve d'implémentation ni d'une adoption normative. Ce document ne constitue ni une affirmation d'implémentation, ni une adoption normative, ni une preuve de durabilité opérationnelle. **English:** [0034](0034-canonical-journal-recovery-model.md).
 
 ## 1. Objet
 
@@ -36,6 +36,21 @@ Il s'agit d'une petite abstraction finie à transitions, pas d'une spécificatio
 L'action de reprise est une opération abstraite de rejeu jusqu'à la tête. Elle ne prouve pas qu'une implémentation concrète peut reconstruire tout état matérialisé ni que les effets externes sont idempotents. Les domaines bornés de contenus, révisions et événements n'établissent aucune correction non bornée.
 
 Les résultats TLC, lorsqu'ils seront disponibles, constitueront uniquement des éléments de model checking pour le module et la configuration exacts. Ils ne seront ni preuve de théorème, ni vérification de l'implémentation, ni assurance de production.
+
+
+
+## 6. Éléments de vérification TLC
+
+Le module et la configuration exacts ont réussi SANY 2.1 et TLC 2.19 sur la tête de PR #99 `a5c9845b1df7a36c9b1f23af0a28bdabdd4300f3` (checkout de fusion CI consigné dans le workflow [42848709804](https://github.com/Martin-PB/govcheck/actions/runs/42848709804)).
+
+- Blob Git du module : `f99b33f510f3350f7ee1dc2ecc4b13a216d64ab6`.
+- Blob Git de la configuration : `43102a4fc3c17a0656ccfe71d34642457d85737a`.
+- Résultat : 178 549 états générés, 38 434 distincts, zéro restant ; profondeur complète du graphe : 9.
+- Les six invariants configurés et la propriété temporelle `AppendOnly` ont réussi ; aucun contre-exemple n'a été trouvé.
+- Job : `129943126960` ; artefact du rapport ID `13778403717`, SHA-256 du ZIP `0fe3148982524a25336674718505b02fd786953bd000d9b06ae016ec4987d00b`.
+- Chaîne d'outils : tla2tools v1.7.4 (SHA-256 `936a262061c914694dfd669a543be24573c45d5aa0ff20a8b96b23d01e050e88`), SANY 2.1, TLC 2.19, Temurin Java 17.0.21+9, quatre workers.
+
+Il s'agit d'éléments de model checking finis pour ces identités exactes de source et de configuration. Ce n'est ni une preuve de théorème, ni une vérification de l'implémentation, ni une preuve de durabilité d'un moteur de stockage. Le modèle vérifie des propriétés de sûreté et l'historique append-only ; il n'affirme pas la reprise éventuelle sous équité. L'autorisation et les contrôles d'évaluateur sont abstraits par les modèles amont de gouvernance/publication et ne sont pas revérifiés ici.
 
 ## 5. Contrat et références associés
 

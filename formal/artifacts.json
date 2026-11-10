@@ -104,6 +104,20 @@
       "revisionPolicy": "repository-history",
       "releaseBinding": "release-tag-and-commit",
       "status": "bounded-design-model; SANY-and-TLC-checked"
+    },
+    {
+      "artifactId": "govcheck.journal-recovery",
+      "kind": "formal-model",
+      "title": "GovCheck durable canonical journal, recovery and rollback TLA+ model",
+      "source": "formal/tla/GovCheckJournalRecovery.tla",
+      "configuration": "formal/tla/GovCheckJournalRecovery.cfg",
+      "documentation": {
+        "en": "docs/architecture/0034-canonical-journal-recovery-model.md",
+        "fr": "docs/architecture/0034-canonical-journal-recovery-model.fr.md"
+      },
+      "revisionPolicy": "repository-history",
+      "releaseBinding": "release-tag-and-commit",
+      "status": "bounded-design-model; TLC verification pending"
     }
   ]
 }

@@ -29,6 +29,7 @@ L'anglais est la langue par défaut. Chaque document d'architecture possède une
 - [0030 — Registre du portefeuille gouverné dans le dépôt et historique révisable/récupérable](0030-repository-backed-work-portfolio-and-recoverable-history.fr.md) · [English](0030-repository-backed-work-portfolio-and-recoverable-history.md)
 - [0031 — Première exécution TLC du modèle d'applicabilité de la gouvernance](0031-first-tlc-governance-applicability.fr.md) · [English](0031-first-tlc-governance-applicability.md)
 - [0032 — Rapport de model checking du modèle de publication canonique](0032-canonical-publication-model-checking.fr.md) · [English](0032-canonical-publication-model-checking.md)
+- [0033 — Modèle de contrôle des évaluateurs, exceptions et révocation](0033-governance-evaluator-exception-revocation-model.fr.md) · [English](0033-governance-evaluator-exception-revocation-model.md)
 
 L'architecture 0028 définit le cycle de vie du portefeuille et la frontière avec les gestionnaires d'issues. L'architecture 0030 ajoute le registre dans le dépôt, l'identité stable des éléments, les événements logiques préservés, la liaison aux révisions natives du VCS, les règles de migration et les limites explicites du mécanisme initial d'historisation/récupération. Aucun de ces documents ne prétend qu'un moteur de registre, un journal inviolable, une synchronisation automatique ou un service d'application est implémenté.
 

@@ -24,6 +24,9 @@ This is a technology-neutral semantic contract. Storage engine, wire format, has
 
 Event ID, idempotency key, journal position, payload digest, VCS-native revision, candidate identity, evaluation ID, authorization ID and governance-revision identity are distinct and MUST NOT be conflated.
 
+
+The journal scope MUST have a stable, unambiguous identity. This specification does not decide whether a scope maps one-to-one to a repository, spans multiple repositories under one authority domain, or follows another governance boundary. That mapping MUST be explicitly defined before a deployment treats a journal as canonical; a VCS or forge URL MUST NOT implicitly define the scope.
+
 ## 3. Journal identity and event envelope
 
 A journal scope MUST have one canonical logical sequence. Each committed event MUST carry:
@@ -34,12 +37,21 @@ A journal scope MUST have one canonical logical sequence. Each committed event M
 5. payload identity/integrity bound to the exact event payload;
 6. actor/principal and provenance attribution required by the applicable authority policy;
 7. relevant candidate, evaluation, authorization, publication or governance-revision identities;
-8. an idempotency key for retryable append requests;
+8. an idempotency key for retryable append requests (genesis/bootstrap records are governed by a separate anchor procedure and need not carry one);
 9. required rationale, assumptions, limitations and evidence references.
 
 A wall-clock timestamp MAY be recorded as descriptive metadata. It MUST NOT allocate positions, resolve concurrency or determine applicability.
 
 Encoding, canonicalization, digest/signature scheme and schema language remain implementation choices. The choices made MUST provide deterministic identity for the exact committed envelope and MUST be documented with versioning and migration rules.
+
+
+The genesis record MUST bind the journal-scope identity, the initial authority record/revision, the initial governance revision, and the initial event/schema semantics. Its provenance and trust anchor MUST be explicit and independently verifiable under the deployment's stated trust model. This specification does not select the bootstrap trust mechanism. A missing, ambiguous or unverifiable genesis yields `unknown` and MUST block normative append; it MUST NOT be reconstructed from a VCS branch or forge default.
+
+
+The selected integrity mechanism MUST make payload and predecessor substitution detectable under the documented threat model. The integrity identity alone MUST NOT be treated as proof of actor authenticity: principal/provenance attribution MUST be validated separately against the applicable authority mechanism. A deployment may use cryptographic commitments, trusted storage integrity, authenticated records, or a combination, but MUST document the guarantees and trust assumptions; no algorithm or suite is selected here.
+
+
+An idempotency key MUST be unique within its journal scope for as long as the corresponding event can remain authoritative. It MUST be bound to the exact append operation, including event type, event ID, expected head and payload identity. Reuse with the same request envelope returns the original receipt; reuse with any different envelope is `conflict`. Compaction, snapshots and projection rebuilds MUST preserve this lookup guarantee (or an equivalent non-reusable tombstone). Genesis/bootstrap records are governed by the separate genesis procedure and are exempt from ordinary append idempotency keys.
 
 ## 4. Compare-and-append and serialization
 
@@ -142,7 +154,7 @@ This specification complements [Specification 0006](0006-governance-revision-app
 
 Current TLA+ models cover separate bounded slices: applicability and temporal authority; compare-and-append publication; evaluator/exception/revocation controls; and journal crash/recovery/rollback safety. They are composable design evidence, not a single integrated implementation model. The journal-recovery model assumes upstream authorization and a single serialized writer; it does not prove multi-writer consensus, durable filesystem semantics, eventual recovery, adapter correctness, replica reconciliation or implementation refinement.
 
-References: [R-05 — TLA+ and TLC](../references.md#r-05), [R-22 — native Git and Pijul semantics](../references.md#r-22), [R-107 — GitHub Actions workflow semantics](../references.md#r-107).
+References: [R-05 — TLA+ and TLC](../references.md#r-05), [R-22 — native Git and Pijul semantics](../references.md#r-22), [R-142 — linearizability](../references.md#r-142), [R-143 — write-ahead logging and crash recovery](../references.md#r-143), [R-144 — idempotent retry semantics](../references.md#r-144).
 
 ## 12. Authority boundary
 

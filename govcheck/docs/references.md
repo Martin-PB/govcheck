@@ -115,3 +115,30 @@ Inclusion is descriptive, not adoption. A cited method or standard does not impl
 - **Primary source:** [Isabelle documentation](https://www.isabelle.in.tum.de/documentation.html)
 - **Use:** interactive theorem proving and formal specification.
 - **Limit:** results depend on the selected logic, theory imports, axioms and prover environment.
+
+
+## Journal canonique, concurrence et reprise
+
+<a id="r-142"></a>
+### R-142 — Linearizability: A Correctness Condition for Concurrent Objects
+- **Cited by:** [Specification 0007](specifications/0007-canonical-governance-journal-protocol.md)
+- **Primary source:** Maurice P. Herlihy and Jeannette M. Wing, “Linearizability: A Correctness Condition for Concurrent Objects,” *ACM Transactions on Programming Languages and Systems*, 12(3), 1990, pp. 463–492. [DOI](https://doi.org/10.1145/78969.78972) · [Author-hosted paper](https://www.cs.cmu.edu/~wing/publications/HerlihyWing90.pdf)
+- **Relevant concepts:** concurrent operations appear to take effect at one point between invocation and response while respecting a legal sequential specification.
+- **Use in GovCheck:** provides the formal concurrency concept behind the journal's single linearization point for compare-and-append.
+- **Limit:** linearizability is a correctness condition, not a storage implementation or a proof that a particular journal satisfies it.
+
+<a id="r-143"></a>
+### R-143 — ARIES write-ahead logging and transaction recovery
+- **Cited by:** [Specification 0007](specifications/0007-canonical-governance-journal-protocol.md)
+- **Primary source:** C. Mohan, Don Haderle, Bruce Lindsay, Hamid Pirahesh and Peter Schwarz, “ARIES: A Transaction Recovery Method Supporting Fine-Granularity Locking and Partial Rollbacks Using Write-Ahead Logging,” *ACM Transactions on Database Systems*, 17(1), 1992. [IBM Research publication](https://research.ibm.com/publications/aries-a-transaction-recovery-method-supporting-fine-granularity-locking-and-partial-rollbacks-using-write-ahead-logging)
+- **Relevant concepts:** write-ahead logging, durable transaction recovery, redo/undo and restart recovery.
+- **Use in GovCheck:** informs the distinction between volatile preparation, durable commit and reconstruction after interruption.
+- **Limit:** ARIES is a database recovery algorithm; citing it does not select a database, imply direct adoption, or prove the GovCheck journal's durability.
+
+<a id="r-144"></a>
+### R-144 — RFC 9110, HTTP Semantics: idempotent methods
+- **Cited by:** [Specification 0007](specifications/0007-canonical-governance-journal-protocol.md)
+- **Primary source:** [RFC 9110 §9.2.2 — Idempotent Methods](https://www.rfc-editor.org/rfc/rfc9110.html#section-9.2.2)
+- **Relevant concepts:** repeatable requests have the same intended effect as one request, enabling safe retry after a lost response when the operation semantics are idempotent.
+- **Use in GovCheck:** informs the protocol distinction between retrying an exact append request and accidentally creating a second normative event.
+- **Limit:** HTTP method semantics do not define GovCheck's idempotency-key namespace, journal retention or append protocol; those remain specified locally.

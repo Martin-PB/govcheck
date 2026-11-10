@@ -234,7 +234,7 @@ Le catalogue central des références est le registre canonique des sources. Cet
 - [R-92 — iStar 2.0](../references.fr.md#r-92)
 - [R-94–R-98 — Modèles sémantiques OMG, architecture, exigences et qualité ISO](../references.fr.md#r-94)
 - [R-102 — Famille W3C PROV](../references.fr.md#r-102)
-- [R-114 — Modélisation probabiliste, floue et à transitions](../references.fr.md#r-114) (cataloguée dans la PR de recherche parallèle #105 ; vérifier son intégration avant de considérer cette entrée présente sur la branche par défaut).
+- [R-114 — Modélisation probabiliste, floue et à transitions](https://github.com/Martin-PB/govcheck/blob/docs/research-assurance-dynamics-2026-11/docs/references.fr.md#r-114) (cataloguée dans la PR de recherche parallèle #105 ; vérifier son intégration avant de considérer cette entrée présente sur la branche par défaut).
 
 Le catalogue indique statut et limites. La présence d'une source ne vaut pas adoption. En particulier, SACM 2.4 Beta 1 est la cible d'ingénierie discutée pour la couverture sémantique et l'interopérabilité SACM, pas une affirmation que la bêta est une norme finale ni que SACM remplace le noyau GovCheck.
 

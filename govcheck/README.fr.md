@@ -23,6 +23,23 @@ La release du dépôt, celle du produit GovCheck et celle du package de gouverna
 
 L’historique de gouvernance propre à GovCheck (records d’architecture, ADR, délibérations) vit au niveau méta du dépôt GovCheck et n’est délibérément **pas** inclus dans ce package. Voir l’ADR 0003 dans le dépôt GovCheck.
 
+## Amorcer un dépôt existant (inspect / plan / apply)
+
+`govcheck/bootstrap.py` permet aussi d'adopter GovCheck dans un dépôt existant non vide sans rien détruire :
+
+    python3 govcheck/bootstrap.py inspect CIBLE [--out rapport.json]
+    python3 govcheck/bootstrap.py plan CIBLE [--capabilities check,docs] [--out plan.json]
+    python3 govcheck/bootstrap.py apply CIBLE [--capabilities check,docs] [--plan plan.json] [--out resultat.json]
+    python3 govcheck/bootstrap.py rollback CIBLE [--out resultat.json]
+
+- `inspect` rapporte l'identité du package (étiquette de version et empreinte SHA-256 de l'arborescence du package), indique si la cible existe, est vide et est un dépôt git, quelles parties du package sont déjà présentes et quels chemins entreraient en conflit. Aucune mutation de la cible.
+- `plan` produit un plan JSON déterministe d'actions (`create`, `identical`, `conflict`) sans effet de bord ; deux exécutions sur une cible inchangée donnent une sortie identique octet par octet.
+- `apply` n'écrit que les actions `create` : les fichiers existants ne sont jamais écrasés, les conflits sont préservés et signalés. Deux applications successives sont idempotentes (la seconde ne crée rien). Avec `--plan`, apply vérifie d'abord que le plan correspond toujours à la cible et échoue sinon (code de sortie 2) : seules les modifications revues sont appliquées.
+- L'identité du package est enregistrée dans un marqueur possédé par le package, `.govcheck-bootstrap.json`, à la racine de la cible (version, empreinte, fichiers installés avec leurs empreintes, conflits préservés). `rollback` supprime exactement les fichiers installés dont le contenu correspond encore à l'empreinte enregistrée, puis le marqueur : c'est le chemin de rollback documenté. La mise à niveau consiste à réexécuter `apply` avec un package plus récent : les fichiers modifiés par l'utilisateur ne sont jamais écrasés et apparaissent comme des conflits.
+- `--capabilities` sélectionne les parties du package à installer (`check`, `decisions`, `docs`, `formal`, `readme`, `scripts`, `workflows` ; par défaut : toutes).
+
+La forme historique `python3 govcheck/bootstrap.py DOSSIER_CIBLE` initialise toujours un dépôt vide et refuse les cibles non vides. Les tests unitaires sont dans `tests/test_govcheck_bootstrap.py`.
+
 ## Vérifier un dépôt (première tranche exécutable)
 
 `govcheck/check.py` est la première commande exécutable de GovCheck. Elle évalue un ensemble fixe de règles sur l’arborescence d’un dépôt et produit un rapport JSON déterministe, indépendant de la langue :

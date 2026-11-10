@@ -14,7 +14,7 @@ Ajouter une règle décidable `sources-present` à `govcheck/check.py` (tranche 
 2. Chaque enregistrement d'attestation dans `docs/attestations/*.json` doit porter une liste `sources` non vide de chaînes : les preuves sur lesquelles le relecteur s'est appuyé.
 3. La règle est décidable et fail-closed : sources absentes ou vides = `fail`. Quand il n'y a ni documents de décision ni attestations, la règle n'est pas applicable.
 
-Les fichiers `govcheck/decisions/TEMPLATE*` gagnent un placeholder Références pour que les dépôts cibles commencent conformes. L'ADR 0006 (branche docs/adr-0006-vcs-forge-portability, PR #93) a vu ses sources cataloguées R-109–R-113 lors de sa rédaction, ce qui est exactement le comportement que cette règle rend désormais obligatoire.
+Les fichiers `govcheck/decisions/TEMPLATE*` gagnent un placeholder Références pour que les dépôts cibles commencent conformes. L'ADR 0006 (branche docs/adr-0006-vcs-forge-portability, PR #93) a vu ses sources cataloguées en cinq nouvelles entrées lors de sa rédaction, ce qui est exactement le comportement que cette règle rend désormais obligatoire.
 
 ## Conséquences
 

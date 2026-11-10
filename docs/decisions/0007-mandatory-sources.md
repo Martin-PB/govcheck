@@ -14,7 +14,7 @@ Add a decidable `sources-present` rule to `govcheck/check.py` (slice 0.3.0):
 2. Every attestation record in `docs/attestations/*.json` must carry a non-empty `sources` list of strings: the evidence the reviewer relied on.
 3. The rule is decidable and fail-closed: missing or empty sources are `fail`. When no decision documents and no attestation records exist, the rule is not applicable.
 
-The `govcheck/decisions/TEMPLATE*` files gain a References placeholder so target repositories start compliant. ADR 0006 (branch docs/adr-0006-vcs-forge-portability, PR #93) had its sources catalogued as R-109–R-113 when it was written, which is exactly the behaviour this rule now enforces.
+The `govcheck/decisions/TEMPLATE*` files gain a References placeholder so target repositories start compliant. ADR 0006 (branch docs/adr-0006-vcs-forge-portability, PR #93) had its sources catalogued as five new entries when it was written, which is exactly the behaviour this rule now enforces.
 
 ## Consequences
 

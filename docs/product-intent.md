@@ -361,3 +361,7 @@ The following are proposed invariant statements for the impact analysis and subs
 This record is a detailed statement of product intent and a basis for architecture refactoring. It is not itself an ADR, a normative repository policy, an approved implementation plan or evidence that any capability exists. The current governance authority process remains applicable. The repository owner alone may approve changes to the product's normative direction under the current project arrangement.
 
 All future changes derived from this intent must preserve the distinction between owner decisions, design proposals, recommendations, external source claims, formal model results and implemented behavior.
+
+## Impact analysis
+
+See the companion [product-intent impact analysis](product-intent-impact-analysis.md) ([French](product-intent-impact-analysis.fr.md)) for the first reconciliation of this intent with existing ADRs, architecture records, specifications and product boundaries. It is a working audit, not an adoption decision.

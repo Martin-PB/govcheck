@@ -20,7 +20,7 @@ Init ==
   /\ replicaObservations = [r \in ReplicaIds |-> 0]
   /\ crashed = FALSE
 
-Head == journal[Len(journal)]
+JournalHead == journal[Len(journal)]
 HeadPosition == Len(journal) - 1
 ContentAt(position) == journal[position + 1].content
 
@@ -33,7 +33,7 @@ Prepare(eventId, revisionId, content, source) ==
   /\ ~\E i \in 1..Len(journal) :
        journal[i].eventId = eventId \/ journal[i].revisionId = revisionId
   /\ pending' = [eventId |-> eventId, revisionId |-> revisionId,
-                  predecessor |-> Head.revisionId, content |-> content,
+                  predecessor |-> JournalHead.revisionId, content |-> content,
                   kind |-> "change", source |-> source]
   /\ UNCHANGED <<journal, appliedPosition, replicaObservations, crashed>>
 
@@ -80,7 +80,7 @@ Rollback(eventId, revisionId, source, targetPosition) ==
   /\ source \in {"authority", "git", "pijul", "other"}
   /\ journal' = Append(journal,
        [position |-> HeadPosition + 1, eventId |-> eventId,
-        revisionId |-> revisionId, predecessor |-> Head.revisionId,
+        revisionId |-> revisionId, predecessor |-> JournalHead.revisionId,
         content |-> ContentAt(targetPosition), kind |-> "rollback", source |-> source])
   /\ UNCHANGED <<pending, appliedPosition, replicaObservations, crashed>>
 

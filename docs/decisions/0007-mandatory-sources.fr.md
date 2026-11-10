@@ -33,6 +33,6 @@ Les fichiers `govcheck/decisions/TEMPLATE*` gagnent un placeholder Références 
 - [R-03 — Branches protégées et contrôles obligatoires GitHub](../references.fr.md#r-03)
 - [R-06 — in-toto : intégrité de la chaîne d'approvisionnement logicielle](../references.fr.md#r-06)
 - [R-24 — W3C PROV-O](../references.fr.md#r-24)
-- [Intégrité du catalogue de références](reference-integrity.md)
+- [Intégrité du catalogue de références](../reference-integrity.md)
 - [ADR 0002 — placement de l'étude](0002-study-placement.fr.md)
 - Issues #33 (règle de recherche), #72 (corpus adversarial), #74 (statut des références), #77 (justification)

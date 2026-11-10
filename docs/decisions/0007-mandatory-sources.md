@@ -33,6 +33,6 @@ The `govcheck/decisions/TEMPLATE*` files gain a References placeholder so target
 - [R-03 — GitHub protected branches and required status checks](../references.md#r-03)
 - [R-06 — in-toto: software supply-chain integrity](../references.md#r-06)
 - [R-24 — W3C PROV-O](../references.md#r-24)
-- [Reference catalogue integrity](reference-integrity.md)
+- [Reference catalogue integrity](../reference-integrity.md)
 - [ADR 0002 — study placement](0002-study-placement.md)
 - Issues #33 (research rule), #72 (adversarial corpus), #74 (reference status), #77 (justification)

@@ -139,3 +139,17 @@
 - **Result:** SANY parse/semantic check passed; TLC reported no error. 84,307 states generated, 56,895 distinct states, zero remaining; complete graph depth 9. Eight configured invariants and temporal property `AppendOnly` passed.
 - **Report:** [Architecture 0032](../architecture/0032-canonical-publication-model-checking.md). Uploaded artifact ID `13763874296`, SHA-256 `eeb439ae60fa0c251a349d19cb89e65f7bd55aa856be29f86fd379aea3e83981`.
 - **Interpretation:** bounded model-checking evidence only for the exact finite model/configuration and toolchain. It is not theorem proof, implementation verification, or evidence for unbounded/distributed behavior. Normative adoption of the eleven arbitration choices remains pending.
+
+
+## WP-EVT-000011 — Governance controls model checked by TLC
+
+- **Subject:** `govcheck.governance-controls`
+- **Event type:** `bounded-formal-model-checking-completed`
+- **Recorded:** 2026-11-10
+- **Workflow:** GitHub Actions run [42825118727](https://github.com/Martin-PB/govcheck/actions/runs/42825118727), job `governance-controls / TLC — GovCheckGovernanceControls` (job ID `129860312738`).
+- **Checked PR head:** `86713a99574c085ee5a41a71e70f93ab7ce4a831`; CI merge checkout `1f387b8f6019db545ccd50d55fd9c7cc0d704d80`.
+- **Exact source identities:** module Git blob `b237fa3bc939c711f0510c4aeca1346c8e50264f`; configuration Git blob `9e8f48d409eeb31adaf22890bbb8ff90674aa96a`.
+- **Toolchain:** SANY 2.1; TLC 2.19; tla2tools v1.7.4 (SHA-256 `936a262061c914694dfd669a543be24573c45d5aa0ff20a8b96b23d01e050e88`); Temurin Java 17.0.21+9; four workers.
+- **Result:** 2,826,117 states generated, 1,026,484 distinct, zero remaining; complete graph depth 12. Nine invariants and temporal property `AppendOnly` passed; no error found.
+- **Report:** [Architecture 0033](../architecture/0033-governance-evaluator-exception-revocation-model.md). Uploaded artifact ID `13769345897`, SHA-256 `66e3537f1f2df50711436c8244d9406d8bc01714536f523a10fe075ab4b875eb`.
+- **Interpretation:** bounded model-checking evidence only for the exact finite model/configuration and toolchain. It does not prove implementation refinement, unbounded concurrency, durable storage, crash recovery, distributed behavior or normative adoption. The one-evaluation/one-authorization bound and other limits are explicit in Architecture 0033.

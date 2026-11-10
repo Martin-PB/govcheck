@@ -133,3 +133,16 @@ The previously checked [GovCheckGovernanceApplicability.tla](../../formal/tla/Go
 **The canonical-publication model has been parsed and checked by TLC.** The canonical-publication and original applicability models passed their configured TLC jobs; the repository-level verification record identifies the exact checked revisions and results. Architecture 0032 records the canonical model's exact checked identities and result: 84,307 generated states, 56,895 distinct, zero remaining; all eight invariants and `AppendOnly` passed. The earlier Architecture 0031 result remains specific to the original applicability model. Remaining formalization gaps include explicit stale-result/reconciliation records, durable journal storage and crash recovery, VCS adapter provenance and divergent replicas, evaluator identity and comparative replacement evaluation, dependency-complete staleness, revocation and historical requalification, exception lifecycle and non-derogable rules, distinct unknown/conflict resolution, rollback content restoration under a new revision, and atomic technical execution preserving three logical acts. Neither model establishes implementation or enforcement.
 
 The detailed selected outcomes and provenance are maintained in the [English](../decisions/0008-governance-applicability-arbitration-session.md) and [French](../decisions/0008-governance-applicability-arbitration-session.fr.md) session records.
+
+
+### 7.2 Evaluator, exception and revocation control model
+
+The separate bounded model [GovCheckGovernanceControls.tla](../../formal/tla/GovCheckGovernanceControls.tla), configured by [GovCheckGovernanceControls.cfg](../../formal/tla/GovCheckGovernanceControls.cfg), adds finite transition coverage for the selected A-04 through A-08 semantics:
+
+- only the evaluator recognized under the prior governance revision can create an authoritative evaluation; a proposed replacement can produce comparative shadow results only;
+- evaluations distinguish `Pass`, `Fail`, `Unknown` and `Conflict`; the latter two cannot authorize;
+- exceptions are explicit, justified, bounded by a logical expiry, revocable, limited to waivable requirements and revalidated at publication; non-derogable requirements cannot be excepted;
+- authority revocation is recorded at a later logical position and blocks later publication without deleting earlier decisions;
+- historical requalification appends a separate record referring to the original decision and governance revision.
+
+The model deliberately abstracts the authority as one designated prior evaluator/root regime, finite identifiers and requirements, and a bounded number of events. It does not model cryptographic identity, delegation, real-time clocks, durable storage, crash recovery, distributed replicas, or a complete executable exception-risk-acceptance record. It is not an implementation or normative-adoption claim. The exact model/configuration passed SANY 2.1 and TLC 2.19: 2,826,117 states generated, 1,026,484 distinct, zero remaining, depth 12; all nine invariants and `AppendOnly` passed. See [Architecture 0033](../architecture/0033-governance-evaluator-exception-revocation-model.md) for exact model/configuration identities and limits.

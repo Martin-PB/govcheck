@@ -29,6 +29,7 @@ English is the default language. Each record has a French counterpart. The bilin
 - [0030 — Repository-backed governed work portfolio and recoverable revision history](0030-repository-backed-work-portfolio-and-recoverable-history.md) · [Français](0030-repository-backed-work-portfolio-and-recoverable-history.fr.md)
 - [0031 — First TLC execution of the governance-applicability model](0031-first-tlc-governance-applicability.md) · [Français](0031-first-tlc-governance-applicability.fr.md)
 - [0032 — Canonical publication model-checking report](0032-canonical-publication-model-checking.md) · [Français](0032-canonical-publication-model-checking.fr.md)
+- [0033 — Governance evaluator, exception and revocation control model](0033-governance-evaluator-exception-revocation-model.md) · [Français](0033-governance-evaluator-exception-revocation-model.fr.md)
 
 Architecture 0028 defines the portfolio lifecycle and the issue-tracker boundary. Architecture 0030 adds the repository-backed registry, stable work-item identity, append-preserving logical events, native VCS revision binding, migration rules and explicit limitations of the initial history/recovery mechanism. Neither record claims that a registry engine, tamper-proof journal, automatic adapter synchronization or enforcement service is implemented.
 

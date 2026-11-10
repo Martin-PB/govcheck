@@ -107,7 +107,7 @@ Spec == Init /\ [][Next]_vars /\ WF_vars(Recover)
 TypeOK ==
   /\ journal \in Seq([position : Nat, eventId : EventIds \cup {"genesis"},
        revisionId : RevisionIds \cup {"rev0"},
-       predecessor : RevisionIds \cup {"NoRevision"}, content : Contents,
+       predecessor : RevisionIds \cup {"NoRevision", "rev0"}, content : Contents,
        kind : {"genesis", "change", "rollback"},
        source : {"authority", "git", "pijul", "other"}])
   /\ pending \in [status : {"None", "Prepared"}, eventId : EventIds,

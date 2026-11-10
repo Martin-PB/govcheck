@@ -49,7 +49,16 @@ This separate bounded model links each evaluation to the governance revision eff
 - [TLC configuration](../../formal/tla/GovCheckCanonicalPublication.cfg)
 - [Stable artifact catalogue entry](../../formal/artifacts.json) — `govcheck.canonical-publication`
 
-This bounded design model separates candidate evaluation, authorization and publication. Authorization is bound to the evaluated head revision and position; publication appends only while that base remains current. It expresses revision-identity uniqueness, predecessor continuity, one publication per canonical predecessor, authorization/evaluation binding, publication authorization and stale-base exclusion. The TLC configuration also requests the append-only temporal property. **This model has not yet been parsed or checked by TLC.** It does not model VCS replicas/adapters, evaluator replacement, revocation, exceptions, unknown/conflict resolution, rollback content restoration, crash recovery or implementation refinement. Its presence in the source tree is not verification evidence.
+This bounded design model separates candidate evaluation, authorization and publication. Authorization is bound to the evaluated head revision and position; publication appends only while that base remains current. It expresses revision-identity uniqueness, predecessor continuity, one publication per canonical predecessor, authorization/evaluation binding, publication authorization and stale-base exclusion. The TLC configuration also requests the append-only temporal property. **Verification status corrected:** the exact model/configuration passed TLC; see Architecture 0032 for the checked revision and finite result. Remaining implementation gaps are not covered by that model.
+
+
+## Governance evaluator and exception controls
+
+- [TLA+ module](../../formal/tla/GovCheckGovernanceControls.tla)
+- [TLC configuration](../../formal/tla/GovCheckGovernanceControls.cfg)
+- [Stable artifact catalogue](../../formal/artifacts.json) — `govcheck.governance-controls`
+
+This bounded control model makes the prior evaluator the sole authoritative evaluator while a proposed replacement is represented only by comparative/shadow results. It distinguishes `Pass`, `Fail`, `Unknown` and `Conflict`; only a pass or a fail covered by a currently valid, explicitly granted exception for a waivable requirement can be authorized. Non-derogable requirements cannot be excepted, and exception validity is checked again at publication. Authority revocation is recorded at a later logical position and blocks subsequent publication; prior decisions remain append-only and can receive separate requalification records. The model is a finite abstraction and does not establish durable journal storage, distributed consensus, VCS adapter correctness, crash recovery or implementation refinement.
 
 ## Shared release evidence
 

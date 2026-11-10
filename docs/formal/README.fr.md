@@ -69,3 +69,13 @@ La partition des vérifications du dépôt et son modèle formel de routage sont
 ## Registre de références
 
 Pour les fondements académiques et industriels, notamment les limites du model checking et la distinction entre provenance, preuve et autorité normative, voir le [registre GovCheck des références sur la gouvernance et l'assurance](../references.fr.md) et sa [version anglaise](../references.md).
+
+
+## Durabilité et reprise du journal canonique
+
+- [Architecture 0034 — modèle et limites](../architecture/0034-canonical-journal-recovery-model.fr.md) · [English](../architecture/0034-canonical-journal-recovery-model.md)
+- [Module TLA+](../../formal/tla/GovCheckJournalRecovery.tla)
+- [Configuration TLC](../../formal/tla/GovCheckJournalRecovery.cfg)
+- [Catalogue stable des artefacts](../../formal/artifacts.json) — `govcheck.journal-recovery`
+
+Le modèle distingue l'état volatil en attente du journal durable append-only. L'ajout durable constitue le point de commit ; la reprise rejoue jusqu'à la tête durable. Un rollback ajoute un nouvel événement et une nouvelle révision dont le contenu est restauré depuis une position antérieure. Les observations de répliques Git/Pijul sont des positions passives de provenance/réplication et ne peuvent établir l'ordre normatif. Le modèle est borné et ne spécifie pas un moteur de stockage ni ne prouve la sûreté après panne d'une implémentation. La vérification TLC est en attente de la fin du workflow enregistré.

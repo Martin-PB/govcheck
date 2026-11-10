@@ -258,7 +258,7 @@ TypeOK ==
       [candidate : Candidates, evaluator : {ShadowEvaluator},
        result : {"Pass", "Fail", "Unknown", "Conflict"}, comparedAt : Nat]
   /\ exceptions \in [ExceptionIds ->
-      [status : {"Unused"}, requirement : Requirements, reason : {"None", "OperationalNeed", "TemporaryConstraint"},
+      [status : {"Unused", "Active"}, requirement : Requirements, reason : {"None", "OperationalNeed", "TemporaryConstraint"},
        grantedAt : Nat, expiresAt : Nat, statusDetail : {"Unused", "Active", "Revoked"}]]
   /\ authorizations \in [AuthorizationIds ->
       [status : {"Unused", "Authorized"}, evaluationId : EvaluationIds,
@@ -274,12 +274,12 @@ TypeOK ==
        outcome : {"Confirmed", "Disputed", "Invalidated"}, atPosition : Nat])
 
 HistoriesAreAppendOnly ==
-  /\\ Len(journal') >= Len(journal)
-  /\\ SubSeq(journal', 1, Len(journal)) = journal
-  /\\ Len(decisions') >= Len(decisions)
-  /\\ SubSeq(decisions', 1, Len(decisions)) = decisions
-  /\\ Len(requalifications') >= Len(requalifications)
-  /\\ SubSeq(requalifications', 1, Len(requalifications)) = requalifications
+  /\ Len(journal') >= Len(journal)
+  /\ SubSeq(journal', 1, Len(journal)) = journal
+  /\ Len(decisions') >= Len(decisions)
+  /\ SubSeq(decisions', 1, Len(decisions)) = decisions
+  /\ Len(requalifications') >= Len(requalifications)
+  /\ SubSeq(requalifications', 1, Len(requalifications)) = requalifications
 
 AppendOnly == [][HistoriesAreAppendOnly]_vars
 

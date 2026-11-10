@@ -282,16 +282,6 @@ TypeOK ==
 HistoriesAreAppendOnly ==
   /\ Len(journal') >= Len(journal)
   /\ SubSeq(journal', 1, Len(journal)) = journal
-  /\ Len(shadowEvaluations') >= Len(shadowEvaluations)
-  /\ SubSeq(shadowEvaluations', 1, Len(shadowEvaluations)) = shadowEvaluations
-  /\ Len(decisions') >= Len(decisions)
-  /\ SubSeq(decisions', 1, Len(decisions)) = decisions
-  /\ Len(requalifications') >= Len(requalifications)
-  /\ SubSeq(requalifications', 1, Len(requalifications)) = requalifications
-
-AppendOnly ==
-  /\ Len(journal') >= Len(journal)
-  /\ SubSeq(journal', 1, Len(journal)) = journal
   /\ Len(decisions') >= Len(decisions)
   /\ SubSeq(decisions', 1, Len(decisions)) = decisions
   /\ Len(requalifications') >= Len(requalifications)

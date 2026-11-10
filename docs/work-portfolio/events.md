@@ -195,3 +195,25 @@
 - **Authority boundary:** the specification elaborates the eleven owner-selected design inputs without re-arbitration. It is a proposal only; no normative adoption, database/serialization/crypto/consensus choice, production implementation or issue closure is inferred.
 - **Related records:** Specifications 0006/0007; Architectures 0032–0034; [R-05](../references.md#r-05) and [R-22](../references.md#r-22).
 - **Known limits:** protocol semantics and conformance targets only. No storage engine, adapter, executable conformance harness or implementation refinement is delivered by this event.
+
+
+## WP-EVT-000014 — Journal protocol review clarifications prepared
+
+- **Subject:** `govcheck.spec.canonical-journal-protocol`
+- **Event type:** `technical-review-clarifications-proposed`
+- **Recorded:** 2026-11-10
+- **Candidate:** [PR #104](https://github.com/Martin-PB/govcheck/pull/104), branch `work/issue-86-journal-protocol-review-fixes`, stacked on PR #100.
+- **Scope:** clarify stable journal-scope identity without choosing its repository/domain cardinality; bind genesis to the initial authority/governance baseline and explicit trust anchor; state algorithm-neutral integrity/authenticity requirements; define idempotency-key scope, exact-request binding, retention and genesis exception; add R-142–R-144 on linearizability, write-ahead logging/recovery and idempotent retries; correct Architecture 0034's recovery-fairness wording and section numbering in EN/FR.
+- **Disposition:** proposed technical/documentary clarification only. Specification 0007 remains proposed; the eleven owner-selected outcomes remain pending formal normative adoption. No storage engine, cryptographic suite or consensus protocol is selected.
+- **Related records:** PR #100; PR #104; Specification 0007 EN/FR; Architecture 0034 EN/FR; references R-142–R-144.
+- **Known limits:** no new TLA+ model or implementation is added; no production journal, genesis mechanism, adapter, durability guarantee or implementation refinement is claimed.
+
+## WP-EVT-000015 — Duplicate portfolio event identifier detected
+
+- **Subject:** `govcheck.work-portfolio`
+- **Event type:** `append-only-journal-integrity-observation`
+- **Recorded:** 2026-11-10
+- **Observation:** `WP-EVT-000012` appears twice verbatim in this journal, with the same subject, workflow run, model/configuration identities and artifact digest.
+- **Interpretation:** the two textual occurrences describe one model-checking event, not two independent events. The duplication is a journal-document integrity defect; it does not alter the underlying TLC result or its provenance.
+- **Disposition:** prior entries are preserved under the append-only policy. This new event records the correction without deleting or rewriting either occurrence. Future event-ID uniqueness checks should detect this class of duplication.
+- **Related records:** WP-EVT-000012; Architecture 0034; PR #99.

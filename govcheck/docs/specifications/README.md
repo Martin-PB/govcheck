@@ -23,3 +23,4 @@ The next engineering phase should derive executable conformance tests and formal
 ## External references
 
 See the [package reference catalogue](../references.md) for external sources, their use and limitations. Inclusion does not imply adoption or implementation.
+The journal protocol in Specification 0007 is a proposed, technology-neutral contract for review. It does not select a storage engine or VCS adapter and does not claim implementation or normative adoption.

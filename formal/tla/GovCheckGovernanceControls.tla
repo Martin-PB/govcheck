@@ -273,13 +273,15 @@ TypeOK ==
        originalGovernanceRevision : GovernanceRevisions,
        outcome : {"Confirmed", "Disputed", "Invalidated"}, atPosition : Nat])
 
-AppendOnly ==
-  /\ Len(journal') >= Len(journal)
-  /\ SubSeq(journal', 1, Len(journal)) = journal
-  /\ Len(decisions') >= Len(decisions)
-  /\ SubSeq(decisions', 1, Len(decisions)) = decisions
-  /\ Len(requalifications') >= Len(requalifications)
-  /\ SubSeq(requalifications', 1, Len(requalifications)) = requalifications
+HistoriesAreAppendOnly ==
+  /\\ Len(journal') >= Len(journal)
+  /\\ SubSeq(journal', 1, Len(journal)) = journal
+  /\\ Len(decisions') >= Len(decisions)
+  /\\ SubSeq(decisions', 1, Len(decisions)) = decisions
+  /\\ Len(requalifications') >= Len(requalifications)
+  /\\ SubSeq(requalifications', 1, Len(requalifications)) = requalifications
+
+AppendOnly == [][HistoriesAreAppendOnly]_vars
 
 UniquePublishedRevisions ==
   \A i, j \in 1..Len(journal) :

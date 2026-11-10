@@ -43,3 +43,7 @@ PR #21 has been merged and records the bootstrap authority baseline. ADR 0004 is
 ## Status
 
 Architecture records are proposals/design records unless stated otherwise. They are not evidence of implemented controls, verified security properties or technology adoption. Read each record's status, scope and limits.
+
+## Product-intent reconciliation
+
+The [product-intent impact analysis](../product-intent-impact-analysis.md) ([French](../product-intent-impact-analysis.fr.md)) maps the expanded product direction to existing architecture/specification records and identifies the remaining repository-wide audit. It is a working analysis, not an adoption event.

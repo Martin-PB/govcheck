@@ -6,7 +6,7 @@ La présence d'une référence est descriptive, pas une adoption. Citer une mét
 
 <a id="r-05"></a>
 ## R-05 — TLA+ et TLC
-- **Cité par :** [spécification 0005](specifications/0005-assurance-model.fr.md), [spécification 0006](specifications/0006-governance-revision-applicability.fr.md), [README des modèles formels](formal/README.fr.md)
+- **Cité par :** [spécification 0005](specifications/0005-assurance-model.fr.md), [spécification 0006](specifications/0006-governance-revision-applicability.fr.md), [spécification 0007](specifications/0007-canonical-governance-journal-protocol.fr.md), [README des modèles formels](formal/README.fr.md)
 
 - **Sources primaires :** [Publications TLA de Lamport](https://www.microsoft.com/en-us/research/people/lamport/publications/) · [Projet et documentation TLA+](https://lamport.azurewebsites.net/tla/tla.html) · [DOI de l'article TLA](https://doi.org/10.1145/177492.177726)
 - **Utilité :** spécifications par transitions d'états, invariants, propriétés temporelles et model checking.
@@ -38,7 +38,7 @@ La présence d'une référence est descriptive, pas une adoption. Citer une mét
 
 <a id="r-22"></a>
 ## R-22 — Sémantiques natives de Git et Pijul
-- **Cité par :** [README des modèles formels](formal/README.fr.md), [spécification 0006](specifications/0006-governance-revision-applicability.fr.md)
+- **Cité par :** [README des modèles formels](formal/README.fr.md), [spécification 0006](specifications/0006-governance-revision-applicability.fr.md), [spécification 0007](specifications/0007-canonical-governance-journal-protocol.fr.md)
 
 - **Sources primaires :** [Documentation Git](https://git-scm.com/docs) · [Théorie Pijul](https://pijul.org/manual/theory) · [Canaux Pijul](https://pijul.org/manual/workflows/channels) · [Conflits Pijul](https://pijul.org/manual/conflicts.html)
 - **Utilité :** préserver les sémantiques snapshot/commit de Git et celles de graphe de changements/patches, canaux et conflits de Pijul.

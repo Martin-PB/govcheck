@@ -73,7 +73,7 @@ Missing authority, ambiguous history, unknown applicability, revoked authority, 
 
 ### 3.6 Authority and separation of concerns
 
-Architecture 0023 currently records one root principal, `Martin-PB`, and explicitly accepts that the same principal may propose and authorize a change. This specification does not change that regime.
+Architecture 0023 currently records one root principal, the configured root principal, and explicitly accepts that the same principal may propose and authorize a change. This specification does not change that regime.
 
 Implementations MUST distinguish proposer/producer, technical reviewer/evaluator, normative authorizer and publisher/executor. Where proposer and authorizer may be the same principal, the record MUST disclose this. It MUST NOT claim independent approval or two-person separation. Repository administration, merge permission and CI execution are not normative authority.
 

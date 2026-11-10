@@ -153,3 +153,33 @@
 - **Result:** 2,826,117 states generated, 1,026,484 distinct, zero remaining; complete graph depth 12. Nine invariants and temporal property `AppendOnly` passed; no error found.
 - **Report:** [Architecture 0033](../architecture/0033-governance-evaluator-exception-revocation-model.md). Uploaded artifact ID `13769345897`, SHA-256 `66e3537f1f2df50711436c8244d9406d8bc01714536f523a10fe075ab4b875eb`.
 - **Interpretation:** bounded model-checking evidence only for the exact finite model/configuration and toolchain. It does not prove implementation refinement, unbounded concurrency, durable storage, crash recovery, distributed behavior or normative adoption. The one-evaluation/one-authorization bound and other limits are explicit in Architecture 0033.
+
+
+## WP-EVT-000012 — Canonical journal recovery and rollback model checked
+
+- **Subject:** `govcheck.journal-recovery`
+- **Event type:** `bounded-formal-model-checking-completed`
+- **Recorded:** 2026-11-10
+- **Workflow:** GitHub Actions run [42848709804](https://github.com/Martin-PB/govcheck/actions/runs/42848709804), job `journal-recovery / TLC — GovCheckJournalRecovery` (job ID `129943126960`).
+- **Checked PR head:** `a5c9845b1df7a36c9b1f23af0a28bdabdd4300f3`.
+- **Exact source identities:** module Git blob `f99b33f510f3350f7ee1dc2ecc4b13a216d64ab6`; configuration Git blob `43102a4fc3c17a0656ccfe71d34642457d85737a`.
+- **Toolchain:** SANY 2.1; TLC 2.19; tla2tools v1.7.4 (SHA-256 `936a262061c914694dfd669a543be24573c45d5aa0ff20a8b96b23d01e050e88`); Temurin Java 17.0.21+9; four workers.
+- **Result:** 178,549 states generated, 38,434 distinct, zero remaining; complete graph depth 9. Six invariants and temporal property `AppendOnly` passed.
+- **Report:** [Architecture 0034](../architecture/0034-canonical-journal-recovery-model.md). Uploaded artifact ID `13778403717`, SHA-256 `0fe3148982524a25336674718505b02fd786953bd000d9b06ae016ec4987d00b`.
+- **Scope/limits:** finite two-event trace with one serialized writer, one durable journal, crash-before/after-commit transitions, recovery-to-head action, rollback restoring earlier content under a new event/revision, and passive Git/Pijul replica observations. This is bounded safety/model-checking evidence only; authorization is abstracted by upstream models, and eventual recovery, storage-engine durability, torn writes, multi-writer consensus, divergent-replica reconciliation and implementation refinement are not established.
+- **Disposition:** technical model-checking evidence; no implementation claim, normative adoption or issue closure.
+
+
+## WP-EVT-000012 — Canonical journal recovery and rollback model checked
+
+- **Subject:** `govcheck.journal-recovery`
+- **Event type:** `bounded-formal-model-checking-completed`
+- **Recorded:** 2026-11-10
+- **Workflow:** GitHub Actions run [42848709804](https://github.com/Martin-PB/govcheck/actions/runs/42848709804), job `journal-recovery / TLC — GovCheckJournalRecovery` (job ID `129943126960`).
+- **Checked PR head:** `a5c9845b1df7a36c9b1f23af0a28bdabdd4300f3`.
+- **Exact source identities:** module Git blob `f99b33f510f3350f7ee1dc2ecc4b13a216d64ab6`; configuration Git blob `43102a4fc3c17a0656ccfe71d34642457d85737a`.
+- **Toolchain:** SANY 2.1; TLC 2.19; tla2tools v1.7.4 (SHA-256 `936a262061c914694dfd669a543be24573c45d5aa0ff20a8b96b23d01e050e88`); Temurin Java 17.0.21+9; four workers.
+- **Result:** 178,549 states generated, 38,434 distinct, zero remaining; complete graph depth 9. Six invariants and temporal property `AppendOnly` passed.
+- **Report:** [Architecture 0034](../architecture/0034-canonical-journal-recovery-model.md). Uploaded artifact ID `13778403717`, SHA-256 `0fe3148982524a25336674718505b02fd786953bd000d9b06ae016ec4987d00b`.
+- **Scope/limits:** finite two-event trace with one serialized writer, one durable journal, crash-before/after-commit transitions, recovery-to-head action, rollback restoring earlier content under a new event/revision, and passive Git/Pijul replica observations. This is bounded safety/model-checking evidence only; authorization is abstracted by upstream models, and eventual recovery, storage-engine durability, torn writes, multi-writer consensus, divergent-replica reconciliation and implementation refinement are not established.
+- **Disposition:** technical model-checking evidence; no implementation claim, normative adoption or issue closure.

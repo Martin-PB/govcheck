@@ -42,3 +42,9 @@ Le [catalogue unique des références](../references.fr.md) ([English](../refere
 ## Statut
 
 Les documents d'architecture sont des propositions/mémoires de conception, sauf indication contraire dans leur statut individuel. Ils ne prouvent ni contrôles implémentés, ni propriétés de sécurité vérifiées, ni adoption technologique. Lire le statut, le périmètre et les limites de chaque document.
+
+
+## Architecture 0034 — Reprise du journal canonique
+
+- [Architecture 0034 — Durabilité, reprise et rollback du journal canonique](0034-canonical-journal-recovery-model.fr.md)
+- [English version](0034-canonical-journal-recovery-model.md)

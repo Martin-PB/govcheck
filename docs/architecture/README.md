@@ -44,3 +44,9 @@ PR #21 has been merged and records the bootstrap authority baseline. ADR 0004 is
 ## Status
 
 Architecture records are proposals/design records unless stated otherwise. They are not evidence of implemented controls, verified security properties or technology adoption. Read each record's status, scope and limits.
+
+
+## Architecture 0034 — Canonical journal recovery
+
+- [Architecture 0034 — Canonical journal durability, recovery and rollback](0034-canonical-journal-recovery-model.md)
+- [French version](0034-canonical-journal-recovery-model.fr.md)

@@ -33,3 +33,8 @@ Les issues #40 et #78–#85 restent ouvertes comme vues de navigation/coordinati
 La priorité, l'ouverture, l'assignation, la colonne Projects et la relation parent/enfant ne confèrent jamais d'autorisation. Le registre du dépôt est l'autorité documentaire ; une modification GitHub ne le remplace pas silencieusement.
 
 Les modifications du registre doivent passer par une branche/canal de changement, une revue d'un candidat exact et un événement ajouté au journal. Le journal est append-only par politique, mais son application automatique, la réplication indépendante et les protections anti-altération ne sont pas encore implémentées.
+
+
+## Issue #86 — mise à jour de l'avancement technique — 2026-11-10
+
+Les onze choix sélectionnés par l'autorité racine restent des entrées techniques arrêtées ; aucune nouvelle délibération ni adoption normative n'est impliquée. La PR #98 ajoute le modèle borné des évaluateurs, exceptions et révocation (Architecture 0033). La PR #99 ajoute le modèle distinct de durabilité, reprise et rollback du journal canonique (Architecture 0034) : le modèle fini exact a réussi SANY/TLC avec 178 549 états générés / 38 434 distincts, zéro restant, six invariants et `AppendOnly` (WP-EVT-000012). Ces résultats n'établissent ni l'implémentation ni la durabilité en production. Restent notamment la conception et l'implémentation réelles du journal/persistance, l'intégration compare-and-append, les sémantiques de stockage résistantes aux pannes, les adaptateurs de provenance Git/Pijul et la réconciliation des répliques divergentes, les tests de conformité exécutables et les éléments de raffinement. #86 reste ouverte.

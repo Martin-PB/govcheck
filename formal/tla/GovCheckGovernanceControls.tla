@@ -6,7 +6,7 @@ CONSTANTS
   InitialRevision, GovernanceRevisions, Candidates, EvaluationIds,
   AuthorizationIds, ExceptionIds, Requirements, WaivableRequirements,
   NonDerogableRequirements, Contents, ContentA, ContentB,
-  WaivableRequirement, NonDerogableRequirement
+  WaivableRequirement, NonDerogableRequirement, NoRevision, NoException, NotRevoked
 
 ASSUME RootPrincipal \in Principals
 ASSUME PriorEvaluator \in Principals
@@ -43,20 +43,20 @@ UnusedException ==
 UnusedAuthorization ==
   [status |-> "Unused", evaluationId |-> CHOOSE e \in EvaluationIds : TRUE,
    baseRevision |-> InitialRevision, basePosition |-> 0,
-   exceptionId |-> "NoException"]
+   exceptionId |-> NoException]
 
 Init ==
   /\ head = InitialRevision
   /\ position = 0
   /\ journal = <<[kind |-> "Genesis", revision |-> InitialRevision,
-                   predecessor |-> "NoRevision", content |-> CHOOSE c \in Contents : TRUE,
+                   predecessor |-> NoRevision, content |-> CHOOSE c \in Contents : TRUE,
                    position |-> 0]>>
   /\ evaluations = [e \in EvaluationIds |-> UnusedEvaluation]
   /\ shadowEvaluations = {}
   /\ exceptions = [x \in ExceptionIds |-> UnusedException]
   /\ authorizations = [a \in AuthorizationIds |-> UnusedAuthorization]
   /\ authorityRevoked = FALSE
-  /\ revocationPosition = "NotRevoked"
+  /\ revocationPosition = NotRevoked
   /\ decisions = <<>>
   /\ requalifications = <<>>
 
@@ -150,7 +150,7 @@ Authorize(evaluationId, authorizationId, exceptionId) ==
          evaluationId |-> evaluationId,
          baseRevision |-> head, basePosition |-> position,
          exceptionId |-> IF evaluations[evaluationId].result = "Pass"
-                         THEN "NoException" ELSE exceptionId]]
+                         THEN NoException ELSE exceptionId]]
   /\ UNCHANGED <<head, position, journal, evaluations, shadowEvaluations,
                   exceptions, authorityRevoked, revocationPosition,
                   decisions, requalifications>>
@@ -175,7 +175,7 @@ Publish(authorizationId, newRevision) ==
   /\ ~authorityRevoked
   /\ authorizations[authorizationId].baseRevision = head
   /\ authorizations[authorizationId].basePosition = position
-  /\ (authorizations[authorizationId].exceptionId = "NoException" \/
+  /\ (authorizations[authorizationId].exceptionId = NoException \/
        ExceptionUsable(authorizations[authorizationId].exceptionId,
          evaluations[authorizations[authorizationId].evaluationId].requirement))
   /\ newRevision \in GovernanceRevisions

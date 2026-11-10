@@ -19,7 +19,7 @@ The finite model contains a durable append-only journal, a volatile pending reco
 
 Replica observations are constrained to positions that exist in the journal; they cannot append, reorder, select or advance the normative head. A Git/Pijul observation is therefore provenance/replication state, not governance publication.
 
-## 3. Checked properties intended
+## 3. Checked properties
 
 - `TypeOK`: state values remain within the declared finite domains.
 - `AppendOnly`: every journal transition preserves the prior journal as an exact prefix.

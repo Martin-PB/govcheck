@@ -19,7 +19,7 @@ Le modèle fini contient un journal durable append-only, un enregistrement en at
 
 Les observations des répliques sont limitées aux positions présentes dans le journal ; elles ne peuvent ni ajouter, ni réordonner, ni sélectionner, ni faire avancer la tête normative. Une observation Git/Pijul relève donc de la provenance ou de la réplication, pas de la publication de gouvernance.
 
-## 3. Propriétés visées
+## 3. Propriétés vérifiées
 
 - `TypeOK` : les valeurs d'état restent dans les domaines finis déclarés.
 - `AppendOnly` : chaque transition conserve le journal antérieur comme préfixe exact.

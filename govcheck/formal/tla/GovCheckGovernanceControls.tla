@@ -5,8 +5,8 @@ CONSTANTS
   Principals, RootPrincipal, PriorEvaluator, ShadowEvaluator,
   InitialRevision, GovernanceRevisions, Candidates, EvaluationIds,
   AuthorizationIds, ExceptionIds, Requirements, WaivableRequirements,
-  NonDerogableRequirements, Contents, CandidateContent, CandidateRequirement,
-  RevisionsContent
+  NonDerogableRequirements, Contents, ContentA, ContentB,
+  WaivableRequirement, NonDerogableRequirement
 
 ASSUME RootPrincipal \in Principals
 ASSUME PriorEvaluator \in Principals
@@ -25,6 +25,9 @@ vars ==
   <<head, position, journal, evaluations, shadowEvaluations,
     exceptions, authorizations, authorityRevoked, revocationPosition,
     decisions, requalifications>>
+
+CandidateRequirement(candidate) ==
+  IF candidate = ContentB THEN WaivableRequirement ELSE NonDerogableRequirement
 
 UnusedEvaluation ==
   [status |-> "Unused", candidate |-> CHOOSE c \in Candidates : TRUE,
@@ -67,7 +70,7 @@ Evaluate(candidate, evaluationId, result) ==
        ![evaluationId] = [status |-> "Ready", candidate |-> candidate,
          evaluator |-> PriorEvaluator, baseRevision |-> head,
          basePosition |-> position, result |-> result,
-         requirement |-> CandidateRequirement[candidate]]]
+         requirement |-> CandidateRequirement(candidate)]]
   /\ UNCHANGED <<head, position, journal, shadowEvaluations, exceptions,
                   authorizations, authorityRevoked, revocationPosition,
                   decisions, requalifications>>
@@ -183,7 +186,7 @@ Publish(authorizationId, newRevision) ==
   /\ journal' = Append(journal,
        [kind |-> "Publication", revision |-> newRevision,
         predecessor |-> head,
-        content |-> CandidateContent[evaluations[authorizations[authorizationId].evaluationId].candidate],
+        content |-> evaluations[authorizations[authorizationId].evaluationId].candidate,
         position |-> position + 1])
   /\ decisions' = Append(decisions,
        [kind |-> "AuthorizedPublication",

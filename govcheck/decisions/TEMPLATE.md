@@ -7,3 +7,7 @@
 ## Decision
 
 ## Consequences
+
+## References
+
+- (at least one source link: reference-catalogue anchor or external URL; mandatory, see ADR 0007)

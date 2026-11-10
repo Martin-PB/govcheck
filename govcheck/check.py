@@ -23,7 +23,7 @@ import sys
 from pathlib import Path
 
 TOOL = "govcheck"
-VERSION = "0.2.0-slice"
+VERSION = "0.3.0-slice"
 
 ANCHOR_RE = re.compile(r'<a id="r-(\d{2,3})"></a>', re.I)
 MENTION_RE = re.compile(r"\bR-(\d{2,3})\b")
@@ -32,6 +32,17 @@ REF_LINK_RE = re.compile(r"\[[^\]]*\]\(([^)]*references(?:\.fr)?\.md#r-(\d{2,3})
 LICENSE_NAMES = ("LICENSE", "LICENSE.md", "LICENCE", "LICENCE.md")
 CATALOGUES = ("docs/references.md", "docs/references.fr.md")
 ATTESTATION_DIR = "docs/attestations"
+DECISIONS_DIR = "docs/decisions"
+GUIDE_BASENAMES = ("README", "TEMPLATE")
+
+REFERENCES_HEADING_RE = re.compile(
+    r"^##[ \t]+(References|Bibliographic references|R\u00e9f\u00e9rences|R\u00e9f\u00e9rences bibliographiques)[ \t]*$",
+    re.I | re.M,
+)
+SOURCE_LINK_RE = re.compile(
+    r"\[[^\]]*\]\(([^)]*(?:references(?:\.fr)?\.md#r-\d{2,3}|https?://)[^)]*)\)",
+    re.I,
+)
 
 
 class Ctx:
@@ -156,6 +167,52 @@ def load_attestations(ctx: Ctx):
     return records
 
 
+
+def _is_guide_file(name: str) -> bool:
+    base = name[:-6] if name.endswith(".fr.md") else name[:-3]
+    return base.upper().startswith(GUIDE_BASENAMES)
+
+
+def rule_sources_present(ctx: Ctx):
+    """Decisions and attestations must carry their sources.
+
+    Every non-guide docs/decisions/*.md must contain a References/R\u00e9f\u00e9rences
+    heading followed, before the next heading, by at least one source link
+    (a reference-catalogue anchor or an external URL). Every attestation
+    record must carry a non-empty "sources" list of strings.
+    """
+    problems = []
+    checked = 0
+    d = ctx.tree / DECISIONS_DIR
+    if d.is_dir():
+        for p in sorted(d.iterdir()):
+            if p.suffix != ".md" or not p.is_file() or _is_guide_file(p.name):
+                continue
+            checked += 1
+            text = p.read_text(encoding="utf-8")
+            m = REFERENCES_HEADING_RE.search(text)
+            if not m:
+                problems.append(p.name + ": no References/R\u00e9f\u00e9rences section heading")
+                continue
+            section = text[m.end():]
+            nxt = re.search(r"^##[ \t]", section, re.M)
+            if nxt:
+                section = section[: nxt.start()]
+            if not SOURCE_LINK_RE.search(section):
+                problems.append(p.name + ": the references section contains no source link (catalogue anchor or external URL)")
+    att_checked = 0
+    for rec in load_attestations(ctx):
+        att_checked += 1
+        srcs = rec.get("sources")
+        if not isinstance(srcs, list) or not srcs or not all(isinstance(s, str) and s.strip() for s in srcs):
+            problems.append(str(rec.get("_file", "attestation")) + ': attestation record has no non-empty "sources" list')
+    if checked == 0 and att_checked == 0:
+        return ("pass", False, ["no decision documents and no attestation records; rule not applicable"])
+    if problems:
+        return ("fail", True, problems)
+    return ("pass", True, [str(checked) + " decision document(s) and " + str(att_checked) + " attestation record(s) each carry sources"])
+
+
 def rule_independent_review(ctx: Ctx):
     if ctx.changed is None or not ctx.changed:
         return ("pass", False, ["no candidate diff supplied; rule not applicable"])
@@ -182,6 +239,7 @@ RULES = [
     {"id": "bilingual-decisions", "class": "decidable", "fn": rule_bilingual_decisions},
     {"id": "manifest-pairs", "class": "decidable", "fn": rule_manifest_pairs},
     {"id": "reference-integrity", "class": "decidable", "fn": rule_reference_integrity},
+    {"id": "sources-present", "class": "decidable", "fn": rule_sources_present},
     {"id": "tla-evidence-freshness", "class": "not-verifiable-offline", "fn": rule_tla_freshness},
     {"id": "independent-review", "class": "attested", "fn": rule_independent_review},
 ]

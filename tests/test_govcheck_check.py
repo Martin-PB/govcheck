@@ -5,6 +5,7 @@ from __future__ import annotations
 import importlib.util
 import io
 import json
+import shutil
 import tempfile
 import unittest
 from contextlib import redirect_stdout
@@ -22,8 +23,8 @@ def build_tree(root: Path) -> None:
     dec.mkdir(parents=True)
     (dec / "README.md").write_text("# Decisions\n", encoding="utf-8")
     (dec / "README.fr.md").write_text("# D\u00e9cisions\n", encoding="utf-8")
-    (dec / "0001-a.md").write_text("# A\n", encoding="utf-8")
-    (dec / "0001-a.fr.md").write_text("# A\n", encoding="utf-8")
+    (dec / "0001-a.md").write_text("# A\n\n## References\n\n- [R-01](../references.md#r-01)\n", encoding="utf-8")
+    (dec / "0001-a.fr.md").write_text("# A\n\n## R\u00e9f\u00e9rences\n\n- [R-01](../references.fr.md#r-01)\n", encoding="utf-8")
     specs = root / "docs" / "specifications"
     specs.mkdir(parents=True)
     (specs / "0001-a.md").write_text("# Spec\n\nSee [R-01](../references.md#r-01).\n", encoding="utf-8")
@@ -48,6 +49,7 @@ def add_attestation(root: Path, reviewer="Bob <bob@example.org>", rev="deadbeef"
         "candidate_rev": rev,
         "reviewer": reviewer,
         "date": "2026-11-09",
+        "sources": ["https://example.org/review-notes"],
     }), encoding="utf-8")
 
 
@@ -135,7 +137,7 @@ class EvaluateTests(unittest.TestCase):
             report = json.loads(out.read_text(encoding="utf-8"))
             self.assertEqual(report["tool"], "govcheck")
             self.assertEqual(report["overall"], "pass")
-            self.assertEqual(len(report["rules"]), 6)
+            self.assertEqual(len(report["rules"]), 7)
 
     def test_review_unknown_without_attestation(self):
         with tempfile.TemporaryDirectory() as d:
@@ -178,6 +180,53 @@ class EvaluateTests(unittest.TestCase):
             report = check.evaluate(root, changed={"x.md"}, git=git)
             rule = next(r for r in report["rules"] if r["id"] == "independent-review")
             self.assertEqual(rule["result"], "unknown")
+
+
+    def test_decision_without_references_section_fails(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            build_tree(root)
+            (root / "docs" / "decisions" / "0001-a.md").write_text("# A\n", encoding="utf-8")
+            report = check.evaluate(root)
+            self.assertEqual(report["overall"], "fail")
+            rule = next(r for r in report["rules"] if r["id"] == "sources-present")
+            self.assertEqual(rule["result"], "fail")
+
+    def test_references_section_without_source_link_fails(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            build_tree(root)
+            (root / "docs" / "decisions" / "0001-a.md").write_text(
+                "# A\n\n## References\n\n- [internal](0001-a.fr.md)\n", encoding="utf-8"
+            )
+            report = check.evaluate(root)
+            rule = next(r for r in report["rules"] if r["id"] == "sources-present")
+            self.assertEqual(rule["result"], "fail")
+
+    def test_attestation_without_sources_fails(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            build_tree(root)
+            att = root / "docs" / "attestations"
+            att.mkdir(parents=True)
+            (att / "0001.json").write_text(json.dumps({
+                "decision": "accept",
+                "candidate_rev": "a" * 40,
+                "reviewer": "Bob <bob@example.org>",
+            }), encoding="utf-8")
+            report = check.evaluate(root)
+            rule = next(r for r in report["rules"] if r["id"] == "sources-present")
+            self.assertEqual(rule["result"], "fail")
+
+    def test_sources_present_not_applicable_without_decisions(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            build_tree(root)
+            shutil.rmtree(root / "docs" / "decisions")
+            report = check.evaluate(root)
+            rule = next(r for r in report["rules"] if r["id"] == "sources-present")
+            self.assertEqual(rule["result"], "pass")
+            self.assertEqual(rule["applies"], False)
 
 
 if __name__ == "__main__":

@@ -30,8 +30,12 @@ L’historique de gouvernance propre à GovCheck (records d’architecture, ADR,
     python3 govcheck/check.py --tree . [--out report.json]
     python3 govcheck/check.py --tree . --base main --candidate HEAD
 
-Chaque règle renvoie `pass`, `fail` ou `unknown`. Le résultat global est `fail` si une règle échoue, sinon `unknown` si une règle est inconnue, sinon `pass` (fermeture par l’échec : `unknown` n’est jamais un succès). Le code de sortie est 0 uniquement lorsque le résultat global est `pass`. Les règles couvrent les trois classes d’assurance : décidable (présence de la licence, paires de décisions bilingues, paires de paquet déclarées par le manifeste, intégrité du catalogue de références), attestée (revue indépendante) et non vérifiable hors ligne (fraîcheur des preuves TLC). Les tests unitaires sont dans `tests/test_govcheck_check.py`.
+Chaque règle renvoie `pass`, `fail` ou `unknown`. Le résultat global est `fail` si une règle échoue, sinon `unknown` si une règle est inconnue, sinon `pass` (fermeture par l’échec : `unknown` n’est jamais un succès). Le code de sortie est 0 uniquement lorsque le résultat global est `pass`. Les règles couvrent les trois classes d’assurance : décidable (présence de la licence, paires de décisions bilingues, paires de paquet déclarées par le manifeste, intégrité du catalogue de références, sources obligatoires sur décisions et attestations), attestée (revue indépendante) et non vérifiable hors ligne (fraîcheur des preuves TLC). Les tests unitaires sont dans `tests/test_govcheck_check.py`.
 
 ### Attestations enregistrées (revue indépendante)
 
 En mode git (`--base/--candidate`), la règle `independent-review` renvoie `pass` quand un enregistrement JSON dans `docs/attestations/*.json` porte `"decision": "accept"`, le SHA complet exact de la révision candidate dans `candidate_rev`, et un `reviewer` distinct de l’auteur du commit candidate. Sinon la règle reste `unknown` (fermeture par l’échec).
+
+### Sources obligatoires (ADR 0007)
+
+La règle `sources-present` (décidable) exige que chaque `docs/decisions/*.md` non guide porte une section `## Références` (ou `## References`) contenant au moins un lien de source : une ancre du catalogue de références (`docs/references.fr.md#r-xx`) ou une URL externe. Chaque enregistrement d’attestation dans `docs/attestations/*.json` doit aussi porter une liste `"sources"` non vide de chaînes, listant les preuves sur lesquelles le relecteur s’est appuyé. Les fichiers guides (`README*`, `TEMPLATE*`) sont exemptés. Sans cela, un agent pouvait énoncer une décision sans aucune preuve ; la règle rend « pas de source, pas de décision » vérifiable hors ligne.

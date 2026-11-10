@@ -23,6 +23,10 @@ GovCheck vise à rendre les règles de développement explicites, vérifiables p
 
 L'anglais est la langue par défaut : [README.md](README.md). Cette page est la version française.
 
+## Intention produit
+
+Le [document détaillé d'intention produit GovCheck](docs/product-intent.fr.md) ([English](docs/product-intent.md)) capture la définition visée du produit et le cycle progressif de décisions de gouvernance, éclairées par les sources. Il s'agit d'un document d'intention destiné à l'analyse d'impact, pas d'un ADR ni d'un contrat d'implémentation adopté.
+
 ## Spécifications d'architecture
 
 Le premier cycle de conception est documenté dans [docs/specifications](docs/specifications/README.md) :

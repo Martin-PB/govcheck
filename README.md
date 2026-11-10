@@ -23,6 +23,10 @@ GovCheck aims to make repository development rules explicit, machine-checkable, 
 
 English is the default. French documentation is maintained alongside it: [README.fr.md](README.fr.md).
 
+## Product intent
+
+The detailed [GovCheck product-intent record](docs/product-intent.md) ([Français](docs/product-intent.fr.md)) captures the intended product definition and the progressive, source-informed governance-decision lifecycle. It is a design-intent record for impact analysis, not an ADR or an adopted implementation contract.
+
 ## Architecture specifications
 
 The first architecture-design pass is documented in [docs/specifications](docs/specifications/README.md):

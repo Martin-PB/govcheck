@@ -70,3 +70,13 @@ The lifecycle model is a source artifact with stable identifier govcheck.lifecyc
 The lifecycle diagram is generated from formal/lifecycle-transitions.json. The checker verifies operator-name coverage and generated-file freshness; it does not parse TLA+ semantics or prove that explanatory guards/effects faithfully describe operators.
 
 **Verification status:** the lifecycle and assurance modules, and the authority-transition module, are source artifacts checked by the formal workflow. Their TLC results establish properties only within their respective finite configurations; they do not prove implementation refinement or production enforcement. See each model document and its CI report for exact scope, state-space bounds, abstraction limits and required refinements.
+
+
+## Canonical journal durability and recovery
+
+- [Architecture 0034 — model and limits](../architecture/0034-canonical-journal-recovery-model.md) · [French](../architecture/0034-canonical-journal-recovery-model.fr.md)
+- [TLA+ module](../../formal/tla/GovCheckJournalRecovery.tla)
+- [TLC configuration](../../formal/tla/GovCheckJournalRecovery.cfg)
+- [Stable artifact catalogue](../../formal/artifacts.json) — `govcheck.journal-recovery`
+
+The model separates volatile pending state from the durable append-only journal. Durable append is the commit point; recovery replays to the durable head. Rollback appends a new event/revision whose content is restored from an earlier position. Git/Pijul replica observations are passive provenance/replication positions and cannot establish normative ordering. The model is bounded and does not specify a storage engine or prove crash safety of an implementation. TLC verification is pending until the recorded workflow completes.

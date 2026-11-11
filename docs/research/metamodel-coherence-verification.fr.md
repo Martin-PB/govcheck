@@ -197,3 +197,13 @@ Le contrat d'ingénierie proposé précise désormais la première tranche épis
 Catalogue : [R-121 sémantique OWL 2](../references.fr.md#r-121), [R-122 SHACL](../references.fr.md#r-122), [R-123 CSLib](../references.fr.md#r-123), [R-124 TLA+/TLAPS](../references.fr.md#r-124), [R-125 vérification des transformations](../references.fr.md#r-125), [R-126 EVL/Alloy](../references.fr.md#r-126), [R-127 alignement et conservativité](../references.fr.md#r-127).
 
 Documents liés : [dossier de décision](../decisions/metamodel-design-dossier.fr.md), [étude de réemploi](metamodel-ontology-reuse-assessment.fr.md), [Architecture 0013](../architecture/0013-governance-metamodel.md), [Architecture 0027](../architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md), [Spécification 0002](../specifications/0002-canonical-governance-model.md), [Spécification 0005](../specifications/0005-assurance-model.md).
+
+
+## Éléments probants du prototype (2026-11-11)
+
+La première tranche exécutable a maintenant été compilée et vérifiée dans deux profils épinglés distincts :
+
+- **Noyau Lean :** [PR #108](https://github.com/Martin-PB/govcheck/pull/108), Lean 4.19.0. Les théorèmes de préservation par transport et de non-promotion épistémique compilent ; l'audit des axiomes du module de théorèmes réussit et le rapport explicite ne montre aucun axiome pour les neuf théorèmes. [Exécution 43049890363](https://github.com/Martin-PB/govcheck/actions/runs/43049890363).
+- **Pont LTS CSLib :** [PR #109](https://github.com/Martin-PB/govcheck/pull/109), Lean 4.36.0-rc2, commit CSLib `f8acdb37c713b0124ad36b863f50c200a5f1cdba`. Les théorèmes de préservation des transitions LTS et des exécutions finies compilent ; l'audit des axiomes du module de théorèmes réussit et le rapport explicite ne montre aucun axiome pour les douze théorèmes. [Exécution 43051029627](https://github.com/Martin-PB/govcheck/actions/runs/43051029627).
+
+Cela démontre que CSLib peut soutenir des lois formelles de préservation sur des LTS et des exécutions finies avec sa propre chaîne d'outils épinglée. Cela ne démontre **pas** l'alignement d'ontologies, la préservation aller-retour SACM, l'équivalence sémantique entre modèles externes et GovCheck, ni le raffinement de l'implémentation. La PR #109 est empilée sur la PR #108 ; aucune des deux n'est fusionnée.

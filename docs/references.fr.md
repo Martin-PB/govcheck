@@ -48,6 +48,7 @@
 | Qualité du code assisté par IA, maintenabilité, TDD agentique et adoption organisationnelle | R-152–R-161 |
 | Applicabilité de GovCheck, usines logicielles, préconditions externes et mesure de productivité IA | R-162–R-165 |
 | Épistémologie constructiviste, complexité irréductible, modélisation systémique et validité des modèles | R-166–R-186 |
+| Spécifications multi-métiers, points de vue, interopérabilité sémantique et délibération | R-187–R-192 |
 
 ## Entrées bibliographiques détaillées
 

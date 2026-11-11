@@ -39,6 +39,10 @@ The design rationale, assurance distinctions, lifecycle-model audit, canonical d
 
 The repository-backed [Governed Work Portfolio](docs/work-portfolio/README.md) is the canonical home for work-item identity, lifecycle and traceability. GitHub Issues/Projects remain coordination adapters during migration; see [Architecture 0028](docs/architecture/0028-governed-work-portfolio-and-issue-tracker-boundary.md) and [Architecture 0030](docs/architecture/0030-repository-backed-work-portfolio-and-recoverable-history.md).
 
+## Research library
+
+The durable [Research Register](docs/research/README.md) indexes non-normative studies that may inform future decisions. Each study has a stable ID, source analysis, applicability assessment, limitations, cross-references and decision-traceability guidance. Research records are not implementation tasks or adopted requirements.
+
 ## Decisions and next phase
 
 [ADR 0001](docs/decisions/0001-bootstrap-boundaries.md) records the accepted bootstrap boundaries. Remaining decisions include implementation language, canonical serialization/schema, expression language, formal kernel, cryptographic approach, and dependency strategy. These should be resolved through explicit comparative analysis before implementation.

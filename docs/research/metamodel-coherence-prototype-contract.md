@@ -137,3 +137,8 @@ No implementation should claim that this gate has passed until the Lean build, f
 ## 8. Decision still reserved
 
 This contract is a proposed experiment. It does not select Lean/CSLib as a universal adopter dependency, does not adopt a GovCheck ontology, does not replace SACM's native semantics, and does not authorize a downgrade of proof obligations. The authority must decide the mandatory proof profile after reviewing the prototype's actual cost, coverage and trusted base.
+
+
+## Actual prototype outcomes
+
+The Lean 4.19.0 core passed its build and theorem axiom audit in [PR #108 run 43049890363](https://github.com/Martin-PB/govcheck/actions/runs/43049890363). A separate CSLib LTS experiment on Lean 4.36.0-rc2 passed build and theorem axiom audit in [PR #109 run 43051029627](https://github.com/Martin-PB/govcheck/actions/runs/43051029627). The CSLib experiment proves preservation of method class and epistemic kind over individual transitions and finite LTS executions. It remains an abstract lifecycle model, not an external ontology mapping proof. Both PRs remain unmerged; PR #109 is stacked on PR #108.

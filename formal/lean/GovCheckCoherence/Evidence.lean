@@ -63,10 +63,8 @@ inductive DerivationOrigin where
 
 def admissibleTargetKind
     (source target : EvidenceKind) (origin : DerivationOrigin) : Prop :=
-  match target with
-  | .theoremProof =>
-      source = .theoremProof ∨ origin = .kernelChecked
-  | _ => True
+  target ≠ .theoremProof ∨
+    source = .theoremProof ∨ origin = .kernelChecked
 
 /-- A passing empirical execution remains testimony, not a theorem proof. -/
 def passingTestimony : EvidenceRecord :=

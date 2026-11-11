@@ -11,9 +11,9 @@ The analysis uses the presentation and its timestamped transcript, then checks i
 
 This is a targeted critical analysis, not an independent evaluation of Warp or a systematic literature review. The speaker is the founder of a vendor demonstrating its own product. Product documentation is evidence of the vendor's design and claims, not independent proof of operational properties.
 
-## 8. Detailed analysis of the talk
+## 1. Detailed analysis of the talk
 
-### 8.1 The argument, reconstructed from the presentation
+### 1.1 The argument, reconstructed from the presentation
 
 The talk is not merely a product demonstration for remote agents. It advances a coherent operating-model proposal:
 
@@ -26,7 +26,7 @@ The talk is not merely a product demonstration for remote agents. It advances a 
 7. **Benchmark on the organization's own tasks (14:42–17:15).** Rather than relying only on public benchmarks, teams should curate representative historical tasks and replay them across model/configuration choices. Cost and quality results can inform model routing for the team's own codebase and stack.
 8. **Keep a verification and economics discipline (17:15–end).** In the Q&A, Lloyd recommends spec-driven development and computer-use verification to cope with PR volume and review burden. For budgeting, he suggests measuring cost per PR and the share spent on scoring and benchmarking, then extrapolating. He suggests this becomes particularly valuable for teams of roughly ten or more engineers; this is a practical heuristic, not a universal threshold.
 
-### 8.2 What is genuinely useful in the proposal
+### 1.2 What is genuinely useful in the proposal
 
 - **The factory is a governed system in its own right.** Prompts, agent roles, tool grants, skills, workflows, evaluators, benchmark tasks and deployment locations are not incidental setup; they influence the properties of the produced software and deserve identity, revision history, review and evidence.
 - **The operational loop is explicit.** Run → trace/artifacts → evaluation → failure analysis → proposed workflow change → review/test → new run. This is a useful lifecycle to model, including the possibility that the loop itself is defective.
@@ -35,7 +35,7 @@ The talk is not merely a product demonstration for remote agents. It advances a 
 - **Human and agent responsibilities should be designed, not improvised.** The distinction between product engineering and factory engineering makes the maintenance of the production system visible as work with owners, competence requirements and assurance obligations.
 - **Sovereignty is a set of concrete choices.** Data control, compute location, inference provider, retention, subprocessors and exit options can be specified and assessed separately instead of collapsed into a vague “self-hosted” label.
 
-### 8.3 Assumptions and limitations that the talk does not establish
+### 1.3 Assumptions and limitations that the talk does not establish
 
 The presentation is an industry proposal by the founder of a vendor demonstrating that vendor's product. It is useful primary evidence for the design philosophy and a concrete implementation example, but it is not an independent evaluation of the product or the general approach.
 
@@ -53,7 +53,7 @@ In particular, the talk does not establish:
 
 A self-improvement loop is therefore not automatically a quality-improvement loop. It can amplify a defective metric, evaluator bias, benchmark leakage or a mistaken diagnosis. Each transition in the loop needs provenance and an appropriate independent check.
 
-### 8.4 Implications for GovCheck — adopt the questions, not the product architecture
+### 1.4 Implications for GovCheck — adopt the questions, not the product architecture
 
 The talk should prompt GovCheck to govern the **production system as an object of assurance**, but it does not imply that GovCheck should become a cloud factory or operate agents itself.
 
@@ -73,7 +73,7 @@ The useful questions to carry into the repository audit are:
 
 These are candidate audit questions, not a new mandatory factory schema. They should first be mapped to the existing GovCheck concepts and open issues.
 
-### 8.5 A crucial distinction: governing a factory versus enforcing its guarantees
+### 1.5 A crucial distinction: governing a factory versus enforcing its guarantees
 
 A repository can enforce that a factory definition is versioned, schema-valid, reviewed and associated with a run. It may verify a signed attestation or query a forge/provider API. It can reject a release claim when required evidence is missing or stale, if an adopted policy says so.
 
@@ -81,7 +81,7 @@ It cannot infer from the presence of a YAML file that the remote service execute
 
 The factory itself may also be a separate governed repository. In that case, GovCheck can bootstrap and govern that repository using the same general model; it should not silently assume that the product repository has authority over the factory's infrastructure repository, cloud account or organization.
 
-### 8.6 Suggested evidence chain for a factory improvement
+### 1.6 Suggested evidence chain for a factory improvement
 
 A candidate traceability chain, to be compared with the existing metamodel rather than immediately added as a new schema, is:
 
@@ -89,7 +89,7 @@ A candidate traceability chain, to be compared with the existing metamodel rathe
 
 Each link needs stable identity and provenance. The evaluation result must state its criterion and evaluator; the improvement proposal must state which findings support it; the reviewed change must identify the human/authority decision; and the subsequent verification must use an identified task set and environment. A passing benchmark is evidence about the tested cases, not proof of general improvement.
 
-### 8.7 Overall assessment
+### 1.7 Overall assessment
 
 The strongest contribution of the talk is its shift in unit of analysis: from the individual coding agent to the governed system that configures, executes, observes, evaluates and improves agent work. GovCheck should take that shift seriously when auditing repository lifecycle and assurance completeness.
 

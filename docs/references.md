@@ -42,6 +42,7 @@
 | OWASP guidance for AI-agent and MCP security | R-106 |
 | GitHub Actions workflow location and syntax | R-107 |
 | Open-source licensing and attribution | R-108 |
+| Ontology reuse, software-engineering ontology network and semantic interoperability | R-115–R-120 |
 
 ## Full reference entries
 
@@ -1098,4 +1099,53 @@
 - **Relevant concepts:** single-binary DVCS with built-in ticketing, wiki, forum and timeline served over HTTP; check-in hashes as revision identity; external CI.
 - **Use in GovCheck:** shows a VCS with a native tracker (tickets) but no native required-status-check concept, informing the transposability matrix in ADR 0006.
 - **Limit:** vendor documentation; Fossil's CI integration is external and must be evaluated separately.
+
+
+<a id="r-115"></a>
+### R-115 — Software Engineering Ontology Network (SEON)
+- **Cited by:** [metamodel ontology-reuse assessment](research/metamodel-ontology-reuse-assessment.md) · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
+- **Primary sources:** [SEON network](https://dev.nemo.inf.ufes.br/seon/SEON.html) · [ReqON](https://dev.nemo.inf.ufes.br/seon/ReqON.html) · [SPO](https://dev.nemo.inf.ufes.br/seon/SPO.html)
+- **Relevant concepts:** software-engineering reference ontology network including software processes, requirements engineering, goal-oriented requirements, runtime requirements, testing, quality assurance and measurement, grounded in UFO.
+- **Use in GovCheck:** strongest identified reuse candidate for lifecycle, requirements and engineering concepts; align to it before inventing equivalent concepts.
+- **Limit:** public site shows version 1.0.5 and does not establish current maintenance, uniform licensing, conformance or operational readiness. It does not supply complete repository governance or enforcement semantics.
+
+<a id="r-116"></a>
+### R-116 — W3C semantic-web ontology and validation components
+- **Cited by:** [metamodel ontology-reuse assessment](research/metamodel-ontology-reuse-assessment.md) · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
+- **Primary sources:** [OWL 2 overview](https://www.w3.org/TR/owl-overview/) · [OWL](https://www.w3.org/OWL/) · [SKOS](https://www.w3.org/TR/skos-reference/) · [SHACL](https://www.w3.org/TR/shacl/)
+- **Relevant concepts:** OWL 2 formal ontologies, RDF graph data, SKOS concept schemes/mappings, SHACL validation of RDF graphs against declared constraints.
+- **Use in GovCheck:** possible implementation profile for vocabularies, linked identifiers, concept mapping and graph validation, subject to a separate decision.
+- **Limit:** these components have different semantics. RDF/OWL/SHACL is not a prerequisite for interoperability; SHACL is not theorem proving; this stack does not itself define governance semantics.
+
+<a id="r-117"></a>
+### R-117 — OMG Ontology Definition Metamodel (ODM)
+- **Cited by:** [metamodel ontology-reuse assessment](research/metamodel-ontology-reuse-assessment.md) · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
+- **Primary source:** [OMG ODM 1.1](https://www.omg.org/spec/ODM/1.1/)
+- **Relevant concepts:** metamodels, profiles and mappings among ontology and modeling standards, including UML/MOF, for knowledge interchange and consistency checking.
+- **Use in GovCheck:** reference for explicit integration and mapping between conceptual models and ontology formalisms.
+- **Limit:** not a ready-made ontology for repository governance or lifecycle assurance.
+
+<a id="r-118"></a>
+### R-118 — Lean Computer Science Library (CSLib)
+- **Cited by:** [metamodel ontology-reuse assessment](research/metamodel-ontology-reuse-assessment.md) · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
+- **Primary sources:** [repository](https://github.com/leanprover/cslib) · [organization](https://github.com/leanprover/cslib/blob/main/ORGANISATION.md) · [contributor guidance](https://github.com/leanprover/cslib/blob/main/CONTRIBUTING.md) · [roadmap](https://www.cslib.io/roadmap/)
+- **Relevant concepts:** reusable Lean formalizations for operational semantics, labeled transition systems, program equivalences, logics, languages, automata and computability; Boole direction for code verification.
+- **Use in GovCheck:** optional formalization backend for selected semantic contracts, lifecycle transition systems or properties.
+- **Limit:** not a domain ontology, RDF/SHACL engine or interchange format. Its code-verification pipeline is evolving; formal proof does not establish model-to-reality fidelity.
+
+<a id="r-119"></a>
+### R-119 — OMG Essence, software engineering kernel and methods
+- **Cited by:** [metamodel ontology-reuse assessment](research/metamodel-ontology-reuse-assessment.md) · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
+- **Primary source:** [OMG Essence catalogue](https://www.omg.org/spec/Essence/)
+- **Relevant concepts:** method-independent software-engineering kernel, alphas such as opportunity, stakeholders, requirements, software system, team, work and way of working, and a language for methods/practices.
+- **Use in GovCheck:** candidate reference for lifecycle/work-product coverage and separating reusable engineering concepts from method-specific practices.
+- **Limit:** not a complete repository-governance ontology, assurance case or formal proof of project health.
+
+<a id="r-120"></a>
+### R-120 — OASIS OSLC Requirements Management
+- **Cited by:** [metamodel ontology-reuse assessment](research/metamodel-ontology-reuse-assessment.md) · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
+- **Primary source:** [OSLC Requirements Management 2.1](https://docs.oasis-open-projects.org/oslc-op/rm/v2.1/requirements-management-spec.html)
+- **Relevant concepts:** requirements-management resources/vocabulary, linked-data service patterns and constraints for requirements exchange between tools.
+- **Use in GovCheck:** candidate interoperability target for linking or exchanging requirements with external engineering/lifecycle systems.
+- **Limit:** does not define all semantics for intent, decisions, authority, assurance, implementation conformance or risk acceptance.
 

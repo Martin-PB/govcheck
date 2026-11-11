@@ -43,6 +43,7 @@
 | GitHub Actions workflow location and syntax | R-107 |
 | Open-source licensing and attribution | R-108 |
 | Ontology reuse, software-engineering ontology network and semantic interoperability | R-115–R-120 |
+| Metamodel coherence, semantic preservation and formal verification | R-121–R-127 |
 
 ## Full reference entries
 
@@ -1148,4 +1149,61 @@
 - **Relevant concepts:** requirements-management resources/vocabulary, linked-data service patterns and constraints for requirements exchange between tools.
 - **Use in GovCheck:** candidate interoperability target for linking or exchanging requirements with external engineering/lifecycle systems.
 - **Limit:** does not define all semantics for intent, decisions, authority, assurance, implementation conformance or risk acceptance.
+
+
+<a id="r-121"></a>
+### R-121 — OWL 2 formal semantics and reasoning
+- **Cited by:** [metamodel coherence verification](research/metamodel-coherence-verification.md) · [metamodel decision dossier](decisions/metamodel-design-dossier.md)
+- **Primary sources:** [OWL 2 overview](https://www.w3.org/TR/owl-overview/) · [OWL 2 Direct Semantics](https://www.w3.org/TR/owl2-direct-semantics/) · [OWL 2 conformance](https://www.w3.org/TR/owl2-conformance/)
+- **Relevant concepts:** model-theoretic semantics, ontology consistency, class satisfiability, subsumption, entailment, profiles and reasoner conformance.
+- **Use in GovCheck:** source-native logical consistency and entailment checks for ontologies within a declared OWL profile.
+- **Limit:** consistency does not establish truth or fitness for intent; OWL open-world semantics and supported expressivity must be explicit.
+
+<a id="r-122"></a>
+### R-122 — W3C Shapes Constraint Language (SHACL)
+- **Cited by:** [metamodel coherence verification](research/metamodel-coherence-verification.md) · [metamodel decision dossier](decisions/metamodel-design-dossier.md)
+- **Primary source:** [SHACL](https://www.w3.org/TR/shacl/)
+- **Relevant concepts:** validation of RDF data graphs against declared shapes, constraints and validation reports.
+- **Use in GovCheck:** structural and graph-level contract validation where RDF is the chosen representation.
+- **Limit:** a passing report establishes conformance to those shapes, not general logical consistency or semantic preservation across mappings.
+
+<a id="r-123"></a>
+### R-123 — Lean Computer Science Library (CSLib) for semantic proof
+- **Cited by:** [metamodel coherence verification](research/metamodel-coherence-verification.md) · [metamodel decision dossier](decisions/metamodel-design-dossier.md)
+- **Primary sources:** [CSLib repository](https://github.com/leanprover/cslib) · [organization](https://github.com/leanprover/cslib/blob/main/ORGANISATION.md) · [contributor guidance](https://github.com/leanprover/cslib/blob/main/CONTRIBUTING.md)
+- **Relevant concepts:** reusable Lean formalizations for operational semantics, labeled transition systems, program equivalence and logics.
+- **Use in GovCheck:** reuse suitable foundations to formalize the common semantic bridge and prove critical mapping properties.
+- **Limit:** CSLib is not a ready-made GovCheck ontology; its code-translation/Boole preservation pipeline is evolving. Pin versions and disclose axioms and trusted components.
+
+<a id="r-124"></a>
+### R-124 — TLA+, TLC and TLAPS for temporal and transition-system properties
+- **Cited by:** [metamodel coherence verification](research/metamodel-coherence-verification.md) · [metamodel decision dossier](decisions/metamodel-design-dossier.md)
+- **Primary sources:** [TLA+ Proof System](https://proofs.tlapl.us/doc/web/content/Home.html) · [TLC documentation](https://github.com/tlaplus/tlaplus/blob/master/general/docs/tlcgui.txt)
+- **Relevant concepts:** state-transition specifications, invariant checking, temporal properties, finite-state model checking and mechanically checked proof steps.
+- **Use in GovCheck:** check authority lifecycle, revocation, expiry, invalidation and revalidation properties.
+- **Limit:** finite model checking is bounded by the model and state space; TLAPS does not currently provide general temporal reasoning for all TLA+ constructs.
+
+<a id="r-125"></a>
+### R-125 — Verification of model transformations
+- **Cited by:** [metamodel coherence verification](research/metamodel-coherence-verification.md) · [metamodel decision dossier](decisions/metamodel-design-dossier.md)
+- **Primary source:** Calegari & Szasz, “Verification of Model Transformations: A Survey of the State-of-the-Art” (2013), [DOI](https://doi.org/10.1016/j.entcs.2013.02.002)
+- **Relevant concepts:** verification of transformations in terms of transformation rules, properties of interest and verification techniques; heterogeneous verification.
+- **Use in GovCheck:** frame mapping verification as explicit transformations plus preservation properties and declared techniques.
+- **Limit:** no single method proves all transformation properties; results depend on semantics, assumptions and bounds.
+
+<a id="r-126"></a>
+### R-126 — Epsilon EVL and Alloy Analyzer
+- **Cited by:** [metamodel coherence verification](research/metamodel-coherence-verification.md) · [metamodel decision dossier](decisions/metamodel-design-dossier.md)
+- **Primary sources:** [Epsilon Validation Language](https://eclipse.dev/epsilon/doc/evl/) · [Alloy Analyzer](https://alloy.readthedocs.io/en/latest/tooling/analyzer.html)
+- **Relevant concepts:** intra-/inter-model constraints, validation diagnostics and fixes; SAT-based search for finite relational counterexamples.
+- **Use in GovCheck:** executable model constraints and counterexample discovery before or alongside proof development.
+- **Limit:** bounded analysis and validation are not unbounded proof of arbitrary semantic preservation.
+
+<a id="r-127"></a>
+### R-127 — Ontology alignment, consistency and conservative extension
+- **Cited by:** [metamodel coherence verification](research/metamodel-coherence-verification.md) · [metamodel decision dossier](decisions/metamodel-design-dossier.md)
+- **Primary sources:** Botoeva et al., “Inseparability and conservative extensions of description logic ontologies: A survey” (2017), [repository record](https://livrepository.liverpool.ac.uk/3006616/) · “A semantic approach to mapping the Provenance Ontology to Basic Formal Ontology” (2025), [open article](https://pmc.ncbi.nlm.nih.gov/articles/PMC11833102/)
+- **Relevant concepts:** model-theoretic criteria for ontology alignment, semantic interoperability, query/concept inseparability and conservative extensions.
+- **Use in GovCheck:** distinguish simple traceability from semantic mappings; state when adding GovCheck vocabulary must preserve consequences in source vocabularies.
+- **Limit:** conservativity is relative to a chosen signature, semantics and application; define it per mapping/use case, not universally.
 

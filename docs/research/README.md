@@ -58,6 +58,7 @@ Future decision records should link:
 
 Current related PRs are provenance only, not decisions:
 - [PR #111 — AI-assisted quality and engineering governance research](https://github.com/Martin-PB/govcheck/pull/111) (STUDY-001).
-- [PR #112 — software-factory analysis and GovCheck applicability](https://github.com/Martin-PB/govcheck/pull/112) (STUDY-002).\n- [PR #113 — Le Moigne colloquium and durable research register](https://github.com/Martin-PB/govcheck/pull/113) (STUDY-003).
+- [PR #112 — software-factory analysis and GovCheck applicability](https://github.com/Martin-PB/govcheck/pull/112) (STUDY-002).
+- [PR #113 — Le Moigne colloquium and durable research register](https://github.com/Martin-PB/govcheck/pull/113) (STUDY-003).
 
 No decision should be inferred from the fact that a research PR was merged.

@@ -72,7 +72,7 @@ Il s'agit d'une **preuve issue du model checking**, pas d'une preuve de théorè
 - une application impossible à contourner par Git, Pijul, une forge ou une frontière de déploiement ;
 - la correction ou l'adoption de la politique normative elle-même.
 
-Le modèle maintient volontairement l'autorité racine constante. Succession/délégation et récupération d'urgence exigent des décisions et extensions distinctes. Le mécanisme canonique d'ordre des événements et le protocole de publication persistante restent également ouverts.
+Le modèle maintient volontairement l'autorité racine constante. Succession/délégation et récupération d'urgence exigent des décisions et extensions distinctes. Les travaux techniques ultérieurs proposent désormais le protocole du journal canonique dans la [Spécification 0007](../specifications/0007-canonical-governance-journal-protocol.fr.md) et vérifient une abstraction bornée de reprise/rollback dans l'[Architecture 0034](0034-canonical-journal-recovery-model.fr.md). Ces artefacts ultérieurs ne modifient pas le modèle exact vérifié par le présent rapport et n'établissent ni implémentation, ni consensus multi-écrivain, ni durabilité opérationnelle.
 
 ## 8. Documents liés
 

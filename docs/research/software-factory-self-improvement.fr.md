@@ -11,9 +11,9 @@ L'analyse s'appuie sur la présentation et sa transcription horodatée, puis con
 
 Il s'agit d'une analyse critique ciblée, non d'une évaluation indépendante de Warp ni d'une revue systématique de littérature. L'intervenant est le fondateur d'un fournisseur qui présente son propre produit. La documentation produit établit la conception et les affirmations du fournisseur, pas les propriétés opérationnelles de manière indépendante.
 
-## 8. Analyse détaillée de la conférence
+## 1. Analyse détaillée de la conférence
 
-### 8.1 Reconstruction de l'argument présenté
+### 1.1 Reconstruction de l'argument présenté
 
 La conférence n'est pas simplement une démonstration commerciale d'agents distants. Elle défend une proposition cohérente de modèle opérationnel :
 
@@ -26,7 +26,7 @@ La conférence n'est pas simplement une démonstration commerciale d'agents dist
 7. **Construire des benchmarks sur les tâches de l'organisation (14:42–17:15).** Plutôt que de s'appuyer uniquement sur des benchmarks publics, les équipes devraient constituer un corpus représentatif de tâches historiques et les rejouer avec différentes configurations de modèles. Les résultats de coût et de qualité peuvent guider le routage des modèles pour le code et la stack réels de l'équipe.
 8. **Maintenir une discipline de vérification et d'économie (17:15–fin).** Dans les questions-réponses, Lloyd recommande le développement piloté par spécification et la vérification par interaction avec l'interface pour absorber le volume de PR et réduire la charge de revue. Pour le budget, il suggère de mesurer le coût par PR et la part consacrée à l'évaluation et aux benchmarks, puis d'extrapoler. Il estime que cela devient particulièrement utile autour de dix ingénieurs ou davantage ; c'est une heuristique pratique, pas un seuil universel.
 
-### 8.2 Les apports réellement intéressants de la proposition
+### 1.2 Les apports réellement intéressants de la proposition
 
 - **La factory est elle-même un système à gouverner.** Prompts, rôles d'agents, permissions d'outils, skills, workflows, évaluateurs, tâches de benchmark et lieux de déploiement ne sont pas de simples détails de configuration : ils influencent les propriétés du logiciel produit et méritent identité, historique de révision, revue et preuves.
 - **La boucle opérationnelle est explicite.** Exécution → trace/artefacts → évaluation → analyse des échecs → proposition de modification du workflow → revue/tests → nouvelle exécution. C'est un cycle de vie intéressant à modéliser, y compris lorsque la boucle elle-même est défectueuse.
@@ -35,7 +35,7 @@ La conférence n'est pas simplement une démonstration commerciale d'agents dist
 - **Les responsabilités humaines et agentiques doivent être conçues.** La distinction entre ingénierie produit et ingénierie de la factory rend visible la maintenance du système de production comme un travail à part entière, avec responsables, compétences et obligations d'assurance.
 - **La souveraineté recouvre des choix concrets.** Maîtrise des données, localisation du calcul, fournisseur d'inférence, rétention, sous-traitants et possibilité de sortie peuvent être spécifiés et évalués séparément, au lieu d'être résumés par l'étiquette vague « auto-hébergé ».
 
-### 8.3 Hypothèses et limites que la conférence ne démontre pas
+### 1.3 Hypothèses et limites que la conférence ne démontre pas
 
 La présentation est une proposition industrielle faite par le fondateur d'un fournisseur qui y démontre son propre produit. C'est une source primaire utile pour comprendre sa philosophie de conception et un exemple concret d'implémentation, mais pas une évaluation indépendante du produit ou de l'approche générale.
 
@@ -53,7 +53,7 @@ En particulier, la conférence ne démontre pas :
 
 Une boucle d'auto-amélioration n'est donc pas automatiquement une boucle d'amélioration de la qualité. Elle peut amplifier une métrique défectueuse, un biais d'évaluation, une fuite du benchmark ou un diagnostic erroné. Chaque transition de la boucle nécessite provenance et contrôle approprié, idéalement indépendant.
 
-### 8.4 Conséquences pour GovCheck — reprendre les questions, pas l'architecture produit
+### 1.4 Conséquences pour GovCheck — reprendre les questions, pas l'architecture produit
 
 La conférence devrait inciter GovCheck à traiter le **système de production comme un objet d'assurance à part entière**, mais elle ne signifie pas que GovCheck doit devenir une factory cloud ou exploiter lui-même des agents.
 
@@ -73,7 +73,7 @@ Les questions utiles à intégrer à l'audit du dépôt sont :
 
 Ce sont des questions candidates pour l'audit, pas un nouveau schéma obligatoire de factory. Il faut d'abord les relier aux concepts GovCheck et aux issues ouvertes.
 
-### 8.5 Distinction essentielle : gouverner une factory et imposer ses garanties
+### 1.5 Distinction essentielle : gouverner une factory et imposer ses garanties
 
 Un dépôt peut imposer qu'une définition de factory soit versionnée, valide au regard d'un schéma, revue et associée à une exécution. Il peut vérifier une attestation signée ou interroger une API de forge/fournisseur. Il peut refuser une affirmation de release si une preuve requise est absente ou périmée, lorsque la politique adoptée le prévoit.
 
@@ -81,7 +81,7 @@ Il ne peut pas déduire de la présence d'un fichier YAML que le service distant
 
 La factory peut aussi être un dépôt gouverné distinct. GovCheck peut alors amorcer et gouverner ce dépôt avec le même modèle général ; il ne doit pas supposer silencieusement que le dépôt du produit a autorité sur le dépôt d'infrastructure de la factory, le compte cloud ou l'organisation.
 
-### 8.6 Chaîne de preuves suggérée pour une amélioration de factory
+### 1.6 Chaîne de preuves suggérée pour une amélioration de factory
 
 Une chaîne de traçabilité candidate, à confronter au métamodèle existant plutôt qu'à ajouter immédiatement comme nouveau schéma, est :
 
@@ -89,7 +89,7 @@ Une chaîne de traçabilité candidate, à confronter au métamodèle existant p
 
 Chaque lien nécessite identité stable et provenance. Le résultat d'évaluation doit préciser son critère et son évaluateur ; la proposition d'amélioration doit identifier les constats qui l'étayent ; le changement revu doit identifier la décision humaine/de l'autorité ; et la vérification ultérieure doit utiliser un corpus de tâches et un environnement identifiés. Un benchmark réussi est une preuve concernant les cas testés, pas une preuve d'amélioration générale.
 
-### 8.7 Appréciation générale
+### 1.7 Appréciation générale
 
 L'apport le plus fort de la conférence est le déplacement de l'unité d'analyse : de l'agent de codage individuel vers le système gouverné qui configure, exécute, observe, évalue et améliore le travail agentique. GovCheck devrait prendre ce déplacement au sérieux lorsqu'il audite le cycle de vie des dépôts et l'exhaustivité de l'assurance.
 

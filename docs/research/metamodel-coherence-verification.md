@@ -218,3 +218,7 @@ The first executable slice has now been built and checked in two separate pinned
 - **CSLib LTS bridge:** [PR #109](https://github.com/Martin-PB/govcheck/pull/109), Lean 4.36.0-rc2, CSLib commit `f8acdb37c713b0124ad36b863f50c200a5f1cdba`. The lifecycle LTS transition and finite-trace preservation theorems compiled; the theorem-module axiom audit passed and the explicit axiom report showed no axioms for the twelve theorem declarations. [Run 43051029627](https://github.com/Martin-PB/govcheck/actions/runs/43051029627).
 
 This demonstrates that CSLib can support formal LTS and finite-execution preservation laws on its own pinned toolchain. It does **not** demonstrate ontology alignment, SACM round-trip preservation, semantic equivalence between external models and GovCheck, or implementation refinement. PR #109 is stacked on PR #108; neither PR has been merged.
+
+## Schema-to-semantics gap identified by the prototype
+
+The current evidence JSON Schema has separate method-class and result-status fields, but no explicit epistemic-kind field or typed kernel-checked derivation object. The Lean prototype's `EvidenceKind` is therefore a semantic interpretation beyond the present JSON shape. The mapping must not infer theorem-proof from `theorem-proving` + `passed`; absent a separately authenticated derivation, the epistemic status remains unresolved/non-proof. The prototype fixtures are semantic fixtures, not full schema-valid production evidence records. This is a #73/#79 decision gap; no schema change is made by the prototype.

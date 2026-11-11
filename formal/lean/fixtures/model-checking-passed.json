@@ -1,0 +1,13 @@
+{
+  "fixtureId": "coherence.model-checking-passed",
+  "kind": "modelChecking",
+  "status": "passed",
+  "bounds": {
+    "stateSpace": "finite",
+    "configuration": "fixture-only"
+  },
+  "expected": {
+    "kind": "modelChecking",
+    "theoremProofPromotionAllowedByTransport": false
+  }
+}

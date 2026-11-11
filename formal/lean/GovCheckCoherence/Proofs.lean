@@ -1,4 +1,5 @@
 import GovCheckCoherence.Evidence
+import GovCheckCoherence.CslibBridge
 
 namespace GovCheck.Coherence
 
@@ -61,5 +62,27 @@ theorem passing_testimony_is_not_a_theorem_proof :
 theorem theorem_proving_label_alone_does_not_authenticate_proof :
     unverifiedTheoremProvingReport.kind ≠ .theoremProof := by
   decide
+
+/-- CSLib LTS transitions preserve the evidence method class. -/
+theorem evidence_lifecycle_transition_preserves_method_class
+    {before after : EvidenceLifecycleState} {event : EvidenceLifecycleEvent}
+    (h : evidenceLifecycle.Tr before event after) :
+    before.evidence.methodClass = after.evidence.methodClass := h.1
+
+/-- CSLib LTS transitions preserve epistemic kind. -/
+theorem evidence_lifecycle_transition_preserves_kind
+    {before after : EvidenceLifecycleState} {event : EvidenceLifecycleEvent}
+    (h : evidenceLifecycle.Tr before event after) :
+    before.evidence.kind = after.evidence.kind := h.2.1
+
+/-- Any finite CSLib LTS execution preserves epistemic kind end-to-end. -/
+theorem evidence_lifecycle_multistep_preserves_kind
+    {before after : EvidenceLifecycleState} {events : List EvidenceLifecycleEvent}
+    (h : evidenceLifecycle.MTr before events after) :
+    before.evidence.kind = after.evidence.kind := by
+  induction h with
+  | refl => rfl
+  | stepL hstep hrest ih =>
+      exact (evidence_lifecycle_transition_preserves_kind hstep).trans ih
 
 end GovCheck.Coherence

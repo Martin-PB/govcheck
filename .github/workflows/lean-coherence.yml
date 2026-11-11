@@ -20,15 +20,23 @@ jobs:
   lean-build:
     name: Kernel-check coherence slice
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: formal/lean
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Install pinned Lean toolchain and build
+      - name: Install elan
+        shell: bash
+        run: |
+          curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Generate Lake manifest
+        working-directory: formal/lean
+        run: lake update
+
+      - name: Build with pinned Lean toolchain
         uses: leanprover/lean-action@v1
         with:
           lake-package-directory: formal/lean
           build: true
+          auto-config: false

@@ -25,6 +25,10 @@ Cette direction est cohérente avec les Architectures 0013 et 0027 et la Spécif
 
 **Réévaluation du réemploi des ontologies :** consulter l'[évaluation dédiée](../research/metamodel-ontology-reuse-assessment.fr.md) et sa [version anglaise](../research/metamodel-ontology-reuse-assessment.md). Elle identifie SEON/ReqON comme le meilleur candidat de réemploi trouvé et déconseille une ontologie ad hoc exhaustive au vu des éléments actuels ; un petit noyau de gouvernance avec correspondances explicites reste une option provisoire, non adoptée.
 
+
+
+**Vérification de cohérence :** consulter l'[étude de vérification formelle](../research/metamodel-coherence-verification.fr.md) et sa [version anglaise](../research/metamodel-coherence-verification.md). Elle recommande des obligations d'assurance obligatoires pour les mappings sémantiques critiques, avec une chaîne hétérogène et un pont Lean formellement spécifié, complétés par les raisonneurs/validateurs natifs et le model checking temporel. Il s'agit d'une proposition à examiner, pas d'une chaîne d'outils adoptée.
+
 ## 2. Décision à prendre
 
 Décider de l'architecture et des frontières du métamodèle GovCheck, notamment :

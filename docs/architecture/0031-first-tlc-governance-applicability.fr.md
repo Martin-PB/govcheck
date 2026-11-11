@@ -78,6 +78,8 @@ Le modèle maintient volontairement l'autorité racine constante. Succession/dé
 
 - [Spécification 0006 — Applicabilité des révisions de gouvernance](../specifications/0006-governance-revision-applicability.fr.md)
 - [Spécification 0003 — Cycle de vie des changements](../specifications/0003-change-lifecycle.fr.md)
+- [Spécification 0007 — Protocole du journal canonique et des adaptateurs VCS](../specifications/0007-canonical-governance-journal-protocol.fr.md)
+- [Architecture 0034 — Modèle de reprise du journal canonique](0034-canonical-journal-recovery-model.fr.md)
 - [Architecture 0023 — Décision d'amorçage de l'autorité](0023-bootstrap-governance-authority.fr.md)
 - [Issue #86 — Travail de spécification technique](https://github.com/Martin-PB/govcheck/issues/86)
 - [Issue #41 — Décision d'autorité parente](https://github.com/Martin-PB/govcheck/issues/41)

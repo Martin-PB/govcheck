@@ -1115,7 +1115,7 @@
 
 <a id="r-116"></a>
 ### R-116 — Composants W3C du Web sémantique pour ontologies et validation
-- **Cited by:** [metamodel ontology-reuse assessment](research/metamodel-ontology-reuse-assessment.fr.md) · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
+- **Cité par :** [étude de réemploi des ontologies](research/metamodel-ontology-reuse-assessment.fr.md) · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
 - **Sources primaires :** [OWL 2 overview](https://www.w3.org/TR/owl-overview/) · [OWL](https://www.w3.org/OWL/) · [SKOS](https://www.w3.org/TR/skos-reference/) · [SHACL](https://www.w3.org/TR/shacl/)
 - **Concepts pertinents :** OWL 2 formal ontologies, RDF graph data, SKOS concept schemes/mappings, SHACL validation of RDF graphs against declared constraints.
 - **Utilité pour GovCheck :** profil d'implémentation possible pour vocabulaires, identifiants liés, correspondances de concepts et validation de graphes, sous réserve d'une décision distincte.
@@ -1123,7 +1123,7 @@
 
 <a id="r-117"></a>
 ### R-117 — Ontology Definition Metamodel (ODM) de l'OMG
-- **Cited by:** [metamodel ontology-reuse assessment](research/metamodel-ontology-reuse-assessment.fr.md) · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
+- **Cité par :** [étude de réemploi des ontologies](research/metamodel-ontology-reuse-assessment.fr.md) · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
 - **Primary source:** [OMG ODM 1.1](https://www.omg.org/spec/ODM/1.1/)
 - **Concepts pertinents :** metamodels, profiles and mappings among ontology and modeling standards, including UML/MOF, for knowledge interchange and consistency checking.
 - **Utilité pour GovCheck :** référence pour l'intégration et les correspondances explicites entre modèles conceptuels et formalismes d'ontologie.
@@ -1131,7 +1131,7 @@
 
 <a id="r-118"></a>
 ### R-118 — Bibliothèque Lean d'informatique CSLib
-- **Cited by:** [metamodel ontology-reuse assessment](research/metamodel-ontology-reuse-assessment.fr.md) · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
+- **Cité par :** [étude de réemploi des ontologies](research/metamodel-ontology-reuse-assessment.fr.md) · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
 - **Sources primaires :** [repository](https://github.com/leanprover/cslib) · [organization](https://github.com/leanprover/cslib/blob/main/ORGANISATION.md) · [contributor guidance](https://github.com/leanprover/cslib/blob/main/CONTRIBUTING.md) · [roadmap](https://www.cslib.io/roadmap/)
 - **Concepts pertinents :** reusable Lean formalizations for operational semantics, labeled transition systems, program equivalences, logics, languages, automata and computability; Boole direction for code verification.
 - **Utilité pour GovCheck :** backend facultatif de formalisation pour des contrats sémantiques, systèmes de transition du cycle de vie ou propriétés sélectionnés.
@@ -1139,7 +1139,7 @@
 
 <a id="r-119"></a>
 ### R-119 — OMG Essence, noyau d'ingénierie logicielle et méthodes
-- **Cited by:** [metamodel ontology-reuse assessment](research/metamodel-ontology-reuse-assessment.fr.md) · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
+- **Cité par :** [étude de réemploi des ontologies](research/metamodel-ontology-reuse-assessment.fr.md) · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
 - **Primary source:** [OMG Essence catalogue](https://www.omg.org/spec/Essence/)
 - **Concepts pertinents :** method-independent software-engineering kernel, alphas such as opportunity, stakeholders, requirements, software system, team, work and way of working, and a language for methods/practices.
 - **Utilité pour GovCheck :** référence possible pour le cycle de vie/produits de travail et la distinction entre concepts d'ingénierie réutilisables et pratiques propres aux méthodes.
@@ -1147,7 +1147,7 @@
 
 <a id="r-120"></a>
 ### R-120 — Gestion des exigences OASIS OSLC
-- **Cited by:** [metamodel ontology-reuse assessment](research/metamodel-ontology-reuse-assessment.fr.md) · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
+- **Cité par :** [étude de réemploi des ontologies](research/metamodel-ontology-reuse-assessment.fr.md) · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
 - **Primary source:** [OSLC Requirements Management 2.1](https://docs.oasis-open-projects.org/oslc-op/rm/v2.1/requirements-management-spec.html)
 - **Concepts pertinents :** requirements-management resources/vocabulary, linked-data service patterns and constraints for requirements exchange between tools.
 - **Utilité pour GovCheck :** cible d'interopérabilité possible pour relier ou échanger des exigences avec des systèmes externes d'ingénierie/cycle de vie.
@@ -1164,7 +1164,7 @@
 
 <a id="r-122"></a>
 ### R-122 — Langage de contraintes W3C SHACL
-- **Cited by:** [metamodel coherence verification](research/metamodel-coherence-verification.fr.md) · [metamodel decision dossier](decisions/metamodel-design-dossier.fr.md)
+- **Cité par :** [vérification de la cohérence du métamodèle](research/metamodel-coherence-verification.fr.md) · [dossier de décision sur le métamodèle](decisions/metamodel-design-dossier.fr.md)
 - **Primary source:** [SHACL](https://www.w3.org/TR/shacl/)
 - **Relevant concepts:** validation de graphes RDF contre des formes et contraintes déclarées et génération de rapports.
 - **Use in GovCheck:** validation structurelle et des contrats de graphe lorsque RDF est retenu.
@@ -1172,7 +1172,7 @@
 
 <a id="r-123"></a>
 ### R-123 — Bibliothèque Lean CSLib pour la preuve sémantique
-- **Cited by:** [metamodel coherence verification](research/metamodel-coherence-verification.fr.md) · [metamodel decision dossier](decisions/metamodel-design-dossier.fr.md)
+- **Cité par :** [vérification de la cohérence du métamodèle](research/metamodel-coherence-verification.fr.md) · [dossier de décision sur le métamodèle](decisions/metamodel-design-dossier.fr.md)
 - **Primary sources:** [CSLib repository](https://github.com/leanprover/cslib) · [organization](https://github.com/leanprover/cslib/blob/main/ORGANISATION.md) · [contributor guidance](https://github.com/leanprover/cslib/blob/main/CONTRIBUTING.md)
 - **Relevant concepts:** formalisations Lean réutilisables de sémantique opérationnelle, systèmes de transition étiquetés, équivalence de programmes et logiques.
 - **Use in GovCheck:** réutiliser les fondations adaptées pour formaliser le pont sémantique commun et prouver les propriétés critiques des mappings.
@@ -1180,7 +1180,7 @@
 
 <a id="r-124"></a>
 ### R-124 — TLA+, TLC et TLAPS pour les propriétés temporelles et systèmes de transition
-- **Cited by:** [metamodel coherence verification](research/metamodel-coherence-verification.fr.md) · [metamodel decision dossier](decisions/metamodel-design-dossier.fr.md)
+- **Cité par :** [vérification de la cohérence du métamodèle](research/metamodel-coherence-verification.fr.md) · [dossier de décision sur le métamodèle](decisions/metamodel-design-dossier.fr.md)
 - **Primary sources:** [TLA+ Proof System](https://proofs.tlapl.us/doc/web/content/Home.html) · [TLC documentation](https://github.com/tlaplus/tlaplus/blob/master/general/docs/tlcgui.txt)
 - **Relevant concepts:** spécifications de transitions d'état, vérification d'invariants, propriétés temporelles, model checking fini et étapes de preuve vérifiées mécaniquement.
 - **Use in GovCheck:** vérifier cycle de vie de l'autorité, révocation, expiration, invalidation et revalidation.
@@ -1188,7 +1188,7 @@
 
 <a id="r-125"></a>
 ### R-125 — Vérification des transformations de modèles
-- **Cited by:** [metamodel coherence verification](research/metamodel-coherence-verification.fr.md) · [metamodel decision dossier](decisions/metamodel-design-dossier.fr.md)
+- **Cité par :** [vérification de la cohérence du métamodèle](research/metamodel-coherence-verification.fr.md) · [dossier de décision sur le métamodèle](decisions/metamodel-design-dossier.fr.md)
 - **Primary source:** Calegari & Szasz, “Verification of Model Transformations: A Survey of the State-of-the-Art” (2013), [DOI](https://doi.org/10.1016/j.entcs.2013.02.002)
 - **Relevant concepts:** vérification des transformations selon leurs règles, propriétés recherchées et techniques ; vérification hétérogène.
 - **Use in GovCheck:** décrire les mappings comme transformations explicites avec propriétés de préservation et techniques déclarées.
@@ -1196,7 +1196,7 @@
 
 <a id="r-126"></a>
 ### R-126 — Epsilon EVL et analyseur Alloy
-- **Cited by:** [metamodel coherence verification](research/metamodel-coherence-verification.fr.md) · [metamodel decision dossier](decisions/metamodel-design-dossier.fr.md)
+- **Cité par :** [vérification de la cohérence du métamodèle](research/metamodel-coherence-verification.fr.md) · [dossier de décision sur le métamodèle](decisions/metamodel-design-dossier.fr.md)
 - **Primary sources:** [Epsilon Validation Language](https://eclipse.dev/epsilon/doc/evl/) · [Alloy Analyzer](https://alloy.readthedocs.io/en/latest/tooling/analyzer.html)
 - **Relevant concepts:** contraintes intra-/intermodèles, diagnostics et corrections ; recherche SAT de contre-exemples relationnels finis.
 - **Use in GovCheck:** contraintes exécutables et découverte de contre-exemples avant ou pendant les preuves.
@@ -1204,7 +1204,7 @@
 
 <a id="r-127"></a>
 ### R-127 — Alignement, cohérence et extension conservative des ontologies
-- **Cited by:** [metamodel coherence verification](research/metamodel-coherence-verification.fr.md) · [metamodel decision dossier](decisions/metamodel-design-dossier.fr.md)
+- **Cité par :** [vérification de la cohérence du métamodèle](research/metamodel-coherence-verification.fr.md) · [dossier de décision sur le métamodèle](decisions/metamodel-design-dossier.fr.md)
 - **Primary sources:** Botoeva et al., “Inseparability and conservative extensions of description logic ontologies: A survey” (2017), [repository record](https://livrepository.liverpool.ac.uk/3006616/) · “A semantic approach to mapping the Provenance Ontology to Basic Formal Ontology” (2025), [open article](https://pmc.ncbi.nlm.nih.gov/articles/PMC11833102/)
 - **Relevant concepts:** critères fondés sur les modèles pour alignement d'ontologies, interopérabilité sémantique, inséparabilité de requêtes/concepts et extensions conservatives.
 - **Use in GovCheck:** distinguer traçabilité simple et mapping sémantique ; définir quand le vocabulaire GovCheck doit préserver les conséquences des vocabulaires sources.

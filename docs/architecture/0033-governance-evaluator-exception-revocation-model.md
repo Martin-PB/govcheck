@@ -73,6 +73,8 @@ The model's finite state-space result is model-checking evidence for these exact
 
 - [R-05 — TLA+ and TLC state-transition modeling](../references.md#r-05)
 - [Specification 0006 — governance revision applicability](../specifications/0006-governance-revision-applicability.md)
+- [Specification 0007 — canonical journal and VCS adapter protocol](../specifications/0007-canonical-governance-journal-protocol.md)
 - [Architecture 0032 — canonical publication model-checking report](0032-canonical-publication-model-checking.md)
+- [Architecture 0034 — canonical journal recovery model](0034-canonical-journal-recovery-model.md)
 - [Decision-session record 0008](../decisions/0008-governance-applicability-arbitration-session.md)
 - [Issue #86 — governance applicability engineering obligations](https://github.com/Martin-PB/govcheck/issues/86)

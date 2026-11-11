@@ -42,7 +42,7 @@ jobs:
           build-args: GovCheckCoherence
           auto-config: false
           axiom-audit: true
-          axiom-audit-root: GovCheckCoherence
+          axiom-audit-root: GovCheckCoherence.Proofs
 
       - name: Report axioms used by prototype theorems
         working-directory: formal/lean

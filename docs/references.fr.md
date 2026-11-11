@@ -1579,3 +1579,52 @@
 - **Concepts pertinents :** critique des conceptions trop socialisées de la connaissance.
 - **Utilité pour GovCheck :** contrepoint à l'idée que la construction sociale suffit à établir la validité.
 - **Limite :** argument critique en sociologie, ne clôt pas le débat épistémologique.
+
+
+<a id="r-187"></a>
+### R-187 — Domain-Driven Design : Bounded Context
+- **Cité par :** [STUDY-004 — Gouvernance des spécifications multi-métiers](research/multi-viewpoint-specification-governance.fr.md)
+- **Source :** [Martin Fowler, Bounded Context](https://martinfowler.com/bliki/BoundedContext.html)
+- **Concepts pertinents :** frontières explicites au sein desquelles un modèle de domaine et son langage sont cohérents ; relations entre modèles distincts.
+- **Utilité pour GovCheck :** comparateur possible pour préserver les significations propres aux domaines et établir des correspondances entre contextes.
+- **Limite :** article explicatif industriel, pas formalisme complet de provenance, d'autorité, de gestion des contradictions ou d'assurance.
+
+<a id="r-188"></a>
+### R-188 — ISO/IEC/IEEE 42010:2022 — Description d'architecture
+- **Cité par :** [STUDY-004 — Gouvernance des spécifications multi-métiers](research/multi-viewpoint-specification-governance.fr.md)
+- **Source :** [Notice officielle ISO](https://www.iso.org/standard/74393.html)
+- **Concepts pertinents :** descriptions d'architecture, parties prenantes, préoccupations, points de vue et vues.
+- **Utilité pour GovCheck :** référence candidate pour relier spécifications et représentations aux préoccupations et points de vue des parties prenantes.
+- **Limite :** norme de description d'architecture ; ne constitue pas à elle seule un mécanisme d'ingestion, d'alignement sémantique ou de délibération décisionnelle.
+
+<a id="r-189"></a>
+### R-189 — ISO/IEC 11179-3 — Registres de métadonnées
+- **Cité par :** [STUDY-004 — Gouvernance des spécifications multi-métiers](research/multi-viewpoint-specification-governance.fr.md)
+- **Source :** [Notice officielle ISO/IEC 11179-3](https://www.iso.org/standard/78914.html)
+- **Concepts pertinents :** registres de métadonnées, description et identification des éléments de données.
+- **Utilité pour GovCheck :** comparateur pour préserver définitions, contextes et descriptions contrôlées des éléments de données.
+- **Limite :** l'enregistrement de métadonnées n'équivaut pas à l'alignement conceptuel inter-métiers ni à l'arbitrage de gouvernance ; édition et applicabilité à vérifier.
+
+<a id="r-190"></a>
+### R-190 — W3C Simple Knowledge Organization System (SKOS) Reference
+- **Cité par :** [STUDY-004 — Gouvernance des spécifications multi-métiers](research/multi-viewpoint-specification-governance.fr.md)
+- **Source :** [Recommandation W3C du 18 août 2009](https://www.w3.org/TR/skos-reference/)
+- **Concepts pertinents :** schémas de concepts, libellés, relations génériques/spécifiques et associatives, propriétés de correspondance.
+- **Utilité pour GovCheck :** vocabulaire d'échange candidat pour les vocabulaires contrôlés et les correspondances entre schémas de concepts.
+- **Limite :** les relations SKOS ne capturent pas à elles seules le contexte complet, la justification, l'autorité, l'incertitude ou le cycle de vie d'une traduction métier.
+
+<a id="r-191"></a>
+### R-191 — OWL 2 Web Ontology Language Document Overview
+- **Cité par :** [STUDY-004 — Gouvernance des spécifications multi-métiers](research/multi-viewpoint-specification-governance.fr.md)
+- **Source :** [Recommandation W3C](https://www.w3.org/TR/owl2-overview/)
+- **Concepts pertinents :** famille de langages d'ontologies et sémantique formelle pour représenter des connaissances de domaine et des conséquences logiques.
+- **Utilité pour GovCheck :** formalisme candidat à comparer pour les contraintes sémantiques vérifiables et les relations inférées.
+- **Limite :** une conséquence logique est relative à l'ontologie et à ses axiomes ; elle n'établit pas qu'un modèle de domaine est accepté par les métiers ou adéquat à une finalité donnée.
+
+<a id="r-192"></a>
+### R-192 — OMG Structured Assurance Case Metamodel (SACM)
+- **Cité par :** [STUDY-004 — Gouvernance des spécifications multi-métiers](research/multi-viewpoint-specification-governance.fr.md)
+- **Source :** [Page officielle de la spécification OMG SACM](https://www.omg.org/spec/SACM/)
+- **Concepts pertinents :** structuration des affirmations, arguments, éléments probants et échange de cas d'assurance.
+- **Utilité pour GovCheck :** mécanisme candidat pour relier les affirmations débattues, arguments et éléments probants aux décisions et à l'assurance.
+- **Limite :** SACM est un métamodèle de cas d'assurance, pas à lui seul un système d'ingestion de spécifications multi-métiers, d'alignement sémantique ou de résolution des conflits. Version exacte et profil de conformité à établir.

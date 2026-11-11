@@ -1,4 +1,4 @@
-import GovCheckCoherence.Evidence
+import GovCheckCoherence.Proofs
 
 #print axioms GovCheck.Coherence.transport_preserves_method_class
 #print axioms GovCheck.Coherence.transport_preserves_kind

@@ -31,6 +31,8 @@ SEON ne règle pas à lui seul l'autorité normative propre au dépôt, la dél�
 
 Sources : [R-115](../references.fr.md#r-115), [SEON](https://dev.nemo.inf.ufes.br/seon/SEON.html), [ReqON](https://dev.nemo.inf.ufes.br/seon/ReqON.html), [SPO](https://dev.nemo.inf.ufes.br/seon/SPO.html).
 
+Sources du catalogue associées : [R-04](../references.fr.md#r-04) · [R-33](../references.fr.md#r-33) · [R-34](../references.fr.md#r-34) · [R-71](../references.fr.md#r-71) · [R-73](../references.fr.md#r-73) · [R-88](../references.fr.md#r-88) · [R-92](../references.fr.md#r-92) · [R-93](../references.fr.md#r-93) · [R-94](../references.fr.md#r-94) · [R-95](../references.fr.md#r-95) · [R-96](../references.fr.md#r-96) · [R-97](../references.fr.md#r-97) · [R-98](../references.fr.md#r-98) · [R-99](../references.fr.md#r-99) · [R-100](../references.fr.md#r-100) · [R-102](../references.fr.md#r-102) · [R-115](../references.fr.md#r-115) · [R-116](../references.fr.md#r-116) · [R-117](../references.fr.md#r-117) · [R-118](../references.fr.md#r-118) · [R-119](../references.fr.md#r-119) · [R-120](../references.fr.md#r-120)
+
 ## 3. Cartographie de couverture : réutiliser sans confondre
 
 | Besoin | Candidats existants | Couverture réutilisable | Limite / lacune |

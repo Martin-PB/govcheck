@@ -134,7 +134,22 @@ La première tranche n'est achevée que lorsque :
 
 Aucune implémentation ne doit prétendre que ce critère est satisfait tant que la compilation Lean, l'exécuteur de fixtures et l'exécution TLC n'ont pas réellement été lancés et leurs sorties enregistrées.
 
-## 8. Décision toujours réservée
+
+
+## 9. Frontière du schéma d'élément probant existant (écart explicite)
+
+Le schéma actuel `formal/schemas/evidence-record.schema.json` définit `method.methodClass` et `result.status`, mais ne contient ni champ typé distinct `epistemicKind), ni objet typé dédié à une dérivation vérifiée par noyau. Le `EvidenceKind` du prototype Lean constitue donc une **interprétation sémantique supplémentaire**, et non une projection champ-à-champ sans perte du schéma JSON actuel.
+
+Conséquences :
+
+- `methodClass = theorem-proving` et `status = passed` ne suffisent pas à déduire `EvidenceKind.theoremProof`.
+- Une étiquette de méthode et un statut de résultat ne peuvent authentifier une dérivation. L'énoncé exact du théorème, les prémisses, hypothèses, identité/version du noyau-vérificateur, imports, axiomes, obligations admises, fonctionnalités unsafe et frontières d'oracle doivent être liés à un artefact de dérivation vérifiable.
+- Tant qu'un mapping/une extension typé(e) n'est pas autorisé(e), un enregistrement sans cette dérivation doit être classé comme épistémiquement non résolu/non-preuve ; il ne doit pas être promu en preuve de théorème.
+- Les petits fichiers JSON de `formal/lean/fixtures/` sont des **fixtures sémantiques**, pas des enregistrements complets valides selon le schéma JSON de production. Ils ne doivent pas être présentés au validateur de schéma comme des fixtures de production.
+
+Il s'agit d'un écart concret entre artefacts pour #73/#79, et non d'une autorisation de modifier le schéma de production. Une décision ultérieure devra choisir si le type épistémique et les métadonnées de dérivation appartiennent à l'enregistrement principal, à une extension typée ou à un artefact de preuve référencé séparément, et préciser le comportement aller-retour.
+
+## 10. Décision toujours réservée
 
 Ce contrat est une expérimentation proposée. Il ne sélectionne pas Lean/CSLib comme dépendance universelle des dépôts adoptants, n'adopte pas une ontologie GovCheck, ne remplace pas la sémantique native de SACM et n'autorise aucune dégradation des obligations de preuve. L'autorité devra décider du profil de preuve obligatoire après examen du coût réel, de la couverture et du socle de confiance du prototype.
 

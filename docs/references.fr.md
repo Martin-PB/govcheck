@@ -74,7 +74,7 @@
 - **Modélisation des exigences orientée objectifs :** R-44, R-92.
 - **Dossiers d'assurance de sécurité et métamodèles :** R-33 à R-34.
 - **Modèle de décision PEAK :** R-74.
-- **Modifications concurrentes, conflits sémantiques, files de fusion et livraison multi-agents :** R-142–R-150.
+- **Modifications concurrentes, conflits sémantiques, files de fusion et livraison multi-agents :** R-142–R-151.
 - **Surveillance continue et assurance à l'exécution :** R-70, R-72, R-75 à R-76.
 - **Assurance 2.0 et évolution de SACM :** R-71, R-73.
 - **Modèles sémantiques de domaine, qualité produit et conformité open source (sources candidates) :** R-94–R-100, R-102–R-103.

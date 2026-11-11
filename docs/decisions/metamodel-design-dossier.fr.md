@@ -21,6 +21,10 @@ Cette direction est cohérente avec les Architectures 0013 et 0027 et la Spécif
 
 **Posture recommandée :** adopter les principes architecturaux seulement après revue ; ne pas figer dès maintenant l'ontologie complète, la sérialisation, la technologie de graphe, le langage de règles, la logique, l'assistant de preuve ou le model checker. Définir et valider d'abord un noyau sémantique minimal et ses contrats intermodèles.
 
+
+
+**Réévaluation du réemploi des ontologies :** consulter l'[évaluation dédiée](../research/metamodel-ontology-reuse-assessment.fr.md) et sa [version anglaise](../research/metamodel-ontology-reuse-assessment.md). Elle identifie SEON/ReqON comme le meilleur candidat de réemploi trouvé et déconseille une ontologie ad hoc exhaustive au vu des éléments actuels ; un petit noyau de gouvernance avec correspondances explicites reste une option provisoire, non adoptée.
+
 ## 2. Décision à prendre
 
 Décider de l'architecture et des frontières du métamodèle GovCheck, notamment :

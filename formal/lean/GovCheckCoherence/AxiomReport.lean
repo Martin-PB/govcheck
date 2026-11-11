@@ -11,3 +11,6 @@ import GovCheckCoherence.Proofs
 #print axioms GovCheck.Coherence.theorem_proving_label_alone_does_not_authenticate_proof
 
 #print axioms GovCheck.Coherence.schema_method_and_status_do_not_determine_epistemic_kind
+#print axioms GovCheck.Coherence.evidence_lifecycle_transition_preserves_method_class
+#print axioms GovCheck.Coherence.evidence_lifecycle_transition_preserves_kind
+#print axioms GovCheck.Coherence.evidence_lifecycle_multistep_preserves_kind

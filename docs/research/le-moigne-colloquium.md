@@ -187,4 +187,4 @@ No binary “complexity score” or universal maturity threshold is supported by
 
 ## References
 
-See the central catalogue entries [R-166–R-186](../references.md#r-166). All references are research sources, not automatic requirements.
+See the central catalogue entries: [R-166](../references.md#r-166) · [R-167](../references.md#r-167) · [R-168](../references.md#r-168) · [R-169](../references.md#r-169) · [R-170](../references.md#r-170) · [R-171](../references.md#r-171) · [R-172](../references.md#r-172) · [R-173](../references.md#r-173) · [R-174](../references.md#r-174) · [R-175](../references.md#r-175) · [R-176](../references.md#r-176) · [R-177](../references.md#r-177) · [R-178](../references.md#r-178) · [R-179](../references.md#r-179) · [R-180](../references.md#r-180) · [R-181](../references.md#r-181) · [R-182](../references.md#r-182) · [R-183](../references.md#r-183) · [R-184](../references.md#r-184) · [R-185](../references.md#r-185) · [R-186](../references.md#r-186). All references are research sources, not automatic requirements.

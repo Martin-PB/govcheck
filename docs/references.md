@@ -46,6 +46,7 @@
 | Metamodel coherence, semantic preservation and formal verification | R-121–R-127 |
 | Concurrent edits, semantic merge conflicts and multi-agent delivery | R-142–R-151 |
 | AI-assisted code quality, maintainability, agentic TDD and organizational adoption | R-152–R-161 |
+| Repository enforcement boundaries, software factories, external preconditions and AI productivity measurement | R-162–R-165 |
 
 ## Full reference entries
 
@@ -1373,3 +1374,35 @@
 - **Relevant concepts:** retained as one of the five supplied research triggers; title, speaker and substantive claims were not independently verified in accessible indexed metadata during this pass.
 - **Use in GovCheck:** preserves source traceability without inventing its content; review the video itself before attributing claims or deriving requirements.
 - **Limit:** no content-level inference is made from the URL alone.
+
+<a id="r-162"></a>
+### R-162 — How to Build a Software Factory That Improves Itself
+- **Cited by:** [Repository-enforceable governance and external preconditions for AI software factories](research/repository-enforcement-boundaries.md)
+- **Source:** [Zach Lloyd, Warp, AI Engineer talk](https://youtu.be/nKjPBAw_N_0)
+- **Relevant concepts:** code-defined agent workflows, sandboxing, model/harness flexibility, run traces, locally curated benchmarks, cost/quality measurement, evaluator agents and reviewable self-improvement proposals.
+- **Use in GovCheck:** motivates a precise distinction between repository-owned controls, external evidence, observable outcomes, preconditions and residual risk.
+- **Limit:** industry talk from a vendor founder; recommendations and product examples are not independent validation or universal requirements.
+
+<a id="r-163"></a>
+### R-163 — Warp Factories: official workflow and configuration documentation
+- **Cited by:** [Repository-enforceable governance and external preconditions for AI software factories](research/repository-enforcement-boundaries.md)
+- **Primary sources:** [Warp Factories overview](https://docs.warp.dev/factories/) · [How factories work](https://docs.warp.dev/factories/how-factories-work) · [Factory definition syntax](https://docs.warp.dev/factories/factory-as-code/)
+- **Relevant concepts:** versioned factory definitions, workflow stages and human checkpoints, scorers, benchmarks, self-improvement proposals, and separation between workflow instructions and repository-enforced merge permissions.
+- **Use in GovCheck:** concrete industry example for distinguishing declarative configuration from runtime guarantees and repository policy from provider/platform enforcement.
+- **Limit:** product documentation describes Warp's implementation and claims; it does not independently establish security, evaluation validity or suitability as a GovCheck dependency.
+
+<a id="r-164"></a>
+### R-164 — Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity
+- **Cited by:** [Repository-enforceable governance and external preconditions for AI software factories](research/repository-enforcement-boundaries.md)
+- **Primary source:** [Becker, Rush, Barnes and Rein, METR randomized controlled trial (2025)](https://doi.org/10.48550/arXiv.2507.09089) · [paper PDF](https://metr.org/Early_2025_AI_Experienced_OS_Devs_Study-paper.pdf)
+- **Relevant concepts:** 16 experienced developers, 246 tasks in mature repositories; measured completion times diverged from participant expectations, with a 19% slowdown for the early-2025 tools in the studied setting.
+- **Use in GovCheck:** supports distinguishing self-reported productivity, benchmark performance, measured outcomes and contextual applicability; motivates explicit denominators and uncertainty.
+- **Limit:** small, context-specific sample and early-2025 tools; does not estimate effects for all teams, tasks or current systems. METR's 2026 update describes selection and measurement limitations in its later experiment.
+
+<a id="r-165"></a>
+### R-165 — NIST AI Risk Management Framework: Generative Artificial Intelligence Profile (AI 600-1)
+- **Cited by:** [Repository-enforceable governance and external preconditions for AI software factories](research/repository-enforcement-boundaries.md)
+- **Primary source:** [NIST AI 600-1 publication](https://doi.org/10.6028/NIST.AI.600-1) · [NIST publication page](https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence)
+- **Relevant concepts:** voluntary, cross-sector guidance for incorporating generative-AI trustworthiness considerations into design, development, use and evaluation.
+- **Use in GovCheck:** informs risk identification and explicit responsibility for assumptions, external dependencies and residual risk.
+- **Limit:** risk-management guidance, not a repository-local enforcement mechanism, formal proof system or evidence that an organization has implemented a recommended practice.

@@ -1267,7 +1267,7 @@
 
 <a id="r-148"></a>
 ### R-148 — DORA 2025 State of AI-assisted Software Development
-- **Cited by:** [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md), [AI-assisted quality and governance research review](research/ai-assisted-quality-governance.md), [GovCheck applicability and external boundaries](research/govcheck-applicability-and-boundaries.md), [Software factory conference analysis](research/software-factory-self-improvement.md)
+- **Cited by:** [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md), [AI-assisted quality and governance research review](research/ai-assisted-quality-governance.md), [Software factory conference analysis](research/software-factory-self-improvement.md)
 - **Primary sources:** [DORA report](https://dora.dev/research/2025/dora-report/) · [Google Research publication](https://research.google/pubs/dora-2025-state-of-ai-assisted-software-development-report/)
 - **Relevant concepts:** organizational and delivery-system factors associated with AI-assisted software development; AI as an amplifier of existing strengths and weaknesses.
 - **Use in GovCheck:** cautions against equating agent count or coding speed with delivery quality; emphasizes governance, feedback and engineering-system context.
@@ -1363,7 +1363,7 @@
 
 <a id="r-160"></a>
 ### R-160 — User-supplied video (metadata not independently resolved)
-- **Cited by:** [AI-assisted quality and governance research review](research/ai-assisted-quality-governance.md)
+- **Cited by:** [AI-assisted quality and governance research review](research/ai-assisted-quality-governance.md), [GovCheck applicability and external boundaries](research/govcheck-applicability-and-boundaries.md)
 - **Source:** [YouTube video ID hP2vfBcQhfk](https://youtu.be/hP2vfBcQhfk)
 - **Relevant concepts:** retained as one of the five supplied research triggers; title, speaker and substantive claims were not independently verified in accessible indexed metadata during this pass.
 - **Use in GovCheck:** preserves source traceability without inventing its content; review the video itself before attributing claims or deriving requirements.
@@ -1371,7 +1371,7 @@
 
 <a id="r-161"></a>
 ### R-161 — User-supplied video (metadata not independently resolved)
-- **Cited by:** [AI-assisted quality and governance research review](research/ai-assisted-quality-governance.md)
+- **Cited by:** [AI-assisted quality and governance research review](research/ai-assisted-quality-governance.md), [GovCheck applicability and external boundaries](research/govcheck-applicability-and-boundaries.md)
 - **Source:** [YouTube video ID cZ_PqBpZygY](https://youtu.be/cZ_PqBpZygY)
 - **Relevant concepts:** retained as one of the five supplied research triggers; title, speaker and substantive claims were not independently verified in accessible indexed metadata during this pass.
 - **Use in GovCheck:** preserves source traceability without inventing its content; review the video itself before attributing claims or deriving requirements.
@@ -1412,7 +1412,7 @@
 
 <a id="r-166"></a>
 ### R-166 — Grand colloquium: Current relevance of Jean-Louis Le Moigne's work (16 November 2023)
-- **Cited by:** [STUDY-003 colloquium analysis](research/le-moigne-colloquium.md), [STUDY-003 GovCheck applicability assessment](research/govcheck-applicability-constructivism-and-systems.md)
+- **Cited by:** [STUDY-003 colloquium analysis](research/le-moigne-colloquium.md)
 - **Primary sources:** [Official event page and programme](https://www.intelligence-complexite.org/activites/manifestation/grand-colloque-actualite-oeuvre-jean-louis-moigne) · [Replay programme PDF](https://www.intelligence-complexite.org/sites/default/files/media/text/rencontres/Colloque%20JLLM%20-%20video%20Replay.pdf)
 - **Relevant concepts:** programme and provenance for the three sessions on constructivist epistemologies, irreducibility and systemic modelling; identifies speakers and session sequence.
 - **Use in GovCheck:** provides a traceable research source for epistemology, complexity and systemic-modelling questions examined in STUDY-003.

@@ -116,7 +116,7 @@
 <a id="r-04"></a>
 
 ### R-04 — Goal Structuring Notation (GSN) Community Standard
-- **Cited by:** [0010](architecture/0010-assurance-proof-and-conformance.md)
+- **Cited by:** [0010-assurance-proof-and-conformance ](architecture/0010-assurance-proof-and-conformance.md) · [metamodel-ontology-reuse-assessment ](research/metamodel-ontology-reuse-assessment.md)
 
 - **Primary source:** [GSN Community Standard — official site](https://scsc.uk/gsn)
 - **Relevant concepts:** structured assurance claims, arguments, strategies, context, assumptions and evidence.
@@ -126,7 +126,7 @@
 <a id="r-05"></a>
 
 ### R-05 — TLA+ and TLC
-- **Cited by:** [0007](architecture/0007-technology-decision-framework.md), [0008](architecture/0008-formalization-and-conformance.md), [0009](architecture/0009-govcheck-design-discussion-record.md), [0010](architecture/0010-assurance-proof-and-conformance.md), [0011](architecture/0011-lifecycle-model-assertion-audit.md), [0020](architecture/0020-first-tlc-execution-record.md), [0021](architecture/0021-assurance-claims-and-freshness.md), [ADR 0001](decisions/0001-bootstrap-boundaries.md), [Spec 0003](specifications/0003-change-lifecycle.md), [Spec 0005](specifications/0005-assurance-model.md), [Spec 0006](specifications/0006-governance-revision-applicability.md), [ADR 0002](decisions/0002-study-placement.md), [ADR 0008](decisions/0008-governance-applicability-arbitration-session.md), [Formal lifecycle model](formal/lifecycle-model.md), [Formal model index](formal/README.md), [Architecture 0032](architecture/0032-canonical-publication-model-checking.md), [Architecture 0033](architecture/0033-governance-evaluator-exception-revocation-model.md)
+- **Cited by:** [0007-technology-decision-framework ](architecture/0007-technology-decision-framework.md) · [0008-formalization-and-conformance ](architecture/0008-formalization-and-conformance.md) · [0009-govcheck-design-discussion-record ](architecture/0009-govcheck-design-discussion-record.md) · [0010-assurance-proof-and-conformance ](architecture/0010-assurance-proof-and-conformance.md) · [0011-lifecycle-model-assertion-audit ](architecture/0011-lifecycle-model-assertion-audit.md) · [0020-first-tlc-execution-record ](architecture/0020-first-tlc-execution-record.md) · [0021-assurance-claims-and-freshness ](architecture/0021-assurance-claims-and-freshness.md) · [0032-canonical-publication-model-checking ](architecture/0032-canonical-publication-model-checking.md) · [0033-governance-evaluator-exception-revocation-model ](architecture/0033-governance-evaluator-exception-revocation-model.md) · [0001-bootstrap-boundaries ](decisions/0001-bootstrap-boundaries.md) · [0002-study-placement ](decisions/0002-study-placement.md) · [0008-governance-applicability-arbitration-session ](decisions/0008-governance-applicability-arbitration-session.md) · [metamodel-design-dossier ](decisions/metamodel-design-dossier.md) · [README ](formal/README.md) · [lifecycle-model ](formal/lifecycle-model.md) · [0003-change-lifecycle ](specifications/0003-change-lifecycle.md) · [0005-assurance-model ](specifications/0005-assurance-model.md) · [0006-governance-revision-applicability ](specifications/0006-governance-revision-applicability.md)
 
 - **Primary sources:** [Lamport's publications on TLA](https://www.microsoft.com/en-us/research/people/lamport/publications/) · [TLA+ project and documentation](https://lamport.azurewebsites.net/tla/tla.html)
 - **Academic reference:** Leslie Lamport, “The Temporal Logic of Actions,” ACM Transactions on Programming Languages and Systems, 16(3), 1994, pp. 872–923. [DOI](https://doi.org/10.1145/177492.177726)
@@ -392,7 +392,7 @@
 
 <a id="r-33"></a>
 ### R-33 — Mohamad, Steghöfer and Scandariato, “Security assurance cases—state of the art of an emerging approach” (2021)
-- **Cited by:** [0010](architecture/0010-assurance-proof-and-conformance.md), [0021](architecture/0021-assurance-claims-and-freshness.md) · [0024](architecture/0024-project-bootstrap-and-assurance-profiles.md)
+- **Cited by:** [0010-assurance-proof-and-conformance ](architecture/0010-assurance-proof-and-conformance.md) · [0021-assurance-claims-and-freshness ](architecture/0021-assurance-claims-and-freshness.md) · [0024-project-bootstrap-and-assurance-profiles ](architecture/0024-project-bootstrap-and-assurance-profiles.md) · [metamodel-design-dossier ](decisions/metamodel-design-dossier.md) · [metamodel-ontology-reuse-assessment ](research/metamodel-ontology-reuse-assessment.md)
 
 - **Primary source:** [Empirical Software Engineering article](https://doi.org/10.1007/s10664-021-09971-7)
 - **Academic reference:** Mazen Mohamad, Jan-Philipp Steghöfer and Riccardo Scandariato, *Empirical Software Engineering* 26, article 70 (2021).
@@ -402,7 +402,7 @@
 
 <a id="r-34"></a>
 ### R-34 — OMG Structured Assurance Case Metamodel (SACM)
-- **Cited by:** [0010](architecture/0010-assurance-proof-and-conformance.md), [0021](architecture/0021-assurance-claims-and-freshness.md) · [0024](architecture/0024-project-bootstrap-and-assurance-profiles.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.md)
+- **Cited by:** [0010-assurance-proof-and-conformance ](architecture/0010-assurance-proof-and-conformance.md) · [0021-assurance-claims-and-freshness ](architecture/0021-assurance-claims-and-freshness.md) · [0024-project-bootstrap-and-assurance-profiles ](architecture/0024-project-bootstrap-and-assurance-profiles.md) · [0025-runtime-observations-peak-and-sacm ](architecture/0025-runtime-observations-peak-and-sacm.md) · [metamodel-design-dossier ](decisions/metamodel-design-dossier.md) · [metamodel-ontology-reuse-assessment ](research/metamodel-ontology-reuse-assessment.md)
 
 - **Primary source:** [OMG SACM specification family](https://www.omg.org/spec/SACM/) · [formal version 2.3](https://www.omg.org/spec/SACM/2.3)
 - **Relevant concepts:** machine-processable representation of assurance-case structures and relationships between claims, argumentation, artifacts and evidence.
@@ -494,7 +494,7 @@
 
 <a id="r-44"></a>
 ### R-44 — KAOS and goal-oriented requirements engineering
-- **Cited by:** [0013](architecture/0013-governance-metamodel.md), [ADR 0002](decisions/0002-study-placement.md)
+- **Cited by:** [0013-governance-metamodel ](architecture/0013-governance-metamodel.md) · [0002-study-placement ](decisions/0002-study-placement.md) · [metamodel-design-dossier ](decisions/metamodel-design-dossier.md)
 
 - **Primary source:** [Axel van Lamsweerde, Requirements Engineering: From System Goals to UML Models to Software Specifications (2009), UCLouvain record](https://research.dial.uclouvain.be/entities/publication/ddcd5cbc-c76d-4da2-bd29-509cbf0f9399)
 - **Relevant concepts:** goal refinement, obstacles, responsibility assignment and derivation from system goals to requirements and software specifications.
@@ -558,7 +558,7 @@
 
 <a id="r-51"></a>
 ### R-51 — Open Knowledge Format (OKF) v0.2
-- **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
+- **Cited by:** [0002-study-placement ](decisions/0002-study-placement.md) · [metamodel-design-dossier ](decisions/metamodel-design-dossier.md)
 
 - **Primary sources:** [Canonical OKF v0.2 specification](https://github.com/GoogleCloudPlatform/open-knowledge-format/blob/main/SPEC.md) · [OKF v0.2 specification in the original Knowledge Catalog repository](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md)
 - **Relevant concepts:** portable knowledge bundles built from Markdown, YAML frontmatter, links, provenance, trust and lifecycle metadata.
@@ -567,7 +567,7 @@
 
 <a id="r-52"></a>
 ### R-52 — RDF 1.1 data model
-- **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
+- **Cited by:** [0002-study-placement ](decisions/0002-study-placement.md) · [metamodel-design-dossier ](decisions/metamodel-design-dossier.md)
 
 - **Primary source:** [W3C RDF 1.1 Concepts and Abstract Syntax](https://www.w3.org/TR/rdf11-concepts/) · [W3C RDF Primer](https://www.w3.org/TR/rdf-primer/)
 - **Relevant concepts:** graph and dataset data model based on subject–predicate–object triples and IRIs.
@@ -576,7 +576,7 @@
 
 <a id="r-53"></a>
 ### R-53 — SKOS
-- **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
+- **Cited by:** [0002-study-placement ](decisions/0002-study-placement.md) · [metamodel-design-dossier ](decisions/metamodel-design-dossier.md)
 
 - **Primary source:** [W3C SKOS Reference](https://www.w3.org/TR/skos-reference/)
 - **Relevant concepts:** URI-identified concepts, labels, notations, concept schemes, mappings and lightweight semantic relations.
@@ -585,7 +585,7 @@
 
 <a id="r-54"></a>
 ### R-54 — OWL 2 Web Ontology Language
-- **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
+- **Cited by:** [0002-study-placement ](decisions/0002-study-placement.md) · [metamodel-design-dossier ](decisions/metamodel-design-dossier.md)
 
 - **Primary source:** [W3C OWL 2 Structural Specification and Functional-Style Syntax](https://www.w3.org/TR/owl-syntax/) · [W3C OWL 2 Overview](https://www.w3.org/TR/owl-overview/)
 - **Relevant concepts:** formally defined ontology semantics for classes, properties, individuals and axioms.
@@ -594,7 +594,7 @@
 
 <a id="r-55"></a>
 ### R-55 — SHACL
-- **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
+- **Cited by:** [0002-study-placement ](decisions/0002-study-placement.md) · [metamodel-design-dossier ](decisions/metamodel-design-dossier.md)
 
 - **Primary source:** [W3C Shapes Constraint Language (SHACL)](https://www.w3.org/TR/shacl/)
 - **Relevant concepts:** validation of RDF graphs against declared shapes and constraints.
@@ -739,7 +739,7 @@
 
 <a id="r-71"></a>
 ### R-71 — Bloomfield and Rushby, “Assurance 2.0: A Manifesto” (2021)
-- **Cited by:** [0010](architecture/0010-assurance-proof-and-conformance.md), [0021](architecture/0021-assurance-claims-and-freshness.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.md)
+- **Cited by:** [0010-assurance-proof-and-conformance ](architecture/0010-assurance-proof-and-conformance.md) · [0021-assurance-claims-and-freshness ](architecture/0021-assurance-claims-and-freshness.md) · [0025-runtime-observations-peak-and-sacm ](architecture/0025-runtime-observations-peak-and-sacm.md) · [metamodel-design-dossier ](decisions/metamodel-design-dossier.md) · [metamodel-ontology-reuse-assessment ](research/metamodel-ontology-reuse-assessment.md)
 - **Primary source:** [SRI author page and paper](https://www.csl.sri.com/users/rushby/abstracts/sss21) · [arXiv manuscript](https://arxiv.org/abs/2004.10474)
 - **Bibliographic reference:** Robin Bloomfield and John Rushby, *Systems and Covid-19: Proceedings of the 29th Safety-Critical Systems Symposium*, 2021, pp. 85–108.
 - **Relevant concepts:** stronger scrutiny of reasoning and evidence; explicit defeaters and counterevidence; assessment of evidence weight and discrimination between a claim and its negation.
@@ -756,7 +756,7 @@
 
 <a id="r-73"></a>
 ### R-73 — OMG Structured Assurance Case Metamodel (SACM), Version 2.4 Beta 1 (September 2026)
-- **Cited by:** [0010](architecture/0010-assurance-proof-and-conformance.md), [0021](architecture/0021-assurance-claims-and-freshness.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.md)
+- **Cited by:** [0010-assurance-proof-and-conformance ](architecture/0010-assurance-proof-and-conformance.md) · [0021-assurance-claims-and-freshness ](architecture/0021-assurance-claims-and-freshness.md) · [0025-runtime-observations-peak-and-sacm ](architecture/0025-runtime-observations-peak-and-sacm.md) · [metamodel-design-dossier ](decisions/metamodel-design-dossier.md) · [metamodel-ontology-reuse-assessment ](research/metamodel-ontology-reuse-assessment.md)
 - **Primary source:** [OMG SACM specification status and 2.4 Beta 1 materials](https://www.omg.org/spec/SACM)
 - **Relevant concepts:** proposed extensions to SACM 2.3, including typed structured values/strengths, assessment-related constructs, joins, whole-concept references, development-state marking, and revised package/relationship semantics.
 - **Use in GovCheck:** essential comparison point before selecting an internal or interchange metamodel. The beta issue resolutions indicate which gaps in 2.3 the revision is attempting to address.
@@ -764,7 +764,7 @@
 
 <a id="r-74"></a>
 ### R-74 — Hoover, Rosso-Llopart and Taran, *Evaluating Project Decisions: Case Studies in Software Engineering* (2009/2010)
-- **Cited by:** [0013](architecture/0013-governance-metamodel.md), [0021](architecture/0021-assurance-claims-and-freshness.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.md)
+- **Cited by:** [0013-governance-metamodel ](architecture/0013-governance-metamodel.md) · [0021-assurance-claims-and-freshness ](architecture/0021-assurance-claims-and-freshness.md) · [0025-runtime-observations-peak-and-sacm ](architecture/0025-runtime-observations-peak-and-sacm.md) · [metamodel-design-dossier ](decisions/metamodel-design-dossier.md)
 - **Primary sources:** [PEAK section in Chapter 1 (InformIT)](https://www.informit.com/articles/article.aspx?p=1409781&seqNum=3) · [O’Reilly publisher book page](https://www.oreilly.com/library/view/evaluating-project-decisions/9780321685629/)
 - **Bibliographic reference:** Carol L. Hoover, Mel Rosso-Llopart and Gil Taran, Addison-Wesley Professional, first published October 2009 (copyright 2010), ISBN 978-0-321-54456-8; Chapter 1, §1.3 introduces the PEAK decision model.
 - **Relevant concepts:** Problem, Experience, Assumptions and Knowledge as decision inputs; a decision process produces a solution and an assumed risk.
@@ -879,7 +879,7 @@
 
 <a id="r-88"></a>
 ### R-88 — NIST SP 800-192: Verification and Test Methods for Access Control Policies/Models
-- **Cited by:** [ADR 0002](decisions/0002-study-placement.md), [0013](architecture/0013-governance-metamodel.md), [0015](architecture/0015-governance-conformance-and-validation-plan.md), [0022](architecture/0022-governance-capability-audit.md), [Spec 0002](specifications/0002-canonical-governance-model.md), [Spec 0006](specifications/0006-governance-revision-applicability.md)
+- **Cited by:** [0013-governance-metamodel ](architecture/0013-governance-metamodel.md) · [0015-governance-conformance-and-validation-plan ](architecture/0015-governance-conformance-and-validation-plan.md) · [0022-governance-capability-audit ](architecture/0022-governance-capability-audit.md) · [0002-study-placement ](decisions/0002-study-placement.md) · [metamodel-design-dossier ](decisions/metamodel-design-dossier.md) · [metamodel-ontology-reuse-assessment ](research/metamodel-ontology-reuse-assessment.md) · [0002-canonical-governance-model ](specifications/0002-canonical-governance-model.md) · [0006-governance-revision-applicability ](specifications/0006-governance-revision-applicability.md)
 - **Primary sources:** [NIST SP 800-192 publication record](https://csrc.nist.gov/pubs/sp/800/192/final) · [NIST DOI](https://doi.org/10.6028/NIST.SP.800-192)
 - **Relevant concepts:** verification and testing of access-control policies and models; inconsistency, incompleteness, safety requirements, black-box/white-box model checks and tests derived from policy models.
 - **Use in GovCheck:** direct support for validating normative policy models before testing their evaluators or enforcement mechanisms. An executable policy is not necessarily a correct, complete or coherent policy.
@@ -911,7 +911,7 @@
 
 <a id="r-92"></a>
 ### R-92 — iStar 2.0 goal-oriented requirements modeling
-- **Cited by:** [ADR 0002](decisions/0002-study-placement.md), [0013](architecture/0013-governance-metamodel.md)
+- **Cited by:** [0013-governance-metamodel ](architecture/0013-governance-metamodel.md) · [0002-study-placement ](decisions/0002-study-placement.md) · [metamodel-design-dossier ](decisions/metamodel-design-dossier.md) · [metamodel-ontology-reuse-assessment ](research/metamodel-ontology-reuse-assessment.md)
 - **Primary source:** [Dalpiaz, Franch and Horkoff, iStar 2.0 Language Guide (arXiv:1605.07767)](https://arxiv.org/abs/1605.07767)
 - **Relevant concepts:** actor-centered goal modeling, intentional and social dependencies, goals, qualities, tasks and resources; a shared core vocabulary for goal-oriented requirements engineering.
 - **Use in GovCheck:** preserves iStar as a candidate complement to KAOS/GORE for relating stakeholder goals, actors, dependencies and derived requirements.
@@ -919,7 +919,7 @@
 
 <a id="r-93"></a>
 ### R-93 — Deontic logic and normative modalities
-- **Cited by:** [ADR 0002](decisions/0002-study-placement.md), [0013](architecture/0013-governance-metamodel.md), [0015](architecture/0015-governance-conformance-and-validation-plan.md), [0022](architecture/0022-governance-capability-audit.md), [Spec 0002](specifications/0002-canonical-governance-model.md)
+- **Cited by:** [0013-governance-metamodel ](architecture/0013-governance-metamodel.md) · [0015-governance-conformance-and-validation-plan ](architecture/0015-governance-conformance-and-validation-plan.md) · [0022-governance-capability-audit ](architecture/0022-governance-capability-audit.md) · [0002-study-placement ](decisions/0002-study-placement.md) · [metamodel-design-dossier ](decisions/metamodel-design-dossier.md) · [metamodel-ontology-reuse-assessment ](research/metamodel-ontology-reuse-assessment.md) · [0002-canonical-governance-model ](specifications/0002-canonical-governance-model.md)
 - **Primary sources:** [G. H. von Wright, “Deontic Logic”, Mind (1951)](https://doi.org/10.1093/mind/LX.237.1) · [Stanford Encyclopedia of Philosophy, Deontic Logic](https://plato.stanford.edu/entries/logic-deontic/)
 - **Relevant concepts:** formal reasoning about obligation, permission, prohibition, optionality, omission and related normative statuses.
 - **Use in GovCheck:** provides a logical vocabulary for expressing obligations, permissions and prohibitions in a normative governance model, and for distinguishing these modalities from descriptive facts.
@@ -938,7 +938,7 @@
 
 <a id="r-94"></a>
 ### R-94 — OMG business decision, motivation and process standards
-- **Cited by:** no current record cites this candidate source. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
+- **Cited by:** [0027-domain-semantic-standards-decisions-and-bootstrap ](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md) · [metamodel-design-dossier ](decisions/metamodel-design-dossier.md) · [metamodel-ontology-reuse-assessment ](research/metamodel-ontology-reuse-assessment.md)
 - **Primary sources:** [OMG specifications catalogue](https://www.omg.org/specifications/) · [DMN 1.6](https://www.omg.org/spec/DMN/1.6/) · [DMN 1.7 Beta 1](https://www.omg.org/spec/DMN/1.7/Beta1) · [BPMN 2.0.2](https://www.omg.org/spec/BPMN/) · [CMMN 1.1](https://www.omg.org/spec/CMMN/1.1) · [Business Motivation Model 1.3](https://www.omg.org/spec/BMM/1.3/) · [SBVR 1.5](https://www.omg.org/spec/SBVR)
 - **Relevant concepts:** decision requirements, decision tables and FEEL; process activities, events and gateways; adaptive case management; business goals and influencers; formal business vocabularies and rules.
 - **Use in GovCheck:** primary specifications for complementary decision-logic, process, case-management, motivation and business-rule candidates discussed in the project.
@@ -946,7 +946,7 @@
 
 <a id="r-95"></a>
 ### R-95 — OMG engineering, risk, testing, requirements, metrics and provenance models
-- **Cited by:** no current record cites this candidate source. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
+- **Cited by:** [0027-domain-semantic-standards-decisions-and-bootstrap ](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md) · [metamodel-design-dossier ](decisions/metamodel-design-dossier.md) · [metamodel-ontology-reuse-assessment ](research/metamodel-ontology-reuse-assessment.md)
 - **Primary sources:** [RAAML 1.1](https://www.omg.org/spec/RAAML/1.1) · [RAAML 1.2 Beta 1](https://www.omg.org/spec/RAAML/1.2/Beta1) · [SysML v2](https://www.omg.org/spec/SysML/2.0) · [SysML v2 overview](https://www.omg.org/sysml/sysmlv2/) · [UTP 2.3 Beta 1](https://www.omg.org/spec/UTP2) · [ReqIF 1.2](https://www.omg.org/spec/ReqIF/1.2) · [Structured Metrics Metamodel 1.2](https://www.omg.org/spec/SMM/1.2) · [PPMN 1.0](https://www.omg.org/spec/PPMN/)
 - **Relevant concepts:** risk/safety analysis; systems requirements, structure, behavior and verification; model-based test specification; requirements exchange; measurement definitions/results; provenance of entities, activities and agents.
 - **Use in GovCheck:** primary sources for candidate engineering-domain models, including machine-readable model and exchange artifacts where published.
@@ -954,7 +954,7 @@
 
 <a id="r-96"></a>
 ### R-96 — ISO/IEC/IEEE 42010:2022, architecture description
-- **Cited by:** no current record cites this candidate source. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
+- **Cited by:** [0027-domain-semantic-standards-decisions-and-bootstrap ](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md) · [metamodel-design-dossier ](decisions/metamodel-design-dossier.md) · [metamodel-ontology-reuse-assessment ](research/metamodel-ontology-reuse-assessment.md)
 - **Primary source:** [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html)
 - **Relevant concepts:** requirements for architecture descriptions, description frameworks, viewpoints, model kinds and conformance.
 - **Use in GovCheck:** candidate normative foundation for structuring architecture descriptions, stakeholder concerns, views and viewpoints.
@@ -962,7 +962,7 @@
 
 <a id="r-97"></a>
 ### R-97 — ISO/IEC/IEEE 29148, requirements engineering
-- **Cited by:** no current record cites this candidate source. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
+- **Cited by:** [0027-domain-semantic-standards-decisions-and-bootstrap ](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md) · [metamodel-design-dossier ](decisions/metamodel-design-dossier.md) · [metamodel-ontology-reuse-assessment ](research/metamodel-ontology-reuse-assessment.md)
 - **Primary sources:** [ISO/IEC/IEEE DIS 29148, third edition (2026)](https://www.iso.org/standard/94091.html) · [ISO/IEC/IEEE 29148:2018](https://www.iso.org/standard/72089.html)
 - **Relevant concepts:** lifecycle requirements-engineering processes, required information items and their contents, and guidance for requirements work across systems/software lifecycles.
 - **Use in GovCheck:** candidate process and information-item reference for requirements governance and traceability.
@@ -970,7 +970,7 @@
 
 <a id="r-98"></a>
 ### R-98 — ISO/IEC 25010:2023, product quality model
-- **Cited by:** no current record cites this candidate source. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
+- **Cited by:** [0027-domain-semantic-standards-decisions-and-bootstrap ](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md) · [metamodel-design-dossier ](decisions/metamodel-design-dossier.md) · [metamodel-ontology-reuse-assessment ](research/metamodel-ontology-reuse-assessment.md)
 - **Primary source:** [ISO/IEC 25010:2023](https://www.iso.org/standard/78176.html)
 - **Relevant concepts:** product-quality characteristics and subcharacteristics used to specify, measure and evaluate ICT/software product quality.
 - **Use in GovCheck:** candidate shared quality vocabulary for quality requirements, test objectives, evaluation criteria and measurement planning.
@@ -978,7 +978,7 @@
 
 <a id="r-99"></a>
 ### R-99 — SPDX specification
-- **Cited by:** no current record cites this candidate source. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
+- **Cited by:** [0027-domain-semantic-standards-decisions-and-bootstrap ](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md) · [metamodel-design-dossier ](decisions/metamodel-design-dossier.md) · [metamodel-ontology-reuse-assessment ](research/metamodel-ontology-reuse-assessment.md)
 - **Primary source:** [SPDX specifications catalogue](https://spdx.dev/use/specifications/)
 - **Relevant concepts:** standardized machine-readable representation of software components, packages, files, relationships, licensing and other supply-chain metadata. The catalogue identifies SPDX 3.0 as current at the research snapshot.
 - **Use in GovCheck:** candidate native format for SBOM and license/supply-chain metadata.
@@ -986,7 +986,7 @@
 
 <a id="r-100"></a>
 ### R-100 — CycloneDX specification
-- **Cited by:** no current record cites this candidate source. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
+- **Cited by:** [0027-domain-semantic-standards-decisions-and-bootstrap ](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md) · [metamodel-design-dossier ](decisions/metamodel-design-dossier.md) · [metamodel-ontology-reuse-assessment ](research/metamodel-ontology-reuse-assessment.md)
 - **Primary source:** [CycloneDX specification overview](https://cyclonedx.org/specification/overview/)
 - **Relevant concepts:** extensible supply-chain object model for software/hardware components, services, dependencies, cryptographic assets, operational configurations and metadata; JSON, XML and Protocol Buffers representations.
 - **Use in GovCheck:** candidate SBOM and broader supply-chain exchange format, to assess alongside SPDX against actual needs.
@@ -994,7 +994,7 @@
 
 <a id="r-102"></a>
 ### R-102 — W3C PROV family
-- **Cited by:** no current record cites this candidate source. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
+- **Cited by:** [0027-domain-semantic-standards-decisions-and-bootstrap ](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md) · [metamodel-design-dossier ](decisions/metamodel-design-dossier.md) · [metamodel-ontology-reuse-assessment ](research/metamodel-ontology-reuse-assessment.md)
 - **Primary source:** [W3C PROV overview](https://www.w3.org/TR/prov-overview/)
 - **Relevant concepts:** interoperable provenance models for entities, activities, agents and derivation/attribution, with data model, ontology, constraints and serialization specifications.
 - **Use in GovCheck:** candidate vocabulary and representation family for provenance across decisions, sources, generated artifacts, observations and evidence.
@@ -1104,7 +1104,7 @@
 
 <a id="r-115"></a>
 ### R-115 — Software Engineering Ontology Network (SEON)
-- **Cited by:** [metamodel ontology-reuse assessment](research/metamodel-ontology-reuse-assessment.md) · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
+- **Cited by:** [metamodel-ontology-reuse-assessment ](research/metamodel-ontology-reuse-assessment.md)
 - **Primary sources:** [SEON network](https://dev.nemo.inf.ufes.br/seon/SEON.html) · [ReqON](https://dev.nemo.inf.ufes.br/seon/ReqON.html) · [SPO](https://dev.nemo.inf.ufes.br/seon/SPO.html)
 - **Relevant concepts:** software-engineering reference ontology network including software processes, requirements engineering, goal-oriented requirements, runtime requirements, testing, quality assurance and measurement, grounded in UFO.
 - **Use in GovCheck:** strongest identified reuse candidate for lifecycle, requirements and engineering concepts; align to it before inventing equivalent concepts.
@@ -1112,7 +1112,7 @@
 
 <a id="r-116"></a>
 ### R-116 — W3C semantic-web ontology and validation components
-- **Cited by:** [metamodel ontology-reuse assessment](research/metamodel-ontology-reuse-assessment.md) · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
+- **Cited by:** [metamodel-ontology-reuse-assessment ](research/metamodel-ontology-reuse-assessment.md)
 - **Primary sources:** [OWL 2 overview](https://www.w3.org/TR/owl-overview/) · [OWL](https://www.w3.org/OWL/) · [SKOS](https://www.w3.org/TR/skos-reference/) · [SHACL](https://www.w3.org/TR/shacl/)
 - **Relevant concepts:** OWL 2 formal ontologies, RDF graph data, SKOS concept schemes/mappings, SHACL validation of RDF graphs against declared constraints.
 - **Use in GovCheck:** possible implementation profile for vocabularies, linked identifiers, concept mapping and graph validation, subject to a separate decision.
@@ -1120,7 +1120,7 @@
 
 <a id="r-117"></a>
 ### R-117 — OMG Ontology Definition Metamodel (ODM)
-- **Cited by:** [metamodel ontology-reuse assessment](research/metamodel-ontology-reuse-assessment.md) · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
+- **Cited by:** [metamodel-ontology-reuse-assessment ](research/metamodel-ontology-reuse-assessment.md)
 - **Primary source:** [OMG ODM 1.1](https://www.omg.org/spec/ODM/1.1/)
 - **Relevant concepts:** metamodels, profiles and mappings among ontology and modeling standards, including UML/MOF, for knowledge interchange and consistency checking.
 - **Use in GovCheck:** reference for explicit integration and mapping between conceptual models and ontology formalisms.
@@ -1128,7 +1128,7 @@
 
 <a id="r-118"></a>
 ### R-118 — Lean Computer Science Library (CSLib)
-- **Cited by:** [metamodel ontology-reuse assessment](research/metamodel-ontology-reuse-assessment.md) · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
+- **Cited by:** [metamodel-ontology-reuse-assessment ](research/metamodel-ontology-reuse-assessment.md)
 - **Primary sources:** [repository](https://github.com/leanprover/cslib) · [organization](https://github.com/leanprover/cslib/blob/main/ORGANISATION.md) · [contributor guidance](https://github.com/leanprover/cslib/blob/main/CONTRIBUTING.md) · [roadmap](https://www.cslib.io/roadmap/)
 - **Relevant concepts:** reusable Lean formalizations for operational semantics, labeled transition systems, program equivalences, logics, languages, automata and computability; Boole direction for code verification.
 - **Use in GovCheck:** optional formalization backend for selected semantic contracts, lifecycle transition systems or properties.
@@ -1136,7 +1136,7 @@
 
 <a id="r-119"></a>
 ### R-119 — OMG Essence, software engineering kernel and methods
-- **Cited by:** [metamodel ontology-reuse assessment](research/metamodel-ontology-reuse-assessment.md) · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
+- **Cited by:** [metamodel-ontology-reuse-assessment ](research/metamodel-ontology-reuse-assessment.md)
 - **Primary source:** [OMG Essence catalogue](https://www.omg.org/spec/Essence/)
 - **Relevant concepts:** method-independent software-engineering kernel, alphas such as opportunity, stakeholders, requirements, software system, team, work and way of working, and a language for methods/practices.
 - **Use in GovCheck:** candidate reference for lifecycle/work-product coverage and separating reusable engineering concepts from method-specific practices.
@@ -1144,7 +1144,7 @@
 
 <a id="r-120"></a>
 ### R-120 — OASIS OSLC Requirements Management
-- **Cited by:** [metamodel ontology-reuse assessment](research/metamodel-ontology-reuse-assessment.md) · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
+- **Cited by:** [metamodel-ontology-reuse-assessment ](research/metamodel-ontology-reuse-assessment.md)
 - **Primary source:** [OSLC Requirements Management 2.1](https://docs.oasis-open-projects.org/oslc-op/rm/v2.1/requirements-management-spec.html)
 - **Relevant concepts:** requirements-management resources/vocabulary, linked-data service patterns and constraints for requirements exchange between tools.
 - **Use in GovCheck:** candidate interoperability target for linking or exchanging requirements with external engineering/lifecycle systems.
@@ -1153,7 +1153,7 @@
 
 <a id="r-121"></a>
 ### R-121 — OWL 2 formal semantics and reasoning
-- **Cited by:** [metamodel coherence verification](research/metamodel-coherence-verification.md) · [metamodel decision dossier](decisions/metamodel-design-dossier.md)
+- **Cited by:** [metamodel-coherence-verification ](research/metamodel-coherence-verification.md)
 - **Primary sources:** [OWL 2 overview](https://www.w3.org/TR/owl-overview/) · [OWL 2 Direct Semantics](https://www.w3.org/TR/owl2-direct-semantics/) · [OWL 2 conformance](https://www.w3.org/TR/owl2-conformance/)
 - **Relevant concepts:** model-theoretic semantics, ontology consistency, class satisfiability, subsumption, entailment, profiles and reasoner conformance.
 - **Use in GovCheck:** source-native logical consistency and entailment checks for ontologies within a declared OWL profile.
@@ -1161,7 +1161,7 @@
 
 <a id="r-122"></a>
 ### R-122 — W3C Shapes Constraint Language (SHACL)
-- **Cited by:** [metamodel coherence verification](research/metamodel-coherence-verification.md) · [metamodel decision dossier](decisions/metamodel-design-dossier.md)
+- **Cited by:** [metamodel-coherence-verification ](research/metamodel-coherence-verification.md)
 - **Primary source:** [SHACL](https://www.w3.org/TR/shacl/)
 - **Relevant concepts:** validation of RDF data graphs against declared shapes, constraints and validation reports.
 - **Use in GovCheck:** structural and graph-level contract validation where RDF is the chosen representation.
@@ -1169,7 +1169,7 @@
 
 <a id="r-123"></a>
 ### R-123 — Lean Computer Science Library (CSLib) for semantic proof
-- **Cited by:** [metamodel coherence verification](research/metamodel-coherence-verification.md) · [metamodel decision dossier](decisions/metamodel-design-dossier.md)
+- **Cited by:** [metamodel-coherence-verification ](research/metamodel-coherence-verification.md)
 - **Primary sources:** [CSLib repository](https://github.com/leanprover/cslib) · [organization](https://github.com/leanprover/cslib/blob/main/ORGANISATION.md) · [contributor guidance](https://github.com/leanprover/cslib/blob/main/CONTRIBUTING.md)
 - **Relevant concepts:** reusable Lean formalizations for operational semantics, labeled transition systems, program equivalence and logics.
 - **Use in GovCheck:** reuse suitable foundations to formalize the common semantic bridge and prove critical mapping properties.
@@ -1177,7 +1177,7 @@
 
 <a id="r-124"></a>
 ### R-124 — TLA+, TLC and TLAPS for temporal and transition-system properties
-- **Cited by:** [metamodel coherence verification](research/metamodel-coherence-verification.md) · [metamodel decision dossier](decisions/metamodel-design-dossier.md)
+- **Cited by:** [metamodel-coherence-verification ](research/metamodel-coherence-verification.md)
 - **Primary sources:** [TLA+ Proof System](https://proofs.tlapl.us/doc/web/content/Home.html) · [TLC documentation](https://github.com/tlaplus/tlaplus/blob/master/general/docs/tlcgui.txt)
 - **Relevant concepts:** state-transition specifications, invariant checking, temporal properties, finite-state model checking and mechanically checked proof steps.
 - **Use in GovCheck:** check authority lifecycle, revocation, expiry, invalidation and revalidation properties.
@@ -1185,7 +1185,7 @@
 
 <a id="r-125"></a>
 ### R-125 — Verification of model transformations
-- **Cited by:** [metamodel coherence verification](research/metamodel-coherence-verification.md) · [metamodel decision dossier](decisions/metamodel-design-dossier.md)
+- **Cited by:** [metamodel-coherence-verification ](research/metamodel-coherence-verification.md)
 - **Primary source:** Calegari & Szasz, “Verification of Model Transformations: A Survey of the State-of-the-Art” (2013), [DOI](https://doi.org/10.1016/j.entcs.2013.02.002)
 - **Relevant concepts:** verification of transformations in terms of transformation rules, properties of interest and verification techniques; heterogeneous verification.
 - **Use in GovCheck:** frame mapping verification as explicit transformations plus preservation properties and declared techniques.
@@ -1193,7 +1193,7 @@
 
 <a id="r-126"></a>
 ### R-126 — Epsilon EVL and Alloy Analyzer
-- **Cited by:** [metamodel coherence verification](research/metamodel-coherence-verification.md) · [metamodel decision dossier](decisions/metamodel-design-dossier.md)
+- **Cited by:** [metamodel-coherence-verification ](research/metamodel-coherence-verification.md)
 - **Primary sources:** [Epsilon Validation Language](https://eclipse.dev/epsilon/doc/evl/) · [Alloy Analyzer](https://alloy.readthedocs.io/en/latest/tooling/analyzer.html)
 - **Relevant concepts:** intra-/inter-model constraints, validation diagnostics and fixes; SAT-based search for finite relational counterexamples.
 - **Use in GovCheck:** executable model constraints and counterexample discovery before or alongside proof development.
@@ -1201,7 +1201,7 @@
 
 <a id="r-127"></a>
 ### R-127 — Ontology alignment, consistency and conservative extension
-- **Cited by:** [metamodel coherence verification](research/metamodel-coherence-verification.md) · [metamodel decision dossier](decisions/metamodel-design-dossier.md)
+- **Cited by:** [metamodel-coherence-verification ](research/metamodel-coherence-verification.md)
 - **Primary sources:** Botoeva et al., “Inseparability and conservative extensions of description logic ontologies: A survey” (2017), [repository record](https://livrepository.liverpool.ac.uk/3006616/) · “A semantic approach to mapping the Provenance Ontology to Basic Formal Ontology” (2025), [open article](https://pmc.ncbi.nlm.nih.gov/articles/PMC11833102/)
 - **Relevant concepts:** model-theoretic criteria for ontology alignment, semantic interoperability, query/concept inseparability and conservative extensions.
 - **Use in GovCheck:** distinguish simple traceability from semantic mappings; state when adding GovCheck vocabulary must preserve consequences in source vocabularies.

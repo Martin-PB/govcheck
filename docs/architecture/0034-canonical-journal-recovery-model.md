@@ -58,6 +58,6 @@ Final PR-head revalidation: the same module/configuration blobs were rechecked o
 
 ## 6. Related contract and references
 
-This model complements [Specification 0006](../specifications/0006-governance-revision-applicability.md), [Architecture 0032](0032-canonical-publication-model-checking.md) and [Architecture 0033](0033-governance-evaluator-exception-revocation-model.md). Its conceptual foundations are catalogued under [R-05 — TLA+ and TLC](../references.md#r-05) and [R-22 — native Git and Pijul semantics](../references.md#r-22).
+This model complements [Specification 0006](../specifications/0006-governance-revision-applicability.md), proposed [Specification 0007](../specifications/0007-canonical-governance-journal-protocol.md), [Architecture 0032](0032-canonical-publication-model-checking.md), [Architecture 0033](0033-governance-evaluator-exception-revocation-model.md) and [decision-session record 0008](../decisions/0008-governance-applicability-arbitration-session.md). Its conceptual foundations are catalogued under [R-05 — TLA+ and TLC](../references.md#r-05) and [R-22 — native Git and Pijul semantics](../references.md#r-22).
 
 It does not claim the journal, recovery procedure or VCS adapters are implemented.

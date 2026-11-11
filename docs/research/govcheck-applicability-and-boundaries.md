@@ -5,7 +5,7 @@
 
 ## Research basis and scope
 
-This synthesis is not the analysis of one conference. It consolidates the earlier research review of AI-assisted quality, maintainability, agentic TDD and organizational practice ([research review](ai-assisted-quality-governance.md)), the separate [software-factory conference analysis](software-factory-self-improvement.md), and the supporting academic, standards and industry sources catalogued in [R-148](../references.md#r-148) and [R-152–R-165](../references.md#r-152).
+This synthesis is not the analysis of one conference. It consolidates the earlier research review of AI-assisted quality, maintainability, agentic TDD and organizational practice ([research review](ai-assisted-quality-governance.md)), the separate [software-factory conference analysis](software-factory-self-improvement.md), and the supporting academic, standards and industry sources described in the earlier [AI-assisted quality and governance research review](ai-assisted-quality-governance.md), including empirical work on code health, downstream maintainability, large-scale change context, agent-generated pull requests and practitioner workflows.
 
 The purpose is to determine what GovCheck can reasonably govern or assess at repository level, what requires external evidence or organizational action, and what should be communicated as a limitation or applicability condition. It also develops a provisional user-facing answer to the question “When is GovCheck an appropriate fit?” without claiming that the planned product is already implemented.
 
@@ -64,6 +64,10 @@ The talk's “measure on your own tasks” recommendation is a reasonable experi
 Warp's docs describe a specific commercial implementation: versioned factory definitions, agent stages, scorers, benchmarks, self-improvement proposals and human approval checkpoints. This is a concrete industrial example, not a neutral standard. In particular, an LLM judge's score is itself evidence from a fallible evaluator, not ground truth. A factory configuration in Git does not, by itself, prove that the cloud runtime executed exactly that configuration or that external permissions were correctly applied.
 
 NIST AI RMF's Generative AI Profile offers risk-management guidance for organizations; it is not a repository-local enforcement engine. SSDF and existing supply-chain/provenance sources similarly inform practices but do not prove a particular implementation conforms merely because the references are cited.
+
+
+
+The earlier research review also supplies important counterweights to the software-factory narrative: studies report context-dependent relationships between code health and AI refactoring, no clear universal downstream maintainability penalty in one preregistered setting, substantial contextual confounds in large-scale data, and a non-trivial share of agent-authored PRs needing further changes after merge. Practitioner TDD/example-mapping workflows offer useful ways to clarify intent and test oracles, but remain methods to select per project rather than universal requirements. Industry interviews and DORA-style organizational evidence are prompts for local assessment, not causal proof that a particular operating model will work. Two supplied video identifiers (R-160 and R-161) remain unresolved in the earlier review; no content claims should be inferred from them.
 
 ## 5. Proposed boundary record for each requirement or claim
 

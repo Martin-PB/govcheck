@@ -2,6 +2,14 @@
 
 **Policy:** append-only. This is a logical journal, not a tamper-proof storage mechanism. Never edit or delete an earlier event; corrections are new events.
 
+## References used
+
+- [R-05 — TLA+ and TLC](../references.md#r-05) — bounded formal-model evidence recorded in the journal.
+- [R-22 — Native Git and Pijul semantics](../references.md#r-22) — distinction between VCS observations and normative journal order.
+- [R-142 — Linearizability](../references.md#r-142) — the single linearization point for concurrent appends.
+- [R-143 — ARIES write-ahead logging and recovery](../references.md#r-143) — durable commit and recovery boundary.
+- [R-144 — RFC 9110 idempotent methods](../references.md#r-144) — safe retry semantics after a lost response.
+
 ## WP-EVT-000001 — Initial issue-to-registry import
 
 - **Subject:** govcheck.work-portfolio
@@ -203,7 +211,7 @@
 - **Event type:** `technical-review-clarifications-proposed`
 - **Recorded:** 2026-11-10
 - **Candidate:** [PR #104](https://github.com/Martin-PB/govcheck/pull/104), branch `work/issue-86-journal-protocol-review-fixes`, stacked on PR #100.
-- **Scope:** clarify stable journal-scope identity without choosing its repository/domain cardinality; bind genesis to the initial authority/governance baseline and explicit trust anchor; state algorithm-neutral integrity/authenticity requirements; define idempotency-key scope, exact-request binding, retention and genesis exception; add R-142–R-144 on linearizability, write-ahead logging/recovery and idempotent retries; correct Architecture 0034's recovery-fairness wording and section numbering in EN/FR.
+- **Scope:** clarify stable journal-scope identity without choosing its repository/domain cardinality; bind genesis to the initial authority/governance baseline and explicit trust anchor; state algorithm-neutral integrity/authenticity requirements; define idempotency-key scope, exact-request binding, retention and genesis exception; add [R-142](../references.md#r-142)–[R-144](../references.md#r-144) on linearizability, write-ahead logging/recovery and idempotent retries; correct Architecture 0034's recovery-fairness wording and section numbering in EN/FR.
 - **Disposition:** proposed technical/documentary clarification only. Specification 0007 remains proposed; the eleven owner-selected outcomes remain pending formal normative adoption. No storage engine, cryptographic suite or consensus protocol is selected.
 - **Related records:** PR #100; PR #104; Specification 0007 EN/FR; Architecture 0034 EN/FR; references R-142–R-144.
 - **Known limits:** no new TLA+ model or implementation is added; no production journal, genesis mechanism, adapter, durability guarantee or implementation refinement is claimed.

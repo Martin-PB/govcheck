@@ -78,7 +78,7 @@
 - **Continuous monitoring and runtime assurance:** R-70, R-72, R-75–R-76.
 - **Assurance 2.0 and SACM evolution:** R-71, R-73.
 - **Domain semantics, product quality and open-source compliance (candidate sources):** R-94–R-100, R-102–R-103.
-- **Agent instructions and spec-driven workflows:** R-104.\n- **Concurrent edits, semantic conflicts, merge queues and multi-agent delivery:** R-142–R-151.
+- **Agent instructions and spec-driven workflows:** R-104.
 - **Policy-as-code, continuous assurance and MCP governance research:** R-105.
 - **AI-agent and MCP security guidance:** R-106.
 - **GitHub Actions workflow placement:** R-107.

@@ -58,6 +58,10 @@ Source: [W3C SHACL](https://www.w3.org/TR/shacl/).
 
 Lean can define GovCheck's semantic domains and prove theorems about mappings. CSLib offers reusable formalizations of computer-science foundations, operational semantics, labeled transition systems, equivalences and logics; its documented interests include temporal logic. Reuse those definitions when appropriate, and formalize missing GovCheck-specific semantics rather than reimplementing every source ontology.
 
+
+
+**Concrete CSLib compatibility finding (2026-11-11):** the inspected CSLib `main` snapshot is commit [`f8acdb37c713b0124ad36b863f50c200a5f1cdba`](https://github.com/leanprover/cslib/commit/f8acdb37c713b0124ad36b863f50c200a5f1cdba). Its `lean-toolchain` pins Lean **4.36.0-rc2**, and its Lake manifest pins Mathlib commit `887bb849a9f64e1c66499fd5ff8523c864e78941`. GovCheck's first verified slice currently pins Lean **4.19.0**. Therefore the current CSLib snapshot is not directly import-compatible with the verified GovCheck package. Do not upgrade the GovCheck proof profile solely to import CSLib. First either identify and test a historical CSLib revision compatible with Lean 4.19, or isolate a separate CSLib-backed proof profile on its own pinned toolchain. The inspected CSLib modules do provide useful LTS, simulation, trace-equivalence and basic temporal-logic foundations; they do not provide a general ontology-alignment or GovCheck assurance metamodel.
+
 For each source formalism, define or import a semantic interpretation (or explicitly weaker abstraction) and a mapping into GovCheck's semantic domain. State obligations such as:
 
 - **Well-definedness:** every supported source construct maps to a well-typed target construct.

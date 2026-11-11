@@ -4,7 +4,8 @@ Le journal canonique des événements est conservé dans [Portfolio event journa
 
 ## Références mobilisées
 
-- [R-05 — TLA+ et TLC](../references.fr.md#r-05) : modèles formels et éléments de model checking mentionnés dans les événements.
+- [R-05 — TLA+ et TLC](../references.fr.md#r-05)
+- [R-107 — Emplacement et syntaxe des workflows GitHub Actions](../references.fr.md#r-107) : modèles formels et éléments de model checking mentionnés dans les événements.
 - [R-22 — Sémantiques natives des VCS](../references.fr.md#r-22) : distinction entre les sémantiques des systèmes de contrôle de version et l'ordre du journal canonique.
 - [R-142 — Linéarisabilité](../references.fr.md#r-142) : point de linéarisation des ajouts concurrents.
 - [R-143 — Journalisation anticipée ARIES](../references.fr.md#r-143) : distinction entre commit durable et reprise.

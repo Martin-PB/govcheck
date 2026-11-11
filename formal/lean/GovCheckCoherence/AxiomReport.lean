@@ -9,3 +9,5 @@ import GovCheckCoherence.Proofs
 #print axioms GovCheck.Coherence.new_theorem_proof_requires_kernel_derivation
 #print axioms GovCheck.Coherence.passing_testimony_is_not_a_theorem_proof
 #print axioms GovCheck.Coherence.theorem_proving_label_alone_does_not_authenticate_proof
+
+#print axioms GovCheck.Coherence.schema_method_and_status_do_not_determine_epistemic_kind

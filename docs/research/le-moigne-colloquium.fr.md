@@ -187,4 +187,4 @@ Aucun « score de complexité » binaire ni seuil universel de maturité n'est �
 
 ## Références
 
-Voir les entrées du catalogue central [R-166 à R-182](../references.fr.md#r-166). Toutes les références sont des sources de recherche, pas des exigences automatiques.
+Voir les entrées du catalogue central [R-166 à R-186](../references.fr.md#r-166). Toutes les références sont des sources de recherche, pas des exigences automatiques.

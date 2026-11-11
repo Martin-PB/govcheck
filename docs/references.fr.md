@@ -141,7 +141,7 @@
 <a id="r-06"></a>
 
 ### R-06 — in-toto : intégrité de la chaîne d'approvisionnement logicielle
-- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md), [0007](architecture/0007-technology-decision-framework.fr.md), [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0014](architecture/0014-governed-development-workflow.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md), [ADR 0007](decisions/0007-mandatory-sources.fr.md), [Étude sur la gouvernance des changements concurrents d'agents](research/concurrent-agent-change-governance.fr.md)
+- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md), [0007](architecture/0007-technology-decision-framework.fr.md), [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0014](architecture/0014-governed-development-workflow.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md), [ADR 0007](decisions/0007-mandatory-sources.fr.md), [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
 
 - **Sources primaires :** [Projet in-toto](https://in-toto.io/) · [Article USENIX Security 2019](https://ssl.engineering.nyu.edu/papers/torres-toto-usenix19.pdf)
 - **Référence académique :** Santiago Torres-Arias et al., « in-toto: Providing farm-to-table guarantees for bits and bytes », 28th USENIX Security Symposium, 2019.
@@ -152,7 +152,7 @@
 <a id="r-07"></a>
 
 ### R-07 — SLSA
-- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md), [0007](architecture/0007-technology-decision-framework.fr.md), [0014](architecture/0014-governed-development-workflow.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md), [Étude sur la gouvernance des changements concurrents d'agents](research/concurrent-agent-change-governance.fr.md)
+- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md), [0007](architecture/0007-technology-decision-framework.fr.md), [0014](architecture/0014-governed-development-workflow.fr.md), [0015](architecture/0015-governance-conformance-and-validation-plan.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md), [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
 
 - **Source primaire :** [Spécification SLSA](https://slsa.dev/spec/)
 - **Concepts pertinents :** niveaux de chaîne d'approvisionnement logicielle, provenance et intégrité de construction.
@@ -738,7 +738,7 @@
 
 <a id="r-70"></a>
 ### R-70 — Wei et al., « ACCESS: Assurance Case Centric Engineering of Safety-critical Systems » (2024)
-- **Cité par :** [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.fr.md), [Étude sur la gouvernance des changements concurrents d'agents](research/concurrent-agent-change-governance.fr.md)
+- **Cité par :** [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.fr.md), [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
 - **Source primaire :** [Article du Journal of Systems and Software](https://doi.org/10.1016/j.jss.2024.112034) · [copie en accès ouvert](https://eprints.whiterose.ac.uk/id/eprint/211554/)
 - **Référence bibliographique :** Ran Wei, Simon Foster, Haitao Mei, Fang Yan, Ruizhe Yang, Ibrahim Habli, Colin O’Halloran, Nick Tudor, Tim Kelly et Yakoub Nemouchi, *Journal of Systems and Software* 213 (2024), article 112034.
 - **Concepts pertinents :** dossiers d'assurance fondés sur des modèles SACM ; traçabilité vers des artefacts d'ingénierie hétérogènes ; évaluation automatisée, analyse d'impact des changements, preuves de méthodes formelles et évaluation dynamique du dossier d'assurance en production.
@@ -756,7 +756,7 @@
 
 <a id="r-72"></a>
 ### R-72 — Ericsson, « Runtime threat modeling for attack prediction and defense » (2025)
-- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.fr.md), [Étude sur la gouvernance des changements concurrents d'agents](research/concurrent-agent-change-governance.fr.md), [Étude sur la gouvernance des changements concurrents d'agents](research/concurrent-agent-change-governance.fr.md)
+- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.fr.md), [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
 - **Source primaire :** [Article d'ingénierie Ericsson](https://www.ericsson.com/en/blog/2025/12/runtime-threat-modeling-for-attack-prediction-and-defense)
 - **Concepts pertinents :** combinaison de télémétrie, état de configuration et changements d'actifs/contexte avec les connaissances sur les menaces ; hypothèses de menace issues des observations ; évaluation de l'efficacité des contrôles et boucles de retour.
 - **Utilité pour GovCheck :** exemple industriel reliant l'observabilité en production à l'évolution du modèle de menace et à l'évaluation des contrôles.
@@ -781,7 +781,7 @@
 
 <a id="r-75"></a>
 ### R-75 — NIST SP 800-137, Information Security Continuous Monitoring (2011)
-- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.fr.md)
+- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.fr.md), [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
 - **Source primaire :** [Publication NIST](https://csrc.nist.gov/pubs/sp/800/137/final) · [DOI](https://doi.org/10.6028/NIST.SP.800-137)
 - **Concepts pertinents :** visibilité continue sur les actifs, menaces, vulnérabilités et efficacité des contrôles déployés ; surveillance alignée sur la tolérance au risque ; réaction lorsque les observations montrent que les contrôles sont insuffisants.
 - **Utilité pour GovCheck :** étaye une boucle de retour en production dans laquelle les observations actualisent l'état du système, l'évaluation des contrôles et les décisions de risque, au lieu de figer le modèle de menace à la conception.
@@ -789,7 +789,7 @@
 
 <a id="r-76"></a>
 ### R-76 — Rushby, « Runtime Certification » (RV 2008)
-- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md), [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.fr.md), [Étude sur la gouvernance des changements concurrents d'agents](research/concurrent-agent-change-governance.fr.md)
+- **Cité par :** [0006](architecture/0006-threat-and-trust-model.fr.md), [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.fr.md), [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
 - **Source primaire :** [Article de l'auteur, présenté au huitième atelier Runtime Verification](https://citeseerx.ist.psu.edu/document?doi=c28045b0a573839028f6042870a3eccd8f9be748&repid=rep1&type=pdf)
 - **Référence bibliographique :** John Rushby, « Runtime Certification », article invité à RV 2008, Budapest, avril 2008.
 - **Concepts pertinents :** dossiers d'assurance comme affirmations, preuves et arguments ; surveillance en exécution des hypothèses et anomalies ; utilisation de la vérification à l'exécution comme preuve ; détection de la violation d'hypothèses environnementales.
@@ -1268,7 +1268,7 @@
 <a id="r-148"></a>
 ### R-148 — DORA 2025 : état du développement logiciel assisté par IA
 - **Sources primaires :** [Rapport DORA](https://dora.dev/research/2025/dora-report/) · [Publication Google Research](https://research.google/pubs/dora-2025-state-of-ai-assisted-software-development-report/)
-- **Cité par :** [Étude sur la gouvernance des changements concurrents d'agents](research/concurrent-agent-change-governance.fr.md), [Revue de recherche sur la qualité et la gouvernance du développement assisté par IA](research/ai-assisted-quality-governance.fr.md)
+- **Cité par :** [Étude sur la gouvernance des changements concurrents d'agents](research/concurrent-agent-change-governance.fr.md), [AI-assisted quality and governance research review](research/ai-assisted-quality-governance.md)
 - **Concepts pertinents :** facteurs organisationnels et de livraison liés au développement assisté par IA ; l'IA comme amplificateur des forces et faiblesses existantes.
 - **Utilité pour GovCheck :** met en garde contre l'équivalence entre nombre d'agents/vitesse de codage et qualité de livraison ; souligne la gouvernance, le retour d'expérience et le système d'ingénierie.
 - **Limite :** enquêtes et études qualitatives éclairent les choix organisationnels mais ne prouvent pas la causalité ni ne prédisent les résultats d'un dépôt donné.

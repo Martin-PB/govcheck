@@ -58,6 +58,6 @@ Revalidation de la tête finale de PR : les mêmes blobs du module et de la conf
 
 ## 6. Contrat et références associés
 
-Ce modèle complète la [Spécification 0006](../specifications/0006-governance-revision-applicability.fr.md), l'[Architecture 0032](0032-canonical-publication-model-checking.fr.md) et l'[Architecture 0033](0033-governance-evaluator-exception-revocation-model.fr.md). Ses fondements conceptuels sont catalogués sous [R-05 — TLA+ et TLC](../references.fr.md#r-05) et [R-22 — sémantiques natives de Git et Pijul](../references.fr.md#r-22).
+Ce modèle complète la [Spécification 0006](../specifications/0006-governance-revision-applicability.fr.md), la [Spécification 0007](../specifications/0007-canonical-governance-journal-protocol.fr.md) proposée, les [Architectures 0032](0032-canonical-publication-model-checking.fr.md) et [0033](0033-governance-evaluator-exception-revocation-model.fr.md), ainsi que le [compte rendu de séance 0008](../decisions/0008-governance-applicability-arbitration-session.fr.md). Ses fondements conceptuels sont catalogués sous [R-05 — TLA+ et TLC](../references.fr.md#r-05) et [R-22 — sémantiques natives de Git et Pijul](../references.fr.md#r-22).
 
 Il ne prétend pas que le journal, la procédure de reprise ou les adaptateurs VCS sont implémentés.

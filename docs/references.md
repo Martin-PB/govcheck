@@ -752,7 +752,7 @@
 
 <a id="r-72"></a>
 ### R-72 — Ericsson, “Runtime threat modeling for attack prediction and defense” (2025)
-- **Cited by:** [0006](architecture/0006-threat-and-trust-model.md), [0021](architecture/0021-assurance-claims-and-freshness.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.md), [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md), [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
+- **Cited by:** [0006](architecture/0006-threat-and-trust-model.md), [0021](architecture/0021-assurance-claims-and-freshness.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.md), [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
 - **Primary source:** [Ericsson engineering article](https://www.ericsson.com/en/blog/2025/12/runtime-threat-modeling-for-attack-prediction-and-defense)
 - **Relevant concepts:** combining telemetry, configuration state and asset/context changes with threat knowledge; observation-driven threat hypotheses; control-effectiveness assessment and feedback loops.
 - **Use in GovCheck:** industrial example of connecting production observability to evolving threat models and control assessment.
@@ -777,7 +777,7 @@
 
 <a id="r-75"></a>
 ### R-75 — NIST SP 800-137, Information Security Continuous Monitoring (2011)
-- **Cited by:** [0006](architecture/0006-threat-and-trust-model.md), [0021](architecture/0021-assurance-claims-and-freshness.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.md)
+- **Cited by:** [0006](architecture/0006-threat-and-trust-model.md), [0021](architecture/0021-assurance-claims-and-freshness.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.md), [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
 - **Primary source:** [NIST publication](https://csrc.nist.gov/pubs/sp/800/137/final) · [DOI](https://doi.org/10.6028/NIST.SP.800-137)
 - **Relevant concepts:** continuous visibility into assets, threats, vulnerabilities and deployed-control effectiveness; monitoring aligned with organizational risk tolerance; response when observations show controls are inadequate.
 - **Use in GovCheck:** supports a production feedback loop in which observations update system posture, control assessments and risk decisions rather than leaving threat models frozen at design time.

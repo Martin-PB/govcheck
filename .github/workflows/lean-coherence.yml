@@ -30,4 +30,5 @@ jobs:
       - name: Install pinned Lean toolchain and build
         uses: leanprover/lean-action@v1
         with:
+          lake-package-directory: formal/lean
           build: true

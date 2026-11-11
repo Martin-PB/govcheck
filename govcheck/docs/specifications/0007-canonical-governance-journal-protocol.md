@@ -73,6 +73,8 @@ Evaluation, authorization and publication are three distinct logical acts with d
 
 Authorization MUST bind the exact evaluation, candidate, base governance revision and expected journal head. Publication MUST revalidate that binding and applicable exception/revocation/staleness controls immediately before its commit point.
 
+A stale evaluation MUST remain immutable historical evidence with an explicit stale disposition and reason. It MUST NOT be reused to authorize or satisfy a later transition. A new transition requires a fresh evaluation over the current candidate/base/governance/evaluator/specification/evidence inputs; the old evaluation is retained as history and is not rewritten.
+
 The publication event is the effect point: the resulting governance revision applies prospectively from the canonical position occupied by that publication event, not from a Git/Pijul commit, merge, tag, branch update, CI completion, local file write or wall-clock timestamp.
 
 A technical transaction may prepare or record evaluation and authorization before publication, but MUST NOT expose the resulting revision as applicable unless the publication event is durably committed. A failed or aborted transaction MUST leave no partially applicable governance revision.

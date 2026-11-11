@@ -180,3 +180,7 @@ Le bootstrap guidé de l'Architecture 0024 est le lieu naturel pour recueillir l
 La recherche actuelle ne justifie ni l'adoption des six étiquettes proposées comme taxonomie du métamodèle, ni une modification du modèle canonique de gouvernance, ni l'imposition d'une architecture de software factory. Leur seul rôle actuel est de distinguer, pendant l'audit, les contrôles locaux au dépôt des preuves externes, observations, prérequis, avertissements et garanties hors périmètre.
 
 Il faut ensuite confronter ces constats à l'Architecture 0024, à l'Architecture 0029, aux Spécifications 0002/0003/0005/0006 et au portefeuille d'issues pertinent. Pour chaque capacité, préciser si elle est implémentée, spécifiée, proposée, partielle, absente ou hors de l'autorité de GovCheck. Ne proposer des changements que si une contradiction concrète ou une lacune d'expressivité est démontrée.
+
+## Catalogue central des références
+
+Voir [R-160](../references.fr.md#r-160) et [R-161](../references.fr.md#r-161).

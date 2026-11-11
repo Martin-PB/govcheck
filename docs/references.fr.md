@@ -43,7 +43,7 @@
 | Emplacement et syntaxe des workflows GitHub Actions | R-107 |
 | Licences open source et attribution | R-108 |
 | Réemploi des ontologies, réseau d'ontologies logicielles et interopérabilité sémantique | R-115–R-120 |
-| Cohérence du métamodèle, préservation sémantique et vérification formelle | R-121–R-127 |
+| Cohérence du métamodèle, préservation sémantique et vérification formelle | R-121–R-127 |\n| Modifications concurrentes, conflits sémantiques et livraison multi-agents | R-142–R-150 |
 
 ## Entrées bibliographiques détaillées
 
@@ -72,7 +72,7 @@
 - **Modélisation des menaces, chemins d'attaque et gestion des risques :** R-27 à R-32.
 - **Modélisation des exigences orientée objectifs :** R-44, R-92.
 - **Dossiers d'assurance de sécurité et métamodèles :** R-33 à R-34.
-- **Modèle de décision PEAK :** R-74.
+- **Modèle de décision PEAK :** R-74.\n- **Modifications concurrentes, conflits sémantiques, files de fusion et livraison multi-agents :** R-142–R-150.
 - **Surveillance continue et assurance à l'exécution :** R-70, R-72, R-75 à R-76.
 - **Assurance 2.0 et évolution de SACM :** R-71, R-73.
 - **Modèles sémantiques de domaine, qualité produit et conformité open source (sources candidates) :** R-94–R-100, R-102–R-103.

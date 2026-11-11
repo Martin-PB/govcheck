@@ -78,4 +78,4 @@ This wording is a research candidate only. It must be reviewed against the imple
 
 ## Decision status
 
-No decision is made here. No issue or implementation task is created by this research alone. Future decisions should cite STUDY-003 and the relevant R-166–R-182 sources, record counterarguments and identify the authorized decision-maker.
+No decision is made here. No issue or implementation task is created by this research alone. Future decisions should cite STUDY-003 and the relevant R-166–R-186 sources, record counterarguments and identify the authorized decision-maker.

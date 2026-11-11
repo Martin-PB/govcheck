@@ -46,6 +46,7 @@
 | Cohérence du métamodèle, préservation sémantique et vérification formelle | R-121–R-127 |
 | Modifications concurrentes, conflits sémantiques et livraison multi-agents | R-142–R-151 |
 | Qualité du code assisté par IA, maintenabilité, TDD agentique et adoption organisationnelle | R-152–R-161 |
+| Frontières d'application du dépôt, usines logicielles, préconditions externes et mesure de productivité IA | R-162–R-165 |
 
 ## Entrées bibliographiques détaillées
 
@@ -1376,3 +1377,35 @@
 - **Concepts pertinents :** conservée comme l'une des cinq sources de recherche fournies ; le titre, l'intervenant et les affirmations de fond n'ont pas pu être vérifiés indépendamment dans les métadonnées indexées accessibles lors de ce passage.
 - **Utilité pour GovCheck :** préserve la traçabilité sans inventer le contenu ; la vidéo doit être examinée avant d'attribuer des affirmations ou d'en dériver des exigences.
 - **Limite :** aucune inférence sur le contenu n'est faite à partir de l'URL seule.
+
+<a id="r-162"></a>
+### R-162 — How to Build a Software Factory That Improves Itself
+- **Cité par :** [Gouvernance applicable à la frontière du dépôt et préconditions externes des usines logicielles IA](research/repository-enforcement-boundaries.fr.md)
+- **Source :** [Conférence de Zach Lloyd, Warp, AI Engineer](https://youtu.be/nKjPBAw_N_0)
+- **Concepts pertinents :** workflows d'agents définis comme code, sandboxing, flexibilité des modèles/harnesses, traces d'exécution, benchmarks locaux, mesure du coût/de la qualité, agents évaluateurs et propositions d'auto-amélioration soumises à revue.
+- **Utilité pour GovCheck :** motive une distinction précise entre contrôles appartenant au dépôt, preuves externes, résultats observables, préconditions et risque résiduel.
+- **Limite :** conférence industrielle d'un fondateur fournisseur ; recommandations et exemples produit ne sont ni une validation indépendante ni des exigences universelles.
+
+<a id="r-163"></a>
+### R-163 — Warp Factories : documentation officielle des workflows et de la configuration
+- **Cité par :** [Gouvernance applicable à la frontière du dépôt et préconditions externes des usines logicielles IA](research/repository-enforcement-boundaries.fr.md)
+- **Sources primaires :** [Présentation de Warp Factories](https://docs.warp.dev/factories/) · [Fonctionnement des factories](https://docs.warp.dev/factories/how-factories-work) · [Syntaxe des définitions](https://docs.warp.dev/factories/factory-as-code/)
+- **Concepts pertinents :** définitions de factory versionnées, étapes et points de validation humaine, évaluateurs, benchmarks, propositions d'auto-amélioration et séparation entre instructions de workflow et permissions de fusion imposées par le dépôt.
+- **Utilité pour GovCheck :** exemple industriel concret pour distinguer configuration déclarative et garanties à l'exécution, ainsi que politique du dépôt et contrôles de la plateforme/fournisseur.
+- **Limite :** la documentation produit décrit l'implémentation et les affirmations de Warp ; elle n'établit indépendamment ni la sécurité, ni la validité de l'évaluation, ni l'adéquation comme dépendance de GovCheck.
+
+<a id="r-164"></a>
+### R-164 — Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity
+- **Cité par :** [Gouvernance applicable à la frontière du dépôt et préconditions externes des usines logicielles IA](research/repository-enforcement-boundaries.fr.md)
+- **Source primaire :** [Essai contrôlé randomisé de Becker, Rush, Barnes et Rein, METR (2025)](https://doi.org/10.48550/arXiv.2507.09089) · [PDF de l'article](https://metr.org/Early_2025_AI_Experienced_OS_Devs_Study-paper.pdf)
+- **Concepts pertinents :** 16 développeurs expérimentés, 246 tâches dans des dépôts matures ; les durées observées divergent des attentes des participants, avec un ralentissement de 19 % pour les outils du début 2025 dans le contexte étudié.
+- **Utilité pour GovCheck :** justifie de distinguer productivité auto-déclarée, performance sur benchmark, résultats mesurés et applicabilité contextuelle ; motive la déclaration explicite des dénominateurs et de l'incertitude.
+- **Limite :** échantillon limité et dépendant du contexte, outils du début 2025 ; n'estime pas l'effet pour toutes les équipes, tâches ou systèmes actuels. La mise à jour METR de 2026 décrit des limites de sélection et de mesure dans son expérience ultérieure.
+
+<a id="r-165"></a>
+### R-165 — NIST AI Risk Management Framework: Generative Artificial Intelligence Profile (AI 600-1)
+- **Cité par :** [Gouvernance applicable à la frontière du dépôt et préconditions externes des usines logicielles IA](research/repository-enforcement-boundaries.fr.md)
+- **Source primaire :** [Publication NIST AI 600-1](https://doi.org/10.6028/NIST.AI.600-1) · [Page de publication NIST](https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence)
+- **Concepts pertinents :** recommandations volontaires et intersectorielles pour intégrer les considérations de fiabilité de l'IA générative à la conception, au développement, à l'usage et à l'évaluation.
+- **Utilité pour GovCheck :** éclaire l'identification des risques et l'attribution explicite des responsabilités concernant hypothèses, dépendances externes et risques résiduels.
+- **Limite :** guide de gestion des risques, pas mécanisme d'application local au dépôt, système de preuve formelle ni preuve qu'une organisation a appliqué une pratique recommandée.

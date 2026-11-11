@@ -101,7 +101,7 @@
 <a id="r-02"></a>
 
 ### R-02 — NIST SP 800-218, Secure Software Development Framework (SSDF) 1.1
-- **Cited by:** [0006](architecture/0006-threat-and-trust-model.md), [0014](architecture/0014-governed-development-workflow.md), [0015](architecture/0015-governance-conformance-and-validation-plan.md), [0022](architecture/0022-governance-capability-audit.md) · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md), [GovCheck applicability and external boundaries](research/govcheck-applicability-and-boundaries.md), [Software factory conference analysis](research/software-factory-self-improvement.md)
+- **Cited by:** [0006](architecture/0006-threat-and-trust-model.md), [0014](architecture/0014-governed-development-workflow.md), [0015](architecture/0015-governance-conformance-and-validation-plan.md), [0022](architecture/0022-governance-capability-audit.md) · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md), [Software factory conference analysis](research/software-factory-self-improvement.md)
 
 - **Primary source:** [NIST publication](https://csrc.nist.gov/pubs/sp/800/218/final) · [DOI](https://doi.org/10.6028/NIST.SP.800-218)
 - **Relevant concepts:** documented security requirements and design decisions, secure development practices, provenance and release practices.
@@ -111,7 +111,7 @@
 <a id="r-03"></a>
 
 ### R-03 — GitHub protected branches and required status checks
-- **Cited by:** [0014](architecture/0014-governed-development-workflow.md), [0022](architecture/0022-governance-capability-audit.md), [0023](architecture/0023-bootstrap-governance-authority.md), [ADR 0002](decisions/0002-study-placement.md), [ADR 0007](decisions/0007-mandatory-sources.md), [GovCheck applicability and external boundaries](research/govcheck-applicability-and-boundaries.md), [Software factory conference analysis](research/software-factory-self-improvement.md)
+- **Cited by:** [0014](architecture/0014-governed-development-workflow.md), [0022](architecture/0022-governance-capability-audit.md), [0023](architecture/0023-bootstrap-governance-authority.md), [ADR 0002](decisions/0002-study-placement.md), [ADR 0007](decisions/0007-mandatory-sources.md), [Software factory conference analysis](research/software-factory-self-improvement.md)
 
 - **Primary source:** [About protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)
 - **Relevant concepts:** required reviews, required status checks, bypass lists and branch restrictions.
@@ -811,7 +811,7 @@
 
 <a id="r-79"></a>
 ### R-79 — Agent sandboxing and runtime isolation: nono, Landlock and Docker Sandboxes
-- **Cited by:** [ADR 0002](decisions/0002-study-placement.md), [GovCheck applicability and external boundaries](research/govcheck-applicability-and-boundaries.md), [Software factory conference analysis](research/software-factory-self-improvement.md)
+- **Cited by:** [ADR 0002](decisions/0002-study-placement.md), [Software factory conference analysis](research/software-factory-self-improvement.md)
 - **Primary sources:** [nono project and security model](https://github.com/nolabs-ai/nono) · [nono documentation site](https://nono.sh/) · [Linux Landlock kernel documentation](https://docs.kernel.org/userspace-api/landlock.html) · [Docker Sandboxes documentation](https://docs.docker.com/ai/sandboxes/) · [Goose AI agent project](https://github.com/aaif-goose/goose)
 - **Relevant concepts:** per-tool capability scoping, filesystem/network restrictions, credential brokering, kernel-enforced unprivileged sandboxing, microVM isolation and agent runtime orchestration.
 - **Use in GovCheck:** preserves the runtime-isolation and agent-execution options discussed in the wider GovCheck/security architecture context. Goose is included as an agent harness example, not as a sandbox.
@@ -1377,7 +1377,7 @@
 
 <a id="r-162"></a>
 ### R-162 — How to Build a Software Factory That Improves Itself
-- **Cited by:** [GovCheck applicability and external boundaries](research/govcheck-applicability-and-boundaries.md), [Software factory conference analysis](research/software-factory-self-improvement.md)
+- **Cited by:** [Software factory conference analysis](research/software-factory-self-improvement.md)
 - **Source:** [Zach Lloyd, Warp, AI Engineer talk](https://youtu.be/nKjPBAw_N_0)
 - **Relevant concepts:** code-defined agent workflows, sandboxing, model/harness flexibility, run traces, locally curated benchmarks, cost/quality measurement, evaluator agents and reviewable self-improvement proposals.
 - **Use in GovCheck:** motivates a precise distinction between repository-owned controls, external evidence, observable outcomes, preconditions and residual risk.
@@ -1385,7 +1385,7 @@
 
 <a id="r-163"></a>
 ### R-163 — Warp Factories: official workflow and configuration documentation
-- **Cited by:** [GovCheck applicability and external boundaries](research/govcheck-applicability-and-boundaries.md), [Software factory conference analysis](research/software-factory-self-improvement.md)
+- **Cited by:** [Software factory conference analysis](research/software-factory-self-improvement.md)
 - **Primary sources:** [Warp Factories overview](https://docs.warp.dev/factories/) · [How factories work](https://docs.warp.dev/factories/how-factories-work) · [Factory definition syntax](https://docs.warp.dev/factories/factory-as-code/)
 - **Relevant concepts:** versioned factory definitions, workflow stages and human checkpoints, scorers, benchmarks, self-improvement proposals, and separation between workflow instructions and repository-enforced merge permissions.
 - **Use in GovCheck:** concrete industry example for distinguishing declarative configuration from runtime guarantees and repository policy from provider/platform enforcement.
@@ -1401,7 +1401,7 @@
 
 <a id="r-165"></a>
 ### R-165 — NIST AI Risk Management Framework: Generative Artificial Intelligence Profile (AI 600-1)
-- **Cited by:** [GovCheck applicability and external boundaries](research/govcheck-applicability-and-boundaries.md), [Software factory conference analysis](research/software-factory-self-improvement.md)
+- **Cited by:** [Software factory conference analysis](research/software-factory-self-improvement.md)
 - **Primary source:** [NIST AI 600-1 publication](https://doi.org/10.6028/NIST.AI.600-1) · [NIST publication page](https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence)
 - **Relevant concepts:** voluntary, cross-sector guidance for incorporating generative-AI trustworthiness considerations into design, development, use and evaluation.
 - **Use in GovCheck:** informs risk identification and explicit responsibility for assumptions, external dependencies and residual risk.

@@ -42,6 +42,7 @@
 | Sécurité des agents IA et de MCP — recommandations OWASP | R-106 |
 | Emplacement et syntaxe des workflows GitHub Actions | R-107 |
 | Licences open source et attribution | R-108 |
+| Réemploi des ontologies, réseau d'ontologies logicielles et interopérabilité sémantique | R-115–R-120 |
 
 ## Entrées bibliographiques détaillées
 
@@ -1101,4 +1102,53 @@
 - **Concepts pertinents :** DVCS en un seul binaire avec tickets, wiki, forum et timeline servis en HTTP ; les condensats de check-in comme identité de révision ; CI externe.
 - **Utilité pour GovCheck :** montre un VCS avec un tracker natif (tickets) mais sans concept natif de required status check, éclairant la matrice de transposabilité de l'ADR 0006.
 - **Limite :** documentation du projet ; l'intégration CI de Fossil est externe et doit être évaluée séparément.
+
+
+<a id="r-115"></a>
+### R-115 — Software Engineering Ontology Network (SEON)
+- **Cité par :** [metamodel ontology-reuse assessment](research/metamodel-ontology-reuse-assessment.md) · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
+- **Sources primaires :** [SEON network](https://dev.nemo.inf.ufes.br/seon/SEON.html) · [ReqON](https://dev.nemo.inf.ufes.br/seon/ReqON.html) · [SPO](https://dev.nemo.inf.ufes.br/seon/SPO.html)
+- **Concepts pertinents :** réseau d'ontologies de référence couvrant processus logiciels, exigences, objectifs, exigences à l'exécution, tests, assurance qualité et mesure, ancré dans UFO.
+- **Utilité pour GovCheck :** candidat de réemploi le plus prometteur pour cycle de vie, exigences et ingénierie ; s'y aligner avant d'inventer des concepts équivalents.
+- **Limite :** le site public indique la version 1.0.5 sans établir maintenance actuelle, licences uniformes, conformité ou aptitude opérationnelle. Il ne fournit pas toute la sémantique de gouvernance et d'application du dépôt.
+
+<a id="r-116"></a>
+### R-116 — Composants W3C du Web sémantique pour ontologies et validation
+- **Cited by:** [metamodel ontology-reuse assessment](research/metamodel-ontology-reuse-assessment.md) · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
+- **Primary sources:** [OWL 2 overview](https://www.w3.org/TR/owl-overview/) · [OWL](https://www.w3.org/OWL/) · [SKOS](https://www.w3.org/TR/skos-reference/) · [SHACL](https://www.w3.org/TR/shacl/)
+- **Relevant concepts:** OWL 2 formal ontologies, RDF graph data, SKOS concept schemes/mappings, SHACL validation of RDF graphs against declared constraints.
+- **Use in GovCheck:** profil d'implémentation possible pour vocabulaires, identifiants liés, correspondances de concepts et validation de graphes, sous réserve d'une décision distincte.
+- **Limit:** these components have different semantics. RDF/OWL/SHACL is not a prerequisite for interoperability; SHACL is not theorem proving; this stack does not itself define governance semantics.
+
+<a id="r-117"></a>
+### R-117 — Ontology Definition Metamodel (ODM) de l'OMG
+- **Cited by:** [metamodel ontology-reuse assessment](research/metamodel-ontology-reuse-assessment.md) · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
+- **Primary source:** [OMG ODM 1.1](https://www.omg.org/spec/ODM/1.1/)
+- **Relevant concepts:** metamodels, profiles and mappings among ontology and modeling standards, including UML/MOF, for knowledge interchange and consistency checking.
+- **Use in GovCheck:** référence pour l'intégration et les correspondances explicites entre modèles conceptuels et formalismes d'ontologie.
+- **Limit:** ne constitue pas une ontologie prête à l'emploi pour la gouvernance du dépôt ou l'assurance du cycle de vie.
+
+<a id="r-118"></a>
+### R-118 — Bibliothèque Lean d'informatique CSLib
+- **Cited by:** [metamodel ontology-reuse assessment](research/metamodel-ontology-reuse-assessment.md) · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
+- **Primary sources:** [repository](https://github.com/leanprover/cslib) · [organization](https://github.com/leanprover/cslib/blob/main/ORGANISATION.md) · [contributor guidance](https://github.com/leanprover/cslib/blob/main/CONTRIBUTING.md) · [roadmap](https://www.cslib.io/roadmap/)
+- **Relevant concepts:** reusable Lean formalizations for operational semantics, labeled transition systems, program equivalences, logics, languages, automata and computability; Boole direction for code verification.
+- **Use in GovCheck:** backend facultatif de formalisation pour des contrats sémantiques, systèmes de transition du cycle de vie ou propriétés sélectionnés.
+- **Limit:** n'est ni une ontologie métier, ni un moteur RDF/SHACL, ni un format d'échange. Sa chaîne de vérification du code évolue ; une preuve ne garantit pas la fidélité du modèle au réel.
+
+<a id="r-119"></a>
+### R-119 — OMG Essence, noyau d'ingénierie logicielle et méthodes
+- **Cited by:** [metamodel ontology-reuse assessment](research/metamodel-ontology-reuse-assessment.md) · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
+- **Primary source:** [OMG Essence catalogue](https://www.omg.org/spec/Essence/)
+- **Relevant concepts:** method-independent software-engineering kernel, alphas such as opportunity, stakeholders, requirements, software system, team, work and way of working, and a language for methods/practices.
+- **Use in GovCheck:** référence possible pour le cycle de vie/produits de travail et la distinction entre concepts d'ingénierie réutilisables et pratiques propres aux méthodes.
+- **Limit:** not a complete repository-governance ontology, assurance case or formal proof of project health.
+
+<a id="r-120"></a>
+### R-120 — OASIS OSLC Requirements Management
+- **Cited by:** [metamodel ontology-reuse assessment](research/metamodel-ontology-reuse-assessment.md) · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
+- **Primary source:** [OSLC Requirements Management 2.1](https://docs.oasis-open-projects.org/oslc-op/rm/v2.1/requirements-management-spec.html)
+- **Relevant concepts:** requirements-management resources/vocabulary, linked-data service patterns and constraints for requirements exchange between tools.
+- **Use in GovCheck:** cible d'interopérabilité possible pour relier ou échanger des exigences avec des systèmes externes d'ingénierie/cycle de vie.
+- **Limit:** ne définit pas toute la sémantique des intentions, décisions, autorités, assurances, conformité d'implémentation ou acceptation du risque.
 

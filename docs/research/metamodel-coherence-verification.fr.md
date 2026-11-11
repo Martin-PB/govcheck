@@ -182,7 +182,11 @@ Pas de nouvel épique :
 
 Critères de sortie du premier prototype : trois tranches verticales ; contrôles propres aux sources ; au moins un théorème Lean sur un invariant intermodèle réel ; un contre-exemple délibéré ; contrôles temporels d'invalidation/preuves périmées ; paquet d'assurance reproductible ; base de confiance documentée ; décision sur les obligations de preuve obligatoires.
 
-## 9. Références et traçabilité
+## 9. Contrat concret de la première tranche
+
+Le contrat d'ingénierie proposé précise désormais la première tranche épistémique, ses obligations de preuve Lean (VC-EPI-01/02, VC-MAP-01–04 et VC-AUTH-01), les fixtures adversariales, les propriétés temporelles d'invalidation, le protocole d'audit des imports CSLib et le critère d'achèvement : [Contrat du prototype de cohérence](metamodel-coherence-prototype-contract.fr.md) / [version anglaise](metamodel-coherence-prototype-contract.md). Il s'agit d'un contrat de conception, pas d'un prototype exécuté ou compilé.
+
+## 10. Références et traçabilité
 
 Catalogue : [R-121 sémantique OWL 2](../references.fr.md#r-121), [R-122 SHACL](../references.fr.md#r-122), [R-123 CSLib](../references.fr.md#r-123), [R-124 TLA+/TLAPS](../references.fr.md#r-124), [R-125 vérification des transformations](../references.fr.md#r-125), [R-126 EVL/Alloy](../references.fr.md#r-126), [R-127 alignement et conservativité](../references.fr.md#r-127).
 

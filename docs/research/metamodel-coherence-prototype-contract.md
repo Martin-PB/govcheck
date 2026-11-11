@@ -111,6 +111,12 @@ Do not decide “CSLib mandatory” by reputation or breadth. For each candidate
 5. prove a small bridge theorem from the imported definition to the GovCheck contract;
 6. record the trusted base and reproducible build command.
 
+
+
+### Current CSLib/toolchain compatibility constraint
+
+The inspected CSLib main commit is `f8acdb37c713b0124ad36b863f50c200a5f1cdba`, which pins Lean 4.36.0-rc2 and Mathlib commit `887bb849a9f64e1c66499fd5ff8523c864e78941`. This prototype pins Lean 4.19.0. A direct dependency therefore cannot be added without a toolchain change. The next experiment must either identify a CSLib revision compatible with Lean 4.19 or isolate a separate CSLib-backed profile with its own pinned toolchain. Do not silently upgrade the verified core.
+
 If CSLib provides a sound and reusable formalization for a required semantic concept, reuse should be preferred to an independent duplicate. If it does not, define the smallest GovCheck-specific concept and prove its relation to the relevant source model. This is not a blanket optionality rule: **the assurance obligation is mandatory for critical mappings; the library choice is evidence-driven**.
 
 ## 7. Prototype completion gate

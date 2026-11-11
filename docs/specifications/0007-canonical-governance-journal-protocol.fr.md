@@ -73,6 +73,8 @@ L'évaluation, l'autorisation et la publication sont trois actes logiques distin
 
 L'autorisation MUST être liée à l'évaluation exacte, au candidat, à la révision de gouvernance de base et à la tête de journal attendue. La publication MUST revérifier ce lien ainsi que les contrôles applicables d'exception/révocation/péremption immédiatement avant son point de commit.
 
+Une évaluation périmée MUST rester un élément de preuve historique immuable, avec une disposition et un motif de péremption explicites. Elle MUST NOT être réutilisée pour autoriser ou satisfaire une transition ultérieure. Toute nouvelle transition exige une nouvelle évaluation sur les entrées courantes du candidat, de la base, de la gouvernance, de l'évaluateur, de la spécification et des preuves ; l'ancienne évaluation est conservée dans l'historique et n'est pas réécrite.
+
 L'événement de publication est le point d'effet : la révision de gouvernance résultante s'applique prospectivement à partir de la position canonique occupée par cet événement, et non à partir d'un commit Git/Pijul, d'une fusion, d'un tag, d'une mise à jour de branche, de la fin d'une CI, d'une écriture de fichier locale ou d'un horodatage mural.
 
 Une transaction technique peut préparer ou enregistrer l'évaluation et l'autorisation avant la publication, mais MUST NOT exposer la révision résultante comme applicable tant que l'événement de publication n'est pas durablement commis. Une transaction échouée ou abandonnée MUST laisser aucune révision de gouvernance partiellement applicable.

@@ -44,7 +44,7 @@
 | Open-source licensing and attribution | R-108 |
 | Ontology reuse, software-engineering ontology network and semantic interoperability | R-115–R-120 |
 | Metamodel coherence, semantic preservation and formal verification | R-121–R-127 |
-| Concurrent edits, semantic merge conflicts and multi-agent delivery | R-142–R-150 |
+| Concurrent edits, semantic merge conflicts and multi-agent delivery | R-142–R-151 |
 
 ## Full reference entries
 
@@ -1283,3 +1283,11 @@
 - **Relevant concepts:** industry framing of concurrent agent contributions and the coordination/integration bottleneck.
 - **Use in GovCheck:** motivation for the research question and adversarial scenarios, including individually passing but collectively incompatible changes.
 - **Limit:** a talk/video is a secondary industry source and problem framing, not a peer-reviewed result or sufficient evidence for adopting an architecture.
+
+<a id="r-151"></a>
+### R-151 — Predicting merge conflicts considering social and technical assets
+- **Cited by:** [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
+- **Primary source:** [Empirical Software Engineering, DOI 10.1007/s10664-023-10395-8](https://link.springer.com/article/10.1007/s10664-023-10395-8)
+- **Relevant concepts:** empirical prediction of merge conflicts using social and technical assets.
+- **Use in GovCheck:** supports assessing work overlap and dependency/coordination context rather than treating changed-file overlap as a complete conflict predicate.
+- **Limit:** predictive associations and model performance depend on the dataset, features and development context; they do not establish incompatibility or causality.

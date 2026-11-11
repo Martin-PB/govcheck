@@ -187,4 +187,4 @@ Aucun « score de complexité » binaire ni seuil universel de maturité n'est �
 
 ## Références
 
-Voir les entrées du catalogue central [R-166 à R-186](../references.fr.md#r-166). Toutes les références sont des sources de recherche, pas des exigences automatiques.
+Voir les entrées du catalogue central : [R-166](../references.fr.md#r-166) · [R-167](../references.fr.md#r-167) · [R-168](../references.fr.md#r-168) · [R-169](../references.fr.md#r-169) · [R-170](../references.fr.md#r-170) · [R-171](../references.fr.md#r-171) · [R-172](../references.fr.md#r-172) · [R-173](../references.fr.md#r-173) · [R-174](../references.fr.md#r-174) · [R-175](../references.fr.md#r-175) · [R-176](../references.fr.md#r-176) · [R-177](../references.fr.md#r-177) · [R-178](../references.fr.md#r-178) · [R-179](../references.fr.md#r-179) · [R-180](../references.fr.md#r-180) · [R-181](../references.fr.md#r-181) · [R-182](../references.fr.md#r-182) · [R-183](../references.fr.md#r-183) · [R-184](../references.fr.md#r-184) · [R-185](../references.fr.md#r-185) · [R-186](../references.fr.md#r-186). Toutes les références sont des sources de recherche, pas des exigences automatiques.

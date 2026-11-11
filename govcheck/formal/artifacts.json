@@ -54,8 +54,8 @@
       "source": "formal/tla/GovCheckJournalRecovery.tla",
       "configuration": "formal/tla/GovCheckJournalRecovery.cfg",
       "documentation": {
-        "en": "docs/architecture/0034-canonical-journal-recovery-model.md",
-        "fr": "docs/architecture/0034-canonical-journal-recovery-model.fr.md"
+        "en": "docs/formal/README.md",
+        "fr": "docs/formal/README.fr.md"
       },
       "revisionPolicy": "repository-history",
       "releaseBinding": "release-tag-and-commit",

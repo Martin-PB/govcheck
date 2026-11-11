@@ -5,6 +5,7 @@
 ## References used
 
 - [R-05 — TLA+ and TLC](../references.md#r-05) — bounded formal-model evidence recorded in the journal.
+- [R-107 — GitHub Actions workflow location and syntax](../references.md#r-107) — source-catalogue provenance for workflow-location references in the integration audit.
 - [R-22 — Native Git and Pijul semantics](../references.md#r-22) — distinction between VCS observations and normative journal order.
 - [R-142 — Linearizability](../references.md#r-142) — the single linearization point for concurrent appends.
 - [R-143 — ARIES write-ahead logging and recovery](../references.md#r-143) — durable commit and recovery boundary.

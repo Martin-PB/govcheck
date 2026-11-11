@@ -69,6 +69,22 @@ NIST AI RMF's Generative AI Profile offers risk-management guidance for organiza
 
 The earlier research review also supplies important counterweights to the software-factory narrative: studies report context-dependent relationships between code health and AI refactoring, no clear universal downstream maintainability penalty in one preregistered setting, substantial contextual confounds in large-scale data, and a non-trivial share of agent-authored PRs needing further changes after merge. Practitioner TDD/example-mapping workflows offer useful ways to clarify intent and test oracles, but remain methods to select per project rather than universal requirements. Industry interviews and DORA-style organizational evidence are prompts for local assessment, not causal proof that a particular operating model will work. Two supplied video identifiers (R-160 and R-161) remain unresolved in the earlier review; no content claims should be inferred from them.
 
+### 4.1 What the earlier multi-source review contributes
+
+The preceding review of supplied talks, practitioner material and academic studies adds several counterweights to any simple “more agents means more productivity” narrative:
+
+- **Code health and AI refactoring:** the FORGE 2026 study reports context- and model-dependent associations between code-health measures and semantic preservation as measured by tests. This supports examining maintainability and comprehensibility as context; it does not establish a universal metric threshold or prove semantic equivalence beyond the test oracle.
+- **Downstream maintainability:** the preregistered *Echoes of AI* study did not find a clear systematic downstream maintainability or evolution-time penalty in its studied setting. GovCheck should not encode the blanket assumption that AI-assisted code is necessarily less maintainable.
+- **Large-scale engineering data:** the ESEM study highlights contextual confounds such as code centrality, change size, testing and author experience. Any comparison needs an identified population, task mix, baseline and denominator.
+- **Agent-authored pull requests:** the Claude Code PR study reports both eventual merges and substantial follow-up changes among merged PRs. Merge status is a workflow outcome, not a correctness or assurance result; provenance must identify the exact revision reviewed and integrated.
+- **Practitioner workflows:** Emily Bache's EXACT/TDD account shows how example mapping, explicit acceptance examples and a feedback loop can help clarify intent and test oracles. These are selectable practices, not universal requirements; hidden tests still establish only their encoded properties.
+- **Organizational adoption:** the McKinsey interview and DORA material motivate attention to engineering standards, training, task selection, review capacity and feedback loops. They do not establish one universal organizational model or causal effect for every team.
+- **AI-friendly code:** Adam Tornhill's talk is a useful practitioner hypothesis about code health and AI-assisted change, but a proposed metric or heuristic must be assessed against independent evidence and the project's own goals.
+
+The two other supplied video identifiers retained as R-160 and R-161 were not independently resolved in the earlier review. They remain explicit research gaps; no title, speaker, claim or applicability conclusion should be inferred from the URLs alone.
+
+Taken together, the evidence supports **context-sensitive evaluation and honest uncertainty**, not a universal AI workflow, maturity score, productivity promise or mandatory quality metric. The earlier [research review](ai-assisted-quality-governance.md) contains the detailed source descriptions and limitations.
+
 ## 5. Proposed boundary record for each requirement or claim
 
 Before implementing a control, the audit should be able to answer:

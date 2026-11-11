@@ -1176,6 +1176,7 @@
 - **Limit:** CSLib is not a ready-made GovCheck ontology; its code-translation/Boole preservation pipeline is evolving. Pin versions and disclose axioms and trusted components.
 
 - **Compatibility snapshot (2026-11-11):** [CSLib main commit f8acdb3](https://github.com/leanprover/cslib/commit/f8acdb37c713b0124ad36b863f50c200a5f1cdba) pins Lean 4.36.0-rc2 and Mathlib commit 887bb849a9f64e1c66499fd5ff8523c864e78941; the current GovCheck prototype pins Lean 4.19.0, so direct import is not yet compatible.
+- **BTL semantics limit:** CSLib's BTL module defines future/past modalities over a relation without imposing order properties; reflexivity/transitivity and any linear-time assumptions must be declared by the consuming model.
 <a id="r-124"></a>
 ### R-124 — TLA+, TLC and TLAPS for temporal and transition-system properties
 - **Cited by:** [metamodel-coherence-verification ](research/metamodel-coherence-verification.md)

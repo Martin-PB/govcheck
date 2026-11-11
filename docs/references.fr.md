@@ -1041,7 +1041,7 @@
 
 <a id="r-107"></a>
 ### R-107 — Emplacement et syntaxe des workflows GitHub Actions
-- **Cité par :** [ADR 0003](decisions/0003-two-level-governance.fr.md)
+- **Cité par :** [ADR 0003](decisions/0003-two-level-governance.fr.md), [Journal des événements du portefeuille](work-portfolio/events.fr.md), [Registre des éléments de travail](work-portfolio/work-items.fr.md)
 - **Sources primaires :** [Syntaxe des workflows GitHub Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax) · [Concepts des workflows GitHub Actions](https://docs.github.com/en/actions/concepts/workflows-and-actions/workflows)
 - **Concepts pertinents :** les définitions de workflows GitHub Actions sont des fichiers YAML placés dans le répertoire `.github/workflows/` à la racine du dépôt ; GitHub découvre les workflows à cet emplacement et les évalue en fonction des événements du dépôt.
 - **Utilité pour GovCheck :** étaye la contrainte de l'ADR 0003 selon laquelle le contenu réutilisable du package produit ne peut pas, à lui seul, déplacer un workflow GitHub Actions : le processus de bootstrap/synchronisation doit matérialiser le workflow au chemin requis à la racine du dépôt.

@@ -44,7 +44,7 @@
 | Licences open source et attribution | R-108 |
 | Réemploi des ontologies, réseau d'ontologies logicielles et interopérabilité sémantique | R-115–R-120 |
 | Cohérence du métamodèle, préservation sémantique et vérification formelle | R-121–R-127 |
-| Modifications concurrentes, conflits sémantiques et livraison multi-agents | R-142–R-150 |
+| Modifications concurrentes, conflits sémantiques et livraison multi-agents | R-142–R-151 |
 
 ## Entrées bibliographiques détaillées
 
@@ -1286,3 +1286,11 @@
 - **Concepts pertinents :** cadrage industriel des contributions agentiques concurrentes et du goulot d'étranglement de coordination/intégration.
 - **Utilité pour GovCheck :** motive la question de recherche et les scénarios adversariaux, dont des changements qui passent isolément mais deviennent incompatibles ensemble.
 - **Limite :** une vidéo est une source industrielle secondaire et un cadrage de problème, pas un résultat évalué par les pairs ni une preuve suffisante pour adopter une architecture.
+
+<a id="r-151"></a>
+### R-151 — Prédire les conflits de fusion selon les facteurs sociaux et techniques
+- **Cité par :** [Étude sur la gouvernance des changements concurrents d'agents](research/concurrent-agent-change-governance.fr.md)
+- **Source primaire :** [Empirical Software Engineering, DOI 10.1007/s10664-023-10395-8](https://link.springer.com/article/10.1007/s10664-023-10395-8)
+- **Concepts pertinents :** prédiction empirique des conflits de fusion à partir de facteurs sociaux et techniques.
+- **Utilité pour GovCheck :** étaye l'analyse du chevauchement et du contexte de dépendance/coordination plutôt que de traiter le chevauchement de fichiers comme un critère complet de conflit.
+- **Limite :** associations prédictives et performances dépendent du jeu de données, des variables et du contexte ; elles ne prouvent ni incompatibilité ni causalité.

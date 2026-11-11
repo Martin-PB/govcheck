@@ -137,3 +137,8 @@ Aucune implémentation ne doit prétendre que ce critère est satisfait tant que
 ## 8. Décision toujours réservée
 
 Ce contrat est une expérimentation proposée. Il ne sélectionne pas Lean/CSLib comme dépendance universelle des dépôts adoptants, n'adopte pas une ontologie GovCheck, ne remplace pas la sémantique native de SACM et n'autorise aucune dégradation des obligations de preuve. L'autorité devra décider du profil de preuve obligatoire après examen du coût réel, de la couverture et du socle de confiance du prototype.
+
+
+## Résultats effectifs du prototype
+
+Le noyau Lean 4.19.0 a réussi sa compilation et son audit des axiomes dans [l'exécution 43049890363 de la PR #108](https://github.com/Martin-PB/govcheck/actions/runs/43049890363). Une expérimentation LTS CSLib distincte sous Lean 4.36.0-rc2 a réussi la compilation et l'audit des axiomes dans [l'exécution 43051029627 de la PR #109](https://github.com/Martin-PB/govcheck/actions/runs/43051029627). L'expérimentation CSLib prouve la préservation de la classe de méthode et du type épistémique sur les transitions individuelles et les exécutions LTS finies. Elle reste un modèle abstrait de cycle de vie, pas une preuve de correspondance avec une ontologie externe. Les deux PR restent non fusionnées ; la PR #109 est empilée sur la PR #108.

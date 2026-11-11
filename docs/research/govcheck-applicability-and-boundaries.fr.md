@@ -5,7 +5,7 @@
 
 ## Base de recherche et périmètre
 
-Cette synthèse n'est pas l'analyse d'une conférence unique. Elle consolide la revue antérieure sur la qualité du code assistée par IA, la maintenabilité, le TDD agentique et les pratiques organisationnelles ([revue de recherche](ai-assisted-quality-governance.fr.md)), l'[analyse séparée de la conférence sur la software factory](software-factory-self-improvement.fr.md), ainsi que les sources académiques, normatives et industrielles cataloguées en [R-148](../references.fr.md#r-148) et [R-152–R-165](../references.fr.md#r-152).
+Cette synthèse n'est pas l'analyse d'une conférence unique. Elle consolide la revue antérieure sur la qualité du code assistée par IA, la maintenabilité, le TDD agentique et les pratiques organisationnelles ([revue de recherche](ai-assisted-quality-governance.fr.md)), l'[analyse séparée de la conférence sur la software factory](software-factory-self-improvement.fr.md), ainsi que les sources académiques, normatives et industrielles décrites dans la [revue antérieure sur la qualité et la gouvernance du développement assisté par IA](ai-assisted-quality-governance.fr.md), notamment les travaux empiriques sur la santé du code, la maintenabilité ultérieure, le contexte des changements à grande échelle, les PR produites par des agents et les workflows de praticiens.
 
 L'objectif est de déterminer ce que GovCheck peut raisonnablement gouverner ou évaluer à la frontière du dépôt, ce qui exige des preuves externes ou une action organisationnelle, et ce qui doit être communiqué comme limite ou condition d'applicabilité. Le document formule également une réponse provisoire, destinée aux futurs utilisateurs, à la question « Dans quels cas GovCheck est-il adapté ? », sans prétendre que le produit prévu est déjà implémenté.
 
@@ -64,6 +64,10 @@ La recommandation « mesurer sur ses propres tâches » est un bon principe exp�
 La documentation de Warp décrit une implémentation commerciale particulière : définitions de factory versionnées, étapes d'agents, évaluateurs, benchmarks, propositions d'auto-amélioration et points de validation humaine. C'est un exemple industriel concret, pas une norme neutre. En particulier, le score d'un juge LLM est lui-même un élément probant produit par un évaluateur faillible, pas une vérité terrain. Une configuration de factory versionnée dans Git ne prouve pas, à elle seule, que le runtime cloud a exécuté exactement cette configuration ni que les permissions externes ont été appliquées correctement.
 
 Le profil NIST AI RMF pour l'IA générative donne des recommandations de gestion des risques aux organisations ; ce n'est pas un moteur d'application local au dépôt. SSDF et les sources de provenance/chaîne d'approvisionnement informent également les pratiques, mais citer ces références ne prouve pas qu'une implémentation particulière est conforme.
+
+
+
+La revue antérieure apporte aussi des contrepoints importants au récit de la software factory : les études rapportent des relations dépendantes du contexte entre santé du code et refactoring par IA, aucune pénalité universelle claire de maintenabilité ultérieure dans une étude préenregistrée, des facteurs de confusion importants dans les données à grande échelle et une part non négligeable de PR produites par des agents nécessitant encore des changements après fusion. Les workflows TDD/example mapping des praticiens offrent des moyens utiles de clarifier l'intention et les oracles de test, mais restent des méthodes à sélectionner selon le projet, pas des exigences universelles. Les entretiens industriels et les données organisationnelles de type DORA sont des pistes d'évaluation locale, pas des preuves causales qu'un modèle opérationnel donné fonctionnera. Deux identifiants vidéo fournis (R-160 et R-161) restent non résolus dans la revue antérieure ; aucun contenu ne doit leur être attribué par inférence.
 
 ## 5. Fiche de frontière proposée pour chaque exigence ou affirmation
 

@@ -40,3 +40,4 @@ jobs:
           lake-package-directory: formal/lean
           build: true
           auto-config: false
+          axiom-audit: true

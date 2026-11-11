@@ -15,7 +15,9 @@ This distinction matters: a record labelled with method class
 authenticated kernel-checked derivation. A test execution with status
 `passed` remains testimony; a model-checking result remains model-checking
 evidence. Freshness/staleness is computed separately and is not conflated
-with the source schema's result status.
+with the source schema's result status. The source schema's method-class
+vocabulary is represented directly by `EvidenceMethodClass`; the epistemic
+kind is an additional assurance interpretation, not a replacement enum.
 
 The first module deliberately imports no CSLib modules. This isolates the
 proposition and gives us a baseline against which candidate CSLib definitions

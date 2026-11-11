@@ -73,6 +73,8 @@ Le résultat sur cet espace d'états fini constitue un élément de preuve par m
 
 - [R-05 — Modélisation des transitions d'état avec TLA+ et TLC](../references.fr.md#r-05)
 - [Spécification 0006 — applicabilité des révisions de gouvernance](../specifications/0006-governance-revision-applicability.fr.md)
+- [Spécification 0007 — protocole du journal canonique et des adaptateurs VCS](../specifications/0007-canonical-governance-journal-protocol.fr.md)
 - [Architecture 0032 — rapport de model checking du modèle de publication canonique](0032-canonical-publication-model-checking.fr.md)
+- [Architecture 0034 — modèle de reprise du journal canonique](0034-canonical-journal-recovery-model.fr.md)
 - [Compte rendu de séance 0008](../decisions/0008-governance-applicability-arbitration-session.fr.md)
 - [Issue #86 — obligations d'ingénierie sur l'applicabilité de la gouvernance](https://github.com/Martin-PB/govcheck/issues/86)

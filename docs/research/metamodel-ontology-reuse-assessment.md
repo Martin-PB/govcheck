@@ -31,6 +31,8 @@ SEON does not by itself settle repository-specific normative authority, delegati
 
 Sources: [R-115](../references.md#r-115), [SEON](https://dev.nemo.inf.ufes.br/seon/SEON.html), [ReqON](https://dev.nemo.inf.ufes.br/seon/ReqON.html), [SPO](https://dev.nemo.inf.ufes.br/seon/SPO.html).
 
+Related catalogue sources: [R-04](../references.md#r-04) · [R-33](../references.md#r-33) · [R-34](../references.md#r-34) · [R-71](../references.md#r-71) · [R-73](../references.md#r-73) · [R-88](../references.md#r-88) · [R-92](../references.md#r-92) · [R-93](../references.md#r-93) · [R-94](../references.md#r-94) · [R-95](../references.md#r-95) · [R-96](../references.md#r-96) · [R-97](../references.md#r-97) · [R-98](../references.md#r-98) · [R-99](../references.md#r-99) · [R-100](../references.md#r-100) · [R-102](../references.md#r-102) · [R-115](../references.md#r-115) · [R-116](../references.md#r-116) · [R-117](../references.md#r-117) · [R-118](../references.md#r-118) · [R-119](../references.md#r-119) · [R-120](../references.md#r-120)
+
 ## 3. Coverage map: reuse without conflating models
 
 | Concern | Existing candidate(s) | Reusable coverage | Boundary / gap |

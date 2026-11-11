@@ -1,64 +1,44 @@
-# Lean coherence prototype
+# Lean/CSLib coherence experiment
 
-**Status:** experimental first slice; not an adopted GovCheck metamodel.
+**Status:** stacked experiment against PR #108; not an adopted GovCheck toolchain or metamodel.
 
-## Scope
+## Purpose
 
-This package formalizes one narrow cross-model invariant: pure evidence
-transport cannot promote the epistemic nature of an evidence record. The
-Lean vocabulary mirrors the existing GovCheck evidence schema's
-`methodClass` values and result-status values, while keeping the epistemic
-kind explicit and separate.
+This branch tests whether CSLib's formal transition-system abstractions can support GovCheck's evidence lifecycle semantics. It is intentionally separate from the Lean 4.19.0 core in PR #108.
 
-This distinction matters: a record labelled with method class
-`theorem-proving` and status `passed` is not, by those labels alone, an
-authenticated kernel-checked derivation. A test execution with status
-`passed` remains testimony; a model-checking result remains model-checking
-evidence. Freshness/staleness is computed separately and is not conflated
-with the source schema's result status. The source schema's method-class
-vocabulary is represented directly by `EvidenceMethodClass`; the epistemic
-kind is an additional assurance interpretation, not a replacement enum.
+## Pinned compatibility profile
 
-The first module deliberately imports no CSLib modules. This isolates the
-proposition and gives us a baseline against which candidate CSLib definitions
-can later be compared. It does **not** imply that CSLib is unsuitable or that
-the assurance obligation for critical mappings is optional.
+- Lean: `4.36.0-rc2`
+- CSLib: commit `f8acdb37c713b0124ad36b863f50c200a5f1cdba`
+- CSLib's Mathlib dependency: commit `887bb849a9f64e1c66499fd5ff8523c864e78941`
 
-The Lean `EvidenceKind` is an additional semantic interpretation: the current
-production `evidence-record.schema.json` has `method.methodClass` and
-`result.status`, but no explicit epistemic-kind field or typed kernel-checked
-derivation object. Therefore the Lean record is not a lossless projection of
-the current JSON schema. The fixtures under `fixtures/` are intentionally
-minimal semantic fixtures, **not** full production records valid against the
-JSON Schema. See the bilingual prototype contract for this identified #73/#79
-decision gap.
+The exact CSLib commit is pinned in `lakefile.lean`; the toolchain is pinned in `lean-toolchain`. This experiment must not silently change the independently verified Lean 4.19.0 profile from PR #108.
 
-## Toolchain and commands
+## Experiment
 
-Pinned toolchain: Lean 4.19.0.
+`GovCheckCoherence.CslibBridge` models evidence lifecycle changes as a CSLib labelled transition system (LTS). It keeps method class, epistemic kind and result status distinct, while representing freshness separately. The theorem module tests:
+
+- each transition preserves method class;
+- each transition preserves epistemic kind;
+- any finite LTS execution preserves epistemic kind end-to-end.
+
+This is a proof of the stated abstract transition relation, not yet proof that an external SACM/OWL/SEON mapping or a runtime implementation refines it. CSLib contributes LTS and multistep-transition foundations; it does not provide a general ontology-alignment system or a model checker equivalent to TLC.
+
+The lifecycle record uses the additional Lean `EvidenceKind` semantic interpretation from PR #108. The current production JSON Schema has no such explicit field and no typed kernel-checked derivation object, so these are not lossless schema projections or schema-valid production fixtures. That gap is recorded in the bilingual prototype contract; no production schema change is made here.
+
+## Commands
 
 From this directory:
 
 ```sh
-lake env lean GovCheckCoherence.lean
-lake build
+lake update
+lake build GovCheckCoherence
+lake env axiom-audit --root GovCheckCoherence.Proofs
+lake env lean GovCheckCoherence/AxiomReport.lean
 ```
 
-## Explicit limits
+The GitHub Actions workflow runs the build and theorem-module axiom audit. Results are recorded only after the actual run completes.
 
-This is not yet a complete mapping-contract semantics. In particular, it does
-not authenticate an imported theorem proof, bind a derivation to exact
-premises/conclusion/axioms/kernel identity, prove source-model semantic
-preservation, validate SACM serialization, establish provenance, or check
-freshness and authority scope. Those are separate obligations.
+## Decision boundary
 
-The `DerivationOrigin.kernelChecked` constructor currently expresses the
-gate that a new derivation must be supplied; it is not yet a proof-object
-type. The next refinement must replace it with a typed derivation object whose
-exact statement is kernel checked and whose dependency set is bound to source
-fingerprints.
-
-## Verification status
-
-The authoring environment did not have Lean installed when this package was
-first created. The Lean 4.19.0 build and axiom audit passed: [GitHub Actions run 43049890363](https://github.com/Martin-PB/govcheck/actions/runs/43049890363), source head `473ff33c74c8c04b4766b52de20ac68a9fb20d9b`. The workflow explicitly builds the `GovCheckCoherence` library, audits the theorem module with `leanprover-community/axiom-audit`, and prints each theorem's axiom dependencies. The audit checked 10 declarations under `GovCheckCoherence.Proofs`; all were within the configured standard allowlist. The explicit `#print axioms` report showed that all nine theorem declarations in this slice depend on no axioms. This is a result about this small formal slice only: it is not yet a semantic mapping proof against SACM/OWL/SEON, proof of imported-source fidelity, or implementation conformance. A successful Git commit alone is not a Lean verification result.
+This experiment does not authorize upgrading GovCheck's primary proof profile to Lean 4.36.0-rc2. The authority should compare the compatibility cost, proof reuse and maintenance burden against a Lean 4.19-compatible historical CSLib revision before selecting any mandatory toolchain.

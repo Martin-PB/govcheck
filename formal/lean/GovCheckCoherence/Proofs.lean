@@ -19,18 +19,30 @@ theorem transport_preserves_status (record : EvidenceRecord) :
 proof merely by translation. -/
 theorem testimony_cannot_be_promoted_by_transport :
     ¬ admissibleTargetKind .testimony .theoremProof .carried := by
-  simp [admissibleTargetKind]
+  intro h
+  rcases h with h | h
+  · exact h rfl
+  · rcases h with h | h
+    · cases h
+    · cases h
 
 /-- A model-checking result cannot become a theorem proof by transport alone. -/
 theorem model_checking_cannot_be_promoted_by_transport :
     ¬ admissibleTargetKind .modelCheckingResult .theoremProof .carried := by
-  simp [admissibleTargetKind]
+  intro h
+  rcases h with h | h
+  · exact h rfl
+  · rcases h with h | h
+    · cases h
+    · cases h
 
 /-- A theorem-proof record may be carried as such. This does not authenticate
 its source proof or establish freshness; those are separate obligations. -/
 theorem theorem_proof_may_be_carried :
     admissibleTargetKind .theoremProof .theoremProof .carried := by
-  simp [admissibleTargetKind]
+  right
+  left
+  rfl
 
 /-- A new theorem-proof target requires an explicitly identified
 kernel-checked derivation. A later refinement must bind the derivation to
@@ -38,7 +50,9 @@ exact premises, conclusion, assumptions and kernel identity. -/
 theorem new_theorem_proof_requires_kernel_derivation
     (source : EvidenceKind) :
     admissibleTargetKind source .theoremProof .kernelChecked := by
-  simp [admissibleTargetKind]
+  right
+  right
+  rfl
 
 theorem passing_testimony_is_not_a_theorem_proof :
     passingTestimony.kind ≠ .theoremProof := by

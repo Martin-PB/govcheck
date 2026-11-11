@@ -48,6 +48,7 @@
 | AI-assisted code quality, maintainability, agentic TDD and organizational adoption | R-152–R-161 |
 | GovCheck applicability, software factories, external preconditions and AI productivity measurement | R-162–R-165 |
 | Constructivist epistemology, irreducible complexity, systemic modelling and model validity | R-166–R-186 |
+| Multi-disciplinary specifications, viewpoints, semantic interoperability and deliberation | R-187–R-192 |
 
 ## Full reference entries
 

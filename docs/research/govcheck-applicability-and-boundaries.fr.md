@@ -69,6 +69,22 @@ Le profil NIST AI RMF pour l'IA générative donne des recommandations de gestio
 
 La revue antérieure apporte aussi des contrepoints importants au récit de la software factory : les études rapportent des relations dépendantes du contexte entre santé du code et refactoring par IA, aucune pénalité universelle claire de maintenabilité ultérieure dans une étude préenregistrée, des facteurs de confusion importants dans les données à grande échelle et une part non négligeable de PR produites par des agents nécessitant encore des changements après fusion. Les workflows TDD/example mapping des praticiens offrent des moyens utiles de clarifier l'intention et les oracles de test, mais restent des méthodes à sélectionner selon le projet, pas des exigences universelles. Les entretiens industriels et les données organisationnelles de type DORA sont des pistes d'évaluation locale, pas des preuves causales qu'un modèle opérationnel donné fonctionnera. Deux identifiants vidéo fournis (R-160 et R-161) restent non résolus dans la revue antérieure ; aucun contenu ne doit leur être attribué par inférence.
 
+### 4.1 Apports de la revue multi-sources antérieure
+
+La revue précédente des conférences fournies, des retours de praticiens et des études académiques apporte plusieurs contrepoints à un récit simpliste du type « davantage d'agents signifie davantage de productivité » :
+
+- **Santé du code et refactoring par IA :** l'étude FORGE 2026 rapporte des associations dépendantes du contexte et du modèle entre mesures de santé du code et préservation sémantique évaluée par des tests. Cela justifie d'examiner maintenabilité et compréhensibilité comme éléments de contexte ; cela ne définit ni seuil métrique universel ni équivalence sémantique au-delà de l'oracle de test.
+- **Maintenabilité ultérieure :** l'étude préenregistrée *Echoes of AI* n'a pas trouvé de pénalité systématique claire de maintenabilité ou de temps d'évolution dans le contexte étudié. GovCheck ne doit pas encoder l'hypothèse générale selon laquelle le code assisté par IA serait nécessairement moins maintenable.
+- **Données d'ingénierie à grande échelle :** l'étude ESEM souligne des facteurs de confusion contextuels tels que centralité du code, taille du changement, tests et expérience de l'auteur. Toute comparaison doit identifier population, types de tâches, référence et dénominateur.
+- **Pull requests produites par des agents :** l'étude sur les PR Claude Code rapporte à la fois des fusions ultérieures et une proportion importante de changements complémentaires parmi les PR fusionnées. Le statut de fusion est un résultat de workflow, pas un résultat de correction ou d'assurance ; la provenance doit identifier la révision exacte revue et intégrée.
+- **Workflows de praticiens :** le retour d'Emily Bache sur EXACT/TDD montre comment example mapping, exemples d'acceptation explicites et boucle de rétroaction peuvent aider à clarifier l'intention et les oracles de test. Ce sont des pratiques sélectionnables, pas des exigences universelles ; les tests cachés n'établissent que les propriétés qu'ils encodent.
+- **Adoption organisationnelle :** l'entretien McKinsey et les éléments DORA invitent à considérer normes d'ingénierie, formation, sélection des tâches, capacité de revue et boucles de rétroaction. Ils n'établissent ni modèle organisationnel universel ni effet causal pour toutes les équipes.
+- **Code adapté à l'IA :** la conférence d'Adam Tornhill constitue une hypothèse de praticien utile sur la santé du code et les changements assistés par IA, mais toute métrique ou heuristique proposée doit être confrontée à des preuves indépendantes et aux objectifs propres au projet.
+
+Les deux autres identifiants vidéo fournis et conservés sous R-160 et R-161 n'ont pas été résolus indépendamment dans la revue précédente. Ils restent des lacunes de recherche explicites ; aucun titre, intervenant, propos ou conclusion d'applicabilité ne doit être déduit des seules URL.
+
+Pris ensemble, ces éléments étayent une **évaluation sensible au contexte et une incertitude honnête**, pas un workflow IA universel, un score de maturité, une promesse de productivité ou une métrique de qualité obligatoire. La [revue de recherche antérieure](ai-assisted-quality-governance.fr.md) contient les descriptions détaillées des sources et leurs limites.
+
 ## 5. Fiche de frontière proposée pour chaque exigence ou affirmation
 
 Avant d'implémenter un contrôle, l'audit devrait pouvoir répondre à ces questions :

@@ -1,0 +1,33 @@
+name: Lean coherence prototype
+
+on:
+  pull_request:
+    paths:
+      - "formal/lean/**"
+      - ".github/workflows/lean-coherence.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "formal/lean/**"
+      - ".github/workflows/lean-coherence.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lean-build:
+    name: Kernel-check coherence slice
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: formal/lean
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install pinned Lean toolchain and build
+        uses: leanprover/lean-action@v1
+        with:
+          build: true

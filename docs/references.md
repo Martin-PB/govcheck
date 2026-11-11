@@ -41,6 +41,7 @@
 | Policy-as-code and runtime agent-governance research | R-105 |
 | OWASP guidance for AI-agent and MCP security | R-106 |
 | GitHub Actions workflow location and syntax | R-107 |
+| Canonical journal ordering, durable recovery and idempotent retry | R-142–R-144 |
 | Open-source licensing and attribution | R-108 |
 
 ## Full reference entries
@@ -1037,7 +1038,7 @@
 
 <a id="r-107"></a>
 ### R-107 — GitHub Actions workflow location and syntax
-- **Cited by:** [ADR 0003](decisions/0003-two-level-governance.md), [Specification 0007](specifications/0007-canonical-governance-journal-protocol.md)
+- **Cited by:** [ADR 0003](decisions/0003-two-level-governance.md)
 - **Primary sources:** [GitHub Actions workflow syntax](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax) · [GitHub Actions workflow concepts](https://docs.github.com/en/actions/concepts/workflows-and-actions/workflows)
 - **Relevant concepts:** GitHub Actions workflow definitions are YAML files stored under the repository-root `.github/workflows/` directory; GitHub discovers workflow files from that location and evaluates them against repository events.
 - **Use in GovCheck:** supports the ADR 0003 constraint that reusable product-package content cannot by itself relocate a GitHub Actions workflow: the bootstrap/synchronization process must materialize the workflow at the required repository-root path.
@@ -1105,7 +1106,7 @@
 
 <a id="r-142"></a>
 ### R-142 — Linearizability: A Correctness Condition for Concurrent Objects
-- **Cited by:** [Specification 0007](specifications/0007-canonical-governance-journal-protocol.md)
+- **Cited by:** [Specification 0007](specifications/0007-canonical-governance-journal-protocol.md), [Work portfolio event journal](work-portfolio/events.md), [Work-item register](work-portfolio/work-items.md)
 - **Primary source:** Maurice P. Herlihy and Jeannette M. Wing, “Linearizability: A Correctness Condition for Concurrent Objects,” *ACM Transactions on Programming Languages and Systems*, 12(3), 1990, pp. 463–492. [DOI](https://doi.org/10.1145/78969.78972) · [Author-hosted paper](https://www.cs.cmu.edu/~wing/publications/HerlihyWing90.pdf)
 - **Relevant concepts:** concurrent operations appear to take effect at one point between invocation and response while respecting a legal sequential specification.
 - **Use in GovCheck:** provides the formal concurrency concept behind the journal's single linearization point for compare-and-append.
@@ -1113,7 +1114,7 @@
 
 <a id="r-143"></a>
 ### R-143 — ARIES write-ahead logging and transaction recovery
-- **Cited by:** [Specification 0007](specifications/0007-canonical-governance-journal-protocol.md)
+- **Cited by:** [Specification 0007](specifications/0007-canonical-governance-journal-protocol.md), [Work portfolio event journal](work-portfolio/events.md), [Work-item register](work-portfolio/work-items.md)
 - **Primary source:** C. Mohan, Don Haderle, Bruce Lindsay, Hamid Pirahesh and Peter Schwarz, “ARIES: A Transaction Recovery Method Supporting Fine-Granularity Locking and Partial Rollbacks Using Write-Ahead Logging,” *ACM Transactions on Database Systems*, 17(1), 1992. [IBM Research publication](https://research.ibm.com/publications/aries-a-transaction-recovery-method-supporting-fine-granularity-locking-and-partial-rollbacks-using-write-ahead-logging)
 - **Relevant concepts:** write-ahead logging, durable transaction recovery, redo/undo and restart recovery.
 - **Use in GovCheck:** informs the distinction between volatile preparation, durable commit and reconstruction after interruption.
@@ -1121,7 +1122,7 @@
 
 <a id="r-144"></a>
 ### R-144 — RFC 9110, HTTP Semantics: idempotent methods
-- **Cited by:** [Specification 0007](specifications/0007-canonical-governance-journal-protocol.md)
+- **Cited by:** [Specification 0007](specifications/0007-canonical-governance-journal-protocol.md), [Work portfolio event journal](work-portfolio/events.md), [Work-item register](work-portfolio/work-items.md)
 - **Primary source:** [RFC 9110 §9.2.2 — Idempotent Methods](https://www.rfc-editor.org/rfc/rfc9110.html#section-9.2.2)
 - **Relevant concepts:** repeatable requests have the same intended effect as one request, enabling safe retry after a lost response when the operation semantics are idempotent.
 - **Use in GovCheck:** informs the protocol distinction between retrying an exact append request and accidentally creating a second normative event.

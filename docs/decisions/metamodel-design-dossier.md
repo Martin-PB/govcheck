@@ -164,7 +164,7 @@ These should be aligned with SACM where applicable, without making SACM the enti
 - Analysis specification / property / horizon / scheduler assumptions
 - Analysis result / witness / counterexample / sensitivity analysis
 
-A finite-state machine is not automatically probabilistic. A Markov chain adds a Markov assumption and a transition distribution/rate semantics. Fuzzy membership is not probability. A model checker validates a supplied abstraction, not its fidelity to the real system. See the research discussion and source catalogue entry R-114 once its accompanying research PR is integrated; the primary mathematical references are R-05 and the PRISM/UPPAAL documentation cited in the research record.
+A finite-state machine is not automatically probabilistic. A Markov chain adds a Markov assumption and a transition distribution/rate semantics. Fuzzy membership is not probability. A model checker validates a supplied abstraction, not its fidelity to the real system. See the probabilistic/fuzzy/state-transition research discussion in [PR #105](https://github.com/Martin-PB/govcheck/pull/105); the primary mathematical reference includes [R-05](../references.md#r-05) and the PRISM/UPPAAL documentation cited there.
 
 ## 7. Candidate relationship families
 
@@ -244,7 +244,6 @@ The reference catalogue is the canonical source register. This section summarize
 - [R-92 — iStar 2.0](../references.md#r-92)
 - [R-94–R-98 — OMG semantic models, ISO architecture, requirements and quality references](../references.md#r-94)
 - [R-102 — W3C PROV family](../references.md#r-102)
-- [R-114 — Probabilistic, fuzzy and state-transition modelling](https://github.com/Martin-PB/govcheck/blob/docs/research-assurance-dynamics-2026-11/docs/references.md#r-114) (catalogued in the parallel research PR #105; confirm integration before treating it as present on the default branch).
 
 The source catalogue records status and limitations. Presence in the catalogue is not adoption. In particular, SACM 2.4 Beta 1 is an engineering target for full semantic coverage and interoperability, not a claim that the beta is a final standard or that SACM replaces the GovCheck core.
 
@@ -380,3 +379,8 @@ All external sources must be maintained in the central [reference catalogue](../
 
 Internal design records: Architecture 0013, 0022, 0023, 0027; Specifications 0002 and 0005; ADRs in `docs/decisions/`; formal models in `docs/formal/`; portfolio register in `docs/work-portfolio/`.
 
+
+
+## Complete source-catalogue links
+
+[R-05](../references.md#r-05) · [R-33](../references.md#r-33) · [R-34](../references.md#r-34) · [R-44](../references.md#r-44) · [R-51](../references.md#r-51) · [R-52](../references.md#r-52) · [R-53](../references.md#r-53) · [R-54](../references.md#r-54) · [R-55](../references.md#r-55) · [R-71](../references.md#r-71) · [R-73](../references.md#r-73) · [R-74](../references.md#r-74) · [R-88](../references.md#r-88) · [R-92](../references.md#r-92) · [R-93](../references.md#r-93) · [R-94](../references.md#r-94) · [R-95](../references.md#r-95) · [R-96](../references.md#r-96) · [R-97](../references.md#r-97) · [R-98](../references.md#r-98) · [R-99](../references.md#r-99) · [R-100](../references.md#r-100) · [R-102](../references.md#r-102)

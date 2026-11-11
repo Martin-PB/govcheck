@@ -30,8 +30,11 @@ production `evidence-record.schema.json` has `method.methodClass` and
 derivation object. Therefore the Lean record is not a lossless projection of
 the current JSON schema. The fixtures under `fixtures/` are intentionally
 minimal semantic fixtures, **not** full production records valid against the
-JSON Schema. See the bilingual prototype contract for this identified #73/#79
-decision gap.
+JSON Schema. The theorem `schema_method_and_status_do_not_determine_epistemic_kind`
+constructs two semantic interpretations with identical method class and
+status but different epistemic kinds; this is a formal counterexample to
+inferring epistemic kind from the current schema dimensions. See the bilingual
+prototype contract for this identified #73/#79 decision gap.
 
 ## Toolchain and commands
 

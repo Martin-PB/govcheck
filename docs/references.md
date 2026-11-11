@@ -46,7 +46,8 @@
 | Metamodel coherence, semantic preservation and formal verification | R-121–R-127 |
 | Concurrent edits, semantic merge conflicts and multi-agent delivery | R-142–R-151 |
 | AI-assisted code quality, maintainability, agentic TDD and organizational adoption | R-152–R-161 |
-| GovCheck applicability, software factories, external preconditions and AI productivity measurement | R-162–R-165 |\n| Constructivist epistemology, irreducible complexity, systemic modelling and model validity | R-166–R-186 |
+| GovCheck applicability, software factories, external preconditions and AI productivity measurement | R-162–R-165 |
+| Constructivist epistemology, irreducible complexity, systemic modelling and model validity | R-166–R-186 |
 
 ## Full reference entries
 
@@ -77,7 +78,8 @@
 - **Security assurance cases and metamodels:** R-33–R-34.
 - **PEAK decision model:** R-74.
 - **Concurrent edits, semantic conflicts, merge queues and multi-agent delivery:** R-142–R-151.
-- **AI-assisted code quality, maintainability, agentic TDD and organizational adoption:** R-152–R-161.\n- **Constructivist epistemology, irreducible complexity, systemic modelling and model validity:** R-166–R-186.
+- **AI-assisted code quality, maintainability, agentic TDD and organizational adoption:** R-152–R-161.
+- **Constructivist epistemology, irreducible complexity, systemic modelling and model validity:** R-166–R-186.
 - **Continuous monitoring and runtime assurance:** R-70, R-72, R-75–R-76.
 - **Assurance 2.0 and SACM evolution:** R-71, R-73.
 - **Domain semantics, product quality and open-source compliance (candidate sources):** R-94–R-100, R-102–R-103.
@@ -1405,7 +1407,8 @@
 - **Primary source:** [NIST AI 600-1 publication](https://doi.org/10.6028/NIST.AI.600-1) · [NIST publication page](https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence)
 - **Relevant concepts:** voluntary, cross-sector guidance for incorporating generative-AI trustworthiness considerations into design, development, use and evaluation.
 - **Use in GovCheck:** informs risk identification and explicit responsibility for assumptions, external dependencies and residual risk.
-- **Limit:** risk-management guidance, not a repository-local enforcement mechanism, formal proof system or evidence that an organization has implemented a recommended practice.\n
+- **Limit:** risk-management guidance, not a repository-local enforcement mechanism, formal proof system or evidence that an organization has implemented a recommended practice.
+
 
 <a id="r-166"></a>
 ### R-166 — Grand colloquium: Current relevance of Jean-Louis Le Moigne's work (16 November 2023)

@@ -45,6 +45,7 @@
 | Réemploi des ontologies, réseau d'ontologies logicielles et interopérabilité sémantique | R-115–R-120 |
 | Cohérence du métamodèle, préservation sémantique et vérification formelle | R-121–R-127 |
 | Modifications concurrentes, conflits sémantiques et livraison multi-agents | R-142–R-151 |
+| Qualité du code assisté par IA, maintenabilité, TDD agentique et adoption organisationnelle | R-152–R-161 |
 
 ## Entrées bibliographiques détaillées
 
@@ -75,6 +76,7 @@
 - **Dossiers d'assurance de sécurité et métamodèles :** R-33 à R-34.
 - **Modèle de décision PEAK :** R-74.
 - **Modifications concurrentes, conflits sémantiques, files de fusion et livraison multi-agents :** R-142–R-151.
+- **Qualité du code assisté par IA, maintenabilité, TDD agentique et adoption organisationnelle :** R-152–R-161.
 - **Surveillance continue et assurance à l'exécution :** R-70, R-72, R-75 à R-76.
 - **Assurance 2.0 et évolution de SACM :** R-71, R-73.
 - **Modèles sémantiques de domaine, qualité produit et conformité open source (sources candidates) :** R-94–R-100, R-102–R-103.
@@ -1294,3 +1296,83 @@
 - **Concepts pertinents :** prédiction empirique des conflits de fusion à partir de facteurs sociaux et techniques.
 - **Utilité pour GovCheck :** étaye l'analyse du chevauchement et du contexte de dépendance/coordination plutôt que de traiter le chevauchement de fichiers comme un critère complet de conflit.
 - **Limite :** associations prédictives et performances dépendent du jeu de données, des variables et du contexte ; elles ne prouvent ni incompatibilité ni causalité.
+
+<a id="r-152"></a>
+### R-152 — Code for Machines, Not Just Humans: Quantifying AI-Friendliness with Code Health Metrics
+- **Cité par :** [Revue de recherche sur la qualité et la gouvernance du développement assisté par IA](research/ai-assisted-quality-governance.fr.md)
+- **Sources primaires :** [FORGE 2026 / DOI 10.1145/3793655.3793722](https://doi.org/10.1145/3793655.3793722) · [Prépublication arXiv](https://arxiv.org/abs/2601.02200)
+- **Concepts pertinents :** étude du refactoring par IA et de la préservation sémantique sur 5 000 solutions Python ; association entre CodeHealth et des taux de rupture des suites de tests plus faibles pour plusieurs modèles de taille moyenne.
+- **Utilité pour GovCheck :** motive l'étude de la maintenabilité, de la complexité et du contexte comme facteurs de risque dans les arguments d'assurance, plutôt que de supposer le code généré maintenable par défaut.
+- **Limite :** corpus Python de programmation compétitive, sélection de code smells et oracle de tests spécifique ; une métrique commerciale n'est pas une mesure universelle de correction et les résultats varient selon le modèle et la tâche.
+
+<a id="r-153"></a>
+### R-153 — Echoes of AI: Investigating the downstream effects of AI assistants on software maintainability
+- **Cité par :** [Revue de recherche sur la qualité et la gouvernance du développement assisté par IA](research/ai-assisted-quality-governance.fr.md)
+- **Source primaire :** [Empirical Software Engineering, DOI 10.1007/s10664-026-10889-1](https://doi.org/10.1007/s10664-026-10889-1)
+- **Concepts pertinents :** étude préenregistrée en deux phases auprès de 151 participants, dont 95 % de développeurs professionnels ; la tâche de maintenance ultérieure randomisée ne trouve pas de différence systématique statistiquement claire de temps ou de qualité entre le code assisté par IA et le code sans IA dans le contexte étudié.
+- **Utilité pour GovCheck :** nuance l'affirmation selon laquelle le code assisté par IA dégraderait nécessairement la maintenabilité ; motive l'enregistrement des tâches, populations, mesures et incertitudes.
+- **Limite :** tâche sur une application web Java et période antérieure aux workflows d'agents autonomes actuels ; l'absence de différence détectée ne prouve pas l'équivalence dans d'autres contextes.
+
+<a id="r-154"></a>
+### R-154 — A Preliminary Analysis of the Impact of AI Assisted/Generated Code on Quality, Centrality and Review Time at Scale
+- **Cité par :** [Revue de recherche sur la qualité et la gouvernance du développement assisté par IA](research/ai-assisted-quality-governance.fr.md)
+- **Source primaire :** [ESEM 2026, LIPIcs, DOI 10.4230/LIPIcs.ESEM.2026.93](https://doi.org/10.4230/LIPIcs.ESEM.2026.93)
+- **Concepts pertinents :** analyse de plus de 10 000 développeurs et 400 000 diffs chez Meta, avec suivi de provenance du code au fil des modifications, revues et intégrations ; met en évidence des facteurs de confusion tels que la centralité, la taille du changement, les tests et l'ancienneté de l'auteur.
+- **Utilité pour GovCheck :** motive une évaluation tenant compte du contexte et de la provenance, et met en garde contre l'attribution des résultats à l'IA seule sans modéliser la tâche et le contexte du dépôt.
+- **Limite :** analyse observationnelle préliminaire dans une seule grande organisation ; les associations ne constituent ni des garanties causales ni des seuils transférables.
+
+<a id="r-155"></a>
+### R-155 — On the Use of Agentic Coding: An Empirical Study of Pull Requests on GitHub
+- **Cité par :** [Revue de recherche sur la qualité et la gouvernance du développement assisté par IA](research/ai-assisted-quality-governance.fr.md)
+- **Source primaire :** [ACM Transactions on Software Engineering and Methodology, DOI 10.1145/3798166](https://doi.org/10.1145/3798166)
+- **Concepts pertinents :** étude empirique de 567 pull requests générées avec Claude Code dans 157 dépôts open source ; 83,8 % ont finalement été fusionnées, mais 45,1 % des PR fusionnées ont nécessité des changements supplémentaires.
+- **Utilité pour GovCheck :** justifie de préserver la revue mainteneur, la provenance des changements et la distinction entre contribution d'un agent, changement accepté et intégration sans modification.
+- **Limite :** échantillon limité à un outil et à des dépôts GitHub observables ; les taux d'acceptation dépendent de la sélection et des définitions retenues.
+
+<a id="r-156"></a>
+### R-156 — How to Use Test-Driven Development with AI Agents (Without Lowering Code Quality)
+- **Cité par :** [Revue de recherche sur la qualité et la gouvernance du développement assisté par IA](research/ai-assisted-quality-governance.fr.md)
+- **Source primaire :** [Emily Bache, 5 novembre 2026](https://coding-is-like-cooking.info/2026/11/how-to-use-test-driven-development-with-ai-agents-without-lowering-code-quality/)
+- **Concepts pertinents :** workflow EXACT ; example mapping, liste de tests en langage naturel, TDD prédictif, boucle red/green/refactor, agent de refactoring dédié dans certaines expériences et laboratoire de tests avec suites d'acceptation cachées au modèle.
+- **Utilité pour GovCheck :** motive la distinction entre intention/exemples des parties prenantes, spécification de tests, implémentation et preuve d'acceptation indépendante ; encourage à documenter le protocole expérimental et l'indépendance de l'oracle.
+- **Limite :** compte rendu pratique et expériences décrites par les auteurs du workflow ; les gains annoncés dépendent de la tâche, du modèle et du harness et ne constituent pas un benchmark universel indépendant.
+
+<a id="r-157"></a>
+### R-157 — AI-Friendly Code: The Missing Link for Speed with Quality
+- **Cité par :** [Revue de recherche sur la qualité et la gouvernance du développement assisté par IA](research/ai-assisted-quality-governance.fr.md)
+- **Source :** [Conférence d'Adam Tornhill, GOTO Copenhagen 2026](https://youtu.be/ciRTdOIhNCc)
+- **Concepts pertinents :** argument industriel selon lequel la santé du code et la maintenabilité affectent la sûreté et la durabilité des changements assistés par IA.
+- **Utilité pour GovCheck :** motive l'examen de la santé à long terme du code en complément des résultats immédiats des tests et du débit.
+- **Limite :** conférence et cadrage métrique associé à un fournisseur ; l'article empirique correspondant est référencé séparément en R-152 et doit être évalué selon sa méthode et ses limites.
+
+<a id="r-158"></a>
+### R-158 — How to Use Test-Driven Development with AI Agents (Without Lowering Code Quality)
+- **Cité par :** [Revue de recherche sur la qualité et la gouvernance du développement assisté par IA](research/ai-assisted-quality-governance.fr.md)
+- **Source :** [Vidéo Modern Software Engineering](https://youtu.be/a6HYpocKwXU)
+- **Concepts pertinents :** développement guidé par des exemples, TDD prédictif et comparaison empirique de workflows de codage par agents.
+- **Utilité pour GovCheck :** motive l'audit des liens entre intention, exemples, exigences, preuves de test et acceptation.
+- **Limite :** entretien/vidéo industrielle ; ce n'est pas une évaluation académique indépendante de GovCheck ni une preuve universelle que le TDD garantit la correction.
+
+<a id="r-159"></a>
+### R-159 — What the Top Companies Do Differently With AI Coding
+- **Cité par :** [Revue de recherche sur la qualité et la gouvernance du développement assisté par IA](research/ai-assisted-quality-governance.fr.md)
+- **Source :** [Entretien AI Engineer avec Martin Harrysson et Prakhar Dixit, McKinsey](https://youtu.be/21tuT-e4NVo)
+- **Concepts pertinents :** observations industrielles sur les pratiques organisationnelles du développement logiciel assisté par IA dans de grandes entreprises.
+- **Utilité pour GovCheck :** invite à examiner la responsabilité, la conception des workflows, les compétences, les boucles de rétroaction et les preuves nécessaires pour étayer les affirmations organisationnelles.
+- **Limite :** entretien et observations industrielles ; il faut évaluer les méthodes et données sous-jacentes, sans présumer qu'une pratique est transférable à tous les dépôts.
+
+<a id="r-160"></a>
+### R-160 — Vidéo fournie par l'utilisateur (métadonnées non vérifiées indépendamment)
+- **Cité par :** [Revue de recherche sur la qualité et la gouvernance du développement assisté par IA](research/ai-assisted-quality-governance.fr.md)
+- **Source :** [Vidéo YouTube, identifiant hP2vfBcQhfk](https://youtu.be/hP2vfBcQhfk)
+- **Concepts pertinents :** conservée comme l'une des cinq sources de recherche fournies ; le titre, l'intervenant et les affirmations de fond n'ont pas pu être vérifiés indépendamment dans les métadonnées indexées accessibles lors de ce passage.
+- **Utilité pour GovCheck :** préserve la traçabilité sans inventer le contenu ; la vidéo doit être examinée avant d'attribuer des affirmations ou d'en dériver des exigences.
+- **Limite :** aucune inférence sur le contenu n'est faite à partir de l'URL seule.
+
+<a id="r-161"></a>
+### R-161 — Vidéo fournie par l'utilisateur (métadonnées non vérifiées indépendamment)
+- **Cité par :** [Revue de recherche sur la qualité et la gouvernance du développement assisté par IA](research/ai-assisted-quality-governance.fr.md)
+- **Source :** [Vidéo YouTube, identifiant cZ_PqBpZygY](https://youtu.be/cZ_PqBpZygY)
+- **Concepts pertinents :** conservée comme l'une des cinq sources de recherche fournies ; le titre, l'intervenant et les affirmations de fond n'ont pas pu être vérifiés indépendamment dans les métadonnées indexées accessibles lors de ce passage.
+- **Utilité pour GovCheck :** préserve la traçabilité sans inventer le contenu ; la vidéo doit être examinée avant d'attribuer des affirmations ou d'en dériver des exigences.
+- **Limite :** aucune inférence sur le contenu n'est faite à partir de l'URL seule.

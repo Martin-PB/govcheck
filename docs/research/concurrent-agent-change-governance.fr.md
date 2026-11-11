@@ -59,7 +59,7 @@ Une file peut limiter les builds concurrents, grouper les changements, optimiser
 
 ### 4.3 La provenance est complémentaire, pas suffisante
 
-GovCheck catalogue déjà in-toto et SLSA (R-06/R-07), et traite séparément identité des artefacts, révisions et actualité des éléments probants. Ces systèmes peuvent identifier comment un artefact a été produit ; ils ne prouvent pas à eux seuls qu'il satisfait l'intention du dépôt ou que l'acteur avait autorité pour l'accepter.
+GovCheck catalogue déjà in-toto et SLSA ([R-06](../references.fr.md#r-06)/[R-07](../references.fr.md#r-07)), et traite séparément identité des artefacts, révisions et actualité des éléments probants. Ces systèmes peuvent identifier comment un artefact a été produit ; ils ne prouvent pas à eux seuls qu'il satisfait l'intention du dépôt ou que l'acteur avait autorité pour l'accepter.
 
 ## 5. Conséquences candidates pour GovCheck
 
@@ -74,7 +74,7 @@ Ces éléments issus de la recherche sont à auditer, et non des exigences adopt
 | Applicabilité de l'assurance | Révision du sujet, entrées, hypothèses, méthode, version d'outil, périmètre et statut exacts | Spécification 0005 ; applicabilité des révisions ; fraîcheur |
 | Invalidation | Changement de dépendance, hypothèse, politique, base, résolution ou outil invalide les résultats concernés selon des règles explicites | GovCheckAssurance.tla ; GovCheckLifecycle.tla ; architectures 0021/0033 |
 | Autorité d'acceptation | Autorisation d'intégration et acceptation du risque distinctes de l'auteur, de la mécanique de fusion, d'une CI verte ou d'une résolution automatique | Architecture 0023 ; modèles d'autorité/exception |
-| Retour d'expérience | Observations en production déclenchant incident, affirmation, changement d'exigence, réévaluation ou remédiation | Références R-70/R-72/R-75/R-76 |
+| Retour d'expérience | Observations en production déclenchant incident, affirmation, changement d'exigence, réévaluation ou remédiation | Références [R-70](../references.fr.md#r-70), [R-72](../references.fr.md#r-72), [R-75](../references.fr.md#r-75) et [R-76](../references.fr.md#r-76) |
 
 ### 5.1 La validité individuelle n'implique pas la validité combinée
 
@@ -147,4 +147,4 @@ Ce rapport ne recommande aucun verrou, file de fusion, framework d'agents, forge
 
 ## 10. Références et traçabilité
 
-Les entrées proposées sont R-142–R-150 dans le [catalogue central](../references.fr.md). Documents liés : [Architecture 0013](../architecture/0013-governance-metamodel.fr.md), [Architecture 0021](../architecture/0021-assurance-claims-and-freshness.fr.md), [Architecture 0022](../architecture/0022-governance-capability-audit.fr.md), [Architecture 0023](../architecture/0023-bootstrap-governance-authority.fr.md), [Architecture 0028](../architecture/0028-governed-work-portfolio-and-issue-tracker-boundary.fr.md), [Architecture 0033](../architecture/0033-governance-evaluator-exception-revocation-model.fr.md), [Spécification 0005](../specifications/0005-assurance-model.fr.md), et travaux [#84](https://github.com/Martin-PB/govcheck/issues/84), [#73](https://github.com/Martin-PB/govcheck/issues/73), [#74](https://github.com/Martin-PB/govcheck/issues/74), [#79](https://github.com/Martin-PB/govcheck/issues/79), [#81](https://github.com/Martin-PB/govcheck/issues/81).
+Les entrées proposées sont les entrées [R-142](../references.fr.md#r-142), [R-143](../references.fr.md#r-143), [R-144](../references.fr.md#r-144), [R-145](../references.fr.md#r-145), [R-146](../references.fr.md#r-146), [R-147](../references.fr.md#r-147), [R-148](../references.fr.md#r-148), [R-149](../references.fr.md#r-149), [R-150](../references.fr.md#r-150) et [R-151](../references.fr.md#r-151) du catalogue central. Documents liés : [Architecture 0013](../architecture/0013-governance-metamodel.fr.md), [Architecture 0021](../architecture/0021-assurance-claims-and-freshness.fr.md), [Architecture 0022](../architecture/0022-governance-capability-audit.fr.md), [Architecture 0023](../architecture/0023-bootstrap-governance-authority.fr.md), [Architecture 0028](../architecture/0028-governed-work-portfolio-and-issue-tracker-boundary.fr.md), [Architecture 0033](../architecture/0033-governance-evaluator-exception-revocation-model.fr.md), [Spécification 0005](../specifications/0005-assurance-model.fr.md), et travaux [#84](https://github.com/Martin-PB/govcheck/issues/84), [#73](https://github.com/Martin-PB/govcheck/issues/73), [#74](https://github.com/Martin-PB/govcheck/issues/74), [#79](https://github.com/Martin-PB/govcheck/issues/79), [#81](https://github.com/Martin-PB/govcheck/issues/81).

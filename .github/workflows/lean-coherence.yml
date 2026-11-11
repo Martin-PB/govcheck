@@ -39,6 +39,7 @@ jobs:
         with:
           lake-package-directory: formal/lean
           build: true
+          build-args: GovCheckCoherence
           auto-config: false
 
       - name: Report axioms used by prototype theorems

@@ -25,6 +25,10 @@ This direction is consistent with Architecture 0013, Architecture 0027 and Speci
 
 **Ontology-reuse reassessment:** see the dedicated [ontology reuse and CSLib assessment](../research/metamodel-ontology-reuse-assessment.md) and [French counterpart](../research/metamodel-ontology-reuse-assessment.fr.md). It identifies SEON/ReqON as the strongest candidate found, recommends against a comprehensive bespoke ontology on current evidence, and treats a small governance kernel plus explicit mappings as provisional—not adopted.
 
+
+
+**Coherence verification:** see the [formal verification assessment](../research/metamodel-coherence-verification.md) and [French counterpart](../research/metamodel-coherence-verification.fr.md). It recommends mandatory assurance obligations for critical semantic mappings, using a heterogeneous toolchain and a formally specified Lean bridge, with source-native reasoners/validators and temporal model checking. This is a proposal for review, not an adopted toolchain.
+
 ## 2. Decision to be made
 
 Decide the architecture and boundaries of GovCheck's metamodel, including:

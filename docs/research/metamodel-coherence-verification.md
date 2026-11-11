@@ -193,7 +193,11 @@ No duplicate epic is proposed:
 
 First-prototype exit criteria: three vertical slices; source-specific checks; at least one Lean theorem about a real cross-model invariant; at least one deliberate counterexample; temporal stale-evidence/invalidation checks; reproducible evidence bundle; documented trusted base; and an authority decision on mandatory proof obligations.
 
-## 9. References and traceability
+## 9. Concrete first-slice contract
+
+The proposed engineering contract now specifies the initial evidence-epistemics slice, its Lean proof obligations (VC-EPI-01/02, VC-MAP-01–04 and VC-AUTH-01), adversarial fixtures, temporal invalidation properties, CSLib import audit protocol and completion gate: [Metamodel coherence prototype contract](metamodel-coherence-prototype-contract.md) / [French version](metamodel-coherence-prototype-contract.fr.md). This is a design contract, not an executed or compiled prototype.
+
+## 10. References and traceability
 
 Central catalogue: [R-121 OWL 2 semantics](../references.md#r-121), [R-122 SHACL](../references.md#r-122), [R-123 CSLib](../references.md#r-123), [R-124 TLA+/TLAPS](../references.md#r-124), [R-125 model-transformation verification](../references.md#r-125), [R-126 EVL/Alloy](../references.md#r-126), [R-127 ontology alignment and conservativity](../references.md#r-127).
 

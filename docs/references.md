@@ -46,7 +46,7 @@
 | Metamodel coherence, semantic preservation and formal verification | R-121–R-127 |
 | Concurrent edits, semantic merge conflicts and multi-agent delivery | R-142–R-151 |
 | AI-assisted code quality, maintainability, agentic TDD and organizational adoption | R-152–R-161 |
-| GovCheck applicability, software factories, external preconditions and AI productivity measurement | R-162–R-165 |
+| GovCheck applicability, software factories, external preconditions and AI productivity measurement | R-162–R-165 |\n| Constructivist epistemology, irreducible complexity, systemic modelling and model validity | R-166–R-186 |
 
 ## Full reference entries
 
@@ -77,7 +77,7 @@
 - **Security assurance cases and metamodels:** R-33–R-34.
 - **PEAK decision model:** R-74.
 - **Concurrent edits, semantic conflicts, merge queues and multi-agent delivery:** R-142–R-151.
-- **AI-assisted code quality, maintainability, agentic TDD and organizational adoption:** R-152–R-161.
+- **AI-assisted code quality, maintainability, agentic TDD and organizational adoption:** R-152–R-161.\n- **Constructivist epistemology, irreducible complexity, systemic modelling and model validity:** R-166–R-186.
 - **Continuous monitoring and runtime assurance:** R-70, R-72, R-75–R-76.
 - **Assurance 2.0 and SACM evolution:** R-71, R-73.
 - **Domain semantics, product quality and open-source compliance (candidate sources):** R-94–R-100, R-102–R-103.
@@ -1405,4 +1405,172 @@
 - **Primary source:** [NIST AI 600-1 publication](https://doi.org/10.6028/NIST.AI.600-1) · [NIST publication page](https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence)
 - **Relevant concepts:** voluntary, cross-sector guidance for incorporating generative-AI trustworthiness considerations into design, development, use and evaluation.
 - **Use in GovCheck:** informs risk identification and explicit responsibility for assumptions, external dependencies and residual risk.
-- **Limit:** risk-management guidance, not a repository-local enforcement mechanism, formal proof system or evidence that an organization has implemented a recommended practice.
+- **Limit:** risk-management guidance, not a repository-local enforcement mechanism, formal proof system or evidence that an organization has implemented a recommended practice.\n
+
+<a id="r-166"></a>
+### R-166 — Grand colloquium: Current relevance of Jean-Louis Le Moigne's work (16 November 2023)
+- **Cited by:** [STUDY-003 colloquium analysis](research/le-moigne-colloquium.md), [STUDY-003 GovCheck applicability assessment](research/govcheck-applicability-constructivism-and-systems.md)
+- **Primary sources:** [Official event page and programme](https://www.intelligence-complexite.org/activites/manifestation/grand-colloque-actualite-oeuvre-jean-louis-moigne) · [Replay programme PDF](https://www.intelligence-complexite.org/sites/default/files/media/text/rencontres/Colloque%20JLLM%20-%20video%20Replay.pdf)
+- **Relevant concepts:** programme and provenance for the three sessions on constructivist epistemologies, irreducibility and systemic modelling; identifies speakers and session sequence.
+- **Use in GovCheck:** provides a traceable research source for epistemology, complexity and systemic-modelling questions examined in STUDY-003.
+- **Limit:** organizer-produced programme; it establishes session metadata and framing, not the full arguments or independent validity of the talks.
+
+<a id="r-167"></a>
+### R-167 — Part 1: Constructivist epistemologies (colloquium recording)
+- **Cited by:** [STUDY-003 colloquium analysis](research/le-moigne-colloquium.md)
+- **Source:** [Video recording](https://youtu.be/rLTeDfgEW88)
+- **Relevant concepts:** round table chaired by Georges Garcia with Marie-José Avenier, Bruno Tardieu and Jean-Yves Rossignol.
+- **Use in GovCheck:** source trigger for questions about observer, purpose, model construction, epistemic validity and plural viewpoints.
+- **Limit:** a reliable timestamped transcript was not available in the research pass; speaker-specific statements are not attributed without verification.
+
+<a id="r-168"></a>
+### R-168 — Part 2: Assuming and going beyond the irreducible (colloquium recording)
+- **Cited by:** [STUDY-003 colloquium analysis](research/le-moigne-colloquium.md)
+- **Source:** [Video recording](https://youtu.be/QhRj0XGYYeU)
+- **Relevant concepts:** Robert Delorme's presentation on the irreducibility of complex phenomena and the possibility of modelling without reducing them to a single exhaustive representation.
+- **Use in GovCheck:** source trigger for research on uncertainty, model limits, unmodelled interactions, object/meta levels and residual risk.
+- **Limit:** a reliable timestamped transcript was not available in the research pass; the companion publication is separately referenced as R-175.
+
+<a id="r-169"></a>
+### R-169 — Part 3: Systemic modelling (colloquium recording)
+- **Cited by:** [STUDY-003 colloquium analysis](research/le-moigne-colloquium.md)
+- **Source:** [Video recording](https://youtu.be/0iYNt4nDNvg)
+- **Relevant concepts:** round table chaired by Dominique Genelot with Frédéric Rousseau, François Pissochet, Frédéric Erpicum and Hubert Tardieu.
+- **Use in GovCheck:** source trigger for examining model purpose, activity, organization, environment, evolution and model validity.
+- **Limit:** a reliable timestamped transcript was not available in the research pass; no detailed intervention is attributed to a named speaker without verification.
+
+<a id="r-170"></a>
+### R-170 — A constructivist view of the concept of complexity
+- **Cited by:** [STUDY-003 colloquium analysis](research/le-moigne-colloquium.md)
+- **Primary source:** [Dominique Genelot, AE-MCX / RIC colloquium paper (November 2023)](https://www.intelligence-complexite.org/media/document/rencontres/vision-constructiviste-concept-complexite/open)
+- **Relevant concepts:** the meaning of “complexity” varies with epistemological commitments; the paper presents a constructivist perspective.
+- **Use in GovCheck:** warns against treating complexity as a self-evident scalar or universal category.
+- **Limit:** organizer-hosted session document; it is a perspective paper, not an independent empirical validation of a complexity measure.
+
+<a id="r-171"></a>
+### R-171 — Legitimizing knowledge developed from practitioners' experience in a pragmatic constructivist epistemology
+- **Cited by:** [STUDY-003 colloquium analysis](research/le-moigne-colloquium.md)
+- **Primary source:** Marie-Noëlle Albert and Marie-José Avenier, *Recherches qualitatives*, 30(2), 2011, pp. 22–47. [Full-text record](https://www.marienoellealbert.ca/publications/legitimation-de-savoirs-elabores-a-partir-de-l-experience-de-praticiens)
+- **Relevant concepts:** conditions under which practitioner experience can contribute to legitimate knowledge; pragmatic constructivist research.
+- **Use in GovCheck:** informs how situated observations, expert judgment and experience-based claims might be documented and critically assessed.
+- **Limit:** domain-specific methodological contribution; does not make every experience report valid without explicit method and critical examination.
+
+<a id="r-172"></a>
+### R-172 — Radical constructivism and its failings: Anti-realism and individualism
+- **Cited by:** [STUDY-003 colloquium analysis](research/le-moigne-colloquium.md)
+- **Primary source:** Mark Olssen, *British Journal of Educational Studies*, 44(3), 1996, pp. 275–295. [DOI](https://doi.org/10.1080/00071005.1996.9974075)
+- **Relevant concepts:** critique of radical constructivism on anti-realism, individualism, idealism and relativism.
+- **Use in GovCheck:** ensures that constructivist insights are assessed alongside realist and objectivity concerns rather than adopted as an undifferentiated epistemology.
+- **Limit:** critique of radical constructivism in a particular philosophical/educational debate; it does not refute every pragmatic or social constructivist approach.
+
+<a id="r-173"></a>
+### R-173 — Ernst von Glasersfeld's radical constructivism and truth as disclosure
+- **Cited by:** [STUDY-003 colloquium analysis](research/le-moigne-colloquium.md)
+- **Primary source:** Clarence W. Joldersma, *Educational Theory*, 61(3), 2011, pp. 275–293. [DOI](https://doi.org/10.1111/j.1741-5446.2011.00404.x)
+- **Relevant concepts:** critique and reconstruction of radical constructivist accounts of truth; explores a conception intended to avoid pitfalls of both realism and anti-realism.
+- **Use in GovCheck:** supports a nuanced distinction between observer-mediated knowledge and arbitrary relativism.
+- **Limit:** philosophical argument; not a formal validation procedure or a universally accepted resolution of the realism debate.
+
+<a id="r-174"></a>
+### R-174 — The making of constructivism: A critical exploration of Jean-Louis Le Moigne's work
+- **Cited by:** [STUDY-003 colloquium analysis](research/le-moigne-colloquium.md)
+- **Primary source:** Baptiste Rappin, *La Revue des Sciences de Gestion*, no. 272, 2015, pp. 47–53. [Sciences Po Lyon record and abstract](https://signal.sciencespo-lyon.fr/article/566571/La-fabrique-du-constructivisme-Exploration-commentee-et-critique-de-l-oeuvre-de-Jean-Louis-Le-Moigne)
+- **Relevant concepts:** critical examination of Le Moigne's conceptual sources, treatment of reality, causality and positivism, and argumentative strategies.
+- **Use in GovCheck:** provides a critical counter-source against unexamined adoption of a theoretical framework.
+- **Limit:** the catalogue record provides an abstract, not the complete article; detailed claims require reading the full text.
+
+<a id="r-175"></a>
+### R-175 — Complexity theory and institutions in economics: Robert Delorme's second-order complexity
+- **Cited by:** [STUDY-003 colloquium analysis](research/le-moigne-colloquium.md)
+- **Primary source:** [Robert Delorme, “Théorie de la complexité et institutions en économie”](https://archive.mcxapc.org/docs/ateliers/delorm3.htm)
+- **Relevant concepts:** irreducibility as both obstacle and resource for knowledge/action; multiple forms of complexity; object/meta levels; abduction and contextualized theorization.
+- **Use in GovCheck:** informs research on how to distinguish different uncertainty/irreducibility sources and how to document the limits of a model.
+- **Limit:** theoretical framework developed in an economic/institutional context; its categories require domain-specific operationalization before use in governance rules.
+
+<a id="r-176"></a>
+### R-176 — The General System Theory: Theory of Modelling
+- **Cited by:** [STUDY-003 colloquium analysis](research/le-moigne-colloquium.md), [STUDY-003 GovCheck applicability assessment](research/govcheck-applicability-constructivism-and-systems.md)
+- **Primary sources:** Jean-Louis Le Moigne, *La théorie du système général : théorie de la modélisation*, PUF, first edition 1977; [BnF catalogue record](https://catalogue.bnf.fr/ark:/12148/cb34588322h) · [RIC digitized edition record](https://www.intelligence-complexite.org/bibliotheque/classiques-ric/theorie-systeme-general)
+- **Relevant concepts:** model construction as a process; purpose, action, structure, organization, environment, regulation and evolution.
+- **Use in GovCheck:** source for comparative analysis of lifecycle, model scope, system boundaries, context and model evolution.
+- **Limit:** a particular theoretical model, not a universal ontology or a ready-made GovCheck metamodel.
+
+<a id="r-177"></a>
+### R-177 — Review of Le Moigne's General System Theory: Theory of Modelling
+- **Cited by:** [STUDY-003 colloquium analysis](research/le-moigne-colloquium.md)
+- **Primary source:** Bernard Motulsky, review in *Communication. Information Médias Théories*, 2(3), 1978, pp. 217–218. [Persée record/full text](https://www.persee.fr/doc/comin_0382-7798_1978_num_2_3_1078)
+- **Relevant concepts:** the review distinguishes functional/action, structural and genetic/evolutionary dimensions and emphasizes the observer's objectives and model boundaries; it also notes the work's density and difficulty of entry.
+- **Use in GovCheck:** helps identify the conceptual commitments and practical readability costs of adopting systemic modelling.
+- **Limit:** contemporary book review, not a controlled evaluation or comprehensive critique.
+
+<a id="r-178"></a>
+### R-178 — Soft Systems Methodology
+- **Cited by:** [STUDY-003 colloquium analysis](research/le-moigne-colloquium.md), [STUDY-003 GovCheck applicability assessment](research/govcheck-applicability-constructivism-and-systems.md)
+- **Primary source:** Peter B. Checkland, *Human Systems Management*, 8(4), 1989, pp. 273–289. [DOI](https://doi.org/10.3233/HSM-1989-8405)
+- **Relevant concepts:** purposeful activity models used to support debate and learning where objectives are unclear and multiple legitimate viewpoints exist.
+- **Use in GovCheck:** comparator for stakeholder viewpoints, plural models, deliberation and decision traceability.
+- **Limit:** SSM models serve a learning/debate process; they are not automatically predictive models or formal specifications.
+
+<a id="r-179"></a>
+### R-179 — Model validation in soft systems practice
+- **Cited by:** [STUDY-003 colloquium analysis](research/le-moigne-colloquium.md)
+- **Primary source:** Peter Checkland, *Systems Research and Behavioral Science*, 12(1), 1995, pp. 47–54. [DOI](https://doi.org/10.1002/sres.3850120108)
+- **Relevant concepts:** distinction between representative models of the world and conceptual models used as devices in a cyclical learning process.
+- **Use in GovCheck:** helps distinguish model consistency, representational adequacy and usefulness for deliberation/action.
+- **Limit:** developed for soft systems practice; its validation conception cannot be mechanically generalized to every formal or engineering model.
+
+<a id="r-180"></a>
+### R-180 — Validity Frame-enabled model-based engineering processes
+- **Cited by:** [STUDY-003 colloquium analysis](research/le-moigne-colloquium.md), [STUDY-003 GovCheck applicability assessment](research/govcheck-applicability-constructivism-and-systems.md)
+- **Primary source:** Bert Van Acker et al., *Simulation*, 2023. [DOI](https://doi.org/10.1177/00375497231205035)
+- **Relevant concepts:** model validity context, intended use, limitations of formalisms, and the need to maintain validity reasoning throughout model creation and transformation.
+- **Use in GovCheck:** strong comparator for recording a model's scope, assumptions, intended use and validity argument.
+- **Limit:** focused on model-based engineering and cyber-physical systems; requires adaptation before use in repository governance.
+
+<a id="r-181"></a>
+### R-181 — Early validation and verification of system behaviour in model-based systems engineering: a systematic literature review
+- **Cited by:** [STUDY-003 colloquium analysis](research/le-moigne-colloquium.md)
+- **Primary source:** Johan Cederbladh, Antonio Cicchetti and Jagadish Suryadevara, *ACM Transactions on Software Engineering and Methodology*, 33(3), 2024, article 81. [DOI](https://doi.org/10.1145/3631976)
+- **Relevant concepts:** validation and verification of system behavior in early lifecycle phases; limited system understanding constrains the detail and analytical power of early models.
+- **Use in GovCheck:** supports lifecycle-sensitive claims about model maturity and evidence limitations.
+- **Limit:** MBSE systematic review; its conclusions need contextualization for software-repository governance.
+
+<a id="r-182"></a>
+### R-182 — Soft Systems Methodology: Cambridge Decision Support Tools
+- **Cited by:** [STUDY-003 GovCheck applicability assessment](research/govcheck-applicability-constructivism-and-systems.md)
+- **Primary source:** [University of Cambridge, Institute for Manufacturing](https://www.ifm.eng.cam.ac.uk/research/dstools/soft-systems-methodology/)
+- **Relevant concepts:** rich pictures, root definitions, CATWOE, multiple conceptual models, comparison with a problem situation, and feasible/desirable change.
+- **Use in GovCheck:** practical comparator for recording stakeholder perspectives, environmental constraints and the difference between repository traceability and facilitated inquiry.
+- **Limit:** teaching/practice overview, not a normative standard or an assurance guarantee.
+
+<a id="r-183"></a>
+### R-183 — Testimony of an engineering education experience in pragmatic constructivism
+- **Cited by:** [STUDY-003 colloquium analysis](research/le-moigne-colloquium.md)
+- **Primary source:** [Jean-Yves Rossignol, RIC colloquium document (September 2024)](https://www.intelligence-complexite.org/media/document/rencontres/temoignage-experience-pedagogique-ingenierie-paradigme-epistemologique/open)
+- **Relevant concepts:** application of pragmatic constructivist epistemology to engineering pedagogy and the foundations of professional education.
+- **Use in GovCheck:** contextual example of a domain-specific application, not evidence of universal transfer.
+- **Limit:** later testimony, not part of the 2023 session and not an independent evaluation of the approach.
+
+<a id="r-184"></a>
+### R-184 — Formalisms of systemic modelling
+- **Cited by:** [STUDY-003 colloquium analysis](research/le-moigne-colloquium.md)
+- **Primary source:** [Jean-Louis Le Moigne, “Les formalismes de la modélisation systémique” (1992; RIC publication)](https://www.intelligence-complexite.org/media/document/ateliers/formalismes-modelisation-systemique/open)
+- **Relevant concepts:** argues that systemic modelling and procedural reasoning can be expressed through rigorous formalism, while challenging an overly narrow identification of formalism with analytic/deductive expression alone.
+- **Use in GovCheck:** directly relevant to the research question whether systemic and procedural models can be formalized without reducing them to a purely static analytic model.
+- **Limit:** theoretical argument by Le Moigne; requires independent assessment of semantics, soundness and operational formalization.
+
+<a id="r-185"></a>
+### R-185 — Model-based systems engineering: Motivation, current status, and research opportunities
+- **Cited by:** [STUDY-003 colloquium analysis](research/le-moigne-colloquium.md)
+- **Primary source:** Azad M. Madni, *Systems Engineering*, 21(3), 2018, pp. 172–190. [DOI](https://doi.org/10.1002/sys.21438)
+- **Relevant concepts:** MBSE as a lifecycle-oriented approach centered on evolving system models for consistency, traceability and assurance.
+- **Use in GovCheck:** comparator for model-centric lifecycle governance and the difference between using models as artifacts and engineering around an evolving model.
+- **Limit:** MBSE overview; “single source of truth” is an approach claim, not proof that a model is complete or valid.
+
+<a id="r-186"></a>
+### R-186 — Oversocialised epistemology: A critical appraisal of constructivism
+- **Cited by:** [STUDY-003 colloquium analysis](research/le-moigne-colloquium.md)
+- **Primary source:** Volker H. Schmidt, *Sociology*, 35(1), 2001. [DOI](https://doi.org/10.1177/0038038501035001009)
+- **Relevant concepts:** critique of over-socialized accounts of knowledge and limits of deriving epistemic conclusions from sociological analyses.
+- **Use in GovCheck:** further counterweight against treating the social construction of knowledge as sufficient for validity.
+- **Limit:** critical sociological argument; it does not settle the epistemological debate or invalidate all social/constructivist approaches.

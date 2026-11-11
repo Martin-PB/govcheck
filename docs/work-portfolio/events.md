@@ -241,3 +241,17 @@
 - **Disposition:** factual synchronization and integration preparation only. #41 and #86 remain open; the eleven owner-selected choices remain pending formal normative adoption. No issue closure, adoption, implementation or production enforcement is implied.
 - **Related records:** Issues #41/#86; PRs #90/#96/#98/#99/#100/#104; Specifications 0003/0006/0007; Architectures 0023/0031–0034; decision-session record 0008; [R-05](../references.md#r-05), [R-22](../references.md#r-22), [R-142](../references.md#r-142), [R-143](../references.md#r-143) and [R-144](../references.md#r-144).
 - **Known limits:** no new TLA+ run, implementation or conformance result is claimed; existing model-checking evidence remains limited to each exact finite model/configuration and its documented assumptions.
+
+## WP-EVT-000017 — Consolidated formalization PR opened for review
+
+- **Subject:** `govcheck.work.governance-revision-temporal-applicability`
+- **Event type:** `integration-review-requested`
+- **Recorded:** 2026-11-11
+- **Actor/provenance:** GitHub pull-request creation and subsequent PR/commit status read-back.
+- **Pull request:** [#107 — Integrate #41 arbitration formalization and #86 journal protocol](https://github.com/Martin-PB/govcheck/pull/107).
+- **Branch/base:** `work/issue-41-formalization-reconciliation` → `main`; head `82204640cf11104265d75319d6adc2389545f65f`.
+- **Observed PR state:** open, non-draft, 134 commits, 46 changed files; GitHub reports `mergeable=true`. This is a review candidate, not an adoption or merge.
+- **Workflow/credit boundary:** the head has no associated GitHub Actions workflow runs or commit statuses. Commits carry `[skip ci]`; no new Actions credits were consumed.
+- **Issue state:** #41 remains open at `needs-decision`; #86 remains open at `in-progress`. No issue closure, normative adoption, implementation or production enforcement is implied.
+- **Related records:** [#41](https://github.com/Martin-PB/govcheck/issues/41), [#86](https://github.com/Martin-PB/govcheck/issues/86), [PR #107](https://github.com/Martin-PB/govcheck/pull/107), decision-session record [0008](../decisions/0008-governance-applicability-arbitration-session.md), [Specification 0007](../specifications/0007-canonical-governance-journal-protocol.md), [Architecture 0034](../architecture/0034-canonical-journal-recovery-model.md).
+- **Known limits:** the full repository-wide reference-integrity script was not rerun locally; focused offline checks cover the previous reported citation/index errors. No new TLC run or implementation test was performed.

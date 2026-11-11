@@ -2,7 +2,7 @@
 
 **Statut du compte rendu :** choix d'arbitrage exprimés par l'utilisateur, en attente de leur intégration et de leur adoption normative formelle selon le processus d'autorité applicable de GovCheck. Ce document n'est pas lui-même un acte d'adoption, ne modifie pas l'Architecture 0023 et ne prétend ni à une implémentation ni à une vérification.
 **Autorité/provenance :** choix explicitement sélectionnés par le propriétaire du projet dans la discussion GovCheck du 10-11-2026, en réponse aux onze questions guidées d'arbitrage de l'issue [#41](https://github.com/Martin-PB/govcheck/issues/41).
-**Compagnon technique :** [Spécification 0006](../specifications/0006-governance-revision-applicability.fr.md) ; [modèle d'applicabilité antérieur](../../formal/tla/GovCheckGovernanceApplicability.tla) ; [modèle de publication canonique, pas encore vérifié par TLC](../../formal/tla/GovCheckCanonicalPublication.tla) ; [Architecture 0031](../architecture/0031-first-tlc-governance-applicability.fr.md).
+**Compagnon technique :** [Spécification 0006](../specifications/0006-governance-revision-applicability.fr.md) et [Spécification 0007](../specifications/0007-canonical-governance-journal-protocol.fr.md), proposée ; modèles bornés [GovCheckGovernanceApplicability](../../formal/tla/GovCheckGovernanceApplicability.tla), [GovCheckCanonicalPublication](../../formal/tla/GovCheckCanonicalPublication.tla), [GovCheckGovernanceControls](../../formal/tla/GovCheckGovernanceControls.tla) et [GovCheckJournalRecovery](../../formal/tla/GovCheckJournalRecovery.tla) ; rapports de model checking [Architectures 0031–0034](../architecture/README.fr.md).
 **English:** [0008 — governance applicability arbitration session record](0008-governance-applicability-arbitration-session.md).
 
 ## 1. Statut et interprétation
@@ -101,25 +101,24 @@ Les choix retenus impliquent que le contrat technique et sa future réalisation 
 
 Il s'agit d'exigences de formalisation déduites des choix consignés, pas d'affirmations selon lesquelles le modèle TLA+ borné actuel les couvre déjà.
 
-## 4. Couverture du modèle actuel et lacunes explicites
+## 4. Couverture des modèles formels bornés et lacunes explicites
 
-Le modèle `GovCheckGovernanceApplicability.tla` de la PR #90 reste l'abstraction d'applicabilité précédemment vérifiée : une autorité racine fixe, des domaines finis, un seul emplacement de publication en attente et un historique append-only borné. Un second modèle, `GovCheckCanonicalPublication.tla`, a été ajouté comme modèle de conception borné distinct. Il représente l'évaluation d'un candidat sur la tête capturée, l'autorisation uniquement tant que la base de cette évaluation reste courante, une action de publication distincte qui ajoute au journal logique et le rejet d'une autorisation périmée après qu'une autre publication a avancé la tête. Il énonce également des invariants d'unicité des identités de révision, de continuité des prédécesseurs, d'une publication par prédécesseur canonique, de liaison évaluation/autorisation, d'autorisation préalable à la publication et d'exclusion des bases périmées. Sa configuration inclut une propriété temporelle append-only.
+Les artefacts formels sont des **abstractions finies distinctes**, et non un modèle intégré ni une preuve de raffinement :
 
-**Mise à jour de la vérification :** le nouveau modèle a été analysé avec succès par SANY 2.1 et vérifié par TLC 2.19 dans [l'exécution du workflow 42815445104](https://github.com/Martin-PB/govcheck/actions/runs/42815445104), sur le commit `8c77aeac1ef89e2c6dc7463a65af0f9151fa1bb9`. TLC a généré 84 307 états, trouvé 56 895 états distincts, épuisé la file et signalé aucune erreur. Les huit invariants configurés et la propriété temporelle `AppendOnly` ont réussi. La chaîne d'outils exacte, les identités du modèle/de la configuration, l'empreinte de l'artefact et les limites sont consignées dans l'[Architecture 0032](../architecture/0032-canonical-publication-model-checking.fr.md). Il s'agit d'un élément de preuve par model checking borné, pas d'une preuve de l'implémentation ni d'un comportement non borné. Aucun des deux modèles n'établit l'intégralité du contrat retenu. En particulier, les modèles ne représentent pas encore :
+- **Applicabilité et autorité antérieure — [Architecture 0031](../architecture/0031-first-tlc-governance-applicability.fr.md), PR #90 :** liaison aux positions de décision/d'effet, autorité antérieure applicable et préservation historique bornée ; 20 785 états générés / 18 067 distincts.
+- **Publication canonique — [Architecture 0032](../architecture/0032-canonical-publication-model-checking.fr.md), PR #96 :** évaluation sur tête capturée, liaison de l'autorisation, publication comme point d'effet distinct, rejet des autorisations périmées, unicité des révisions/prédécesseurs et une publication par prédécesseur canonique ; 84 307 états générés / 56 895 distincts, huit invariants et `AppendOnly` réussis.
+- **Contrôles des évaluateurs, exceptions et révocation — [Architecture 0033](../architecture/0033-governance-evaluator-exception-revocation-model.fr.md), PR #98 :** autorité de l'évaluateur antérieur, résultats comparatifs uniquement pour un remplaçant, états distincts et bloquants `Unknown`/`Conflict`, exceptions bornées/révocables et exigences non dérogeables, révocation prospective, requalification historique distincte et rejet des autorisations périmées ; 2 826 117 états générés / 1 026 484 distincts, neuf invariants et `AppendOnly` réussis.
+- **Reprise du journal et rollback — [Architecture 0034](../architecture/0034-canonical-journal-recovery-model.fr.md), PR #99 :** point de commit abstrait d'ajout durable, panne avant/après commit, rejeu jusqu'à la tête, rollback comme nouvel événement/révision restaurant un contenu antérieur et observations passives de répliques Git/Pijul ; 178 549 états générés / 38 434 distincts, six invariants et `AppendOnly` réussis. Le modèle suppose un rédacteur sérialisé et abstrait l'autorisation amont ; son hypothèse d'équité n'est pas un résultat vérifié de vivacité de reprise éventuelle.
 
-1. le compare-and-append multi-écrivain non borné ou distribué, les enregistrements explicites de résultat « base périmée », la réconciliation et les workflows de reprise/réévaluation (le nouveau modèle ne couvre qu'une course finie en mémoire et bloque la publication périmée) ;
-2. le stockage durable du journal, la convergence des répliques, l'attribution indépendante des positions canoniques et la sérialisation résistante aux pannes ;
-3. les correspondances de provenance des adaptateurs Git/Pijul ou des répliques VCS divergentes ;
-4. l'identité/version/configuration de l'évaluateur, l'autorité de l'ancien évaluateur ou l'exécution comparative d'un évaluateur de remplacement ;
-5. les dépendances d'évaluation et l'invalidation systématique de péremption après changement de candidat/base/spécification/profil/preuve ;
-6. les événements de révocation et la requalification historique distincte ;
-7. les enregistrements d'exception, expiration, révocation et exigences non dérogeables ;
-8. les transitions d'états `unknown` et `conflict` distinctes et leur résolution explicite ;
-9. le retour arrière comme nouvelle révision restaurant un contenu antérieur ;
-10. les transactions techniques atomiques préservant trois actes logiques distincts ;
-11. la reprise après panne/interruption, l'atomicité d'ajout durable ou le raffinement de l'implémentation.
+La [Spécification 0007](../specifications/0007-canonical-governance-journal-protocol.fr.md) est un contrat sémantique proposé pour compare-and-append, la linéarisabilité, les reçus durables, les nouvelles tentatives idempotentes, le périmètre/la genèse du journal, les adaptateurs VCS limités à la provenance, la réconciliation des répliques et douze scénarios de conformité. Elle n'est pas elle-même vérifiée dans son ensemble par model checking ni implémentée.
 
-Le résultat TLC réussi consigné par la PR #90 et l'Architecture 0031 reste une preuve de model checking uniquement pour le modèle fini et la configuration exacts qui y sont vérifiés. Aucun résultat n'est revendiqué pour les propriétés supplémentaires ci-dessus. Elles exigent une extension du modèle, une conception de configuration et de nouveaux contrôles reproductibles ; l'implémentation exige également des preuves distinctes de conformité et d'intégration.
+**État d'intégration :** les PR #90, #96 et #98 sont fusionnées dans `main`. GitHub a marqué la PR #99 comme fusionnée dans l'ancienne branche de travail de la PR #98, pas dans `main` ; les PR #100 et #104 restent ouvertes et empilées. Le modèle de reprise du journal et la Spécification 0007 ne doivent donc pas être présentés comme déjà intégrés à `main`. Le présent candidat de revue transporte ce travail vers `main`.
+
+### Lacunes restantes
+
+Linéarisabilité et consensus multi-écrivain non bornés/distribués ; durabilité d'un moteur de stockage concret, écritures déchirées et reprise opérationnelle ; correspondances réelles des adaptateurs VCS et résolution de répliques divergentes ; invalidation complète des évaluations périmées selon leurs dépendances et réévaluation ; succession arbitraire d'évaluateurs, identité cryptographique et délégation ; acceptation structurée complète du risque d'exception et expiration temps réel ; workflows explicites de résolution de `unknown`/`conflict` ; exécution atomique concrète préservant les trois actes logiques pendant les interruptions ; séquences multiples de rollback ; tests de conformité exécutables, raffinement de l'implémentation et enforcement en production. La Spécification 0007 décrit des obligations proposées, sans fournir leur implémentation ni leur vérification.
+
+Aucun résultat de model checking fini, aucune modification de spécification ni aucune fusion de PR n'établit la conformité d'une implémentation ou l'adoption normative. Les onze choix restent des entrées de conception sélectionnées par le propriétaire jusqu'à l'enregistrement d'un événement d'adoption distinct sous la révision de gouvernance antérieure applicable.
 
 ## 5. Frontière entre adoption et implémentation
 
@@ -134,11 +133,11 @@ Le résultat TLC réussi consigné par la PR #90 et l'Architecture 0031 reste un
 - Issue parente de décision : [#41](https://github.com/Martin-PB/govcheck/issues/41).
 - Compagnon technique : [#86](https://github.com/Martin-PB/govcheck/issues/86).
 - Régime d'autorité antérieur : [Architecture 0023](../architecture/0023-bootstrap-governance-authority.fr.md).
-- Contrat d'applicabilité : [Spécification 0006](../specifications/0006-governance-revision-applicability.fr.md).
 - Contrat de cycle de vie : [Spécification 0003](../specifications/0003-change-lifecycle.fr.md).
-- Modèle borné actuel : [GovCheckGovernanceApplicability.tla](../../formal/tla/GovCheckGovernanceApplicability.tla).
-- Rapport de model checking existant : [Architecture 0031](../architecture/0031-first-tlc-governance-applicability.fr.md).
-- Référence aux sémantiques VCS : [R-22](../references.fr.md#r-22).
-- Référence aux méthodes formelles : [R-05](../references.fr.md#r-05).
+- Contrat d'applicabilité : [Spécification 0006](../specifications/0006-governance-revision-applicability.fr.md).
+- Protocole de journal proposé : [Spécification 0007](../specifications/0007-canonical-governance-journal-protocol.fr.md).
+- Modèles bornés : [applicabilité](../../formal/tla/GovCheckGovernanceApplicability.tla), [publication canonique](../../formal/tla/GovCheckCanonicalPublication.tla), [contrôles de gouvernance](../../formal/tla/GovCheckGovernanceControls.tla), [reprise du journal](../../formal/tla/GovCheckJournalRecovery.tla).
+- Rapports : [Architecture 0031](../architecture/0031-first-tlc-governance-applicability.fr.md), [0032](../architecture/0032-canonical-publication-model-checking.fr.md), [0033](../architecture/0033-governance-evaluator-exception-revocation-model.fr.md) et [0034](../architecture/0034-canonical-journal-recovery-model.fr.md).
+- Références : [R-05](../references.fr.md#r-05), [R-22](../references.fr.md#r-22), [R-142](../references.fr.md#r-142), [R-143](../references.fr.md#r-143) et [R-144](../references.fr.md#r-144).
 
 Les références externes éclairent les méthodes techniques ; elles ne déterminent ni n'autorisent la politique de gouvernance choisie par l'utilisateur.

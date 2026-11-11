@@ -111,6 +111,12 @@ Ne pas décider que « CSLib est obligatoire » en fonction de sa réputation ou
 5. prouver un petit théorème de liaison entre la définition importée et le contrat GovCheck ;
 6. enregistrer le socle de confiance et la commande de compilation reproductible.
 
+
+
+### Contrainte actuelle de compatibilité CSLib/chaîne d'outils
+
+Le commit `main` de CSLib examiné est `f8acdb37c713b0124ad36b863f50c200a5f1cdba`, qui épingle Lean 4.36.0-rc2 et le commit Mathlib `887bb849a9f64e1c66499fd5ff8523c864e78941`. Ce prototype épingle Lean 4.19.0. Une dépendance directe ne peut donc pas être ajoutée sans changement de chaîne d'outils. La prochaine expérimentation doit soit identifier une révision CSLib compatible avec Lean 4.19, soit isoler un profil CSLib avec sa propre chaîne d'outils épinglée. Ne pas mettre à niveau silencieusement le noyau déjà vérifié.
+
 Si CSLib fournit une formalisation saine et réutilisable d'un concept sémantique requis, le réemploi doit être préféré à une duplication indépendante. Dans le cas contraire, définir le plus petit concept spécifique à GovCheck et prouver sa relation au modèle source pertinent. Ce n'est pas une règle d'optionalité générale : **l'obligation d'assurance est impérative pour les correspondances critiques ; le choix de la bibliothèque repose sur les éléments établis**.
 
 ## 7. Critère d'achèvement du prototype

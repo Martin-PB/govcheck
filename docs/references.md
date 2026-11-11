@@ -1577,3 +1577,52 @@
 - **Relevant concepts:** critique of over-socialized accounts of knowledge and limits of deriving epistemic conclusions from sociological analyses.
 - **Use in GovCheck:** further counterweight against treating the social construction of knowledge as sufficient for validity.
 - **Limit:** critical sociological argument; it does not settle the epistemological debate or invalidate all social/constructivist approaches.
+
+
+<a id="r-187"></a>
+### R-187 — Domain-Driven Design: Bounded Context
+- **Cited by:** [STUDY-004 — Multi-disciplinary specification governance](research/multi-viewpoint-specification-governance.md)
+- **Source:** [Martin Fowler, Bounded Context](https://martinfowler.com/bliki/BoundedContext.html)
+- **Relevant concepts:** explicit boundaries within which a domain model and its language are consistent; relationships between distinct models.
+- **Use for GovCheck:** a candidate comparison for preserving domain-specific meanings and mapping between contexts.
+- **Limit:** an explanatory industry article, not a complete formalism for provenance, authority, contradiction management or assurance.
+
+<a id="r-188"></a>
+### R-188 — ISO/IEC/IEEE 42010:2022 — Architecture description
+- **Cited by:** [STUDY-004 — Multi-disciplinary specification governance](research/multi-viewpoint-specification-governance.md)
+- **Source:** [ISO standard record](https://www.iso.org/standard/74393.html)
+- **Relevant concepts:** architecture descriptions, stakeholders, concerns, viewpoints and views.
+- **Use for GovCheck:** candidate reference for relating specifications and representations to stakeholder concerns and viewpoints.
+- **Limit:** architecture-description standard; not by itself an ingestion, semantic alignment or decision-deliberation engine.
+
+<a id="r-189"></a>
+### R-189 — ISO/IEC 11179-3 — Metadata registries
+- **Cited by:** [STUDY-004 — Multi-disciplinary specification governance](research/multi-viewpoint-specification-governance.md)
+- **Source:** [ISO/IEC 11179-3 standard record](https://www.iso.org/standard/78914.html)
+- **Relevant concepts:** metadata registries and the description and identification of data elements.
+- **Use for GovCheck:** candidate comparison for preserving data-element definitions, contexts and controlled descriptions.
+- **Limit:** metadata registration is not equivalent to cross-domain conceptual alignment or governance arbitration; edition and applicability must be verified.
+
+<a id="r-190"></a>
+### R-190 — W3C Simple Knowledge Organization System (SKOS) Reference
+- **Cited by:** [STUDY-004 — Multi-disciplinary specification governance](research/multi-viewpoint-specification-governance.md)
+- **Source:** [W3C Recommendation, 18 August 2009](https://www.w3.org/TR/skos-reference/)
+- **Relevant concepts:** concept schemes, labels, broader/narrower and associative semantic relations, mapping properties.
+- **Use for GovCheck:** candidate interchange vocabulary for controlled vocabularies and concept-scheme mappings.
+- **Limit:** SKOS mapping relations do not alone capture the full context, rationale, authority, uncertainty or lifecycle of a business translation.
+
+<a id="r-191"></a>
+### R-191 — OWL 2 Web Ontology Language Document Overview
+- **Cited by:** [STUDY-004 — Multi-disciplinary specification governance](research/multi-viewpoint-specification-governance.md)
+- **Source:** [W3C Recommendation](https://www.w3.org/TR/owl2-overview/)
+- **Relevant concepts:** ontology language family and formal semantics for representing domain knowledge and logical entailments.
+- **Use for GovCheck:** candidate formalism to compare for machine-checkable semantic constraints and inferred relations.
+- **Limit:** logical entailment is relative to the ontology and axioms; it does not establish that a domain model is accepted by stakeholders or adequate for a particular purpose.
+
+<a id="r-192"></a>
+### R-192 — OMG Structured Assurance Case Metamodel (SACM)
+- **Cited by:** [STUDY-004 — Multi-disciplinary specification governance](research/multi-viewpoint-specification-governance.md)
+- **Source:** [OMG SACM specification landing page](https://www.omg.org/spec/SACM/)
+- **Relevant concepts:** structured claims, arguments, evidence and assurance-case interchange.
+- **Use for GovCheck:** candidate mechanism for connecting deliberative claims, supporting arguments and evidence to decisions and assurance.
+- **Limit:** SACM is an assurance-case metamodel, not by itself a multi-domain specification ingestion, semantic mapping or conflict-resolution system. Exact version and conformance profile must be established.

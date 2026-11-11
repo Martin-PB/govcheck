@@ -24,6 +24,15 @@ proposition and gives us a baseline against which candidate CSLib definitions
 can later be compared. It does **not** imply that CSLib is unsuitable or that
 the assurance obligation for critical mappings is optional.
 
+The Lean `EvidenceKind` is an additional semantic interpretation: the current
+production `evidence-record.schema.json` has `method.methodClass` and
+`result.status`, but no explicit epistemic-kind field or typed kernel-checked
+derivation object. Therefore the Lean record is not a lossless projection of
+the current JSON schema. The fixtures under `fixtures/` are intentionally
+minimal semantic fixtures, **not** full production records valid against the
+JSON Schema. See the bilingual prototype contract for this identified #73/#79
+decision gap.
+
 ## Toolchain and commands
 
 Pinned toolchain: Lean 4.19.0.

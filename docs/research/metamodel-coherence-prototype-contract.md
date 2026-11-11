@@ -134,7 +134,22 @@ The first slice is complete only when:
 
 No implementation should claim that this gate has passed until the Lean build, fixture runner and TLC run have actually been executed and their outputs recorded.
 
-## 8. Decision still reserved
+
+
+## 9. Existing evidence-schema boundary (explicit gap)
+
+The current `formal/schemas/evidence-record.schema.json` defines `method.methodClass` and `result.status`, but it has no separate typed `epistemicKind` field and no dedicated typed kernel-checked derivation object. The Lean `EvidenceKind` in the prototype is therefore an **additional semantic interpretation**, not a lossless field-for-field projection of the current JSON schema.
+
+Consequences:
+
+- `methodClass = theorem-proving` plus `status = passed` is not enough to infer `EvidenceKind.theoremProof`.
+- A method label and a result status cannot authenticate a derivation. The exact theorem statement, premises, assumptions, kernel/checker identity and version, imports, axioms, admitted obligations, unsafe features and oracle boundaries must be bound to a verifiable derivation artifact.
+- Until a typed mapping/extension is authorized, a schema record without that derivation must map to an unresolved/non-proof epistemic classification; it must not be promoted to theorem proof.
+- The small JSON files under `formal/lean/fixtures/` are **semantic fixtures**, not complete records valid against the production evidence JSON Schema. They must not be fed to the schema validator as if they were production fixtures.
+
+This is a concrete cross-artifact gap for #73/#79, not authorization to change the production schema. A later decision must choose whether epistemic kind and derivation metadata belong in the core record, a typed extension, or a separately referenced proof artifact, and specify round-trip behavior.
+
+## 10. Decision still reserved
 
 This contract is a proposed experiment. It does not select Lean/CSLib as a universal adopter dependency, does not adopt a GovCheck ontology, does not replace SACM's native semantics, and does not authorize a downgrade of proof obligations. The authority must decide the mandatory proof profile after reviewing the prototype's actual cost, coverage and trusted base.
 

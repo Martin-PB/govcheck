@@ -43,7 +43,7 @@
 | GitHub Actions workflow location and syntax | R-107 |
 | Open-source licensing and attribution | R-108 |
 | Ontology reuse, software-engineering ontology network and semantic interoperability | R-115–R-120 |
-| Metamodel coherence, semantic preservation and formal verification | R-121–R-127 |
+| Metamodel coherence, semantic preservation and formal verification | R-121–R-127 |\n| Concurrent edits, semantic merge conflicts and multi-agent delivery | R-142–R-150 |
 
 ## Full reference entries
 
@@ -72,7 +72,7 @@
 - **Threat modeling, attack paths and risk management:** R-27–R-32.
 - **Goal-oriented requirements modeling:** R-44, R-92.
 - **Security assurance cases and metamodels:** R-33–R-34.
-- **PEAK decision model:** R-74.
+- **PEAK decision model:** R-74.\n- **Concurrent edits, semantic conflicts, merge queues and multi-agent delivery:** R-142–R-150.
 - **Continuous monitoring and runtime assurance:** R-70, R-72, R-75–R-76.
 - **Assurance 2.0 and SACM evolution:** R-71, R-73.
 - **Domain semantics, product quality and open-source compliance (candidate sources):** R-94–R-100, R-102–R-103.

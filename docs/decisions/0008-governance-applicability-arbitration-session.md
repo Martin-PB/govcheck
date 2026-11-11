@@ -2,7 +2,7 @@
 
 **Record status:** user-expressed arbitration choices, pending incorporation and formal normative adoption through GovCheck's applicable authority process. This record is not itself an adoption instrument, does not amend Architecture 0023, and does not claim implementation or verification.
 **Authority/provenance:** choices explicitly selected by the project owner in the GovCheck discussion on 2026-11-10, in response to the eleven guided arbitration questions for issue [#41](https://github.com/Martin-PB/govcheck/issues/41).
-**Technical companion:** [Specification 0006](../specifications/0006-governance-revision-applicability.md); [prior applicability model](../../formal/tla/GovCheckGovernanceApplicability.tla); [canonical publication model, not yet TLC-checked](../../formal/tla/GovCheckCanonicalPublication.tla); [Architecture 0031](../architecture/0031-first-tlc-governance-applicability.md).
+**Technical companion:** [Specification 0006](../specifications/0006-governance-revision-applicability.md) and proposed [Specification 0007](../specifications/0007-canonical-governance-journal-protocol.md); bounded models [GovCheckGovernanceApplicability](../../formal/tla/GovCheckGovernanceApplicability.tla), [GovCheckCanonicalPublication](../../formal/tla/GovCheckCanonicalPublication.tla), [GovCheckGovernanceControls](../../formal/tla/GovCheckGovernanceControls.tla) and [GovCheckJournalRecovery](../../formal/tla/GovCheckJournalRecovery.tla); model-checking records [Architectures 0031–0034](../architecture/README.md).
 **French:** [0008 — compte rendu de séance d'arbitrage](0008-governance-applicability-arbitration-session.fr.md).
 
 ## 1. Status and interpretation
@@ -101,25 +101,24 @@ The selected outcomes imply that the technical contract and its future executabl
 
 These are formalization requirements derived from the recorded selections; they are not claims that the current bounded TLA+ model already covers them.
 
-## 4. Current model coverage and explicit gaps
+## 4. Coverage of the bounded formal models and explicit gaps
 
-The PR #90 model `GovCheckGovernanceApplicability.tla` remains the previously checked applicability abstraction: one fixed root authority, finite domains, one pending-publication slot and bounded append-only history. A second model, `GovCheckCanonicalPublication.tla`, has now been added as a separate bounded design model. It represents candidate evaluation against a captured head, authorization only while that evaluation's base remains current, a distinct publication action that appends to the logical journal, and rejection of a stale authorization after another publication advances the head. It also states invariants for revision identity uniqueness, predecessor continuity, one publication per canonical predecessor, evaluation/authorization binding, publication authorization and stale-base exclusion. Its configuration includes an append-only temporal property.
+The formal artifacts are **separate finite abstractions**, not one integrated model and not a refinement proof:
 
-**Verification update:** the new model was successfully parsed by SANY 2.1 and checked by TLC 2.19 in [workflow run 42815445104](https://github.com/Martin-PB/govcheck/actions/runs/42815445104), on commit `8c77aeac1ef89e2c6dc7463a65af0f9151fa1bb9`. TLC generated 84,307 states, found 56,895 distinct states, exhausted the queue, and reported no error. All eight configured invariants and the `AppendOnly` temporal property passed. The exact toolchain, model/configuration identities, artifact digest and limits are recorded in [Architecture 0032](../architecture/0032-canonical-publication-model-checking.md). This is bounded model-checking evidence, not a proof of implementation or unbounded behavior. Neither model establishes the full selected contract. In particular, the models do not yet represent:
+- **Applicability and prior authority — [Architecture 0031](../architecture/0031-first-tlc-governance-applicability.md), PR #90:** decision/effective-position binding, prior applicable authority and bounded historical preservation; 20,785 generated / 18,067 distinct states.
+- **Canonical publication — [Architecture 0032](../architecture/0032-canonical-publication-model-checking.md), PR #96:** captured-head evaluation, authorization binding, distinct publication effect, stale-authorization rejection, revision/predecessor uniqueness and one publication per canonical predecessor; 84,307 generated / 56,895 distinct states, eight invariants and `AppendOnly` passed.
+- **Evaluator/exception/revocation controls — [Architecture 0033](../architecture/0033-governance-evaluator-exception-revocation-model.md), PR #98:** prior evaluator authority, comparative-only shadow results, distinct blocking `Unknown`/`Conflict`, bounded/revocable exceptions and non-derogable requirements, prospective revocation, separate historical requalification and stale-authorization rejection; 2,826,117 generated / 1,026,484 distinct states, nine invariants and `AppendOnly` passed.
+- **Journal recovery/rollback — [Architecture 0034](../architecture/0034-canonical-journal-recovery-model.md), PR #99:** abstract durable-append commit point, crash before/after commit, replay-to-head, rollback as a new event/revision restoring earlier content, and passive Git/Pijul replica observations; 178,549 generated / 38,434 distinct states, six invariants and `AppendOnly` passed. It assumes one serialized writer and abstracts upstream authorization; its weak-fairness assumption is not a checked eventual-recovery liveness result.
 
-1. unbounded or distributed multi-writer compare-and-append, explicit stale-base result records, reconciliation and retry/re-evaluation workflows (the new model covers only a finite in-memory race and blocks stale publication);
-2. durable journal storage, replica convergence, independent canonical-position allocation and crash-safe serialization;
-3. Git/Pijul adapter provenance mappings or divergent VCS replicas;
-4. evaluator identity/version/configuration, prior evaluator authority, or comparative execution of a replacement evaluator;
-5. evaluation dependencies and systematic stale invalidation across candidate/base/specification/profile/evidence changes;
-6. revocation events and separate historical requalification;
-7. exception records, expiry, revocation and non-derogable requirements;
-8. distinct `unknown` and `conflict` state transitions and their explicit resolution;
-9. rollback as a new revision restoring prior content;
-10. atomic technical transactions preserving three separate logical acts;
-11. crash/interruption recovery, durable append atomicity or implementation refinement.
+[Specification 0007](../specifications/0007-canonical-governance-journal-protocol.md) is a proposed semantic contract for compare-and-append, linearization, durable receipts, idempotent retry, journal scope/genesis, VCS provenance-only adapters, replica reconciliation and twelve conformance scenarios. It is not itself model-checked as a whole or implemented.
 
-The successful TLC result recorded by PR #90 / Architecture 0031 remains evidence only for the exact finite model and configuration checked there. No result is claimed for the additional properties above. They require model extension, configuration design and new reproducible checks; the implementation also requires separate conformance and integration evidence.
+**Integration status:** PRs #90, #96 and #98 are merged into `main`. GitHub marked PR #99 merged into the former PR #98 work branch, not into `main`; PRs #100 and #104 remain open and stacked. The journal-recovery model and Specification 0007 must therefore not be described as already integrated into `main`. This review candidate carries that work toward `main`.
+
+### Remaining gaps
+
+Unbounded/distributed multi-writer linearizability and consensus; concrete storage-engine durability, torn writes and operational recovery; actual VCS adapter mappings and divergent-replica resolution; full dependency-based stale-evaluation invalidation and re-evaluation; arbitrary evaluator succession, cryptographic identity and delegation; complete exception risk-acceptance and real-time expiry; explicit resolution workflows for `unknown`/`conflict`; concrete atomic execution preserving the three logical acts across interruption; multiple rollback sequences; executable conformance tests, implementation refinement and production enforcement. Specification 0007 describes proposed obligations but does not supply their implementation or verification.
+
+No finite model-checking result, specification edit or PR merge establishes implementation conformance or normative adoption. The eleven choices remain owner-selected design inputs until a separate adoption event under the applicable prior governance revision is recorded.
 
 ## 5. Adoption and implementation boundary
 
@@ -134,11 +133,11 @@ The successful TLC result recorded by PR #90 / Architecture 0031 remains evidenc
 - Decision parent: [Issue #41](https://github.com/Martin-PB/govcheck/issues/41).
 - Technical companion: [Issue #86](https://github.com/Martin-PB/govcheck/issues/86).
 - Prior authority regime: [Architecture 0023](../architecture/0023-bootstrap-governance-authority.md).
-- Applicability contract: [Specification 0006](../specifications/0006-governance-revision-applicability.md).
 - Lifecycle contract: [Specification 0003](../specifications/0003-change-lifecycle.md).
-- Existing bounded model: [GovCheckGovernanceApplicability.tla](../../formal/tla/GovCheckGovernanceApplicability.tla).
-- Existing bounded model-checking report: [Architecture 0031](../architecture/0031-first-tlc-governance-applicability.md).
-- VCS semantics reference: [R-22](../references.md#r-22).
-- Formal methods reference: [R-05](../references.md#r-05).
+- Applicability contract: [Specification 0006](../specifications/0006-governance-revision-applicability.md).
+- Proposed journal protocol: [Specification 0007](../specifications/0007-canonical-governance-journal-protocol.md).
+- Bounded models: [applicability](../../formal/tla/GovCheckGovernanceApplicability.tla), [canonical publication](../../formal/tla/GovCheckCanonicalPublication.tla), [governance controls](../../formal/tla/GovCheckGovernanceControls.tla), [journal recovery](../../formal/tla/GovCheckJournalRecovery.tla).
+- Model-checking records: [Architecture 0031](../architecture/0031-first-tlc-governance-applicability.md), [0032](../architecture/0032-canonical-publication-model-checking.md), [0033](../architecture/0033-governance-evaluator-exception-revocation-model.md) and [0034](../architecture/0034-canonical-journal-recovery-model.md).
+- Formal-methods and VCS references: [R-05](../references.md#r-05), [R-22](../references.md#r-22), [R-142](../references.md#r-142), [R-143](../references.md#r-143) and [R-144](../references.md#r-144).
 
 External references inform technical methods; they do not determine or authorize the user's selected governance policy.

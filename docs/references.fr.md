@@ -1270,7 +1270,7 @@
 <a id="r-148"></a>
 ### R-148 — DORA 2025 : état du développement logiciel assisté par IA
 - **Sources primaires :** [Rapport DORA](https://dora.dev/research/2025/dora-report/) · [Publication Google Research](https://research.google/pubs/dora-2025-state-of-ai-assisted-software-development-report/)
-- **Cité par :** [Étude sur la gouvernance des changements concurrents d'agents](research/concurrent-agent-change-governance.fr.md), [Revue de recherche sur la qualité et la gouvernance du développement assisté par IA](research/ai-assisted-quality-governance.fr.md), [Applicabilité de GovCheck et frontières externes](research/govcheck-applicability-and-boundaries.fr.md), [Analyse de la conférence software factory](research/software-factory-self-improvement.fr.md)
+- **Cité par :** [Étude sur la gouvernance des changements concurrents d'agents](research/concurrent-agent-change-governance.fr.md), [Revue de recherche sur la qualité et la gouvernance du développement assisté par IA](research/ai-assisted-quality-governance.fr.md), [Analyse de la conférence software factory](research/software-factory-self-improvement.fr.md)
 - **Concepts pertinents :** facteurs organisationnels et de livraison liés au développement assisté par IA ; l'IA comme amplificateur des forces et faiblesses existantes.
 - **Utilité pour GovCheck :** met en garde contre l'équivalence entre nombre d'agents/vitesse de codage et qualité de livraison ; souligne la gouvernance, le retour d'expérience et le système d'ingénierie.
 - **Limite :** enquêtes et études qualitatives éclairent les choix organisationnels mais ne prouvent pas la causalité ni ne prédisent les résultats d'un dépôt donné.
@@ -1365,7 +1365,7 @@
 
 <a id="r-160"></a>
 ### R-160 — Vidéo fournie par l'utilisateur (métadonnées non vérifiées indépendamment)
-- **Cité par :** [Revue de recherche sur la qualité et la gouvernance du développement assisté par IA](research/ai-assisted-quality-governance.fr.md)
+- **Cité par :** [Revue de recherche sur la qualité et la gouvernance du développement assisté par IA](research/ai-assisted-quality-governance.fr.md), [Applicabilité de GovCheck et frontières externes](research/govcheck-applicability-and-boundaries.fr.md)
 - **Source :** [Vidéo YouTube, identifiant hP2vfBcQhfk](https://youtu.be/hP2vfBcQhfk)
 - **Concepts pertinents :** conservée comme l'une des cinq sources de recherche fournies ; le titre, l'intervenant et les affirmations de fond n'ont pas pu être vérifiés indépendamment dans les métadonnées indexées accessibles lors de ce passage.
 - **Utilité pour GovCheck :** préserve la traçabilité sans inventer le contenu ; la vidéo doit être examinée avant d'attribuer des affirmations ou d'en dériver des exigences.
@@ -1373,7 +1373,7 @@
 
 <a id="r-161"></a>
 ### R-161 — Vidéo fournie par l'utilisateur (métadonnées non vérifiées indépendamment)
-- **Cité par :** [Revue de recherche sur la qualité et la gouvernance du développement assisté par IA](research/ai-assisted-quality-governance.fr.md)
+- **Cité par :** [Revue de recherche sur la qualité et la gouvernance du développement assisté par IA](research/ai-assisted-quality-governance.fr.md), [Applicabilité de GovCheck et frontières externes](research/govcheck-applicability-and-boundaries.fr.md)
 - **Source :** [Vidéo YouTube, identifiant cZ_PqBpZygY](https://youtu.be/cZ_PqBpZygY)
 - **Concepts pertinents :** conservée comme l'une des cinq sources de recherche fournies ; le titre, l'intervenant et les affirmations de fond n'ont pas pu être vérifiés indépendamment dans les métadonnées indexées accessibles lors de ce passage.
 - **Utilité pour GovCheck :** préserve la traçabilité sans inventer le contenu ; la vidéo doit être examinée avant d'attribuer des affirmations ou d'en dériver des exigences.
@@ -1414,7 +1414,7 @@
 
 <a id="r-166"></a>
 ### R-166 — Grand colloque : Actualité de l’œuvre de Jean-Louis Le Moigne (16 novembre 2023)
-- **Cité par :** [Dossier STUDY-003](research/le-moigne-colloquium.fr.md), [Applicabilité STUDY-003](research/govcheck-applicability-constructivism-and-systems.fr.md)
+- **Cité par :** [Analyse du colloque STUDY-003](research/le-moigne-colloquium.fr.md)
 - **Sources primaires :** [Programme officiel](https://www.intelligence-complexite.org/activites/manifestation/grand-colloque-actualite-oeuvre-jean-louis-moigne) · [PDF replay](https://www.intelligence-complexite.org/sites/default/files/media/text/rencontres/Colloque%20JLLM%20-%20video%20Replay.pdf)
 - **Concepts pertinents :** provenance, titres et intervenants des trois sessions.
 - **Utilité pour GovCheck :** source de recherche traçable pour épistémologie, complexité et modélisation systémique.

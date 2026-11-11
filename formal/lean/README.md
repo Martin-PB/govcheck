@@ -52,6 +52,4 @@ fingerprints.
 ## Verification status
 
 The authoring environment did not have Lean installed when this package was
-first created. A GitHub Actions build has been configured, but no compilation
-or theorem-check result is claimed until its run completes successfully.
-A successful Git commit is not a Lean verification result.
+first created. The first GitHub Actions Lean build passed: [run 43048161615](https://github.com/Martin-PB/govcheck/actions/runs/43048161615), branch head `b270b98a3220bc3eeb4a5c767fea8ee94a08f398` (Lean 4.19.0; `lake build` completed successfully). This verifies compilation of the declarations in this package at that exact revision. It does not yet constitute an independent axiom audit, a semantic mapping proof against SACM/OWL/SEON, or proof of implementation conformance. An axiom-audit step has been added separately and its result must be recorded independently. A successful Git commit is not a Lean verification result.

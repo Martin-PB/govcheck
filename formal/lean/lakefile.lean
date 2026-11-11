@@ -6,4 +6,5 @@ package govcheckCoherence where
 
 lean_lib GovCheckCoherence where
   srcDir := "."
+  roots := #[`GovCheckCoherence]
 

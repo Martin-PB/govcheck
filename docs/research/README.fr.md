@@ -58,6 +58,7 @@ Les futurs dossiers de décision devront référencer :
 
 Les PR liées constituent une provenance, pas des décisions :
 - [PR #111 — Recherche sur la qualité et la gouvernance de l'ingénierie assistée par IA](https://github.com/Martin-PB/govcheck/pull/111) (STUDY-001).
-- [PR #112 — Analyse software factory et applicabilité de GovCheck](https://github.com/Martin-PB/govcheck/pull/112) (STUDY-002).\n- [PR #113 — Colloque Le Moigne et registre durable des recherches](https://github.com/Martin-PB/govcheck/pull/113) (STUDY-003).
+- [PR #112 — Analyse software factory et applicabilité de GovCheck](https://github.com/Martin-PB/govcheck/pull/112) (STUDY-002).
+- [PR #113 — Colloque Le Moigne et registre durable des recherches](https://github.com/Martin-PB/govcheck/pull/113) (STUDY-003).
 
 Aucune décision ne doit être déduite du seul fait qu'une PR de recherche a été fusionnée.

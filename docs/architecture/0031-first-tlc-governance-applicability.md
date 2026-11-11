@@ -78,6 +78,8 @@ The model deliberately holds the root authority constant. Authority succession/d
 
 - [Specification 0006 — Governance revision applicability](../specifications/0006-governance-revision-applicability.md)
 - [Specification 0003 — Change lifecycle](../specifications/0003-change-lifecycle.md)
+- [Specification 0007 — Canonical journal and VCS adapter protocol](../specifications/0007-canonical-governance-journal-protocol.md)
+- [Architecture 0034 — Canonical journal recovery model](0034-canonical-journal-recovery-model.md)
 - [Architecture 0023 — Bootstrap governance authority](0023-bootstrap-governance-authority.md)
 - [Issue #86 — Technical specification work](https://github.com/Martin-PB/govcheck/issues/86)
 - [Issue #41 — Parent authority decision](https://github.com/Martin-PB/govcheck/issues/41)

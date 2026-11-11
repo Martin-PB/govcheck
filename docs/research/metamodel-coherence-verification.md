@@ -208,3 +208,13 @@ The proposed engineering contract now specifies the initial evidence-epistemics 
 Central catalogue: [R-121 OWL 2 semantics](../references.md#r-121), [R-122 SHACL](../references.md#r-122), [R-123 CSLib](../references.md#r-123), [R-124 TLA+/TLAPS](../references.md#r-124), [R-125 model-transformation verification](../references.md#r-125), [R-126 EVL/Alloy](../references.md#r-126), [R-127 ontology alignment and conservativity](../references.md#r-127).
 
 Related internal records: [metamodel decision dossier](../decisions/metamodel-design-dossier.md), [ontology reuse assessment](metamodel-ontology-reuse-assessment.md), [Architecture 0013](../architecture/0013-governance-metamodel.md), [Architecture 0027](../architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md), [Specification 0002](../specifications/0002-canonical-governance-model.md), [Specification 0005](../specifications/0005-assurance-model.md).
+
+
+## Prototype evidence (2026-11-11)
+
+The first executable slice has now been built and checked in two separate pinned profiles:
+
+- **Lean core:** [PR #108](https://github.com/Martin-PB/govcheck/pull/108), Lean 4.19.0. The transport-preservation and epistemic non-promotion theorems compiled; the theorem-module axiom audit passed and the explicit axiom report showed no axioms for the nine theorem declarations. [Run 43049890363](https://github.com/Martin-PB/govcheck/actions/runs/43049890363).
+- **CSLib LTS bridge:** [PR #109](https://github.com/Martin-PB/govcheck/pull/109), Lean 4.36.0-rc2, CSLib commit `f8acdb37c713b0124ad36b863f50c200a5f1cdba`. The lifecycle LTS transition and finite-trace preservation theorems compiled; the theorem-module axiom audit passed and the explicit axiom report showed no axioms for the twelve theorem declarations. [Run 43051029627](https://github.com/Martin-PB/govcheck/actions/runs/43051029627).
+
+This demonstrates that CSLib can support formal LTS and finite-execution preservation laws on its own pinned toolchain. It does **not** demonstrate ontology alignment, SACM round-trip preservation, semantic equivalence between external models and GovCheck, or implementation refinement. PR #109 is stacked on PR #108; neither PR has been merged.

@@ -54,7 +54,7 @@ Il s'agit d'un élément de preuve par model checking pour le module TLA+, la co
 
 Le modèle ne représente pas encore le stockage durable, la reprise après panne, la convergence des répliques, la provenance indépendante des VCS, le remplacement/comparaison d'évaluateurs, la révocation et la requalification historique, les exceptions, la résolution de unknown/conflict, la restauration du contenu lors d'un rollback, ni le raffinement vers du code exécutable. Son action de publication est un ajout logique abstrait ; elle n'établit ni transaction de base de données ni implémentation de compare-and-swap en production.
 
-Le résultat antérieur de l'[Architecture 0031](0031-first-tlc-governance-applicability.fr.md) correspond à une exécution distincte sur le modèle d'applicabilité initial. Aucun des deux rapports n'adopte les onze choix. Leur statut normatif reste en attente de l'événement d'adoption de gouvernance applicable.
+Le résultat antérieur de l'[Architecture 0031](0031-first-tlc-governance-applicability.fr.md) correspond à une exécution distincte sur le modèle d'applicabilité initial. Les tranches complémentaires sur les contrôles d'évaluateur/exception et la reprise du journal sont consignées dans les [Architectures 0033](0033-governance-evaluator-exception-revocation-model.fr.md) et [0034](0034-canonical-journal-recovery-model.fr.md) ; leur contrat de protocole proposé est la [Spécification 0007](../specifications/0007-canonical-governance-journal-protocol.fr.md). Ce sont des artefacts bornés distincts, pas une preuve composée. Aucun de ces rapports n'adopte les onze choix. Leur statut normatif reste en attente de l'événement d'adoption de gouvernance applicable.
 
 ## 6. Provenance et reproductibilité
 

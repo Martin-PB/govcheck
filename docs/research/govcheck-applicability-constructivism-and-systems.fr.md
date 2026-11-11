@@ -78,4 +78,4 @@ Cette formulation est uniquement une proposition issue de la recherche. Elle dev
 
 ## Statut décisionnel
 
-Aucune décision n'est prise ici. Aucune issue ni tâche d'implémentation n'est créée par cette recherche seule. Les décisions futures devront citer STUDY-003 et les sources R-166 à R-182 pertinentes, consigner les contre-arguments et identifier l'autorité décisionnelle compétente.
+Aucune décision n'est prise ici. Aucune issue ni tâche d'implémentation n'est créée par cette recherche seule. Les décisions futures devront citer STUDY-003 et les sources R-166 à R-186 pertinentes, consigner les contre-arguments et identifier l'autorité décisionnelle compétente.

@@ -162,7 +162,7 @@ Ces objets doivent être alignés sur SACM lorsque pertinent, sans faire de SACM
 - Spécification d'analyse / propriété / horizon / hypothèses de stratégie
 - Résultat d'analyse / témoin / contre-exemple / analyse de sensibilité
 
-Une machine à états finis n'est pas automatiquement probabiliste. Une chaîne de Markov ajoute une hypothèse de Markov et une sémantique de distribution/taux de transition. L'appartenance floue n'est pas une probabilité. Un model checker valide une abstraction fournie, pas sa fidélité au système réel. Voir le compte rendu de recherche et l'entrée R-114 une fois la PR de recherche associée intégrée ; les références mathématiques primaires incluent R-05 et la documentation PRISM/UPPAAL citée dans ce compte rendu.
+Une machine à états finis n'est pas automatiquement probabiliste. Une chaîne de Markov ajoute une hypothèse de Markov et une sémantique de distribution/taux de transition. L'appartenance floue n'est pas une probabilité. Un model checker valide une abstraction fournie, pas sa fidélité au système réel. Voir le compte rendu de recherche sur les modèles probabilistes/flous et à transitions dans la [PR #105](https://github.com/Martin-PB/govcheck/pull/105) ; la référence mathématique principale inclut [R-05](../references.fr.md#r-05) et la documentation PRISM/UPPAAL qui y est citée.
 
 ## 7. Familles candidates de relations
 
@@ -242,7 +242,6 @@ Le catalogue central des références est le registre canonique des sources. Cet
 - [R-92 — iStar 2.0](../references.fr.md#r-92)
 - [R-94–R-98 — Modèles sémantiques OMG, architecture, exigences et qualité ISO](../references.fr.md#r-94)
 - [R-102 — Famille W3C PROV](../references.fr.md#r-102)
-- [R-114 — Modélisation probabiliste, floue et à transitions](https://github.com/Martin-PB/govcheck/blob/docs/research-assurance-dynamics-2026-11/docs/references.fr.md#r-114) (cataloguée dans la PR de recherche parallèle #105 ; vérifier son intégration avant de considérer cette entrée présente sur la branche par défaut).
 
 Le catalogue indique statut et limites. La présence d'une source ne vaut pas adoption. En particulier, SACM 2.4 Beta 1 est la cible d'ingénierie discutée pour la couverture sémantique et l'interopérabilité SACM, pas une affirmation que la bêta est une norme finale ni que SACM remplace le noyau GovCheck.
 
@@ -378,3 +377,8 @@ Toutes les sources externes doivent être maintenues dans le [catalogue central 
 
 Documents internes de conception : Architectures 0013, 0022, 0023, 0027 ; Spécifications 0002 et 0005 ; ADR dans `docs/decisions/` ; modèles formels dans `docs/formal/` ; registre du portefeuille dans `docs/work-portfolio/`.
 
+
+
+## Liens complets vers le catalogue des sources
+
+[R-05](../references.fr.md#r-05) · [R-33](../references.fr.md#r-33) · [R-34](../references.fr.md#r-34) · [R-44](../references.fr.md#r-44) · [R-51](../references.fr.md#r-51) · [R-52](../references.fr.md#r-52) · [R-53](../references.fr.md#r-53) · [R-54](../references.fr.md#r-54) · [R-55](../references.fr.md#r-55) · [R-71](../references.fr.md#r-71) · [R-73](../references.fr.md#r-73) · [R-74](../references.fr.md#r-74) · [R-88](../references.fr.md#r-88) · [R-92](../references.fr.md#r-92) · [R-93](../references.fr.md#r-93) · [R-94](../references.fr.md#r-94) · [R-95](../references.fr.md#r-95) · [R-96](../references.fr.md#r-96) · [R-97](../references.fr.md#r-97) · [R-98](../references.fr.md#r-98) · [R-99](../references.fr.md#r-99) · [R-100](../references.fr.md#r-100) · [R-102](../references.fr.md#r-102)

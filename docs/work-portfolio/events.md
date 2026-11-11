@@ -255,3 +255,14 @@
 - **Issue state:** #41 remains open at `needs-decision`; #86 remains open at `in-progress`. No issue closure, normative adoption, implementation or production enforcement is implied.
 - **Related records:** [#41](https://github.com/Martin-PB/govcheck/issues/41), [#86](https://github.com/Martin-PB/govcheck/issues/86), [PR #107](https://github.com/Martin-PB/govcheck/pull/107), decision-session record [0008](../decisions/0008-governance-applicability-arbitration-session.md), [Specification 0007](../specifications/0007-canonical-governance-journal-protocol.md), [Architecture 0034](../architecture/0034-canonical-journal-recovery-model.md).
 - **Known limits:** the full repository-wide reference-integrity script was not rerun locally; focused offline checks cover the previous reported citation/index errors. No new TLC run or implementation test was performed.
+
+## WP-EVT-000018 — PR #107 review head advanced and revalidated
+
+- **Subject:** `govcheck.work.governance-revision-temporal-applicability`
+- **Event type:** `integration-review-head-advanced`
+- **Recorded:** 2026-11-11
+- **Provenance:** subsequent GitHub PR/commit read-back after WP-EVT-000017; this event supersedes only that event's head-specific snapshot, not its historical creation record.
+- **Pull request:** [#107](https://github.com/Martin-PB/govcheck/pull/107) remains open and non-draft, targeting `main`.
+- **Current head:** `6265b529926d888fccc4bf94e29189bcd30db315`; GitHub reports 137 commits, 46 changed files, 1,677 additions, 74 deletions and `mergeable=true`.
+- **Workflow/credit boundary:** the current head has no associated Actions workflow runs and no commit statuses. No hosted workflow was triggered by the register/journal update.
+- **Disposition:** ready for human review, not merged and not normatively adopted. Issues #41/#86 remain open at their existing stages.

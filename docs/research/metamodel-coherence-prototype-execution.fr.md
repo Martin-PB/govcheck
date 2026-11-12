@@ -11,12 +11,12 @@
 - Source : `formal/lean/GovCheckEpistemic/Evidence.lean`
 - Chaîne d'outils : Lean 4.19.0, épinglée dans `formal/lean/lean-toolchain`.
 - Workflow : `Lean epistemic core`.
-- Exécution réussie : [43209893631](https://github.com/Martin-PB/govcheck/actions/runs/43209893631), commit contrôlé `941d212113f52dc96f37377faf16618da50bdae8`.
+- Exécution réussie : [43210687685](https://github.com/Martin-PB/govcheck/actions/runs/43210687685), commit contrôlé `72b6cf9e4d5afcd1e51aede3c3b9ee284d60e968`.
 - Résultat : `lake update` et `lake build` terminés avec succès.
 
-Le noyau sépare la classe de méthode de l'état du résultat et représente une correspondance comme un transport conservant la classe ou comme une dérivation distincte de type preuve de théorème, appuyée par un objet explicite `KernelCheckedDerivation`. Les déclarations vérifiées établissent la préservation de la classe lors du transport, les voies admissibles vers un résultat de preuve de théorème et la préservation du statut. Le type `KernelCheckedDerivation` contient désormais un véritable terme de preuve Lean (`proof : claim`), et pas seulement des métadonnées déclaratives.
+Le noyau sépare la classe de méthode de l'état du résultat et représente une correspondance comme un transport conservant la classe ou comme une dérivation distincte de type preuve de théorème, appuyée par un objet explicite `KernelCheckedDerivation`. Les déclarations vérifiées établissent la préservation de la classe lors du transport ; exigent un véritable terme de preuve Lean pour toute nouvelle dérivation de type preuve de théorème ; et définissent des obligations de mapping portées par des preuves pour l'identité/révision source, la préservation exacte de la portée et la conservation des hypothèses sources. La classe de méthode et le statut du résultat restent indépendants.
 
-**Limite de portée :** ce résultat vérifié par le noyau concerne les définitions de ce module Lean. Il ne prouve ni que ces définitions constituent la sémantique définitive de GovCheck, ni qu'un mapping SACM est correct, ni qu'un importateur/exportateur est conforme au modèle.
+**Limite de portée :** ce résultat vérifié par le noyau concerne les définitions de ce module Lean. Le type `EvidenceMapping` rend les obligations de préservation explicites, mais ne prouve pas qu'une implémentation réelle les satisfait. Il ne prouve ni que ces définitions constituent la sémantique définitive de GovCheck, ni qu'un mapping SACM est correct, ni qu'un importateur/exportateur est conforme au modèle.
 
 ### Modèle TLA+ de fraîcheur des éléments probants
 

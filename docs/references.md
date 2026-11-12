@@ -45,6 +45,8 @@
 | Ontology reuse, software-engineering ontology network and semantic interoperability | R-115–R-120 |
 | Metamodel coherence, semantic preservation and formal verification | R-121–R-127 |
 | Concurrent edits, semantic merge conflicts and multi-agent delivery | R-142–R-151 |
+| AI-assisted code quality, maintainability, agentic TDD and organizational adoption | R-152–R-161 |
+| GovCheck applicability, software factories, external preconditions and AI productivity measurement | R-162–R-165 |
 
 ## Full reference entries
 
@@ -75,6 +77,8 @@
 - **Security assurance cases and metamodels:** R-33–R-34.
 - **PEAK decision model:** R-74.
 - **Concurrent edits, semantic conflicts, merge queues and multi-agent delivery:** R-142–R-151.
+- **AI-assisted code quality, maintainability, agentic TDD and organizational adoption:** R-152–R-161.
+- **GovCheck applicability, software factories, external preconditions and AI productivity measurement:** R-162–R-165.
 - **Continuous monitoring and runtime assurance:** R-70, R-72, R-75–R-76.
 - **Assurance 2.0 and SACM evolution:** R-71, R-73.
 - **Domain semantics, product quality and open-source compliance (candidate sources):** R-94–R-100, R-102–R-103.
@@ -98,7 +102,7 @@
 <a id="r-02"></a>
 
 ### R-02 — NIST SP 800-218, Secure Software Development Framework (SSDF) 1.1
-- **Cited by:** [0006](architecture/0006-threat-and-trust-model.md), [0014](architecture/0014-governed-development-workflow.md), [0015](architecture/0015-governance-conformance-and-validation-plan.md), [0022](architecture/0022-governance-capability-audit.md) · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
+- **Cited by:** [0006](architecture/0006-threat-and-trust-model.md), [0014](architecture/0014-governed-development-workflow.md), [0015](architecture/0015-governance-conformance-and-validation-plan.md), [0022](architecture/0022-governance-capability-audit.md) · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md), [Software factory self-improvement study](research/software-factory-self-improvement.md)
 
 - **Primary source:** [NIST publication](https://csrc.nist.gov/pubs/sp/800/218/final) · [DOI](https://doi.org/10.6028/NIST.SP.800-218)
 - **Relevant concepts:** documented security requirements and design decisions, secure development practices, provenance and release practices.
@@ -108,7 +112,7 @@
 <a id="r-03"></a>
 
 ### R-03 — GitHub protected branches and required status checks
-- **Cited by:** [0014](architecture/0014-governed-development-workflow.md), [0022](architecture/0022-governance-capability-audit.md), [0023](architecture/0023-bootstrap-governance-authority.md), [ADR 0002](decisions/0002-study-placement.md), [ADR 0007](decisions/0007-mandatory-sources.md)
+- **Cited by:** [0014](architecture/0014-governed-development-workflow.md), [0022](architecture/0022-governance-capability-audit.md), [0023](architecture/0023-bootstrap-governance-authority.md), [ADR 0002](decisions/0002-study-placement.md), [ADR 0007](decisions/0007-mandatory-sources.md), [Software factory self-improvement study](research/software-factory-self-improvement.md)
 
 - **Primary source:** [About protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)
 - **Relevant concepts:** required reviews, required status checks, bypass lists and branch restrictions.
@@ -808,7 +812,7 @@
 
 <a id="r-79"></a>
 ### R-79 — Agent sandboxing and runtime isolation: nono, Landlock and Docker Sandboxes
-- **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
+- **Cited by:** [ADR 0002](decisions/0002-study-placement.md), [Software factory self-improvement study](research/software-factory-self-improvement.md)
 - **Primary sources:** [nono project and security model](https://github.com/nolabs-ai/nono) · [nono documentation site](https://nono.sh/) · [Linux Landlock kernel documentation](https://docs.kernel.org/userspace-api/landlock.html) · [Docker Sandboxes documentation](https://docs.docker.com/ai/sandboxes/) · [Goose AI agent project](https://github.com/aaif-goose/goose)
 - **Relevant concepts:** per-tool capability scoping, filesystem/network restrictions, credential brokering, kernel-enforced unprivileged sandboxing, microVM isolation and agent runtime orchestration.
 - **Use in GovCheck:** preserves the runtime-isolation and agent-execution options discussed in the wider GovCheck/security architecture context. Goose is included as an agent harness example, not as a sandbox.
@@ -1262,7 +1266,7 @@
 
 <a id="r-148"></a>
 ### R-148 — DORA 2025 State of AI-assisted Software Development
-- **Cited by:** [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
+- **Cited by:** [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md), [AI-assisted quality governance](research/ai-assisted-quality-governance.md), [Software factory self-improvement study](research/software-factory-self-improvement.md)
 - **Primary sources:** [DORA report](https://dora.dev/research/2025/dora-report/) · [Google Research publication](https://research.google/pubs/dora-2025-state-of-ai-assisted-software-development-report/)
 - **Relevant concepts:** organizational and delivery-system factors associated with AI-assisted software development; AI as an amplifier of existing strengths and weaknesses.
 - **Use in GovCheck:** cautions against equating agent count or coding speed with delivery quality; emphasizes governance, feedback and engineering-system context.
@@ -1291,3 +1295,116 @@
 - **Relevant concepts:** empirical prediction of merge conflicts using social and technical assets.
 - **Use in GovCheck:** supports assessing work overlap and dependency/coordination context rather than treating changed-file overlap as a complete conflict predicate.
 - **Limit:** predictive associations and model performance depend on the dataset, features and development context; they do not establish incompatibility or causality.
+
+
+<a id="r-152"></a>
+### R-152 — Code for Machines, Not Just Humans: Quantifying AI-Friendliness with Code Health Metrics
+- **Cited by:** [AI-assisted quality and governance research review](research/ai-assisted-quality-governance.md)
+- **Primary sources:** [FORGE 2026 / DOI 10.1145/3793655.3793722](https://doi.org/10.1145/3793655.3793722) · [arXiv preprint](https://arxiv.org/abs/2601.02200)
+- **Relevant concepts:** study of AI refactoring and semantic preservation on 5,000 Python solutions; association between CodeHealth and lower test-suite break rates for several medium-sized models.
+- **Use in GovCheck:** motivates testing whether maintainability, complexity and code context should be explicit risk/context inputs to assurance claims, rather than treating code-generation output as self-evidently maintainable.
+- **Limit:** competitive-programming Python corpus, selected code smells and test-oracle setup; a commercial metric is not a universal correctness measure, and results vary by model/task.
+
+<a id="r-153"></a>
+### R-153 — Echoes of AI: Investigating the downstream effects of AI assistants on software maintainability
+- **Cited by:** [AI-assisted quality and governance research review](research/ai-assisted-quality-governance.md)
+- **Primary source:** [Empirical Software Engineering, DOI 10.1007/s10664-026-10889-1](https://doi.org/10.1007/s10664-026-10889-1)
+- **Relevant concepts:** preregistered two-phase study with 151 participants, 95% professional developers; randomized downstream task found no statistically clear systematic difference in manual evolution time or code quality for AI-assisted versus unaided source in the studied setting.
+- **Use in GovCheck:** counterbalances claims that AI-assisted code necessarily degrades maintainability; motivates recording task, population, measures and uncertainty for quality claims.
+- **Limit:** Java web-app feature task and study period predate today's mature autonomous-agent workflows; null results do not prove equivalence in other contexts.
+
+<a id="r-154"></a>
+### R-154 — A Preliminary Analysis of the Impact of AI Assisted/Generated Code on Quality, Centrality and Review Time at Scale
+- **Cited by:** [AI-assisted quality and governance research review](research/ai-assisted-quality-governance.md)
+- **Primary source:** [ESEM 2026, LIPIcs, DOI 10.4230/LIPIcs.ESEM.2026.93](https://doi.org/10.4230/LIPIcs.ESEM.2026.93)
+- **Relevant concepts:** analysis of over 10,000 developers and 400,000 diffs at Meta, with code provenance through editing/review/landing; shows contextual confounding, including centrality, change size, tests and author tenure.
+- **Use in GovCheck:** motivates context-aware evaluation and provenance, and warns against attributing outcomes to AI alone without modeling task and repository context.
+- **Limit:** preliminary observational analysis in one large organization; associations are not causal guarantees or portable thresholds.
+
+<a id="r-155"></a>
+### R-155 — On the Use of Agentic Coding: An Empirical Study of Pull Requests on GitHub
+- **Cited by:** [AI-assisted quality and governance research review](research/ai-assisted-quality-governance.md)
+- **Primary source:** [ACM Transactions on Software Engineering and Methodology, DOI 10.1145/3798166](https://doi.org/10.1145/3798166)
+- **Relevant concepts:** empirical analysis of 567 Claude Code-generated pull requests across 157 open-source projects; 83.8% were eventually merged, while 45.1% of merged PRs needed additional changes.
+- **Use in GovCheck:** supports preserving maintainer review, change provenance and the distinction between agent contribution, accepted change and unmodified integration.
+- **Limit:** sample is specific to one agent/tool and observable GitHub projects; acceptance rates depend on project selection and definitions.
+
+<a id="r-156"></a>
+### R-156 — How to Use Test-Driven Development with AI Agents (Without Lowering Code Quality)
+- **Cited by:** [AI-assisted quality and governance research review](research/ai-assisted-quality-governance.md)
+- **Primary source:** [Emily Bache, 5 November 2026](https://coding-is-like-cooking.info/2026/11/how-to-use-test-driven-development-with-ai-agents-without-lowering-code-quality/)
+- **Relevant concepts:** EXACT workflow; example mapping, natural-language test lists, predictive TDD, iterative red/green/refactor, a dedicated refactoring subagent in some experiments, and a test lab with acceptance suites hidden from the model.
+- **Use in GovCheck:** motivates separating stakeholder intent/examples, test specifications, implementation and independent acceptance evidence; encourages recording experiment design and test-oracle independence.
+- **Limit:** practitioner report and experiments described by the workflow authors; reported gains are task/model/harness-dependent and are not an independent universal benchmark.
+
+<a id="r-157"></a>
+### R-157 — AI-Friendly Code: The Missing Link for Speed with Quality
+- **Cited by:** [AI-assisted quality and governance research review](research/ai-assisted-quality-governance.md)
+- **Source:** [Adam Tornhill, GOTO Copenhagen 2026 video](https://youtu.be/ciRTdOIhNCc)
+- **Relevant concepts:** industry argument that code health and maintainability affect the safety and sustainability of AI-assisted changes.
+- **Use in GovCheck:** motivates examining long-term code health alongside immediate test outcomes and throughput.
+- **Limit:** conference talk and vendor-associated metric framing; the associated empirical paper is catalogued separately as R-152 and must be assessed on its own methods and limitations.
+
+<a id="r-158"></a>
+### R-158 — How to Use Test-Driven Development with AI Agents (Without Lowering Code Quality)
+- **Cited by:** [AI-assisted quality and governance research review](research/ai-assisted-quality-governance.md)
+- **Source:** [Modern Software Engineering video](https://youtu.be/a6HYpocKwXU)
+- **Relevant concepts:** example-guided development, predictive TDD and empirical workflow comparison for coding agents.
+- **Use in GovCheck:** motivates audit of links between intent, examples, requirements, test evidence and acceptance.
+- **Limit:** industry interview/video; not an independent peer-reviewed evaluation of GovCheck or a universal proof that TDD guarantees correctness.
+
+<a id="r-159"></a>
+### R-159 — What the Top Companies Do Differently With AI Coding
+- **Cited by:** [AI-assisted quality and governance research review](research/ai-assisted-quality-governance.md)
+- **Source:** [AI Engineer interview with Martin Harrysson and Prakhar Dixit, McKinsey](https://youtu.be/21tuT-e4NVo)
+- **Relevant concepts:** industry account of organizational practices for AI-assisted software development at larger companies.
+- **Use in GovCheck:** prompts review of accountability, workflow design, skills, feedback loops and evidence needed to substantiate organizational claims.
+- **Limit:** interview and industry observations; claims need their underlying methods and data assessed and do not establish that a practice transfers to every repository.
+
+<a id="r-160"></a>
+### R-160 — User-supplied video (metadata not independently resolved)
+- **Cited by:** [AI-assisted quality and governance research review](research/ai-assisted-quality-governance.md), [GovCheck applicability and boundaries](research/govcheck-applicability-and-boundaries.md)
+- **Source:** [YouTube video ID hP2vfBcQhfk](https://youtu.be/hP2vfBcQhfk)
+- **Relevant concepts:** retained as one of the five supplied research triggers; title, speaker and substantive claims were not independently verified in accessible indexed metadata during this pass.
+- **Use in GovCheck:** preserves source traceability without inventing its content; review the video itself before attributing claims or deriving requirements.
+- **Limit:** no content-level inference is made from the URL alone.
+
+<a id="r-161"></a>
+### R-161 — User-supplied video (metadata not independently resolved)
+- **Cited by:** [AI-assisted quality and governance research review](research/ai-assisted-quality-governance.md), [GovCheck applicability and boundaries](research/govcheck-applicability-and-boundaries.md)
+- **Source:** [YouTube video ID cZ_PqBpZygY](https://youtu.be/cZ_PqBpZygY)
+- **Relevant concepts:** retained as one of the five supplied research triggers; title, speaker and substantive claims were not independently verified in accessible indexed metadata during this pass.
+- **Use in GovCheck:** preserves source traceability without inventing its content; review the video itself before attributing claims or deriving requirements.
+- **Limit:** no content-level inference is made from the URL alone.
+
+<a id="r-162"></a>
+### R-162 — How to Build a Software Factory That Improves Itself
+- **Cited by:** [Software factory conference analysis](research/software-factory-self-improvement.md)
+- **Source:** [Zach Lloyd, Warp, AI Engineer talk](https://youtu.be/nKjPBAw_N_0)
+- **Relevant concepts:** code-defined agent workflows, sandboxing, model/harness flexibility, run traces, locally curated benchmarks, cost/quality measurement, evaluator agents and reviewable self-improvement proposals.
+- **Use in GovCheck:** motivates a precise distinction between repository-owned controls, external evidence, observable outcomes, preconditions and residual risk.
+- **Limit:** industry talk from a vendor founder; recommendations and product examples are not independent validation or universal requirements.
+
+<a id="r-163"></a>
+### R-163 — Warp Factories: official workflow and configuration documentation
+- **Cited by:** [Software factory conference analysis](research/software-factory-self-improvement.md)
+- **Primary sources:** [Warp Factories overview](https://docs.warp.dev/factories/) · [How factories work](https://docs.warp.dev/factories/how-factories-work) · [Factory definition syntax](https://docs.warp.dev/factories/factory-as-code/)
+- **Relevant concepts:** versioned factory definitions, workflow stages and human checkpoints, scorers, benchmarks, self-improvement proposals, and separation between workflow instructions and repository-enforced merge permissions.
+- **Use in GovCheck:** concrete industry example for distinguishing declarative configuration from runtime guarantees and repository policy from provider/platform enforcement.
+- **Limit:** product documentation describes Warp's implementation and claims; it does not independently establish security, evaluation validity or suitability as a GovCheck dependency.
+
+<a id="r-164"></a>
+### R-164 — Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity
+- **Cited by:** [GovCheck applicability and external boundaries](research/govcheck-applicability-and-boundaries.md), [Software factory conference analysis](research/software-factory-self-improvement.md)
+- **Primary source:** [Becker, Rush, Barnes and Rein, METR randomized controlled trial (2025)](https://doi.org/10.48550/arXiv.2507.09089) · [paper PDF](https://metr.org/Early_2025_AI_Experienced_OS_Devs_Study-paper.pdf)
+- **Relevant concepts:** 16 experienced developers, 246 tasks in mature repositories; measured completion times diverged from participant expectations, with a 19% slowdown for the early-2025 tools in the studied setting.
+- **Use in GovCheck:** supports distinguishing self-reported productivity, benchmark performance, measured outcomes and contextual applicability; motivates explicit denominators and uncertainty.
+- **Limit:** small, context-specific sample and early-2025 tools; does not estimate effects for all teams, tasks or current systems. METR's 2026 update describes selection and measurement limitations in its later experiment.
+
+<a id="r-165"></a>
+### R-165 — NIST AI Risk Management Framework: Generative Artificial Intelligence Profile (AI 600-1)
+- **Cited by:** [Software factory conference analysis](research/software-factory-self-improvement.md)
+- **Primary source:** [NIST AI 600-1 publication](https://doi.org/10.6028/NIST.AI.600-1) · [NIST publication page](https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence)
+- **Relevant concepts:** voluntary, cross-sector guidance for incorporating generative-AI trustworthiness considerations into design, development, use and evaluation.
+- **Use in GovCheck:** informs risk identification and explicit responsibility for assumptions, external dependencies and residual risk.
+- **Limit:** risk-management guidance, not a repository-local enforcement mechanism, formal proof system or evidence that an organization has implemented a recommended practice.

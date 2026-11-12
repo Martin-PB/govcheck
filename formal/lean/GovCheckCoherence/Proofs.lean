@@ -1,5 +1,6 @@
 import GovCheckCoherence.Evidence
 import GovCheckCoherence.SchemaBoundary
+import GovCheckCoherence.Mapping
 
 namespace GovCheck.Coherence
 

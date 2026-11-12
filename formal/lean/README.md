@@ -4,8 +4,7 @@
 
 ## Scope
 
-This package formalizes one narrow cross-model invariant: pure evidence
-transport cannot promote the epistemic nature of an evidence record. The
+This package formalizes the first evidence-coherence invariants and a proof-carrying cross-model mapping contract. It keeps `EvidenceMethodClass`, `EvidenceKind` and `EvidenceStatus` as separate dimensions. The
 Lean vocabulary mirrors the existing GovCheck evidence schema's
 `methodClass` values and result-status values, while keeping the epistemic
 kind explicit and separate.
@@ -46,6 +45,14 @@ From this directory:
 lake env lean GovCheckCoherence.lean
 lake build
 ```
+
+## Mapping contract
+
+`GovCheckCoherence.Mapping` binds a source and target claim identifier to Lean propositions and declares the mapping coverage (`equivalent`, `soundDirectional`, `partial`, `approximate`, `traceabilityOnly`, `unsupported`). The corresponding `SemanticBridge` constructor requires the proof obligation appropriate to that coverage. A mapping also binds exact source/target model revisions and requires preservation of the evidence source identity/revision, exact scope, all source assumptions, and method class.
+
+A new theorem-proof kind requires a `KernelCheckedDerivation` containing an actual Lean proof term of the exact target proposition. A method label or result status cannot construct this proof object. Target result status is deliberately independent: derivation of a new theorem has its own result, not an automatic copy of a source test status.
+
+The first profile requires exact scope equality; it does not yet define a scope partial order or safe scope narrowing. The contract is a typed obligation, not proof that any production importer/exporter satisfies it.
 
 ## Explicit limits
 

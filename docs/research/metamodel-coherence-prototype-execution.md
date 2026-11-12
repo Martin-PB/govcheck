@@ -44,7 +44,14 @@ The invariant `NonPassingEvidenceCannotBeAccepted` failed. The transition was co
 
 This illustrates the intended distinction: the first run was not “a failed proof”; it was a bounded model-checking counterexample exposing an inconsistency in the transition model. The corrected run provides bounded evidence only for the corrected finite model.
 
-## 3. Integration and repository governance
+
+## 3. CSLib compatibility audit
+
+The exact inspected CSLib HEAD is `70e25828d89a3916e41c9d84cfffd7e6093bb1a0`, pinned to Lean `v4.36.0-rc2` and Mathlib revision `887bb849a9f64e1c66499fd5ff8523c864e78941`. This is incompatible with the core's Lean 4.19.0 toolchain as a direct package dependency. The audit identifies reusable BTL, omega-sequence temporal properties, LTS and modal semantics, while finding no ready-made evidence/provenance/authority mapping metamodel: [CSLib compatibility and semantic-fit audit](cslib-compatibility-audit.md) / [French audit](cslib-compatibility-audit.fr.md).
+
+An isolated compatibility probe now lives in `formal/cslib-compat/`. Its CI result is pending at the time of this record. Even a successful build will establish API/build compatibility only, not a semantic refinement theorem.
+
+## 4. Integration and repository governance
 
 - Both verification workflows are explicitly classified as meta-level-only in `scripts/check-package-alignment.py`; they are not copied into the adopter template package.
 - The Lean core and TLA+ model are registered in `formal/artifacts.json`, including exact toolchain, run, commit, result, bounds and limitations.

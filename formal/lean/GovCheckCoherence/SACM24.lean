@@ -27,8 +27,7 @@ def mapAssertionDeclaration : AssertionDeclarationKind → ClaimDisposition
 
 theorem mapAssertionDeclaration_injective :
     ∀ a b, mapAssertionDeclaration a = mapAssertionDeclaration b → a = b := by
-  intro a b h
-  cases a <;> cases b <;> simp_all [mapAssertionDeclaration]
+  decide
 
 theorem sacm_axiomatic_remains_declaration :
     mapAssertionDeclaration .axiomatic = .axiomaticDeclared := rfl

@@ -7,7 +7,7 @@
 
 ## 1. Pourquoi cette tranche source en premier
 
-SACM 2.4 Beta 1 introduit des sémantiques directement pertinentes pour le modèle épistémique de GovCheck. Un audit d'implémentation indépendant (R-128) relève aussi des contradictions entre le texte PDF de la spécification et le métamodèle XML lisible par machine ; voir le [rapport sur les risques d'interopérabilité](sacm24-beta1-interoperability-risk.fr.md). La tranche formelle distingue donc les vues sources au lieu de traiter Beta 1 comme un schéma cohérent unique :
+SACM 2.4 Beta 1 introduit des sémantiques directement pertinentes pour le modèle épistémique de GovCheck. Un audit d'implémentation indépendant ([R-128](../references.fr.md#r-128)) relève aussi des contradictions entre le texte PDF de la spécification et le métamodèle XML lisible par machine ; voir le [rapport sur les risques d'interopérabilité](sacm24-beta1-interoperability-risk.fr.md). La tranche formelle distingue donc les vues sources au lieu de traiter Beta 1 comme un schéma cohérent unique :
 
 - un sujet explicite pour un Claim (issue SACM24-83) ;
 - des valeurs étendues de AssertionDeclarationKind et des structures de valeur d'assertion ;

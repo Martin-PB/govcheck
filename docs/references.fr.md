@@ -1495,7 +1495,7 @@
 
 <a id="r-176"></a>
 ### R-176 — La théorie du système général : théorie de la modélisation
-- **Cité par :** [Dossier STUDY-003](research/le-moigne-colloquium.fr.md), [Applicabilité STUDY-003](research/govcheck-applicability-constructivism-and-systems.fr.md)
+- **Cité par :** [Dossier STUDY-003](research/le-moigne-colloquium.fr.md)
 - **Source :** Jean-Louis Le Moigne, PUF, 1977 ; [notice BnF](https://catalogue.bnf.fr/ark:/12148/cb34588322h) · [édition RIC](https://www.intelligence-complexite.org/bibliotheque/classiques-ric/theorie-systeme-general)
 - **Concepts pertinents :** modélisation comme processus, finalité, action, structure, organisation, environnement, régulation et évolution.
 - **Utilité pour GovCheck :** comparaison avec cycle de vie, périmètre, frontières et évolution des modèles.
@@ -1511,7 +1511,7 @@
 
 <a id="r-178"></a>
 ### R-178 — Soft Systems Methodology
-- **Cité par :** [Dossier STUDY-003](research/le-moigne-colloquium.fr.md), [Applicabilité STUDY-003](research/govcheck-applicability-constructivism-and-systems.fr.md)
+- **Cité par :** [Dossier STUDY-003](research/le-moigne-colloquium.fr.md)
 - **Source :** Peter B. Checkland, *Human Systems Management*, 8(4), 1989, p. 273–289. [DOI](https://doi.org/10.3233/HSM-1989-8405)
 - **Concepts pertinents :** modèles d'activités finalisées pour soutenir débat et apprentissage en présence de points de vue légitimes concurrents.
 - **Utilité pour GovCheck :** comparaison sur perspectives, modèles pluriels, délibération et décisions.
@@ -1527,7 +1527,7 @@
 
 <a id="r-180"></a>
 ### R-180 — Validity Frame-enabled model-based engineering processes
-- **Cité par :** [Dossier STUDY-003](research/le-moigne-colloquium.fr.md), [Applicabilité STUDY-003](research/govcheck-applicability-constructivism-and-systems.fr.md)
+- **Cité par :** [Dossier STUDY-003](research/le-moigne-colloquium.fr.md)
 - **Source :** Bert Van Acker et al., *Simulation*, 2023. [DOI](https://doi.org/10.1177/00375497231205035)
 - **Concepts pertinents :** contexte de validité, usage visé et limites des modèles tout au long de leur cycle de vie.
 - **Utilité pour GovCheck :** comparateur pour périmètre, hypothèses et argument de validité.
@@ -1543,7 +1543,7 @@
 
 <a id="r-182"></a>
 ### R-182 — Soft Systems Methodology : outils de l'Université de Cambridge
-- **Cité par :** [Applicabilité STUDY-003](research/govcheck-applicability-constructivism-and-systems.fr.md), [Le Moigne colloquium study](research/le-moigne-colloquium.md)
+- **Cité par :** [Dossier STUDY-003](research/le-moigne-colloquium.fr.md)
 - **Source :** [University of Cambridge, Institute for Manufacturing](https://www.ifm.eng.cam.ac.uk/research/dstools/soft-systems-methodology/)
 - **Concepts pertinents :** rich pictures, CATWOE, modèles conceptuels multiples, comparaison et changements faisables/désirables.
 - **Utilité pour GovCheck :** perspectives des parties prenantes et contraintes environnementales.

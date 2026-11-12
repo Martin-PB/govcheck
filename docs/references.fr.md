@@ -268,9 +268,10 @@
 
 <a id="r-20"></a>
 ### R-20 — Lean
-- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [0008](architecture/0008-formalization-and-conformance.fr.md), [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [ADR 0001](decisions/0001-bootstrap-boundaries.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [0008](architecture/0008-formalization-and-conformance.fr.md), [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [ADR 0001](decisions/0001-bootstrap-boundaries.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md), [audit de compatibilité CSLib](research/cslib-compatibility-audit.fr.md)
 
 - **Source primaire :** [Référence du langage Lean](https://lean-lang.org/doc/reference/latest/)
+- **Bibliothèque associée :** [CSLib](https://github.com/leanprover/cslib), bibliothèque Lean pour formaliser les théories informatiques, les logiques temporelles et la sémantique des systèmes de transitions.
 - **Concepts pertinents :** termes de preuve vérifiés par un petit noyau ; démonstration sous définitions, axiomes et hypothèses explicites.
 - **Utilité pour GovCheck :** candidat pour des prédicats critiques justifiant une preuve ou la vérification de certificats, si une ADR ultérieure le justifie.
 - **Limite :** un théorème sur un prédicat ne prouve ni que le prédicat représente la politique approuvée ni que l'exécutable le raffine. Lean n'est pas sélectionné comme dépendance globale.

@@ -7,7 +7,7 @@
 
 ## 1. Why this is the first source-native slice
 
-SACM 2.4 Beta 1 introduces semantics directly relevant to GovCheck's epistemic model. An independent implementation audit (R-128) also finds contradictions between the specification PDF text and the machine-readable metamodel XML; see the [interoperability-risk report](sacm24-beta1-interoperability-risk.md). The formal slice therefore distinguishes source views rather than treating Beta 1 as one coherent schema:
+SACM 2.4 Beta 1 introduces semantics directly relevant to GovCheck's epistemic model. An independent implementation audit ([R-128](../references.md#r-128)) also finds contradictions between the specification PDF text and the machine-readable metamodel XML; see the [interoperability-risk report](sacm24-beta1-interoperability-risk.md). The formal slice therefore distinguishes source views rather than treating Beta 1 as one coherent schema:
 
 - an explicit subject for a Claim (issue SACM24-83);
 - extended AssertionDeclarationKind values and assertion-value structures;

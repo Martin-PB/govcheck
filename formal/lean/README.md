@@ -46,6 +46,10 @@ lake env lean GovCheckCoherence.lean
 lake build
 ```
 
+## SACM 2.4 Beta 1 semantic slice
+
+`GovCheckCoherence.SACM24` preserves SACM assertion-declaration distinctions, binds explicit Claim subjects to exact model revisions, and types inference direction. The `probable` inference kind has no classical implication bridge; `byRule` requires a concrete proof term. See the bilingual [SACM 2.4 mapping study](../../docs/research/sacm24-claim-inference-mapping.md) / [étude française](../../docs/research/sacm24-claim-inference-mapping.fr.md).
+
 ## Mapping contract
 
 The status model also proves `unknown_status_is_distinct_from_inconclusive`; both statuses are represented in the JSON Schema, while staleness remains a separate freshness property.

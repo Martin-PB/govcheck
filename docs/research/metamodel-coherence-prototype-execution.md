@@ -1,6 +1,6 @@
 # Metamodel coherence prototype — integrated execution record
 
-**Status:** proof-carrying mapping contract added to the existing Lean coherence core; final CI for this branch pending. CSLib compatibility probe separately verified.  
+**Status:** proof-carrying mapping contract added to the existing Lean coherence core; Lean build and axiom audit passed. CSLib compatibility probe separately verified.  
 **Date:** 2026-11-12.  
 **Related work:** issue [#73](https://github.com/Martin-PB/govcheck/issues/73), [metamodel coherence research](https://github.com/Martin-PB/govcheck/blob/docs/metamodel-decision-dossier-2026-11/docs/research/metamodel-coherence-verification.md), [SACM 2.4 integration proposal](../architecture/0026-sacm-24-conformance-and-govcheck-integration.md).
 
@@ -17,6 +17,8 @@ The existing core keeps three independent dimensions:
 The current production schema has method class and result status but no explicit epistemic-kind or typed derivation field. The Lean kind is therefore an additional assurance interpretation, not a lossless projection of the current JSON schema. The existing theorem `schema_method_and_status_do_not_determine_epistemic_kind` captures that gap.
 
 ## 2. Proof-carrying mapping contract
+
+The integrated Lean 4.19.0 build and axiom audit passed in [run 43212472986](https://github.com/Martin-PB/govcheck/actions/runs/43212472986), checked commit `25ea9de19fb24dc72d00b6af3a438b67afe5bed1`. The explicit axiom report states that each of the seven new mapping theorem declarations depends on no axioms.
 
 Added `formal/lean/GovCheckCoherence/Mapping.lean`, imported by the existing `GovCheckCoherence` library and theorem axiom report.
 

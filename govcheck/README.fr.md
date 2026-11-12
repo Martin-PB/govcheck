@@ -21,7 +21,8 @@ La release du dépôt, celle du produit GovCheck et celle du package de gouverna
 
 ## Deux niveaux
 
-L’historique de gouvernance propre à GovCheck (records d’architecture, ADR, délibérations) vit au niveau méta du dépôt GovCheck et n’est délibérément **pas** inclus dans ce package. Voir l’ADR 0003 dans le dépôt GovCheck.
+L’historique de gouvernance propre à GovCheck (records d’architecture, ADR, délibérations) vit au niveau méta du dépôt GovCheck et n’est délibérément **pas** inclus dans ce p
+ackage. Voir l’ADR 0003 dans le dépôt GovCheck.
 
 ## Amorcer un dépôt existant (inspect / plan / apply)
 
@@ -36,7 +37,8 @@ L’historique de gouvernance propre à GovCheck (records d’architecture, ADR,
 - `plan` produit un plan JSON déterministe d'actions (`create`, `identical`, `conflict`) sans effet de bord ; deux exécutions sur une cible inchangée donnent une sortie identique octet par octet.
 - `apply` n'écrit que les actions `create` : les fichiers existants ne sont jamais écrasés, les conflits sont préservés et signalés. Deux applications successives sont idempotentes (la seconde ne crée rien). Avec `--plan`, apply vérifie d'abord que le plan correspond toujours à la cible et échoue sinon (code de sortie 2) : seules les modifications revues sont appliquées.
 - L'identité du package est enregistrée dans un marqueur possédé par le package, `.govcheck-bootstrap.json`, à la racine de la cible (version, empreinte, fichiers installés avec leurs empreintes, conflits préservés). `rollback` supprime exactement les fichiers installés dont le contenu correspond encore à l'empreinte enregistrée, puis le marqueur : c'est le chemin de rollback documenté. La mise à niveau consiste à réexécuter `apply` avec un package plus récent : les fichiers modifiés par l'utilisateur ne sont jamais écrasés et apparaissent comme des conflits.
-- `--capabilities` sélectionne les parties du package à installer (`check`, `decisions`, `docs`, `formal`, `readme`, `scripts`, `workflows` ; par défaut : toutes).
+- `--capabi
+lities` sélectionne les parties du package à installer (`check`, `decisions`, `docs`, `formal`, `readme`, `scripts`, `workflows` ; par défaut : toutes).
 
 La forme historique `python3 govcheck/bootstrap.py DOSSIER_CIBLE` initialise toujours un dépôt vide et refuse les cibles non vides. Les tests unitaires sont dans `tests/test_govcheck_bootstrap.py`.
 
@@ -47,7 +49,7 @@ La forme historique `python3 govcheck/bootstrap.py DOSSIER_CIBLE` initialise tou
     python3 govcheck/check.py --tree . [--out report.json]
     python3 govcheck/check.py --tree . --base main --candidate HEAD
 
-Chaque règle renvoie `pass`, `fail` ou `unknown`. Le résultat global est `fail` si une règle échoue, sinon `unknown` si une règle est inconnue, sinon `pass` (fermeture par l’échec : `unknown` n’est jamais un succès). Le code de sortie est 0 uniquement lorsque le résultat global est `pass`. Les règles couvrent les trois classes d’assurance : décidable (présence de la licence, paires de décisions bilingues, paires de paquet déclarées par le manifeste, intégrité du catalogue de références, sources obligatoires sur décisions et attestations), attestée (revue indépendante) et non vérifiable hors ligne (fraîcheur des preuves TLC). Les tests unitaires sont dans `tests/test_govcheck_check.py`.
+Chaque règle renvoie `pass`, `fail` ou `unknown`. Le résultat global est `fail` si une règle échoue, sinon `unknown` si une règle est inconnue, sinon `pass` (fermeture par l’échec : `unknown` n’est jamais un succès). Le code de sortie est 0 uniquement lorsque le résultat global est `pass`. Les règles couvrent les trois classes d’assurance : décidable (présence de la licence, paires de décisions bilingues, paires de paquet déclarées par le manifeste, intégrité du catalogue de références, sources obligatoires sur décisions et attestations, intégrité du marqueur d’amorçage), attestée (revue indépendante) et non vérifiable hors ligne (fraîcheur des preuves TLC). Les tests unitaires sont dans `tests/test_govcheck_check.py`.
 
 ### Attestations enregistrées (revue indépendante)
 
@@ -55,4 +57,16 @@ En mode git (`--base/--candidate`), la règle `independent-review` renvoie `pass
 
 ### Sources obligatoires (ADR 0007)
 
-La règle `sources-present` (décidable) exige que chaque `docs/decisions/*.md` non guide porte une section `## Références` (ou `## References`) contenant au moins un lien de source : une ancre du catalogue de références (`docs/references.fr.md#r-xx`) ou une URL externe. Chaque enregistrement d’attestation dans `docs/attestations/*.json` doit aussi porter une liste `"sources"` non vide de chaînes, listant les preuves sur lesquelles le relecteur s’est appuyé. Les fichiers guides (`README*`, `TEMPLATE*`) sont exemptés. Sans cela, un agent pouvait énoncer une décision sans aucune preuve ; la règle rend « pas de source, pas de décision » vérifiable hors ligne.
+La règle `sources-present` (décidable) exige que chaque `docs/decisions/*.md` non guide porte une section `## Référence
+s` (ou `## References`) contenant au moins un lien de source : une ancre du catalogue de références (`docs/references.fr.md#r-xx`) ou une URL externe. Chaque enregistrement d’attestation dans `docs/attestations/*.json` doit aussi porter une liste `"sources"` non vide de chaînes, listant les preuves sur lesquelles le relecteur s’est appuyé. Les fichiers guides (`README*`, `TEMPLATE*`) sont exemptés. Sans cela, un agent pouvait énoncer une décision sans aucune preuve ; la règle rend « pas de source, pas de décision » vérifiable hors ligne.
+
+### Intégrité du marqueur d’amorçage
+
+Quand la racine du dépôt contient le marqueur propriétaire du paquet `.govcheck-bootstrap.json` (écrit par `govcheck/bootstrap.py apply`), la règle `bootstrap-integrity` vérifie que :
+
+- le marqueur est un JSON valide, objet JSON ;
+- `tool` vaut `govcheck-bootstrap`, `package_version` est une chaîne non vide et `package_digest` est un SHA-256 hexadécimal minuscules de 64 caractères ;
+- `installed` est une liste d’entrées `{path, sha256}` dont chaque chemin est relatif et sûr (pas de chemin absolu, pas d’antislash, aucun segment vide, `.` ou `..`), chaque `sha256` est en hexadécimal minuscules de 64 caractères, et chaque fichier enregistré existe avec exactement ce digest (fichier manquant ou contenu dérivé = échec) ;
+- `conflicts` est une liste de chaînes non vides.
+
+Tout problème fait échouer la règle. Sans marqueur à la racine de l’arbre, la règle n’est pas applicable et rapporte `pass` avec `applies: false`.

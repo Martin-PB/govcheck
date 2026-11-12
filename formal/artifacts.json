@@ -116,8 +116,8 @@
       "status": "kernel-checked; axiom-audited",
       "verification": {
         "workflow": ".github/workflows/lean-coherence.yml",
-        "workflowRunId": 43212969096,
-        "checkedCommit": "6707da00eea2dd368d309b2806b3d8c849bd8995",
+        "workflowRunId": 43213158225,
+        "checkedCommit": "abc055ce457b4554500d71d4aa0b73ed8ec722d9",
         "result": "lake-build-success; axiom-audit-success",
         "lean": "4.19.0",
         "axiomAudit": {

@@ -27,7 +27,8 @@ ChangeSourceRevision ==
 ReevaluateEvidence ==
   /\ evidenceRevision' = currentRevision
   /\ evidenceStatus' \in {"Passed", "Failed", "Inconclusive", "Unknown", "Unsupported", "NotRun"}
-  /\ UNCHANGED <<currentRevision, accepted>>
+  /\ accepted' = FALSE
+  /\ UNCHANGED <<currentRevision>>
 
 Accept ==
   /\ EvidenceFresh

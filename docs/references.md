@@ -43,9 +43,10 @@
 | GitHub Actions workflow location and syntax | R-107 |
 | Open-source licensing and attribution | R-108 |
 
+| Probabilistic, fuzzy and state-transition assurance methods | R-114 |
+
 ## Full reference entries
 
-| Probabilistic, fuzzy and state-transition assurance methods | R-114 |
 
 ## Detailed source register
 

@@ -1492,7 +1492,7 @@
 
 <a id="r-176"></a>
 ### R-176 — The General System Theory: Theory of Modelling
-- **Cited by:** [STUDY-003 colloquium analysis](research/le-moigne-colloquium.md), [STUDY-003 GovCheck applicability assessment](research/govcheck-applicability-constructivism-and-systems.md)
+- **Cited by:** [STUDY-003 colloquium analysis](research/le-moigne-colloquium.md)
 - **Primary sources:** Jean-Louis Le Moigne, *La théorie du système général : théorie de la modélisation*, PUF, first edition 1977; [BnF catalogue record](https://catalogue.bnf.fr/ark:/12148/cb34588322h) · [RIC digitized edition record](https://www.intelligence-complexite.org/bibliotheque/classiques-ric/theorie-systeme-general)
 - **Relevant concepts:** model construction as a process; purpose, action, structure, organization, environment, regulation and evolution.
 - **Use in GovCheck:** source for comparative analysis of lifecycle, model scope, system boundaries, context and model evolution.
@@ -1508,7 +1508,7 @@
 
 <a id="r-178"></a>
 ### R-178 — Soft Systems Methodology
-- **Cited by:** [STUDY-003 colloquium analysis](research/le-moigne-colloquium.md), [STUDY-003 GovCheck applicability assessment](research/govcheck-applicability-constructivism-and-systems.md)
+- **Cited by:** [STUDY-003 colloquium analysis](research/le-moigne-colloquium.md)
 - **Primary source:** Peter B. Checkland, *Human Systems Management*, 8(4), 1989, pp. 273–289. [DOI](https://doi.org/10.3233/HSM-1989-8405)
 - **Relevant concepts:** purposeful activity models used to support debate and learning where objectives are unclear and multiple legitimate viewpoints exist.
 - **Use in GovCheck:** comparator for stakeholder viewpoints, plural models, deliberation and decision traceability.
@@ -1524,7 +1524,7 @@
 
 <a id="r-180"></a>
 ### R-180 — Validity Frame-enabled model-based engineering processes
-- **Cited by:** [STUDY-003 colloquium analysis](research/le-moigne-colloquium.md), [STUDY-003 GovCheck applicability assessment](research/govcheck-applicability-constructivism-and-systems.md)
+- **Cited by:** [STUDY-003 colloquium analysis](research/le-moigne-colloquium.md)
 - **Primary source:** Bert Van Acker et al., *Simulation*, 2023. [DOI](https://doi.org/10.1177/00375497231205035)
 - **Relevant concepts:** model validity context, intended use, limitations of formalisms, and the need to maintain validity reasoning throughout model creation and transformation.
 - **Use in GovCheck:** strong comparator for recording a model's scope, assumptions, intended use and validity argument.
@@ -1540,7 +1540,7 @@
 
 <a id="r-182"></a>
 ### R-182 — Soft Systems Methodology: Cambridge Decision Support Tools
-- **Cited by:** [STUDY-003 GovCheck applicability assessment](research/govcheck-applicability-constructivism-and-systems.md)
+- **Cited by:**
 - **Primary source:** [University of Cambridge, Institute for Manufacturing](https://www.ifm.eng.cam.ac.uk/research/dstools/soft-systems-methodology/)
 - **Relevant concepts:** rich pictures, root definitions, CATWOE, multiple conceptual models, comparison with a problem situation, and feasible/desirable change.
 - **Use in GovCheck:** practical comparator for recording stakeholder perspectives, environmental constraints and the difference between repository traceability and facilitated inquiry.

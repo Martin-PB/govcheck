@@ -47,6 +47,7 @@
 | Modifications concurrentes, conflits sémantiques et livraison multi-agents | R-142–R-151 |
 | Qualité du code assisté par IA, maintenabilité, TDD agentique et adoption organisationnelle | R-152–R-161 |
 | Applicabilité de GovCheck, usines logicielles, préconditions externes et mesure de productivité IA | R-162–R-165 |
+| Épistémologie constructiviste, complexité irréductible, modélisation systémique et validité des modèles | R-166–R-186 |
 
 ## Entrées bibliographiques détaillées
 
@@ -1364,7 +1365,7 @@
 
 <a id="r-160"></a>
 ### R-160 — Vidéo fournie par l'utilisateur (métadonnées non vérifiées indépendamment)
-- **Cité par :** [Revue de recherche sur la qualité et la gouvernance du développement assisté par IA](research/ai-assisted-quality-governance.fr.md), [Applicabilité et limites de GovCheck](research/govcheck-applicability-and-boundaries.fr.md)
+- **Cité par :** [Revue de recherche sur la qualité et la gouvernance du développement assisté par IA](research/ai-assisted-quality-governance.fr.md), [Applicabilité de GovCheck et frontières externes](research/govcheck-applicability-and-boundaries.fr.md)
 - **Source :** [Vidéo YouTube, identifiant hP2vfBcQhfk](https://youtu.be/hP2vfBcQhfk)
 - **Concepts pertinents :** conservée comme l'une des cinq sources de recherche fournies ; le titre, l'intervenant et les affirmations de fond n'ont pas pu être vérifiés indépendamment dans les métadonnées indexées accessibles lors de ce passage.
 - **Utilité pour GovCheck :** préserve la traçabilité sans inventer le contenu ; la vidéo doit être examinée avant d'attribuer des affirmations ou d'en dériver des exigences.
@@ -1372,7 +1373,7 @@
 
 <a id="r-161"></a>
 ### R-161 — Vidéo fournie par l'utilisateur (métadonnées non vérifiées indépendamment)
-- **Cité par :** [Revue de recherche sur la qualité et la gouvernance du développement assisté par IA](research/ai-assisted-quality-governance.fr.md), [Applicabilité et limites de GovCheck](research/govcheck-applicability-and-boundaries.fr.md)
+- **Cité par :** [Revue de recherche sur la qualité et la gouvernance du développement assisté par IA](research/ai-assisted-quality-governance.fr.md), [Applicabilité de GovCheck et frontières externes](research/govcheck-applicability-and-boundaries.fr.md)
 - **Source :** [Vidéo YouTube, identifiant cZ_PqBpZygY](https://youtu.be/cZ_PqBpZygY)
 - **Concepts pertinents :** conservée comme l'une des cinq sources de recherche fournies ; le titre, l'intervenant et les affirmations de fond n'ont pas pu être vérifiés indépendamment dans les métadonnées indexées accessibles lors de ce passage.
 - **Utilité pour GovCheck :** préserve la traçabilité sans inventer le contenu ; la vidéo doit être examinée avant d'attribuer des affirmations ou d'en dériver des exigences.
@@ -1409,3 +1410,172 @@
 - **Concepts pertinents :** recommandations volontaires et intersectorielles pour intégrer les considérations de fiabilité de l'IA générative à la conception, au développement, à l'usage et à l'évaluation.
 - **Utilité pour GovCheck :** éclaire l'identification des risques et l'attribution explicite des responsabilités concernant hypothèses, dépendances externes et risques résiduels.
 - **Limite :** guide de gestion des risques, pas mécanisme d'application local au dépôt, système de preuve formelle ni preuve qu'une organisation a appliqué une pratique recommandée.
+
+
+<a id="r-166"></a>
+### R-166 — Grand colloque : Actualité de l’œuvre de Jean-Louis Le Moigne (16 novembre 2023)
+- **Cité par :** [Analyse du colloque STUDY-003](research/le-moigne-colloquium.fr.md)
+- **Sources primaires :** [Programme officiel](https://www.intelligence-complexite.org/activites/manifestation/grand-colloque-actualite-oeuvre-jean-louis-moigne) · [PDF replay](https://www.intelligence-complexite.org/sites/default/files/media/text/rencontres/Colloque%20JLLM%20-%20video%20Replay.pdf)
+- **Concepts pertinents :** provenance, titres et intervenants des trois sessions.
+- **Utilité pour GovCheck :** source de recherche traçable pour épistémologie, complexité et modélisation systémique.
+- **Limite :** programme des organisateurs, pas transcription ni validation indépendante des interventions.
+
+<a id="r-167"></a>
+### R-167 — Partie 1 : Les épistémologies constructivistes
+- **Cité par :** [Dossier STUDY-003](research/le-moigne-colloquium.fr.md)
+- **Source :** [Enregistrement vidéo](https://youtu.be/rLTeDfgEW88)
+- **Concepts pertinents :** table ronde de Georges Garcia avec Marie-José Avenier, Bruno Tardieu et Jean-Yves Rossignol.
+- **Utilité pour GovCheck :** questions sur observateur, finalité, construction des modèles, validité et pluralité des points de vue.
+- **Limite :** pas de transcription horodatée fiable disponible ; pas d'attribution de propos individuels non vérifiés.
+
+<a id="r-168"></a>
+### R-168 — Partie 2 : Assumer et dépasser l’irréductible
+- **Cité par :** [Dossier STUDY-003](research/le-moigne-colloquium.fr.md)
+- **Source :** [Enregistrement vidéo](https://youtu.be/QhRj0XGYYeU)
+- **Concepts pertinents :** exposé de Robert Delorme sur l'irréductibilité des phénomènes complexes.
+- **Utilité pour GovCheck :** incertitude, limites des modèles, interactions non modélisées, niveaux objet/méta et risque résiduel.
+- **Limite :** pas de transcription horodatée fiable disponible ; publication complémentaire en R-175.
+
+<a id="r-169"></a>
+### R-169 — Partie 3 : Modélisation systémique
+- **Cité par :** [Dossier STUDY-003](research/le-moigne-colloquium.fr.md)
+- **Source :** [Enregistrement vidéo](https://youtu.be/0iYNt4nDNvg)
+- **Concepts pertinents :** table ronde de Dominique Genelot avec Frédéric Rousseau, François Pissochet, Frédéric Erpicum et Hubert Tardieu.
+- **Utilité pour GovCheck :** finalité, activité, organisation, environnement, évolution et validité des modèles.
+- **Limite :** pas de transcription horodatée fiable disponible ; pas d'attribution d'intervention détaillée non vérifiée.
+
+<a id="r-170"></a>
+### R-170 — Une vision constructiviste du concept de complexité
+- **Cité par :** [Dossier STUDY-003](research/le-moigne-colloquium.fr.md)
+- **Source :** [Dominique Genelot, AE-MCX / RIC (novembre 2023)](https://www.intelligence-complexite.org/media/document/rencontres/vision-constructiviste-concept-complexite/open)
+- **Concepts pertinents :** variation du sens de « complexité » selon les engagements épistémologiques.
+- **Utilité pour GovCheck :** éviter de traiter la complexité comme grandeur évidente ou catégorie universelle.
+- **Limite :** texte de perspective, pas validation empirique d'une mesure.
+
+<a id="r-171"></a>
+### R-171 — Légitimation de savoirs élaborés à partir de l'expérience de praticiens
+- **Cité par :** [Dossier STUDY-003](research/le-moigne-colloquium.fr.md)
+- **Source :** Marie-Noëlle Albert et Marie-José Avenier, *Recherches qualitatives*, 30(2), 2011, p. 22–47. [Texte intégral](https://www.marienoellealbert.ca/publications/legitimation-de-savoirs-elabores-a-partir-de-l-experience-de-praticiens)
+- **Concepts pertinents :** légitimation de connaissances issues de l'expérience dans une épistémologie constructiviste pragmatique.
+- **Utilité pour GovCheck :** documenter et examiner les observations situées et jugements experts.
+- **Limite :** contribution méthodologique située ; toute expérience n'est pas valide sans méthode critique.
+
+<a id="r-172"></a>
+### R-172 — Radical constructivism and its failings: Anti-realism and individualism
+- **Cité par :** [Dossier STUDY-003](research/le-moigne-colloquium.fr.md)
+- **Source :** Mark Olssen, *British Journal of Educational Studies*, 44(3), 1996, p. 275–295. [DOI](https://doi.org/10.1080/00071005.1996.9974075)
+- **Concepts pertinents :** critique du constructivisme radical (antiréalisme, individualisme, relativisme).
+- **Utilité pour GovCheck :** contrepoint aux approches constructivistes.
+- **Limite :** ne réfute pas toutes les formes pragmatiques ou sociales du constructivisme.
+
+<a id="r-173"></a>
+### R-173 — Ernst von Glasersfeld's radical constructivism and truth as disclosure
+- **Cité par :** [Dossier STUDY-003](research/le-moigne-colloquium.fr.md)
+- **Source :** Clarence W. Joldersma, *Educational Theory*, 61(3), 2011, p. 275–293. [DOI](https://doi.org/10.1111/j.1741-5446.2011.00404.x)
+- **Concepts pertinents :** critique et reconstruction d'une conception constructiviste radicale de la vérité.
+- **Utilité pour GovCheck :** distinguer connaissance médiatisée et relativisme arbitraire.
+- **Limite :** argument philosophique, pas procédure de validation formelle.
+
+<a id="r-174"></a>
+### R-174 — La fabrique du constructivisme : exploration critique de l'œuvre de Jean-Louis Le Moigne
+- **Cité par :** [Dossier STUDY-003](research/le-moigne-colloquium.fr.md)
+- **Source :** Baptiste Rappin, *La Revue des Sciences de Gestion*, n° 272, 2015, p. 47–53. [Notice et résumé](https://signal.sciencespo-lyon.fr/article/566571/La-fabrique-du-constructivisme-Exploration-commentee-et-critique-de-l-oeuvre-de-Jean-Louis-Le-Moigne)
+- **Concepts pertinents :** examen critique des sources conceptuelles et stratégies argumentatives de Le Moigne.
+- **Utilité pour GovCheck :** contre-source avant toute adoption d'un cadre théorique.
+- **Limite :** notice et résumé disponibles, pas le texte intégral.
+
+<a id="r-175"></a>
+### R-175 — Théorie de la complexité et institutions en économie
+- **Cité par :** [Dossier STUDY-003](research/le-moigne-colloquium.fr.md)
+- **Source :** [Robert Delorme, « Théorie de la complexité et institutions en économie »](https://archive.mcxapc.org/docs/ateliers/delorm3.htm)
+- **Concepts pertinents :** complexité de second ordre, irréductibilité, niveaux objet/méta, pluralité des formes de complexité et abduction.
+- **Utilité pour GovCheck :** distinguer les sources d'incertitude et documenter les limites des modèles.
+- **Limite :** cadre théorique contextuel ; catégories à opérationnaliser avant tout usage normatif.
+
+<a id="r-176"></a>
+### R-176 — La théorie du système général : théorie de la modélisation
+- **Cité par :** [Dossier STUDY-003](research/le-moigne-colloquium.fr.md)
+- **Source :** Jean-Louis Le Moigne, PUF, 1977 ; [notice BnF](https://catalogue.bnf.fr/ark:/12148/cb34588322h) · [édition RIC](https://www.intelligence-complexite.org/bibliotheque/classiques-ric/theorie-systeme-general)
+- **Concepts pertinents :** modélisation comme processus, finalité, action, structure, organisation, environnement, régulation et évolution.
+- **Utilité pour GovCheck :** comparaison avec cycle de vie, périmètre, frontières et évolution des modèles.
+- **Limite :** modèle théorique particulier, pas ontologie universelle ni métamodèle prêt à l'emploi.
+
+<a id="r-177"></a>
+### R-177 — Recension de La théorie du système général
+- **Cité par :** [Dossier STUDY-003](research/le-moigne-colloquium.fr.md)
+- **Source :** Bernard Motulsky, *Communication. Information Médias Théories*, 2(3), 1978, p. 217–218. [Persée](https://www.persee.fr/doc/comin_0382-7798_1978_num_2_3_1078)
+- **Concepts pertinents :** dimensions action/fonction, structure et évolution ; rôle des objectifs de l'observateur et des frontières du modèle.
+- **Utilité pour GovCheck :** comprendre les engagements conceptuels et les coûts de lisibilité.
+- **Limite :** recension contemporaine, pas évaluation contrôlée.
+
+<a id="r-178"></a>
+### R-178 — Soft Systems Methodology
+- **Cité par :** [Dossier STUDY-003](research/le-moigne-colloquium.fr.md)
+- **Source :** Peter B. Checkland, *Human Systems Management*, 8(4), 1989, p. 273–289. [DOI](https://doi.org/10.3233/HSM-1989-8405)
+- **Concepts pertinents :** modèles d'activités finalisées pour soutenir débat et apprentissage en présence de points de vue légitimes concurrents.
+- **Utilité pour GovCheck :** comparaison sur perspectives, modèles pluriels, délibération et décisions.
+- **Limite :** modèles d'apprentissage/débat, pas automatiquement spécifications formelles ou prédictives.
+
+<a id="r-179"></a>
+### R-179 — Model validation in soft systems practice
+- **Cité par :** [Dossier STUDY-003](research/le-moigne-colloquium.fr.md)
+- **Source :** Peter Checkland, *Systems Research and Behavioral Science*, 12(1), 1995, p. 47–54. [DOI](https://doi.org/10.1002/sres.3850120108)
+- **Concepts pertinents :** différence entre modèles représentatifs et modèles conceptuels utilisés dans un apprentissage cyclique.
+- **Utilité pour GovCheck :** distinguer cohérence, adéquation représentative et utilité pour l'action.
+- **Limite :** conception de validation liée à la SSM, non généralisable mécaniquement.
+
+<a id="r-180"></a>
+### R-180 — Validity Frame-enabled model-based engineering processes
+- **Cité par :** [Dossier STUDY-003](research/le-moigne-colloquium.fr.md)
+- **Source :** Bert Van Acker et al., *Simulation*, 2023. [DOI](https://doi.org/10.1177/00375497231205035)
+- **Concepts pertinents :** contexte de validité, usage visé et limites des modèles tout au long de leur cycle de vie.
+- **Utilité pour GovCheck :** comparateur pour périmètre, hypothèses et argument de validité.
+- **Limite :** centré MBSE et systèmes cyber-physiques ; adaptation nécessaire.
+
+<a id="r-181"></a>
+### R-181 — Early validation and verification of system behaviour in model-based systems engineering
+- **Cité par :** [Dossier STUDY-003](research/le-moigne-colloquium.fr.md)
+- **Source :** Johan Cederbladh, Antonio Cicchetti et Jagadish Suryadevara, *ACM TOSEM*, 33(3), 2024. [DOI](https://doi.org/10.1145/3631976)
+- **Concepts pertinents :** revue systématique de validation/vérification du comportement et limites des modèles en phases précoces.
+- **Utilité pour GovCheck :** maturité des modèles et limites des preuves selon le cycle de vie.
+- **Limite :** résultats MBSE à contextualiser pour la gouvernance de dépôts logiciels.
+
+<a id="r-182"></a>
+### R-182 — Soft Systems Methodology : outils de l'Université de Cambridge
+- **Cité par :** [Dossier STUDY-003](research/le-moigne-colloquium.fr.md)
+- **Source :** [University of Cambridge, Institute for Manufacturing](https://www.ifm.eng.cam.ac.uk/research/dstools/soft-systems-methodology/)
+- **Concepts pertinents :** rich pictures, CATWOE, modèles conceptuels multiples, comparaison et changements faisables/désirables.
+- **Utilité pour GovCheck :** perspectives des parties prenantes et contraintes environnementales.
+- **Limite :** présentation pédagogique, pas norme ni garantie.
+
+<a id="r-183"></a>
+### R-183 — Témoignage d'une expérience pédagogique en ingénierie dans le constructivisme pragmatique
+- **Cité par :** [Dossier STUDY-003](research/le-moigne-colloquium.fr.md)
+- **Source :** [Jean-Yves Rossignol, RIC (septembre 2024)](https://www.intelligence-complexite.org/media/document/rencontres/temoignage-experience-pedagogique-ingenierie-paradigme-epistemologique/open)
+- **Concepts pertinents :** application du constructivisme pragmatique à la pédagogie de l'ingénierie.
+- **Utilité pour GovCheck :** exemple contextuel, pas preuve de transfert universel.
+- **Limite :** témoignage postérieur, pas intervention du colloque 2023.
+
+<a id="r-184"></a>
+### R-184 — Les formalismes de la modélisation systémique
+- **Cité par :** [Dossier STUDY-003](research/le-moigne-colloquium.fr.md)
+- **Source :** [Jean-Louis Le Moigne, texte de 1992 publié par le RIC](https://www.intelligence-complexite.org/media/document/ateliers/formalismes-modelisation-systemique/open)
+- **Concepts pertinents :** formalisation rigoureuse de la modélisation systémique et du raisonnement procédural.
+- **Utilité pour GovCheck :** question de la formalisation de modèles systémiques sans réduction à l'analytique statique.
+- **Limite :** argument théorique à évaluer indépendamment sur sémantique et solidité.
+
+<a id="r-185"></a>
+### R-185 — Model-based systems engineering: Motivation, current status, and research opportunities
+- **Cité par :** [Dossier STUDY-003](research/le-moigne-colloquium.fr.md)
+- **Source :** Azad M. Madni, *Systems Engineering*, 21(3), 2018, p. 172–190. [DOI](https://doi.org/10.1002/sys.21438)
+- **Concepts pertinents :** MBSE, modèles évolutifs, cohérence, traçabilité et assurance.
+- **Utilité pour GovCheck :** comparaison sur la gouvernance du cycle de vie centrée sur les modèles.
+- **Limite :** panorama MBSE ; « source unique de vérité » n'est pas une preuve de complétude.
+
+<a id="r-186"></a>
+### R-186 — Oversocialised Epistemology: A Critical Appraisal of Constructivism
+- **Cité par :** [Dossier STUDY-003](research/le-moigne-colloquium.fr.md)
+- **Source :** Volker H. Schmidt, *Sociology*, 35(1), 2001. [DOI](https://doi.org/10.1177/0038038501035001009)
+- **Concepts pertinents :** critique des conceptions trop socialisées de la connaissance.
+- **Utilité pour GovCheck :** contrepoint à l'idée que la construction sociale suffit à établir la validité.
+- **Limite :** argument critique en sociologie, ne clôt pas le débat épistémologique.

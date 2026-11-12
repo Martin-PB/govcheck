@@ -39,6 +39,10 @@ Le raisonnement de conception, les distinctions d'assurance, l'audit du modèle 
 
 Le [portefeuille de travaux gouverné](docs/work-portfolio/README.fr.md) dans le dépôt constitue le point d'ancrage canonique des identités, du cycle de vie et de la traçabilité des travaux. GitHub Issues/Projects restent des adaptateurs de coordination pendant la migration. Voir les architectures [0028](docs/architecture/0028-governed-work-portfolio-and-issue-tracker-boundary.fr.md) et [0030](docs/architecture/0030-repository-backed-work-portfolio-and-recoverable-history.fr.md).
 
+## Bibliothèque de recherche
+
+Le [Registre des recherches](docs/research/README.fr.md) indexe durablement les études non normatives susceptibles d'éclairer des décisions ultérieures. Chaque étude possède un identifiant stable, une analyse des sources, une évaluation d'applicabilité, ses limites, ses références croisées et des règles de traçabilité décisionnelle. Ces dossiers ne sont ni des tâches d'implémentation ni des exigences adoptées.
+
 ## Décisions et suite
 
 [ADR 0001](docs/decisions/0001-bootstrap-boundaries.fr.md) consigne les frontières du bootstrap. Restent à décider : langage d'implémentation, format/schéma canonique, langage d'expression, noyau formel, approche cryptographique et stratégie de dépendances. Ces choix doivent faire l'objet d'une analyse comparative explicite avant l'implémentation.

@@ -45,7 +45,9 @@ structure SACMElementRef where
   deriving DecidableEq, Repr
 
 /-- Minimal Claim/Assertion slice: textual value and optional subject are
-    retained separately from the formal proposition used by a bridge. -/
+    retained separately from the formal proposition used by a bridge.
+    assertionValue and assertionRule are opaque source payload/reference strings
+    here, not complete formalizations of those SACM metaclasses. -/
 structure SACMClaim where
   identity : String
   value : Option String
@@ -92,6 +94,7 @@ inductive InferenceTypeKind where
     byRule requires a concrete rule identity and a proof term. -/
 inductive InferenceBridge : List Prop → Prop → InferenceTypeKind → Type where
   | collective {premises : List Prop} {conclusion : Prop} :
+      premises ≠ [] →
       (AllPremises premises ↔ conclusion) →
       InferenceBridge premises conclusion .collective
   | necessary {premise conclusion : Prop} :
@@ -134,7 +137,7 @@ theorem collective_inference_is_joint_equivalence
     (bridge : InferenceBridge premises conclusion .collective) :
     AllPremises premises ↔ conclusion := by
   cases bridge with
-  | collective proof => exact proof
+  | collective _ proof => exact proof
 
 theorem claim_interpretation_preserves_declaration
     {claim : SACMClaim} {target : ClaimSemantics}

@@ -116,8 +116,8 @@
       "status": "kernel-checked; axiom-audited",
       "verification": {
         "workflow": ".github/workflows/lean-coherence.yml",
-        "workflowRunId": 43215132423,
-        "checkedCommit": "d801e8dc8ceeb99664b0a4703068e807fdd81892",
+        "workflowRunId": 43215882124,
+        "checkedCommit": "5ddfe93d4d82007a8db207eaab8fc4ef8ea56434",
         "result": "lake-build-success; axiom-audit-success",
         "lean": "4.19.0",
         "axiomAudit": {
@@ -183,19 +183,21 @@
       "releaseBinding": "release-tag-and-commit",
       "status": "kernel-checked; axiom-audited",
       "limitations": [
-        "small assertion/claim/inference slice only",
-        "claim proposition interpretation remains authority-supplied",
-        "probable inference unsupported by classical fragment",
-        "not full SACM conformance or XMI/XML round-trip proof"
+        "formal mapping declarations only",
+        "no normative XMI/XML instance fixture imported",
+        "natural-language claim interpretation remains authority-supplied",
+        "SACM 2.4 Beta 1 PDF and metamodel XML contain reported contradictions; source view must be pinned",
+        "probable inference intentionally unsupported by classical fragment",
+        "other multiplicity, value-type and inheritance conflicts remain unresolved"
       ],
       "verification": {
         "workflow": ".github/workflows/lean-coherence.yml",
-        "workflowRunId": 43215132423,
-        "checkedCommit": "d801e8dc8ceeb99664b0a4703068e807fdd81892",
+        "workflowRunId": 43215882124,
+        "checkedCommit": "5ddfe93d4d82007a8db207eaab8fc4ef8ea56434",
         "result": "lake-build-success; axiom-audit-success",
         "lean": "4.19.0",
         "axiomAudit": {
-          "publicSACMTheorems": 13,
+          "publicSACMTheorems": 19,
           "axiomsUsed": 0
         },
         "limitations": [

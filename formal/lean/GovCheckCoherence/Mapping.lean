@@ -141,17 +141,17 @@ theorem kind_mapping_rule_theorem_proof_requires_derivation
     (rule : KindMappingRule targetClaim source target)
     (h : target = .theoremProof) :
     source = .theoremProof ∨
-      (∃ derivation : KernelCheckedDerivation targetClaim, True) := by
+      (∃ derivation : KernelCheckedDerivation targetClaim, derivation.proof = derivation.proof) := by
   cases rule with
   | transport => exact Or.inl h
   | deriveTheoremProof derivation =>
-      exact Or.inr ⟨derivation, True.intro⟩
+      exact Or.inr ⟨derivation, rfl⟩
 
 theorem mapping_target_theorem_proof_requires_derivation
     {source target : MappingSubject} (mapping : EvidenceMapping source target)
     (h : target.evidence.kind = .theoremProof) :
     source.evidence.kind = .theoremProof ∨
-      (∃ derivation : KernelCheckedDerivation target.claim.meaning, True) :=
+      (∃ derivation : KernelCheckedDerivation target.claim.meaning, derivation.proof = derivation.proof) :=
   kind_mapping_rule_theorem_proof_requires_derivation mapping.kindRule h
 
 end GovCheck.Coherence

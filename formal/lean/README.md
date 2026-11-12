@@ -56,17 +56,21 @@ The first profile requires exact scope equality; it does not yet define a scope 
 
 ## Explicit limits
 
-This is not yet a complete mapping-contract semantics. In particular, it does
-not authenticate an imported theorem proof, bind a derivation to exact
-premises/conclusion/axioms/kernel identity, prove source-model semantic
-preservation, validate SACM serialization, establish provenance, or check
-freshness and authority scope. Those are separate obligations.
+This is not yet a complete metamodel coherence proof. In particular, it does
+not prove that a production importer/exporter constructs valid mapping values,
+that a source-native SACM/OWL/SEON interpretation is correctly bound to the
+Lean propositions, that mappings compose conservatively, or that an external
+implementation refines the formal contract. Freshness and temporal authority
+remain governed by the repository's TLA+ models and require a separate
+conformance argument.
 
-The `DerivationOrigin.kernelChecked` constructor currently expresses the
-gate that a new derivation must be supplied; it is not yet a proof-object
-type. The next refinement must replace it with a typed derivation object whose
-exact statement is kernel checked and whose dependency set is bound to source
-fingerprints.
+The proof term is checked by the pinned Lean kernel, but the `premises`,
+`assumptions`, `kernelIdentity` and `kernelVersion` fields are currently
+metadata and are not yet mechanically linked to the proof term's dependency
+closure. Claim identifiers are paired with Lean propositions in the mapping
+subject, but no production parser has yet been proven to preserve that binding.
+The `approximate` coverage constructor records a relation and declared
+limitations; it does not assert a sound semantic refinement.
 
 ## Verification status
 

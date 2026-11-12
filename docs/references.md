@@ -44,6 +44,7 @@
 | Open-source licensing and attribution | R-108 |
 | Ontology reuse, software-engineering ontology network and semantic interoperability | R-115–R-120 |
 | Metamodel coherence, semantic preservation and formal verification | R-121–R-127 |
+| Concurrent edits, semantic merge conflicts and multi-agent delivery | R-142–R-151 |
 
 ## Full reference entries
 
@@ -73,6 +74,7 @@
 - **Goal-oriented requirements modeling:** R-44, R-92.
 - **Security assurance cases and metamodels:** R-33–R-34.
 - **PEAK decision model:** R-74.
+- **Concurrent edits, semantic conflicts, merge queues and multi-agent delivery:** R-142–R-151.
 - **Continuous monitoring and runtime assurance:** R-70, R-72, R-75–R-76.
 - **Assurance 2.0 and SACM evolution:** R-71, R-73.
 - **Domain semantics, product quality and open-source compliance (candidate sources):** R-94–R-100, R-102–R-103.
@@ -137,7 +139,7 @@
 <a id="r-06"></a>
 
 ### R-06 — in-toto: software supply-chain integrity
-- **Cited by:** [0006](architecture/0006-threat-and-trust-model.md), [0007](architecture/0007-technology-decision-framework.md), [0010](architecture/0010-assurance-proof-and-conformance.md), [0014](architecture/0014-governed-development-workflow.md), [0015](architecture/0015-governance-conformance-and-validation-plan.md), [ADR 0002](decisions/0002-study-placement.md), [ADR 0007](decisions/0007-mandatory-sources.md)
+- **Cited by:** [0006](architecture/0006-threat-and-trust-model.md), [0007](architecture/0007-technology-decision-framework.md), [0010](architecture/0010-assurance-proof-and-conformance.md), [0014](architecture/0014-governed-development-workflow.md), [0015](architecture/0015-governance-conformance-and-validation-plan.md), [ADR 0002](decisions/0002-study-placement.md), [ADR 0007](decisions/0007-mandatory-sources.md), [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
 
 - **Primary sources:** [in-toto project](https://in-toto.io/) · [USENIX Security 2019 paper](https://ssl.engineering.nyu.edu/papers/torres-toto-usenix19.pdf)
 - **Academic reference:** Santiago Torres-Arias et al., “in-toto: Providing farm-to-table guarantees for bits and bytes,” 28th USENIX Security Symposium, 2019.
@@ -148,7 +150,7 @@
 <a id="r-07"></a>
 
 ### R-07 — SLSA
-- **Cited by:** [0006](architecture/0006-threat-and-trust-model.md), [0007](architecture/0007-technology-decision-framework.md), [0014](architecture/0014-governed-development-workflow.md), [0015](architecture/0015-governance-conformance-and-validation-plan.md), [Spec 0005](specifications/0005-assurance-model.md), [ADR 0002](decisions/0002-study-placement.md)
+- **Cited by:** [0006](architecture/0006-threat-and-trust-model.md), [0007](architecture/0007-technology-decision-framework.md), [0014](architecture/0014-governed-development-workflow.md), [0015](architecture/0015-governance-conformance-and-validation-plan.md), [Spec 0005](specifications/0005-assurance-model.md), [ADR 0002](decisions/0002-study-placement.md), [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
 
 - **Primary source:** [SLSA specification](https://slsa.dev/spec/)
 - **Relevant concepts:** software supply-chain levels, provenance and build integrity.
@@ -730,7 +732,7 @@
 
 <a id="r-70"></a>
 ### R-70 — Wei et al., “ACCESS: Assurance Case Centric Engineering of Safety-critical Systems” (2024)
-- **Cited by:** [0010](architecture/0010-assurance-proof-and-conformance.md), [0021](architecture/0021-assurance-claims-and-freshness.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.md)
+- **Cited by:** [0010](architecture/0010-assurance-proof-and-conformance.md), [0021](architecture/0021-assurance-claims-and-freshness.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.md), [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
 - **Primary source:** [Journal of Systems and Software article](https://doi.org/10.1016/j.jss.2024.112034) · [open repository copy](https://eprints.whiterose.ac.uk/id/eprint/211554/)
 - **Bibliographic reference:** Ran Wei, Simon Foster, Haitao Mei, Fang Yan, Ruizhe Yang, Ibrahim Habli, Colin O’Halloran, Nick Tudor, Tim Kelly and Yakoub Nemouchi, *Journal of Systems and Software* 213 (2024), article 112034.
 - **Relevant concepts:** model-based assurance cases using SACM; traceability to heterogeneous engineering artifacts; automated evaluation, change-impact analysis, formal-method evidence and dynamic runtime assurance-case evaluation.
@@ -748,7 +750,7 @@
 
 <a id="r-72"></a>
 ### R-72 — Ericsson, “Runtime threat modeling for attack prediction and defense” (2025)
-- **Cited by:** [0006](architecture/0006-threat-and-trust-model.md), [0021](architecture/0021-assurance-claims-and-freshness.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.md)
+- **Cited by:** [0006](architecture/0006-threat-and-trust-model.md), [0021](architecture/0021-assurance-claims-and-freshness.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.md), [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
 - **Primary source:** [Ericsson engineering article](https://www.ericsson.com/en/blog/2025/12/runtime-threat-modeling-for-attack-prediction-and-defense)
 - **Relevant concepts:** combining telemetry, configuration state and asset/context changes with threat knowledge; observation-driven threat hypotheses; control-effectiveness assessment and feedback loops.
 - **Use in GovCheck:** industrial example of connecting production observability to evolving threat models and control assessment.
@@ -773,7 +775,7 @@
 
 <a id="r-75"></a>
 ### R-75 — NIST SP 800-137, Information Security Continuous Monitoring (2011)
-- **Cited by:** [0006](architecture/0006-threat-and-trust-model.md), [0021](architecture/0021-assurance-claims-and-freshness.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.md)
+- **Cited by:** [0006](architecture/0006-threat-and-trust-model.md), [0021](architecture/0021-assurance-claims-and-freshness.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.md), [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
 - **Primary source:** [NIST publication](https://csrc.nist.gov/pubs/sp/800/137/final) · [DOI](https://doi.org/10.6028/NIST.SP.800-137)
 - **Relevant concepts:** continuous visibility into assets, threats, vulnerabilities and deployed-control effectiveness; monitoring aligned with organizational risk tolerance; response when observations show controls are inadequate.
 - **Use in GovCheck:** supports a production feedback loop in which observations update system posture, control assessments and risk decisions rather than leaving threat models frozen at design time.
@@ -781,7 +783,7 @@
 
 <a id="r-76"></a>
 ### R-76 — Rushby, “Runtime Certification” (RV 2008)
-- **Cited by:** [0006](architecture/0006-threat-and-trust-model.md), [0010](architecture/0010-assurance-proof-and-conformance.md), [0021](architecture/0021-assurance-claims-and-freshness.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.md)
+- **Cited by:** [0006](architecture/0006-threat-and-trust-model.md), [0010](architecture/0010-assurance-proof-and-conformance.md), [0021](architecture/0021-assurance-claims-and-freshness.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.md), [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
 - **Primary source:** [Author's paper, presented at the Eighth Workshop on Runtime Verification](https://citeseerx.ist.psu.edu/document?doi=c28045b0a573839028f6042870a3eccd8f9be748&repid=rep1&type=pdf)
 - **Bibliographic reference:** John Rushby, “Runtime Certification,” invited paper at RV 2008, Budapest, April 2008.
 - **Relevant concepts:** assurance cases as claims, evidence and arguments; monitoring assumptions and anomalies at runtime; using runtime verification as evidence; detecting violated environmental assumptions.
@@ -1209,3 +1211,83 @@
 - **Use in GovCheck:** distinguish simple traceability from semantic mappings; state when adding GovCheck vocabulary must preserve consequences in source vocabularies.
 - **Limit:** conservativity is relative to a chosen signature, semantics and application; define it per mapping/use case, not universally.
 
+
+<a id="r-142"></a>
+### R-142 — ConE: Concurrent Edit Detection Tool
+- **Cited by:** [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
+- **Primary source:** [ACM/IEEE paper, DOI 10.1145/3478019](https://doi.org/10.1145/3478019)
+- **Relevant concepts:** detecting concurrently edited files across pull requests; empirical relationship between overlap and bug risk.
+- **Use in GovCheck:** motivates representing overlapping work scopes as a signal for impact analysis and targeted review.
+- **Limit:** the study concerns six large Microsoft repositories over six months; overlap is not proof of incompatibility, and a detector is not a correctness proof.
+
+<a id="r-143"></a>
+### R-143 — Empirical investigation into merge conflicts and software quality
+- **Cited by:** [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
+- **Primary source:** [Open paper PDF](https://ics.uci.edu/~iftekha/pdf/J4.pdf)
+- **Relevant concepts:** conflict prevalence, semantic conflict categories and association between conflict-affected code and bugs in a sample of open-source projects.
+- **Use in GovCheck:** evidence that conflict resolution and semantic impact deserve separate treatment in assurance.
+- **Limit:** results are empirical associations within a particular dataset and methodology; they do not establish universal causal rates or project-specific risk.
+
+<a id="r-144"></a>
+### R-144 — ConflictBench: A benchmark to evaluate software merge tools
+- **Cited by:** [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
+- **Primary source:** [Journal of Systems and Software, 2024](https://www.sciencedirect.com/science/article/pii/S0164121224001298)
+- **Relevant concepts:** Java merge-conflict dataset and comparative evaluation of merge tools.
+- **Use in GovCheck:** supports distinguishing tool applicability and merge success from semantic correctness.
+- **Limit:** dataset and language coverage are bounded; benchmark outcomes do not establish correctness for arbitrary repositories or languages.
+
+<a id="r-145"></a>
+### R-145 — Lightweight Semantic Conflict Detection with Static Analysis
+- **Cited by:** [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
+- **Primary source:** [ICSE Companion 2024, DOI 10.1145/3639478.3643118](https://doi.org/10.1145/3639478.3643118)
+- **Relevant concepts:** static-analysis detection of dynamic semantic conflicts that may remain after textual merge; reported F1 0.50 and accuracy 0.60 on 99 experimental units.
+- **Use in GovCheck:** motivates layered detection while preserving uncertainty and detector limitations.
+- **Limit:** reported evaluation is small and metrics are modest; the method is not an authoritative compatibility decision.
+
+<a id="r-146"></a>
+### R-146 — Research on search-based and synthesis-based merge conflict resolution
+- **Cited by:** [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
+- **Primary sources:** Paulino, [ACM TOSEM 2026, DOI 10.1145/3748256](https://doi.org/10.1145/3748256) · Pan et al., [Microsoft Research / ICSE 2021](https://www.microsoft.com/en-us/research/publication/can-program-synthesis-be-used-to-learn-merge-conflict-resolutions-an-empirical-analysis/)
+- **Relevant concepts:** search-guided conflict-resolution candidates and learned synthesis patterns for bounded conflict classes.
+- **Use in GovCheck:** supports recording resolver provenance, inputs, tool version and post-resolution assurance, without giving the resolver acceptance authority.
+- **Limit:** coverage and accuracy depend on conflict class, dataset and evaluation; similarity heuristics are not semantic proof.
+
+<a id="r-147"></a>
+### R-147 — LLM-based multi-agent systems for software engineering: literature review
+- **Cited by:** [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
+- **Primary source:** [ACM TOSEM 2025, DOI 10.1145/3712003](https://doi.org/10.1145/3712003)
+- **Relevant concepts:** survey of multi-agent software-engineering architectures, collaboration patterns, benefits and research gaps.
+- **Use in GovCheck:** contextualizes agent collaboration as one workflow class whose coordination and assurance claims need evaluation.
+- **Limit:** a literature review is not evidence that a particular framework, coordination protocol or deployment is reliable.
+
+<a id="r-148"></a>
+### R-148 — DORA 2025 State of AI-assisted Software Development
+- **Cited by:** [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
+- **Primary sources:** [DORA report](https://dora.dev/research/2025/dora-report/) · [Google Research publication](https://research.google/pubs/dora-2025-state-of-ai-assisted-software-development-report/)
+- **Relevant concepts:** organizational and delivery-system factors associated with AI-assisted software development; AI as an amplifier of existing strengths and weaknesses.
+- **Use in GovCheck:** cautions against equating agent count or coding speed with delivery quality; emphasizes governance, feedback and engineering-system context.
+- **Limit:** survey and qualitative research inform organizational decisions but do not prove causality or predict a specific repository's outcomes.
+
+<a id="r-149"></a>
+### R-149 — GitHub merge queues
+- **Cited by:** [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
+- **Primary source:** [Official GitHub documentation](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue)
+- **Relevant concepts:** temporary merge-group branches; required checks against the base plus queued changes; bounded build concurrency and merge grouping.
+- **Use in GovCheck:** industrial example of validating an exact integration candidate rather than reusing isolated pull-request results.
+- **Limit:** GitHub-specific product documentation; the feature must not become GovCheck's canonical or mandatory architecture.
+
+<a id="r-150"></a>
+### R-150 — “Your Team's Agents Are All Shipping to the Same Code at Once”
+- **Cited by:** [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
+- **Source:** [Video supplied for the review](https://youtu.be/fTUinMqA1XQ)
+- **Relevant concepts:** industry framing of concurrent agent contributions and the coordination/integration bottleneck.
+- **Use in GovCheck:** motivation for the research question and adversarial scenarios, including individually passing but collectively incompatible changes.
+- **Limit:** a talk/video is a secondary industry source and problem framing, not a peer-reviewed result or sufficient evidence for adopting an architecture.
+
+<a id="r-151"></a>
+### R-151 — Predicting merge conflicts considering social and technical assets
+- **Cited by:** [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
+- **Primary source:** [Empirical Software Engineering, DOI 10.1007/s10664-023-10395-8](https://link.springer.com/article/10.1007/s10664-023-10395-8)
+- **Relevant concepts:** empirical prediction of merge conflicts using social and technical assets.
+- **Use in GovCheck:** supports assessing work overlap and dependency/coordination context rather than treating changed-file overlap as a complete conflict predicate.
+- **Limit:** predictive associations and model performance depend on the dataset, features and development context; they do not establish incompatibility or causality.

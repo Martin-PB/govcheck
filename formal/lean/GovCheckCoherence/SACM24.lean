@@ -135,6 +135,12 @@ theorem collective_inference_is_joint_equivalence
   cases bridge with
   | collective proof => exact proof
 
+theorem claim_interpretation_preserves_declaration
+    {claim : SACMClaim} {target : ClaimSemantics}
+    (mapping : SACMClaimInterpretation claim target) :
+    mapping.disposition = mapAssertionDeclaration claim.declaration :=
+  mapping.declarationPreserved
+
 theorem claim_interpretation_preserves_identity
     {claim : SACMClaim} {target : ClaimSemantics}
     (mapping : SACMClaimInterpretation claim target) :

@@ -37,7 +37,19 @@ Consequences:
 3. A separate compatibility package could test CSLib on its pinned toolchain without changing the trusted build of the GovCheck semantic core.
 4. Alternatively, a historical CSLib commit compatible with Lean 4.19 could be investigated, but it must be identified from repository history and tested—not guessed.
 
-## 4. Does CSLib solve the metamodel coherence problem?
+## 4. Preliminary trusted-base source scan
+
+A repository code-search pass at the inspected commit found:
+
+- no indexed matches for `sorry`;
+- no indexed matches for `run_tac`, `implemented_by` or `extern`;
+- matches for `axiom` primarily describe axioms as objects of the modal/propositional logics being formalized, rather than Lean kernel axioms;
+- matches for `unsafe` were in test comments, not identified declarations;
+- several `opaque` declarations are type tags such as `InferenceSystem.Default`, `MLL` and `ND`, not by themselves evidence of an unsound proof boundary.
+
+This is a preliminary search, not a trusted-base certification: GitHub code search is not a complete static audit, and transitive Mathlib dependencies and generated/compiled artifacts still need inspection. The isolated build is the next step; before importing any definition into a critical GovCheck theorem, inspect the full transitive dependency closure and audit its axioms with Lean's `#print axioms` or an equivalent reproducible audit.
+
+## 5. Does CSLib solve the metamodel coherence problem?
 
 No single CSLib module inspected provides the missing GovCheck-specific semantics for:
 
@@ -51,7 +63,7 @@ No single CSLib module inspected provides the missing GovCheck-specific semantic
 
 Lean remains the proof assistant and kernel-checking environment in which GovCheck can state these obligations. CSLib can provide reusable formal definitions for selected mathematical structures and semantic machinery. It is not a substitute for the GovCheck bridge contracts.
 
-## 5. Recommended integration strategy
+## 6. Recommended integration strategy
 
 Do not add CSLib to the core package yet. Instead:
 
@@ -62,7 +74,7 @@ Do not add CSLib to the core package yet. Instead:
 5. Compare the CSLib result with the existing TLA+ model. Do not treat translation between TLA+ and Lean/CSLib as trusted unless its semantic preservation is established.
 6. Only after the experiment succeeds should we decide whether CSLib is a direct dependency, an isolated proof backend, or simply a reference formalization.
 
-## 6. Conclusion
+## 7. Conclusion
 
 CSLib should be treated as a serious candidate formalization library for lifecycle semantics, transition systems, temporal reasoning and related computer-science theories. The inspected current HEAD is not a drop-in dependency for GovCheck's Lean 4.19 core, and it does not provide the ontology-mapping guarantees GovCheck needs.
 

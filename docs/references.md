@@ -41,7 +41,7 @@
 | Policy-as-code and runtime agent-governance research | R-105 |
 | OWASP guidance for AI-agent and MCP security | R-106 |
 | GitHub Actions workflow location and syntax | R-107 |
-| Canonical journal ordering, durable recovery and idempotent retry | R-142–R-144 |
+| Canonical journal ordering, durable recovery and idempotent retry | R-194–R-196 |
 | Open-source licensing and attribution | R-108 |
 | Repository intent, lifecycle and requirements engineering | R-114–R-118, R-121–R-122 |
 | System modeling and assurance-case metamodels | R-119–R-120 |
@@ -1177,24 +1177,24 @@
 - **Use in GovCheck:** comparison point for an existing published `INTENT.md` format and its scope.
 - **Limit:** its bundled content model is not adopted by GovCheck; GovCheck does not claim conformance or compatibility.
 
-<a id="r-142"></a>
-### R-142 — Linearizability: A Correctness Condition for Concurrent Objects
+<a id="r-194"></a>
+### R-194 — Linearizability: A Correctness Condition for Concurrent Objects
 - **Cited by:** [Specification 0007](specifications/0007-canonical-governance-journal-protocol.md), [Decision-session record 0008](decisions/0008-governance-applicability-arbitration-session.md), [Work portfolio event journal](work-portfolio/events.md), [Work-item register](work-portfolio/work-items.md)
 - **Primary source:** Maurice P. Herlihy and Jeannette M. Wing, “Linearizability: A Correctness Condition for Concurrent Objects,” *ACM Transactions on Programming Languages and Systems*, 12(3), 1990, pp. 463–492. [DOI](https://doi.org/10.1145/78969.78972) · [Author-hosted paper](https://www.cs.cmu.edu/~wing/publications/HerlihyWing90.pdf)
 - **Relevant concepts:** concurrent operations appear to take effect at one point between invocation and response while respecting a legal sequential specification.
 - **Use in GovCheck:** provides the formal concurrency concept behind the journal's single linearization point for compare-and-append.
 - **Limit:** linearizability is a correctness condition, not a storage implementation or a proof that a particular journal satisfies it.
 
-<a id="r-143"></a>
-### R-143 — ARIES write-ahead logging and transaction recovery
+<a id="r-195"></a>
+### R-195 — ARIES write-ahead logging and transaction recovery
 - **Cited by:** [Specification 0007](specifications/0007-canonical-governance-journal-protocol.md), [Decision-session record 0008](decisions/0008-governance-applicability-arbitration-session.md), [Work portfolio event journal](work-portfolio/events.md), [Work-item register](work-portfolio/work-items.md)
 - **Primary source:** C. Mohan, Don Haderle, Bruce Lindsay, Hamid Pirahesh and Peter Schwarz, “ARIES: A Transaction Recovery Method Supporting Fine-Granularity Locking and Partial Rollbacks Using Write-Ahead Logging,” *ACM Transactions on Database Systems*, 17(1), 1992. [IBM Research publication](https://research.ibm.com/publications/aries-a-transaction-recovery-method-supporting-fine-granularity-locking-and-partial-rollbacks-using-write-ahead-logging)
 - **Relevant concepts:** write-ahead logging, durable transaction recovery, redo/undo and restart recovery.
 - **Use in GovCheck:** informs the distinction between volatile preparation, durable commit and reconstruction after interruption.
 - **Limit:** ARIES is a database recovery algorithm; citing it does not select a database, imply direct adoption, or prove the GovCheck journal's durability.
 
-<a id="r-144"></a>
-### R-144 — RFC 9110, HTTP Semantics: idempotent methods
+<a id="r-196"></a>
+### R-196 — RFC 9110, HTTP Semantics: idempotent methods
 - **Cited by:** [Specification 0007](specifications/0007-canonical-governance-journal-protocol.md), [Decision-session record 0008](decisions/0008-governance-applicability-arbitration-session.md), [Work portfolio event journal](work-portfolio/events.md), [Work-item register](work-portfolio/work-items.md)
 - **Primary source:** [RFC 9110 §9.2.2 — Idempotent Methods](https://www.rfc-editor.org/rfc/rfc9110.html#section-9.2.2)
 - **Relevant concepts:** repeatable requests have the same intended effect as one request, enabling safe retry after a lost response when the operation semantics are idempotent.

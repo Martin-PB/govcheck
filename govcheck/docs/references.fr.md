@@ -119,24 +119,24 @@ La présence d'une référence est descriptive, pas une adoption. Citer une mét
 
 ## Journal canonique, concurrence et reprise
 
-<a id="r-142"></a>
-### R-142 — Linearizability: A Correctness Condition for Concurrent Objects
+<a id="r-194"></a>
+### R-194 — Linearizability: A Correctness Condition for Concurrent Objects
 - **Cité par :** [Spécification 0007](specifications/0007-canonical-governance-journal-protocol.fr.md)
 - **Source primaire :** Maurice P. Herlihy et Jeannette M. Wing, « Linearizability: A Correctness Condition for Concurrent Objects », *ACM Transactions on Programming Languages and Systems*, 12(3), 1990, p. 463–492. [DOI](https://doi.org/10.1145/78969.78972) · [Article hébergé par les auteurs](https://www.cs.cmu.edu/~wing/publications/HerlihyWing90.pdf)
 - **Concepts pertinents :** des opérations concurrentes semblent prendre effet en un point unique entre leur invocation et leur réponse, tout en respectant une spécification séquentielle légale.
 - **Utilité pour GovCheck :** fournit le concept formel de concurrence sous-jacent au point unique de linéarisation du compare-and-append du journal.
 - **Limite :** la linéarisabilité est une condition de correction, pas une implémentation de stockage ni une preuve qu'un journal donné la satisfait.
 
-<a id="r-143"></a>
-### R-143 — Journalisation anticipée ARIES et reprise transactionnelle
+<a id="r-195"></a>
+### R-195 — Journalisation anticipée ARIES et reprise transactionnelle
 - **Cité par :** [Spécification 0007](specifications/0007-canonical-governance-journal-protocol.fr.md)
 - **Source primaire :** C. Mohan, Don Haderle, Bruce Lindsay, Hamid Pirahesh et Peter Schwarz, « ARIES: A Transaction Recovery Method Supporting Fine-Granularity Locking and Partial Rollbacks Using Write-Ahead Logging », *ACM Transactions on Database Systems*, 17(1), 1992. [Publication IBM Research](https://research.ibm.com/publications/aries-a-transaction-recovery-method-supporting-fine-granularity-locking-and-partial-rollbacks-using-write-ahead-logging)
 - **Concepts pertinents :** journalisation anticipée, reprise transactionnelle durable, redo/undo et reprise après redémarrage.
 - **Utilité pour GovCheck :** éclaire la distinction entre préparation volatile, commit durable et reconstruction après interruption.
 - **Limite :** ARIES est un algorithme de reprise de base de données ; sa citation ne sélectionne pas une base, n'implique pas son adoption directe et ne prouve pas la durabilité du journal GovCheck.
 
-<a id="r-144"></a>
-### R-144 — RFC 9110, sémantique HTTP : méthodes idempotentes
+<a id="r-196"></a>
+### R-196 — RFC 9110, sémantique HTTP : méthodes idempotentes
 - **Cité par :** [Spécification 0007](specifications/0007-canonical-governance-journal-protocol.fr.md)
 - **Source primaire :** [RFC 9110 §9.2.2 — Méthodes idempotentes](https://www.rfc-editor.org/rfc/rfc9110.html#section-9.2.2)
 - **Concepts pertinents :** des requêtes répétables produisent le même effet voulu qu'une requête unique, ce qui permet une nouvelle tentative sûre après perte de réponse lorsque la sémantique de l'opération est idempotente.

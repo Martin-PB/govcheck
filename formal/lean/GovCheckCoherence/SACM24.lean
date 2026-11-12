@@ -26,7 +26,7 @@ def mapAssertionDeclaration : AssertionDeclarationKind → ClaimDisposition
   | .byRule => .ruleDeclared
 
 theorem mapAssertionDeclaration_injective :
-    Function.Injective mapAssertionDeclaration := by
+    ∀ a b, mapAssertionDeclaration a = mapAssertionDeclaration b → a = b := by
   intro a b h
   cases a <;> cases b <;> simp_all [mapAssertionDeclaration]
 

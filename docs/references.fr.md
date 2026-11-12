@@ -1117,7 +1117,7 @@
 
 <a id="r-143"></a>
 ### R-143 — Journalisation anticipée ARIES et reprise transactionnelle
-- **Cité par :** [Spécification 0007](specifications/0007-canonical-governance-journal-protocol.fr.md), [Journal des événements du portefeuille](work-portfolio/events.fr.md), [Registre des éléments de travail](work-portfolio/work-items.fr.md)
+- **Cité par :** [Spécification 0007](specifications/0007-canonical-governance-journal-protocol.fr.md), [Journal des événements du portefeuille](work-portfolio/events.fr.md)
 - **Source primaire :** C. Mohan, Don Haderle, Bruce Lindsay, Hamid Pirahesh et Peter Schwarz, « ARIES: A Transaction Recovery Method Supporting Fine-Granularity Locking and Partial Rollbacks Using Write-Ahead Logging », *ACM Transactions on Database Systems*, 17(1), 1992. [Publication IBM Research](https://research.ibm.com/publications/aries-a-transaction-recovery-method-supporting-fine-granularity-locking-and-partial-rollbacks-using-write-ahead-logging)
 - **Concepts pertinents :** journalisation anticipée, reprise transactionnelle durable, redo/undo et reprise après redémarrage.
 - **Utilité pour GovCheck :** éclaire la distinction entre préparation volatile, commit durable et reconstruction après interruption.
@@ -1125,7 +1125,7 @@
 
 <a id="r-144"></a>
 ### R-144 — RFC 9110, sémantique HTTP : méthodes idempotentes
-- **Cité par :** [Spécification 0007](specifications/0007-canonical-governance-journal-protocol.fr.md), [Journal des événements du portefeuille](work-portfolio/events.fr.md), [Registre des éléments de travail](work-portfolio/work-items.fr.md)
+- **Cité par :** [Spécification 0007](specifications/0007-canonical-governance-journal-protocol.fr.md), [Journal des événements du portefeuille](work-portfolio/events.fr.md)
 - **Source primaire :** [RFC 9110 §9.2.2 — Méthodes idempotentes](https://www.rfc-editor.org/rfc/rfc9110.html#section-9.2.2)
 - **Concepts pertinents :** des requêtes répétables produisent le même effet voulu qu'une requête unique, ce qui permet une nouvelle tentative sûre après perte de réponse lorsque la sémantique de l'opération est idempotente.
 - **Utilité pour GovCheck :** éclaire la distinction entre la nouvelle tentative d'une requête d'ajout exacte et la création accidentelle d'un second événement normatif.

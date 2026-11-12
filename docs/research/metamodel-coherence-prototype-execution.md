@@ -49,7 +49,7 @@ This illustrates the intended distinction: the first run was not “a failed pro
 
 The exact inspected CSLib HEAD is `70e25828d89a3916e41c9d84cfffd7e6093bb1a0`, pinned to Lean `v4.36.0-rc2` and Mathlib revision `887bb849a9f64e1c66499fd5ff8523c864e78941`. This is incompatible with the core's Lean 4.19.0 toolchain as a direct package dependency. The audit identifies reusable BTL, omega-sequence temporal properties, LTS and modal semantics, while finding no ready-made evidence/provenance/authority mapping metamodel: [CSLib compatibility and semantic-fit audit](cslib-compatibility-audit.md) / [French audit](cslib-compatibility-audit.fr.md).
 
-An isolated compatibility probe now lives in `formal/cslib-compat/`. Its CI result is pending at the time of this record. Even a successful build will establish API/build compatibility only, not a semantic refinement theorem.
+The isolated probe in `formal/cslib-compat/` passed: [run 43210543930](https://github.com/Martin-PB/govcheck/actions/runs/43210543930), inspected CSLib commit `70e25828d89a3916e41c9d84cfffd7e6093bb1a0`, Lean 4.36.0-rc2, 1,779 build jobs. It compiled BTL model/satisfaction APIs and omega-sequence `Step`/`LeadsTo`. This establishes API/build compatibility only, not a semantic refinement theorem.
 
 ## 4. Integration and repository governance
 

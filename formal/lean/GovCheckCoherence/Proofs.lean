@@ -213,4 +213,12 @@ theorem sacm_mapping_has_semantic_bridge
       mapping.evidenceMapping.contract.coverage :=
   SACM24.sacm_claim_mapping_has_semantic_bridge mapping
 
+/-- SACM assertion declaration remains distinct in the GovCheck claim disposition. -/
+theorem sacm_mapping_preserves_assertion_declaration
+    {sacmClaim : SACM24.SACMClaim} {source target : MappingSubject}
+    (mapping : SACM24.SACMClaimMapping sacmClaim source target) :
+    mapping.sourceInterpretation.disposition =
+      SACM24.mapAssertionDeclaration sacmClaim.declaration :=
+  SACM24.claim_interpretation_preserves_declaration mapping.sourceInterpretation
+
 end GovCheck.Coherence

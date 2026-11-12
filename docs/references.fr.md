@@ -1109,7 +1109,7 @@
 
 <a id="r-142"></a>
 ### R-142 — Linearizability: A Correctness Condition for Concurrent Objects
-- **Cité par :** [Spécification 0007](specifications/0007-canonical-governance-journal-protocol.fr.md), [Journal des événements du portefeuille](work-portfolio/events.fr.md), [Registre des éléments de travail](work-portfolio/work-items.fr.md)
+- **Cité par :** [Spécification 0007](specifications/0007-canonical-governance-journal-protocol.fr.md), [Journal des événements du portefeuille](work-portfolio/events.fr.md)
 - **Source primaire :** Maurice P. Herlihy et Jeannette M. Wing, « Linearizability: A Correctness Condition for Concurrent Objects », *ACM Transactions on Programming Languages and Systems*, 12(3), 1990, p. 463–492. [DOI](https://doi.org/10.1145/78969.78972) · [Article hébergé par les auteurs](https://www.cs.cmu.edu/~wing/publications/HerlihyWing90.pdf)
 - **Concepts pertinents :** des opérations concurrentes semblent prendre effet en un point unique entre leur invocation et leur réponse, tout en respectant une spécification séquentielle légale.
 - **Utilité pour GovCheck :** fournit le concept formel de concurrence sous-jacent au point unique de linéarisation du compare-and-append du journal.

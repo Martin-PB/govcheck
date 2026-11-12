@@ -1,0 +1,30 @@
+name: Lean epistemic core
+
+on:
+  push:
+    branches:
+      - main
+      - "formal/metamodel-epistemic-core-*"
+    paths:
+      - "formal/lean/**"
+      - ".github/workflows/lean-epistemic-core.yml"
+  pull_request:
+    paths:
+      - "formal/lean/**"
+      - ".github/workflows/lean-epistemic-core.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lean-build:
+    name: Kernel-checked Lean build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Install pinned Lean toolchain and build
+        uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: formal/lean

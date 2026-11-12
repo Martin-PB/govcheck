@@ -140,7 +140,7 @@ theorem mapping_target_theorem_proof_requires_derivation
       (∃ derivation : KernelCheckedDerivation target.claim.meaning, True) := by
   cases mapping.kindRule with
   | transport kind =>
-      exact Or.inl (by simpa using h.symm)
+      exact Or.inl h
   | deriveTheoremProof sourceKind derivation =>
       exact Or.inr ⟨derivation, True.intro⟩
 

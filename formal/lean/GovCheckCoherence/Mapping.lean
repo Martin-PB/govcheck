@@ -144,7 +144,7 @@ theorem kind_mapping_rule_theorem_proof_requires_derivation
       (∃ derivation : KernelCheckedDerivation targetClaim, True) := by
   cases rule with
   | transport => exact Or.inl h
-  | deriveTheoremProof sourceKind derivation =>
+  | deriveTheoremProof derivation =>
       exact Or.inr ⟨derivation, True.intro⟩
 
 theorem mapping_target_theorem_proof_requires_derivation

@@ -18,7 +18,7 @@ The current production schema has method class and result status but no explicit
 
 ## 2. Proof-carrying mapping contract
 
-The integrated Lean 4.19.0 build and axiom audit passed in [run 43212969096](https://github.com/Martin-PB/govcheck/actions/runs/43212969096), checked commit `6707da00eea2dd368d309b2806b3d8c849bd8995`. The explicit axiom report states that each of the seven new mapping theorem declarations and the separate `unknown`/`inconclusive` distinction theorem depend on no axioms.
+The integrated Lean 4.19.0 build and axiom audit passed in [run 43213158225](https://github.com/Martin-PB/govcheck/actions/runs/43213158225), checked commit `abc055ce457b4554500d71d4aa0b73ed8ec722d9`. The explicit axiom report states that each of the seven new mapping theorem declarations and the separate `unknown`/`inconclusive` distinction theorem depend on no axioms.
 
 Added `formal/lean/GovCheckCoherence/Mapping.lean`, imported by the existing `GovCheckCoherence` library and theorem axiom report.
 

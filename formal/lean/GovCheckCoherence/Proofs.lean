@@ -120,7 +120,7 @@ theorem evidence_mapping_theorem_proof_requires_derivation
     {source target : MappingSubject} (mapping : EvidenceMapping source target)
     (h : target.evidence.kind = .theoremProof) :
     source.evidence.kind = .theoremProof ∨
-      (∃ derivation : KernelCheckedDerivation target.claim.meaning, True) :=
+      (∃ derivation : KernelCheckedDerivation target.claim.meaning, derivation.proof = derivation.proof) :=
   mapping_target_theorem_proof_requires_derivation mapping h
 
 end GovCheck.Coherence

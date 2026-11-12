@@ -1,6 +1,6 @@
 # SACM 2.4 Beta 1 — first semantic mapping slice
 
-**Status:** source-native semantic slice formalized in Lean; Lean build and axiom audit passed in [run 43214609771](https://github.com/Martin-PB/govcheck/actions/runs/43214609771).  
+**Status:** source-native semantic slice formalized in Lean; Lean build and axiom audit passed in [run 43214838388](https://github.com/Martin-PB/govcheck/actions/runs/43214838388).  
 **Source baseline:** OMG SACM 2.4 Beta 1, September 2026; normative metamodel XML dated 2026-05-04.  
 **Reference:** [R-73](../references.md#r-73).  
 **Related formalization:** [GovCheckCoherence.SACM24](../../formal/lean/GovCheckCoherence/SACM24.lean).

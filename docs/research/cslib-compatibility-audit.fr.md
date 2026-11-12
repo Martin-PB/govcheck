@@ -1,7 +1,7 @@
 # Audit de compatibilité et d'adéquation sémantique de CSLib
 
 **Date de l'audit :** 2026-11-12  
-**Catalogue de références :** [R-20 Lean et bibliothèque de formalisation associée](../../references.fr.md#r-20)  
+**Catalogue de références :** [R-20 Lean et bibliothèque de formalisation associée](../references.fr.md#r-20)  
 **Dépôt :** [leanprover/cslib](https://github.com/leanprover/cslib)  
 **Commit inspecté :** `70e25828d89a3916e41c9d84cfffd7e6093bb1a0`  
 **Noyau Lean GovCheck :** Lean 4.19.0

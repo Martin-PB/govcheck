@@ -58,7 +58,11 @@ Un paquet isolé dans `formal/cslib-compat/` a été compilé contre le commit C
 
 Cela établit uniquement la compatibilité de compilation et d'API dans un paquet isolé. Cela ne prouve pas de raffinement sémantique GovCheck↔CSLib et ne modifie pas la chaîne d'outils Lean 4.19.0 du noyau existant. Voir l'[audit de compatibilité CSLib](cslib-compatibility-audit.fr.md) / [version anglaise](cslib-compatibility-audit.md).
 
-## 6. Obligations restantes
+## 6. Tranche sémantique SACM 2.4 Beta 1
+
+Une première tranche source est désormais formalisée dans `GovCheckCoherence.SACM24` et documentée dans l'[étude de mapping SACM 2.4](sacm24-claim-inference-mapping.fr.md) / [version anglaise](sacm24-claim-inference-mapping.md). Elle préserve les valeurs AssertionDeclarationKind sans promouvoir `axiomatic` en preuve de théorème, lie les sujets explicites des Claim aux révisions exactes des modèles et donne des liaisons formelles correctement orientées pour les inférences necessary, sufficient, necessaryAndSufficient et collective. Le type `probable` ne possède aucun constructeur d'implication classique ; `byRule` exige un terme de preuve formel. L'interprétation propositionnelle de la source reste fournie par l'autorité et n'est pas déduite du texte en langage naturel. Les nouveaux théorèmes SACM attendent l'exécution Lean/audit des axiomes en cours.
+
+## 7. Obligations restantes
 
 Le contrat actuel ne prouve pas encore :
 
@@ -70,4 +74,4 @@ Le contrat actuel ne prouve pas encore :
 - la liaison des métadonnées de dérivation à la fermeture complète des dépendances du terme de preuve ;
 - la préservation de l'autorité et des délégations à travers des mappings réels.
 
-La prochaine tranche verticale concrète doit lier un petit concept d'assurance SACM et une affirmation d'assurance GovCheck à leurs identifiants natifs, interprétations formelles et `SemanticBridge` typé ; il faudra ensuite prouver la loi de mapping et tester des mappings volontairement invalides. Il ne faut pas généraliser les petits résultats de compilation Lean et CSLib en affirmant que tout le métamodèle est cohérent.
+La prochaine tranche concrète consiste à lier de vraies fixtures XMI/XML normatives SACM 2.4 Beta 1 et des relations `AssertedInference`/`AssertedEvidence` concrètes à ces types, en préservant les identités source/cible et les indicateurs de contre-preuve ; il faudra ensuite prouver la loi de mapping et tester des mappings volontairement invalides. Il ne faut pas généraliser les petits résultats de compilation Lean et CSLib en affirmant que tout le métamodèle est cohérent.

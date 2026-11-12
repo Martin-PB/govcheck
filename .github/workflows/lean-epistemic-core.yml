@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - "formal/metamodel-epistemic-core-*"
     paths:
       - "formal/lean/**"
       - ".github/workflows/lean-epistemic-core.yml"

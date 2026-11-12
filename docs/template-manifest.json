@@ -79,6 +79,16 @@
       "optional": [
         "Références"
       ]
+    },
+    "docs/specifications/0007-canonical-governance-journal-protocol.md": {
+      "optional": [
+        "References"
+      ]
+    },
+    "docs/specifications/0007-canonical-governance-journal-protocol.fr.md": {
+      "optional": [
+        "Références"
+      ]
     }
   }
 }

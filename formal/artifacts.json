@@ -190,8 +190,8 @@
       ],
       "verification": {
         "workflow": ".github/workflows/lean-coherence.yml",
-        "workflowRunId": 43214609771,
-        "checkedCommit": "02641d759f5e4eb6d910e34ff644923344725a05",
+        "workflowRunId": 43214838388,
+        "checkedCommit": "52e892a7c1a0b84be665c45e26ec121592963775",
         "result": "lake-build-success; axiom-audit-success",
         "lean": "4.19.0",
         "axiomAudit": {

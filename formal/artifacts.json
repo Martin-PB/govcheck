@@ -161,11 +161,19 @@
           "Cslib.Logic.Modal.Satisfies.btl_future_always_iff",
           "Cslib.ωSequence.Step",
           "Cslib.ωSequence.LeadsTo"
-        ]
+        ],
+        "sourceBlobs": {
+          "formal/cslib-compat/lean-toolchain": "0fc4336929df18cb6edbdcce0498f49d38877271",
+          "formal/cslib-compat/lakefile.lean": "adf2b4065e85a818972df74d74ad1c303d0b1e1d",
+          "formal/cslib-compat/CslibCompat.lean": "53c762290b43b888b56f0a117006ecd59ae855d7"
+        },
+        "sameProjectFilesVerifiedOnCurrentBranch": true,
+        "currentBranchRunPending": 43217133709
       },
       "limitations": [
         "API/build compatibility only",
         "no GovCheck-to-CSLib semantic refinement theorem",
+        "the successful probe was run on a superseded branch, but the three project source/toolchain blobs are identical on the current branch",
         "does not make CSLib a required dependency"
       ]
     },

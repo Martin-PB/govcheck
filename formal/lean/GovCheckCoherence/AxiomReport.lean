@@ -59,3 +59,5 @@ import GovCheckCoherence.Proofs
 #print axioms GovCheck.Coherence.sacm_xml_identity_field_is_elementId
 #print axioms GovCheck.Coherence.sacm_claim_mapping_requires_source_view_consistency
 #print axioms GovCheck.Coherence.sacm_claim_mapping_requires_source_identity_field
+
+#print axioms GovCheck.Coherence.sacm_claim_source_format_matches_view

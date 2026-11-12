@@ -181,13 +181,30 @@
       "sourceReference": "R-73",
       "revisionPolicy": "repository-history",
       "releaseBinding": "release-tag-and-commit",
-      "status": "pending-kernel-build-and-axiom-audit",
+      "status": "kernel-checked; axiom-audited",
       "limitations": [
         "small assertion/claim/inference slice only",
         "claim proposition interpretation remains authority-supplied",
         "probable inference unsupported by classical fragment",
         "not full SACM conformance or XMI/XML round-trip proof"
-      ]
+      ],
+      "verification": {
+        "workflow": ".github/workflows/lean-coherence.yml",
+        "workflowRunId": 43214609771,
+        "checkedCommit": "02641d759f5e4eb6d910e34ff644923344725a05",
+        "result": "lake-build-success; axiom-audit-success",
+        "lean": "4.19.0",
+        "axiomAudit": {
+          "publicSACMTheorems": 13,
+          "axiomsUsed": 0
+        },
+        "limitations": [
+          "formal mapping declarations only",
+          "no normative XMI/XML fixture imported",
+          "natural-language claim interpretation remains authority-supplied",
+          "probable inference intentionally unsupported by classical fragment"
+        ]
+      }
     }
   ]
 }

@@ -176,4 +176,4 @@ Les références R-187 à R-192 sont des points de départ bibliographiques à v
 
 ## Références
 
-Catalogue central : [R-187](../references.fr.md#r-187) · [R-188](../references.fr.md#r-188) · [R-189](../references.fr.md#r-189) · [R-190](../references.fr.md#r-190) · [R-191](../references.fr.md#r-191) · [R-192](../references.fr.md#r-192). Voir également les références R-51–R-61, R-83–R-86, R-115–R-127 et R-178–R-182.
+Catalogue central : [R-187](../references.fr.md#r-187) · [R-188](../references.fr.md#r-188) · [R-189](../references.fr.md#r-189) · [R-190](../references.fr.md#r-190) · [R-191](../references.fr.md#r-191) · [R-192](../references.fr.md#r-192). Voir également les références [R-51](../references.fr.md#r-51)–[R-61](../references.fr.md#r-61), [R-83](../references.fr.md#r-83)–[R-86](../references.fr.md#r-86), [R-115](../references.fr.md#r-115)–[R-127](../references.fr.md#r-127) et [R-178](../references.fr.md#r-178)–[R-182](../references.fr.md#r-182).

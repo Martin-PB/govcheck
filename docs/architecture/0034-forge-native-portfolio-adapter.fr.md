@@ -1,6 +1,6 @@
 # Architecture 0034 — Adaptateur natif de forge (govcheck/forge.py) : miroir du registre et vérification côté forge
 
-**Statut :** proposition d’architecture soumise à revue ; ce document n’implémente aucun code d’adaptateur, aucune configuration de forge, ni aucun contrôle de conformité. Il complète l’[ADR 0006](../../decisions/0006-vcs-forge-portability.fr.md) et la [Spécification 0004](../../specifications/0004-vcs-collaboration-contracts.fr.md) ; il ne les remplace pas.  
+**Statut :** proposition d’architecture soumise à revue ; ce document n’implémente aucun code d’adaptateur, aucune configuration de forge, ni aucun contrôle de conformité. Il complète l’[ADR 0006](../decisions/0006-vcs-forge-portability.fr.md) et la [Spécification 0004](../specifications/0004-vcs-collaboration-contracts.fr.md) ; il ne les remplace pas.  
 **Langue :** l’anglais est la langue par défaut ; voir la [version anglaise](0034-forge-native-portfolio-adapter.md).
 
 ## 1. Sujet et objectif
@@ -16,7 +16,7 @@ Tout le contenu canonique reste dans le dépôt : la conception est indépendant
 
 - Les Architectures 0028/0030 font du registre dans le dépôt le tracker canonique ; les issues de la forge sont des adaptateurs/projections, et l’autorité va du registre vers l’adaptateur, jamais l’inverse. La synchronisation est initialement explicite/manuelle ; la dérive est rapportée, pas réconciliée silencieusement.
 - L’ADR 0006 (proposé) nomme déjà la troisième couche : « adaptateur de forge : miroir du tracker, CI, identité », avec un pipeline CI portable (seule la syntaxe du workflow change selon la forge). La Spécification 0004 définit les contrats d’adaptateurs et constate qu’aucun adaptateur n’est encore implémenté.
-- L’option brain.md (Apache-2.0, npm `@mindmux/brain-md` v0.4.1, dépôt <https://github.com/mindmuxai/brain.md>) a été évaluée puis écartée pour la machine de l’agent : son CLI Node.js sans dépendance (`bin/brain.mjs`, node >= 18) n’y est pas souhaitable. Ce document ne réutilise aucun contenu de brain.md ; toute réutilisation future devra être attribuée dans le [catalogue des références](../../references.fr.md).
+- L’option brain.md (Apache-2.0, npm `@mindmux/brain-md` v0.4.1, dépôt <https://github.com/mindmuxai/brain.md>) a été évaluée puis écartée pour la machine de l’agent : son CLI Node.js sans dépendance (`bin/brain.mjs`, node >= 18) n’y est pas souhaitable. Ce document ne réutilise aucun contenu de brain.md ; toute réutilisation future devra être attribuée dans le [catalogue des références](../references.fr.md).
 - L’issue #118 suit l’implémentation de ce document (fille de #63).
 
 ## 3. Décision d’architecture
@@ -73,8 +73,8 @@ Adopter un unique module d’adaptation limité à la bibliothèque standard, de
 
 - [Architecture 0028 — Portefeuille de travail gouverné et frontière avec les gestionnaires d’issues](0028-governed-work-portfolio-and-issue-tracker-boundary.fr.md)
 - [Architecture 0030 — Portefeuille de travail dans le dépôt et historique récupérable](0030-repository-backed-work-portfolio-and-recoverable-history.fr.md)
-- [ADR 0006 — Portabilité VCS et forge](../../decisions/0006-vcs-forge-portability.fr.md)
-- [Spécification 0004 — Contrats d’adaptateurs VCS et de collaboration](../../specifications/0004-vcs-collaboration-contracts.fr.md)
+- [ADR 0006 — Portabilité VCS et forge](../decisions/0006-vcs-forge-portability.fr.md)
+- [Spécification 0004 — Contrats d’adaptateurs VCS et de collaboration](../specifications/0004-vcs-collaboration-contracts.fr.md)
 - [Issue #118 — Adaptateur natif de forge : govcheck/forge.py](https://github.com/Martin-PB/govcheck/issues/118)
 - [Issue #63 — Adaptateur GitHub du portefeuille et taxonomie de labels](https://github.com/Martin-PB/govcheck/issues/63)
 - [Issue #92 (fermée) — Portabilité inter-forges de la décision GovCheck](https://github.com/Martin-PB/govcheck/issues/92)

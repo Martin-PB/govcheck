@@ -1,6 +1,6 @@
 # Architecture 0034 — Forge-native adapter (govcheck/forge.py): registry mirror and forge-side verification
 
-**Status:** architecture proposal for review; no adapter code, forge configuration or conformance control is implemented by this record. This record complements [ADR 0006](../../decisions/0006-vcs-forge-portability.md) and [Specification 0004](../../specifications/0004-vcs-collaboration-contracts.md); it does not replace them.  
+**Status:** architecture proposal for review; no adapter code, forge configuration or conformance control is implemented by this record. This record complements [ADR 0006](../decisions/0006-vcs-forge-portability.md) and [Specification 0004](../specifications/0004-vcs-collaboration-contracts.md); it does not replace them.  
 **Language:** English is the default; see the [French counterpart](0034-forge-native-portfolio-adapter.fr.md).
 
 ## 1. Subject and purpose
@@ -16,7 +16,7 @@ Everything canonical stays in the repository: the design is forge-independent, t
 
 - Architecture 0028/0030 make the repository-backed registry the canonical tracker; forge issues are adapters/projections, and authority flows from the register to the adapter, never the reverse. Synchronization is initially explicit/manual; drift is reported, not silently reconciled.
 - ADR 0006 (proposed) already names the third layer: "forge adapter: tracker mirror, CI, identity", with a portable CI pipeline (only the workflow syntax changes per forge). Specification 0004 defines the adapter contracts and states that no adapters are implemented yet.
-- The brain.md option (Apache-2.0, npm `@mindmux/brain-md` v0.4.1, repository <https://github.com/mindmuxai/brain.md>) was evaluated and set aside for the agent machine: its zero-dependency Node.js CLI (`bin/brain.mjs`, node >= 18) is unwanted there. This record reuses no brain.md content; if any content is ever reused, it must be attributed in the [reference catalogue](../../references.md).
+- The brain.md option (Apache-2.0, npm `@mindmux/brain-md` v0.4.1, repository <https://github.com/mindmuxai/brain.md>) was evaluated and set aside for the agent machine: its zero-dependency Node.js CLI (`bin/brain.mjs`, node >= 18) is unwanted there. This record reuses no brain.md content; if any content is ever reused, it must be attributed in the [reference catalogue](../references.md).
 - Issue #118 tracks the implementation of this record (child of #63).
 
 ## 3. Architectural decision
@@ -73,8 +73,8 @@ Adopt a single stdlib-only adapter module behind a forge-agnostic contract:
 
 - [Architecture 0028 — Governed work portfolio and issue-tracker boundary](0028-governed-work-portfolio-and-issue-tracker-boundary.md)
 - [Architecture 0030 — Repository-backed work portfolio and recoverable history](0030-repository-backed-work-portfolio-and-recoverable-history.md)
-- [ADR 0006 — VCS and forge portability](../../decisions/0006-vcs-forge-portability.md)
-- [Specification 0004 — VCS and collaboration adapter contracts](../../specifications/0004-vcs-collaboration-contracts.md)
+- [ADR 0006 — VCS and forge portability](../decisions/0006-vcs-forge-portability.md)
+- [Specification 0004 — VCS and collaboration adapter contracts](../specifications/0004-vcs-collaboration-contracts.md)
 - [Issue #118 — Forge-native adapter: govcheck/forge.py](https://github.com/Martin-PB/govcheck/issues/118)
 - [Issue #63 — portfolio GitHub adapter and label taxonomy](https://github.com/Martin-PB/govcheck/issues/63)
 - [Issue #92 (closed) — forge portability of the GovCheck decision](https://github.com/Martin-PB/govcheck/issues/92)

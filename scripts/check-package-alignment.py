@@ -52,6 +52,8 @@ META_ONLY_WORKFLOWS = {
     "tla-lifecycle.yml",
     "tla-model-reusable.yml",
     "version-governance.yml",
+    "lean-epistemic-core.yml",
+    "tla-evidence-freshness.yml",
 }
 
 # Product-package workflow templates are intentionally not executable at the meta level.

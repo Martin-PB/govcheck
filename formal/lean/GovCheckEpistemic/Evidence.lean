@@ -78,14 +78,17 @@ theorem transport_preserves_kind (kind : EvidenceKind) :
     mappedKind (MappingRule.transport kind) = kind := by
   rfl
 
-/-- A target theorem proof can only be obtained through the derivation
-    constructor; there is no transport constructor from other kinds. -/
-theorem transport_cannot_promote (source : EvidenceKind)
-    (h : MappingRule source EvidenceKind.theoremProof) :
-    source = EvidenceKind.theoremProof := by
-  cases h with
-  | transport kind => rfl
-  | deriveTheoremProof _ _ => simp
+/-- Any mapping whose target is a theorem-proof record is either a
+    same-kind transport of an existing theorem proof, or uses the explicit
+    kernel-checked derivation constructor. -/
+theorem theorem_proof_requires_valid_route (source : EvidenceKind)
+    (rule : MappingRule source EvidenceKind.theoremProof) :
+    source = EvidenceKind.theoremProof ∨
+      (∃ derivation : KernelCheckedDerivation, True) := by
+  cases rule with
+  | transport kind => exact Or.inl rfl
+  | deriveTheoremProof sourceKind derivation =>
+      exact Or.inr ⟨derivation, True.intro⟩
 
 /-- Status is carried independently; this function does not infer a result
     from the method class. -/

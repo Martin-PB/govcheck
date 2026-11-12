@@ -33,3 +33,8 @@ Les issues #40 et #78–#85 restent ouvertes comme vues de navigation/coordinati
 La priorité, l'ouverture, l'assignation, la colonne Projects et la relation parent/enfant ne confèrent jamais d'autorisation. Le registre du dépôt est l'autorité documentaire ; une modification GitHub ne le remplace pas silencieusement.
 
 Les modifications du registre doivent passer par une branche/canal de changement, une revue d'un candidat exact et un événement ajouté au journal. Le journal est append-only par politique, mais son application automatique, la réplication indépendante et les protections anti-altération ne sont pas encore implémentées.
+
+
+## Mise à jour de l'étude des relations — issue #73 — 2026-11-10
+
+Le périmètre de l'issue #73 couvre explicitement les contrats sémantiques entre intention du dépôt, besoins/attentes des parties prenantes, objectifs/résultats, exigences/contraintes, décisions/justifications, architecture/spécifications, réalisation, vérification/validation, assurance et autorité. Le travail reste un candidat P2 nécessitant une spécification ; cette précision ne vaut ni autorisation d'exécution ni adoption normative. Voir l'[étude des relations intention-assurance](../research/intent-relationship-model-survey.fr.md) dans la branche de travail dépendante.

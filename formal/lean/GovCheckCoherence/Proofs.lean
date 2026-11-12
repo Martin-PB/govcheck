@@ -184,4 +184,33 @@ theorem sacm_claim_subject_revision_is_pinned
     subject.modelRevision = mapping.sourceModel.revision :=
   SACM24.claim_subject_revision_is_pinned mapping subject h
 
+/-- SACM Claim identity is carried into the source GovCheck interpretation. -/
+theorem sacm_mapping_preserves_claim_identity
+    {sacmClaim : SACM24.SACMClaim} {source target : MappingSubject}
+    (mapping : SACM24.SACMClaimMapping sacmClaim source target) :
+    source.claim.claimId = sacmClaim.identity :=
+  SACM24.sacm_claim_mapping_preserves_claim_identity mapping
+
+/-- The explicit SACM subject remains attached to the mapped claim. -/
+theorem sacm_mapping_preserves_subject
+    {sacmClaim : SACM24.SACMClaim} {source target : MappingSubject}
+    (mapping : SACM24.SACMClaimMapping sacmClaim source target) :
+    mapping.sourceInterpretation.mappedSubject = sacmClaim.subject :=
+  SACM24.sacm_claim_mapping_preserves_subject mapping
+
+/-- The SACM subject is bound to the exact source model revision. -/
+theorem sacm_mapping_uses_exact_source_model
+    {sacmClaim : SACM24.SACMClaim} {source target : MappingSubject}
+    (mapping : SACM24.SACMClaimMapping sacmClaim source target) :
+    mapping.sourceInterpretation.sourceModel = source.model :=
+  SACM24.sacm_claim_mapping_uses_exact_source_model mapping
+
+/-- The SACM-to-GovCheck claim mapping carries its declared semantic bridge. -/
+theorem sacm_mapping_has_semantic_bridge
+    {sacmClaim : SACM24.SACMClaim} {source target : MappingSubject}
+    (mapping : SACM24.SACMClaimMapping sacmClaim source target) :
+    SemanticBridge source.claim.meaning target.claim.meaning
+      mapping.evidenceMapping.contract.coverage :=
+  SACM24.sacm_claim_mapping_has_semantic_bridge mapping
+
 end GovCheck.Coherence

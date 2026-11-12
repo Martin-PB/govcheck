@@ -36,3 +36,7 @@ prototype as passing until `lake build` has actually run against the pinned
 toolchain and the output has been recorded. No CSLib import is present yet;
 that is deliberate pending a definition-by-definition compatibility and
 trusted-base review.
+
+## Execution record
+
+See the bilingual [prototype execution record](../../docs/research/metamodel-coherence-prototype-execution.md) / [compte rendu français](../../docs/research/metamodel-coherence-prototype-execution.fr.md) for the actual Lean and TLC runs, including their exact scope and limitations.

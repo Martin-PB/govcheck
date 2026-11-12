@@ -239,6 +239,7 @@
             "incomplete",
             "failed",
             "passed",
+            "unknown",
             "inconclusive"
           ]
         },

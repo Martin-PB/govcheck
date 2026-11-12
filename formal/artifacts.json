@@ -113,7 +113,24 @@
       "documentation": "formal/lean/README.md",
       "revisionPolicy": "repository-history",
       "releaseBinding": "release-tag-and-commit",
-      "status": "proposed-kernel-checked-contract"
+      "status": "kernel-checked; axiom-audited",
+      "verification": {
+        "workflow": ".github/workflows/lean-coherence.yml",
+        "workflowRunId": 43212472986,
+        "checkedCommit": "25ea9de19fb24dc72d00b6af3a438b67afe5bed1",
+        "result": "lake-build-success; axiom-audit-success",
+        "lean": "4.19.0",
+        "axiomAudit": {
+          "root": "GovCheckCoherence.Proofs",
+          "mappingTheorems": 7,
+          "axiomsUsed": 0
+        },
+        "limitations": [
+          "contract types and projection theorems only",
+          "no source ontology mapping implementation proved",
+          "no importer/exporter conformance theorem"
+        ]
+      }
     },
     {
       "artifactId": "govcheck.cslib-temporal-compatibility",

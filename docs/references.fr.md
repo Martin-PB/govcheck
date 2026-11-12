@@ -1364,7 +1364,7 @@
 
 <a id="r-160"></a>
 ### R-160 — Vidéo fournie par l'utilisateur (métadonnées non vérifiées indépendamment)
-- **Cité par :** [Revue de recherche sur la qualité et la gouvernance du développement assisté par IA](research/ai-assisted-quality-governance.fr.md)
+- **Cité par :** [Revue de recherche sur la qualité et la gouvernance du développement assisté par IA](research/ai-assisted-quality-governance.fr.md), [Applicabilité et limites de GovCheck](research/govcheck-applicability-and-boundaries.fr.md)
 - **Source :** [Vidéo YouTube, identifiant hP2vfBcQhfk](https://youtu.be/hP2vfBcQhfk)
 - **Concepts pertinents :** conservée comme l'une des cinq sources de recherche fournies ; le titre, l'intervenant et les affirmations de fond n'ont pas pu être vérifiés indépendamment dans les métadonnées indexées accessibles lors de ce passage.
 - **Utilité pour GovCheck :** préserve la traçabilité sans inventer le contenu ; la vidéo doit être examinée avant d'attribuer des affirmations ou d'en dériver des exigences.
@@ -1372,7 +1372,7 @@
 
 <a id="r-161"></a>
 ### R-161 — Vidéo fournie par l'utilisateur (métadonnées non vérifiées indépendamment)
-- **Cité par :** [Revue de recherche sur la qualité et la gouvernance du développement assisté par IA](research/ai-assisted-quality-governance.fr.md)
+- **Cité par :** [Revue de recherche sur la qualité et la gouvernance du développement assisté par IA](research/ai-assisted-quality-governance.fr.md), [Applicabilité et limites de GovCheck](research/govcheck-applicability-and-boundaries.fr.md)
 - **Source :** [Vidéo YouTube, identifiant cZ_PqBpZygY](https://youtu.be/cZ_PqBpZygY)
 - **Concepts pertinents :** conservée comme l'une des cinq sources de recherche fournies ; le titre, l'intervenant et les affirmations de fond n'ont pas pu être vérifiés indépendamment dans les métadonnées indexées accessibles lors de ce passage.
 - **Utilité pour GovCheck :** préserve la traçabilité sans inventer le contenu ; la vidéo doit être examinée avant d'attribuer des affirmations ou d'en dériver des exigences.

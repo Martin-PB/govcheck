@@ -58,7 +58,11 @@ An isolated package under `formal/cslib-compat/` was built against exact CSLib c
 
 This establishes API/build compatibility in an isolated package only. It does not prove a GovCheck↔CSLib semantic refinement and does not change the existing Lean 4.19.0 core toolchain. See the bilingual [CSLib compatibility audit](cslib-compatibility-audit.md) / [audit français](cslib-compatibility-audit.fr.md).
 
-## 6. Remaining obligations
+## 6. SACM 2.4 Beta 1 semantic slice
+
+A first source-native slice is now formalized in `GovCheckCoherence.SACM24` and documented in the bilingual [SACM 2.4 mapping study](sacm24-claim-inference-mapping.md) / [étude française](sacm24-claim-inference-mapping.fr.md). It preserves AssertionDeclarationKind values without promoting `axiomatic` to theorem proof, binds explicit Claim subjects to exact model revisions, and gives correctly directed formal bridges for necessary, sufficient, necessaryAndSufficient and collective inference. The `probable` kind has no classical implication constructor; `byRule` requires a formal proof term. The source proposition interpretation remains authority-supplied and is not inferred from natural-language text. The new SACM theorem declarations are awaiting the current Lean/axiom-audit run.
+
+## 7. Remaining obligations
 
 The current contract does not yet prove:
 
@@ -70,4 +74,4 @@ The current contract does not yet prove:
 - binding of derivation metadata to the proof term's complete dependency closure;
 - authority/delegation preservation across actual model mappings.
 
-The next concrete vertical slice should bind one small SACM assurance concept and one GovCheck evidence claim to source-native identifiers, formal interpretations and a typed `SemanticBridge`; then prove the mapping law and test deliberate invalid mappings. Do not generalize the small Lean and CSLib build results into a claim that the whole metamodel is coherent.
+The next concrete slice is to bind actual normative SACM 2.4 Beta 1 XMI/XML fixtures and concrete `AssertedInference`/`AssertedEvidence` relationships to these types, preserving source/target identities and counter-evidence flags; then prove the mapping law and test deliberate invalid mappings. Do not generalize the small Lean and CSLib build results into a claim that the whole metamodel is coherent.

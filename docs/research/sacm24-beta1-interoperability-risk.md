@@ -49,7 +49,7 @@ The Assurance Forge fetch script records these SHA-256 values for the four offic
 
 ## 5. GovCheck response: source-view-qualified mapping
 
-The Lean module `GovCheckCoherence.SACM24` has been tightened so it cannot silently merge the two conflicting views:
+The Lean module `GovCheckCoherence.SACM24` has been tightened so it cannot silently merge the two conflicting views; it also binds the selected view to the source artifact's native format and exact revision:
 
 - `SourceView` distinguishes `specificationText` from `normativeMetamodelXML`.
 - `AssertionDeclarationKind` retains the union of both value sets, including both `needsSupport` and `byRule`.

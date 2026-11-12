@@ -1,0 +1,10 @@
+{
+  "fixtureId": "coherence.testimony-passed",
+  "methodClass": "empirical-execution",
+  "kind": "testimony",
+  "status": "passed",
+  "expected": {
+    "kind": "testimony",
+    "theoremProofPromotionAllowedByTransport": false
+  }
+}

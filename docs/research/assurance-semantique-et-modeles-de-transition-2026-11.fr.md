@@ -130,4 +130,4 @@ Questions ouvertes : noyau ontologique minimal cohérent ; typage formel des rel
 Ce compte rendu n'adopte aucune logique, norme, outil de model checking, assistant de preuve, sérialisation ou méthode de confiance quantitative particulière. Il préserve les échanges pour la prochaine étape de recherche académique/industrielle et de conception du métamodèle.
 
 
-Catalogue des références : [R-114](../references.fr.md#r-114).
+Catalogue des références : [R-193](../references.fr.md#r-193).

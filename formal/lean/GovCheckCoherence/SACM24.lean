@@ -152,4 +152,38 @@ theorem claim_subject_revision_is_pinned
     subject.modelRevision = mapping.sourceModel.revision :=
   mapping.subjectRevisionMatchesModel subject h
 
+/-- Full first-slice link from a native SACM Claim through its explicit
+    formal interpretation into a GovCheck cross-model mapping. -/
+structure SACMClaimMapping
+    (sacmClaim : SACMClaim) (source target : MappingSubject) where
+  sourceInterpretation : SACMClaimInterpretation sacmClaim source.claim
+  evidenceMapping : EvidenceMapping source target
+  sourceModelMatches :
+    sourceInterpretation.sourceModel = source.model
+
+theorem sacm_claim_mapping_preserves_claim_identity
+    {sacmClaim : SACMClaim} {source target : MappingSubject}
+    (mapping : SACMClaimMapping sacmClaim source target) :
+    source.claim.claimId = sacmClaim.identity :=
+  mapping.sourceInterpretation.claimIdentityPreserved
+
+theorem sacm_claim_mapping_preserves_subject
+    {sacmClaim : SACMClaim} {source target : MappingSubject}
+    (mapping : SACMClaimMapping sacmClaim source target) :
+    mapping.sourceInterpretation.mappedSubject = sacmClaim.subject :=
+  mapping.sourceInterpretation.subjectPreserved
+
+theorem sacm_claim_mapping_uses_exact_source_model
+    {sacmClaim : SACMClaim} {source target : MappingSubject}
+    (mapping : SACMClaimMapping sacmClaim source target) :
+    mapping.sourceInterpretation.sourceModel = source.model :=
+  mapping.sourceModelMatches
+
+theorem sacm_claim_mapping_has_semantic_bridge
+    {sacmClaim : SACMClaim} {source target : MappingSubject}
+    (mapping : SACMClaimMapping sacmClaim source target) :
+    SemanticBridge source.claim.meaning target.claim.meaning
+      mapping.evidenceMapping.contract.coverage :=
+  mapping.evidenceMapping.semanticBridge
+
 end GovCheck.Coherence.SACM24

@@ -18,7 +18,7 @@ Le schéma de production actuel contient la classe de méthode et le statut du r
 
 ## 2. Contrat de mapping porté par des preuves
 
-La compilation intégrée Lean 4.19.0 et l'audit des axiomes ont réussi dans [l'exécution 43212610129](https://github.com/Martin-PB/govcheck/actions/runs/43212610129), commit contrôlé `b6c4bd8aff7e80b9921361529a46f01f14ed6468`. Le rapport explicite indique que chacune des sept nouvelles déclarations de théorème du mapping ne dépend d'aucun axiome.
+La compilation intégrée Lean 4.19.0 et l'audit des axiomes ont réussi dans [l'exécution 43212969096](https://github.com/Martin-PB/govcheck/actions/runs/43212969096), commit contrôlé `6707da00eea2dd368d309b2806b3d8c849bd8995`. Le rapport explicite indique que chacune des sept nouvelles déclarations de théorème du mapping et le théorème distinct `unknown`/`inconclusive` ne dépendent d'aucun axiome.
 
 Ajout de `formal/lean/GovCheckCoherence/Mapping.lean`, importé par la bibliothèque `GovCheckCoherence` existante et par le rapport d'axiomes des théorèmes.
 

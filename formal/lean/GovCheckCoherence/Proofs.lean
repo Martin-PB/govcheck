@@ -132,7 +132,7 @@ theorem unknown_status_is_distinct_from_inconclusive :
 
 /-- SACM assertion declarations preserve their distinct GovCheck dispositions. -/
 theorem sacm_assertion_disposition_is_injective :
-    Function.Injective SACM24.mapAssertionDeclaration :=
+    ∀ a b, SACM24.mapAssertionDeclaration a = SACM24.mapAssertionDeclaration b → a = b :=
   SACM24.mapAssertionDeclaration_injective
 
 /-- SACM probable inference cannot be silently interpreted as classical entailment. -/

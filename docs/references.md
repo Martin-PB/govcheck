@@ -120,7 +120,7 @@
 <a id="r-04"></a>
 
 ### R-04 — Goal Structuring Notation (GSN) Community Standard
-- **Cited by:** [0010](architecture/0010-assurance-proof-and-conformance.md) · [Intent impact analysis](intent-impact-analysis.md)
+- **Cited by:** [0010](architecture/0010-assurance-proof-and-conformance.md) · [Intent impact analysis](intent-impact-analysis.md) · [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.md)
 
 - **Primary source:** [GSN Community Standard — official site](https://scsc.uk/gsn)
 - **Relevant concepts:** structured assurance claims, arguments, strategies, context, assumptions and evidence.
@@ -130,7 +130,7 @@
 <a id="r-05"></a>
 
 ### R-05 — TLA+ and TLC
-- **Cited by:** [0007](architecture/0007-technology-decision-framework.md), [0008](architecture/0008-formalization-and-conformance.md), [0009](architecture/0009-govcheck-design-discussion-record.md), [0010](architecture/0010-assurance-proof-and-conformance.md), [0011](architecture/0011-lifecycle-model-assertion-audit.md), [0020](architecture/0020-first-tlc-execution-record.md), [0021](architecture/0021-assurance-claims-and-freshness.md), [ADR 0001](decisions/0001-bootstrap-boundaries.md), [Spec 0003](specifications/0003-change-lifecycle.md), [Spec 0005](specifications/0005-assurance-model.md), [Spec 0006](specifications/0006-governance-revision-applicability.md), [ADR 0002](decisions/0002-study-placement.md), [ADR 0008](decisions/0008-governance-applicability-arbitration-session.md), [Formal lifecycle model](formal/lifecycle-model.md), [Formal model index](formal/README.md), [Architecture 0032](architecture/0032-canonical-publication-model-checking.md), [Architecture 0033](architecture/0033-governance-evaluator-exception-revocation-model.md)
+- **Cited by:** [0007](architecture/0007-technology-decision-framework.md), [0008](architecture/0008-formalization-and-conformance.md), [0009](architecture/0009-govcheck-design-discussion-record.md), [0010](architecture/0010-assurance-proof-and-conformance.md), [0011](architecture/0011-lifecycle-model-assertion-audit.md), [0020](architecture/0020-first-tlc-execution-record.md), [0021](architecture/0021-assurance-claims-and-freshness.md), [ADR 0001](decisions/0001-bootstrap-boundaries.md), [Spec 0003](specifications/0003-change-lifecycle.md), [Spec 0005](specifications/0005-assurance-model.md), [Spec 0006](specifications/0006-governance-revision-applicability.md), [ADR 0002](decisions/0002-study-placement.md), [ADR 0008](decisions/0008-governance-applicability-arbitration-session.md), [Formal lifecycle model](formal/lifecycle-model.md), [Formal model index](formal/README.md), [Architecture 0032](architecture/0032-canonical-publication-model-checking.md), [Architecture 0033](architecture/0033-governance-evaluator-exception-revocation-model.md) · [metamodel-design-dossier](decisions/metamodel-design-dossier.md)
 
 - **Primary sources:** [Lamport's publications on TLA](https://www.microsoft.com/en-us/research/people/lamport/publications/) · [TLA+ project and documentation](https://lamport.azurewebsites.net/tla/tla.html)
 - **Academic reference:** Leslie Lamport, “The Temporal Logic of Actions,” ACM Transactions on Programming Languages and Systems, 16(3), 1994, pp. 872–923. [DOI](https://doi.org/10.1145/177492.177726)
@@ -141,7 +141,7 @@
 <a id="r-06"></a>
 
 ### R-06 — in-toto: software supply-chain integrity
-- **Cited by:** [0006](architecture/0006-threat-and-trust-model.md), [0007](architecture/0007-technology-decision-framework.md), [0010](architecture/0010-assurance-proof-and-conformance.md), [0014](architecture/0014-governed-development-workflow.md), [0015](architecture/0015-governance-conformance-and-validation-plan.md), [ADR 0002](decisions/0002-study-placement.md), [ADR 0007](decisions/0007-mandatory-sources.md) · [Intent impact analysis](intent-impact-analysis.md)
+- **Cited by:** [0006](architecture/0006-threat-and-trust-model.md), [0007](architecture/0007-technology-decision-framework.md), [0010](architecture/0010-assurance-proof-and-conformance.md), [0014](architecture/0014-governed-development-workflow.md), [0015](architecture/0015-governance-conformance-and-validation-plan.md), [ADR 0002](decisions/0002-study-placement.md), [ADR 0007](decisions/0007-mandatory-sources.md) · [Intent impact analysis](intent-impact-analysis.md) · [concurrent-agent-change-governance](research/concurrent-agent-change-governance.md)
 
 - **Primary sources:** [in-toto project](https://in-toto.io/) · [USENIX Security 2019 paper](https://ssl.engineering.nyu.edu/papers/torres-toto-usenix19.pdf)
 - **Academic reference:** Santiago Torres-Arias et al., “in-toto: Providing farm-to-table guarantees for bits and bytes,” 28th USENIX Security Symposium, 2019.
@@ -152,7 +152,7 @@
 <a id="r-07"></a>
 
 ### R-07 — SLSA
-- **Cited by:** [0006](architecture/0006-threat-and-trust-model.md), [0007](architecture/0007-technology-decision-framework.md), [0014](architecture/0014-governed-development-workflow.md), [0015](architecture/0015-governance-conformance-and-validation-plan.md), [Spec 0005](specifications/0005-assurance-model.md), [ADR 0002](decisions/0002-study-placement.md)
+- **Cited by:** [0006](architecture/0006-threat-and-trust-model.md), [0007](architecture/0007-technology-decision-framework.md), [0014](architecture/0014-governed-development-workflow.md), [0015](architecture/0015-governance-conformance-and-validation-plan.md), [Spec 0005](specifications/0005-assurance-model.md), [ADR 0002](decisions/0002-study-placement.md) · [concurrent-agent-change-governance](research/concurrent-agent-change-governance.md)
 
 - **Primary source:** [SLSA specification](https://slsa.dev/spec/)
 - **Relevant concepts:** software supply-chain levels, provenance and build integrity.
@@ -396,7 +396,7 @@
 
 <a id="r-33"></a>
 ### R-33 — Mohamad, Steghöfer and Scandariato, “Security assurance cases—state of the art of an emerging approach” (2021)
-- **Cited by:** [0010](architecture/0010-assurance-proof-and-conformance.md), [0021](architecture/0021-assurance-claims-and-freshness.md) · [0024](architecture/0024-project-bootstrap-and-assurance-profiles.md) · [Intent impact analysis](intent-impact-analysis.md)
+- **Cited by:** [0010](architecture/0010-assurance-proof-and-conformance.md), [0021](architecture/0021-assurance-claims-and-freshness.md) · [0024](architecture/0024-project-bootstrap-and-assurance-profiles.md) · [Intent impact analysis](intent-impact-analysis.md) · [metamodel-design-dossier](decisions/metamodel-design-dossier.md) · [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.md)
 
 - **Primary source:** [Empirical Software Engineering article](https://doi.org/10.1007/s10664-021-09971-7)
 - **Academic reference:** Mazen Mohamad, Jan-Philipp Steghöfer and Riccardo Scandariato, *Empirical Software Engineering* 26, article 70 (2021).
@@ -406,7 +406,7 @@
 
 <a id="r-34"></a>
 ### R-34 — OMG Structured Assurance Case Metamodel (SACM)
-- **Cited by:** [0010](architecture/0010-assurance-proof-and-conformance.md), [0021](architecture/0021-assurance-claims-and-freshness.md) · [0024](architecture/0024-project-bootstrap-and-assurance-profiles.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.md) · [Intent impact analysis](intent-impact-analysis.md)
+- **Cited by:** [0010](architecture/0010-assurance-proof-and-conformance.md), [0021](architecture/0021-assurance-claims-and-freshness.md) · [0024](architecture/0024-project-bootstrap-and-assurance-profiles.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.md) · [Intent impact analysis](intent-impact-analysis.md) · [metamodel-design-dossier](decisions/metamodel-design-dossier.md) · [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.md)
 
 - **Primary source:** [OMG SACM specification family](https://www.omg.org/spec/SACM/) · [formal version 2.3](https://www.omg.org/spec/SACM/2.3)
 - **Relevant concepts:** machine-processable representation of assurance-case structures and relationships between claims, argumentation, artifacts and evidence.
@@ -498,7 +498,7 @@
 
 <a id="r-44"></a>
 ### R-44 — KAOS and goal-oriented requirements engineering
-- **Cited by:** [0013](architecture/0013-governance-metamodel.md), [ADR 0002](decisions/0002-study-placement.md)
+- **Cited by:** [0013](architecture/0013-governance-metamodel.md), [ADR 0002](decisions/0002-study-placement.md) · [metamodel-design-dossier](decisions/metamodel-design-dossier.md)
 
 - **Primary source:** [Axel van Lamsweerde, Requirements Engineering: From System Goals to UML Models to Software Specifications (2009), UCLouvain record](https://research.dial.uclouvain.be/entities/publication/ddcd5cbc-c76d-4da2-bd29-509cbf0f9399)
 - **Relevant concepts:** goal refinement, obstacles, responsibility assignment and derivation from system goals to requirements and software specifications.
@@ -562,7 +562,7 @@
 
 <a id="r-51"></a>
 ### R-51 — Open Knowledge Format (OKF) v0.2
-- **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
+- **Cited by:** [ADR 0002](decisions/0002-study-placement.md) · [metamodel-design-dossier](decisions/metamodel-design-dossier.md)
 
 - **Primary sources:** [Canonical OKF v0.2 specification](https://github.com/GoogleCloudPlatform/open-knowledge-format/blob/main/SPEC.md) · [OKF v0.2 specification in the original Knowledge Catalog repository](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md)
 - **Relevant concepts:** portable knowledge bundles built from Markdown, YAML frontmatter, links, provenance, trust and lifecycle metadata.
@@ -571,7 +571,7 @@
 
 <a id="r-52"></a>
 ### R-52 — RDF 1.1 data model
-- **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
+- **Cited by:** [ADR 0002](decisions/0002-study-placement.md) · [metamodel-design-dossier](decisions/metamodel-design-dossier.md)
 
 - **Primary source:** [W3C RDF 1.1 Concepts and Abstract Syntax](https://www.w3.org/TR/rdf11-concepts/) · [W3C RDF Primer](https://www.w3.org/TR/rdf-primer/)
 - **Relevant concepts:** graph and dataset data model based on subject–predicate–object triples and IRIs.
@@ -580,7 +580,7 @@
 
 <a id="r-53"></a>
 ### R-53 — SKOS
-- **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
+- **Cited by:** [ADR 0002](decisions/0002-study-placement.md) · [metamodel-design-dossier](decisions/metamodel-design-dossier.md)
 
 - **Primary source:** [W3C SKOS Reference](https://www.w3.org/TR/skos-reference/)
 - **Relevant concepts:** URI-identified concepts, labels, notations, concept schemes, mappings and lightweight semantic relations.
@@ -589,7 +589,7 @@
 
 <a id="r-54"></a>
 ### R-54 — OWL 2 Web Ontology Language
-- **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
+- **Cited by:** [ADR 0002](decisions/0002-study-placement.md) · [metamodel-design-dossier](decisions/metamodel-design-dossier.md)
 
 - **Primary source:** [W3C OWL 2 Structural Specification and Functional-Style Syntax](https://www.w3.org/TR/owl-syntax/) · [W3C OWL 2 Overview](https://www.w3.org/TR/owl-overview/)
 - **Relevant concepts:** formally defined ontology semantics for classes, properties, individuals and axioms.
@@ -598,7 +598,7 @@
 
 <a id="r-55"></a>
 ### R-55 — SHACL
-- **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
+- **Cited by:** [ADR 0002](decisions/0002-study-placement.md) · [metamodel-design-dossier](decisions/metamodel-design-dossier.md)
 
 - **Primary source:** [W3C Shapes Constraint Language (SHACL)](https://www.w3.org/TR/shacl/)
 - **Relevant concepts:** validation of RDF graphs against declared shapes and constraints.
@@ -734,7 +734,7 @@
 
 <a id="r-70"></a>
 ### R-70 — Wei et al., “ACCESS: Assurance Case Centric Engineering of Safety-critical Systems” (2024)
-- **Cited by:** [0010](architecture/0010-assurance-proof-and-conformance.md), [0021](architecture/0021-assurance-claims-and-freshness.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.md)
+- **Cited by:** [0010](architecture/0010-assurance-proof-and-conformance.md), [0021](architecture/0021-assurance-claims-and-freshness.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.md) · [concurrent-agent-change-governance](research/concurrent-agent-change-governance.md)
 - **Primary source:** [Journal of Systems and Software article](https://doi.org/10.1016/j.jss.2024.112034) · [open repository copy](https://eprints.whiterose.ac.uk/id/eprint/211554/)
 - **Bibliographic reference:** Ran Wei, Simon Foster, Haitao Mei, Fang Yan, Ruizhe Yang, Ibrahim Habli, Colin O’Halloran, Nick Tudor, Tim Kelly and Yakoub Nemouchi, *Journal of Systems and Software* 213 (2024), article 112034.
 - **Relevant concepts:** model-based assurance cases using SACM; traceability to heterogeneous engineering artifacts; automated evaluation, change-impact analysis, formal-method evidence and dynamic runtime assurance-case evaluation.
@@ -743,7 +743,7 @@
 
 <a id="r-71"></a>
 ### R-71 — Bloomfield and Rushby, “Assurance 2.0: A Manifesto” (2021)
-- **Cited by:** [0010](architecture/0010-assurance-proof-and-conformance.md), [0021](architecture/0021-assurance-claims-and-freshness.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.md) · [Intent impact analysis](intent-impact-analysis.md)
+- **Cited by:** [0010](architecture/0010-assurance-proof-and-conformance.md), [0021](architecture/0021-assurance-claims-and-freshness.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.md) · [Intent impact analysis](intent-impact-analysis.md) · [metamodel-design-dossier](decisions/metamodel-design-dossier.md) · [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.md)
 - **Primary source:** [SRI author page and paper](https://www.csl.sri.com/users/rushby/abstracts/sss21) · [arXiv manuscript](https://arxiv.org/abs/2004.10474)
 - **Bibliographic reference:** Robin Bloomfield and John Rushby, *Systems and Covid-19: Proceedings of the 29th Safety-Critical Systems Symposium*, 2021, pp. 85–108.
 - **Relevant concepts:** stronger scrutiny of reasoning and evidence; explicit defeaters and counterevidence; assessment of evidence weight and discrimination between a claim and its negation.
@@ -752,7 +752,7 @@
 
 <a id="r-72"></a>
 ### R-72 — Ericsson, “Runtime threat modeling for attack prediction and defense” (2025)
-- **Cited by:** [0006](architecture/0006-threat-and-trust-model.md), [0021](architecture/0021-assurance-claims-and-freshness.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.md)
+- **Cited by:** [0006](architecture/0006-threat-and-trust-model.md), [0021](architecture/0021-assurance-claims-and-freshness.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.md) · [concurrent-agent-change-governance](research/concurrent-agent-change-governance.md)
 - **Primary source:** [Ericsson engineering article](https://www.ericsson.com/en/blog/2025/12/runtime-threat-modeling-for-attack-prediction-and-defense)
 - **Relevant concepts:** combining telemetry, configuration state and asset/context changes with threat knowledge; observation-driven threat hypotheses; control-effectiveness assessment and feedback loops.
 - **Use in GovCheck:** industrial example of connecting production observability to evolving threat models and control assessment.
@@ -760,7 +760,7 @@
 
 <a id="r-73"></a>
 ### R-73 — OMG Structured Assurance Case Metamodel (SACM), Version 2.4 Beta 1 (September 2026)
-- **Cited by:** [0010](architecture/0010-assurance-proof-and-conformance.md), [0021](architecture/0021-assurance-claims-and-freshness.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.md) · [Intent impact analysis](intent-impact-analysis.md)
+- **Cited by:** [0010](architecture/0010-assurance-proof-and-conformance.md), [0021](architecture/0021-assurance-claims-and-freshness.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.md) · [Intent impact analysis](intent-impact-analysis.md) · [metamodel-design-dossier](decisions/metamodel-design-dossier.md) · [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.md)
 - **Primary source:** [OMG SACM specification status and 2.4 Beta 1 materials](https://www.omg.org/spec/SACM)
 - **Relevant concepts:** proposed extensions to SACM 2.3, including typed structured values/strengths, assessment-related constructs, joins, whole-concept references, development-state marking, and revised package/relationship semantics.
 - **Use in GovCheck:** essential comparison point before selecting an internal or interchange metamodel. The beta issue resolutions indicate which gaps in 2.3 the revision is attempting to address.
@@ -768,7 +768,7 @@
 
 <a id="r-74"></a>
 ### R-74 — Hoover, Rosso-Llopart and Taran, *Evaluating Project Decisions: Case Studies in Software Engineering* (2009/2010)
-- **Cited by:** [0013](architecture/0013-governance-metamodel.md), [0021](architecture/0021-assurance-claims-and-freshness.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.md) · [Intent impact analysis](intent-impact-analysis.md)
+- **Cited by:** [0013](architecture/0013-governance-metamodel.md), [0021](architecture/0021-assurance-claims-and-freshness.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.md) · [Intent impact analysis](intent-impact-analysis.md) · [metamodel-design-dossier](decisions/metamodel-design-dossier.md)
 - **Primary sources:** [PEAK section in Chapter 1 (InformIT)](https://www.informit.com/articles/article.aspx?p=1409781&seqNum=3) · [O’Reilly publisher book page](https://www.oreilly.com/library/view/evaluating-project-decisions/9780321685629/)
 - **Bibliographic reference:** Carol L. Hoover, Mel Rosso-Llopart and Gil Taran, Addison-Wesley Professional, first published October 2009 (copyright 2010), ISBN 978-0-321-54456-8; Chapter 1, §1.3 introduces the PEAK decision model.
 - **Relevant concepts:** Problem, Experience, Assumptions and Knowledge as decision inputs; a decision process produces a solution and an assumed risk.
@@ -777,7 +777,7 @@
 
 <a id="r-75"></a>
 ### R-75 — NIST SP 800-137, Information Security Continuous Monitoring (2011)
-- **Cited by:** [0006](architecture/0006-threat-and-trust-model.md), [0021](architecture/0021-assurance-claims-and-freshness.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.md)
+- **Cited by:** [0006](architecture/0006-threat-and-trust-model.md), [0021](architecture/0021-assurance-claims-and-freshness.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.md) · [concurrent-agent-change-governance](research/concurrent-agent-change-governance.md)
 - **Primary source:** [NIST publication](https://csrc.nist.gov/pubs/sp/800/137/final) · [DOI](https://doi.org/10.6028/NIST.SP.800-137)
 - **Relevant concepts:** continuous visibility into assets, threats, vulnerabilities and deployed-control effectiveness; monitoring aligned with organizational risk tolerance; response when observations show controls are inadequate.
 - **Use in GovCheck:** supports a production feedback loop in which observations update system posture, control assessments and risk decisions rather than leaving threat models frozen at design time.
@@ -785,7 +785,7 @@
 
 <a id="r-76"></a>
 ### R-76 — Rushby, “Runtime Certification” (RV 2008)
-- **Cited by:** [0006](architecture/0006-threat-and-trust-model.md), [0010](architecture/0010-assurance-proof-and-conformance.md), [0021](architecture/0021-assurance-claims-and-freshness.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.md)
+- **Cited by:** [0006](architecture/0006-threat-and-trust-model.md), [0010](architecture/0010-assurance-proof-and-conformance.md), [0021](architecture/0021-assurance-claims-and-freshness.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.md) · [concurrent-agent-change-governance](research/concurrent-agent-change-governance.md)
 - **Primary source:** [Author's paper, presented at the Eighth Workshop on Runtime Verification](https://citeseerx.ist.psu.edu/document?doi=c28045b0a573839028f6042870a3eccd8f9be748&repid=rep1&type=pdf)
 - **Bibliographic reference:** John Rushby, “Runtime Certification,” invited paper at RV 2008, Budapest, April 2008.
 - **Relevant concepts:** assurance cases as claims, evidence and arguments; monitoring assumptions and anomalies at runtime; using runtime verification as evidence; detecting violated environmental assumptions.
@@ -883,7 +883,7 @@
 
 <a id="r-88"></a>
 ### R-88 — NIST SP 800-192: Verification and Test Methods for Access Control Policies/Models
-- **Cited by:** [ADR 0002](decisions/0002-study-placement.md), [0013](architecture/0013-governance-metamodel.md), [0015](architecture/0015-governance-conformance-and-validation-plan.md), [0022](architecture/0022-governance-capability-audit.md), [Spec 0002](specifications/0002-canonical-governance-model.md), [Spec 0006](specifications/0006-governance-revision-applicability.md) · [Intent impact analysis](intent-impact-analysis.md)
+- **Cited by:** [ADR 0002](decisions/0002-study-placement.md), [0013](architecture/0013-governance-metamodel.md), [0015](architecture/0015-governance-conformance-and-validation-plan.md), [0022](architecture/0022-governance-capability-audit.md), [Spec 0002](specifications/0002-canonical-governance-model.md), [Spec 0006](specifications/0006-governance-revision-applicability.md) · [Intent impact analysis](intent-impact-analysis.md) · [metamodel-design-dossier](decisions/metamodel-design-dossier.md) · [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.md)
 - **Primary sources:** [NIST SP 800-192 publication record](https://csrc.nist.gov/pubs/sp/800/192/final) · [NIST DOI](https://doi.org/10.6028/NIST.SP.800-192)
 - **Relevant concepts:** verification and testing of access-control policies and models; inconsistency, incompleteness, safety requirements, black-box/white-box model checks and tests derived from policy models.
 - **Use in GovCheck:** direct support for validating normative policy models before testing their evaluators or enforcement mechanisms. An executable policy is not necessarily a correct, complete or coherent policy.
@@ -915,7 +915,7 @@
 
 <a id="r-92"></a>
 ### R-92 — iStar 2.0 goal-oriented requirements modeling
-- **Cited by:** [ADR 0002](decisions/0002-study-placement.md), [0013](architecture/0013-governance-metamodel.md)
+- **Cited by:** [ADR 0002](decisions/0002-study-placement.md), [0013](architecture/0013-governance-metamodel.md) · [metamodel-design-dossier](decisions/metamodel-design-dossier.md) · [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.md)
 - **Primary source:** [Dalpiaz, Franch and Horkoff, iStar 2.0 Language Guide (arXiv:1605.07767)](https://arxiv.org/abs/1605.07767)
 - **Relevant concepts:** actor-centered goal modeling, intentional and social dependencies, goals, qualities, tasks and resources; a shared core vocabulary for goal-oriented requirements engineering.
 - **Use in GovCheck:** preserves iStar as a candidate complement to KAOS/GORE for relating stakeholder goals, actors, dependencies and derived requirements.
@@ -923,7 +923,7 @@
 
 <a id="r-93"></a>
 ### R-93 — Deontic logic and normative modalities
-- **Cited by:** [ADR 0002](decisions/0002-study-placement.md), [0013](architecture/0013-governance-metamodel.md), [0015](architecture/0015-governance-conformance-and-validation-plan.md), [0022](architecture/0022-governance-capability-audit.md), [Spec 0002](specifications/0002-canonical-governance-model.md) · [Intent impact analysis](intent-impact-analysis.md)
+- **Cited by:** [ADR 0002](decisions/0002-study-placement.md), [0013](architecture/0013-governance-metamodel.md), [0015](architecture/0015-governance-conformance-and-validation-plan.md), [0022](architecture/0022-governance-capability-audit.md), [Spec 0002](specifications/0002-canonical-governance-model.md) · [Intent impact analysis](intent-impact-analysis.md) · [metamodel-design-dossier](decisions/metamodel-design-dossier.md) · [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.md)
 - **Primary sources:** [G. H. von Wright, “Deontic Logic”, Mind (1951)](https://doi.org/10.1093/mind/LX.237.1) · [Stanford Encyclopedia of Philosophy, Deontic Logic](https://plato.stanford.edu/entries/logic-deontic/)
 - **Relevant concepts:** formal reasoning about obligation, permission, prohibition, optionality, omission and related normative statuses.
 - **Use in GovCheck:** provides a logical vocabulary for expressing obligations, permissions and prohibitions in a normative governance model, and for distinguishing these modalities from descriptive facts.
@@ -942,7 +942,7 @@
 
 <a id="r-94"></a>
 ### R-94 — OMG business decision, motivation and process standards
-- **Cited by:** no current record cites this candidate source. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md) · [Intent impact analysis](intent-impact-analysis.md)
+- **Cited by:** no current record cites this candidate source. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md) · [Intent impact analysis](intent-impact-analysis.md) · [metamodel-design-dossier](decisions/metamodel-design-dossier.md) · [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.md)
 - **Primary sources:** [OMG specifications catalogue](https://www.omg.org/specifications/) · [DMN 1.6](https://www.omg.org/spec/DMN/1.6/) · [DMN 1.7 Beta 1](https://www.omg.org/spec/DMN/1.7/Beta1) · [BPMN 2.0.2](https://www.omg.org/spec/BPMN/) · [CMMN 1.1](https://www.omg.org/spec/CMMN/1.1) · [Business Motivation Model 1.3](https://www.omg.org/spec/BMM/1.3/) · [SBVR 1.5](https://www.omg.org/spec/SBVR)
 - **Relevant concepts:** decision requirements, decision tables and FEEL; process activities, events and gateways; adaptive case management; business goals and influencers; formal business vocabularies and rules.
 - **Use in GovCheck:** primary specifications for complementary decision-logic, process, case-management, motivation and business-rule candidates discussed in the project.
@@ -950,7 +950,7 @@
 
 <a id="r-95"></a>
 ### R-95 — OMG engineering, risk, testing, requirements, metrics and provenance models
-- **Cited by:** no current record cites this candidate source. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
+- **Cited by:** no current record cites this candidate source. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md) · [metamodel-design-dossier](decisions/metamodel-design-dossier.md) · [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.md)
 - **Primary sources:** [RAAML 1.1](https://www.omg.org/spec/RAAML/1.1) · [RAAML 1.2 Beta 1](https://www.omg.org/spec/RAAML/1.2/Beta1) · [SysML v2](https://www.omg.org/spec/SysML/2.0) · [SysML v2 overview](https://www.omg.org/sysml/sysmlv2/) · [UTP 2.3 Beta 1](https://www.omg.org/spec/UTP2) · [ReqIF 1.2](https://www.omg.org/spec/ReqIF/1.2) · [Structured Metrics Metamodel 1.2](https://www.omg.org/spec/SMM/1.2) · [PPMN 1.0](https://www.omg.org/spec/PPMN/)
 - **Relevant concepts:** risk/safety analysis; systems requirements, structure, behavior and verification; model-based test specification; requirements exchange; measurement definitions/results; provenance of entities, activities and agents.
 - **Use in GovCheck:** primary sources for candidate engineering-domain models, including machine-readable model and exchange artifacts where published.
@@ -958,7 +958,7 @@
 
 <a id="r-96"></a>
 ### R-96 — ISO/IEC/IEEE 42010:2022, architecture description
-- **Cited by:** no current record cites this candidate source. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
+- **Cited by:** no current record cites this candidate source. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md) · [metamodel-design-dossier](decisions/metamodel-design-dossier.md) · [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.md)
 - **Primary source:** [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html)
 - **Relevant concepts:** requirements for architecture descriptions, description frameworks, viewpoints, model kinds and conformance.
 - **Use in GovCheck:** candidate normative foundation for structuring architecture descriptions, stakeholder concerns, views and viewpoints.
@@ -966,7 +966,7 @@
 
 <a id="r-97"></a>
 ### R-97 — ISO/IEC/IEEE 29148, requirements engineering
-- **Cited by:** no current record cites this candidate source. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
+- **Cited by:** no current record cites this candidate source. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md) · [metamodel-design-dossier](decisions/metamodel-design-dossier.md) · [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.md)
 - **Primary sources:** [ISO/IEC/IEEE DIS 29148, third edition (2026)](https://www.iso.org/standard/94091.html) · [ISO/IEC/IEEE 29148:2018](https://www.iso.org/standard/72089.html)
 - **Relevant concepts:** lifecycle requirements-engineering processes, required information items and their contents, and guidance for requirements work across systems/software lifecycles.
 - **Use in GovCheck:** candidate process and information-item reference for requirements governance and traceability.
@@ -974,7 +974,7 @@
 
 <a id="r-98"></a>
 ### R-98 — ISO/IEC 25010:2023, product quality model
-- **Cited by:** no current record cites this candidate source. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
+- **Cited by:** no current record cites this candidate source. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md) · [metamodel-design-dossier](decisions/metamodel-design-dossier.md) · [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.md)
 - **Primary source:** [ISO/IEC 25010:2023](https://www.iso.org/standard/78176.html)
 - **Relevant concepts:** product-quality characteristics and subcharacteristics used to specify, measure and evaluate ICT/software product quality.
 - **Use in GovCheck:** candidate shared quality vocabulary for quality requirements, test objectives, evaluation criteria and measurement planning.
@@ -982,7 +982,7 @@
 
 <a id="r-99"></a>
 ### R-99 — SPDX specification
-- **Cited by:** no current record cites this candidate source. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
+- **Cited by:** no current record cites this candidate source. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md) · [metamodel-design-dossier](decisions/metamodel-design-dossier.md) · [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.md)
 - **Primary source:** [SPDX specifications catalogue](https://spdx.dev/use/specifications/)
 - **Relevant concepts:** standardized machine-readable representation of software components, packages, files, relationships, licensing and other supply-chain metadata. The catalogue identifies SPDX 3.0 as current at the research snapshot.
 - **Use in GovCheck:** candidate native format for SBOM and license/supply-chain metadata.
@@ -990,7 +990,7 @@
 
 <a id="r-100"></a>
 ### R-100 — CycloneDX specification
-- **Cited by:** no current record cites this candidate source. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
+- **Cited by:** no current record cites this candidate source. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md) · [metamodel-design-dossier](decisions/metamodel-design-dossier.md) · [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.md)
 - **Primary source:** [CycloneDX specification overview](https://cyclonedx.org/specification/overview/)
 - **Relevant concepts:** extensible supply-chain object model for software/hardware components, services, dependencies, cryptographic assets, operational configurations and metadata; JSON, XML and Protocol Buffers representations.
 - **Use in GovCheck:** candidate SBOM and broader supply-chain exchange format, to assess alongside SPDX against actual needs.
@@ -998,7 +998,7 @@
 
 <a id="r-102"></a>
 ### R-102 — W3C PROV family
-- **Cited by:** no current record cites this candidate source. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
+- **Cited by:** no current record cites this candidate source. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md) · [metamodel-design-dossier](decisions/metamodel-design-dossier.md) · [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.md)
 - **Primary source:** [W3C PROV overview](https://www.w3.org/TR/prov-overview/)
 - **Relevant concepts:** interoperable provenance models for entities, activities, agents and derivation/attribution, with data model, ontology, constraints and serialization specifications.
 - **Use in GovCheck:** candidate vocabulary and representation family for provenance across decisions, sources, generated artifacts, observations and evidence.
@@ -1115,7 +1115,7 @@
 
 <a id="r-115"></a>
 ### R-115 — ISO/IEC/IEEE 15288:2023, Systems and software engineering — System life cycle processes
-- **Cited by:** [ADR 0009](decisions/0009-intent-record-and-authority.md), [intent impact analysis](intent-impact-analysis.md)
+- **Cited by:** [ADR 0009](decisions/0009-intent-record-and-authority.md), [intent impact analysis](intent-impact-analysis.md) · [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.md)
 - **Primary source:** [ISO/IEC/IEEE 15288:2023](https://www.iso.org/standard/81702.html)
 - **Relevant concepts:** lifecycle-process framework spanning conception, development, production, utilization, support and retirement; iterative and recursive application; stakeholder involvement and information exchange.
 - **Use in GovCheck:** supports modeling intent, requirements, decisions, realization and assurance as lifecycle concerns rather than a one-time bootstrap pipeline.
@@ -1123,7 +1123,7 @@
 
 <a id="r-116"></a>
 ### R-116 — ISO/IEC/IEEE 29148 requirements engineering
-- **Cited by:** [ADR 0009](decisions/0009-intent-record-and-authority.md), [intent impact analysis](intent-impact-analysis.md)
+- **Cited by:** [ADR 0009](decisions/0009-intent-record-and-authority.md), [intent impact analysis](intent-impact-analysis.md) · [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.md)
 - **Primary sources:** [ISO/IEC/IEEE 29148:2018](https://www.iso.org/standard/72089.html) · [ISO/IEC/IEEE DIS 29148 edition 3](https://www.iso.org/standard/94091.html)
 - **Relevant concepts:** requirements-engineering processes and information items; derivation, allocation, validation, verification and bidirectional traceability of needs and requirements throughout the lifecycle.
 - **Use in GovCheck:** standards reference for distinguishing intent/needs from requirements and defining derivation, allocation, validation and change-impact relations.
@@ -1131,7 +1131,7 @@
 
 <a id="r-117"></a>
 ### R-117 — NASA Systems Engineering Handbook: stakeholder expectations and requirements management
-- **Cited by:** [ADR 0009](decisions/0009-intent-record-and-authority.md), [intent impact analysis](intent-impact-analysis.md)
+- **Cited by:** [ADR 0009](decisions/0009-intent-record-and-authority.md), [intent impact analysis](intent-impact-analysis.md) · [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.md)
 - **Primary sources:** [NASA stakeholder expectations definition](https://www.nasa.gov/reference/4-1-stakeholder-expectations-definition/) · [NASA requirements management](https://www.nasa.gov/reference/6-2-requirements-management/) · [NASA Systems Engineering Handbook](https://science.nasa.gov/wp-content/uploads/2023/04/nasa_systems_engineering_handbook_0.pdf)
 - **Relevant concepts:** stakeholder expectations, ConOps, goals/objectives, iterative design decisions, requirement decomposition/allocation, bidirectional traceability, design verification, product verification and validation.
 - **Use in GovCheck:** supports upward/downward traceability and consistency checks across expectations, requirements, architecture/design and verification/validation.
@@ -1139,7 +1139,7 @@
 
 <a id="r-118"></a>
 ### R-118 — Goal-oriented Requirements Engineering systematic mapping and 2026 reflection
-- **Cited by:** [ADR 0009](decisions/0009-intent-record-and-authority.md), [intent impact analysis](intent-impact-analysis.md)
+- **Cited by:** [ADR 0009](decisions/0009-intent-record-and-authority.md), [intent impact analysis](intent-impact-analysis.md) · [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.md)
 - **Primary source:** [A systematic mapping of goal-oriented requirements engineering: reflections, impact, and the way forward](https://link.springer.com/article/10.1007/s00766-026-00476-7)
 - **Academic background:** reflects on the extended systematic mapping study covering 246 GORE publications up to 2015 and examines subsequent influence and adoption.
 - **Relevant concepts:** goals, AND/OR refinement, operationalization, actors, dependencies, quality goals/softgoals, trade-offs, KAOS, iStar, GRL and Tropos.
@@ -1148,7 +1148,7 @@
 
 <a id="r-119"></a>
 ### R-119 — OMG Systems Modeling Language (SysML) v2.0
-- **Cited by:** [ADR 0009](decisions/0009-intent-record-and-authority.md), [intent impact analysis](intent-impact-analysis.md)
+- **Cited by:** [ADR 0009](decisions/0009-intent-record-and-authority.md), [intent impact analysis](intent-impact-analysis.md) · [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.md)
 - **Primary source:** [OMG SysML specification](https://www.omg.org/spec/SysML)
 - **Relevant concepts:** standardized systems modeling for requirements, behavior, structure, analysis and verification; model relationships and interoperability through standardized APIs.
 - **Use in GovCheck:** candidate source for typed relationships among requirements, model elements, design and verification, and possible exchange/mapping profiles.
@@ -1156,7 +1156,7 @@
 
 <a id="r-120"></a>
 ### R-120 — OMG Structured Assurance Case Metamodel (SACM) 2.3
-- **Cited by:** [ADR 0009](decisions/0009-intent-record-and-authority.md), [intent impact analysis](intent-impact-analysis.md)
+- **Cited by:** [ADR 0009](decisions/0009-intent-record-and-authority.md), [intent impact analysis](intent-impact-analysis.md) · [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.md)
 - **Primary source:** [OMG SACM 2.3 specification](https://www.omg.org/spec/SACM/)
 - **Relevant concepts:** claims, argumentation, artifact references, asserted evidence/context, reasoning, counter-claims/counter-evidence and modular argument packages.
 - **Use in GovCheck:** specialized standardized model for the assurance subgraph and argument/evidence relationships.
@@ -1164,7 +1164,7 @@
 
 <a id="r-121"></a>
 ### R-121 — UK Government Architectural Decision Record Framework (2025)
-- **Cited by:** [ADR 0009](decisions/0009-intent-record-and-authority.md), [intent impact analysis](intent-impact-analysis.md)
+- **Cited by:** [ADR 0009](decisions/0009-intent-record-and-authority.md), [intent impact analysis](intent-impact-analysis.md) · [metamodel-coherence-verification](research/metamodel-coherence-verification.md)
 - **Primary source:** [UK Government ADR Framework](https://www.gov.uk/government/publications/architectural-decision-record-framework)
 - **Relevant concepts:** context, decision, consequences, appropriate decision-making level, visibility, traceability and autonomy balanced with accountability.
 - **Use in GovCheck:** supports separately authorized decision records explaining how requirements, constraints and architecture alternatives were resolved.
@@ -1172,7 +1172,7 @@
 
 <a id="r-122"></a>
 ### R-122 — IntentDocs open INTENT.md format
-- **Cited by:** [ADR 0009](decisions/0009-intent-record-and-authority.md)
+- **Cited by:** [ADR 0009](decisions/0009-intent-record-and-authority.md) · [metamodel-coherence-verification](research/metamodel-coherence-verification.md)
 - **Primary source:** [IntentDocs INTENT.md format](https://www.intentdocs.com/intent-md)
 - **Relevant concepts:** published open format and convention for a repository-level `INTENT.md` that combines product overview, personas, releases, user stories and acceptance criteria.
 - **Use in GovCheck:** comparison point for an existing published `INTENT.md` format and its scope.

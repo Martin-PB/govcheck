@@ -36,7 +36,18 @@ The audit distinguishes the official machine-readable metamodel XML from an inte
 
 This is not a claim that the OMG XML file is invalid. It is a distinction between a machine-readable metamodel artifact and a stable, portable serialization contract for governed assurance cases.
 
-## 4. GovCheck response: source-view-qualified mapping
+## 4. Pinned artifact hashes reported by the audit
+
+The Assurance Forge fetch script records these SHA-256 values for the four official OMG Beta 1 artifacts as downloaded on 2026-10-02. GovCheck has not independently re-downloaded and re-hashed these files yet; treat them as comparison values, not as GovCheck-verified hashes.
+
+| OMG artifact | File ID | SHA-256 reported by Assurance Forge |
+|---|---|---|
+| Specification PDF | ptc/26-06-34 | `25f32d1cd4bf32dfa9c92c7c1840e1a113b1e91c0e97252f6551878c39997ff5` |
+| Specification changebar PDF | ptc/26-06-35 | `6840a0f67104d07997168d07079c0e168f5ac65ef5fa1779eccb9ebef1fe5f96` |
+| Metamodel XML | ptc/26-05-28 | `0581dfa0b9dfaf17ff0f6c63b74f8e7a8396bea03f315e1334e94f23db110830` |
+| UML Profile XMI | ptc/26-05-21 | `9149a0414628e1b70c1f7c2235f5180c64e7a144601eb2ae78d539681918838b` |
+
+## 5. GovCheck response: source-view-qualified mapping
 
 The Lean module `GovCheckCoherence.SACM24` has been tightened so it cannot silently merge the two conflicting views:
 
@@ -49,7 +60,7 @@ The Lean module `GovCheckCoherence.SACM24` has been tightened so it cannot silen
 
 These guards formalize the two conflicts relevant to the current Claim/Assertion slice. They do not resolve the remaining multiplicity, value-type or inheritance conflicts, and they do not establish conformance to either full source view.
 
-## 5. Required handling policy
+## 6. Required handling policy
 
 Until OMG publishes a stable formal SACM 2.4 version or a beta with a coherent serialization contract:
 
@@ -60,7 +71,7 @@ Until OMG publishes a stable formal SACM 2.4 version or a beta with a coherent s
 5. Do not invent an XMI namespace, XSD, Ecore or interchange profile. Wait for an official or independently interoperable contract and real external instance files.
 6. Keep the 2.4 model and any future conformance matrix separate from 2.3. A later implementation should be additive and version-dispatched, not a silent replacement.
 
-## 6. Next verification work
+## 7. Next verification work
 
 - Obtain and pin the four OMG Beta 1 artifacts using the official URLs and compare their hashes with the independent audit's recorded hashes.
 - Run GovCheck's own text/XML structural diff and extend the Lean source-view model to the remaining conflicts: AssertedEvidence multiplicity, Claim.value type, BindingPackage inheritance, abstraction multiplicity and isCounter multiplicity.

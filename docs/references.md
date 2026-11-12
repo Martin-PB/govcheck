@@ -1265,7 +1265,7 @@
 
 <a id="r-148"></a>
 ### R-148 — DORA 2025 State of AI-assisted Software Development
-- **Cited by:** [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md), [AI-assisted quality and governance research review](research/ai-assisted-quality-governance.md), [GovCheck applicability and external boundaries](research/govcheck-applicability-and-boundaries.md), [Software factory conference analysis](research/software-factory-self-improvement.md)
+- **Cited by:** [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md), [AI-assisted quality and governance research review](research/ai-assisted-quality-governance.md), [Software factory conference analysis](research/software-factory-self-improvement.md)
 - **Primary sources:** [DORA report](https://dora.dev/research/2025/dora-report/) · [Google Research publication](https://research.google/pubs/dora-2025-state-of-ai-assisted-software-development-report/)
 - **Relevant concepts:** organizational and delivery-system factors associated with AI-assisted software development; AI as an amplifier of existing strengths and weaknesses.
 - **Use in GovCheck:** cautions against equating agent count or coding speed with delivery quality; emphasizes governance, feedback and engineering-system context.

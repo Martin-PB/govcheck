@@ -9,7 +9,7 @@
 | Security assurance cases and metamodels | R-04, R-33–R-34 |
 | PEAK decision model | R-74 |
 | Continuous monitoring and runtime assurance | R-70, R-72, R-75–R-76 |
-| Assurance 2.0 and SACM evolution | R-71, R-73 |
+| Assurance 2.0, SACM evolution and implementation audits | R-71, R-73, R-128 |
 | Assurance regimes and goal-oriented requirements | R-35–R-36, R-44, R-92 |
 | Model checking and program-verification alternatives | R-05, R-20, R-37–R-43, R-89–R-91 |
 | Evidence provenance and software supply chain | R-06–R-08 |
@@ -269,9 +269,10 @@
 <a id="r-20"></a>
 
 ### R-20 — Lean
-- **Cited by:** [0007](architecture/0007-technology-decision-framework.md), [0008](architecture/0008-formalization-and-conformance.md), [0010](architecture/0010-assurance-proof-and-conformance.md), [ADR 0001](decisions/0001-bootstrap-boundaries.md), [Spec 0005](specifications/0005-assurance-model.md), [ADR 0002](decisions/0002-study-placement.md)
+- **Cited by:** [0007](architecture/0007-technology-decision-framework.md), [0008](architecture/0008-formalization-and-conformance.md), [0010](architecture/0010-assurance-proof-and-conformance.md), [ADR 0001](decisions/0001-bootstrap-boundaries.md), [Spec 0005](specifications/0005-assurance-model.md), [ADR 0002](decisions/0002-study-placement.md), [CSLib compatibility audit](research/cslib-compatibility-audit.md)
 
 - **Primary source:** [Lean language reference](https://lean-lang.org/doc/reference/latest/)
+- **Related library:** [CSLib](https://github.com/leanprover/cslib), a Lean library for formalizing computer-science theories, temporal logics and transition-system semantics.
 - **Relevant concepts:** proof terms checked by a small kernel; theorem proving under explicit definitions, axioms and hypotheses.
 - **Use in GovCheck:** candidate for narrowly justified proof-critical predicates or certificate checking, if a later ADR supports it.
 - **Limit:** a theorem about a predicate does not establish that the predicate captures approved policy or that the executable refines it. Lean is not selected as a product-wide dependency.
@@ -758,11 +759,12 @@
 
 <a id="r-73"></a>
 ### R-73 — OMG Structured Assurance Case Metamodel (SACM), Version 2.4 Beta 1 (September 2026)
-- **Cited by:** [0010](architecture/0010-assurance-proof-and-conformance.md), [0021](architecture/0021-assurance-claims-and-freshness.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.md) · [Intent impact analysis](intent-impact-analysis.md)
-- **Primary source:** [OMG SACM specification status and 2.4 Beta 1 materials](https://www.omg.org/spec/SACM)
-- **Relevant concepts:** proposed extensions to SACM 2.3, including typed structured values/strengths, assessment-related constructs, joins, whole-concept references, development-state marking, and revised package/relationship semantics.
-- **Use in GovCheck:** essential comparison point before selecting an internal or interchange metamodel. The beta issue resolutions indicate which gaps in 2.3 the revision is attempting to address.
-- **Limit:** 2.4 is a beta, not a formal adopted specification. GovCheck must not treat its draft constructs as stable contracts or claim conformance to them. Preserve 2.3 as the current formal baseline pending final 2.4 review.
+- **Cited by:** [0010](architecture/0010-assurance-proof-and-conformance.md), [0021](architecture/0021-assurance-claims-and-freshness.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.md) · [Intent impact analysis](intent-impact-analysis.md) · [SACM 2.4 semantic mapping slice](research/sacm24-claim-inference-mapping.md), [SACM 2.4 Beta 1 interoperability-risk report](research/sacm24-beta1-interoperability-risk.md)
+- **Primary sources:** [OMG SACM 2.4 Beta 1 specification page](https://www.omg.org/spec/SACM/2.4/Beta1) · [PDF specification artifact (normative within the Beta 1 package)](https://www.omg.org/spec/SACM/2.4/Beta1/PDF) · [machine-readable metamodel XML (normative within the Beta 1 package), 2026-05-04](https://www.omg.org/spec/SACM/20260504/SACM2.4_Metamodel.xml). The beta package is informational/in-process; SACM 2.3 remains the formal adopted baseline.
+- **Relevant issue resolutions:** [SACM24-83 explicit Claim subject](https://issues.omg.org/issues/SACM24-83) · [SACM24-75 Assessment](https://issues.omg.org/issues/SACM24-75) · [SACM24-77 advanced arguments](https://issues.omg.org/issues/SACM24-77) · [SACM24-48 inference/relationship semantics](https://issues.omg.org/issues/SACM24-48).
+- **Relevant concepts:** explicit Claim subject via SACMElement; AssertionDeclarationKind (asserted, assumed, axiomatic, byRule); optional assertion truth/value/rule structures; InferenceTypeKind (probable, collective, necessary, sufficient, necessaryAndSufficient, byRule); AssertionRule and InferenceRule; assessment and advanced-argument extensions.
+- **Use in GovCheck:** source-native semantic comparison and mapping target. The first formal slice preserves assertion-declaration distinctions, explicit subject/revision, and inference direction; probable inference remains outside classical implication until a probability semantics is supplied.
+- **Limit:** 2.4 is a beta, not a formal adopted specification. GovCheck must not treat its draft constructs as stable contracts or claim full conformance. Preserve 2.3 as the current formal baseline pending final 2.4 review.
 
 <a id="r-74"></a>
 ### R-74 — Hoover, Rosso-Llopart and Taran, *Evaluating Project Decisions: Case Studies in Software Engineering* (2009/2010)
@@ -1175,3 +1177,11 @@
 - **Relevant concepts:** published open format and convention for a repository-level `INTENT.md` that combines product overview, personas, releases, user stories and acceptance criteria.
 - **Use in GovCheck:** comparison point for an existing published `INTENT.md` format and its scope.
 - **Limit:** its bundled content model is not adopted by GovCheck; GovCheck does not claim conformance or compatibility.
+
+<a id="r-128"></a>
+### R-128 — Assurance Forge: independent SACM 2.4 Beta 1 implementation-impact audit (2026-10-02; repository revision 2026-11-03)
+- **Cited by:** [SACM 2.4 Beta 1 interoperability-risk report](research/sacm24-beta1-interoperability-risk.md), [SACM 2.4 semantic mapping slice](research/sacm24-claim-inference-mapping.md), [integrated metamodel-coherence execution record](research/metamodel-coherence-prototype-execution.md)
+- **Primary source:** [Pinned implementation-impact audit](https://github.com/lasrod/assurance-forge/blob/0f5187099be1c28fc725cb0f381afc695a135c89/docs/sacm/sacm-2.4-beta1-impact.md) · [pinned official-artifact fetch script and SHA-256 checks](https://github.com/lasrod/assurance-forge/blob/0f5187099be1c28fc725cb0f381afc695a135c89/scripts/fetch-sacm24-beta1-references.sh).
+- **Relevant concepts:** reported absence of a stable native 2.4 instance interchange contract; text/XML contradictions in identity fields, assertion declaration literals, multiplicities, Claim value type and inheritance; implementation cost and versioning implications.
+- **Use in GovCheck:** independent engineering cross-check that the SACM 2.4 Beta 1 text and machine-readable metamodel must be treated as separate source views, not silently normalized into one model.
+- **Limit:** this is a third-party implementation audit, not an OMG statement or normative authority. Its findings must be checked against pinned OMG artifacts; it does not establish that all SACM 2.4 implementations share the same limitations.

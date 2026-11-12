@@ -36,9 +36,12 @@ The result vocabulary preserves the distinctions required by Specification 0005:
 | `incomplete` | The activity began but did not reach its declared completion criterion |
 | `failed` | The method completed and reported a negative result |
 | `passed` | The method completed and reported its scoped positive result |
-| `inconclusive` | The result does not establish pass or fail |
+| `unknown` | No reliable result is available, or the evaluator cannot determine the result from the available inputs |
+| `inconclusive` | The method completed, but its result does not establish pass or fail |
 
-Synthetic illustrations are provided in [evidence-record-passed.example.json](../fixtures/evidence-record-passed.example.json) and [evidence-record-not-run.example.json](../fixtures/evidence-record-not-run.example.json). They are examples only, not repository evidence.
+Synthetic illustrations are provided in [evidence-record-passed.example.json](../fixtures/evidence-record-passed.example.json), [evidence-record-not-run.example.json](../fixtures/evidence-record-not-run.example.json) and [evidence-record-unknown.example.json](../fixtures/evidence-record-unknown.example.json). They are examples only, not repository evidence.
+
+`unknown` and `inconclusive` are distinct: the former means no determinate result is available; the latter means a method ran but did not settle the claim. `stale` is not a result status: freshness/applicability is derived separately from exact dependency revisions and validity conditions.
 
 A `passed` record is testimony from the declared method, not a universal proof. Its meaning remains bounded by method class, scope, assumptions, tool, configuration, environment and trust base.
 

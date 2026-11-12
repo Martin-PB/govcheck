@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "evidenceId": "evidence:status:unknown",
+  "claimIds": [
+    "claim:lifecycle:apply"
+  ],
+  "subject": {
+    "kind": "formal-model",
+    "artifactId": "govcheck.lifecycle",
+    "revision": {
+      "vcs": "git",
+      "nativeId": "4444444444444444444444444444444444444444"
+    }
+  },
+  "governance": {
+    "packageId": "govcheck.governance",
+    "packageRevision": {
+      "vcs": "git",
+      "nativeId": "5555555555555555555555555555555555555555"
+    },
+    "semanticsVersion": "1"
+  },
+  "method": {
+    "methodClass": "model-checking",
+    "scope": "Explore the bounded lifecycle model.",
+    "assumptions": [
+      "A pinned TLC configuration is required."
+    ],
+    "bounds": {
+      "historyLimit": 12
+    },
+    "limitations": [
+      "Synthetic unknown-status example; no method result is asserted."
+    ]
+  },
+  "result": {
+    "status": "unknown",
+    "observedAt": "2026-11-06T00:00:00Z",
+    "summary": "No reliable result is available from the available inputs."
+  },
+  "provenance": {
+    "producer": {
+      "actorId": "synthetic-fixture",
+      "actorType": "service"
+    },
+    "recordedAt": "2026-11-06T00:00:01Z"
+  },
+  "limitations": [
+    "Synthetic status example; not an actual verification report."
+  ],
+  "invalidationDependencies": []
+}

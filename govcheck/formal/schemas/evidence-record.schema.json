@@ -239,7 +239,8 @@
             "incomplete",
             "failed",
             "passed",
-            "inconclusive"
+            "inconclusive",
+            "unknown"
           ]
         },
         "observedAt": {

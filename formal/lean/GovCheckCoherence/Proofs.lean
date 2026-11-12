@@ -181,7 +181,7 @@ theorem sacm_claim_subject_revision_is_pinned
     {claim : SACM24.SACMClaim} {target : ClaimSemantics}
     (mapping : SACM24.SACMClaimInterpretation claim target)
     (subject : SACM24.SACMElementRef) (h : mapping.mappedSubject = some subject) :
-    subject.modelRevision = mapping.targetModel.revision :=
+    subject.modelRevision = mapping.sourceModel.revision :=
   SACM24.claim_subject_revision_is_pinned mapping subject h
 
 end GovCheck.Coherence

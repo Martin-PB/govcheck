@@ -24,6 +24,9 @@ Il s'agit d'un contrat sémantique indépendant des technologies. Le moteur de s
 
 L'identifiant d'événement, la clé d'idempotence, la position du journal, le condensat du payload, la révision native VCS, l'identité du candidat, l'identifiant d'évaluation, l'identifiant d'autorisation et l'identité de révision de gouvernance sont des champs distincts et MUST NOT être confondus.
 
+
+Le périmètre du journal MUST posséder une identité stable et non ambiguë. Cette spécification ne décide pas si un périmètre correspond exactement à un dépôt, couvre plusieurs dépôts relevant d'un même domaine d'autorité ou suit une autre frontière de gouvernance. Cette correspondance MUST être explicitement définie avant qu'un déploiement traite un journal comme canonique ; une URL de VCS ou de forge MUST NOT définir implicitement ce périmètre.
+
 ## 3. Identité du journal et enveloppe d'événement
 
 Un périmètre de journal MUST posséder une séquence logique canonique unique. Chaque événement commis MUST comporter :
@@ -34,12 +37,21 @@ Un périmètre de journal MUST posséder une séquence logique canonique unique.
 5. une identité/intégrité du contenu liée au payload exact de l'événement ;
 6. une attribution d'acteur/principal et de provenance suffisante pour la politique d'autorité applicable ;
 7. les identités pertinentes du candidat, de l'évaluation, de l'autorisation, de la publication ou de la révision de gouvernance ;
-8. une clé d'idempotence pour les requêtes d'ajout réessayables ;
+8. une clé d'idempotence pour les requêtes d'ajout réessayables (les enregistrements de genèse/bootstrap relèvent d'une procédure d'ancrage distincte et n'ont pas à en porter une) ;
 9. toute justification, hypothèse, limite et référence aux preuves requises.
 
 Un horodatage mural MAY être enregistré comme métadonnée descriptive. Il MUST NOT allouer les positions, résoudre la concurrence ou déterminer l'applicabilité.
 
 L'encodage, la canonicalisation, le schéma de condensat/signature et le langage de schéma restent des choix d'implémentation. Les choix effectués MUST fournir une identité déterministe de l'enveloppe exacte commise et MUST être documentés avec leurs règles de versionnement et de migration.
+
+
+L'enregistrement de genèse MUST lier l'identité du périmètre du journal, l'enregistrement/la révision d'autorité initiale, la révision de gouvernance initiale ainsi que les sémantiques initiales des événements et schémas. Sa provenance et son ancre de confiance MUST être explicites et vérifiables indépendamment selon le modèle de confiance déclaré du déploiement. Cette spécification ne sélectionne pas le mécanisme de confiance du bootstrap. Une genèse absente, ambiguë ou invérifiable produit `unknown` et MUST bloquer tout ajout normatif ; elle MUST NOT être reconstruite à partir d'une branche VCS ou d'une valeur par défaut de forge.
+
+
+Le mécanisme d'intégrité retenu MUST rendre détectable la substitution du payload ou du prédécesseur au regard du modèle de menace documenté. L'identité d'intégrité seule MUST NOT être considérée comme une preuve d'authenticité de l'acteur : l'attribution du principal et de la provenance MUST être validée séparément au regard du mécanisme d'autorité applicable. Un déploiement peut utiliser des engagements cryptographiques, l'intégrité d'un stockage de confiance, des enregistrements authentifiés ou une combinaison de ces mécanismes, mais MUST documenter les garanties et hypothèses de confiance ; aucun algorithme ni aucune suite n'est sélectionné ici.
+
+
+Une clé d'idempotence MUST être unique dans son périmètre de journal tant que l'événement correspondant peut rester faisant autorité. Elle MUST être liée à l'opération d'ajout exacte, notamment au type d'événement, à l'identifiant d'événement, à la tête attendue et à l'identité du payload. Une réutilisation avec la même enveloppe de requête retourne le reçu initial ; une réutilisation avec toute enveloppe différente produit `conflict`. La compaction, les instantanés et la reconstruction des projections MUST préserver cette garantie de recherche (ou un tombstone équivalent non réutilisable). Les enregistrements de genèse/bootstrap relèvent de la procédure de genèse distincte et sont exemptés des clés d'idempotence ordinaires des ajouts.
 
 ## 4. Compare-and-append et sérialisation
 
@@ -142,7 +154,7 @@ Cette spécification complète la [Spécification 0006](0006-governance-revision
 
 Les modèles TLA+ actuels couvrent des tranches bornées distinctes : applicabilité et autorité temporelle ; publication compare-and-append ; contrôles d'évaluateur/exception/révocation ; sûreté du journal face aux pannes/reprises/rollback. Ils constituent des éléments de conception composables, pas un modèle intégré d'implémentation. Le modèle de reprise du journal suppose une autorisation amont et un rédacteur sérialisé ; il ne prouve ni consensus multi-écrivain, ni sémantique durable du système de fichiers, ni reprise éventuelle, ni correction des adaptateurs, ni réconciliation des répliques, ni raffinement de l'implémentation.
 
-Références : [R-05 — TLA+ et TLC](../references.fr.md#r-05), [R-22 — sémantiques natives de Git et Pijul](../references.fr.md#r-22), [R-107 — sémantique des workflows GitHub Actions](../references.fr.md#r-107).
+Références : [R-05 — TLA+ et TLC](../references.fr.md#r-05), [R-22 — sémantiques natives de Git et Pijul](../references.fr.md#r-22), [R-142 — linéarisabilité](../references.fr.md#r-142), [R-143 — journalisation anticipée et reprise après panne](../references.fr.md#r-143), [R-144 — sémantique des nouvelles tentatives idempotentes](../references.fr.md#r-144).
 
 ## 12. Frontière d'autorité
 

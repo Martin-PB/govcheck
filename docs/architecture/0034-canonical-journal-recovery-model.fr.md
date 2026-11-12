@@ -1,6 +1,6 @@
 # Architecture 0034 — Modèle de durabilité, reprise et rollback du journal canonique
 
-**Statut :** modèle de conception TLA+ borné ; vérifié par SANY/TLC pour la configuration finie exacte. Il ne s'agit ni d'une preuve d'implémentation ni d'une adoption normative. Ce document ne constitue ni une affirmation d'implémentation, ni une adoption normative, ni une preuve de durabilité opérationnelle. **English:** [0034](0034-canonical-journal-recovery-model.md).
+**Statut :** modèle de conception TLA+ borné ; vérifié par SANY/TLC pour la configuration finie exacte. Ce document ne constitue ni une preuve d'implémentation, ni une adoption normative, ni une preuve de durabilité opérationnelle. **English:** [0034](0034-canonical-journal-recovery-model.md).
 
 ## 1. Objet
 
@@ -35,11 +35,11 @@ Il s'agit d'une petite abstraction finie à transitions, pas d'une spécificatio
 
 L'action de reprise est une opération abstraite de rejeu jusqu'à la tête. Elle ne prouve pas qu'une implémentation concrète peut reconstruire tout état matérialisé ni que les effets externes sont idempotents. Les domaines bornés de contenus, révisions et événements n'établissent aucune correction non bornée.
 
-Les résultats TLC, lorsqu'ils seront disponibles, constitueront uniquement des éléments de model checking pour le module et la configuration exacts. Ils ne seront ni preuve de théorème, ni vérification de l'implémentation, ni assurance de production.
+Le résultat TLC consigné constitue uniquement un élément de model checking pour le module et la configuration exacts. Il ne s'agit ni d'une preuve de théorème, ni d'une vérification de l'implémentation, ni d'une assurance de production.
 
 
 
-## 6. Éléments de vérification TLC
+## 5. Éléments de vérification TLC
 
 Le module et la configuration exacts ont réussi SANY 2.1 et TLC 2.19 sur la tête de PR #99 `a5c9845b1df7a36c9b1f23af0a28bdabdd4300f3` (checkout de fusion CI consigné dans le workflow [42848709804](https://github.com/Martin-PB/govcheck/actions/runs/42848709804)).
 
@@ -50,13 +50,13 @@ Le module et la configuration exacts ont réussi SANY 2.1 et TLC 2.19 sur la tê
 - Job : `129943126960` ; artefact du rapport ID `13778403717`, SHA-256 du ZIP `0fe3148982524a25336674718505b02fd786953bd000d9b06ae016ec4987d00b`.
 - Chaîne d'outils : tla2tools v1.7.4 (SHA-256 `936a262061c914694dfd669a543be24573c45d5aa0ff20a8b96b23d01e050e88`), SANY 2.1, TLC 2.19, Temurin Java 17.0.21+9, quatre workers.
 
-Il s'agit d'éléments de model checking finis pour ces identités exactes de source et de configuration. Ce n'est ni une preuve de théorème, ni une vérification de l'implémentation, ni une preuve de durabilité d'un moteur de stockage. Le modèle vérifie des propriétés de sûreté et l'historique append-only ; il n'affirme pas la reprise éventuelle sous équité. L'autorisation et les contrôles d'évaluateur sont abstraits par les modèles amont de gouvernance/publication et ne sont pas revérifiés ici.
+Il s'agit d'éléments de model checking finis pour ces identités exactes de source et de configuration. Ce n'est ni une preuve de théorème, ni une vérification de l'implémentation, ni une preuve de durabilité d'un moteur de stockage. Le modèle inclut une hypothèse d'équité faible pour l'action abstraite `Recover`, mais la configuration TLC vérifie uniquement les invariants de sûreté et `AppendOnly` ; elle ne vérifie ni ne rapporte de propriété temporelle distincte de reprise éventuelle. Aucune garantie de vivacité de reprise dans une implémentation concrète n'est revendiquée. L'autorisation et les contrôles d'évaluateur sont abstraits par les modèles amont de gouvernance/publication et ne sont pas revérifiés ici.
 
 
 
 Revalidation de la tête finale de PR : les mêmes blobs du module et de la configuration ont été revérifiés sur la tête finale documentation/package `8ace02658a9f349db57e937c697e66c7b779aaa8` dans le [workflow 42849634866](https://github.com/Martin-PB/govcheck/actions/runs/42849634866), job `129946416981`. Le résultat est identique : 178 549 états générés / 38 434 distincts, zéro restant, profondeur 9 ; les six invariants et `AppendOnly` ont réussi. Artefact du rapport de la tête finale ID `13778459512`, SHA-256 `8ce7414863ef57725e7ae36e3055d10edb21571feb62c35d9fae68228a96b94c`. Les huit vérifications configurées de la PR ont toutes réussi sur cette tête finale.
 
-## 5. Contrat et références associés
+## 6. Contrat et références associés
 
 Ce modèle complète la [Spécification 0006](../specifications/0006-governance-revision-applicability.fr.md), l'[Architecture 0032](0032-canonical-publication-model-checking.fr.md) et l'[Architecture 0033](0033-governance-evaluator-exception-revocation-model.fr.md). Ses fondements conceptuels sont catalogués sous [R-05 — TLA+ et TLC](../references.fr.md#r-05) et [R-22 — sémantiques natives de Git et Pijul](../references.fr.md#r-22).
 

@@ -20,6 +20,7 @@
 | Métadonnées de gouvernance et catalogues | R-17 |
 | Systèmes de workflow d'agents évalués comme fixtures | R-18–R-19 |
 | Sémantiques de contrôle de version | R-22 |
+| Journal canonique, concurrence et reprise | R-142–R-144 |
 | Plateformes VCS, forges et CI alternatives (CLI Pijul, GitLab, Woodpecker, SourceHut, Fossil) | R-109–R-113 |
 | CRDT, collaboration temps réel et transport réseau | R-45–R-50, R-66, R-87 |
 | Représentation des connaissances et interopérabilité | R-51–R-61, R-83–R-86 |
@@ -1040,7 +1041,7 @@
 
 <a id="r-107"></a>
 ### R-107 — Emplacement et syntaxe des workflows GitHub Actions
-- **Cité par :** [ADR 0003](decisions/0003-two-level-governance.fr.md), [Spécification 0007](specifications/0007-canonical-governance-journal-protocol.fr.md)
+- **Cité par :** [ADR 0003](decisions/0003-two-level-governance.fr.md)
 - **Sources primaires :** [Syntaxe des workflows GitHub Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax) · [Concepts des workflows GitHub Actions](https://docs.github.com/en/actions/concepts/workflows-and-actions/workflows)
 - **Concepts pertinents :** les définitions de workflows GitHub Actions sont des fichiers YAML placés dans le répertoire `.github/workflows/` à la racine du dépôt ; GitHub découvre les workflows à cet emplacement et les évalue en fonction des événements du dépôt.
 - **Utilité pour GovCheck :** étaye la contrainte de l'ADR 0003 selon laquelle le contenu réutilisable du package produit ne peut pas, à lui seul, déplacer un workflow GitHub Actions : le processus de bootstrap/synchronisation doit matérialiser le workflow au chemin requis à la racine du dépôt.
@@ -1102,3 +1103,30 @@
 - **Utilité pour GovCheck :** montre un VCS avec un tracker natif (tickets) mais sans concept natif de required status check, éclairant la matrice de transposabilité de l'ADR 0006.
 - **Limite :** documentation du projet ; l'intégration CI de Fossil est externe et doit être évaluée séparément.
 
+
+
+## Journal canonique, concurrence et reprise
+
+<a id="r-142"></a>
+### R-142 — Linearizability: A Correctness Condition for Concurrent Objects
+- **Cité par :** [Spécification 0007](specifications/0007-canonical-governance-journal-protocol.fr.md), [Journal des événements du portefeuille](work-portfolio/events.fr.md)
+- **Source primaire :** Maurice P. Herlihy et Jeannette M. Wing, « Linearizability: A Correctness Condition for Concurrent Objects », *ACM Transactions on Programming Languages and Systems*, 12(3), 1990, p. 463–492. [DOI](https://doi.org/10.1145/78969.78972) · [Article hébergé par les auteurs](https://www.cs.cmu.edu/~wing/publications/HerlihyWing90.pdf)
+- **Concepts pertinents :** des opérations concurrentes semblent prendre effet en un point unique entre leur invocation et leur réponse, tout en respectant une spécification séquentielle légale.
+- **Utilité pour GovCheck :** fournit le concept formel de concurrence sous-jacent au point unique de linéarisation du compare-and-append du journal.
+- **Limite :** la linéarisabilité est une condition de correction, pas une implémentation de stockage ni une preuve qu'un journal donné la satisfait.
+
+<a id="r-143"></a>
+### R-143 — Journalisation anticipée ARIES et reprise transactionnelle
+- **Cité par :** [Spécification 0007](specifications/0007-canonical-governance-journal-protocol.fr.md), [Journal des événements du portefeuille](work-portfolio/events.fr.md)
+- **Source primaire :** C. Mohan, Don Haderle, Bruce Lindsay, Hamid Pirahesh et Peter Schwarz, « ARIES: A Transaction Recovery Method Supporting Fine-Granularity Locking and Partial Rollbacks Using Write-Ahead Logging », *ACM Transactions on Database Systems*, 17(1), 1992. [Publication IBM Research](https://research.ibm.com/publications/aries-a-transaction-recovery-method-supporting-fine-granularity-locking-and-partial-rollbacks-using-write-ahead-logging)
+- **Concepts pertinents :** journalisation anticipée, reprise transactionnelle durable, redo/undo et reprise après redémarrage.
+- **Utilité pour GovCheck :** éclaire la distinction entre préparation volatile, commit durable et reconstruction après interruption.
+- **Limite :** ARIES est un algorithme de reprise de base de données ; sa citation ne sélectionne pas une base, n'implique pas son adoption directe et ne prouve pas la durabilité du journal GovCheck.
+
+<a id="r-144"></a>
+### R-144 — RFC 9110, sémantique HTTP : méthodes idempotentes
+- **Cité par :** [Spécification 0007](specifications/0007-canonical-governance-journal-protocol.fr.md), [Journal des événements du portefeuille](work-portfolio/events.fr.md)
+- **Source primaire :** [RFC 9110 §9.2.2 — Méthodes idempotentes](https://www.rfc-editor.org/rfc/rfc9110.html#section-9.2.2)
+- **Concepts pertinents :** des requêtes répétables produisent le même effet voulu qu'une requête unique, ce qui permet une nouvelle tentative sûre après perte de réponse lorsque la sémantique de l'opération est idempotente.
+- **Utilité pour GovCheck :** éclaire la distinction entre la nouvelle tentative d'une requête d'ajout exacte et la création accidentelle d'un second événement normatif.
+- **Limite :** la sémantique des méthodes HTTP ne définit ni l'espace de noms des clés d'idempotence GovCheck, ni leur rétention, ni le protocole d'ajout du journal ; ces points restent spécifiés localement.

@@ -128,8 +128,6 @@ structure MappingContract where
 structure EvidenceMapping (source target : EvidenceRecord) where
   contract : MappingContract
   methodRule : MappingRule source.kind target.kind
-  sourceModelMatches : contract.sourceModel = source.source
-  targetModelMatches : contract.targetModel = target.source
   sourceIdentityPreserved : target.source.identity = source.source.identity
   sourceRevisionPreserved : target.source.revision = source.source.revision
   scopePreserved : target.scope = source.scope

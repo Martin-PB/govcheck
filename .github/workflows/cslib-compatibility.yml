@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - "formal/metamodel-epistemic-core-*"
     paths:
       - "formal/cslib-compat/**"
       - ".github/workflows/cslib-compatibility.yml"

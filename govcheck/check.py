@@ -16,6 +16,7 @@ stdout text is a human-readable projection. Standard library only.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 import subprocess
@@ -23,7 +24,7 @@ import sys
 from pathlib import Path
 
 TOOL = "govcheck"
-VERSION = "0.3.0-slice"
+VERSION = "0.4.0-slice"
 
 ANCHOR_RE = re.compile(r'<a id="r-(\d{2,3})"></a>', re.I)
 MENTION_RE = re.compile(r"\bR-(\d{2,3})\b")
@@ -34,6 +35,8 @@ CATALOGUES = ("docs/references.md", "docs/references.fr.md")
 ATTESTATION_DIR = "docs/attestations"
 DECISIONS_DIR = "docs/decisions"
 GUIDE_BASENAMES = ("README", "TEMPLATE")
+MARKER_NAME = ".govcheck-bootstrap.json"
+HEX64_RE = re.compile(r"^[0-9a-f]{64}$")
 
 REFERENCES_HEADING_RE = re.compile(
     r"^##[ \t]+(References|Bibliographic references|R\u00e9f\u00e9rences|R\u00e9f\u00e9rences bibliographiques)[ \t]*$",
@@ -213,6 +216,69 @@ def rule_sources_present(ctx: Ctx):
     return ("pass", True, [str(checked) + " decision document(s) and " + str(att_checked) + " attestation record(s) each carry sources"])
 
 
+def _safe_rel(path: str) -> bool:
+    if not path or path.startswith("/") or chr(92) in path:
+        return False
+    return all(p not in ("", ".", "..") for p in path.split("/"))
+
+
+def rule_bootstrap_integrity(ctx: Ctx):
+    """Installed package files must still match the bootstrap marker digests.
+
+    When the tree root carries the package-owned marker .govcheck-bootstrap.json
+    (written by govcheck/bootstrap.py apply), the marker must be valid JSON with
+    the expected schema, and every installed file must exist with the recorded
+    SHA-256 digest. Without the marker the rule is not applicable.
+    """
+    mp = ctx.tree / MARKER_NAME
+    if not mp.is_file():
+        return ("pass", False, ["no " + MARKER_NAME + " at the tree root; rule not applicable"])
+    try:
+        marker = json.loads(mp.read_text(encoding="utf-8"))
+    except ValueError as e:
+        return ("fail", True, [MARKER_NAME + " is not valid JSON: " + str(e)])
+    if not isinstance(marker, dict):
+        return ("fail", True, [MARKER_NAME + " must be a JSON object"])
+    problems = []
+    if marker.get("tool") != "govcheck-bootstrap":
+        problems.append(MARKER_NAME + ': unexpected "tool" value ' + repr(marker.get("tool")))
+    pv = marker.get("package_version")
+    if not isinstance(pv, str) or not pv.strip():
+        problems.append(MARKER_NAME + ': missing non-empty "package_version"')
+    pd = marker.get("package_digest")
+    if not isinstance(pd, str) or not HEX64_RE.match(pd):
+        problems.append(MARKER_NAME + ': "package_digest" must be a 64-char lowercase hex SHA-256')
+    installed = marker.get("installed")
+    if not isinstance(installed, list):
+        problems.append(MARKER_NAME + ': "installed" must be a list of {path, sha256} entries')
+        installed = []
+    checked = 0
+    for entry in installed:
+        if not isinstance(entry, dict):
+            problems.append(MARKER_NAME + ": installed entry is not an object")
+            continue
+        rel = entry.get("path")
+        sha = entry.get("sha256")
+        if not isinstance(rel, str) or not _safe_rel(rel):
+            problems.append(MARKER_NAME + ": unsafe installed path " + repr(rel))
+            continue
+        if not isinstance(sha, str) or not HEX64_RE.match(sha):
+            problems.append(rel + ": installed entry has no valid sha256 digest")
+            continue
+        checked += 1
+        f = ctx.tree / rel
+        if not f.is_file():
+            problems.append(rel + ": file recorded in the marker is missing")
+        elif hashlib.sha256(f.read_bytes()).hexdigest() != sha:
+            problems.append(rel + ": content drifted from the digest recorded in the marker")
+    conflicts = marker.get("conflicts", [])
+    if not isinstance(conflicts, list) or not all(isinstance(c, str) and c for c in conflicts):
+        problems.append(MARKER_NAME + ': "conflicts" must be a list of non-empty strings')
+    if problems:
+        return ("fail", True, problems)
+    return ("pass", True, [str(checked) + " installed file(s) match the recorded digests of package " + str(pv)])
+
+
 def rule_independent_review(ctx: Ctx):
     if ctx.changed is None or not ctx.changed:
         return ("pass", False, ["no candidate diff supplied; rule not applicable"])
@@ -240,6 +306,7 @@ RULES = [
     {"id": "manifest-pairs", "class": "decidable", "fn": rule_manifest_pairs},
     {"id": "reference-integrity", "class": "decidable", "fn": rule_reference_integrity},
     {"id": "sources-present", "class": "decidable", "fn": rule_sources_present},
+    {"id": "bootstrap-integrity", "class": "decidable", "fn": rule_bootstrap_integrity},
     {"id": "tla-evidence-freshness", "class": "not-verifiable-offline", "fn": rule_tla_freshness},
     {"id": "independent-review", "class": "attested", "fn": rule_independent_review},
 ]

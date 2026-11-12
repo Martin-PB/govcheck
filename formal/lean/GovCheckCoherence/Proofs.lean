@@ -1,5 +1,7 @@
 import GovCheckCoherence.Evidence
 import GovCheckCoherence.SchemaBoundary
+import GovCheckCoherence.Mapping
+import GovCheckCoherence.SACM24
 
 namespace GovCheck.Coherence
 
@@ -73,5 +75,191 @@ theorem schema_method_and_status_do_not_determine_epistemic_kind :
     theoremProvingTestimony.kind ≠
         candidateTheoremProofClassification.kind := by
   decide
+
+
+/-- The mapping bridge binds the exact source and target semantic model revisions. -/
+theorem evidence_mapping_binds_model_revisions
+    {source target : MappingSubject} (mapping : EvidenceMapping source target) :
+    mapping.contract.sourceModel = source.model ∧
+      mapping.contract.targetModel = target.model :=
+  ⟨mapping.sourceModelMatches, mapping.targetModelMatches⟩
+
+/-- A mapped evidence record retains the exact native artifact revision. -/
+theorem evidence_mapping_preserves_revision
+    {source target : MappingSubject} (mapping : EvidenceMapping source target) :
+    target.artifact.revision = source.artifact.revision :=
+  mapping_preserves_source_revision mapping
+
+/-- A mapped evidence record retains the source artifact identity. -/
+theorem evidence_mapping_preserves_identity
+    {source target : MappingSubject} (mapping : EvidenceMapping source target) :
+    target.artifact.identity = source.artifact.identity :=
+  mapping_preserves_source_identity mapping
+
+/-- The first contract requires exact scope preservation. -/
+theorem evidence_mapping_preserves_scope
+    {source target : MappingSubject} (mapping : EvidenceMapping source target) :
+    target.scope = source.scope :=
+  mapping_preserves_scope mapping
+
+/-- Every source assumption remains explicit in the mapped target. -/
+theorem evidence_mapping_preserves_assumptions
+    {source target : MappingSubject} (mapping : EvidenceMapping source target)
+    (assumption : String) (h : assumption ∈ source.assumptions) :
+    assumption ∈ target.assumptions :=
+  mapping_preserves_assumptions mapping assumption h
+
+/-- Method-class changes are not silently introduced by this first mapping profile. -/
+theorem evidence_mapping_preserves_method_class
+    {source target : MappingSubject} (mapping : EvidenceMapping source target) :
+    target.evidence.methodClass = source.evidence.methodClass :=
+  mapping_preserves_method_class mapping
+
+/-- A theorem-proof target is carried from an existing theorem proof or has
+    an actual Lean proof term for the target claim. -/
+theorem evidence_mapping_theorem_proof_requires_derivation
+    {source target : MappingSubject} (mapping : EvidenceMapping source target)
+    (h : target.evidence.kind = .theoremProof) :
+    source.evidence.kind = .theoremProof ∨
+      (∃ derivation : KernelCheckedDerivation target.claim.meaning, derivation.proof = derivation.proof) :=
+  mapping_target_theorem_proof_requires_derivation mapping h
+
+/-- Unknown (no determinate result) is not the same as inconclusive
+    (a method ran but did not settle pass/fail). -/
+theorem unknown_status_is_distinct_from_inconclusive :
+    EvidenceStatus.unknown ≠ EvidenceStatus.inconclusive := by
+  decide
+
+/-- SACM assertion declarations preserve their distinct GovCheck dispositions. -/
+theorem sacm_assertion_disposition_is_injective :
+    ∀ a b, SACM24.mapAssertionDeclaration a = SACM24.mapAssertionDeclaration b → a = b :=
+  SACM24.mapAssertionDeclaration_injective
+
+/-- SACM probable inference cannot be silently interpreted as classical entailment. -/
+theorem sacm_probable_inference_requires_probability_semantics
+    (premises : List Prop) (conclusion : Prop) :
+    ¬ Nonempty (SACM24.InferenceBridge premises conclusion .probable) :=
+  SACM24.probable_inference_has_no_classical_bridge premises conclusion
+
+/-- SACM necessary inference is represented in the reverse implication direction. -/
+theorem sacm_necessary_inference_direction
+    {premise conclusion : Prop}
+    (bridge : SACM24.InferenceBridge [premise] conclusion .necessary) :
+    conclusion → premise :=
+  SACM24.necessary_inference_is_reverse_entailment bridge
+
+/-- SACM sufficient inference is represented in the forward implication direction. -/
+theorem sacm_sufficient_inference_direction
+    {premise conclusion : Prop}
+    (bridge : SACM24.InferenceBridge [premise] conclusion .sufficient) :
+    premise → conclusion :=
+  SACM24.sufficient_inference_is_forward_entailment bridge
+
+/-- SACM collective inference preserves the joint-premise equivalence. -/
+theorem sacm_collective_inference_semantics
+    {premises : List Prop} {conclusion : Prop}
+    (bridge : SACM24.InferenceBridge premises conclusion .collective) :
+    SACM24.AllPremises premises ↔ conclusion :=
+  SACM24.collective_inference_is_joint_equivalence bridge
+
+/-- SACM Claim identity is bound to the GovCheck claim interpretation. -/
+theorem sacm_claim_interpretation_preserves_identity
+    {claim : SACM24.SACMClaim} {target : ClaimSemantics}
+    (mapping : SACM24.SACMClaimInterpretation claim target) :
+    target.claimId = claim.identity :=
+  SACM24.claim_interpretation_preserves_identity mapping
+
+/-- SACM explicit subject references are preserved by the interpretation. -/
+theorem sacm_claim_interpretation_preserves_subject
+    {claim : SACM24.SACMClaim} {target : ClaimSemantics}
+    (mapping : SACM24.SACMClaimInterpretation claim target) :
+    mapping.mappedSubject = claim.subject :=
+  SACM24.claim_interpretation_preserves_subject mapping
+
+/-- A SACM subject reference is tied to the exact source model revision. -/
+theorem sacm_claim_subject_revision_is_pinned
+    {claim : SACM24.SACMClaim} {target : ClaimSemantics}
+    (mapping : SACM24.SACMClaimInterpretation claim target)
+    (subject : SACM24.SACMElementRef) (h : mapping.mappedSubject = some subject) :
+    subject.modelRevision = mapping.sourceModel.revision :=
+  SACM24.claim_subject_revision_is_pinned mapping subject h
+
+/-- SACM Claim identity is carried into the source GovCheck interpretation. -/
+theorem sacm_mapping_preserves_claim_identity
+    {sacmClaim : SACM24.SACMClaim} {source target : MappingSubject}
+    (mapping : SACM24.SACMClaimMapping sacmClaim source target) :
+    source.claim.claimId = sacmClaim.identity :=
+  SACM24.sacm_claim_mapping_preserves_claim_identity mapping
+
+/-- The explicit SACM subject remains attached to the mapped claim. -/
+theorem sacm_mapping_preserves_subject
+    {sacmClaim : SACM24.SACMClaim} {source target : MappingSubject}
+    (mapping : SACM24.SACMClaimMapping sacmClaim source target) :
+    mapping.sourceInterpretation.mappedSubject = sacmClaim.subject :=
+  SACM24.sacm_claim_mapping_preserves_subject mapping
+
+/-- The SACM subject is bound to the exact source model revision. -/
+theorem sacm_mapping_uses_exact_source_model
+    {sacmClaim : SACM24.SACMClaim} {source target : MappingSubject}
+    (mapping : SACM24.SACMClaimMapping sacmClaim source target) :
+    mapping.sourceInterpretation.sourceModel = source.model :=
+  SACM24.sacm_claim_mapping_uses_exact_source_model mapping
+
+/-- The SACM-to-GovCheck claim mapping carries its declared semantic bridge. -/
+theorem sacm_mapping_has_semantic_bridge
+    {sacmClaim : SACM24.SACMClaim} {source target : MappingSubject}
+    (mapping : SACM24.SACMClaimMapping sacmClaim source target) :
+    Nonempty (SemanticBridge source.claim.meaning target.claim.meaning
+      mapping.evidenceMapping.contract.coverage) :=
+  SACM24.sacm_claim_mapping_has_semantic_bridge mapping
+
+/-- SACM assertion declaration remains distinct in the GovCheck claim disposition. -/
+theorem sacm_mapping_preserves_assertion_declaration
+    {sacmClaim : SACM24.SACMClaim} {source target : MappingSubject}
+    (mapping : SACM24.SACMClaimMapping sacmClaim source target) :
+    mapping.sourceInterpretation.disposition =
+      SACM24.mapAssertionDeclaration sacmClaim.declaration :=
+  SACM24.claim_interpretation_preserves_declaration mapping.sourceInterpretation
+
+/-- Textual Beta 1 declaration literals reject the XML-only byRule value. -/
+theorem sacm_text_byRule_is_rejected :
+    SACM24.declarationSupportedBySourceView .specificationText .byRule = false :=
+  SACM24.text_byRule_is_not_supported
+
+/-- The metamodel XML rejects the text-only needsSupport value. -/
+theorem sacm_xml_needsSupport_is_rejected :
+    SACM24.declarationSupportedBySourceView .normativeMetamodelXML .needsSupport = false :=
+  SACM24.xml_needsSupport_is_not_supported
+
+/-- The PDF text identity field is explicitly represented as gid. -/
+theorem sacm_text_identity_field_is_gid :
+    SACM24.identityFieldForSourceView .specificationText = .gid :=
+  SACM24.text_identity_field_is_gid
+
+/-- The normative metamodel XML identity field is explicitly elementId. -/
+theorem sacm_xml_identity_field_is_elementId :
+    SACM24.identityFieldForSourceView .normativeMetamodelXML = .elementId :=
+  SACM24.xml_identity_field_is_elementId
+
+/-- A mapped Claim must carry the declaration/source-view consistency proof. -/
+theorem sacm_claim_mapping_requires_source_view_consistency
+    {claim : SACM24.SACMClaim} {interpretation : ClaimSemantics}
+    (mapping : SACM24.SACMClaimInterpretation claim interpretation) :
+    SACM24.declarationSupportedBySourceView claim.sourceView claim.declaration = true :=
+  mapping.declarationConsistentWithSourceView
+
+/-- A mapped Claim must use the identity field of its declared source view. -/
+theorem sacm_claim_mapping_requires_source_identity_field
+    {claim : SACM24.SACMClaim} {interpretation : ClaimSemantics}
+    (mapping : SACM24.SACMClaimInterpretation claim interpretation) :
+    claim.identityField = SACM24.identityFieldForSourceView claim.sourceView :=
+  mapping.identityFieldMatchesSourceView
+
+/-- A SACM mapping pins the native format corresponding to the selected source view. -/
+theorem sacm_claim_source_format_matches_view
+    {claim : SACM24.SACMClaim} {interpretation : ClaimSemantics}
+    (mapping : SACM24.SACMClaimInterpretation claim interpretation) :
+    mapping.sourceModel.nativeFormat = SACM24.nativeFormatForSourceView claim.sourceView :=
+  mapping.sourceFormatMatchesView
 
 end GovCheck.Coherence

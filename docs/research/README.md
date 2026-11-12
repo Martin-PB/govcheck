@@ -32,6 +32,7 @@ When a new study is added, update this register and both central reference catal
 | STUDY-001 | AI-assisted code quality, maintainability, agentic TDD and organizational adoption | [Revue de recherche](ai-assisted-quality-governance.fr.md) | [Research review](ai-assisted-quality-governance.md) | Research only; no recommendation adopted |
 | STUDY-002 | Software factories, AI engineering governance and GovCheck applicability | [Applicabilité de GovCheck](govcheck-applicability-and-boundaries.fr.md) · [Analyse de la conférence](software-factory-self-improvement.fr.md) | [GovCheck applicability](govcheck-applicability-and-boundaries.md) · [Conference analysis](software-factory-self-improvement.md) | Research only; no factory architecture or audit taxonomy adopted |
 | STUDY-003 | Constructivist epistemology, irreducible complexity and systemic modelling (three-session Le Moigne colloquium) | [Dossier du colloque](le-moigne-colloquium.fr.md) · [Applicabilité à GovCheck](govcheck-applicability-constructivism-and-systems.fr.md) | [Colloquium dossier](le-moigne-colloquium.md) · [GovCheck applicability](govcheck-applicability-constructivism-and-systems.md) | Research only; no constructivist/systemic ontology adopted |
+| STUDY-004 | Multi-disciplinary specifications, plural viewpoints, semantic alignment and formal deliberation | [Dossier de recherche](multi-viewpoint-specification-governance.fr.md) | [Research dossier](multi-viewpoint-specification-governance.md) | Research only; no metamodel or implementation decision adopted |
 
 ## Cross-study themes
 
@@ -42,6 +43,7 @@ These are navigation aids, not adopted concepts or product taxonomy.
 - **AI-assisted engineering and organizational fit:** STUDY-001 and STUDY-002.
 - **Repository boundaries and external preconditions:** STUDY-002.
 - **Complexity, uncertainty, model scope and residual risk:** STUDY-003 and STUDY-002.
+- **Plural specifications, semantic alignment and cross-domain deliberation:** STUDY-004; compare with existing ontology/interoperability and assurance-case studies.
 - **Evidence, provenance and decision authority:** all studies.
 
 ## Decision traceability

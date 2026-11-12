@@ -48,6 +48,7 @@
 | Qualité du code assisté par IA, maintenabilité, TDD agentique et adoption organisationnelle | R-152–R-161 |
 | Applicabilité de GovCheck, usines logicielles, préconditions externes et mesure de productivité IA | R-162–R-165 |
 | Épistémologie constructiviste, complexité irréductible, modélisation systémique et validité des modèles | R-166–R-186 |
+| Spécifications multi-métiers, points de vue, interopérabilité sémantique et délibération | R-187–R-192 |
 
 ## Entrées bibliographiques détaillées
 
@@ -568,7 +569,7 @@
 
 <a id="r-51"></a>
 ### R-51 — Open Knowledge Format (OKF) v0.2
-- **Cité par :** [0002-study-placement ](decisions/0002-study-placement.fr.md) · [metamodel-design-dossier ](decisions/metamodel-design-dossier.fr.md)
+- **Cité par :** [0002-study-placement ](decisions/0002-study-placement.fr.md) · [metamodel-design-dossier ](decisions/metamodel-design-dossier.fr.md), [Gouvernance des spécifications multi-points de vue](research/multi-viewpoint-specification-governance.fr.md)
 
 - **Sources primaires :** [Spécification canonique OKF v0.2](https://github.com/GoogleCloudPlatform/open-knowledge-format/blob/main/SPEC.md) · [Spécification OKF v0.2 dans l'ancien dépôt Knowledge Catalog](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md)
 - **Concepts pertinents :** bundles de connaissances portables fondés sur Markdown, frontmatter YAML, liens et métadonnées de provenance, confiance et cycle de vie.
@@ -658,7 +659,7 @@
 
 <a id="r-61"></a>
 ### R-61 — Ontologie P-Plan
-- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [Gouvernance des spécifications multi-points de vue](research/multi-viewpoint-specification-governance.fr.md)
 
 - **Source primaire :** [Spécification de l'ontologie P-Plan](https://www.opmw.org/model/p-plan/)
 - **Concepts pertinents :** représentation de plans abstraits et correspondance avec les traces PROV-O des processus exécutés.
@@ -849,7 +850,7 @@
 
 <a id="r-83"></a>
 ### R-83 — JSON-LD 1.1
-- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [Gouvernance des spécifications multi-points de vue](research/multi-viewpoint-specification-governance.fr.md)
 - **Source primaire :** [Recommandation W3C JSON-LD 1.1](https://www.w3.org/TR/json-ld/)
 - **Concepts pertinents :** sérialisation JSON de données liées ; contextes, expansion des IRI, représentation de graphes et jeux de données, intégration à des systèmes et services utilisant déjà JSON.
 - **Utilité pour GovCheck :** syntaxe d'échange candidate pour les connaissances et métadonnées RDF lorsque l'outillage JSON et l'intégration aux services Web sont utiles.
@@ -873,7 +874,7 @@
 
 <a id="r-86"></a>
 ### R-86 — Schema.org DigitalDocument
-- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [Gouvernance des spécifications multi-points de vue](research/multi-viewpoint-specification-governance.fr.md)
 - **Source primaire :** [Type DigitalDocument de Schema.org](https://schema.org/DigitalDocument)
 - **Concepts pertinents :** description légère de documents numériques comme ressources Web, reliées aux métadonnées plus générales de CreativeWork.
 - **Utilité pour GovCheck :** vocabulaire généraliste candidat pour décrire des ressources documentaires lorsque ses propriétés correspondent au contexte d'échange.
@@ -1113,7 +1114,7 @@
 
 <a id="r-115"></a>
 ### R-115 — Réseau d'ontologies d'ingénierie logicielle (SEON)
-- **Cité par :** [metamodel-ontology-reuse-assessment ](research/metamodel-ontology-reuse-assessment.fr.md)
+- **Cité par :** [metamodel-ontology-reuse-assessment ](research/metamodel-ontology-reuse-assessment.fr.md), [Gouvernance des spécifications multi-points de vue](research/multi-viewpoint-specification-governance.fr.md)
 - **Sources primaires :** [SEON network](https://dev.nemo.inf.ufes.br/seon/SEON.html) · [ReqON](https://dev.nemo.inf.ufes.br/seon/ReqON.html) · [SPO](https://dev.nemo.inf.ufes.br/seon/SPO.html)
 - **Concepts pertinents :** réseau d'ontologies de référence couvrant processus logiciels, exigences, objectifs, exigences à l'exécution, tests, assurance qualité et mesure, ancré dans UFO.
 - **Utilité pour GovCheck :** candidat de réemploi le plus prometteur pour cycle de vie, exigences et ingénierie ; s'y aligner avant d'inventer des concepts équivalents.
@@ -1212,7 +1213,7 @@
 
 <a id="r-127"></a>
 ### R-127 — Alignement, cohérence et extension conservative des ontologies
-- **Cité par :** [metamodel-coherence-verification ](research/metamodel-coherence-verification.fr.md)
+- **Cité par :** [metamodel-coherence-verification ](research/metamodel-coherence-verification.fr.md), [Gouvernance des spécifications multi-points de vue](research/multi-viewpoint-specification-governance.fr.md)
 - **Primary sources:** Botoeva et al., “Inseparability and conservative extensions of description logic ontologies: A survey” (2017), [repository record](https://livrepository.liverpool.ac.uk/3006616/) · “A semantic approach to mapping the Provenance Ontology to Basic Formal Ontology” (2025), [open article](https://pmc.ncbi.nlm.nih.gov/articles/PMC11833102/)
 - **Relevant concepts:** critères fondés sur les modèles pour alignement d'ontologies, interopérabilité sémantique, inséparabilité de requêtes/concepts et extensions conservatives.
 - **Use in GovCheck:** distinguer traçabilité simple et mapping sémantique ; définir quand le vocabulaire GovCheck doit préserver les conséquences des vocabulaires sources.
@@ -1494,7 +1495,7 @@
 
 <a id="r-176"></a>
 ### R-176 — La théorie du système général : théorie de la modélisation
-- **Cité par :** [Dossier STUDY-003](research/le-moigne-colloquium.fr.md)
+- **Cité par :** [Dossier STUDY-003](research/le-moigne-colloquium.fr.md), [Applicabilité constructiviste et systémique de GovCheck](research/govcheck-applicability-constructivism-and-systems.fr.md)
 - **Source :** Jean-Louis Le Moigne, PUF, 1977 ; [notice BnF](https://catalogue.bnf.fr/ark:/12148/cb34588322h) · [édition RIC](https://www.intelligence-complexite.org/bibliotheque/classiques-ric/theorie-systeme-general)
 - **Concepts pertinents :** modélisation comme processus, finalité, action, structure, organisation, environnement, régulation et évolution.
 - **Utilité pour GovCheck :** comparaison avec cycle de vie, périmètre, frontières et évolution des modèles.
@@ -1510,7 +1511,7 @@
 
 <a id="r-178"></a>
 ### R-178 — Soft Systems Methodology
-- **Cité par :** [Dossier STUDY-003](research/le-moigne-colloquium.fr.md)
+- **Cité par :** [Dossier STUDY-003](research/le-moigne-colloquium.fr.md), [Applicabilité constructiviste et systémique de GovCheck](research/govcheck-applicability-constructivism-and-systems.fr.md), [Gouvernance des spécifications multi-points de vue](research/multi-viewpoint-specification-governance.fr.md)
 - **Source :** Peter B. Checkland, *Human Systems Management*, 8(4), 1989, p. 273–289. [DOI](https://doi.org/10.3233/HSM-1989-8405)
 - **Concepts pertinents :** modèles d'activités finalisées pour soutenir débat et apprentissage en présence de points de vue légitimes concurrents.
 - **Utilité pour GovCheck :** comparaison sur perspectives, modèles pluriels, délibération et décisions.
@@ -1526,7 +1527,7 @@
 
 <a id="r-180"></a>
 ### R-180 — Validity Frame-enabled model-based engineering processes
-- **Cité par :** [Dossier STUDY-003](research/le-moigne-colloquium.fr.md)
+- **Cité par :** [Dossier STUDY-003](research/le-moigne-colloquium.fr.md), [Applicabilité constructiviste et systémique de GovCheck](research/govcheck-applicability-constructivism-and-systems.fr.md)
 - **Source :** Bert Van Acker et al., *Simulation*, 2023. [DOI](https://doi.org/10.1177/00375497231205035)
 - **Concepts pertinents :** contexte de validité, usage visé et limites des modèles tout au long de leur cycle de vie.
 - **Utilité pour GovCheck :** comparateur pour périmètre, hypothèses et argument de validité.
@@ -1542,7 +1543,7 @@
 
 <a id="r-182"></a>
 ### R-182 — Soft Systems Methodology : outils de l'Université de Cambridge
-- **Cité par :** [Dossier STUDY-003](research/le-moigne-colloquium.fr.md)
+- **Cité par :** [Dossier STUDY-003](research/le-moigne-colloquium.fr.md), [Applicabilité constructiviste et systémique de GovCheck](research/govcheck-applicability-constructivism-and-systems.fr.md), [Gouvernance des spécifications multi-points de vue](research/multi-viewpoint-specification-governance.fr.md)
 - **Source :** [University of Cambridge, Institute for Manufacturing](https://www.ifm.eng.cam.ac.uk/research/dstools/soft-systems-methodology/)
 - **Concepts pertinents :** rich pictures, CATWOE, modèles conceptuels multiples, comparaison et changements faisables/désirables.
 - **Utilité pour GovCheck :** perspectives des parties prenantes et contraintes environnementales.
@@ -1579,3 +1580,52 @@
 - **Concepts pertinents :** critique des conceptions trop socialisées de la connaissance.
 - **Utilité pour GovCheck :** contrepoint à l'idée que la construction sociale suffit à établir la validité.
 - **Limite :** argument critique en sociologie, ne clôt pas le débat épistémologique.
+
+
+<a id="r-187"></a>
+### R-187 — Domain-Driven Design : Bounded Context
+- **Cité par :** [STUDY-004 — Gouvernance des spécifications multi-métiers](research/multi-viewpoint-specification-governance.fr.md)
+- **Source :** [Martin Fowler, Bounded Context](https://martinfowler.com/bliki/BoundedContext.html)
+- **Concepts pertinents :** frontières explicites au sein desquelles un modèle de domaine et son langage sont cohérents ; relations entre modèles distincts.
+- **Utilité pour GovCheck :** comparateur possible pour préserver les significations propres aux domaines et établir des correspondances entre contextes.
+- **Limite :** article explicatif industriel, pas formalisme complet de provenance, d'autorité, de gestion des contradictions ou d'assurance.
+
+<a id="r-188"></a>
+### R-188 — ISO/IEC/IEEE 42010:2022 — Description d'architecture
+- **Cité par :** [STUDY-004 — Gouvernance des spécifications multi-métiers](research/multi-viewpoint-specification-governance.fr.md)
+- **Source :** [Notice officielle ISO](https://www.iso.org/standard/74393.html)
+- **Concepts pertinents :** descriptions d'architecture, parties prenantes, préoccupations, points de vue et vues.
+- **Utilité pour GovCheck :** référence candidate pour relier spécifications et représentations aux préoccupations et points de vue des parties prenantes.
+- **Limite :** norme de description d'architecture ; ne constitue pas à elle seule un mécanisme d'ingestion, d'alignement sémantique ou de délibération décisionnelle.
+
+<a id="r-189"></a>
+### R-189 — ISO/IEC 11179-3 — Registres de métadonnées
+- **Cité par :** [STUDY-004 — Gouvernance des spécifications multi-métiers](research/multi-viewpoint-specification-governance.fr.md)
+- **Source :** [Notice officielle ISO/IEC 11179-3](https://www.iso.org/standard/78914.html)
+- **Concepts pertinents :** registres de métadonnées, description et identification des éléments de données.
+- **Utilité pour GovCheck :** comparateur pour préserver définitions, contextes et descriptions contrôlées des éléments de données.
+- **Limite :** l'enregistrement de métadonnées n'équivaut pas à l'alignement conceptuel inter-métiers ni à l'arbitrage de gouvernance ; édition et applicabilité à vérifier.
+
+<a id="r-190"></a>
+### R-190 — W3C Simple Knowledge Organization System (SKOS) Reference
+- **Cité par :** [STUDY-004 — Gouvernance des spécifications multi-métiers](research/multi-viewpoint-specification-governance.fr.md)
+- **Source :** [Recommandation W3C du 18 août 2009](https://www.w3.org/TR/skos-reference/)
+- **Concepts pertinents :** schémas de concepts, libellés, relations génériques/spécifiques et associatives, propriétés de correspondance.
+- **Utilité pour GovCheck :** vocabulaire d'échange candidat pour les vocabulaires contrôlés et les correspondances entre schémas de concepts.
+- **Limite :** les relations SKOS ne capturent pas à elles seules le contexte complet, la justification, l'autorité, l'incertitude ou le cycle de vie d'une traduction métier.
+
+<a id="r-191"></a>
+### R-191 — OWL 2 Web Ontology Language Document Overview
+- **Cité par :** [STUDY-004 — Gouvernance des spécifications multi-métiers](research/multi-viewpoint-specification-governance.fr.md)
+- **Source :** [Recommandation W3C](https://www.w3.org/TR/owl2-overview/)
+- **Concepts pertinents :** famille de langages d'ontologies et sémantique formelle pour représenter des connaissances de domaine et des conséquences logiques.
+- **Utilité pour GovCheck :** formalisme candidat à comparer pour les contraintes sémantiques vérifiables et les relations inférées.
+- **Limite :** une conséquence logique est relative à l'ontologie et à ses axiomes ; elle n'établit pas qu'un modèle de domaine est accepté par les métiers ou adéquat à une finalité donnée.
+
+<a id="r-192"></a>
+### R-192 — OMG Structured Assurance Case Metamodel (SACM)
+- **Cité par :** [STUDY-004 — Gouvernance des spécifications multi-métiers](research/multi-viewpoint-specification-governance.fr.md)
+- **Source :** [Page officielle de la spécification OMG SACM](https://www.omg.org/spec/SACM/)
+- **Concepts pertinents :** structuration des affirmations, arguments, éléments probants et échange de cas d'assurance.
+- **Utilité pour GovCheck :** mécanisme candidat pour relier les affirmations débattues, arguments et éléments probants aux décisions et à l'assurance.
+- **Limite :** SACM est un métamodèle de cas d'assurance, pas à lui seul un système d'ingestion de spécifications multi-métiers, d'alignement sémantique ou de résolution des conflits. Version exacte et profil de conformité à établir.

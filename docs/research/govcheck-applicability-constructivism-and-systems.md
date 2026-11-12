@@ -79,3 +79,7 @@ This wording is a research candidate only. It must be reviewed against the imple
 ## Decision status
 
 No decision is made here. No issue or implementation task is created by this research alone. Future decisions should cite STUDY-003 and the exact catalogue entries used, as listed in the [source dossier](le-moigne-colloquium.md), record counterarguments and identify the authorized decision-maker.
+
+## Central reference catalogue
+
+See [R-176](../references.md#r-176), [R-178](../references.md#r-178), [R-180](../references.md#r-180) and [R-182](../references.md#r-182).

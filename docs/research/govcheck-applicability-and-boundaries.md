@@ -180,3 +180,7 @@ The guided bootstrap in Architecture 0024 is the natural place to elicit the con
 The current research does not justify adopting the six proposed audit labels as a metamodel taxonomy, changing the canonical governance model, or mandating a software-factory architecture. Their only present purpose is to keep repository-local controls distinct from external evidence, observation, prerequisites, warnings and out-of-scope guarantees during the audit.
 
 Next, compare these findings against Architecture 0024, Architecture 0029, Specifications 0002/0003/0005/0006 and the relevant issue portfolio. Record coverage as implemented, specified, proposed, partial, absent or outside GovCheck's authority. Only propose changes where a concrete contradiction or expressiveness gap is demonstrated.
+
+## Central reference catalogue
+
+See [R-160](../references.md#r-160) and [R-161](../references.md#r-161).

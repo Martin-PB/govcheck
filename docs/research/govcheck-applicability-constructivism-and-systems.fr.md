@@ -79,3 +79,7 @@ Cette formulation est uniquement une proposition issue de la recherche. Elle dev
 ## Statut décisionnel
 
 Aucune décision n'est prise ici. Aucune issue ni tâche d'implémentation n'est créée par cette recherche seule. Les décisions futures devront citer STUDY-003 et les entrées exactes du catalogue utilisées, recensées dans le [dossier source](le-moigne-colloquium.fr.md), consigner les contre-arguments et identifier l'autorité décisionnelle compétente.
+
+## Catalogue central des références
+
+Voir [R-176](../references.fr.md#r-176), [R-178](../references.fr.md#r-178), [R-180](../references.fr.md#r-180) et [R-182](../references.fr.md#r-182).

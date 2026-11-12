@@ -32,6 +32,7 @@ Lorsqu'une nouvelle étude est ajoutée, mettre à jour ce registre et les deux 
 | STUDY-001 | Qualité du code assistée par IA, maintenabilité, TDD agentique et adoption organisationnelle | [Revue de recherche](ai-assisted-quality-governance.fr.md) | [Research review](ai-assisted-quality-governance.md) | Recherche uniquement ; aucune recommandation adoptée |
 | STUDY-002 | Software factories, gouvernance de l'ingénierie IA et applicabilité de GovCheck | [Applicabilité de GovCheck](govcheck-applicability-and-boundaries.fr.md) · [Analyse de la conférence](software-factory-self-improvement.fr.md) | [GovCheck applicability](govcheck-applicability-and-boundaries.md) · [Conference analysis](software-factory-self-improvement.md) | Recherche uniquement ; aucune architecture de factory ni taxonomie d'audit adoptée |
 | STUDY-003 | Épistémologie constructiviste, complexité irréductible et modélisation systémique (colloque Le Moigne en trois sessions) | [Dossier du colloque](le-moigne-colloquium.fr.md) · [Applicabilité à GovCheck](govcheck-applicability-constructivism-and-systems.fr.md) | [Colloquium dossier](le-moigne-colloquium.md) · [GovCheck applicability](govcheck-applicability-constructivism-and-systems.md) | Recherche uniquement ; aucune ontologie constructiviste/systémique adoptée |
+| STUDY-004 | Spécifications multi-métiers, pluralité des points de vue, alignement sémantique et délibération formelle | [Dossier de recherche](multi-viewpoint-specification-governance.fr.md) | [Research dossier](multi-viewpoint-specification-governance.md) | Recherche uniquement ; aucune décision de métamodèle ou d'implémentation adoptée |
 
 ## Thèmes transversaux
 
@@ -42,6 +43,7 @@ Ces thèmes servent à la navigation ; ils ne sont ni des concepts adoptés ni u
 - **Ingénierie assistée par IA et adéquation organisationnelle :** STUDY-001 et STUDY-002.
 - **Frontières du dépôt et prérequis externes :** STUDY-002.
 - **Complexité, incertitude, périmètre des modèles et risque résiduel :** STUDY-003 et STUDY-002.
+- **Spécifications plurielles, alignement sémantique et délibération inter-métiers :** STUDY-004 ; à comparer avec les études existantes sur les ontologies, l'interopérabilité et les cas d'assurance.
 - **Preuves, provenance et autorité décisionnelle :** toutes les études.
 
 ## Traçabilité des décisions

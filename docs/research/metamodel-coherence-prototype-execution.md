@@ -11,10 +11,10 @@
 - Source: `formal/lean/GovCheckEpistemic/Evidence.lean`
 - Toolchain: Lean 4.19.0, pinned in `formal/lean/lean-toolchain`.
 - Workflow: `Lean epistemic core`.
-- Successful run: [43209893631](https://github.com/Martin-PB/govcheck/actions/runs/43209893631), checked commit `941d212113f52dc96f37377faf16618da50bdae8`.
+- Successful run: [43210687685](https://github.com/Martin-PB/govcheck/actions/runs/43210687685), checked commit `72b6cf9e4d5afcd1e51aede3c3b9ee284d60e968`.
 - Result: `lake update` and `lake build` completed successfully.
 
-The core separates evidence method class from result status and represents a mapping as either same-kind transport or a distinct theorem-proving derivation backed by a `KernelCheckedDerivation` that contains an actual Lean proof term (`proof : claim`), not merely metadata. The checked declarations establish transport kind preservation, that theorem-proving output requires either transport of an existing theorem-proving result or an explicit derivation containing a kernel-checked proof term, and status preservation.
+The core separates evidence method class from result status and represents a mapping as either same-kind transport or a distinct theorem-proving derivation backed by a `KernelCheckedDerivation` that contains an actual Lean proof term (`proof : claim`), not merely metadata. The checked declarations establish transport kind preservation; require an actual Lean proof term for a newly derived theorem-proving result; and define proof-carrying mapping obligations for source identity/revision, exact scope preservation and retention of source assumptions. Method class and result status remain independent.
 
 **Scope limit:** this is a kernel-checked result about the definitions in this Lean module. It does not prove that the definitions are the final GovCheck semantics, that a SACM mapping is correct, or that an importer/exporter conforms to the model.
 

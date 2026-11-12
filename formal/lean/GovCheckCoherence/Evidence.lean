@@ -32,7 +32,7 @@ inductive EvidenceKind where
   | other
   deriving DecidableEq, Repr
 
-/-- Result statuses aligned with evidence-record.schema.json.
+/-- Result statuses aligned with evidence-record.schema.json, including `unknown`.
 Freshness (including staleness) is computed separately from result status. -/
 inductive EvidenceStatus where
   | notRun

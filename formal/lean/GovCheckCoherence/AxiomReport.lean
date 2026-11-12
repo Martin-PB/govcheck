@@ -52,3 +52,10 @@ import GovCheckCoherence.Proofs
 #print axioms GovCheck.Coherence.sacm_mapping_has_semantic_bridge
 
 #print axioms GovCheck.Coherence.sacm_mapping_preserves_assertion_declaration
+
+#print axioms GovCheck.Coherence.sacm_text_byRule_is_rejected
+#print axioms GovCheck.Coherence.sacm_xml_needsSupport_is_rejected
+#print axioms GovCheck.Coherence.sacm_text_identity_field_is_gid
+#print axioms GovCheck.Coherence.sacm_xml_identity_field_is_elementId
+#print axioms GovCheck.Coherence.sacm_claim_mapping_requires_source_view_consistency
+#print axioms GovCheck.Coherence.sacm_claim_mapping_requires_source_identity_field

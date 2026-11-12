@@ -76,3 +76,50 @@ theorem schema_method_and_status_do_not_determine_epistemic_kind :
   decide
 
 end GovCheck.Coherence
+
+/-- The mapping bridge binds the exact source and target semantic model revisions. -/
+theorem evidence_mapping_binds_model_revisions
+    {source target : MappingSubject} (mapping : EvidenceMapping source target) :
+    mapping.contract.sourceModel = source.model ∧
+      mapping.contract.targetModel = target.model :=
+  ⟨mapping.sourceModelMatches, mapping.targetModelMatches⟩
+
+/-- A mapped evidence record retains the exact native artifact revision. -/
+theorem evidence_mapping_preserves_revision
+    {source target : MappingSubject} (mapping : EvidenceMapping source target) :
+    target.artifact.revision = source.artifact.revision :=
+  mapping_preserves_source_revision mapping
+
+/-- A mapped evidence record retains the source artifact identity. -/
+theorem evidence_mapping_preserves_identity
+    {source target : MappingSubject} (mapping : EvidenceMapping source target) :
+    target.artifact.identity = source.artifact.identity :=
+  mapping_preserves_source_identity mapping
+
+/-- The first contract requires exact scope preservation. -/
+theorem evidence_mapping_preserves_scope
+    {source target : MappingSubject} (mapping : EvidenceMapping source target) :
+    target.scope = source.scope :=
+  mapping_preserves_scope mapping
+
+/-- Every source assumption remains explicit in the mapped target. -/
+theorem evidence_mapping_preserves_assumptions
+    {source target : MappingSubject} (mapping : EvidenceMapping source target)
+    (assumption : String) (h : assumption ∈ source.assumptions) :
+    assumption ∈ target.assumptions :=
+  mapping_preserves_assumptions mapping assumption h
+
+/-- Method-class changes are not silently introduced by this first mapping profile. -/
+theorem evidence_mapping_preserves_method_class
+    {source target : MappingSubject} (mapping : EvidenceMapping source target) :
+    target.evidence.methodClass = source.evidence.methodClass :=
+  mapping_preserves_method_class mapping
+
+/-- A theorem-proof target is carried from an existing theorem proof or has
+    an actual Lean proof term for the target claim. -/
+theorem evidence_mapping_theorem_proof_requires_derivation
+    {source target : MappingSubject} (mapping : EvidenceMapping source target)
+    (h : target.evidence.kind = .theoremProof) :
+    source.evidence.kind = .theoremProof ∨
+      (∃ derivation : KernelCheckedDerivation target.claim.meaning, True) :=
+  mapping_target_theorem_proof_requires_derivation mapping h

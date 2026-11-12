@@ -44,7 +44,14 @@ L'invariant `NonPassingEvidenceCannotBeAccepted` a échoué. La transition a ét
 
 Cette séquence illustre la distinction recherchée : la première exécution n'était pas « une preuve échouée », mais un contre-exemple de model checking borné révélant une incohérence dans le modèle de transitions. L'exécution corrigée apporte uniquement un élément probant borné sur le modèle fini corrigé.
 
-## 3. Intégration et gouvernance du dépôt
+
+## 3. Audit de compatibilité CSLib
+
+Le HEAD CSLib inspecté est `70e25828d89a3916e41c9d84cfffd7e6093bb1a0`, épinglé sur Lean `v4.36.0-rc2` et Mathlib `887bb849a9f64e1c66499fd5ff8523c864e78941`. Il est incompatible avec la chaîne Lean 4.19.0 du noyau si on l'ajoute comme dépendance directe. L'audit identifie des sémantiques BTL, des propriétés temporelles sur séquences oméga, des LTS et une sémantique modale réutilisables, mais ne trouve pas de métamodèle prêt à l'emploi pour les preuves, la provenance et l'autorité : [audit de compatibilité et d'adéquation CSLib](cslib-compatibility-audit.fr.md) / [version anglaise](cslib-compatibility-audit.md).
+
+Une expérimentation de compatibilité isolée se trouve dans `formal/cslib-compat/`. Son résultat CI est en attente à la date de ce compte rendu. Même une compilation réussie n'établira que la compatibilité de compilation et d'API, pas un théorème de raffinement sémantique.
+
+## 4. Intégration et gouvernance du dépôt
 
 - Les deux workflows de vérification sont explicitement classés comme propres au niveau méta dans `scripts/check-package-alignment.py` ; ils ne sont pas copiés dans le paquet de modèles destiné aux dépôts adoptants.
 - Le noyau Lean et le modèle TLA+ sont inscrits dans `formal/artifacts.json`, avec chaîne d'outils, exécution, commit, résultat, bornes et limites exacts.

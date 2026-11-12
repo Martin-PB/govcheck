@@ -761,11 +761,12 @@
 
 <a id="r-73"></a>
 ### R-73 — OMG Structured Assurance Case Metamodel (SACM), version 2.4 Beta 1 (septembre 2026)
-- **Cité par :** [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.fr.md) · [Analyse d'impact de l'intention](intent-impact-analysis.fr.md)
-- **Source primaire :** [État de la spécification SACM et documents de la bêta 2.4 chez OMG](https://www.omg.org/spec/SACM)
-- **Concepts pertinents :** extensions proposées à SACM 2.3, notamment valeurs structurées/forces typées, constructions liées à l'évaluation, jointures, références à un concept entier, marquage de l'état de développement et révision de la sémantique des packages/relations.
-- **Utilité pour GovCheck :** point de comparaison indispensable avant de sélectionner un métamodèle interne ou d'échange. Les résolutions de tickets de la bêta indiquent quelles lacunes de 2.3 la révision tente de combler.
-- **Limite :** la version 2.4 est une bêta, pas une spécification formelle adoptée. GovCheck ne doit pas traiter ses constructions provisoires comme des contrats stables ni revendiquer sa conformité. Conserver 2.3 comme base formelle actuelle en attendant l'examen de la version finale 2.4.
+- **Cité par :** [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.fr.md) · [Analyse d'impact de l'intention](intent-impact-analysis.fr.md) · [Tranche de mapping sémantique SACM 2.4](research/sacm24-claim-inference-mapping.fr.md) / [EN](research/sacm24-claim-inference-mapping.md)
+- **Sources primaires :** [page OMG SACM 2.4 Beta 1](https://www.omg.org/spec/SACM/2.4/Beta1) · [PDF normatif](https://www.omg.org/spec/SACM/2.4/Beta1/PDF) · [XML normatif du métamodèle, 04/05/2026](https://www.omg.org/spec/SACM/20260504/SACM2.4_Metamodel.xml)
+- **Résolutions d'issues pertinentes :** [SACM24-83 sujet explicite du Claim](https://issues.omg.org/issues/SACM24-83) · [SACM24-75 Assessment](https://issues.omg.org/issues/SACM24-75) · [SACM24-77 arguments avancés](https://issues.omg.org/issues/SACM24-77) · [SACM24-48 sémantique des inférences/relations](https://issues.omg.org/issues/SACM24-48).
+- **Concepts pertinents :** sujet explicite du Claim via SACMElement ; AssertionDeclarationKind (asserted, assumed, axiomatic, byRule) ; structures optionnelles de vérité/valeur/règle ; InferenceTypeKind (probable, collective, necessary, sufficient, necessaryAndSufficient, byRule) ; AssertionRule et InferenceRule ; extensions d'évaluation et d'arguments avancés.
+- **Usage dans GovCheck :** comparaison sémantique source et cible de mapping. La première tranche formelle préserve les distinctions de déclaration, le sujet/la révision exacts et la direction des inférences ; probable reste hors de l'implication classique tant qu'une sémantique probabiliste n'est pas fournie.
+- **Limite :** 2.4 est une bêta, pas une spécification formelle adoptée. GovCheck ne doit pas traiter ses constructions de travail comme des contrats stables ni revendiquer une conformité complète. Conserver 2.3 comme référence formelle actuelle en attendant la revue finale de 2.4.
 
 <a id="r-74"></a>
 ### R-74 — Hoover, Rosso-Llopart et Taran, *Evaluating Project Decisions: Case Studies in Software Engineering* (2009/2010)

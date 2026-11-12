@@ -11,10 +11,10 @@
 - Source : `formal/lean/GovCheckEpistemic/Evidence.lean`
 - Chaîne d'outils : Lean 4.19.0, épinglée dans `formal/lean/lean-toolchain`.
 - Workflow : `Lean epistemic core`.
-- Exécution réussie : [43209380453](https://github.com/Martin-PB/govcheck/actions/runs/43209380453).
+- Exécution réussie : [43209893631](https://github.com/Martin-PB/govcheck/actions/runs/43209893631), commit contrôlé `941d212113f52dc96f37377faf16618da50bdae8`.
 - Résultat : `lake update` et `lake build` terminés avec succès.
 
-Le noyau sépare la classe de méthode de l'état du résultat et représente une correspondance comme un transport conservant la classe ou comme une dérivation distincte de type preuve de théorème, appuyée par un objet explicite `KernelCheckedDerivation`. Les déclarations vérifiées établissent la préservation de la classe lors du transport, les voies admissibles vers un résultat de preuve de théorème et la préservation du statut.
+Le noyau sépare la classe de méthode de l'état du résultat et représente une correspondance comme un transport conservant la classe ou comme une dérivation distincte de type preuve de théorème, appuyée par un objet explicite `KernelCheckedDerivation`. Les déclarations vérifiées établissent la préservation de la classe lors du transport, les voies admissibles vers un résultat de preuve de théorème et la préservation du statut. Le type `KernelCheckedDerivation` contient désormais un véritable terme de preuve Lean (`proof : claim`), et pas seulement des métadonnées déclaratives.
 
 **Limite de portée :** ce résultat vérifié par le noyau concerne les définitions de ce module Lean. Il ne prouve ni que ces définitions constituent la sémantique définitive de GovCheck, ni qu'un mapping SACM est correct, ni qu'un importateur/exportateur est conforme au modèle.
 

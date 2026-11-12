@@ -28,7 +28,7 @@ structure MappingSubject where
 inductive MappingCoverage where
   | equivalent
   | soundDirectional
-  | partial
+  | partialMapping
   | approximate
   | traceabilityOnly
   | unsupported
@@ -42,10 +42,10 @@ inductive SemanticBridge : Prop → Prop → MappingCoverage → Type where
   | soundDirectional {source target : Prop} :
       (source → target) →
       SemanticBridge source target .soundDirectional
-  | partial {source target : Prop} :
+  | partialMapping {source target : Prop} :
       (domain : source → Prop) →
       (∀ h : source, domain h → target) →
-      SemanticBridge source target .partial
+      SemanticBridge source target .partialMapping
   | approximate {source target : Prop} :
       (relation : source → target → Prop) →
       (declaredLimitations : List String) →
@@ -142,7 +142,7 @@ theorem mapping_target_theorem_proof_requires_derivation
     source.evidence.kind = .theoremProof ∨
       (∃ derivation : KernelCheckedDerivation target.claim.meaning, True) := by
   cases mapping.kindRule with
-  | transport kind =>
+  | transport =>
       exact Or.inl h
   | deriveTheoremProof sourceKind derivation =>
       exact Or.inr ⟨derivation, True.intro⟩

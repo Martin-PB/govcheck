@@ -49,7 +49,7 @@ Le script de récupération d'Assurance Forge enregistre les empreintes SHA-256 
 
 ## 5. Réponse de GovCheck : mapping qualifié par la vue source
 
-Le module Lean `GovCheckCoherence.SACM24` a été renforcé pour empêcher la fusion silencieuse des deux vues contradictoires :
+Le module Lean `GovCheckCoherence.SACM24` a été renforcé pour empêcher la fusion silencieuse des deux vues contradictoires ; il lie aussi la vue sélectionnée au format natif et à la révision exacte de l'artefact source :
 
 - `SourceView` distingue `specificationText` de `normativeMetamodelXML`.
 - `AssertionDeclarationKind` conserve l'union des deux ensembles de valeurs, dont `needsSupport` et `byRule`.

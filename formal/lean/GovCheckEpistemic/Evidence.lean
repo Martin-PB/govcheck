@@ -26,6 +26,7 @@ inductive EvidenceStatus where
   | failed
   | inconclusive
   | unknown
+  | incomplete
   | unsupported
   | notRun
   | notApplicable
@@ -52,21 +53,22 @@ structure EvidenceRecord where
 
 /-- A kernel-checked derivation is a separate object, never a Boolean flag
     inferred from parsing, testing, or model checking. -/
-structure KernelCheckedDerivation where
+structure KernelCheckedDerivation (claim : Prop) where
+  /-- The actual Lean proof term. The kernel checks this term when the
+      declaration is elaborated/compiled; metadata alone cannot inhabit it. -/
+  proof : claim
   premises : List String
-  conclusion : String
   assumptions : List String
   kernelIdentity : String
   kernelVersion : String
-  deriving Repr
 
 /-- The mapping rule makes the epistemic boundary explicit. -/
 inductive MappingRule : EvidenceKind → EvidenceKind → Type where
   /-- A pure transport/re-expression preserves the evidence method class. -/
   | transport (kind : EvidenceKind) : MappingRule kind kind
   /-- A new theorem-proving result requires an explicit checked derivation. -/
-  | deriveTheoremProof (sourceKind : EvidenceKind)
-      (derivation : KernelCheckedDerivation) :
+  | deriveTheoremProof (sourceKind : EvidenceKind) (claim : Prop)
+      (derivation : KernelCheckedDerivation claim) :
       MappingRule sourceKind EvidenceKind.theoremProving
 
 /-- The method class resulting from an admissible mapping. -/
@@ -84,11 +86,11 @@ theorem transport_preserves_kind (kind : EvidenceKind) :
 theorem theorem_proof_requires_valid_route (source : EvidenceKind)
     (rule : MappingRule source EvidenceKind.theoremProving) :
     source = EvidenceKind.theoremProving ∨
-      (∃ derivation : KernelCheckedDerivation, True) := by
+      (∃ claim : Prop, ∃ derivation : KernelCheckedDerivation claim, True) := by
   cases rule with
   | transport kind => exact Or.inl rfl
-  | deriveTheoremProof sourceKind derivation =>
-      exact Or.inr ⟨derivation, True.intro⟩
+  | deriveTheoremProof sourceKind claim derivation =>
+      exact Or.inr ⟨claim, derivation, True.intro⟩
 
 /-- Status is carried independently; this function does not infer a result
     from the method class. -/

@@ -48,7 +48,7 @@ The legacy form `python3 govcheck/bootstrap.py TARGET_DIR` still initializes an 
     python3 govcheck/check.py --tree . [--out report.json]
     python3 govcheck/check.py --tree . --base main --candidate HEAD
 
-Each rule returns `pass`, `fail` or `unknown`. The overall result is `fail` if any rule fails, otherwise `unknown` if any rule is unknown, otherwise `pass` (fail-closed: `unknown` never counts as a success). The exit code is 0 only when the overall result is `pass`. The rules span the three assurance classes: decidable (license presence, bilingual decision pairs, manifest-declared package pairs, reference-catalogue integrity, mandatory sources on decisions and attestations), attested (independent review) and not verifiable offline (TLC evidence freshness). Unit tests live in `tests/test_govcheck_check.py`.
+Each rule returns `pass`, `fail` or `unknown`. The overall result is `fail` if any rule fails, otherwise `unknown` if any rule is unknown, otherwise `pass` (fail-closed: `unknown` never counts as a success). The exit code is 0 only when the overall result is `pass`. The rules span the three assurance classes: decidable (license presence, bilingual decision pairs, manifest-declared package pairs, reference-catalogue integrity, mandatory sources on decisions and attestations, bootstrap-marker integrity), attested (independent review) and not verifiable offline (TLC evidence freshness). Unit tests live in `tests/test_govcheck_check.py`.
 
 
 ### Recorded attestations (independent review)
@@ -58,3 +58,7 @@ In git mode (`--base/--candidate`), the `independent-review` rule becomes `pass`
 ### Mandatory sources (ADR 0007)
 
 The `sources-present` rule (decidable) requires every non-guide `docs/decisions/*.md` to carry a `## References` (or `## Références`) section containing at least one source link: a reference-catalogue anchor (`docs/references.md#r-xx`) or an external URL. Every attestation record in `docs/attestations/*.json` must also carry a non-empty `"sources"` list of strings, listing the evidence the reviewer relied on. Guide files (`README*`, `TEMPLATE*`) are exempt. Without this, an agent could state a decision without any evidence; the rule makes "no source, no decision" enforceable offline.
+
+### Bootstrap marker integrity
+
+The `bootstrap-integrity` rule (decidable) checks the package-owned marker `.govcheck-bootstrap.json` written by `govcheck/bootstrap.py apply` at the target root. Without the marker the rule is not applicable (pass, not applicable). With the marker, it must be a JSON object with `"tool": "govcheck-bootstrap"`, a non-empty `"package_version"`, a `"package_digest"` that is a 64-character lowercase hex SHA-256, an `"installed"` list of `{path, sha256}` entries and a `"conflicts"` list of non-empty strings. Each installed path must be relative and safe (no absolute path, no backslash, no `.`/`..`/empty segment), and each installed file must still exist with exactly the recorded SHA-256 digest. Any schema violation, missing file or content drift fails the rule. The marker is a repository document, not a tamper-proof seal: it detects accidental drift, not a malicious editor.

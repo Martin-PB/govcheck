@@ -1,0 +1,47 @@
+name: CSLib compatibility probe
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "formal/cslib-compat/**"
+      - ".github/workflows/cslib-compatibility.yml"
+  pull_request:
+    paths:
+      - "formal/cslib-compat/**"
+      - ".github/workflows/cslib-compatibility.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cslib-compat-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  cslib-build:
+    name: Build isolated CSLib temporal API probe
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install elan and pinned CSLib toolchain
+        run: |
+          curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          "$HOME/.elan/bin/elan" toolchain install "$(cat formal/cslib-compat/lean-toolchain)"
+      - name: Cache pinned CSLib dependencies and build outputs
+        uses: actions/cache@v4
+        with:
+          path: |
+            formal/cslib-compat/.lake/packages
+            formal/cslib-compat/.lake/build
+          key: cslib-${{ runner.os }}-${{ hashFiles('formal/cslib-compat/lean-toolchain', 'formal/cslib-compat/lakefile.lean') }}
+      - name: Resolve pinned dependencies and build probe
+        working-directory: formal/cslib-compat
+        run: |
+          lake update
+          lake exe cache get
+          lake build CslibCompat

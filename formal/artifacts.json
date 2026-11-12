@@ -104,6 +104,117 @@
       "revisionPolicy": "repository-history",
       "releaseBinding": "release-tag-and-commit",
       "status": "bounded-design-model; SANY-and-TLC-checked"
+    },
+    {
+      "artifactId": "govcheck.evidence-mapping-contract",
+      "kind": "formalization",
+      "title": "Proof-carrying semantic evidence mapping contract",
+      "source": "formal/lean/GovCheckCoherence/Mapping.lean",
+      "documentation": "formal/lean/README.md",
+      "revisionPolicy": "repository-history",
+      "releaseBinding": "release-tag-and-commit",
+      "status": "kernel-checked; axiom-audited",
+      "verification": {
+        "workflow": ".github/workflows/lean-coherence.yml",
+        "workflowRunId": 43216879988,
+        "checkedCommit": "7716c9e5ad054faca042b86630d38bfaee2b4f5a",
+        "result": "lake-build-success; axiom-audit-success",
+        "lean": "4.19.0",
+        "axiomAudit": {
+          "root": "GovCheckCoherence.Proofs",
+          "mappingTheorems": 14,
+          "axiomsUsed": 0,
+          "additionalStatusTheorems": 1
+        },
+        "limitations": [
+          "contract types and projection theorems only",
+          "no source ontology mapping implementation proved",
+          "no importer/exporter conformance theorem"
+        ]
+      }
+    },
+    {
+      "artifactId": "govcheck.cslib-temporal-compatibility",
+      "kind": "formalization-compatibility-probe",
+      "title": "Isolated CSLib BTL and omega-sequence API compatibility probe",
+      "source": "formal/cslib-compat/CslibCompat.lean",
+      "toolchain": "formal/cslib-compat/lean-toolchain",
+      "configuration": "formal/cslib-compat/lakefile.lean",
+      "documentation": "formal/cslib-compat/README.md",
+      "revisionPolicy": "repository-history",
+      "releaseBinding": "release-tag-and-commit",
+      "status": "API-compatibility-checked",
+      "upstream": {
+        "repository": "https://github.com/leanprover/cslib",
+        "commit": "70e25828d89a3916e41c9d84cfffd7e6093bb1a0",
+        "lean": "4.36.0-rc2",
+        "mathlib": "887bb849a9f64e1c66499fd5ff8523c864e78941"
+      },
+      "verification": {
+        "workflow": ".github/workflows/cslib-compatibility.yml",
+        "workflowRunId": 43210543930,
+        "checkedCommit": "076ceb326e3f13e46644f555cf0395971ecdeae5",
+        "result": "lake-build-success",
+        "builtJobs": 1779,
+        "apisChecked": [
+          "Cslib.Logic.Modal.BTL.Model",
+          "Cslib.Logic.Modal.Satisfies.btl_future_always_iff",
+          "Cslib.ωSequence.Step",
+          "Cslib.ωSequence.LeadsTo"
+        ],
+        "sourceBlobs": {
+          "formal/cslib-compat/lean-toolchain": "0fc4336929df18cb6edbdcce0498f49d38877271",
+          "formal/cslib-compat/lakefile.lean": "adf2b4065e85a818972df74d74ad1c303d0b1e1d",
+          "formal/cslib-compat/CslibCompat.lean": "53c762290b43b888b56f0a117006ecd59ae855d7"
+        },
+        "sameProjectFilesVerifiedOnCurrentBranch": true,
+        "currentBranchRunPending": 43217133709
+      },
+      "limitations": [
+        "API/build compatibility only",
+        "no GovCheck-to-CSLib semantic refinement theorem",
+        "the successful probe was run on a superseded branch, but the three project source/toolchain blobs are identical on the current branch",
+        "does not make CSLib a required dependency"
+      ]
+    },
+    {
+      "artifactId": "govcheck.sacm24-semantic-bridge",
+      "kind": "formalization",
+      "title": "SACM 2.4 Beta 1 assertion and inference semantic slice",
+      "source": "formal/lean/GovCheckCoherence/SACM24.lean",
+      "documentation": {
+        "en": "docs/research/sacm24-claim-inference-mapping.md",
+        "fr": "docs/research/sacm24-claim-inference-mapping.fr.md"
+      },
+      "sourceReference": "R-73",
+      "revisionPolicy": "repository-history",
+      "releaseBinding": "release-tag-and-commit",
+      "status": "kernel-checked; axiom-audited",
+      "limitations": [
+        "formal mapping declarations only",
+        "no normative XMI/XML instance fixture imported",
+        "natural-language claim interpretation remains authority-supplied",
+        "SACM 2.4 Beta 1 PDF and metamodel XML contain reported contradictions; source view and native format must be pinned",
+        "probable inference intentionally unsupported by classical fragment",
+        "other multiplicity, value-type and inheritance conflicts remain unresolved"
+      ],
+      "verification": {
+        "workflow": ".github/workflows/lean-coherence.yml",
+        "workflowRunId": 43216879988,
+        "checkedCommit": "7716c9e5ad054faca042b86630d38bfaee2b4f5a",
+        "result": "lake-build-success; axiom-audit-success",
+        "lean": "4.19.0",
+        "axiomAudit": {
+          "publicSACMTheorems": 20,
+          "axiomsUsed": 0
+        },
+        "limitations": [
+          "formal mapping declarations only",
+          "no normative XMI/XML fixture imported",
+          "natural-language claim interpretation remains authority-supplied",
+          "probable inference intentionally unsupported by classical fragment"
+        ]
+      }
     }
   ]
 }

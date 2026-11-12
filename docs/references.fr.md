@@ -268,7 +268,7 @@
 
 <a id="r-20"></a>
 ### R-20 — Lean
-- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [0008](architecture/0008-formalization-and-conformance.fr.md), [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [ADR 0001](decisions/0001-bootstrap-boundaries.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [0008](architecture/0008-formalization-and-conformance.fr.md), [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [ADR 0001](decisions/0001-bootstrap-boundaries.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md), [Audit de compatibilité CSLib](research/cslib-compatibility-audit.fr.md)
 
 - **Source primaire :** [Référence du langage Lean](https://lean-lang.org/doc/reference/latest/)
 - **Concepts pertinents :** termes de preuve vérifiés par un petit noyau ; démonstration sous définitions, axiomes et hypothèses explicites.
@@ -760,7 +760,7 @@
 
 <a id="r-73"></a>
 ### R-73 — OMG Structured Assurance Case Metamodel (SACM), version 2.4 Beta 1 (septembre 2026)
-- **Cité par :** [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.fr.md) · [Analyse d'impact de l'intention](intent-impact-analysis.fr.md) · [metamodel-design-dossier](decisions/metamodel-design-dossier.md) · [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.md)
+- **Cité par :** [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.fr.md) · [Analyse d'impact de l'intention](intent-impact-analysis.fr.md) · [metamodel-design-dossier](decisions/metamodel-design-dossier.md) · [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.md), [Tranche de mappage sémantique SACM 2.4](research/sacm24-claim-inference-mapping.fr.md), [Rapport de risque d'interopérabilité SACM 2.4 Beta 1](research/sacm24-beta1-interoperability-risk.fr.md)
 - **Source primaire :** [État de la spécification SACM et documents de la bêta 2.4 chez OMG](https://www.omg.org/spec/SACM)
 - **Concepts pertinents :** extensions proposées à SACM 2.3, notamment valeurs structurées/forces typées, constructions liées à l'évaluation, jointures, références à un concept entier, marquage de l'état de développement et révision de la sémantique des packages/relations.
 - **Utilité pour GovCheck :** point de comparaison indispensable avant de sélectionner un métamodèle interne ou d'échange. Les résolutions de tickets de la bêta indiquent quelles lacunes de 2.3 la révision tente de combler.

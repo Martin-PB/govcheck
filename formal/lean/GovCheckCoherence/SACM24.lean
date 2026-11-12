@@ -61,6 +61,8 @@ structure SACMClaimInterpretation
     (claim : SACMClaim) (target : ClaimSemantics) where
   sourceModel : ArtifactRef
   mappedSubject : Option SACMElementRef
+  disposition : ClaimDisposition
+  declarationPreserved : disposition = mapAssertionDeclaration claim.declaration
   claimIdentityPreserved : target.claimId = claim.identity
   subjectPreserved : mappedSubject = claim.subject
   subjectRevisionMatchesModel :

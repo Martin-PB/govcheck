@@ -136,15 +136,22 @@ theorem mapping_preserves_method_class
     target.evidence.methodClass = source.evidence.methodClass :=
   mapping.methodClassPreserved
 
+theorem kind_mapping_rule_theorem_proof_requires_derivation
+    {targetClaim : Prop} {source target : EvidenceKind}
+    (rule : KindMappingRule targetClaim source target)
+    (h : target = .theoremProof) :
+    source = .theoremProof ∨
+      (∃ derivation : KernelCheckedDerivation targetClaim, True) := by
+  cases rule with
+  | transport => exact Or.inl h
+  | deriveTheoremProof sourceKind derivation =>
+      exact Or.inr ⟨derivation, True.intro⟩
+
 theorem mapping_target_theorem_proof_requires_derivation
     {source target : MappingSubject} (mapping : EvidenceMapping source target)
     (h : target.evidence.kind = .theoremProof) :
     source.evidence.kind = .theoremProof ∨
-      (∃ derivation : KernelCheckedDerivation target.claim.meaning, True) := by
-  cases mapping.kindRule with
-  | transport =>
-      exact Or.inl h
-  | deriveTheoremProof sourceKind derivation =>
-      exact Or.inr ⟨derivation, True.intro⟩
+      (∃ derivation : KernelCheckedDerivation target.claim.meaning, True) :=
+  kind_mapping_rule_theorem_proof_requires_derivation mapping.kindRule h
 
 end GovCheck.Coherence

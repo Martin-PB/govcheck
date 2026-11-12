@@ -104,6 +104,40 @@
       "revisionPolicy": "repository-history",
       "releaseBinding": "release-tag-and-commit",
       "status": "bounded-design-model; SANY-and-TLC-checked"
+    },
+    {
+      "artifactId": "govcheck.epistemic-core",
+      "kind": "formalization",
+      "title": "GovCheck epistemic evidence core (Lean)",
+      "source": "formal/lean/GovCheckEpistemic/Evidence.lean",
+      "toolchain": "formal/lean/lean-toolchain",
+      "configuration": "formal/lean/lakefile.lean",
+      "documentation": "formal/lean/README.md",
+      "revisionPolicy": "repository-history",
+      "releaseBinding": "release-tag-and-commit",
+      "status": "prototypical-kernel-checked-core",
+      "verification": {
+        "workflow": ".github/workflows/lean-epistemic-core.yml",
+        "runId": 43209380453,
+        "checkedCommit": "4cfcd0f8ff153427c4e3d3575e04abf80215c831",
+        "result": "lake-build-success",
+        "lean": "4.19.0",
+        "scope": "module declarations only; no whole-metamodel or importer-conformance claim"
+      }
+    },
+    {
+      "artifactId": "govcheck.evidence-freshness",
+      "kind": "formal-model",
+      "title": "GovCheck evidence freshness and acceptance TLA+ model",
+      "source": "formal/tla/GovCheckEvidenceFreshness.tla",
+      "configuration": "formal/tla/GovCheckEvidenceFreshness.cfg",
+      "revisionPolicy": "repository-history",
+      "releaseBinding": "release-tag-and-commit",
+      "status": "pending-bounded-model-checking",
+      "documentation": {
+        "en": "docs/research/metamodel-coherence-prototype-contract.md",
+        "fr": "docs/research/metamodel-coherence-prototype-contract.fr.md"
+      }
     }
   ]
 }

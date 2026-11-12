@@ -1543,7 +1543,7 @@
 
 <a id="r-182"></a>
 ### R-182 — Soft Systems Methodology : outils de l'Université de Cambridge
-- **Cité par :** [Applicabilité STUDY-003](research/govcheck-applicability-constructivism-and-systems.fr.md)
+- **Cité par :** [Applicabilité STUDY-003](research/govcheck-applicability-constructivism-and-systems.fr.md), [Le Moigne colloquium study](research/le-moigne-colloquium.md)
 - **Source :** [University of Cambridge, Institute for Manufacturing](https://www.ifm.eng.cam.ac.uk/research/dstools/soft-systems-methodology/)
 - **Concepts pertinents :** rich pictures, CATWOE, modèles conceptuels multiples, comparaison et changements faisables/désirables.
 - **Utilité pour GovCheck :** perspectives des parties prenantes et contraintes environnementales.

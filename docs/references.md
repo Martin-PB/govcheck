@@ -78,6 +78,7 @@
 - **PEAK decision model:** R-74.
 - **Concurrent edits, semantic conflicts, merge queues and multi-agent delivery:** R-142–R-151.
 - **AI-assisted code quality, maintainability, agentic TDD and organizational adoption:** R-152–R-161.
+- **GovCheck applicability, software factories, external preconditions and AI productivity measurement:** R-162–R-165.
 - **Continuous monitoring and runtime assurance:** R-70, R-72, R-75–R-76.
 - **Assurance 2.0 and SACM evolution:** R-71, R-73.
 - **Domain semantics, product quality and open-source compliance (candidate sources):** R-94–R-100, R-102–R-103.
@@ -101,7 +102,7 @@
 <a id="r-02"></a>
 
 ### R-02 — NIST SP 800-218, Secure Software Development Framework (SSDF) 1.1
-- **Cited by:** [0006](architecture/0006-threat-and-trust-model.md), [0014](architecture/0014-governed-development-workflow.md), [0015](architecture/0015-governance-conformance-and-validation-plan.md), [0022](architecture/0022-governance-capability-audit.md) · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md), [Software factory conference analysis](research/software-factory-self-improvement.md)
+- **Cited by:** [0006](architecture/0006-threat-and-trust-model.md), [0014](architecture/0014-governed-development-workflow.md), [0015](architecture/0015-governance-conformance-and-validation-plan.md), [0022](architecture/0022-governance-capability-audit.md) · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
 
 - **Primary source:** [NIST publication](https://csrc.nist.gov/pubs/sp/800/218/final) · [DOI](https://doi.org/10.6028/NIST.SP.800-218)
 - **Relevant concepts:** documented security requirements and design decisions, secure development practices, provenance and release practices.
@@ -111,7 +112,7 @@
 <a id="r-03"></a>
 
 ### R-03 — GitHub protected branches and required status checks
-- **Cited by:** [0014](architecture/0014-governed-development-workflow.md), [0022](architecture/0022-governance-capability-audit.md), [0023](architecture/0023-bootstrap-governance-authority.md), [ADR 0002](decisions/0002-study-placement.md), [ADR 0007](decisions/0007-mandatory-sources.md), [Software factory conference analysis](research/software-factory-self-improvement.md)
+- **Cited by:** [0014](architecture/0014-governed-development-workflow.md), [0022](architecture/0022-governance-capability-audit.md), [0023](architecture/0023-bootstrap-governance-authority.md), [ADR 0002](decisions/0002-study-placement.md), [ADR 0007](decisions/0007-mandatory-sources.md)
 
 - **Primary source:** [About protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)
 - **Relevant concepts:** required reviews, required status checks, bypass lists and branch restrictions.
@@ -811,7 +812,7 @@
 
 <a id="r-79"></a>
 ### R-79 — Agent sandboxing and runtime isolation: nono, Landlock and Docker Sandboxes
-- **Cited by:** [ADR 0002](decisions/0002-study-placement.md), [Software factory conference analysis](research/software-factory-self-improvement.md)
+- **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
 - **Primary sources:** [nono project and security model](https://github.com/nolabs-ai/nono) · [nono documentation site](https://nono.sh/) · [Linux Landlock kernel documentation](https://docs.kernel.org/userspace-api/landlock.html) · [Docker Sandboxes documentation](https://docs.docker.com/ai/sandboxes/) · [Goose AI agent project](https://github.com/aaif-goose/goose)
 - **Relevant concepts:** per-tool capability scoping, filesystem/network restrictions, credential brokering, kernel-enforced unprivileged sandboxing, microVM isolation and agent runtime orchestration.
 - **Use in GovCheck:** preserves the runtime-isolation and agent-execution options discussed in the wider GovCheck/security architecture context. Goose is included as an agent harness example, not as a sandbox.
@@ -1265,7 +1266,7 @@
 
 <a id="r-148"></a>
 ### R-148 — DORA 2025 State of AI-assisted Software Development
-- **Cited by:** [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md), [AI-assisted quality and governance research review](research/ai-assisted-quality-governance.md), [Software factory conference analysis](research/software-factory-self-improvement.md)
+- **Cited by:** [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
 - **Primary sources:** [DORA report](https://dora.dev/research/2025/dora-report/) · [Google Research publication](https://research.google/pubs/dora-2025-state-of-ai-assisted-software-development-report/)
 - **Relevant concepts:** organizational and delivery-system factors associated with AI-assisted software development; AI as an amplifier of existing strengths and weaknesses.
 - **Use in GovCheck:** cautions against equating agent count or coding speed with delivery quality; emphasizes governance, feedback and engineering-system context.
@@ -1294,6 +1295,7 @@
 - **Relevant concepts:** empirical prediction of merge conflicts using social and technical assets.
 - **Use in GovCheck:** supports assessing work overlap and dependency/coordination context rather than treating changed-file overlap as a complete conflict predicate.
 - **Limit:** predictive associations and model performance depend on the dataset, features and development context; they do not establish incompatibility or causality.
+
 
 <a id="r-152"></a>
 ### R-152 — Code for Machines, Not Just Humans: Quantifying AI-Friendliness with Code Health Metrics

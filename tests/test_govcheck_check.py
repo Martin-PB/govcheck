@@ -257,73 +257,66 @@ def add_marker(root, installed=None, digest="0" * 64, conflicts=None, raw=None):
 
 
 class BootstrapIntegrityTests(unittest.TestCase):
-    def _report(self, root):
-        ctx = mod.Ctx(tree=root)
-        return mod.evaluate([mod.find_rule("bootstrap-integrity")], ctx)
+    def _rule(self, root):
+        report = check.evaluate(root)
+        return next(r for r in report["rules"] if r["id"] == "bootstrap-integrity")
 
     def test_not_applicable_without_marker(self):
         with tempfile.TemporaryDirectory() as d:
-            root = pathlib.Path(d)
+            root = Path(d)
             (root / "decision.md").write_text("# d\n", encoding="utf-8")
-            report = self._report(root)
-            rule = report["rules"][0]
+            rule = self._rule(root)
             self.assertEqual(rule["result"], "pass")
             self.assertEqual(rule["applies"], False)
 
     def test_valid_marker_passes(self):
         with tempfile.TemporaryDirectory() as d:
-            root = pathlib.Path(d)
+            root = Path(d)
             f = root / "check.py"
             f.write_text("print(1)\n", encoding="utf-8")
             add_marker(root, installed=[{"path": "check.py", "sha256": sha256_of(f)}])
-            report = self._report(root)
-            rule = report["rules"][0]
+            rule = self._rule(root)
             self.assertEqual(rule["result"], "pass")
             self.assertEqual(rule["applies"], True)
 
     def test_drifted_file_fails(self):
         with tempfile.TemporaryDirectory() as d:
-            root = pathlib.Path(d)
+            root = Path(d)
             f = root / "check.py"
             f.write_text("print(1)\n", encoding="utf-8")
             add_marker(root, installed=[{"path": "check.py", "sha256": "0" * 64}])
-            report = self._report(root)
-            rule = report["rules"][0]
+            rule = self._rule(root)
             self.assertEqual(rule["result"], "fail")
             self.assertTrue(any("drifted" in r for r in rule["reasons"]))
 
     def test_missing_installed_file_fails(self):
         with tempfile.TemporaryDirectory() as d:
-            root = pathlib.Path(d)
+            root = Path(d)
             add_marker(root, installed=[{"path": "gone.txt", "sha256": "0" * 64}])
-            report = self._report(root)
-            rule = report["rules"][0]
+            rule = self._rule(root)
             self.assertEqual(rule["result"], "fail")
             self.assertTrue(any("missing" in r for r in rule["reasons"]))
 
     def test_invalid_json_fails(self):
         with tempfile.TemporaryDirectory() as d:
-            root = pathlib.Path(d)
+            root = Path(d)
             add_marker(root, raw="{not json")
-            report = self._report(root)
-            rule = report["rules"][0]
+            rule = self._rule(root)
             self.assertEqual(rule["result"], "fail")
 
     def test_unsafe_path_fails(self):
         with tempfile.TemporaryDirectory() as d:
-            root = pathlib.Path(d)
+            root = Path(d)
             add_marker(root, installed=[{"path": "../evil", "sha256": "0" * 64}])
-            report = self._report(root)
-            rule = report["rules"][0]
+            rule = self._rule(root)
             self.assertEqual(rule["result"], "fail")
             self.assertTrue(any("unsafe" in r for r in rule["reasons"]))
 
     def test_bad_package_digest_field_fails(self):
         with tempfile.TemporaryDirectory() as d:
-            root = pathlib.Path(d)
+            root = Path(d)
             add_marker(root, digest="xyz")
-            report = self._report(root)
-            rule = report["rules"][0]
+            rule = self._rule(root)
             self.assertEqual(rule["result"], "fail")
             self.assertTrue(any("package_digest" in r for r in rule["reasons"]))
 

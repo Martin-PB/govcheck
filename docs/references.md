@@ -758,6 +758,7 @@
 - **Primary source:** [OMG SACM specification status and 2.4 Beta 1 materials](https://www.omg.org/spec/SACM)
 - **Relevant concepts:** proposed extensions to SACM 2.3, including typed structured values/strengths, assessment-related constructs, joins, whole-concept references, development-state marking, and revised package/relationship semantics.
 - **Use in GovCheck:** essential comparison point before selecting an internal or interchange metamodel. The beta issue resolutions indicate which gaps in 2.3 the revision is attempting to address.
+- **Issue tracker views cited by Architecture 0026:** [SACM issues — all](https://issues.omg.org/issues/spec/SACM?view=ALL) · [SACM issues — closed](https://issues.omg.org/issues/spec/SACM?view=CLOSED).
 - **Limit:** 2.4 is a beta, not a formal adopted specification. GovCheck must not treat its draft constructs as stable contracts or claim conformance to them. Preserve 2.3 as the current formal baseline pending final 2.4 review.
 
 <a id="r-74"></a>

@@ -58,12 +58,12 @@ structure SACMClaim where
 /-- The proposition is an explicit interpretation supplied by a mapping
     authority. SACM text is not silently parsed into Lean truth. -/
 structure SACMClaimInterpretation
-    (claim : SACMClaim) (target : ClaimSemantics) where
+    (claim : SACMClaim) (interpretation : ClaimSemantics) where
   sourceModel : ArtifactRef
   mappedSubject : Option SACMElementRef
   disposition : ClaimDisposition
   declarationPreserved : disposition = mapAssertionDeclaration claim.declaration
-  claimIdentityPreserved : target.claimId = claim.identity
+  claimIdentityPreserved : interpretation.claimId = claim.identity
   subjectPreserved : mappedSubject = claim.subject
   subjectRevisionMatchesModel :
     ∀ subject, mappedSubject = some subject →

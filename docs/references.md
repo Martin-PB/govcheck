@@ -1540,7 +1540,7 @@
 
 <a id="r-182"></a>
 ### R-182 — Soft Systems Methodology: Cambridge Decision Support Tools
-- **Cited by:**
+- **Cited by:** [STUDY-003 colloquium analysis](research/le-moigne-colloquium.md)
 - **Primary source:** [University of Cambridge, Institute for Manufacturing](https://www.ifm.eng.cam.ac.uk/research/dstools/soft-systems-methodology/)
 - **Relevant concepts:** rich pictures, root definitions, CATWOE, multiple conceptual models, comparison with a problem situation, and feasible/desirable change.
 - **Use in GovCheck:** practical comparator for recording stakeholder perspectives, environmental constraints and the difference between repository traceability and facilitated inquiry.

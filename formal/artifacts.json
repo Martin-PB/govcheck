@@ -104,6 +104,52 @@
       "revisionPolicy": "repository-history",
       "releaseBinding": "release-tag-and-commit",
       "status": "bounded-design-model; SANY-and-TLC-checked"
+    },
+    {
+      "artifactId": "govcheck.evidence-mapping-contract",
+      "kind": "formalization",
+      "title": "Proof-carrying semantic evidence mapping contract",
+      "source": "formal/lean/GovCheckCoherence/Mapping.lean",
+      "documentation": "formal/lean/README.md",
+      "revisionPolicy": "repository-history",
+      "releaseBinding": "release-tag-and-commit",
+      "status": "proposed-kernel-checked-contract"
+    },
+    {
+      "artifactId": "govcheck.cslib-temporal-compatibility",
+      "kind": "formalization-compatibility-probe",
+      "title": "Isolated CSLib BTL and omega-sequence API compatibility probe",
+      "source": "formal/cslib-compat/CslibCompat.lean",
+      "toolchain": "formal/cslib-compat/lean-toolchain",
+      "configuration": "formal/cslib-compat/lakefile.lean",
+      "documentation": "formal/cslib-compat/README.md",
+      "revisionPolicy": "repository-history",
+      "releaseBinding": "release-tag-and-commit",
+      "status": "API-compatibility-checked",
+      "upstream": {
+        "repository": "https://github.com/leanprover/cslib",
+        "commit": "70e25828d89a3916e41c9d84cfffd7e6093bb1a0",
+        "lean": "4.36.0-rc2",
+        "mathlib": "887bb849a9f64e1c66499fd5ff8523c864e78941"
+      },
+      "verification": {
+        "workflow": ".github/workflows/cslib-compatibility.yml",
+        "workflowRunId": 43210543930,
+        "checkedCommit": "076ceb326e3f13e46644f555cf0395971ecdeae5",
+        "result": "lake-build-success",
+        "builtJobs": 1779,
+        "apisChecked": [
+          "Cslib.Logic.Modal.BTL.Model",
+          "Cslib.Logic.Modal.Satisfies.btl_future_always_iff",
+          "Cslib.ωSequence.Step",
+          "Cslib.ωSequence.LeadsTo"
+        ]
+      },
+      "limitations": [
+        "API/build compatibility only",
+        "no GovCheck-to-CSLib semantic refinement theorem",
+        "does not make CSLib a required dependency"
+      ]
     }
   ]
 }

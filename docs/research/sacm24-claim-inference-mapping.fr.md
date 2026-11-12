@@ -1,6 +1,6 @@
 # SACM 2.4 Beta 1 — première tranche de mapping sémantique
 
-**Statut :** tranche sémantique source formalisée en Lean ; compilation Lean et audit des axiomes réussis dans [l'exécution 43214609771](https://github.com/Martin-PB/govcheck/actions/runs/43214609771).  
+**Statut :** tranche sémantique source formalisée en Lean ; compilation Lean et audit des axiomes réussis dans [l'exécution 43214838388](https://github.com/Martin-PB/govcheck/actions/runs/43214838388).  
 **Référence source :** OMG SACM 2.4 Beta 1, septembre 2026 ; XML normatif du métamodèle daté du 04/05/2026.  
 **Catalogue :** [R-73](../references.fr.md#r-73).  
 **Formalisation :** [GovCheckCoherence.SACM24](../../formal/lean/GovCheckCoherence/SACM24.lean).

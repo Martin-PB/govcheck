@@ -50,3 +50,5 @@ import GovCheckCoherence.Proofs
 #print axioms GovCheck.Coherence.sacm_mapping_preserves_subject
 #print axioms GovCheck.Coherence.sacm_mapping_uses_exact_source_model
 #print axioms GovCheck.Coherence.sacm_mapping_has_semantic_bridge
+
+#print axioms GovCheck.Coherence.sacm_mapping_preserves_assertion_declaration

@@ -21,8 +21,19 @@ lake build
 - Pure transport preserves method class.
 - A theorem-proof result can only be introduced through a separate
   `KernelCheckedDerivation` constructor.
-- Mapping coverage, source/target identities, assumptions and declared losses
-  are represented explicitly.
+- A proof-carrying `EvidenceMapping` requires explicit obligations for source
+  identity/revision, exact scope preservation, and preservation of source assumptions.
+- A typed `MappingRule` distinguishes same-kind transport from theorem proving
+  backed by an actual Lean proof term.
+- Mapping method and result status remain independent; a new proof result is not
+  forced to inherit the source test's result status.
+- Mapping coverage, source/target model identities, assumptions and declared
+  losses are represented explicitly.
+
+The current mapping contract uses exact scope equality as a conservative first
+step; scope narrowing and formal scope orders are not yet modeled. The proof
+fields are obligations a mapping implementation must discharge; this module does
+not yet prove any real importer/exporter satisfies them.
 
 ## Important limitation
 

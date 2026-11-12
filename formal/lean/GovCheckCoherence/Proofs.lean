@@ -209,8 +209,8 @@ theorem sacm_mapping_uses_exact_source_model
 theorem sacm_mapping_has_semantic_bridge
     {sacmClaim : SACM24.SACMClaim} {source target : MappingSubject}
     (mapping : SACM24.SACMClaimMapping sacmClaim source target) :
-    SemanticBridge source.claim.meaning target.claim.meaning
-      mapping.evidenceMapping.contract.coverage :=
+    Nonempty (SemanticBridge source.claim.meaning target.claim.meaning
+      mapping.evidenceMapping.contract.coverage) :=
   SACM24.sacm_claim_mapping_has_semantic_bridge mapping
 
 /-- SACM assertion declaration remains distinct in the GovCheck claim disposition. -/

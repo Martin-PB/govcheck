@@ -1,6 +1,7 @@
 import GovCheckCoherence.Evidence
 import GovCheckCoherence.SchemaBoundary
 import GovCheckCoherence.Mapping
+import GovCheckCoherence.SACM24
 
 namespace GovCheck.Coherence
 
@@ -128,5 +129,37 @@ theorem evidence_mapping_theorem_proof_requires_derivation
 theorem unknown_status_is_distinct_from_inconclusive :
     EvidenceStatus.unknown ≠ EvidenceStatus.inconclusive := by
   decide
+
+/-- SACM assertion declarations preserve their distinct GovCheck dispositions. -/
+theorem sacm_assertion_disposition_is_injective :
+    Function.Injective SACM24.mapAssertionDeclaration :=
+  SACM24.mapAssertionDeclaration_injective
+
+/-- SACM probable inference cannot be silently interpreted as classical entailment. -/
+theorem sacm_probable_inference_requires_probability_semantics
+    (premises : List Prop) (conclusion : Prop) :
+    ¬ Nonempty (SACM24.InferenceBridge premises conclusion .probable) :=
+  SACM24.probable_inference_has_no_classical_bridge premises conclusion
+
+/-- SACM necessary inference is represented in the reverse implication direction. -/
+theorem sacm_necessary_inference_direction
+    {premise conclusion : Prop}
+    (bridge : SACM24.InferenceBridge [premise] conclusion .necessary) :
+    conclusion → premise :=
+  SACM24.necessary_inference_is_reverse_entailment bridge
+
+/-- SACM sufficient inference is represented in the forward implication direction. -/
+theorem sacm_sufficient_inference_direction
+    {premise conclusion : Prop}
+    (bridge : SACM24.InferenceBridge [premise] conclusion .sufficient) :
+    premise → conclusion :=
+  SACM24.sufficient_inference_is_forward_entailment bridge
+
+/-- SACM collective inference preserves the joint-premise equivalence. -/
+theorem sacm_collective_inference_semantics
+    {premises : List Prop} {conclusion : Prop}
+    (bridge : SACM24.InferenceBridge premises conclusion .collective) :
+    SACM24.AllPremises premises ↔ conclusion :=
+  SACM24.collective_inference_is_joint_equivalence bridge
 
 end GovCheck.Coherence

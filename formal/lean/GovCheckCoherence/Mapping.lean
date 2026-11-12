@@ -20,6 +20,7 @@ structure MappingSubject where
   evidence : EvidenceRecord
   claim : ClaimSemantics
   artifact : ArtifactRef
+  model : ArtifactRef
   scope : String
   assumptions : List String
 
@@ -91,6 +92,8 @@ structure MappingContract where
 -/
 structure EvidenceMapping (source target : MappingSubject) where
   contract : MappingContract
+  sourceModelMatches : contract.sourceModel = source.model
+  targetModelMatches : contract.targetModel = target.model
   semanticBridge :
     SemanticBridge source.claim.meaning target.claim.meaning contract.coverage
   methodClassPreserved :

@@ -33,3 +33,5 @@ import GovCheckCoherence.Proofs
 #print axioms GovCheck.Coherence.evidence_mapping_preserves_assumptions
 #print axioms GovCheck.Coherence.evidence_mapping_preserves_method_class
 #print axioms GovCheck.Coherence.evidence_mapping_theorem_proof_requires_derivation
+
+#print axioms GovCheck.Coherence.unknown_status_is_distinct_from_inconclusive

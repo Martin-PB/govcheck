@@ -61,8 +61,7 @@ class Ctx:
 def rule_license(ctx: Ctx):
     found = [n for n in LICENSE_NAMES if (ctx.tree / n).is_file()]
     if found:
-        return ("pass", True, ["license file present at the root:
- " + found[0]])
+        return ("pass", True, ["license file present at the root: " + found[0]])
     return ("fail", True, ["no LICENSE/LICENCE file at the repository root"])
 
 
@@ -113,8 +112,7 @@ def rule_reference_integrity(ctx: Ctx):
     for rel in CATALOGUES:
         p = ctx.tree / rel
         if not p.is_file():
-            return ("fa
-il", True, ["missing reference catalogue: " + rel])
+            return ("fail", True, ["missing reference catalogue: " + rel])
         cat_ids[rel] = {"R-" + n for n in ANCHOR_RE.findall(ctx.read(rel))}
     problems = []
     en_ids = cat_ids[CATALOGUES[0]]
@@ -161,8 +159,7 @@ def load_attestations(ctx: Ctx):
     if not d.is_dir():
         return []
     records = []
-    for p in so
-rted(d.glob("*.json")):
+    for p in sorted(d.glob("*.json")):
         try:
             rec = json.loads(p.read_text(encoding="utf-8"))
         except ValueError:
@@ -211,8 +208,7 @@ def rule_sources_present(ctx: Ctx):
         att_checked += 1
         srcs = rec.get("sources")
         if not isinstance(srcs, list) or not srcs or not all(isinstance(s, str) and s.strip() for s in srcs):
-            problems.append(str(rec.get("_file", "attestation")) + ': attestation record has no non-empty "sou
-rces" list')
+            problems.append(str(rec.get("_file", "attestation")) + ': attestation record has no non-empty "sources" list')
     if checked == 0 and att_checked == 0:
         return ("pass", False, ["no decision documents and no attestation records; rule not applicable"])
     if problems:
@@ -316,8 +312,7 @@ RULES = [
 ]
 
 
-def evaluate(tree: Path, changed=None, git=None) -> d
-ict:
+def evaluate(tree: Path, changed=None, git=None) -> dict:
     ctx = Ctx(tree, changed, git)
     rules = []
     for r in RULES:
@@ -376,8 +371,7 @@ def main(argv=None) -> int:
     parser.add_argument("--out")
     parser.add_argument("--list-rules", action="store_true")
     args = parser.parse_args(argv)
-    if args.l
-ist_rules:
+    if args.list_rules:
         for r in RULES:
             print(r["id"] + " (" + r["class"] + ")")
         return 0

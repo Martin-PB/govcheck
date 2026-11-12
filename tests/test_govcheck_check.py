@@ -45,8 +45,7 @@ def build_tree(root: Path) -> None:
 def add_attestation(root: Path, reviewer="Bob <bob@example.org>", rev="deadbeef" * 5, decision="accept") -> None:
     d = root / "docs" / "attestations"
     d.mkdir(parents=True, exist_ok=True)
-    (d / "000
-1.json").write_text(json.dumps({
+    (d / "0001.json").write_text(json.dumps({
         "decision": decision,
         "candidate_rev": rev,
         "reviewer": reviewer,
@@ -99,8 +98,7 @@ class EvaluateTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d:
             root = Path(d)
             build_tree(root)
-          
-  p = root / "docs" / "specifications" / "0001-a.md"
+            p = root / "docs" / "specifications" / "0001-a.md"
             p.write_text(p.read_text(encoding="utf-8") + "Also R-99.\n", encoding="utf-8")
             report = check.evaluate(root)
             self.assertEqual(report["overall"], "fail")
@@ -143,8 +141,7 @@ class EvaluateTests(unittest.TestCase):
             self.assertEqual(len(report["rules"]), 8)
 
     def test_review_unknown_without_attestation(self):
-        
-with tempfile.TemporaryDirectory() as d:
+        with tempfile.TemporaryDirectory() as d:
             root = Path(d)
             build_tree(root)
             git = {"candidate_rev": "a" * 40, "author": "Alice <alice@example.org>"}
@@ -181,8 +178,7 @@ with tempfile.TemporaryDirectory() as d:
             build_tree(root)
             add_attestation(root, reviewer="Bob <bob@example.org>", rev="b" * 40)
             git = {"candidate_rev": "a" * 40, "author": "Alice <alice@example.org>"}
-            report = check.evaluate(root, changed={"x.m
-d"}, git=git)
+            report = check.evaluate(root, changed={"x.md"}, git=git)
             rule = next(r for r in report["rules"] if r["id"] == "independent-review")
             self.assertEqual(rule["result"], "unknown")
 
@@ -227,8 +223,7 @@ d"}, git=git)
         with tempfile.TemporaryDirectory() as d:
             root = Path(d)
             build_tree(root)
- 
-           shutil.rmtree(root / "docs" / "decisions")
+            shutil.rmtree(root / "docs" / "decisions")
             report = check.evaluate(root)
             rule = next(r for r in report["rules"] if r["id"] == "sources-present")
             self.assertEqual(rule["result"], "pass")

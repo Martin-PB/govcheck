@@ -26,8 +26,7 @@ GovCheck's own governance history (architecture records, ADRs, deliberations) li
 
 ## Bootstrapping an existing repository (inspect / plan / apply)
 
-`govcheck/bootstrap.py` also adopts GovCheck into an 
-existing, non-empty repository without destroying anything:
+`govcheck/bootstrap.py` also adopts GovCheck into an existing, non-empty repository without destroying anything:
 
     python3 govcheck/bootstrap.py inspect TARGET [--out report.json]
     python3 govcheck/bootstrap.py plan TARGET [--capabilities check,docs] [--out plan.json]
@@ -42,8 +41,7 @@ existing, non-empty repository without destroying anything:
 
 The legacy form `python3 govcheck/bootstrap.py TARGET_DIR` still initializes an empty repository and refuses non-empty targets. Unit tests live in `tests/test_govcheck_bootstrap.py`.
 
-## Checking a reposito
-ry (first executable slice)
+## Checking a repository (first executable slice)
 
 `govcheck/check.py` is the first executable GovCheck command. It evaluates a fixed rule set on a repository tree and emits a deterministic, language-independent JSON report:
 
@@ -63,11 +61,4 @@ The `sources-present` rule (decidable) requires every non-guide `docs/decisions/
 
 ### Bootstrap marker integrity
 
-When the repository root contains the package-owned marker `.govcheck-bootstrap.json` (written by `govcheck/bootstrap.py apply`), the `bootstrap-integrity` rule checks that:
-
-- the marker is valid JSON and a JSON object;
-- `tool` equals `govcheck-bootstrap`, `package_version` is a non-empty string and `package_digest` is a 64-character lowercase hex SHA-256;
-- `installed` is a list of `{path, sha256}` entries where each path is relative and safe (no absolute path, no backslash, no empty/`.`/`..` segment), each `sha256` is 64-char lowercase hex, and each recorded file exists with exactly that digest (missing file or content drift fails);
-- `conflicts` is a list of non-empty strings.
-
-Any problem fails the rule. Without the marker at the tree root the rule is not applicable and reports `pass` with `applies: false`.
+The `bootstrap-integrity` rule (decidable) checks the package-owned marker `.govcheck-bootstrap.json` written by `govcheck/bootstrap.py apply` at the target root. Without the marker the rule is not applicable (pass, not applicable). With the marker, it must be a JSON object with `"tool": "govcheck-bootstrap"`, a non-empty `"package_version"`, a `"package_digest"` that is a 64-character lowercase hex SHA-256, an `"installed"` list of `{path, sha256}` entries and a `"conflicts"` list of non-empty strings. Each installed path must be relative and safe (no absolute path, no backslash, no `.`/`..`/empty segment), and each installed file must still exist with exactly the recorded SHA-256 digest. Any schema violation, missing file or content drift fails the rule. The marker is a repository document, not a tamper-proof seal: it detects accidental drift, not a malicious editor.

@@ -116,8 +116,8 @@
       "status": "kernel-checked; axiom-audited",
       "verification": {
         "workflow": ".github/workflows/lean-coherence.yml",
-        "workflowRunId": 43215882124,
-        "checkedCommit": "5ddfe93d4d82007a8db207eaab8fc4ef8ea56434",
+        "workflowRunId": 43216670445,
+        "checkedCommit": "7c69cd98338954107ebe561c799bdea933218241",
         "result": "lake-build-success; axiom-audit-success",
         "lean": "4.19.0",
         "axiomAudit": {
@@ -186,18 +186,18 @@
         "formal mapping declarations only",
         "no normative XMI/XML instance fixture imported",
         "natural-language claim interpretation remains authority-supplied",
-        "SACM 2.4 Beta 1 PDF and metamodel XML contain reported contradictions; source view must be pinned",
+        "SACM 2.4 Beta 1 PDF and metamodel XML contain reported contradictions; source view and native format must be pinned",
         "probable inference intentionally unsupported by classical fragment",
         "other multiplicity, value-type and inheritance conflicts remain unresolved"
       ],
       "verification": {
         "workflow": ".github/workflows/lean-coherence.yml",
-        "workflowRunId": 43215882124,
-        "checkedCommit": "5ddfe93d4d82007a8db207eaab8fc4ef8ea56434",
+        "workflowRunId": 43216670445,
+        "checkedCommit": "7c69cd98338954107ebe561c799bdea933218241",
         "result": "lake-build-success; axiom-audit-success",
         "lean": "4.19.0",
         "axiomAudit": {
-          "publicSACMTheorems": 19,
+          "publicSACMTheorems": 20,
           "axiomsUsed": 0
         },
         "limitations": [

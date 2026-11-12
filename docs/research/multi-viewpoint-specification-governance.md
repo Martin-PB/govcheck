@@ -176,4 +176,4 @@ References R-187 to R-192 are bibliographic leads to verify and investigate; the
 
 ## References
 
-Central catalogue: [R-187](../references.md#r-187) · [R-188](../references.md#r-188) · [R-189](../references.md#r-189) · [R-190](../references.md#r-190) · [R-191](../references.md#r-191) · [R-192](../references.md#r-192). Also see R-51–R-61, R-83–R-86, R-115–R-127 and R-178–R-182.
+Central catalogue: [R-187](../references.md#r-187) · [R-188](../references.md#r-188) · [R-189](../references.md#r-189) · [R-190](../references.md#r-190) · [R-191](../references.md#r-191) · [R-192](../references.md#r-192). Also see [R-51](../references.md#r-51)–[R-61](../references.md#r-61), [R-83](../references.md#r-83)–[R-86](../references.md#r-86), [R-115](../references.md#r-115)–[R-127](../references.md#r-127) and [R-178](../references.md#r-178)–[R-182](../references.md#r-182).

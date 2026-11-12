@@ -221,4 +221,38 @@ theorem sacm_mapping_preserves_assertion_declaration
       SACM24.mapAssertionDeclaration sacmClaim.declaration :=
   SACM24.claim_interpretation_preserves_declaration mapping.sourceInterpretation
 
+/-- Textual Beta 1 declaration literals reject the XML-only byRule value. -/
+theorem sacm_text_byRule_is_rejected :
+    SACM24.declarationSupportedBySourceView .specificationText .byRule = false :=
+  SACM24.text_byRule_is_not_supported
+
+/-- The metamodel XML rejects the text-only needsSupport value. -/
+theorem sacm_xml_needsSupport_is_rejected :
+    SACM24.declarationSupportedBySourceView .normativeMetamodelXML .needsSupport = false :=
+  SACM24.xml_needsSupport_is_not_supported
+
+/-- The PDF text identity field is explicitly represented as gid. -/
+theorem sacm_text_identity_field_is_gid :
+    SACM24.identityFieldForSourceView .specificationText = .gid :=
+  SACM24.text_identity_field_is_gid
+
+/-- The normative metamodel XML identity field is explicitly elementId. -/
+theorem sacm_xml_identity_field_is_elementId :
+    SACM24.identityFieldForSourceView .normativeMetamodelXML = .elementId :=
+  SACM24.xml_identity_field_is_elementId
+
+/-- A mapped Claim must carry the declaration/source-view consistency proof. -/
+theorem sacm_claim_mapping_requires_source_view_consistency
+    {claim : SACM24.SACMClaim} {interpretation : ClaimSemantics}
+    (mapping : SACM24.SACMClaimInterpretation claim interpretation) :
+    SACM24.declarationSupportedBySourceView claim.sourceView claim.declaration = true :=
+  mapping.declarationConsistentWithSourceView
+
+/-- A mapped Claim must use the identity field of its declared source view. -/
+theorem sacm_claim_mapping_requires_source_identity_field
+    {claim : SACM24.SACMClaim} {interpretation : ClaimSemantics}
+    (mapping : SACM24.SACMClaimInterpretation claim interpretation) :
+    claim.identityField = SACM24.identityFieldForSourceView claim.sourceView :=
+  mapping.identityFieldMatchesSourceView
+
 end GovCheck.Coherence

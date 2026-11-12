@@ -28,7 +28,7 @@ La tranche Lean modélise les littéraux de AssertionDeclarationKind de SACM :
 | `axiomatic` | `axiomaticDeclared` | Pas une preuve de théorème vérifiée par le noyau Lean |
 | `byRule` | `ruleDeclared` | Pas validé tant que la règle référencée n'est pas interprétée et vérifiée |
 
-Le mapping est injectif : aucun littéral de déclaration SACM n'est fusionné avec un autre dans une disposition GovCheck.
+Le mapping est injectif : aucun littéral de déclaration SACM n'est fusionné avec un autre dans une disposition GovCheck. La structure de bout en bout `SACMClaimMapping` transporte cette disposition avec l'interprétation du Claim source, le modèle source exact et le pont sémantique générique `EvidenceMapping`.
 
 Les champs optionnels SACM `isTrue`, `assertionValue` et `assertionRule` restent distincts du type de déclaration. Dans la tranche Lean actuelle, les deux derniers sont conservés comme chaînes opaques de contenu/référence source, sans formaliser encore leurs métaclasses SACM complètes. Une valeur booléenne de vérité facultative n'est pas un objet de preuve ; une valeur d'assertion peut être plus riche qu'un booléen ; une référence de règle n'est pas sa sémantique formelle. L'enregistrement Lean conserve ces champs séparément.
 
@@ -54,7 +54,7 @@ Le modèle Lean formalise le fragment déterministe avec sa direction explicite 
 | `sufficient` | `AllPremises premises → conclusion` | Les prémisses conjointes suffisent à la conclusion |
 | `necessary` | `conclusion → premise` | La prémisse source est nécessaire à la conclusion |
 | `necessaryAndSufficient` | `premise ↔ conclusion` | Les deux directions sont vraies |
-| `collective` | `AllPremises premises ↔ conclusion` avec un ensemble de prémisses non vide | L'ensemble des prémisses est conjointement nécessaire et suffisant |
+| `collective` | `AllPremises premises ↔ conclusion` avec un ensemble de prémisses non vide (imposé par le constructeur Lean) | L'ensemble des prémisses est conjointement nécessaire et suffisant |
 | `byRule` | Identité de règle explicite et terme de preuve | Nécessite une règle formelle interprétée séparément |
 | `probable` | Aucun constructeur de liaison classique | Nécessite une sémantique probabiliste ; non pris en charge par ce fragment classique |
 

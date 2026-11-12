@@ -20,6 +20,7 @@
 | Métadonnées de gouvernance et catalogues | R-17 |
 | Systèmes de workflow d'agents évalués comme fixtures | R-18–R-19 |
 | Sémantiques de contrôle de version | R-22 |
+| Journal canonique, concurrence et reprise | R-142–R-144 |
 | Plateformes VCS, forges et CI alternatives (CLI Pijul, GitLab, Woodpecker, SourceHut, Fossil) | R-109–R-113 |
 | CRDT, collaboration temps réel et transport réseau | R-45–R-50, R-66, R-87 |
 | Représentation des connaissances et interopérabilité | R-51–R-61, R-83–R-86 |

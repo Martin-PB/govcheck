@@ -18,7 +18,23 @@ inductive EvidenceKind where
   | implementationConformance
   | normativeFidelity
   | acceptance
+
   deriving DecidableEq, Repr
+
+/-- Stable wire labels corresponding to the evidence-record schema. -/
+def EvidenceKind.wireName : EvidenceKind → String
+  | .empiricalExecution => "empirical-execution"
+  | .modelChecking => "model-checking"
+  | .programVerification => "program-verification"
+  | .theoremProving => "theorem-proving"
+  | .implementationConformance => "implementation-conformance"
+  | .normativeFidelity => "normative-fidelity"
+  | .acceptance => "acceptance"
+
+theorem EvidenceKind.wireName_injective :
+    Function.Injective EvidenceKind.wireName := by
+  intro a b h
+  cases a <;> cases b <;> simp_all [EvidenceKind.wireName]
 
 /-- Result status is independent of the method used to obtain it. -/
 inductive EvidenceStatus where
@@ -30,7 +46,24 @@ inductive EvidenceStatus where
   | unsupported
   | notRun
   | notApplicable
+
   deriving DecidableEq, Repr
+
+/-- Stable wire labels corresponding to the evidence-record schema. -/
+def EvidenceStatus.wireName : EvidenceStatus → String
+  | .passed => "passed"
+  | .failed => "failed"
+  | .inconclusive => "inconclusive"
+  | .unknown => "unknown"
+  | .incomplete => "incomplete"
+  | .unsupported => "unsupported"
+  | .notRun => "not-run"
+  | .notApplicable => "not-applicable"
+
+theorem EvidenceStatus.wireName_injective :
+    Function.Injective EvidenceStatus.wireName := by
+  intro a b h
+  cases a <;> cases b <;> simp_all [EvidenceStatus.wireName]
 
 /-- Identity and exact revision of a native source artifact. -/
 structure ArtifactRef where

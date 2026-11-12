@@ -79,7 +79,6 @@
 - **PEAK decision model:** R-74.
 - **Concurrent edits, semantic conflicts, merge queues and multi-agent delivery:** R-142–R-151.
 - **AI-assisted code quality, maintainability, agentic TDD and organizational adoption:** R-152–R-161.
-- **Constructivist epistemology, irreducible complexity, systemic modelling and model validity:** R-166–R-186.
 - **Continuous monitoring and runtime assurance:** R-70, R-72, R-75–R-76.
 - **Assurance 2.0 and SACM evolution:** R-71, R-73.
 - **Domain semantics, product quality and open-source compliance (candidate sources):** R-94–R-100, R-102–R-103.

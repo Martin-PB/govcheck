@@ -45,6 +45,8 @@
 
 ## Full reference entries
 
+| Probabilistic, fuzzy and state-transition assurance methods | R-114 |
+
 ## Detailed source register
 
 **Purpose.** This register consolidates academic, standards-body, industrial-documentation and source-code references used to motivate GovCheck's repository-governance design. It is a navigational bibliography, not a normative policy or adoption decision.

@@ -30,7 +30,7 @@ The Lean slice models SACM's AssertionDeclarationKind literals:
 
 The mapping is injective: no two SACM declaration literals collapse into one GovCheck disposition.
 
-SACM's optional `isTrue`, `assertionValue`, and `assertionRule` fields remain distinct from declaration kind. An optional Boolean truth value is not a proof object; an assertion value may encode a richer value than Boolean; and a rule reference is not the rule's formal semantics. The Lean record retains these fields separately.
+SACM's optional `isTrue`, `assertionValue`, and `assertionRule` fields remain distinct from declaration kind. In the current Lean slice, the latter two are retained as opaque source payload/reference strings, not yet formalized as their complete SACM metaclasses. An optional Boolean truth value is not a proof object; an assertion value may encode a richer value than Boolean; and a rule reference is not the rule's formal semantics. The Lean record retains these fields separately.
 
 **Critical non-promotion rule:** SACM `axiomatic` must remain an explicit source-declared axiom/assumption in the trust ledger. It cannot be promoted to GovCheck `theoremProof` without an independent Lean proof term and a separate trusted-base/axiom audit.
 
@@ -54,7 +54,7 @@ The Lean model formalizes the deterministic fragment with explicit direction:
 | `sufficient` | `AllPremises premises → conclusion` | Joint premises are sufficient for the conclusion |
 | `necessary` | `conclusion → premise` | The source premise is necessary for the conclusion |
 | `necessaryAndSufficient` | `premise ↔ conclusion` | Both directions hold |
-| `collective` | `AllPremises premises ↔ conclusion` | The whole set of premises is jointly necessary and sufficient |
+| `collective` | `AllPremises premises ↔ conclusion` with a non-empty premise set | The whole set of premises is jointly necessary and sufficient |
 | `byRule` | Explicit rule identity plus proof term | Requires a separately interpreted formal rule |
 | `probable` | No classical bridge constructor | Requires a probability semantics; unsupported by this classical fragment |
 

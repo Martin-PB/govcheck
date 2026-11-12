@@ -43,6 +43,8 @@
 | GitHub Actions workflow location and syntax | R-107 |
 | Canonical journal ordering, durable recovery and idempotent retry | R-142–R-144 |
 | Open-source licensing and attribution | R-108 |
+| Repository intent, lifecycle and requirements engineering | R-114–R-118, R-121–R-122 |
+| System modeling and assurance-case metamodels | R-119–R-120 |
 
 ## Full reference entries
 
@@ -80,12 +82,14 @@
 - **AI-agent and MCP security guidance:** R-106.
 - **GitHub Actions workflow placement:** R-107.
 - **Open-source licensing and attribution:** R-108.
+- **Repository intent and lifecycle/requirements engineering:** R-114–R-118, R-121–R-122.
+- **System modeling and assurance-case metamodels:** R-119–R-120.
 
 ## Standards, government guidance and industry specifications
 
 <a id="r-01"></a>
 ### R-01 — NIST SP 800-53 Rev. 5, Security and Privacy Controls
-- **Cited by:** [0006](architecture/0006-threat-and-trust-model.md), [0013](architecture/0013-governance-metamodel.md), [0022](architecture/0022-governance-capability-audit.md), [0023](architecture/0023-bootstrap-governance-authority.md), [Spec 0002](specifications/0002-canonical-governance-model.md)
+- **Cited by:** [0006](architecture/0006-threat-and-trust-model.md), [0013](architecture/0013-governance-metamodel.md), [0022](architecture/0022-governance-capability-audit.md), [0023](architecture/0023-bootstrap-governance-authority.md), [Spec 0002](specifications/0002-canonical-governance-model.md) · [Intent impact analysis](intent-impact-analysis.md)
 
 - **Primary source:** [NIST SP 800-53 publication and control catalogue](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final)
 - **Relevant concepts:** AC-5 separation of duties; access management; auditability and control ownership.
@@ -105,7 +109,7 @@
 <a id="r-03"></a>
 
 ### R-03 — GitHub protected branches and required status checks
-- **Cited by:** [0014](architecture/0014-governed-development-workflow.md), [0022](architecture/0022-governance-capability-audit.md), [0023](architecture/0023-bootstrap-governance-authority.md), [ADR 0002](decisions/0002-study-placement.md), [ADR 0007](decisions/0007-mandatory-sources.md)
+- **Cited by:** [0014](architecture/0014-governed-development-workflow.md), [0022](architecture/0022-governance-capability-audit.md), [0023](architecture/0023-bootstrap-governance-authority.md), [ADR 0002](decisions/0002-study-placement.md), [ADR 0007](decisions/0007-mandatory-sources.md) · [Intent impact analysis](intent-impact-analysis.md)
 
 - **Primary source:** [About protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)
 - **Relevant concepts:** required reviews, required status checks, bypass lists and branch restrictions.
@@ -115,7 +119,7 @@
 <a id="r-04"></a>
 
 ### R-04 — Goal Structuring Notation (GSN) Community Standard
-- **Cited by:** [0010](architecture/0010-assurance-proof-and-conformance.md)
+- **Cited by:** [0010](architecture/0010-assurance-proof-and-conformance.md) · [Intent impact analysis](intent-impact-analysis.md)
 
 - **Primary source:** [GSN Community Standard — official site](https://scsc.uk/gsn)
 - **Relevant concepts:** structured assurance claims, arguments, strategies, context, assumptions and evidence.
@@ -125,7 +129,7 @@
 <a id="r-05"></a>
 
 ### R-05 — TLA+ and TLC
-- **Cited by:** [0007](architecture/0007-technology-decision-framework.md), [0008](architecture/0008-formalization-and-conformance.md), [0009](architecture/0009-govcheck-design-discussion-record.md), [0010](architecture/0010-assurance-proof-and-conformance.md), [0011](architecture/0011-lifecycle-model-assertion-audit.md), [0020](architecture/0020-first-tlc-execution-record.md), [0021](architecture/0021-assurance-claims-and-freshness.md), [ADR 0001](decisions/0001-bootstrap-boundaries.md), [Spec 0003](specifications/0003-change-lifecycle.md), [Spec 0005](specifications/0005-assurance-model.md), [Spec 0006](specifications/0006-governance-revision-applicability.md), [Spec 0007](specifications/0007-canonical-governance-journal-protocol.md), [ADR 0002](decisions/0002-study-placement.md), [ADR 0008](decisions/0008-governance-applicability-arbitration-session.md), [Formal lifecycle model](formal/lifecycle-model.md), [Formal model index](formal/README.md), [Architecture 0032](architecture/0032-canonical-publication-model-checking.md), [Architecture 0033](architecture/0033-governance-evaluator-exception-revocation-model.md), [Architecture 0034](architecture/0034-canonical-journal-recovery-model.md), [Work portfolio events](work-portfolio/events.md)
+- **Cited by:** [0007](architecture/0007-technology-decision-framework.md), [0008](architecture/0008-formalization-and-conformance.md), [0009](architecture/0009-govcheck-design-discussion-record.md), [0010](architecture/0010-assurance-proof-and-conformance.md), [0011](architecture/0011-lifecycle-model-assertion-audit.md), [0020](architecture/0020-first-tlc-execution-record.md), [0021](architecture/0021-assurance-claims-and-freshness.md), [ADR 0001](decisions/0001-bootstrap-boundaries.md), [Spec 0003](specifications/0003-change-lifecycle.md), [Spec 0005](specifications/0005-assurance-model.md), [Spec 0006](specifications/0006-governance-revision-applicability.md), [ADR 0002](decisions/0002-study-placement.md), [ADR 0008](decisions/0008-governance-applicability-arbitration-session.md), [Formal lifecycle model](formal/lifecycle-model.md), [Formal model index](formal/README.md), [Architecture 0032](architecture/0032-canonical-publication-model-checking.md), [Architecture 0033](architecture/0033-governance-evaluator-exception-revocation-model.md), [Specification 0007](specifications/0007-canonical-governance-journal-protocol.md), [Architecture 0034](architecture/0034-canonical-journal-recovery-model.md), [Work portfolio events](work-portfolio/events.md)
 
 - **Primary sources:** [Lamport's publications on TLA](https://www.microsoft.com/en-us/research/people/lamport/publications/) · [TLA+ project and documentation](https://lamport.azurewebsites.net/tla/tla.html)
 - **Academic reference:** Leslie Lamport, “The Temporal Logic of Actions,” ACM Transactions on Programming Languages and Systems, 16(3), 1994, pp. 872–923. [DOI](https://doi.org/10.1145/177492.177726)
@@ -136,7 +140,7 @@
 <a id="r-06"></a>
 
 ### R-06 — in-toto: software supply-chain integrity
-- **Cited by:** [0006](architecture/0006-threat-and-trust-model.md), [0007](architecture/0007-technology-decision-framework.md), [0010](architecture/0010-assurance-proof-and-conformance.md), [0014](architecture/0014-governed-development-workflow.md), [0015](architecture/0015-governance-conformance-and-validation-plan.md), [ADR 0002](decisions/0002-study-placement.md), [ADR 0007](decisions/0007-mandatory-sources.md)
+- **Cited by:** [0006](architecture/0006-threat-and-trust-model.md), [0007](architecture/0007-technology-decision-framework.md), [0010](architecture/0010-assurance-proof-and-conformance.md), [0014](architecture/0014-governed-development-workflow.md), [0015](architecture/0015-governance-conformance-and-validation-plan.md), [ADR 0002](decisions/0002-study-placement.md), [ADR 0007](decisions/0007-mandatory-sources.md) · [Intent impact analysis](intent-impact-analysis.md)
 
 - **Primary sources:** [in-toto project](https://in-toto.io/) · [USENIX Security 2019 paper](https://ssl.engineering.nyu.edu/papers/torres-toto-usenix19.pdf)
 - **Academic reference:** Santiago Torres-Arias et al., “in-toto: Providing farm-to-table guarantees for bits and bytes,” 28th USENIX Security Symposium, 2019.
@@ -157,7 +161,7 @@
 <a id="r-08"></a>
 
 ### R-08 — OpenSSF Scorecard
-- **Cited by:** [0015](architecture/0015-governance-conformance-and-validation-plan.md), [ADR 0002](decisions/0002-study-placement.md)
+- **Cited by:** [0015](architecture/0015-governance-conformance-and-validation-plan.md), [ADR 0002](decisions/0002-study-placement.md) · [Intent impact analysis](intent-impact-analysis.md)
 
 - **Primary sources:** [OpenSSF project page](https://openssf.org/projects/scorecard/) · [Scorecard repository](https://github.com/ossf/scorecard)
 - **Relevant concepts:** automated, reusable checks of selected open-source security practices.
@@ -167,7 +171,7 @@
 <a id="r-09"></a>
 
 ### R-09 — Open Policy Agent (OPA)
-- **Cited by:** [0012](architecture/0012-normative-authority-and-documentation.md), [0013](architecture/0013-governance-metamodel.md), [0015](architecture/0015-governance-conformance-and-validation-plan.md), [0021](architecture/0021-assurance-claims-and-freshness.md), [0022](architecture/0022-governance-capability-audit.md), [Spec 0002](specifications/0002-canonical-governance-model.md), [ADR 0002](decisions/0002-study-placement.md)
+- **Cited by:** [0012](architecture/0012-normative-authority-and-documentation.md), [0013](architecture/0013-governance-metamodel.md), [0015](architecture/0015-governance-conformance-and-validation-plan.md), [0021](architecture/0021-assurance-claims-and-freshness.md), [0022](architecture/0022-governance-capability-audit.md), [Spec 0002](specifications/0002-canonical-governance-model.md), [ADR 0002](decisions/0002-study-placement.md) · [Intent impact analysis](intent-impact-analysis.md)
 
 - **Primary source:** [Official OPA documentation](https://www.openpolicyagent.org/docs)
 - **Relevant concepts:** separation of policy decision-making from policy enforcement; evaluating structured input against policy.
@@ -177,7 +181,7 @@
 <a id="r-10"></a>
 
 ### R-10 — Cedar authorization language
-- **Cited by:** [0012](architecture/0012-normative-authority-and-documentation.md), [0013](architecture/0013-governance-metamodel.md), [0015](architecture/0015-governance-conformance-and-validation-plan.md), [0022](architecture/0022-governance-capability-audit.md), [Spec 0002](specifications/0002-canonical-governance-model.md), [ADR 0002](decisions/0002-study-placement.md)
+- **Cited by:** [0012](architecture/0012-normative-authority-and-documentation.md), [0013](architecture/0013-governance-metamodel.md), [0015](architecture/0015-governance-conformance-and-validation-plan.md), [0022](architecture/0022-governance-capability-audit.md), [Spec 0002](specifications/0002-canonical-governance-model.md), [ADR 0002](decisions/0002-study-placement.md) · [Intent impact analysis](intent-impact-analysis.md)
 
 - **Primary sources:** [Cedar language reference](https://docs.cedarpolicy.com/) · [Cedar project](https://www.cedarpolicy.com/) · [OOPSLA 2024 paper](https://doi.org/10.1145/3649835) · [FSE Companion 2024: How We Built Cedar](https://doi.org/10.1145/3663529.3663854) · [arXiv preprint](https://arxiv.org/abs/2407.01688)
 - **Relevant concepts:** typed principal/action/resource/context authorization decisions and separation of authorization logic from application logic.
@@ -286,7 +290,7 @@
 <a id="r-22"></a>
 
 ### R-22 — Native Git and Pijul semantics
-- **Cited by:** [0007](architecture/0007-technology-decision-framework.md), [0009](architecture/0009-govcheck-design-discussion-record.md), [0011](architecture/0011-lifecycle-model-assertion-audit.md), [0014](architecture/0014-governed-development-workflow.md), [0021](architecture/0021-assurance-claims-and-freshness.md), [ADR 0001](decisions/0001-bootstrap-boundaries.md), [Spec 0003](specifications/0003-change-lifecycle.md), [Spec 0004](specifications/0004-vcs-collaboration-contracts.md), [ADR 0002](decisions/0002-study-placement.md), [Formal lifecycle model](formal/lifecycle-model.md), [Spec 0006](specifications/0006-governance-revision-applicability.md), [Spec 0007](specifications/0007-canonical-governance-journal-protocol.md), [ADR 0006](decisions/0006-vcs-forge-portability.md), [ADR 0008](decisions/0008-governance-applicability-arbitration-session.md), [Formal model index](formal/README.md), [Architecture 0032](architecture/0032-canonical-publication-model-checking.md), [Architecture 0034](architecture/0034-canonical-journal-recovery-model.md), [Work portfolio events](work-portfolio/events.md)
+- **Cited by:** [0007](architecture/0007-technology-decision-framework.md), [0009](architecture/0009-govcheck-design-discussion-record.md), [0011](architecture/0011-lifecycle-model-assertion-audit.md), [0014](architecture/0014-governed-development-workflow.md), [0021](architecture/0021-assurance-claims-and-freshness.md), [ADR 0001](decisions/0001-bootstrap-boundaries.md), [Spec 0003](specifications/0003-change-lifecycle.md), [Spec 0004](specifications/0004-vcs-collaboration-contracts.md), [ADR 0002](decisions/0002-study-placement.md), [Formal lifecycle model](formal/lifecycle-model.md), [Spec 0006](specifications/0006-governance-revision-applicability.md), [ADR 0006](decisions/0006-vcs-forge-portability.md), [ADR 0008](decisions/0008-governance-applicability-arbitration-session.md), [Formal model index](formal/README.md), [Architecture 0032](architecture/0032-canonical-publication-model-checking.md), [Specification 0007](specifications/0007-canonical-governance-journal-protocol.md), [Architecture 0034](architecture/0034-canonical-journal-recovery-model.md), [Work portfolio events](work-portfolio/events.md)
 
 - **Primary sources:** [Git documentation](https://git-scm.com/docs) · [Pijul manual: theory](https://pijul.org/manual/theory) · [Pijul channels](https://pijul.org/manual/workflows/channels) · [Pijul conflicts](https://pijul.org/manual/conflicts.html) · [Pijul project](https://pijul.org/) · [Nest hosting service](https://nest.pijul.com/) · [Nest source repository](https://nest.pijul.com/pijul/nest/tree)
 - **Relevant concepts:** Git's snapshot/commit and tree model; Pijul's change/patch graph, channels and first-class conflicts; Nest as a Pijul repository-hosting platform.
@@ -391,7 +395,7 @@
 
 <a id="r-33"></a>
 ### R-33 — Mohamad, Steghöfer and Scandariato, “Security assurance cases—state of the art of an emerging approach” (2021)
-- **Cited by:** [0010](architecture/0010-assurance-proof-and-conformance.md), [0021](architecture/0021-assurance-claims-and-freshness.md) · [0024](architecture/0024-project-bootstrap-and-assurance-profiles.md)
+- **Cited by:** [0010](architecture/0010-assurance-proof-and-conformance.md), [0021](architecture/0021-assurance-claims-and-freshness.md) · [0024](architecture/0024-project-bootstrap-and-assurance-profiles.md) · [Intent impact analysis](intent-impact-analysis.md)
 
 - **Primary source:** [Empirical Software Engineering article](https://doi.org/10.1007/s10664-021-09971-7)
 - **Academic reference:** Mazen Mohamad, Jan-Philipp Steghöfer and Riccardo Scandariato, *Empirical Software Engineering* 26, article 70 (2021).
@@ -401,7 +405,7 @@
 
 <a id="r-34"></a>
 ### R-34 — OMG Structured Assurance Case Metamodel (SACM)
-- **Cited by:** [0010](architecture/0010-assurance-proof-and-conformance.md), [0021](architecture/0021-assurance-claims-and-freshness.md) · [0024](architecture/0024-project-bootstrap-and-assurance-profiles.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.md)
+- **Cited by:** [0010](architecture/0010-assurance-proof-and-conformance.md), [0021](architecture/0021-assurance-claims-and-freshness.md) · [0024](architecture/0024-project-bootstrap-and-assurance-profiles.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.md) · [Intent impact analysis](intent-impact-analysis.md)
 
 - **Primary source:** [OMG SACM specification family](https://www.omg.org/spec/SACM/) · [formal version 2.3](https://www.omg.org/spec/SACM/2.3)
 - **Relevant concepts:** machine-processable representation of assurance-case structures and relationships between claims, argumentation, artifacts and evidence.
@@ -738,7 +742,7 @@
 
 <a id="r-71"></a>
 ### R-71 — Bloomfield and Rushby, “Assurance 2.0: A Manifesto” (2021)
-- **Cited by:** [0010](architecture/0010-assurance-proof-and-conformance.md), [0021](architecture/0021-assurance-claims-and-freshness.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.md)
+- **Cited by:** [0010](architecture/0010-assurance-proof-and-conformance.md), [0021](architecture/0021-assurance-claims-and-freshness.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.md) · [Intent impact analysis](intent-impact-analysis.md)
 - **Primary source:** [SRI author page and paper](https://www.csl.sri.com/users/rushby/abstracts/sss21) · [arXiv manuscript](https://arxiv.org/abs/2004.10474)
 - **Bibliographic reference:** Robin Bloomfield and John Rushby, *Systems and Covid-19: Proceedings of the 29th Safety-Critical Systems Symposium*, 2021, pp. 85–108.
 - **Relevant concepts:** stronger scrutiny of reasoning and evidence; explicit defeaters and counterevidence; assessment of evidence weight and discrimination between a claim and its negation.
@@ -755,7 +759,7 @@
 
 <a id="r-73"></a>
 ### R-73 — OMG Structured Assurance Case Metamodel (SACM), Version 2.4 Beta 1 (September 2026)
-- **Cited by:** [0010](architecture/0010-assurance-proof-and-conformance.md), [0021](architecture/0021-assurance-claims-and-freshness.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.md)
+- **Cited by:** [0010](architecture/0010-assurance-proof-and-conformance.md), [0021](architecture/0021-assurance-claims-and-freshness.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.md) · [Intent impact analysis](intent-impact-analysis.md)
 - **Primary source:** [OMG SACM specification status and 2.4 Beta 1 materials](https://www.omg.org/spec/SACM)
 - **Relevant concepts:** proposed extensions to SACM 2.3, including typed structured values/strengths, assessment-related constructs, joins, whole-concept references, development-state marking, and revised package/relationship semantics.
 - **Use in GovCheck:** essential comparison point before selecting an internal or interchange metamodel. The beta issue resolutions indicate which gaps in 2.3 the revision is attempting to address.
@@ -763,7 +767,7 @@
 
 <a id="r-74"></a>
 ### R-74 — Hoover, Rosso-Llopart and Taran, *Evaluating Project Decisions: Case Studies in Software Engineering* (2009/2010)
-- **Cited by:** [0013](architecture/0013-governance-metamodel.md), [0021](architecture/0021-assurance-claims-and-freshness.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.md)
+- **Cited by:** [0013](architecture/0013-governance-metamodel.md), [0021](architecture/0021-assurance-claims-and-freshness.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.md) · [Intent impact analysis](intent-impact-analysis.md)
 - **Primary sources:** [PEAK section in Chapter 1 (InformIT)](https://www.informit.com/articles/article.aspx?p=1409781&seqNum=3) · [O’Reilly publisher book page](https://www.oreilly.com/library/view/evaluating-project-decisions/9780321685629/)
 - **Bibliographic reference:** Carol L. Hoover, Mel Rosso-Llopart and Gil Taran, Addison-Wesley Professional, first published October 2009 (copyright 2010), ISBN 978-0-321-54456-8; Chapter 1, §1.3 introduces the PEAK decision model.
 - **Relevant concepts:** Problem, Experience, Assumptions and Knowledge as decision inputs; a decision process produces a solution and an assumed risk.
@@ -878,7 +882,7 @@
 
 <a id="r-88"></a>
 ### R-88 — NIST SP 800-192: Verification and Test Methods for Access Control Policies/Models
-- **Cited by:** [ADR 0002](decisions/0002-study-placement.md), [0013](architecture/0013-governance-metamodel.md), [0015](architecture/0015-governance-conformance-and-validation-plan.md), [0022](architecture/0022-governance-capability-audit.md), [Spec 0002](specifications/0002-canonical-governance-model.md), [Spec 0006](specifications/0006-governance-revision-applicability.md)
+- **Cited by:** [ADR 0002](decisions/0002-study-placement.md), [0013](architecture/0013-governance-metamodel.md), [0015](architecture/0015-governance-conformance-and-validation-plan.md), [0022](architecture/0022-governance-capability-audit.md), [Spec 0002](specifications/0002-canonical-governance-model.md), [Spec 0006](specifications/0006-governance-revision-applicability.md) · [Intent impact analysis](intent-impact-analysis.md)
 - **Primary sources:** [NIST SP 800-192 publication record](https://csrc.nist.gov/pubs/sp/800/192/final) · [NIST DOI](https://doi.org/10.6028/NIST.SP.800-192)
 - **Relevant concepts:** verification and testing of access-control policies and models; inconsistency, incompleteness, safety requirements, black-box/white-box model checks and tests derived from policy models.
 - **Use in GovCheck:** direct support for validating normative policy models before testing their evaluators or enforcement mechanisms. An executable policy is not necessarily a correct, complete or coherent policy.
@@ -918,7 +922,7 @@
 
 <a id="r-93"></a>
 ### R-93 — Deontic logic and normative modalities
-- **Cited by:** [ADR 0002](decisions/0002-study-placement.md), [0013](architecture/0013-governance-metamodel.md), [0015](architecture/0015-governance-conformance-and-validation-plan.md), [0022](architecture/0022-governance-capability-audit.md), [Spec 0002](specifications/0002-canonical-governance-model.md)
+- **Cited by:** [ADR 0002](decisions/0002-study-placement.md), [0013](architecture/0013-governance-metamodel.md), [0015](architecture/0015-governance-conformance-and-validation-plan.md), [0022](architecture/0022-governance-capability-audit.md), [Spec 0002](specifications/0002-canonical-governance-model.md) · [Intent impact analysis](intent-impact-analysis.md)
 - **Primary sources:** [G. H. von Wright, “Deontic Logic”, Mind (1951)](https://doi.org/10.1093/mind/LX.237.1) · [Stanford Encyclopedia of Philosophy, Deontic Logic](https://plato.stanford.edu/entries/logic-deontic/)
 - **Relevant concepts:** formal reasoning about obligation, permission, prohibition, optionality, omission and related normative statuses.
 - **Use in GovCheck:** provides a logical vocabulary for expressing obligations, permissions and prohibitions in a normative governance model, and for distinguishing these modalities from descriptive facts.
@@ -937,7 +941,7 @@
 
 <a id="r-94"></a>
 ### R-94 — OMG business decision, motivation and process standards
-- **Cited by:** no current record cites this candidate source. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
+- **Cited by:** no current record cites this candidate source. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md) · [Intent impact analysis](intent-impact-analysis.md)
 - **Primary sources:** [OMG specifications catalogue](https://www.omg.org/specifications/) · [DMN 1.6](https://www.omg.org/spec/DMN/1.6/) · [DMN 1.7 Beta 1](https://www.omg.org/spec/DMN/1.7/Beta1) · [BPMN 2.0.2](https://www.omg.org/spec/BPMN/) · [CMMN 1.1](https://www.omg.org/spec/CMMN/1.1) · [Business Motivation Model 1.3](https://www.omg.org/spec/BMM/1.3/) · [SBVR 1.5](https://www.omg.org/spec/SBVR)
 - **Relevant concepts:** decision requirements, decision tables and FEEL; process activities, events and gateways; adaptive case management; business goals and influencers; formal business vocabularies and rules.
 - **Use in GovCheck:** primary specifications for complementary decision-logic, process, case-management, motivation and business-rule candidates discussed in the project.
@@ -1002,7 +1006,7 @@
 
 <a id="r-103"></a>
 ### R-103 — OpenChain: ISO/IEC 5230 and ISO/IEC 18974
-- **Cited by:** no current record cites this candidate source. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
+- **Cited by:** no current record cites this candidate source. · [0027](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md) · [Intent impact analysis](intent-impact-analysis.md)
 - **Primary sources:** [ISO/IEC 5230:2020 — OpenChain Specification](https://www.iso.org/standard/81039.html) · [ISO/IEC 18974:2023 — OpenChain security assurance specification](https://www.iso.org/standard/86450.html) · [OpenChain standards and adoption guidance](https://openchainproject.org/get-started)
 - **Relevant concepts:** organizational requirements for open-source license-compliance programs (5230) and open-source security-assurance programs (18974), including policy, scope, roles, processes and retained verification material.
 - **Use in GovCheck:** candidate process/organizational standards for open-source compliance and open-source security-assurance capabilities.
@@ -1011,7 +1015,7 @@
 
 <a id="r-104"></a>
 ### R-104 — Agent instruction formats and spec-driven agent workflows
-- **Cited by:** [ADR 0002](decisions/0002-study-placement.md)
+- **Cited by:** [ADR 0002](decisions/0002-study-placement.md) · [Intent impact analysis](intent-impact-analysis.md)
 - **Primary sources:** [AGENTS.md open format](https://agents.md/) · [VS Code custom-instructions reference](https://code.visualstudio.com/docs/agents/reference/custom-instructions-reference) · [Secure AI-assisted development in VS Code](https://code.visualstudio.com/docs/agents/run/security) · [VS Code agent hooks](https://code.visualstudio.com/docs/agent-customization/hooks) · [VS Code approvals and permissions](https://code.visualstudio.com/docs/agents/run/approvals) · [Claude Code project instructions and AGENTS.md support](https://code.claude.com/docs/en/memory) · [Codex development-workflow guide](https://developers.openai.com/cookbook/examples/codex/iterating-development-workflows-with-codex) · [GitHub Spec Kit repository](https://github.com/github/spec-kit) · [GitHub Spec Kit documentation](https://github.github.com/spec-kit/)
 - **Relevant concepts:** shared repository-level agent instructions; harness-specific discovery and loading rules; project-specific and path-scoped guidance; specification-driven workflows that produce plans, tasks and reviewable outcomes.
 - **Use in GovCheck:** preserves the cross-agent instruction and spec-driven workflow options discussed for repository bootstrap and agent interoperability.
@@ -1100,9 +1104,78 @@
 - **Use in GovCheck:** shows a VCS with a native tracker (tickets) but no native required-status-check concept, informing the transposability matrix in ADR 0006.
 - **Limit:** vendor documentation; Fossil's CI integration is external and must be evaluated separately.
 
+<a id="r-114"></a>
+### R-114 — Anthropic AI-native SDLC Playbook: repository/change intent records
+- **Cited by:** [ADR 0009](decisions/0009-intent-record-and-authority.md), [GovCheck intent](intent.md), [intent impact analysis](intent-impact-analysis.md)
+- **Primary source:** [Anthropic, The AI-native SDLC Playbook](https://claude.com/resources/articles/the-ai-native-sdlc-playbook)
+- **Relevant concepts:** a versioned, human-readable `intent.md` preserving the originating problem, expected outcome, users/systems, constraints and open questions; downstream specification and implementation planning; intent retained as traceable context.
+- **Use in GovCheck:** closest industrial precedent for the name and conceptual role of repository-level `intent.md`.
+- **Limit:** industry playbook, not a universal normative file-format standard. Anthropic also uses intent records for individual changes; GovCheck's repository-level intent has a broader persistent scope. No Anthropic schema conformance is claimed.
 
+<a id="r-115"></a>
+### R-115 — ISO/IEC/IEEE 15288:2023, Systems and software engineering — System life cycle processes
+- **Cited by:** [ADR 0009](decisions/0009-intent-record-and-authority.md), [intent impact analysis](intent-impact-analysis.md)
+- **Primary source:** [ISO/IEC/IEEE 15288:2023](https://www.iso.org/standard/81702.html)
+- **Relevant concepts:** lifecycle-process framework spanning conception, development, production, utilization, support and retirement; iterative and recursive application; stakeholder involvement and information exchange.
+- **Use in GovCheck:** supports modeling intent, requirements, decisions, realization and assurance as lifecycle concerns rather than a one-time bootstrap pipeline.
+- **Limit:** does not prescribe a particular lifecycle model, methodology, modeling approach, technique or document naming convention.
 
-## Journal canonique, concurrence et reprise
+<a id="r-116"></a>
+### R-116 — ISO/IEC/IEEE 29148 requirements engineering
+- **Cited by:** [ADR 0009](decisions/0009-intent-record-and-authority.md), [intent impact analysis](intent-impact-analysis.md)
+- **Primary sources:** [ISO/IEC/IEEE 29148:2018](https://www.iso.org/standard/72089.html) · [ISO/IEC/IEEE DIS 29148 edition 3](https://www.iso.org/standard/94091.html)
+- **Relevant concepts:** requirements-engineering processes and information items; derivation, allocation, validation, verification and bidirectional traceability of needs and requirements throughout the lifecycle.
+- **Use in GovCheck:** standards reference for distinguishing intent/needs from requirements and defining derivation, allocation, validation and change-impact relations.
+- **Limit:** 2018 was confirmed current in 2024; the third-edition DIS listed in 2026 is a draft under enquiry, not an adopted International Standard.
+
+<a id="r-117"></a>
+### R-117 — NASA Systems Engineering Handbook: stakeholder expectations and requirements management
+- **Cited by:** [ADR 0009](decisions/0009-intent-record-and-authority.md), [intent impact analysis](intent-impact-analysis.md)
+- **Primary sources:** [NASA stakeholder expectations definition](https://www.nasa.gov/reference/4-1-stakeholder-expectations-definition/) · [NASA requirements management](https://www.nasa.gov/reference/6-2-requirements-management/) · [NASA Systems Engineering Handbook](https://science.nasa.gov/wp-content/uploads/2023/04/nasa_systems_engineering_handbook_0.pdf)
+- **Relevant concepts:** stakeholder expectations, ConOps, goals/objectives, iterative design decisions, requirement decomposition/allocation, bidirectional traceability, design verification, product verification and validation.
+- **Use in GovCheck:** supports upward/downward traceability and consistency checks across expectations, requirements, architecture/design and verification/validation.
+- **Limit:** NASA systems-engineering guidance, not a universal repository schema or mandatory process for every software project.
+
+<a id="r-118"></a>
+### R-118 — Goal-oriented Requirements Engineering systematic mapping and 2026 reflection
+- **Cited by:** [ADR 0009](decisions/0009-intent-record-and-authority.md), [intent impact analysis](intent-impact-analysis.md)
+- **Primary source:** [A systematic mapping of goal-oriented requirements engineering: reflections, impact, and the way forward](https://link.springer.com/article/10.1007/s00766-026-00476-7)
+- **Academic background:** reflects on the extended systematic mapping study covering 246 GORE publications up to 2015 and examines subsequent influence and adoption.
+- **Relevant concepts:** goals, AND/OR refinement, operationalization, actors, dependencies, quality goals/softgoals, trade-offs, KAOS, iStar, GRL and Tropos.
+- **Use in GovCheck:** informs typed relationships connecting intent, goals, actors, alternatives, quality concerns and requirements.
+- **Limit:** the 2026 reflection identifies persistent industrial-adoption barriers and uneven empirical evaluation. GORE is a family of approaches, not one universal standard.
+
+<a id="r-119"></a>
+### R-119 — OMG Systems Modeling Language (SysML) v2.0
+- **Cited by:** [ADR 0009](decisions/0009-intent-record-and-authority.md), [intent impact analysis](intent-impact-analysis.md)
+- **Primary source:** [OMG SysML specification](https://www.omg.org/spec/SysML)
+- **Relevant concepts:** standardized systems modeling for requirements, behavior, structure, analysis and verification; model relationships and interoperability through standardized APIs.
+- **Use in GovCheck:** candidate source for typed relationships among requirements, model elements, design and verification, and possible exchange/mapping profiles.
+- **Limit:** SysML is a systems-modeling language, not GovCheck's repository-governance metamodel or a mandatory serialization.
+
+<a id="r-120"></a>
+### R-120 — OMG Structured Assurance Case Metamodel (SACM) 2.3
+- **Cited by:** [ADR 0009](decisions/0009-intent-record-and-authority.md), [intent impact analysis](intent-impact-analysis.md)
+- **Primary source:** [OMG SACM 2.3 specification](https://www.omg.org/spec/SACM/)
+- **Relevant concepts:** claims, argumentation, artifact references, asserted evidence/context, reasoning, counter-claims/counter-evidence and modular argument packages.
+- **Use in GovCheck:** specialized standardized model for the assurance subgraph and argument/evidence relationships.
+- **Limit:** SACM does not define the entire intent-to-goals-to-requirements-to-decisions-to-specifications lifecycle and is not GovCheck's complete metamodel.
+
+<a id="r-121"></a>
+### R-121 — UK Government Architectural Decision Record Framework (2025)
+- **Cited by:** [ADR 0009](decisions/0009-intent-record-and-authority.md), [intent impact analysis](intent-impact-analysis.md)
+- **Primary source:** [UK Government ADR Framework](https://www.gov.uk/government/publications/architectural-decision-record-framework)
+- **Relevant concepts:** context, decision, consequences, appropriate decision-making level, visibility, traceability and autonomy balanced with accountability.
+- **Use in GovCheck:** supports separately authorized decision records explaining how requirements, constraints and architecture alternatives were resolved.
+- **Limit:** an ADR records a decision and rationale; it does not itself establish that a choice satisfies originating intent or requirements.
+
+<a id="r-122"></a>
+### R-122 — IntentDocs open INTENT.md format
+- **Cited by:** [ADR 0009](decisions/0009-intent-record-and-authority.md)
+- **Primary source:** [IntentDocs INTENT.md format](https://www.intentdocs.com/intent-md)
+- **Relevant concepts:** published open format and convention for a repository-level `INTENT.md` that combines product overview, personas, releases, user stories and acceptance criteria.
+- **Use in GovCheck:** comparison point for an existing published `INTENT.md` format and its scope.
+- **Limit:** its bundled content model is not adopted by GovCheck; GovCheck does not claim conformance or compatibility.
 
 <a id="r-142"></a>
 ### R-142 — Linearizability: A Correctness Condition for Concurrent Objects

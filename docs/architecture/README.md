@@ -45,6 +45,9 @@ PR #21 has been merged and records the bootstrap authority baseline. ADR 0004 is
 
 Architecture records are proposals/design records unless stated otherwise. They are not evidence of implemented controls, verified security properties or technology adoption. Read each record's status, scope and limits.
 
+## Intent reconciliation
+
+The [intent impact analysis](../intent-impact-analysis.md) ([French](../intent-impact-analysis.fr.md)) maps the expanded product direction to existing architecture/specification records and identifies the remaining repository-wide audit. It is a working analysis, not an adoption event.
 
 ## Architecture 0034 — Canonical journal recovery
 

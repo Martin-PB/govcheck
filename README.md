@@ -48,3 +48,7 @@ The repository-backed [Governed Work Portfolio](docs/work-portfolio/README.md) i
 GovCheck is licensed under the [Apache License, Version 2.0](LICENSE). Copyright 2026 Martin Pruvost-Beaurain.
 
 Any redistribution of GovCheck or of a derivative work must include the [LICENSE](LICENSE) and the attribution in the [NOTICE](NOTICE) file. See [ADR 0005](docs/decisions/0005-license-apache-2-0-with-individual-attribution.md) for the decision and its limits.
+
+## Intent and reconciliation
+
+The [GovCheck intent](docs/intent.md) ([French](docs/intent.fr.md)) defines the intended progressive governance-decision lifecycle. Its companion [impact analysis](docs/intent-impact-analysis.md) ([French](docs/intent-impact-analysis.fr.md)) maps that direction to existing records and identifies the remaining audit. These are design records, not adoption events.

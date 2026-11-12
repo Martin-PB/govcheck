@@ -10,9 +10,10 @@ English is the default language. Each record has a French counterpart.
 - [0006 — VCS and forge portability](0006-vcs-forge-portability.md) · [Français](0006-vcs-forge-portability.fr.md)
 - [0007 — Mandatory source references](0007-mandatory-sources.md) · [Français](0007-mandatory-sources.fr.md)
 - [0008 — Governance applicability arbitration session record](0008-governance-applicability-arbitration-session.md) · [Français](0008-governance-applicability-arbitration-session.fr.md)
+- [0009 — Repository intent record and canonical naming](0009-intent-record-and-authority.md) · [Français](0009-intent-record-and-authority.fr.md)
 
 ## Record status distinctions
 
-Records 0001–0007 document decisions with their individual status and authority basis. Record 0008 is specifically a provenance record of eleven user-selected arbitration outcomes pending the applicable formal normative adoption event. It is not itself an adoption decision and does not amend the current authority regime.
+Records 0001–0007 document decisions with their individual status and authority basis. Record 0008 is specifically a provenance record of eleven user-selected arbitration outcomes pending the applicable formal normative adoption event. It is not itself an adoption decision and does not amend the current authority regime. Record 0009 adopts the repository-level intent artifact and its canonical naming; it explicitly defers the formal relationship metamodel.
 
 All external sources used by these records belong in the central [reference catalogue](../references.md); each entry links back to the records that cite it.

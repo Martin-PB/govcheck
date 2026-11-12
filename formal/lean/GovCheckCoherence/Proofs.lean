@@ -255,4 +255,11 @@ theorem sacm_claim_mapping_requires_source_identity_field
     claim.identityField = SACM24.identityFieldForSourceView claim.sourceView :=
   mapping.identityFieldMatchesSourceView
 
+/-- A SACM mapping pins the native format corresponding to the selected source view. -/
+theorem sacm_claim_source_format_matches_view
+    {claim : SACM24.SACMClaim} {interpretation : ClaimSemantics}
+    (mapping : SACM24.SACMClaimInterpretation claim interpretation) :
+    mapping.sourceModel.nativeFormat = SACM24.nativeFormatForSourceView claim.sourceView :=
+  mapping.sourceFormatMatchesView
+
 end GovCheck.Coherence

@@ -122,7 +122,7 @@
         "lean": "4.19.0",
         "axiomAudit": {
           "root": "GovCheckCoherence.Proofs",
-          "mappingTheorems": 7,
+          "mappingTheorems": 14,
           "axiomsUsed": 0,
           "additionalStatusTheorems": 1
         },

@@ -42,6 +42,7 @@ inductive EvidenceStatus where
   | failed
   | passed
   | inconclusive
+  | unknown
   deriving DecidableEq, Repr
 
 /-- Minimal record for the first semantic slice. -/

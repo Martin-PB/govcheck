@@ -52,7 +52,7 @@ lake build
 
 A new theorem-proof kind requires a `KernelCheckedDerivation` containing an actual Lean proof term of the exact target proposition. A method label or result status cannot construct this proof object. Target result status is deliberately independent: derivation of a new theorem has its own result, not an automatic copy of a source test status.
 
-The first profile requires exact scope equality; it does not yet define a scope partial order or safe scope narrowing. The contract is a typed obligation, not proof that any production importer/exporter satisfies it.
+The first profile requires exact scope equality; it does not yet define a scope partial order or safe scope narrowing. The `DerivationOrigin.kernelChecked` predicate from the original PR #108 slice remains a coarse abstract placeholder; it is not a proof object and must not be used as the proof-carrying route for new mappings. New mappings use `KindMappingRule` and `KernelCheckedDerivation`. The contract is a typed obligation, not proof that any production importer/exporter satisfies it.
 
 ## Explicit limits
 

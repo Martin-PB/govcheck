@@ -134,4 +134,23 @@ theorem collective_inference_is_joint_equivalence
   cases bridge with
   | collective proof => exact proof
 
+theorem claim_interpretation_preserves_identity
+    {claim : SACMClaim} {target : ClaimSemantics}
+    (mapping : SACMClaimInterpretation claim target) :
+    target.claimId = claim.identity :=
+  mapping.claimIdentityPreserved
+
+theorem claim_interpretation_preserves_subject
+    {claim : SACMClaim} {target : ClaimSemantics}
+    (mapping : SACMClaimInterpretation claim target) :
+    mapping.mappedSubject = claim.subject :=
+  mapping.subjectPreserved
+
+theorem claim_subject_revision_is_pinned
+    {claim : SACMClaim} {target : ClaimSemantics}
+    (mapping : SACMClaimInterpretation claim target)
+    (subject : SACMElementRef) (h : mapping.mappedSubject = some subject) :
+    subject.modelRevision = mapping.targetModel.revision :=
+  mapping.subjectRevisionMatchesModel subject h
+
 end GovCheck.Coherence.SACM24

@@ -36,7 +36,18 @@ L'audit distingue le XML du métamodèle lisible par machine publié par l'OMG d
 
 Il ne s'agit pas d'affirmer que le fichier XML de l'OMG est invalide. Il faut distinguer un artefact de métamodèle lisible par machine d'un contrat de sérialisation stable et portable pour les dossiers d'assurance gouvernés.
 
-## 4. Réponse de GovCheck : mapping qualifié par la vue source
+## 4. Empreintes des artefacts épinglées par l'audit
+
+Le script de récupération d'Assurance Forge enregistre les empreintes SHA-256 suivantes pour les quatre artefacts OMG Beta 1 officiels téléchargés le 02/10/2026. GovCheck n'a pas encore retéléchargé ces fichiers ni recalculé leurs empreintes de manière indépendante ; il s'agit de valeurs de comparaison, pas d'empreintes vérifiées par GovCheck.
+
+| Artefact OMG | Identifiant de fichier | SHA-256 rapporté par Assurance Forge |
+|---|---|---|
+| PDF de spécification | ptc/26-06-34 | `25f32d1cd4bf32dfa9c92c7c1840e1a113b1e91c0e97252f6551878c39997ff5` |
+| PDF de spécification avec barres de modification | ptc/26-06-35 | `6840a0f67104d07997168d07079c0e168f5ac65ef5fa1779eccb9ebef1fe5f96` |
+| XML du métamodèle | ptc/26-05-28 | `0581dfa0b9dfaf17ff0f6c63b74f8e7a8396bea03f315e1334e94f23db110830` |
+| XMI du profil UML | ptc/26-05-21 | `9149a0414628e1b70c1f7c2235f5180c64e7a144601eb2ae78d539681918838b` |
+
+## 5. Réponse de GovCheck : mapping qualifié par la vue source
 
 Le module Lean `GovCheckCoherence.SACM24` a été renforcé pour empêcher la fusion silencieuse des deux vues contradictoires :
 
@@ -49,7 +60,7 @@ Le module Lean `GovCheckCoherence.SACM24` a été renforcé pour empêcher la fu
 
 Ces garde-fous formalisent les deux conflits pertinents pour la tranche Claim/Assertion actuelle. Ils ne résolvent pas les autres conflits de multiplicité, de type de valeur ou d'héritage et n'établissent pas la conformité à l'une ou l'autre vue source complète.
 
-## 5. Politique de traitement requise
+## 6. Politique de traitement requise
 
 Tant que l'OMG n'a pas publié une version formelle stable de SACM 2.4 ou une bêta dotée d'un contrat de sérialisation cohérent :
 
@@ -60,7 +71,7 @@ Tant que l'OMG n'a pas publié une version formelle stable de SACM 2.4 ou une b�
 5. Ne pas inventer de namespace XMI, XSD, Ecore ou profil d'échange. Attendre un contrat officiel ou interopérable et de vrais fichiers d'instance externes.
 6. Garder le modèle 2.4 et toute future matrice de conformité séparés de 2.3. Une implémentation ultérieure doit être additive et distribuée par version, pas un remplacement silencieux.
 
-## 6. Prochain travail de vérification
+## 7. Prochain travail de vérification
 
 - Obtenir et épingler les quatre artefacts OMG Beta 1 avec les URL officielles et comparer leurs empreintes à celles enregistrées par l'audit indépendant.
 - Exécuter le diff structurel texte/XML de GovCheck et étendre le modèle Lean source-view aux autres conflits : multiplicité AssertedEvidence, type de Claim.value, héritage BindingPackage, multiplicité abstraction et multiplicité isCounter.

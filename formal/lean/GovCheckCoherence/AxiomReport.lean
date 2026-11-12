@@ -41,3 +41,7 @@ import GovCheckCoherence.Proofs
 #print axioms GovCheck.Coherence.sacm_necessary_inference_direction
 #print axioms GovCheck.Coherence.sacm_sufficient_inference_direction
 #print axioms GovCheck.Coherence.sacm_collective_inference_semantics
+
+#print axioms GovCheck.Coherence.sacm_claim_interpretation_preserves_identity
+#print axioms GovCheck.Coherence.sacm_claim_interpretation_preserves_subject
+#print axioms GovCheck.Coherence.sacm_claim_subject_revision_is_pinned

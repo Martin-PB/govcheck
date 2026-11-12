@@ -75,7 +75,6 @@ theorem schema_method_and_status_do_not_determine_epistemic_kind :
         candidateTheoremProofClassification.kind := by
   decide
 
-end GovCheck.Coherence
 
 /-- The mapping bridge binds the exact source and target semantic model revisions. -/
 theorem evidence_mapping_binds_model_revisions
@@ -123,3 +122,5 @@ theorem evidence_mapping_theorem_proof_requires_derivation
     source.evidence.kind = .theoremProof ∨
       (∃ derivation : KernelCheckedDerivation target.claim.meaning, True) :=
   mapping_target_theorem_proof_requires_derivation mapping h
+
+end GovCheck.Coherence

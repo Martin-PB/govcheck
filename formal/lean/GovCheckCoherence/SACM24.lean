@@ -27,7 +27,8 @@ def mapAssertionDeclaration : AssertionDeclarationKind → ClaimDisposition
 
 theorem mapAssertionDeclaration_injective :
     ∀ a b, mapAssertionDeclaration a = mapAssertionDeclaration b → a = b := by
-  decide
+  intro a b h
+  cases a <;> cases b <;> cases h <;> rfl
 
 theorem sacm_axiomatic_remains_declaration :
     mapAssertionDeclaration .axiomatic = .axiomaticDeclared := rfl
@@ -67,7 +68,7 @@ structure SACMClaimInterpretation
   subjectPreserved : mappedSubject = claim.subject
   subjectRevisionMatchesModel :
     ∀ subject, mappedSubject = some subject →
-      subject.modelRevision = targetModel.revision
+      subject.modelRevision = sourceModel.revision
   interpretationBasis : String
 
 /-- Conjunction of all premises in a structured inference. -/
@@ -190,8 +191,8 @@ theorem sacm_claim_mapping_uses_exact_source_model
 theorem sacm_claim_mapping_has_semantic_bridge
     {sacmClaim : SACMClaim} {source target : MappingSubject}
     (mapping : SACMClaimMapping sacmClaim source target) :
-    SemanticBridge source.claim.meaning target.claim.meaning
-      mapping.evidenceMapping.contract.coverage :=
-  mapping.evidenceMapping.semanticBridge
+    Nonempty (SemanticBridge source.claim.meaning target.claim.meaning
+      mapping.evidenceMapping.contract.coverage) :=
+  ⟨mapping.evidenceMapping.semanticBridge⟩
 
 end GovCheck.Coherence.SACM24

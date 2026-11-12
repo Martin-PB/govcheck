@@ -1,6 +1,6 @@
 # Prototype de cohérence du métamodèle — compte rendu d'intégration
 
-**Statut :** contrat de mapping porté par des preuves ajouté au noyau Lean existant ; CI finale de cette branche en attente. Expérimentation de compatibilité CSLib vérifiée séparément.  
+**Statut :** contrat de mapping porté par des preuves ajouté au noyau Lean existant ; compilation Lean et audit des axiomes réussis. Expérimentation de compatibilité CSLib vérifiée séparément.  
 **Date :** 2026-11-12.  
 **Travaux liés :** issue [#73](https://github.com/Martin-PB/govcheck/issues/73), [recherche sur la cohérence du métamodèle](https://github.com/Martin-PB/govcheck/blob/docs/metamodel-decision-dossier-2026-11/docs/research/metamodel-coherence-verification.fr.md), [proposition d'intégration SACM 2.4](../architecture/0026-sacm-24-conformance-and-govcheck-integration.fr.md).
 
@@ -17,6 +17,8 @@ Le noyau existant conserve trois dimensions indépendantes :
 Le schéma de production actuel contient la classe de méthode et le statut du résultat, mais aucun champ explicite de nature épistémique ni objet typé de dérivation. Le type Lean constitue donc une interprétation d'assurance supplémentaire, pas une projection sans perte du schéma JSON actuel. Le théorème existant `schema_method_and_status_do_not_determine_epistemic_kind` formalise cette lacune.
 
 ## 2. Contrat de mapping porté par des preuves
+
+La compilation intégrée Lean 4.19.0 et l'audit des axiomes ont réussi dans [l'exécution 43212472986](https://github.com/Martin-PB/govcheck/actions/runs/43212472986), commit contrôlé `25ea9de19fb24dc72d00b6af3a438b67afe5bed1`. Le rapport explicite indique que chacune des sept nouvelles déclarations de théorème du mapping ne dépend d'aucun axiome.
 
 Ajout de `formal/lean/GovCheckCoherence/Mapping.lean`, importé par la bibliothèque `GovCheckCoherence` existante et par le rapport d'axiomes des théorèmes.
 

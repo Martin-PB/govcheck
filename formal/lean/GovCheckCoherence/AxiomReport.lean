@@ -1,0 +1,13 @@
+import GovCheckCoherence.Proofs
+
+#print axioms GovCheck.Coherence.transport_preserves_method_class
+#print axioms GovCheck.Coherence.transport_preserves_kind
+#print axioms GovCheck.Coherence.transport_preserves_status
+#print axioms GovCheck.Coherence.testimony_cannot_be_promoted_by_transport
+#print axioms GovCheck.Coherence.model_checking_cannot_be_promoted_by_transport
+#print axioms GovCheck.Coherence.theorem_proof_may_be_carried
+#print axioms GovCheck.Coherence.new_theorem_proof_requires_kernel_derivation
+#print axioms GovCheck.Coherence.passing_testimony_is_not_a_theorem_proof
+#print axioms GovCheck.Coherence.theorem_proving_label_alone_does_not_authenticate_proof
+
+#print axioms GovCheck.Coherence.schema_method_and_status_do_not_determine_epistemic_kind

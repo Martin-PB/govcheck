@@ -1,0 +1,49 @@
+name: Lean coherence prototype
+
+on:
+  pull_request:
+    paths:
+      - "formal/lean/**"
+      - ".github/workflows/lean-coherence.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "formal/lean/**"
+      - ".github/workflows/lean-coherence.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lean-build:
+    name: Kernel-check coherence slice
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install elan
+        shell: bash
+        run: |
+          curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Generate Lake manifest
+        working-directory: formal/lean
+        run: lake update
+
+      - name: Build with pinned Lean toolchain
+        uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: formal/lean
+          build: true
+          build-args: GovCheckCoherence
+          auto-config: false
+          axiom-audit: true
+          axiom-audit-root: GovCheckCoherence.Proofs
+
+      - name: Report axioms used by prototype theorems
+        working-directory: formal/lean
+        run: lake env lean GovCheckCoherence/AxiomReport.lean

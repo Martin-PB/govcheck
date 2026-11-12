@@ -121,4 +121,50 @@ structure MappingContract where
   transformationRevision : String
   deriving Repr
 
+/-- A concrete cross-model evidence mapping. The proof fields are obligations
+    supplied by the mapping implementation or its formal bridge; without
+    them, a value of this type cannot be constructed. Exact scope preservation
+    is intentionally conservative in this first slice. -/
+structure EvidenceMapping (source target : EvidenceRecord) where
+  contract : MappingContract
+  methodRule : MappingRule source.kind target.kind
+  sourceModelMatches : contract.sourceModel = source.source
+  targetModelMatches : contract.targetModel = target.source
+  sourceIdentityPreserved : target.source.identity = source.source.identity
+  sourceRevisionPreserved : target.source.revision = source.source.revision
+  methodPreserved : target.kind = source.kind ∨
+    (∃ claim : Prop, ∃ derivation : KernelCheckedDerivation claim, True)
+  statusPreserved : target.status = source.status
+  scopePreserved : target.scope = source.scope
+  assumptionsPreserved :
+    ∀ assumption, assumption ∈ source.assumptions →
+      assumption ∈ target.assumptions
+
+theorem evidenceMapping_preserves_source_revision
+    {source target : EvidenceRecord} (mapping : EvidenceMapping source target) :
+    target.source.revision = source.source.revision :=
+  mapping.sourceRevisionPreserved
+
+theorem evidenceMapping_preserves_source_identity
+    {source target : EvidenceRecord} (mapping : EvidenceMapping source target) :
+    target.source.identity = source.source.identity :=
+  mapping.sourceIdentityPreserved
+
+theorem evidenceMapping_preserves_status
+    {source target : EvidenceRecord} (mapping : EvidenceMapping source target) :
+    target.status = source.status :=
+  mapping.statusPreserved
+
+theorem evidenceMapping_preserves_scope
+    {source target : EvidenceRecord} (mapping : EvidenceMapping source target) :
+    target.scope = source.scope :=
+  mapping.scopePreserved
+
+theorem evidenceMapping_preserves_assumptions
+    {source target : EvidenceRecord} (mapping : EvidenceMapping source target)
+    (assumption : String) (h : assumption ∈ source.assumptions) :
+    assumption ∈ target.assumptions :=
+  mapping.assumptionsPreserved assumption h
+
+
 end GovCheckEpistemic

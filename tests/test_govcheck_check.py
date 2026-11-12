@@ -2,6 +2,7 @@
 """Tests for the first GovCheck executable slice (govcheck/check.py)."""
 from __future__ import annotations
 
+import hashlib
 import importlib.util
 import io
 import json
@@ -137,7 +138,7 @@ class EvaluateTests(unittest.TestCase):
             report = json.loads(out.read_text(encoding="utf-8"))
             self.assertEqual(report["tool"], "govcheck")
             self.assertEqual(report["overall"], "pass")
-            self.assertEqual(len(report["rules"]), 7)
+            self.assertEqual(len(report["rules"]), 8)
 
     def test_review_unknown_without_attestation(self):
         with tempfile.TemporaryDirectory() as d:
@@ -227,6 +228,92 @@ class EvaluateTests(unittest.TestCase):
             rule = next(r for r in report["rules"] if r["id"] == "sources-present")
             self.assertEqual(rule["result"], "pass")
             self.assertEqual(rule["applies"], False)
+
+
+def sha256_of(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def add_marker(root, installed=None, digest="0" * 64, conflicts=None, raw=None):
+    marker = root / ".govcheck-bootstrap.json"
+    if raw is not None:
+        marker.write_text(raw, encoding="utf-8")
+        return marker
+    payload = {
+        "tool": "govcheck-bootstrap",
+        "package_version": "0.4.0-slice",
+        "package_digest": digest,
+        "capabilities": ["check"],
+        "installed": installed if installed is not None else [],
+        "conflicts": conflicts if conflicts is not None else [],
+    }
+    marker.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+    return marker
+
+
+class BootstrapIntegrityTests(unittest.TestCase):
+    def _rule(self, root):
+        report = check.evaluate(root)
+        return next(r for r in report["rules"] if r["id"] == "bootstrap-integrity")
+
+    def test_not_applicable_without_marker(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            (root / "decision.md").write_text("# d\n", encoding="utf-8")
+            rule = self._rule(root)
+            self.assertEqual(rule["result"], "pass")
+            self.assertEqual(rule["applies"], False)
+
+    def test_valid_marker_passes(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            f = root / "check.py"
+            f.write_text("print(1)\n", encoding="utf-8")
+            add_marker(root, installed=[{"path": "check.py", "sha256": sha256_of(f)}])
+            rule = self._rule(root)
+            self.assertEqual(rule["result"], "pass")
+            self.assertEqual(rule["applies"], True)
+
+    def test_drifted_file_fails(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            f = root / "check.py"
+            f.write_text("print(1)\n", encoding="utf-8")
+            add_marker(root, installed=[{"path": "check.py", "sha256": "0" * 64}])
+            rule = self._rule(root)
+            self.assertEqual(rule["result"], "fail")
+            self.assertTrue(any("drifted" in r for r in rule["reasons"]))
+
+    def test_missing_installed_file_fails(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            add_marker(root, installed=[{"path": "gone.txt", "sha256": "0" * 64}])
+            rule = self._rule(root)
+            self.assertEqual(rule["result"], "fail")
+            self.assertTrue(any("missing" in r for r in rule["reasons"]))
+
+    def test_invalid_json_fails(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            add_marker(root, raw="{not json")
+            rule = self._rule(root)
+            self.assertEqual(rule["result"], "fail")
+
+    def test_unsafe_path_fails(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            add_marker(root, installed=[{"path": "../evil", "sha256": "0" * 64}])
+            rule = self._rule(root)
+            self.assertEqual(rule["result"], "fail")
+            self.assertTrue(any("unsafe" in r for r in rule["reasons"]))
+
+    def test_bad_package_digest_field_fails(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            add_marker(root, digest="xyz")
+            rule = self._rule(root)
+            self.assertEqual(rule["result"], "fail")
+            self.assertTrue(any("package_digest" in r for r in rule["reasons"]))
 
 
 if __name__ == "__main__":

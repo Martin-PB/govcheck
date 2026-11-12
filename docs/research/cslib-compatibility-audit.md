@@ -66,4 +66,4 @@ Do not add CSLib to the core package yet. Instead:
 
 CSLib should be treated as a serious candidate formalization library for lifecycle semantics, transition systems, temporal reasoning and related computer-science theories. The inspected current HEAD is not a drop-in dependency for GovCheck's Lean 4.19 core, and it does not provide the ontology-mapping guarantees GovCheck needs.
 
-The next useful experiment is a separately pinned CSLib compatibility project—not a toolchain upgrade of the GovCheck core and not a claim that temporal logic alone establishes static metamodel coherence.
+A separately pinned compatibility probe is now present under `formal/cslib-compat/`; it imports BTL and infinite-sequence temporal modules without changing the GovCheck core toolchain. Its CI result is pending. This is an API/build compatibility experiment, not a semantic refinement proof. It is not a toolchain upgrade of the GovCheck core and does not imply that temporal logic alone establishes static metamodel coherence.

@@ -217,3 +217,12 @@
 - **Interpretation:** the two textual occurrences describe one model-checking event, not two independent events. The duplication is a journal-document integrity defect; it does not alter the underlying TLC result or its provenance.
 - **Disposition:** prior entries are preserved under the append-only policy. This new event records the correction without deleting or rewriting either occurrence. Future event-ID uniqueness checks should detect this class of duplication.
 - **Related records:** WP-EVT-000012; Architecture 0034; PR #99.
+
+
+## References used
+
+- [R-05 — TLA+ and TLC](../references.md#r-05): formal models and model-checking evidence referenced by portfolio events.
+- [R-22 — native VCS semantics](../references.md#r-22): distinction between version-control semantics and canonical journal order.
+- [R-142 — linearizability](../references.md#r-142): linearization point for concurrent appends.
+- [R-143 — ARIES write-ahead logging](../references.md#r-143): distinction between durable commit and recovery.
+- [R-144 — RFC 9110 idempotency](../references.md#r-144): safe retry after a lost response.

@@ -59,7 +59,7 @@ structure SACMClaim where
     authority. SACM text is not silently parsed into Lean truth. -/
 structure SACMClaimInterpretation
     (claim : SACMClaim) (target : ClaimSemantics) where
-  targetModel : ArtifactRef
+  sourceModel : ArtifactRef
   mappedSubject : Option SACMElementRef
   claimIdentityPreserved : target.claimId = claim.identity
   subjectPreserved : mappedSubject = claim.subject
@@ -149,7 +149,7 @@ theorem claim_subject_revision_is_pinned
     {claim : SACMClaim} {target : ClaimSemantics}
     (mapping : SACMClaimInterpretation claim target)
     (subject : SACMElementRef) (h : mapping.mappedSubject = some subject) :
-    subject.modelRevision = mapping.targetModel.revision :=
+    subject.modelRevision = mapping.sourceModel.revision :=
   mapping.subjectRevisionMatchesModel subject h
 
 end GovCheck.Coherence.SACM24

@@ -11,3 +11,10 @@ import GovCheckCoherence.Proofs
 #print axioms GovCheck.Coherence.theorem_proving_label_alone_does_not_authenticate_proof
 
 #print axioms GovCheck.Coherence.schema_method_and_status_do_not_determine_epistemic_kind
+
+#print axioms GovCheck.Coherence.mapping_preserves_source_revision
+#print axioms GovCheck.Coherence.mapping_preserves_source_identity
+#print axioms GovCheck.Coherence.mapping_preserves_scope
+#print axioms GovCheck.Coherence.mapping_preserves_assumptions
+#print axioms GovCheck.Coherence.mapping_preserves_method_class
+#print axioms GovCheck.Coherence.mapping_target_theorem_proof_requires_derivation

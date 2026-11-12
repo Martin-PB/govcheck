@@ -118,11 +118,11 @@
       "status": "prototypical-kernel-checked-core",
       "verification": {
         "workflow": ".github/workflows/lean-epistemic-core.yml",
-        "runId": 43209380453,
-        "checkedCommit": "4cfcd0f8ff153427c4e3d3575e04abf80215c831",
+        "workflowRunId": 43209893631,
+        "checkedCommit": "941d212113f52dc96f37377faf16618da50bdae8",
         "result": "lake-build-success",
         "lean": "4.19.0",
-        "scope": "module declarations only; no whole-metamodel or importer-conformance claim"
+        "scope": "kernel-checked declarations in the epistemic core module only; no whole-metamodel or importer-conformance claim"
       }
     },
     {

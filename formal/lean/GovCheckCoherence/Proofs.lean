@@ -162,4 +162,26 @@ theorem sacm_collective_inference_semantics
     SACM24.AllPremises premises ↔ conclusion :=
   SACM24.collective_inference_is_joint_equivalence bridge
 
+/-- SACM Claim identity is bound to the GovCheck claim interpretation. -/
+theorem sacm_claim_interpretation_preserves_identity
+    {claim : SACM24.SACMClaim} {target : ClaimSemantics}
+    (mapping : SACM24.SACMClaimInterpretation claim target) :
+    target.claimId = claim.identity :=
+  SACM24.claim_interpretation_preserves_identity mapping
+
+/-- SACM explicit subject references are preserved by the interpretation. -/
+theorem sacm_claim_interpretation_preserves_subject
+    {claim : SACM24.SACMClaim} {target : ClaimSemantics}
+    (mapping : SACM24.SACMClaimInterpretation claim target) :
+    mapping.mappedSubject = claim.subject :=
+  SACM24.claim_interpretation_preserves_subject mapping
+
+/-- A SACM subject reference is tied to the exact source model revision. -/
+theorem sacm_claim_subject_revision_is_pinned
+    {claim : SACM24.SACMClaim} {target : ClaimSemantics}
+    (mapping : SACM24.SACMClaimInterpretation claim target)
+    (subject : SACM24.SACMElementRef) (h : mapping.mappedSubject = some subject) :
+    subject.modelRevision = mapping.targetModel.revision :=
+  SACM24.claim_subject_revision_is_pinned mapping subject h
+
 end GovCheck.Coherence

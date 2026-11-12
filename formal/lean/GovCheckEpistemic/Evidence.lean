@@ -11,13 +11,13 @@ namespace GovCheckEpistemic
 
 /-- Evidence methods are distinct categories, not a total strength ordering. -/
 inductive EvidenceKind where
-  | testimony
+  | empiricalExecution
   | modelChecking
   | programVerification
-  | theoremProof
-  | inspection
-  | observation
-  | other
+  | theoremProving
+  | implementationConformance
+  | normativeFidelity
+  | acceptance
   deriving DecidableEq, Repr
 
 /-- Result status is independent of the method used to obtain it. -/
@@ -28,7 +28,7 @@ inductive EvidenceStatus where
   | unknown
   | unsupported
   | notRun
-  | stale
+  | notApplicable
   deriving DecidableEq, Repr
 
 /-- Identity and exact revision of a native source artifact. -/
@@ -64,10 +64,10 @@ structure KernelCheckedDerivation where
 inductive MappingRule : EvidenceKind → EvidenceKind → Type where
   /-- A pure transport/re-expression preserves the evidence method class. -/
   | transport (kind : EvidenceKind) : MappingRule kind kind
-  /-- A new theorem-proof result requires an explicit checked derivation. -/
+  /-- A new theorem-proving result requires an explicit checked derivation. -/
   | deriveTheoremProof (sourceKind : EvidenceKind)
       (derivation : KernelCheckedDerivation) :
-      MappingRule sourceKind EvidenceKind.theoremProof
+      MappingRule sourceKind EvidenceKind.theoremProving
 
 /-- The method class resulting from an admissible mapping. -/
 def mappedKind {source target : EvidenceKind}
@@ -82,8 +82,8 @@ theorem transport_preserves_kind (kind : EvidenceKind) :
     same-kind transport of an existing theorem proof, or uses the explicit
     kernel-checked derivation constructor. -/
 theorem theorem_proof_requires_valid_route (source : EvidenceKind)
-    (rule : MappingRule source EvidenceKind.theoremProof) :
-    source = EvidenceKind.theoremProof ∨
+    (rule : MappingRule source EvidenceKind.theoremProving) :
+    source = EvidenceKind.theoremProving ∨
       (∃ derivation : KernelCheckedDerivation, True) := by
   cases rule with
   | transport kind => exact Or.inl rfl

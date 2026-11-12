@@ -30,7 +30,7 @@ La tranche Lean modélise les littéraux de AssertionDeclarationKind de SACM :
 
 Le mapping est injectif : aucun littéral de déclaration SACM n'est fusionné avec un autre dans une disposition GovCheck.
 
-Les champs optionnels SACM `isTrue`, `assertionValue` et `assertionRule` restent distincts du type de déclaration. Une valeur booléenne de vérité facultative n'est pas un objet de preuve ; une valeur d'assertion peut être plus riche qu'un booléen ; une référence de règle n'est pas sa sémantique formelle. L'enregistrement Lean conserve ces champs séparément.
+Les champs optionnels SACM `isTrue`, `assertionValue` et `assertionRule` restent distincts du type de déclaration. Dans la tranche Lean actuelle, les deux derniers sont conservés comme chaînes opaques de contenu/référence source, sans formaliser encore leurs métaclasses SACM complètes. Une valeur booléenne de vérité facultative n'est pas un objet de preuve ; une valeur d'assertion peut être plus riche qu'un booléen ; une référence de règle n'est pas sa sémantique formelle. L'enregistrement Lean conserve ces champs séparément.
 
 **Règle critique de non-promotion :** `axiomatic` dans SACM doit rester un axiome/hypothèse explicitement déclaré par la source dans le registre de confiance. Il ne peut pas être promu en `theoremProof` GovCheck sans terme de preuve Lean indépendant et audit séparé de la base de confiance/des axiomes.
 
@@ -54,7 +54,7 @@ Le modèle Lean formalise le fragment déterministe avec sa direction explicite 
 | `sufficient` | `AllPremises premises → conclusion` | Les prémisses conjointes suffisent à la conclusion |
 | `necessary` | `conclusion → premise` | La prémisse source est nécessaire à la conclusion |
 | `necessaryAndSufficient` | `premise ↔ conclusion` | Les deux directions sont vraies |
-| `collective` | `AllPremises premises ↔ conclusion` | L'ensemble des prémisses est conjointement nécessaire et suffisant |
+| `collective` | `AllPremises premises ↔ conclusion` avec un ensemble de prémisses non vide | L'ensemble des prémisses est conjointement nécessaire et suffisant |
 | `byRule` | Identité de règle explicite et terme de preuve | Nécessite une règle formelle interprétée séparément |
 | `probable` | Aucun constructeur de liaison classique | Nécessite une sémantique probabiliste ; non pris en charge par ce fragment classique |
 

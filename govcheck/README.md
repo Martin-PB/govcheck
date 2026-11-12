@@ -37,7 +37,7 @@ GovCheck's own governance history (architecture records, ADRs, deliberations) li
 - `plan` produces a deterministic JSON plan of actions (`create`, `identical`, `conflict`) with no side effect; running it twice on an unchanged target yields byte-identical output.
 - `apply` writes only `create` actions: existing files are never overwritten, conflicts are preserved and reported. Applying twice is idempotent (the second run creates nothing). With `--plan`, apply first verifies that the plan still matches the target and aborts with exit code 2 otherwise, so only reviewed changes are applied.
 - The package identity is recorded in a package-owned marker, `.govcheck-bootstrap.json`, at the target root (version, digest, installed files with digests, preserved conflicts). `rollback` deletes exactly the installed files whose content still matches the recorded digest and then the marker; that is the documented rollback path. Upgrading means re-running `apply` with a newer package: user-modified files are never overwritten and appear as conflicts.
-- `--capabilities` selects which package parts to install (`check`, `decisions`, `docs`, `formal`, `readme`, `scripts`, `workflows`; default: all of them).
+- `--capabilities` selects which package parts to install (`check`, `forge`, `decisions`, `docs`, `formal`, `readme`, `scripts`, `workflows`; default: all of them).
 
 The legacy form `python3 govcheck/bootstrap.py TARGET_DIR` still initializes an empty repository and refuses non-empty targets. Unit tests live in `tests/test_govcheck_bootstrap.py`.
 
@@ -62,3 +62,20 @@ The `sources-present` rule (decidable) requires every non-guide `docs/decisions/
 ### Bootstrap marker integrity
 
 The `bootstrap-integrity` rule (decidable) checks the package-owned marker `.govcheck-bootstrap.json` written by `govcheck/bootstrap.py apply` at the target root. Without the marker the rule is not applicable (pass, not applicable). With the marker, it must be a JSON object with `"tool": "govcheck-bootstrap"`, a non-empty `"package_version"`, a `"package_digest"` that is a 64-character lowercase hex SHA-256, an `"installed"` list of `{path, sha256}` entries and a `"conflicts"` list of non-empty strings. Each installed path must be relative and safe (no absolute path, no backslash, no `.`/`..`/empty segment), and each installed file must still exist with exactly the recorded SHA-256 digest. Any schema violation, missing file or content drift fails the rule. The marker is a repository document, not a tamper-proof seal: it detects accidental drift, not a malicious editor.
+
+
+## Forge adapter (govcheck/forge.py)
+
+govcheck/forge.py is the forge-native adapter (Architecture 0034 of the GovCheck repository) with two roles: a **registry mirror** that projects the repository-canonical work portfolio onto forge issues, labels and comments, and **forge-side verification** that reads CI check runs and branch protection so a report can state whether a candidate revision is covered by shared, not-locally-falsifiable verifications. The forge verifies, it never authorizes: a green check is evidence, not authority. The check command stays offline, read-only and token-free and never calls the adapter.
+
+    python3 govcheck/forge.py list-issues [--state open] [--labels a,b]
+    python3 govcheck/forge.py get-issue --number N
+    python3 govcheck/forge.py list-labels
+    python3 govcheck/forge.py check-runs --ref REF
+    python3 govcheck/forge.py branch-protection [--branch main]
+    python3 govcheck/forge.py create-issue --title T [--body B] [--labels a,b] [--registry-id govcheck.work.slug]
+    python3 govcheck/forge.py update-issue --number N [--title T] [--state open|closed]
+    python3 govcheck/forge.py comment --number N --body B
+    python3 govcheck/forge.py capabilities
+
+Configuration comes from the environment only: GOVCHECK_FORGE (default github), GOVCHECK_FORGE_OWNER, GOVCHECK_FORGE_REPO, and the token GOVCHECK_FORGE_TOKEN (fallback GITHUB_TOKEN). Tokens are never written to disk, logs or reports, and error messages never carry them. Writes (create-issue, update-issue, comment) require a token and are explicit commands only; check never mutates the forge. The adapter is standard library only (GitHub REST v3 first) with an injectable transport, so unit tests run fully offline; failures are typed (not-found, unsupported, unavailable, stale, conflict, auth, malformed) and a partial failure is never reported as an atomic success. Registry ids (govcheck.work.<slug>) stay canonical; lossless round-trip tests are required before any live sync. Unit tests live in tests/test_govcheck_forge.py. The forge bootstrap capability installs forge.py alone.

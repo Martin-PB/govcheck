@@ -67,7 +67,7 @@ NIST AI RMF's Generative AI Profile offers risk-management guidance for organiza
 
 
 
-The earlier research review also supplies important counterweights to the software-factory narrative: studies report context-dependent relationships between code health and AI refactoring, no clear universal downstream maintainability penalty in one preregistered setting, substantial contextual confounds in large-scale data, and a non-trivial share of agent-authored PRs needing further changes after merge. Practitioner TDD/example-mapping workflows offer useful ways to clarify intent and test oracles, but remain methods to select per project rather than universal requirements. Industry interviews and DORA-style organizational evidence are prompts for local assessment, not causal proof that a particular operating model will work. Two supplied video identifiers (R-160 and R-161) remain unresolved in the earlier review; no content claims should be inferred from them.
+The earlier research review also supplies important counterweights to the software-factory narrative: studies report context-dependent relationships between code health and AI refactoring, no clear universal downstream maintainability penalty in one preregistered setting, substantial contextual confounds in large-scale data, and a non-trivial share of agent-authored PRs needing further changes after merge. Practitioner TDD/example-mapping workflows offer useful ways to clarify intent and test oracles, but remain methods to select per project rather than universal requirements. Industry interviews and DORA-style organizational evidence are prompts for local assessment, not causal proof that a particular operating model will work. Two supplied video identifiers ([R-160](../references.md#r-160) and [R-161](../references.md#r-161)) remain unresolved in the earlier review; no content claims should be inferred from them.
 
 ### 4.1 What the earlier multi-source review contributes
 
@@ -81,7 +81,7 @@ The preceding review of supplied talks, practitioner material and academic studi
 - **Organizational adoption:** the McKinsey interview and DORA material motivate attention to engineering standards, training, task selection, review capacity and feedback loops. They do not establish one universal organizational model or causal effect for every team.
 - **AI-friendly code:** Adam Tornhill's talk is a useful practitioner hypothesis about code health and AI-assisted change, but a proposed metric or heuristic must be assessed against independent evidence and the project's own goals.
 
-The two other supplied video identifiers retained as R-160 and R-161 were not independently resolved in the earlier review. They remain explicit research gaps; no title, speaker, claim or applicability conclusion should be inferred from the URLs alone.
+The two other supplied video identifiers retained as [R-160](../references.md#r-160) and [R-161](../references.md#r-161) were not independently resolved in the earlier review. They remain explicit research gaps; no title, speaker, claim or applicability conclusion should be inferred from the URLs alone.
 
 Taken together, the evidence supports **context-sensitive evaluation and honest uncertainty**, not a universal AI workflow, maturity score, productivity promise or mandatory quality metric. The earlier [research review](ai-assisted-quality-governance.md) contains the detailed source descriptions and limitations.
 

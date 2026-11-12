@@ -45,3 +45,8 @@ import GovCheckCoherence.Proofs
 #print axioms GovCheck.Coherence.sacm_claim_interpretation_preserves_identity
 #print axioms GovCheck.Coherence.sacm_claim_interpretation_preserves_subject
 #print axioms GovCheck.Coherence.sacm_claim_subject_revision_is_pinned
+
+#print axioms GovCheck.Coherence.sacm_mapping_preserves_claim_identity
+#print axioms GovCheck.Coherence.sacm_mapping_preserves_subject
+#print axioms GovCheck.Coherence.sacm_mapping_uses_exact_source_model
+#print axioms GovCheck.Coherence.sacm_mapping_has_semantic_bridge

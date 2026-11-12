@@ -1269,7 +1269,7 @@
 <a id="r-148"></a>
 ### R-148 — DORA 2025 : état du développement logiciel assisté par IA
 - **Sources primaires :** [Rapport DORA](https://dora.dev/research/2025/dora-report/) · [Publication Google Research](https://research.google/pubs/dora-2025-state-of-ai-assisted-software-development-report/)
-- **Cité par :** [Étude sur la gouvernance des changements concurrents d'agents](research/concurrent-agent-change-governance.fr.md), [Revue de recherche sur la qualité et la gouvernance du développement assisté par IA](research/ai-assisted-quality-governance.fr.md), [Applicabilité de GovCheck et frontières externes](research/govcheck-applicability-and-boundaries.fr.md), [Analyse de la conférence software factory](research/software-factory-self-improvement.fr.md)
+- **Cité par :** [Étude sur la gouvernance des changements concurrents d'agents](research/concurrent-agent-change-governance.fr.md), [Revue de recherche sur la qualité et la gouvernance du développement assisté par IA](research/ai-assisted-quality-governance.fr.md), [Analyse de la conférence software factory](research/software-factory-self-improvement.fr.md)
 - **Concepts pertinents :** facteurs organisationnels et de livraison liés au développement assisté par IA ; l'IA comme amplificateur des forces et faiblesses existantes.
 - **Utilité pour GovCheck :** met en garde contre l'équivalence entre nombre d'agents/vitesse de codage et qualité de livraison ; souligne la gouvernance, le retour d'expérience et le système d'ingénierie.
 - **Limite :** enquêtes et études qualitatives éclairent les choix organisationnels mais ne prouvent pas la causalité ni ne prédisent les résultats d'un dépôt donné.

@@ -1,6 +1,7 @@
 # CSLib compatibility and semantic-fit audit
 
 **Audit date:** 2026-11-12  
+**Reference catalogue:** [R-20 Lean and related formalization library](../../references.md#r-20)  
 **Repository:** [leanprover/cslib](https://github.com/leanprover/cslib)  
 **Inspected commit:** `70e25828d89a3916e41c9d84cfffd7e6093bb1a0`  
 **GovCheck Lean core:** Lean 4.19.0

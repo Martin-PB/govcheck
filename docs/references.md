@@ -1361,7 +1361,7 @@
 
 <a id="r-160"></a>
 ### R-160 — User-supplied video (metadata not independently resolved)
-- **Cited by:** [AI-assisted quality and governance research review](research/ai-assisted-quality-governance.md)
+- **Cited by:** [AI-assisted quality and governance research review](research/ai-assisted-quality-governance.md), [GovCheck applicability and boundaries](research/govcheck-applicability-and-boundaries.md)
 - **Source:** [YouTube video ID hP2vfBcQhfk](https://youtu.be/hP2vfBcQhfk)
 - **Relevant concepts:** retained as one of the five supplied research triggers; title, speaker and substantive claims were not independently verified in accessible indexed metadata during this pass.
 - **Use in GovCheck:** preserves source traceability without inventing its content; review the video itself before attributing claims or deriving requirements.
@@ -1369,7 +1369,7 @@
 
 <a id="r-161"></a>
 ### R-161 — User-supplied video (metadata not independently resolved)
-- **Cited by:** [AI-assisted quality and governance research review](research/ai-assisted-quality-governance.md)
+- **Cited by:** [AI-assisted quality and governance research review](research/ai-assisted-quality-governance.md), [GovCheck applicability and boundaries](research/govcheck-applicability-and-boundaries.md)
 - **Source:** [YouTube video ID cZ_PqBpZygY](https://youtu.be/cZ_PqBpZygY)
 - **Relevant concepts:** retained as one of the five supplied research triggers; title, speaker and substantive claims were not independently verified in accessible indexed metadata during this pass.
 - **Use in GovCheck:** preserves source traceability without inventing its content; review the video itself before attributing claims or deriving requirements.

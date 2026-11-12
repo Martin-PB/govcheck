@@ -37,7 +37,19 @@ Conséquences :
 3. Un paquet de compatibilité séparé permettrait de tester CSLib avec sa chaîne d'outils épinglée sans modifier la compilation de confiance du noyau sémantique GovCheck.
 4. Il est également possible de rechercher un commit historique CSLib compatible avec Lean 4.19, mais il faut l'identifier dans l'historique et le tester, pas le supposer.
 
-## 4. CSLib résout-il le problème de cohérence du métamodèle ?
+## 4. Analyse préliminaire du socle de confiance
+
+Une recherche préliminaire dans le code du commit inspecté a donné les résultats suivants :
+
+- aucune occurrence indexée de `sorry` ;
+- aucune occurrence indexée de `run_tac`, `implemented_by` ou `extern` ;
+- les occurrences de `axiom` décrivent principalement des axiomes comme objets des logiques modales/propositionnelles formalisées, et non des axiomes du noyau Lean ;
+- les occurrences de `unsafe` se trouvaient dans des commentaires de tests, sans déclaration identifiée ;
+- plusieurs déclarations `opaque` sont des marqueurs de types, par exemple `InferenceSystem.Default`, `MLL` et `ND`, et ne constituent pas en elles-mêmes une frontière de preuve non sûre.
+
+Il s'agit d'une recherche préliminaire, pas d'une certification du socle de confiance : la recherche de code GitHub n'est pas un audit statique exhaustif, et les dépendances transitives Mathlib ainsi que les artefacts générés/compilés restent à inspecter. Avant d'importer une définition dans un théorème GovCheck critique, il faudra examiner toute sa fermeture de dépendances transitives et auditer ses axiomes avec `#print axioms` de Lean ou un contrôle reproductible équivalent.
+
+## 5. CSLib résout-il le problème de cohérence du métamodèle ?
 
 Aucun module CSLib inspecté ne fournit les sémantiques spécifiques à GovCheck qui manquent pour :
 
@@ -51,7 +63,7 @@ Aucun module CSLib inspecté ne fournit les sémantiques spécifiques à GovChec
 
 Lean reste l'assistant de preuve et l'environnement de vérification par noyau dans lequel GovCheck peut énoncer ces obligations. CSLib peut fournir des définitions formelles réutilisables pour certaines structures mathématiques et certains mécanismes sémantiques. Il ne remplace pas les contrats de liaison GovCheck.
 
-## 5. Stratégie d'intégration recommandée
+## 6. Stratégie d'intégration recommandée
 
 N'ajoutons pas encore CSLib au paquet central. À la place :
 
@@ -62,7 +74,7 @@ N'ajoutons pas encore CSLib au paquet central. À la place :
 5. Comparer le résultat CSLib au modèle TLA+ existant. Ne pas considérer la traduction entre TLA+ et Lean/CSLib comme fiable par défaut sans établir sa préservation sémantique.
 6. Ce n'est qu'après réussite de l'expérience qu'il faudra décider si CSLib devient une dépendance directe, un back-end de preuve isolé ou une formalisation de référence.
 
-## 6. Conclusion
+## 7. Conclusion
 
 CSLib doit être considéré comme une bibliothèque candidate sérieuse pour les sémantiques de cycle de vie, les systèmes de transitions, le raisonnement temporel et les théories informatiques connexes. Le HEAD actuel inspecté n'est pas une dépendance directement intégrable au noyau Lean 4.19 de GovCheck et ne fournit pas les garanties de mapping d'ontologies dont GovCheck a besoin.
 

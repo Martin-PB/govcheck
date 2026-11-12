@@ -48,3 +48,7 @@ Le [portefeuille de travaux gouverné](docs/work-portfolio/README.fr.md) dans le
 GovCheck est placé sous la [licence Apache, version 2.0](LICENSE). Copyright 2026 Martin Pruvost-Beaurain.
 
 Toute redistribution de GovCheck ou d'une œuvre dérivée doit inclure la [LICENSE](LICENSE) et l'attribution figurant dans le fichier [NOTICE](NOTICE). La décision et ses limites sont consignées dans l'[ADR 0005](docs/decisions/0005-license-apache-2-0-with-individual-attribution.fr.md).
+
+## Intention et réconciliation
+
+L'[intention GovCheck](docs/intent.fr.md) ([English](docs/intent.md)) définit le cycle progressif de décisions de gouvernance visé. Son [analyse d'impact](docs/intent-impact-analysis.fr.md) ([English](docs/intent-impact-analysis.md)) met cette orientation en correspondance avec les documents existants et identifie l'audit restant. Ces documents expriment une conception, pas des actes d'adoption.

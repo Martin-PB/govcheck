@@ -1,0 +1,36 @@
+name: CSLib compatibility probe
+
+on:
+  push:
+    branches:
+      - main
+      - "formal/metamodel-epistemic-core-*"
+    paths:
+      - "formal/cslib-compat/**"
+      - ".github/workflows/cslib-compatibility.yml"
+  pull_request:
+    paths:
+      - "formal/cslib-compat/**"
+      - ".github/workflows/cslib-compatibility.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  cslib-build:
+    name: Build isolated CSLib temporal API probe
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install elan and pinned CSLib toolchain
+        run: |
+          curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          "$HOME/.elan/bin/elan" toolchain install "$(cat formal/cslib-compat/lean-toolchain)"
+      - name: Resolve pinned dependencies and build probe
+        working-directory: formal/cslib-compat
+        run: |
+          lake update
+          lake exe cache get
+          lake build

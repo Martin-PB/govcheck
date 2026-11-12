@@ -18,3 +18,10 @@ import GovCheckCoherence.Proofs
 #print axioms GovCheck.Coherence.mapping_preserves_assumptions
 #print axioms GovCheck.Coherence.mapping_preserves_method_class
 #print axioms GovCheck.Coherence.mapping_target_theorem_proof_requires_derivation
+
+#print axioms GovCheck.Coherence.mapping_preserves_source_revision
+#print axioms GovCheck.Coherence.mapping_preserves_source_identity
+#print axioms GovCheck.Coherence.mapping_preserves_scope
+#print axioms GovCheck.Coherence.mapping_preserves_assumptions
+#print axioms GovCheck.Coherence.mapping_preserves_method_class
+#print axioms GovCheck.Coherence.mapping_target_theorem_proof_requires_derivation

@@ -116,14 +116,15 @@
       "status": "kernel-checked; axiom-audited",
       "verification": {
         "workflow": ".github/workflows/lean-coherence.yml",
-        "workflowRunId": 43212610129,
-        "checkedCommit": "b6c4bd8aff7e80b9921361529a46f01f14ed6468",
+        "workflowRunId": 43212969096,
+        "checkedCommit": "6707da00eea2dd368d309b2806b3d8c849bd8995",
         "result": "lake-build-success; axiom-audit-success",
         "lean": "4.19.0",
         "axiomAudit": {
           "root": "GovCheckCoherence.Proofs",
           "mappingTheorems": 7,
-          "axiomsUsed": 0
+          "axiomsUsed": 0,
+          "additionalStatusTheorems": 1
         },
         "limitations": [
           "contract types and projection theorems only",

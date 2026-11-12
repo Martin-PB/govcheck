@@ -58,13 +58,16 @@ structure SACMClaim where
 
 /-- The proposition is an explicit interpretation supplied by a mapping
     authority. SACM text is not silently parsed into Lean truth. -/
-structure SACMClaimInterpretation (claim : SACMClaim) where
-  proposition : Prop
-  interpretationRecord : String
-  claimIdentityPreserved : claim.identity = claim.identity
-  subjectRevisionRecorded :
-    ∀ subject, claim.subject = some subject →
-      subject.modelRevision = subject.modelRevision
+structure SACMClaimInterpretation
+    (claim : SACMClaim) (target : ClaimSemantics) where
+  targetModel : ArtifactRef
+  mappedSubject : Option SACMElementRef
+  claimIdentityPreserved : target.claimId = claim.identity
+  subjectPreserved : mappedSubject = claim.subject
+  subjectRevisionMatchesModel :
+    ∀ subject, mappedSubject = some subject →
+      subject.modelRevision = targetModel.revision
+  interpretationBasis : String
 
 /-- Conjunction of all premises in a structured inference. -/
 def AllPremises : List Prop → Prop
@@ -89,12 +92,12 @@ inductive InferenceBridge : List Prop → Prop → InferenceTypeKind → Type wh
   | collective {premises : List Prop} {conclusion : Prop} :
       (AllPremises premises ↔ conclusion) →
       InferenceBridge premises conclusion .collective
-  | necessary {premises : List Prop} {conclusion : Prop} :
-      (conclusion → AllPremises premises) →
-      InferenceBridge premises conclusion .necessary
-  | sufficient {premises : List Prop} {conclusion : Prop} :
-      (AllPremises premises → conclusion) →
-      InferenceBridge premises conclusion .sufficient
+  | necessary {premise conclusion : Prop} :
+      (conclusion → premise) →
+      InferenceBridge [premise] conclusion .necessary
+  | sufficient {premise conclusion : Prop} :
+      (premise → conclusion) →
+      InferenceBridge [premise] conclusion .sufficient
   | necessaryAndSufficient {premise conclusion : Prop} :
       (premise ↔ conclusion) →
       InferenceBridge [premise] conclusion .necessaryAndSufficient
@@ -111,16 +114,16 @@ theorem probable_inference_has_no_classical_bridge
   | intro bridge => cases bridge
 
 theorem necessary_inference_is_reverse_entailment
-    {premises : List Prop} {conclusion : Prop}
-    (bridge : InferenceBridge premises conclusion .necessary) :
-    conclusion → AllPremises premises := by
+    {premise conclusion : Prop}
+    (bridge : InferenceBridge [premise] conclusion .necessary) :
+    conclusion → premise := by
   cases bridge with
   | necessary proof => exact proof
 
 theorem sufficient_inference_is_forward_entailment
-    {premises : List Prop} {conclusion : Prop}
-    (bridge : InferenceBridge premises conclusion .sufficient) :
-    AllPremises premises → conclusion := by
+    {premise conclusion : Prop}
+    (bridge : InferenceBridge [premise] conclusion .sufficient) :
+    premise → conclusion := by
   cases bridge with
   | sufficient proof => exact proof
 

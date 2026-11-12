@@ -44,6 +44,7 @@
 | Open-source licensing and attribution | R-108 |
 | Repository intent, lifecycle and requirements engineering | R-114–R-118, R-121–R-122 |
 | System modeling and assurance-case metamodels | R-119–R-120 |
+| Probabilistic assurance, fuzzy logic and state-transition models | R-193 |
 
 ## Full reference entries
 
@@ -83,7 +84,7 @@
 - **Open-source licensing and attribution:** R-108.
 - **Repository intent and lifecycle/requirements engineering:** R-114–R-118, R-121–R-122.
 - **System modeling and assurance-case metamodels:** R-119–R-120.
-
+- **Probabilistic assurance, fuzzy logic and state-transition models:** R-193.
 ## Standards, government guidance and industry specifications
 
 <a id="r-01"></a>
@@ -1185,3 +1186,12 @@
 - **Relevant concepts:** reported absence of a stable native 2.4 instance interchange contract; text/XML contradictions in identity fields, assertion declaration literals, multiplicities, Claim value type and inheritance; implementation cost and versioning implications.
 - **Use in GovCheck:** independent engineering cross-check that the SACM 2.4 Beta 1 text and machine-readable metamodel must be treated as separate source views, not silently normalized into one model.
 - **Limit:** this is a third-party implementation audit, not an OMG statement or normative authority. Its findings must be checked against pinned OMG artifacts; it does not establish that all SACM 2.4 implementations share the same limitations.
+
+<a id="r-193"></a>
+### R-193 — Probabilistic, fuzzy and state-transition modelling for software assurance
+- **Cited by:** [Research discussion: semantic assurance and transition models](research/semantic-assurance-and-transition-models-2026-11.md)
+
+- **Primary and academic sources:** [Baier & Katoen, *Principles of Model Checking*](https://is.ifmo.ru/books/_principles_of_model_checking.pdf) · [PRISM model checker manual](https://www.prismmodelchecker.org/manual/Main/Introduction) · [PRISM tutorials](https://www.prismmodelchecker.org/tutorial/) · [UPPAAL transition-system semantics](https://docs.uppaal.org/language-reference/system-description/semantics/) · [NIST Engineering Statistics Handbook: Bayesian reliability evaluation](https://www.itl.nist.gov/div898/handbook/apr/section1/apr1a.htm) · [Graydon & Holloway (2017), quantitative confidence in assurance arguments](https://doi.org/10.1016/j.ssci.2016.09.014) · [Probabilistic model of belief in safety cases (2021)](https://www.sciencedirect.com/science/article/pii/S0925753521000321) · [Johanyák & Zlatko (2025), fuzzy logic in software requirements engineering](https://doi.org/10.47833/2025.2.CSC.008) · [Yen, Tiao & Liu (1996), imprecise requirements](https://doi.org/10.1109/FUZZY.1996.551766) · [Salako & Zhao (2023), correlated software reliability tests](https://doi.org/10.1109/TSE.2022.3233802) · [Salako & Zhao (2024), conservative Bayesian software reliability](https://doi.org/10.1002/qre.3460) · [NIST, Software Assurance Using Structured Assurance Case Models](https://pmc.ncbi.nlm.nih.gov/articles/PMC4548534/).
+- **Relevant concepts:** finite-state transition systems; discrete- and continuous-time Markov chains; Markov decision processes; probabilistic timed automata; transition rates, probabilities, costs and rewards; Bayesian reliability assessment; interval-valued transition probabilities; fuzzy membership and imprecise requirements; quantitative confidence in assurance arguments.
+- **Use in GovCheck:** supports the study of optional specialist profiles for probabilistic and fuzzy reasoning and of a generic transition-analysis contract linking semantics, parameters, provenance, analysis specifications/results and assurance claims.
+- **Limit:** the sources describe distinct mathematical semantics and tools. A transition weight is not necessarily a probability; a fuzzy membership degree is not a probability; a model-checking result is bounded by its model and assumptions. Quantitative confidence techniques require critical evaluation and empirical validation. These sources do not establish adoption or implementation by GovCheck.

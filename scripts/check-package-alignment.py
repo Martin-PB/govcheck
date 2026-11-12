@@ -54,6 +54,7 @@ META_ONLY_WORKFLOWS = {
     "version-governance.yml",
     "lean-epistemic-core.yml",
     "tla-evidence-freshness.yml",
+    "cslib-compatibility.yml",
 }
 
 # Product-package workflow templates are intentionally not executable at the meta level.

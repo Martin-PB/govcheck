@@ -48,6 +48,8 @@ lake build
 
 ## Mapping contract
 
+The status model also proves `unknown_status_is_distinct_from_inconclusive`; both statuses are represented in the JSON Schema, while staleness remains a separate freshness property.
+
 `GovCheckCoherence.Mapping` binds a source and target claim identifier to Lean propositions and declares the mapping coverage (`equivalent`, `soundDirectional`, `partial`, `approximate`, `traceabilityOnly`, `unsupported`). The corresponding `SemanticBridge` constructor requires the proof obligation appropriate to that coverage. A mapping also binds exact source/target model revisions and requires preservation of the evidence source identity/revision, exact scope, all source assumptions, and method class.
 
 A new theorem-proof kind requires a `KernelCheckedDerivation` containing an actual Lean proof term of the exact target proposition. A method label or result status cannot construct this proof object. Target result status is deliberately independent: derivation of a new theorem has its own result, not an automatic copy of a source test status.

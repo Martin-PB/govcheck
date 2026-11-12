@@ -48,7 +48,7 @@ lake build
 
 ## SACM 2.4 Beta 1 semantic slice
 
-`GovCheckCoherence.SACM24` preserves SACM assertion-declaration distinctions, binds explicit Claim subjects to exact model revisions, and types inference direction. The `probable` inference kind has no classical implication bridge; `byRule` requires a concrete proof term. The thirteen public SACM mapping theorems passed the pinned Lean 4.19.0 build and axiom audit in [run 43214838388](https://github.com/Martin-PB/govcheck/actions/runs/43214838388) with no axioms. See the bilingual [SACM 2.4 mapping study](../../docs/research/sacm24-claim-inference-mapping.md) / [étude française](../../docs/research/sacm24-claim-inference-mapping.fr.md).
+`GovCheckCoherence.SACM24` preserves SACM assertion-declaration distinctions, binds explicit Claim subjects to exact model revisions, and types inference direction. The `probable` inference kind has no classical implication bridge; `byRule` requires a concrete proof term. The thirteen public SACM mapping theorems passed the pinned Lean 4.19.0 build and axiom audit in [run 43215132423](https://github.com/Martin-PB/govcheck/actions/runs/43215132423) with no axioms. See the bilingual [SACM 2.4 mapping study](../../docs/research/sacm24-claim-inference-mapping.md) / [étude française](../../docs/research/sacm24-claim-inference-mapping.fr.md).
 
 ## Mapping contract
 

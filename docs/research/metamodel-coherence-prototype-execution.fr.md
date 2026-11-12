@@ -49,7 +49,7 @@ Cette séquence illustre la distinction recherchée : la première exécution n'
 
 Le HEAD CSLib inspecté est `70e25828d89a3916e41c9d84cfffd7e6093bb1a0`, épinglé sur Lean `v4.36.0-rc2` et Mathlib `887bb849a9f64e1c66499fd5ff8523c864e78941`. Il est incompatible avec la chaîne Lean 4.19.0 du noyau si on l'ajoute comme dépendance directe. L'audit identifie des sémantiques BTL, des propriétés temporelles sur séquences oméga, des LTS et une sémantique modale réutilisables, mais ne trouve pas de métamodèle prêt à l'emploi pour les preuves, la provenance et l'autorité : [audit de compatibilité et d'adéquation CSLib](cslib-compatibility-audit.fr.md) / [version anglaise](cslib-compatibility-audit.md).
 
-Une expérimentation de compatibilité isolée se trouve dans `formal/cslib-compat/`. Son résultat CI est en attente à la date de ce compte rendu. Même une compilation réussie n'établira que la compatibilité de compilation et d'API, pas un théorème de raffinement sémantique.
+L'expérimentation isolée dans `formal/cslib-compat/` a réussi : [exécution 43210543930](https://github.com/Martin-PB/govcheck/actions/runs/43210543930), commit CSLib inspecté `70e25828d89a3916e41c9d84cfffd7e6093bb1a0`, Lean 4.36.0-rc2, 1 779 tâches de compilation. Elle a compilé les API de modèle/satisfaction BTL et `Step`/`LeadsTo` sur séquences oméga. Cela établit uniquement la compatibilité de compilation et d'API, pas un théorème de raffinement sémantique.
 
 ## 4. Intégration et gouvernance du dépôt
 

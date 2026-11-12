@@ -35,3 +35,9 @@ import GovCheckCoherence.Proofs
 #print axioms GovCheck.Coherence.evidence_mapping_theorem_proof_requires_derivation
 
 #print axioms GovCheck.Coherence.unknown_status_is_distinct_from_inconclusive
+
+#print axioms GovCheck.Coherence.sacm_assertion_disposition_is_injective
+#print axioms GovCheck.Coherence.sacm_probable_inference_requires_probability_semantics
+#print axioms GovCheck.Coherence.sacm_necessary_inference_direction
+#print axioms GovCheck.Coherence.sacm_sufficient_inference_direction
+#print axioms GovCheck.Coherence.sacm_collective_inference_semantics

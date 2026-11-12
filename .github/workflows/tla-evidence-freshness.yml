@@ -1,0 +1,24 @@
+name: TLA+ evidence freshness
+
+on:
+  push:
+    branches:
+      - main
+      - "formal/metamodel-epistemic-core-*"
+    paths:
+      - "formal/tla/GovCheckEvidenceFreshness.*"
+      - ".github/workflows/tla-evidence-freshness.yml"
+  pull_request:
+    paths:
+      - "formal/tla/GovCheckEvidenceFreshness.*"
+      - ".github/workflows/tla-evidence-freshness.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    uses: ./.github/workflows/tla-model-reusable.yml
+    with:
+      model: GovCheckEvidenceFreshness

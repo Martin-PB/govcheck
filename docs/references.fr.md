@@ -44,6 +44,7 @@
 | Licences open source et attribution | R-108 |
 | Intention du dépôt, cycle de vie et ingénierie des exigences | R-114–R-118, R-121–R-122 |
 | Modélisation des systèmes et métamodèles de dossiers d'assurance | R-119–R-120 |
+| Assurance probabiliste, logique floue et modèles à transitions d'états | R-193 |
 
 ## Entrées bibliographiques détaillées
 
@@ -81,7 +82,7 @@
 - **Sécurité des agents IA et de MCP :** R-106.
 - **Emplacement des workflows GitHub Actions :** R-107.
 - **Licences open source et attribution :** R-108.
-
+- **Assurance probabiliste, logique floue et modèles à transitions d'états :** R-193.
 ## Normes, recommandations publiques et spécifications industrielles
 
 <a id="r-01"></a>
@@ -1189,7 +1190,7 @@
 
 <a id="r-193"></a>
 ### R-193 — Modélisation probabiliste, floue et à transitions d'états pour l'assurance logicielle
-- **Cité par :** [Compte rendu de recherche : assurance sémantique et modèles de transition](research/assurance-semantique-et-modeles-de-transition-2026-11.fr.md), [English research report](research/semantic-assurance-and-transition-models-2026-11.md)
+- **Cité par :** [Compte rendu de recherche : assurance sémantique et modèles de transition](research/assurance-semantique-et-modeles-de-transition-2026-11.fr.md)
 
 - **Sources primaires et académiques :** [Baier & Katoen, *Principles of Model Checking*](https://is.ifmo.ru/books/_principles_of_model_checking.pdf) · [Manuel du vérificateur PRISM](https://www.prismmodelchecker.org/manual/Main/Introduction) · [Tutoriels PRISM](https://www.prismmodelchecker.org/tutorial/) · [Sémantique des systèmes de transition UPPAAL](https://docs.uppaal.org/language-reference/system-description/semantics/) · [NIST Engineering Statistics Handbook : évaluation bayésienne de la fiabilité](https://www.itl.nist.gov/div898/handbook/apr/section1/apr1a.htm) · [Graydon & Holloway (2017), confiance quantitative dans les arguments d'assurance](https://doi.org/10.1016/j.ssci.2016.09.014) · [Modèle probabiliste de croyance dans les cas d'assurance (2021)](https://www.sciencedirect.com/science/article/pii/S0925753521000321) · [Johanyák & Zlatko (2025), logique floue et ingénierie des exigences logicielles](https://doi.org/10.47833/2025.2.CSC.008) · [Yen, Tiao & Liu (1996), exigences imprécises](https://doi.org/10.1109/FUZZY.1996.551766) · [Salako & Zhao (2023), tests corrélés et fiabilité logicielle](https://doi.org/10.1109/TSE.2022.3233802) · [Salako & Zhao (2024), approche bayésienne conservatrice de la fiabilité logicielle](https://doi.org/10.1002/qre.3460) · [NIST, Software Assurance Using Structured Assurance Case Models](https://pmc.ncbi.nlm.nih.gov/articles/PMC4548534/).
 - **Concepts pertinents :** systèmes de transitions à états finis ; chaînes de Markov à temps discret et continu ; processus de décision markoviens ; automates probabilistes temporisés ; taux, probabilités, coûts et récompenses de transition ; évaluation bayésienne de la fiabilité ; probabilités de transition par intervalles ; appartenance floue et exigences imprécises ; confiance quantitative dans les arguments d'assurance.

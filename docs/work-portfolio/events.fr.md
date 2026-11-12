@@ -7,8 +7,8 @@ Le journal canonique des événements est conservé dans [Portfolio event journa
 - [R-05 — TLA+ et TLC](../references.fr.md#r-05)
 - [R-107 — Emplacement et syntaxe des workflows GitHub Actions](../references.fr.md#r-107) : modèles formels et éléments de model checking mentionnés dans les événements.
 - [R-22 — Sémantiques natives des VCS](../references.fr.md#r-22) : distinction entre les sémantiques des systèmes de contrôle de version et l'ordre du journal canonique.
-- [R-142 — Linéarisabilité](../references.fr.md#r-142) : point de linéarisation des ajouts concurrents.
-- [R-143 — Journalisation anticipée ARIES](../references.fr.md#r-143) : distinction entre commit durable et reprise.
-- [R-144 — RFC 9110, idempotence](../references.fr.md#r-144) : nouvelle tentative après perte de réponse.
+- [R-194 — Linéarisabilité](../references.fr.md#r-194) : point de linéarisation des ajouts concurrents.
+- [R-195 — Journalisation anticipée ARIES](../references.fr.md#r-195) : distinction entre commit durable et reprise.
+- [R-196 — RFC 9110, idempotence](../references.fr.md#r-196) : nouvelle tentative après perte de réponse.
 
 Pour consulter les entrées, leur provenance et leurs limites, se reporter au [journal canonique](events.md).

@@ -7,9 +7,9 @@
 - [R-05 — TLA+ and TLC](../references.md#r-05) — bounded formal-model evidence recorded in the journal.
 - [R-107 — GitHub Actions workflow location and syntax](../references.md#r-107) — source-catalogue provenance for workflow-location references in the integration audit.
 - [R-22 — Native Git and Pijul semantics](../references.md#r-22) — distinction between VCS observations and normative journal order.
-- [R-142 — Linearizability](../references.md#r-142) — the single linearization point for concurrent appends.
-- [R-143 — ARIES write-ahead logging and recovery](../references.md#r-143) — durable commit and recovery boundary.
-- [R-144 — RFC 9110 idempotent methods](../references.md#r-144) — safe retry semantics after a lost response.
+- [R-194 — Linearizability](../references.md#r-194) — the single linearization point for concurrent appends.
+- [R-195 — ARIES write-ahead logging and recovery](../references.md#r-195) — durable commit and recovery boundary.
+- [R-196 — RFC 9110 idempotent methods](../references.md#r-196) — safe retry semantics after a lost response.
 
 ## WP-EVT-000001 — Initial issue-to-registry import
 
@@ -212,9 +212,9 @@
 - **Event type:** `technical-review-clarifications-proposed`
 - **Recorded:** 2026-11-10
 - **Candidate:** [PR #104](https://github.com/Martin-PB/govcheck/pull/104), branch `work/issue-86-journal-protocol-review-fixes`, stacked on PR #100.
-- **Scope:** clarify stable journal-scope identity without choosing its repository/domain cardinality; bind genesis to the initial authority/governance baseline and explicit trust anchor; state algorithm-neutral integrity/authenticity requirements; define idempotency-key scope, exact-request binding, retention and genesis exception; add R-142–R-144 on linearizability, write-ahead logging/recovery and idempotent retries; correct Architecture 0034's recovery-fairness wording and section numbering in EN/FR.
+- **Scope:** clarify stable journal-scope identity without choosing its repository/domain cardinality; bind genesis to the initial authority/governance baseline and explicit trust anchor; state algorithm-neutral integrity/authenticity requirements; define idempotency-key scope, exact-request binding, retention and genesis exception; add R-194–R-196 on linearizability, write-ahead logging/recovery and idempotent retries; correct Architecture 0034's recovery-fairness wording and section numbering in EN/FR.
 - **Disposition:** proposed technical/documentary clarification only. Specification 0007 remains proposed; the eleven owner-selected outcomes remain pending formal normative adoption. No storage engine, cryptographic suite or consensus protocol is selected.
-- **Related records:** PR #100; PR #104; Specification 0007 EN/FR; Architecture 0034 EN/FR; references R-142–R-144.
+- **Related records:** PR #100; PR #104; Specification 0007 EN/FR; Architecture 0034 EN/FR; references R-194–R-196.
 - **Known limits:** no new TLA+ model or implementation is added; no production journal, genesis mechanism, adapter, durability guarantee or implementation refinement is claimed.
 
 ## WP-EVT-000015 — Duplicate portfolio event identifier detected
@@ -237,9 +237,9 @@
 - **Integrated PRs:** #90 merged into main at `5af21e58ef597480061a2712aaf94a3e2980ba7f`; #96 merged at `934000a73aa0f34acd9b692b072d29b7877a8f2b`; #98 merged at `a9ea85796e9864296bef4c0ff33d174d63dc3b75`.
 - **PR #99:** GitHub reports it merged into `work/issue-86-governance-controls-model` at `4fa84e4675f8d62fe725e6dbd3c412c84f3e684a`, not into main. Its head `e9a57ad63f223a2d934e9ec44f272b4684499dbd` compares with main as diverged (48 ahead / 1 behind; merge base `502e43d4ea55a4a5beec07573dab80c69a6796a0`). Architecture 0034 and the journal-recovery model therefore were not in main before the current integration candidate.
 - **Open stack:** PR #100 remains open/non-draft, based on `work/issue-86-journal-recovery-model`, head `1be58c4a550cb5041573d704f64ef2baa7701097`; PR #104 remains open/non-draft, based on `work/issue-86-journal-protocol-spec`, head `91edf52fd4fe67815eace4db30f577b50069d53f`.
-- **Latest recorded PR #104 validation:** reference-integrity run [42891011411](https://github.com/Martin-PB/govcheck/actions/runs/42891011411) failed with 17 errors / 8 warnings; package alignment and report-only GovCheck checks passed. The reference errors concerned R-142–R-144 thematic indexing/backlinks and bilingual citations, stale [R-107](../references.md#r-107) backlinks, and unlinked portfolio mentions. This candidate repairs those documentary findings. No new Actions run was triggered.
+- **Latest recorded PR #104 validation:** reference-integrity run [42891011411](https://github.com/Martin-PB/govcheck/actions/runs/42891011411) failed with 17 errors / 8 warnings; package alignment and report-only GovCheck checks passed. The reference errors concerned R-194–R-196 thematic indexing/backlinks and bilingual citations, stale [R-107](../references.md#r-107) backlinks, and unlinked portfolio mentions. This candidate repairs those documentary findings. No new Actions run was triggered.
 - **Disposition:** factual synchronization and integration preparation only. #41 and #86 remain open; the eleven owner-selected choices remain pending formal normative adoption. No issue closure, adoption, implementation or production enforcement is implied.
-- **Related records:** Issues #41/#86; PRs #90/#96/#98/#99/#100/#104; Specifications 0003/0006/0007; Architectures 0023/0031–0034; decision-session record 0008; [R-05](../references.md#r-05), [R-22](../references.md#r-22), [R-142](../references.md#r-142), [R-143](../references.md#r-143) and [R-144](../references.md#r-144).
+- **Related records:** Issues #41/#86; PRs #90/#96/#98/#99/#100/#104; Specifications 0003/0006/0007; Architectures 0023/0031–0034; decision-session record 0008; [R-05](../references.md#r-05), [R-22](../references.md#r-22), [R-194](../references.md#r-194), [R-195](../references.md#r-195) and [R-196](../references.md#r-196).
 - **Known limits:** no new TLA+ run, implementation or conformance result is claimed; existing model-checking evidence remains limited to each exact finite model/configuration and its documented assumptions.
 
 ## WP-EVT-000017 — Consolidated formalization PR opened for review

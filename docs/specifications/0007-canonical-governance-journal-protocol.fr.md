@@ -156,7 +156,7 @@ Cette spécification complète la [Spécification 0006](0006-governance-revision
 
 Les modèles TLA+ actuels couvrent des tranches bornées distinctes : applicabilité et autorité temporelle ; publication compare-and-append ; contrôles d'évaluateur/exception/révocation ; sûreté du journal face aux pannes/reprises/rollback. Ils constituent des éléments de conception composables, pas un modèle intégré d'implémentation. Le modèle de reprise du journal suppose une autorisation amont et un rédacteur sérialisé ; il ne prouve ni consensus multi-écrivain, ni sémantique durable du système de fichiers, ni reprise éventuelle, ni correction des adaptateurs, ni réconciliation des répliques, ni raffinement de l'implémentation.
 
-Références : [R-05 — TLA+ et TLC](../references.fr.md#r-05), [R-22 — sémantiques natives de Git et Pijul](../references.fr.md#r-22), [R-142 — linéarisabilité](../references.fr.md#r-142), [R-143 — journalisation anticipée et reprise après panne](../references.fr.md#r-143), [R-144 — sémantique des nouvelles tentatives idempotentes](../references.fr.md#r-144).
+Références : [R-05 — TLA+ et TLC](../references.fr.md#r-05), [R-22 — sémantiques natives de Git et Pijul](../references.fr.md#r-22), [R-194 — linéarisabilité](../references.fr.md#r-194), [R-195 — journalisation anticipée et reprise après panne](../references.fr.md#r-195), [R-196 — sémantique des nouvelles tentatives idempotentes](../references.fr.md#r-196).
 
 ## 12. Frontière d'autorité
 

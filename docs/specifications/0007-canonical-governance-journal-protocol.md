@@ -156,7 +156,7 @@ This specification complements [Specification 0006](0006-governance-revision-app
 
 Current TLA+ models cover separate bounded slices: applicability and temporal authority; compare-and-append publication; evaluator/exception/revocation controls; and journal crash/recovery/rollback safety. They are composable design evidence, not a single integrated implementation model. The journal-recovery model assumes upstream authorization and a single serialized writer; it does not prove multi-writer consensus, durable filesystem semantics, eventual recovery, adapter correctness, replica reconciliation or implementation refinement.
 
-References: [R-05 — TLA+ and TLC](../references.md#r-05), [R-22 — native Git and Pijul semantics](../references.md#r-22), [R-142 — linearizability](../references.md#r-142), [R-143 — write-ahead logging and crash recovery](../references.md#r-143), [R-144 — idempotent retry semantics](../references.md#r-144).
+References: [R-05 — TLA+ and TLC](../references.md#r-05), [R-22 — native Git and Pijul semantics](../references.md#r-22), [R-194 — linearizability](../references.md#r-194), [R-195 — write-ahead logging and crash recovery](../references.md#r-195), [R-196 — idempotent retry semantics](../references.md#r-196).
 
 ## 12. Authority boundary
 

@@ -84,6 +84,7 @@
 - **Open-source licensing and attribution:** R-108.
 - **Repository intent and lifecycle/requirements engineering:** R-114–R-118, R-121–R-122.
 - **System modeling and assurance-case metamodels:** R-119–R-120.
+- **Canonical journal ordering, durable recovery and idempotent retry:** R-194–R-196.
 
 ## Standards, government guidance and industry specifications
 

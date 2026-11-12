@@ -138,6 +138,6 @@ Aucun résultat de model checking fini, aucune modification de spécification ni
 - Protocole de journal proposé : [Spécification 0007](../specifications/0007-canonical-governance-journal-protocol.fr.md).
 - Modèles bornés : [applicabilité](../../formal/tla/GovCheckGovernanceApplicability.tla), [publication canonique](../../formal/tla/GovCheckCanonicalPublication.tla), [contrôles de gouvernance](../../formal/tla/GovCheckGovernanceControls.tla), [reprise du journal](../../formal/tla/GovCheckJournalRecovery.tla).
 - Rapports : [Architecture 0031](../architecture/0031-first-tlc-governance-applicability.fr.md), [0032](../architecture/0032-canonical-publication-model-checking.fr.md), [0033](../architecture/0033-governance-evaluator-exception-revocation-model.fr.md) et [0034](../architecture/0034-canonical-journal-recovery-model.fr.md).
-- Références : [R-05](../references.fr.md#r-05), [R-22](../references.fr.md#r-22), [R-142](../references.fr.md#r-142), [R-143](../references.fr.md#r-143) et [R-144](../references.fr.md#r-144).
+- Références : [R-05](../references.fr.md#r-05), [R-22](../references.fr.md#r-22), [R-194](../references.fr.md#r-194), [R-195](../references.fr.md#r-195) et [R-196](../references.fr.md#r-196).
 
 Les références externes éclairent les méthodes techniques ; elles ne déterminent ni n'autorisent la politique de gouvernance choisie par l'utilisateur.

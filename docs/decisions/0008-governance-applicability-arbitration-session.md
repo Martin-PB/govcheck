@@ -138,6 +138,6 @@ No finite model-checking result, specification edit or PR merge establishes impl
 - Proposed journal protocol: [Specification 0007](../specifications/0007-canonical-governance-journal-protocol.md).
 - Bounded models: [applicability](../../formal/tla/GovCheckGovernanceApplicability.tla), [canonical publication](../../formal/tla/GovCheckCanonicalPublication.tla), [governance controls](../../formal/tla/GovCheckGovernanceControls.tla), [journal recovery](../../formal/tla/GovCheckJournalRecovery.tla).
 - Model-checking records: [Architecture 0031](../architecture/0031-first-tlc-governance-applicability.md), [0032](../architecture/0032-canonical-publication-model-checking.md), [0033](../architecture/0033-governance-evaluator-exception-revocation-model.md) and [0034](../architecture/0034-canonical-journal-recovery-model.md).
-- Formal-methods and VCS references: [R-05](../references.md#r-05), [R-22](../references.md#r-22), [R-142](../references.md#r-142), [R-143](../references.md#r-143) and [R-144](../references.md#r-144).
+- Formal-methods and VCS references: [R-05](../references.md#r-05), [R-22](../references.md#r-22), [R-194](../references.md#r-194), [R-195](../references.md#r-195) and [R-196](../references.md#r-196).
 
 External references inform technical methods; they do not determine or authorize the user's selected governance policy.

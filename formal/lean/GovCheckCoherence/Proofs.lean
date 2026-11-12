@@ -123,4 +123,10 @@ theorem evidence_mapping_theorem_proof_requires_derivation
       (∃ derivation : KernelCheckedDerivation target.claim.meaning, derivation.proof = derivation.proof) :=
   mapping_target_theorem_proof_requires_derivation mapping h
 
+/-- Unknown (no determinate result) is not the same as inconclusive
+    (a method ran but did not settle pass/fail). -/
+theorem unknown_status_is_distinct_from_inconclusive :
+    EvidenceStatus.unknown ≠ EvidenceStatus.inconclusive := by
+  decide
+
 end GovCheck.Coherence

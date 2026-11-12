@@ -9,7 +9,7 @@
 | Dossiers d'assurance de sécurité et métamodèles | R-04, R-33–R-34 |
 | Modèle de décision PEAK | R-74 |
 | Surveillance continue et assurance à l'exécution | R-70, R-72, R-75–R-76 |
-| Assurance 2.0 et évolution de SACM | R-71, R-73 |
+| Assurance 2.0, évolution de SACM et audits d'implémentation | R-71, R-73, R-128 |
 | Régimes d'assurance et exigences orientées objectifs | R-35–R-36, R-44, R-92 |
 | Model checking et vérification de programmes candidates | R-05, R-20, R-37–R-43, R-89–R-91 |
 | Provenance des preuves et chaîne d'approvisionnement logicielle | R-06–R-08 |
@@ -43,7 +43,6 @@
 | Emplacement et syntaxe des workflows GitHub Actions | R-107 |
 | Licences open source et attribution | R-108 |
 | Intention du dépôt, cycle de vie et ingénierie des exigences | R-114–R-118, R-121–R-122 |
-| Méthodes probabilistes, floues et à transitions d'états pour l'assurance | R-193 |
 | Modélisation des systèmes et métamodèles de dossiers d'assurance | R-119–R-120 |
 
 ## Entrées bibliographiques détaillées
@@ -269,9 +268,10 @@
 
 <a id="r-20"></a>
 ### R-20 — Lean
-- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [0008](architecture/0008-formalization-and-conformance.fr.md), [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [ADR 0001](decisions/0001-bootstrap-boundaries.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md)
+- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [0008](architecture/0008-formalization-and-conformance.fr.md), [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [ADR 0001](decisions/0001-bootstrap-boundaries.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md), [audit de compatibilité CSLib](research/cslib-compatibility-audit.fr.md)
 
 - **Source primaire :** [Référence du langage Lean](https://lean-lang.org/doc/reference/latest/)
+- **Bibliothèque associée :** [CSLib](https://github.com/leanprover/cslib), bibliothèque Lean pour formaliser les théories informatiques, les logiques temporelles et la sémantique des systèmes de transitions.
 - **Concepts pertinents :** termes de preuve vérifiés par un petit noyau ; démonstration sous définitions, axiomes et hypothèses explicites.
 - **Utilité pour GovCheck :** candidat pour des prédicats critiques justifiant une preuve ou la vérification de certificats, si une ADR ultérieure le justifie.
 - **Limite :** un théorème sur un prédicat ne prouve ni que le prédicat représente la politique approuvée ni que l'exécutable le raffine. Lean n'est pas sélectionné comme dépendance globale.
@@ -761,11 +761,12 @@
 
 <a id="r-73"></a>
 ### R-73 — OMG Structured Assurance Case Metamodel (SACM), version 2.4 Beta 1 (septembre 2026)
-- **Cité par :** [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.fr.md) · [Analyse d'impact de l'intention](intent-impact-analysis.fr.md)
-- **Source primaire :** [État de la spécification SACM et documents de la bêta 2.4 chez OMG](https://www.omg.org/spec/SACM)
-- **Concepts pertinents :** extensions proposées à SACM 2.3, notamment valeurs structurées/forces typées, constructions liées à l'évaluation, jointures, références à un concept entier, marquage de l'état de développement et révision de la sémantique des packages/relations.
-- **Utilité pour GovCheck :** point de comparaison indispensable avant de sélectionner un métamodèle interne ou d'échange. Les résolutions de tickets de la bêta indiquent quelles lacunes de 2.3 la révision tente de combler.
-- **Limite :** la version 2.4 est une bêta, pas une spécification formelle adoptée. GovCheck ne doit pas traiter ses constructions provisoires comme des contrats stables ni revendiquer sa conformité. Conserver 2.3 comme base formelle actuelle en attendant l'examen de la version finale 2.4.
+- **Cité par :** [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md) · [0025](architecture/0025-runtime-observations-peak-and-sacm.fr.md) · [Analyse d'impact de l'intention](intent-impact-analysis.fr.md) · [Tranche de mapping sémantique SACM 2.4](research/sacm24-claim-inference-mapping.fr.md), [rapport sur les risques d'interopérabilité SACM 2.4 Beta 1](research/sacm24-beta1-interoperability-risk.fr.md)
+- **Sources primaires :** [page OMG SACM 2.4 Beta 1](https://www.omg.org/spec/SACM/2.4/Beta1) · [artefact PDF de spécification (normatif dans le paquet Beta 1)](https://www.omg.org/spec/SACM/2.4/Beta1/PDF) · [XML lisible par machine du métamodèle (normatif dans le paquet Beta 1), 04/05/2026](https://www.omg.org/spec/SACM/20260504/SACM2.4_Metamodel.xml). Le paquet bêta reste informatif/en cours ; SACM 2.3 demeure la base formelle adoptée.
+- **Résolutions d'issues pertinentes :** [SACM24-83 sujet explicite du Claim](https://issues.omg.org/issues/SACM24-83) · [SACM24-75 Assessment](https://issues.omg.org/issues/SACM24-75) · [SACM24-77 arguments avancés](https://issues.omg.org/issues/SACM24-77) · [SACM24-48 sémantique des inférences/relations](https://issues.omg.org/issues/SACM24-48).
+- **Concepts pertinents :** sujet explicite du Claim via SACMElement ; AssertionDeclarationKind (asserted, assumed, axiomatic, byRule) ; structures optionnelles de vérité/valeur/règle ; InferenceTypeKind (probable, collective, necessary, sufficient, necessaryAndSufficient, byRule) ; AssertionRule et InferenceRule ; extensions d'évaluation et d'arguments avancés.
+- **Usage dans GovCheck :** comparaison sémantique source et cible de mapping. La première tranche formelle préserve les distinctions de déclaration, le sujet/la révision exacts et la direction des inférences ; probable reste hors de l'implication classique tant qu'une sémantique probabiliste n'est pas fournie.
+- **Limite :** 2.4 est une bêta, pas une spécification formelle adoptée. GovCheck ne doit pas traiter ses constructions de travail comme des contrats stables ni revendiquer une conformité complète. Conserver 2.3 comme référence formelle actuelle en attendant la revue finale de 2.4.
 
 <a id="r-74"></a>
 ### R-74 — Hoover, Rosso-Llopart et Taran, *Evaluating Project Decisions: Case Studies in Software Engineering* (2009/2010)
@@ -1177,6 +1178,14 @@
 - **Concepts pertinents :** format ouvert publié et convention pour un fichier `INTENT.md` au niveau du dépôt, combinant présentation du produit, personas, releases, user stories et critères d'acceptation.
 - **Utilité pour GovCheck :** point de comparaison pour un format publié existant nommé `INTENT.md` et son périmètre.
 - **Limite :** son modèle de contenu regroupé n'est pas adopté par GovCheck ; aucune conformité ou compatibilité n'est revendiquée.
+
+<a id="r-128"></a>
+### R-128 — Assurance Forge : audit indépendant de l'impact d'implémentation de SACM 2.4 Beta 1 (2026-10-02 ; révision du dépôt 2026-11-03)
+- **Cité par :** [Rapport sur les risques d'interopérabilité SACM 2.4 Beta 1](research/sacm24-beta1-interoperability-risk.fr.md), [tranche de mapping sémantique SACM 2.4](research/sacm24-claim-inference-mapping.fr.md), [compte rendu intégré de cohérence du métamodèle](research/metamodel-coherence-prototype-execution.fr.md)
+- **Sources primaires :** [Audit d'impact épinglé](https://github.com/lasrod/assurance-forge/blob/0f5187099be1c28fc725cb0f381afc695a135c89/docs/sacm/sacm-2.4-beta1-impact.md) · [script épinglé de récupération des artefacts officiels et contrôles SHA-256](https://github.com/lasrod/assurance-forge/blob/0f5187099be1c28fc725cb0f381afc695a135c89/scripts/fetch-sacm24-beta1-references.sh).
+- **Concepts pertinents :** absence rapportée d'un contrat stable d'échange natif d'instances 2.4 ; contradictions texte/XML concernant les champs d'identité, littéraux de déclaration, multiplicités, type de valeur Claim et héritage ; conséquences d'implémentation et de versionnement.
+- **Usage dans GovCheck :** contre-vérification d'ingénierie indépendante indiquant que le texte et le métamodèle lisible par machine de SACM 2.4 Beta 1 doivent rester deux vues sources distinctes, sans normalisation silencieuse en un modèle unique.
+- **Limite :** audit d'implémentation tiers, ni déclaration de l'OMG ni autorité normative. Ses constats doivent être vérifiés contre les artefacts OMG épinglés ; il ne prouve pas que toutes les implémentations SACM 2.4 ont les mêmes limites.
 
 <a id="r-193"></a>
 ### R-193 — Modélisation probabiliste, floue et à transitions d'états pour l'assurance logicielle

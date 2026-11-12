@@ -2,20 +2,37 @@ import GovCheckCoherence.Mapping
 
 namespace GovCheck.Coherence.SACM24
 
-/-- SACM 2.4 Beta 1 AssertionDeclarationKind literals. -/
+/-- The two conflicting SACM 2.4 Beta 1 source views must remain distinct. -/
+inductive SourceView where
+  | specificationText
+  | normativeMetamodelXML
+  deriving DecidableEq, Repr
+
+/-- The PDF text uses gid; the machine-readable metamodel uses elementId. -/
+inductive ElementIdentityField where
+  | gid
+  | elementId
+  deriving DecidableEq, Repr
+
+def identityFieldForSourceView : SourceView → ElementIdentityField
+  | .specificationText => .gid
+  | .normativeMetamodelXML => .elementId
+
+/-- Union of declaration literals found across the two Beta 1 source views. -/
 inductive AssertionDeclarationKind where
   | asserted
   | assumed
   | axiomatic
+  | needsSupport
   | byRule
   deriving DecidableEq, Repr
 
-/-- GovCheck preserves the declaration's nature without treating it as
-    evidence method, evidence result, or a theorem-proof status. -/
+/-- GovCheck preserves each declaration literal as a distinct disposition. -/
 inductive ClaimDisposition where
   | asserted
   | assumed
   | axiomaticDeclared
+  | needsSupport
   | ruleDeclared
   deriving DecidableEq, Repr
 
@@ -23,6 +40,7 @@ def mapAssertionDeclaration : AssertionDeclarationKind → ClaimDisposition
   | .asserted => .asserted
   | .assumed => .assumed
   | .axiomatic => .axiomaticDeclared
+  | .needsSupport => .needsSupport
   | .byRule => .ruleDeclared
 
 theorem mapAssertionDeclaration_injective :
@@ -30,26 +48,52 @@ theorem mapAssertionDeclaration_injective :
   intro a b h
   cases a <;> cases b <;> cases h <;> rfl
 
+/-- A literal is accepted only against the Beta 1 source view that defines it. -/
+def declarationSupportedBySourceView :
+    SourceView → AssertionDeclarationKind → Bool
+  | .specificationText, .byRule => false
+  | .normativeMetamodelXML, .needsSupport => false
+  | _, _ => true
+
+theorem text_needsSupport_is_supported :
+    declarationSupportedBySourceView .specificationText .needsSupport = true := rfl
+
+theorem text_byRule_is_not_supported :
+    declarationSupportedBySourceView .specificationText .byRule = false := rfl
+
+theorem xml_byRule_is_supported :
+    declarationSupportedBySourceView .normativeMetamodelXML .byRule = true := rfl
+
+theorem xml_needsSupport_is_not_supported :
+    declarationSupportedBySourceView .normativeMetamodelXML .needsSupport = false := rfl
+
+theorem text_identity_field_is_gid :
+    identityFieldForSourceView .specificationText = .gid := rfl
+
+theorem xml_identity_field_is_elementId :
+    identityFieldForSourceView .normativeMetamodelXML = .elementId := rfl
+
 theorem sacm_axiomatic_remains_declaration :
     mapAssertionDeclaration .axiomatic = .axiomaticDeclared := rfl
 
 theorem sacm_assumed_remains_assumption :
     mapAssertionDeclaration .assumed = .assumed := rfl
 
-/-- Optional source subject reference. SACM 2.4 Beta 1 issue SACM24-83
-    introduces SACMElement as a possible explicit subject of a Claim. -/
+/-- Optional source subject reference, including the identity field and exact
+    model revision used by the selected source view. -/
 structure SACMElementRef where
   identity : String
+  identityField : ElementIdentityField
   metaclass : String
   modelRevision : String
   deriving DecidableEq, Repr
 
-/-- Minimal Claim/Assertion slice: textual value and optional subject are
-    retained separately from the formal proposition used by a bridge.
-    assertionValue and assertionRule are opaque source payload/reference strings
-    here, not complete formalizations of those SACM metaclasses. -/
+/-- Minimal Claim/Assertion slice. Raw values/rule references are retained
+    opaquely; they are not full encodings of the SACM value/rule metaclasses. -/
 structure SACMClaim where
   identity : String
+  identityField : ElementIdentityField
+  sourceView : SourceView
   value : Option String
   subject : Option SACMElementRef
   declaration : AssertionDeclarationKind
@@ -59,15 +103,23 @@ structure SACMClaim where
   deriving DecidableEq, Repr
 
 /-- The proposition is an explicit interpretation supplied by a mapping
-    authority. SACM text is not silently parsed into Lean truth. -/
+    authority. The source text/value is not silently parsed into Lean truth.
+    The constructor obligations reject source-view/literal mismatches. -/
 structure SACMClaimInterpretation
     (claim : SACMClaim) (interpretation : ClaimSemantics) where
   sourceModel : ArtifactRef
   mappedSubject : Option SACMElementRef
   disposition : ClaimDisposition
   declarationPreserved : disposition = mapAssertionDeclaration claim.declaration
+  declarationConsistentWithSourceView :
+    declarationSupportedBySourceView claim.sourceView claim.declaration = true
+  identityFieldMatchesSourceView :
+    claim.identityField = identityFieldForSourceView claim.sourceView
   claimIdentityPreserved : interpretation.claimId = claim.identity
   subjectPreserved : mappedSubject = claim.subject
+  subjectIdentityFieldMatchesSourceView :
+    ∀ subject, mappedSubject = some subject →
+      subject.identityField = identityFieldForSourceView claim.sourceView
   subjectRevisionMatchesModel :
     ∀ subject, mappedSubject = some subject →
       subject.modelRevision = sourceModel.revision
@@ -140,32 +192,32 @@ theorem collective_inference_is_joint_equivalence
   | collective _ proof => exact proof
 
 theorem claim_interpretation_preserves_declaration
-    {claim : SACMClaim} {target : ClaimSemantics}
-    (mapping : SACMClaimInterpretation claim target) :
+    {claim : SACMClaim} {interpretation : ClaimSemantics}
+    (mapping : SACMClaimInterpretation claim interpretation) :
     mapping.disposition = mapAssertionDeclaration claim.declaration :=
   mapping.declarationPreserved
 
 theorem claim_interpretation_preserves_identity
-    {claim : SACMClaim} {target : ClaimSemantics}
-    (mapping : SACMClaimInterpretation claim target) :
-    target.claimId = claim.identity :=
+    {claim : SACMClaim} {interpretation : ClaimSemantics}
+    (mapping : SACMClaimInterpretation claim interpretation) :
+    interpretation.claimId = claim.identity :=
   mapping.claimIdentityPreserved
 
 theorem claim_interpretation_preserves_subject
-    {claim : SACMClaim} {target : ClaimSemantics}
-    (mapping : SACMClaimInterpretation claim target) :
+    {claim : SACMClaim} {interpretation : ClaimSemantics}
+    (mapping : SACMClaimInterpretation claim interpretation) :
     mapping.mappedSubject = claim.subject :=
   mapping.subjectPreserved
 
 theorem claim_subject_revision_is_pinned
-    {claim : SACMClaim} {target : ClaimSemantics}
-    (mapping : SACMClaimInterpretation claim target)
+    {claim : SACMClaim} {interpretation : ClaimSemantics}
+    (mapping : SACMClaimInterpretation claim interpretation)
     (subject : SACMElementRef) (h : mapping.mappedSubject = some subject) :
     subject.modelRevision = mapping.sourceModel.revision :=
   mapping.subjectRevisionMatchesModel subject h
 
-/-- Full first-slice link from a native SACM Claim through its explicit
-    formal interpretation into a GovCheck cross-model mapping. -/
+/-- Full first-slice link from a source-view-qualified SACM Claim through its
+    explicit formal interpretation into a GovCheck cross-model mapping. -/
 structure SACMClaimMapping
     (sacmClaim : SACMClaim) (source target : MappingSubject) where
   sourceInterpretation : SACMClaimInterpretation sacmClaim source.claim

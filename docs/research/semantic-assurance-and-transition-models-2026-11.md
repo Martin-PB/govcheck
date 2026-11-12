@@ -128,3 +128,6 @@ Open questions: smallest coherent core ontology; formal typing of relations amon
 ## 7. Decision status
 
 This record does not adopt a particular logic, standard, model checker, proof assistant, serialization or quantitative confidence method. It preserves the discussion for the next academic/industry research and metamodel-design pass.
+
+
+Catalogue de références : [R-114](../references.md#r-114).

@@ -7,7 +7,7 @@
 
 ## 1. Pourquoi cette tranche source en premier
 
-SACM 2.4 Beta 1 introduit des sémantiques directement pertinentes pour le modèle épistémique de GovCheck :
+SACM 2.4 Beta 1 introduit des sémantiques directement pertinentes pour le modèle épistémique de GovCheck. Un audit d'implémentation indépendant (R-128) relève aussi des contradictions entre le texte PDF de la spécification et le métamodèle XML lisible par machine ; voir le [rapport sur les risques d'interopérabilité](sacm24-beta1-interoperability-risk.fr.md). La tranche formelle distingue donc les vues sources au lieu de traiter Beta 1 comme un schéma cohérent unique :
 
 - un sujet explicite pour un Claim (issue SACM24-83) ;
 - des valeurs étendues de AssertionDeclarationKind et des structures de valeur d'assertion ;
@@ -19,16 +19,17 @@ SACM constitue donc une bonne cible de réfutation : un mapping GovCheck doit pr
 
 ## 2. Une déclaration d'assertion n'est ni un statut d'élément probant ni une preuve de théorème
 
-La tranche Lean modélise les littéraux de AssertionDeclarationKind de SACM :
+La tranche Lean modélise l'union des littéraux AssertionDeclarationKind trouvés dans les deux vues sources :
 
 | Déclaration SACM | Disposition GovCheck | Ce que cela **ne** signifie **pas** |
 |---|---|---|
-| `asserted` | `asserted` | Ni un test réussi ni une preuve |
-| `assumed` | `assumed` | Pas un élément probant de vérité de la proposition |
-| `axiomatic` | `axiomaticDeclared` | Pas une preuve de théorème vérifiée par le noyau Lean |
-| `byRule` | `ruleDeclared` | Pas validé tant que la règle référencée n'est pas interprétée et vérifiée |
+| `asserted` (PDF et XML) | `asserted` | Ni un test réussi ni une preuve |
+| `assumed` (PDF et XML) | `assumed` | Pas un élément probant de vérité de la proposition |
+| `axiomatic` (PDF et XML) | `axiomaticDeclared` | Pas une preuve de théorème vérifiée par le noyau Lean |
+| `needsSupport` (texte PDF seulement) | `needsSupport` | Pas une déclaration de règle ; rejeté pour la vue XML |
+| `byRule` (métamodèle XML seulement) | `ruleDeclared` | Pas une règle validée ; rejeté pour la vue texte PDF |
 
-Le mapping est injectif : aucun littéral de déclaration SACM n'est fusionné avec un autre dans une disposition GovCheck. La structure de bout en bout `SACMClaimMapping` transporte cette disposition avec l'interprétation du Claim source, le modèle source exact et le pont sémantique générique `EvidenceMapping`.
+Le mapping est injectif sur l'union des deux vues sources : aucun littéral de déclaration n'est fusionné avec une autre disposition GovCheck. Le champ `SourceView` sélectionne le texte PDF ou le métamodèle XML normatif ; un prédicat typé rejette `byRule` pour la vue texte et `needsSupport` pour la vue XML. Cette sélection de vue épingle également `gid` (texte PDF) ou `elementId` (métamodèle XML). La structure de bout en bout `SACMClaimMapping` transporte l'interprétation du Claim source, sa disposition, le modèle source exact et le pont sémantique générique `EvidenceMapping`.
 
 Les champs optionnels SACM `isTrue`, `assertionValue` et `assertionRule` restent distincts du type de déclaration. Dans la tranche Lean actuelle, les deux derniers sont conservés comme chaînes opaques de contenu/référence source, sans formaliser encore leurs métaclasses SACM complètes. Une valeur booléenne de vérité facultative n'est pas un objet de preuve ; une valeur d'assertion peut être plus riche qu'un booléen ; une référence de règle n'est pas sa sémantique formelle. L'enregistrement Lean conserve ces champs séparément.
 
@@ -36,14 +37,14 @@ Les champs optionnels SACM `isTrue`, `assertionValue` et `assertionRule` restent
 
 ## 3. Sujet du Claim et interprétation formelle
 
-La tranche Lean définit un `SACMElementRef` contenant l'identité source, la métaclasse et la révision du modèle. `SACMClaimInterpretation` lie :
+La tranche Lean définit un `SACMElementRef` contenant le champ d'identité source, la métaclasse et la révision du modèle. `SACMClaim` porte sa vue source et son choix de champ d'identité. `SACMClaimInterpretation` ne peut être construite que si le littéral de déclaration et le champ d'identité sont cohérents avec la vue source sélectionnée ; elle lie :
 
 - l'identité exacte du Claim SACM à l'identifiant d'affirmation GovCheck ;
 - le sujet SACM explicite facultatif au sujet traduit ;
 - la référence du sujet à la révision exacte du modèle source ;
 - une proposition Lean fournie séparément comme interprétation formelle.
 
-Il ne s'agit volontairement pas d'une conversion automatique du texte/de la valeur SACM en logique Lean. L'autorité de mapping doit fournir et justifier l'interprétation propositionnelle. Le contrat formel actuel contrôle la préservation de l'identité et du sujet/de la révision, mais ne prouve pas qu'une proposition choisie pour une affirmation en langage naturel est fidèle à son texte. Cela reste un argument d'interprétation et une obligation d'assurance explicites.
+La divergence de type de `Claim.value` entre PDF et XML n'est pas aplatie : le champ Lean actuel est un espace réservé opaque pour la valeur brute, pas une formalisation de `MultiLangString` ou `ExpressionLangString`. Il ne s'agit volontairement pas d'une conversion automatique du texte/de la valeur SACM en logique Lean. L'autorité de mapping doit fournir et justifier l'interprétation propositionnelle. Le contrat formel actuel contrôle la préservation de l'identité et du sujet/de la révision, mais ne prouve pas qu'une proposition choisie pour une affirmation en langage naturel est fidèle à son texte. Cela reste un argument d'interprétation et une obligation d'assurance explicites.
 
 ## 4. Types d'inférence et directionnalité
 
@@ -77,7 +78,7 @@ L'exécution de compilation/audit des axiomes pour cette extension est en attent
 
 ## 6. Limites et prochaine étape du mapping
 
-Il s'agit d'une petite tranche SACM 2.4, pas d'une conformité SACM complète. Elle ne formalise pas encore tous les constructs Argument, Artifact, Terminology, Package, View, Diagram, Assessment, Strength, AssertionRule ou InferenceRule ; elle ne prouve pas non plus un import/export XML/XMI sans perte.
+Il s'agit d'une petite tranche SACM 2.4 Beta 1 qualifiée par la vue source, pas d'une conformité SACM complète. Elle ne résout pas les autres conflits PDF/XML documentés dans le [rapport sur les risques d'interopérabilité](sacm24-beta1-interoperability-risk.fr.md). Elle ne formalise pas encore tous les constructs Argument, Artifact, Terminology, Package, View, Diagram, Assessment, Strength, AssertionRule ou InferenceRule ; elle ne prouve pas non plus un import/export XML/XMI sans perte.
 
 Suite :
 1. lier une vraie fixture XMI/XML SACM 2.4 Beta 1 à la représentation formelle `SACMClaim` et `SACMAssertion` ;

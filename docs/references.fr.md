@@ -9,7 +9,7 @@
 | Dossiers d'assurance de sécurité et métamodèles | R-04, R-33–R-34 |
 | Modèle de décision PEAK | R-74 |
 | Surveillance continue et assurance à l'exécution | R-70, R-72, R-75–R-76 |
-| Assurance 2.0 et évolution de SACM | R-71, R-73 |
+| Assurance 2.0, évolution de SACM et audits d'implémentation | R-71, R-73, R-128 |
 | Régimes d'assurance et exigences orientées objectifs | R-35–R-36, R-44, R-92 |
 | Model checking et vérification de programmes candidates | R-05, R-20, R-37–R-43, R-89–R-91 |
 | Provenance des preuves et chaîne d'approvisionnement logicielle | R-06–R-08 |
@@ -1178,3 +1178,11 @@
 - **Concepts pertinents :** format ouvert publié et convention pour un fichier `INTENT.md` au niveau du dépôt, combinant présentation du produit, personas, releases, user stories et critères d'acceptation.
 - **Utilité pour GovCheck :** point de comparaison pour un format publié existant nommé `INTENT.md` et son périmètre.
 - **Limite :** son modèle de contenu regroupé n'est pas adopté par GovCheck ; aucune conformité ou compatibilité n'est revendiquée.
+
+<a id="r-128"></a>
+### R-128 — Assurance Forge : audit indépendant de l'impact d'implémentation de SACM 2.4 Beta 1 (2026-10-02 ; révision du dépôt 2026-11-03)
+- **Cité par :** [Rapport sur les risques d'interopérabilité SACM 2.4 Beta 1](research/sacm24-beta1-interoperability-risk.fr.md)
+- **Sources primaires :** [Audit d'impact épinglé](https://github.com/lasrod/assurance-forge/blob/0f5187099be1c28fc725cb0f381afc695a135c89/docs/sacm/sacm-2.4-beta1-impact.md) · [script épinglé de récupération des artefacts officiels et contrôles SHA-256](https://github.com/lasrod/assurance-forge/blob/0f5187099be1c28fc725cb0f381afc695a135c89/scripts/fetch-sacm24-beta1-references.sh).
+- **Concepts pertinents :** absence rapportée d'un contrat stable d'échange natif d'instances 2.4 ; contradictions texte/XML concernant les champs d'identité, littéraux de déclaration, multiplicités, type de valeur Claim et héritage ; conséquences d'implémentation et de versionnement.
+- **Usage dans GovCheck :** contre-vérification d'ingénierie indépendante indiquant que le texte et le métamodèle lisible par machine de SACM 2.4 Beta 1 doivent rester deux vues sources distinctes, sans normalisation silencieuse en un modèle unique.
+- **Limite :** audit d'implémentation tiers, ni déclaration de l'OMG ni autorité normative. Ses constats doivent être vérifiés contre les artefacts OMG épinglés ; il ne prouve pas que toutes les implémentations SACM 2.4 ont les mêmes limites.

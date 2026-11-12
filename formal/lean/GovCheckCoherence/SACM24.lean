@@ -14,6 +14,10 @@ inductive ElementIdentityField where
   | elementId
   deriving DecidableEq, Repr
 
+def nativeFormatForSourceView : SourceView → String
+  | .specificationText => "application/pdf"
+  | .normativeMetamodelXML => "application/xml"
+
 def identityFieldForSourceView : SourceView → ElementIdentityField
   | .specificationText => .gid
   | .normativeMetamodelXML => .elementId
@@ -108,6 +112,7 @@ structure SACMClaim where
 structure SACMClaimInterpretation
     (claim : SACMClaim) (interpretation : ClaimSemantics) where
   sourceModel : ArtifactRef
+  sourceFormatMatchesView : sourceModel.nativeFormat = nativeFormatForSourceView claim.sourceView
   mappedSubject : Option SACMElementRef
   disposition : ClaimDisposition
   declarationPreserved : disposition = mapAssertionDeclaration claim.declaration

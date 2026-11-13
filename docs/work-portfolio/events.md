@@ -407,3 +407,17 @@
 - **Formal boundary:** Lean proves differences among manually transcribed constants and enforces fragment-specific mapping obligations. The kernel proof does not authenticate the source transcription. The PDF workflow verifies bytes but does not extract/interpret PDF text. No UML/MOF semantic interpreter, parser-refinement theorem, source-derived GovCheck mapping, source precedence, SACM 2.4 conformance or normative adoption is claimed.
 - **References:** independent discrepancy audit [R-128](../references.md#r-128); source-native metamodel [R-197](../references.md#r-197).
 - **Next work:** validate each transcription against pinned PDF/XML fragments; build an explicit source extraction/reconciliation pipeline; formalize parser refinement; then prove only those source-derived semantic mappings intended for use as established GovCheck premises. Issue #73 remains open.
+
+
+<a id="wp-evt-000028"></a>
+## WP-EVT-000028 — Final PR-head verification for SACM source-view reconciliation
+
+- **Subject:** `govcheck.work.intermodel-contract-conformance`
+- **Event type:** `final-pr-head-verification`
+- **Recorded:** 2026-11-13
+- **PR head:** `e57b28bafd35757f1491fafb6b30cd130d748206`; PR [#128](https://github.com/Martin-PB/govcheck/pull/128) remains open, non-draft, mergeable and unmerged, stacked on [PR #127](https://github.com/Martin-PB/govcheck/pull/127).
+- **Source workflow:** [43495625975](https://github.com/Martin-PB/govcheck/actions/runs/43495625975) passed on this PR head: 12 Python tests, official PDF and XML digest checks, structural inventory generation/summary comparison, source-view manifest and upload. Artifact [14071287095](https://github.com/Martin-PB/govcheck/actions/runs/43495625975/artifacts/14071287095) contains the 9,019,601-byte PDF, 524,243-byte XML, manifest and XMI inventory.
+- **Lean workflow:** [43495626076](https://github.com/Martin-PB/govcheck/actions/runs/43495626076) passed on merge candidate `c6029f9` with Lean 4.19.0. The axiom audit covered 43 declarations under `GovCheckCoherence.Proofs`; dependencies are within the allowlist `propext`, `Classical.choice`, `Quot.sound`. Five source-fragment wrapper theorems use `propext`; the 13 directly printed `SourceFacts` theorems have no axioms. No unapproved axiom was reported.
+- **Other checks:** reference integrity [43495626080](https://github.com/Martin-PB/govcheck/actions/runs/43495626080), package alignment [43495625956](https://github.com/Martin-PB/govcheck/actions/runs/43495625956), and version governance [43495626381](https://github.com/Martin-PB/govcheck/actions/runs/43495626381) passed on the same PR head.
+- **Evidence links:** bilingual [source-view alignment and conflict register](../research/sacm24-source-view-alignment.md); independent discrepancy audit [R-128](../references.md#r-128); source-native metamodel [R-197](../references.md#r-197).
+- **Limits unchanged:** the PDF/XML digests authenticate bytes, not human transcription. The Lean source facts formalize transcribed values, not their fidelity to the source documents. No automated PDF text extraction, full UML/MOF semantics, parser-refinement theorem, source-derived GovCheck semantic mapping, precedence decision, SACM 2.4 conformance or normative adoption is claimed. Issue #73 remains open.

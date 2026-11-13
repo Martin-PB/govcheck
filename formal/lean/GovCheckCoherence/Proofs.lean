@@ -18,38 +18,23 @@ theorem transport_preserves_status (record : EvidenceRecord) :
     (transport record).status = record.status := by
   rfl
 
-/-- A passed empirical test remains testimony and cannot become a theorem
-proof merely by translation. -/
-theorem testimony_cannot_be_promoted_by_transport :
-    ¬ admissibleTargetKind .testimony .theoremProof .carried := by
-  intro h
-  rcases h with h | h
-  · exact h rfl
-  · cases h
+/-- Testimony cannot be mapped to theorem-proof status without an actual
+    proof term of the exact target proposition. -/
+theorem testimony_mapping_to_theorem_proof_requires_derivation
+    {claim : Prop}
+    (rule : KindMappingRule claim .testimony .theoremProof) :
+    ∃ derivation : KernelCheckedDerivation claim,
+      derivation.proof = derivation.proof :=
+  kind_mapping_rule_theorem_proof_requires_derivation rule rfl
 
-/-- A model-checking result cannot become a theorem proof by transport alone. -/
-theorem model_checking_cannot_be_promoted_by_transport :
-    ¬ admissibleTargetKind .modelCheckingResult .theoremProof .carried := by
-  intro h
-  rcases h with h | h
-  · exact h rfl
-  · cases h
-
-/-- Even a source theorem-proof label cannot be carried as a target proof
-without re-checking a derivation in the target formal context. -/
-theorem theorem_proof_cannot_be_carried_without_kernel_check :
-    ¬ admissibleTargetKind .theoremProof .theoremProof .carried := by
-  intro h
-  rcases h with h | h
-  · exact h rfl
-  · cases h
-
-/-- Any target theorem-proof classification requires kernel-checked origin. -/
-theorem new_theorem_proof_requires_kernel_derivation
-    (source : EvidenceKind) :
-    admissibleTargetKind source .theoremProof .kernelChecked := by
-  right
-  rfl
+/-- A model-checking result cannot be mapped to theorem-proof status without
+    an actual proof term of the exact target proposition. -/
+theorem model_checking_mapping_to_theorem_proof_requires_derivation
+    {claim : Prop}
+    (rule : KindMappingRule claim .modelCheckingResult .theoremProof) :
+    ∃ derivation : KernelCheckedDerivation claim,
+      derivation.proof = derivation.proof :=
+  kind_mapping_rule_theorem_proof_requires_derivation rule rfl
 
 theorem passing_testimony_is_not_a_theorem_proof :
     passingTestimony.kind ≠ .theoremProof := by

@@ -78,7 +78,7 @@
 - **Dossiers d'assurance de sécurité et métamodèles :** R-33 à R-34.
 - **Modèle de décision PEAK :** R-74.
 - **Surveillance continue et assurance à l'exécution :** R-70, R-72, R-75 à R-76.
-- **Assurance 2.0 et évolution de SACM :** R-71, R-73.
+- **Assurance 2.0 et évolution de SACM :** R-71, R-73, R-128, R-197.
 - **Modèles sémantiques de domaine, qualité produit et conformité open source (sources candidates) :** R-94–R-100, R-102–R-103.
 - **Instructions d'agents et workflows pilotés par spécifications :** R-104.
 - **Recherches sur le policy-as-code, l'assurance continue et la gouvernance MCP :** R-105.

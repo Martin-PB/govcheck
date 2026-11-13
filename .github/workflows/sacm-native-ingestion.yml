@@ -100,7 +100,7 @@ jobs:
               "interpretation": "Distinct normative source views; no precedence or semantic equivalence is inferred."
           }
           Path("/tmp/govcheck-sacm-import/source-view-manifest.json").write_text(
-              json.dumps(manifest, indent=2, sort_keys=True) + "\\n", encoding="utf-8"
+              json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8"
           )
           print(json.dumps(manifest, indent=2))
           PY

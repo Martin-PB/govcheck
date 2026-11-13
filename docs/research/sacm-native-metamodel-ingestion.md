@@ -106,7 +106,7 @@ Synthetic unit fixtures exercise:
 
 These fixtures are not OMG SACM instance examples and do not establish conformance. The source-capture workflow passed against the actual downloaded OMG XML on the PR head (run 43444619765); the digest and byte length above are GovCheck-verified for that exact source URL/revision.
 
-## 6. Explicit non-claims and next step
+## 6. Source-derived structural inventory\n\nThe next ingestion increment has now produced a revision-bound XMI/UML structural inventory. See the [bilingual structural-inventory report](sacm-xmi-structural-inventory.md) and the [committed reviewable summary](../../formal/sources/sacm-2.4-beta1/metamodel-inventory-summary.json). The parser records 1,616 unique XMI identities, 121 UML classes, 121 associations, 355 properties, 167 generalizations, eight enumerations, 37 literals and 40 constraints. It accounts for 1,371 internal reference edges and 63 external references, with no unresolved internal reference in the recognized attributes. The full inventory is emitted by the source workflow artifact. This remains structural extraction, not UML/MOF semantic interpretation or a parser-refinement proof.\n\n## 7. Explicit non-claims and next step
 
 This slice does not yet:
 - interpret MOF/XMI classes, properties, associations, multiplicities, subsets, redefinitions or constraints;
@@ -117,4 +117,4 @@ This slice does not yet:
 - prove a parser-to-Lean refinement theorem;
 - claim SACM 2.4 conformance or normative adoption.
 
-The next increment is to parse the pinned metamodel's actual MOF/XMI vocabulary into a lossless typed inventory while retaining the raw source, then derive a coverage matrix directly from that inventory. Only after the inventory is checked against the specification PDF and its known contradictions should individual source metaclasses be mapped to GovCheck concepts. Each mapping remains non-operative until its exact semantic obligation is proved.
+The next increment is to compare this source-derived structural inventory with the exact PDF source view and the R-128 conflict list, classify each discrepancy by affected construct and scope, and then derive typed source-view-specific mapping obligations. Only mappings whose exact semantic relation is formally proved may become established GovCheck premises. Each mapping remains non-operative until its exact semantic obligation is proved.

@@ -377,8 +377,8 @@
       ],
       "verification": {
         "sourceWorkflow": ".github/workflows/sacm-native-ingestion.yml",
-        "sourceWorkflowRunId": 43494908580,
-        "sourceCheckedCommit": "9c279a92878fbeff2e3d883e318eb6d980272e07",
+        "sourceWorkflowRunId": 43495288103,
+        "sourceCheckedCommit": "e80f4833de9478bd0fd5672a7333753609f40c0c",
         "sourceResult": "success",
         "sourceTests": 12,
         "pdf": {
@@ -392,27 +392,28 @@
           "fileId": "ptc/26-05-28"
         },
         "artifact": {
-          "id": 14071002816,
+          "id": 14071601644,
           "name": "sacm-2.4-beta1-source-views-and-xmi-inventory",
           "retentionDays": 90,
-          "url": "https://github.com/Martin-PB/govcheck/actions/runs/43494908580/artifacts/14071002816"
+          "url": "https://github.com/Martin-PB/govcheck/actions/runs/43495288103/artifacts/14071601644"
         },
         "leanWorkflow": ".github/workflows/lean-coherence.yml",
-        "leanWorkflowRunId": 43494698574,
-        "leanCheckedMergeCommit": "2ea4de80738e1462c4366096359c9142a6a95eac",
-        "leanSourceHead": "b2602e2cf5aabd6ac45f23c7f865c1068096bed8",
+        "leanWorkflowRunId": 43495288333,
+        "leanCheckedMergeCommit": "2f03f73",
+        "leanSourceHead": "e80f4833de9478bd0fd5672a7333753609f40c0c",
         "lean": "4.19.0",
         "leanBuild": "success",
         "axiomAudit": {
           "root": "GovCheckCoherence.Proofs",
-          "declarationsAudited": 55,
+          "declarationsAudited": 43,
           "allowedAxioms": [
             "propext",
             "Classical.choice",
             "Quot.sound"
           ],
           "unapprovedAxioms": 0,
-          "sourceFragmentWrappersUsingPropext": 5
+          "sourceFragmentWrappersUsingPropext": 4,
+          "sourceFactsDirectTheoremsWithNoAxioms": 13
         }
       }
     }

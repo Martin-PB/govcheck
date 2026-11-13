@@ -267,6 +267,7 @@
 - **Workflow/credit boundary:** the current head has no associated Actions workflow runs and no commit statuses. No hosted workflow was triggered by the register/journal update.
 - **Disposition:** ready for human review, not merged and not normatively adopted. Issues #41/#86 remain open at their existing stages.
 
+<a id="wp-evt-000019"></a>
 ## WP-EVT-000019 — Rebased metamodel and journal integration candidates
 
 - **Subject:** `govcheck.work.intermodel-contract-conformance` and `govcheck.work.governance-revision-temporal-applicability`

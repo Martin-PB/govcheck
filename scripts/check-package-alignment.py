@@ -53,6 +53,7 @@ META_ONLY_WORKFLOWS = {
     "tla-model-reusable.yml",
     "version-governance.yml",
     "lean-coherence.yml",
+    "sacm-native-ingestion.yml",
     "cslib-compatibility.yml",
 }
 

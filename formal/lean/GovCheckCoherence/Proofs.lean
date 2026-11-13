@@ -197,7 +197,7 @@ theorem sacm_mapping_preserves_assertion_declaration
     {sacmClaim : SACM24.SACMClaim} {source target : MappingSubject}
     (mapping : SACM24.SACMClaimMapping sacmClaim source target) :
     mapping.sourceInterpretation.disposition =
-      SACM24.mapAssertionDeclaration (SACM24.effectiveDeclaration sacmClaim) :
+      SACM24.mapAssertionDeclaration (SACM24.effectiveDeclaration sacmClaim) :=
   SACM24.claim_interpretation_preserves_declaration mapping.sourceInterpretation
 
 /-- PDF Clause 13.6 includes needsSupport; this is a fragment-level fact,

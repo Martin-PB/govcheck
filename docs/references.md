@@ -1348,7 +1348,7 @@
 
 <a id="r-197"></a>
 ### R-197 — OMG SACM 2.4 Beta 1 normative machine-readable metamodel XML
-- **Cited by:** [SACM source-native metamodel ingestion](research/sacm-native-metamodel-ingestion.md), [SACM XMI structural inventory](research/sacm-xmi-structural-inventory.md), [Work portfolio event journal](work-portfolio/events.md)
+- **Cited by:** [SACM source-native metamodel ingestion](research/sacm-native-metamodel-ingestion.md), [SACM XMI structural inventory](research/sacm-xmi-structural-inventory.md), [SACM source-view alignment report](research/sacm24-source-view-alignment.md), [Work portfolio event journal](work-portfolio/events.md)
 - **Implementation artifacts:** [XMI inventory generator](../scripts/parse-sacm-xmi.py) · [committed inventory summary](../formal/sources/sacm-2.4-beta1/metamodel-inventory-summary.json).\n- **Primary source:** [OMG SACM specification catalogue](https://www.omg.org/spec/SACM) · [normative machine-readable metamodel XML](https://www.omg.org/spec/SACM/20260504/SACM2.4_Metamodel.xml) · OMG file ID `ptc/26-05-28`.
 - **Pinned identity:** SACM 2.4 Beta 1; source path dated 2026-05-04; native format XML; SHA-256 comparison value `0581dfa0b9dfaf17ff0f6c63b74f8e7a8396bea03f315e1334e94f23db110830`, as reported by R-128 and verified by GovCheck workflow run [43444619765](https://github.com/Martin-PB/govcheck/actions/runs/43444619765) against 524,243 downloaded source bytes.
 - **Relevant concepts:** normative machine-readable metamodel source, distinct from the normative PDF prose and informative UML Profile XMI.
@@ -1358,15 +1358,15 @@
 <a id="r-198"></a>
 ### R-198 — OMG SACM 2.4 Beta 1 normative specification PDF
 - **Cited by:** [SACM source-view alignment report](research/sacm24-source-view-alignment.md), [SACM 2.4 Beta 1 interoperability-risk report](research/sacm24-beta1-interoperability-risk.md), [Work portfolio event journal](work-portfolio/events.md)
-- **Primary source:** [OMG SACM specification catalogue](https://www.omg.org/spec/SACM) · [SACM 2.4 Beta 1 normative PDF](https://www.omg.org/spec/SACM/20260504/SACM2.4.pdf) · OMG file ID `ptc/26-06-34`.
-- **Pinned identity:** SACM 2.4 Beta 1; source path dated 2026-05-04; 161 pages; SHA-256 `25f32d1cd4bf32dfa9c92c7c1840e1a113b1e91c0e97252f6551878c39997ff5`, reported by the independent R-128 pinned fetch script. GovCheck has not yet independently downloaded and recomputed this PDF digest.
+- **Primary source:** [OMG SACM specification catalogue](https://www.omg.org/spec/SACM) · [SACM 2.4 Beta 1 normative PDF](https://www.omg.org/spec/SACM/2.4/Beta1/PDF) · OMG file ID `ptc/26-06-34`.
+- **Pinned identity:** SACM 2.4 Beta 1; source path dated 2026-05-04; 161 pages; SHA-256 `25f32d1cd4bf32dfa9c92c7c1840e1a113b1e91c0e97252f6551878c39997ff5`, reported by the independent R-128 pinned fetch script; the GovCheck workflow now downloads this exact official URL and checks the digest. Its result is recorded in the source-view alignment report.
 - **Relevant concepts:** normative specification prose, figures, clauses and annexes; source-fragment provenance for SACM 2.4 Beta 1 claims.
 - **Limit:** the PDF itself contains conflicting fragments; PDF text extraction does not capture all diagram-only labels. No fragment should be treated as a canonical PDF-wide statement without explicit scope.
 
 <a id="r-199"></a>
 ### R-199 — OMG SACM 2.4 Beta 1 informative UML Profile XMI
 - **Cited by:** [SACM source-view alignment report](research/sacm24-source-view-alignment.md), [SACM 2.4 Beta 1 interoperability-risk report](research/sacm24-beta1-interoperability-risk.md), [Work portfolio event journal](work-portfolio/events.md)
-- **Primary source:** [OMG SACM specification catalogue](https://www.omg.org/spec/SACM) · [SACM 2.4 Beta 1 informative UML Profile XMI](https://www.omg.org/spec/SACM/20260504/SACM2.4_Profile.xmi) · OMG file ID `ptc/26-05-21`.
+- **Primary source:** [OMG SACM specification catalogue](https://www.omg.org/spec/SACM) · [OMG SACM machine-readable files catalogue](https://www.omg.org/spec/SACM/machine-readable) · OMG file ID `ptc/26-05-21`.
 - **Pinned identity:** SACM 2.4 Beta 1; source path dated 2026-05-04; SHA-256 `9149a0414628e1b70c1f7c2235f5180c64e7a144601eb2ae78d539681918838b`, reported by the independent R-128 pinned fetch script. GovCheck has not yet independently downloaded and recomputed this XMI digest.
 - **Relevant concepts:** informative UML profile artifact, kept distinct from the normative metamodel XML (R-197) and normative specification PDF (R-198).
 - **Limit:** informative profile XMI is not the normative SACM metamodel XML and does not establish an instance interchange contract or semantic conformance.

@@ -72,12 +72,14 @@ This is **model-checking evidence**, not a theorem proof. It establishes that TL
 - non-bypassable enforcement by Git, Pijul, a forge or a deployment boundary;
 - correctness or adoption of the normative policy itself.
 
-The model deliberately holds the root authority constant. Authority succession/delegation and emergency recovery require separate decisions and extensions. The canonical event-order mechanism and persistent publication protocol also remain open.
+The model deliberately holds the root authority constant. Authority succession/delegation and emergency recovery require separate decisions and extensions. Subsequent technical work now proposes the canonical journal protocol in [Specification 0007](../specifications/0007-canonical-governance-journal-protocol.md) and checks a bounded recovery/rollback abstraction in [Architecture 0035](0035-canonical-journal-recovery-model.md). These later artifacts do not change this report's exact checked model or establish an implementation, multi-writer consensus or operational durability.
 
 ## 8. Related records
 
 - [Specification 0006 — Governance revision applicability](../specifications/0006-governance-revision-applicability.md)
 - [Specification 0003 — Change lifecycle](../specifications/0003-change-lifecycle.md)
+- [Specification 0007 — Canonical journal and VCS adapter protocol](../specifications/0007-canonical-governance-journal-protocol.md)
+- [Architecture 0035 — Canonical journal recovery model](0035-canonical-journal-recovery-model.md)
 - [Architecture 0023 — Bootstrap governance authority](0023-bootstrap-governance-authority.md)
 - [Issue #86 — Technical specification work](https://github.com/Martin-PB/govcheck/issues/86)
 - [Issue #41 — Parent authority decision](https://github.com/Martin-PB/govcheck/issues/41)

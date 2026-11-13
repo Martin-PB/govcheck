@@ -47,6 +47,7 @@
 | Metamodel coherence, semantic preservation and formal verification | R-123–R-127 |
 | Probabilistic assurance, fuzzy logic and state-transition models | R-193 |
 | Concurrent edits, semantic merge conflicts and multi-agent delivery | R-142–R-151 |
+| Canonical journal ordering, durable recovery and idempotent retry | R-194–R-196 |
 
 ## Full reference entries
 
@@ -131,7 +132,7 @@
 <a id="r-05"></a>
 
 ### R-05 — TLA+ and TLC
-- **Cited by:** [0007-technology-decision-framework](architecture/0007-technology-decision-framework.md), [0008-formalization-and-conformance](architecture/0008-formalization-and-conformance.md), [0009-govcheck-design-discussion-record](architecture/0009-govcheck-design-discussion-record.md), [0010-assurance-proof-and-conformance](architecture/0010-assurance-proof-and-conformance.md), [0011-lifecycle-model-assertion-audit](architecture/0011-lifecycle-model-assertion-audit.md), [0020-first-tlc-execution-record](architecture/0020-first-tlc-execution-record.md), [0021-assurance-claims-and-freshness](architecture/0021-assurance-claims-and-freshness.md), [0032-canonical-publication-model-checking](architecture/0032-canonical-publication-model-checking.md), [0033-governance-evaluator-exception-revocation-model](architecture/0033-governance-evaluator-exception-revocation-model.md), [0001-bootstrap-boundaries](decisions/0001-bootstrap-boundaries.md), [0002-study-placement](decisions/0002-study-placement.md), [0008-governance-applicability-arbitration-session](decisions/0008-governance-applicability-arbitration-session.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.md), [README](formal/README.md), [lifecycle-model](formal/lifecycle-model.md), [0003-change-lifecycle](specifications/0003-change-lifecycle.md), [0005-assurance-model](specifications/0005-assurance-model.md), [0006-governance-revision-applicability](specifications/0006-governance-revision-applicability.md)
+- **Cited by:** [0007-technology-decision-framework](architecture/0007-technology-decision-framework.md), [0008-formalization-and-conformance](architecture/0008-formalization-and-conformance.md), [0009-govcheck-design-discussion-record](architecture/0009-govcheck-design-discussion-record.md), [0010-assurance-proof-and-conformance](architecture/0010-assurance-proof-and-conformance.md), [0011-lifecycle-model-assertion-audit](architecture/0011-lifecycle-model-assertion-audit.md), [0020-first-tlc-execution-record](architecture/0020-first-tlc-execution-record.md), [0021-assurance-claims-and-freshness](architecture/0021-assurance-claims-and-freshness.md), [0032-canonical-publication-model-checking](architecture/0032-canonical-publication-model-checking.md), [0033-governance-evaluator-exception-revocation-model](architecture/0033-governance-evaluator-exception-revocation-model.md), [0035-canonical-journal-recovery-model](architecture/0035-canonical-journal-recovery-model.md), [0001-bootstrap-boundaries](decisions/0001-bootstrap-boundaries.md), [0002-study-placement](decisions/0002-study-placement.md), [0008-governance-applicability-arbitration-session](decisions/0008-governance-applicability-arbitration-session.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.md), [README](formal/README.md), [lifecycle-model](formal/lifecycle-model.md), [0003-change-lifecycle](specifications/0003-change-lifecycle.md), [0005-assurance-model](specifications/0005-assurance-model.md), [0006-governance-revision-applicability](specifications/0006-governance-revision-applicability.md), [0007-canonical-governance-journal-protocol](specifications/0007-canonical-governance-journal-protocol.md), [events](work-portfolio/events.md)
 
 - **Primary sources:** [Lamport's publications on TLA](https://www.microsoft.com/en-us/research/people/lamport/publications/) · [TLA+ project and documentation](https://lamport.azurewebsites.net/tla/tla.html)
 - **Academic reference:** Leslie Lamport, “The Temporal Logic of Actions,” ACM Transactions on Programming Languages and Systems, 16(3), 1994, pp. 872–923. [DOI](https://doi.org/10.1145/177492.177726)
@@ -293,7 +294,7 @@
 <a id="r-22"></a>
 
 ### R-22 — Native Git and Pijul semantics
-- **Cited by:** [0007](architecture/0007-technology-decision-framework.md), [0009](architecture/0009-govcheck-design-discussion-record.md), [0011](architecture/0011-lifecycle-model-assertion-audit.md), [0014](architecture/0014-governed-development-workflow.md), [0021](architecture/0021-assurance-claims-and-freshness.md), [ADR 0001](decisions/0001-bootstrap-boundaries.md), [Spec 0003](specifications/0003-change-lifecycle.md), [Spec 0004](specifications/0004-vcs-collaboration-contracts.md), [ADR 0002](decisions/0002-study-placement.md), [Formal lifecycle model](formal/lifecycle-model.md), [Spec 0006](specifications/0006-governance-revision-applicability.md), [ADR 0006](decisions/0006-vcs-forge-portability.md), [ADR 0008](decisions/0008-governance-applicability-arbitration-session.md), [Formal model index](formal/README.md), [Architecture 0032](architecture/0032-canonical-publication-model-checking.md)
+- **Cited by:** [0007](architecture/0007-technology-decision-framework.md), [0009](architecture/0009-govcheck-design-discussion-record.md), [0011](architecture/0011-lifecycle-model-assertion-audit.md), [0014](architecture/0014-governed-development-workflow.md), [0021](architecture/0021-assurance-claims-and-freshness.md), [ADR 0001](decisions/0001-bootstrap-boundaries.md), [Spec 0003](specifications/0003-change-lifecycle.md), [Spec 0004](specifications/0004-vcs-collaboration-contracts.md), [ADR 0002](decisions/0002-study-placement.md), [Formal lifecycle model](formal/lifecycle-model.md), [Spec 0006](specifications/0006-governance-revision-applicability.md), [ADR 0006](decisions/0006-vcs-forge-portability.md), [ADR 0008](decisions/0008-governance-applicability-arbitration-session.md), [Formal model index](formal/README.md), [Architecture 0032](architecture/0032-canonical-publication-model-checking.md), [Specification 0007](specifications/0007-canonical-governance-journal-protocol.md), [Architecture 0035](architecture/0035-canonical-journal-recovery-model.md), [Work portfolio events](work-portfolio/events.md)
 
 - **Primary sources:** [Git documentation](https://git-scm.com/docs) · [Pijul manual: theory](https://pijul.org/manual/theory) · [Pijul channels](https://pijul.org/manual/workflows/channels) · [Pijul conflicts](https://pijul.org/manual/conflicts.html) · [Pijul project](https://pijul.org/) · [Nest hosting service](https://nest.pijul.com/) · [Nest source repository](https://nest.pijul.com/pijul/nest/tree)
 - **Relevant concepts:** Git's snapshot/commit and tree model; Pijul's change/patch graph, channels and first-class conflicts; Nest as a Pijul repository-hosting platform.
@@ -1046,7 +1047,7 @@
 
 <a id="r-107"></a>
 ### R-107 — GitHub Actions workflow location and syntax
-- **Cited by:** [ADR 0003](decisions/0003-two-level-governance.md)
+- **Cited by:** [ADR 0003](decisions/0003-two-level-governance.md), [Work portfolio event journal](work-portfolio/events.md), [Work-item register](work-portfolio/work-items.md)
 - **Primary sources:** [GitHub Actions workflow syntax](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax) · [GitHub Actions workflow concepts](https://docs.github.com/en/actions/concepts/workflows-and-actions/workflows)
 - **Relevant concepts:** GitHub Actions workflow definitions are YAML files stored under the repository-root `.github/workflows/` directory; GitHub discovers workflow files from that location and evaluates them against repository events.
 - **Use in GovCheck:** supports the ADR 0003 constraint that reusable product-package content cannot by itself relocate a GitHub Actions workflow: the bootstrap/synchronization process must materialize the workflow at the required repository-root path.
@@ -1320,3 +1321,27 @@
 - **Relevant concepts:** finite-state transition systems; discrete- and continuous-time Markov chains; Markov decision processes; probabilistic timed automata; transition rates, probabilities, costs and rewards; Bayesian reliability assessment; interval-valued transition probabilities; fuzzy membership and imprecise requirements; quantitative confidence in assurance arguments.
 - **Use in GovCheck:** supports the study of optional specialist profiles for probabilistic and fuzzy reasoning and of a generic transition-analysis contract linking semantics, parameters, provenance, analysis specifications/results and assurance claims.
 - **Limit:** the sources describe distinct mathematical semantics and tools. A transition weight is not necessarily a probability; a fuzzy membership degree is not a probability; a model-checking result is bounded by its model and assumptions. Quantitative confidence techniques require critical evaluation and empirical validation. These sources do not establish adoption or implementation by GovCheck.
+
+<a id="r-194"></a>
+### R-194 — Linearizability: A Correctness Condition for Concurrent Objects
+- **Cited by:** [Specification 0007](specifications/0007-canonical-governance-journal-protocol.md), [Decision-session record 0008](decisions/0008-governance-applicability-arbitration-session.md), [Work portfolio event journal](work-portfolio/events.md), [Work-item register](work-portfolio/work-items.md)
+- **Primary source:** Maurice P. Herlihy and Jeannette M. Wing, “Linearizability: A Correctness Condition for Concurrent Objects,” *ACM Transactions on Programming Languages and Systems*, 12(3), 1990, pp. 463–492. [DOI](https://doi.org/10.1145/78969.78972) · [Author-hosted paper](https://www.cs.cmu.edu/~wing/publications/HerlihyWing90.pdf)
+- **Relevant concepts:** concurrent operations appear to take effect at one point between invocation and response while respecting a legal sequential specification.
+- **Use in GovCheck:** provides the formal concurrency concept behind the journal's single linearization point for compare-and-append.
+- **Limit:** linearizability is a correctness condition, not a storage implementation or a proof that a particular journal satisfies it.
+
+<a id="r-195"></a>
+### R-195 — ARIES write-ahead logging and transaction recovery
+- **Cited by:** [Specification 0007](specifications/0007-canonical-governance-journal-protocol.md), [Decision-session record 0008](decisions/0008-governance-applicability-arbitration-session.md), [Work portfolio event journal](work-portfolio/events.md), [Work-item register](work-portfolio/work-items.md)
+- **Primary source:** C. Mohan, Don Haderle, Bruce Lindsay, Hamid Pirahesh and Peter Schwarz, “ARIES: A Transaction Recovery Method Supporting Fine-Granularity Locking and Partial Rollbacks Using Write-Ahead Logging,” *ACM Transactions on Database Systems*, 17(1), 1992. [IBM Research publication](https://research.ibm.com/publications/aries-a-transaction-recovery-method-supporting-fine-granularity-locking-and-partial-rollbacks-using-write-ahead-logging)
+- **Relevant concepts:** write-ahead logging, durable transaction recovery, redo/undo and restart recovery.
+- **Use in GovCheck:** informs the distinction between volatile preparation, durable commit and reconstruction after interruption.
+- **Limit:** ARIES is a database recovery algorithm; citing it does not select a database, imply direct adoption, or prove the GovCheck journal's durability.
+
+<a id="r-196"></a>
+### R-196 — RFC 9110, HTTP Semantics: idempotent methods
+- **Cited by:** [Specification 0007](specifications/0007-canonical-governance-journal-protocol.md), [Decision-session record 0008](decisions/0008-governance-applicability-arbitration-session.md), [Work portfolio event journal](work-portfolio/events.md), [Work-item register](work-portfolio/work-items.md)
+- **Primary source:** [RFC 9110 §9.2.2 — Idempotent Methods](https://www.rfc-editor.org/rfc/rfc9110.html#section-9.2.2)
+- **Relevant concepts:** repeatable requests have the same intended effect as one request, enabling safe retry after a lost response when the operation semantics are idempotent.
+- **Use in GovCheck:** informs the protocol distinction between retrying an exact append request and accidentally creating a second normative event.
+- **Limit:** HTTP method semantics do not define GovCheck's idempotency-key namespace, journal retention or append protocol; those remain specified locally.

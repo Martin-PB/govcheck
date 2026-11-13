@@ -359,11 +359,20 @@ structure SourceMultiplicity where
 
 namespace SourceFacts
 
-/-- Clause 13.9 PDF text versus normative metamodel XML. -/
-def pdfClaimValueType : String := "MultiLangString"
+/-- PDF Figure 15.1.1 (printed page 59) shows Claim.value as ExpressionLangString.
+    The normative metamodel XML declares the same type. The R-128 audit reports
+    MultiLangString for Clause 13.9, but that transcription has not yet been
+    corroborated against the cited passage and is not promoted to a source fact. -/
+def pdfFigure15_1_1ClaimValueType : String := "ExpressionLangString"
 def xmlClaimValueType : String := "ExpressionLangString"
+def r128ReportedClaimValueType : String := "MultiLangString"
 
-theorem claim_value_type_conflict : pdfClaimValueType ≠ xmlClaimValueType := by
+theorem claim_value_type_agrees_in_pdf_figure15_1_1_and_xml :
+    pdfFigure15_1_1ClaimValueType = xmlClaimValueType := by
+  decide
+
+theorem r128_reported_claim_value_type_differs_from_inspected_pdf_figure :
+    r128ReportedClaimValueType ≠ pdfFigure15_1_1ClaimValueType := by
   decide
 
 /-- PDF clause 13.13 versus the metamodel XML AssertedEvidence.evidence. -/

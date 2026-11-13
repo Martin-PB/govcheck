@@ -7,7 +7,7 @@
 
 ## 1. Objectif et périmètre
 
-Ce contrat transforme la première expérimentation recommandée en obligations réfutables. Il ne cherche pas à formaliser d'un seul coup l'intégralité de SACM, SEON/ReqON, OWL ou GovCheck. Il vérifie une frontière sémantique critique : **une correspondance d'interopérabilité ne doit pas renforcer le statut épistémique d'un élément probant du seul fait de sa traduction**.
+Ce contrat transforme la première expérimentation recommandée en obligations réfutables. Il ne cherche pas à formaliser d'un seul coup l'intégralité de SACM, SEON/ReqON, OWL ou GovCheck. Il vérifie une première frontière sémantique : **une correspondance d'interopérabilité ne doit pas renforcer le statut épistémique d'un élément probant du seul fait de sa traduction**. Il ne s'agit que de la première tranche réfutable de l'exigence universelle GovCheck : toute correspondance sémantique utilisée dans un raisonnement doit disposer d'une démonstration formelle vérifiée de la relation exacte revendiquée. Ce prototype ne satisfait pas à lui seul l'obligation pour les autres classes de mapping.
 
 Le prototype est volontairement réparti entre trois artefacts :
 
@@ -117,7 +117,7 @@ Ne pas décider que « CSLib est obligatoire » en fonction de sa réputation ou
 
 Le commit `main` de CSLib examiné est `f8acdb37c713b0124ad36b863f50c200a5f1cdba`, qui épingle Lean 4.36.0-rc2 et le commit Mathlib `887bb849a9f64e1c66499fd5ff8523c864e78941`. Ce prototype épingle Lean 4.19.0. Une dépendance directe ne peut donc pas être ajoutée sans changement de chaîne d'outils. La prochaine expérimentation doit soit identifier une révision CSLib compatible avec Lean 4.19, soit isoler un profil CSLib avec sa propre chaîne d'outils épinglée. Ne pas mettre à niveau silencieusement le noyau déjà vérifié.
 
-Si CSLib fournit une formalisation saine et réutilisable d'un concept sémantique requis, le réemploi doit être préféré à une duplication indépendante. Dans le cas contraire, définir le plus petit concept spécifique à GovCheck et prouver sa relation au modèle source pertinent. Ce n'est pas une règle d'optionalité générale : **l'obligation d'assurance est impérative pour les correspondances critiques ; le choix de la bibliothèque repose sur les éléments établis**.
+Si CSLib fournit une formalisation saine et réutilisable d'un concept sémantique requis, le réemploi doit être préféré à une duplication indépendante. Dans le cas contraire, définir le plus petit concept spécifique à GovCheck et prouver sa relation au modèle source pertinent. **L'obligation de démonstration formelle s'applique à toute correspondance sémantique utilisée dans un raisonnement GovCheck, et pas uniquement aux mappings qualifiés de critiques.** Le choix de la bibliothèque, de l'assistant de preuve et du vérificateur reste fondé sur les éléments établis et doit satisfaire aux exigences déclarées du socle de confiance.
 
 ## 7. Critère d'achèvement du prototype
 
@@ -151,7 +151,7 @@ Il s'agit d'un écart concret entre artefacts pour #73/#79, et non d'une autoris
 
 ## 10. Décision toujours réservée
 
-Ce contrat est une expérimentation proposée. Il ne sélectionne pas Lean/CSLib comme dépendance universelle des dépôts adoptants, n'adopte pas une ontologie GovCheck, ne remplace pas la sémantique native de SACM et n'autorise aucune dégradation des obligations de preuve. L'autorité devra décider du profil de preuve obligatoire après examen du coût réel, de la couverture et du socle de confiance du prototype.
+Ce contrat est une expérimentation proposée. Il ne sélectionne pas Lean/CSLib comme dépendance universelle des dépôts adoptants, n'adopte pas une ontologie GovCheck, ne remplace pas la sémantique native de SACM et n'autorise aucune dégradation des obligations de preuve. L'obligation universelle de démontrer toute correspondance sémantique utilisée dans le raisonnement est un principe de conception désormais arrêté pour cette proposition ; l'autorité doit encore décider du vérificateur de confiance, du profil de preuve, de l'empaquetage, de la reproductibilité et de la distribution après examen du coût réel, de la couverture et du socle de confiance du prototype.
 
 
 ## Résultats effectifs du prototype

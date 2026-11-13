@@ -65,7 +65,7 @@ It does **not** provide:
 
 CSLib's Boole direction is evolving. Its contributor documentation says source translations may initially be ad hoc and trusted; proving semantic preservation is a longer-term goal, and the deep-embedding backend is not fully foundational. A proof establishes a theorem from the supplied formal definitions, axioms and assumptions; it does not prove that the model faithfully represents the repository, policy, deployed implementation or real world.
 
-**Recommendation:** do not make CSLib mandatory at this stage. If a high-value semantic contract cannot be adequately checked by schema/contract tests, prototype a small Lean/CSLib formalization behind an optional adapter. Pin its revision and record toolchain, imports, axioms, assumptions and trusted base.
+**Recommendation:** do not make CSLib a universal dependency merely by default. However, schema/contract tests cannot replace the formal demonstration required for every semantic correspondence used in reasoning. Where CSLib provides a fitting, audited formalization, prefer reuse; otherwise develop the smallest suitable formalization in a trusted system. Pin revisions and record toolchain, imports, axioms, assumptions and trusted base.
 
 Sources: [R-118](../references.md#r-118), [CSLib repository](https://github.com/leanprover/cslib), [organization](https://github.com/leanprover/cslib/blob/main/ORGANISATION.md), [contributor guidance](https://github.com/leanprover/cslib/blob/main/CONTRIBUTING.md), [roadmap](https://www.cslib.io/roadmap/).
 

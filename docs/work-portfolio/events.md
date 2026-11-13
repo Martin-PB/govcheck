@@ -357,3 +357,20 @@
 - **Formal mapping inventory:** the bilingual report identifies the existing manually authored Lean correspondences and their typed proof declarations for Claim identity, subject/revision, AssertionDeclarationKind and inference kinds. The Lean library/axiom audit was already checked in the merged #125 revision (run [43442307871](https://github.com/Martin-PB/govcheck/actions/runs/43442307871)); PR #126 does not claim a new parser-refinement theorem.
 - **Remaining work:** source-derived MOF/XMI metaclass/property/association/constraint inventory, parser-to-inventory refinement, native SACM instance interchange, complete source-derived correspondence proofs and SACM conformance. Beta 1 remains in-process; SACM 2.3 remains formal.
 - **Normative boundary:** this is a bounded implementation increment, not adoption of SACM 2.4 or the complete GovCheck metamodel. Issue #73 remains open.
+
+
+<a id="wp-evt-000025"></a>
+## WP-EVT-000025 — SACM 2.4 Beta 1 source-derived XMI structural inventory
+
+- **Subject:** `govcheck.work.intermodel-contract-conformance`
+- **Event type:** `source-derived-structural-inventory-implemented`
+- **Recorded:** 2026-11-13
+- **Dependency state:** PR #126 was confirmed merged directly through GitHub (`merged=true`, merge commit `3fa19c708fdbc0b53aaa2dde521a59e14d82a9f6`) before this increment began.
+- **Source:** OMG SACM 2.4 Beta 1 metamodel XML, R-197, file ID `ptc/26-05-28`, source revision `2026-05-04`, SHA-256 `0581dfa0b9dfaf17ff0f6c63b74f8e7a8396bea03f315e1334e94f23db110830`, 524,243 bytes. The exact source payload was retrieved from the successful PR #126 workflow artifact and checked again by the local parser.
+- **Implementation:** `scripts/parse-sacm-xmi.py` parses the pinned XMI/XML with Python's standard library; it records all 1,616 unique `xmi:id` elements, ordered child structure, attributes and containment, plus typed structural indexes for packages, classifiers, associations, properties, generalizations, constraints and explicit reference edges. It rejects digest mismatch, malformed XML, duplicate IDs and DTD/entity declarations.
+- **Observed structural counts:** 19 UML packages plus one UML Profile; 121 classes; 121 associations; 355 properties; 167 generalizations; 8 enumerations / 37 literals; 40 constraints; 157 comments; 2 data types; 40 opaque expressions; 3 opaque behaviors. The inventory records 1,434 explicit reference edges: 1,371 resolve internally, 63 remain external `href` references, and zero recognized internal references are unresolved.
+- **Committed review summary:** `formal/sources/sacm-2.4-beta1/metamodel-inventory-summary.json`. Full generated inventory is emitted as a workflow artifact rather than committed as a large generated JSON file.
+- **Documentation:** [EN](../research/sacm-xmi-structural-inventory.md) / [FR](../research/sacm-xmi-structural-inventory.fr.md), plus updated [source-native ingestion report](../research/sacm-native-metamodel-ingestion.md) / [rapport français](../research/sacm-native-metamodel-ingestion.fr.md). R-197/R-128 backlinks, artifact catalogue and bilingual work-item registers updated.
+- **Local verification:** seven synthetic parser tests passed. The official source payload was parsed locally and the generated summary matches the committed summary. PR workflow is configured to repeat both test suites, download and digest-check the official source, regenerate the full inventory, compare the summary byte-for-byte and publish source plus inventory; final workflow results are pending on this PR head.
+- **Semantic boundary:** this is structural extraction only. It does not interpret UML/MOF/OCL semantics, resolve external href targets, reconcile the conflicting SACM 2.4 PDF view, prove parser refinement, validate the existing Lean SACM slice, or create a GovCheck semantic mapping. SACM 2.4 Beta 1 remains in-process/informational; SACM 2.3 remains formal.
+- **Normative boundary:** no SACM conformance or metamodel adoption is claimed. Issue #73 remains open.

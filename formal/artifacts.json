@@ -271,6 +271,47 @@
           "AppendOnly"
         ]
       }
+    },
+    {
+      "artifactId": "govcheck.sacm24-source-structural-inventory",
+      "kind": "source-structural-inventory",
+      "title": "SACM 2.4 Beta 1 source-revision-bound XMI/UML structural inventory",
+      "source": "scripts/parse-sacm-xmi.py",
+      "generatedSummary": "formal/sources/sacm-2.4-beta1/metamodel-inventory-summary.json",
+      "generatedFullInventory": "workflow-artifact:metamodel-inventory.json",
+      "documentation": {
+        "en": "docs/research/sacm-xmi-structural-inventory.md",
+        "fr": "docs/research/sacm-xmi-structural-inventory.fr.md"
+      },
+      "sourceReference": "R-197",
+      "sourceIdentity": {
+        "specification": "OMG SACM 2.4 Beta 1",
+        "fileId": "ptc/26-05-28",
+        "revision": "2026-05-04",
+        "sha256": "0581dfa0b9dfaf17ff0f6c63b74f8e7a8396bea03f315e1334e94f23db110830",
+        "byteLength": 524243
+      },
+      "revisionPolicy": "repository-history",
+      "releaseBinding": "release-tag-and-commit",
+      "status": "source-revision-bound; structurally-indexed; summary-generated-and-checked; no-semantic-mapping",
+      "verification": {
+        "workflow": ".github/workflows/sacm-native-ingestion.yml",
+        "result": "pending-on-this-PR-head",
+        "checks": [
+          "seven-synthetic-parser-tests",
+          "official-source-digest-verification",
+          "full-inventory-generation",
+          "committed-summary-byte-comparison"
+        ]
+      },
+      "limitations": [
+        "structural XMI/UML inventory only; no UML/MOF semantic interpreter",
+        "63 external href references are retained but not resolved",
+        "zero unresolved internal references applies only to recognized reference attributes in this pinned document",
+        "no parser refinement theorem or source-to-GovCheck semantic correspondence",
+        "known SACM 2.4 Beta 1 PDF/XML conflicts remain unresolved",
+        "no SACM instance interchange or conformance claim"
+      ]
     }
   ]
 }

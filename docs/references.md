@@ -1358,7 +1358,7 @@
 
 <a id="r-198"></a>
 ### R-198 — OMG SACM 2.4 Beta 1 normative specification PDF
-- **Cited by:** [SACM source-view alignment report](research/sacm24-source-view-alignment.md), [SACM 2.4 Beta 1 interoperability-risk report](research/sacm24-beta1-interoperability-risk.md), [Work portfolio event journal](work-portfolio/events.md)
+- **Cited by:** [SACM source-view alignment report](research/sacm24-source-view-alignment.md)
 - **Primary source:** [OMG SACM specification catalogue](https://www.omg.org/spec/SACM) · [SACM 2.4 Beta 1 normative PDF](https://www.omg.org/spec/SACM/2.4/Beta1/PDF) · OMG file ID `ptc/26-06-34`.
 - **Pinned identity:** SACM 2.4 Beta 1; source path dated 2026-05-04; 161 pages; SHA-256 `25f32d1cd4bf32dfa9c92c7c1840e1a113b1e91c0e97252f6551878c39997ff5`, reported by the independent R-128 pinned fetch script; the GovCheck workflow is configured to download this exact official URL and check the digest; the result is pending on the current PR head.
 - **Relevant concepts:** normative specification prose, figures, clauses and annexes; source-fragment provenance for SACM 2.4 Beta 1 claims.

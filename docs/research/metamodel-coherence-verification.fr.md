@@ -8,9 +8,9 @@
 
 L'objectif n'est pas seulement de contrôler la syntaxe des fichiers d'ontologie. GovCheck doit obtenir des éléments d'assurance défendables montrant que (a) chaque modèle source est cohérent selon sa sémantique déclarée, (b) les mappings préservent le sens qu'ils prétendent préserver, (c) l'intégration n'introduit ni contradiction ni conséquence imprévue, et (d) les règles temporelles de gouvernance restent valides lorsque les artefacts, hypothèses, autorités et décisions changent.
 
-**Recommandation :** utiliser une architecture de vérification en couches, avec des contrats formels vérifiés par machine pour les ponts sémantiques critiques comme exigence d'assurance obligatoire, sans imposer un outil monolithique pour tous les contrôles. Lean est le candidat pour le noyau de preuve des théorèmes du pont ; CSLib doit être réutilisé lorsque ses formalismes conviennent, sans présumer qu'il contient toute la théorie GovCheck. Les raisonneurs OWL, SHACL, tests de contrats exécutables, recherche de contre-exemples et model checking temporel complètent la preuve. La chaîne obligatoire précise reste à arbitrer après prototype.
+**Recommandation :** exiger une démonstration formelle vérifiée par machine pour toute correspondance sémantique que GovCheck utilise dans un raisonnement. L'obligation de preuve est universelle ; le théorème dépend de la relation revendiquée et doit préciser les sémantiques, le contexte, les hypothèses, le périmètre, les révisions source/cible et la propriété de préservation. Une équivalence exige les deux directions ; inclusion, raffinement, traduction et correspondance partielle exigent leurs propres obligations précisément formulées. Les propositions non démontrées peuvent être conservées comme connaissances non résolues, mais sont exclues du raisonnement établi. Utiliser une architecture de vérification en couches : Lean est un environnement candidat, CSLib une source candidate de formalisations réutilisables ; les raisonneurs/validateurs natifs, tests et recherches de contre-exemples fournissent des éléments complémentaires. Le vérificateur de confiance, le format des paquets de preuve et leur distribution restent à décider.
 
-Pour les affirmations critiques d'interopérabilité, les obligations de preuve devraient être obligatoires. L'obligation d'installer Lean dans chaque dépôt adoptant est une décision distincte : un dépôt pourrait consommer un paquet de preuves épinglé, reproductible et vérifiable indépendamment, mais ne doit pas remplacer silencieusement une preuve requise par un test.
+L'installation locale de Lean dans chaque dépôt adoptant est une décision de distribution distincte : un dépôt peut consommer un paquet de preuves épinglé, reproductible et vérifiable indépendamment. Ce choix de distribution ne peut affaiblir l'obligation universelle : aucune correspondance sémantique ne peut être utilisée comme établie dans un raisonnement GovCheck sans sa démonstration formelle vérifiée.
 
 ## 2. Décomposer la cohérence en obligations explicites
 
@@ -92,7 +92,7 @@ Sources : [système de preuve TLA+](https://proofs.tlapl.us/doc/web/content/Home
 
 La recherche en ingénierie dirigée par les modèles étudie la vérification par combinaison de règles de transformation, propriétés recherchées et techniques. Epsilon EVL vérifie des contraintes intra- et intermodèles. Alloy cherche des contre-exemples relationnels dans des portées finies. Ces outils sont utiles pour détecter les erreurs tôt, mais une recherche bornée n'est pas une preuve non bornée.
 
-Les utiliser pour produire des contre-exemples et fixtures de régression, puis formaliser les lois de mapping critiques en Lean ou annoncer explicitement les bornes d'un résultat exhaustif.
+Les utiliser pour produire des contre-exemples et fixtures de régression ; formaliser la propriété exacte de préservation de chaque mapping sémantique utilisé dans le raisonnement. Les résultats exhaustifs finis restent bornés et ne remplacent pas une preuve générale, sauf si l'énoncé revendiqué est lui-même fini et borné.
 
 Sources : [Calegari et Szasz, revue](https://doi.org/10.1016/j.entcs.2013.02.002), [Epsilon EVL](https://eclipse.dev/epsilon/doc/evl/), [analyseur Alloy](https://alloy.readthedocs.io/en/latest/tooling/analyzer.html).
 
@@ -166,15 +166,16 @@ Modéliser adoption, délégation, révocation, portée, périodes d'effet et r�
 
 | Question | Recommandation |
 |---|---|
-| Faut-il assurer la cohérence sémantique critique ? | **Oui.** Exigence d'assurance de premier rang. |
-| Chaque contrôle doit-il utiliser Lean ? | Non. Choisir la méthode la plus forte adaptée ; les obligations des mappings critiques doivent être explicites et vérifiées par machine lorsque faisable. |
+| Toute correspondance sémantique utilisée dans le raisonnement doit-elle être démontrée ? | **Oui.** Sans démonstration formelle vérifiée, la correspondance n'est pas une prémisse établie. |
+| Chaque correspondance doit-elle être une équivalence ? | Non. Démontrer la relation exacte revendiquée : équivalence, direction, raffinement, traduction ou préservation partielle. |
+| Chaque contrôle doit-il utiliser Lean ? | Aucun outil unique n'est sélectionné ici. L'obligation de preuve est impérative ; le système formel de confiance et le profil de distribution restent des choix de mise en œuvre. |
 | CSLib suffit-elle ? | Non. Réutiliser les formalismes pertinents et prouver la sémantique GovCheck manquante. |
 | La logique temporelle suffit-elle ? | Non. Elle sert à l'évolution, à la validité temporelle et à l'invalidation, pas au raisonnement statique universel. |
-| Remplacer OWL/SHACL par Lean ? | Non. Conserver les vérificateurs natifs et prouver les affirmations critiques du pont. |
+| Remplacer OWL/SHACL par Lean ? | Non. Conserver les raisonneurs/validateurs natifs pour leurs obligations propres ; ils ne remplacent pas la preuve formelle d'une correspondance utilisée dans le raisonnement GovCheck. |
 | Les tests remplacent-ils une preuve manquante ? | Non. Tout déclassement doit déclarer la lacune et être autorisé. |
 | Architecture adoptée ? | Non. Proposition de prototype à examiner. |
 
-L'approche la plus solide est une **vérification hétérogène avec pont formellement spécifié** : raisonneurs/validateurs sources, recherche de contre-exemples et fixtures, preuves Lean/CSLib pour les lois critiques des mappings et model checking temporel pour l'évolution de la gouvernance. Aucun outil seul ne démontre toutes les formes de cohérence.
+L'approche la plus solide est une **vérification hétérogène avec correspondances sémantiques porteuses de preuve** : raisonneurs et validateurs sources pour les propriétés natives ; Lean/CSLib ou un autre système formel de confiance pour le théorème exact attaché à chaque correspondance utilisée dans le raisonnement ; recherche de contre-exemples et fixtures ; model checking temporel pour l'évolution de la gouvernance. Aucun outil seul ne démontre toutes les formes de cohérence, et aucun mapping n'acquiert de force déductive parce qu'un validateur ou un test a réussi.
 
 ## 8. Backlog existant et critères de sortie
 
@@ -186,7 +187,7 @@ Pas de nouvel épique :
 - **#81 :** formalisation du cycle de vie et de l'invalidation.
 - **#83 :** provenance des références, versions sources et liens retour.
 
-Critères de sortie du premier prototype : trois tranches verticales ; contrôles propres aux sources ; au moins un théorème Lean sur un invariant intermodèle réel ; un contre-exemple délibéré ; contrôles temporels d'invalidation/preuves périmées ; paquet d'assurance reproductible ; base de confiance documentée ; décision sur les obligations de preuve obligatoires.
+Critères de sortie du premier prototype : trois tranches verticales ; contrôles propres aux sources ; au moins une correspondance intermodèle réelle formellement démontrée, avec relation et périmètre exacts ; un contre-exemple délibéré ; contrôles temporels d'invalidation/preuves périmées ; paquet d'assurance reproductible ; base de confiance documentée. Le prototype valide la première tranche seulement ; il ne satisfait pas à lui seul l'obligation universelle pour les autres types de mapping et profils.
 
 ## 9. Contrat concret de la première tranche
 

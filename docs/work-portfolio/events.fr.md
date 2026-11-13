@@ -55,3 +55,14 @@ L'artefact [sacm-2.4-beta1-source-capture](https://github.com/Martin-PB/govcheck
 Les correspondances typées Lean existantes sont recensées dans la recherche bilingue, mais elles restent manuellement encodées et non dérivées du parseur XML. L'inventaire MOF/XMI, le raffinement du parseur, l'interchange d'instances et les preuves de correspondances dérivées de la source restent à réaliser. La bêta 2.4 demeure en cours de traitement ; SACM 2.3 reste formelle. L'issue #73 reste ouverte.
 
 Détail canonique : [journal anglais WP-EVT-000024](events.md#wp-evt-000024).
+
+
+## Dernier événement — WP-EVT-000025
+
+L'incrément suivant la fusion de la PR #126 produit un inventaire structurel XMI lié à la source officielle OMG SACM 2.4 Beta 1 épinglée par digest. Le parseur `scripts/parse-sacm-xmi.py` recense 1 616 identifiants XMI uniques, 19 packages UML et un profil, 121 classes, 121 associations, 355 propriétés, 167 généralisations, 8 énumérations (37 littéraux), 40 contraintes, 157 commentaires, 2 types de données, 40 expressions opaques et 3 comportements opaques.
+
+Il enregistre 1 434 références explicites : 1 371 références internes résolues, 63 références externes `href` conservées sans résolution et aucune référence interne non résolue parmi les attributs reconnus. La synthèse générée est versionnée dans [`metamodel-inventory-summary.json`](../..//formal/sources/sacm-2.4-beta1/metamodel-inventory-summary.json). L'inventaire complet sera publié comme artefact du workflow ; il n'est pas ajouté au dépôt comme volumineux fichier généré.
+
+Sept tests synthétiques du parseur réussissent localement et la synthèse produite depuis le payload officiel récupéré correspond à la synthèse versionnée. Le workflow de PR doit encore répéter ces contrôles sur GitHub. Aucune interprétation UML/MOF/OCL, résolution des références externes, preuve de raffinement, réconciliation PDF/XML ou correspondance sémantique vers GovCheck n'est revendiquée. L'issue #73 reste ouverte.
+
+Détail canonique : [journal anglais WP-EVT-000025](events.md#wp-evt-000025).

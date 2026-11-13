@@ -38,7 +38,7 @@ Il ne s'agit pas d'affirmer que le fichier XML de l'OMG est invalide. Il faut di
 
 ## 4. Empreintes des artefacts épinglées par l'audit
 
-Le script de récupération d'Assurance Forge enregistre les empreintes SHA-256 suivantes pour les quatre artefacts OMG Beta 1 officiels téléchargés le 02/10/2026. GovCheck n'a pas encore retéléchargé ces fichiers ni recalculé leurs empreintes de manière indépendante ; il s'agit de valeurs de comparaison, pas d'empreintes vérifiées par GovCheck.
+Le script de récupération d'Assurance Forge enregistre les empreintes SHA-256 de comparaison de quatre artefacts OMG Beta 1 officiels téléchargés le 02/10/2026. GovCheck a téléchargé et vérifié indépendamment le PDF normatif de spécification (9 019 601 octets) et le XML normatif du métamodèle (524 243 octets) dans le workflow [43494908580](https://github.com/Martin-PB/govcheck/actions/runs/43494908580) ; les deux payloads sources exacts sont conservés dans l'artefact [14071002816](https://github.com/Martin-PB/govcheck/actions/runs/43494908580/artifacts/14071002816). Le PDF avec barres de modification et le XMI informatif du profil UML ne sont pas encore vérifiés par GovCheck.
 
 | Artefact OMG | Identifiant de fichier | SHA-256 rapporté par Assurance Forge |
 |---|---|---|
@@ -76,7 +76,7 @@ Tant que l'OMG n'a pas publié une version formelle stable de SACM 2.4 ou une b�
 Le [rapport d'alignement des vues source](sacm24-source-view-alignment.fr.md) est un relevé de comparaison lié aux révisions source, pas une décision de priorité.
 
 - Obtenir et épingler les quatre artefacts OMG Beta 1 avec les URL officielles et comparer leurs empreintes à celles enregistrées par l'audit indépendant.
-- Exécuter le diff structurel texte/XML de GovCheck et étendre le modèle Lean source-view aux autres conflits : multiplicité AssertedEvidence, type de Claim.value, héritage BindingPackage, multiplicité abstraction et multiplicité isCounter.
+- Valider la transcription humaine de chaque fragment PDF/XML par rapport aux octets source épinglés ; les théorèmes Lean actuels prouvent des différences entre constantes transcrites, pas l'exactitude des transcriptions. Construire un pipeline explicite d'extraction/réconciliation avant de revendiquer une couverture automatisée du diff PDF/XML.
 - Construire des fixtures négatives où la vue source et la déclaration/l'identité/multiplicité divergent ; chaque cas doit être rejeté ou explicitement représenté comme conflit.
 - Seulement lorsqu'un format d'instance portable et des fichiers d'exemple existeront, construire un corpus de tests aller-retour d'import/export natif.
 - Revoir le mapping lorsque l'OMG publiera Beta 2 ou la spécification formelle SACM 2.4.

@@ -42,3 +42,16 @@ L'artefact [sacm-2.4-beta1-source-capture](https://github.com/Martin-PB/govcheck
 Les correspondances typées Claim/Assertion/inférence déjà présentes dans Lean sont recensées dans les deux documents de recherche. Elles restent écrites manuellement et ne sont pas encore dérivées ni validées par le parseur XML. L'inventaire MOF/XMI, le raffinement du parseur, l'import/export d'instances et la conformité SACM restent ouverts.
 
 Détail canonique : [journal anglais WP-EVT-000023](events.md#wp-evt-000023).
+
+
+## Dernier événement — WP-EVT-000024
+
+La [PR #126](https://github.com/Martin-PB/govcheck/pull/126) est ouverte, non brouillon et fusionnable ; aucune fusion n'a été effectuée. La tête vérifiée au moment de cet enregistrement est `7f3c68f0c710392fa5de5c7a180661f60b0b0500`.
+
+La source officielle retenue est le XML normatif lisible par machine du métamodèle OMG SACM 2.4 Beta 1, fichier `ptc/26-05-28`, révision source `SACM/20260504/SACM2.4_Metamodel.xml` ([R-197](../references.fr.md#r-197), provenance de comparaison [R-128](../references.fr.md#r-128)). Le workflow [43444799397](https://github.com/Martin-PB/govcheck/actions/runs/43444799397) a réussi cinq tests unitaires, le téléchargement officiel et le contrôle du digest sur 524 243 octets : `0581dfa0b9dfaf17ff0f6c63b74f8e7a8396bea03f315e1334e94f23db110830`.
+
+L'artefact [sacm-2.4-beta1-source-capture](https://github.com/Martin-PB/govcheck/actions/runs/43444799397/artifacts/14046408461), ID `14046408461`, contient le XML exact `source.xml`, le manifeste et l'index structurel. Les contrôles d'intégrité des références [43444799378](https://github.com/Martin-PB/govcheck/actions/runs/43444799378), d'alignement du package [43444799366](https://github.com/Martin-PB/govcheck/actions/runs/43444799366) et le contrôle GovCheck en mode rapport seul [43444799488](https://github.com/Martin-PB/govcheck/actions/runs/43444799488) ont également réussi.
+
+Les correspondances typées Lean existantes sont recensées dans la recherche bilingue, mais elles restent manuellement encodées et non dérivées du parseur XML. L'inventaire MOF/XMI, le raffinement du parseur, l'interchange d'instances et les preuves de correspondances dérivées de la source restent à réaliser. La bêta 2.4 demeure en cours de traitement ; SACM 2.3 reste formelle. L'issue #73 reste ouverte.
+
+Détail canonique : [journal anglais WP-EVT-000024](events.md#wp-evt-000024).

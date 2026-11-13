@@ -28,6 +28,6 @@ La fusion de la PR #125 a été confirmée directement auprès de GitHub (`merge
 
 La première source retenue est le XML normatif lisible par machine du métamodèle OMG SACM 2.4 Beta 1 (fichier `ptc/26-05-28`, chemin daté du 04/05/2026 ; [R-197](../references.fr.md#r-197)). La bêta reste en cours de traitement ; SACM 2.3 demeure formelle.
 
-La branche `work/sacm-native-metamodel-ingestion` ajoute un importateur qui conserve les octets XML exacts et produit un index structurel distinct. Il n'interprète pas encore la sémantique MOF/XMI et n'infère aucune correspondance vers GovCheck. Le digest attendu provient de l'audit indépendant R-128 ; le workflow GovCheck doit encore vérifier ce digest sur le téléchargement officiel réel.
+La branche `work/sacm-native-metamodel-ingestion` ajoute un importateur qui conserve les octets XML exacts et produit un index structurel distinct. Il n'interprète pas encore la sémantique MOF/XMI et n'infère aucune correspondance vers GovCheck. Le digest attendu provient de l'audit indépendant [R-128](../references.fr.md#r-128) ; le workflow GovCheck doit encore vérifier ce digest sur le téléchargement officiel réel.
 
 Détail canonique : [journal anglais WP-EVT-000022](events.md#wp-evt-000022).

@@ -54,7 +54,7 @@ This is model-checking evidence for the exact finite TLA+ module, configuration 
 
 The model does not yet represent durable storage, crash recovery, replica convergence, independent VCS provenance, evaluator replacement/comparison, revocation and historical requalification, exceptions, unknown/conflict resolution, rollback content restoration, or refinement to executable code. Its publication action is an abstract logical append; it does not establish a database transaction or a production compare-and-swap implementation.
 
-The earlier [Architecture 0031](0031-first-tlc-governance-applicability.md) result remains a separate run on the original applicability model. Neither report adopts the eleven choices. Their normative status remains pending the applicable governance adoption event.
+The earlier [Architecture 0031](0031-first-tlc-governance-applicability.md) result remains a separate run on the original applicability model. The complementary evaluator/exception controls and journal recovery slices are recorded in [Architecture 0033](0033-governance-evaluator-exception-revocation-model.md) and [Architecture 0035](0035-canonical-journal-recovery-model.md); their proposed protocol contract is [Specification 0007](../specifications/0007-canonical-governance-journal-protocol.md). These are separate bounded artifacts, not a composed proof. Neither report adopts the eleven choices. Their normative status remains pending the applicable governance adoption event.
 
 ## 6. Provenance and reproducibility
 

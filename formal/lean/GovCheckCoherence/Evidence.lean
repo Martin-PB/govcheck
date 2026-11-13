@@ -55,19 +55,6 @@ structure EvidenceRecord where
 /-- Pure identity transport; this function alone makes no cross-model claim. -/
 def transport (record : EvidenceRecord) : EvidenceRecord := record
 
-/-- A theorem-proof target can only be classified as admissible when a
-kernel-checked derivation is supplied. Merely carrying a source label is not
-sufficient: the target proposition and its proof dependencies must be checked
-again in the target formal context. -/
-inductive DerivationOrigin where
-  | carried
-  | kernelChecked
-  deriving DecidableEq, Repr
-
-def admissibleTargetKind
-    (_source target : EvidenceKind) (origin : DerivationOrigin) : Prop :=
-  target ≠ .theoremProof ∨ origin = .kernelChecked
-
 /-- A passing empirical execution remains testimony, not a theorem proof. -/
 def passingTestimony : EvidenceRecord :=
   ⟨.empiricalExecution, .testimony, .passed⟩

@@ -9,7 +9,7 @@
 
 ## 1. Scope and source identity
 
-The OMG catalogue lists the SACM 2.4 Beta 1 specification PDF as a **normative document** (file ID `ptc/26-06-34`) and the machine-readable metamodel XML as a **normative machine-readable document** (file ID `ptc/26-05-28`). They are separate artifacts and separate source views, not two serializations that may be silently merged.
+The OMG catalogue lists the SACM 2.4 Beta 1 specification PDF as a **normative document** (file ID `ptc/26-06-34`) and the machine-readable metamodel XML as a **normative machine-readable document** (file ID `ptc/26-05-28`). They are separate artifacts and separate source views, not two serializations that may be silently merged. The catalogue also lists an **informative UML Profile XMI** ([R-199](../references.md#r-199)); it is intentionally excluded from this normative PDF/XML comparison and remains a third, separately scoped source view.
 
 | Source view | OMG file ID | Official URL | SHA-256 | Current GovCheck status |
 |---|---|---|---|---|

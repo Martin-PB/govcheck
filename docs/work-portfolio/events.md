@@ -374,3 +374,19 @@
 - **Local verification:** seven synthetic parser tests passed. The official source payload was parsed locally and the generated summary matches the committed summary. PR workflow is configured to repeat both test suites, download and digest-check the official source, regenerate the full inventory, compare the summary byte-for-byte and publish source plus inventory; final workflow results are pending on this PR head.
 - **Semantic boundary:** this is structural extraction only. It does not interpret UML/MOF/OCL semantics, resolve external href targets, reconcile the conflicting SACM 2.4 PDF view, prove parser refinement, validate the existing Lean SACM slice, or create a GovCheck semantic mapping. SACM 2.4 Beta 1 remains in-process/informational; SACM 2.3 remains formal.
 - **Normative boundary:** no SACM conformance or metamodel adoption is claimed. Issue #73 remains open.
+
+
+<a id="wp-evt-000026"></a>
+## WP-EVT-000026 — XMI structural inventory workflow verified
+
+- **Subject:** `govcheck.work.intermodel-contract-conformance`
+- **Event type:** `source-derived-inventory-workflow-verified`
+- **Recorded:** 2026-11-13
+- **Workflow:** [SACM source-native ingestion run 43451737489](https://github.com/Martin-PB/govcheck/actions/runs/43451737489), checked commit `8c0288d5992929089e96596c3f31a8f20ea535f4`.
+- **Source identity:** OMG SACM 2.4 Beta 1, file ID `ptc/26-05-28`, 524,243 bytes, SHA-256 `0581dfa0b9dfaf17ff0f6c63b74f8e7a8396bea03f315e1334e94f23db110830`.
+- **Test result:** 12 tests passed: five source-capture tests and seven XMI-inventory tests.
+- **Ingestion result:** official OMG download and digest verification passed; full structural inventory generated; generated summary structurally equalled the committed JSON summary.
+- **Inventory result:** 1,616 identified XMI elements; 121 UML classes; 121 associations; 355 properties; 167 generalizations; 8 enumerations / 37 literals; 40 constraints; 157 comments; 2 data types; 40 opaque expressions; 3 opaque behaviors; 1,434 reference edges, of which 1,371 resolve internally, 63 external href references are retained, and zero recognized internal references are unresolved.
+- **Published artifact:** [`sacm-2.4-beta1-source-and-xmi-inventory`](https://github.com/Martin-PB/govcheck/actions/runs/43451737489/artifacts/14051746241), artifact ID `14051746241`, SHA-256 `01bd32307376baaa0c401b4631d7338bae7f0a999c9d3f94aecc21af5a3c8ae3`, 90-day retention. It contains `source.xml`, `manifest.json`, `index.json`, `metamodel-inventory.json` and `metamodel-inventory-summary.json`.
+- **Reproducibility binding:** the parser, tests, summary and workflow blobs at the current PR branch head were compared with the checked commit and are identical; later commits affect documentation/portfolio records only.
+- **Limits:** structural extraction only; no UML/MOF/OCL semantic interpretation, external href resolution, parser-refinement theorem, PDF/XML conflict resolution, source-derived GovCheck mapping, SACM conformance or normative adoption. Issue #73 remains open.

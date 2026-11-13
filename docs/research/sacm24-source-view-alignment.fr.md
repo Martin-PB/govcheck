@@ -9,7 +9,7 @@
 
 ## 1. Périmètre et identité des sources
 
-Le catalogue OMG répertorie le PDF de la spécification SACM 2.4 Beta 1 comme **document normatif** (identifiant `ptc/26-06-34`) et le XML du métamodèle lisible par machine comme **document normatif lisible par machine** (identifiant `ptc/26-05-28`). Ce sont deux artefacts et deux vues sources distincts, pas deux sérialisations que l'on pourrait fusionner silencieusement.
+Le catalogue OMG répertorie le PDF de la spécification SACM 2.4 Beta 1 comme **document normatif** (identifiant `ptc/26-06-34`) et le XML du métamodèle lisible par machine comme **document normatif lisible par machine** (identifiant `ptc/26-05-28`). Ce sont deux artefacts et deux vues sources distincts, pas deux sérialisations que l'on pourrait fusionner silencieusement. Le catalogue répertorie aussi un XMI informatif du profil UML ([R-199](../references.fr.md#r-199)) ; il est volontairement exclu de cette comparaison normative PDF/XML et constitue une troisième vue source, à traiter séparément.
 
 | Vue source | Identifiant OMG | URL officielle | SHA-256 | État actuel dans GovCheck |
 |---|---|---|---|---|

@@ -217,7 +217,7 @@ theorem sacm_pdf_clause13_6_omits_byRule :
 theorem sacm_xml_omits_needsSupport :
     SACM24.AssertionDeclarationKind.needsSupport ∉
       SACM24.declarationLiteralsForFragment .normativeMetamodelXML := by
-  simp [SACM24.declarationLiteralsForFragment]
+  decide
 
 /-- The normative XML and PDF Clause 15.2.1 both list byRule. -/
 theorem sacm_xml_and_pdf_clause15_2_1_include_byRule :

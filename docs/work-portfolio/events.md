@@ -421,3 +421,29 @@
 - **Other checks:** reference integrity [43495626080](https://github.com/Martin-PB/govcheck/actions/runs/43495626080), package alignment [43495625956](https://github.com/Martin-PB/govcheck/actions/runs/43495625956), and version governance [43495626381](https://github.com/Martin-PB/govcheck/actions/runs/43495626381) passed on the same PR head.
 - **Evidence links:** bilingual [source-view alignment and conflict register](../research/sacm24-source-view-alignment.md); independent discrepancy audit [R-128](../references.md#r-128); source-native metamodel [R-197](../references.md#r-197).
 - **Limits unchanged:** the PDF/XML digests authenticate bytes, not human transcription. The Lean source facts formalize transcribed values, not their fidelity to the source documents. No automated PDF text extraction, full UML/MOF semantics, parser-refinement theorem, source-derived GovCheck semantic mapping, precedence decision, SACM 2.4 conformance or normative adoption is claimed. Issue #73 remains open.
+
+
+<a id="wp-evt-000029"></a>
+## WP-EVT-000029 — Reclassify the uncorroborated Claim.value audit discrepancy
+
+- **Subject:** `govcheck.work.intermodel-contract-conformance`
+- **Event type:** `source-transcription-review-and-conflict-reclassification`
+- **Recorded:** 2026-11-13
+- **Trigger:** direct inspection of the exact official PDF downloaded and retained in the SACM source-view workflow artifact.
+- **Finding:** the informative PDF Figure 15.1.1 (printed page 59, section 15.1 "SACM Join", explicitly informative) depicts `Argument::Claim.value` as `ExpressionLangString`. The pinned normative metamodel XML also declares `Claim.value` as `ExpressionLangString`. The R-128 audit reports `MultiLangString` for normative Clause 13.9, but the inspected figure does not corroborate that value and is not itself a substitute for the cited normative clause.
+- **Reclassification:** remove the previous `claim_value_type_conflict` source theorem. Lean now records agreement between the informative figure and XML, and separately records that the audit-reported `MultiLangString` differs from that figure. The exact Clause 13.9 passage remains an unresolved transcription/source-locator question, not an established PDF/XML conflict.
+- **Research register:** the bilingual report now has 12 comparison entries: 11 modelled source-fragment differences/additions and one unresolved audit discrepancy. No precedence or semantic mapping is inferred.
+- **Reference:** [R-128](../references.md#r-128); detailed source-view register [EN](../research/sacm24-source-view-alignment.md) / [FR](../research/sacm24-source-view-alignment.fr.md).
+
+<a id="wp-evt-000030"></a>
+## WP-EVT-000030 — Verify the corrected SACM source-view model
+
+- **Subject:** `govcheck.work.intermodel-contract-conformance`
+- **Event type:** `corrected-source-view-model-verified`
+- **Recorded:** 2026-11-13
+- **Checked source/code head:** `d82c810e91e5cee456bf83cdb4198b7de84421d1`.
+- **Source workflow:** [43496689208](https://github.com/Martin-PB/govcheck/actions/runs/43496689208) passed: 12 Python tests, official PDF and XML digest checks, structural inventory/summary comparison, source-view manifest and upload. Artifact [14072371021](https://github.com/Martin-PB/govcheck/actions/runs/43496689208/artifacts/14072371021) contains the exact 9,019,601-byte PDF, 524,243-byte XML, manifest and XMI inventory.
+- **Lean workflow:** [43496689323](https://github.com/Martin-PB/govcheck/actions/runs/43496689323) passed with Lean 4.19.0 on merge candidate `af19d63`. The axiom audit covered 43 declarations under `GovCheckCoherence.Proofs`; all dependencies were within `propext`, `Classical.choice`, `Quot.sound`. Five fragment-wrapper theorems use `propext`; the 14 directly printed `SourceFacts` theorems have no axioms. No unapproved axiom was reported.
+- **Other checks:** reference integrity [43496689170](https://github.com/Martin-PB/govcheck/actions/runs/43496689170), package alignment [43496689204](https://github.com/Martin-PB/govcheck/actions/runs/43496689204), and version governance [43496689233](https://github.com/Martin-PB/govcheck/actions/runs/43496689233) passed.
+- **PR:** [#128](https://github.com/Martin-PB/govcheck/pull/128) is open, non-draft, mergeable and unmerged, stacked on [PR #127](https://github.com/Martin-PB/govcheck/pull/127).
+- **Limits:** source digests authenticate bytes, not transcription. The informative Figure 15.1.1 does not resolve the normative Clause 13.9 report. No PDF text-extraction pipeline, UML/MOF semantic interpreter, parser-refinement theorem, source-derived GovCheck semantic mapping, source precedence or SACM 2.4 conformance is claimed. Issue #73 remains open.

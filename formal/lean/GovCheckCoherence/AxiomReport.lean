@@ -57,7 +57,8 @@ import GovCheckCoherence.Proofs
 #print axioms GovCheck.Coherence.sacm_claim_mapping_requires_identity_fragment_view
 #print axioms GovCheck.Coherence.sacm_claim_source_format_matches_view
 
-#print axioms GovCheck.Coherence.SACM24.SourceFacts.claim_value_type_conflict
+#print axioms GovCheck.Coherence.SACM24.SourceFacts.claim_value_type_agrees_in_pdf_figure15_1_1_and_xml
+#print axioms GovCheck.Coherence.SACM24.SourceFacts.r128_reported_claim_value_type_differs_from_inspected_pdf_figure
 #print axioms GovCheck.Coherence.SACM24.SourceFacts.asserted_evidence_multiplicity_conflict
 #print axioms GovCheck.Coherence.SACM24.SourceFacts.sacm_element_abstraction_multiplicity_conflict
 #print axioms GovCheck.Coherence.SACM24.SourceFacts.asserted_relationship_isCounter_multiplicity_conflict

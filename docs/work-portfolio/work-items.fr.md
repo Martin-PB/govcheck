@@ -76,7 +76,7 @@ Il s'agit d'une extraction structurelle, pas d'une interprétation sémantique U
 
 ## Issue #73 — registre initial des divergences de vues sources SACM — 2026-11-13
 
-Le rapport bilingue [d'alignement des vues sources](../research/sacm24-source-view-alignment.fr.md) recense douze entrées de comparaison, dont le conflit Claim.value entre la figure normative PDF 13.1 (MultiLangString), la figure informative 15.1.1 (ExpressionLangString) et le XML (ExpressionLangString). Le localisateur exact de la clause 13.9 rapporté par R-128 reste à vérifier. Il ne choisit aucune source prioritaire et ne canonise aucun champ.
+Le rapport bilingue [d'alignement des vues sources](../research/sacm24-source-view-alignment.fr.md) recense douze entrées de comparaison : conflits internes au PDF pour Claim.value et AssertedEvidence.evidence ; différence de multiplicité PDF/XML pour isCounter ; déplacement de propriété subject/whole entre la figure PDF 13.1 et le XML ; et autres différences d'héritage/de nom de propriété. Le localisateur exact de la clause 13.9 rapporté par R-128 reste à vérifier. Il ne choisit aucune source prioritaire et ne canonise aucun champ.
 
 Le modèle Lean distingue désormais les vues documentaires des fragments de clauses, figure et annexe. Les théorèmes prouvent les différences ou accords entre les constantes transcrites, pas l'exactitude de la transcription par rapport aux documents sources. Les obligations de mapping Claim exigent le fragment exact et sa cohérence avec la vue documentaire, sans règle d'identité globale au PDF.
 

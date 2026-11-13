@@ -45,8 +45,8 @@
 | Repository intent, lifecycle and requirements engineering | R-114–R-118, R-121–R-122 |
 | System modeling and assurance-case metamodels | R-119–R-120 |
 | Metamodel coherence, semantic preservation and formal verification | R-123–R-127 |
-| Concurrent edits, semantic merge conflicts and multi-agent delivery | R-142–R-151 |
 | Probabilistic assurance, fuzzy logic and state-transition models | R-193 |
+| Concurrent edits, semantic merge conflicts and multi-agent delivery | R-142–R-151 |
 | Canonical journal ordering, durable recovery and idempotent retry | R-194–R-196 |
 
 ## Full reference entries
@@ -1182,8 +1182,9 @@
 - **Use in GovCheck:** comparison point for an existing published `INTENT.md` format and its scope.
 - **Limit:** its bundled content model is not adopted by GovCheck; GovCheck does not claim conformance or compatibility.
 
+<a id="r-123"></a>
 ### R-123 — Lean Computer Science Library (CSLib) for semantic proof
-- **Cited by:** [Metamodel coherence verification](research/metamodel-coherence-verification.md)
+- **Cited by:** [metamodel-coherence-verification ](research/metamodel-coherence-verification.md)
 - **Primary sources:** [CSLib repository](https://github.com/leanprover/cslib) · [organization](https://github.com/leanprover/cslib/blob/main/ORGANISATION.md) · [contributor guidance](https://github.com/leanprover/cslib/blob/main/CONTRIBUTING.md)
 - **Relevant concepts:** reusable Lean formalizations for operational semantics, labeled transition systems, program equivalence and logics.
 - **Use in GovCheck:** reuse suitable foundations to formalize the common semantic bridge and prove critical mapping properties.
@@ -1191,44 +1192,38 @@
 
 - **Compatibility snapshot (2026-11-11):** [CSLib main commit f8acdb3](https://github.com/leanprover/cslib/commit/f8acdb37c713b0124ad36b863f50c200a5f1cdba) pins Lean 4.36.0-rc2 and Mathlib commit 887bb849a9f64e1c66499fd5ff8523c864e78941; the current GovCheck prototype pins Lean 4.19.0, so direct import is not yet compatible.
 - **BTL semantics limit:** CSLib's BTL module defines future/past modalities over a relation without imposing order properties; reflexivity/transitivity and any linear-time assumptions must be declared by the consuming model.
-<a id="r-124"></a>
 
+<a id="r-124"></a>
 ### R-124 — TLA+, TLC and TLAPS for temporal and transition-system properties
-- **Cited by:** [Metamodel coherence verification](research/metamodel-coherence-verification.md)
+- **Cited by:** [metamodel-coherence-verification ](research/metamodel-coherence-verification.md)
 - **Primary sources:** [TLA+ Proof System](https://proofs.tlapl.us/doc/web/content/Home.html) · [TLC documentation](https://github.com/tlaplus/tlaplus/blob/master/general/docs/tlcgui.txt)
 - **Relevant concepts:** state-transition specifications, invariant checking, temporal properties, finite-state model checking and mechanically checked proof steps.
 - **Use in GovCheck:** check authority lifecycle, revocation, expiry, invalidation and revalidation properties.
 - **Limit:** finite model checking is bounded by the model and state space; TLAPS does not currently provide general temporal reasoning for all TLA+ constructs.
 
 <a id="r-125"></a>
-
 ### R-125 — Verification of model transformations
-- **Cited by:** [Metamodel coherence verification](research/metamodel-coherence-verification.md)
+- **Cited by:** [metamodel-coherence-verification ](research/metamodel-coherence-verification.md)
 - **Primary source:** Calegari & Szasz, “Verification of Model Transformations: A Survey of the State-of-the-Art” (2013), [DOI](https://doi.org/10.1016/j.entcs.2013.02.002)
 - **Relevant concepts:** verification of transformations in terms of transformation rules, properties of interest and verification techniques; heterogeneous verification.
 - **Use in GovCheck:** frame mapping verification as explicit transformations plus preservation properties and declared techniques.
 - **Limit:** no single method proves all transformation properties; results depend on semantics, assumptions and bounds.
 
 <a id="r-126"></a>
-
 ### R-126 — Epsilon EVL and Alloy Analyzer
-- **Cited by:** [Metamodel coherence verification](research/metamodel-coherence-verification.md)
+- **Cited by:** [metamodel-coherence-verification ](research/metamodel-coherence-verification.md)
 - **Primary sources:** [Epsilon Validation Language](https://eclipse.dev/epsilon/doc/evl/) · [Alloy Analyzer](https://alloy.readthedocs.io/en/latest/tooling/analyzer.html)
 - **Relevant concepts:** intra-/inter-model constraints, validation diagnostics and fixes; SAT-based search for finite relational counterexamples.
 - **Use in GovCheck:** executable model constraints and counterexample discovery before or alongside proof development.
 - **Limit:** bounded analysis and validation are not unbounded proof of arbitrary semantic preservation.
 
 <a id="r-127"></a>
-
 ### R-127 — Ontology alignment, consistency and conservative extension
-- **Cited by:** [Metamodel coherence verification](research/metamodel-coherence-verification.md)
+- **Cited by:** [metamodel-coherence-verification ](research/metamodel-coherence-verification.md)
 - **Primary sources:** Botoeva et al., “Inseparability and conservative extensions of description logic ontologies: A survey” (2017), [repository record](https://livrepository.liverpool.ac.uk/3006616/) · “A semantic approach to mapping the Provenance Ontology to Basic Formal Ontology” (2025), [open article](https://pmc.ncbi.nlm.nih.gov/articles/PMC11833102/)
 - **Relevant concepts:** model-theoretic criteria for ontology alignment, semantic interoperability, query/concept inseparability and conservative extensions.
 - **Use in GovCheck:** distinguish simple traceability from semantic mappings; state when adding GovCheck vocabulary must preserve consequences in source vocabularies.
 - **Limit:** conservativity is relative to a chosen signature, semantics and application; define it per mapping/use case, not universally.
-
-
-<a id="r-142"></a>
 
 <a id="r-128"></a>
 ### R-128 — Assurance Forge: independent SACM 2.4 Beta 1 implementation-impact audit (2026-10-02; repository revision 2026-11-03)
@@ -1238,6 +1233,7 @@
 - **Use in GovCheck:** independent engineering cross-check that the SACM 2.4 Beta 1 text and machine-readable metamodel must be treated as separate source views, not silently normalized into one model.
 - **Limit:** this is a third-party implementation audit, not an OMG statement or normative authority. Its findings must be checked against pinned OMG artifacts; it does not establish that all SACM 2.4 implementations share the same limitations.
 
+<a id="r-142"></a>
 ### R-142 — ConE: Concurrent Edit Detection Tool
 - **Cited by:** [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
 - **Primary source:** [ACM/IEEE paper, DOI 10.1145/3478019](https://doi.org/10.1145/3478019)
@@ -1246,7 +1242,6 @@
 - **Limit:** the study concerns six large Microsoft repositories over six months; overlap is not proof of incompatibility, and a detector is not a correctness proof.
 
 <a id="r-143"></a>
-
 ### R-143 — Empirical investigation into merge conflicts and software quality
 - **Cited by:** [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
 - **Primary source:** [Open paper PDF](https://ics.uci.edu/~iftekha/pdf/J4.pdf)
@@ -1255,7 +1250,6 @@
 - **Limit:** results are empirical associations within a particular dataset and methodology; they do not establish universal causal rates or project-specific risk.
 
 <a id="r-144"></a>
-
 ### R-144 — ConflictBench: A benchmark to evaluate software merge tools
 - **Cited by:** [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
 - **Primary source:** [Journal of Systems and Software, 2024](https://www.sciencedirect.com/science/article/pii/S0164121224001298)
@@ -1264,7 +1258,6 @@
 - **Limit:** dataset and language coverage are bounded; benchmark outcomes do not establish correctness for arbitrary repositories or languages.
 
 <a id="r-145"></a>
-
 ### R-145 — Lightweight Semantic Conflict Detection with Static Analysis
 - **Cited by:** [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
 - **Primary source:** [ICSE Companion 2024, DOI 10.1145/3639478.3643118](https://doi.org/10.1145/3639478.3643118)
@@ -1273,7 +1266,6 @@
 - **Limit:** reported evaluation is small and metrics are modest; the method is not an authoritative compatibility decision.
 
 <a id="r-146"></a>
-
 ### R-146 — Research on search-based and synthesis-based merge conflict resolution
 - **Cited by:** [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
 - **Primary sources:** Paulino, [ACM TOSEM 2026, DOI 10.1145/3748256](https://doi.org/10.1145/3748256) · Pan et al., [Microsoft Research / ICSE 2021](https://www.microsoft.com/en-us/research/publication/can-program-synthesis-be-used-to-learn-merge-conflict-resolutions-an-empirical-analysis/)
@@ -1282,7 +1274,6 @@
 - **Limit:** coverage and accuracy depend on conflict class, dataset and evaluation; similarity heuristics are not semantic proof.
 
 <a id="r-147"></a>
-
 ### R-147 — LLM-based multi-agent systems for software engineering: literature review
 - **Cited by:** [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
 - **Primary source:** [ACM TOSEM 2025, DOI 10.1145/3712003](https://doi.org/10.1145/3712003)
@@ -1291,7 +1282,6 @@
 - **Limit:** a literature review is not evidence that a particular framework, coordination protocol or deployment is reliable.
 
 <a id="r-148"></a>
-
 ### R-148 — DORA 2025 State of AI-assisted Software Development
 - **Cited by:** [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
 - **Primary sources:** [DORA report](https://dora.dev/research/2025/dora-report/) · [Google Research publication](https://research.google/pubs/dora-2025-state-of-ai-assisted-software-development-report/)
@@ -1300,7 +1290,6 @@
 - **Limit:** survey and qualitative research inform organizational decisions but do not prove causality or predict a specific repository's outcomes.
 
 <a id="r-149"></a>
-
 ### R-149 — GitHub merge queues
 - **Cited by:** [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
 - **Primary source:** [Official GitHub documentation](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue)
@@ -1309,7 +1298,6 @@
 - **Limit:** GitHub-specific product documentation; the feature must not become GovCheck's canonical or mandatory architecture.
 
 <a id="r-150"></a>
-
 ### R-150 — “Your Team's Agents Are All Shipping to the Same Code at Once”
 - **Cited by:** [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
 - **Source:** [Video supplied for the review](https://youtu.be/fTUinMqA1XQ)
@@ -1318,15 +1306,12 @@
 - **Limit:** a talk/video is a secondary industry source and problem framing, not a peer-reviewed result or sufficient evidence for adopting an architecture.
 
 <a id="r-151"></a>
-
 ### R-151 — Predicting merge conflicts considering social and technical assets
 - **Cited by:** [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
 - **Primary source:** [Empirical Software Engineering, DOI 10.1007/s10664-023-10395-8](https://link.springer.com/article/10.1007/s10664-023-10395-8)
 - **Relevant concepts:** empirical prediction of merge conflicts using social and technical assets.
 - **Use in GovCheck:** supports assessing work overlap and dependency/coordination context rather than treating changed-file overlap as a complete conflict predicate.
 - **Limit:** predictive associations and model performance depend on the dataset, features and development context; they do not establish incompatibility or causality.
-
-<a id="r-128"></a>
 
 <a id="r-193"></a>
 ### R-193 — Probabilistic, fuzzy and state-transition modelling for software assurance
@@ -1337,6 +1322,7 @@
 - **Use in GovCheck:** supports the study of optional specialist profiles for probabilistic and fuzzy reasoning and of a generic transition-analysis contract linking semantics, parameters, provenance, analysis specifications/results and assurance claims.
 - **Limit:** the sources describe distinct mathematical semantics and tools. A transition weight is not necessarily a probability; a fuzzy membership degree is not a probability; a model-checking result is bounded by its model and assumptions. Quantitative confidence techniques require critical evaluation and empirical validation. These sources do not establish adoption or implementation by GovCheck.
 
+<a id="r-194"></a>
 ### R-194 — Linearizability: A Correctness Condition for Concurrent Objects
 - **Cited by:** [Specification 0007](specifications/0007-canonical-governance-journal-protocol.md), [Decision-session record 0008](decisions/0008-governance-applicability-arbitration-session.md), [Work portfolio event journal](work-portfolio/events.md), [Work-item register](work-portfolio/work-items.md)
 - **Primary source:** Maurice P. Herlihy and Jeannette M. Wing, “Linearizability: A Correctness Condition for Concurrent Objects,” *ACM Transactions on Programming Languages and Systems*, 12(3), 1990, pp. 463–492. [DOI](https://doi.org/10.1145/78969.78972) · [Author-hosted paper](https://www.cs.cmu.edu/~wing/publications/HerlihyWing90.pdf)
@@ -1345,7 +1331,6 @@
 - **Limit:** linearizability is a correctness condition, not a storage implementation or a proof that a particular journal satisfies it.
 
 <a id="r-195"></a>
-
 ### R-195 — ARIES write-ahead logging and transaction recovery
 - **Cited by:** [Specification 0007](specifications/0007-canonical-governance-journal-protocol.md), [Decision-session record 0008](decisions/0008-governance-applicability-arbitration-session.md), [Work portfolio event journal](work-portfolio/events.md), [Work-item register](work-portfolio/work-items.md)
 - **Primary source:** C. Mohan, Don Haderle, Bruce Lindsay, Hamid Pirahesh and Peter Schwarz, “ARIES: A Transaction Recovery Method Supporting Fine-Granularity Locking and Partial Rollbacks Using Write-Ahead Logging,” *ACM Transactions on Database Systems*, 17(1), 1992. [IBM Research publication](https://research.ibm.com/publications/aries-a-transaction-recovery-method-supporting-fine-granularity-locking-and-partial-rollbacks-using-write-ahead-logging)
@@ -1354,12 +1339,9 @@
 - **Limit:** ARIES is a database recovery algorithm; citing it does not select a database, imply direct adoption, or prove the GovCheck journal's durability.
 
 <a id="r-196"></a>
-
 ### R-196 — RFC 9110, HTTP Semantics: idempotent methods
 - **Cited by:** [Specification 0007](specifications/0007-canonical-governance-journal-protocol.md), [Decision-session record 0008](decisions/0008-governance-applicability-arbitration-session.md), [Work portfolio event journal](work-portfolio/events.md), [Work-item register](work-portfolio/work-items.md)
 - **Primary source:** [RFC 9110 §9.2.2 — Idempotent Methods](https://www.rfc-editor.org/rfc/rfc9110.html#section-9.2.2)
 - **Relevant concepts:** repeatable requests have the same intended effect as one request, enabling safe retry after a lost response when the operation semantics are idempotent.
 - **Use in GovCheck:** informs the protocol distinction between retrying an exact append request and accidentally creating a second normative event.
 - **Limit:** HTTP method semantics do not define GovCheck's idempotency-key namespace, journal retention or append protocol; those remain specified locally.
-
-<a id="r-128"></a>

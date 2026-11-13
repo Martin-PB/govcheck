@@ -9,7 +9,7 @@
 | Dossiers d'assurance de sécurité et métamodèles | R-04, R-33–R-34 |
 | Modèle de décision PEAK | R-74 |
 | Surveillance continue et assurance à l'exécution | R-70, R-72, R-75–R-76 |
-| Assurance 2.0, évolution de SACM et audits d'implémentation | R-71, R-73, R-128, R-197 |
+| Assurance 2.0, évolution de SACM et audits d'implémentation | R-71, R-73, R-128, R-197, R-198, R-199 |
 | Régimes d'assurance et exigences orientées objectifs | R-35–R-36, R-44, R-92 |
 | Model checking et vérification de programmes candidates | R-05, R-20, R-37–R-43, R-89–R-91 |
 | Provenance des preuves et chaîne d'approvisionnement logicielle | R-06–R-08 |
@@ -78,7 +78,7 @@
 - **Dossiers d'assurance de sécurité et métamodèles :** R-33 à R-34.
 - **Modèle de décision PEAK :** R-74.
 - **Surveillance continue et assurance à l'exécution :** R-70, R-72, R-75 à R-76.
-- **Assurance 2.0 et évolution de SACM :** R-71, R-73, R-128, R-197.
+- **Assurance 2.0 et évolution de SACM :** R-71, R-73, R-128, R-197, R-198, R-199.
 - **Modèles sémantiques de domaine, qualité produit et conformité open source (sources candidates) :** R-94–R-100, R-102–R-103.
 - **Instructions d'agents et workflows pilotés par spécifications :** R-104.
 - **Recherches sur le policy-as-code, l'assurance continue et la gouvernance MCP :** R-105.
@@ -1349,8 +1349,25 @@
 
 <a id="r-197"></a>
 ### R-197 — XML normatif du métamodèle lisible par machine OMG SACM 2.4 Beta 1
-- **Cité par :** [Ingestion source-native du métamodèle SACM](research/sacm-native-metamodel-ingestion.fr.md), [Inventaire structurel XMI SACM](research/sacm-xmi-structural-inventory.fr.md), [Journal des événements du portefeuille](work-portfolio/events.fr.md)
+- **Cité par :** [Ingestion source-native du métamodèle SACM](research/sacm-native-metamodel-ingestion.fr.md), [Inventaire structurel XMI SACM](research/sacm-xmi-structural-inventory.fr.md), [rapport d'alignement des vues source SACM](research/sacm24-source-view-alignment.fr.md), [Journal des événements du portefeuille](work-portfolio/events.fr.md)
 - **Artefacts d'implémentation :** [générateur d'inventaire XMI](../scripts/parse-sacm-xmi.py) · [synthèse d'inventaire versionnée](../formal/sources/sacm-2.4-beta1/metamodel-inventory-summary.json).\n- **Source primaire :** [Catalogue de spécifications SACM de l'OMG](https://www.omg.org/spec/SACM) · [XML normatif du métamodèle lisible par machine](https://www.omg.org/spec/SACM/20260504/SACM2.4_Metamodel.xml) · identifiant de fichier OMG `ptc/26-05-28`.
 - **Identité épinglée :** SACM 2.4 Beta 1 ; chemin source daté du 04/05/2026 ; format natif XML ; valeur SHA-256 de comparaison `0581dfa0b9dfaf17ff0f6c63b74f8e7a8396bea03f315e1334e94f23db110830`, rapportée par R-128 et vérifiée par l'exécution GovCheck [43444619765](https://github.com/Martin-PB/govcheck/actions/runs/43444619765) sur 524 243 octets source téléchargés.
 - **Concepts pertinents :** source normative du métamodèle lisible par machine, distincte du texte PDF normatif et du XMI informatif du profil UML.
 - **Limite :** SACM 2.4 Beta 1 est en cours de traitement et informative ; SACM 2.3 reste formelle. Ce XML de métamodèle n'est pas un format portable d'échange d'instances de dossiers d'assurance et son digest n'établit pas la conformité sémantique.
+
+
+<a id="r-198"></a>
+### R-198 — PDF normatif de spécification OMG SACM 2.4 Beta 1
+- **Cité par :** [Rapport d'alignement des vues source SACM](research/sacm24-source-view-alignment.fr.md), [rapport sur les risques d'interopérabilité SACM 2.4 Beta 1](research/sacm24-beta1-interoperability-risk.fr.md), [Journal des événements du portefeuille](work-portfolio/events.fr.md)
+- **Source primaire :** [Catalogue de spécifications SACM de l'OMG](https://www.omg.org/spec/SACM) · [PDF normatif SACM 2.4 Beta 1](https://www.omg.org/spec/SACM/20260504/SACM2.4.pdf) · identifiant de fichier OMG `ptc/26-06-34`.
+- **Identité épinglée :** SACM 2.4 Beta 1 ; chemin source daté du 04/05/2026 ; 161 pages ; SHA-256 `25f32d1cd4bf32dfa9c92c7c1840e1a113b1e91c0e97252f6551878c39997ff5`, rapporté par le script de téléchargement épinglé de l'audit indépendant R-128. GovCheck n'a pas encore téléchargé indépendamment ce PDF ni recalculé son digest.
+- **Concepts pertinents :** prose normative, figures, clauses et annexes de la spécification ; provenance par fragment des affirmations SACM 2.4 Beta 1.
+- **Limite :** le PDF contient lui-même des fragments contradictoires ; l'extraction textuelle ne capture pas tous les libellés présents uniquement dans les diagrammes. Aucun fragment ne doit être traité comme une déclaration canonique globale du PDF sans portée explicite.
+
+<a id="r-199"></a>
+### R-199 — XMI informatif du profil UML OMG SACM 2.4 Beta 1
+- **Cité par :** [Rapport d'alignement des vues source SACM](research/sacm24-source-view-alignment.fr.md), [rapport sur les risques d'interopérabilité SACM 2.4 Beta 1](research/sacm24-beta1-interoperability-risk.fr.md), [Journal des événements du portefeuille](work-portfolio/events.fr.md)
+- **Source primaire :** [Catalogue de spécifications SACM de l'OMG](https://www.omg.org/spec/SACM) · [XMI informatif du profil UML SACM 2.4 Beta 1](https://www.omg.org/spec/SACM/20260504/SACM2.4_Profile.xmi) · identifiant de fichier OMG `ptc/26-05-21`.
+- **Identité épinglée :** SACM 2.4 Beta 1 ; chemin source daté du 04/05/2026 ; SHA-256 `9149a0414628e1b70c1f7c2235f5180c64e7a144601eb2ae78d539681918838b`, rapporté par le script de téléchargement épinglé de l'audit indépendant R-128. GovCheck n'a pas encore téléchargé indépendamment ce XMI ni recalculé son digest.
+- **Concepts pertinents :** artefact informatif de profil UML, distinct du XML normatif du métamodèle (R-197) et du PDF normatif de spécification (R-198).
+- **Limite :** le XMI informatif du profil n'est pas le XML normatif du métamodèle SACM et n'établit ni contrat d'échange d'instances ni conformité sémantique.

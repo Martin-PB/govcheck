@@ -125,7 +125,7 @@ theorem sacm_necessary_inference_direction
     {premise conclusion : Prop}
     (bridge : SACM24.InferenceBridge [premise] conclusion .necessary) :
     conclusion → premise :=
-  SACM24.necessary_inference_is_reverse-entailment bridge
+  SACM24.necessary_inference_is_reverse_entailment bridge
 
 /-- SACM sufficient inference is represented in the forward implication direction. -/
 theorem sacm_sufficient_inference_direction

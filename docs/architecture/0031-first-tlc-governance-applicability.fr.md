@@ -72,12 +72,14 @@ Il s'agit d'une **preuve issue du model checking**, pas d'une preuve de théorè
 - une application impossible à contourner par Git, Pijul, une forge ou une frontière de déploiement ;
 - la correction ou l'adoption de la politique normative elle-même.
 
-Le modèle maintient volontairement l'autorité racine constante. Succession/délégation et récupération d'urgence exigent des décisions et extensions distinctes. Le mécanisme canonique d'ordre des événements et le protocole de publication persistante restent également ouverts.
+Le modèle maintient volontairement l'autorité racine constante. Succession/délégation et récupération d'urgence exigent des décisions et extensions distinctes. Les travaux techniques ultérieurs proposent désormais le protocole du journal canonique dans la [Spécification 0007](../specifications/0007-canonical-governance-journal-protocol.fr.md) et vérifient une abstraction bornée de reprise/rollback dans l'[Architecture 0035](0035-canonical-journal-recovery-model.fr.md). Ces artefacts ultérieurs ne modifient pas le modèle exact vérifié par le présent rapport et n'établissent ni implémentation, ni consensus multi-écrivain, ni durabilité opérationnelle.
 
 ## 8. Documents liés
 
 - [Spécification 0006 — Applicabilité des révisions de gouvernance](../specifications/0006-governance-revision-applicability.fr.md)
 - [Spécification 0003 — Cycle de vie des changements](../specifications/0003-change-lifecycle.fr.md)
+- [Spécification 0007 — Protocole du journal canonique et des adaptateurs VCS](../specifications/0007-canonical-governance-journal-protocol.fr.md)
+- [Architecture 0035 — Modèle de reprise du journal canonique](0035-canonical-journal-recovery-model.fr.md)
 - [Architecture 0023 — Décision d'amorçage de l'autorité](0023-bootstrap-governance-authority.fr.md)
 - [Issue #86 — Travail de spécification technique](https://github.com/Martin-PB/govcheck/issues/86)
 - [Issue #41 — Décision d'autorité parente](https://github.com/Martin-PB/govcheck/issues/41)

@@ -31,3 +31,14 @@ La première source retenue est le XML normatif lisible par machine du métamod�
 La branche `work/sacm-native-metamodel-ingestion` ajoute un importateur qui conserve les octets XML exacts et produit un index structurel distinct. Il n'interprète pas encore la sémantique MOF/XMI et n'infère aucune correspondance vers GovCheck. Le digest attendu provient de l'audit indépendant [R-128](../references.fr.md#r-128) ; le workflow GovCheck doit encore vérifier ce digest sur le téléchargement officiel réel.
 
 Détail canonique : [journal anglais WP-EVT-000022](events.md#wp-evt-000022).
+
+
+## Dernier événement — WP-EVT-000023
+
+Le workflow d'ingestion [43443933268](https://github.com/Martin-PB/govcheck/actions/runs/43443933268) a réussi sur le dernier artefact source officiel : cinq tests unitaires réussis, téléchargement OMG, vérification du digest SHA-256 et publication de l'artefact. Le fichier source fait 524 243 octets et son digest est `0581dfa0b9dfaf17ff0f6c63b74f8e7a8396bea03f315e1334e94f23db110830`.
+
+L'artefact [sacm-2.4-beta1-source-capture](https://github.com/Martin-PB/govcheck/actions/runs/43443933268/artifacts/14047167094) (ID `14047167094`, rétention 90 jours) contient les trois fichiers : payload XML exact `source.xml`, manifeste `manifest.json` et index structurel `index.json`. Le workflow a été corrigé après une première exécution qui ne publiait que le manifeste et l'index.
+
+Les correspondances typées Claim/Assertion/inférence déjà présentes dans Lean sont recensées dans les deux documents de recherche. Elles restent écrites manuellement et ne sont pas encore dérivées ni validées par le parseur XML. L'inventaire MOF/XMI, le raffinement du parseur, l'import/export d'instances et la conformité SACM restent ouverts.
+
+Détail canonique : [journal anglais WP-EVT-000023](events.md#wp-evt-000023).

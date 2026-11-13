@@ -49,16 +49,16 @@ Le script de récupération d'Assurance Forge enregistre les empreintes SHA-256 
 
 ## 5. Réponse de GovCheck : mapping qualifié par la vue source
 
-Le module Lean `GovCheckCoherence.SACM24` a été renforcé pour empêcher la fusion silencieuse des deux vues contradictoires ; il lie aussi la vue sélectionnée au format natif et à la révision exacte de l'artefact source :
+Le module Lean `GovCheckCoherence.SACM24` distingue désormais les vues documentaires des clauses, annexes et figures individuelles qui portent des affirmations dans ces vues. Le prédicat global PDF précédent était trop grossier : il rejetait à tort `byRule` pour l'ensemble du PDF alors que la clause 15.2.1 l'ajoute, tandis que la clause 13.6 inclut `needsSupport`.
 
-- `SourceView` distingue `specificationText` de `normativeMetamodelXML`.
-- `AssertionDeclarationKind` conserve l'union des deux ensembles de valeurs, dont `needsSupport` et `byRule`.
-- `declarationSupportedBySourceView` rejette `byRule` lorsque la vue du texte PDF est sélectionnée et rejette `needsSupport` lorsque la vue du métamodèle XML est sélectionnée.
-- `ElementIdentityField` préserve `gid` et `elementId) ; la vue source détermine le champ attendu.
-- `SACMClaimInterpretation` exige des preuves que le littéral de déclaration et le champ d'identité sont cohérents avec la vue source sélectionnée, et lie tout sujet explicite à la révision exacte du modèle source.
-- `SACMClaimMapping` compose cette interprétation source avec le pont sémantique général `EvidenceMapping` de GovCheck.
+- `SourceView` identifie le format documentaire ; `DeclarationSourceFragment` identifie séparément la clause PDF 13.6, l'annexe G.6 point 6, la clause 15.2.1 et le modèle XML normatif.
+- `IdentitySourceFragment` distingue la clause PDF 9.2 (`gid`), la figure PDF 9.1 (`elementId`) et le modèle XML (`elementId`).
+- Une interprétation de Claim doit porter les fragments exacts de déclaration et d'identité utilisés. Elle n'affirme plus un ensemble canonique de déclarations ni un champ d'identité unique pour tout le PDF.
+- La tranche Claim préserve `subject` comme `Option (List SACMElementRef)`, la présence de déclaration séparément de sa valeur par défaut `asserted`, les libellés de type de valeur brute, `whole` optionnel et les références opaques multivaluées d'assertion/règle/force.
+- Une identité mappée doit être non vide ; le contrat de mapping actuel est donc explicitement partiel pour les enregistrements source sans identité exploitable.
+- Les théorèmes Lean prouvent les différences entre les faits transcrits des fragments : ensembles de littéraux de déclaration, champs d'identité, certaines multiplicités, listes d'héritage et noms de propriétés de règle d'assertion.
 
-Ces garde-fous formalisent les deux conflits pertinents pour la tranche Claim/Assertion actuelle. Ils ne résolvent pas les autres conflits de multiplicité, de type de valeur ou d'héritage et n'établissent pas la conformité à l'une ou l'autre vue source complète.
+Le [rapport détaillé d'alignement des vues source](sacm24-source-view-alignment.fr.md) enregistre les éléments de preuve et la classification de chaque point. Ces théorèmes ne prouvent ni l'exactitude de la transcription source, ni le raffinement du parseur XMI Python vers la sémantique UML/MOF, ni que le pont d'inférence encodé manuellement représente la sémantique voulue par SACM. Les types `SACMClaimInterpretation` et `SACMClaimMapping` définissent des obligations de preuve ; aucune instance concrète de mapping GovCheck dérivée de la source ni revendication de conformité complète n'est établie.
 
 ## 6. Politique de traitement requise
 
@@ -72,6 +72,8 @@ Tant que l'OMG n'a pas publié une version formelle stable de SACM 2.4 ou une b�
 6. Garder le modèle 2.4 et toute future matrice de conformité séparés de 2.3. Une implémentation ultérieure doit être additive et distribuée par version, pas un remplacement silencieux.
 
 ## 7. Prochain travail de vérification
+
+Le [rapport d'alignement des vues source](sacm24-source-view-alignment.fr.md) est un relevé de comparaison lié aux révisions source, pas une décision de priorité.
 
 - Obtenir et épingler les quatre artefacts OMG Beta 1 avec les URL officielles et comparer leurs empreintes à celles enregistrées par l'audit indépendant.
 - Exécuter le diff structurel texte/XML de GovCheck et étendre le modèle Lean source-view aux autres conflits : multiplicité AssertedEvidence, type de Claim.value, héritage BindingPackage, multiplicité abstraction et multiplicité isCounter.

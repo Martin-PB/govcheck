@@ -24,7 +24,7 @@ La première cible d'ingestion source-native est l'artefact du métamodèle lisi
 
 Le catalogue OMG identifie ce XML comme un **document normatif lisible par machine** pour la bêta 2.4. Le même catalogue identifie séparément le PDF de spécification comme texte normatif et le XMI du profil UML comme informatif. SACM 2.4 Beta 1 est en cours de traitement ; SACM 2.3 demeure la version formellement adoptée. Ces rôles de source ne doivent pas être confondus.
 
-La valeur SHA-256 ci-dessus est la valeur de comparaison enregistrée par l'audit indépendant Assurance Forge ([R-128](../references.fr.md#r-128)). Le workflow GovCheck télécharge l'URL OMG versionnée et recalcule indépendamment le digest. Une exécution réussie constituera la première vérification de ce digest par GovCheck ; avant cette réussite, le digest est une valeur attendue épinglée, pas un fait vérifié localement.
+La valeur SHA-256 ci-dessus est la valeur de comparaison enregistrée par l'audit indépendant Assurance Forge ([R-128](../references.fr.md#r-128)). Le workflow GovCheck télécharge l'URL OMG versionnée et recalcule indépendamment le digest. GovCheck a vérifié indépendamment ce digest sur les octets téléchargés depuis l'URL officielle dans [l'exécution 43443933268](https://github.com/Martin-PB/govcheck/actions/runs/43443933268) : 524 243 octets source, SHA-256 `0581dfa0b9dfaf17ff0f6c63b74f8e7a8396bea03f315e1334e94f23db110830`.
 
 ## 2. Pourquoi commencer par le XML du métamodèle
 
@@ -55,7 +55,7 @@ L'importateur :
 
 La copie brute des octets fait autorité pour la fidélité. L'index des événements est un outil de navigation, pas un remplacement canonisé : les distinctions lexicales XML qui ne sont pas représentées dans l'index restent récupérables dans \`source.xml\`. La résolution des DTD/entités externes est désactivée ; l'importateur impose une limite d'entrée de 32 Mio.
 
-Le workflow exécute les tests unitaires, télécharge l'artefact OMG exact, vérifie son digest, produit le manifeste et l'index de capture, puis publie le payload exact `source.xml` avec le manifeste et l'index structurel comme artefact de workflow conservé 90 jours. Le payload source n'est pas copié dans l'historique Git : il reste disponible depuis l'URL OMG versionnée officielle.
+Le workflow exécute cinq tests unitaires, télécharge l'artefact OMG exact, vérifie son digest, produit le manifeste et l'index de capture, puis publie le payload exact `source.xml` avec le manifeste et l'index structurel comme artefact de workflow conservé 90 jours. L'artefact de capture réussi est [sacm-2.4-beta1-source-capture](https://github.com/Martin-PB/govcheck/actions/runs/43443933268/artifacts/14047167094) (identifiant `14047167094`). Le payload source n'est pas copié dans l'historique Git : il reste disponible depuis l'URL OMG versionnée officielle.
 
 ## 4. Frontière de correspondance sémantique
 
@@ -74,6 +74,24 @@ La tranche Lean SACM 2.4 actuelle est un modèle formel écrit manuellement pour
 
 Toute future correspondance sémantique opérationnelle devra toujours respecter le contrat général de correspondance GovCheck portant des preuves : sens source/cible exacts, révisions source et cible, portée et hypothèses, avec une preuve vérifiée par noyau de la relation précise revendiquée. Un digest XML prouve l'identité des octets relativement à l'hypothèse du hash ; il ne prouve pas une équivalence sémantique.
 
+### 4.1 Correspondances typées existantes et frontière des preuves
+
+Le dépôt contient déjà une tranche de mapping Lean écrite manuellement. Elle fournit des correspondances typées portant des preuves pour certains concepts SACM ; la nouvelle capture XML ne génère ni ne valide encore ces déclarations.
+
+| Type/champ source SACM | Cible Lean GovCheck | Relation encodée | Déclaration vérifiée par noyau |
+|---|---|---|---|
+| `SACMClaim.identity` | `ClaimSemantics.claimId` | Préservation exacte de l'identifiant | `claim_interpretation_preserves_identity` |
+| `SACMClaim.subject` | `SACMClaimInterpretation.mappedSubject` | Préservation exacte du sujet optionnel ; révision du modèle source épinglée | `claim_interpretation_preserves_subject`, `claim_subject_revision_is_pinned` |
+| `AssertionDeclarationKind` | `ClaimDisposition` | Mapping injectif préservant les littéraux, contrôlé par la vue source sélectionnée | `mapAssertionDeclaration_injective`, `claim_interpretation_preserves_declaration` |
+| `InferenceTypeKind.necessary` | `InferenceBridge` | Implication inverse : conclusion implique prémisse | `necessary_inference_is_reverse_entailment` |
+| `InferenceTypeKind.sufficient` | `InferenceBridge` | Implication directe : prémisse implique conclusion | `sufficient_inference_is_forward_entailment` |
+| `InferenceTypeKind.collective` | `InferenceBridge` | Équivalence des prémisses conjointes, avec ensemble non vide | `collective_inference_is_joint_equivalence` |
+| `InferenceTypeKind.necessaryAndSufficient` | `InferenceBridge` | Équivalence dans les deux directions | Constructeur `InferenceBridge.necessaryAndSufficient` |
+| `InferenceTypeKind.byRule` | `InferenceBridge` | Identité explicite de règle et preuve de sa conclusion | Constructeur `InferenceBridge.byRule` |
+| `InferenceTypeKind.probable` | Aucun pont classique cible | Non pris en charge tant qu'une sémantique probabiliste n'est pas fournie | `probable_inference_has_no_classical_bridge` |
+
+Ces interprétations sont typées sur le vocabulaire des vues sources transcrit manuellement ; elles ne constituent pas des résultats de conformité dérivés du parseur. L'importateur n'établit pas encore que les déclarations de métaclasses/propriétés du XML épinglé instancient ces types Lean. `Claim.value`, les valeurs/règles d'assertion et les autres packages SACM restent opaques ou non mappés. Les théorèmes prouvent uniquement les relations exactes énoncées dans leurs types ; ils ne prouvent ni la fidélité de l'interprétation d'un Claim en langage naturel, ni le raffinement du métamodèle SACM complet vers GovCheck.
+
 ## 5. Vérification et état d'acceptation
 
 Les tests unitaires synthétiques couvrent :
@@ -86,7 +104,7 @@ Les tests unitaires synthétiques couvrent :
 - le rejet des DTD externes ;
 - l'absence explicite de correspondances sémantiques inférées.
 
-Ces fixtures ne sont pas des exemples d'instances SACM OMG et n'établissent aucune conformité. Le workflow de capture doit également réussir sur le véritable XML OMG téléchargé avant que le digest source épinglé puisse être qualifié de vérifié par GovCheck.
+Ces fixtures ne sont pas des exemples d'instances SACM OMG et n'établissent aucune conformité. Le workflow de capture a réussi sur le véritable XML OMG téléchargé pour la tête de PR (exécution 43443933268) ; le digest et la longueur en octets ci-dessus sont vérifiés par GovCheck pour cette URL/révision source exacte.
 
 ## 6. Non-revendications explicites et étape suivante
 

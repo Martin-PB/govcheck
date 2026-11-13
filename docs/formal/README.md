@@ -82,3 +82,13 @@ The repository-level verification partition and its formal routing model are doc
 ## Reference register
 
 For the academic and industrial foundations, including the limitations of model checking and the distinction between provenance, proof and policy authority, see the [governance and assurance reference register](../references.md) and its [French version](../references.fr.md).
+
+
+## Canonical journal durability and recovery
+
+- [Architecture 0035 — model and limits](../architecture/0035-canonical-journal-recovery-model.md) · [French](../architecture/0035-canonical-journal-recovery-model.fr.md)
+- [TLA+ module](../../formal/tla/GovCheckJournalRecovery.tla)
+- [TLC configuration](../../formal/tla/GovCheckJournalRecovery.cfg)
+- [Stable artifact catalogue](../../formal/artifacts.json) — `govcheck.journal-recovery`
+
+The model separates volatile pending state from the durable append-only journal. Durable append is the commit point; recovery replays to the durable head. Rollback appends a new event/revision whose content is restored from an earlier position. Git/Pijul replica observations are passive provenance/replication positions and cannot establish normative ordering. The model is bounded and does not specify a storage engine or prove crash safety of an implementation. The exact module/configuration passed SANY 2.1 and TLC 2.19 on PR #99 head `a5c9845b1df7a36c9b1f23af0a28bdabdd4300f3`: 178,549 states generated, 38,434 distinct, zero remaining, graph depth 9. All six configured invariants and `AppendOnly` passed. See [Architecture 0035](../architecture/0035-canonical-journal-recovery-model.md) and [workflow run 42848709804](https://github.com/Martin-PB/govcheck/actions/runs/42848709804). This is bounded model-checking evidence only; the model abstracts upstream authorization and does not prove implementation durability or eventual recovery.

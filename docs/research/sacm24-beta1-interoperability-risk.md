@@ -38,7 +38,7 @@ This is not a claim that the OMG XML file is invalid. It is a distinction betwee
 
 ## 4. Pinned artifact hashes reported by the audit
 
-The Assurance Forge fetch script records these SHA-256 values for the four official OMG Beta 1 artifacts as downloaded on 2026-10-02. GovCheck has not independently re-downloaded and re-hashed these files yet; treat them as comparison values, not as GovCheck-verified hashes.
+The Assurance Forge fetch script records comparison SHA-256 values for four official OMG Beta 1 artifacts as downloaded on 2026-10-02. GovCheck independently downloaded and verified the normative specification PDF (9,019,601 bytes) and normative metamodel XML (524,243 bytes) in workflow run [43494908580](https://github.com/Martin-PB/govcheck/actions/runs/43494908580); both exact source payloads are retained in artifact [14071002816](https://github.com/Martin-PB/govcheck/actions/runs/43494908580/artifacts/14071002816). The changebar PDF and informative UML Profile XMI remain unverified by GovCheck.
 
 | OMG artifact | File ID | SHA-256 reported by Assurance Forge |
 |---|---|---|
@@ -76,7 +76,7 @@ Until OMG publishes a stable formal SACM 2.4 version or a beta with a coherent s
 The current [source-view alignment report](sacm24-source-view-alignment.md) is a revision-bound comparison record, not a precedence decision.
 
 - Obtain and pin the four OMG Beta 1 artifacts using the official URLs and compare their hashes with the independent audit's recorded hashes.
-- Run GovCheck's own text/XML structural diff and extend the Lean source-view model to the remaining conflicts: AssertedEvidence multiplicity, Claim.value type, BindingPackage inheritance, abstraction multiplicity and isCounter multiplicity.
+- Validate the human transcription of each PDF/XML fragment against the pinned source bytes; the current Lean theorems prove differences among transcribed constants, not transcription correctness. Build an explicit extraction/reconciliation pipeline before claiming automated PDF/XML diff coverage.
 - Build negative fixtures where the source view and declaration/identity/multiplicity disagree; each must be rejected or explicitly represented as a conflict.
 - Only after a portable instance format and sample files exist, build a native import/export round-trip corpus.
 - Revisit the mapping when OMG publishes Beta 2 or the formal SACM 2.4 specification.

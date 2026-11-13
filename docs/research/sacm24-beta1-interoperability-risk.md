@@ -38,7 +38,7 @@ This is not a claim that the OMG XML file is invalid. It is a distinction betwee
 
 ## 4. Pinned artifact hashes reported by the audit
 
-The Assurance Forge fetch script records comparison SHA-256 values for four official OMG Beta 1 artifacts as downloaded on 2026-10-02. GovCheck independently downloaded and verified the normative specification PDF (9,019,601 bytes) and normative metamodel XML (524,243 bytes) in workflow run [43494908580](https://github.com/Martin-PB/govcheck/actions/runs/43494908580); both exact source payloads are retained in artifact [14071002816](https://github.com/Martin-PB/govcheck/actions/runs/43494908580/artifacts/14071002816). The changebar PDF and informative UML Profile XMI remain unverified by GovCheck.
+The Assurance Forge fetch script records comparison SHA-256 values for four official OMG Beta 1 artifacts as downloaded on 2026-10-02. GovCheck independently downloaded and verified the normative specification PDF (9,019,601 bytes) and normative metamodel XML (524,243 bytes) in workflow run [43495288103](https://github.com/Martin-PB/govcheck/actions/runs/43495288103); both exact source payloads are retained in artifact [14071601644](https://github.com/Martin-PB/govcheck/actions/runs/43495288103/artifacts/14071601644). The changebar PDF and informative UML Profile XMI remain unverified by GovCheck.
 
 | OMG artifact | File ID | SHA-256 reported by Assurance Forge |
 |---|---|---|

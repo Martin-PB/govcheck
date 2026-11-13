@@ -88,7 +88,9 @@ Le noyau GovCheck candidat pourrait couvrir les lacunes suivantes : périmètre 
 
 Ce sont des lacunes candidates, pas une hiérarchie approuvée. Chaque concept doit être justifié par une question de compétence et une comparaison démontrant que réemploi, profil ou correspondance ne suffisent pas.
 
-Chaque correspondance doit déclarer les versions exactes des modèles et artefacts, l'identité de la règle et l'autorité responsable, son type (exacte, équivalente, plus étroite, plus large, partielle, ambiguë, non prise en charge), les constructions mappées/non mappées, hypothèses, pertes, comportement aller-retour, validation, fixtures et conditions d'invalidation. Ne jamais convertir silencieusement « inconnu » en « faux », « non applicable », « réussi » ou « prouvé », ni inférer une équivalence à partir des seuls libellés.
+Chaque correspondance doit déclarer les versions exactes des modèles et artefacts, l'identité de la règle et l'autorité responsable, la relation exacte revendiquée (équivalence, inclusion, raffinement, traduction, préservation partielle ou traçabilité seule), les constructions mappées/non mappées/transformées, les hypothèses, pertes et comportements aller-retour, les sémantiques formelles et l'énoncé du théorème, l'artefact de preuve, le vérificateur de confiance et les dépendances du socle de confiance, ainsi que la période de validité et les conditions d'invalidation.
+
+Une correspondance utilisée dans un raisonnement GovCheck n'est admissible qu'après démonstration formelle vérifiée de la relation revendiquée. Une proposition non démontrée peut être conservée comme recherche non résolue, mais ne peut pas servir de prémisse établie. Ne jamais convertir silencieusement « inconnu » en « faux », « non applicable », « réussi » ou « prouvé », ni inférer une équivalence à partir des seuls libellés.
 
 ## 7. Options et recommandation
 

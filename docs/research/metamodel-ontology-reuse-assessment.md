@@ -8,7 +8,7 @@
 
 The evidence does **not** justify creating a comprehensive, self-contained GovCheck ontology now. A relevant software-engineering ontology network (SEON) already exists, alongside mature models for requirements, assurance, provenance, roles, policies, decisions, architecture, lifecycle and software artifacts.
 
-The best-supported candidate is to **reuse existing domain models in their own scope**, define only a **small GovCheck-specific governance vocabulary where a documented gap remains**, and connect models through explicit, versioned mappings and conformance contracts. CSLib should remain an optional formalization/proof-support library, not the canonical ontology, interchange format or an RDF/SHACL engine.
+The best-supported candidate is to **reuse existing domain models in their own scope**, define only a **small GovCheck-specific governance vocabulary where a documented gap remains**, and connect models through explicit, versioned mappings and conformance contracts. CSLib is a candidate formalization/proof-support library, not the canonical ontology, interchange format or an RDF/SHACL engine. Its use is not what makes the proof obligation optional: every semantic correspondence used in GovCheck reasoning must be formally demonstrated by a trusted verification chain, whether CSLib, another library or a smaller GovCheck-specific formalization supplies the definitions.
 
 This does not mean “no GovCheck model.” GovCheck still needs precise repository-governance semantics and explicit inter-model contracts. It means those semantics must be derived from a gap analysis rather than invented wholesale. PR #106 remains unmerged; this report adopts no metamodel.
 

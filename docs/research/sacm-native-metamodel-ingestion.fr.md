@@ -114,11 +114,11 @@ L'incrément d'ingestion suivant a maintenant produit un inventaire structurel X
 
 Cette tranche ne :
 - interprète pas les classes, propriétés, associations, multiplicités, subsets, redefinitions ou contraintes MOF/XMI ;
-- ne génère pas l'inventaire complet du métamodèle SACM ;
+- ne produit pas une interprétation sémantique complète du métamodèle SACM ;
 - n'importe/exporte pas une instance de dossier d'assurance SACM ;
 - n'effectue pas de round-trip d'un modèle d'instance ;
 - ne mappe pas tous les concepts SACM vers GovCheck ;
 - ne prouve pas de théorème de raffinement parseur-vers-Lean ;
 - ne revendique ni conformité SACM 2.4 ni adoption normative.
 
-L'incrément suivant consiste à comparer cet inventaire structurel dérivé de la source à la vue PDF exacte et à la liste des conflits R-128, à classer chaque divergence par construction et portée affectées, puis à dériver des obligations de correspondance typées et spécifiques à chaque vue source. Seules les correspondances dont la relation sémantique exacte est formellement démontrée pourront devenir des prémisses établies de GovCheck. Chaque correspondance restera non opérationnelle tant que son obligation sémantique exacte ne sera pas démontrée.
+L'incrément suivant consiste à comparer cet inventaire structurel dérivé de la source à la vue PDF exacte et à la liste des conflits R-128, à classer chaque divergence par construction et portée affectées, puis à dériver des obligations de correspondance typées et spécifiques à chaque vue source. Seules les correspondances dont la relation sémantique exacte est formellement démontrée pourront devenir des prémisses établies de GovCheck.

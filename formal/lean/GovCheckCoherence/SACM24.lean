@@ -196,6 +196,9 @@ structure SACMClaimInterpretation
     declarationSourceView declarationFragment = claim.sourceView
   declarationConsistentWithFragment :
     declarationSupportedByFragment declarationFragment (effectiveDeclaration claim)
+  disposition : ClaimDisposition
+  declarationPreserved :
+    disposition = mapAssertionDeclaration (effectiveDeclaration claim)
   identityFragment : IdentitySourceFragment
   identityFragmentMatchesView : identitySourceView identityFragment = claim.sourceView
   identityFieldMatchesFragment :
@@ -283,8 +286,8 @@ theorem collective_inference_is_joint_equivalence
 theorem claim_interpretation_preserves_declaration
     {claim : SACMClaim} {interpretation : ClaimSemantics}
     (mapping : SACMClaimInterpretation claim interpretation) :
-    mapping.disposition = mapAssertionDeclaration (effectiveDeclaration claim) := by
-  rfl
+    mapping.disposition = mapAssertionDeclaration (effectiveDeclaration claim) :=
+  mapping.declarationPreserved
 
 theorem claim_interpretation_preserves_identity
     {claim : SACMClaim} {interpretation : ClaimSemantics}

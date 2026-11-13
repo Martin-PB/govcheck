@@ -79,3 +79,16 @@ L'artefact complet [`sacm-2.4-beta1-source-and-xmi-inventory`](https://github.co
 La livraison reste structurelle : aucune interprétation UML/MOF/OCL, résolution des références externes, preuve de raffinement du parseur, résolution des conflits PDF/XML, correspondance sémantique vers GovCheck, conformité SACM ou adoption normative n'est revendiquée. L'issue #73 reste ouverte.
 
 Détail canonique : [journal anglais WP-EVT-000026](events.md#wp-evt-000026).
+
+
+## Dernier événement — WP-EVT-000027
+
+La PR empilée [#128](https://github.com/Martin-PB/govcheck/pull/128), dépendante de la PR [#127](https://github.com/Martin-PB/govcheck/pull/127), présente le registre bilingue des divergences entre les fragments du PDF normatif et le métamodèle XML normatif. Elle est ouverte, non-draft, fusionnable et non fusionnée.
+
+Le workflow source [43495288103](https://github.com/Martin-PB/govcheck/actions/runs/43495288103) a réussi : 12 tests Python, contrôle du digest XML et comparaison de l'inventaire généré, contrôle du digest du PDF officiel, manifeste des deux vues et publication de l'artefact [14071601644](https://github.com/Martin-PB/govcheck/actions/runs/43495288103/artifacts/14071601644). Le PDF fait 9 019 601 octets, le XML 524 243 octets ; les deux digests correspondent aux valeurs épinglées.
+
+Le build Lean 4.19.0 et l'audit d'axiomes ont réussi dans [l'exécution 43495288333](https://github.com/Martin-PB/govcheck/actions/runs/43495288333), sur le candidat de fusion `2f03f73`. L'audit couvre 43 déclarations sous `GovCheckCoherence.Proofs`, toutes dans la liste autorisée `propext`, `Classical.choice`, `Quot.sound`. Quatre théorèmes wrappers par fragment utilisent `propext` ; les 13 théorèmes `SourceFacts` affichés directement n'utilisent aucun axiome. Aucun axiome non autorisé n'a été signalé. Les contrôles d'intégrité des références [43495288014](https://github.com/Martin-PB/govcheck/actions/runs/43495288014), d'alignement du package [43495288347](https://github.com/Martin-PB/govcheck/actions/runs/43495288347) et de gouvernance des versions [43495287866](https://github.com/Martin-PB/govcheck/actions/runs/43495287866) ont également réussi.
+
+Le registre classe onze groupes de divergences/différences au niveau des fragments. Les preuves Lean établissent les différences entre constantes transcrites ; elles ne certifient pas la fidélité de la transcription. Le contrôle de digest authentifie les octets, pas leur interprétation. Aucune sémantique UML/MOF complète, preuve de raffinement du parseur, correspondance sémantique dérivée, priorité entre sources, conformité SACM 2.4 ni adoption normative n'est revendiquée. L'issue #73 reste ouverte.
+
+Détail canonique : [journal anglais WP-EVT-000027](events.md#wp-evt-000027).

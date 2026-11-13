@@ -27,7 +27,7 @@ This direction is consistent with Architecture 0013, Architecture 0027 and Speci
 
 
 
-**Coherence verification:** see the [formal verification assessment](../research/metamodel-coherence-verification.md) and [French counterpart](../research/metamodel-coherence-verification.fr.md). It recommends mandatory assurance obligations for critical semantic mappings, using a heterogeneous toolchain and a formally specified Lean bridge, with source-native reasoners/validators and temporal model checking. This is a proposal for review, not an adopted toolchain.
+**Coherence verification:** see the [formal verification assessment](../research/metamodel-coherence-verification.md) and [French counterpart](../research/metamodel-coherence-verification.fr.md). It recommends a universal proof obligation for every semantic correspondence used in GovCheck reasoning: the claimed relation must be formally demonstrated correct for its declared context, assumptions, scope and exact model revisions. This does not require arbitrary models to be equivalent; it requires the relation actually claimed (equivalence, inclusion, refinement, translation or partial correspondence) to be proved. Unproved proposals may be retained but cannot be used as established premises. The proof-verification infrastructure and toolchain remain to be selected.
 
 ## 2. Decision to be made
 
@@ -41,6 +41,8 @@ Decide the architecture and boundaries of GovCheck's metamodel, including:
 - how authority, provenance, uncertainty, invalidation and change affect those relationships;
 - how external models are imported/exported without silent semantic loss;
 - which parts are core, optional profiles, adapters or external tool responsibilities.
+
+**Semantic-interoperability principle submitted for decision:** every semantic correspondence used as a premise or inference step in GovCheck reasoning must be accompanied by a machine-checked formal demonstration of the exact relation claimed, relative to explicit semantics, context, assumptions, scope and source/target revisions. An equivalence requires both directions; a directional, refinement or partial mapping requires the corresponding preservation theorem. A proposed or unproved correspondence may be recorded as unresolved knowledge, but it must not be consumed as an established relation. This obligation does not require unrelated models to be made equivalent and does not prescribe a single proof assistant or require every adopter to install one locally.
 
 This is a metamodel decision, not a decision to mandate every method or tool for every adopting repository.
 
@@ -83,10 +85,10 @@ The metamodel should satisfy the following candidate decision criteria.
 | MM-06 | Context and applicability | Scope by repository, component, lifecycle stage, environment, profile, risk and other declared context; never infer legal or safety status from labels alone. |
 | MM-07 | Authority is explicit | Separate authorship, production, technical review, normative authority, approval, execution privilege and risk acceptance. |
 | MM-08 | Epistemic integrity | Preserve assertion, hypothesis, assumption, observation, evidence, testimony, inference, argument, proof, counterevidence, unknown and limitation. |
-| MM-09 | Method pluralism | Tests, model checking, formal proof, inspection, simulation, measurement and operational observation remain distinct methods/results. |
+| MM-09 | Method pluralism | Tests, model checking, formal proof, inspection, simulation, measurement and operational observation remain distinct methods/results. None substitutes for the formal demonstration required for a semantic correspondence used in reasoning. |
 | MM-10 | Quantitative semantic integrity | Distinguish probability, fuzzy membership, nondeterminism, transition rates, costs/rewards and qualitative judgments. |
 | MM-11 | Interoperability without loss | Map external standards explicitly; preserve native content and report unmapped/ambiguous constructs rather than silently dropping them. |
-| MM-12 | Incremental adoption | Projects select applicable profiles and capabilities; no universal maturity ladder and no mandatory proof tool. |
+| MM-12 | Incremental adoption | Projects select applicable profiles and capabilities; no universal maturity ladder or single prescribed proof toolchain. The proof obligation for semantic correspondences used in reasoning remains mandatory independently of tool choice. |
 | MM-13 | Machine-checkable contracts | Define invariants, conformance vectors, negative cases and explicit unknown/unsupported outcomes. |
 | MM-14 | Explainability and reproducibility | Every evaluation result links to exact subject/model/policy revisions, method, inputs, tool version, assumptions, limits and provenance. |
 | MM-15 | Independence from a single toolchain | No mandatory RDF store, graph database, Lean, TLA+, SACM parser, hosted service or forge. |
@@ -283,6 +285,7 @@ These are repository design statements, not all implemented capabilities. Where 
 6. Permit probabilistic, fuzzy and Markov/state-transition profiles where justified; make none mandatory.
 7. Defer serialization, ontology language, graph storage/query technology and evaluator language until contract requirements and conformance cases are established.
 8. Require explicit mapping coverage and loss reports for every import/export adapter.
+9. Require a machine-checked formal demonstration of correctness for every semantic correspondence used in GovCheck reasoning; match proof obligations to the claimed relation, and exclude unproved proposals from established reasoning.
 
 These recommendations are not adopted merely by appearing here. They require an explicit decision by the current GovCheck authority.
 
@@ -296,7 +299,7 @@ These recommendations are not adopted merely by appearing here. They require an 
 - Full SACM 2.4 Beta 1 coverage strategy and treatment of future version changes.
 - Probabilistic/fuzzy semantics and validation boundaries.
 - Markov/MDP/automata profile boundaries and quantitative model-checking integration.
-- Required formalization and proof obligations for the metamodel itself.
+- Exact formalization architecture, theorem statements, trusted kernel/verifier and proof-bundle distribution profile. The requirement to prove every semantic correspondence used in reasoning is no longer an open principle; its detailed obligations and implementation remain to be specified.
 - Canonical exchange package, migration and loss-accounting strategy.
 
 ## 13. Decision options and requested authority response

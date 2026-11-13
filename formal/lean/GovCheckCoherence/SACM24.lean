@@ -42,11 +42,11 @@ def declarationLiteralsForFragment : DeclarationSourceFragment → List Assertio
 
 theorem pdf_clause13_6_includes_needsSupport :
     AssertionDeclarationKind.needsSupport ∈ declarationLiteralsForFragment .pdfClause13_6 := by
-  simp [declarationLiteralsForFragment]
+  decide
 
 theorem pdf_clause13_6_does_not_list_byRule :
     AssertionDeclarationKind.byRule ∉ declarationLiteralsForFragment .pdfClause13_6 := by
-  simp [declarationLiteralsForFragment]
+  decide
 
 theorem pdf_annex_g6_item6_lists_three_declarations :
     declarationLiteralsForFragment .pdfAnnexG6Item6 =
@@ -54,11 +54,11 @@ theorem pdf_annex_g6_item6_lists_three_declarations :
 
 theorem pdf_clause15_2_1_includes_byRule :
     AssertionDeclarationKind.byRule ∈ declarationLiteralsForFragment .pdfClause15_2_1 := by
-  simp [declarationLiteralsForFragment]
+  decide
 
 theorem xml_model_includes_byRule :
     AssertionDeclarationKind.byRule ∈ declarationLiteralsForFragment .normativeMetamodelXML := by
-  simp [declarationLiteralsForFragment]
+  decide
 
 /-- The PDF is internally inconsistent about this enumeration: clause 13.6
     includes needsSupport and omits byRule, while clause 15.2.1 includes byRule. -/
@@ -67,7 +67,7 @@ theorem pdf_assertion_declaration_fragments_disagree :
     AssertionDeclarationKind.needsSupport ∉ declarationLiteralsForFragment .pdfClause15_2_1 ∧
     AssertionDeclarationKind.byRule ∉ declarationLiteralsForFragment .pdfClause13_6 ∧
     AssertionDeclarationKind.byRule ∈ declarationLiteralsForFragment .pdfClause15_2_1 := by
-  simp [declarationLiteralsForFragment]
+  decide
 
 /-- GovCheck preserves every source literal as a distinct disposition. -/
 inductive ClaimDisposition where

@@ -325,3 +325,19 @@
 - **Documentation:** bilingual [source-native ingestion boundary](../research/sacm-native-metamodel-ingestion.md) / [frontière d'ingestion source-native](../research/sacm-native-metamodel-ingestion.fr.md); R-197 catalogued in both reference catalogues.
 - **Normative boundary:** PR #125's merge did not adopt the full GovCheck metamodel. This ingestion increment does not adopt SACM 2.4, claim SACM conformance, import assurance-case instances, or establish any semantic equivalence. The work remains under issue #73.
 - **Outstanding verification:** run the Python tests and the workflow against the live OMG artifact; inspect the actual metamodel vocabulary before implementing a typed MOF/XMI inventory; prove any future semantic correspondence independently.
+
+
+<a id="wp-evt-000023"></a>
+## WP-EVT-000023 — Official SACM metamodel source captured and digest verified
+
+- **Subject:** `govcheck.work.intermodel-contract-conformance`
+- **Event type:** `source-artifact-captured-and-ingestion-workflow-verified`
+- **Recorded:** 2026-11-13
+- **PR:** [#126 — Add source-native SACM metamodel capture and ingestion boundary](https://github.com/Martin-PB/govcheck/pull/126), current checked head `b8ece5423f7145832ef6003b714280f88c01915c`.
+- **Official source:** OMG SACM 2.4 Beta 1 metamodel XML, file ID `ptc/26-05-28`, revision path `SACM/20260504/SACM2.4_Metamodel.xml`, SHA-256 `0581dfa0b9dfaf17ff0f6c63b74f8e7a8396bea03f315e1334e94f23db110830`; downloaded source length 524,243 bytes. The expected digest was independently recomputed and matched by GovCheck.
+- **Ingestion verification:** [workflow run 43443933268](https://github.com/Martin-PB/govcheck/actions/runs/43443933268) passed: five Python unit tests, official OMG download, digest verification, source capture and artifact upload. The uploaded artifact [sacm-2.4-beta1-source-capture](https://github.com/Martin-PB/govcheck/actions/runs/43443933268/artifacts/14047167094) (ID `14047167094`) contains the exact `source.xml`, `manifest.json` and `index.json`; 90-day retention.
+- **Other PR checks:** reference integrity [43443694584](https://github.com/Martin-PB/govcheck/actions/runs/43443694584), package alignment [43443694514](https://github.com/Martin-PB/govcheck/actions/runs/43443694514), and GovCheck check slice (report-only) [43443694553](https://github.com/Martin-PB/govcheck/actions/runs/43443694553) passed on the preceding PR head `9d79d00654e2eca79c04edfa8a0010fcd48c842d). The final head `b8ece5423f7145832ef6003b714280f88c01915c` reran all four checks successfully.
+- **Typed mapping inventory:** bilingual research now records the existing manually authored Lean correspondences: Claim identity, explicit subject/revision, injective AssertionDeclarationKind-to-ClaimDisposition, and kind-indexed inference bridges. These are not generated from the XML and do not establish source parser refinement. Unsupported/ambiguous constructs remain unmapped.
+- **Fidelity correction:** the initial workflow artifact contained only the manifest/index. The workflow was corrected to include the raw `source.xml` payload, and the successful final run confirms all three files were uploaded.
+- **Limits:** no MOF/XMI semantic inventory, SACM instance import/export, parser refinement theorem, full SACM conformance or metamodel adoption is claimed. SACM 2.4 Beta 1 remains in-process; SACM 2.3 remains formal.
+- **Normative boundary:** the PR remains open and unmerged; successful checks and source capture do not constitute adoption.

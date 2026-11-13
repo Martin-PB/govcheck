@@ -31,6 +31,7 @@ English is the default language. Each record has a French counterpart. The bilin
 - [0032 — Canonical publication model-checking report](0032-canonical-publication-model-checking.md) · [Français](0032-canonical-publication-model-checking.fr.md)
 - [0033 — Governance evaluator, exception and revocation control model](0033-governance-evaluator-exception-revocation-model.md) · [Français](0033-governance-evaluator-exception-revocation-model.fr.md)
 - [0034 — Forge-native portfolio adapter (govcheck/forge.py)](0034-forge-native-portfolio-adapter.md) · [Français](0034-forge-native-portfolio-adapter.fr.md)
+- [0035 — Canonical journal durability, recovery and rollback model](0035-canonical-journal-recovery-model.md) · [Français](0035-canonical-journal-recovery-model.fr.md)
 
 Architecture 0028 defines the portfolio lifecycle and the issue-tracker boundary. Architecture 0030 adds the repository-backed registry, stable work-item identity, append-preserving logical events, native VCS revision binding, migration rules and explicit limitations of the initial history/recovery mechanism. Neither record claims that a registry engine, tamper-proof journal, automatic adapter synchronization or enforcement service is implemented.
 

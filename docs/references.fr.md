@@ -1346,3 +1346,11 @@
 - **Concepts pertinents :** des requêtes répétables produisent le même effet voulu qu'une requête unique, ce qui permet une nouvelle tentative sûre après perte de réponse lorsque la sémantique de l'opération est idempotente.
 - **Utilité pour GovCheck :** éclaire la distinction entre la nouvelle tentative d'une requête d'ajout exacte et la création accidentelle d'un second événement normatif.
 - **Limite :** la sémantique des méthodes HTTP ne définit ni l'espace de noms des clés d'idempotence GovCheck, ni leur rétention, ni le protocole d'ajout du journal ; ces points restent spécifiés localement.
+
+<a id="r-197"></a>
+### R-197 — XML normatif du métamodèle lisible par machine OMG SACM 2.4 Beta 1
+- **Cité par :** [Ingestion source-native du métamodèle SACM](research/sacm-native-metamodel-ingestion.fr.md)
+- **Source primaire :** [Catalogue de spécifications SACM de l'OMG](https://www.omg.org/spec/SACM) · [XML normatif du métamodèle lisible par machine](https://www.omg.org/spec/SACM/20260504/SACM2.4_Metamodel.xml) · identifiant de fichier OMG `ptc/26-05-28`.
+- **Identité épinglée :** SACM 2.4 Beta 1 ; chemin source daté du 04/05/2026 ; format natif XML ; valeur SHA-256 de comparaison `0581dfa0b9dfaf17ff0f6c63b74f8e7a8396bea03f315e1334e94f23db110830`, rapportée par R-128 et revérifiée par le workflow d'ingestion GovCheck.
+- **Concepts pertinents :** source normative du métamodèle lisible par machine, distincte du texte PDF normatif et du XMI informatif du profil UML.
+- **Limite :** SACM 2.4 Beta 1 est en cours de traitement et informative ; SACM 2.3 reste formelle. Ce XML de métamodèle n'est pas un format portable d'échange d'instances de dossiers d'assurance et son digest n'établit pas la conformité sémantique.

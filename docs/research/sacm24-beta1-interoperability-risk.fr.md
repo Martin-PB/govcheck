@@ -38,7 +38,7 @@ Il ne s'agit pas d'affirmer que le fichier XML de l'OMG est invalide. Il faut di
 
 ## 4. Empreintes des artefacts épinglées par l'audit
 
-Le script de récupération d'Assurance Forge enregistre les empreintes SHA-256 de comparaison de quatre artefacts OMG Beta 1 officiels téléchargés le 02/10/2026. GovCheck a téléchargé et vérifié indépendamment le PDF normatif de spécification (9 019 601 octets) et le XML normatif du métamodèle (524 243 octets) dans le workflow [43495625975](https://github.com/Martin-PB/govcheck/actions/runs/43495625975) ; les deux payloads sources exacts sont conservés dans l'artefact [14071287095](https://github.com/Martin-PB/govcheck/actions/runs/43495625975/artifacts/14071287095). Le PDF avec barres de modification et le XMI informatif du profil UML ne sont pas encore vérifiés par GovCheck.
+Le script de récupération d'Assurance Forge enregistre les empreintes SHA-256 de comparaison de quatre artefacts OMG Beta 1 officiels téléchargés le 02/10/2026. GovCheck a téléchargé et vérifié indépendamment le PDF normatif de spécification (9 019 601 octets) et le XML normatif du métamodèle (524 243 octets) dans le workflow [43496689208](https://github.com/Martin-PB/govcheck/actions/runs/43496689208) ; les deux payloads sources exacts sont conservés dans l'artefact [14072371021](https://github.com/Martin-PB/govcheck/actions/runs/43496689208/artifacts/14072371021). Le PDF avec barres de modification et le XMI informatif du profil UML ne sont pas encore vérifiés par GovCheck.
 
 | Artefact OMG | Identifiant de fichier | SHA-256 rapporté par Assurance Forge |
 |---|---|---|

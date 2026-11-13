@@ -18,7 +18,7 @@ The Assurance Forge report is not an OMG authority and its conclusions must be c
 | Element identity | `gid : String[0..1]` | `elementId : UID[1]`; no `gid` | Identity cannot be normalized without selecting a source view and recording the transformation |
 | Assertion declaration literals | `axiomatic`, `assumed`, `asserted`, `needsSupport` | `axiomatic`, `assumed`, `asserted`, plus `byRule`; no `needsSupport` | The same enum name has incompatible value sets |
 | `AssertedEvidence.evidence` multiplicity | `[0..*]` | `[1..*]` | Empty evidence collections are valid in one view and invalid in the other |
-| `Claim.value` | `MultiLangString` | `ExpressionLangString` | Text and typed expression values are not interchangeable |
+| `Claim.value` | R-128 reports `MultiLangString` for Clause 13.9; informative Figure 15.1.1 (printed p.59) shows `ExpressionLangString` | `ExpressionLangString` | Unresolved audit discrepancy: the inspected informative figure agrees with XML, but does not settle the exact normative Clause 13.9 passage. Do not claim an established type conflict until that passage is located and verified. |
 | `BindingPackage` inheritance | Text clauses disagree on the superclass set | XML declares `ScopedPackage` and `SACMPackageWithBinding` | A parser/validator may build a different type hierarchy |
 | `SACMElement.abstraction` multiplicity | `[0..1]` | `[0..*]` | One view permits at most one abstraction, the other multiple |
 | `AssertedRelationship.isCounter` multiplicity | `Boolean[1]` | `Boolean[0..1]` | Requiredness differs |

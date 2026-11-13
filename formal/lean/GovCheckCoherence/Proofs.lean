@@ -25,9 +25,7 @@ theorem testimony_cannot_be_promoted_by_transport :
   intro h
   rcases h with h | h
   · exact h rfl
-  · rcases h with h | h
-    · cases h
-    · cases h
+  · cases h
 
 /-- A model-checking result cannot become a theorem proof by transport alone. -/
 theorem model_checking_cannot_be_promoted_by_transport :
@@ -35,25 +33,21 @@ theorem model_checking_cannot_be_promoted_by_transport :
   intro h
   rcases h with h | h
   · exact h rfl
-  · rcases h with h | h
-    · cases h
-    · cases h
+  · cases h
 
-/-- A theorem-proof record may be carried as such. This does not authenticate
-its source proof or establish freshness; those are separate obligations. -/
-theorem theorem_proof_may_be_carried :
-    admissibleTargetKind .theoremProof .theoremProof .carried := by
-  right
-  left
-  rfl
+/-- Even a source theorem-proof label cannot be carried as a target proof
+without re-checking a derivation in the target formal context. -/
+theorem theorem_proof_cannot_be_carried_without_kernel_check :
+    ¬ admissibleTargetKind .theoremProof .theoremProof .carried := by
+  intro h
+  rcases h with h | h
+  · exact h rfl
+  · cases h
 
-/-- A new theorem-proof target requires an explicitly identified
-kernel-checked derivation. A later refinement must bind the derivation to
-exact premises, conclusion, assumptions and kernel identity. -/
+/-- Any target theorem-proof classification requires kernel-checked origin. -/
 theorem new_theorem_proof_requires_kernel_derivation
     (source : EvidenceKind) :
     admissibleTargetKind source .theoremProof .kernelChecked := by
-  right
   right
   rfl
 
@@ -115,13 +109,13 @@ theorem evidence_mapping_preserves_method_class
     target.evidence.methodClass = source.evidence.methodClass :=
   mapping_preserves_method_class mapping
 
-/-- A theorem-proof target is carried from an existing theorem proof or has
-    an actual Lean proof term for the target claim. -/
+/-- A theorem-proof target always carries an actual Lean proof term of the
+exact target claim; a source kind label is never sufficient. -/
 theorem evidence_mapping_theorem_proof_requires_derivation
     {source target : MappingSubject} (mapping : EvidenceMapping source target)
     (h : target.evidence.kind = .theoremProof) :
-    source.evidence.kind = .theoremProof ∨
-      (∃ derivation : KernelCheckedDerivation target.claim.meaning, derivation.proof = derivation.proof) :=
+    ∃ derivation : KernelCheckedDerivation target.claim.meaning,
+      derivation.proof = derivation.proof :=
   mapping_target_theorem_proof_requires_derivation mapping h
 
 /-- Unknown (no determinate result) is not the same as inconclusive
@@ -146,7 +140,7 @@ theorem sacm_necessary_inference_direction
     {premise conclusion : Prop}
     (bridge : SACM24.InferenceBridge [premise] conclusion .necessary) :
     conclusion → premise :=
-  SACM24.necessary_inference_is_reverse_entailment bridge
+  SACM24.necessary_inference_is_reverse-entailment bridge
 
 /-- SACM sufficient inference is represented in the forward implication direction. -/
 theorem sacm_sufficient_inference_direction

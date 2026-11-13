@@ -309,3 +309,19 @@
 - **Observed PR state:** open, non-draft, GitHub reports mergeable. No merge was performed.
 - **Normative boundary:** the audit and API correction do not adopt the complete GovCheck metamodel, select a universal formalization stack, establish external ontology conformance or prove production importer/exporter refinement. Issue #73 remains open.
 - **Residual limits:** source-native semantic interpretation is still authority-supplied; proof metadata is not yet tied to the complete proof dependency closure; mappings are not yet proved compositional; TLA+ lifecycle/authority models are not yet related by a refinement theorem to the Lean mapping layer.
+
+
+<a id="wp-evt-000022"></a>
+## WP-EVT-000022 — PR #125 merged; SACM source-native ingestion started
+
+- **Subject:** `govcheck.work.intermodel-contract-conformance`
+- **Event type:** `dependency-satisfied-and-implementation-increment-started`
+- **Recorded:** 2026-11-13
+- **Merge confirmation:** GitHub PR #125 reports `merged=true`, merged at `2026-11-13T14:23:44Z`; merge commit `2ae091f55ab177560f0f603e07b47c847c740480`. This was checked against the live PR resource before beginning the dependent work.
+- **Source selection:** OMG SACM 2.4 Beta 1 normative machine-readable metamodel XML, file ID `ptc/26-05-28`, dated source path `SACM/20260504/SACM2.4_Metamodel.xml`; catalogue entry [R-197](../references.md#r-197). SACM 2.4 remains in-process/informational; SACM 2.3 remains the formal baseline.
+- **Implementation candidate:** branch `work/sacm-native-metamodel-ingestion`; source capture/importer in `scripts/ingest-sacm-metamodel.py`, synthetic tests in `tests/test_sacm_native_ingestion.py`, and a workflow that downloads the official source, checks its expected SHA-256 and publishes a structural capture index.
+- **Fidelity boundary:** the importer copies the exact source bytes and creates a separate Expat event index. The raw payload is authoritative; the index is not a MOF/XMI interpreter. No GovCheck semantic mapping is inferred; `semanticMappings` remains empty.
+- **Digest provenance:** expected SHA-256 `0581dfa0b9dfaf17ff0f6c63b74f8e7a8396bea03f315e1334e94f23db110830` is the comparison value reported by independent audit R-128. GovCheck's own workflow must complete the official download and digest comparison before this value is described as independently verified by GovCheck.
+- **Documentation:** bilingual [source-native ingestion boundary](../research/sacm-native-metamodel-ingestion.md) / [frontière d'ingestion source-native](../research/sacm-native-metamodel-ingestion.fr.md); R-197 catalogued in both reference catalogues.
+- **Normative boundary:** PR #125's merge did not adopt the full GovCheck metamodel. This ingestion increment does not adopt SACM 2.4, claim SACM conformance, import assurance-case instances, or establish any semantic equivalence. The work remains under issue #73.
+- **Outstanding verification:** run the Python tests and the workflow against the live OMG artifact; inspect the actual metamodel vocabulary before implementing a typed MOF/XMI inventory; prove any future semantic correspondence independently.

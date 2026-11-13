@@ -24,7 +24,7 @@ La première cible d'ingestion source-native est l'artefact du métamodèle lisi
 
 Le catalogue OMG identifie ce XML comme un **document normatif lisible par machine** pour la bêta 2.4. Le même catalogue identifie séparément le PDF de spécification comme texte normatif et le XMI du profil UML comme informatif. SACM 2.4 Beta 1 est en cours de traitement ; SACM 2.3 demeure la version formellement adoptée. Ces rôles de source ne doivent pas être confondus.
 
-La valeur SHA-256 ci-dessus est la valeur de comparaison enregistrée par l'audit indépendant Assurance Forge (R-128). Le workflow GovCheck télécharge l'URL OMG versionnée et recalcule indépendamment le digest. Une exécution réussie constituera la première vérification de ce digest par GovCheck ; avant cette réussite, le digest est une valeur attendue épinglée, pas un fait vérifié localement.
+La valeur SHA-256 ci-dessus est la valeur de comparaison enregistrée par l'audit indépendant Assurance Forge ([R-128](../references.fr.md#r-128)). Le workflow GovCheck télécharge l'URL OMG versionnée et recalcule indépendamment le digest. Une exécution réussie constituera la première vérification de ce digest par GovCheck ; avant cette réussite, le digest est une valeur attendue épinglée, pas un fait vérifié localement.
 
 ## 2. Pourquoi commencer par le XML du métamodèle
 

@@ -51,7 +51,7 @@ class SacmXmiInventoryTests(unittest.TestCase):
 
     def test_indexes_uml_constructs_and_internal_references(self):
         result = self.inventory()
-        self.assertEqual(result["document"]["identifiedElementCount"], 11)
+        self.assertEqual(result["document"]["identifiedElementCount"], 12)
         counts = result["summary"]["xmiTypeCounts"]
         self.assertEqual(counts["uml:Class"], 2)
         self.assertEqual(counts["uml:Property"], 1)
@@ -95,8 +95,9 @@ class SacmXmiInventoryTests(unittest.TestCase):
         result = self.inventory()
         summary = MODULE.build_summary(result)
         self.assertEqual(summary["summaryFormat"], "govcheck.sacm-xmi-structural-inventory-summary/v1")
-        self.assertEqual(summary["document"]["identifiedElementCount"], 11)
-        self.assertEqual(summary["counts"]["resolvedInternalReferenceCount"], 4)
+        self.assertEqual(summary["document"]["identifiedElementCount"], 12)
+        self.assertEqual(summary["counts"]["resolvedInternalReferenceCount"], 5)
+        self.assertEqual(summary["counts"]["externalReferenceCount"], 1)
         self.assertEqual(summary["packages"][0]["name"], "P")
 
     def test_rejects_digest_mismatch(self):

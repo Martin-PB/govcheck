@@ -24,13 +24,13 @@ The first source-native ingestion target is the OMG normative machine-readable m
 
 The OMG catalogue identifies this XML as a **normative machine-readable document** for the 2.4 beta. The same catalogue separately identifies the specification PDF as normative prose and the UML Profile XMI as informative. SACM 2.4 Beta 1 is in process; SACM 2.3 remains the formal adopted version. These source roles must not be conflated.
 
-The SHA-256 value above is the comparison value recorded by the independent Assurance Forge audit (R-128). GovCheck's workflow downloads the official versioned OMG URL and independently recomputes the digest. A successful run is the first GovCheck-side verification of that digest; before that run succeeds, the digest is a pinned expected value, not a locally verified fact.
+The SHA-256 value above is the comparison value recorded by the independent Assurance Forge audit ([R-128](../references.md#r-128)). GovCheck's workflow downloads the official versioned OMG URL and independently recomputes the digest. A successful run is the first GovCheck-side verification of that digest; before that run succeeds, the digest is a pinned expected value, not a locally verified fact.
 
 ## 2. Why ingest the metamodel XML first
 
 The XML is the authoritative machine-readable description of the metamodel, not an instance of an assurance case. It is the right first ingestion target because it provides a stable, version-addressed source from which the later metaclass, property, association, multiplicity, enumeration and constraint inventory can be derived.
 
-It does **not** establish a portable native instance interchange format. The independent R-128 audit reports that Beta 1's PDF and XML views disagree on multiple constructs and that the available UML Profile XMI is informative and vendor-specific. This work therefore does not claim to import arbitrary SACM assurance-case instances.
+It does **not** establish a portable native instance interchange format. The independent [R-128](../references.md#r-128) audit reports that Beta 1's PDF and XML views disagree on multiple constructs and that the available UML Profile XMI is informative and vendor-specific. This work therefore does not claim to import arbitrary SACM assurance-case instances.
 
 ## 3. Ingestion contract implemented by this slice
 

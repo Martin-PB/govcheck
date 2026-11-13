@@ -47,6 +47,7 @@
 | Metamodel coherence, semantic preservation and formal verification | R-123–R-127 |
 | Concurrent edits, semantic merge conflicts and multi-agent delivery | R-142–R-151 |
 | Probabilistic assurance, fuzzy logic and state-transition models | R-193 |
+| Canonical journal ordering, durable recovery and idempotent retry | R-194–R-196 |
 
 ## Full reference entries
 
@@ -1335,3 +1336,30 @@
 - **Relevant concepts:** finite-state transition systems; discrete- and continuous-time Markov chains; Markov decision processes; probabilistic timed automata; transition rates, probabilities, costs and rewards; Bayesian reliability assessment; interval-valued transition probabilities; fuzzy membership and imprecise requirements; quantitative confidence in assurance arguments.
 - **Use in GovCheck:** supports the study of optional specialist profiles for probabilistic and fuzzy reasoning and of a generic transition-analysis contract linking semantics, parameters, provenance, analysis specifications/results and assurance claims.
 - **Limit:** the sources describe distinct mathematical semantics and tools. A transition weight is not necessarily a probability; a fuzzy membership degree is not a probability; a model-checking result is bounded by its model and assumptions. Quantitative confidence techniques require critical evaluation and empirical validation. These sources do not establish adoption or implementation by GovCheck.
+
+### R-194 — Linearizability: A Correctness Condition for Concurrent Objects
+- **Cited by:** [Specification 0007](specifications/0007-canonical-governance-journal-protocol.md), [Decision-session record 0008](decisions/0008-governance-applicability-arbitration-session.md), [Work portfolio event journal](work-portfolio/events.md), [Work-item register](work-portfolio/work-items.md)
+- **Primary source:** Maurice P. Herlihy and Jeannette M. Wing, “Linearizability: A Correctness Condition for Concurrent Objects,” *ACM Transactions on Programming Languages and Systems*, 12(3), 1990, pp. 463–492. [DOI](https://doi.org/10.1145/78969.78972) · [Author-hosted paper](https://www.cs.cmu.edu/~wing/publications/HerlihyWing90.pdf)
+- **Relevant concepts:** concurrent operations appear to take effect at one point between invocation and response while respecting a legal sequential specification.
+- **Use in GovCheck:** provides the formal concurrency concept behind the journal's single linearization point for compare-and-append.
+- **Limit:** linearizability is a correctness condition, not a storage implementation or a proof that a particular journal satisfies it.
+
+<a id="r-195"></a>
+
+### R-195 — ARIES write-ahead logging and transaction recovery
+- **Cited by:** [Specification 0007](specifications/0007-canonical-governance-journal-protocol.md), [Decision-session record 0008](decisions/0008-governance-applicability-arbitration-session.md), [Work portfolio event journal](work-portfolio/events.md), [Work-item register](work-portfolio/work-items.md)
+- **Primary source:** C. Mohan, Don Haderle, Bruce Lindsay, Hamid Pirahesh and Peter Schwarz, “ARIES: A Transaction Recovery Method Supporting Fine-Granularity Locking and Partial Rollbacks Using Write-Ahead Logging,” *ACM Transactions on Database Systems*, 17(1), 1992. [IBM Research publication](https://research.ibm.com/publications/aries-a-transaction-recovery-method-supporting-fine-granularity-locking-and-partial-rollbacks-using-write-ahead-logging)
+- **Relevant concepts:** write-ahead logging, durable transaction recovery, redo/undo and restart recovery.
+- **Use in GovCheck:** informs the distinction between volatile preparation, durable commit and reconstruction after interruption.
+- **Limit:** ARIES is a database recovery algorithm; citing it does not select a database, imply direct adoption, or prove the GovCheck journal's durability.
+
+<a id="r-196"></a>
+
+### R-196 — RFC 9110, HTTP Semantics: idempotent methods
+- **Cited by:** [Specification 0007](specifications/0007-canonical-governance-journal-protocol.md), [Decision-session record 0008](decisions/0008-governance-applicability-arbitration-session.md), [Work portfolio event journal](work-portfolio/events.md), [Work-item register](work-portfolio/work-items.md)
+- **Primary source:** [RFC 9110 §9.2.2 — Idempotent Methods](https://www.rfc-editor.org/rfc/rfc9110.html#section-9.2.2)
+- **Relevant concepts:** repeatable requests have the same intended effect as one request, enabling safe retry after a lost response when the operation semantics are idempotent.
+- **Use in GovCheck:** informs the protocol distinction between retrying an exact append request and accidentally creating a second normative event.
+- **Limit:** HTTP method semantics do not define GovCheck's idempotency-key namespace, journal retention or append protocol; those remain specified locally.
+
+<a id="r-128"></a>

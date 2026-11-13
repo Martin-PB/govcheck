@@ -159,7 +159,7 @@ theorem sacm_claim_interpretation_preserves_subject
 theorem sacm_claim_subject_revision_is_pinned
     {claim : SACM24.SACMClaim} {target : ClaimSemantics}
     (mapping : SACM24.SACMClaimInterpretation claim target)
-    (subject : SACM24.SACMElementRef) (h : mapping.mappedSubject = some subject) :
+    (subject : SACM24.SACMElementRef) (h : subject ∈ mapping.mappedSubject.getD []) :
     subject.modelRevision = mapping.sourceModel.revision :=
   SACM24.claim_subject_revision_is_pinned mapping subject h
 
@@ -197,7 +197,7 @@ theorem sacm_mapping_preserves_assertion_declaration
     {sacmClaim : SACM24.SACMClaim} {source target : MappingSubject}
     (mapping : SACM24.SACMClaimMapping sacmClaim source target) :
     mapping.sourceInterpretation.disposition =
-      SACM24.mapAssertionDeclaration sacmClaim.declaration :=
+      SACM24.mapAssertionDeclaration (SACM24.effectiveDeclaration sacmClaim) :
   SACM24.claim_interpretation_preserves_declaration mapping.sourceInterpretation
 
 /-- PDF Clause 13.6 includes needsSupport; this is a fragment-level fact,

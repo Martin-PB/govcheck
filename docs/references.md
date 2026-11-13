@@ -45,6 +45,7 @@
 | Repository intent, lifecycle and requirements engineering | R-114–R-118, R-121–R-122 |
 | System modeling and assurance-case metamodels | R-119–R-120 |
 | Metamodel coherence, semantic preservation and formal verification | R-123–R-127 |
+| Concurrent edits, semantic merge conflicts and multi-agent delivery | R-142–R-151 |
 | Probabilistic assurance, fuzzy logic and state-transition models | R-193 |
 
 ## Full reference entries
@@ -1235,6 +1236,96 @@
 - **Relevant concepts:** reported absence of a stable native 2.4 instance interchange contract; text/XML contradictions in identity fields, assertion declaration literals, multiplicities, Claim value type and inheritance; implementation cost and versioning implications.
 - **Use in GovCheck:** independent engineering cross-check that the SACM 2.4 Beta 1 text and machine-readable metamodel must be treated as separate source views, not silently normalized into one model.
 - **Limit:** this is a third-party implementation audit, not an OMG statement or normative authority. Its findings must be checked against pinned OMG artifacts; it does not establish that all SACM 2.4 implementations share the same limitations.
+
+### R-142 — ConE: Concurrent Edit Detection Tool
+- **Cited by:** [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
+- **Primary source:** [ACM/IEEE paper, DOI 10.1145/3478019](https://doi.org/10.1145/3478019)
+- **Relevant concepts:** detecting concurrently edited files across pull requests; empirical relationship between overlap and bug risk.
+- **Use in GovCheck:** motivates representing overlapping work scopes as a signal for impact analysis and targeted review.
+- **Limit:** the study concerns six large Microsoft repositories over six months; overlap is not proof of incompatibility, and a detector is not a correctness proof.
+
+<a id="r-143"></a>
+
+### R-143 — Empirical investigation into merge conflicts and software quality
+- **Cited by:** [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
+- **Primary source:** [Open paper PDF](https://ics.uci.edu/~iftekha/pdf/J4.pdf)
+- **Relevant concepts:** conflict prevalence, semantic conflict categories and association between conflict-affected code and bugs in a sample of open-source projects.
+- **Use in GovCheck:** evidence that conflict resolution and semantic impact deserve separate treatment in assurance.
+- **Limit:** results are empirical associations within a particular dataset and methodology; they do not establish universal causal rates or project-specific risk.
+
+<a id="r-144"></a>
+
+### R-144 — ConflictBench: A benchmark to evaluate software merge tools
+- **Cited by:** [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
+- **Primary source:** [Journal of Systems and Software, 2024](https://www.sciencedirect.com/science/article/pii/S0164121224001298)
+- **Relevant concepts:** Java merge-conflict dataset and comparative evaluation of merge tools.
+- **Use in GovCheck:** supports distinguishing tool applicability and merge success from semantic correctness.
+- **Limit:** dataset and language coverage are bounded; benchmark outcomes do not establish correctness for arbitrary repositories or languages.
+
+<a id="r-145"></a>
+
+### R-145 — Lightweight Semantic Conflict Detection with Static Analysis
+- **Cited by:** [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
+- **Primary source:** [ICSE Companion 2024, DOI 10.1145/3639478.3643118](https://doi.org/10.1145/3639478.3643118)
+- **Relevant concepts:** static-analysis detection of dynamic semantic conflicts that may remain after textual merge; reported F1 0.50 and accuracy 0.60 on 99 experimental units.
+- **Use in GovCheck:** motivates layered detection while preserving uncertainty and detector limitations.
+- **Limit:** reported evaluation is small and metrics are modest; the method is not an authoritative compatibility decision.
+
+<a id="r-146"></a>
+
+### R-146 — Research on search-based and synthesis-based merge conflict resolution
+- **Cited by:** [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
+- **Primary sources:** Paulino, [ACM TOSEM 2026, DOI 10.1145/3748256](https://doi.org/10.1145/3748256) · Pan et al., [Microsoft Research / ICSE 2021](https://www.microsoft.com/en-us/research/publication/can-program-synthesis-be-used-to-learn-merge-conflict-resolutions-an-empirical-analysis/)
+- **Relevant concepts:** search-guided conflict-resolution candidates and learned synthesis patterns for bounded conflict classes.
+- **Use in GovCheck:** supports recording resolver provenance, inputs, tool version and post-resolution assurance, without giving the resolver acceptance authority.
+- **Limit:** coverage and accuracy depend on conflict class, dataset and evaluation; similarity heuristics are not semantic proof.
+
+<a id="r-147"></a>
+
+### R-147 — LLM-based multi-agent systems for software engineering: literature review
+- **Cited by:** [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
+- **Primary source:** [ACM TOSEM 2025, DOI 10.1145/3712003](https://doi.org/10.1145/3712003)
+- **Relevant concepts:** survey of multi-agent software-engineering architectures, collaboration patterns, benefits and research gaps.
+- **Use in GovCheck:** contextualizes agent collaboration as one workflow class whose coordination and assurance claims need evaluation.
+- **Limit:** a literature review is not evidence that a particular framework, coordination protocol or deployment is reliable.
+
+<a id="r-148"></a>
+
+### R-148 — DORA 2025 State of AI-assisted Software Development
+- **Cited by:** [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
+- **Primary sources:** [DORA report](https://dora.dev/research/2025/dora-report/) · [Google Research publication](https://research.google/pubs/dora-2025-state-of-ai-assisted-software-development-report/)
+- **Relevant concepts:** organizational and delivery-system factors associated with AI-assisted software development; AI as an amplifier of existing strengths and weaknesses.
+- **Use in GovCheck:** cautions against equating agent count or coding speed with delivery quality; emphasizes governance, feedback and engineering-system context.
+- **Limit:** survey and qualitative research inform organizational decisions but do not prove causality or predict a specific repository's outcomes.
+
+<a id="r-149"></a>
+
+### R-149 — GitHub merge queues
+- **Cited by:** [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
+- **Primary source:** [Official GitHub documentation](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue)
+- **Relevant concepts:** temporary merge-group branches; required checks against the base plus queued changes; bounded build concurrency and merge grouping.
+- **Use in GovCheck:** industrial example of validating an exact integration candidate rather than reusing isolated pull-request results.
+- **Limit:** GitHub-specific product documentation; the feature must not become GovCheck's canonical or mandatory architecture.
+
+<a id="r-150"></a>
+
+### R-150 — “Your Team's Agents Are All Shipping to the Same Code at Once”
+- **Cited by:** [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
+- **Source:** [Video supplied for the review](https://youtu.be/fTUinMqA1XQ)
+- **Relevant concepts:** industry framing of concurrent agent contributions and the coordination/integration bottleneck.
+- **Use in GovCheck:** motivation for the research question and adversarial scenarios, including individually passing but collectively incompatible changes.
+- **Limit:** a talk/video is a secondary industry source and problem framing, not a peer-reviewed result or sufficient evidence for adopting an architecture.
+
+<a id="r-151"></a>
+
+### R-151 — Predicting merge conflicts considering social and technical assets
+- **Cited by:** [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
+- **Primary source:** [Empirical Software Engineering, DOI 10.1007/s10664-023-10395-8](https://link.springer.com/article/10.1007/s10664-023-10395-8)
+- **Relevant concepts:** empirical prediction of merge conflicts using social and technical assets.
+- **Use in GovCheck:** supports assessing work overlap and dependency/coordination context rather than treating changed-file overlap as a complete conflict predicate.
+- **Limit:** predictive associations and model performance depend on the dataset, features and development context; they do not establish incompatibility or causality.
+
+<a id="r-128"></a>
 
 <a id="r-193"></a>
 ### R-193 — Probabilistic, fuzzy and state-transition modelling for software assurance

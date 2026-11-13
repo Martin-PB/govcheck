@@ -1359,15 +1359,15 @@
 <a id="r-198"></a>
 ### R-198 — PDF normatif de spécification OMG SACM 2.4 Beta 1
 - **Cité par :** [Rapport d'alignement des vues source SACM](research/sacm24-source-view-alignment.fr.md), [rapport sur les risques d'interopérabilité SACM 2.4 Beta 1](research/sacm24-beta1-interoperability-risk.fr.md), [Journal des événements du portefeuille](work-portfolio/events.fr.md)
-- **Source primaire :** [Catalogue de spécifications SACM de l'OMG](https://www.omg.org/spec/SACM) · [PDF normatif SACM 2.4 Beta 1](https://www.omg.org/spec/SACM/20260504/SACM2.4.pdf) · identifiant de fichier OMG `ptc/26-06-34`.
-- **Identité épinglée :** SACM 2.4 Beta 1 ; chemin source daté du 04/05/2026 ; 161 pages ; SHA-256 `25f32d1cd4bf32dfa9c92c7c1840e1a113b1e91c0e97252f6551878c39997ff5`, rapporté par le script de téléchargement épinglé de l'audit indépendant R-128. GovCheck n'a pas encore téléchargé indépendamment ce PDF ni recalculé son digest.
+- **Source primaire :** [Catalogue de spécifications SACM de l'OMG](https://www.omg.org/spec/SACM) · [PDF normatif SACM 2.4 Beta 1](https://www.omg.org/spec/SACM/2.4/Beta1/PDF) · identifiant de fichier OMG `ptc/26-06-34`.
+- **Identité épinglée :** SACM 2.4 Beta 1 ; chemin source daté du 04/05/2026 ; 161 pages ; SHA-256 `25f32d1cd4bf32dfa9c92c7c1840e1a113b1e91c0e97252f6551878c39997ff5`, rapporté par le script de téléchargement épinglé de l'audit indépendant R-128 ; le workflow GovCheck télécharge désormais cette URL officielle exacte et contrôle le digest. Son résultat est consigné dans le rapport d'alignement des vues source.
 - **Concepts pertinents :** prose normative, figures, clauses et annexes de la spécification ; provenance par fragment des affirmations SACM 2.4 Beta 1.
 - **Limite :** le PDF contient lui-même des fragments contradictoires ; l'extraction textuelle ne capture pas tous les libellés présents uniquement dans les diagrammes. Aucun fragment ne doit être traité comme une déclaration canonique globale du PDF sans portée explicite.
 
 <a id="r-199"></a>
 ### R-199 — XMI informatif du profil UML OMG SACM 2.4 Beta 1
 - **Cité par :** [Rapport d'alignement des vues source SACM](research/sacm24-source-view-alignment.fr.md), [rapport sur les risques d'interopérabilité SACM 2.4 Beta 1](research/sacm24-beta1-interoperability-risk.fr.md), [Journal des événements du portefeuille](work-portfolio/events.fr.md)
-- **Source primaire :** [Catalogue de spécifications SACM de l'OMG](https://www.omg.org/spec/SACM) · [XMI informatif du profil UML SACM 2.4 Beta 1](https://www.omg.org/spec/SACM/20260504/SACM2.4_Profile.xmi) · identifiant de fichier OMG `ptc/26-05-21`.
+- **Source primaire :** [Catalogue de spécifications SACM de l'OMG](https://www.omg.org/spec/SACM) · [Catalogue des fichiers lisibles par machine de l'OMG SACM](https://www.omg.org/spec/SACM/machine-readable) · identifiant de fichier OMG `ptc/26-05-21`.
 - **Identité épinglée :** SACM 2.4 Beta 1 ; chemin source daté du 04/05/2026 ; SHA-256 `9149a0414628e1b70c1f7c2235f5180c64e7a144601eb2ae78d539681918838b`, rapporté par le script de téléchargement épinglé de l'audit indépendant R-128. GovCheck n'a pas encore téléchargé indépendamment ce XMI ni recalculé son digest.
 - **Concepts pertinents :** artefact informatif de profil UML, distinct du XML normatif du métamodèle (R-197) et du PDF normatif de spécification (R-198).
 - **Limite :** le XMI informatif du profil n'est pas le XML normatif du métamodèle SACM et n'établit ni contrat d'échange d'instances ni conformité sémantique.

@@ -338,6 +338,43 @@
         "known SACM 2.4 Beta 1 PDF/XML conflicts remain unresolved",
         "no SACM instance interchange or conformance claim"
       ]
+    },
+    {
+      "artifactId": "govcheck.sacm24-source-view-conflict-register",
+      "kind": "source-view-conflict-register",
+      "title": "SACM 2.4 Beta 1 PDF/XML fragment-level conflict register",
+      "source": "formal/lean/GovCheckCoherence/SACM24.lean",
+      "documentation": {
+        "en": "docs/research/sacm24-source-view-alignment.md",
+        "fr": "docs/research/sacm24-source-view-alignment.fr.md"
+      },
+      "sourceReferences": [
+        "R-128",
+        "R-197",
+        "R-198"
+      ],
+      "sourceViews": [
+        {
+          "fileId": "ptc/26-06-34",
+          "role": "normativeSpecificationText",
+          "sha256": "25f32d1cd4bf32dfa9c92c7c1840e1a113b1e91c0e97252f6551878c39997ff5"
+        },
+        {
+          "fileId": "ptc/26-05-28",
+          "role": "normativeMachineReadableMetamodel",
+          "sha256": "0581dfa0b9dfaf17ff0f6c63b74f8e7a8396bea03f315e1334e94f23db110830"
+        }
+      ],
+      "revisionPolicy": "repository-history",
+      "releaseBinding": "release-tag-and-commit",
+      "status": "fragment-level-facts-formalized; transcription-provenance-pending; no-precedence-decision",
+      "limitations": [
+        "Lean theorems establish differences among manually transcribed source constants, not correctness of the transcriptions",
+        "PDF digest verification is pending the current source-view workflow run",
+        "no parser-to-formal-model refinement theorem",
+        "no source-derived GovCheck semantic mapping or conformance claim",
+        "no normative precedence decision between conflicting source fragments"
+      ]
     }
   ]
 }

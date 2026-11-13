@@ -163,7 +163,7 @@ theorem kind_mapping_rule_theorem_proof_requires_derivation
   cases rule with
   | transport kind =>
       exact False.elim (kind.property h)
-  | deriveTheoremProof derivation =>
+  | deriveTheoremProof _ derivation =>
       exact ⟨derivation, rfl⟩
 
 theorem mapping_target_theorem_proof_requires_derivation

@@ -359,20 +359,33 @@ structure SourceMultiplicity where
 
 namespace SourceFacts
 
-/-- The informative PDF Figure 15.1.1 (printed page 59) shows Claim.value as ExpressionLangString.
-    The normative metamodel XML declares the same type. The R-128 audit reports
-    MultiLangString for Clause 13.9, but that transcription has not yet been
-    corroborated against the cited passage and is not promoted to a source fact. -/
+/-- Normative PDF Figure 13.1 (printed page 41) shows Claim.value as MultiLangString. -/
+def normativePdfFigure13_1ClaimValueType : String := "MultiLangString"
+
+/-- Informative PDF Figure 15.1.1 (printed page 59) shows Claim.value as ExpressionLangString. -/
 def informativePdfFigure15_1_1ClaimValueType : String := "ExpressionLangString"
+
+/-- The normative machine-readable metamodel XML declares Claim.value as ExpressionLangString. -/
 def xmlClaimValueType : String := "ExpressionLangString"
+
+/-- R-128 reports MultiLangString for Clause 13.9; this value agrees with the normative
+    Figure 13.1, but the exact Clause 13.9 locator remains a separate transcription check. -/
 def r128ReportedClaimValueType : String := "MultiLangString"
+
+theorem pdf_normative_figure13_1_vs_informative_figure15_1_1_claim_value_conflict :
+    normativePdfFigure13_1ClaimValueType ≠ informativePdfFigure15_1_1ClaimValueType := by
+  decide
+
+theorem pdf_normative_figure13_1_vs_xml_claim_value_conflict :
+    normativePdfFigure13_1ClaimValueType ≠ xmlClaimValueType := by
+  decide
 
 theorem claim_value_type_agrees_in_informative_pdf_figure15_1_1_and_xml :
     informativePdfFigure15_1_1ClaimValueType = xmlClaimValueType := by
   decide
 
-theorem r128_reported_claim_value_type_differs_from_informative_pdf_figure :
-    r128ReportedClaimValueType ≠ informativePdfFigure15_1_1ClaimValueType := by
+theorem r128_reported_claim_value_type_matches_normative_pdf_figure13_1 :
+    r128ReportedClaimValueType = normativePdfFigure13_1ClaimValueType := by
   decide
 
 /-- PDF clause 13.13 versus the metamodel XML AssertedEvidence.evidence. -/

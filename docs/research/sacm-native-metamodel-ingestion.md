@@ -55,7 +55,7 @@ The importer:
 
 The raw byte copy is authoritative for fidelity. The event index is a navigation aid, not a canonicalized replacement: XML lexical distinctions not represented in the event index remain recoverable from \`source.xml\`. External DTD/entity resolution is disabled; the importer applies a 32 MiB input limit.
 
-The workflow runs unit tests, downloads the exact OMG artifact, verifies its digest, produces the capture manifest/index and publishes those derived files as a 90-day workflow artifact. The source payload itself remains available from the official versioned OMG URL and is not copied into Git history.
+The workflow runs unit tests, downloads the exact OMG artifact, verifies its digest, produces the capture manifest/index and publishes the exact `source.xml` payload together with the manifest and structural index as a 90-day workflow artifact. The source payload itself remains available from the official versioned OMG URL and is not copied into Git history.
 
 ## 4. Semantic mapping boundary
 

@@ -367,14 +367,54 @@
       ],
       "revisionPolicy": "repository-history",
       "releaseBinding": "release-tag-and-commit",
-      "status": "fragment-level-facts-formalized; transcription-provenance-pending; no-precedence-decision",
+      "status": "fragment-level-source-facts-formalized; PDF-and-XML-digests-workflow-verified; transcription-proof-pending; no-precedence-decision",
       "limitations": [
         "Lean theorems establish differences among manually transcribed source constants, not correctness of the transcriptions",
-        "PDF digest verification is pending the current source-view workflow run",
+        "PDF and XML digests authenticate exact bytes but do not authenticate source-fragment interpretation",
         "no parser-to-formal-model refinement theorem",
         "no source-derived GovCheck semantic mapping or conformance claim",
         "no normative precedence decision between conflicting source fragments"
-      ]
+      ],
+      "verification": {
+        "sourceWorkflow": ".github/workflows/sacm-native-ingestion.yml",
+        "sourceWorkflowRunId": 43494908580,
+        "sourceCheckedCommit": "9c279a92878fbeff2e3d883e318eb6d980272e07",
+        "sourceResult": "success",
+        "sourceTests": 12,
+        "pdf": {
+          "sha256": "25f32d1cd4bf32dfa9c92c7c1840e1a113b1e91c0e97252f6551878c39997ff5",
+          "byteLength": 9019601,
+          "fileId": "ptc/26-06-34"
+        },
+        "xml": {
+          "sha256": "0581dfa0b9dfaf17ff0f6c63b74f8e7a8396bea03f315e1334e94f23db110830",
+          "byteLength": 524243,
+          "fileId": "ptc/26-05-28"
+        },
+        "artifact": {
+          "id": 14071002816,
+          "name": "sacm-2.4-beta1-source-views-and-xmi-inventory",
+          "retentionDays": 90,
+          "url": "https://github.com/Martin-PB/govcheck/actions/runs/43494908580/artifacts/14071002816"
+        },
+        "leanWorkflow": ".github/workflows/lean-coherence.yml",
+        "leanWorkflowRunId": 43494698574,
+        "leanCheckedMergeCommit": "2ea4de80738e1462c4366096359c9142a6a95eac",
+        "leanSourceHead": "b2602e2cf5aabd6ac45f23c7f865c1068096bed8",
+        "lean": "4.19.0",
+        "leanBuild": "success",
+        "axiomAudit": {
+          "root": "GovCheckCoherence.Proofs",
+          "declarationsAudited": 55,
+          "allowedAxioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "unapprovedAxioms": 0,
+          "sourceFragmentWrappersUsingPropext": 5
+        }
+      }
     }
   ]
 }

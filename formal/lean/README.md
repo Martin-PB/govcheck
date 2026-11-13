@@ -80,12 +80,19 @@ non-operative `MappingProposal` values; they do not carry a semantic proof.
 
 ## Verification status
 
-Historical build and axiom-audit reports apply only to the exact commits and
-source blobs recorded in the execution report. They do not establish that the
-tightened mapping API in this branch has passed verification. The current
-branch must pass the pinned Lean 4.19.0 build and axiom audit before this
-revision is described as verified. The workflow builds the
-`GovCheckCoherence` library, audits `GovCheckCoherence.Proofs`, and prints
-the axiom dependencies of the listed theorem declarations. A successful Git
+The tightened mapping API was built and axiom-audited successfully with the
+pinned Lean 4.19.0 toolchain in [workflow run 43437994055](https://github.com/Martin-PB/govcheck/actions/runs/43437994055),
+on formal source revision `6580daaeef6c506b0a2da30c790cac43481a15f3`.
+The workflow built `GovCheckCoherence`, audited 36 declarations under
+`GovCheckCoherence.Proofs` (all within the configured allowlist
+`propext`, `Classical.choice`, `Quot.sound`), and the explicit
+`#print axioms` report found no axioms for the listed theorem declarations.
+The artifact catalogue records this exact checked revision and workflow run.
+
+The result applies to the exact formal source revision above. Subsequent
+documentation/portfolio commits do not change the checked Lean source blobs.
+This is a result about the small formal slice only: it is not a semantic
+mapping proof against SACM/OWL/SEON, proof of imported-source fidelity,
+mapping-composition proof, or implementation conformance. A successful Git
 commit or a historical green run is not a Lean verification result for a
-different source revision.
+different formal source revision.

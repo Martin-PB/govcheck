@@ -280,3 +280,16 @@
 - **Historical PRs:** #106 and #107 are superseded by #122 and #123 respectively; their historical branches and review records are retained. Closure of the superseded PRs is tracked separately from merging the replacements.
 - **Normative boundary:** neither replacement PR, its checks, review or eventual merge adopts the complete metamodel, Specification 0007 or the eleven arbitration outcomes. #41/#86 remain open at their existing stages.
 - **Known limits:** the journal TLA+ result remains bounded evidence for its exact finite model/configuration, not an implementation-refinement proof, distributed consensus proof or operational durability guarantee. The formal mapping requirement is a design obligation; not every mapping class has yet been implemented or proved by the prototype.
+
+<a id="wp-evt-000020"></a>
+## WP-EVT-000020 — PR #122 ready; journal replacement validated
+
+- **Subject:** `govcheck.work.intermodel-contract-conformance` and `govcheck.work.governance-revision-temporal-applicability`
+- **Event type:** `integration-review-ready`
+- **Recorded:** 2026-11-13
+- **Metamodel dossier:** [PR #122](https://github.com/Martin-PB/govcheck/pull/122) is based on `main`, has no merge-base divergence, and its Reference integrity and Package alignment checks both passed. It is mergeable. The superseded PR #106 has been closed without merging.
+- **Journal integration:** [PR #124](https://github.com/Martin-PB/govcheck/pull/124) is based on `main` and contains the #122 changes plus the journal integration delta. It is mergeable. Reference integrity, Package alignment, GovCheck check slice, version-governance validation, and all four TLC model jobs (canonical publication, governance controls, journal recovery and governance applicability) passed on head `281d9bb81a2a73e578c42126fe1720fb64aa6caf`.
+- **Merge order:** merge #122 first, then #124. After #122 is merged, review #124's reduced diff and merge it second. Do not merge #124 first merely because its current base is `main`; it includes the #122 tree pending that first merge.
+- **Superseded PRs:** #106 and intermediate #123 are closed without merging. Original PR #107 is superseded by #124 and remains open only until the replacement is confirmed ready for review; its history is retained.
+- **Normative boundary:** neither PR merge adopts the complete metamodel or makes the arbitration session 0008 normative. The proof-carrying correspondence principle is recorded in #122; the journal/VCS application is specified in #124. The #41 authority decision remains separate.
+- **Limits:** TLC results are model-checking evidence for the exact finite models/configurations; they do not establish implementation refinement, distributed consensus, concrete storage durability or runtime enforcement.

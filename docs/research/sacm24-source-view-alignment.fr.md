@@ -13,10 +13,10 @@ Le catalogue OMG répertorie le PDF de la spécification SACM 2.4 Beta 1 comme *
 
 | Vue source | Identifiant OMG | URL officielle | SHA-256 | État actuel dans GovCheck |
 |---|---|---|---|---|
-| Texte, figures et annexes de la spécification (PDF) | `ptc/26-06-34` | <https://www.omg.org/spec/SACM/2.4/Beta1/PDF> | `25f32d1cd4bf32dfa9c92c7c1840e1a113b1e91c0e97252f6551878c39997ff5` | Valeur attendue rapportée par R-128 ; téléchargement PDF et contrôle du digest ajoutés au workflow de la PR, exécution encore attendue |
+| Texte, figures et annexes de la spécification (PDF) | `ptc/26-06-34` | <https://www.omg.org/spec/SACM/2.4/Beta1/PDF> | `25f32d1cd4bf32dfa9c92c7c1840e1a113b1e91c0e97252f6551878c39997ff5` | Vérifié par GovCheck dans le workflow [43494908580](https://github.com/Martin-PB/govcheck/actions/runs/43494908580) ; 9 019 601 octets ; conservé dans l'artefact [14071002816](https://github.com/Martin-PB/govcheck/actions/runs/43494908580/artifacts/14071002816) |
 | Métamodèle lisible par machine (XML) | `ptc/26-05-28` | <https://www.omg.org/spec/SACM/20260504/SACM2.4_Metamodel.xml> | `0581dfa0b9dfaf17ff0f6c63b74f8e7a8396bea03f315e1334e94f23db110830` | Téléchargement indépendant et digest vérifié par GovCheck ; 524 243 octets |
 
-Le digest PDF reste une valeur de comparaison rapportée indépendamment jusqu'à la réussite du nouveau workflow. Celui-ci télécharge le PDF officiel, vérifie son digest exact et publie le PDF à côté du XML déjà vérifié et d'un manifeste des vues sources. Il n'extrait ni n'interprète automatiquement le texte PDF.
+Le digest PDF rapporté par R-128 a été recalculé indépendamment par GovCheck sur le téléchargement officiel dans le workflow [43494908580](https://github.com/Martin-PB/govcheck/actions/runs/43494908580) : 9 019 601 octets et SHA-256 exact ci-dessus. L'artefact de 90 jours [14071002816](https://github.com/Martin-PB/govcheck/actions/runs/43494908580/artifacts/14071002816) contient le PDF, le XML exact, le manifeste des vues sources et l'inventaire XMI généré. Le workflow n'extrait ni n'interprète automatiquement le texte PDF.
 
 SACM 2.4 Beta 1 reste une version en cours/de nature informative ; SACM 2.3 demeure la version formelle. Le fait que le catalogue OMG classe le PDF et le XML comme artefacts normatifs ne résout pas leurs contradictions.
 
@@ -64,11 +64,7 @@ Les théorèmes `SourceFacts` de Lean prouvent que les **constantes transcrites*
 
 ## 5. Vérification et limites restantes
 
-La capture XML et l'inventaire structurel sont vérifiés indépendamment par workflow (12 tests ; digest XML officiel ; inventaire généré comparé à la synthèse versionnée ; source brute et inventaire complet publiés). Le workflow complémentaire ajoute :
-- le téléchargement du PDF officiel et le contrôle SHA-256 par rapport à la valeur épinglée par R-128 ;
-- un manifeste enregistrant les identités, digests et longueurs des deux sources ;
-- la publication du PDF à côté du XML brut, du manifeste source et de l'inventaire structurel ;
-- la compilation Lean et l'audit des axiomes du modèle de fragments sources et de ses théorèmes de conflit.
+La capture XML et l'inventaire structurel sont vérifiés indépendamment par workflow (12 tests Python ; digest XML officiel ; inventaire généré comparé à la synthèse versionnée ; source brute et inventaire complet publiés). Le téléchargement PDF et son contrôle SHA-256 par rapport à la valeur épinglée par R-128 ont également réussi ; le manifeste enregistre les deux identités, digests et longueurs, et l'artefact combiné a été publié. Lean 4.19.0 a compilé le modèle de fragments sources ; l'audit a couvert 55 déclarations sous GovCheckCoherence.Proofs, toutes dans la liste d'axiomes autorisés (cinq théorèmes wrappers de fragments sources utilisent propext ; aucun axiome non autorisé n'a été signalé).
 
 Ne sont toujours pas démontrés :
 - l'exactitude et l'exhaustivité des transcriptions PDF-vers-Lean et XML-vers-Lean ;

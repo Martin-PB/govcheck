@@ -24,7 +24,7 @@ The first source-native ingestion target is the OMG normative machine-readable m
 
 The OMG catalogue identifies this XML as a **normative machine-readable document** for the 2.4 beta. The same catalogue separately identifies the specification PDF as normative prose and the UML Profile XMI as informative. SACM 2.4 Beta 1 is in process; SACM 2.3 remains the formal adopted version. These source roles must not be conflated.
 
-The SHA-256 value above is the comparison value recorded by the independent Assurance Forge audit ([R-128](../references.md#r-128)). GovCheck's workflow downloads the official versioned OMG URL and independently recomputes the digest. GovCheck independently verified this digest against the downloaded official bytes in [workflow run 43443933268](https://github.com/Martin-PB/govcheck/actions/runs/43443933268): 524,243 source bytes, SHA-256 `0581dfa0b9dfaf17ff0f6c63b74f8e7a8396bea03f315e1334e94f23db110830`.
+The SHA-256 value above is the comparison value recorded by the independent Assurance Forge audit ([R-128](../references.md#r-128)). GovCheck's workflow downloads the official versioned OMG URL and independently recomputes the digest. GovCheck independently verified this digest against the downloaded official bytes in [workflow run 43444619765](https://github.com/Martin-PB/govcheck/actions/runs/43444619765): 524,243 source bytes, SHA-256 `0581dfa0b9dfaf17ff0f6c63b74f8e7a8396bea03f315e1334e94f23db110830`.
 
 ## 2. Why ingest the metamodel XML first
 
@@ -55,7 +55,7 @@ The importer:
 
 The raw byte copy is authoritative for fidelity. The event index is a navigation aid, not a canonicalized replacement: XML lexical distinctions not represented in the event index remain recoverable from \`source.xml\`. External DTD/entity resolution is disabled; the importer applies a 32 MiB input limit.
 
-The workflow runs five unit tests, downloads the exact OMG artifact, verifies its digest, produces the capture manifest/index and publishes the exact `source.xml` payload together with the manifest and structural index as a 90-day workflow artifact. The successful capture artifact is [sacm-2.4-beta1-source-capture](https://github.com/Martin-PB/govcheck/actions/runs/43443933268/artifacts/14047167094) (artifact ID `14047167094`). The source payload itself remains available from the official versioned OMG URL and is not copied into Git history.
+The workflow runs five unit tests, downloads the exact OMG artifact, verifies its digest, produces the capture manifest/index and publishes the exact `source.xml` payload together with the manifest and structural index as a 90-day workflow artifact. The successful capture artifact is [sacm-2.4-beta1-source-capture](https://github.com/Martin-PB/govcheck/actions/runs/43444619765/artifacts/14046333134) (artifact ID `14046333134`). The source payload itself remains available from the official versioned OMG URL and is not copied into Git history.
 
 ## 4. Semantic mapping boundary
 
@@ -104,7 +104,7 @@ Synthetic unit fixtures exercise:
 - external DTD rejection;
 - explicit absence of inferred semantic mappings.
 
-These fixtures are not OMG SACM instance examples and do not establish conformance. The source-capture workflow passed against the actual downloaded OMG XML on the PR head (run 43443933268); the digest and byte length above are GovCheck-verified for that exact source URL/revision.
+These fixtures are not OMG SACM instance examples and do not establish conformance. The source-capture workflow passed against the actual downloaded OMG XML on the PR head (run 43444619765); the digest and byte length above are GovCheck-verified for that exact source URL/revision.
 
 ## 6. Explicit non-claims and next step
 

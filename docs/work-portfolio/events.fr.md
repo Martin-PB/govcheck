@@ -92,3 +92,18 @@ Le build Lean 4.19.0 et l'audit d'axiomes ont réussi dans [l'exécution 4349528
 Le registre classe onze groupes de divergences/différences au niveau des fragments. Les preuves Lean établissent les différences entre constantes transcrites ; elles ne certifient pas la fidélité de la transcription. Le contrôle de digest authentifie les octets, pas leur interprétation. Aucune sémantique UML/MOF complète, preuve de raffinement du parseur, correspondance sémantique dérivée, priorité entre sources, conformité SACM 2.4 ni adoption normative n'est revendiquée. L'issue #73 reste ouverte.
 
 Détail canonique : [journal anglais WP-EVT-000027](events.md#wp-evt-000027).
+
+
+## Dernier événement — WP-EVT-000028
+
+La tête finale de PR `e57b28bafd35757f1491fafb6b30cd130d748206` est vérifiée. La PR [#128](https://github.com/Martin-PB/govcheck/pull/128) reste ouverte, non-draft, fusionnable et non fusionnée ; elle est empilée sur la [PR #127](https://github.com/Martin-PB/govcheck/pull/127).
+
+Le workflow source [43495625975](https://github.com/Martin-PB/govcheck/actions/runs/43495625975) a réussi sur cette tête : 12 tests Python, contrôle des digests officiels PDF et XML, génération/comparaison de l'inventaire structurel, manifeste des vues sources et publication. L'artefact [14071287095](https://github.com/Martin-PB/govcheck/actions/runs/43495625975/artifacts/14071287095) contient le PDF de 9 019 601 octets, le XML de 524 243 octets, le manifeste et l'inventaire XMI.
+
+Le workflow Lean [43495626076](https://github.com/Martin-PB/govcheck/actions/runs/43495626076) a réussi sur le candidat de fusion `c6029f9`, avec Lean 4.19.0. L'audit couvre 43 déclarations sous `GovCheckCoherence.Proofs` ; les dépendances sont limitées à la liste autorisée `propext`, `Classical.choice`, `Quot.sound`. Cinq théorèmes wrappers de fragments sources utilisent `propext` ; les 13 théorèmes `SourceFacts` affichés directement n'utilisent aucun axiome. Aucun axiome non autorisé n'a été signalé.
+
+Les contrôles d'intégrité des références [43495626080](https://github.com/Martin-PB/govcheck/actions/runs/43495626080), d'alignement du package [43495625956](https://github.com/Martin-PB/govcheck/actions/runs/43495625956) et de gouvernance des versions [43495626381](https://github.com/Martin-PB/govcheck/actions/runs/43495626381) ont également réussi sur la même tête de PR.
+
+Les limites ne changent pas : les digests PDF/XML authentifient les octets, pas la transcription humaine. Les faits Lean formalisent les valeurs transcrites, pas leur fidélité aux documents sources. Aucune extraction automatique du texte PDF, sémantique UML/MOF complète, preuve de raffinement du parseur, correspondance sémantique GovCheck dérivée de la source, décision de priorité, conformité SACM 2.4 ni adoption normative n'est revendiquée. L'issue #73 reste ouverte.
+
+Détail canonique : [journal anglais WP-EVT-000028](events.md#wp-evt-000028).

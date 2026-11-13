@@ -65,7 +65,7 @@ Il s'agit d'un modèle de conception fini, pas d'une preuve d'un protocole gén�
 - au plus un résultat comparatif/en parallèle et une requalification historique ;
 - une progression du temps logique bornée.
 
-En conséquence, cette exécution **n'établit pas** la concurrence entre publications multiples, une séquence complète de rollback, une succession arbitraire d'évaluateurs, l'identité cryptographique, la délégation, un enregistrement structuré complet d'acceptation du risque, l'expiration en temps réel, le stockage durable du journal, la reprise après panne, la réconciliation de répliques distribuées, la correction des adaptateurs Git/Pijul ni le raffinement de l'implémentation. Ces sujets restent des obligations d'ingénierie et de formalisation suivies dans l'issue #86.
+En conséquence, cette exécution **n'établit pas** la concurrence entre publications multiples, une séquence complète de rollback, une succession arbitraire d'évaluateurs, l'identité cryptographique, la délégation, un enregistrement structuré complet d'acceptation du risque, l'expiration en temps réel, le stockage durable du journal, la reprise après panne, la réconciliation de répliques distribuées, la correction des adaptateurs Git/Pijul ni le raffinement de l'implémentation. L'[Architecture 0035](0035-canonical-journal-recovery-model.fr.md) complémentaire vérifie uniquement une abstraction bornée de reprise/rollback à rédacteur unique ; la [Spécification 0007](../specifications/0007-canonical-governance-journal-protocol.fr.md) proposée définit des obligations de protocole, mais ne constitue ni une implémentation ni une vérification de l'ensemble de la spécification. Ces sujets restent des obligations d'ingénierie et de formalisation suivies dans l'issue #86.
 
 Le résultat sur cet espace d'états fini constitue un élément de preuve par model checking pour ces identités exactes de source et de configuration uniquement. Il ne s'agit ni d'une preuve de théorème, ni d'une preuve que le code de production raffine le modèle, ni d'un acte d'adoption normative. Les onze choix sélectionnés par le propriétaire restent des entrées sélectionnées ; l'adoption formelle relève exclusivement de l'autorité du propriétaire du projet.
 
@@ -73,6 +73,8 @@ Le résultat sur cet espace d'états fini constitue un élément de preuve par m
 
 - [R-05 — Modélisation des transitions d'état avec TLA+ et TLC](../references.fr.md#r-05)
 - [Spécification 0006 — applicabilité des révisions de gouvernance](../specifications/0006-governance-revision-applicability.fr.md)
+- [Spécification 0007 — protocole du journal canonique et des adaptateurs VCS](../specifications/0007-canonical-governance-journal-protocol.fr.md)
 - [Architecture 0032 — rapport de model checking du modèle de publication canonique](0032-canonical-publication-model-checking.fr.md)
+- [Architecture 0035 — modèle de reprise du journal canonique](0035-canonical-journal-recovery-model.fr.md)
 - [Compte rendu de séance 0008](../decisions/0008-governance-applicability-arbitration-session.fr.md)
 - [Issue #86 — obligations d'ingénierie sur l'applicabilité de la gouvernance](https://github.com/Martin-PB/govcheck/issues/86)

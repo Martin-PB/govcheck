@@ -72,3 +72,12 @@ La PR #126 est fusionnée. L'incrément suivant produit un inventaire structurel
 L'inventaire recense 1 616 identifiants XMI uniques, 121 classes, 121 associations, 355 propriétés, 167 généralisations, 8 énumérations, 37 littéraux et 40 contraintes. Il compte 1 371 références internes résolues, 63 références externes conservées et aucune référence interne non résolue parmi les attributs reconnus.
 
 Il s'agit d'une extraction structurelle, pas d'une interprétation sémantique UML/MOF, d'une preuve de raffinement du parseur ou d'une correspondance vers GovCheck. La comparaison PDF/XML, les conflits de source, les preuves de raffinement et les correspondances sémantiques restent ouverts. La PR de cet incrément est non normative ; l'issue #73 reste ouverte.
+
+
+## Issue #73 — registre initial des divergences de vues sources SACM — 2026-11-13
+
+Le rapport bilingue [d'alignement des vues sources](../research/sacm24-source-view-alignment.fr.md) recense onze divergences ou différences de portée entre des fragments PDF précis et le métamodèle XML épinglé : conflits internes au PDF, différences PDF/XML, ajouts XML par rapport à un passage textuel et éléments non indiqués dans le texte examiné. Il ne choisit aucune source prioritaire et ne canonise aucun champ.
+
+Le modèle Lean distingue désormais les vues documentaires des fragments de clauses, figure et annexe. Les théorèmes prouvent les différences entre les constantes transcrites, pas l'exactitude de la transcription par rapport aux documents sources. Les obligations de mapping Claim exigent le fragment exact et sa cohérence avec la vue documentaire, sans règle d'identité globale au PDF.
+
+Le workflow complémentaire doit encore réussir sur la tête de PR pour vérifier le digest du PDF officiel et compiler/auditer le module Lean. Restent ouverts : validation indépendante des transcriptions, interprétation UML/MOF, raffinement formel du parseur, correspondances sémantiques dérivées de la source et résolution autorisée des conflits. L'issue #73 reste ouverte ; aucune adoption normative ni conformité SACM 2.4 n'est revendiquée.

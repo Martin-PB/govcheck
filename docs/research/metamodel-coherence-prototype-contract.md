@@ -7,7 +7,7 @@
 
 ## 1. Purpose and boundary
 
-This contract turns the first recommended experiment into falsifiable obligations. It does not attempt to formalize all of SACM, SEON/ReqON, OWL, or GovCheck at once. It tests one critical semantic boundary: **an interoperability mapping must not strengthen the epistemic status of evidence merely by translating it**.
+This contract turns the first recommended experiment into falsifiable obligations. It does not attempt to formalize all of SACM, SEON/ReqON, OWL, or GovCheck at once. It tests one initial semantic boundary: **an interoperability mapping must not strengthen the epistemic status of evidence merely by translating it**. This is only the first falsifiable slice of the universal GovCheck requirement: every semantic correspondence used in reasoning must have a verified formal demonstration of the exact relation claimed. This prototype does not discharge the obligation for all other mapping classes.
 
 The prototype is deliberately split into three artifacts:
 
@@ -117,7 +117,7 @@ Do not decide “CSLib mandatory” by reputation or breadth. For each candidate
 
 The inspected CSLib main commit is `f8acdb37c713b0124ad36b863f50c200a5f1cdba`, which pins Lean 4.36.0-rc2 and Mathlib commit `887bb849a9f64e1c66499fd5ff8523c864e78941`. This prototype pins Lean 4.19.0. A direct dependency therefore cannot be added without a toolchain change. The next experiment must either identify a CSLib revision compatible with Lean 4.19 or isolate a separate CSLib-backed profile with its own pinned toolchain. Do not silently upgrade the verified core.
 
-If CSLib provides a sound and reusable formalization for a required semantic concept, reuse should be preferred to an independent duplicate. If it does not, define the smallest GovCheck-specific concept and prove its relation to the relevant source model. This is not a blanket optionality rule: **the assurance obligation is mandatory for critical mappings; the library choice is evidence-driven**.
+If CSLib provides a sound and reusable formalization for a required semantic concept, reuse should be preferred to an independent duplicate. If it does not, define the smallest GovCheck-specific concept and prove its relation to the relevant source model. **The formal-demonstration obligation applies to every semantic correspondence used in GovCheck reasoning, not only to mappings labelled critical.** The library, proof assistant and verifier choices remain evidence-driven and must satisfy the declared trusted-base requirements.
 
 ## 7. Prototype completion gate
 
@@ -151,7 +151,7 @@ This is a concrete cross-artifact gap for #73/#79, not authorization to change t
 
 ## 10. Decision still reserved
 
-This contract is a proposed experiment. It does not select Lean/CSLib as a universal adopter dependency, does not adopt a GovCheck ontology, does not replace SACM's native semantics, and does not authorize a downgrade of proof obligations. The authority must decide the mandatory proof profile after reviewing the prototype's actual cost, coverage and trusted base.
+This contract is a proposed experiment. It does not select Lean/CSLib as a universal adopter dependency, does not adopt a GovCheck ontology, does not replace SACM's native semantics, and does not authorize a downgrade of proof obligations. The universal obligation to prove every semantic correspondence used in reasoning is a settled design requirement for this proposal; the authority still has to decide the trusted verifier, proof profile, packaging, reproducibility and distribution model after reviewing the prototype's actual cost, coverage and trusted base.
 
 
 ## Actual prototype outcomes

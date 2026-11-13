@@ -388,12 +388,25 @@ theorem r128_reported_claim_value_type_matches_normative_pdf_figure13_1 :
     r128ReportedClaimValueType = normativePdfFigure13_1ClaimValueType := by
   decide
 
-/-- PDF clause 13.13 versus the metamodel XML AssertedEvidence.evidence. -/
-def pdfAssertedEvidenceEvidence : SourceMultiplicity := ⟨0, none⟩
+/-- PDF Clause 13.13 text gives AssertedEvidence.evidence a 0..* multiplicity. -/
+def pdfClause13_13AssertedEvidenceEvidence : SourceMultiplicity := ⟨0, none⟩
+
+/-- Normative PDF Figure 13.1 shows the evidence end as 1..*. -/
+def pdfFigure13_1AssertedEvidenceEvidence : SourceMultiplicity := ⟨1, none⟩
+
+/-- The normative metamodel XML declares the evidence end as 1..*. -/
 def xmlAssertedEvidenceEvidence : SourceMultiplicity := ⟨1, none⟩
 
-theorem asserted_evidence_multiplicity_conflict :
-    pdfAssertedEvidenceEvidence ≠ xmlAssertedEvidenceEvidence := by
+theorem pdf_clause13_13_vs_figure13_1_asserted_evidence_conflict :
+    pdfClause13_13AssertedEvidenceEvidence ≠ pdfFigure13_1AssertedEvidenceEvidence := by
+  decide
+
+theorem pdf_figure13_1_and_xml_asserted_evidence_agree :
+    pdfFigure13_1AssertedEvidenceEvidence = xmlAssertedEvidenceEvidence := by
+  decide
+
+theorem pdf_clause13_13_vs_xml_asserted_evidence_conflict :
+    pdfClause13_13AssertedEvidenceEvidence ≠ xmlAssertedEvidenceEvidence := by
   decide
 
 /-- PDF clause 9.2 versus the normative metamodel XML. -/
@@ -412,20 +425,47 @@ theorem asserted_relationship_isCounter_multiplicity_conflict :
     pdfAssertedRelationshipIsCounter ≠ xmlAssertedRelationshipIsCounter := by
   decide
 
-/-- The PDF prose does not specify these Claim features; the XML declares
-    multi-valued properties. `none` means "not stated in this PDF text view",
-    not proof that no diagram or other fragment mentions the feature. -/
-def pdfTextClaimSubject : Option SourceMultiplicity := none
-def xmlClaimSubject : Option SourceMultiplicity := some ⟨0, none⟩
-def pdfTextClaimWhole : Option SourceMultiplicity := none
-def xmlClaimWhole : Option SourceMultiplicity := some ⟨0, none⟩
+/-- Normative PDF Figure 13.1 shows isCounter as required, matching Clause 13.11. -/
+def pdfFigure13_1AssertedRelationshipIsCounter : SourceMultiplicity := ⟨1, some 1⟩
 
-theorem claim_subject_is_xml_addition_over_pdf_text :
-    pdfTextClaimSubject ≠ xmlClaimSubject := by
+theorem pdf_figure13_1_isCounter_matches_clause13_11 :
+    pdfFigure13_1AssertedRelationshipIsCounter = pdfAssertedRelationshipIsCounter := by
   decide
 
-theorem claim_whole_is_xml_addition_over_pdf_text :
-    pdfTextClaimWhole ≠ xmlClaimWhole := by
+theorem pdf_figure13_1_vs_xml_isCounter_conflict :
+    pdfFigure13_1AssertedRelationshipIsCounter ≠ xmlAssertedRelationshipIsCounter := by
+  decide
+
+/-- PDF Figure 13.1 places subject on SACMElement with multiplicity 0..*. -/
+def pdfFigure13_1SubjectOwner : String := "SACMElement"
+def pdfFigure13_1SubjectMultiplicity : SourceMultiplicity := ⟨0, none⟩
+
+/-- The XML declares subject as an owned property of Claim with multiplicity 0..*. -/
+def xmlClaimSubjectOwner : String := "Claim"
+def xmlClaimSubjectMultiplicity : SourceMultiplicity := ⟨0, none⟩
+
+/-- PDF Figure 13.1 places whole on SACMElement with multiplicity 0..*. -/
+def pdfFigure13_1WholeOwner : String := "SACMElement"
+def pdfFigure13_1WholeMultiplicity : SourceMultiplicity := ⟨0, none⟩
+
+/-- The XML declares whole as an owned property of Claim with multiplicity 0..*. -/
+def xmlClaimWholeOwner : String := "Claim"
+def xmlClaimWholeMultiplicity : SourceMultiplicity := ⟨0, none⟩
+
+theorem claim_subject_owner_differs_between_pdf_figure13_1_and_xml :
+    pdfFigure13_1SubjectOwner ≠ xmlClaimSubjectOwner := by
+  decide
+
+theorem claim_subject_multiplicity_agrees_between_pdf_figure13_1_and_xml :
+    pdfFigure13_1SubjectMultiplicity = xmlClaimSubjectMultiplicity := by
+  decide
+
+theorem claim_whole_owner_differs_between_pdf_figure13_1_and_xml :
+    pdfFigure13_1WholeOwner ≠ xmlClaimWholeOwner := by
+  decide
+
+theorem claim_whole_multiplicity_agrees_between_pdf_figure13_1_and_xml :
+    pdfFigure13_1WholeMultiplicity = xmlClaimWholeMultiplicity := by
   decide
 
 /-- PDF clauses 10.5 and 11.3 give incompatible BindingPackage superclass

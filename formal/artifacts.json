@@ -215,6 +215,54 @@
           "probable inference intentionally unsupported by classical fragment"
         ]
       }
+    },
+    {
+      "artifactId": "govcheck.journal-recovery",
+      "kind": "formal-model",
+      "title": "GovCheck durable canonical journal, recovery and rollback TLA+ model",
+      "source": "formal/tla/GovCheckJournalRecovery.tla",
+      "configuration": "formal/tla/GovCheckJournalRecovery.cfg",
+      "documentation": {
+        "en": "docs/architecture/0035-canonical-journal-recovery-model.md",
+        "fr": "docs/architecture/0035-canonical-journal-recovery-model.fr.md"
+      },
+      "revisionPolicy": "repository-history",
+      "releaseBinding": "release-tag-and-commit",
+      "status": "bounded-design-model; SANY-parsed-and-TLC-model-checked",
+      "verification": {
+        "architectureRecord": "docs/architecture/0035-canonical-journal-recovery-model.md",
+        "workflowRunId": 42849634866,
+        "jobId": 129946416981,
+        "checkedCommit": "8ace02658a9f349db57e937c697e66c7b779aaa8",
+        "modelGitBlob": "f99b33f510f3350f7ee1dc2ecc4b13a216d64ab6",
+        "configurationGitBlob": "43102a4fc3c17a0656ccfe71d34642457d85737a",
+        "result": "no-counterexample",
+        "statesGenerated": 178549,
+        "distinctStates": 38434,
+        "statesRemaining": 0,
+        "graphDepth": 9,
+        "toolchain": {
+          "sany": "2.1",
+          "tlc": "2.19",
+          "tla2tools": "1.7.4",
+          "tla2toolsSha256": "936a262061c914694dfd669a543be24573c45d5aa0ff20a8b96b23d01e050e88",
+          "java": "Temurin 17.0.21+9",
+          "workers": 4
+        },
+        "artifactId": 13778459512,
+        "artifactSha256": "8ce7414863ef57725e7ae36e3055d10edb21571feb62c35d9fae68228a96b94c",
+        "invariants": [
+          "TypeOK",
+          "UniqueEventAndRevisionIds",
+          "PositionAndPredecessorContinuity",
+          "RollbackRestoresContentAsNewEvent",
+          "VCSObservationIsNonAuthoritative",
+          "AppliedStateIsDurable"
+        ],
+        "properties": [
+          "AppendOnly"
+        ]
+      }
     }
   ]
 }

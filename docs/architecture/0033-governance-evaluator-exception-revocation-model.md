@@ -65,7 +65,7 @@ This is a finite design model, not a general unbounded protocol proof. Its TLC i
 - at most one comparative shadow result and one historical requalification;
 - a bounded logical-time progression.
 
-Consequently, this run does **not** establish multi-publication concurrency, a complete rollback sequence, arbitrary evaluator succession, cryptographic identity, delegation, a complete structured risk-acceptance record, real-time expiry, durable journal storage, crash recovery, distributed replica reconciliation, Git/Pijul adapter correctness, or implementation refinement. These remain engineering/formalization obligations tracked by issue #86.
+Consequently, this run does **not** establish multi-publication concurrency, a complete rollback sequence, arbitrary evaluator succession, cryptographic identity, delegation, a complete structured risk-acceptance record, real-time expiry, durable journal storage, crash recovery, distributed replica reconciliation, Git/Pijul adapter correctness, or implementation refinement. The complementary [Architecture 0035](0035-canonical-journal-recovery-model.md) checks only a bounded single-writer recovery/rollback abstraction; [proposed Specification 0007](../specifications/0007-canonical-governance-journal-protocol.md) defines protocol obligations but is not an implementation or a whole-specification model check. These remain engineering/formalization obligations tracked by issue #86.
 
 The model's finite state-space result is model-checking evidence for these exact source/configuration identities only. It is not a theorem proof, not evidence that production code refines the model, and not an act of normative adoption. The eleven owner-selected choices remain selected inputs; formal adoption remains exclusively the project owner's authority.
 
@@ -73,6 +73,8 @@ The model's finite state-space result is model-checking evidence for these exact
 
 - [R-05 — TLA+ and TLC state-transition modeling](../references.md#r-05)
 - [Specification 0006 — governance revision applicability](../specifications/0006-governance-revision-applicability.md)
+- [Specification 0007 — canonical journal and VCS adapter protocol](../specifications/0007-canonical-governance-journal-protocol.md)
 - [Architecture 0032 — canonical publication model-checking report](0032-canonical-publication-model-checking.md)
+- [Architecture 0035 — canonical journal recovery model](0035-canonical-journal-recovery-model.md)
 - [Decision-session record 0008](../decisions/0008-governance-applicability-arbitration-session.md)
 - [Issue #86 — governance applicability engineering obligations](https://github.com/Martin-PB/govcheck/issues/86)

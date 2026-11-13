@@ -44,6 +44,7 @@
 | Open-source licensing and attribution | R-108 |
 | Repository intent, lifecycle and requirements engineering | R-114–R-118, R-121–R-122 |
 | System modeling and assurance-case metamodels | R-119–R-120 |
+| Metamodel coherence, semantic preservation and formal verification | R-123–R-127 |
 | Probabilistic assurance, fuzzy logic and state-transition models | R-193 |
 
 ## Full reference entries
@@ -1178,6 +1179,54 @@
 - **Relevant concepts:** published open format and convention for a repository-level `INTENT.md` that combines product overview, personas, releases, user stories and acceptance criteria.
 - **Use in GovCheck:** comparison point for an existing published `INTENT.md` format and its scope.
 - **Limit:** its bundled content model is not adopted by GovCheck; GovCheck does not claim conformance or compatibility.
+
+### R-123 — Lean Computer Science Library (CSLib) for semantic proof
+- **Cited by:** [Metamodel coherence verification](research/metamodel-coherence-verification.md)
+- **Primary sources:** [CSLib repository](https://github.com/leanprover/cslib) · [organization](https://github.com/leanprover/cslib/blob/main/ORGANISATION.md) · [contributor guidance](https://github.com/leanprover/cslib/blob/main/CONTRIBUTING.md)
+- **Relevant concepts:** reusable Lean formalizations for operational semantics, labeled transition systems, program equivalence and logics.
+- **Use in GovCheck:** reuse suitable foundations to formalize the common semantic bridge and prove critical mapping properties.
+- **Limit:** CSLib is not a ready-made GovCheck ontology; its code-translation/Boole preservation pipeline is evolving. Pin versions and disclose axioms and trusted components.
+
+- **Compatibility snapshot (2026-11-11):** [CSLib main commit f8acdb3](https://github.com/leanprover/cslib/commit/f8acdb37c713b0124ad36b863f50c200a5f1cdba) pins Lean 4.36.0-rc2 and Mathlib commit 887bb849a9f64e1c66499fd5ff8523c864e78941; the current GovCheck prototype pins Lean 4.19.0, so direct import is not yet compatible.
+- **BTL semantics limit:** CSLib's BTL module defines future/past modalities over a relation without imposing order properties; reflexivity/transitivity and any linear-time assumptions must be declared by the consuming model.
+<a id="r-124"></a>
+
+### R-124 — TLA+, TLC and TLAPS for temporal and transition-system properties
+- **Cited by:** [Metamodel coherence verification](research/metamodel-coherence-verification.md)
+- **Primary sources:** [TLA+ Proof System](https://proofs.tlapl.us/doc/web/content/Home.html) · [TLC documentation](https://github.com/tlaplus/tlaplus/blob/master/general/docs/tlcgui.txt)
+- **Relevant concepts:** state-transition specifications, invariant checking, temporal properties, finite-state model checking and mechanically checked proof steps.
+- **Use in GovCheck:** check authority lifecycle, revocation, expiry, invalidation and revalidation properties.
+- **Limit:** finite model checking is bounded by the model and state space; TLAPS does not currently provide general temporal reasoning for all TLA+ constructs.
+
+<a id="r-125"></a>
+
+### R-125 — Verification of model transformations
+- **Cited by:** [Metamodel coherence verification](research/metamodel-coherence-verification.md)
+- **Primary source:** Calegari & Szasz, “Verification of Model Transformations: A Survey of the State-of-the-Art” (2013), [DOI](https://doi.org/10.1016/j.entcs.2013.02.002)
+- **Relevant concepts:** verification of transformations in terms of transformation rules, properties of interest and verification techniques; heterogeneous verification.
+- **Use in GovCheck:** frame mapping verification as explicit transformations plus preservation properties and declared techniques.
+- **Limit:** no single method proves all transformation properties; results depend on semantics, assumptions and bounds.
+
+<a id="r-126"></a>
+
+### R-126 — Epsilon EVL and Alloy Analyzer
+- **Cited by:** [Metamodel coherence verification](research/metamodel-coherence-verification.md)
+- **Primary sources:** [Epsilon Validation Language](https://eclipse.dev/epsilon/doc/evl/) · [Alloy Analyzer](https://alloy.readthedocs.io/en/latest/tooling/analyzer.html)
+- **Relevant concepts:** intra-/inter-model constraints, validation diagnostics and fixes; SAT-based search for finite relational counterexamples.
+- **Use in GovCheck:** executable model constraints and counterexample discovery before or alongside proof development.
+- **Limit:** bounded analysis and validation are not unbounded proof of arbitrary semantic preservation.
+
+<a id="r-127"></a>
+
+### R-127 — Ontology alignment, consistency and conservative extension
+- **Cited by:** [Metamodel coherence verification](research/metamodel-coherence-verification.md)
+- **Primary sources:** Botoeva et al., “Inseparability and conservative extensions of description logic ontologies: A survey” (2017), [repository record](https://livrepository.liverpool.ac.uk/3006616/) · “A semantic approach to mapping the Provenance Ontology to Basic Formal Ontology” (2025), [open article](https://pmc.ncbi.nlm.nih.gov/articles/PMC11833102/)
+- **Relevant concepts:** model-theoretic criteria for ontology alignment, semantic interoperability, query/concept inseparability and conservative extensions.
+- **Use in GovCheck:** distinguish simple traceability from semantic mappings; state when adding GovCheck vocabulary must preserve consequences in source vocabularies.
+- **Limit:** conservativity is relative to a chosen signature, semantics and application; define it per mapping/use case, not universally.
+
+
+<a id="r-142"></a>
 
 <a id="r-128"></a>
 ### R-128 — Assurance Forge: independent SACM 2.4 Beta 1 implementation-impact audit (2026-10-02; repository revision 2026-11-03)

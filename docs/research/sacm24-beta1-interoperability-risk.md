@@ -49,16 +49,16 @@ The Assurance Forge fetch script records these SHA-256 values for the four offic
 
 ## 5. GovCheck response: source-view-qualified mapping
 
-The Lean module `GovCheckCoherence.SACM24` has been tightened so it cannot silently merge the two conflicting views; it also binds the selected view to the source artifact's native format and exact revision:
+The Lean module `GovCheckCoherence.SACM24` now distinguishes document-level views from the individual clauses, annexes and figures that make claims within those views. The earlier PDF-wide predicate was too coarse: it incorrectly rejected `byRule` for the PDF even though Clause 15.2.1 adds it, while Clause 13.6 includes `needsSupport`.
 
-- `SourceView` distinguishes `specificationText` from `normativeMetamodelXML`.
-- `AssertionDeclarationKind` retains the union of both value sets, including both `needsSupport` and `byRule`.
-- `declarationSupportedBySourceView` rejects `byRule` when the PDF text view is selected and rejects `needsSupport` when the metamodel XML view is selected.
-- `ElementIdentityField` preserves `gid` versus `elementId`; the source view determines the expected field.
-- `SACMClaimInterpretation` requires proofs that the declaration literal and identity field are consistent with the selected source view, and pins any explicit subject to the exact source-model revision.
-- `SACMClaimMapping` composes that source interpretation with the general GovCheck `EvidenceMapping` semantic bridge.
+- `SourceView` identifies the document format; `DeclarationSourceFragment` separately identifies PDF Clause 13.6, Annex G.6 item 6, Clause 15.2.1 and the normative XML model.
+- `IdentitySourceFragment` distinguishes PDF Clause 9.2 (`gid`), PDF Figure 9.1 (`elementId`) and the XML model (`elementId`).
+- A Claim interpretation must carry the exact declaration and identity fragments used. It no longer asserts one canonical declaration set or identity field for the entire PDF.
+- The Claim slice preserves `subject` as `Option (List SACMElementRef)`, declaration presence separately from its default `asserted`, raw value type labels, optional `whole`, and multi-valued opaque assertion/rule/strength references.
+- A mapped identity must be non-empty; this makes the current mapping contract explicitly partial for source records without a usable identity.
+- Lean theorems prove differences between the transcribed fragment facts: declaration literal sets, identity fields, selected multiplicities, inheritance lists and assertion-rule feature names.
 
-These guards formalize the two conflicts relevant to the current Claim/Assertion slice. They do not resolve the remaining multiplicity, value-type or inheritance conflicts, and they do not establish conformance to either full source view.
+The detailed [source-view alignment report](sacm24-source-view-alignment.md) records the evidence and classification for each item. These theorems do not prove that the source transcription is correct, that the Python XMI parser refines UML/MOF semantics, or that the manually encoded inference bridge is SACM's intended semantics. The `SACMClaimInterpretation` and `SACMClaimMapping` types define proof obligations; no concrete source-derived GovCheck mapping instance or full-source conformance claim is established.
 
 ## 6. Required handling policy
 
@@ -72,6 +72,8 @@ Until OMG publishes a stable formal SACM 2.4 version or a beta with a coherent s
 6. Keep the 2.4 model and any future conformance matrix separate from 2.3. A later implementation should be additive and version-dispatched, not a silent replacement.
 
 ## 7. Next verification work
+
+The current [source-view alignment report](sacm24-source-view-alignment.md) is a revision-bound comparison record, not a precedence decision.
 
 - Obtain and pin the four OMG Beta 1 artifacts using the official URLs and compare their hashes with the independent audit's recorded hashes.
 - Run GovCheck's own text/XML structural diff and extend the Lean source-view model to the remaining conflicts: AssertedEvidence multiplicity, Claim.value type, BindingPackage inheritance, abstraction multiplicity and isCounter multiplicity.

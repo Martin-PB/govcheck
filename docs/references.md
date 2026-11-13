@@ -9,7 +9,7 @@
 | Security assurance cases and metamodels | R-04, R-33–R-34 |
 | PEAK decision model | R-74 |
 | Continuous monitoring and runtime assurance | R-70, R-72, R-75–R-76 |
-| Assurance 2.0, SACM evolution and implementation audits | R-71, R-73, R-128 |
+| Assurance 2.0, SACM evolution and implementation audits | R-71, R-73, R-128, R-197 |
 | Assurance regimes and goal-oriented requirements | R-35–R-36, R-44, R-92 |
 | Model checking and program-verification alternatives | R-05, R-20, R-37–R-43, R-89–R-91 |
 | Evidence provenance and software supply chain | R-06–R-08 |
@@ -273,7 +273,7 @@
 <a id="r-20"></a>
 
 ### R-20 — Lean
-- **Cited by:** [0007](architecture/0007-technology-decision-framework.md), [0008](architecture/0008-formalization-and-conformance.md), [0010](architecture/0010-assurance-proof-and-conformance.md), [ADR 0001](decisions/0001-bootstrap-boundaries.md), [Spec 0005](specifications/0005-assurance-model.md), [ADR 0002](decisions/0002-study-placement.md), [CSLib compatibility audit](research/cslib-compatibility-audit.md), [metamodel semantic-coverage audit](research/metamodel-semantic-coverage-audit.md)
+- **Cited by:** [0007](architecture/0007-technology-decision-framework.md), [0008](architecture/0008-formalization-and-conformance.md), [0010](architecture/0010-assurance-proof-and-conformance.md), [ADR 0001](decisions/0001-bootstrap-boundaries.md), [Spec 0005](specifications/0005-assurance-model.md), [ADR 0002](decisions/0002-study-placement.md), [CSLib compatibility audit](research/cslib-compatibility-audit.md), [metamodel semantic-coverage audit](research/metamodel-semantic-coverage-audit.md), [SACM source-native metamodel ingestion](research/sacm-native-metamodel-ingestion.md)
 
 - **Primary source:** [Lean language reference](https://lean-lang.org/doc/reference/latest/)
 - **Related library:** [CSLib](https://github.com/leanprover/cslib), a Lean library for formalizing computer-science theories, temporal logics and transition-system semantics.
@@ -763,7 +763,7 @@
 
 <a id="r-73"></a>
 ### R-73 — OMG Structured Assurance Case Metamodel (SACM), Version 2.4 Beta 1 (September 2026)
-- **Cited by:** [0010-assurance-proof-and-conformance](architecture/0010-assurance-proof-and-conformance.md), [0021-assurance-claims-and-freshness](architecture/0021-assurance-claims-and-freshness.md), [0025-runtime-observations-peak-and-sacm](architecture/0025-runtime-observations-peak-and-sacm.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.md), [intent-impact-analysis](intent-impact-analysis.md), [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.md), [sacm24-beta1-interoperability-risk](research/sacm24-beta1-interoperability-risk.md), [sacm24-claim-inference-mapping](research/sacm24-claim-inference-mapping.md), [metamodel semantic-coverage audit](research/metamodel-semantic-coverage-audit.md)
+- **Cited by:** [0010-assurance-proof-and-conformance](architecture/0010-assurance-proof-and-conformance.md), [0021-assurance-claims-and-freshness](architecture/0021-assurance-claims-and-freshness.md), [0025-runtime-observations-peak-and-sacm](architecture/0025-runtime-observations-peak-and-sacm.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.md), [intent-impact-analysis](intent-impact-analysis.md), [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.md), [sacm24-beta1-interoperability-risk](research/sacm24-beta1-interoperability-risk.md), [sacm24-claim-inference-mapping](research/sacm24-claim-inference-mapping.md), [metamodel semantic-coverage audit](research/metamodel-semantic-coverage-audit.md), [SACM source-native metamodel ingestion](research/sacm-native-metamodel-ingestion.md)
 - **Primary sources:** [OMG SACM 2.4 Beta 1 specification page](https://www.omg.org/spec/SACM/2.4/Beta1) · [PDF specification artifact (normative within the Beta 1 package)](https://www.omg.org/spec/SACM/2.4/Beta1/PDF) · [machine-readable metamodel XML (normative within the Beta 1 package), 2026-05-04](https://www.omg.org/spec/SACM/20260504/SACM2.4_Metamodel.xml). The beta package is informational/in-process; SACM 2.3 remains the formal adopted baseline.
 - **Relevant issue resolutions:** [SACM24-83 explicit Claim subject](https://issues.omg.org/issues/SACM24-83) · [SACM24-75 Assessment](https://issues.omg.org/issues/SACM24-75) · [SACM24-77 advanced arguments](https://issues.omg.org/issues/SACM24-77) · [SACM24-48 inference/relationship semantics](https://issues.omg.org/issues/SACM24-48).
 - **Relevant concepts:** explicit Claim subject via SACMElement; AssertionDeclarationKind (asserted, assumed, axiomatic, byRule); optional assertion truth/value/rule structures; InferenceTypeKind (probable, collective, necessary, sufficient, necessaryAndSufficient, byRule); AssertionRule and InferenceRule; assessment and advanced-argument extensions.
@@ -1345,3 +1345,11 @@
 - **Relevant concepts:** repeatable requests have the same intended effect as one request, enabling safe retry after a lost response when the operation semantics are idempotent.
 - **Use in GovCheck:** informs the protocol distinction between retrying an exact append request and accidentally creating a second normative event.
 - **Limit:** HTTP method semantics do not define GovCheck's idempotency-key namespace, journal retention or append protocol; those remain specified locally.
+
+<a id="r-197"></a>
+### R-197 — OMG SACM 2.4 Beta 1 normative machine-readable metamodel XML
+- **Cited by:** [SACM source-native metamodel ingestion](research/sacm-native-metamodel-ingestion.md)
+- **Primary source:** [OMG SACM specification catalogue](https://www.omg.org/spec/SACM) · [normative machine-readable metamodel XML](https://www.omg.org/spec/SACM/20260504/SACM2.4_Metamodel.xml) · OMG file ID `ptc/26-05-28`.
+- **Pinned identity:** SACM 2.4 Beta 1; source path dated 2026-05-04; native format XML; SHA-256 comparison value `0581dfa0b9dfaf17ff0f6c63b74f8e7a8396bea03f315e1334e94f23db110830`, as reported by R-128 and rechecked by the GovCheck ingestion workflow.
+- **Relevant concepts:** normative machine-readable metamodel source, distinct from the normative PDF prose and informative UML Profile XMI.
+- **Limit:** SACM 2.4 Beta 1 is in-process/informational; SACM 2.3 remains formal. This metamodel XML is not a portable assurance-case instance interchange format and its digest does not establish semantic conformance.

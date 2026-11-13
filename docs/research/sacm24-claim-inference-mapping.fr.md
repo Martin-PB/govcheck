@@ -19,17 +19,17 @@ SACM constitue donc une bonne cible de réfutation : un mapping GovCheck doit pr
 
 ## 2. Une déclaration d'assertion n'est ni un statut d'élément probant ni une preuve de théorème
 
-La tranche Lean modélise l'union des littéraux AssertionDeclarationKind trouvés dans les deux vues sources :
+La tranche Lean préserve l'union des littéraux AssertionDeclarationKind tout en enregistrant le fragment source exact qui énonce chaque littéral :
 
 | Déclaration SACM | Disposition GovCheck | Ce que cela **ne** signifie **pas** |
 |---|---|---|
 | `asserted` (PDF et XML) | `asserted` | Ni un test réussi ni une preuve |
 | `assumed` (PDF et XML) | `assumed` | Pas un élément probant de vérité de la proposition |
 | `axiomatic` (PDF et XML) | `axiomaticDeclared` | Pas une preuve de théorème vérifiée par le noyau Lean |
-| `needsSupport` (texte PDF seulement) | `needsSupport` | Pas une déclaration de règle ; rejeté pour la vue XML |
-| `byRule` (métamodèle XML seulement) | `ruleDeclared` | Pas une règle validée ; rejeté pour la vue texte PDF |
+| `needsSupport` (clause PDF 13.6) | `needsSupport` | Pas une déclaration de règle ; absent de l'ensemble XML et du fragment de la clause PDF 15.2.1 |
+| `byRule` (clause PDF 15.2.1 et modèle XML) | `ruleDeclared` | Pas une règle validée ; il ne doit pas être traité comme absent de l'ensemble du document PDF |
 
-Le mapping est injectif sur l'union des deux vues sources : aucun littéral de déclaration n'est fusionné avec une autre disposition GovCheck. Le champ `SourceView` sélectionne le texte PDF ou le métamodèle XML normatif et est lié au format natif de l'artefact source (`application/pdf` ou `application/xml`) ; un prédicat typé rejette `byRule` pour la vue texte et `needsSupport` pour la vue XML. Cette sélection de vue épingle également `gid` (texte PDF) ou `elementId` (métamodèle XML). La structure de bout en bout `SACMClaimMapping` transporte l'interprétation du Claim source, sa disposition, le modèle source exact et le pont sémantique générique `EvidenceMapping`.
+Le mapping est injectif sur l'union des littéraux enregistrés : aucune déclaration n'est fusionnée avec une autre disposition GovCheck. `SourceView` lie un Claim au format du document PDF ou XML, tandis que `DeclarationSourceFragment` enregistre la clause PDF 13.6, l'annexe G.6 point 6, la clause 15.2.1 ou le modèle XML. Les fragments PDF se contredisent en interne : la clause 13.6 inclut `needsSupport`, l'annexe G.6 point 6 liste trois valeurs et la clause 15.2.1 ajoute `byRule`. `IdentitySourceFragment` enregistre séparément la clause PDF 9.2 (`gid`), la figure PDF 9.1 (`elementId`) et le XML (`elementId`). `SACMClaimMapping` transporte l'interprétation qualifiée par fragments, le modèle source exact et le pont sémantique générique `EvidenceMapping`. Aucune règle de priorité n'est sélectionnée.
 
 Les champs optionnels SACM `isTrue`, `assertionValue` et `assertionRule` restent distincts du type de déclaration. Dans la tranche Lean actuelle, les deux derniers sont conservés comme chaînes opaques de contenu/référence source, sans formaliser encore leurs métaclasses SACM complètes. Une valeur booléenne de vérité facultative n'est pas un objet de preuve ; une valeur d'assertion peut être plus riche qu'un booléen ; une référence de règle n'est pas sa sémantique formelle. L'enregistrement Lean conserve ces champs séparément.
 
@@ -37,14 +37,14 @@ Les champs optionnels SACM `isTrue`, `assertionValue` et `assertionRule` restent
 
 ## 3. Sujet du Claim et interprétation formelle
 
-La tranche Lean définit un `SACMElementRef` contenant le champ d'identité source, la métaclasse et la révision du modèle. `SACMClaim` porte sa vue source et son choix de champ d'identité. `SACMClaimInterpretation` ne peut être construite que si le littéral de déclaration et le champ d'identité sont cohérents avec la vue source sélectionnée ; elle lie :
+La tranche Lean définit un `SACMElementRef` contenant le champ d'identité source, la métaclasse et la révision du modèle. `SACMClaim` porte une vue source documentaire, mais chaque choix de déclaration et d'identité est justifié par son propre fragment. Son sujet est `Option (List SACMElementRef)`, qui distingue une propriété absente de la vue source sélectionnée (`none`) d'une propriété présente mais vide ou multivaluée (`some []` ou `some [..]`). `SACMClaimInterpretation` exige aussi une identité non vide ; le mapping est donc partiel pour les objets source sans identité exploitable. Elle lie :
 
 - l'identité exacte du Claim SACM à l'identifiant d'affirmation GovCheck ;
-- le sujet SACM explicite facultatif au sujet traduit ;
+- le sujet SACM explicite, facultatif et multivalué, au sujet traduit ;
 - la référence du sujet à la révision exacte du modèle source ;
 - une proposition Lean fournie séparément comme interprétation formelle.
 
-La divergence de type de `Claim.value` entre PDF et XML n'est pas aplatie : le champ Lean actuel est un espace réservé opaque pour la valeur brute, pas une formalisation de `MultiLangString` ou `ExpressionLangString`. Il ne s'agit volontairement pas d'une conversion automatique du texte/de la valeur SACM en logique Lean. L'autorité de mapping doit fournir et justifier l'interprétation propositionnelle. Le contrat formel actuel contrôle la préservation de l'identité et du sujet/de la révision, mais ne prouve pas qu'une proposition choisie pour une affirmation en langage naturel est fidèle à son texte. Cela reste un argument d'interprétation et une obligation d'assurance explicites.
+La divergence de type de `Claim.value` entre PDF et XML n'est pas aplatie : le `RawSourceValue` Lean conserve le libellé du type source et le payload brut, mais ne formalise ni `MultiLangString` ni `ExpressionLangString`. La déclaration optionnelle est conservée séparément de sa valeur effective par défaut `asserted` ; `whole` est représenté comme une liste optionnelle et les valeurs d'assertion, références de règles et forces comme des listes de références opaques. Il ne s'agit volontairement pas d'une conversion automatique du texte/de la valeur SACM en logique Lean. L'autorité de mapping doit fournir et justifier l'interprétation propositionnelle. Le contrat formel actuel contrôle la préservation de l'identité et du sujet/de la révision, mais ne prouve pas qu'une proposition choisie pour une affirmation en langage naturel est fidèle à son texte. Il ne prouve pas non plus l'exactitude des faits source transcrits ni celle de l'inventaire structurel produit par Python. Cela reste un argument d'interprétation et une obligation d'assurance explicites.
 
 ## 4. Types d'inférence et directionnalité
 

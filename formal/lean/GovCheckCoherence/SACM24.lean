@@ -348,4 +348,115 @@ theorem sacm_claim_mapping_has_semantic_bridge
       mapping.evidenceMapping.contract.coverage) :=
   ⟨mapping.evidenceMapping.semanticBridge⟩
 
+
+/-- A multiplicity interval transcribed from a particular SACM source fragment.
+    `none` as upper bound means unbounded. This records claims; it does not
+    implement UML default-value semantics or prove source extraction. -/
+structure SourceMultiplicity where
+  lower : Nat
+  upper : Option Nat
+  deriving DecidableEq, Repr
+
+namespace SourceFacts
+
+/-- Clause 13.9 PDF text versus normative metamodel XML. -/
+def pdfClaimValueType : String := "MultiLangString"
+def xmlClaimValueType : String := "ExpressionLangString"
+
+theorem claim_value_type_conflict : pdfClaimValueType ≠ xmlClaimValueType := by
+  decide
+
+/-- PDF clause 13.13 versus the metamodel XML AssertedEvidence.evidence. -/
+def pdfAssertedEvidenceEvidence : SourceMultiplicity := ⟨0, none⟩
+def xmlAssertedEvidenceEvidence : SourceMultiplicity := ⟨1, none⟩
+
+theorem asserted_evidence_multiplicity_conflict :
+    pdfAssertedEvidenceEvidence ≠ xmlAssertedEvidenceEvidence := by
+  decide
+
+/-- PDF clause 9.2 versus the normative metamodel XML. -/
+def pdfSACMElementAbstraction : SourceMultiplicity := ⟨0, some 1⟩
+def xmlSACMElementAbstraction : SourceMultiplicity := ⟨0, none⟩
+
+theorem sacm_element_abstraction_multiplicity_conflict :
+    pdfSACMElementAbstraction ≠ xmlSACMElementAbstraction := by
+  decide
+
+/-- PDF clause 13.11 versus the normative metamodel XML. -/
+def pdfAssertedRelationshipIsCounter : SourceMultiplicity := ⟨1, some 1⟩
+def xmlAssertedRelationshipIsCounter : SourceMultiplicity := ⟨0, some 1⟩
+
+theorem asserted_relationship_isCounter_multiplicity_conflict :
+    pdfAssertedRelationshipIsCounter ≠ xmlAssertedRelationshipIsCounter := by
+  decide
+
+/-- The PDF prose does not specify these Claim features; the XML declares
+    multi-valued properties. `none` means "not stated in this PDF text view",
+    not proof that no diagram or other fragment mentions the feature. -/
+def pdfTextClaimSubject : Option SourceMultiplicity := none
+def xmlClaimSubject : Option SourceMultiplicity := some ⟨0, none⟩
+def pdfTextClaimWhole : Option SourceMultiplicity := none
+def xmlClaimWhole : Option SourceMultiplicity := some ⟨0, none⟩
+
+theorem claim_subject_is_xml_addition_over_pdf_text :
+    pdfTextClaimSubject ≠ xmlClaimSubject := by
+  decide
+
+theorem claim_whole_is_xml_addition_over_pdf_text :
+    pdfTextClaimWhole ≠ xmlClaimWhole := by
+  decide
+
+/-- PDF clauses 10.5 and 11.3 give incompatible BindingPackage superclass
+    statements; the XML agrees with clause 10.5. -/
+def pdfBindingPackageClause10_5 : List String :=
+  ["ScopedPackage", "SACMPackageWithBinding"]
+def pdfBindingPackageClause11_3 : List String := ["ModelElement"]
+def xmlBindingPackage : List String :=
+  ["ScopedPackage", "SACMPackageWithBinding"]
+
+theorem binding_package_pdf_fragments_conflict :
+    pdfBindingPackageClause10_5 ≠ pdfBindingPackageClause11_3 := by
+  decide
+
+theorem xml_binding_package_matches_pdf_clause10_5 :
+    xmlBindingPackage = pdfBindingPackageClause10_5 := rfl
+
+/-- PDF clause 9.10 versus Annex G.6 item 5 and the XML metamodel. -/
+def pdfSACMModelClause9_10 : List String := ["ModelElement"]
+def pdfSACMModelAnnexG6Item5 : List String :=
+  ["ModelElement", "Assertion", "Assessment"]
+def xmlSACMModel : List String :=
+  ["ModelElement", "Assertion", "Assessment"]
+
+theorem sacm_model_pdf_fragments_differ :
+    pdfSACMModelClause9_10 ≠ pdfSACMModelAnnexG6Item5 := by
+  decide
+
+theorem xml_sacm_model_matches_pdf_annex_g6 :
+    xmlSACMModel = pdfSACMModelAnnexG6Item5 := rfl
+
+/-- Additional XML generalizations not stated in the corresponding PDF clauses. -/
+def pdfSACMDependencyClause9_11 : List String := ["DirectedRelationship"]
+def xmlSACMDependency : List String := ["DirectedRelationship", "BaseElement"]
+def pdfRuleClause15_2_3 : List String := ["BaseElement"]
+def xmlRule : List String := ["ModelElement", "BaseElement"]
+
+theorem sacm_dependency_xml_adds_base_element :
+    pdfSACMDependencyClause9_11 ≠ xmlSACMDependency := by
+  decide
+
+theorem rule_xml_adds_model_element :
+    pdfRuleClause15_2_3 ≠ xmlRule := by
+  decide
+
+/-- PDF and XML use different names for the multi-valued assertion-rule feature. -/
+def pdfAssertionRuleFeature : String := "assertionRule"
+def xmlAssertionRuleFeature : String := "assertionDeclarationRule"
+
+theorem assertion_rule_feature_name_differs :
+    pdfAssertionRuleFeature ≠ xmlAssertionRuleFeature := by
+  decide
+
+end SourceFacts
+
 end GovCheck.Coherence.SACM24

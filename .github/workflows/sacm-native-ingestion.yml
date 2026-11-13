@@ -46,14 +46,21 @@ jobs:
           python scripts/ingest-sacm-metamodel.py \
             --input /tmp/SACM2.4_Metamodel.xml \
             --output-dir /tmp/govcheck-sacm-import
-      - name: Parse XMI structure and verify committed summary
-        run: >
-          python scripts/parse-sacm-xmi.py
-          --input /tmp/govcheck-sacm-import/source.xml
-          --output /tmp/govcheck-sacm-import/metamodel-inventory.json
-          --summary-output /tmp/govcheck-sacm-import/metamodel-inventory-summary.json
-          && cmp /tmp/govcheck-sacm-import/metamodel-inventory-summary.json
-          formal/sources/sacm-2.4-beta1/metamodel-inventory-summary.json
+      - name: Parse XMI structure and compare committed summary
+        run: |
+          python scripts/parse-sacm-xmi.py \
+            --input /tmp/govcheck-sacm-import/source.xml \
+            --output /tmp/govcheck-sacm-import/metamodel-inventory.json \
+            --summary-output /tmp/govcheck-sacm-import/metamodel-inventory-summary.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          generated = json.loads(Path("/tmp/govcheck-sacm-import/metamodel-inventory-summary.json").read_text())
+          committed = json.loads(Path("formal/sources/sacm-2.4-beta1/metamodel-inventory-summary.json").read_text())
+          if generated != committed:
+              raise SystemExit("Generated SACM XMI inventory summary differs from the committed source-bound summary.")
+          print("Committed SACM XMI inventory summary matches generated summary.")
+          PY
       - name: Publish source capture and full XMI inventory
         uses: actions/upload-artifact@v4
         with:

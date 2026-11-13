@@ -220,12 +220,21 @@ theorem sacm_xml_identity_field_is_elementId :
     SACM24.identityFieldForSourceView .normativeMetamodelXML = .elementId :=
   SACM24.xml_identity_field_is_elementId
 
-/-- A mapped Claim must carry the declaration/source-view consistency proof. -/
-theorem sacm_claim_mapping_requires_source_view_consistency
+/-- A mapped Claim must cite a specific source fragment for its declaration;
+    document-level PDF/XML labels cannot resolve contradictions within a document. -/
+theorem sacm_claim_mapping_requires_source_fragment_consistency
     {claim : SACM24.SACMClaim} {interpretation : ClaimSemantics}
     (mapping : SACM24.SACMClaimInterpretation claim interpretation) :
-    SACM24.declarationSupportedBySourceView claim.sourceView claim.declaration = true :=
-  mapping.declarationConsistentWithSourceView
+    SACM24.effectiveDeclaration claim ∈
+      SACM24.declarationLiteralsForFragment mapping.declarationFragment :=
+  mapping.declarationConsistentWithFragment
+
+/-- A mapped Claim must also cite the exact identity fragment whose field it uses. -/
+theorem sacm_claim_mapping_requires_identity_fragment_consistency
+    {claim : SACM24.SACMClaim} {interpretation : ClaimSemantics}
+    (mapping : SACM24.SACMClaimInterpretation claim interpretation) :
+    claim.identityField = SACM24.identityFieldForFragment mapping.identityFragment :=
+  mapping.identityFieldMatchesFragment
 
 /-- A mapped Claim must use the identity field of its declared source view. -/
 theorem sacm_claim_mapping_requires_source_identity_field

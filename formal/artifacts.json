@@ -368,9 +368,9 @@
       ],
       "revisionPolicy": "repository-history",
       "releaseBinding": "release-tag-and-commit",
-      "status": "fragment-level-source-facts-formalized; PDF-and-XML-digests-workflow-verified; Claim.value-normative-informative-PDF-conflict-modelled; exact-Clause-13.9-locator-review-pending; transcription-proof-pending; no-precedence-decision",
+      "status": "fragment-level-source-facts-formalized; PDF-and-XML-digests-workflow-verified; Claim.value-and-AssertedEvidence-PDF-internal-conflicts-modelled; subject-whole-owner-shift-modelled; transcription-proof-pending; no-precedence-decision",
       "limitations": [
-        "Lean theorems formalize transcribed source-fragment values and their differences; they do not prove transcription correctness",
+        "Lean theorems formalize transcribed source-fragment values, multiplicities and owners; they do not prove transcription correctness",
         "the exact Clause 13.9 locator cited by R-128 remains to be checked even though normative Figure 13.1 supports MultiLangString",
         "PDF and XML digests authenticate exact bytes but do not authenticate source-fragment interpretation",
         "no parser-to-formal-model refinement theorem",
@@ -415,7 +415,7 @@
           ],
           "unapprovedAxioms": 0,
           "sourceFragmentWrappersUsingPropext": 5,
-          "sourceFactsDirectTheoremsWithNoAxioms": 16
+          "sourceFactsDirectTheoremsWithNoAxioms": 22
         },
         "otherChecks": {
           "referenceIntegrityRunId": 43496689170,
@@ -429,20 +429,44 @@
           "locator": "Figure 13.1",
           "printedPage": 41,
           "sectionStatus": "normative",
-          "claim": "Claim.value : MultiLangString"
+          "claims": [
+            "Claim.value: MultiLangString",
+            "AssertedEvidence.evidence: 1..*",
+            "AssertedRelationship.isCounter: Boolean[1]",
+            "SACMElement.subject: 0..*",
+            "SACMElement.whole: 0..*"
+          ]
+        },
+        {
+          "sourceFileId": "ptc/26-06-34",
+          "locator": "Clause 13.13",
+          "sectionStatus": "normative",
+          "claim": "AssertedEvidence.evidence: 0..*"
+        },
+        {
+          "sourceFileId": "ptc/26-06-34",
+          "locator": "Clause 13.11",
+          "sectionStatus": "normative",
+          "claim": "AssertedRelationship.isCounter: Boolean[1]"
         },
         {
           "sourceFileId": "ptc/26-06-34",
           "locator": "Figure 15.1.1",
           "printedPage": 59,
           "sectionStatus": "informative",
-          "claim": "Claim.value : ExpressionLangString"
+          "claim": "Claim.value: ExpressionLangString"
         },
         {
           "sourceFileId": "ptc/26-05-28",
           "locator": "Metamodel/Argument/Claim/value",
           "sectionStatus": "normative-machine-readable",
           "claim": "type ExpressionLangString"
+        },
+        {
+          "sourceFileId": "ptc/26-05-28",
+          "locator": "Metamodel/Argument/Claim/subject+whole",
+          "sectionStatus": "normative-machine-readable",
+          "claim": "Claim owns subject and whole; both 0..*"
         }
       ]
     }

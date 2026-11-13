@@ -55,7 +55,7 @@ L'importateur :
 
 La copie brute des octets fait autorité pour la fidélité. L'index des événements est un outil de navigation, pas un remplacement canonisé : les distinctions lexicales XML qui ne sont pas représentées dans l'index restent récupérables dans \`source.xml\`. La résolution des DTD/entités externes est désactivée ; l'importateur impose une limite d'entrée de 32 Mio.
 
-Le workflow exécute les tests unitaires, télécharge l'artefact OMG exact, vérifie son digest, produit le manifeste et l'index de capture, puis publie ces fichiers dérivés comme artefact de workflow conservé 90 jours. Le payload source n'est pas copié dans l'historique Git : il reste disponible depuis l'URL OMG versionnée officielle.
+Le workflow exécute les tests unitaires, télécharge l'artefact OMG exact, vérifie son digest, produit le manifeste et l'index de capture, puis publie le payload exact `source.xml` avec le manifeste et l'index structurel comme artefact de workflow conservé 90 jours. Le payload source n'est pas copié dans l'historique Git : il reste disponible depuis l'URL OMG versionnée officielle.
 
 ## 4. Frontière de correspondance sémantique
 

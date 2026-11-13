@@ -1,0 +1,52 @@
+name: SACM source-native metamodel ingestion
+
+on:
+  pull_request:
+    paths:
+      - "scripts/ingest-sacm-metamodel.py"
+      - "tests/test_sacm_native_ingestion.py"
+      - ".github/workflows/sacm-native-ingestion.yml"
+      - "docs/research/sacm-native-metamodel-ingestion.md"
+      - "docs/research/sacm-native-metamodel-ingestion.fr.md"
+  push:
+    branches: [main]
+    paths:
+      - "scripts/ingest-sacm-metamodel.py"
+      - "tests/test_sacm_native_ingestion.py"
+      - ".github/workflows/sacm-native-ingestion.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  ingestion-contract:
+    name: Verify pinned OMG source capture
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Unit tests
+        run: python -m unittest discover -s tests -p 'test_sacm_native_ingestion.py' -v
+      - name: Download exact OMG machine-readable metamodel
+        run: |
+          curl --fail --location --proto '=https' --tlsv1.2 \
+            --output /tmp/SACM2.4_Metamodel.xml \
+            https://www.omg.org/spec/SACM/20260504/SACM2.4_Metamodel.xml
+      - name: Verify digest and capture source-native artifact
+        run: |
+          python scripts/ingest-sacm-metamodel.py \
+            --input /tmp/SACM2.4_Metamodel.xml \
+            --output-dir /tmp/govcheck-sacm-import
+      - name: Publish capture manifest and structural index
+        uses: actions/upload-artifact@v4
+        with:
+          name: sacm-2.4-beta1-source-capture
+          path: |
+            /tmp/govcheck-sacm-import/source.xml
+            /tmp/govcheck-sacm-import/manifest.json
+            /tmp/govcheck-sacm-import/index.json
+          if-no-files-found: error
+          retention-days: 90

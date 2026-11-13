@@ -1,6 +1,6 @@
 # SACM 2.4 Beta 1 — first semantic mapping slice
 
-**Status:** source-native semantic slice formalized in Lean; Lean build and axiom audit passed in [run 43216879988](https://github.com/Martin-PB/govcheck/actions/runs/43216879988).  
+**Status:** fragment-qualified Claim/Assertion mapping contract and source-fact conflict proofs; not a complete or source-conforming SACM mapping. The revised Lean build/axiom audit is pending on this branch.  
 **Source baseline:** OMG SACM 2.4 Beta 1, September 2026; normative metamodel XML dated 2026-05-04.  
 **Reference:** [R-73](../references.md#r-73).  
 **Related formalization:** [GovCheckCoherence.SACM24](../../formal/lean/GovCheckCoherence/SACM24.lean).
@@ -19,17 +19,17 @@ This makes SACM a useful falsification target: a GovCheck mapping must preserve 
 
 ## 2. Assertion declaration is not evidence status or theorem proof
 
-The Lean slice models the union of AssertionDeclarationKind literals found across the two source views:
+The Lean slice preserves the union of AssertionDeclarationKind literals while recording the exact source fragment that states each literal:
 
 | SACM declaration | GovCheck disposition | What it does **not** mean |
 |---|---|---|
 | `asserted` (PDF and XML) | `asserted` | Not a passed test or proof |
 | `assumed` (PDF and XML) | `assumed` | Not evidence that the proposition is true |
 | `axiomatic` (PDF and XML) | `axiomaticDeclared` | Not a Lean-kernel-checked theorem proof |
-| `needsSupport` (PDF text only) | `needsSupport` | Not a rule declaration; rejected for the XML source view |
-| `byRule` (metamodel XML only) | `ruleDeclared` | Not a validated rule; rejected for the PDF text source view |
+| `needsSupport` (PDF Clause 13.6) | `needsSupport` | Not a rule declaration; absent from the XML literal set and PDF Clause 15.2.1 fragment |
+| `byRule` (PDF Clause 15.2.1 and XML model) | `ruleDeclared` | Not a validated rule; it must not be treated as absent from the PDF document as a whole |
 
-The mapping is injective across the union of the two source views: no declaration literal collapses into another GovCheck disposition. The `SourceView` field selects PDF text or normative metamodel XML and is bound to the source artifact's native format (`application/pdf` or `application/xml`); a typed predicate rejects `byRule` for the text view and `needsSupport` for the XML view. The same source-view selection pins `gid` (PDF text) versus `elementId` (metamodel XML). The end-to-end `SACMClaimMapping` carries the source claim interpretation, declaration disposition, exact source model and general `EvidenceMapping` semantic bridge.
+The mapping is injective across the union of recorded literals: no declaration collapses into another GovCheck disposition. `SourceView` binds a claim to the PDF or XML document format, while `DeclarationSourceFragment` records PDF Clause 13.6, Annex G.6 item 6, Clause 15.2.1 or the XML model. The PDF fragments disagree internally: Clause 13.6 includes `needsSupport`, Annex G.6 item 6 lists three values, and Clause 15.2.1 adds `byRule`. `IdentitySourceFragment` separately records PDF Clause 9.2 (`gid`), PDF Figure 9.1 (`elementId`) and XML (`elementId`). The end-to-end `SACMClaimMapping` carries the fragment-qualified interpretation, exact source model and general `EvidenceMapping` semantic bridge. No precedence rule is selected.
 
 SACM's optional `isTrue`, `assertionValue`, and `assertionRule` fields remain distinct from declaration kind. In the current Lean slice, the latter two are retained as opaque source payload/reference strings, not yet formalized as their complete SACM metaclasses. An optional Boolean truth value is not a proof object; an assertion value may encode a richer value than Boolean; and a rule reference is not the rule's formal semantics. The Lean record retains these fields separately.
 
@@ -37,14 +37,14 @@ SACM's optional `isTrue`, `assertionValue`, and `assertionRule` fields remain di
 
 ## 3. Claim subject and formal interpretation
 
-The Lean slice defines a `SACMElementRef` with source identity field, metaclass and model revision. `SACMClaim` carries its source view and identity-field choice. `SACMClaimInterpretation` cannot be constructed unless the declaration literal and identity field are consistent with that selected source view; it binds:
+The Lean slice defines a `SACMElementRef` with source identity field, metaclass and model revision. `SACMClaim` carries a document-level source view, but each declaration and identity choice is justified by its own fragment. Its subject is `Option (List SACMElementRef)`, distinguishing a feature absent from the selected source view (`none`) from a present but empty or multi-valued feature (`some []` or `some [..]`). `SACMClaimInterpretation` also requires a non-empty identity, making this a partial mapping for source objects without a usable identity. It binds:
 
 - the exact SACM claim identity to the GovCheck claim identifier;
-- the optional explicit SACM subject to the mapped subject;
+- the optional, multi-valued explicit SACM subject to the mapped subject;
 - the subject reference to the exact source model revision;
 - a separately supplied Lean proposition as the formal interpretation.
 
-The `Claim.value` PDF/XML type mismatch is not flattened: the current Lean field is an opaque raw value placeholder, not a formalization of either `MultiLangString` or `ExpressionLangString`. This is intentionally not an automatic conversion of SACM's text/value into Lean logic. The mapping authority must supply and justify the proposition interpretation. The current formal contract checks identity and subject/revision preservation, but does not prove that a human-language claim's chosen proposition is semantically faithful to its text. That remains an explicit interpretation argument and assurance obligation.
+The `Claim.value` PDF/XML type mismatch is not flattened: the current Lean `RawSourceValue` retains the source type label and raw payload, but does not formalize either `MultiLangString` or `ExpressionLangString`. The optional declaration is preserved separately from its effective default `asserted`; `whole` is represented as an optional list, and assertion values, assertion-rule references and strengths as lists of opaque references. This is intentionally not an automatic conversion of SACM's text/value into Lean logic. The mapping authority must supply and justify the proposition interpretation. The current formal contract checks identity and subject/revision preservation, but does not prove that a human-language claim's chosen proposition is semantically faithful to its text. Nor does it prove that the manually transcribed source facts or Python-generated structural inventory are correct. That remains an explicit interpretation argument and assurance obligation.
 
 ## 4. Inference types and directionality
 
@@ -74,11 +74,11 @@ The existing Lean coherence library now imports `GovCheckCoherence.SACM24`. The 
 - SACM claim identity and explicit-subject preservation;
 - pinning the subject reference to the exact model revision.
 
-The build/axiom-audit run for this extension is pending. No result is claimed until CI completes on the commit containing these declarations.
+The revised build/axiom-audit run for the fragment-level source model is pending. No result is claimed until CI completes on the commit containing these declarations.
 
 ## 6. Limits and next mapping step
 
-This is a deliberately small, source-view-qualified SACM 2.4 Beta 1 slice, not full SACM conformance. It does not resolve the other PDF/XML conflicts documented in the [interoperability-risk report](sacm24-beta1-interoperability-risk.md). It does not yet formalize every Argument, Artifact, Terminology, Package, View, Diagram, Assessment, Strength, AssertionRule or InferenceRule construct; nor does it prove lossless XML/XMI import/export.
+This is a deliberately small, source-fragment-qualified SACM 2.4 Beta 1 mapping contract, not a concrete source-derived mapping instance or full SACM conformance. See the [source-view alignment report](sacm24-source-view-alignment.md) for the current conflict inventory. It does not resolve the other PDF/XML conflicts documented in the [interoperability-risk report](sacm24-beta1-interoperability-risk.md). It does not yet formalize every Argument, Artifact, Terminology, Package, View, Diagram, Assessment, Strength, AssertionRule or InferenceRule construct; nor does it prove lossless XML/XMI import/export.
 
 Next:
 1. bind one real SACM 2.4 Beta 1 XMI/XML fixture to the formal `SACMClaim` and `SACMAssertion` representation;

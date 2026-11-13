@@ -66,3 +66,16 @@ Il enregistre 1 434 références explicites : 1 371 références internes résol
 Sept tests synthétiques du parseur réussissent localement et la synthèse produite depuis le payload officiel récupéré correspond à la synthèse versionnée. Le workflow de PR doit encore répéter ces contrôles sur GitHub. Aucune interprétation UML/MOF/OCL, résolution des références externes, preuve de raffinement, réconciliation PDF/XML ou correspondance sémantique vers GovCheck n'est revendiquée. L'issue #73 reste ouverte.
 
 Détail canonique : [journal anglais WP-EVT-000025](events.md#wp-evt-000025).
+
+
+## Dernier événement — WP-EVT-000026
+
+Le workflow d'ingestion SACM [43451737489](https://github.com/Martin-PB/govcheck/actions/runs/43451737489), vérifié sur le commit `8c0288d5992929089e96596c3f31a8f20ea535f4`, a réussi. Les 12 tests passent : cinq tests de capture source et sept tests d'inventaire XMI. Le téléchargement OMG officiel et le contrôle SHA-256 ont réussi ; l'inventaire complet a été généré et sa synthèse JSON est structurellement égale à la synthèse versionnée.
+
+Résultat : 1 616 éléments XMI identifiés, 121 classes UML, 121 associations, 355 propriétés, 167 généralisations, 8 énumérations (37 littéraux), 40 contraintes, 157 commentaires, 2 types de données, 40 expressions opaques et 3 comportements opaques. Sur 1 434 références, 1 371 sont résolues en interne, 63 références externes `href` sont conservées et aucune référence interne reconnue n'est non résolue.
+
+L'artefact complet [`sacm-2.4-beta1-source-and-xmi-inventory`](https://github.com/Martin-PB/govcheck/actions/runs/43451737489/artifacts/14051746241), ID `14051746241`, digest SHA-256 `01bd32307376baaa0c401b4631d7338bae7f0a999c9d3f94aecc21af5a3c8ae3`, rétention 90 jours, contient la source exacte, le manifeste, l'index d'événements, l'inventaire complet et sa synthèse. Les blobs du parseur, des tests, de la synthèse et du workflow sont identiques à la tête actuelle de PR ; les commits postérieurs ne changent que la documentation et le portefeuille.
+
+La livraison reste structurelle : aucune interprétation UML/MOF/OCL, résolution des références externes, preuve de raffinement du parseur, résolution des conflits PDF/XML, correspondance sémantique vers GovCheck, conformité SACM ou adoption normative n'est revendiquée. L'issue #73 reste ouverte.
+
+Détail canonique : [journal anglais WP-EVT-000026](events.md#wp-evt-000026).

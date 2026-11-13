@@ -30,7 +30,7 @@ La valeur SHA-256 ci-dessus est la valeur de comparaison enregistrée par l'audi
 
 Le XML est la description lisible par machine du métamodèle, et non une instance de dossier d'assurance. C'est la bonne première cible d'ingestion parce qu'il fournit une source stable et adressable par version à partir de laquelle dériver l'inventaire des métaclasses, propriétés, associations, multiplicités, énumérations et contraintes.
 
-Il n'établit **pas** un format portable d'échange d'instances. L'audit indépendant R-128 signale des désaccords entre les vues PDF et XML de la bêta sur plusieurs constructions, et précise que le XMI disponible pour le profil UML est informatif et propre à un fournisseur. Ce travail ne prétend donc pas importer arbitrairement des instances de dossiers d'assurance SACM.
+Il n'établit **pas** un format portable d'échange d'instances. L'audit indépendant [R-128](../references.fr.md#r-128) signale des désaccords entre les vues PDF et XML de la bêta sur plusieurs constructions, et précise que le XMI disponible pour le profil UML est informatif et propre à un fournisseur. Ce travail ne prétend donc pas importer arbitrairement des instances de dossiers d'assurance SACM.
 
 ## 3. Contrat d'ingestion implémenté dans cette tranche
 

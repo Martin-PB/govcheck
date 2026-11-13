@@ -8,6 +8,8 @@ These specifications complete the initial architecture-design pass. English is t
 4. [0005 — Assurance, Claims and Evidence](0005-assurance-model.md) · [Français](0005-assurance-model.fr.md)
 5. [0006 — Governance Revision Applicability and Temporal Authorization](0006-governance-revision-applicability.md) · [Français](0006-governance-revision-applicability.fr.md)
 
+6. [0007 — Canonical Governance Journal and VCS Adapter Protocol](0007-canonical-governance-journal-protocol.md) · [Français](0007-canonical-governance-journal-protocol.fr.md)
+
 Threat analysis and technology-selection process: [Architecture design](../architecture/README.md) · [Français](../architecture/README.fr.md).
 
 ## Status and boundaries
@@ -21,3 +23,4 @@ The next engineering phase should derive executable conformance tests and formal
 ## External references
 
 See the [package reference catalogue](../references.md) for external sources, their use and limitations. Inclusion does not imply adoption or implementation.
+The journal protocol in Specification 0007 is a proposed, technology-neutral contract for review. It does not select a storage engine or VCS adapter and does not claim implementation or normative adoption.

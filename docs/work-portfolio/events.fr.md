@@ -20,3 +20,14 @@ Le journal canonique a enregistré **WP-EVT-000021** : la PR [#125](https://gith
 La compilation Lean 4.19.0 et l'audit des axiomes ont réussi (36 déclarations auditées, aucune dépendance hors liste autorisée ; les théorèmes explicitement rapportés ne dépendent d'aucun axiome). Les contrôles d'intégrité des références et d'alignement du package ont également réussi. La PR reste ouverte, non fusionnée et fusionnable. L'issue #73 reste ouverte ; aucun métamodèle complet n'est adopté.
 
 Le détail et la provenance restent dans le [journal canonique en anglais](events.md#wp-evt-000021).
+
+
+## Dernier événement — WP-EVT-000022
+
+La fusion de la PR #125 a été confirmée directement auprès de GitHub (`merged=true`, le 13/11/2026 à 14:23:44 UTC ; commit de fusion `2ae091f55ab177560f0f603e07b47c847c740480`). Le chantier dépendant a donc commencé.
+
+La première source retenue est le XML normatif lisible par machine du métamodèle OMG SACM 2.4 Beta 1 (fichier `ptc/26-05-28`, chemin daté du 04/05/2026 ; [R-197](../references.fr.md#r-197)). La bêta reste en cours de traitement ; SACM 2.3 demeure formelle.
+
+La branche `work/sacm-native-metamodel-ingestion` ajoute un importateur qui conserve les octets XML exacts et produit un index structurel distinct. Il n'interprète pas encore la sémantique MOF/XMI et n'infère aucune correspondance vers GovCheck. Le digest attendu provient de l'audit indépendant R-128 ; le workflow GovCheck doit encore vérifier ce digest sur le téléchargement officiel réel.
+
+Détail canonique : [journal anglais WP-EVT-000022](events.md#wp-evt-000022).

@@ -71,15 +71,21 @@ remain governed by the repository's TLA+ models and require a separate
 conformance argument.
 
 The proof term is checked by the pinned Lean kernel, but the `premises`,
-`assumptions`, `kernelIdentity` and `kernelVersion` fields are currently
-metadata and are not yet mechanically linked to the proof term's dependency
-closure. Claim identifiers are paired with Lean propositions in the mapping
-subject, but no production parser has yet been proven to preserve that binding.
-The `approximate` coverage constructor records a relation and declared
-limitations; it does not assert a sound semantic refinement.
+`assumptions`, `kernelIdentity` and `kernelVersion` fields are provenance
+metadata and are not yet mechanically linked to the proof term's complete
+dependency closure. Claim identifiers are paired with Lean propositions in
+the mapping subject, but no production parser has yet been proven to preserve
+that binding. Approximate, traceability-only and unsupported candidates are
+non-operative `MappingProposal` values; they do not carry a semantic proof.
 
 ## Verification status
 
-The authoring environment did not have Lean installed when this package was
-first created. The extended proof-carrying mapping contract also passed the
-pinned Lean 4.19.0 build and axiom audit in [run 43213158225](https://github.com/Martin-PB/govcheck/actions/runs/43213158225); all fourteen mapping helper/public theorem declarations and the separate status-distinction theorem reported no axioms. The Lean 4.19.0 build and axiom audit passed: [GitHub Actions run 43049890363](https://github.com/Martin-PB/govcheck/actions/runs/43049890363), source head `473ff33c74c8c04b4766b52de20ac68a9fb20d9b`. The workflow explicitly builds the `GovCheckCoherence` library, audits the theorem module with `leanprover-community/axiom-audit`, and prints each theorem's axiom dependencies. The audit checked 10 declarations under `GovCheckCoherence.Proofs`; all were within the configured standard allowlist. The explicit `#print axioms` report showed that all nine theorem declarations in this slice depend on no axioms. This is a result about this small formal slice only: it is not yet a semantic mapping proof against SACM/OWL/SEON, proof of imported-source fidelity, or implementation conformance. A successful Git commit alone is not a Lean verification result.
+Historical build and axiom-audit reports apply only to the exact commits and
+source blobs recorded in the execution report. They do not establish that the
+tightened mapping API in this branch has passed verification. The current
+branch must pass the pinned Lean 4.19.0 build and axiom audit before this
+revision is described as verified. The workflow builds the
+`GovCheckCoherence` library, audits `GovCheckCoherence.Proofs`, and prints
+the axiom dependencies of the listed theorem declarations. A successful Git
+commit or a historical green run is not a Lean verification result for a
+different source revision.

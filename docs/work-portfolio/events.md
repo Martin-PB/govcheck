@@ -266,3 +266,16 @@
 - **Current head:** `6265b529926d888fccc4bf94e29189bcd30db315`; GitHub reports 137 commits, 46 changed files, 1,677 additions, 74 deletions and `mergeable=true`.
 - **Workflow/credit boundary:** the current head has no associated Actions workflow runs and no commit statuses. No hosted workflow was triggered by the register/journal update.
 - **Disposition:** ready for human review, not merged and not normatively adopted. Issues #41/#86 remain open at their existing stages.
+
+## WP-EVT-000019 — Rebased metamodel and journal integration candidates
+
+- **Subject:** `govcheck.work.intermodel-contract-conformance` and `govcheck.work.governance-revision-temporal-applicability`
+- **Event type:** `integration-review-rebased`
+- **Recorded:** 2026-11-13
+- **Actor/provenance:** repository maintainer instruction to continue until both PRs are ready; GitHub branch, PR, comparison and check read-backs.
+- **Metamodel dossier:** replacement [PR #122](https://github.com/Martin-PB/govcheck/pull/122), branch `review/metamodel-proof-carrying-mappings`, is based directly on current `main`. It records the universal obligation that every semantic correspondence used in GovCheck reasoning must have a machine-checked formal demonstration of the exact relation claimed. It does not require arbitrary models to be equivalent and does not select a universal proof assistant or adopter installation model.
+- **Journal integration:** replacement [PR #123](https://github.com/Martin-PB/govcheck/pull/123), branch `review/canonical-journal-proof-carrying`, is stacked on the metamodel branch. The journal recovery model is assigned Architecture 0035 because Architecture 0034 is already the forge-native portfolio adapter. Specification 0007 now requires a proof-carrying mapping before VCS-native representations may be bound to a common candidate identity; matching content digests alone are not treated as proof of semantic equivalence.
+- **Dependency/order:** PR #122 must be merged before PR #123. PR #123's base is the #122 branch and should be retargeted to `main` after #122 is merged.
+- **Historical PRs:** #106 and #107 are superseded by #122 and #123 respectively; their historical branches and review records are retained. Closure of the superseded PRs is tracked separately from merging the replacements.
+- **Normative boundary:** neither replacement PR, its checks, review or eventual merge adopts the complete metamodel, Specification 0007 or the eleven arbitration outcomes. #41/#86 remain open at their existing stages.
+- **Known limits:** the journal TLA+ result remains bounded evidence for its exact finite model/configuration, not an implementation-refinement proof, distributed consensus proof or operational durability guarantee. The formal mapping requirement is a design obligation; not every mapping class has yet been implemented or proved by the prototype.

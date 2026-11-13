@@ -18,7 +18,7 @@ Le rapport Assurance Forge ne fait pas autorité pour l'OMG et ses conclusions d
 | Identité d'élément | `gid : String[0..1]` | `elementId : UID[1]`, sans `gid` | Impossible de normaliser l'identité sans sélectionner une vue source et enregistrer la transformation |
 | Littéraux de déclaration | `axiomatic`, `assumed`, `asserted`, `needsSupport` | `axiomatic`, `assumed`, `asserted`, plus `byRule`, sans `needsSupport` | Le même nom d'énumération possède des ensembles de valeurs incompatibles |
 | Multiplicité de `AssertedEvidence.evidence` | `[0..*]` | `[1..*]` | Une collection vide est valide dans une vue et invalide dans l'autre |
-| `Claim.value` | `MultiLangString` | `ExpressionLangString` | Texte et expression typée ne sont pas interchangeables |
+| `Claim.value` | R-128 rapporte `MultiLangString` pour la clause 13.9 ; la figure informative 15.1.1 (page imprimée 59) montre `ExpressionLangString` | `ExpressionLangString` | Divergence d'audit non résolue : la figure informative examinée concorde avec le XML, mais ne tranche pas le passage normatif exact de la clause 13.9. Ne pas revendiquer de conflit de type établi avant localisation et vérification de ce passage. |
 | Héritage de `BindingPackage` | Les clauses textuelles divergent sur les superclasses | Le XML déclare `ScopedPackage` et `SACMPackageWithBinding` | Le parseur/validateur peut construire une hiérarchie de types différente |
 | Multiplicité de `SACMElement.abstraction` | `[0..1]` | `[0..*]` | Une vue autorise au plus une abstraction, l'autre plusieurs |
 | Multiplicité de `AssertedRelationship.isCounter` | `Boolean[1]` | `Boolean[0..1]` | Le caractère obligatoire diffère |

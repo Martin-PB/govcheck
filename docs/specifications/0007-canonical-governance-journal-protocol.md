@@ -103,7 +103,7 @@ A VCS adapter MUST NOT allocate or reorder canonical journal positions; treat co
 
 Each VCS observation SHOULD preserve, where available, VCS kind, repository identity, native revision/change/object identity, content digest, ref/channel, observed parent(s), remote/forge identity, observation time (descriptive only) and adapter version. Missing provenance MUST be explicit; it MUST NOT be fabricated from a journal position.
 
-The same logical candidate may have multiple native VCS representations. Adapters MUST bind them to a common candidate identity only when content equivalence and mapping evidence justify that relation. Native revision identity and canonical journal identity remain distinct.
+The same logical candidate may have multiple native VCS representations. Adapters MUST bind them to a common candidate identity only when a proof-carrying mapping contract formally demonstrates the exact identity/equivalence relation claimed, for the declared candidate semantics, scope, assumptions and exact native revisions. A matching content digest is an integrity witness for bytes under its hash assumptions; by itself it is not a formal demonstration of semantic equivalence or of common candidate identity. If the relation is not demonstrated, adapters MUST preserve the native identities separately and MUST NOT use the proposed association as an established premise in journal or governance reasoning. Native revision identity and canonical journal identity remain distinct.
 
 ## 8. Replica reconciliation
 

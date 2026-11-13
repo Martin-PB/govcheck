@@ -45,6 +45,7 @@ jobs:
         with:
           name: sacm-2.4-beta1-source-capture
           path: |
+            /tmp/govcheck-sacm-import/source.xml
             /tmp/govcheck-sacm-import/manifest.json
             /tmp/govcheck-sacm-import/index.json
           if-no-files-found: error

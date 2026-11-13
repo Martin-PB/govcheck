@@ -27,7 +27,7 @@ Cette direction est cohérente avec les Architectures 0013 et 0027 et la Spécif
 
 
 
-**Vérification de cohérence :** consulter l'[étude de vérification formelle](../research/metamodel-coherence-verification.fr.md) et sa [version anglaise](../research/metamodel-coherence-verification.md). Elle recommande des obligations d'assurance obligatoires pour les mappings sémantiques critiques, avec une chaîne hétérogène et un pont Lean formellement spécifié, complétés par les raisonneurs/validateurs natifs et le model checking temporel. Il s'agit d'une proposition à examiner, pas d'une chaîne d'outils adoptée.
+**Vérification de cohérence :** consulter l'[étude de vérification formelle](../research/metamodel-coherence-verification.fr.md) et sa [version anglaise](../research/metamodel-coherence-verification.md). Elle retient une obligation universelle de démonstration pour toute correspondance sémantique utilisée dans un raisonnement GovCheck : la relation revendiquée doit être formellement démontrée correcte dans son contexte, sous ses hypothèses, dans son périmètre et pour les révisions exactes des modèles. Cela n'impose pas l'équivalence de modèles arbitraires ; cela impose de démontrer la relation effectivement revendiquée (équivalence, inclusion, raffinement, traduction ou correspondance partielle). Les propositions non démontrées peuvent être conservées, mais ne peuvent pas servir de prémisses établies. L'infrastructure et la chaîne d'outils de vérification restent à déterminer.
 
 ## 2. Décision à prendre
 
@@ -41,6 +41,8 @@ Décider de l'architecture et des frontières du métamodèle GovCheck, notammen
 - comment autorité, provenance, incertitude, invalidation et changement affectent ces relations ;
 - comment importer/exporter des modèles externes sans perte sémantique silencieuse ;
 - quelles responsabilités relèvent du noyau, des profils optionnels, des adaptateurs ou des outils externes.
+
+**Principe d'interopérabilité sémantique soumis à décision :** toute correspondance sémantique utilisée comme prémisse ou étape d'inférence dans un raisonnement GovCheck doit être accompagnée d'une démonstration formelle vérifiée par machine de la relation exacte revendiquée, relativement à des sémantiques, un contexte, des hypothèses, un périmètre et des révisions source/cible explicites. Une équivalence exige les deux directions ; un mapping directionnel, un raffinement ou une correspondance partielle exige le théorème de préservation correspondant. Une correspondance proposée ou non démontrée peut être conservée comme connaissance non résolue, mais ne peut être consommée comme relation établie. Cette obligation n'impose pas de rendre équivalents des modèles sans relation pertinente et ne prescrit pas un assistant de preuve unique ni son installation locale dans chaque dépôt adoptant.
 
 Il s'agit d'une décision sur le métamodèle, pas d'une décision imposant toutes les méthodes et tous les outils à chaque dépôt utilisateur.
 
@@ -81,7 +83,7 @@ Ces éléments sont liés, mais non interchangeables. #73 est le travail princip
 | MM-06 | Contexte et applicabilité | Définir les périmètres par dépôt, composant, étape du cycle de vie, environnement, profil, risque et contexte ; ne pas inférer conformité légale ou sûreté à partir d'étiquettes. |
 | MM-07 | Autorité explicite | Séparer auteur, producteur, revue technique, autorité normative, approbation, privilège d'exécution et acceptation du risque. |
 | MM-08 | Intégrité épistémique | Préserver affirmation, hypothèse, supposition, observation, élément probant, témoignage, inférence, argument, preuve, contre-évidence, inconnu et limite. |
-| MM-09 | Pluralisme des méthodes | Tests, model checking, preuve formelle, inspection, simulation, mesure et observation opérationnelle restent des méthodes/résultats distincts. |
+| MM-09 | Pluralisme des méthodes | Tests, model checking, preuve formelle, inspection, simulation, mesure et observation opérationnelle restent des méthodes/résultats distincts. Aucun ne remplace la démonstration formelle exigée pour une correspondance sémantique utilisée dans le raisonnement. |
 | MM-10 | Intégrité sémantique quantitative | Distinguer probabilité, appartenance floue, non-déterminisme, taux de transition, coûts/récompenses et jugements qualitatifs. |
 | MM-11 | Interopérabilité sans perte silencieuse | Cartographier explicitement les normes externes ; signaler constructions non mappées ou ambiguës au lieu de les supprimer. |
 | MM-12 | Adoption incrémentale | Les projets sélectionnent profils et capacités applicables ; pas d'échelle universelle de maturité ni d'obligation d'utiliser un outil de preuve. |
@@ -281,6 +283,7 @@ Ce sont des énoncés de conception du dépôt, pas des capacités toutes implé
 6. Autoriser des profils probabilistes, flous et Markov/transitionnels lorsqu'ils sont justifiés ; aucun n'est obligatoire.
 7. Reporter sérialisation, langage ontologique, stockage/requête de graphe et langage d'évaluation jusqu'à stabilisation des contrats et cas de conformité.
 8. Exiger une déclaration explicite de couverture et de pertes pour chaque adaptateur d'import/export.
+9. Exiger une démonstration formelle vérifiée par machine de la correction de toute correspondance sémantique utilisée dans un raisonnement GovCheck ; adapter les obligations de preuve à la relation revendiquée et exclure les propositions non démontrées du raisonnement établi.
 
 Ces recommandations ne sont pas adoptées du seul fait de figurer ici. Elles nécessitent une décision explicite de l'autorité actuelle de GovCheck.
 
@@ -294,7 +297,7 @@ Ces recommandations ne sont pas adoptées du seul fait de figurer ici. Elles né
 - Stratégie de couverture complète SACM 2.4 Beta 1 et gestion des versions futures.
 - Sémantiques probabilistes/floues et frontières de validation.
 - Frontières des profils Markov/MDP/automates et intégration au model checking quantitatif.
-- Formalisation et obligations de preuve du métamodèle lui-même.
+- Architecture exacte de formalisation, énoncés des théorèmes, noyau/vérificateur de confiance et profil de distribution des paquets de preuve. L'obligation de démontrer toute correspondance sémantique utilisée dans le raisonnement n'est plus un principe ouvert ; ses obligations détaillées et sa mise en œuvre restent à spécifier.
 - Paquet d'échange canonique, migration et comptabilité des pertes.
 
 ## 13. Options de décision et réponse attendue de l'autorité

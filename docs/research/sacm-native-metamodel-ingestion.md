@@ -24,7 +24,7 @@ The first source-native ingestion target is the OMG normative machine-readable m
 
 The OMG catalogue identifies this XML as a **normative machine-readable document** for the 2.4 beta. The same catalogue separately identifies the specification PDF as normative prose and the UML Profile XMI as informative. SACM 2.4 Beta 1 is in process; SACM 2.3 remains the formal adopted version. These source roles must not be conflated.
 
-The SHA-256 value above is the comparison value recorded by the independent Assurance Forge audit ([R-128](../references.md#r-128)). GovCheck's workflow downloads the official versioned OMG URL and independently recomputes the digest. A successful run is the first GovCheck-side verification of that digest; before that run succeeds, the digest is a pinned expected value, not a locally verified fact.
+The SHA-256 value above is the comparison value recorded by the independent Assurance Forge audit ([R-128](../references.md#r-128)). GovCheck's workflow downloads the official versioned OMG URL and independently recomputes the digest. GovCheck independently verified this digest against the downloaded official bytes in [workflow run 43443933268](https://github.com/Martin-PB/govcheck/actions/runs/43443933268): 524,243 source bytes, SHA-256 `0581dfa0b9dfaf17ff0f6c63b74f8e7a8396bea03f315e1334e94f23db110830`.
 
 ## 2. Why ingest the metamodel XML first
 
@@ -55,7 +55,7 @@ The importer:
 
 The raw byte copy is authoritative for fidelity. The event index is a navigation aid, not a canonicalized replacement: XML lexical distinctions not represented in the event index remain recoverable from \`source.xml\`. External DTD/entity resolution is disabled; the importer applies a 32 MiB input limit.
 
-The workflow runs unit tests, downloads the exact OMG artifact, verifies its digest, produces the capture manifest/index and publishes the exact `source.xml` payload together with the manifest and structural index as a 90-day workflow artifact. The source payload itself remains available from the official versioned OMG URL and is not copied into Git history.
+The workflow runs five unit tests, downloads the exact OMG artifact, verifies its digest, produces the capture manifest/index and publishes the exact `source.xml` payload together with the manifest and structural index as a 90-day workflow artifact. The successful capture artifact is [sacm-2.4-beta1-source-capture](https://github.com/Martin-PB/govcheck/actions/runs/43443933268/artifacts/14047167094) (artifact ID `14047167094`). The source payload itself remains available from the official versioned OMG URL and is not copied into Git history.
 
 ## 4. Semantic mapping boundary
 
@@ -74,6 +74,24 @@ The current Lean SACM 2.4 slice is a manually authored formal model of selected 
 
 Any future operative semantic correspondence must still satisfy the general GovCheck proof-carrying mapping contract: exact source/target meanings, source and target revisions, scope and assumptions, with a kernel-checked proof of the precise relation claimed. An XML digest proves byte identity relative to the hash assumption; it does not prove semantic equivalence.
 
+### 4.1 Existing typed correspondences and their proof boundary
+
+The repository already contains a manually authored Lean mapping slice. It provides typed, proof-carrying correspondences for selected SACM concepts; the new XML capture does not generate or validate these declarations yet.
+
+| SACM source type/field | GovCheck Lean target | Relation encoded | Kernel-checked declaration |
+|---|---|---|---|
+| `SACMClaim.identity` | `ClaimSemantics.claimId` | Exact identifier preservation | `claim_interpretation_preserves_identity` |
+| `SACMClaim.subject` | `SACMClaimInterpretation.mappedSubject` | Exact optional subject preservation; source-model revision pinned | `claim_interpretation_preserves_subject`, `claim_subject_revision_is_pinned` |
+| `AssertionDeclarationKind` | `ClaimDisposition` | Injective literal-preserving mapping, guarded by selected source view | `mapAssertionDeclaration_injective`, `claim_interpretation_preserves_declaration` |
+| `InferenceTypeKind.necessary` | `InferenceBridge` | Reverse entailment: conclusion implies premise | `necessary_inference_is_reverse_entailment` |
+| `InferenceTypeKind.sufficient` | `InferenceBridge` | Forward entailment: premise implies conclusion | `sufficient_inference_is_forward_entailment` |
+| `InferenceTypeKind.collective` | `InferenceBridge` | Joint-premise equivalence, with non-empty premises | `collective_inference_is_joint_equivalence` |
+| `InferenceTypeKind.necessaryAndSufficient` | `InferenceBridge` | Equivalence in both directions | `InferenceBridge.necessaryAndSufficient` constructor |
+| `InferenceTypeKind.byRule` | `InferenceBridge` | Explicit rule identity plus a proof of the rule conclusion | `InferenceBridge.byRule` constructor |
+| `InferenceTypeKind.probable` | No classical target bridge | Unsupported until a probability semantics is supplied | `probable_inference_has_no_classical_bridge` |
+
+These are typed interpretations over the manually transcribed source-view vocabulary, not parser-derived conformance results. The importer does not yet establish that the pinned XML's metaclass/property declarations instantiate these Lean types. `Claim.value`, assertion values/rules and the remaining SACM packages remain opaque or unmapped. The proof theorems establish only the exact relations stated in their types; they do not prove that a human-language Claim was interpreted faithfully or that the whole SACM metamodel refines GovCheck.
+
 ## 5. Verification and acceptance status
 
 Synthetic unit fixtures exercise:
@@ -86,7 +104,7 @@ Synthetic unit fixtures exercise:
 - external DTD rejection;
 - explicit absence of inferred semantic mappings.
 
-These fixtures are not OMG SACM instance examples and do not establish conformance. The source-capture workflow must also pass against the actual downloaded OMG XML before the pinned source digest can be called GovCheck-verified.
+These fixtures are not OMG SACM instance examples and do not establish conformance. The source-capture workflow passed against the actual downloaded OMG XML on the PR head (run 43443933268); the digest and byte length above are GovCheck-verified for that exact source URL/revision.
 
 ## 6. Explicit non-claims and next step
 

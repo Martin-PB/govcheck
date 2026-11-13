@@ -1367,7 +1367,7 @@
 
 <a id="r-199"></a>
 ### R-199 — XMI informatif du profil UML OMG SACM 2.4 Beta 1
-- **Cité par :**
+- **Cité par :** [Rapport d'alignement des vues source SACM](research/sacm24-source-view-alignment.fr.md)
 - **Source primaire :** [Catalogue de spécifications SACM de l'OMG](https://www.omg.org/spec/SACM) · [Catalogue des fichiers lisibles par machine de l'OMG SACM](https://www.omg.org/spec/SACM/machine-readable) · identifiant de fichier OMG `ptc/26-05-21`.
 - **Identité épinglée :** SACM 2.4 Beta 1 ; chemin source daté du 04/05/2026 ; SHA-256 `9149a0414628e1b70c1f7c2235f5180c64e7a144601eb2ae78d539681918838b`, rapporté par le script de téléchargement épinglé de l'audit indépendant R-128. GovCheck n'a pas encore téléchargé indépendamment ce XMI ni recalculé son digest.
 - **Concepts pertinents :** artefact informatif de profil UML, distinct du XML normatif du métamodèle (R-197) et du PDF normatif de spécification (R-198).

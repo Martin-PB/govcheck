@@ -145,5 +145,21 @@ class BootstrapTests(unittest.TestCase):
         self.assertTrue(out.is_file())
 
 
+
+class ForgeCapabilityTests(unittest.TestCase):
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.tmp.cleanup)
+        self.target = Path(self.tmp.name) / "repo"
+
+    def test_forge_py_is_a_package_file(self):
+        self.assertIn("forge.py", bootstrap.package_files())
+
+    def test_forge_capability_installs_only_forge_py(self):
+        r, code = bootstrap.apply_plan(self.target, ["forge"])
+        self.assertEqual(code, 0)
+        self.assertEqual([a["path"] for a in r["created"]], ["forge.py"])
+        self.assertTrue((self.target / "forge.py").is_file())
+
 if __name__ == "__main__":
     unittest.main()

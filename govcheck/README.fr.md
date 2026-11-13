@@ -36,7 +36,7 @@ L’historique de gouvernance propre à GovCheck (records d’architecture, ADR,
 - `plan` produit un plan JSON déterministe d'actions (`create`, `identical`, `conflict`) sans effet de bord ; deux exécutions sur une cible inchangée donnent une sortie identique octet par octet.
 - `apply` n'écrit que les actions `create` : les fichiers existants ne sont jamais écrasés, les conflits sont préservés et signalés. Deux applications successives sont idempotentes (la seconde ne crée rien). Avec `--plan`, apply vérifie d'abord que le plan correspond toujours à la cible et échoue sinon (code de sortie 2) : seules les modifications revues sont appliquées.
 - L'identité du package est enregistrée dans un marqueur possédé par le package, `.govcheck-bootstrap.json`, à la racine de la cible (version, empreinte, fichiers installés avec leurs empreintes, conflits préservés). `rollback` supprime exactement les fichiers installés dont le contenu correspond encore à l'empreinte enregistrée, puis le marqueur : c'est le chemin de rollback documenté. La mise à niveau consiste à réexécuter `apply` avec un package plus récent : les fichiers modifiés par l'utilisateur ne sont jamais écrasés et apparaissent comme des conflits.
-- `--capabilities` sélectionne les parties du package à installer (`check`, `decisions`, `docs`, `formal`, `readme`, `scripts`, `workflows` ; par défaut : toutes).
+- `--capabilities` sélectionne les parties du package à installer (`check`, `forge`, `decisions`, `docs`, `formal`, `readme`, `scripts`, `workflows` ; par défaut : toutes).
 
 La forme historique `python3 govcheck/bootstrap.py DOSSIER_CIBLE` initialise toujours un dépôt vide et refuse les cibles non vides. Les tests unitaires sont dans `tests/test_govcheck_bootstrap.py`.
 
@@ -60,3 +60,20 @@ La règle `sources-present` (décidable) exige que chaque `docs/decisions/*.md` 
 ### Intégrité du marqueur d’amorçage
 
 La règle `bootstrap-integrity` (décidable) contrôle le marqueur possédé par le package `.govcheck-bootstrap.json` écrit par `govcheck/bootstrap.py apply` à la racine de la cible. Sans marqueur, la règle ne s’applique pas (pass, non applicable). Avec le marqueur, celui-ci doit être un objet JSON avec `"tool": "govcheck-bootstrap"`, un `"package_version"` non vide, un `"package_digest"` en SHA-256 hexadécimal minuscule de 64 caractères, une liste `"installed"` d’entrées `{path, sha256}` et une liste `"conflicts"` de chaînes non vides. Chaque chemin installé doit être relatif et sûr (pas de chemin absolu, pas de barre oblique inversée, pas de segment `.`/`..`/vide), et chaque fichier installé doit encore exister avec exactement l’empreinte SHA-256 enregistrée. Toute violation de schéma, fichier manquant ou dérive de contenu fait échouer la règle. Le marqueur est un document du dépôt, pas un sceau inviolable : il détecte la dérive accidentelle, pas un éditeur malveillant.
+
+
+## Adaptateur de forge (govcheck/forge.py)
+
+govcheck/forge.py est l'adaptateur natif de forge (Architecture 0034 du dépôt GovCheck) à deux rôles : un **miroir du registre** qui projette le portefeuille de travail canonique du dépôt sur les issues, labels et commentaires de la forge, et une **vérification côté forge** qui lit les exécutions de checks CI et la protection de branche pour qu'un rapport puisse indiquer si une révision candidate est couverte par des vérifications partagées, non falsifiables localement. La forge vérifie, elle n'autorise jamais : un check vert est une preuve, pas une autorité. La commande check reste hors ligne, en lecture seule et sans token, et n'appelle jamais l'adaptateur.
+
+    python3 govcheck/forge.py list-issues [--state open] [--labels a,b]
+    python3 govcheck/forge.py get-issue --number N
+    python3 govcheck/forge.py list-labels
+    python3 govcheck/forge.py check-runs --ref REF
+    python3 govcheck/forge.py branch-protection [--branch main]
+    python3 govcheck/forge.py create-issue --title T [--body B] [--labels a,b] [--registry-id govcheck.work.slug]
+    python3 govcheck/forge.py update-issue --number N [--title T] [--state open|closed]
+    python3 govcheck/forge.py comment --number N --body B
+    python3 govcheck/forge.py capabilities
+
+La configuration vient uniquement de l'environnement : GOVCHECK_FORGE (défaut github), GOVCHECK_FORGE_OWNER, GOVCHECK_FORGE_REPO, et le token GOVCHECK_FORGE_TOKEN (repli GITHUB_TOKEN). Les tokens ne sont jamais écrits sur disque, dans les logs ou dans les rapports, et les messages d'erreur ne les contiennent jamais. Les écritures (create-issue, update-issue, comment) exigent un token et ne sont que des commandes explicites ; check ne modifie jamais la forge. L'adaptateur n'utilise que la bibliothèque standard (REST GitHub v3 d'abord) avec un transport injectable, donc les tests unitaires tournent entièrement hors ligne ; les échecs sont typés (not-found, unsupported, unavailable, stale, conflict, auth, malformed) et un échec partiel n'est jamais rapporté comme un succès atomique. Les ids de registre (govcheck.work.<slug>) restent canoniques ; des tests d'aller-retour sans perte sont requis avant toute synchronisation en direct. Les tests unitaires sont dans tests/test_govcheck_forge.py. La capacité de bootstrap forge installe forge.py seul.

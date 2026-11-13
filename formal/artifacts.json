@@ -368,10 +368,10 @@
       ],
       "revisionPolicy": "repository-history",
       "releaseBinding": "release-tag-and-commit",
-      "status": "fragment-level-source-facts-formalized; PDF-and-XML-digests-workflow-verified; Claim.value-audit-discrepancy-unresolved; transcription-proof-pending; no-precedence-decision",
+      "status": "fragment-level-source-facts-formalized; PDF-and-XML-digests-workflow-verified; Claim.value-normative-informative-PDF-conflict-modelled; exact-Clause-13.9-locator-review-pending; transcription-proof-pending; no-precedence-decision",
       "limitations": [
-        "Lean theorems establish differences or agreements among manually transcribed source constants, not correctness of the transcriptions",
-        "R-128's reported Clause 13.9 Claim.value type is not corroborated by inspected informative PDF Figure 15.1.1; exact normative passage remains unresolved",
+        "Lean theorems formalize transcribed source-fragment values and their differences; they do not prove transcription correctness",
+        "the exact Clause 13.9 locator cited by R-128 remains to be checked even though normative Figure 13.1 supports MultiLangString",
         "PDF and XML digests authenticate exact bytes but do not authenticate source-fragment interpretation",
         "no parser-to-formal-model refinement theorem",
         "no source-derived GovCheck semantic mapping or conformance claim",
@@ -415,14 +415,36 @@
           ],
           "unapprovedAxioms": 0,
           "sourceFragmentWrappersUsingPropext": 5,
-          "sourceFactsDirectTheoremsWithNoAxioms": 14
+          "sourceFactsDirectTheoremsWithNoAxioms": 16
         },
         "otherChecks": {
           "referenceIntegrityRunId": 43496689170,
           "packageAlignmentRunId": 43496689204,
           "versionGovernanceRunId": 43496689233
         }
-      }
+      },
+      "sourceFragments": [
+        {
+          "sourceFileId": "ptc/26-06-34",
+          "locator": "Figure 13.1",
+          "printedPage": 41,
+          "sectionStatus": "normative",
+          "claim": "Claim.value : MultiLangString"
+        },
+        {
+          "sourceFileId": "ptc/26-06-34",
+          "locator": "Figure 15.1.1",
+          "printedPage": 59,
+          "sectionStatus": "informative",
+          "claim": "Claim.value : ExpressionLangString"
+        },
+        {
+          "sourceFileId": "ptc/26-05-28",
+          "locator": "Metamodel/Argument/Claim/value",
+          "sectionStatus": "normative-machine-readable",
+          "claim": "type ExpressionLangString"
+        }
+      ]
     }
   ]
 }

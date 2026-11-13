@@ -8,9 +8,9 @@
 
 The objective is not merely to lint ontology files. GovCheck needs defensible evidence that (a) each source model is internally coherent under its declared semantics, (b) mappings preserve the meaning they claim to preserve, (c) integration introduces no unintended contradictions or consequences, and (d) temporal governance rules remain valid as artifacts, assumptions, authorities and decisions change.
 
-**Recommendation:** use a layered verification architecture, with machine-checked formal contracts for critical semantic bridges as a required assurance objective—not one monolithic tool for every check. Lean is the candidate proof kernel for the bridge's theorems; CSLib should be reused wherever its formalizations fit, not assumed to contain the whole GovCheck theory. OWL reasoners, SHACL, executable contract tests, counterexample search and temporal model checking complement the proof layer. The exact mandatory toolchain remains for authority decision after a prototype.
+**Recommendation:** require a machine-checked formal demonstration for every semantic correspondence that GovCheck uses in reasoning. The proof obligation is universal; the theorem is relation-specific and must state the exact semantics, context, assumptions, scope, source/target revisions and preservation claim. An equivalence requires both directions; inclusion, refinement, translation and partial correspondence require their own precisely stated preservation obligations. Unproved proposals may be retained as unresolved knowledge but are excluded from established reasoning. Use a layered verification architecture rather than one monolithic tool: Lean is a candidate proof environment, CSLib a candidate source of reusable formalizations, while source-native reasoners/validators, tests and counterexample search provide complementary evidence. The exact trusted verifier, proof-bundle format and distribution model remain to be decided.
 
-For critical interoperability claims, proof obligations should be mandatory. Whether every adopter must install Lean locally is a separate distribution decision: an adopter may consume a pinned, reproducible and independently checkable proof bundle, but must not silently downgrade a required proof to a test.
+Whether every adopter must install Lean locally is a separate distribution decision: an adopter may consume a pinned, reproducible and independently checkable proof bundle. This distribution choice cannot weaken the universal obligation: no semantic correspondence may be used as established in GovCheck reasoning without its verified formal demonstration.
 
 ## 2. Decompose coherence into explicit obligations
 
@@ -103,7 +103,7 @@ Sources: [TLA+ Proof System](https://proofs.tlapl.us/doc/web/content/Home.html),
 
 Research on model-driven engineering treats transformation verification as the combination of transformation rules, properties of interest and verification techniques. Epsilon EVL supports constraints on models and intra-/inter-model consistency checks. Alloy can search finite scopes for relational counterexamples. These tools find errors early, but bounded search is not an unbounded proof.
 
-Use them to create counterexamples and regression fixtures before or alongside proof development. For critical mapping laws, turn the property into a Lean theorem or a sound exhaustive result with explicit bounds and scope.
+Use them to create counterexamples and regression fixtures before or alongside proof development. For each semantic mapping used in reasoning, formalize the exact preservation claim as a theorem in the selected trusted formal system. Finite exhaustive results may provide counterexamples or bounded evidence, but do not replace a general proof unless the claim itself is explicitly finite and bounded.
 
 Sources: [Calegari & Szasz, transformation-verification survey](https://doi.org/10.1016/j.entcs.2013.02.002), [Epsilon EVL](https://eclipse.dev/epsilon/doc/evl/), [Alloy Analyzer](https://alloy.readthedocs.io/en/latest/tooling/analyzer.html).
 
@@ -177,15 +177,16 @@ Model decision adoption, delegation, revocation, scope, effective periods and so
 
 | Question | Recommendation |
 |---|---|
-| Must critical semantic coherence be assured? | **Yes.** Make it a first-class assurance requirement. |
-| Must every check use Lean? | No. Use the strongest method suited to each property; critical mapping obligations should be explicit and machine-checked where feasible. |
+| Must every semantic correspondence used in reasoning be proved? | **Yes.** A correspondence without a verified formal demonstration is not an established premise. |
+| Must every correspondence be an equivalence? | No. Prove the exact relation claimed: equivalence, direction, refinement, translation or partial preservation. |
+| Must every check use Lean? | No single tool is selected here. The proof obligation is mandatory; the trusted formal system and distribution profile remain implementation decisions. |
 | Is CSLib the whole solution? | No. Reuse relevant formalizations and prove the missing GovCheck semantics. |
 | Is temporal logic the whole solution? | No. Use it for state evolution, temporal validity and invalidation, not as a universal static semantic checker. |
-| Should OWL/SHACL be replaced by Lean? | No. Retain source-native reasoners/validators and prove critical cross-model claims at the bridge. |
+| Should OWL/SHACL be replaced by Lean? | No. Retain source-native reasoners/validators for their native obligations; they do not substitute for the formal proof of a correspondence used in GovCheck reasoning. |
 | Can tests replace a missing proof? | Tests are evidence, not proof. Any downgrade must disclose the residual gap and be authorized. |
 | Is the architecture adopted? | No. This report proposes a prototype and proof-obligation model for review. |
 
-The strongest practical approach is **heterogeneous verification with a formally specified bridge**: source reasoners and validators, counterexample search and regression fixtures, Lean/CSLib proofs for critical mapping laws, and temporal model checking for governance evolution. No single tool establishes every kind of coherence.
+The strongest practical approach is **heterogeneous verification with proof-carrying semantic correspondences**: source reasoners and validators for source-native properties; Lean/CSLib or another trusted formal system for the exact theorem attached to every correspondence used in reasoning; counterexample search and regression fixtures; and temporal model checking for governance evolution. No single tool establishes every kind of coherence, and no mapping receives deductive force merely because a validator or test passed.
 
 ## 8. Existing backlog and exit criteria
 
@@ -197,7 +198,7 @@ No duplicate epic is proposed:
 - **#81:** formalize lifecycle and invalidation properties.
 - **#83:** preserve reference provenance, source versions and backlinks.
 
-First-prototype exit criteria: three vertical slices; source-specific checks; at least one Lean theorem about a real cross-model invariant; at least one deliberate counterexample; temporal stale-evidence/invalidation checks; reproducible evidence bundle; documented trusted base; and an authority decision on mandatory proof obligations.
+First-prototype exit criteria: three vertical slices; source-specific checks; at least one formally proved real cross-model correspondence with its exact relation and scope; at least one deliberate counterexample; temporal stale-evidence/invalidation checks; reproducible evidence bundle; and documented trusted base. The prototype validates the first slice only; it does not discharge the universal obligation for other mapping types or profiles.
 
 ## 9. Concrete first-slice contract
 

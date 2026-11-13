@@ -2,6 +2,15 @@
 
 **Policy:** append-only. This is a logical journal, not a tamper-proof storage mechanism. Never edit or delete an earlier event; corrections are new events.
 
+## References used
+
+- [R-05 — TLA+ and TLC](../references.md#r-05) — bounded formal-model evidence recorded in the journal.
+- [R-107 — GitHub Actions workflow location and syntax](../references.md#r-107) — source-catalogue provenance for workflow-location references in the integration audit.
+- [R-22 — Native Git and Pijul semantics](../references.md#r-22) — distinction between VCS observations and normative journal order.
+- [R-194 — Linearizability](../references.md#r-194) — the single linearization point for concurrent appends.
+- [R-195 — ARIES write-ahead logging and recovery](../references.md#r-195) — durable commit and recovery boundary.
+- [R-196 — RFC 9110 idempotent methods](../references.md#r-196) — safe retry semantics after a lost response.
+
 ## WP-EVT-000001 — Initial issue-to-registry import
 
 - **Subject:** govcheck.work-portfolio
@@ -153,3 +162,107 @@
 - **Result:** 2,826,117 states generated, 1,026,484 distinct, zero remaining; complete graph depth 12. Nine invariants and temporal property `AppendOnly` passed; no error found.
 - **Report:** [Architecture 0033](../architecture/0033-governance-evaluator-exception-revocation-model.md). Uploaded artifact ID `13769345897`, SHA-256 `66e3537f1f2df50711436c8244d9406d8bc01714536f523a10fe075ab4b875eb`.
 - **Interpretation:** bounded model-checking evidence only for the exact finite model/configuration and toolchain. It does not prove implementation refinement, unbounded concurrency, durable storage, crash recovery, distributed behavior or normative adoption. The one-evaluation/one-authorization bound and other limits are explicit in Architecture 0033.
+
+
+## WP-EVT-000012 — Canonical journal recovery and rollback model checked
+
+- **Subject:** `govcheck.journal-recovery`
+- **Event type:** `bounded-formal-model-checking-completed`
+- **Recorded:** 2026-11-10
+- **Workflow:** GitHub Actions run [42848709804](https://github.com/Martin-PB/govcheck/actions/runs/42848709804), job `journal-recovery / TLC — GovCheckJournalRecovery` (job ID `129943126960`).
+- **Checked PR head:** `a5c9845b1df7a36c9b1f23af0a28bdabdd4300f3`.
+- **Exact source identities:** module Git blob `f99b33f510f3350f7ee1dc2ecc4b13a216d64ab6`; configuration Git blob `43102a4fc3c17a0656ccfe71d34642457d85737a`.
+- **Toolchain:** SANY 2.1; TLC 2.19; tla2tools v1.7.4 (SHA-256 `936a262061c914694dfd669a543be24573c45d5aa0ff20a8b96b23d01e050e88`); Temurin Java 17.0.21+9; four workers.
+- **Result:** 178,549 states generated, 38,434 distinct, zero remaining; complete graph depth 9. Six invariants and temporal property `AppendOnly` passed.
+- **Report:** [Architecture 0035](../architecture/0035-canonical-journal-recovery-model.md). Uploaded artifact ID `13778403717`, SHA-256 `0fe3148982524a25336674718505b02fd786953bd000d9b06ae016ec4987d00b`.
+- **Scope/limits:** finite two-event trace with one serialized writer, one durable journal, crash-before/after-commit transitions, recovery-to-head action, rollback restoring earlier content under a new event/revision, and passive Git/Pijul replica observations. This is bounded safety/model-checking evidence only; authorization is abstracted by upstream models, and eventual recovery, storage-engine durability, torn writes, multi-writer consensus, divergent-replica reconciliation and implementation refinement are not established.
+- **Disposition:** technical model-checking evidence; no implementation claim, normative adoption or issue closure.
+
+
+## WP-EVT-000012 — Canonical journal recovery and rollback model checked
+
+- **Subject:** `govcheck.journal-recovery`
+- **Event type:** `bounded-formal-model-checking-completed`
+- **Recorded:** 2026-11-10
+- **Workflow:** GitHub Actions run [42848709804](https://github.com/Martin-PB/govcheck/actions/runs/42848709804), job `journal-recovery / TLC — GovCheckJournalRecovery` (job ID `129943126960`).
+- **Checked PR head:** `a5c9845b1df7a36c9b1f23af0a28bdabdd4300f3`.
+- **Exact source identities:** module Git blob `f99b33f510f3350f7ee1dc2ecc4b13a216d64ab6`; configuration Git blob `43102a4fc3c17a0656ccfe71d34642457d85737a`.
+- **Toolchain:** SANY 2.1; TLC 2.19; tla2tools v1.7.4 (SHA-256 `936a262061c914694dfd669a543be24573c45d5aa0ff20a8b96b23d01e050e88`); Temurin Java 17.0.21+9; four workers.
+- **Result:** 178,549 states generated, 38,434 distinct, zero remaining; complete graph depth 9. Six invariants and temporal property `AppendOnly` passed.
+- **Report:** [Architecture 0035](../architecture/0035-canonical-journal-recovery-model.md). Uploaded artifact ID `13778403717`, SHA-256 `0fe3148982524a25336674718505b02fd786953bd000d9b06ae016ec4987d00b`.
+- **Scope/limits:** finite two-event trace with one serialized writer, one durable journal, crash-before/after-commit transitions, recovery-to-head action, rollback restoring earlier content under a new event/revision, and passive Git/Pijul replica observations. This is bounded safety/model-checking evidence only; authorization is abstracted by upstream models, and eventual recovery, storage-engine durability, torn writes, multi-writer consensus, divergent-replica reconciliation and implementation refinement are not established.
+- **Disposition:** technical model-checking evidence; no implementation claim, normative adoption or issue closure.
+
+
+## WP-EVT-000013 — Canonical journal and VCS adapter protocol specification proposed
+
+- **Subject:** `govcheck.spec.canonical-journal-protocol`
+- **Event type:** `technical-contract-proposed`
+- **Recorded:** 2026-11-10
+- **Candidate:** PR #100, branch `work/issue-86-journal-protocol-spec`, based on PR #99.
+- **Scope:** bilingual Specification 0007 defines technology-neutral event identity/envelopes, compare-and-append linearization, durable commit/idempotent retry, crash recovery, distinct evaluation/authorization/publication acts, VCS provenance-only adapters, replica reconciliation, blocking result vocabulary and twelve conformance scenarios.
+- **Authority boundary:** the specification elaborates the eleven owner-selected design inputs without re-arbitration. It is a proposal only; no normative adoption, database/serialization/crypto/consensus choice, production implementation or issue closure is inferred.
+- **Related records:** Specifications 0006/0007; Architectures 0032–0035; [R-05](../references.md#r-05) and [R-22](../references.md#r-22).
+- **Known limits:** protocol semantics and conformance targets only. No storage engine, adapter, executable conformance harness or implementation refinement is delivered by this event.
+
+
+## WP-EVT-000014 — Journal protocol review clarifications prepared
+
+- **Subject:** `govcheck.spec.canonical-journal-protocol`
+- **Event type:** `technical-review-clarifications-proposed`
+- **Recorded:** 2026-11-10
+- **Candidate:** [PR #104](https://github.com/Martin-PB/govcheck/pull/104), branch `work/issue-86-journal-protocol-review-fixes`, stacked on PR #100.
+- **Scope:** clarify stable journal-scope identity without choosing its repository/domain cardinality; bind genesis to the initial authority/governance baseline and explicit trust anchor; state algorithm-neutral integrity/authenticity requirements; define idempotency-key scope, exact-request binding, retention and genesis exception; add R-194–R-196 on linearizability, write-ahead logging/recovery and idempotent retries; correct Architecture 0035's recovery-fairness wording and section numbering in EN/FR.
+- **Disposition:** proposed technical/documentary clarification only. Specification 0007 remains proposed; the eleven owner-selected outcomes remain pending formal normative adoption. No storage engine, cryptographic suite or consensus protocol is selected.
+- **Related records:** PR #100; PR #104; Specification 0007 EN/FR; Architecture 0035 EN/FR; references R-194–R-196.
+- **Known limits:** no new TLA+ model or implementation is added; no production journal, genesis mechanism, adapter, durability guarantee or implementation refinement is claimed.
+
+## WP-EVT-000015 — Duplicate portfolio event identifier detected
+
+- **Subject:** `govcheck.work-portfolio`
+- **Event type:** `append-only-journal-integrity-observation`
+- **Recorded:** 2026-11-10
+- **Observation:** `WP-EVT-000012` appears twice verbatim in this journal, with the same subject, workflow run, model/configuration identities and artifact digest.
+- **Interpretation:** the two textual occurrences describe one model-checking event, not two independent events. The duplication is a journal-document integrity defect; it does not alter the underlying TLC result or its provenance.
+- **Disposition:** prior entries are preserved under the append-only policy. This new event records the correction without deleting or rewriting either occurrence. Future event-ID uniqueness checks should detect this class of duplication.
+- **Related records:** WP-EVT-000012; Architecture 0035; PR #99.
+
+## WP-EVT-000016 — Issue #41/#86 GitHub integration state reconciled
+
+- **Subject:** `govcheck.work.governance-revision-temporal-applicability`
+- **Event type:** `technical-integration-status-reconciled`
+- **Recorded:** 2026-11-11
+- **Actor/provenance:** read-back of current GitHub PR, branch, merge and workflow-run metadata; this entry records repository facts, not a governance decision.
+- **Main head inspected:** `a9ea85796e9864296bef4c0ff33d174d63dc3b75`.
+- **Integrated PRs:** #90 merged into main at `5af21e58ef597480061a2712aaf94a3e2980ba7f`; #96 merged at `934000a73aa0f34acd9b692b072d29b7877a8f2b`; #98 merged at `a9ea85796e9864296bef4c0ff33d174d63dc3b75`.
+- **PR #99:** GitHub reports it merged into `work/issue-86-governance-controls-model` at `4fa84e4675f8d62fe725e6dbd3c412c84f3e684a`, not into main. Its head `e9a57ad63f223a2d934e9ec44f272b4684499dbd` compares with main as diverged (48 ahead / 1 behind; merge base `502e43d4ea55a4a5beec07573dab80c69a6796a0`). Architecture 0035 and the journal-recovery model therefore were not in main before the current integration candidate.
+- **Open stack:** PR #100 remains open/non-draft, based on `work/issue-86-journal-recovery-model`, head `1be58c4a550cb5041573d704f64ef2baa7701097`; PR #104 remains open/non-draft, based on `work/issue-86-journal-protocol-spec`, head `91edf52fd4fe67815eace4db30f577b50069d53f`.
+- **Latest recorded PR #104 validation:** reference-integrity run [42891011411](https://github.com/Martin-PB/govcheck/actions/runs/42891011411) failed with 17 errors / 8 warnings; package alignment and report-only GovCheck checks passed. The reference errors concerned R-194–R-196 thematic indexing/backlinks and bilingual citations, stale [R-107](../references.md#r-107) backlinks, and unlinked portfolio mentions. This candidate repairs those documentary findings. No new Actions run was triggered.
+- **Disposition:** factual synchronization and integration preparation only. #41 and #86 remain open; the eleven owner-selected choices remain pending formal normative adoption. No issue closure, adoption, implementation or production enforcement is implied.
+- **Related records:** Issues #41/#86; PRs #90/#96/#98/#99/#100/#104; Specifications 0003/0006/0007; Architectures 0023/0031–0035; decision-session record 0008; [R-05](../references.md#r-05), [R-22](../references.md#r-22), [R-194](../references.md#r-194), [R-195](../references.md#r-195) and [R-196](../references.md#r-196).
+- **Known limits:** no new TLA+ run, implementation or conformance result is claimed; existing model-checking evidence remains limited to each exact finite model/configuration and its documented assumptions.
+
+## WP-EVT-000017 — Consolidated formalization PR opened for review
+
+- **Subject:** `govcheck.work.governance-revision-temporal-applicability`
+- **Event type:** `integration-review-requested`
+- **Recorded:** 2026-11-11
+- **Actor/provenance:** GitHub pull-request creation and subsequent PR/commit status read-back.
+- **Pull request:** [#107 — Integrate #41 arbitration formalization and #86 journal protocol](https://github.com/Martin-PB/govcheck/pull/107).
+- **Branch/base:** `work/issue-41-formalization-reconciliation` → `main`; head `82204640cf11104265d75319d6adc2389545f65f`.
+- **Observed PR state:** open, non-draft, 134 commits, 46 changed files; GitHub reports `mergeable=true`. This is a review candidate, not an adoption or merge.
+- **Workflow/credit boundary:** the head has no associated GitHub Actions workflow runs or commit statuses. Commits carry `[skip ci]`; no new Actions credits were consumed.
+- **Issue state:** #41 remains open at `needs-decision`; #86 remains open at `in-progress`. No issue closure, normative adoption, implementation or production enforcement is implied.
+- **Related records:** [#41](https://github.com/Martin-PB/govcheck/issues/41), [#86](https://github.com/Martin-PB/govcheck/issues/86), [PR #107](https://github.com/Martin-PB/govcheck/pull/107), decision-session record [0008](../decisions/0008-governance-applicability-arbitration-session.md), [Specification 0007](../specifications/0007-canonical-governance-journal-protocol.md), [Architecture 0035](../architecture/0035-canonical-journal-recovery-model.md).
+- **Known limits:** the full repository-wide reference-integrity script was not rerun locally; focused offline checks cover the previous reported citation/index errors. No new TLC run or implementation test was performed.
+
+## WP-EVT-000018 — PR #107 review head advanced and revalidated
+
+- **Subject:** `govcheck.work.governance-revision-temporal-applicability`
+- **Event type:** `integration-review-head-advanced`
+- **Recorded:** 2026-11-11
+- **Provenance:** subsequent GitHub PR/commit read-back after WP-EVT-000017; this event supersedes only that event's head-specific snapshot, not its historical creation record.
+- **Pull request:** [#107](https://github.com/Martin-PB/govcheck/pull/107) remains open and non-draft, targeting `main`.
+- **Current head:** `6265b529926d888fccc4bf94e29189bcd30db315`; GitHub reports 137 commits, 46 changed files, 1,677 additions, 74 deletions and `mergeable=true`.
+- **Workflow/credit boundary:** the current head has no associated Actions workflow runs and no commit statuses. No hosted workflow was triggered by the register/journal update.
+- **Disposition:** ready for human review, not merged and not normatively adopted. Issues #41/#86 remain open at their existing stages.

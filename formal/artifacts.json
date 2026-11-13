@@ -379,8 +379,8 @@
       ],
       "verification": {
         "sourceWorkflow": ".github/workflows/sacm-native-ingestion.yml",
-        "sourceWorkflowRunId": 43495625975,
-        "sourceCheckedCommit": "e57b28bafd35757f1491fafb6b30cd130d748206",
+        "sourceWorkflowRunId": 43496689208,
+        "sourceCheckedCommit": "d82c810e91e5cee456bf83cdb4198b7de84421d1",
         "sourceResult": "success",
         "sourceTests": 12,
         "pdf": {
@@ -394,15 +394,15 @@
           "fileId": "ptc/26-05-28"
         },
         "artifact": {
-          "id": 14071287095,
+          "id": 14072371021,
           "name": "sacm-2.4-beta1-source-views-and-xmi-inventory",
           "retentionDays": 90,
-          "url": "https://github.com/Martin-PB/govcheck/actions/runs/43495625975/artifacts/14071287095"
+          "url": "https://github.com/Martin-PB/govcheck/actions/runs/43496689208/artifacts/14072371021"
         },
         "leanWorkflow": ".github/workflows/lean-coherence.yml",
-        "leanWorkflowRunId": 43495626076,
-        "leanCheckedMergeCommit": "c6029f9",
-        "leanSourceHead": "e57b28bafd35757f1491fafb6b30cd130d748206",
+        "leanWorkflowRunId": 43496689323,
+        "leanCheckedMergeCommit": "af19d63",
+        "leanSourceHead": "d82c810e91e5cee456bf83cdb4198b7de84421d1",
         "lean": "4.19.0",
         "leanBuild": "success",
         "axiomAudit": {
@@ -418,9 +418,9 @@
           "sourceFactsDirectTheoremsWithNoAxioms": 14
         },
         "otherChecks": {
-          "referenceIntegrityRunId": 43495626080,
-          "packageAlignmentRunId": 43495625956,
-          "versionGovernanceRunId": 43495626381
+          "referenceIntegrityRunId": 43496689170,
+          "packageAlignmentRunId": 43496689204,
+          "versionGovernanceRunId": 43496689233
         }
       }
     }

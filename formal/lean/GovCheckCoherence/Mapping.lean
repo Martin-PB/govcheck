@@ -74,14 +74,18 @@ structure KernelCheckedDerivation (claim : Prop) where
   kernelIdentity : String
   kernelVersion : String
 
+/-- Evidence kinds other than theoremProof, so the transport constructor
+    cannot be instantiated with a theorem-proof label. -/
+abbrev NonTheoremEvidenceKind := { kind : EvidenceKind // kind ≠ .theoremProof }
+
 /-- A target theorem-proof kind always requires a proof term of the exact
     target proposition. Other epistemic kinds may be transported unchanged.
     In particular, an existing theoremProof label cannot be transported by
     this rule without re-establishing the target proposition. -/
 inductive KindMappingRule (targetClaim : Prop) :
     EvidenceKind → EvidenceKind → Type where
-  | transport (kind : EvidenceKind) (notTheoremProof : kind ≠ .theoremProof) :
-      KindMappingRule targetClaim kind kind
+  | transport (kind : NonTheoremEvidenceKind) :
+      KindMappingRule targetClaim kind.val kind.val
   | deriveTheoremProof (sourceKind : EvidenceKind)
       (derivation : KernelCheckedDerivation targetClaim) :
       KindMappingRule targetClaim sourceKind .theoremProof
@@ -157,8 +161,8 @@ theorem kind_mapping_rule_theorem_proof_requires_derivation
     ∃ derivation : KernelCheckedDerivation targetClaim,
       derivation.proof = derivation.proof := by
   cases rule with
-  | transport kind notTheoremProof =>
-      exact False.elim (notTheoremProof h)
+  | transport kind =>
+      exact False.elim (kind.property h)
   | deriveTheoremProof derivation =>
       exact ⟨derivation, rfl⟩
 

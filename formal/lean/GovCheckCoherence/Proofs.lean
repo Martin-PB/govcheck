@@ -18,44 +18,23 @@ theorem transport_preserves_status (record : EvidenceRecord) :
     (transport record).status = record.status := by
   rfl
 
-/-- A passed empirical test remains testimony and cannot become a theorem
-proof merely by translation. -/
-theorem testimony_cannot_be_promoted_by_transport :
-    ¬ admissibleTargetKind .testimony .theoremProof .carried := by
-  intro h
-  rcases h with h | h
-  · exact h rfl
-  · rcases h with h | h
-    · cases h
-    · cases h
+/-- Testimony cannot be mapped to theorem-proof status without an actual
+    proof term of the exact target proposition. -/
+theorem testimony_mapping_to_theorem_proof_requires_derivation
+    {claim : Prop}
+    (rule : KindMappingRule claim .testimony .theoremProof) :
+    ∃ derivation : KernelCheckedDerivation claim,
+      derivation.proof = derivation.proof :=
+  kind_mapping_rule_theorem_proof_requires_derivation rule rfl
 
-/-- A model-checking result cannot become a theorem proof by transport alone. -/
-theorem model_checking_cannot_be_promoted_by_transport :
-    ¬ admissibleTargetKind .modelCheckingResult .theoremProof .carried := by
-  intro h
-  rcases h with h | h
-  · exact h rfl
-  · rcases h with h | h
-    · cases h
-    · cases h
-
-/-- A theorem-proof record may be carried as such. This does not authenticate
-its source proof or establish freshness; those are separate obligations. -/
-theorem theorem_proof_may_be_carried :
-    admissibleTargetKind .theoremProof .theoremProof .carried := by
-  right
-  left
-  rfl
-
-/-- A new theorem-proof target requires an explicitly identified
-kernel-checked derivation. A later refinement must bind the derivation to
-exact premises, conclusion, assumptions and kernel identity. -/
-theorem new_theorem_proof_requires_kernel_derivation
-    (source : EvidenceKind) :
-    admissibleTargetKind source .theoremProof .kernelChecked := by
-  right
-  right
-  rfl
+/-- A model-checking result cannot be mapped to theorem-proof status without
+    an actual proof term of the exact target proposition. -/
+theorem model_checking_mapping_to_theorem_proof_requires_derivation
+    {claim : Prop}
+    (rule : KindMappingRule claim .modelCheckingResult .theoremProof) :
+    ∃ derivation : KernelCheckedDerivation claim,
+      derivation.proof = derivation.proof :=
+  kind_mapping_rule_theorem_proof_requires_derivation rule rfl
 
 theorem passing_testimony_is_not_a_theorem_proof :
     passingTestimony.kind ≠ .theoremProof := by
@@ -115,13 +94,13 @@ theorem evidence_mapping_preserves_method_class
     target.evidence.methodClass = source.evidence.methodClass :=
   mapping_preserves_method_class mapping
 
-/-- A theorem-proof target is carried from an existing theorem proof or has
-    an actual Lean proof term for the target claim. -/
+/-- A theorem-proof target always carries an actual Lean proof term of the
+exact target claim; a source kind label is never sufficient. -/
 theorem evidence_mapping_theorem_proof_requires_derivation
     {source target : MappingSubject} (mapping : EvidenceMapping source target)
     (h : target.evidence.kind = .theoremProof) :
-    source.evidence.kind = .theoremProof ∨
-      (∃ derivation : KernelCheckedDerivation target.claim.meaning, derivation.proof = derivation.proof) :=
+    ∃ derivation : KernelCheckedDerivation target.claim.meaning,
+      derivation.proof = derivation.proof :=
   mapping_target_theorem_proof_requires_derivation mapping h
 
 /-- Unknown (no determinate result) is not the same as inconclusive

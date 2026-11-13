@@ -272,7 +272,7 @@
 
 <a id="r-20"></a>
 ### R-20 — Lean
-- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [0008](architecture/0008-formalization-and-conformance.fr.md), [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [ADR 0001](decisions/0001-bootstrap-boundaries.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md), [audit de compatibilité CSLib](research/cslib-compatibility-audit.fr.md)
+- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [0008](architecture/0008-formalization-and-conformance.fr.md), [0010](architecture/0010-assurance-proof-and-conformance.fr.md), [ADR 0001](decisions/0001-bootstrap-boundaries.fr.md), [Spec 0005](specifications/0005-assurance-model.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md), [audit de compatibilité CSLib](research/cslib-compatibility-audit.fr.md), [audit de couverture sémantique du métamodèle](research/metamodel-semantic-coverage-audit.fr.md)
 
 - **Source primaire :** [Référence du langage Lean](https://lean-lang.org/doc/reference/latest/)
 - **Bibliothèque associée :** [CSLib](https://github.com/leanprover/cslib), bibliothèque Lean pour formaliser les théories informatiques, les logiques temporelles et la sémantique des systèmes de transitions.
@@ -411,7 +411,7 @@
 
 <a id="r-34"></a>
 ### R-34 — OMG Structured Assurance Case Metamodel (SACM)
-- **Cité par :** [0010-assurance-proof-and-conformance](architecture/0010-assurance-proof-and-conformance.fr.md), [0021-assurance-claims-and-freshness](architecture/0021-assurance-claims-and-freshness.fr.md), [0024-project-bootstrap-and-assurance-profiles](architecture/0024-project-bootstrap-and-assurance-profiles.fr.md), [0025-runtime-observations-peak-and-sacm](architecture/0025-runtime-observations-peak-and-sacm.fr.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.fr.md), [intent-impact-analysis](intent-impact-analysis.fr.md), [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.fr.md)
+- **Cité par :** [0010-assurance-proof-and-conformance](architecture/0010-assurance-proof-and-conformance.fr.md), [0021-assurance-claims-and-freshness](architecture/0021-assurance-claims-and-freshness.fr.md), [0024-project-bootstrap-and-assurance-profiles](architecture/0024-project-bootstrap-and-assurance-profiles.fr.md), [0025-runtime-observations-peak-and-sacm](architecture/0025-runtime-observations-peak-and-sacm.fr.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.fr.md), [intent-impact-analysis](intent-impact-analysis.fr.md), [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.fr.md), [audit de couverture sémantique du métamodèle](research/metamodel-semantic-coverage-audit.fr.md)
 
 - **Source primaire :** [Famille de spécifications OMG SACM](https://www.omg.org/spec/SACM/) · [Version formelle 2.3](https://www.omg.org/spec/SACM/2.3)
 - **Concepts pertinents :** représentation exploitable par machine de structures de dossiers d'assurance et relations entre affirmations, argumentation, artefacts et preuves.
@@ -765,7 +765,7 @@
 
 <a id="r-73"></a>
 ### R-73 — OMG Structured Assurance Case Metamodel (SACM), version 2.4 Beta 1 (septembre 2026)
-- **Cité par :** [0010-assurance-proof-and-conformance](architecture/0010-assurance-proof-and-conformance.fr.md), [0021-assurance-claims-and-freshness](architecture/0021-assurance-claims-and-freshness.fr.md), [0025-runtime-observations-peak-and-sacm](architecture/0025-runtime-observations-peak-and-sacm.fr.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.fr.md), [intent-impact-analysis](intent-impact-analysis.fr.md), [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.fr.md), [sacm24-beta1-interoperability-risk](research/sacm24-beta1-interoperability-risk.fr.md), [sacm24-claim-inference-mapping](research/sacm24-claim-inference-mapping.fr.md)
+- **Cité par :** [0010-assurance-proof-and-conformance](architecture/0010-assurance-proof-and-conformance.fr.md), [0021-assurance-claims-and-freshness](architecture/0021-assurance-claims-and-freshness.fr.md), [0025-runtime-observations-peak-and-sacm](architecture/0025-runtime-observations-peak-and-sacm.fr.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.fr.md), [intent-impact-analysis](intent-impact-analysis.fr.md), [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.fr.md), [sacm24-beta1-interoperability-risk](research/sacm24-beta1-interoperability-risk.fr.md), [sacm24-claim-inference-mapping](research/sacm24-claim-inference-mapping.fr.md), [audit de couverture sémantique du métamodèle](research/metamodel-semantic-coverage-audit.fr.md)
 - **Sources primaires :** [page OMG SACM 2.4 Beta 1](https://www.omg.org/spec/SACM/2.4/Beta1) · [artefact PDF de spécification (normatif dans le paquet Beta 1)](https://www.omg.org/spec/SACM/2.4/Beta1/PDF) · [XML lisible par machine du métamodèle (normatif dans le paquet Beta 1), 04/05/2026](https://www.omg.org/spec/SACM/20260504/SACM2.4_Metamodel.xml). Le paquet bêta reste informatif/en cours ; SACM 2.3 demeure la base formelle adoptée.
 - **Résolutions d'issues pertinentes :** [SACM24-83 sujet explicite du Claim](https://issues.omg.org/issues/SACM24-83) · [SACM24-75 Assessment](https://issues.omg.org/issues/SACM24-75) · [SACM24-77 arguments avancés](https://issues.omg.org/issues/SACM24-77) · [SACM24-48 sémantique des inférences/relations](https://issues.omg.org/issues/SACM24-48).
 - **Concepts pertinents :** sujet explicite du Claim via SACMElement ; AssertionDeclarationKind (asserted, assumed, axiomatic, byRule) ; structures optionnelles de vérité/valeur/règle ; InferenceTypeKind (probable, collective, necessary, sufficient, necessaryAndSufficient, byRule) ; AssertionRule et InferenceRule ; extensions d'évaluation et d'arguments avancés.
@@ -774,7 +774,7 @@
 
 <a id="r-74"></a>
 ### R-74 — Hoover, Rosso-Llopart et Taran, *Evaluating Project Decisions: Case Studies in Software Engineering* (2009/2010)
-- **Cité par :** [0013-governance-metamodel](architecture/0013-governance-metamodel.fr.md), [0021-assurance-claims-and-freshness](architecture/0021-assurance-claims-and-freshness.fr.md), [0025-runtime-observations-peak-and-sacm](architecture/0025-runtime-observations-peak-and-sacm.fr.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.fr.md), [intent-impact-analysis](intent-impact-analysis.fr.md)
+- **Cité par :** [0013-governance-metamodel](architecture/0013-governance-metamodel.fr.md), [0021-assurance-claims-and-freshness](architecture/0021-assurance-claims-and-freshness.fr.md), [0025-runtime-observations-peak-and-sacm](architecture/0025-runtime-observations-peak-and-sacm.fr.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.fr.md), [intent-impact-analysis](intent-impact-analysis.fr.md), [audit de couverture sémantique du métamodèle](research/metamodel-semantic-coverage-audit.fr.md)
 - **Sources primaires :** [Section PEAK du chapitre 1 (InformIT)](https://www.informit.com/articles/article.aspx?p=1409781&seqNum=3) · [Page du livre chez l'éditeur O’Reilly](https://www.oreilly.com/library/view/evaluating-project-decisions/9780321685629/)
 - **Référence bibliographique :** Carol L. Hoover, Mel Rosso-Llopart et Gil Taran, Addison-Wesley Professional, première publication en octobre 2009 (copyright 2010), ISBN 978-0-321-54456-8 ; le chapitre 1, §1.3 présente le modèle de décision PEAK.
 - **Concepts pertinents :** Problem, Experience, Assumptions et Knowledge comme entrées de la décision ; un processus de décision produit une solution et un risque assumé.
@@ -1120,7 +1120,7 @@
 
 <a id="r-115"></a>
 ### R-115 — ISO/IEC/IEEE 15288:2023, Ingénierie des systèmes et du logiciel — Processus du cycle de vie du système
-- **Cité par :** [0009-intent-record-and-authority](decisions/0009-intent-record-and-authority.fr.md), [intent-impact-analysis](intent-impact-analysis.fr.md), [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.fr.md)
+- **Cité par :** [0009-intent-record-and-authority](decisions/0009-intent-record-and-authority.fr.md), [intent-impact-analysis](intent-impact-analysis.fr.md), [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.fr.md), [audit de couverture sémantique du métamodèle](research/metamodel-semantic-coverage-audit.fr.md)
 - **Source primaire :** [ISO/IEC/IEEE 15288:2023](https://www.iso.org/fr/standard/81702.html)
 - **Concepts pertinents :** cadre de processus couvrant conception, développement, production, utilisation, soutien et retrait ; application itérative et récursive ; participation des parties prenantes et échange d'informations.
 - **Utilité pour GovCheck :** soutient la modélisation de l'intention, des exigences, décisions, réalisations et assurances comme préoccupations du cycle de vie plutôt que comme pipeline de bootstrap ponctuel.
@@ -1128,7 +1128,7 @@
 
 <a id="r-116"></a>
 ### R-116 — ISO/IEC/IEEE 29148, ingénierie des exigences
-- **Cité par :** [0009-intent-record-and-authority](decisions/0009-intent-record-and-authority.fr.md), [intent-impact-analysis](intent-impact-analysis.fr.md), [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.fr.md)
+- **Cité par :** [0009-intent-record-and-authority](decisions/0009-intent-record-and-authority.fr.md), [intent-impact-analysis](intent-impact-analysis.fr.md), [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.fr.md), [audit de couverture sémantique du métamodèle](research/metamodel-semantic-coverage-audit.fr.md)
 - **Sources primaires :** [ISO/IEC/IEEE 29148:2018](https://www.iso.org/standard/72089.html) · [ISO/IEC/IEEE DIS 29148, édition 3](https://www.iso.org/fr/standard/94091.html)
 - **Concepts pertinents :** processus et éléments d'information d'ingénierie des exigences ; dérivation, allocation, validation, vérification et traçabilité bidirectionnelle des besoins et exigences sur le cycle de vie.
 - **Utilité pour GovCheck :** référence normative pour distinguer intention/besoins et exigences et définir les relations de dérivation, allocation, validation et analyse d'impact.
@@ -1228,7 +1228,7 @@
 
 <a id="r-128"></a>
 ### R-128 — Assurance Forge : audit indépendant de l'impact d'implémentation de SACM 2.4 Beta 1 (2026-10-02 ; révision du dépôt 2026-11-03)
-- **Cité par :** [Rapport sur les risques d'interopérabilité SACM 2.4 Beta 1](research/sacm24-beta1-interoperability-risk.fr.md), [tranche de mapping sémantique SACM 2.4](research/sacm24-claim-inference-mapping.fr.md), [compte rendu intégré de cohérence du métamodèle](research/metamodel-coherence-prototype-execution.fr.md)
+- **Cité par :** [Rapport sur les risques d'interopérabilité SACM 2.4 Beta 1](research/sacm24-beta1-interoperability-risk.fr.md), [tranche de mapping sémantique SACM 2.4](research/sacm24-claim-inference-mapping.fr.md), [compte rendu intégré de cohérence du métamodèle](research/metamodel-coherence-prototype-execution.fr.md), [audit de couverture sémantique du métamodèle](research/metamodel-semantic-coverage-audit.fr.md)
 - **Sources primaires :** [Audit d'impact épinglé](https://github.com/lasrod/assurance-forge/blob/0f5187099be1c28fc725cb0f381afc695a135c89/docs/sacm/sacm-2.4-beta1-impact.md) · [script épinglé de récupération des artefacts officiels et contrôles SHA-256](https://github.com/lasrod/assurance-forge/blob/0f5187099be1c28fc725cb0f381afc695a135c89/scripts/fetch-sacm24-beta1-references.sh).
 - **Concepts pertinents :** absence rapportée d'un contrat stable d'échange natif d'instances 2.4 ; contradictions texte/XML concernant les champs d'identité, littéraux de déclaration, multiplicités, type de valeur Claim et héritage ; conséquences d'implémentation et de versionnement.
 - **Usage dans GovCheck :** contre-vérification d'ingénierie indépendante indiquant que le texte et le métamodèle lisible par machine de SACM 2.4 Beta 1 doivent rester deux vues sources distinctes, sans normalisation silencieuse en un modèle unique.

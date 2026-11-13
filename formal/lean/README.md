@@ -54,11 +54,11 @@ lake build
 
 The status model also proves `unknown_status_is_distinct_from_inconclusive`; both statuses are represented in the JSON Schema, while staleness remains a separate freshness property.
 
-`GovCheckCoherence.Mapping` binds a source and target claim identifier to Lean propositions and declares the mapping coverage (`equivalent`, `soundDirectional`, `partial`, `approximate`, `traceabilityOnly`, `unsupported`). The corresponding `SemanticBridge` constructor requires the proof obligation appropriate to that coverage. A mapping also binds exact source/target model revisions and requires preservation of the evidence source identity/revision, exact scope, all source assumptions, and method class.
+`GovCheckCoherence.Mapping` binds a source and target claim identifier to Lean propositions. Its operative coverage is restricted to `equivalent`, `soundDirectional` and `partialMapping`; each `SemanticBridge` constructor carries the corresponding proof obligation. Approximate, traceability-only and unsupported candidates use the separate `MappingProposal` type. A proposal has no semantic bridge and cannot inhabit `EvidenceMapping`, so it cannot be consumed by the current typed mapping interface as an established semantic premise.
 
-A new theorem-proof kind requires a `KernelCheckedDerivation` containing an actual Lean proof term of the exact target proposition. A method label or result status cannot construct this proof object. Target result status is deliberately independent: derivation of a new theorem has its own result, not an automatic copy of a source test status.
+An operative mapping also binds exact source/target model revisions and requires preservation of the evidence source identity/revision, exact scope, all source assumptions, and method class. A target theorem-proof kind can only be introduced through `KindMappingRule.deriveTheoremProof`, which contains an actual Lean proof term of the exact target proposition. The generic transport constructor explicitly excludes `theoremProof`; even an existing source theorem-proof label is not enough to carry that status to a target. Target result status remains independent: a new theorem derivation has its own result, not an automatic copy of a source test status.
 
-The first profile requires exact scope equality; it does not yet define a scope partial order or safe scope narrowing. The `DerivationOrigin.kernelChecked` predicate from the original PR #108 slice remains a coarse abstract placeholder; it is not a proof object and must not be used as the proof-carrying route for new mappings. New mappings use `KindMappingRule` and `KernelCheckedDerivation`. The contract is a typed obligation, not proof that any production importer/exporter satisfies it.
+The first profile requires exact scope equality; it does not yet define a scope partial order or safe scope narrowing. The `premises`, `assumptions`, `kernelIdentity` and `kernelVersion` fields on `KernelCheckedDerivation` remain provenance metadata and are not yet mechanically linked to the proof term's complete dependency closure. The contract is a typed obligation, not proof that any production importer/exporter satisfies it.
 
 ## Explicit limits
 
@@ -71,15 +71,28 @@ remain governed by the repository's TLA+ models and require a separate
 conformance argument.
 
 The proof term is checked by the pinned Lean kernel, but the `premises`,
-`assumptions`, `kernelIdentity` and `kernelVersion` fields are currently
-metadata and are not yet mechanically linked to the proof term's dependency
-closure. Claim identifiers are paired with Lean propositions in the mapping
-subject, but no production parser has yet been proven to preserve that binding.
-The `approximate` coverage constructor records a relation and declared
-limitations; it does not assert a sound semantic refinement.
+`assumptions`, `kernelIdentity` and `kernelVersion` fields are provenance
+metadata and are not yet mechanically linked to the proof term's complete
+dependency closure. Claim identifiers are paired with Lean propositions in
+the mapping subject, but no production parser has yet been proven to preserve
+that binding. Approximate, traceability-only and unsupported candidates are
+non-operative `MappingProposal` values; they do not carry a semantic proof.
 
 ## Verification status
 
-The authoring environment did not have Lean installed when this package was
-first created. The extended proof-carrying mapping contract also passed the
-pinned Lean 4.19.0 build and axiom audit in [run 43213158225](https://github.com/Martin-PB/govcheck/actions/runs/43213158225); all fourteen mapping helper/public theorem declarations and the separate status-distinction theorem reported no axioms. The Lean 4.19.0 build and axiom audit passed: [GitHub Actions run 43049890363](https://github.com/Martin-PB/govcheck/actions/runs/43049890363), source head `473ff33c74c8c04b4766b52de20ac68a9fb20d9b`. The workflow explicitly builds the `GovCheckCoherence` library, audits the theorem module with `leanprover-community/axiom-audit`, and prints each theorem's axiom dependencies. The audit checked 10 declarations under `GovCheckCoherence.Proofs`; all were within the configured standard allowlist. The explicit `#print axioms` report showed that all nine theorem declarations in this slice depend on no axioms. This is a result about this small formal slice only: it is not yet a semantic mapping proof against SACM/OWL/SEON, proof of imported-source fidelity, or implementation conformance. A successful Git commit alone is not a Lean verification result.
+The tightened mapping API was built and axiom-audited successfully with the
+pinned Lean 4.19.0 toolchain in [workflow run 43437994055](https://github.com/Martin-PB/govcheck/actions/runs/43437994055),
+on formal source revision `6580daaeef6c506b0a2da30c790cac43481a15f3`.
+The workflow built `GovCheckCoherence`, audited 36 declarations under
+`GovCheckCoherence.Proofs` (all within the configured allowlist
+`propext`, `Classical.choice`, `Quot.sound`), and the explicit
+`#print axioms` report found no axioms for the listed theorem declarations.
+The artifact catalogue records this exact checked revision and workflow run.
+
+The result applies to the exact formal source revision above. Subsequent
+documentation/portfolio commits do not change the checked Lean source blobs.
+This is a result about the small formal slice only: it is not a semantic
+mapping proof against SACM/OWL/SEON, proof of imported-source fidelity,
+mapping-composition proof, or implementation conformance. A successful Git
+commit or a historical green run is not a Lean verification result for a
+different formal source revision.

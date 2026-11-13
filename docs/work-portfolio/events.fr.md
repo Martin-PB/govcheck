@@ -15,6 +15,8 @@ Pour consulter les entrées, leur provenance et leurs limites, se reporter au [j
 
 ## Dernier événement enregistré
 
-Le journal canonique a enregistré **WP-EVT-000020** : la PR [#122](https://github.com/Martin-PB/govcheck/pull/122) est prête à fusionner après réussite des contrôles d'intégrité des références et d'alignement du package. La PR [#124](https://github.com/Martin-PB/govcheck/pull/124), qui applique le principe de preuve des correspondances au protocole du journal et aux identités VCS, est également déclarée fusionnable ; les contrôles de références, de package, de version et les quatre jobs TLC ont réussi. L'ordre reste impératif : fusionner #122, puis #124. Les anciennes PR #106 et #123 sont fermées sans fusion ; #107 est remplacée par #124.
+Le journal canonique a enregistré **WP-EVT-000021** : la PR [#125](https://github.com/Martin-PB/govcheck/pull/125) présente le premier audit bilingue de couverture sémantique du métamodèle et corrige deux failles de typage dans le prototype Lean. Les correspondances opérationnelles sont désormais limitées aux relations dont l'obligation de preuve est explicite ; les propositions approximatives, limitées à la traçabilité ou non prises en charge restent non opérationnelles. Toute cible de nature preuve de théorème exige un terme de preuve de la proposition cible exacte.
 
-Le détail et la provenance restent dans le [journal canonique en anglais](events.md#wp-evt-000020).
+La compilation Lean 4.19.0 et l'audit des axiomes ont réussi (36 déclarations auditées, aucune dépendance hors liste autorisée ; les théorèmes explicitement rapportés ne dépendent d'aucun axiome). Les contrôles d'intégrité des références et d'alignement du package ont également réussi. La PR reste ouverte, non fusionnée et fusionnable. L'issue #73 reste ouverte ; aucun métamodèle complet n'est adopté.
+
+Le détail et la provenance restent dans le [journal canonique en anglais](events.md#wp-evt-000021).

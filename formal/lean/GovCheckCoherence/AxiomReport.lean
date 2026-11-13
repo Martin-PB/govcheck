@@ -3,21 +3,11 @@ import GovCheckCoherence.Proofs
 #print axioms GovCheck.Coherence.transport_preserves_method_class
 #print axioms GovCheck.Coherence.transport_preserves_kind
 #print axioms GovCheck.Coherence.transport_preserves_status
-#print axioms GovCheck.Coherence.testimony_cannot_be_promoted_by_transport
-#print axioms GovCheck.Coherence.model_checking_cannot_be_promoted_by_transport
-#print axioms GovCheck.Coherence.theorem_proof_may_be_carried
-#print axioms GovCheck.Coherence.new_theorem_proof_requires_kernel_derivation
+#print axioms GovCheck.Coherence.testimony_mapping_to_theorem_proof_requires_derivation
+#print axioms GovCheck.Coherence.model_checking_mapping_to_theorem_proof_requires_derivation
 #print axioms GovCheck.Coherence.passing_testimony_is_not_a_theorem_proof
 #print axioms GovCheck.Coherence.theorem_proving_label_alone_does_not_authenticate_proof
-
 #print axioms GovCheck.Coherence.schema_method_and_status_do_not_determine_epistemic_kind
-
-#print axioms GovCheck.Coherence.mapping_preserves_source_revision
-#print axioms GovCheck.Coherence.mapping_preserves_source_identity
-#print axioms GovCheck.Coherence.mapping_preserves_scope
-#print axioms GovCheck.Coherence.mapping_preserves_assumptions
-#print axioms GovCheck.Coherence.mapping_preserves_method_class
-#print axioms GovCheck.Coherence.mapping_target_theorem_proof_requires_derivation
 
 #print axioms GovCheck.Coherence.mapping_preserves_source_revision
 #print axioms GovCheck.Coherence.mapping_preserves_source_identity
@@ -50,7 +40,6 @@ import GovCheckCoherence.Proofs
 #print axioms GovCheck.Coherence.sacm_mapping_preserves_subject
 #print axioms GovCheck.Coherence.sacm_mapping_uses_exact_source_model
 #print axioms GovCheck.Coherence.sacm_mapping_has_semantic_bridge
-
 #print axioms GovCheck.Coherence.sacm_mapping_preserves_assertion_declaration
 
 #print axioms GovCheck.Coherence.sacm_text_byRule_is_rejected
@@ -59,5 +48,4 @@ import GovCheckCoherence.Proofs
 #print axioms GovCheck.Coherence.sacm_xml_identity_field_is_elementId
 #print axioms GovCheck.Coherence.sacm_claim_mapping_requires_source_view_consistency
 #print axioms GovCheck.Coherence.sacm_claim_mapping_requires_source_identity_field
-
 #print axioms GovCheck.Coherence.sacm_claim_source_format_matches_view

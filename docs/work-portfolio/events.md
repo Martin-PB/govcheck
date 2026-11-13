@@ -293,3 +293,19 @@
 - **Superseded PRs:** #106 and intermediate #123 are closed without merging. Original PR #107 is superseded by #124 and remains open only until the replacement is confirmed ready for review; its history is retained.
 - **Normative boundary:** neither PR merge adopts the complete metamodel or makes the arbitration session 0008 normative. The proof-carrying correspondence principle is recorded in #122; the journal/VCS application is specified in #124. The #41 authority decision remains separate.
 - **Limits:** TLC results are model-checking evidence for the exact finite models/configurations; they do not establish implementation refinement, distributed consensus, concrete storage durability or runtime enforcement.
+
+
+<a id="wp-evt-000021"></a>
+## WP-EVT-000021 — Metamodel semantic-coverage baseline and proof-boundary correction reviewed
+
+- **Subject:** `govcheck.work.intermodel-contract-conformance`
+- **Event type:** `formalization-audit-and-review-candidate-prepared`
+- **Recorded:** 2026-11-13
+- **Pull request:** [#125 — Audit metamodel semantic coverage and tighten proof-carrying mappings](https://github.com/Martin-PB/govcheck/pull/125), branch `work/metamodel-coverage-and-mapping-boundary` → `main`.
+- **Audit artifacts:** bilingual [semantic-coverage audit](../research/metamodel-semantic-coverage-audit.md) / [audit français](../research/metamodel-semantic-coverage-audit.fr.md). The matrix distinguishes locally formalized, model-checked, documented-target, candidate, uncovered and unresolved/conflicting coverage. It is a repository-grounded baseline, not an exhaustive conformance inventory.
+- **Formal correction:** the previous Lean `SemanticBridge` allowed approximate, traceability-only and unsupported cases to inhabit an operative `EvidenceMapping` without a source/target proposition relation. The previous epistemic-kind transport also allowed `theoremProof` to pass without a target proof term. The revised API restricts operative mappings to equivalence, sound directional preservation and domain-restricted partial preservation; other candidates are non-operative `MappingProposal` values. Every theorem-proof target now carries a proof term for the exact target proposition.
+- **Checked formal source revision:** `6580daaeef6c506b0a2da30c790cac43481a15f3`; the subsequent portfolio/catalogue metadata commits do not alter the Lean source blobs checked at that revision.
+- **Verification:** Lean coherence workflow [43437994055](https://github.com/Martin-PB/govcheck/actions/runs/43437994055) passed on Lean 4.19.0; axiom-audit checked 36 declarations under `GovCheckCoherence.Proofs`, all within the configured allowlist, and the explicit report showed no axioms for the listed theorem declarations. Reference integrity [43437993877](https://github.com/Martin-PB/govcheck/actions/runs/43437993877) passed. Package alignment [43437993999](https://github.com/Martin-PB/govcheck/actions/runs/43437993999) passed.
+- **Observed PR state:** open, non-draft, GitHub reports mergeable. No merge was performed.
+- **Normative boundary:** the audit and API correction do not adopt the complete GovCheck metamodel, select a universal formalization stack, establish external ontology conformance or prove production importer/exporter refinement. Issue #73 remains open.
+- **Residual limits:** source-native semantic interpretation is still authority-supplied; proof metadata is not yet tied to the complete proof dependency closure; mappings are not yet proved compositional; TLA+ lifecycle/authority models are not yet related by a refinement theorem to the Lean mapping layer.

@@ -24,17 +24,35 @@ structure MappingSubject where
   scope : String
   assumptions : List String
 
-/-- Coverage is explicit; it is not reduced to a Boolean valid/invalid flag. -/
+/-- Only relations with an explicit proof obligation can be operative mappings. -/
 inductive MappingCoverage where
   | equivalent
   | soundDirectional
   | partialMapping
+  deriving DecidableEq, Repr
+
+/-- Proposals that are useful to retain but cannot yet be consumed as
+    established semantic correspondences. They deliberately have no
+    SemanticBridge constructor and cannot inhabit EvidenceMapping. -/
+inductive MappingProposalDisposition where
   | approximate
   | traceabilityOnly
   | unsupported
   deriving DecidableEq, Repr
 
-/-- The formal bridge obligation depends on the declared mapping coverage. -/
+/-- A non-operative mapping proposal. This is documentation/triage data,
+    not a semantic premise and not an EvidenceMapping. -/
+structure MappingProposal where
+  sourceModel : ArtifactRef
+  targetModel : ArtifactRef
+  disposition : MappingProposalDisposition
+  relationDescription : String
+  declaredLimitations : List String
+  transformationIdentity : String
+  transformationRevision : String
+
+/-- The formal bridge is indexed only by relations with a corresponding
+    machine-checkable obligation. -/
 inductive SemanticBridge : Prop → Prop → MappingCoverage → Type where
   | equivalent {source target : Prop} :
       (source ↔ target) →
@@ -46,17 +64,9 @@ inductive SemanticBridge : Prop → Prop → MappingCoverage → Type where
       (domain : source → Prop) →
       (∀ h : source, domain h → target) →
       SemanticBridge source target .partialMapping
-  | approximate {source target : Prop} :
-      (relation : source → target → Prop) →
-      (declaredLimitations : List String) →
-      SemanticBridge source target .approximate
-  | traceabilityOnly {source target : Prop} :
-      SemanticBridge source target .traceabilityOnly
-  | unsupported {source target : Prop} :
-      SemanticBridge source target .unsupported
 
 /-- A derivation carries an actual Lean proof term of the exact target claim.
-    Metadata alone cannot construct this value. -/
+    The strings are provenance metadata, not a substitute for the proof term. -/
 structure KernelCheckedDerivation (claim : Prop) where
   proof : claim
   premises : List String
@@ -64,12 +74,18 @@ structure KernelCheckedDerivation (claim : Prop) where
   kernelIdentity : String
   kernelVersion : String
 
-/-- Transport preserves epistemic kind. A new theorem-proof kind requires a
-    kernel-checked proof of the target claim, not merely a method/status label. -/
+/-- Evidence kinds other than theoremProof, so the transport constructor
+    cannot be instantiated with a theorem-proof label. -/
+abbrev NonTheoremEvidenceKind := { kind : EvidenceKind // kind ≠ .theoremProof }
+
+/-- A target theorem-proof kind always requires a proof term of the exact
+    target proposition. Other epistemic kinds may be transported unchanged.
+    In particular, an existing theoremProof label cannot be transported by
+    this rule without re-establishing the target proposition. -/
 inductive KindMappingRule (targetClaim : Prop) :
     EvidenceKind → EvidenceKind → Type where
-  | transport (kind : EvidenceKind) :
-      KindMappingRule targetClaim kind kind
+  | transport (kind : NonTheoremEvidenceKind) :
+      KindMappingRule targetClaim kind.val kind.val
   | deriveTheoremProof (sourceKind : EvidenceKind)
       (derivation : KernelCheckedDerivation targetClaim) :
       KindMappingRule targetClaim sourceKind .theoremProof
@@ -84,12 +100,14 @@ structure MappingContract where
   transformationIdentity : String
   transformationRevision : String
 
-/-- A proof-carrying mapping contract.
+/-- An operative, proof-carrying mapping contract.
 
     The target status is intentionally not forced to equal the source status:
     a new theorem derivation has its own result. Method class, epistemic kind,
-    result status and acceptance remain distinct dimensions.
--/
+    result status and acceptance remain distinct dimensions. Approximate,
+    traceability-only and unsupported proposals are represented separately
+    by MappingProposal and cannot inhabit this type.
+-/ 
 structure EvidenceMapping (source target : MappingSubject) where
   contract : MappingContract
   sourceModelMatches : contract.sourceModel = source.model
@@ -140,18 +158,19 @@ theorem kind_mapping_rule_theorem_proof_requires_derivation
     {targetClaim : Prop} {source target : EvidenceKind}
     (rule : KindMappingRule targetClaim source target)
     (h : target = .theoremProof) :
-    source = .theoremProof ∨
-      (∃ derivation : KernelCheckedDerivation targetClaim, derivation.proof = derivation.proof) := by
+    ∃ derivation : KernelCheckedDerivation targetClaim,
+      derivation.proof = derivation.proof := by
   cases rule with
-  | transport => exact Or.inl h
-  | deriveTheoremProof derivation =>
-      exact Or.inr ⟨derivation, rfl⟩
+  | transport kind =>
+      exact False.elim (kind.property h)
+  | deriveTheoremProof _ derivation =>
+      exact ⟨derivation, rfl⟩
 
 theorem mapping_target_theorem_proof_requires_derivation
     {source target : MappingSubject} (mapping : EvidenceMapping source target)
     (h : target.evidence.kind = .theoremProof) :
-    source.evidence.kind = .theoremProof ∨
-      (∃ derivation : KernelCheckedDerivation target.claim.meaning, derivation.proof = derivation.proof) :=
+    ∃ derivation : KernelCheckedDerivation target.claim.meaning,
+      derivation.proof = derivation.proof :=
   kind_mapping_rule_theorem_proof_requires_derivation mapping.kindRule h
 
 end GovCheck.Coherence

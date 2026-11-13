@@ -351,7 +351,8 @@
       "sourceReferences": [
         "R-128",
         "R-197",
-        "R-198"
+        "R-198",
+        "R-199"
       ],
       "sourceViews": [
         {
@@ -367,9 +368,10 @@
       ],
       "revisionPolicy": "repository-history",
       "releaseBinding": "release-tag-and-commit",
-      "status": "fragment-level-source-facts-formalized; PDF-and-XML-digests-workflow-verified; transcription-proof-pending; no-precedence-decision",
+      "status": "fragment-level-source-facts-formalized; PDF-and-XML-digests-workflow-verified; Claim.value-audit-discrepancy-unresolved; transcription-proof-pending; no-precedence-decision",
       "limitations": [
-        "Lean theorems establish differences among manually transcribed source constants, not correctness of the transcriptions",
+        "Lean theorems establish differences or agreements among manually transcribed source constants, not correctness of the transcriptions",
+        "R-128's reported Clause 13.9 Claim.value type is not corroborated by inspected informative PDF Figure 15.1.1; exact normative passage remains unresolved",
         "PDF and XML digests authenticate exact bytes but do not authenticate source-fragment interpretation",
         "no parser-to-formal-model refinement theorem",
         "no source-derived GovCheck semantic mapping or conformance claim",
@@ -413,7 +415,7 @@
           ],
           "unapprovedAxioms": 0,
           "sourceFragmentWrappersUsingPropext": 5,
-          "sourceFactsDirectTheoremsWithNoAxioms": 13
+          "sourceFactsDirectTheoremsWithNoAxioms": 14
         },
         "otherChecks": {
           "referenceIntegrityRunId": 43495626080,

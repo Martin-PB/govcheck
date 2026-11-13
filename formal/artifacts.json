@@ -113,25 +113,33 @@
       "documentation": "formal/lean/README.md",
       "revisionPolicy": "repository-history",
       "releaseBinding": "release-tag-and-commit",
-      "status": "kernel-checked; axiom-audited",
+      "status": "kernel-checked; axiom-audited; operative-mapping-boundary-hardened",
       "verification": {
         "workflow": ".github/workflows/lean-coherence.yml",
-        "workflowRunId": 43216879988,
-        "checkedCommit": "7716c9e5ad054faca042b86630d38bfaee2b4f5a",
+        "workflowRunId": 43437994055,
+        "checkedCommit": "6580daaeef6c506b0a2da30c790cac43481a15f3",
         "result": "lake-build-success; axiom-audit-success",
         "lean": "4.19.0",
         "axiomAudit": {
           "root": "GovCheckCoherence.Proofs",
-          "mappingTheorems": 14,
+          "mappingTheorems": 16,
           "axiomsUsed": 0,
-          "additionalStatusTheorems": 1
+          "additionalStatusTheorems": 1,
+          "auditedDeclarations": 36
         },
         "limitations": [
           "contract types and projection theorems only",
           "no source ontology mapping implementation proved",
           "no importer/exporter conformance theorem"
         ]
-      }
+      },
+      "limitations": [
+        "typed contract and theorem projections only",
+        "approximate, traceability-only and unsupported mapping proposals are non-operative",
+        "no source ontology mapping implementation proved",
+        "no importer/exporter conformance theorem",
+        "proof metadata is not yet mechanically linked to the complete proof dependency closure"
+      ]
     },
     {
       "artifactId": "govcheck.cslib-temporal-compatibility",
@@ -200,8 +208,8 @@
       ],
       "verification": {
         "workflow": ".github/workflows/lean-coherence.yml",
-        "workflowRunId": 43216879988,
-        "checkedCommit": "7716c9e5ad054faca042b86630d38bfaee2b4f5a",
+        "workflowRunId": 43437994055,
+        "checkedCommit": "6580daaeef6c506b0a2da30c790cac43481a15f3",
         "result": "lake-build-success; axiom-audit-success",
         "lean": "4.19.0",
         "axiomAudit": {

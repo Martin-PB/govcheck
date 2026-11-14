@@ -16,11 +16,11 @@ Le rapport Assurance Forge ne fait pas autorité pour l'OMG et ses conclusions d
 | Sujet | Texte PDF de la spécification | XML du métamodèle lisible par machine | Conséquence |
 |---|---|---|---|
 | Identité d'élément | `gid : String[0..1]` | `elementId : UID[1]`, sans `gid` | Impossible de normaliser l'identité sans sélectionner une vue source et enregistrer la transformation |
-| Littéraux de déclaration | `axiomatic`, `assumed`, `asserted`, `needsSupport` | `axiomatic`, `assumed`, `asserted`, plus `byRule`, sans `needsSupport` | Le même nom d'énumération possède des ensembles de valeurs incompatibles |
+| Littéraux de déclaration | Clause normative 13.6 : `axiomatic`, `assumed`, `asserted`, `needsSupport` ; la clause informative 15.2.1 ajoute `byRule` | `axiomatic`, `assumed`, `asserted`, `byRule`, sans `needsSupport` | Divergence entre listes de fragments. La clause informative présente `byRule` comme un ajout ; son omission de `needsSupport` ne prouve pas sa suppression de la liste normative. Aucun ensemble normalisé n'est choisi. |
 | Multiplicité de `AssertedEvidence.evidence` | `[0..*]` | `[1..*]` | Une collection vide est valide dans une vue et invalide dans l'autre |
 | `Claim.value` | Figure normative 13.1 (page imprimée 41) et clause 13.9 (page imprimée 45) : `MultiLangString` ; figure informative 15.1.1 (page imprimée 59) : `ExpressionLangString` | `ExpressionLangString` | Conflit interne au PDF : le XML concorde avec la figure informative et diffère des fragments normatifs. La valeur rapportée par R-128 est confirmée par les deux fragments normatifs. |
 | Héritage de `BindingPackage` | Les clauses textuelles divergent sur les superclasses | Le XML déclare `ScopedPackage` et `SACMPackageWithBinding` | Le parseur/validateur peut construire une hiérarchie de types différente |
-| Multiplicité de `SACMElement.abstraction` | `[0..1]` | `[0..*]` | Une vue autorise au plus une abstraction, l'autre plusieurs |
+| Multiplicité de `SACMElement.abstraction` | Clause 9.2 : `[0..1]` ; figure 9.1 : `[0..*]` | `[0..*]` selon les valeurs par défaut UML 2.5 | Divergence interne au PDF ; le XML concorde avec la figure 9.1 et diffère de la clause 9.2. Aucune priorité n'est inférée. |
 | Multiplicité de `AssertedRelationship.isCounter` | `Boolean[1]` | `Boolean[0..1]` | Le caractère obligatoire diffère |
 
 L'audit signale aussi des noms obsolètes de SACM 2.3 dans le texte/les annexes de la bêta, des littéraux supprimés encore référencés dans l'annexe C, une ambiguïté sur les points de conformité et un exemple XMI de profil UML propre à un éditeur. Consulter l'audit épinglé complet et son inventaire de défauts lié avant toute implémentation supplémentaire.
@@ -49,7 +49,7 @@ Le script de récupération d'Assurance Forge enregistre les empreintes SHA-256 
 
 ## 5. Réponse de GovCheck : mapping qualifié par la vue source
 
-Le module Lean `GovCheckCoherence.SACM24` distingue désormais les vues documentaires des clauses, annexes et figures individuelles qui portent des affirmations dans ces vues. Le prédicat global PDF précédent était trop grossier : il rejetait à tort `byRule` pour l'ensemble du PDF alors que la clause 15.2.1 l'ajoute, tandis que la clause 13.6 inclut `needsSupport`.
+Le module Lean `GovCheckCoherence.SACM24` distingue désormais les vues documentaires des clauses, annexes et figures individuelles qui portent des affirmations dans ces vues. La clause 13.6 est normative ; l'annexe G.6 et la clause 15.2.1 sont informatives. La liste ultérieure `byRule` est traitée comme un ajout, pas comme une suppression démontrée de `needsSupport`. La multiplicité d'abstraction présente également une divergence interne au PDF : la clause 9.2 indique `0..1`, la figure 9.1 `0..*`, et le XML concorde avec la figure.
 
 - `SourceView` identifie le format documentaire ; `DeclarationSourceFragment` identifie séparément la clause PDF 13.6, l'annexe G.6 point 6, la clause 15.2.1 et le modèle XML normatif.
 - `IdentitySourceFragment` distingue la clause PDF 9.2 (`gid`), la figure PDF 9.1 (`elementId`) et le modèle XML (`elementId`).

@@ -370,7 +370,7 @@
       "releaseBinding": "release-tag-and-commit",
       "status": "fragment-level-source-facts-formalized; PDF-and-XML-digests-workflow-verified; Claim.value-and-AssertedEvidence-PDF-internal-conflicts-modelled; subject-whole-target-types-and-multiplicities-aligned; no ownership-conflict claim; transcription-proof-pending; no-precedence-decision",
       "limitations": [
-        "Lean theorems formalize transcribed source-fragment values, multiplicities and owners; they do not prove transcription correctness",
+        "Lean theorems formalize transcribed source-fragment values, target types and multiplicities; they do not prove transcription correctness",
         "PDF Clause 13.9 (printed page 45) and normative Figure 13.1 (printed page 41) both state MultiLangString; informative Figure 15.1.1 (printed page 59) states ExpressionLangString",
         "PDF and XML digests authenticate exact bytes but do not authenticate source-fragment interpretation",
         "no parser-to-formal-model refinement theorem",
@@ -433,8 +433,19 @@
             "Claim.value: MultiLangString",
             "AssertedEvidence.evidence: 1..*",
             "AssertedRelationship.isCounter: Boolean[1]",
-            "SACMElement.subject: 0..*",
-            "SACMElement.whole: 0..*"
+            "Claim.subject target type: SACMElement [0..*]",
+            "Claim.whole target type: SACMModel [0..*]"
+          ]
+        },
+        {
+          "sourceFileId": "ptc/26-06-34",
+          "locator": "Clause 13.9",
+          "sectionStatus": "normative",
+          "printedPage": 45,
+          "claims": [
+            "Claim.value: MultiLangString [0..1]",
+            "Claim.whole: SACMModel [0..*]",
+            "Claim.subject: SACMElement [0..*]"
           ]
         },
         {

@@ -382,8 +382,8 @@
     "machineReadableFileId": "ptc/13-08-17",
     "rules": [
       "§7.8.8.7: absent lowerValue/upperValue falls back to 1",
-      "§8.2.2: LiteralInteger.value defaults to 0",
-      "§8.2.2: LiteralUnlimitedNatural.value defaults to 0",
+      "§8.6.9.4: LiteralInteger.value defaults to 0",
+      "§8.6.14.4: LiteralUnlimitedNatural.value defaults to 0",
       "unsupported or non-literal ValueSpecifications remain unresolved"
     ],
     "boundStatusCounts": {
@@ -435,7 +435,7 @@
             "value": 0,
             "kind": "finite",
             "status": "literal-default",
-            "rule": "UML 2.5 §8.2.2 LiteralInteger.value default = 0"
+            "rule": "UML 2.5 §8.6.9.4 LiteralInteger.value default = 0"
           },
           "upper": {
             "value": 1,
@@ -459,7 +459,7 @@
             "value": 0,
             "kind": "finite",
             "status": "literal-default",
-            "rule": "UML 2.5 §8.2.2 LiteralInteger.value default = 0"
+            "rule": "UML 2.5 §8.6.9.4 LiteralInteger.value default = 0"
           },
           "upper": {
             "value": "*",
@@ -483,7 +483,7 @@
             "value": 0,
             "kind": "finite",
             "status": "literal-default",
-            "rule": "UML 2.5 §8.2.2 LiteralInteger.value default = 0"
+            "rule": "UML 2.5 §8.6.9.4 LiteralInteger.value default = 0"
           },
           "upper": {
             "value": "*",
@@ -507,7 +507,7 @@
             "value": 0,
             "kind": "finite",
             "status": "literal-default",
-            "rule": "UML 2.5 §8.2.2 LiteralInteger.value default = 0"
+            "rule": "UML 2.5 §8.6.9.4 LiteralInteger.value default = 0"
           },
           "upper": {
             "value": 1,
@@ -531,7 +531,7 @@
             "value": 0,
             "kind": "finite",
             "status": "literal-default",
-            "rule": "UML 2.5 §8.2.2 LiteralInteger.value default = 0"
+            "rule": "UML 2.5 §8.6.9.4 LiteralInteger.value default = 0"
           },
           "upper": {
             "value": "*",
@@ -555,7 +555,7 @@
             "value": 0,
             "kind": "finite",
             "status": "literal-default",
-            "rule": "UML 2.5 §8.2.2 LiteralInteger.value default = 0"
+            "rule": "UML 2.5 §8.6.9.4 LiteralInteger.value default = 0"
           },
           "upper": {
             "value": "*",

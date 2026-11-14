@@ -20,7 +20,15 @@
 | Métadonnées de gouvernance et catalogues | R-17 |
 | Systèmes de workflow d'agents évalués comme fixtures | R-18–R-19 |
 | Sémantiques de contrôle de version | R-22 |
-| Sémantique des métamodèles UML/XMI et des spécifications de valeurs | R-200 |
+| Sémantique des métamodèles UML/XMI et des spécifications de valeurs | R-197, R-200 |
+| Suivi OMG et historique des sources | R-201 |
+| Protocoles de mémoire de dépôt natifs aux agents | R-202 |
+| Sémantique et conformité OWL 2 | R-203 |
+| Réseaux d'ontologies d'ingénierie logicielle et métamodèles | R-204–R-206 |
+| Confiance dans les arguments d'assurance et preuves probabilistes | R-207–R-209, R-214 |
+| Exigences floues et méthodes d'incertitude | R-210–R-211 |
+| Fiabilité logicielle bayésienne | R-212–R-213 |
+| Model checking et sémantique des automates temporisés | R-215–R-217 |
 | Plateformes VCS, forges et CI alternatives (CLI Pijul, GitLab, Woodpecker, SourceHut, Fossil) | R-109–R-113 |
 | CRDT, collaboration temps réel et transport réseau | R-45–R-50, R-66, R-87 |
 | Représentation des connaissances et interopérabilité | R-51–R-61, R-83–R-86 |
@@ -61,7 +69,9 @@
 ## Utilisation rapide
 
 - **Autorité normative et séparation des tâches :** R-01, R-02, R-03.
-- **Modèles formels, preuves et arguments d'assurance :** R-04, R-05, R-89–R-91.
+- **Modèles formels, preuves et arguments d'assurance :** R-04, R-05, R-89–R-91, R-215–R-217.
+- **Sémantique des ontologies et métamodèles réutilisables :** R-203–R-206.
+- **Recherche sur la confiance, la fiabilité et l'incertitude :** R-207–R-214.
 - **Provenance des preuves et chaîne d'approvisionnement logicielle :** R-06, R-07, R-08.
 - **Politiques exécutables et autorisation :** R-09, R-10.
 - **Vérification des modèles de politiques avant application :** R-88.

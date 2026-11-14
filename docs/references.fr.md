@@ -1377,7 +1377,7 @@
 
 <a id="r-200"></a>
 ### R-200 — Spécification OMG UML 2.5 et métamodèle lisible par machine
-- **Cité par :** [Inventaire structurel XMI SACM](research/sacm-xmi-structural-inventory.fr.md), [Journal des événements du portefeuille](work-portfolio/events.fr.md), [Registre des éléments de travail](work-portfolio/work-items.fr.md).
+- **Cité par :** [Inventaire structurel XMI SACM](research/sacm-xmi-structural-inventory.fr.md), [Alignement des vues sources SACM 2.4](research/sacm24-source-view-alignment.fr.md), [Risque d'interopérabilité SACM 2.4](research/sacm24-beta1-interoperability-risk.fr.md), [Journal des événements du portefeuille](work-portfolio/events.fr.md), [Registre des éléments de travail](work-portfolio/work-items.fr.md).
 - **Source primaire :** [PDF normatif OMG UML 2.5](https://www.omg.org/spec/UML/2.5/PDF) · [Catalogue OMG des fichiers UML lisibles par machine](https://www.omg.org/spec/UML/machine-readable) · identifiant du jeu de fichiers UML 2.5 lisibles par machine `ptc/13-08-17`.
 - **Identité épinglée :** UML 2.5 ; document normatif formal/2015-03-01 ; la source XMI SACM utilise l'espace de noms `http://www.omg.org/spec/UML/20131001`, qui est celui d'UML 2.5 (et non l'espace de noms ultérieur `20161101` d'UML 2.5.1).
 - **Clauses pertinentes :** §7.8.8.7 définit `MultiplicityElement.lowerBound()` et `upperBound()`, y compris la valeur de repli 1 lorsque la spécification de valeur correspondante ou sa valeur typée est absente ; §8.6.9.4 définit la valeur par défaut 0 de `LiteralInteger.value` ; §8.6.14.4 définit la valeur par défaut 0 de `LiteralUnlimitedNatural.value` ; §8.6.10 définit `LiteralNull`.

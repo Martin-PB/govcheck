@@ -9,7 +9,7 @@
 | Security assurance cases and metamodels | R-04, R-33–R-34 |
 | PEAK decision model | R-74 |
 | Continuous monitoring and runtime assurance | R-70, R-72, R-75–R-76 |
-| Assurance 2.0, SACM evolution and implementation audits | R-71, R-73, R-128, R-197 |
+| Assurance 2.0, SACM evolution and implementation audits | R-71, R-73, R-128, R-197–R-199 |
 | Assurance regimes and goal-oriented requirements | R-35–R-36, R-44, R-92 |
 | Model checking and program-verification alternatives | R-05, R-20, R-37–R-43, R-89–R-91 |
 | Evidence provenance and software supply chain | R-06–R-08 |
@@ -78,7 +78,7 @@
 - **Security assurance cases and metamodels:** R-33–R-34.
 - **PEAK decision model:** R-74.
 - **Continuous monitoring and runtime assurance:** R-70, R-72, R-75–R-76.
-- **Assurance 2.0 and SACM evolution:** R-71, R-73.
+- **Assurance 2.0 and SACM evolution:** R-71, R-73, R-128, R-197–R-199.
 - **Domain semantics, product quality and open-source compliance (candidate sources):** R-94–R-100, R-102–R-103.
 - **Agent instructions and spec-driven workflows:** R-104.
 - **Policy-as-code, continuous assurance and MCP governance research:** R-105.
@@ -1227,15 +1227,13 @@
 
 <a id="r-128"></a>
 ### R-128 — Assurance Forge: independent SACM 2.4 Beta 1 implementation-impact audit (2026-10-02; repository revision 2026-11-03)
-- **Cited by:** [SACM 2.4 Beta 1 interoperability-risk report](research/sacm24-beta1-interoperability-risk.md), [SACM 2.4 semantic mapping slice](research/sacm24-claim-inference-mapping.md), [integrated metamodel-coherence execution record](research/metamodel-coherence-prototype-execution.md), [metamodel semantic-coverage audit](research/metamodel-semantic-coverage-audit.md), [SACM source-native metamodel ingestion](research/sacm-native-metamodel-ingestion.md), [SACM XMI structural inventory](research/sacm-xmi-structural-inventory.md), [Work portfolio event journal](work-portfolio/events.md), [Work-item register](work-portfolio/work-items.md)
+- **Cited by:** [SACM 2.4 Beta 1 interoperability-risk report](research/sacm24-beta1-interoperability-risk.md), [SACM 2.4 semantic mapping slice](research/sacm24-claim-inference-mapping.md), [integrated metamodel-coherence execution record](research/metamodel-coherence-prototype-execution.md), [metamodel semantic-coverage audit](research/metamodel-semantic-coverage-audit.md), [SACM source-native metamodel ingestion](research/sacm-native-metamodel-ingestion.md), [SACM XMI structural inventory](research/sacm-xmi-structural-inventory.md), [Work portfolio event journal](work-portfolio/events.md), [Work-item register](work-portfolio/work-items.md), [SACM source-view alignment](research/sacm24-source-view-alignment.md)
 - **Primary source:** [Pinned implementation-impact audit](https://github.com/lasrod/assurance-forge/blob/0f5187099be1c28fc725cb0f381afc695a135c89/docs/sacm/sacm-2.4-beta1-impact.md) · [pinned official-artifact fetch script and SHA-256 checks](https://github.com/lasrod/assurance-forge/blob/0f5187099be1c28fc725cb0f381afc695a135c89/scripts/fetch-sacm24-beta1-references.sh).
 - **Relevant concepts:** reported absence of a stable native 2.4 instance interchange contract; text/XML contradictions in identity fields, assertion declaration literals, multiplicities, Claim value type and inheritance; implementation cost and versioning implications.
 - **Use in GovCheck:** independent engineering cross-check that the SACM 2.4 Beta 1 text and machine-readable metamodel must be treated as separate source views, not silently normalized into one model.
 - **Limit:** this is a third-party implementation audit, not an OMG statement or normative authority. Its findings must be checked against pinned OMG artifacts; it does not establish that all SACM 2.4 implementations share the same limitations.
 
-<a id="r-142"></a>
-### R-142 — ConE: Concurrent Edit Detection Tool
-- **Cited by:** [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
+Cited by:** [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
 - **Primary source:** [ACM/IEEE paper, DOI 10.1145/3478019](https://doi.org/10.1145/3478019)
 - **Relevant concepts:** detecting concurrently edited files across pull requests; empirical relationship between overlap and bug risk.
 - **Use in GovCheck:** motivates representing overlapping work scopes as a signal for impact analysis and targeted review.
@@ -1348,8 +1346,27 @@
 
 <a id="r-197"></a>
 ### R-197 — OMG SACM 2.4 Beta 1 normative machine-readable metamodel XML
-- **Cited by:** [SACM source-native metamodel ingestion](research/sacm-native-metamodel-ingestion.md), [SACM XMI structural inventory](research/sacm-xmi-structural-inventory.md), [Work portfolio event journal](work-portfolio/events.md)
+- **Cited by:** [SACM source-native metamodel ingestion](research/sacm-native-metamodel-ingestion.md), [SACM XMI structural inventory](research/sacm-xmi-structural-inventory.md), [Work portfolio event journal](work-portfolio/events.md), [SACM source-view alignment](research/sacm24-source-view-alignment.md)
 - **Implementation artifacts:** [XMI inventory generator](../scripts/parse-sacm-xmi.py) · [committed inventory summary](../formal/sources/sacm-2.4-beta1/metamodel-inventory-summary.json).\n- **Primary source:** [OMG SACM specification catalogue](https://www.omg.org/spec/SACM) · [normative machine-readable metamodel XML](https://www.omg.org/spec/SACM/20260504/SACM2.4_Metamodel.xml) · OMG file ID `ptc/26-05-28`.
 - **Pinned identity:** SACM 2.4 Beta 1; source path dated 2026-05-04; native format XML; SHA-256 comparison value `0581dfa0b9dfaf17ff0f6c63b74f8e7a8396bea03f315e1334e94f23db110830`, as reported by R-128 and verified by GovCheck workflow run [43444619765](https://github.com/Martin-PB/govcheck/actions/runs/43444619765) against 524,243 downloaded source bytes.
 - **Relevant concepts:** normative machine-readable metamodel source, distinct from the normative PDF prose and informative UML Profile XMI.
 - **Limit:** SACM 2.4 Beta 1 is in-process/informational; SACM 2.3 remains formal. This metamodel XML is not a portable assurance-case instance interchange format and its digest does not establish semantic conformance.
+
+
+<a id="r-198"></a>
+### R-198 — OMG SACM 2.4 Beta 1 normative specification PDF
+- **Cited by:** [SACM 2.4 Beta 1 source-view alignment and conflict inventory](research/sacm24-source-view-alignment.md)
+- **Primary source:** [OMG SACM specification catalogue](https://www.omg.org/spec/SACM) · [normative specification PDF](https://www.omg.org/spec/SACM/20260504/SACM2.4.pdf) · OMG file ID `ptc/26-06-34`.
+- **Pinned identity:** SACM 2.4 Beta 1; source path `SACM/20260504/SACM2.4.pdf`; SHA-256 `25f32d1cd4bf32dfa9c92c7c1840e1a113b1e91c0e97252f6551878c39997ff5`, reported by the independent R-128 audit and not yet independently recomputed by GovCheck.
+- **Relevant concepts:** normative PDF text and figures for SACM 2.4 Beta 1, distinct from the normative machine-readable metamodel XML and the informative UML Profile XMI.
+- **Use in GovCheck:** preserve PDF clauses, figures, annexes, exact fragments and contradictions as a separately identified source view. The source-view alignment report records conflicts within the PDF and against the XML without imposing precedence.
+- **Limit:** the PDF is 161 pages. R-128 reports approximately 98% text-extraction coverage and warns that diagram-only labels require visual review. The reported digest is not a GovCheck-controlled verification, and PDF text extraction alone is not a complete semantic inventory.
+
+<a id="r-199"></a>
+### R-199 — OMG SACM 2.4 Beta 1 informative UML Profile XMI
+- **Cited by:** [SACM 2.4 Beta 1 source-view alignment and conflict inventory](research/sacm24-source-view-alignment.md)
+- **Primary source:** [OMG SACM specification catalogue](https://www.omg.org/spec/SACM) · [informative UML Profile XMI](https://www.omg.org/spec/SACM/20260504/SACM2.4_Profile.xmi) · OMG file ID `ptc/26-05-21`.
+- **Pinned identity:** SACM 2.4 Beta 1; source path `SACM/20260504/SACM2.4_Profile.xmi`; SHA-256 `9149a0414628e1b70c1f7c2235f5180c64e7a144601eb2ae78d539681918838b`, reported by the independent R-128 audit and not yet independently recomputed by GovCheck.
+- **Relevant concepts:** informative UML Profile source artifact, distinct from both the normative specification PDF and normative machine-readable metamodel XML.
+- **Use in GovCheck:** retain this profile as a separate source view for later comparison and provenance-aware interpretation; do not silently merge its contents into the normative metamodel.
+- **Limit:** informative status does not confer normative authority. Its reported digest is not independently verified by GovCheck, and the artifact does not establish SACM conformance or semantic equivalence with the normative XML.

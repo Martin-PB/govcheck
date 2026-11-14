@@ -9,6 +9,7 @@ on:
       - "tests/test_sacm_xmi_inventory.py"
       - "formal/sources/sacm-2.4-beta1/metamodel-inventory-summary.json"
       - "formal/lean/GovCheckCoherence/SACM24.lean"
+      - "formal/lean/GovCheckCoherence/UML25Multiplicity.lean"
       - "formal/lean/GovCheckCoherence/Proofs.lean"
       - "formal/lean/GovCheckCoherence/AxiomReport.lean"
       - ".github/workflows/sacm-native-ingestion.yml"

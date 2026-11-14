@@ -1372,7 +1372,7 @@
 ### R-198 — OMG SACM 2.4 Beta 1 normative specification PDF
 - **Cited by:** [SACM source-view alignment report](research/sacm24-source-view-alignment.md)
 - **Primary source:** [OMG SACM specification catalogue](https://www.omg.org/spec/SACM) · [SACM 2.4 Beta 1 normative PDF](https://www.omg.org/spec/SACM/2.4/Beta1/PDF) · OMG file ID `ptc/26-06-34`.
-- **Pinned identity:** SACM 2.4 Beta 1; source path dated 2026-05-04; 161 pages; SHA-256 `25f32d1cd4bf32dfa9c92c7c1840e1a113b1e91c0e97252f6551878c39997ff5`, reported by the independent R-128 pinned fetch script and independently verified by GovCheck workflow run [43498142371](https://github.com/Martin-PB/govcheck/actions/runs/43498142371) against 9,019,601 downloaded bytes; source PDF is retained in artifact [14071999627](https://github.com/Martin-PB/govcheck/actions/runs/43498142371/artifacts/14071999627).
+- **Pinned identity:** SACM 2.4 Beta 1; source path dated 2026-05-04; 161 pages; SHA-256 `25f32d1cd4bf32dfa9c92c7c1840e1a113b1e91c0e97252f6551878c39997ff5`, reported by the independent R-128 pinned fetch script and independently verified by GovCheck workflow run [43586559738](https://github.com/Martin-PB/govcheck/actions/runs/43586559738) against 9,019,601 downloaded bytes; source PDF is retained in artifact [14110697846](https://github.com/Martin-PB/govcheck/actions/runs/43586559738/artifacts/14110697846).
 - **Relevant concepts:** normative specification prose, figures, clauses and annexes; source-fragment provenance for SACM 2.4 Beta 1 claims.
 - **Limit:** the PDF itself contains conflicting fragments; PDF text extraction does not capture all diagram-only labels. No fragment should be treated as a canonical PDF-wide statement without explicit scope.
 

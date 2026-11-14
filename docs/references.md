@@ -20,6 +20,7 @@
 | Governance metadata and catalogues | R-17 |
 | Agent workflow systems assessed as fixtures | R-18–R-19 |
 | Version-control semantics | R-22 |
+| UML/XMI metamodel and value-specification semantics | R-200 |
 | Alternative VCS, forges and CI platforms (Pijul CLI, GitLab, Woodpecker, SourceHut, Fossil) | R-109–R-113 |
 | CRDTs, real-time collaboration and network transport | R-45–R-50, R-66, R-87 |
 | Knowledge representation and interoperability | R-51–R-61, R-83–R-86 |
@@ -87,6 +88,7 @@
 - **Open-source licensing and attribution:** R-108.
 - **Repository intent and lifecycle/requirements engineering:** R-114–R-118, R-121–R-122.
 - **System modeling and assurance-case metamodels:** R-119–R-120.
+- **UML/XMI metamodel semantics and multiplicity defaults:** R-200.
 - **Probabilistic assurance, fuzzy logic and state-transition models:** R-193.
 ## Standards, government guidance and industry specifications
 
@@ -1371,3 +1373,13 @@
 - **Pinned identity:** SACM 2.4 Beta 1; source path dated 2026-05-04; SHA-256 `9149a0414628e1b70c1f7c2235f5180c64e7a144601eb2ae78d539681918838b`, reported by the independent R-128 pinned fetch script. GovCheck has not yet independently downloaded and recomputed this XMI digest.
 - **Relevant concepts:** informative UML profile artifact, kept distinct from the normative metamodel XML (R-197) and normative specification PDF (R-198).
 - **Limit:** informative profile XMI is not the normative SACM metamodel XML and does not establish an instance interchange contract or semantic conformance.
+
+
+<a id="r-200"></a>
+### R-200 — OMG Unified Modeling Language (UML) 2.5 specification and machine-readable metamodel
+- **Cited by:** [SACM XMI structural inventory](research/sacm-xmi-structural-inventory.md), [Work portfolio event journal](work-portfolio/events.md), [Work-item register](work-portfolio/work-items.md).
+- **Primary source:** [OMG UML 2.5 normative PDF](https://www.omg.org/spec/UML/2.5/PDF) · [OMG UML machine-readable catalogue](https://www.omg.org/spec/UML/machine-readable) · UML 2.5 machine-readable file set ID `ptc/13-08-17`.
+- **Pinned identity:** UML 2.5; normative document formal/2015-03-01; the SACM XMI source uses the `http://www.omg.org/spec/UML/20131001` namespace, which is the UML 2.5 namespace (not the later UML 2.5.1 `20161101` namespace).
+- **Relevant clauses:** §7.8.8.7 defines `MultiplicityElement.lowerBound()` and `upperBound()`, including the fallback value 1 when the corresponding value specification or typed value is absent; §8.6.9.4 defines `LiteralInteger.value` default 0; §8.6.14.4 defines `LiteralUnlimitedNatural.value` default 0; §8.6.10 defines `LiteralNull`.
+- **Use in GovCheck:** supplies the exact UML 2.5 rules used to interpret the omitted literal values in the pinned SACM 2.4 Beta 1 XMI. The parser records both the raw value specification and the effective multiplicity, including the rule responsible for a default.
+- **Limit:** only the stated literal/default cases are implemented. Arbitrary `ValueSpecification` expressions, OCL evaluation, full UML/MOF well-formedness and parser refinement remain outside this increment.

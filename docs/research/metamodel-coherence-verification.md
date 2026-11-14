@@ -44,7 +44,7 @@ Limitations:
 
 Use reasoners for source ontologies and OWL mapping profiles, not as universal verifiers for every model or for the correctness of mapping intent.
 
-Sources: [OWL 2 overview](https://www.w3.org/TR/owl-overview/), [OWL 2 Direct Semantics](https://www.w3.org/TR/owl2-direct-semantics/), [OWL 2 conformance](https://www.w3.org/TR/owl2-conformance/).
+Sources: [OWL 2 overview](https://www.w3.org/TR/owl-overview/), [OWL 2 Direct Semantics](../references.md#r-203), [OWL 2 conformance](../references.md#r-203).
 
 ### 3.2 SHACL and schema/contract validation: executable structural obligations
 

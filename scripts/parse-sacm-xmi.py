@@ -427,8 +427,8 @@ def build_summary(inventory: dict[str, Any]) -> dict[str, Any]:
         "machineReadableFileId": "ptc/13-08-17",
         "rules": [
             "§7.8.8.7: absent lowerValue/upperValue falls back to 1",
-            "§8.2.2: LiteralInteger.value defaults to 0",
-            "§8.2.2: LiteralUnlimitedNatural.value defaults to 0",
+            "§8.6.9.4: LiteralInteger.value defaults to 0",
+            "§8.6.14.4: LiteralUnlimitedNatural.value defaults to 0",
             "unsupported or non-literal ValueSpecifications remain unresolved",
         ],
         "boundStatusCounts": {side: dict(sorted(counts.items())) for side, counts in bound_status.items()},

@@ -81,8 +81,8 @@ def interpret_multiplicity_bound(raw: dict[str, Any] | None, side: str) -> dict[
 
     UML 2.5 §7.8.8.7 defines the lowerBound()/upperBound() fallback as 1
     when the corresponding ValueSpecification is absent or has no value.
-    UML 2.5 §8.2.2 gives LiteralInteger.value and
-    LiteralUnlimitedNatural.value a metamodel default of 0.
+    UML 2.5 §8.6.9.4 gives LiteralInteger.value and
+    §8.6.14.4 gives LiteralUnlimitedNatural.value a metamodel default of 0.
     Unsupported expressions remain unresolved; no evaluator is implied.
     """
     if side not in {"lower", "upper"}:
@@ -106,9 +106,9 @@ def interpret_multiplicity_bound(raw: dict[str, Any] | None, side: str) -> dict[
         return {"value": "*", "kind": "unlimited", "status": "explicit-unlimited", "rule": "explicit UML 2.5 UnlimitedNatural literal", "sourceElementId": source_id}
     if value is None:
         default_rule = (
-            "UML 2.5 §8.2.2 LiteralInteger.value default = 0"
+            "UML 2.5 §8.6.9.4 LiteralInteger.value default = 0"
             if side == "lower"
-            else "UML 2.5 §8.2.2 LiteralUnlimitedNatural.value default = 0"
+            else "UML 2.5 §8.6.14.4 LiteralUnlimitedNatural.value default = 0"
         )
         return {"value": 0, "kind": "finite", "status": "literal-default", "rule": default_rule, "sourceElementId": source_id}
     try:

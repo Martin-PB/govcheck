@@ -570,7 +570,7 @@
           "printedPage": 64,
           "sectionStatus": "informative",
           "claims": [
-            "Assertion.asssertionDeclarationRule: Rule [0..*]",
+            "Assertion.assertionDeclarationRule: Rule [0..*]",
             "ByRuleDeclarationRequiresRule OCL refers to assertionRule",
             "AssertionDeclarationKind adds byRule"
           ]

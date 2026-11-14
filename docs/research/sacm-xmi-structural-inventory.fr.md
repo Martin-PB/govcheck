@@ -1,7 +1,7 @@
 # SACM 2.4 Beta 1 — inventaire structurel XMI dérivé de la source
 
 **Statut :** inventaire structurel généré pour une révision exacte du XML de métamodèle OMG, épinglée par digest ; aucune correspondance sémantique vers GovCheck n'est inférée.  
-**Source :** [R-197 — XML normatif du métamodèle OMG SACM 2.4 Beta 1](../references.fr.md#r-197).  
+**Sources :** [R-197 — XML normatif du métamodèle OMG SACM 2.4 Beta 1](../references.fr.md#r-197) · [R-200 — sémantique OMG UML 2.5](../references.fr.md#r-200).  
 **Risque indépendant de divergence entre vues :** [R-128](../references.fr.md#r-128).  
 **Générateur :** [`scripts/parse-sacm-xmi.py`](../../scripts/parse-sacm-xmi.py).  
 **Synthèse révisable :** [`formal/sources/sacm-2.4-beta1/metamodel-inventory-summary.json`](../../formal/sources/sacm-2.4-beta1/metamodel-inventory-summary.json).  
@@ -17,7 +17,7 @@ Le parseur ne consomme que le payload source capturé dont le SHA-256 correspond
 - longueur : `524243` octets ;
 - SHA-256 : `0581dfa0b9dfaf17ff0f6c63b74f8e7a8396bea03f315e1334e94f23db110830`.
 
-Le document est un XML dont la racine et le vocabulaire du métamodèle utilisent les espaces de noms OMG XMI 20131001 et UML 20131001. Les métadonnées d'export indiquent MagicDraw Clean XMI Exporter 2024x v6. Cela décrit la représentation effective de la source ; cela **ne signifie pas** que SACM 2.4 définit un contrat portable d'échange d'instances XMI.
+Le document est un XML dont la racine et le vocabulaire du métamodèle utilisent les espaces de noms OMG XMI 20131001 et UML 20131001. L'espace de noms UML est épinglé à UML 2.5 (R-200), et non à UML 2.5.1. Les métadonnées d'export indiquent MagicDraw Clean XMI Exporter 2024x v6. Cela décrit la représentation effective de la source ; cela **ne signifie pas** que SACM 2.4 définit un contrat portable d'échange d'instances XMI.
 
 Le `source.xml` original reste l'autorité et est conservé octet pour octet par le workflow de capture. L'inventaire généré est une vue dérivée, reproductible à partir de ces octets exacts et de la révision du parseur.
 
@@ -54,9 +54,9 @@ L'inventaire enregistre 1 434 arêtes de référence explicites :
 - 63 références sont des références externes `href` et restent volontairement non résolues ;
 - aucune référence interne non résolue n'a été observée parmi les attributs de référence reconnus.
 
-Pour chaque élément identifié, la sortie conserve le `xmi:id` stable, le tag XML, le `xmi:type`, le nom, tous les attributs, le propriétaire identifié le plus proche, le chemin de contenance, le texte direct et la structure ordonnée des enfants. Des index séparés recensent l'appartenance aux packages/classificateurs, les extrémités d'associations, les types et multiplicités de propriétés, les cibles de généralisations, les cibles/spécifications de contraintes et les arêtes de référence. Les nœuds sans identifiant (dont la documentation de l'exporteur, les enfants des expressions de contraintes, les données imbriquées des commentaires et les autres nœuds XML non identifiés) sont conservés en ligne ; les déclarations d'espaces de noms sont enregistrées.
+Pour chaque élément identifié, la sortie conserve le `xmi:id` stable, le tag XML, le `xmi:type`, le nom, tous les attributs, le propriétaire identifié le plus proche, le chemin de contenance, le texte direct et la structure ordonnée des enfants. Des index séparés recensent l'appartenance aux packages/classificateurs, les extrémités d'associations, les types et ValueSpecifications brutes des multiplicités de propriétés, les cibles de généralisations, les cibles/spécifications de contraintes et les arêtes de référence. Les nœuds sans identifiant (dont la documentation de l'exporteur, les enfants des expressions de contraintes, les données imbriquées des commentaires et les autres nœuds XML non identifiés) sont conservés en ligne ; les déclarations d'espaces de noms sont enregistrées.
 
-Cette comptabilisation est un résultat du parseur pour le fichier épinglé ; elle ne prouve pas que le XML constitue un modèle UML sémantiquement complet ou bien formé.
+Cette comptabilisation est un résultat du parseur pour le fichier épinglé ; elle ne prouve pas que le XML constitue un modèle UML sémantiquement complet ou bien formé. L'inventaire v2 ajoute une projection explicite des multiplicités effectives selon les règles UML 2.5 épinglées décrites ci-dessous.
 
 ## 4. Frontière du parseur et comportement défensif
 
@@ -69,15 +69,49 @@ Le parseur utilise uniquement la bibliothèque standard Python `xml.etree.Elemen
 - conserve les valeurs `href` externes sans télécharger ni interpréter leurs cibles ;
 - conserve génériquement les constructions identifiées inconnues au lieu de les supprimer ou de les convertir.
 
-Il n'exécute pas OCL ni d'autres langages de contraintes, ne résout pas le métamodèle UML externe, ne valide pas la bonne formation UML/MOF, n'interprète pas les extensions fournisseur, ne déduit pas la sémantique d'héritage au-delà de l'enregistrement des références `general` et n'affirme aucune équivalence SACM–GovCheck. Le XML brut reste la source de vérité lorsque la représentation dérivée est incomplète ou ambiguë.
+Il n'exécute pas OCL ni d'autres langages de contraintes, ne résout pas le métamodèle UML externe, ne valide pas la bonne formation UML/MOF, n'interprète pas les extensions fournisseur, ne déduit pas la sémantique d'héritage au-delà de l'enregistrement des références `general` et n'affirme aucune équivalence SACM–GovCheck. Les seules sémantiques UML appliquées sont les règles étroites de multiplicité décrites au §5 ; les expressions arbitraires et ValueSpecifications non prises en charge restent non résolues. Le XML brut reste la source de vérité lorsque la représentation dérivée est incomplète ou ambiguë.
 
-## 5. État des vérifications
+## 5. Sémantique de multiplicité UML 2.5 épinglée par version
 
-La suite contient sept tests synthétiques couvrant l'indexation des constructions, les multiplicités de propriétés, les références d'associations/généralisations/contraintes, la documentation d'exporteur sans identifiant, les identifiants dupliqués, les références non résolues, le digest incorrect, le rejet des DTD/entités, les XML mal formés et la dérivation de la synthèse. Le workflow a réussi sur la révision de code `8c0288d5992929089e96596c3f31a8f20ea535f4` dans l'[exécution 43451737489](https://github.com/Martin-PB/govcheck/actions/runs/43451737489) : les 12 tests (cinq tests d'ingestion et sept tests d'inventaire), le téléchargement officiel et la vérification du digest, la génération de l'inventaire complet, la comparaison structurelle du JSON avec la synthèse versionnée et la publication de l'artefact ont réussi. La branche actuelle de la PR conserve des blobs identiques pour le parseur, les tests, la synthèse et le workflow. L'inventaire complet est publié dans [l'artefact 14051746241](https://github.com/Martin-PB/govcheck/actions/runs/43451737489/artifacts/14051746241) avec la source brute et le manifeste de capture.
+L'espace de noms source http://www.omg.org/spec/UML/20131001 identifie la révision UML 2.5 sélectionnée dans R-200. L'inventaire v2 applique uniquement les règles normatives suivantes :
 
-Ces tests établissent le comportement de cette implémentation Python sur les fixtures testées et lors de l'exécution sur la source épinglée. Ils ne constituent **pas** une preuve formelle que le parseur implémente correctement l'intégralité des standards XMI/UML ni que sa sortie est un modèle UML préservant la sémantique. Aucun théorème Lean ne relie actuellement la sortie du parseur Python à l'infoset XML source.
+- UML 2.5 §7.8.8.7 : MultiplicityElement.lowerBound() et upperBound() retournent 1 lorsque la ValueSpecification correspondante est absente ou que sa valeur typée est nulle.
+- UML 2.5 §8.6.9.4 : une valeur sérialisée omise pour LiteralInteger.value utilise la valeur par défaut du métamodèle, 0.
+- UML 2.5 §8.6.14.4 : une valeur sérialisée omise pour LiteralUnlimitedNatural.value utilise la valeur par défaut du métamodèle, 0.
+- Le littéral supérieur explicite * reste illimité.
+- LiteralNull suit le repli du §7.8.8.7 ; les ValueSpecifications non littérales ou non prises en charge restent non résolues, sans supposition ni évaluation.
 
-## 6. Non-revendications explicites et travaux suivants
+L'inventaire complet conserve chaque élément brut lowerValue/upperValue et ajoute effectiveMultiplicity, avec la valeur résolue, le statut d'interprétation et la règle exacte. La synthèse v2 enregistre les 355 propriétés :
+
+| Borne | Statut d'interprétation | Nombre |
+|---|---|---:|
+| Inférieure | valeur par défaut de LiteralInteger : 0 | 303 |
+| Inférieure | repli d'absence de borne : 1 | 52 |
+| Supérieure | illimitée explicite * | 192 |
+| Supérieure | valeur par défaut de LiteralUnlimitedNatural : 0 | 4 |
+| Supérieure | repli d'absence de borne : 1 | 159 |
+
+Les valeurs dérivées sélectionnées comprennent :
+
+| Propriété XML | Type | Multiplicité effective |
+|---|---|---:|
+| Claim.value | ExpressionLangString | 0..1 |
+| Claim.subject | SACMElement | 0..* |
+| Claim.whole | SACMModel | 0..* |
+| SACMElement.abstraction | SACMElement | 0..* |
+| AssertedRelationship.isCounter | UML externe Boolean | 0..1 |
+| AssertedEvidence.evidence | ArtifactReference | 1..* |
+| Assertion.assertionDeclarationRule | Rule | 0..* |
+
+Le module Lean UML25Multiplicity.lean prouve les règles de valeur par défaut et de repli prises en charge. SACM24.lean enregistre sept formes de ValueSpecifications XML transcrites manuellement et prouve que l'interpréteur UML 2.5 produit les intervalles indiqués. Ces théorèmes prouvent l'interprétation des formes transcrites ; ils ne prouvent **pas** que le parseur Python a correctement extrait ces formes du XML. Les contrôles du workflow sur le véritable fichier source restent des éléments de preuve, pas une preuve de raffinement du parseur.
+
+## 6. État des vérifications
+
+La suite synthétique de l'inventaire contient désormais 13 tests couvrant l'indexation structurelle, la conservation de la source, les protections digest/DTD, la dérivation de la synthèse, les valeurs littérales UML explicites et omises, les replis des bornes absentes, LiteralNull et les ValueSpecifications non prises en charge. Le workflow source exécute en outre cinq tests d'ingestion sur les entrées XML/PDF officielles exactes. Une nouvelle exécution du workflow sur la tête finale de PR est nécessaire. Les anciens identifiants d'exécution de l'incrément structurel ne vérifient ni ce parseur v2, ni la synthèse mise à jour, ni le nouveau module Lean.
+
+Les tests établissent le comportement de cette implémentation Python sur les fixtures testées et lors de l'exécution sur la source épinglée. Ils ne constituent **pas** une preuve formelle que le parseur implémente correctement l'intégralité des standards XMI/UML ni que sa sortie est un modèle UML préservant la sémantique. Lean prouve les règles étroites de valeur par défaut UML 2.5 et l'interprétation des formes source transcrites manuellement ; aucun théorème Lean ne relie actuellement la sortie du parseur Python à l'infoset XML source.
+
+## 7. Non-revendications explicites et travaux suivants
 
 Cet incrément ne :
 
@@ -88,4 +122,4 @@ Cet incrément ne :
 - ne génère aucune correspondance sémantique GovCheck opérationnelle ;
 - n'adopte pas SACM 2.4 Beta 1 et n'en fait pas la base formelle.
 
-La suite consiste à comparer l'inventaire structurel dérivé de la source à la vue PDF exacte et à la liste des conflits R-128, à classer chaque divergence par construction et portée affectées, puis seulement à définir des obligations de correspondance typées et spécifiques à chaque vue source. Les déclarations Lean Claim/Assertion/inférence existantes restent écrites manuellement ; cet inventaire ne les valide pas. Toute correspondance sémantique utilisée comme prémisse établie dans GovCheck doit être accompagnée d'une preuve de la relation exacte revendiquée.
+La suite consiste à étendre la projection structurelle typée dérivée de la source aux généralisations de classificateurs, extrémités d'associations, redéfinitions/sous-ensembles de propriétés et corps de contraintes, puis à définir et prouver uniquement les relations exactes source-vers-GovCheck qui seront utilisées comme prémisses établies.

@@ -9,7 +9,7 @@
 | Dossiers d'assurance de sécurité et métamodèles | R-04, R-33–R-34 |
 | Modèle de décision PEAK | R-74 |
 | Surveillance continue et assurance à l'exécution | R-70, R-72, R-75–R-76 |
-| Assurance 2.0, évolution de SACM et audits d'implémentation | R-71, R-73, R-128, R-197 |
+| Assurance 2.0, évolution de SACM et audits d'implémentation | R-71, R-73, R-128, R-197–R-199 |
 | Régimes d'assurance et exigences orientées objectifs | R-35–R-36, R-44, R-92 |
 | Model checking et vérification de programmes candidates | R-05, R-20, R-37–R-43, R-89–R-91 |
 | Provenance des preuves et chaîne d'approvisionnement logicielle | R-06–R-08 |
@@ -1228,14 +1228,13 @@
 
 <a id="r-128"></a>
 ### R-128 — Assurance Forge : audit indépendant de l'impact d'implémentation de SACM 2.4 Beta 1 (2026-10-02 ; révision du dépôt 2026-11-03)
-- **Cité par :** [Rapport sur les risques d'interopérabilité SACM 2.4 Beta 1](research/sacm24-beta1-interoperability-risk.fr.md), [tranche de mapping sémantique SACM 2.4](research/sacm24-claim-inference-mapping.fr.md), [compte rendu intégré de cohérence du métamodèle](research/metamodel-coherence-prototype-execution.fr.md), [audit de couverture sémantique du métamodèle](research/metamodel-semantic-coverage-audit.fr.md), [ingestion source-native du métamodèle SACM](research/sacm-native-metamodel-ingestion.fr.md), [inventaire structurel XMI SACM](research/sacm-xmi-structural-inventory.fr.md), [journal des événements du portefeuille](work-portfolio/events.fr.md), [registre des éléments de travail](work-portfolio/work-items.fr.md)
+- **Cité par :** [Rapport sur les risques d'interopérabilité SACM 2.4 Beta 1](research/sacm24-beta1-interoperability-risk.fr.md), [tranche de mapping sémantique SACM 2.4](research/sacm24-claim-inference-mapping.fr.md), [compte rendu intégré de cohérence du métamodèle](research/metamodel-coherence-prototype-execution.fr.md), [audit de couverture sémantique du métamodèle](research/metamodel-semantic-coverage-audit.fr.md), [ingestion source-native du métamodèle SACM](research/sacm-native-metamodel-ingestion.fr.md), [inventaire structurel XMI SACM](research/sacm-xmi-structural-inventory.fr.md), [journal des événements du portefeuille](work-portfolio/events.fr.md), [registre des éléments de travail](work-portfolio/work-items.fr.md), [Alignement des vues source SACM](research/sacm24-source-view-alignment.fr.md)
 - **Sources primaires :** [Audit d'impact épinglé](https://github.com/lasrod/assurance-forge/blob/0f5187099be1c28fc725cb0f381afc695a135c89/docs/sacm/sacm-2.4-beta1-impact.md) · [script épinglé de récupération des artefacts officiels et contrôles SHA-256](https://github.com/lasrod/assurance-forge/blob/0f5187099be1c28fc725cb0f381afc695a135c89/scripts/fetch-sacm24-beta1-references.sh).
 - **Concepts pertinents :** absence rapportée d'un contrat stable d'échange natif d'instances 2.4 ; contradictions texte/XML concernant les champs d'identité, littéraux de déclaration, multiplicités, type de valeur Claim et héritage ; conséquences d'implémentation et de versionnement.
 - **Usage dans GovCheck :** contre-vérification d'ingénierie indépendante indiquant que le texte et le métamodèle lisible par machine de SACM 2.4 Beta 1 doivent rester deux vues sources distinctes, sans normalisation silencieuse en un modèle unique.
 - **Limite :** audit d'implémentation tiers, ni déclaration de l'OMG ni autorité normative. Ses constats doivent être vérifiés contre les artefacts OMG épinglés ; il ne prouve pas que toutes les implémentations SACM 2.4 ont les mêmes limites.
 
-<a id="r-142"></a>
-### R-142 — ConE : outil de détection des modifications concurrentes
+rrentes
 - **Cité par :** [Étude sur la gouvernance des changements concurrents d'agents](research/concurrent-agent-change-governance.fr.md)
 - **Source primaire :** [Article ACM/IEEE, DOI 10.1145/3478019](https://doi.org/10.1145/3478019)
 - **Concepts pertinents :** détection de fichiers modifiés simultanément dans plusieurs pull requests ; relation empirique entre chevauchement et risque de bogue.
@@ -1349,8 +1348,27 @@
 
 <a id="r-197"></a>
 ### R-197 — XML normatif du métamodèle lisible par machine OMG SACM 2.4 Beta 1
-- **Cité par :** [Ingestion source-native du métamodèle SACM](research/sacm-native-metamodel-ingestion.fr.md), [Inventaire structurel XMI SACM](research/sacm-xmi-structural-inventory.fr.md), [Journal des événements du portefeuille](work-portfolio/events.fr.md)
+- **Cité par :** [Ingestion source-native du métamodèle SACM](research/sacm-native-metamodel-ingestion.fr.md), [Inventaire structurel XMI SACM](research/sacm-xmi-structural-inventory.fr.md), [Journal des événements du portefeuille](work-portfolio/events.fr.md), [Alignement des vues source SACM](research/sacm24-source-view-alignment.fr.md)
 - **Artefacts d'implémentation :** [générateur d'inventaire XMI](../scripts/parse-sacm-xmi.py) · [synthèse d'inventaire versionnée](../formal/sources/sacm-2.4-beta1/metamodel-inventory-summary.json).\n- **Source primaire :** [Catalogue de spécifications SACM de l'OMG](https://www.omg.org/spec/SACM) · [XML normatif du métamodèle lisible par machine](https://www.omg.org/spec/SACM/20260504/SACM2.4_Metamodel.xml) · identifiant de fichier OMG `ptc/26-05-28`.
 - **Identité épinglée :** SACM 2.4 Beta 1 ; chemin source daté du 04/05/2026 ; format natif XML ; valeur SHA-256 de comparaison `0581dfa0b9dfaf17ff0f6c63b74f8e7a8396bea03f315e1334e94f23db110830`, rapportée par R-128 et vérifiée par l'exécution GovCheck [43444619765](https://github.com/Martin-PB/govcheck/actions/runs/43444619765) sur 524 243 octets source téléchargés.
 - **Concepts pertinents :** source normative du métamodèle lisible par machine, distincte du texte PDF normatif et du XMI informatif du profil UML.
 - **Limite :** SACM 2.4 Beta 1 est en cours de traitement et informative ; SACM 2.3 reste formelle. Ce XML de métamodèle n'est pas un format portable d'échange d'instances de dossiers d'assurance et son digest n'établit pas la conformité sémantique.
+
+
+<a id="r-198"></a>
+### R-198 — PDF normatif de spécification OMG SACM 2.4 Beta 1
+- **Cité par :** [Alignement des vues source SACM 2.4 Beta 1 et inventaire des conflits](research/sacm24-source-view-alignment.fr.md)
+- **Source primaire :** [Catalogue de spécifications SACM de l'OMG](https://www.omg.org/spec/SACM) · [PDF normatif de spécification](https://www.omg.org/spec/SACM/20260504/SACM2.4.pdf) · identifiant de fichier OMG `ptc/26-06-34`.
+- **Identité épinglée :** SACM 2.4 Beta 1 ; chemin source `SACM/20260504/SACM2.4.pdf` ; SHA-256 `25f32d1cd4bf32dfa9c92c7c1840e1a113b1e91c0e97252f6551878c39997ff5`, rapporté par l'audit indépendant R-128 et pas encore recalculé indépendamment par GovCheck.
+- **Concepts pertinents :** texte et figures du PDF normatif SACM 2.4 Beta 1, distincts du XML normatif du métamodèle lisible par machine et du XMI informatif du profil UML.
+- **Utilité pour GovCheck :** préserver clauses, figures, annexes, fragments exacts et contradictions du PDF comme vue source identifiée séparément. Le rapport d'alignement des vues source consigne les conflits internes au PDF et ceux avec le XML sans imposer de priorité.
+- **Limite :** le PDF compte 161 pages. R-128 rapporte une couverture d'extraction textuelle d'environ 98 % et avertit que les libellés uniquement présents dans les diagrammes nécessitent une revue visuelle. Le digest rapporté n'est pas une vérification contrôlée par GovCheck et l'extraction de texte PDF ne constitue pas un inventaire sémantique complet.
+
+<a id="r-199"></a>
+### R-199 — XMI informatif du profil UML OMG SACM 2.4 Beta 1
+- **Cité par :** [Alignement des vues source SACM 2.4 Beta 1 et inventaire des conflits](research/sacm24-source-view-alignment.fr.md)
+- **Source primaire :** [Catalogue de spécifications SACM de l'OMG](https://www.omg.org/spec/SACM) · [XMI informatif du profil UML](https://www.omg.org/spec/SACM/20260504/SACM2.4_Profile.xmi) · identifiant de fichier OMG `ptc/26-05-21`.
+- **Identité épinglée :** SACM 2.4 Beta 1 ; chemin source `SACM/20260504/SACM2.4_Profile.xmi` ; SHA-256 `9149a0414628e1b70c1f7c2235f5180c64e7a144601eb2ae78d539681918838b`, rapporté par l'audit indépendant R-128 et pas encore recalculé indépendamment par GovCheck.
+- **Concepts pertinents :** artefact source de profil UML informatif, distinct du PDF normatif de spécification et du XML normatif du métamodèle lisible par machine.
+- **Utilité pour GovCheck :** conserver ce profil comme vue source séparée pour une comparaison et une interprétation ultérieures préservant la provenance ; ne pas fusionner silencieusement son contenu dans le métamodèle normatif.
+- **Limite :** son statut informatif ne lui confère pas d'autorité normative. Son digest rapporté n'est pas vérifié indépendamment par GovCheck et l'artefact n'établit ni conformité SACM ni équivalence sémantique avec le XML normatif.

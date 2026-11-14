@@ -20,7 +20,15 @@
 | Governance metadata and catalogues | R-17 |
 | Agent workflow systems assessed as fixtures | R-18–R-19 |
 | Version-control semantics | R-22 |
-| UML/XMI metamodel and value-specification semantics | R-200 |
+| UML/XMI metamodel and value-specification semantics | R-197, R-200 |
+| OMG issue tracking and source history | R-201 |
+| Agent-native repository memory protocols | R-202 |
+| OWL 2 semantics and conformance | R-203 |
+| Software-engineering ontology networks and metamodels | R-204–R-206 |
+| Assurance argument confidence and probabilistic evidence | R-207–R-209, R-214 |
+| Fuzzy requirements and uncertainty methods | R-210–R-211 |
+| Bayesian software reliability | R-212–R-213 |
+| Model checking and timed-automata semantics | R-215–R-217 |
 | Alternative VCS, forges and CI platforms (Pijul CLI, GitLab, Woodpecker, SourceHut, Fossil) | R-109–R-113 |
 | CRDTs, real-time collaboration and network transport | R-45–R-50, R-66, R-87 |
 | Knowledge representation and interoperability | R-51–R-61, R-83–R-86 |
@@ -61,7 +69,9 @@
 ## How to use these references
 
 - **Normative authority and separation of duties:** R-01, R-02, R-03.
-- **Formal models, proofs and assurance arguments:** R-04, R-05, R-89–R-91.
+- **Formal models, proofs and assurance arguments:** R-04, R-05, R-89–R-91, R-215–R-217.
+- **Ontology semantics and reusable metamodels:** R-203–R-206.
+- **Assurance confidence, reliability and uncertainty research:** R-207–R-214.
 - **Evidence provenance and software supply chain:** R-06, R-07, R-08.
 - **Executable policy and authorization:** R-09, R-10.
 - **Policy-model verification before enforcement:** R-88.

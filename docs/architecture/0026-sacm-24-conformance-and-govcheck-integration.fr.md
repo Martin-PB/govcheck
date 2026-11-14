@@ -9,7 +9,7 @@ GovCheck devrait pouvoir représenter, préserver, valider et exploiter l'intég
 
 Il s'agit d'un objectif plus fort qu'un adaptateur d'import/export avec pertes. La cible est une **capacité d'assurance de GovCheck conforme à SACM** : chaque concept, relation, multiplicité, contrainte, énumération, règle de paquetage et construction de vue/diagramme prise en charge par SACM doit disposer d'une représentation fidèle dans GovCheck. GovCheck doit également pouvoir exprimer ses propres concepts de gouvernance des dépôts et les relier à SACM sans les forcer dans des classes SACM dont le sens serait différent.
 
-SACM 2.4 Beta 1 a été adoptée comme spécification OMG en cours en septembre 2026 ; SACM 2.3 demeure la version formelle à la date du présent document. La bêta constitue donc une cible de conception épinglée, et non l'affirmation que la version finale 2.4 serait déjà formelle. Le PDF normatif et le métamodèle lisible par machine sont publiés depuis le [catalogue de la spécification SACM de l'OMG](https://www.omg.org/spec/SACM). L'historique des changements 2.4 est disponible dans le [suivi des tickets OMG](https://issues.omg.org/issues/spec/SACM?view=CLOSED).
+SACM 2.4 Beta 1 a été adoptée comme spécification OMG en cours en septembre 2026 ; SACM 2.3 demeure la version formelle à la date du présent document. La bêta constitue donc une cible de conception épinglée, et non l'affirmation que la version finale 2.4 serait déjà formelle. Le PDF normatif et le métamodèle lisible par machine sont publiés depuis le [catalogue de la spécification SACM de l'OMG](https://www.omg.org/spec/SACM). L'historique des changements 2.4 est disponible dans le [suivi des tickets OMG](../references.fr.md#r-201).
 
 ## 2. Positionnement architectural dans GovCheck
 
@@ -85,7 +85,7 @@ La bêta 2.4 comprend des constructions et tickets complémentaires concernant :
 
 Les dispositions des tickets OMG identifient certaines de ces constructions comme des éléments complémentaires non normatifs. En particulier, SACM24-105 met à jour la clause de conformité pour inclure le paquetage, les vues/diagrammes et les joins, assessments et arguments avancés non normatifs. GovCheck doit préserver leurs métadonnées de statut et ne doit pas les promouvoir silencieusement en exigences normatives ou en obligations normatives du métamodèle. Lorsque la clause de conformité distingue les éléments normatifs et non normatifs, GovCheck doit implémenter et rapporter ces points de conformité séparément.
 
-La liste des tickets de la bêta fournit une checklist utile pour l'implémentation (les identifiants sont des liens stables dans le [registre des tickets OMG clos](https://issues.omg.org/issues/spec/SACM?view=CLOSED)) :
+La liste des tickets de la bêta fournit une checklist utile pour l'implémentation (les identifiants sont des liens stables dans le [registre des tickets OMG clos](../references.fr.md#r-201)) :
 
 | Sujet de la bêta | Ticket OMG | Conséquence pour la couverture GovCheck |
 |---|---|---|
@@ -213,8 +213,8 @@ Ce document ne sélectionne pas de base graphe, n'impose pas d'outillage UML, n'
 ## 11. Sources primaires
 
 - [Catalogue de la spécification SACM de l'OMG, dont SACM 2.4 Beta 1 et le métamodèle lisible par machine](https://www.omg.org/spec/SACM).
-- [Suivi des tickets SACM 2.4 de l'OMG — tickets clos et dispositions](https://issues.omg.org/issues/spec/SACM?view=CLOSED).
-- [Suivi des tickets SACM 2.4 de l'OMG — tous les tickets](https://issues.omg.org/issues/spec/SACM?view=ALL).
+- [Suivi des tickets SACM 2.4 de l'OMG — tickets clos et dispositions](../references.fr.md#r-201).
+- [Suivi des tickets SACM 2.4 de l'OMG — tous les tickets](../references.fr.md#r-201).
 - [Spécification formelle SACM 2.3 de l'OMG](https://www.omg.org/spec/SACM/2.3).
 
 ## 12. Relations avec les documents GovCheck existants

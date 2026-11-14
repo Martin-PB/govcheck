@@ -79,3 +79,80 @@ L'artefact complet [`sacm-2.4-beta1-source-and-xmi-inventory`](https://github.co
 La livraison reste structurelle : aucune interprétation UML/MOF/OCL, résolution des références externes, preuve de raffinement du parseur, résolution des conflits PDF/XML, correspondance sémantique vers GovCheck, conformité SACM ou adoption normative n'est revendiquée. L'issue #73 reste ouverte.
 
 Détail canonique : [journal anglais WP-EVT-000026](events.md#wp-evt-000026).
+
+
+## Dernier événement — WP-EVT-000027
+
+La PR empilée [#128](https://github.com/Martin-PB/govcheck/pull/128), dépendante de la PR [#127](https://github.com/Martin-PB/govcheck/pull/127), présente le registre bilingue des divergences entre les fragments du PDF normatif et le métamodèle XML normatif. Elle est ouverte, non-draft, fusionnable et non fusionnée.
+
+Le workflow source [43495288103](https://github.com/Martin-PB/govcheck/actions/runs/43495288103) a réussi : 12 tests Python, contrôle du digest XML et comparaison de l'inventaire généré, contrôle du digest du PDF officiel, manifeste des deux vues et publication de l'artefact [14071601644](https://github.com/Martin-PB/govcheck/actions/runs/43495288103/artifacts/14071601644). Le PDF fait 9 019 601 octets, le XML 524 243 octets ; les deux digests correspondent aux valeurs épinglées.
+
+Le build Lean 4.19.0 et l'audit d'axiomes ont réussi dans [l'exécution 43495288333](https://github.com/Martin-PB/govcheck/actions/runs/43495288333), sur le candidat de fusion `2f03f73`. L'audit couvre 43 déclarations sous `GovCheckCoherence.Proofs`, toutes dans la liste autorisée `propext`, `Classical.choice`, `Quot.sound`. Quatre théorèmes wrappers par fragment utilisent `propext` ; les 13 théorèmes `SourceFacts` affichés directement n'utilisent aucun axiome. Aucun axiome non autorisé n'a été signalé. Les contrôles d'intégrité des références [43495288014](https://github.com/Martin-PB/govcheck/actions/runs/43495288014), d'alignement du package [43495288347](https://github.com/Martin-PB/govcheck/actions/runs/43495288347) et de gouvernance des versions [43495287866](https://github.com/Martin-PB/govcheck/actions/runs/43495287866) ont également réussi.
+
+Le registre classe onze groupes de divergences/différences au niveau des fragments. Les preuves Lean établissent les différences entre constantes transcrites ; elles ne certifient pas la fidélité de la transcription. Le contrôle de digest authentifie les octets, pas leur interprétation. Aucune sémantique UML/MOF complète, preuve de raffinement du parseur, correspondance sémantique dérivée, priorité entre sources, conformité SACM 2.4 ni adoption normative n'est revendiquée. L'issue #73 reste ouverte.
+
+Détail canonique : [journal anglais WP-EVT-000027](events.md#wp-evt-000027).
+
+
+## Dernier événement — WP-EVT-000028
+
+La tête finale de PR `e57b28bafd35757f1491fafb6b30cd130d748206` est vérifiée. La PR [#128](https://github.com/Martin-PB/govcheck/pull/128) reste ouverte, non-draft, fusionnable et non fusionnée ; elle est empilée sur la [PR #127](https://github.com/Martin-PB/govcheck/pull/127).
+
+Le workflow source [43495625975](https://github.com/Martin-PB/govcheck/actions/runs/43495625975) a réussi sur cette tête : 12 tests Python, contrôle des digests officiels PDF et XML, génération/comparaison de l'inventaire structurel, manifeste des vues sources et publication. L'artefact [14071287095](https://github.com/Martin-PB/govcheck/actions/runs/43495625975/artifacts/14071287095) contient le PDF de 9 019 601 octets, le XML de 524 243 octets, le manifeste et l'inventaire XMI.
+
+Le workflow Lean [43495626076](https://github.com/Martin-PB/govcheck/actions/runs/43495626076) a réussi sur le candidat de fusion `c6029f9`, avec Lean 4.19.0. L'audit couvre 43 déclarations sous `GovCheckCoherence.Proofs` ; les dépendances sont limitées à la liste autorisée `propext`, `Classical.choice`, `Quot.sound`. Cinq théorèmes wrappers de fragments sources utilisent `propext` ; les 13 théorèmes `SourceFacts` affichés directement n'utilisent aucun axiome. Aucun axiome non autorisé n'a été signalé.
+
+Les contrôles d'intégrité des références [43495626080](https://github.com/Martin-PB/govcheck/actions/runs/43495626080), d'alignement du package [43495625956](https://github.com/Martin-PB/govcheck/actions/runs/43495625956) et de gouvernance des versions [43495626381](https://github.com/Martin-PB/govcheck/actions/runs/43495626381) ont également réussi sur la même tête de PR.
+
+Les limites ne changent pas : les digests PDF/XML authentifient les octets, pas la transcription humaine. Les faits Lean formalisent les valeurs transcrites, pas leur fidélité aux documents sources. Aucune extraction automatique du texte PDF, sémantique UML/MOF complète, preuve de raffinement du parseur, correspondance sémantique GovCheck dérivée de la source, décision de priorité, conformité SACM 2.4 ni adoption normative n'est revendiquée. L'issue #73 reste ouverte.
+
+Détail canonique : [journal anglais WP-EVT-000028](events.md#wp-evt-000028).
+
+
+## WP-EVT-000029 — Reclasser la divergence Claim.value non corroborée
+
+L'inspection directe du PDF officiel exact, téléchargé et conservé dans l'artefact de workflow SACM, montre que la figure informative 15.1.1 (page imprimée 59, section 15.1 « SACM Join », explicitement informative) représente `Argument::Claim.value` par `ExpressionLangString`. Le XML normatif épinglé déclare également `Claim.value` de type `ExpressionLangString`. L'audit R-128 rapporte `MultiLangString` pour la clause normative 13.9, mais la figure examinée ne corrobore pas cette valeur et ne remplace pas le passage normatif cité.
+
+Le théorème source `claim_value_type_conflict` a donc été retiré. Lean enregistre maintenant l'accord entre la figure informative et le XML, ainsi que la différence entre la valeur rapportée par l'audit et celle de cette figure. Le passage exact de la clause 13.9 reste une question de transcription/localisation non résolue, pas un conflit PDF/XML établi. Le registre bilingue compte douze entrées : onze différences/ajouts source-fragmentaires modélisés et une divergence d'audit non résolue. Aucun ordre de priorité ni mapping sémantique n'est inféré.
+
+Référence : [R-128](../references.fr.md#r-128) ; [registre d'alignement des vues source](../research/sacm24-source-view-alignment.fr.md).
+
+## WP-EVT-000030 — Vérifier le modèle corrigé des vues sources SACM
+
+La tête source/code vérifiée est `d82c810e91e5cee456bf83cdb4198b7de84421d1`.
+
+Le workflow source [43496689208](https://github.com/Martin-PB/govcheck/actions/runs/43496689208) a réussi : 12 tests Python, contrôles des digests officiels PDF et XML, comparaison de l'inventaire structurel, manifeste des vues et publication. L'artefact [14072371021](https://github.com/Martin-PB/govcheck/actions/runs/43496689208/artifacts/14072371021) contient le PDF exact de 9 019 601 octets, le XML de 524 243 octets, le manifeste et l'inventaire XMI.
+
+Le workflow Lean [43496689323](https://github.com/Martin-PB/govcheck/actions/runs/43496689323) a réussi avec Lean 4.19.0 sur le candidat de fusion `af19d63`. L'audit couvre 43 déclarations sous `GovCheckCoherence.Proofs` ; les dépendances sont limitées à `propext`, `Classical.choice`, `Quot.sound`. Cinq théorèmes wrappers par fragment utilisent `propext` ; les 14 théorèmes `SourceFacts` affichés directement n'utilisent aucun axiome. Aucun axiome non autorisé n'a été signalé. Les contrôles d'intégrité des références [43496689170](https://github.com/Martin-PB/govcheck/actions/runs/43496689170), d'alignement du package [43496689204](https://github.com/Martin-PB/govcheck/actions/runs/43496689204) et de gouvernance des versions [43496689233](https://github.com/Martin-PB/govcheck/actions/runs/43496689233) ont réussi.
+
+La PR [#128](https://github.com/Martin-PB/govcheck/pull/128) reste ouverte, non-draft, fusionnable et non fusionnée ; elle est empilée sur la PR [#127](https://github.com/Martin-PB/govcheck/pull/127). Les digests authentifient les octets, pas la transcription. La figure informative 15.1.1 ne résout pas le passage normatif de la clause 13.9. Aucune extraction automatique du texte PDF, sémantique UML/MOF complète, preuve de raffinement du parseur, correspondance sémantique GovCheck dérivée de la source, priorité entre sources ni conformité SACM 2.4 n'est revendiquée. L'issue #73 reste ouverte.
+
+Détail canonique : [journal anglais WP-EVT-000029](events.md#wp-evt-000029) et [WP-EVT-000030](events.md#wp-evt-000030).
+
+
+## WP-EVT-000031 — Correction d'interprétation après inspection directe du PDF
+
+Le PDF SACM 2.4 Beta 1 vérifié par GovCheck (fichier OMG `ptc/26-06-34`, SHA-256 `25f32d1cd4bf32dfa9c92c7c1840e1a113b1e91c0e97252f6551878c39997ff5`) a été rendu et inspecté visuellement pour la figure 13.1 (page physique 51, page imprimée 41) et la clause 13.9 (page physique 55, page imprimée 45).
+
+La clause 13.9 énonce explicitement `Claim.value : MultiLangString [0..1]`, `whole : SACMModel [0..*]` et `subject : SACMElement [0..*]`. La figure 13.1 montre les extrémités d'association subject vers `SACMElement` et whole vers `SACMModel`, toutes deux de multiplicité `0..*`. Le XML déclare les propriétés `Claim.subject` et `Claim.whole` avec ces mêmes types et multiplicités.
+
+Le modèle précédent confondait le type cible d'une extrémité d'association PDF avec le propriétaire d'une propriété XML et concluait à tort à une relocalisation de propriété. Cette conclusion est retirée : les deux vues concordent sur types et multiplicités ; elles conservent des encodages structurels distincts. Le localisateur exact de la clause 13.9 est également confirmé : la clause et la figure normative 13.1 disent `MultiLangString`, tandis que la figure informative 15.1.1 dit `ExpressionLangString`.
+
+Les théorèmes Lean mis à jour portent sur les constantes transcrites ; ils ne prouvent pas la fidélité exhaustive de la transcription. Cette inspection est limitée à ces fragments et ne constitue ni une résolution générale des conflits, ni une conformité SACM, ni une adoption normative.
+
+Détail canonique : [journal anglais WP-EVT-000031](events.md#wp-evt-000031).
+
+
+<a id="wp-evt-000032"></a>
+## WP-EVT-000032 — Sémantique des multiplicités UML 2.5 et correction du registre de fragments SACM
+
+- **Sujet :** `govcheck.work.intermodel-contract-conformance`
+- **Type d'événement :** `source-fragment-review-and-version-pinned-semantics-implemented`
+- **Date :** 2026-11-14
+- **PR d'intégration :** [#133](https://github.com/Martin-PB/govcheck/pull/133), ouverte, non brouillon, non fusionnée.
+- **Base normative :** [R-200](../references.fr.md#r-200), OMG UML 2.5 (formal/2015-03-01 ; jeu de fichiers lisibles par machine `ptc/13-08-17` ; espace de noms `http://www.omg.org/spec/UML/20131001`). L'espace de noms de la source SACM sélectionne donc UML 2.5, pas UML 2.5.1.
+- **Interpréteur :** le parseur/inventaire v2 conserve les ValueSpecifications brutes `lowerValue`/`upperValue` et enregistre les multiplicités effectives selon UML 2.5 §7.8.8.7, §8.6.9.4 et §8.6.14.4. Sur 355 propriétés : 303 bornes inférieures utilisent le défaut littéral 0 et 52 le repli 1 en l'absence de borne ; les bornes supérieures comprennent 192 illimitées explicites, 4 défauts littéraux à 0 et 159 replis à 1. Les ValueSpecifications non littérales non prises en charge restent non résolues.
+- **Formalisation Lean :** `formal/lean/GovCheckCoherence/UML25Multiplicity.lean` prouve les règles étroites de valeur par défaut/repli. `SACM24.lean` ajoute sept théorèmes montrant que les formes XML transcrites manuellement pour Claim.value, Claim.subject, Claim.whole, SACMElement.abstraction, AssertedRelationship.isCounter, AssertedEvidence.evidence et Assertion.assertionDeclarationRule produisent les intervalles attendus. Ces théorèmes ne prouvent pas l'extraction du parseur.
+- **Revue directe du PDF :** inspection visuelle des pages imprimées 21, 22, 25, 28, 31, 41, 44, 45, 46, 47, 59, 64 et 151. Corrections : les types cibles et multiplicités subject/whole concordent ; SACMElement.abstraction diverge entre la clause 9.2 (0..1) et la figure 9.1 (0..*), le XML concordant avec la figure ; le PDF déclare assertionDeclarationRule mais son corps OCL référence assertionRule ; le point 5 de l'annexe G.6 est une phrase sur la possibilité qu'un SACMModel soit une Assertion, pas une liste exhaustive de superclasses ; les listes de littéraux AssertionDeclaration diffèrent selon les fragments et ne sont pas normalisées.
+- **Aucune décision :** aucune priorité entre sources, adoption SACM 2.4, interprétation UML/MOF complète, preuve de raffinement du parseur ni conformité SACM n'est revendiquée.
+- **Vérification :** le parseur/tests/synthèse v2 et les nouvelles déclarations Lean sont implémentés ; la CI sur la tête finale reste à exécuter. Les anciennes exécutions de l'inventaire v1 et de la branche de vues sources ne vérifient pas cet incrément.

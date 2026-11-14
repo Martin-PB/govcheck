@@ -39,7 +39,7 @@ Limites : une ontologie cohérente peut être erronée ou incomplète ; plusieur
 
 Utiliser les raisonneurs pour les ontologies sources et les mappings exprimés en OWL, pas comme vérificateurs universels de tous les modèles ou de la pertinence des intentions.
 
-Sources : [OWL 2](https://www.w3.org/TR/owl-overview/), [sémantique directe OWL 2](https://www.w3.org/TR/owl2-direct-semantics/), [conformité OWL 2](https://www.w3.org/TR/owl2-conformance/).
+Sources : [OWL 2](https://www.w3.org/TR/owl-overview/), [sémantique directe OWL 2](../references.fr.md#r-203), [conformité OWL 2](../references.fr.md#r-203).
 
 ### 3.2 SHACL et validation de schémas/contrats
 

@@ -1,9 +1,9 @@
 {
-  "summaryFormat": "govcheck.sacm-xmi-structural-inventory-summary/v1",
+  "summaryFormat": "govcheck.sacm-xmi-structural-inventory-summary/v2",
   "generator": {
     "path": "scripts/parse-sacm-xmi.py",
     "implementation": "Python standard-library ElementTree",
-    "version": "1"
+    "version": "2"
   },
   "source": {
     "authority": "Object Management Group (OMG)",
@@ -13,17 +13,40 @@
     "nativeFormat": "OMG XMI 20131001 / UML 20131001 export",
     "sha256": "0581dfa0b9dfaf17ff0f6c63b74f8e7a8396bea03f315e1334e94f23db110830",
     "byteLength": 524243,
-    "sourceView": "normativeMetamodelXML"
+    "sourceView": "normativeMetamodelXML",
+    "umlSemanticBasis": {
+      "specification": "OMG UML 2.5",
+      "document": "formal/2015-03-01",
+      "machineReadableFileId": "ptc/13-08-17"
+    }
   },
   "document": {
     "rootTag": "{http://www.omg.org/spec/XMI/20131001}XMI",
     "namespaceDeclarations": [
-      {"prefix":"MD_Customization_for_Requirements__additional_stereotypes","uri":"http://www.magicdraw.com/spec/Customization/180/Requirements"},
-      {"prefix":"MD_Customization_for_SysML__additional_stereotypes","uri":"http://www.magicdraw.com/spec/Customization/180/SysML"},
-      {"prefix":"StandardProfile","uri":"http://www.omg.org/spec/UML/20131001/StandardProfile"},
-      {"prefix":"sysml","uri":"http://www.omg.org/spec/SysML/20181001/SysML"},
-      {"prefix":"uml","uri":"http://www.omg.org/spec/UML/20131001"},
-      {"prefix":"xmi","uri":"http://www.omg.org/spec/XMI/20131001"}
+      {
+        "prefix": "MD_Customization_for_Requirements__additional_stereotypes",
+        "uri": "http://www.magicdraw.com/spec/Customization/180/Requirements"
+      },
+      {
+        "prefix": "MD_Customization_for_SysML__additional_stereotypes",
+        "uri": "http://www.magicdraw.com/spec/Customization/180/SysML"
+      },
+      {
+        "prefix": "StandardProfile",
+        "uri": "http://www.omg.org/spec/UML/20131001/StandardProfile"
+      },
+      {
+        "prefix": "sysml",
+        "uri": "http://www.omg.org/spec/SysML/20181001/SysML"
+      },
+      {
+        "prefix": "uml",
+        "uri": "http://www.omg.org/spec/UML/20131001"
+      },
+      {
+        "prefix": "xmi",
+        "uri": "http://www.omg.org/spec/XMI/20131001"
+      }
     ],
     "identifiedElementCount": 1616,
     "identifiedElementIdsUnique": true,
@@ -31,56 +54,517 @@
   },
   "counts": {
     "xmiTypeCounts": {
-      "uml:Association":121,"uml:Class":121,"uml:Comment":157,"uml:Constraint":40,"uml:DataType":2,"uml:Dependency":1,
-      "uml:Enumeration":8,"uml:EnumerationLiteral":37,"uml:Generalization":167,"uml:InstanceValue":8,
-      "uml:LiteralBoolean":17,"uml:LiteralInteger":303,"uml:LiteralReal":1,"uml:LiteralString":17,
-      "uml:LiteralUnlimitedNatural":196,"uml:Model":1,"uml:OpaqueBehavior":3,"uml:OpaqueExpression":40,
-      "uml:Package":19,"uml:Profile":1,"uml:Property":355,
-      "{http://www.omg.org/spec/UML/20131001/StandardProfile}ModelLibrary":1
+      "uml:Association": 121,
+      "uml:Class": 121,
+      "uml:Comment": 157,
+      "uml:Constraint": 40,
+      "uml:DataType": 2,
+      "uml:Dependency": 1,
+      "uml:Enumeration": 8,
+      "uml:EnumerationLiteral": 37,
+      "uml:Generalization": 167,
+      "uml:InstanceValue": 8,
+      "uml:LiteralBoolean": 17,
+      "uml:LiteralInteger": 303,
+      "uml:LiteralReal": 1,
+      "uml:LiteralString": 17,
+      "uml:LiteralUnlimitedNatural": 196,
+      "uml:Model": 1,
+      "uml:OpaqueBehavior": 3,
+      "uml:OpaqueExpression": 40,
+      "uml:Package": 19,
+      "uml:Profile": 1,
+      "uml:Property": 355,
+      "{http://www.omg.org/spec/UML/20131001/StandardProfile}ModelLibrary": 1
     },
     "allXmiTypeCountsIncludingIdless": {
-      "uml:Association":121,"uml:Class":121,"uml:Comment":157,"uml:Constraint":40,"uml:DataType":2,"uml:Dependency":1,
-      "uml:Enumeration":8,"uml:EnumerationLiteral":37,"uml:Generalization":167,"uml:InstanceValue":8,
-      "uml:LiteralBoolean":17,"uml:LiteralInteger":303,"uml:LiteralReal":1,"uml:LiteralString":17,
-      "uml:LiteralUnlimitedNatural":196,"uml:Model":1,"uml:OpaqueBehavior":3,"uml:OpaqueExpression":40,
-      "uml:Package":19,"uml:Profile":1,"uml:Property":355,"xmi:Documentation":2
+      "uml:Association": 121,
+      "uml:Class": 121,
+      "uml:Comment": 157,
+      "uml:Constraint": 40,
+      "uml:DataType": 2,
+      "uml:Dependency": 1,
+      "uml:Enumeration": 8,
+      "uml:EnumerationLiteral": 37,
+      "uml:Generalization": 167,
+      "uml:InstanceValue": 8,
+      "uml:LiteralBoolean": 17,
+      "uml:LiteralInteger": 303,
+      "uml:LiteralReal": 1,
+      "uml:LiteralString": 17,
+      "uml:LiteralUnlimitedNatural": 196,
+      "uml:Model": 1,
+      "uml:OpaqueBehavior": 3,
+      "uml:OpaqueExpression": 40,
+      "uml:Package": 19,
+      "uml:Profile": 1,
+      "uml:Property": 355,
+      "xmi:Documentation": 2
     },
-    "referenceEdgeCount":1434,
-    "resolvedInternalReferenceCount":1371,
-    "externalReferenceCount":63,
-    "unresolvedReferenceCount":0
+    "referenceEdgeCount": 1434,
+    "resolvedInternalReferenceCount": 1371,
+    "externalReferenceCount": 63,
+    "unresolvedReferenceCount": 0
   },
   "packages": [
-    {"name":"SACM2.4","qualifiedName":"XMI/Model/SACM2.4","directChildTypeCounts":{"uml:Package":1}},
-    {"name":"Metamodel","qualifiedName":"XMI/Model/SACM2.4/Metamodel","directChildTypeCounts":{"uml:Package":8}},
-    {"name":"NonNormative","qualifiedName":"XMI/Model/SACM2.4/Metamodel/NonNormative","directChildTypeCounts":{"uml:Association":2,"uml:Class":1,"uml:Comment":1,"uml:Package":7}},
-    {"name":"NamedValueTypes","qualifiedName":"XMI/Model/SACM2.4/Metamodel/NonNormative/NamedValueTypes","directChildTypeCounts":{"uml:Class":5,"uml:Comment":5}},
-    {"name":"SACMView","qualifiedName":"XMI/Model/SACM2.4/Metamodel/NonNormative/SACMView","directChildTypeCounts":{"uml:Association":10,"uml:Class":7,"uml:Package":1}},
-    {"name":"DI","qualifiedName":"XMI/Model/SACM2.4/Metamodel/NonNormative/SACMView/DI","directChildTypeCounts":{"uml:Association":6,"uml:Class":5,"uml:Comment":1,"uml:DataType":2}},
-    {"name":"AdvancedArgument","qualifiedName":"XMI/Model/SACM2.4/Metamodel/NonNormative/AdvancedArgument","directChildTypeCounts":{"uml:Comment":6,"uml:Enumeration":1}},
-    {"name":"Context","qualifiedName":"XMI/Model/SACM2.4/Metamodel/NonNormative/Context","directChildTypeCounts":{"uml:Class":1,"uml:Comment":7}},
-    {"name":"DateTimeDuration","qualifiedName":"XMI/Model/SACM2.4/Metamodel/NonNormative/DateTimeDuration","directChildTypeCounts":{"uml:Association":4,"uml:Class":4,"uml:Comment":11,"uml:Enumeration":1}},
-    {"name":"Asssessment","qualifiedName":"XMI/Model/SACM2.4/Metamodel/NonNormative/Asssessment","directChildTypeCounts":{"uml:Association":3,"uml:Class":3,"uml:Comment":5,"uml:Enumeration":3}},
-    {"name":"Join","qualifiedName":"XMI/Model/SACM2.4/Metamodel/NonNormative/Join","directChildTypeCounts":{"uml:Association":1,"uml:Class":1,"uml:Comment":2,"uml:Constraint":1,"uml:Enumeration":1}},
-    {"name":"Terminology","qualifiedName":"XMI/Model/SACM2.4/Metamodel/Terminology","directChildTypeCounts":{"uml:Association":9,"uml:Class":11,"uml:Comment":5}},
-    {"name":"Packaging","qualifiedName":"XMI/Model/SACM2.4/Metamodel/Packaging","directChildTypeCounts":{"uml:Association":10,"uml:Class":7,"uml:Comment":3}},
-    {"name":"Foundation","qualifiedName":"XMI/Model/SACM2.4/Metamodel/Foundation","directChildTypeCounts":{"uml:Association":6,"uml:Class":7,"uml:Comment":4,"uml:Enumeration":1}},
-    {"name":"Base","qualifiedName":"XMI/Model/SACM2.4/Metamodel/Base","directChildTypeCounts":{"uml:Association":21,"uml:Class":12,"uml:Comment":7}},
-    {"name":"Artifact","qualifiedName":"XMI/Model/SACM2.4/Metamodel/Artifact","directChildTypeCounts":{"uml:Association":10,"uml:Class":13,"uml:Comment":1}},
-    {"name":"Argument","qualifiedName":"XMI/Model/SACM2.4/Metamodel/Argument","directChildTypeCounts":{"uml:Association":17,"uml:Class":14,"uml:Comment":6,"uml:Dependency":1,"uml:Enumeration":1}},
-    {"name":"Mapping","qualifiedName":"XMI/Model/SACM2.4/Metamodel/Mapping","directChildTypeCounts":{"uml:Package":2}},
-    {"name":"CAE","qualifiedName":"XMI/Model/SACM2.4/Metamodel/Mapping/CAE","directChildTypeCounts":{"uml:Association":10,"uml:Class":11,"uml:Comment":1}},
-    {"name":"GSN","qualifiedName":"XMI/Model/SACM2.4/Metamodel/Mapping/GSN","directChildTypeCounts":{"uml:Association":12,"uml:Class":19}}
+    {
+      "name": "SACM2.4",
+      "qualifiedName": "XMI/Model/SACM2.4",
+      "directChildTypeCounts": {
+        "uml:Package": 1
+      }
+    },
+    {
+      "name": "Metamodel",
+      "qualifiedName": "XMI/Model/SACM2.4/Metamodel",
+      "directChildTypeCounts": {
+        "uml:Package": 8
+      }
+    },
+    {
+      "name": "NonNormative",
+      "qualifiedName": "XMI/Model/SACM2.4/Metamodel/NonNormative",
+      "directChildTypeCounts": {
+        "uml:Association": 2,
+        "uml:Class": 1,
+        "uml:Comment": 1,
+        "uml:Package": 7
+      }
+    },
+    {
+      "name": "NamedValueTypes",
+      "qualifiedName": "XMI/Model/SACM2.4/Metamodel/NonNormative/NamedValueTypes",
+      "directChildTypeCounts": {
+        "uml:Class": 5,
+        "uml:Comment": 5
+      }
+    },
+    {
+      "name": "SACMView",
+      "qualifiedName": "XMI/Model/SACM2.4/Metamodel/NonNormative/SACMView",
+      "directChildTypeCounts": {
+        "uml:Association": 10,
+        "uml:Class": 7,
+        "uml:Package": 1
+      }
+    },
+    {
+      "name": "DI",
+      "qualifiedName": "XMI/Model/SACM2.4/Metamodel/NonNormative/SACMView/DI",
+      "directChildTypeCounts": {
+        "uml:Association": 6,
+        "uml:Class": 5,
+        "uml:Comment": 1,
+        "uml:DataType": 2
+      }
+    },
+    {
+      "name": "AdvancedArgument",
+      "qualifiedName": "XMI/Model/SACM2.4/Metamodel/NonNormative/AdvancedArgument",
+      "directChildTypeCounts": {
+        "uml:Comment": 6,
+        "uml:Enumeration": 1
+      }
+    },
+    {
+      "name": "Context",
+      "qualifiedName": "XMI/Model/SACM2.4/Metamodel/NonNormative/Context",
+      "directChildTypeCounts": {
+        "uml:Class": 1,
+        "uml:Comment": 7
+      }
+    },
+    {
+      "name": "DateTimeDuration",
+      "qualifiedName": "XMI/Model/SACM2.4/Metamodel/NonNormative/DateTimeDuration",
+      "directChildTypeCounts": {
+        "uml:Association": 4,
+        "uml:Class": 4,
+        "uml:Comment": 11,
+        "uml:Enumeration": 1
+      }
+    },
+    {
+      "name": "Asssessment",
+      "qualifiedName": "XMI/Model/SACM2.4/Metamodel/NonNormative/Asssessment",
+      "directChildTypeCounts": {
+        "uml:Association": 3,
+        "uml:Class": 3,
+        "uml:Comment": 5,
+        "uml:Enumeration": 3
+      }
+    },
+    {
+      "name": "Join",
+      "qualifiedName": "XMI/Model/SACM2.4/Metamodel/NonNormative/Join",
+      "directChildTypeCounts": {
+        "uml:Association": 1,
+        "uml:Class": 1,
+        "uml:Comment": 2,
+        "uml:Constraint": 1,
+        "uml:Enumeration": 1
+      }
+    },
+    {
+      "name": "Terminology",
+      "qualifiedName": "XMI/Model/SACM2.4/Metamodel/Terminology",
+      "directChildTypeCounts": {
+        "uml:Association": 9,
+        "uml:Class": 11,
+        "uml:Comment": 5
+      }
+    },
+    {
+      "name": "Packaging",
+      "qualifiedName": "XMI/Model/SACM2.4/Metamodel/Packaging",
+      "directChildTypeCounts": {
+        "uml:Association": 10,
+        "uml:Class": 7,
+        "uml:Comment": 3
+      }
+    },
+    {
+      "name": "Foundation",
+      "qualifiedName": "XMI/Model/SACM2.4/Metamodel/Foundation",
+      "directChildTypeCounts": {
+        "uml:Association": 6,
+        "uml:Class": 7,
+        "uml:Comment": 4,
+        "uml:Enumeration": 1
+      }
+    },
+    {
+      "name": "Base",
+      "qualifiedName": "XMI/Model/SACM2.4/Metamodel/Base",
+      "directChildTypeCounts": {
+        "uml:Association": 21,
+        "uml:Class": 12,
+        "uml:Comment": 7
+      }
+    },
+    {
+      "name": "Artifact",
+      "qualifiedName": "XMI/Model/SACM2.4/Metamodel/Artifact",
+      "directChildTypeCounts": {
+        "uml:Association": 10,
+        "uml:Class": 13,
+        "uml:Comment": 1
+      }
+    },
+    {
+      "name": "Argument",
+      "qualifiedName": "XMI/Model/SACM2.4/Metamodel/Argument",
+      "directChildTypeCounts": {
+        "uml:Association": 17,
+        "uml:Class": 14,
+        "uml:Comment": 6,
+        "uml:Dependency": 1,
+        "uml:Enumeration": 1
+      }
+    },
+    {
+      "name": "Mapping",
+      "qualifiedName": "XMI/Model/SACM2.4/Metamodel/Mapping",
+      "directChildTypeCounts": {
+        "uml:Package": 2
+      }
+    },
+    {
+      "name": "CAE",
+      "qualifiedName": "XMI/Model/SACM2.4/Metamodel/Mapping/CAE",
+      "directChildTypeCounts": {
+        "uml:Association": 10,
+        "uml:Class": 11,
+        "uml:Comment": 1
+      }
+    },
+    {
+      "name": "GSN",
+      "qualifiedName": "XMI/Model/SACM2.4/Metamodel/Mapping/GSN",
+      "directChildTypeCounts": {
+        "uml:Association": 12,
+        "uml:Class": 19
+      }
+    }
   ],
   "enumerations": [
-    {"name":"InferenceTypeKind","qualifiedName":"XMI/Model/SACM2.4/Metamodel/NonNormative/AdvancedArgument/InferenceTypeKind","literals":["probable","collective","necessary","sufficient","necessaryAndSufficient","byRule"]},
-    {"name":"TimeUnitKind","qualifiedName":"XMI/Model/SACM2.4/Metamodel/NonNormative/DateTimeDuration/TimeUnitKind","literals":["second","minute","hour","day","week","month","year","iso8601"]},
-    {"name":"ChangeTypeKind","qualifiedName":"XMI/Model/SACM2.4/Metamodel/NonNormative/Asssessment/ChangeTypeKind","literals":["unchanged","addition","deletion","modification"]},
-    {"name":"ConsistencyStatusKind","qualifiedName":"XMI/Model/SACM2.4/Metamodel/NonNormative/Asssessment/ConsistencyStatusKind","literals":["consistent","recheck","needsRevision","changed","obsolete"]},
-    {"name":"DefeationtMechanismKind","qualifiedName":"XMI/Model/SACM2.4/Metamodel/NonNormative/Asssessment/DefeationtMechanismKind","literals":["byOpinion","byLogic","byRule"]},
-    {"name":"JoinTypeKind","qualifiedName":"XMI/Model/SACM2.4/Metamodel/NonNormative/Join/JoinTypeKind","literals":["combine","and","or","xor","byRule"]},
-    {"name":"VisibilityKind","qualifiedName":"XMI/Model/SACM2.4/Metamodel/Foundation/VisibilityKind","literals":["private","public"]},
-    {"name":"AssertionDeclarationKind","qualifiedName":"XMI/Model/SACM2.4/Metamodel/Argument/AssertionDeclarationKind","literals":["axiomatic","assumed","asserted","byRule"]}
+    {
+      "name": "InferenceTypeKind",
+      "qualifiedName": "XMI/Model/SACM2.4/Metamodel/NonNormative/AdvancedArgument/InferenceTypeKind",
+      "literals": [
+        "probable",
+        "collective",
+        "necessary",
+        "sufficient",
+        "necessaryAndSufficient",
+        "byRule"
+      ]
+    },
+    {
+      "name": "TimeUnitKind",
+      "qualifiedName": "XMI/Model/SACM2.4/Metamodel/NonNormative/DateTimeDuration/TimeUnitKind",
+      "literals": [
+        "second",
+        "minute",
+        "hour",
+        "day",
+        "week",
+        "month",
+        "year",
+        "iso8601"
+      ]
+    },
+    {
+      "name": "ChangeTypeKind",
+      "qualifiedName": "XMI/Model/SACM2.4/Metamodel/NonNormative/Asssessment/ChangeTypeKind",
+      "literals": [
+        "unchanged",
+        "addition",
+        "deletion",
+        "modification"
+      ]
+    },
+    {
+      "name": "ConsistencyStatusKind",
+      "qualifiedName": "XMI/Model/SACM2.4/Metamodel/NonNormative/Asssessment/ConsistencyStatusKind",
+      "literals": [
+        "consistent",
+        "recheck",
+        "needsRevision",
+        "changed",
+        "obsolete"
+      ]
+    },
+    {
+      "name": "DefeationtMechanismKind",
+      "qualifiedName": "XMI/Model/SACM2.4/Metamodel/NonNormative/Asssessment/DefeationtMechanismKind",
+      "literals": [
+        "byOpinion",
+        "byLogic",
+        "byRule"
+      ]
+    },
+    {
+      "name": "JoinTypeKind",
+      "qualifiedName": "XMI/Model/SACM2.4/Metamodel/NonNormative/Join/JoinTypeKind",
+      "literals": [
+        "combine",
+        "and",
+        "or",
+        "xor",
+        "byRule"
+      ]
+    },
+    {
+      "name": "VisibilityKind",
+      "qualifiedName": "XMI/Model/SACM2.4/Metamodel/Foundation/VisibilityKind",
+      "literals": [
+        "private",
+        "public"
+      ]
+    },
+    {
+      "name": "AssertionDeclarationKind",
+      "qualifiedName": "XMI/Model/SACM2.4/Metamodel/Argument/AssertionDeclarationKind",
+      "literals": [
+        "axiomatic",
+        "assumed",
+        "asserted",
+        "byRule"
+      ]
+    }
   ],
-  "interpretationBoundary":"This is a source-revision-bound structural inventory of XMI/UML elements and explicit references. It does not implement UML/MOF semantic interpretation, validate SACM conformance, resolve external UML metamodel imports, establish parser refinement, or map SACM to GovCheck. Unknown constructs remain represented in the element records and authoritative raw XML."
+  "interpretationBoundary": "This is a source-revision-bound structural inventory of XMI/UML elements and explicit references, with a narrowly scoped UML 2.5 interpretation of MultiplicityElement bounds for absent bounds, LiteralInteger, LiteralUnlimitedNatural and LiteralNull. It does not implement full UML/MOF semantics, evaluate OCL or arbitrary ValueSpecifications, validate SACM conformance, resolve external UML metamodel imports, establish parser refinement, or map SACM to GovCheck. Unknown constructs remain represented in the element records and authoritative raw XML.",
+  "multiplicitySemantics": {
+    "standard": "OMG UML 2.5",
+    "namespace": "http://www.omg.org/spec/UML/20131001",
+    "normativeDocument": "formal/2015-03-01",
+    "machineReadableFileId": "ptc/13-08-17",
+    "rules": [
+      "§7.8.8.7: absent lowerValue/upperValue falls back to 1",
+      "§8.6.9.4: LiteralInteger.value defaults to 0",
+      "§8.6.14.4: LiteralUnlimitedNatural.value defaults to 0",
+      "unsupported or non-literal ValueSpecifications remain unresolved"
+    ],
+    "boundStatusCounts": {
+      "lower": {
+        "literal-default": 303,
+        "multiplicity-element-fallback": 52
+      },
+      "upper": {
+        "explicit-unlimited": 192,
+        "literal-default": 4,
+        "multiplicity-element-fallback": 159
+      }
+    },
+    "selectedProperties": [
+      {
+        "owner": "AssertedEvidence",
+        "property": "evidence",
+        "type": {
+          "kind": "internal-xmi-id",
+          "targetName": "ArtifactReference",
+          "targetXmiType": "uml:Class"
+        },
+        "effectiveMultiplicity": {
+          "standard": "OMG UML 2.5",
+          "lower": {
+            "value": 1,
+            "kind": "finite",
+            "status": "multiplicity-element-fallback",
+            "rule": "UML 2.5 §7.8.8.7 MultiplicityElement.lowerBound() fallback"
+          },
+          "upper": {
+            "value": "*",
+            "kind": "unlimited",
+            "status": "explicit-unlimited",
+            "rule": "explicit UML 2.5 UnlimitedNatural literal"
+          }
+        }
+      },
+      {
+        "owner": "AssertedRelationship",
+        "property": "isCounter",
+        "type": {
+          "kind": "external-href",
+          "href": "http://www.omg.org/spec/UML/20131001/PrimitiveTypes.xmi#Boolean"
+        },
+        "effectiveMultiplicity": {
+          "standard": "OMG UML 2.5",
+          "lower": {
+            "value": 0,
+            "kind": "finite",
+            "status": "literal-default",
+            "rule": "UML 2.5 §8.6.9.4 LiteralInteger.value default = 0"
+          },
+          "upper": {
+            "value": 1,
+            "kind": "finite",
+            "status": "multiplicity-element-fallback",
+            "rule": "UML 2.5 §7.8.8.7 MultiplicityElement.upperBound() fallback"
+          }
+        }
+      },
+      {
+        "owner": "Assertion",
+        "property": "assertionDeclarationRule",
+        "type": {
+          "kind": "internal-xmi-id",
+          "targetName": "Rule",
+          "targetXmiType": "uml:Class"
+        },
+        "effectiveMultiplicity": {
+          "standard": "OMG UML 2.5",
+          "lower": {
+            "value": 0,
+            "kind": "finite",
+            "status": "literal-default",
+            "rule": "UML 2.5 §8.6.9.4 LiteralInteger.value default = 0"
+          },
+          "upper": {
+            "value": "*",
+            "kind": "unlimited",
+            "status": "explicit-unlimited",
+            "rule": "explicit UML 2.5 UnlimitedNatural literal"
+          }
+        }
+      },
+      {
+        "owner": "Claim",
+        "property": "subject",
+        "type": {
+          "kind": "internal-xmi-id",
+          "targetName": "SACMElement",
+          "targetXmiType": "uml:Class"
+        },
+        "effectiveMultiplicity": {
+          "standard": "OMG UML 2.5",
+          "lower": {
+            "value": 0,
+            "kind": "finite",
+            "status": "literal-default",
+            "rule": "UML 2.5 §8.6.9.4 LiteralInteger.value default = 0"
+          },
+          "upper": {
+            "value": "*",
+            "kind": "unlimited",
+            "status": "explicit-unlimited",
+            "rule": "explicit UML 2.5 UnlimitedNatural literal"
+          }
+        }
+      },
+      {
+        "owner": "Claim",
+        "property": "value",
+        "type": {
+          "kind": "internal-xmi-id",
+          "targetName": "ExpressionLangString",
+          "targetXmiType": "uml:Class"
+        },
+        "effectiveMultiplicity": {
+          "standard": "OMG UML 2.5",
+          "lower": {
+            "value": 0,
+            "kind": "finite",
+            "status": "literal-default",
+            "rule": "UML 2.5 §8.6.9.4 LiteralInteger.value default = 0"
+          },
+          "upper": {
+            "value": 1,
+            "kind": "finite",
+            "status": "multiplicity-element-fallback",
+            "rule": "UML 2.5 §7.8.8.7 MultiplicityElement.upperBound() fallback"
+          }
+        }
+      },
+      {
+        "owner": "Claim",
+        "property": "whole",
+        "type": {
+          "kind": "internal-xmi-id",
+          "targetName": "SACMModel",
+          "targetXmiType": "uml:Class"
+        },
+        "effectiveMultiplicity": {
+          "standard": "OMG UML 2.5",
+          "lower": {
+            "value": 0,
+            "kind": "finite",
+            "status": "literal-default",
+            "rule": "UML 2.5 §8.6.9.4 LiteralInteger.value default = 0"
+          },
+          "upper": {
+            "value": "*",
+            "kind": "unlimited",
+            "status": "explicit-unlimited",
+            "rule": "explicit UML 2.5 UnlimitedNatural literal"
+          }
+        }
+      },
+      {
+        "owner": "SACMElement",
+        "property": "abstraction",
+        "type": {
+          "kind": "internal-xmi-id",
+          "targetName": "SACMElement",
+          "targetXmiType": "uml:Class"
+        },
+        "effectiveMultiplicity": {
+          "standard": "OMG UML 2.5",
+          "lower": {
+            "value": 0,
+            "kind": "finite",
+            "status": "literal-default",
+            "rule": "UML 2.5 §8.6.9.4 LiteralInteger.value default = 0"
+          },
+          "upper": {
+            "value": "*",
+            "kind": "unlimited",
+            "status": "explicit-unlimited",
+            "rule": "explicit UML 2.5 UnlimitedNatural literal"
+          }
+        }
+      }
+    ]
+  }
 }

@@ -293,7 +293,7 @@
       },
       "revisionPolicy": "repository-history",
       "releaseBinding": "release-tag-and-commit",
-      "status": "source-revision-bound; structurally-indexed; workflow-verified; no-semantic-mapping",
+      "status": "source-revision-bound; structurally-indexed; UML25-multiplicity-subset-interpreted; workflow-verification-pending-for-v2; no-semantic-mapping",
       "verification": {
         "workflow": ".github/workflows/sacm-native-ingestion.yml",
         "workflowRunId": 43451737489,
@@ -331,12 +331,488 @@
         "currentSourceBlobsVerifiedUnchanged": true
       },
       "limitations": [
-        "structural XMI/UML inventory only; no UML/MOF semantic interpreter",
+        "source-revision-bound structural inventory plus only the narrowly specified UML 2.5 multiplicity default interpreter; no full UML/MOF semantic interpreter",
+        "multiplicity interpretation covers absent bounds, LiteralInteger, LiteralUnlimitedNatural and LiteralNull; arbitrary ValueSpecifications remain unresolved",
         "63 external href references are retained but not resolved",
         "zero unresolved internal references applies only to recognized reference attributes in this pinned document",
         "no parser refinement theorem or source-to-GovCheck semantic correspondence",
         "known SACM 2.4 Beta 1 PDF/XML conflicts remain unresolved",
         "no SACM instance interchange or conformance claim"
+      ],
+      "version": "2.0.0",
+      "inventoryFormat": "govcheck.sacm-xmi-structural-inventory/v2",
+      "summaryFormat": "govcheck.sacm-xmi-structural-inventory-summary/v2",
+      "generatorVersion": "2",
+      "sourceReferences": [
+        "R-197",
+        "R-200"
+      ],
+      "multiplicitySemantics": {
+        "standard": "OMG UML 2.5",
+        "sourceReference": "R-200",
+        "rules": [
+          "§7.8.8.7: absent bound or null typed value falls back to 1",
+          "§8.6.9.4: LiteralInteger.value defaults to 0",
+          "§8.6.14.4: LiteralUnlimitedNatural.value defaults to 0",
+          "unsupported ValueSpecifications remain unresolved"
+        ],
+        "boundStatusCounts": {
+          "lower": {
+            "literal-default": 303,
+            "multiplicity-element-fallback": 52
+          },
+          "upper": {
+            "explicit-unlimited": 192,
+            "literal-default": 4,
+            "multiplicity-element-fallback": 159
+          }
+        },
+        "selectedProperties": {
+          "Claim.value": "0..1",
+          "Claim.subject": "0..*",
+          "Claim.whole": "0..*",
+          "SACMElement.abstraction": "0..*",
+          "AssertedRelationship.isCounter": "0..1",
+          "AssertedEvidence.evidence": "1..*",
+          "Assertion.assertionDeclarationRule": "0..*"
+        }
+      }
+    },
+    {
+      "artifactId": "govcheck.sacm24-source-view-conflict-register",
+      "kind": "source-view-conflict-register",
+      "title": "SACM 2.4 Beta 1 PDF/XML fragment-level conflict register",
+      "source": "formal/lean/GovCheckCoherence/SACM24.lean",
+      "documentation": {
+        "en": "docs/research/sacm24-source-view-alignment.md",
+        "fr": "docs/research/sacm24-source-view-alignment.fr.md"
+      },
+      "sourceReferences": [
+        "R-128",
+        "R-197",
+        "R-198",
+        "R-199",
+        "R-200"
+      ],
+      "sourceViews": [
+        {
+          "fileId": "ptc/26-06-34",
+          "role": "normativeSpecificationText",
+          "sha256": "25f32d1cd4bf32dfa9c92c7c1840e1a113b1e91c0e97252f6551878c39997ff5"
+        },
+        {
+          "fileId": "ptc/26-05-28",
+          "role": "normativeMachineReadableMetamodel",
+          "sha256": "0581dfa0b9dfaf17ff0f6c63b74f8e7a8396bea03f315e1334e94f23db110830"
+        }
+      ],
+      "revisionPolicy": "repository-history",
+      "releaseBinding": "release-tag-and-commit",
+      "status": "fragment-level-source-facts-formalized; selected-PDF-fragments-visually-reviewed; UML25-multiplicity-interpretation-formalized; no-precedence-decision; no-parser-refinement",
+      "limitations": [
+        "direct visual review covers the listed PDF fragments only; it is not a complete audit of all PDF text, figures, annexes or XML source constructs",
+        "Lean theorems prove relations among manually transcribed constants and UML 2.5 default interpretations; they do not prove transcription fidelity or parser refinement",
+        "the source XML parser does not yet generate the Lean source facts or prove XML-to-Lean correspondence",
+        "PDF and XML digests authenticate exact bytes but do not authenticate source-fragment interpretation",
+        "no source-derived GovCheck semantic mapping or SACM conformance claim",
+        "no normative precedence decision between conflicting or differently scoped source fragments"
+      ],
+      "verification": {
+        "sourceWorkflow": ".github/workflows/sacm-native-ingestion.yml",
+        "sourceWorkflowRunId": 43496689208,
+        "sourceCheckedCommit": "d82c810e91e5cee456bf83cdb4198b7de84421d1",
+        "sourceResult": "success",
+        "sourceTests": 12,
+        "pdf": {
+          "sha256": "25f32d1cd4bf32dfa9c92c7c1840e1a113b1e91c0e97252f6551878c39997ff5",
+          "byteLength": 9019601,
+          "fileId": "ptc/26-06-34"
+        },
+        "xml": {
+          "sha256": "0581dfa0b9dfaf17ff0f6c63b74f8e7a8396bea03f315e1334e94f23db110830",
+          "byteLength": 524243,
+          "fileId": "ptc/26-05-28"
+        },
+        "artifact": {
+          "id": 14072371021,
+          "name": "sacm-2.4-beta1-source-views-and-xmi-inventory",
+          "retentionDays": 90,
+          "url": "https://github.com/Martin-PB/govcheck/actions/runs/43496689208/artifacts/14072371021"
+        },
+        "leanWorkflow": ".github/workflows/lean-coherence.yml",
+        "leanWorkflowRunId": 43496689323,
+        "leanCheckedMergeCommit": "af19d63",
+        "leanSourceHead": "d82c810e91e5cee456bf83cdb4198b7de84421d1",
+        "lean": "4.19.0",
+        "leanBuild": "success",
+        "axiomAudit": {
+          "root": "GovCheckCoherence.Proofs",
+          "declarationsAudited": 43,
+          "allowedAxioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "unapprovedAxioms": 0,
+          "sourceFragmentWrappersUsingPropext": 5,
+          "sourceFactsDirectTheoremsWithNoAxioms": 22
+        },
+        "otherChecks": {
+          "referenceIntegrityRunId": 43496689170,
+          "packageAlignmentRunId": 43496689204,
+          "versionGovernanceRunId": 43496689233
+        }
+      },
+      "sourceFragments": [
+        {
+          "sourceFileId": "ptc/26-06-34",
+          "locator": "Clause 9.2",
+          "printedPage": 22,
+          "sectionStatus": "normative",
+          "claims": [
+            "SACMElement.gid: String [0..1]",
+            "SACMElement.abstraction: SACMElement [0..1]"
+          ]
+        },
+        {
+          "sourceFileId": "ptc/26-06-34",
+          "locator": "Figure 9.1",
+          "printedPage": 21,
+          "sectionStatus": "normative",
+          "claims": [
+            "SACMElement.elementId: UID [1]",
+            "SACMElement.abstraction: SACMElement [0..*]"
+          ]
+        },
+        {
+          "sourceFileId": "ptc/26-06-34",
+          "locator": "Clause 9.10",
+          "printedPage": 25,
+          "sectionStatus": "normative",
+          "claim": "SACMModel superclass: ModelElement"
+        },
+        {
+          "sourceFileId": "ptc/26-06-34",
+          "locator": "Clause 9.11",
+          "printedPage": 25,
+          "sectionStatus": "normative",
+          "claim": "SACMDependency superclass: DirectedRelationship"
+        },
+        {
+          "sourceFileId": "ptc/26-06-34",
+          "locator": "Clause 10.5",
+          "printedPage": 28,
+          "sectionStatus": "normative",
+          "claim": "BindingPackage superclasses: SACMPackageWithBinding, ScopedPackage"
+        },
+        {
+          "sourceFileId": "ptc/26-06-34",
+          "locator": "Clause 11.3",
+          "printedPage": 31,
+          "sectionStatus": "normative",
+          "claim": "BindingPackage superclass: ModelElement"
+        },
+        {
+          "sourceFileId": "ptc/26-06-34",
+          "locator": "Figure 13.1",
+          "printedPage": 41,
+          "sectionStatus": "normative",
+          "claims": [
+            "Claim.value: MultiLangString [0..1]",
+            "AssertedEvidence.evidence: 1..*",
+            "AssertedRelationship.isCounter: Boolean[1]",
+            "Claim.subject target type: SACMElement [0..*]",
+            "Claim.whole target type: SACMModel [0..*]"
+          ]
+        },
+        {
+          "sourceFileId": "ptc/26-06-34",
+          "locator": "Clause 13.6",
+          "printedPage": 44,
+          "sectionStatus": "normative",
+          "claim": "AssertionDeclarationKind literals: axiomatic, assumed, asserted, needsSupport"
+        },
+        {
+          "sourceFileId": "ptc/26-06-34",
+          "locator": "Clause 13.9",
+          "printedPage": 45,
+          "sectionStatus": "normative",
+          "claims": [
+            "Claim.value: MultiLangString [0..1]",
+            "Claim.whole: SACMModel [0..*]",
+            "Claim.subject: SACMElement [0..*]"
+          ]
+        },
+        {
+          "sourceFileId": "ptc/26-06-34",
+          "locator": "Clause 13.11",
+          "printedPage": 46,
+          "sectionStatus": "normative",
+          "claim": "AssertedRelationship.isCounter: Boolean[1]"
+        },
+        {
+          "sourceFileId": "ptc/26-06-34",
+          "locator": "Clause 13.13",
+          "printedPage": 47,
+          "sectionStatus": "normative",
+          "claim": "AssertedEvidence.evidence: 0..*"
+        },
+        {
+          "sourceFileId": "ptc/26-06-34",
+          "locator": "Figure 15.1.1",
+          "printedPage": 59,
+          "sectionStatus": "informative",
+          "claim": "Claim.value: ExpressionLangString"
+        },
+        {
+          "sourceFileId": "ptc/26-06-34",
+          "locator": "Clause 15.2.1",
+          "printedPage": 64,
+          "sectionStatus": "informative",
+          "claims": [
+            "Assertion.assertionDeclarationRule: Rule [0..*]",
+            "ByRuleDeclarationRequiresRule OCL refers to assertionRule",
+            "AssertionDeclarationKind adds byRule"
+          ]
+        },
+        {
+          "sourceFileId": "ptc/26-06-34",
+          "locator": "Clause 15.2.3",
+          "printedPage": 64,
+          "sectionStatus": "informative",
+          "claim": "Rule superclass: Base::BaseElement"
+        },
+        {
+          "sourceFileId": "ptc/26-06-34",
+          "locator": "Annex G.6 item 5",
+          "printedPage": 151,
+          "sectionStatus": "informative",
+          "claim": "A SACMModel (Group, Package, Diagram) can be an Assertion"
+        },
+        {
+          "sourceFileId": "ptc/26-06-34",
+          "locator": "Annex G.6 item 6",
+          "printedPage": 151,
+          "sectionStatus": "informative",
+          "claim": "AssertionDeclaration listed literals: axiomatic, assumed, asserted"
+        },
+        {
+          "sourceFileId": "ptc/26-05-28",
+          "locator": "Metamodel/Argument/Claim/value",
+          "sectionStatus": "normative-machine-readable",
+          "claim": "type ExpressionLangString; UML 2.5 effective multiplicity 0..1"
+        },
+        {
+          "sourceFileId": "ptc/26-05-28",
+          "locator": "Metamodel/Argument/Claim/subject+whole",
+          "sectionStatus": "normative-machine-readable",
+          "claims": [
+            "Claim.subject : SACMElement [0..*]",
+            "Claim.whole : SACMModel [0..*]"
+          ]
+        },
+        {
+          "sourceFileId": "ptc/26-05-28",
+          "locator": "Metamodel/Argument/AssertedRelationship/isCounter",
+          "sectionStatus": "normative-machine-readable",
+          "claim": "Boolean [0..1] under UML 2.5 multiplicity defaults"
+        },
+        {
+          "sourceFileId": "ptc/26-05-28",
+          "locator": "Metamodel/Argument/AssertedEvidence/evidence",
+          "sectionStatus": "normative-machine-readable",
+          "claim": "ArtifactReference [1..*] under UML 2.5 multiplicity defaults"
+        }
+      ],
+      "reviewedFragments": [
+        {
+          "sourceFileId": "ptc/26-06-34",
+          "physicalPage": 31,
+          "printedPage": 21,
+          "locator": "Figure 9.1",
+          "method": "rendered-page visual inspection"
+        },
+        {
+          "sourceFileId": "ptc/26-06-34",
+          "physicalPage": 32,
+          "printedPage": 22,
+          "locator": "Clause 9.2",
+          "method": "rendered-page visual inspection"
+        },
+        {
+          "sourceFileId": "ptc/26-06-34",
+          "physicalPage": 35,
+          "printedPage": 25,
+          "locator": "Clauses 9.10 and 9.11",
+          "method": "rendered-page visual inspection"
+        },
+        {
+          "sourceFileId": "ptc/26-06-34",
+          "physicalPage": 38,
+          "printedPage": 28,
+          "locator": "Clause 10.5",
+          "method": "rendered-page visual inspection"
+        },
+        {
+          "sourceFileId": "ptc/26-06-34",
+          "physicalPage": 41,
+          "printedPage": 31,
+          "locator": "Clause 11.3",
+          "method": "rendered-page visual inspection"
+        },
+        {
+          "sourceFileId": "ptc/26-06-34",
+          "physicalPage": 51,
+          "printedPage": 41,
+          "locator": "Figure 13.1",
+          "method": "rendered-page visual inspection"
+        },
+        {
+          "sourceFileId": "ptc/26-06-34",
+          "physicalPage": 54,
+          "printedPage": 44,
+          "locator": "Clause 13.6",
+          "method": "rendered-page visual inspection"
+        },
+        {
+          "sourceFileId": "ptc/26-06-34",
+          "physicalPage": 55,
+          "printedPage": 45,
+          "locator": "Clause 13.9",
+          "method": "rendered-page visual inspection"
+        },
+        {
+          "sourceFileId": "ptc/26-06-34",
+          "physicalPage": 56,
+          "printedPage": 46,
+          "locator": "Clause 13.11",
+          "method": "rendered-page visual inspection"
+        },
+        {
+          "sourceFileId": "ptc/26-06-34",
+          "physicalPage": 57,
+          "printedPage": 47,
+          "locator": "Clause 13.13",
+          "method": "rendered-page visual inspection"
+        },
+        {
+          "sourceFileId": "ptc/26-06-34",
+          "physicalPage": 69,
+          "printedPage": 59,
+          "locator": "Figure 15.1.1",
+          "method": "rendered-page visual inspection"
+        },
+        {
+          "sourceFileId": "ptc/26-06-34",
+          "physicalPage": 74,
+          "printedPage": 64,
+          "locator": "Clause 15.2.1 and 15.2.3",
+          "method": "rendered-page visual inspection"
+        },
+        {
+          "sourceFileId": "ptc/26-06-34",
+          "physicalPage": 161,
+          "printedPage": 151,
+          "locator": "Annex G.6 items 5 and 6",
+          "method": "rendered-page visual inspection"
+        }
+      ],
+      "sourceViewFindings": [
+        {
+          "topic": "SACMElement identity",
+          "finding": "PDF Clause 9.2 gid and Figure 9.1 elementId differ; XML elementId agrees with the figure."
+        },
+        {
+          "topic": "SACMElement.abstraction",
+          "finding": "PDF Clause 9.2 is 0..1 while Figure 9.1 is 0..*; XML is 0..* under UML 2.5 defaults and agrees with the figure."
+        },
+        {
+          "topic": "AssertionDeclarationKind",
+          "finding": "Normative Clause 13.6 includes needsSupport; informative Annex G.6 item 6 lists three literals; informative Clause 15.2.1 adds byRule. XML includes byRule and omits needsSupport. No single set or precedence is selected."
+        },
+        {
+          "topic": "Claim.value",
+          "finding": "Normative Figure 13.1 and Clause 13.9 say MultiLangString; informative Figure 15.1.1 and XML say ExpressionLangString."
+        },
+        {
+          "topic": "AssertedEvidence.evidence",
+          "finding": "Clause 13.13 says 0..*; Figure 13.1 and XML say 1..*."
+        },
+        {
+          "topic": "AssertedRelationship.isCounter",
+          "finding": "Clause 13.11 and Figure 13.1 say Boolean[1]; XML is Boolean[0..1] under UML 2.5 defaults."
+        },
+        {
+          "topic": "BindingPackage",
+          "finding": "PDF Clauses 10.5 and 11.3 give different superclass statements; XML agrees with Clause 10.5."
+        },
+        {
+          "topic": "SACMModel",
+          "finding": "Clause 9.10 lists ModelElement; Annex G.6 item 5 is prose saying a SACMModel can be an Assertion, not a complete direct-superclass list; XML also lists Assessment. No contradiction is inferred from silence."
+        },
+        {
+          "topic": "SACMDependency",
+          "finding": "XML adds BaseElement relative to the cited Clause 9.11; this is not proof that the PDF forbids it."
+        },
+        {
+          "topic": "Rule",
+          "finding": "XML adds ModelElement relative to the cited informative Clause 15.2.3; this is not proof that the PDF forbids it."
+        },
+        {
+          "topic": "Assertion rule feature",
+          "finding": "PDF Clause 15.2.1 and XML declare assertionDeclarationRule; the PDF OCL constraint uses assertionRule, an internal reference mismatch."
+        },
+        {
+          "topic": "Claim subject/whole",
+          "finding": "PDF Figure 13.1 and Clause 13.9 and XML agree on target types and 0..* multiplicities; PDF diagram and XML owned-property representations remain distinct."
+        }
+      ]
+    },
+    {
+      "artifactId": "govcheck.uml25-multiplicity-interpreter",
+      "version": "1.0.0",
+      "kind": "formal-semantic-interpreter",
+      "title": "Narrow UML 2.5 multiplicity default interpreter",
+      "source": "formal/lean/GovCheckCoherence/UML25Multiplicity.lean",
+      "implementation": "scripts/parse-sacm-xmi.py",
+      "documentation": {
+        "en": "docs/research/sacm-xmi-structural-inventory.md",
+        "fr": "docs/research/sacm-xmi-structural-inventory.fr.md"
+      },
+      "sourceReference": "R-200",
+      "status": "narrow-rule-set-formalized; source-shape-extraction-not-proven",
+      "rules": [
+        "MultiplicityElement.lowerBound()/upperBound() fallback to 1 when the corresponding ValueSpecification or typed value is absent/null (§7.8.8.7)",
+        "LiteralInteger.value default 0 (§8.6.9.4)",
+        "LiteralUnlimitedNatural.value default 0 (§8.6.14.4)",
+        "explicit UnlimitedNatural * remains unlimited",
+        "unsupported ValueSpecifications remain unresolved"
+      ],
+      "provedTheorems": [
+        "absent_lower_value_specification_defaults_to_one",
+        "omitted_literal_integer_value_defaults_to_zero",
+        "explicit_literal_integer_value_is_preserved",
+        "literal_null_lower_value_uses_lower_bound_fallback",
+        "absent_upper_value_specification_defaults_to_one",
+        "omitted_literal_unlimited_natural_value_defaults_to_zero",
+        "explicit_unlimited_natural_is_preserved",
+        "literal_null_upper_value_uses_upper_bound_fallback",
+        "unsupported_lower_value_specification_remains_unresolved",
+        "unsupported_upper_value_specification_remains_unresolved"
+      ],
+      "sourceProjectionTheorems": [
+        "xml_claim_value_multiplicity_matches_uml25",
+        "xml_claim_whole_multiplicity_matches_uml25",
+        "xml_claim_subject_multiplicity_matches_uml25",
+        "xml_sacm_element_abstraction_multiplicity_matches_uml25",
+        "xml_asserted_relationship_isCounter_multiplicity_matches_uml25",
+        "xml_asserted_evidence_evidence_multiplicity_matches_uml25",
+        "xml_assertion_declaration_rule_multiplicity_matches_uml25"
+      ],
+      "limitations": [
+        "the Lean theorems prove the UML 2.5 interpretation of manually transcribed ValueSpecification shapes",
+        "they do not prove the Python parser extracted those shapes correctly from the XML",
+        "no arbitrary ValueSpecification evaluation, OCL execution, full UML/MOF conformance or parser refinement"
       ]
     }
   ]

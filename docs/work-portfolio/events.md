@@ -390,3 +390,90 @@
 - **Published artifact:** [`sacm-2.4-beta1-source-and-xmi-inventory`](https://github.com/Martin-PB/govcheck/actions/runs/43451737489/artifacts/14051746241), artifact ID `14051746241`, SHA-256 `01bd32307376baaa0c401b4631d7338bae7f0a999c9d3f94aecc21af5a3c8ae3`, 90-day retention. It contains `source.xml`, `manifest.json`, `index.json`, `metamodel-inventory.json` and `metamodel-inventory-summary.json`.
 - **Reproducibility binding:** the parser, tests, summary and workflow blobs at the current PR branch head were compared with the checked commit and are identical; later commits affect documentation/portfolio records only.
 - **Limits:** structural extraction only; no UML/MOF/OCL semantic interpretation, external href resolution, parser-refinement theorem, PDF/XML conflict resolution, source-derived GovCheck mapping, SACM conformance or normative adoption. Issue #73 remains open.
+
+
+<a id="wp-evt-000027"></a>
+## WP-EVT-000027 — SACM PDF/XML source-view conflict register and formal boundary verified
+
+- **Subject:** `govcheck.work.intermodel-contract-conformance`
+- **Event type:** `source-view-conflict-register-and-fragment-qualified-formalization-verified`
+- **Recorded:** 2026-11-13
+- **PR:** [#128 — Model SACM 2.4 Beta 1 source-view conflicts with fragment-qualified Lean contracts](https://github.com/Martin-PB/govcheck/pull/128), head `e80f4833de9478bd0fd5672a7333753609f40c0c`; open, non-draft, mergeable, unmerged. It is stacked on [PR #127](https://github.com/Martin-PB/govcheck/pull/127) and targets its branch `work/sacm-xmi-structural-inventory`.
+- **Source identities:** normative PDF OMG `ptc/26-06-34`, SHA-256 `25f32d1cd4bf32dfa9c92c7c1840e1a113b1e91c0e97252f6551878c39997ff5`, 9,019,601 bytes; normative metamodel XML OMG `ptc/26-05-28`, SHA-256 `0581dfa0b9dfaf17ff0f6c63b74f8e7a8396bea03f315e1334e94f23db110830`, 524,243 bytes. Both were downloaded from their exact official URLs and digest-verified by GovCheck.
+- **Source workflow:** [run 43495288103](https://github.com/Martin-PB/govcheck/actions/runs/43495288103) passed on PR head `e80f4833...`: 12 Python tests, XML digest and generated inventory-summary comparison, PDF digest check, source-view manifest creation, and upload of [artifact 14071601644](https://github.com/Martin-PB/govcheck/actions/runs/43495288103/artifacts/14071601644) (90-day retention) containing the PDF, raw XML, manifest and full XMI inventory.
+- **Lean verification:** [run 43495288333](https://github.com/Martin-PB/govcheck/actions/runs/43495288333) built with Lean 4.19.0 on merge candidate `2f03f73`. The axiom audit covered 43 declarations under `GovCheckCoherence.Proofs`; all dependencies were within `propext`, `Classical.choice`, `Quot.sound`. Four fragment-wrapper theorems use `propext`; the 13 directly printed `SourceFacts` theorems have no axioms. No unapproved axiom was reported.
+- **Other controls on the same PR head:** reference integrity [43495288014](https://github.com/Martin-PB/govcheck/actions/runs/43495288014), package alignment [43495288347](https://github.com/Martin-PB/govcheck/actions/runs/43495288347), and version governance [43495287866](https://github.com/Martin-PB/govcheck/actions/runs/43495287866) passed.
+- **Research result:** the bilingual [source-view alignment/conflict register](../research/sacm24-source-view-alignment.md) classifies 11 source-fragment discrepancy/difference groups, distinguishing PDF-internal conflicts, PDF/XML differences, XML additions relative to cited PDF clauses, and XML features not stated in the inspected PDF text.
+- **Formal boundary:** Lean proves differences among manually transcribed constants and enforces fragment-specific mapping obligations. The kernel proof does not authenticate the source transcription. The PDF workflow verifies bytes but does not extract/interpret PDF text. No UML/MOF semantic interpreter, parser-refinement theorem, source-derived GovCheck mapping, source precedence, SACM 2.4 conformance or normative adoption is claimed.
+- **References:** independent discrepancy audit [R-128](../references.md#r-128); source-native metamodel [R-197](../references.md#r-197).
+- **Next work:** validate each transcription against pinned PDF/XML fragments; build an explicit source extraction/reconciliation pipeline; formalize parser refinement; then prove only those source-derived semantic mappings intended for use as established GovCheck premises. Issue #73 remains open.
+
+
+<a id="wp-evt-000028"></a>
+## WP-EVT-000028 — Final PR-head verification for SACM source-view reconciliation
+
+- **Subject:** `govcheck.work.intermodel-contract-conformance`
+- **Event type:** `final-pr-head-verification`
+- **Recorded:** 2026-11-13
+- **PR head:** `e57b28bafd35757f1491fafb6b30cd130d748206`; PR [#128](https://github.com/Martin-PB/govcheck/pull/128) remains open, non-draft, mergeable and unmerged, stacked on [PR #127](https://github.com/Martin-PB/govcheck/pull/127).
+- **Source workflow:** [43495625975](https://github.com/Martin-PB/govcheck/actions/runs/43495625975) passed on this PR head: 12 Python tests, official PDF and XML digest checks, structural inventory generation/summary comparison, source-view manifest and upload. Artifact [14071287095](https://github.com/Martin-PB/govcheck/actions/runs/43495625975/artifacts/14071287095) contains the 9,019,601-byte PDF, 524,243-byte XML, manifest and XMI inventory.
+- **Lean workflow:** [43495626076](https://github.com/Martin-PB/govcheck/actions/runs/43495626076) passed on merge candidate `c6029f9` with Lean 4.19.0. The axiom audit covered 43 declarations under `GovCheckCoherence.Proofs`; dependencies are within the allowlist `propext`, `Classical.choice`, `Quot.sound`. Five source-fragment wrapper theorems use `propext`; the 13 directly printed `SourceFacts` theorems have no axioms. No unapproved axiom was reported.
+- **Other checks:** reference integrity [43495626080](https://github.com/Martin-PB/govcheck/actions/runs/43495626080), package alignment [43495625956](https://github.com/Martin-PB/govcheck/actions/runs/43495625956), and version governance [43495626381](https://github.com/Martin-PB/govcheck/actions/runs/43495626381) passed on the same PR head.
+- **Evidence links:** bilingual [source-view alignment and conflict register](../research/sacm24-source-view-alignment.md); independent discrepancy audit [R-128](../references.md#r-128); source-native metamodel [R-197](../references.md#r-197).
+- **Limits unchanged:** the PDF/XML digests authenticate bytes, not human transcription. The Lean source facts formalize transcribed values, not their fidelity to the source documents. No automated PDF text extraction, full UML/MOF semantics, parser-refinement theorem, source-derived GovCheck semantic mapping, precedence decision, SACM 2.4 conformance or normative adoption is claimed. Issue #73 remains open.
+
+
+<a id="wp-evt-000029"></a>
+## WP-EVT-000029 — Reclassify the uncorroborated Claim.value audit discrepancy
+
+- **Subject:** `govcheck.work.intermodel-contract-conformance`
+- **Event type:** `source-transcription-review-and-conflict-reclassification`
+- **Recorded:** 2026-11-13
+- **Trigger:** direct inspection of the exact official PDF downloaded and retained in the SACM source-view workflow artifact.
+- **Finding:** the informative PDF Figure 15.1.1 (printed page 59, section 15.1 "SACM Join", explicitly informative) depicts `Argument::Claim.value` as `ExpressionLangString`. The pinned normative metamodel XML also declares `Claim.value` as `ExpressionLangString`. The R-128 audit reports `MultiLangString` for normative Clause 13.9, but the inspected figure does not corroborate that value and is not itself a substitute for the cited normative clause.
+- **Reclassification:** remove the previous `claim_value_type_conflict` source theorem. Lean now records agreement between the informative figure and XML, and separately records that the audit-reported `MultiLangString` differs from that figure. The exact Clause 13.9 passage remains an unresolved transcription/source-locator question, not an established PDF/XML conflict.
+- **Research register:** the bilingual report now has 12 comparison entries: 11 modelled source-fragment differences/additions and one unresolved audit discrepancy. No precedence or semantic mapping is inferred.
+- **Reference:** [R-128](../references.md#r-128); detailed source-view register [EN](../research/sacm24-source-view-alignment.md) / [FR](../research/sacm24-source-view-alignment.fr.md).
+
+<a id="wp-evt-000030"></a>
+## WP-EVT-000030 — Verify the corrected SACM source-view model
+
+- **Subject:** `govcheck.work.intermodel-contract-conformance`
+- **Event type:** `corrected-source-view-model-verified`
+- **Recorded:** 2026-11-13
+- **Checked source/code head:** `d82c810e91e5cee456bf83cdb4198b7de84421d1`.
+- **Source workflow:** [43496689208](https://github.com/Martin-PB/govcheck/actions/runs/43496689208) passed: 12 Python tests, official PDF and XML digest checks, structural inventory/summary comparison, source-view manifest and upload. Artifact [14072371021](https://github.com/Martin-PB/govcheck/actions/runs/43496689208/artifacts/14072371021) contains the exact 9,019,601-byte PDF, 524,243-byte XML, manifest and XMI inventory.
+- **Lean workflow:** [43496689323](https://github.com/Martin-PB/govcheck/actions/runs/43496689323) passed with Lean 4.19.0 on merge candidate `af19d63`. The axiom audit covered 43 declarations under `GovCheckCoherence.Proofs`; all dependencies were within `propext`, `Classical.choice`, `Quot.sound`. Five fragment-wrapper theorems use `propext`; the 14 directly printed `SourceFacts` theorems have no axioms. No unapproved axiom was reported.
+- **Other checks:** reference integrity [43496689170](https://github.com/Martin-PB/govcheck/actions/runs/43496689170), package alignment [43496689204](https://github.com/Martin-PB/govcheck/actions/runs/43496689204), and version governance [43496689233](https://github.com/Martin-PB/govcheck/actions/runs/43496689233) passed.
+- **PR:** [#128](https://github.com/Martin-PB/govcheck/pull/128) is open, non-draft, mergeable and unmerged, stacked on [PR #127](https://github.com/Martin-PB/govcheck/pull/127).
+- **Limits:** source digests authenticate bytes, not transcription. The informative Figure 15.1.1 does not resolve the normative Clause 13.9 report. No PDF text-extraction pipeline, UML/MOF semantic interpreter, parser-refinement theorem, source-derived GovCheck semantic mapping, source precedence or SACM 2.4 conformance is claimed. Issue #73 remains open.
+
+
+<a id="wp-evt-000031"></a>
+## WP-EVT-000031 — Correct source-fragment interpretation after direct PDF inspection
+
+- **Subject:** `govcheck.work.intermodel-contract-conformance`.
+- **Event type:** `source-transcription-review-correction`.
+- **Recorded:** 2026-11-14.
+- **Source revision:** OMG SACM 2.4 Beta 1 PDF, file ID `ptc/26-06-34`, SHA-256 `25f32d1cd4bf32dfa9c92c7c1840e1a113b1e91c0e97252f6551878c39997ff5`, 9,019,601 bytes; verified in workflow run [43498346226](https://github.com/Martin-PB/govcheck/actions/runs/43498346226), artifact [14073196847](https://github.com/Martin-PB/govcheck/actions/runs/43498346226/artifacts/14073196847).
+- **Direct inspection:** PDF Figure 13.1, physical page 51 / printed page 41, and Clause 13.9, physical page 55 / printed page 45, were rendered and visually inspected. Clause 13.9 explicitly states `Claim.value : MultiLangString [0..1]`, `whole : SACMModel [0..*]` and `subject : SACMElement [0..*]`. Figure 13.1 depicts the subject association end at `SACMElement` and whole association end at `SACMModel`, both with multiplicity `0..*`.
+- **Correction:** the prior source-view model incorrectly called the PDF target types “owners” and reported a subject/whole ownership relocation. The PDF diagram shows association ends and target types; it does not, by role-label placement alone, establish the XML-specific `ownedAttribute` ownership representation. The XML inventory declares `Claim.subject` typed by `SACMElement` and `Claim.whole` typed by `SACMModel`, both `0..*`. The PDF and XML therefore agree on these target types and multiplicities. The ownership-conflict claim is withdrawn; the two source encodings remain separately represented.
+- **Claim.value locator:** the earlier “Clause 13.9 locator remains to be checked” note is corrected. Clause 13.9 (printed page 45) and Figure 13.1 (printed page 41) both state `MultiLangString`; informative Figure 15.1.1 (printed page 59) states `ExpressionLangString`. The conflict is between normative and informative PDF fragments and the XML agrees with the informative figure.
+- **Formal update:** Lean source facts now compare subject/whole target types and multiplicities rather than conflating target type with property owner. New theorems record the Clause 13.9 value agreement/conflict. These proofs establish relations among the transcribed constants only; they do not prove complete transcription fidelity.
+- **Limits:** this is a direct visual check of the cited fragments, not a full independent audit of all 12 register entries, UML/MOF semantics, parser refinement or SACM conformance.
+- **Normative boundary:** no precedence decision between PDF fragments, no SACM 2.4 adoption and no GovCheck semantic mapping is inferred.
+
+
+<a id="wp-evt-000032"></a>
+## WP-EVT-000032 — UML 2.5 multiplicity semantics and corrected SACM source-fragment register
+
+- **Subject:** `govcheck.work.intermodel-contract-conformance`
+- **Event type:** `source-fragment-review-and-version-pinned-semantics-implemented`
+- **Recorded:** 2026-11-14
+- **Integration PR:** [#133](https://github.com/Martin-PB/govcheck/pull/133), open, non-draft, not merged.
+- **Normative basis:** [R-200](../references.md#r-200), OMG UML 2.5 (formal/2015-03-01; machine-readable file set `ptc/13-08-17`; namespace `http://www.omg.org/spec/UML/20131001`). The SACM source namespace therefore selects UML 2.5, not UML 2.5.1.
+- **Interpreter:** parser/inventory v2 preserves raw `lowerValue`/`upperValue` ValueSpecifications and records effective multiplicities under UML 2.5 §7.8.8.7, §8.6.9.4 and §8.6.14.4. Across 355 properties: lower 303 literal defaults to 0 and 52 absent-bound fallbacks to 1; upper 192 explicit unlimited, 4 literal defaults to 0 and 159 absent-bound fallbacks to 1. Unsupported non-literal ValueSpecifications remain unresolved.
+- **Lean formalization:** `formal/lean/GovCheckCoherence/UML25Multiplicity.lean` proves the narrow default/fallback rules. `SACM24.lean` adds seven theorems showing that manually transcribed XML shapes for Claim.value, Claim.subject, Claim.whole, SACMElement.abstraction, AssertedRelationship.isCounter, AssertedEvidence.evidence and Assertion.assertionDeclarationRule produce the expected intervals. These theorems do not prove parser extraction.
+- **Direct PDF review:** visually inspected printed pages 21, 22, 25, 28, 31, 41, 44, 45, 46, 47, 59, 64 and 151. Corrected findings: subject/whole target types and multiplicities agree; SACMElement.abstraction differs between Clause 9.2 (0..1) and Figure 9.1 (0..*), with XML matching the figure; the PDF declares assertionDeclarationRule and its OCL body references assertionRule; Annex G.6 item 5 is prose about a SACMModel being an Assertion, not an exhaustive superclass list; AssertionDeclaration literal lists differ by fragment status and are not normalized.
+- **No decision:** no source precedence, SACM 2.4 adoption, full UML/MOF interpretation, parser refinement or SACM conformance is claimed.
+- **Verification:** the v2 parser/tests/summary and new Lean declarations are implemented; fresh final-head CI is pending. Earlier inventory-v1 and source-view branch runs do not verify this increment.

@@ -2,7 +2,7 @@
 
 **Statut :** audit indépendant d'implémentation enregistré ; garde-fous de sélection de vue source ajoutés à GovCheck ; aucune revendication de conformité SACM 2.4.  
 **Date :** 2026-11-12.  
-**Catalogue principal :** [R-73 — OMG SACM 2.4 Beta 1](../references.fr.md#r-73).  
+**Catalogues principaux :** [R-73 — OMG SACM 2.4 Beta 1](../references.fr.md#r-73) · [R-200 — sémantique des multiplicités OMG UML 2.5](../references.fr.md#r-200).  
 **Audit indépendant :** [R-128 — Audit d'impact SACM 2.4 Beta 1 d'Assurance Forge](../references.fr.md#r-128).
 
 ## 1. Constat déterminant
@@ -16,11 +16,11 @@ Le rapport Assurance Forge ne fait pas autorité pour l'OMG et ses conclusions d
 | Sujet | Texte PDF de la spécification | XML du métamodèle lisible par machine | Conséquence |
 |---|---|---|---|
 | Identité d'élément | `gid : String[0..1]` | `elementId : UID[1]`, sans `gid` | Impossible de normaliser l'identité sans sélectionner une vue source et enregistrer la transformation |
-| Littéraux de déclaration | `axiomatic`, `assumed`, `asserted`, `needsSupport` | `axiomatic`, `assumed`, `asserted`, plus `byRule`, sans `needsSupport` | Le même nom d'énumération possède des ensembles de valeurs incompatibles |
+| Littéraux de déclaration | Clause normative 13.6 : `axiomatic`, `assumed`, `asserted`, `needsSupport` ; la clause informative 15.2.1 ajoute `byRule` | `axiomatic`, `assumed`, `asserted`, `byRule`, sans `needsSupport` | Divergence entre listes de fragments. La clause informative présente `byRule` comme un ajout ; son omission de `needsSupport` ne prouve pas sa suppression de la liste normative. Aucun ensemble normalisé n'est choisi. |
 | Multiplicité de `AssertedEvidence.evidence` | `[0..*]` | `[1..*]` | Une collection vide est valide dans une vue et invalide dans l'autre |
-| `Claim.value` | `MultiLangString` | `ExpressionLangString` | Texte et expression typée ne sont pas interchangeables |
+| `Claim.value` | Figure normative 13.1 (page imprimée 41) et clause 13.9 (page imprimée 45) : `MultiLangString` ; figure informative 15.1.1 (page imprimée 59) : `ExpressionLangString` | `ExpressionLangString` | Conflit interne au PDF : le XML concorde avec la figure informative et diffère des fragments normatifs. La valeur rapportée par R-128 est confirmée par les deux fragments normatifs. |
 | Héritage de `BindingPackage` | Les clauses textuelles divergent sur les superclasses | Le XML déclare `ScopedPackage` et `SACMPackageWithBinding` | Le parseur/validateur peut construire une hiérarchie de types différente |
-| Multiplicité de `SACMElement.abstraction` | `[0..1]` | `[0..*]` | Une vue autorise au plus une abstraction, l'autre plusieurs |
+| Multiplicité de `SACMElement.abstraction` | Clause 9.2 : `[0..1]` ; figure 9.1 : `[0..*]` | `[0..*]` selon les valeurs par défaut UML 2.5 | Divergence interne au PDF ; le XML concorde avec la figure 9.1 et diffère de la clause 9.2. Aucune priorité n'est inférée. |
 | Multiplicité de `AssertedRelationship.isCounter` | `Boolean[1]` | `Boolean[0..1]` | Le caractère obligatoire diffère |
 
 L'audit signale aussi des noms obsolètes de SACM 2.3 dans le texte/les annexes de la bêta, des littéraux supprimés encore référencés dans l'annexe C, une ambiguïté sur les points de conformité et un exemple XMI de profil UML propre à un éditeur. Consulter l'audit épinglé complet et son inventaire de défauts lié avant toute implémentation supplémentaire.
@@ -38,7 +38,7 @@ Il ne s'agit pas d'affirmer que le fichier XML de l'OMG est invalide. Il faut di
 
 ## 4. Empreintes des artefacts épinglées par l'audit
 
-Le script de récupération d'Assurance Forge enregistre les empreintes SHA-256 suivantes pour les quatre artefacts OMG Beta 1 officiels téléchargés le 02/10/2026. GovCheck n'a pas encore retéléchargé ces fichiers ni recalculé leurs empreintes de manière indépendante ; il s'agit de valeurs de comparaison, pas d'empreintes vérifiées par GovCheck.
+Le script de récupération d'Assurance Forge enregistre les empreintes SHA-256 de comparaison de quatre artefacts OMG Beta 1 officiels téléchargés le 02/10/2026. GovCheck a téléchargé et vérifié indépendamment le PDF normatif de spécification (9 019 601 octets) et le XML normatif du métamodèle (524 243 octets) dans le workflow [43496689208](https://github.com/Martin-PB/govcheck/actions/runs/43496689208) ; les deux payloads sources exacts sont conservés dans l'artefact [14072371021](https://github.com/Martin-PB/govcheck/actions/runs/43496689208/artifacts/14072371021). Le PDF avec barres de modification et le XMI informatif du profil UML ne sont pas encore vérifiés par GovCheck.
 
 | Artefact OMG | Identifiant de fichier | SHA-256 rapporté par Assurance Forge |
 |---|---|---|
@@ -49,16 +49,16 @@ Le script de récupération d'Assurance Forge enregistre les empreintes SHA-256 
 
 ## 5. Réponse de GovCheck : mapping qualifié par la vue source
 
-Le module Lean `GovCheckCoherence.SACM24` a été renforcé pour empêcher la fusion silencieuse des deux vues contradictoires ; il lie aussi la vue sélectionnée au format natif et à la révision exacte de l'artefact source :
+Le module Lean `GovCheckCoherence.SACM24` distingue désormais les vues documentaires des clauses, annexes et figures individuelles qui portent des affirmations dans ces vues. La clause 13.6 est normative ; l'annexe G.6 et la clause 15.2.1 sont informatives. La liste ultérieure `byRule` est traitée comme un ajout, pas comme une suppression démontrée de `needsSupport`. La multiplicité d'abstraction présente également une divergence interne au PDF : la clause 9.2 indique `0..1`, la figure 9.1 `0..*`, et le XML concorde avec la figure.
 
-- `SourceView` distingue `specificationText` de `normativeMetamodelXML`.
-- `AssertionDeclarationKind` conserve l'union des deux ensembles de valeurs, dont `needsSupport` et `byRule`.
-- `declarationSupportedBySourceView` rejette `byRule` lorsque la vue du texte PDF est sélectionnée et rejette `needsSupport` lorsque la vue du métamodèle XML est sélectionnée.
-- `ElementIdentityField` préserve `gid` et `elementId) ; la vue source détermine le champ attendu.
-- `SACMClaimInterpretation` exige des preuves que le littéral de déclaration et le champ d'identité sont cohérents avec la vue source sélectionnée, et lie tout sujet explicite à la révision exacte du modèle source.
-- `SACMClaimMapping` compose cette interprétation source avec le pont sémantique général `EvidenceMapping` de GovCheck.
+- `SourceView` identifie le format documentaire ; `DeclarationSourceFragment` identifie séparément la clause PDF 13.6, l'annexe G.6 point 6, la clause 15.2.1 et le modèle XML normatif.
+- `IdentitySourceFragment` distingue la clause PDF 9.2 (`gid`), la figure PDF 9.1 (`elementId`) et le modèle XML (`elementId`).
+- Une interprétation de Claim doit porter les fragments exacts de déclaration et d'identité utilisés. Elle n'affirme plus un ensemble canonique de déclarations ni un champ d'identité unique pour tout le PDF.
+- La tranche Claim préserve `subject` comme `Option (List SACMElementRef)`, la présence de déclaration séparément de sa valeur par défaut `asserted`, les libellés de type de valeur brute, `whole` optionnel et les références opaques multivaluées d'assertion/règle/force.
+- Une identité mappée doit être non vide ; le contrat de mapping actuel est donc explicitement partiel pour les enregistrements source sans identité exploitable.
+- Les théorèmes Lean prouvent les différences entre les faits transcrits des fragments : ensembles de littéraux de déclaration, champs d'identité, certaines multiplicités, listes d'héritage et noms de propriétés de règle d'assertion.
 
-Ces garde-fous formalisent les deux conflits pertinents pour la tranche Claim/Assertion actuelle. Ils ne résolvent pas les autres conflits de multiplicité, de type de valeur ou d'héritage et n'établissent pas la conformité à l'une ou l'autre vue source complète.
+Le [rapport détaillé d'alignement des vues source](sacm24-source-view-alignment.fr.md) enregistre les éléments de preuve et la classification de chaque point. Ces théorèmes ne prouvent ni l'exactitude de la transcription source, ni le raffinement du parseur XMI Python vers la sémantique UML/MOF, ni que le pont d'inférence encodé manuellement représente la sémantique voulue par SACM. Les types `SACMClaimInterpretation` et `SACMClaimMapping` définissent des obligations de preuve ; aucune instance concrète de mapping GovCheck dérivée de la source ni revendication de conformité complète n'est établie.
 
 ## 6. Politique de traitement requise
 
@@ -73,8 +73,10 @@ Tant que l'OMG n'a pas publié une version formelle stable de SACM 2.4 ou une b�
 
 ## 7. Prochain travail de vérification
 
+Le [rapport d'alignement des vues source](sacm24-source-view-alignment.fr.md) est un relevé de comparaison lié aux révisions source, pas une décision de priorité.
+
 - Obtenir et épingler les quatre artefacts OMG Beta 1 avec les URL officielles et comparer leurs empreintes à celles enregistrées par l'audit indépendant.
-- Exécuter le diff structurel texte/XML de GovCheck et étendre le modèle Lean source-view aux autres conflits : multiplicité AssertedEvidence, type de Claim.value, héritage BindingPackage, multiplicité abstraction et multiplicité isCounter.
+- Valider la transcription humaine de chaque fragment PDF/XML par rapport aux octets source épinglés ; les théorèmes Lean actuels prouvent des différences entre constantes transcrites, pas l'exactitude des transcriptions. Construire un pipeline explicite d'extraction/réconciliation avant de revendiquer une couverture automatisée du diff PDF/XML.
 - Construire des fixtures négatives où la vue source et la déclaration/l'identité/multiplicité divergent ; chaque cas doit être rejeté ou explicitement représenté comme conflit.
 - Seulement lorsqu'un format d'instance portable et des fichiers d'exemple existeront, construire un corpus de tests aller-retour d'import/export natif.
 - Revoir le mapping lorsque l'OMG publiera Beta 2 ou la spécification formelle SACM 2.4.

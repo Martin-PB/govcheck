@@ -16,7 +16,7 @@ Tout le contenu canonique reste dans le dépôt : la conception est indépendant
 
 - Les Architectures 0028/0030 font du registre dans le dépôt le tracker canonique ; les issues de la forge sont des adaptateurs/projections, et l’autorité va du registre vers l’adaptateur, jamais l’inverse. La synchronisation est initialement explicite/manuelle ; la dérive est rapportée, pas réconciliée silencieusement.
 - L’ADR 0006 (proposé) nomme déjà la troisième couche : « adaptateur de forge : miroir du tracker, CI, identité », avec un pipeline CI portable (seule la syntaxe du workflow change selon la forge). La Spécification 0004 définit les contrats d’adaptateurs et constate qu’aucun adaptateur n’est encore implémenté.
-- L’option brain.md (Apache-2.0, npm `@mindmux/brain-md` v0.4.1, dépôt <https://github.com/mindmuxai/brain.md>) a été évaluée puis écartée pour la machine de l’agent : son CLI Node.js sans dépendance (`bin/brain.mjs`, node >= 18) n’y est pas souhaitable. Ce document ne réutilise aucun contenu de brain.md ; toute réutilisation future devra être attribuée dans le [catalogue des références](../references.fr.md).
+- L’option brain.md (Apache-2.0, npm `@mindmux/brain-md` v0.4.1, dépôt [brain.md repository](../references.fr.md#r-202)) a été évaluée puis écartée pour la machine de l’agent : son CLI Node.js sans dépendance (`bin/brain.mjs`, node >= 18) n’y est pas souhaitable. Ce document ne réutilise aucun contenu de brain.md ; toute réutilisation future devra être attribuée dans le [catalogue des références](../references.fr.md).
 - L’issue #118 suit l’implémentation de ce document (fille de #63).
 
 ## 3. Décision d’architecture
@@ -78,5 +78,5 @@ Adopter un unique module d’adaptation limité à la bibliothèque standard, de
 - [Issue #118 — Adaptateur natif de forge : govcheck/forge.py](https://github.com/Martin-PB/govcheck/issues/118)
 - [Issue #63 — Adaptateur GitHub du portefeuille et taxonomie de labels](https://github.com/Martin-PB/govcheck/issues/63)
 - [Issue #92 (fermée) — Portabilité inter-forges de la décision GovCheck](https://github.com/Martin-PB/govcheck/issues/92)
-- brain.md (évalué, non adopté) : <https://github.com/mindmuxai/brain.md> (Apache-2.0)
+- brain.md (évalué, non adopté) : [brain.md repository](../references.fr.md#r-202) (Apache-2.0)
 - [README du package govcheck](../../govcheck/README.md)

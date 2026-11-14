@@ -1,84 +1,85 @@
-# SACM 2.4 Beta 1 — alignement des vues source et inventaire des conflits
+# SACM 2.4 Beta 1 — alignement des vues sources et registre des conflits
 
-**Statut :** comparaison des vues source et modélisation des conflits au niveau des fragments ; aucune règle de priorité ni revendication de conformité SACM 2.4 n'est adoptée.  
-**Audit indépendant d'implémentation :** [R-128](../references.fr.md#r-128).  
-**XML normatif du métamodèle :** [R-197](../references.fr.md#r-197).  
-**PDF normatif :** [R-198](../references.fr.md#r-198).  
-**XMI informatif du profil UML :** [R-199](../references.fr.md#r-199).  
-**Inventaire structurel :** [rapport d'inventaire XMI](sacm-xmi-structural-inventory.fr.md) et [synthèse versionnée](../../formal/sources/sacm-2.4-beta1/metamodel-inventory-summary.json).  
-**Modèle formel des fragments source :** [`GovCheckCoherence.SACM24`](../../formal/lean/GovCheckCoherence/SACM24.lean).
+**Statut :** comparaison liée aux révisions de deux vues sources normatives distinctes ; aucune décision de priorité, aucun modèle canonisé, aucune revendication de conformité SACM ni correspondance sémantique GovCheck n'est établi.  
+**Élément de travail :** [#73 — conformité des contrats intermodèles](https://github.com/Martin-PB/govcheck/issues/73).  
+**Source du métamodèle :** [R-197](../references.fr.md#r-197), [R-200](../references.fr.md#r-200), [inventaire XMI dérivé de la source](sacm-xmi-structural-inventory.fr.md).  
+**Source du texte de spécification :** [R-198](../references.fr.md#r-198).  
+**Audit indépendant des divergences :** [R-128](../references.fr.md#r-128).  
+**Transcription formalisée :** `formal/lean/GovCheckCoherence/SACM24.lean`, espace de noms `GovCheck.Coherence.SACM24.SourceFacts`.
 
-## 1. Séparer les artefacts
+## 1. Périmètre et identité des sources
 
-Le catalogue OMG expose plusieurs artefacts SACM 2.4 Beta 1 distincts. Ils ne sont pas des représentations interchangeables d'un schéma unique déjà résolu :
+Le catalogue OMG répertorie le PDF de la spécification SACM 2.4 Beta 1 comme **document normatif** (identifiant `ptc/26-06-34`) et le XML du métamodèle lisible par machine comme **document normatif lisible par machine** (identifiant `ptc/26-05-28`). Ce sont deux artefacts et deux vues sources distincts, pas deux sérialisations que l'on pourrait fusionner silencieusement. Le catalogue répertorie aussi un XMI informatif du profil UML ([R-199](../references.fr.md#r-199)) ; il est volontairement exclu de cette comparaison normative PDF/XML et constitue une troisième vue source, à traiter séparément.
 
-| Vue source | Identifiant OMG | Chemin source exact | Autorité/statut | Provenance du SHA-256 |
+| Vue source | Identifiant OMG | URL officielle | SHA-256 | État actuel dans GovCheck |
 |---|---|---|---|---|
-| PDF normatif de spécification | `ptc/26-06-34` | `SACM/20260504/SACM2.4.pdf` | Texte et figures de la spécification normative | `25f32d1cd4bf32dfa9c92c7c1840e1a113b1e91c0e97252f6551878c39997ff5`, rapporté par l'audit indépendant R-128 ; pas encore recalculé indépendamment par GovCheck |
-| XML normatif du métamodèle lisible par machine | `ptc/26-05-28` | `SACM/20260504/SACM2.4_Metamodel.xml` | Métamodèle normatif lisible par machine | `0581dfa0b9dfaf17ff0f6c63b74f8e7a8396bea03f315e1334e94f23db110830`, vérifié par GovCheck sur 524 243 octets téléchargés |
-| XMI informatif du profil UML | `ptc/26-05-21` | `SACM/20260504/SACM2.4_Profile.xmi` | Artefact de profil informatif, distinct du XML normatif du métamodèle | `9149a0414628e1b70c1f7c2235f5180c64e7a144601eb2ae78d539681918838b`, rapporté par R-128 |
-| PDF informatif des changements | `ptc/26-06-35` | `SACM/20260504/SACM2.4_Changes.pdf` | Synthèse informative des changements | `6840a0f67104d07997168d07079c0e168f5ac65ef5fa1779eccb9ebef1fe5f96`, rapporté par R-128 |
+| Texte, figures et annexes de la spécification (PDF) | `ptc/26-06-34` | <https://www.omg.org/spec/SACM/2.4/Beta1/PDF> | `25f32d1cd4bf32dfa9c92c7c1840e1a113b1e91c0e97252f6551878c39997ff5` | Vérifié par GovCheck dans le workflow [43498142371](https://github.com/Martin-PB/govcheck/actions/runs/43498142371) ; 9 019 601 octets ; conservé dans l'artefact [14071999627](https://github.com/Martin-PB/govcheck/actions/runs/43498142371/artifacts/14071999627) |
+| Métamodèle lisible par machine (XML) | `ptc/26-05-28` | <https://www.omg.org/spec/SACM/20260504/SACM2.4_Metamodel.xml> | `0581dfa0b9dfaf17ff0f6c63b74f8e7a8396bea03f315e1334e94f23db110830` | Téléchargement indépendant et digest vérifié par GovCheck ; 524 243 octets |
 
-Les trois derniers digests proviennent du script de téléchargement épinglé de l'audit indépendant. GovCheck n'a vérifié indépendamment que le digest XML. Le PDF compte 161 pages ; R-128 rapporte une couverture d'extraction textuelle d'environ 98 % et avertit que les libellés présents uniquement dans les diagrammes nécessitent une inspection visuelle. Une déclaration absente du texte PDF extrait doit donc être enregistrée comme omission dans cette vue textuelle, pas automatiquement comme preuve qu'aucun diagramme ne la contient.
+Le digest PDF rapporté par R-128 a été recalculé indépendamment par GovCheck sur le téléchargement officiel dans le workflow [43498142371](https://github.com/Martin-PB/govcheck/actions/runs/43498142371) : 9 019 601 octets et SHA-256 exact ci-dessus. L'artefact de 90 jours [14071999627](https://github.com/Martin-PB/govcheck/actions/runs/43498142371/artifacts/14071999627) contient le PDF, le XML exact, le manifeste des vues sources et l'inventaire XMI généré. Le workflow n'extrait ni n'interprète automatiquement le texte PDF.
 
-## 2. Matrice des conflits et omissions
+SACM 2.4 Beta 1 reste une version en cours/de nature informative ; SACM 2.3 demeure la version formelle. Le fait que le catalogue OMG classe le PDF et le XML comme artefacts normatifs ne résout pas leurs contradictions.
 
-Le tableau conserve la portée de chaque fragment source. « PDF » ne désigne jamais un ensemble unique et cohérent de revendications lorsque le PDF se contredit lui-même.
+## 2. Registre des conflits
 
-| Concept / propriété | Déclaration du PDF normatif | Déclaration du métamodèle XML normatif | Classification | Effet sur la tranche Lean actuelle |
+Le tableau enregistre les affirmations à la granularité réelle de leurs fragments sources. L'ancienne classification de « relocalisation de propriété » pour subject/whole était incorrecte : la figure 13.1 montre l'extrémité d'association subject vers SACMElement et l'extrémité whole vers SACMModel, chacune [0..*] ; la clause 13.9 confirme ces mêmes types cibles et multiplicités. Le XML déclare Claim.subject et Claim.whole avec les mêmes types et multiplicités. Le diagramme PDF et le XML emploient des encodages structurels distincts (extrémités d'association versus propriétés possédées) ; le diagramme seul ne démontre pas un conflit de propriété. La clause 13.9 (page imprimée 45) et la figure 13.1 (page imprimée 41) indiquent toutes deux MultiLangString pour Claim.value ; la figure informative 15.1.1 (page imprimée 59) indique ExpressionLangString. « Non indiqué dans le texte PDF » ne signifie volontairement pas « interdit par le PDF » : des diagrammes, annexes ou autres fragments peuvent apporter cette information.
+
+| Sujet | Fragment source PDF | Vue source XML du métamodèle | Classification | Théorème(s) Lean sur les faits source |
 |---|---|---|---|---|
-| Identité de `SACMElement` | Clause 9.2 : `gid : String[0..1]` ; Figure 9.1 : `elementId : UID[1]` | `elementId : UID[1]` | **Conflit interne au PDF** ; le XML concorde avec la figure, pas avec le texte de la clause | La preuve d'identité doit citer un fragment clause/figure. Une règle PDF globale « gid » est invalide. |
-| `Claim.value` | Clause 13.9 : `MultiLangString[0..1]` | `ExpressionLangString[0..1]` | **Conflit direct de type** | Conserver le libellé de type source et le payload brut ; ne convertir aucun des deux en proposition GovCheck ni en simple chaîne. |
-| `Claim.subject` | Non indiqué dans la vue de prose PDF extraite | `SACMElement[0..*]` | **Ajout XML / omission du texte PDF** ; pas de contradiction directe | `Option (List ...)` distingue une propriété absente d'une propriété présente vide ou multivaluée. Aucun mapping PDF n'est inféré. |
-| `Claim.whole` | Non indiqué dans la vue de prose PDF extraite | `SACMModel[0..*]` | **Ajout XML / omission du texte PDF** | Conserver séparément la propriété XML ; ne fabriquer aucune valeur PDF. |
-| `AssertionDeclarationKind` | Clause 13.6 / Figure 13.1 inclut `needsSupport` ; Annexe G.6 point 6 ne liste que `axiomatic`, `assumed`, `asserted` ; la clause 15.2.1 ajoute `byRule` | `axiomatic`, `assumed`, `asserted`, `byRule` | **Conflit interne au PDF entre fragments** ; le XML concorde avec l'extension de la clause 15, pas avec la liste de la clause 13 | Les preuves de déclaration sont liées à un fragment précis clause/annexe/XML. Ni `needsSupport` ni `byRule` n'est rejeté pour l'ensemble du document PDF. |
-| Multiplicité de `AssertedEvidence.evidence` | Clause 13.13 : `ArtifactReference[0..*]` | `ArtifactReference[1..*]` | **Conflit direct de multiplicité** | Pas encore représenté dans la tranche Claim actuelle ; nécessite un mapping de relation distinct. |
-| Multiplicité de `SACMElement.abstraction` | Clause 9.2 : `SACMElement[0..1]` | `SACMElement[0..*]` | **Conflit direct de multiplicité** | Pas encore mappé. Ne pas réduire une relation XML multivaluée à une référence optionnelle unique. |
-| Multiplicité de `AssertedRelationship.isCounter` | Clause 13.11 : `Boolean[1]` | `Boolean[0..1]` | **Conflit direct de multiplicité** | Pas encore mappé ; absence et faux explicite ne doivent pas être confondus. |
-| Héritage de `BindingPackage` | Clause 10.5 : `ScopedPackage` et `SACMPackageWithBinding` ; clause 11.3 : `ModelElement` | `ScopedPackage` et `SACMPackageWithBinding` | **Conflit interne au PDF** ; le XML concorde avec la clause 10.5 | Ne pas choisir silencieusement une clause PDF. |
-| Héritage de `SACMModel` | Clause 9.10 : `ModelElement` ; l'annexe G.6 point 5 ajoute `Assertion` et `Assessment` | `ModelElement`, `Assertion`, `Assessment` | **Différence entre fragments PDF / extension de l'annexe** ; le XML concorde avec l'annexe G.6 | Conserver la clause et l'annexe comme revendications distinctes ; aucun ensemble de superclasses aplati pour l'instant. |
-| Héritage de `SACMDependency` | Clause 9.11 : `DirectedRelationship` | `DirectedRelationship` et `BaseElement` | **Ajout XML par rapport au texte de la clause PDF** | Pas encore mappé. |
-| Héritage de `Rule` | Clause 15.2.3 : `BaseElement` | `ModelElement` et `BaseElement` | **Ajout XML par rapport au texte de la clause PDF** | Pas encore mappé. |
-| Nom de la propriété de règle d'assertion | Le texte/diagramme PDF utilise `assertionRule` | La propriété XML est `assertionDeclarationRule` | **Divergence de nom de propriété** ; identité sémantique non établie | Conserver les noms et provenances séparés tant que le mapping n'est pas prouvé. |
-| `InferenceTypeKind` | Les six littéraux sont décrits dans plusieurs fragments PDF | Le XML contient `probable`, `collective`, `necessary`, `sufficient`, `necessaryAndSufficient`, `byRule` | Aucun conflit d'ensemble de littéraux identifié par l'audit actuel | L'ensemble de littéraux seul ne prouve pas la sémantique d'entailment Lean. |
+| Identité d'élément | Clause 9.2 : `gid : String[0..1]` ; Figure 9.1 : `elementId` | `elementId : UID[1]`, sans `gid` | **Conflit interne au PDF et entre ses fragments et le XML.** Une règle d'identité globale au PDF n'est pas fondée. | `pdf_identity_fragments_disagree` ; `pdf_clause9_2_uses_gid` ; `pdf_figure9_1_uses_elementId` ; `xml_model_uses_elementId` |
+| Littéraux de déclaration d'assertion | La clause normative 13.6 liste `axiomatic`, `assumed`, `asserted`, `needsSupport` ; l'annexe informative G.6 point 6 en liste trois ; la clause informative 15.2.1 présente `byRule` comme littéral supplémentaire | `axiomatic`, `assumed`, `asserted`, `byRule` | **Divergence entre listes de fragments.** Le fragment informatif ultérieur est explicitement un ajout ; l'omission de `needsSupport` n'y prouve pas sa suppression de la liste normative. Le XML inclut `byRule` et omet `needsSupport`. Aucun ensemble normalisé unique n'est choisi ici. | `pdf_assertion_declaration_fragments_disagree` ; théorèmes sur les littéraux par fragment |
+| `Claim.value` | Figure normative 13.1 (page imprimée 41) et clause 13.9 (page imprimée 45) : `MultiLangString` ; figure informative 15.1.1 (page imprimée 59) : `ExpressionLangString` | `ExpressionLangString` | **Conflit interne au PDF.** Le XML concorde avec la figure informative et diffère des fragments normatifs. La valeur `MultiLangString` rapportée par R-128 est confirmée par la figure et la clause normatives. | `pdf_normative_figure13_1_vs_informative_figure15_1_1_claim_value_conflict` ; `pdf_normative_figure13_1_vs_xml_claim_value_conflict` ; `claim_value_type_agrees_in_informative_pdf_figure15_1_1_and_xml` ; `r128_reported_claim_value_type_matches_normative_pdf_figure13_1` |
+| Multiplicité de `AssertedEvidence.evidence` | Clause 13.13 : `[0..*]` ; figure 13.1 : `[1..*]` | `[1..*]` | **Conflit interne au PDF.** Le XML concorde avec la figure 13.1 et diffère de la clause 13.13. | `pdf_clause13_13_vs_figure13_1_asserted_evidence_conflict` ; `pdf_figure13_1_and_xml_asserted_evidence_agree` ; `pdf_clause13_13_vs_xml_asserted_evidence_conflict` |
+| Héritage de `BindingPackage` | Les clauses 10.5 et 11.3 donnent des superclasses différentes | `ScopedPackage` et `SACMPackageWithBinding` | **Conflit interne au PDF** ; le XML concorde avec la clause 10.5, pas avec la clause 11.3. | `binding_package_pdf_fragments_conflict` ; `xml_binding_package_matches_pdf_clause10_5` |
+| Multiplicité de `SACMElement.abstraction` | Clause 9.2 : `[0..1]` ; figure 9.1 : `[0..*]` | `[0..*]` selon les valeurs par défaut UML 2.5 épinglées | **Conflit interne au PDF.** Le XML concorde avec la figure 9.1 et diffère de la clause 9.2 ; aucune priorité n'est inférée. | `sacm_element_abstraction_multiplicity_conflict` ; `pdf_clause9_2_vs_figure9_1_abstraction_multiplicity_conflict` ; `pdf_figure9_1_abstraction_multiplicity_matches_xml` |
+| Multiplicité de `AssertedRelationship.isCounter` | Clause 13.11 et figure 13.1 : `Boolean[1]` | `Boolean[0..1]` | **Conflit de multiplicité PDF/XML.** La clause et la figure PDF concordent ; le XML rend la valeur optionnelle. | `asserted_relationship_isCounter_multiplicity_conflict` ; `pdf_figure13_1_isCounter_matches_clause13_11` ; `pdf_figure13_1_vs_xml_isCounter_conflict` |
+| Énoncés de généralisation de `SACMModel` | Clause 9.10 nomme `ModelElement` ; l'annexe G.6 point 5 indique qu'un SACMModel (Group, Package, Diagram) peut être une `Assertion` | Le XML déclare les généralisations `ModelElement`, `Assertion` et `Assessment` | **Appui textuel partiel, pas conflit de liste complète de superclasses.** Le point 5 de l'annexe G.6 est une phrase, pas une énumération exhaustive des superclasses directes ; les fragments PDF cités ne disent pas si `Assessment` est une généralisation directe. Ce silence n'est pas interprété comme une contradiction. | `xml_sacm_model_includes_assertion` ; `xml_sacm_model_includes_assessment` |
+| Héritage de `SACMDependency` | Clause 9.11 : `DirectedRelationship` | Le XML déclare également `BaseElement` | **Ajout XML par rapport à la clause PDF citée**, pas preuve que le PDF l'interdit globalement. | `sacm_dependency_xml_adds_base_element` |
+| Héritage de `Rule` | Clause 15.2.3 : `BaseElement` | Le XML déclare `ModelElement` et `BaseElement` | **Ajout XML par rapport à la clause PDF citée.** | `rule_xml_adds_model_element` |
+| Propriété de règle d'assertion et référence OCL | La clause 15.2.1 déclare `assertionDeclarationRule : Rule [0..*]` ; sa contrainte OCL référence `assertionRule` | Le XML déclare `assertionDeclarationRule : Rule [0..*]` | **Le nom de propriété concorde.** Le PDF contient une incohérence interne entre la propriété déclarée et l'identifiant utilisé dans l'expression OCL ; ce n'est pas un renommage PDF/XML. | `pdf_xml_assertion_declaration_rule_feature_name_agrees` ; `pdf_assertion_rule_ocl_reference_differs_from_declared_feature` ; `xml_assertion_declaration_rule_multiplicity_matches_uml25` |
+| `Claim.subject` et `Claim.whole` | La figure 13.1 montre l'extrémité d'association `subject` vers `SACMElement` et l'extrémité `whole` vers `SACMModel`, chacune `[0..*]` ; la clause 13.9 énonce les mêmes types cibles et multiplicités | Le XML déclare `Claim.subject : SACMElement [0..*]` et `Claim.whole : SACMModel [0..*]` comme propriétés possédées | **Aucun conflit de type cible ou de multiplicité observé.** La notation par extrémités d'association du PDF et la représentation par propriétés possédées du XML sont des encodages source distincts ; le diagramme PDF n'est pas traité comme preuve d'une différence de propriété. | `claim_subject_target_type_agrees_between_pdf_figure13_1_and_xml` ; `claim_subject_multiplicity_agrees_between_pdf_figure13_1_and_xml` ; `claim_whole_target_type_agrees_between_pdf_figure13_1_and_xml` ; `claim_whole_multiplicity_agrees_between_pdf_figure13_1_and_xml` |
 
-**Précaution sur les multiplicités :** l'inventaire XMI conserve les nœuds littéraux et leurs attributs XML explicites ; il n'applique pas actuellement les valeurs par défaut UML pour normaliser les attributs `LiteralInteger.value` omis ou l'absence de nœuds de borne supérieure/inférieure. Les cardinalités ci-dessus sont les lectures normalisées consignées par l'audit indépendant R-128. Elles ne sont pas présentées comme mécaniquement prouvées par le parseur Python d'inventaire.
+Les 12 entrées de comparaison préservent les conflits internes au PDF Claim.value et AssertedEvidence.evidence, la différence PDF/XML isCounter, le conflit de multiplicité entre la clause 9.2 et la figure 9.1, les différences entre listes de littéraux AssertionDeclaration et la divergence entre fragments BindingPackage. L'examen direct corrige également deux anciennes classifications : les types cibles subject/whole concordent, et le nom de propriété assertionDeclarationRule concorde tandis que le corps OCL du PDF emploie un autre identifiant. L'ancienne classification de « relocalisation de propriété » pour subject/whole était incorrecte : la figure 13.1 montre subject vers SACMElement et whole vers SACMModel, chacune [0..*] ; la clause 13.9 confirme ces types cibles et multiplicités. Le XML déclare Claim.subject et Claim.whole avec les mêmes types et multiplicités. Les deux vues emploient des encodages structurels distincts (extrémités d'association du diagramme PDF et propriétés possédées du XML), sans que le diagramme suffise à établir un conflit de propriété. La clause 13.9 (page imprimée 45) et la figure 13.1 (page imprimée 41) indiquent toutes deux MultiLangString ; la figure informative 15.1.1 (page imprimée 59) indique ExpressionLangString. Le registre préserve les constats de l'audit R-128 tout en ajoutant les distinctions par fragment déjà représentées dans Lean. Le tableau est un relevé comparatif, pas une décision d'erratum de l'OMG. La transcription exacte des fragments PDF reste une tâche de preuve révisable ; le digest authentifie les octets, pas la justesse d'une transcription humaine.
 
-## 3. Correction de la première tranche Lean
+## 3. Frontière de la formalisation
 
-La formalisation Claim/Assertion précédente traitait `specificationText` comme une vue PDF cohérente unique et rejetait donc `byRule` pour la vue PDF. C'était trop grossier : le même PDF ajoute `byRule` dans la clause 15.2.1 tandis qu'un autre fragment inclut `needsSupport`. Le PDF donne également des champs d'identité contradictoires entre la clause 9.2 et la figure 9.1.
+Le module Lean distingue :
+- les valeurs documentaires `SourceView` (texte/PDF de spécification versus XML normatif du métamodèle) ;
+- les valeurs `DeclarationSourceFragment` pour la clause PDF 13.6, le point 6 de l'annexe G.6, la clause 15.2.1 et le XML ;
+- les valeurs `IdentitySourceFragment` pour la clause PDF 9.2, la figure 9.1 et le XML.
 
-Le modèle Lean utilise désormais des preuves au niveau des fragments :
+Une `SACMClaimInterpretation` doit rattacher ses fragments de déclaration et d'identité à la vue documentaire sélectionnée, préserver les champs source exacts et conserver la révision du modèle source. Cela empêche de supposer un champ d'identité ou un ensemble de déclarations global au PDF alors que le PDF contient lui-même des fragments incompatibles.
 
-- `DeclarationSourceFragment` distingue la clause PDF 13.6, l'annexe G.6 point 6, la clause 15.2.1 et le modèle XML normatif.
-- `IdentitySourceFragment` distingue la clause PDF 9.2, la figure PDF 9.1 et le modèle XML.
-- Un Claim mappé doit citer les fragments exacts de déclaration et d'identité utilisés ; un simple libellé de document ne suffit pas.
-- `SACMClaim.subject` est `Option (List SACMElementRef)` : `none` signifie que la vue source sélectionnée ne déclare pas la propriété ; `some []` signifie que la propriété existe mais ne contient aucune valeur ; une liste non vide préserve plusieurs sujets.
-- La présence de la déclaration est optionnelle et sa valeur par défaut effective est modélisée séparément comme `asserted`.
-- Une valeur Claim brute conserve un libellé de type source et un payload ; les valeurs d'assertion, références de règles et forces sont conservées comme listes de références opaques.
-- Le mapping source vers GovCheck reste partiel : il exige une identité non vide et une preuve de mapping explicite. Ce n'est pas un encodage complet des objets SACM.
+Les théorèmes `SourceFacts` de Lean prouvent que les **constantes transcrites** diffèrent ou concordent comme indiqué. Ils ne prouvent pas que la transcription représente fidèlement le PDF/XML. Le noyau de preuve vérifie les dérivations Lean à partir de ces constantes ; il n'authentifie pas les citations sources. Le rapport d'axiomes mis à jour audite explicitement les théorèmes sur les faits sources, mais cet audit attend encore l'exécution du workflow de la PR.
 
-Les théorèmes Lean prouvent l'injectivité du mapping déclaration/disposition et les différences entre les **faits transcrits des fragments** (ensembles de déclarations, champs d'identité, multiplicités, listes d'héritage et noms de propriétés). Ils ne prouvent ni l'exactitude de la transcription PDF/XML, ni le raffinement sémantique du parseur Python XMI, ni que le pont d'inférence abstrait exprime la sémantique voulue par SACM.
+## 4. Règles de traitement pour l'intégration actuelle
 
-## 4. Frontière d'autorité et de normalisation
+1. Préserver le PDF et le XML comme artefacts sources distincts et identifiés indépendamment.
+2. Rattacher chaque affirmation à une clause, figure, point d'annexe ou métaclasse/propriété XML précise, pas seulement à une étiquette documentaire.
+3. Représenter les désaccords comme des conflits de première classe avec les deux valeurs source, localisateurs, révisions et provenance.
+4. Ne pas choisir une source gagnante, corriger un artefact OMG ni normaliser les valeurs sans décision explicite autorisée.
+5. Ne pas traiter l'absence dans un passage textuel comme preuve d'absence dans l'intégralité du PDF.
+6. Garder les mappings partiels et qualifiés par vue source. Un mapping dépendant d'un fait contesté ne peut devenir une prémisse établie tant que sa relation sémantique exacte n'est pas prouvée.
+7. Conserver SACM 2.3 comme référence formelle de conformité. Ne pas annoncer d'import/export d'instances ni de conformité SACM 2.4 Beta 1.
 
-Aucune règle de priorité n'est adoptée entre le PDF normatif et le XML normatif du métamodèle. Les deux artefacts restent disponibles comme revendications versionnées séparément. Un conflit peut être :
-- interne à un document (clause PDF contre annexe/figure) ;
-- entre le PDF et le XML ;
-- un ajout ou une omission plutôt qu'une contradiction directe ;
-- une différence de nom dont l'identité sémantique n'est pas établie ;
-- non résolu parce qu'un diagramme ou une référence externe n'a pas été interprété.
+## 5. Vérification et limites restantes
 
-GovCheck doit préserver ces distinctions, les emplacements source exacts, les révisions source et la relation revendiquée. Une vue normalisée, si elle devient nécessaire, doit être une transformation distincte, versionnée, avec pertes déclarées et décision explicite autorisée. Elle ne doit pas écraser les revendications sources.
+La capture XML et l'inventaire structurel sont vérifiés indépendamment par workflow (12 tests Python ; digest XML officiel ; inventaire généré comparé à la synthèse versionnée ; source brute et inventaire complet publiés). Le téléchargement PDF et son contrôle SHA-256 par rapport à la valeur épinglée par R-128 ont également réussi ; le manifeste enregistre les deux identités, digests et longueurs, et l'artefact combiné a été publié. Lean 4.19.0 a compilé le modèle de fragments sources dans [l'exécution 43498142293](https://github.com/Martin-PB/govcheck/actions/runs/43498142293) sur le candidat de fusion `5957e68` ; l'audit a couvert 43 déclarations sous GovCheckCoherence.Proofs, toutes dans la liste d'axiomes autorisés (quatre théorèmes wrappers de fragments sources utilisent propext ; aucun axiome non autorisé n'a été signalé). Les théorèmes SourceFacts affichés directement ne dépendent d'aucun axiome.
 
-## 5. Obligations de preuve et d'implémentation restantes
+Ne sont toujours pas démontrés :
+- l'exactitude et l'exhaustivité de l'ensemble des transcriptions PDF-vers-Lean et XML-vers-Lean (seuls les fragments de la clause 13.9 et de la figure 13.1 décrits ci-dessous ont reçu cette inspection visuelle limitée) ;
+- la sémantique UML/MOF complète ou le raffinement du parseur entre l'infoset XML et un modèle source formel ;
+- une correspondance sémantique dérivée de la source vers le métamodèle GovCheck ;
+- la résolution ou la priorité des conflits sources ;
+- l'échange d'instances, le comportement aller-retour ou la conformité SACM 2.4.
 
-1. Vérifier le digest du PDF normatif par un téléchargement contrôlé par GovCheck, et pas seulement par l'enregistrement indépendant R-128.
-2. Parser et inventorier le XMI informatif du profil UML comme artefact source distinct ; ne pas le fusionner avec le XML normatif du métamodèle.
-3. Ajouter une interprétation des valeurs par défaut UML/multiplicités dérivées de la source, avec provenance explicite de la sémantique UML utilisée.
-4. Prouver le raffinement du parseur ou vérifier indépendamment les faits structurels générés avant de les traiter comme prémisses formelles.
-5. Construire un mapping Claim/Assertion typé et spécifique à chaque vue source, préservant types, multiplicités, valeurs par défaut et provenance ; prouver chaque relation revendiquée.
-6. Ajouter des mappings typés distincts pour AssertedEvidence, AssertedRelationship, SACMElement, les packages, l'héritage des modèles et Rule ; conserver les faits non résolus/contradictoires comme propositions non opérationnelles.
-7. Conserver SACM 2.3 comme référence formelle de conformité. SACM 2.4 Beta 1 reste une entrée de recherche ; aucune conformité 2.4 ni adoption normative n'est revendiquée.
+### 5.1 Inspection visuelle directe de fragments PDF sélectionnés
 
-L'issue #73 reste ouverte. Ce rapport et son modèle Lean de fragments sont un incrément d'ingénierie/recherche, pas une décision d'autorité.
+Les octets exacts du PDF ont été téléchargés depuis l'URL officielle OMG et vérifiés par digest dans le workflow [43498346226](https://github.com/Martin-PB/govcheck/actions/runs/43498346226) ; l'artefact combiné [14073196847](https://github.com/Martin-PB/govcheck/actions/runs/43498346226/artifacts/14073196847) conserve les vues sources PDF et XML. La table de correspondance texte embarquée dans le PDF ne permet pas une extraction textuelle fiable ; les fragments sélectionnés ont donc été vérifiés sur des images des pages rendues :
+
+- page physique PDF 51 / page imprimée 41 : figure 13.1 ; confirme visuellement `Claim.value MultiLangString [0..1]`, l'extrémité subject vers `SACMElement`, l'extrémité whole vers `SACMModel` et les multiplicités du diagramme ;
+- page physique PDF 55 / page imprimée 45 : clause 13.9 ; confirme visuellement `Claim.value : MultiLangString [0..1]`, `whole : SACMModel [0..*]` et `subject : SACMElement [0..*]`.
+
+Il s'agit d'une revue directe de ces fragments précis, pas d'un audit complet de la transcription. Les théorèmes Lean comparent les constantes transcrites ; ils ne prouvent pas que ces constantes ont été transcrites correctement.
+
+Aucune adoption normative n'est proposée par cet incrément de recherche. L'issue #73 reste ouverte.

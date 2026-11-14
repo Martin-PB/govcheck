@@ -59,14 +59,14 @@ Recommandation provisoire : noyau générique pour affirmations, hypothèses, ar
 
 ### Sources sur probabilité, logique floue et confiance dans l'assurance
 
-- Graydon & Holloway, “An investigation of proposed techniques for quantifying confidence in assurance arguments,” *Safety Science* 92 (2017) : https://doi.org/10.1016/j.ssci.2016.09.014. La revue met en garde contre des résultats quantitatifs peu plausibles et une validation empirique insuffisante pour une recommandation générale en contexte critique.
-- “A probabilistic model of belief in safety cases,” *Safety Science* 138 (2021), 105187 : DOI à vérifier avant intégration définitive au catalogue ; le DOI cité dans les échanges était https://doi.org/10.1016/j.ssci.2021.09.014. Exemple de réseau bayésien, pas une méthode universelle.
-- NIST Engineering Statistics Handbook, évaluation bayésienne de la fiabilité : https://www.itl.nist.gov/div898/handbook/apr/section1/apr1a.htm.
-- Johanyák & Zlatko (2025), “A comprehensive survey on Fuzzy logic applications in software requirements engineering” : https://doi.org/10.47833/2025.2.CSC.008.
-- Yen, Tiao & Liu (1996), “A Systematic Tradeoff Methodology for Acquiring and Validating Imprecise Requirements” : https://doi.org/10.1109/FUZZY.1996.551766.
-- Salako & Zhao (2023), “The Unnecessity of Assuming Statistically Independent Tests in Bayesian Software Reliability Assessments” : https://doi.org/10.1109/TSE.2022.3233802.
-- Salako & Zhao (2024), “Demonstrating Software Reliability using Possibly Correlated Tests” : https://doi.org/10.1002/qre.3460.
-- NIST, “Software Assurance Using Structured Assurance Case Models” : https://pmc.ncbi.nlm.nih.gov/articles/PMC4548534/.
+- Graydon & Holloway, “An investigation of proposed techniques for quantifying confidence in assurance arguments,” *Safety Science* 92 (2017) : [R-207](../references.fr.md#r-207). La revue met en garde contre des résultats quantitatifs peu plausibles et une validation empirique insuffisante pour une recommandation générale en contexte critique.
+- “A probabilistic model of belief in safety cases,” *Safety Science* 138 (2021), 105187 : DOI vérifié : [R-208](../references.fr.md#r-208). Exemple de réseau bayésien, pas une méthode universelle.
+- NIST Engineering Statistics Handbook, évaluation bayésienne de la fiabilité : [R-209](../references.fr.md#r-209).
+- Johanyák & Zlatko (2025), “A comprehensive survey on Fuzzy logic applications in software requirements engineering” : [R-210](../references.fr.md#r-210).
+- Yen, Tiao & Liu (1996), “A Systematic Tradeoff Methodology for Acquiring and Validating Imprecise Requirements” : [R-211](../references.fr.md#r-211).
+- Salako & Zhao (2023), “The Unnecessity of Assuming Statistically Independent Tests in Bayesian Software Reliability Assessments” : [R-212](../references.fr.md#r-212).
+- Salako & Zhao (2024), “Demonstrating Software Reliability using Possibly Correlated Tests” : [R-213](../references.fr.md#r-213).
+- NIST, “Software Assurance Using Structured Assurance Case Models” : [R-214](../references.fr.md#r-214).
 
 ## 5. Machines à états finis, transitions pondérées et modèles de Markov
 
@@ -104,9 +104,9 @@ Ceci est conceptuel, pas un schéma adopté. Ne pas forcer automates, réseaux d
 
 ### Sources sur systèmes de transitions et model checking probabiliste
 
-- Baier & Katoen, *Principles of Model Checking*, MIT Press (2008) : https://is.ifmo.ru/books/_principles_of_model_checking.pdf.
-- Manuel officiel PRISM : https://www.prismmodelchecker.org/manual/Main/Introduction ; tutoriels : https://www.prismmodelchecker.org/tutorial/ ; études de cas : https://www.prismmodelchecker.org/casestudies/.
-- Documentation UPPAAL, sémantique : https://docs.uppaal.org/language-reference/system-description/semantics/.
+- Baier & Katoen, *Principles of Model Checking*, MIT Press (2008) : [R-215](../references.fr.md#r-215).
+- Manuel officiel PRISM : [R-216](../references.fr.md#r-216) ; tutoriels : [R-216](../references.fr.md#r-216) ; études de cas : [R-216](../references.fr.md#r-216).
+- Documentation UPPAAL, sémantique : [R-217](../references.fr.md#r-217).
 
 PRISM et UPPAAL sont des outils d'analyse candidats et implémentations de référence, pas des dépendances GovCheck ni des autorités normatives.
 

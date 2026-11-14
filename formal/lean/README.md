@@ -50,6 +50,13 @@ lake build
 
 `GovCheckCoherence.SACM24` preserves SACM assertion-declaration distinctions, binds explicit Claim subjects to exact model revisions, and types inference direction. The `probable` inference kind has no classical implication bridge; `byRule` requires a concrete proof term. The source-view guards for PDF text versus metamodel XML, including `needsSupport`/`byRule` and `gid`/`elementId`, passed the same axiom audit. See the [SACM Beta 1 interoperability-risk report](../../docs/research/sacm24-beta1-interoperability-risk.md). The thirteen public SACM mapping theorems passed the pinned Lean 4.19.0 build and axiom audit in [run 43216879988](https://github.com/Martin-PB/govcheck/actions/runs/43216879988) with no axioms. See the bilingual [SACM 2.4 mapping study](../../docs/research/sacm24-claim-inference-mapping.md) / [étude française](../../docs/research/sacm24-claim-inference-mapping.fr.md).
 
+
+## UML 2.5 multiplicity semantics
+
+`GovCheckCoherence.UML25Multiplicity` formalizes a deliberately narrow subset of the UML 2.5 rules used by the SACM 2.4 Beta 1 XMI source. It proves the fallback to 1 for absent/null lower/upper value specifications, the default 0 for an omitted `LiteralInteger.value` or `LiteralUnlimitedNatural.value`, preservation of an explicit unlimited upper bound, and non-interpretation of unsupported value specifications. The exact source clauses are catalogued in [R-200](../../docs/references.md#r-200).
+
+`GovCheckCoherence.SACM24.SourceFacts` then records seven manually transcribed XML value-specification shapes and proves that this UML 2.5 interpreter yields the corresponding SACM property intervals. This does not prove that the Python XMI parser extracted those shapes correctly; that parser/source refinement obligation remains open. The implementation and generated inventory summary are versioned as inventory v2.
+
 ## Mapping contract
 
 The status model also proves `unknown_status_is_distinct_from_inconclusive`; both statuses are represented in the JSON Schema, while staleness remains a separate freshness property.

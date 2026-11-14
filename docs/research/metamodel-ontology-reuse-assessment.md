@@ -29,7 +29,7 @@ SEON describes itself as a network of reference ontologies with integration mech
 
 SEON does not by itself settle repository-specific normative authority, delegation/revocation, adoption of decisions, exception expiry, forge-neutral enforcement, or all distinctions between tests, model-checking reports, theorem proofs, accepted risk and real-world observations.
 
-Sources: [R-115](../references.md#r-115), [SEON](https://dev.nemo.inf.ufes.br/seon/SEON.html), [ReqON](https://dev.nemo.inf.ufes.br/seon/ReqON.html), [SPO](https://dev.nemo.inf.ufes.br/seon/SPO.html).
+Sources: [R-115](../references.md#r-115), [SEON](../references.md#r-204), [ReqON](../references.md#r-204), [SPO](../references.md#r-204).
 
 Related catalogue sources: [R-04](../references.md#r-04) · [R-33](../references.md#r-33) · [R-34](../references.md#r-34) · [R-71](../references.md#r-71) · [R-73](../references.md#r-73) · [R-88](../references.md#r-88) · [R-92](../references.md#r-92) · [R-93](../references.md#r-93) · [R-94](../references.md#r-94) · [R-95](../references.md#r-95) · [R-96](../references.md#r-96) · [R-97](../references.md#r-97) · [R-98](../references.md#r-98) · [R-99](../references.md#r-99) · [R-100](../references.md#r-100) · [R-102](../references.md#r-102) · [R-115](../references.md#r-115) · [R-116](../references.md#r-116) · [R-117](../references.md#r-117) · [R-118](../references.md#r-118) · [R-119](../references.md#r-119) · [R-120](../references.md#r-120)
 
@@ -67,7 +67,7 @@ CSLib's Boole direction is evolving. Its contributor documentation says source t
 
 **Recommendation:** do not make CSLib a universal dependency merely by default. However, schema/contract tests cannot replace the formal demonstration required for every semantic correspondence used in reasoning. Where CSLib provides a fitting, audited formalization, prefer reuse; otherwise develop the smallest suitable formalization in a trusted system. Pin revisions and record toolchain, imports, axioms, assumptions and trusted base.
 
-Sources: [R-118](../references.md#r-118), [CSLib repository](https://github.com/leanprover/cslib), [organization](https://github.com/leanprover/cslib/blob/main/ORGANISATION.md), [contributor guidance](https://github.com/leanprover/cslib/blob/main/CONTRIBUTING.md), [roadmap](https://www.cslib.io/roadmap/).
+Sources: [R-118](../references.md#r-118), [CSLib repository](https://github.com/leanprover/cslib), [organization](https://github.com/leanprover/cslib/blob/main/ORGANISATION.md), [contributor guidance](https://github.com/leanprover/cslib/blob/main/CONTRIBUTING.md), [roadmap](../references.md#r-205).
 
 ## 5. Ontologies, metamodels, constraints and proof libraries are different things
 
@@ -80,7 +80,7 @@ Sources: [R-118](../references.md#r-118), [CSLib repository](https://github.com/
 
 OMG's Ontology Definition Metamodel (ODM) is relevant as a method: it defines metamodels, profiles and mappings among ontology and modeling standards, including UML/MOF. It is not a ready-made GovCheck lifecycle ontology. OWL 2 can express formal ontologies; RDF provides graph representation; SKOS supports concept schemes and mappings; SHACL validates graph structure against declared constraints. These technologies may be an implementation profile, but GovCheck should not equate its semantics with RDF or mandate this stack before a separate decision.
 
-Sources: [R-116](../references.md#r-116), [R-117](../references.md#r-117), [OWL 2](https://www.w3.org/TR/owl-overview/), [SKOS](https://www.w3.org/TR/skos-reference/), [SHACL](https://www.w3.org/TR/shacl/), [OMG ODM](https://www.omg.org/spec/ODM/).
+Sources: [R-116](../references.md#r-116), [R-117](../references.md#r-117), [OWL 2](https://www.w3.org/TR/owl-overview/), [SKOS](https://www.w3.org/TR/skos-reference/), [SHACL](https://www.w3.org/TR/shacl/), [OMG ODM](../references.md#r-206).
 
 ## 6. Recommended candidate: federate first, extend only with evidence
 

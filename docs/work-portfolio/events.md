@@ -433,4 +433,5 @@
 - **Artifacts:** Architecture 0025 EN/FR updates the PEAK Assumed Risk row and explanatory text; R-193 catalogue backlinks include Architecture 0025 in both languages.
 - **Semantic distinction:** PEAK Assumed Risk is the decision process's explicit output describing what may not work as envisioned. It is distinct from Risk Assessment, Risk Treatment, Residual Risk and authorized Risk Acceptance. The original assumed-risk statement remains in the historical decision record when later assessments or controls change.
 - **Reference:** [R-193](../references.md#r-193).
+- **Integration candidate:** [PR #132](https://github.com/Martin-PB/govcheck/pull/132), rebased on current `main` at `e21c4d2bb1a0fdeec250723c72b1115c9921c3a9`; merge/review status remains separate from adoption.
 - **Disposition:** proposed clarification; no normative adoption or method mandate.

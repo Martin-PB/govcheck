@@ -20,6 +20,7 @@
 | Métadonnées de gouvernance et catalogues | R-17 |
 | Systèmes de workflow d'agents évalués comme fixtures | R-18–R-19 |
 | Sémantiques de contrôle de version | R-22 |
+| Sémantique des métamodèles UML/XMI et des spécifications de valeurs | R-200 |
 | Plateformes VCS, forges et CI alternatives (CLI Pijul, GitLab, Woodpecker, SourceHut, Fossil) | R-109–R-113 |
 | CRDT, collaboration temps réel et transport réseau | R-45–R-50, R-66, R-87 |
 | Représentation des connaissances et interopérabilité | R-51–R-61, R-83–R-86 |
@@ -1372,3 +1373,13 @@
 - **Identité épinglée :** SACM 2.4 Beta 1 ; chemin source daté du 04/05/2026 ; SHA-256 `9149a0414628e1b70c1f7c2235f5180c64e7a144601eb2ae78d539681918838b`, rapporté par le script de téléchargement épinglé de l'audit indépendant R-128. GovCheck n'a pas encore téléchargé indépendamment ce XMI ni recalculé son digest.
 - **Concepts pertinents :** artefact informatif de profil UML, distinct du XML normatif du métamodèle (R-197) et du PDF normatif de spécification (R-198).
 - **Limite :** le XMI informatif du profil n'est pas le XML normatif du métamodèle SACM et n'établit ni contrat d'échange d'instances ni conformité sémantique.
+
+
+<a id="r-200"></a>
+### R-200 — Spécification OMG UML 2.5 et métamodèle lisible par machine
+- **Cité par :** [Inventaire structurel XMI SACM](research/sacm-xmi-structural-inventory.fr.md), [Journal des événements du portefeuille](work-portfolio/events.fr.md), [Registre des éléments de travail](work-portfolio/work-items.fr.md).
+- **Source primaire :** [PDF normatif OMG UML 2.5](https://www.omg.org/spec/UML/2.5/PDF) · [Catalogue OMG des fichiers UML lisibles par machine](https://www.omg.org/spec/UML/machine-readable) · identifiant du jeu de fichiers UML 2.5 lisibles par machine `ptc/13-08-17`.
+- **Identité épinglée :** UML 2.5 ; document normatif formal/2015-03-01 ; la source XMI SACM utilise l'espace de noms `http://www.omg.org/spec/UML/20131001`, qui est celui d'UML 2.5 (et non l'espace de noms ultérieur `20161101` d'UML 2.5.1).
+- **Clauses pertinentes :** §7.8.8.7 définit `MultiplicityElement.lowerBound()` et `upperBound()`, y compris la valeur de repli 1 lorsque la spécification de valeur correspondante ou sa valeur typée est absente ; §8.6.9.4 définit la valeur par défaut 0 de `LiteralInteger.value` ; §8.6.14.4 définit la valeur par défaut 0 de `LiteralUnlimitedNatural.value` ; §8.6.10 définit `LiteralNull`.
+- **Utilité pour GovCheck :** fournit les règles UML 2.5 exactes utilisées pour interpréter les valeurs littérales omises dans le XMI SACM 2.4 Beta 1 épinglé. Le parseur conserve à la fois la spécification de valeur brute et la multiplicité effective, avec la règle responsable de toute valeur par défaut.
+- **Limite :** seuls les cas de littéraux et valeurs par défaut indiqués sont implémentés. Les expressions `ValueSpecification` arbitraires, l'évaluation OCL, la validité UML/MOF complète et le raffinement du parseur restent hors de cet incrément.

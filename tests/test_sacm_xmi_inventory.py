@@ -99,6 +99,10 @@ class SacmXmiInventoryTests(unittest.TestCase):
         self.assertEqual(summary["counts"]["resolvedInternalReferenceCount"], 5)
         self.assertEqual(summary["counts"]["externalReferenceCount"], 1)
         self.assertEqual(summary["packages"][0]["name"], "P")
+        self.assertEqual(summary["multiplicitySemantics"]["standard"], "OMG UML 2.5")
+        self.assertEqual(summary["multiplicitySemantics"]["boundStatusCounts"]["lower"], {"explicit-literal": 1})
+        self.assertEqual(summary["multiplicitySemantics"]["boundStatusCounts"]["upper"], {"explicit-unlimited": 1})
+        self.assertEqual(summary["multiplicitySemantics"]["selectedProperties"], [])
 
     def test_rejects_digest_mismatch(self):
         with self.assertRaisesRegex(MODULE.InventoryError, "SHA-256 mismatch"):
@@ -150,6 +154,15 @@ class SacmXmiInventoryTests(unittest.TestCase):
         self.assertEqual(upper["value"], 0)
         self.assertEqual(upper["status"], "literal-default")
         self.assertIn("LiteralUnlimitedNatural.value default = 0", upper["rule"])
+
+
+    def test_uml25_literal_null_uses_multiplicity_element_fallback(self):
+        data = fixture().replace(b'uml:LiteralInteger', b'uml:LiteralNull', 1)
+        result = self.inventory(data)
+        prop = next(x for x in result["semanticIndex"]["properties"] if x["id"] == "property-a")
+        lower = prop["effectiveMultiplicity"]["lower"]
+        self.assertEqual(lower["value"], 1)
+        self.assertEqual(lower["status"], "null-value-fallback")
 
     def test_unsupported_value_specification_remains_unresolved(self):
         data = fixture().replace(b'uml:LiteralInteger', b'uml:OpaqueExpression', 1)

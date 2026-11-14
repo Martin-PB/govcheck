@@ -87,6 +87,8 @@ import GovCheckCoherence.UML25Multiplicity
 #print axioms GovCheck.Coherence.SACM24.SourceFacts.pdf_figure13_1_and_xml_asserted_evidence_agree
 #print axioms GovCheck.Coherence.SACM24.SourceFacts.pdf_clause13_13_vs_xml_asserted_evidence_conflict
 #print axioms GovCheck.Coherence.SACM24.SourceFacts.sacm_element_abstraction_multiplicity_conflict
+#print axioms GovCheck.Coherence.SACM24.SourceFacts.pdf_clause9_2_vs_figure9_1_abstraction_multiplicity_conflict
+#print axioms GovCheck.Coherence.SACM24.SourceFacts.pdf_figure9_1_abstraction_multiplicity_matches_xml
 #print axioms GovCheck.Coherence.SACM24.SourceFacts.asserted_relationship_isCounter_multiplicity_conflict
 #print axioms GovCheck.Coherence.SACM24.SourceFacts.pdf_figure13_1_isCounter_matches_clause13_11
 #print axioms GovCheck.Coherence.SACM24.SourceFacts.pdf_figure13_1_vs_xml_isCounter_conflict
@@ -98,8 +100,9 @@ import GovCheckCoherence.UML25Multiplicity
 #print axioms GovCheck.Coherence.SACM24.SourceFacts.pdf_clause13_9_conflicts_informative_figure15_1_1
 #print axioms GovCheck.Coherence.SACM24.SourceFacts.binding_package_pdf_fragments_conflict
 #print axioms GovCheck.Coherence.SACM24.SourceFacts.xml_binding_package_matches_pdf_clause10_5
-#print axioms GovCheck.Coherence.SACM24.SourceFacts.sacm_model_pdf_fragments_differ
-#print axioms GovCheck.Coherence.SACM24.SourceFacts.xml_sacm_model_matches_pdf_annex_g6
+#print axioms GovCheck.Coherence.SACM24.SourceFacts.xml_sacm_model_includes_assertion
+#print axioms GovCheck.Coherence.SACM24.SourceFacts.xml_sacm_model_includes_assessment
 #print axioms GovCheck.Coherence.SACM24.SourceFacts.sacm_dependency_xml_adds_base_element
 #print axioms GovCheck.Coherence.SACM24.SourceFacts.rule_xml_adds_model_element
-#print axioms GovCheck.Coherence.SACM24.SourceFacts.assertion_rule_feature_name_differs
+#print axioms GovCheck.Coherence.SACM24.SourceFacts.pdf_xml_assertion_declaration_rule_feature_name_agrees
+#print axioms GovCheck.Coherence.SACM24.SourceFacts.pdf_assertion_rule_ocl_reference_differs_from_declared_feature

@@ -25,6 +25,13 @@ def declarationSourceView : DeclarationSourceFragment → SourceView
   | .pdfClause15_2_1 => .specificationText
   | .normativeMetamodelXML => .normativeMetamodelXML
 
+/-- Normative/informative status is kept distinct from source-view identity. -/
+def declarationFragmentStatus : DeclarationSourceFragment → String
+  | .pdfClause13_6 => "normative"
+  | .pdfAnnexG6Item6 => "informative"
+  | .pdfClause15_2_1 => "informative"
+  | .normativeMetamodelXML => "normative"
+
 /-- Literal sets transcribed from individual source fragments. These are
     evidence records, not a decision that one fragment overrides another. -/
 inductive AssertionDeclarationKind where
@@ -61,8 +68,9 @@ theorem xml_model_includes_byRule :
     AssertionDeclarationKind.byRule ∈ declarationLiteralsForFragment .normativeMetamodelXML := by
   decide
 
-/-- The PDF is internally inconsistent about this enumeration: clause 13.6
-    includes needsSupport and omits byRule, while clause 15.2.1 includes byRule. -/
+/-- The fragment lists differ. Clause 13.6 is normative; Annex G.6 and
+    Clause 15.2.1 are informative. The later byRule listing is described as an
+    addition; its omission of needsSupport is not treated as a deletion rule. -/
 theorem pdf_assertion_declaration_fragments_disagree :
     AssertionDeclarationKind.needsSupport ∈ declarationLiteralsForFragment .pdfClause13_6 ∧
     AssertionDeclarationKind.needsSupport ∉ declarationLiteralsForFragment .pdfClause15_2_1 ∧
@@ -442,10 +450,19 @@ theorem pdf_clause13_13_vs_xml_asserted_evidence_conflict :
 
 /-- PDF clause 9.2 versus the normative metamodel XML. -/
 def pdfSACMElementAbstraction : SourceMultiplicity := ⟨0, some 1⟩
+def pdfFigure9_1SACMElementAbstraction : SourceMultiplicity := ⟨0, none⟩
 def xmlSACMElementAbstraction : SourceMultiplicity := ⟨0, none⟩
 
 theorem sacm_element_abstraction_multiplicity_conflict :
     pdfSACMElementAbstraction ≠ xmlSACMElementAbstraction := by
+  decide
+
+theorem pdf_clause9_2_vs_figure9_1_abstraction_multiplicity_conflict :
+    pdfSACMElementAbstraction ≠ pdfFigure9_1SACMElementAbstraction := by
+  decide
+
+theorem pdf_figure9_1_abstraction_multiplicity_matches_xml :
+    pdfFigure9_1SACMElementAbstraction = xmlSACMElementAbstraction := by
   decide
 
 /-- PDF clause 13.11 versus the normative metamodel XML. -/
@@ -520,19 +537,24 @@ theorem binding_package_pdf_fragments_conflict :
 theorem xml_binding_package_matches_pdf_clause10_5 :
     xmlBindingPackage = pdfBindingPackageClause10_5 := rfl
 
-/-- PDF clause 9.10 versus Annex G.6 item 5 and the XML metamodel. -/
+/-- Clause 9.10 explicitly names ModelElement as the SACMModel superclass. -/
 def pdfSACMModelClause9_10 : List String := ["ModelElement"]
-def pdfSACMModelAnnexG6Item5 : List String :=
-  ["ModelElement", "Assertion", "Assessment"]
+
+/-- Annex G.6 item 5 is prose ("A SACMModel ... can be an Assertion"), not a
+    complete enumeration of direct superclasses; it is not normalized as one. -/
+def pdfSACMModelAnnexG6Item5Text : String :=
+  "A SACMModel (Group, Package, Diagram) can be an Assertion"
+
 def xmlSACMModel : List String :=
   ["ModelElement", "Assertion", "Assessment"]
 
-theorem sacm_model_pdf_fragments_differ :
-    pdfSACMModelClause9_10 ≠ pdfSACMModelAnnexG6Item5 := by
+theorem xml_sacm_model_includes_assertion :
+    "Assertion" ∈ xmlSACMModel := by
   decide
 
-theorem xml_sacm_model_matches_pdf_annex_g6 :
-    xmlSACMModel = pdfSACMModelAnnexG6Item5 := rfl
+theorem xml_sacm_model_includes_assessment :
+    "Assessment" ∈ xmlSACMModel := by
+  decide
 
 /-- Additional XML generalizations not stated in the corresponding PDF clauses. -/
 def pdfSACMDependencyClause9_11 : List String := ["DirectedRelationship"]
@@ -548,12 +570,21 @@ theorem rule_xml_adds_model_element :
     pdfRuleClause15_2_3 ≠ xmlRule := by
   decide
 
-/-- PDF and XML use different names for the multi-valued assertion-rule feature. -/
-def pdfAssertionRuleFeature : String := "assertionRule"
-def xmlAssertionRuleFeature : String := "assertionDeclarationRule"
+/-- Clause 15.2.1 declares the feature assertionDeclarationRule, matching XML. -/
+def pdfAssertionDeclarationRuleFeature : String := "assertionDeclarationRule"
+def xmlAssertionDeclarationRuleFeature : String := "assertionDeclarationRule"
 
-theorem assertion_rule_feature_name_differs :
-    pdfAssertionRuleFeature ≠ xmlAssertionRuleFeature := by
+/-- The same PDF clause's OCL constraint refers to assertionRule instead of the
+    declared assertionDeclarationRule feature. This is an internal PDF reference
+    mismatch, not a PDF/XML feature rename. -/
+def pdfAssertionRuleOclReference : String := "assertionRule"
+
+theorem pdf_xml_assertion_declaration_rule_feature_name_agrees :
+    pdfAssertionDeclarationRuleFeature = xmlAssertionDeclarationRuleFeature := by
+  decide
+
+theorem pdf_assertion_rule_ocl_reference_differs_from_declared_feature :
+    pdfAssertionRuleOclReference ≠ pdfAssertionDeclarationRuleFeature := by
   decide
 
 /-- XML source shapes below preserve the distinction between an absent

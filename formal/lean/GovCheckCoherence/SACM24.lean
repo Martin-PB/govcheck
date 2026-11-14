@@ -480,9 +480,9 @@ theorem claim_whole_multiplicity_agrees_between_pdf_figure13_1_and_xml :
     pdfFigure13_1WholeMultiplicity = xmlClaimWholeMultiplicity := by
   decide
 
-/-- The PDF diagram records navigable association ends; it does not by itself
-    expose the XML-specific ownedAttribute representation. No ownership conflict
-    is inferred from the diagram's role-label placement. -/
+/- The PDF diagram records navigable association ends; it does not by itself
+   expose the XML-specific ownedAttribute representation. No ownership conflict
+   is inferred from the diagram's role-label placement. -/
 
 /-- PDF clauses 10.5 and 11.3 give incompatible BindingPackage superclass
     statements; the XML agrees with clause 10.5. -/

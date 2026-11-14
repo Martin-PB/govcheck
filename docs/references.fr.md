@@ -1428,3 +1428,84 @@
 - **Version formelle épinglée :** ODM 1.1, septembre 2014 ; PDF normatif formal/14-09-02 ; XMI normatif du métamodèle ptc/13-08-04.
 - **Utilité :** métamodèles, profils et correspondances d'ontologies entre UML/MOF, RDF et OWL.
 - **Limite :** les correspondances ODM ne prouvent pas en elles-mêmes une correspondance ODM/SACM/OWL vers GovCheck.
+
+
+<a id="r-207"></a>
+### R-207 — Graydon et Holloway (2017), confiance dans les arguments d'assurance
+- **Cité par :** [Assurance sémantique et modèles de transition EN](research/semantic-assurance-and-transition-models-2026-11.md), [Assurance sémantique et modèles de transition FR](research/semantic-assurance-and-transition-models-2026-11.fr.md).
+- **Source primaire :** [An investigation of proposed techniques for quantifying confidence in assurance arguments](https://doi.org/10.1016/j.ssci.2016.09.014), Safety Science 92 (2017), 53–65.
+- **Utilité :** revue critique des méthodes de confiance quantitative et de leur validation empirique.
+- **Limite :** les contre-exemples et critiques de l'article concernent les techniques examinées ; ils ne constituent pas un théorème universel d'impossibilité de l'assurance quantitative.
+
+<a id="r-208"></a>
+### R-208 — Nešić, Nyberg et Gallina (2021), croyance probabiliste dans les dossiers de sécurité
+- **Cité par :** [Assurance sémantique et modèles de transition EN](research/semantic-assurance-and-transition-models-2026-11.md), [Assurance sémantique et modèles de transition FR](research/semantic-assurance-and-transition-models-2026-11.fr.md).
+- **Source primaire :** [A probabilistic model of belief in safety cases](https://doi.org/10.1016/j.ssci.2021.105187), Safety Science 138 (2021), article 105187.
+- **Utilité :** traitement modèle-théorique et par réseau bayésien de la croyance dans les conclusions d'un dossier de sécurité.
+- **Correction :** le DOI se terminant par 2021.09.014 présent dans une ancienne version française est incorrect pour cet article ; le DOI vérifié est 10.1016/j.ssci.2021.105187.
+- **Limite :** un modèle de croyance probabiliste n'est pas une preuve de vérité d'une affirmation et ne justifie pas automatiquement un seuil de confiance.
+
+<a id="r-209"></a>
+### R-209 — NIST Engineering Statistics Handbook : évaluation bayésienne de la fiabilité
+- **Cité par :** [Assurance sémantique et modèles de transition EN](research/semantic-assurance-and-transition-models-2026-11.md), [Assurance sémantique et modèles de transition FR](research/semantic-assurance-and-transition-models-2026-11.fr.md).
+- **Source primaire :** [How can Bayesian methodology be used for reliability evaluation?](https://www.itl.nist.gov/div898/handbook/apr/section1/apr1a.htm).
+- **Utilité :** éléments de contexte sur l'information a priori, la vraisemblance et l'évaluation a posteriori de la fiabilité.
+- **Limite :** exposé de référence ; une application exige des hypothèses de modèle et des données validées propres au domaine.
+
+<a id="r-210"></a>
+### R-210 — Johanyák et Ćović (2025), logique floue et ingénierie des exigences logicielles
+- **Cité par :** [Assurance sémantique et modèles de transition EN](research/semantic-assurance-and-transition-models-2026-11.md), [Assurance sémantique et modèles de transition FR](research/semantic-assurance-and-transition-models-2026-11.fr.md).
+- **Source primaire :** [A Comprehensive Survey on Fuzzy Logic Applications in Software Requirements Engineering](https://doi.org/10.47833/2025.2.CSC.008), Gradus 12(2), 2025.
+- **Utilité :** synthèse des techniques floues pour l'ambiguïté et l'incertitude dans l'ingénierie des exigences.
+- **Limite :** les degrés flous ne sont interchangeables ni avec la probabilité, ni avec la vérité, la confiance ou la preuve formelle.
+
+<a id="r-211"></a>
+### R-211 — Yen, Tiao et Liu (1996), arbitrage d'exigences imprécises
+- **Cité par :** [Assurance sémantique et modèles de transition EN](research/semantic-assurance-and-transition-models-2026-11.md), [Assurance sémantique et modèles de transition FR](research/semantic-assurance-and-transition-models-2026-11.fr.md).
+- **Source primaire :** [A Systematic Tradeoff Methodology for Acquiring and Validating Imprecise Requirements](https://doi.org/10.1109/FUZZY.1996.551766), Proceedings of the Fifth IEEE International Conference on Fuzzy Systems, 1996.
+- **Utilité :** traitement par logique floue des exigences imprécises et analyse des compromis.
+- **Limite :** cette méthode ne démontre pas que l'agrégation floue convient à tous les domaines d'exigences.
+
+<a id="r-212"></a>
+### R-212 — Salako et Zhao (2023), fiabilité logicielle bayésienne sans indépendance des tests
+- **Cité par :** [Assurance sémantique et modèles de transition EN](research/semantic-assurance-and-transition-models-2026-11.md), [Assurance sémantique et modèles de transition FR](research/semantic-assurance-and-transition-models-2026-11.fr.md).
+- **Source primaire :** [The Unnecessity of Assuming Statistically Independent Tests in Bayesian Software Reliability Assessments](https://doi.org/10.1109/TSE.2022.3233802), IEEE Transactions on Software Engineering 49(4), 2023.
+- **Utilité :** bornes bayésiennes conservatrices lorsque les résultats de tests opérationnels peuvent être dépendants.
+- **Limite :** les hypothèses et la construction de l'article doivent être vérifiées avant d'appliquer ses bornes à un autre système.
+
+<a id="r-213"></a>
+### R-213 — Salako et Zhao (2024), tests de fiabilité potentiellement corrélés
+- **Cité par :** [Assurance sémantique et modèles de transition EN](research/semantic-assurance-and-transition-models-2026-11.md), [Assurance sémantique et modèles de transition FR](research/semantic-assurance-and-transition-models-2026-11.fr.md).
+- **Source primaire :** [Demonstrating Software Reliability using Possibly Correlated Tests: Insights from a Conservative Bayesian Approach](https://doi.org/10.1002/qre.3460), Quality and Reliability Engineering International 40(3), 2024.
+- **Utilité :** affirmations conservatrices de fiabilité lorsque l'indépendance des exécutions est incertaine.
+- **Limite :** une borne de fiabilité statistique est un élément de preuve pour un modèle probabiliste spécifié, pas un théorème de conformité de l'implémentation.
+
+<a id="r-214"></a>
+### R-214 — Rhodes et al. (2010), modèles structurés de dossiers d'assurance pour l'assurance logicielle
+- **Cité par :** [Assurance sémantique et modèles de transition EN](research/semantic-assurance-and-transition-models-2026-11.md), [Assurance sémantique et modèles de transition FR](research/semantic-assurance-and-transition-models-2026-11.fr.md).
+- **Sources primaires :** [Software Assurance Using Structured Assurance Case Models (PubMed Central)](https://pmc.ncbi.nlm.nih.gov/articles/PMC4548534/) · [DOI NIST](https://doi.org/10.6028/jres.115.013).
+- **Identité bibliographique :** Thomas Rhodes, Frederick Boland, Elizabeth Fong et Michael Kass, Journal of Research of NIST 115(3), 2010.
+- **Utilité :** méthodes de dossiers d'assurance structurés appliquées à l'assurance logicielle.
+- **Limite :** un argument structuré n'est pas en soi une preuve ; les éléments de preuve et garanties d'inférence doivent être évalués.
+
+<a id="r-215"></a>
+### R-215 — Baier et Katoen (2008), Principles of Model Checking
+- **Cité par :** [Assurance sémantique et modèles de transition EN](research/semantic-assurance-and-transition-models-2026-11.md), [Assurance sémantique et modèles de transition FR](research/semantic-assurance-and-transition-models-2026-11.fr.md).
+- **Source éditeur :** [Page du livre MIT Press](https://mitpress.mit.edu/9780262026499/principles-of-model-checking/).
+- **Copie d'accès citée par le document de recherche :** [Miroir PDF hébergé par une université](https://is.ifmo.ru/books/_principles_of_model_checking.pdf).
+- **Identité bibliographique :** Christel Baier et Joost-Pieter Katoen, MIT Press, 2008, ISBN 978-0-262-02649-9.
+- **Limite :** le PDF hébergé par l'université est une copie d'accès tierce, pas le canal de distribution canonique de l'éditeur.
+
+<a id="r-216"></a>
+### R-216 — Documentation du model checker probabiliste PRISM
+- **Cité par :** [Assurance sémantique et modèles de transition EN](research/semantic-assurance-and-transition-models-2026-11.md), [Assurance sémantique et modèles de transition FR](research/semantic-assurance-and-transition-models-2026-11.fr.md).
+- **Sources primaires :** [Introduction du manuel PRISM](https://www.prismmodelchecker.org/manual/Main/Introduction) · [Tutoriel PRISM](https://www.prismmodelchecker.org/tutorial/) · [Études de cas PRISM](https://www.prismmodelchecker.org/casestudies/).
+- **Utilité :** types de modèles probabilistes, spécification de propriétés et études de cas publiées.
+- **Limite :** les classes de modèles et algorithmes pris en charge sont propres à l'outil ; un résultat de model checking ne devient pas un théorème sur une implémentation sans relation modèle–implémentation établie.
+
+<a id="r-217"></a>
+### R-217 — Documentation de la sémantique des automates temporisés UPPAAL
+- **Cité par :** [Assurance sémantique et modèles de transition EN](research/semantic-assurance-and-transition-models-2026-11.md), [Assurance sémantique et modèles de transition FR](research/semantic-assurance-and-transition-models-2026-11.fr.md).
+- **Source primaire :** [Sémantique des descriptions de systèmes UPPAAL](https://docs.uppaal.org/language-reference/system-description/semantics/).
+- **Utilité :** sémantique pseudo-formelle de réseaux d'automates temporisés étendus, incluant délais, actions et synchronisations.
+- **Limite :** la documentation décrit la sémantique d'UPPAAL ; elle ne constitue pas une preuve de préservation sémantique pour un modèle GovCheck.

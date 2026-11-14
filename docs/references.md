@@ -576,7 +576,7 @@
 
 <a id="r-52"></a>
 ### R-52 — RDF 1.1 data model
-- **Cited by:** [0002-study-placement](decisions/0002-study-placement.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.md)
+- **Cited by:** [0002-study-placement](decisions/0002-study-placement.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.md), [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.md)
 
 - **Primary source:** [W3C RDF 1.1 Concepts and Abstract Syntax](https://www.w3.org/TR/rdf11-concepts/) · [W3C RDF Primer](https://www.w3.org/TR/rdf-primer/)
 - **Relevant concepts:** graph and dataset data model based on subject–predicate–object triples and IRIs.
@@ -585,7 +585,7 @@
 
 <a id="r-53"></a>
 ### R-53 — SKOS
-- **Cited by:** [0002-study-placement](decisions/0002-study-placement.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.md)
+- **Cited by:** [0002-study-placement](decisions/0002-study-placement.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.md), [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.md)
 
 - **Primary source:** [W3C SKOS Reference](https://www.w3.org/TR/skos-reference/)
 - **Relevant concepts:** URI-identified concepts, labels, notations, concept schemes, mappings and lightweight semantic relations.
@@ -603,7 +603,7 @@
 
 <a id="r-55"></a>
 ### R-55 — SHACL
-- **Cited by:** [0002-study-placement](decisions/0002-study-placement.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.md)
+- **Cited by:** [0002-study-placement](decisions/0002-study-placement.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.md), [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.md)
 
 - **Primary source:** [W3C Shapes Constraint Language (SHACL)](https://www.w3.org/TR/shacl/)
 - **Relevant concepts:** validation of RDF graphs against declared shapes and constraints.

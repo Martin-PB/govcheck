@@ -2,3 +2,4 @@ import GovCheckCoherence.Evidence
 import GovCheckCoherence.Proofs
 import GovCheckCoherence.Mapping
 import GovCheckCoherence.SACM24
+import GovCheckCoherence.UML25Multiplicity

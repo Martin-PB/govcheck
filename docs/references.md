@@ -1233,7 +1233,9 @@
 - **Use in GovCheck:** independent engineering cross-check that the SACM 2.4 Beta 1 text and machine-readable metamodel must be treated as separate source views, not silently normalized into one model.
 - **Limit:** this is a third-party implementation audit, not an OMG statement or normative authority. Its findings must be checked against pinned OMG artifacts; it does not establish that all SACM 2.4 implementations share the same limitations.
 
-Cited by:** [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
+<a id="r-142"></a>
+### R-142 — ConE: Concurrent Edit Detection Tool
+- **Cited by:** [Concurrent agent change-governance research](research/concurrent-agent-change-governance.md)
 - **Primary source:** [ACM/IEEE paper, DOI 10.1145/3478019](https://doi.org/10.1145/3478019)
 - **Relevant concepts:** detecting concurrently edited files across pull requests; empirical relationship between overlap and bug risk.
 - **Use in GovCheck:** motivates representing overlapping work scopes as a signal for impact analysis and targeted review.

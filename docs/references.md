@@ -594,7 +594,7 @@
 
 <a id="r-54"></a>
 ### R-54 — OWL 2 Web Ontology Language
-- **Cited by:** [0002-study-placement](decisions/0002-study-placement.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.md), [metamodel-coherence-verification](research/metamodel-coherence-verification.md)
+- **Cited by:** [0002-study-placement](decisions/0002-study-placement.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.md), [metamodel-coherence-verification](research/metamodel-coherence-verification.md), [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.md)
 
 - **Primary sources:** [W3C OWL 2 Structural Specification and Functional-Style Syntax](https://www.w3.org/TR/owl-syntax/) · [W3C OWL 2 Overview](https://www.w3.org/TR/owl-overview/) · [OWL 2 Direct Semantics, Second Edition](https://www.w3.org/TR/owl2-direct-semantics/) · [OWL 2 Conformance, Second Edition](https://www.w3.org/TR/owl2-conformance/)
 - **Relevant concepts:** formally defined ontology semantics for classes, properties, individuals and axioms.

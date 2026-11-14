@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Build a loss-aware structural inventory of the pinned OMG SACM XMI source.
 
-This parser inventories UML/XMI constructs and reference edges. It does not
-interpret UML semantics, validate SACM conformance, or map SACM to GovCheck.
-The original source bytes remain authoritative and must be retained separately.
+This parser inventories UML/XMI constructs and reference edges, and applies a
+narrow, version-pinned UML 2.5 interpretation of multiplicity bounds. It does
+not implement full UML/MOF semantics, evaluate OCL, validate SACM conformance,
+or map SACM to GovCheck. The original source bytes remain authoritative.
 """
 from __future__ import annotations
 import argparse, hashlib, json, re, sys

@@ -16,7 +16,7 @@ Everything canonical stays in the repository: the design is forge-independent, t
 
 - Architecture 0028/0030 make the repository-backed registry the canonical tracker; forge issues are adapters/projections, and authority flows from the register to the adapter, never the reverse. Synchronization is initially explicit/manual; drift is reported, not silently reconciled.
 - ADR 0006 (proposed) already names the third layer: "forge adapter: tracker mirror, CI, identity", with a portable CI pipeline (only the workflow syntax changes per forge). Specification 0004 defines the adapter contracts and states that no adapters are implemented yet.
-- The brain.md option (Apache-2.0, npm `@mindmux/brain-md` v0.4.1, repository <https://github.com/mindmuxai/brain.md>) was evaluated and set aside for the agent machine: its zero-dependency Node.js CLI (`bin/brain.mjs`, node >= 18) is unwanted there. This record reuses no brain.md content; if any content is ever reused, it must be attributed in the [reference catalogue](../references.md).
+- The brain.md option (Apache-2.0, npm `@mindmux/brain-md` v0.4.1, repository [brain.md repository](../references.md#r-202)) was evaluated and set aside for the agent machine: its zero-dependency Node.js CLI (`bin/brain.mjs`, node >= 18) is unwanted there. This record reuses no brain.md content; if any content is ever reused, it must be attributed in the [reference catalogue](../references.md).
 - Issue #118 tracks the implementation of this record (child of #63).
 
 ## 3. Architectural decision
@@ -78,5 +78,5 @@ Adopt a single stdlib-only adapter module behind a forge-agnostic contract:
 - [Issue #118 — Forge-native adapter: govcheck/forge.py](https://github.com/Martin-PB/govcheck/issues/118)
 - [Issue #63 — portfolio GitHub adapter and label taxonomy](https://github.com/Martin-PB/govcheck/issues/63)
 - [Issue #92 (closed) — forge portability of the GovCheck decision](https://github.com/Martin-PB/govcheck/issues/92)
-- brain.md (evaluated, not adopted): <https://github.com/mindmuxai/brain.md> (Apache-2.0)
+- brain.md (evaluated, not adopted): [brain.md repository](../references.md#r-202) (Apache-2.0)
 - [govcheck package README](../../govcheck/README.md)

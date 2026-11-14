@@ -2,7 +2,7 @@
 
 **Statut :** comparaison liée aux révisions de deux vues sources normatives distinctes ; aucune décision de priorité, aucun modèle canonisé, aucune revendication de conformité SACM ni correspondance sémantique GovCheck n'est établi.  
 **Élément de travail :** [#73 — conformité des contrats intermodèles](https://github.com/Martin-PB/govcheck/issues/73).  
-**Source du métamodèle :** [R-197](../references.fr.md#r-197), [inventaire XMI dérivé de la source](sacm-xmi-structural-inventory.fr.md).  
+**Source du métamodèle :** [R-197](../references.fr.md#r-197), [R-200](../references.fr.md#r-200), [inventaire XMI dérivé de la source](sacm-xmi-structural-inventory.fr.md).  
 **Source du texte de spécification :** [R-198](../references.fr.md#r-198).  
 **Audit indépendant des divergences :** [R-128](../references.fr.md#r-128).  
 **Transcription formalisée :** `formal/lean/GovCheckCoherence/SACM24.lean`, espace de noms `GovCheck.Coherence.SACM24.SourceFacts`.

@@ -578,7 +578,7 @@
 
 <a id="r-52"></a>
 ### R-52 — Modèle de données RDF 1.1
-- **Cité par :** [0002-study-placement](decisions/0002-study-placement.fr.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.fr.md)
+- **Cité par :** [0002-study-placement](decisions/0002-study-placement.fr.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.fr.md), [Évaluation du réemploi des ontologies du métamodèle](research/metamodel-ontology-reuse-assessment.fr.md)
 
 - **Source primaire :** [Concepts et syntaxe abstraite W3C RDF 1.1](https://www.w3.org/TR/rdf11-concepts/) · [Guide d'introduction W3C RDF](https://www.w3.org/TR/rdf-primer/)
 - **Concepts pertinents :** modèle de graphes et jeux de données fondé sur des triplets sujet–prédicat–objet et des IRI.
@@ -587,7 +587,7 @@
 
 <a id="r-53"></a>
 ### R-53 — SKOS
-- **Cité par :** [0002-study-placement](decisions/0002-study-placement.fr.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.fr.md)
+- **Cité par :** [0002-study-placement](decisions/0002-study-placement.fr.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.fr.md), [Évaluation du réemploi des ontologies du métamodèle](research/metamodel-ontology-reuse-assessment.fr.md)
 
 - **Source primaire :** [Référence W3C SKOS](https://www.w3.org/TR/skos-reference/)
 - **Concepts pertinents :** concepts identifiés par URI, libellés, notations, schémas conceptuels, correspondances et relations sémantiques légères.
@@ -605,7 +605,7 @@
 
 <a id="r-55"></a>
 ### R-55 — SHACL
-- **Cité par :** [0002-study-placement](decisions/0002-study-placement.fr.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.fr.md)
+- **Cité par :** [0002-study-placement](decisions/0002-study-placement.fr.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.fr.md), [Évaluation du réemploi des ontologies du métamodèle](research/metamodel-ontology-reuse-assessment.fr.md)
 
 - **Source primaire :** [W3C Shapes Constraint Language (SHACL)](https://www.w3.org/TR/shacl/)
 - **Concepts pertinents :** validation de graphes RDF selon des formes et contraintes déclarées.

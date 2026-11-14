@@ -596,7 +596,7 @@
 
 <a id="r-54"></a>
 ### R-54 — Langage d'ontologie OWL 2
-- **Cité par :** [0002-study-placement](decisions/0002-study-placement.fr.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.fr.md), [Vérification de cohérence du métamodèle](research/metamodel-coherence-verification.fr.md)
+- **Cité par :** [0002-study-placement](decisions/0002-study-placement.fr.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.fr.md), [Vérification de cohérence du métamodèle](research/metamodel-coherence-verification.fr.md), [Évaluation du réemploi des ontologies du métamodèle](research/metamodel-ontology-reuse-assessment.fr.md)
 
 - **Sources primaires :** [Spécification structurelle et syntaxe fonctionnelle W3C OWL 2](https://www.w3.org/TR/owl-syntax/) · [Vue d'ensemble W3C OWL 2](https://www.w3.org/TR/owl-overview/) · [Sémantique directe OWL 2, deuxième édition](https://www.w3.org/TR/owl2-direct-semantics/) · [Conformité OWL 2, deuxième édition](https://www.w3.org/TR/owl2-conformance/)
 - **Concepts pertinents :** sémantique formellement définie pour classes, propriétés, individus et axiomes d'ontologie.

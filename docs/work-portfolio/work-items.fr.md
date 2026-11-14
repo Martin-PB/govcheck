@@ -63,3 +63,12 @@ La PR [#104](https://github.com/Martin-PB/govcheck/pull/104), empilée sur la PR
 ## Source SACM — provenance du digest
 
 La première capture source-native du métamodèle OMG SACM 2.4 Beta 1 réutilise la valeur de comparaison SHA-256 publiée par l'audit indépendant [R-128](../references.fr.md#r-128). Le workflow GovCheck l'a vérifiée sur les 524 243 octets téléchargés depuis l'URL officielle (exécution [43444619765](https://github.com/Martin-PB/govcheck/actions/runs/43444619765)). La branche d'implémentation est [PR #126](https://github.com/Martin-PB/govcheck/pull/126) ; l'inventaire MOF/XMI et les correspondances dérivées de la source restent à réaliser.
+
+
+## État de l'intégration source-native SACM
+
+La PR #126 est fusionnée. L'incrément suivant produit un inventaire structurel XMI lié à la source OMG SACM 2.4 Beta 1 épinglée par digest. Le résultat est décrit dans le [rapport bilingue d'inventaire structurel](../research/sacm-xmi-structural-inventory.fr.md), généré par [`scripts/parse-sacm-xmi.py`](../../scripts/parse-sacm-xmi.py) et résumé dans [`metamodel-inventory-summary.json`](../../formal/sources/sacm-2.4-beta1/metamodel-inventory-summary.json).
+
+L'inventaire recense 1 616 identifiants XMI uniques, 121 classes, 121 associations, 355 propriétés, 167 généralisations, 8 énumérations, 37 littéraux et 40 contraintes. Il compte 1 371 références internes résolues, 63 références externes conservées et aucune référence interne non résolue parmi les attributs reconnus.
+
+Il s'agit d'une extraction structurelle, pas d'une interprétation sémantique UML/MOF, d'une preuve de raffinement du parseur ou d'une correspondance vers GovCheck. La comparaison PDF/XML, les conflits de source, les preuves de raffinement et les correspondances sémantiques restent ouverts. La PR de cet incrément est non normative ; l'issue #73 reste ouverte.

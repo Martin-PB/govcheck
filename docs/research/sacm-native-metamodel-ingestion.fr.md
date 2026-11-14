@@ -106,15 +106,19 @@ Les tests unitaires synthétiques couvrent :
 
 Ces fixtures ne sont pas des exemples d'instances SACM OMG et n'établissent aucune conformité. Le workflow de capture a réussi sur le véritable XML OMG téléchargé pour la tête de PR (exécution 43444619765) ; le digest et la longueur en octets ci-dessus sont vérifiés par GovCheck pour cette URL/révision source exacte.
 
-## 6. Non-revendications explicites et étape suivante
+## 6. Inventaire structurel dérivé de la source
+
+L'incrément d'ingestion suivant a maintenant produit un inventaire structurel XMI/UML lié à une révision précise. Voir le [rapport bilingue d'inventaire structurel](sacm-xmi-structural-inventory.fr.md) et la [synthèse révisable versionnée](../../formal/sources/sacm-2.4-beta1/metamodel-inventory-summary.json). Le parseur recense 1 616 identifiants XMI uniques, 121 classes UML, 121 associations, 355 propriétés, 167 généralisations, huit énumérations, 37 littéraux et 40 contraintes. Il comptabilise 1 371 références internes et 63 références externes, sans référence interne non résolue parmi les attributs reconnus. L'inventaire complet est produit dans l'artefact du workflow source. Le workflow complet a réussi dans l'[exécution 43451737489](https://github.com/Martin-PB/govcheck/actions/runs/43451737489) et a publié l'[artefact 14051746241](https://github.com/Martin-PB/govcheck/actions/runs/43451737489/artifacts/14051746241). Cela reste une extraction structurelle, pas une interprétation sémantique UML/MOF ni une preuve de raffinement du parseur.
+
+## 7. Non-revendications explicites et étape suivante
 
 Cette tranche ne :
 - interprète pas les classes, propriétés, associations, multiplicités, subsets, redefinitions ou contraintes MOF/XMI ;
-- ne génère pas l'inventaire complet du métamodèle SACM ;
+- ne produit pas une interprétation sémantique complète du métamodèle SACM ;
 - n'importe/exporte pas une instance de dossier d'assurance SACM ;
 - n'effectue pas de round-trip d'un modèle d'instance ;
 - ne mappe pas tous les concepts SACM vers GovCheck ;
 - ne prouve pas de théorème de raffinement parseur-vers-Lean ;
 - ne revendique ni conformité SACM 2.4 ni adoption normative.
 
-L'incrément suivant consistera à parser le vocabulaire MOF/XMI réel du métamodèle épinglé en un inventaire typé sans perte, tout en conservant la source brute, puis à dériver une matrice de couverture directement depuis cet inventaire. Ce n'est qu'après vérification de cet inventaire par rapport au PDF de spécification et à ses contradictions connues que les métaclasses sources individuelles seront mises en correspondance avec des concepts GovCheck. Chaque correspondance restera non opérationnelle tant que son obligation sémantique exacte ne sera pas démontrée.
+L'incrément suivant consiste à comparer cet inventaire structurel dérivé de la source à la vue PDF exacte et à la liste des conflits R-128, à classer chaque divergence par construction et portée affectées, puis à dériver des obligations de correspondance typées et spécifiques à chaque vue source. Seules les correspondances dont la relation sémantique exacte est formellement démontrée pourront devenir des prémisses établies de GovCheck.

@@ -1383,3 +1383,48 @@
 - **Relevant clauses:** §7.8.8.7 defines `MultiplicityElement.lowerBound()` and `upperBound()`, including the fallback value 1 when the corresponding value specification or typed value is absent; §8.6.9.4 defines `LiteralInteger.value` default 0; §8.6.14.4 defines `LiteralUnlimitedNatural.value` default 0; §8.6.10 defines `LiteralNull`.
 - **Use in GovCheck:** supplies the exact UML 2.5 rules used to interpret the omitted literal values in the pinned SACM 2.4 Beta 1 XMI. The parser records both the raw value specification and the effective multiplicity, including the rule responsible for a default.
 - **Limit:** only the stated literal/default cases are implemented. Arbitrary `ValueSpecification` expressions, OCL evaluation, full UML/MOF well-formedness and parser refinement remain outside this increment.
+
+
+<a id="r-201"></a>
+### R-201 — OMG SACM issue tracker: closed and complete issue views
+- **Cited by:** [ADR 0026 EN](architecture/0026-sacm-24-conformance-and-govcheck-integration.md), [ADR 0026 FR](architecture/0026-sacm-24-conformance-and-govcheck-integration.fr.md).
+- **Primary sources:** [SACM closed issues](https://issues.omg.org/issues/spec/SACM?view=CLOSED) · [SACM all issues](https://issues.omg.org/issues/spec/SACM?view=ALL).
+- **Use:** issue history and disposition context for SACM 2.4 Beta 1.
+- **Limit:** dynamic issue-tracker views, not normative specification text; capture issue identifiers and access date when relying on a particular record.
+
+<a id="r-202"></a>
+### R-202 — MindMux brain.md repository
+- **Cited by:** [ADR 0034 EN](architecture/0034-forge-native-portfolio-adapter.md), [ADR 0034 FR](architecture/0034-forge-native-portfolio-adapter.fr.md).
+- **Primary source:** [mindmuxai/brain.md](https://github.com/mindmuxai/brain.md).
+- **Use:** repository-native, agent-agnostic durable knowledge protocol and CLI.
+- **Limit:** evolving implementation and protocol; not a normative governance standard and not an adopted GovCheck dependency.
+
+<a id="r-203"></a>
+### R-203 — W3C OWL 2 Direct Semantics and Conformance
+- **Cited by:** [Metamodel coherence verification EN](research/metamodel-coherence-verification.md), [Metamodel coherence verification FR](research/metamodel-coherence-verification.fr.md).
+- **Primary sources:** [OWL 2 Direct Semantics, Second Edition](https://www.w3.org/TR/owl2-direct-semantics/) · [OWL 2 Conformance, Second Edition](https://www.w3.org/TR/owl2-conformance/).
+- **Status:** W3C Recommendations, 11 December 2012.
+- **Use:** model-theoretic semantics and conformance-test framing for OWL 2.
+- **Limit:** OWL 2 semantics apply to OWL ontologies; they do not automatically establish correspondence with GovCheck or other ontology languages.
+
+<a id="r-204"></a>
+### R-204 — SEON software-engineering ontology network
+- **Cited by:** [Metamodel ontology reuse assessment EN](research/metamodel-ontology-reuse-assessment.md), [Metamodel ontology reuse assessment FR](research/metamodel-ontology-reuse-assessment.fr.md).
+- **Primary sources:** [SEON network](https://dev.nemo.inf.ufes.br/seon/SEON.html) · [Requirements Ontology Network (ReqON)](https://dev.nemo.inf.ufes.br/seon/ReqON.html) · [Software Process Ontology (SPO)](https://dev.nemo.inf.ufes.br/seon/SPO.html).
+- **Use:** candidate ontology network for software engineering, requirements and process concepts.
+- **Limit:** project-maintained ontology documentation; reuse requires versioned source capture and explicit correspondence obligations.
+
+<a id="r-205"></a>
+### R-205 — CSLib roadmap
+- **Cited by:** [Metamodel ontology reuse assessment EN](research/metamodel-ontology-reuse-assessment.md), [Metamodel ontology reuse assessment FR](research/metamodel-ontology-reuse-assessment.fr.md).
+- **Primary source:** [CSLib roadmap](https://www.cslib.io/roadmap/).
+- **Use:** current roadmap and stated scope for the CSLib/Lean ecosystem.
+- **Limit:** roadmap statements are not formal guarantees of delivered capabilities; verify the exact library revision before relying on an implementation.
+
+<a id="r-206"></a>
+### R-206 — OMG Ontology Definition Metamodel (ODM) 1.1
+- **Cited by:** [Metamodel ontology reuse assessment EN](research/metamodel-ontology-reuse-assessment.md), [Metamodel ontology reuse assessment FR](research/metamodel-ontology-reuse-assessment.fr.md).
+- **Primary source:** [OMG ODM specification catalogue](https://www.omg.org/spec/ODM/).
+- **Pinned formal version:** ODM 1.1, September 2014; normative PDF file ID formal/14-09-02; normative machine-readable metamodel XMI file ID ptc/13-08-04.
+- **Use:** ontology metamodels, profiles and mappings across UML/MOF, RDF and OWL.
+- **Limit:** ODM mappings do not by themselves prove a mapping from ODM/SACM/OWL to GovCheck.

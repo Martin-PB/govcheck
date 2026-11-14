@@ -72,3 +72,13 @@ La PR #126 est fusionnée. L'incrément suivant produit un inventaire structurel
 L'inventaire recense 1 616 identifiants XMI uniques, 121 classes, 121 associations, 355 propriétés, 167 généralisations, 8 énumérations, 37 littéraux et 40 contraintes. Il compte 1 371 références internes résolues, 63 références externes conservées et aucune référence interne non résolue parmi les attributs reconnus.
 
 Il s'agit d'une extraction structurelle, pas d'une interprétation sémantique UML/MOF, d'une preuve de raffinement du parseur ou d'une correspondance vers GovCheck. La comparaison PDF/XML, les conflits de source, les preuves de raffinement et les correspondances sémantiques restent ouverts. La PR de cet incrément est non normative ; l'issue #73 reste ouverte.
+
+
+## Nouveaux chantiers ouverts — 2026-11-13
+
+- **[#130 — Reproduction de la critique externe #129](https://github.com/Martin-PB/govcheck/issues/130)** : reproduire et qualifier les constats sur la révision source exacte, y compris tests Python, TLA+/TLC, Lean et enforcement CI. Le triage bilingue sur sources est préparé ; les exécutions restent à reproduire.
+- **[#131 — Sémantiques probabilistes, floues et risque assumé](https://github.com/Martin-PB/govcheck/issues/131)** : distinguer probabilité, appartenance floue, incertitude, décision, risque assumé, évaluation, traitement et acceptation autorisée. Le chantier réutilise #60, #69 et #73 ; aucune adoption normative n'est impliquée.
+
+### Avancement — décision transversale et risque PEAK
+
+L'Architecture 0013 EN/FR présente un chemin de traçabilité sans décision terminale et définit la décision comme objet transversal de premier rang. L'Architecture 0025 EN/FR distingue le risque assumé PEAK de l'évaluation, du traitement, du risque résiduel et de l'acceptation autorisée [R-193](../references.fr.md#r-193). Voir l'[addendum de recherche bilingue](../research/decision-and-assumed-risk-crosscutting-2026-11.fr.md). Ces éléments restent des propositions.

@@ -63,6 +63,7 @@ Le dépôt contient déjà une architecture candidate substantielle :
 
 - [Issue #73](https://github.com/Martin-PB/govcheck/issues/73) est l'élément principal de vérification des contrats sémantiques entre intention, exigences, architecture, cycle de vie, assurance et autorité.
 - [Issue #69](https://github.com/Martin-PB/govcheck/issues/69) traite les chaînes de justification des claims et la préservation des méthodes, hypothèses et limites.
+- [Issue #131](https://github.com/Martin-PB/govcheck/issues/131) traite les sémantiques distinctes de la probabilité, de l'appartenance floue, de l'incertitude et du risque assumé. L'[addendum de recherche bilingue décision/risque](../research/decision-and-assumed-risk-crosscutting-2026-11.fr.md) précise que les décisions sont des objets transversaux du graphe et distingue risque assumé PEAK, évaluation, traitement, risque résiduel et acceptation autorisée.
 - [Issue #74](https://github.com/Martin-PB/govcheck/issues/74) traite le statut des références, leur provenance et leur traçabilité vérifiable.
 - [Issue #79](https://github.com/Martin-PB/govcheck/issues/79) est le conteneur de portefeuille assurance/évaluation ; ses enfants conservent chacun leur périmètre.
 - [Issue #81](https://github.com/Martin-PB/govcheck/issues/81) est le conteneur des méthodes formelles et du cycle de vie.

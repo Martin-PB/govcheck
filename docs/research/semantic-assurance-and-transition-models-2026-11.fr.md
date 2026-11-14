@@ -60,7 +60,7 @@ Recommandation provisoire : noyau générique pour affirmations, hypothèses, ar
 ### Sources sur probabilité, logique floue et confiance dans l'assurance
 
 - Graydon & Holloway, “An investigation of proposed techniques for quantifying confidence in assurance arguments,” *Safety Science* 92 (2017) : https://doi.org/10.1016/j.ssci.2016.09.014. La revue met en garde contre des résultats quantitatifs peu plausibles et une validation empirique insuffisante pour une recommandation générale en contexte critique.
-- “A probabilistic model of belief in safety cases,” *Safety Science* 138 (2021), 105187 : DOI à vérifier avant intégration définitive au catalogue ; le DOI cité dans les échanges était https://doi.org/10.1016/j.ssci.2021.09.014. Exemple de réseau bayésien, pas une méthode universelle.
+- “A probabilistic model of belief in safety cases,” *Safety Science* 138 (2021), 105187 : DOI vérifié : https://doi.org/10.1016/j.ssci.2021.105187. Exemple de réseau bayésien, pas une méthode universelle.
 - NIST Engineering Statistics Handbook, évaluation bayésienne de la fiabilité : https://www.itl.nist.gov/div898/handbook/apr/section1/apr1a.htm.
 - Johanyák & Zlatko (2025), “A comprehensive survey on Fuzzy logic applications in software requirements engineering” : https://doi.org/10.47833/2025.2.CSC.008.
 - Yen, Tiao & Liu (1996), “A Systematic Tradeoff Methodology for Acquiring and Validating Imprecise Requirements” : https://doi.org/10.1109/FUZZY.1996.551766.

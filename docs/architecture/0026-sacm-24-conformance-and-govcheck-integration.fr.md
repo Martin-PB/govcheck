@@ -229,3 +229,5 @@ Ce document affine, sans les remplacer :
 - Architecture 0025 — observations du cycle de vie et traçabilité décisionnelle PEAK.
 
 La capacité SACM doit rester reliée à toutes ces fondations sans absorber leurs responsabilités distinctes.
+
+Catalogue de références : [R-197 — artefacts sources et suivi des problèmes SACM 2.4](../references.fr.md#r-197).

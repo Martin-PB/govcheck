@@ -80,3 +80,5 @@ Adopt a single stdlib-only adapter module behind a forge-agnostic contract:
 - [Issue #92 (closed) — forge portability of the GovCheck decision](https://github.com/Martin-PB/govcheck/issues/92)
 - brain.md (evaluated, not adopted): <https://github.com/mindmuxai/brain.md> (Apache-2.0)
 - [govcheck package README](../../govcheck/README.md)
+
+Reference catalogue: [R-104 — agent instruction formats and repository-native workflows](../references.md#r-104).

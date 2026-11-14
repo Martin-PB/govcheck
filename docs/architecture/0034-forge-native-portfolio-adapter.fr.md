@@ -80,3 +80,5 @@ Adopter un unique module d’adaptation limité à la bibliothèque standard, de
 - [Issue #92 (fermée) — Portabilité inter-forges de la décision GovCheck](https://github.com/Martin-PB/govcheck/issues/92)
 - brain.md (évalué, non adopté) : <https://github.com/mindmuxai/brain.md> (Apache-2.0)
 - [README du package govcheck](../../govcheck/README.md)
+
+Catalogue de références : [R-104 — formats d'instructions pour agents et workflows natifs au dépôt](../references.fr.md#r-104).

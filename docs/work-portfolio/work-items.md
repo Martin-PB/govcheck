@@ -62,6 +62,9 @@ Source issue descriptions and discussions remain preserved on GitHub and are lin
 | govcheck.work.governance-revision-temporal-applicability | [#86](https://github.com/Martin-PB/govcheck/issues/86) | Bind each evaluation to the immutable governance revision applicable at its decision position. | specification / governance | unassigned, in-progress | The journal-recovery model is Architecture 0035 and proposed Specification 0007; their consolidated integration is [PR #124](https://github.com/Martin-PB/govcheck/pull/124), stacked on metamodel decision PR #122. PR review, model checking and merge do not constitute normative adoption; #41 remains the parent authority decision. |
 | govcheck.work.multilingual-documentation-governance | [#33](https://github.com/Martin-PB/govcheck/issues/33) | Define language primacy, EN/FR synchronization, translation freshness, terminology and safe handling of operational filenames. | specification / governance-documentation | unassigned, needs-specification | Kept atomic; not forced into the former #40 decomposition. |
 
+| govcheck.work.critique-129-reproduction | [#130](https://github.com/Martin-PB/govcheck/issues/130) | Reproduce and qualify the external critique against the exact source revision, including Python tests, TLA+/TLC, Lean and CI enforcement; preserve uncertainty and non-reproduced results. | verification / formal-methods | P0, in-progress | Bilingual source-level triage prepared; execution-level reproduction remains open. |
+| govcheck.work.probabilistic-fuzzy-risk-semantics | [#131](https://github.com/Martin-PB/govcheck/issues/131) | Specify distinct semantics for probability, fuzzy membership, uncertainty, decision and assumed risk; link risk assessments and acceptances to authority-bound decisions. | specification / assurance | P1, in-progress | Candidate bilingual research addendum; linked to #60, #69 and #73; no normative adoption. |
+
 ## Historical and completed mappings
 
 | Source issue | Disposition | Canonical relation |
@@ -125,3 +128,12 @@ PR [#104](https://github.com/Martin-PB/govcheck/pull/104), stacked on PR #100, a
 - **Stacked proposals:** PR [#100](https://github.com/Martin-PB/govcheck/pull/100) remains open/non-draft on `work/issue-86-journal-recovery-model` (head `1be58c4a550cb5041573d704f64ef2baa7701097`); PR [#104](https://github.com/Martin-PB/govcheck/pull/104) remains open/non-draft on `work/issue-86-journal-protocol-spec` (head `91edf52fd4fe67815eace4db30f577b50069d53f`). They are stacked and are not mainline integration.
 - **Latest recorded PR #104 checks:** run [42891011411](https://github.com/Martin-PB/govcheck/actions/runs/42891011411) failed the offline reference-integrity check with 17 errors and 8 warnings; package alignment and the report-only GovCheck slice passed. The errors identified missing thematic-index entries R-194–R-196, stale [R-107](../references.md#r-107) backlinks, missing R-194–R-196 backlinks, unlinked mentions and EN/FR citation mismatch. The current candidate repairs those documentary defects. No new Actions run is requested or triggered.
 - **Current candidate:** [PR #107](https://github.com/Martin-PB/govcheck/pull/107) is open, non-draft, targets `main` and is currently mergeable; branch `work/issue-41-formalization-reconciliation` carries the #99/#100/#104 technical content and reconciles the bilingual decision/specification/model/portfolio records. No issue is closed, no normative adoption is inferred and no implementation is claimed.
+
+
+### Progress — #130 source-level triage
+
+The bilingual source-level triage of [#129](https://github.com/Martin-PB/govcheck/issues/129) is prepared: [EN](../research/critique-129-source-triage.md) / [FR](../research/critique-129-source-triage.fr.md). Findings 6.1, 6.4, 6.5 and 6.6 are supported by source inspection; 6.2 and 6.3 are qualified; the physical-infrastructure inference in 6.7 is overstated. Python/TLC/Lean execution and axiom audit remain open.
+
+### Progress — #73 decision graph and risk semantics
+
+Architecture 0013 EN/FR now treats Decision as a transversal first-class object, not a terminal stage. Architecture 0025 EN/FR distinguishes PEAK Assumed Risk from Risk Assessment, Risk Treatment, Residual Risk and authorized Risk Acceptance [R-193](../references.md#r-193). The detailed [decision/risk research addendum](../research/decision-and-assumed-risk-crosscutting-2026-11.md) remains a candidate, not a normative adoption.

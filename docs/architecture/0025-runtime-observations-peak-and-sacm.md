@@ -43,7 +43,7 @@ These documents describe a general repository-governance foundation. Security an
 
 ## 3. PEAK: trace the reasoning behind a decision
 
-PEAK is used here in its decision-analysis sense: **Problem, Experience, Assumptions and Knowledge** are made explicit as inputs to a decision; the decision process records the selected **Solution** and the **Assumed Risk** [R-74](../references.md#r-74).
+PEAK is used here in its decision-analysis sense: **Problem, Experience, Assumptions and Knowledge** are made explicit as inputs to a decision; the decision process records the selected **Solution** and the **Assumed Risk** [R-74](../references.md#r-74). The distinction between assumed risk, risk assessment, treatment and acceptance is informed by [R-193](../references.md#r-193).
 
 A GovCheck decision can expose these dimensions without turning them into four isolated data silos:
 
@@ -54,9 +54,9 @@ A GovCheck decision can expose these dimensions without turning them into four i
 | **A — Assumptions** | Which premises are being relied upon, and under what conditions? | Explicit assumptions with owner, scope, rationale, validity, confidence and review/falsification conditions |
 | **K — Knowledge** | What information is available to the decision-makers? | Specifications, architecture, measurements, test results, proofs, dependency facts, observations, standards and other admissible evidence |
 | **Solution** | What option was selected, and why? | Selected alternative, rejected alternatives, rationale, implementation or follow-up plan |
-| **Assumed Risk** | What uncertainty or exposure is knowingly retained by choosing it? | Trade-offs, residual risk, uncertainty, conditions, accountable owner and review triggers |
+| **Assumed Risk** | What may not work as envisioned, and what exposure is knowingly taken by choosing the solution? | Risk scenarios, assumptions, untested dependencies, possible consequences, uncertainty, accountable owner and review triggers; not synonymous with assessed risk, residual risk or authorized acceptance |
 
-PEAK is not an authorization mechanism, risk formula, assurance-case notation or repository lifecycle model. GovCheck must supply the governance around a decision: identity, authority, scope, participants, time, rationale, evidence links, validity, review and supersession.
+PEAK is not an authorization mechanism, risk formula, assurance-case notation or repository lifecycle model. GovCheck must supply the governance around a decision: identity, authority, scope, participants, time, rationale, evidence links, validity, review and supersession. Keep four concepts distinct: PEAK **Assumed Risk** is a decision output describing what may not work as envisioned; **Risk Assessment** is a separate method-bound analysis; **Risk Treatment** changes exposure; **Residual Risk** is what remains after specified treatment; and **Risk Acceptance** is an authorized, scoped and time-bounded disposition. The original assumed-risk statement remains part of the historical decision record when later assessments or controls change.
 
 The same PEAK structure can be useful for decisions about architecture, maintainability, testing strategy, dependency upgrades, release readiness, security treatment or project governance. Its use should be proportional to the importance and consequences of the decision; it should not become mandatory paperwork for every trivial choice.
 

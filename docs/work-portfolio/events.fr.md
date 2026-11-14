@@ -79,3 +79,30 @@ L'artefact complet [`sacm-2.4-beta1-source-and-xmi-inventory`](https://github.co
 La livraison reste structurelle : aucune interprétation UML/MOF/OCL, résolution des références externes, preuve de raffinement du parseur, résolution des conflits PDF/XML, correspondance sémantique vers GovCheck, conformité SACM ou adoption normative n'est revendiquée. L'issue #73 reste ouverte.
 
 Détail canonique : [journal anglais WP-EVT-000026](events.md#wp-evt-000026).
+
+
+## Derniers événements — WP-EVT-000027 à WP-EVT-000030
+
+## WP-EVT-000027 — Ouverture des chantiers d'audit critique et de recherche décision/risque
+
+Les issues [#130](https://github.com/Martin-PB/govcheck/issues/130) et [#131](https://github.com/Martin-PB/govcheck/issues/131) sont ouvertes. Le chantier réutilise les issues existantes #73, #69, #60, #86/#41, #43/#45/#72 au lieu de créer des doublons. L'addendum bilingue traite la décision comme objet transversal et le risque assumé comme objet de premier rang. Aucune adoption normative ni modification d'autorité n'est impliquée.
+
+Détail canonique : [journal anglais WP-EVT-000027](events.md#wp-evt-000027).
+
+## WP-EVT-000028 — Triage sur sources de la critique externe #129
+
+Un triage bilingue est préparé sur la révision `24760fbfd747fc64f6261b53182f4ed8fdbd4467` nommée par #129. Plusieurs constats sont étayés, d'autres nuancés ; les exécutions Python/TLC/Lean et l'audit d'axiomes restent à reproduire.
+
+Détail canonique : [journal anglais WP-EVT-000028](events.md#wp-evt-000028).
+
+## WP-EVT-000029 — Décision transversale et graphe de traçabilité
+
+L'Architecture 0013 EN/FR remplace la chaîne terminée par une décision d'acceptation par un chemin de traçabilité et une décision transversale de premier rang. Le dossier distingue également les sorties PEAK et les objets candidats d'évaluation/traitement/acceptation du risque. Voir [R-74](../references.fr.md#r-74) et [R-193](../references.fr.md#r-193).
+
+Détail canonique : [journal anglais WP-EVT-000029](events.md#wp-evt-000029).
+
+## WP-EVT-000030 — Distinction du risque assumé PEAK dans l'Architecture 0025
+
+L'Architecture 0025 EN/FR distingue désormais le risque assumé PEAK de l'évaluation, du traitement, du risque résiduel et de l'acceptation autorisée du risque. Voir [R-193](../references.fr.md#r-193).
+
+Détail canonique : [journal anglais WP-EVT-000030](events.md#wp-evt-000030).

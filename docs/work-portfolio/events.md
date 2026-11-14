@@ -390,3 +390,48 @@
 - **Published artifact:** [`sacm-2.4-beta1-source-and-xmi-inventory`](https://github.com/Martin-PB/govcheck/actions/runs/43451737489/artifacts/14051746241), artifact ID `14051746241`, SHA-256 `01bd32307376baaa0c401b4631d7338bae7f0a999c9d3f94aecc21af5a3c8ae3`, 90-day retention. It contains `source.xml`, `manifest.json`, `index.json`, `metamodel-inventory.json` and `metamodel-inventory-summary.json`.
 - **Reproducibility binding:** the parser, tests, summary and workflow blobs at the current PR branch head were compared with the checked commit and are identical; later commits affect documentation/portfolio records only.
 - **Limits:** structural extraction only; no UML/MOF/OCL semantic interpretation, external href resolution, parser-refinement theorem, PDF/XML conflict resolution, source-derived GovCheck mapping, SACM conformance or normative adoption. Issue #73 remains open.
+
+
+<a id="wp-evt-000027"></a>
+## WP-EVT-000027 — Critical-review audit and decision/risk research work opened
+- **Subject:** `govcheck.work.critique-129-reproduction`; `govcheck.work.probabilistic-fuzzy-risk-semantics`.
+- **Event type:** `issues-opened-and-bilingual-research-addendum-prepared`.
+- **Recorded:** 2026-11-13.
+- **Actor/provenance:** maintainer instruction to launch the work; issues and research addendum prepared through the GitHub repository integration.
+- **Coordination issues:** [#130](https://github.com/Martin-PB/govcheck/issues/130) tracks independent reproduction of [#129](https://github.com/Martin-PB/govcheck/issues/129); [#131](https://github.com/Martin-PB/govcheck/issues/131) tracks probability/fuzzy/uncertainty/risk-assumption semantics.
+- **Existing work reused:** #73 (inter-model semantic contracts), #86/#41 (governance applicability and authority), #60 (single-authority residual risk), #69 (justification chain), #43/#45/#72 (vertical slice, enforcement boundary and adversarial candidates). No duplicate issues were opened for these scopes; cross-links were added to existing work.
+- **Research candidate:** bilingual decision/risk addendum. It corrects the representation of decisions as transversal graph objects, distinguishes assurance from authorization, and treats risk/assumed risk as first-class versioned objects.
+- **Disposition:** work proposals and research only. No normative model adoption, authority change, implementation claim, or issue closure is implied.
+
+<a id="wp-evt-000028"></a>
+## WP-EVT-000028 — Source-level triage of external critique #129 prepared
+- **Subject:** `govcheck.work.critique-129-reproduction`.
+- **Event type:** `preliminary-source-triage-prepared`.
+- **Recorded:** 2026-11-13.
+- **Source revision:** `main` at `24760fbfd747fc64f6261b53182f4ed8fdbd4467`, the same revision named by #129.
+- **Artifacts:** [English triage](../research/critique-129-source-triage.md) and [French triage](../research/critique-129-source-triage.fr.md).
+- **Disposition:** source-level inspection only. Findings 6.1, 6.4, 6.5 and 6.6 are supported by code/specification inspection; 6.2 and 6.3 are qualified; 6.7's claim of necessary physical infrastructure separation is overstated. No tests, TLC runs, Lean builds or axiom audits were executed in this event.
+- **Environment limitation:** repository clone failed because GitHub DNS/network access was unavailable in the execution environment. No workflow was run for this preliminary triage.
+- **Next work:** reproduce Python tests, all checked-in TLA+ configurations, Lean build/axiom audit and isolated CSLib compatibility profile; construct negative fixtures for partial mapping coverage and candidate-bound attestations.
+
+<a id="wp-evt-000029"></a>
+## WP-EVT-000029 — Architecture 0013 decision graph and risk semantics clarified
+- **Subject:** `govcheck.work.intermodel-contract-conformance`; `govcheck.work.probabilistic-fuzzy-risk-semantics`.
+- **Event type:** `architecture-proposal-clarified`.
+- **Recorded:** 2026-11-14.
+- **Artifacts:** Architecture 0013 EN/FR distinguishes the traceability path from transversal decision objects; the bilingual research addendum defines candidate object boundaries for decision inputs/outputs, assumed risk, scenarios, assessment, treatment and acceptance.
+- **Semantic correction:** the former representative chain ended in an acceptance decision. It is replaced by a traceability path without a terminal decision node and an explicit transversal decision relation. An acceptance decision is one decision kind, not the final stage of the metamodel.
+- **PEAK fidelity:** the four inputs Problem, Experience, Assumptions, Knowledge lead to two outputs, Solution and Assumed Risk. Assumed Risk is distinct from Risk Assessment, Risk Treatment, Residual Risk and authorized Risk Acceptance.
+- **References:** [R-74](../references.md#r-74) and [R-193](../references.md#r-193).
+- **Disposition:** proposed design clarification only; no normative adoption, implementation claim or authority change.
+
+<a id="wp-evt-000030"></a>
+## WP-EVT-000030 — PEAK assumed-risk terminology aligned across Architecture 0025
+- **Subject:** `govcheck.work.probabilistic-fuzzy-risk-semantics`.
+- **Event type:** `decision-risk-terminology-aligned`.
+- **Recorded:** 2026-11-14.
+- **Artifacts:** Architecture 0025 EN/FR updates the PEAK Assumed Risk row and explanatory text; R-193 catalogue backlinks include Architecture 0025 in both languages.
+- **Semantic distinction:** PEAK Assumed Risk is the decision process's explicit output describing what may not work as envisioned. It is distinct from Risk Assessment, Risk Treatment, Residual Risk and authorized Risk Acceptance. The original assumed-risk statement remains in the historical decision record when later assessments or controls change.
+- **Reference:** [R-193](../references.md#r-193).
+- **Integration candidate:** [PR #132](https://github.com/Martin-PB/govcheck/pull/132), rebased on current `main` at `e21c4d2bb1a0fdeec250723c72b1115c9921c3a9`; merge/review status remains separate from adoption.
+- **Disposition:** proposed clarification; no normative adoption or method mandate.

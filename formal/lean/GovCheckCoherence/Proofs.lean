@@ -159,7 +159,7 @@ theorem sacm_claim_interpretation_preserves_subject
 theorem sacm_claim_subject_revision_is_pinned
     {claim : SACM24.SACMClaim} {target : ClaimSemantics}
     (mapping : SACM24.SACMClaimInterpretation claim target)
-    (subject : SACM24.SACMElementRef) (h : mapping.mappedSubject = some subject) :
+    (subject : SACM24.SACMElementRef) (h : subject ∈ mapping.mappedSubject.getD []) :
     subject.modelRevision = mapping.sourceModel.revision :=
   SACM24.claim_subject_revision_is_pinned mapping subject h
 
@@ -197,44 +197,105 @@ theorem sacm_mapping_preserves_assertion_declaration
     {sacmClaim : SACM24.SACMClaim} {source target : MappingSubject}
     (mapping : SACM24.SACMClaimMapping sacmClaim source target) :
     mapping.sourceInterpretation.disposition =
-      SACM24.mapAssertionDeclaration sacmClaim.declaration :=
+      SACM24.mapAssertionDeclaration (SACM24.effectiveDeclaration sacmClaim) :=
   SACM24.claim_interpretation_preserves_declaration mapping.sourceInterpretation
 
-/-- Textual Beta 1 declaration literals reject the XML-only byRule value. -/
-theorem sacm_text_byRule_is_rejected :
-    SACM24.declarationSupportedBySourceView .specificationText .byRule = false :=
-  SACM24.text_byRule_is_not_supported
+/-- PDF Clause 13.6 includes needsSupport; this is a fragment-level fact,
+not a PDF-wide declaration rule. -/
+theorem sacm_pdf_clause13_6_includes_needsSupport :
+    SACM24.AssertionDeclarationKind.needsSupport ∈
+      SACM24.declarationLiteralsForFragment .pdfClause13_6 :=
+  SACM24.pdf_clause13_6_includes_needsSupport
 
-/-- The metamodel XML rejects the text-only needsSupport value. -/
-theorem sacm_xml_needsSupport_is_rejected :
-    SACM24.declarationSupportedBySourceView .normativeMetamodelXML .needsSupport = false :=
-  SACM24.xml_needsSupport_is_not_supported
+/-- PDF Clause 13.6 does not list byRule; Clause 15.2.1 is modelled separately. -/
+theorem sacm_pdf_clause13_6_omits_byRule :
+    SACM24.AssertionDeclarationKind.byRule ∉
+      SACM24.declarationLiteralsForFragment .pdfClause13_6 :=
+  SACM24.pdf_clause13_6_does_not_list_byRule
 
-/-- The PDF text identity field is explicitly represented as gid. -/
-theorem sacm_text_identity_field_is_gid :
-    SACM24.identityFieldForSourceView .specificationText = .gid :=
-  SACM24.text_identity_field_is_gid
+/-- The XML source view does not list the PDF-only needsSupport literal. -/
+theorem sacm_xml_omits_needsSupport :
+    SACM24.AssertionDeclarationKind.needsSupport ∉
+      SACM24.declarationLiteralsForFragment .normativeMetamodelXML := by
+  decide
 
-/-- The normative metamodel XML identity field is explicitly elementId. -/
-theorem sacm_xml_identity_field_is_elementId :
-    SACM24.identityFieldForSourceView .normativeMetamodelXML = .elementId :=
-  SACM24.xml_identity_field_is_elementId
+/-- The normative XML and PDF Clause 15.2.1 both list byRule. -/
+theorem sacm_xml_and_pdf_clause15_2_1_include_byRule :
+    SACM24.AssertionDeclarationKind.byRule ∈
+      SACM24.declarationLiteralsForFragment .normativeMetamodelXML ∧
+    SACM24.AssertionDeclarationKind.byRule ∈
+      SACM24.declarationLiteralsForFragment .pdfClause15_2_1 := by
+  exact ⟨SACM24.xml_model_includes_byRule, SACM24.pdf_clause15_2_1_includes_byRule⟩
 
-/-- A mapped Claim must carry the declaration/source-view consistency proof. -/
-theorem sacm_claim_mapping_requires_source_view_consistency
+/-- The PDF itself contains incompatible declaration fragments. -/
+theorem sacm_pdf_declaration_fragments_disagree :
+    SACM24.AssertionDeclarationKind.needsSupport ∈
+        SACM24.declarationLiteralsForFragment .pdfClause13_6 ∧
+    SACM24.AssertionDeclarationKind.needsSupport ∉
+        SACM24.declarationLiteralsForFragment .pdfClause15_2_1 ∧
+    SACM24.AssertionDeclarationKind.byRule ∉
+        SACM24.declarationLiteralsForFragment .pdfClause13_6 ∧
+    SACM24.AssertionDeclarationKind.byRule ∈
+        SACM24.declarationLiteralsForFragment .pdfClause15_2_1 :=
+  SACM24.pdf_assertion_declaration_fragments_disagree
+
+/-- The PDF clause 9.2 identity field is gid. -/
+theorem sacm_pdf_clause9_2_identity_is_gid :
+    SACM24.identityFieldForFragment .pdfClause9_2 = .gid :=
+  SACM24.pdf_clause9_2_uses_gid
+
+/-- PDF Figure 9.1 uses elementId; the PDF view therefore cannot be collapsed
+into one document-wide identity-field rule. -/
+theorem sacm_pdf_figure9_1_identity_is_elementId :
+    SACM24.identityFieldForFragment .pdfFigure9_1 = .elementId :=
+  SACM24.pdf_figure9_1_uses_elementId
+
+/-- The normative metamodel XML uses elementId. -/
+theorem sacm_xml_identity_is_elementId :
+    SACM24.identityFieldForFragment .normativeMetamodelXML = .elementId :=
+  SACM24.xml_model_uses_elementId
+
+/-- The PDF itself contains incompatible identity fragments. -/
+theorem sacm_pdf_identity_fragments_disagree :
+    SACM24.identityFieldForFragment .pdfClause9_2 =
+        SACM24.ElementIdentityField.gid ∧
+    SACM24.identityFieldForFragment .pdfFigure9_1 =
+        SACM24.ElementIdentityField.elementId ∧
+    SACM24.identityFieldForFragment .pdfClause9_2 ≠
+        SACM24.identityFieldForFragment .pdfFigure9_1 :=
+  SACM24.pdf_identity_fragments_disagree
+
+/-- A mapped Claim must cite a specific source fragment for its declaration. -/
+theorem sacm_claim_mapping_requires_source_fragment_consistency
     {claim : SACM24.SACMClaim} {interpretation : ClaimSemantics}
     (mapping : SACM24.SACMClaimInterpretation claim interpretation) :
-    SACM24.declarationSupportedBySourceView claim.sourceView claim.declaration = true :=
-  mapping.declarationConsistentWithSourceView
+    SACM24.effectiveDeclaration claim ∈
+      SACM24.declarationLiteralsForFragment mapping.declarationFragment :=
+  mapping.declarationConsistentWithFragment
 
-/-- A mapped Claim must use the identity field of its declared source view. -/
-theorem sacm_claim_mapping_requires_source_identity_field
+/-- A mapped Claim must cite the exact identity fragment whose field it uses. -/
+theorem sacm_claim_mapping_requires_identity_fragment_consistency
     {claim : SACM24.SACMClaim} {interpretation : ClaimSemantics}
     (mapping : SACM24.SACMClaimInterpretation claim interpretation) :
-    claim.identityField = SACM24.identityFieldForSourceView claim.sourceView :=
-  mapping.identityFieldMatchesSourceView
+    claim.identityField = SACM24.identityFieldForFragment mapping.identityFragment :=
+  mapping.identityFieldMatchesFragment
 
-/-- A SACM mapping pins the native format corresponding to the selected source view. -/
+/-- A mapped Claim must bind the fragment to its document-level source view. -/
+theorem sacm_claim_mapping_requires_declaration_fragment_view
+    {claim : SACM24.SACMClaim} {interpretation : ClaimSemantics}
+    (mapping : SACM24.SACMClaimInterpretation claim interpretation) :
+    SACM24.declarationSourceView mapping.declarationFragment = claim.sourceView :=
+  mapping.declarationFragmentMatchesView
+
+/-- The identity fragment must belong to the declared document-level view,
+without imposing a single identity field across all PDF fragments. -/
+theorem sacm_claim_mapping_requires_identity_fragment_view
+    {claim : SACM24.SACMClaim} {interpretation : ClaimSemantics}
+    (mapping : SACM24.SACMClaimInterpretation claim interpretation) :
+    SACM24.identitySourceView mapping.identityFragment = claim.sourceView :=
+  mapping.identityFragmentMatchesView
+
+/-- The native source format must match the selected document-level view. -/
 theorem sacm_claim_source_format_matches_view
     {claim : SACM24.SACMClaim} {interpretation : ClaimSemantics}
     (mapping : SACM24.SACMClaimInterpretation claim interpretation) :

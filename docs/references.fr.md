@@ -1383,3 +1383,48 @@
 - **Clauses pertinentes :** §7.8.8.7 définit `MultiplicityElement.lowerBound()` et `upperBound()`, y compris la valeur de repli 1 lorsque la spécification de valeur correspondante ou sa valeur typée est absente ; §8.6.9.4 définit la valeur par défaut 0 de `LiteralInteger.value` ; §8.6.14.4 définit la valeur par défaut 0 de `LiteralUnlimitedNatural.value` ; §8.6.10 définit `LiteralNull`.
 - **Utilité pour GovCheck :** fournit les règles UML 2.5 exactes utilisées pour interpréter les valeurs littérales omises dans le XMI SACM 2.4 Beta 1 épinglé. Le parseur conserve à la fois la spécification de valeur brute et la multiplicité effective, avec la règle responsable de toute valeur par défaut.
 - **Limite :** seuls les cas de littéraux et valeurs par défaut indiqués sont implémentés. Les expressions `ValueSpecification` arbitraires, l'évaluation OCL, la validité UML/MOF complète et le raffinement du parseur restent hors de cet incrément.
+
+
+<a id="r-201"></a>
+### R-201 — Suivi des tickets OMG SACM : vues fermées et complètes
+- **Cité par :** [ADR 0026 EN](architecture/0026-sacm-24-conformance-and-govcheck-integration.md), [ADR 0026 FR](architecture/0026-sacm-24-conformance-and-govcheck-integration.fr.md).
+- **Sources primaires :** [tickets SACM fermés](https://issues.omg.org/issues/spec/SACM?view=CLOSED) · [tous les tickets SACM](https://issues.omg.org/issues/spec/SACM?view=ALL).
+- **Utilité :** historique et contexte des décisions de tickets pour SACM 2.4 Beta 1.
+- **Limite :** vues dynamiques du gestionnaire de tickets, pas texte normatif de la spécification ; conserver l'identifiant du ticket et la date de consultation lorsqu'un enregistrement précis est utilisé.
+
+<a id="r-202"></a>
+### R-202 — Dépôt MindMux brain.md
+- **Cité par :** [ADR 0034 EN](architecture/0034-forge-native-portfolio-adapter.md), [ADR 0034 FR](architecture/0034-forge-native-portfolio-adapter.fr.md).
+- **Source primaire :** [mindmuxai/brain.md](https://github.com/mindmuxai/brain.md).
+- **Utilité :** protocole de connaissance durable natif au dépôt, agnostique vis-à-vis des agents, et CLI associée.
+- **Limite :** protocole et implémentation évolutifs ; ni standard normatif de gouvernance ni dépendance adoptée par GovCheck.
+
+<a id="r-203"></a>
+### R-203 — Sémantique directe et conformité W3C OWL 2
+- **Cité par :** [Vérification de cohérence des métamodèles EN](research/metamodel-coherence-verification.md), [Vérification de cohérence des métamodèles FR](research/metamodel-coherence-verification.fr.md).
+- **Sources primaires :** [Sémantique directe OWL 2, deuxième édition](https://www.w3.org/TR/owl2-direct-semantics/) · [Conformité OWL 2, deuxième édition](https://www.w3.org/TR/owl2-conformance/).
+- **Statut :** recommandations W3C du 11 décembre 2012.
+- **Utilité :** sémantique modèle-théorique et cadre de tests de conformité pour OWL 2.
+- **Limite :** la sémantique OWL 2 s'applique aux ontologies OWL ; elle n'établit pas automatiquement une correspondance avec GovCheck ou un autre langage d'ontologie.
+
+<a id="r-204"></a>
+### R-204 — Réseau d'ontologies d'ingénierie logicielle SEON
+- **Cité par :** [Évaluation de réutilisation des ontologies de métamodèles EN](research/metamodel-ontology-reuse-assessment.md), [Évaluation de réutilisation des ontologies de métamodèles FR](research/metamodel-ontology-reuse-assessment.fr.md).
+- **Sources primaires :** [Réseau SEON](https://dev.nemo.inf.ufes.br/seon/SEON.html) · [réseau d'ontologies des exigences ReqON](https://dev.nemo.inf.ufes.br/seon/ReqON.html) · [ontologie des processus logiciels SPO](https://dev.nemo.inf.ufes.br/seon/SPO.html).
+- **Utilité :** réseau candidat d'ontologies pour l'ingénierie logicielle, les exigences et les processus.
+- **Limite :** documentation d'ontologies maintenue par le projet ; la réutilisation exige une capture de source versionnée et des obligations de correspondance explicites.
+
+<a id="r-205"></a>
+### R-205 — Feuille de route CSLib
+- **Cité par :** [Évaluation de réutilisation des ontologies de métamodèles EN](research/metamodel-ontology-reuse-assessment.md), [Évaluation de réutilisation des ontologies de métamodèles FR](research/metamodel-ontology-reuse-assessment.fr.md).
+- **Source primaire :** [Feuille de route CSLib](https://www.cslib.io/roadmap/).
+- **Utilité :** feuille de route actuelle et périmètre déclaré de l'écosystème CSLib/Lean.
+- **Limite :** une feuille de route ne garantit pas les capacités livrées ; vérifier la révision exacte de la bibliothèque avant de dépendre d'une implémentation.
+
+<a id="r-206"></a>
+### R-206 — OMG Ontology Definition Metamodel (ODM) 1.1
+- **Cité par :** [Évaluation de réutilisation des ontologies de métamodèles EN](research/metamodel-ontology-reuse-assessment.md), [Évaluation de réutilisation des ontologies de métamodèles FR](research/metamodel-ontology-reuse-assessment.fr.md).
+- **Source primaire :** [Catalogue OMG de la spécification ODM](https://www.omg.org/spec/ODM/).
+- **Version formelle épinglée :** ODM 1.1, septembre 2014 ; PDF normatif formal/14-09-02 ; XMI normatif du métamodèle ptc/13-08-04.
+- **Utilité :** métamodèles, profils et correspondances d'ontologies entre UML/MOF, RDF et OWL.
+- **Limite :** les correspondances ODM ne prouvent pas en elles-mêmes une correspondance ODM/SACM/OWL vers GovCheck.

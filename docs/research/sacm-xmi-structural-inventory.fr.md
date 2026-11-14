@@ -13,7 +13,7 @@ Le parseur ne consomme que le payload source capturé dont le SHA-256 correspond
 
 - identifiant de fichier OMG : `ptc/26-05-28` ;
 - révision source datée : `2026-05-04` ;
-- URL : `https://www.omg.org/spec/SACM/20260504/SACM2.4_Metamodel.xml` ;
+- URL : [R-197](../references.fr.md#r-197) ;
 - longueur : `524243` octets ;
 - SHA-256 : `0581dfa0b9dfaf17ff0f6c63b74f8e7a8396bea03f315e1334e94f23db110830`.
 

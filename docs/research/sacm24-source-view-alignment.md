@@ -2,7 +2,7 @@
 
 **Status:** revision-pinned comparison of two distinct normative source views; no precedence decision, canonicalized model, SACM conformance claim or GovCheck semantic mapping is established.  
 **Work item:** [#73 — inter-model contract conformance](https://github.com/Martin-PB/govcheck/issues/73).  
-**Metamodel source:** [R-197](../references.md#r-197), [source-derived XMI inventory](sacm-xmi-structural-inventory.md).  
+**Metamodel source:** [R-197](../references.md#r-197), [R-200](../references.md#r-200), [source-derived XMI inventory](sacm-xmi-structural-inventory.md).  
 **Specification text source:** [R-198](../references.md#r-198).  
 **Independent discrepancy audit:** [R-128](../references.md#r-128).  
 **Formal transcription:** `formal/lean/GovCheckCoherence/SACM24.lean`, namespace `GovCheck.Coherence.SACM24.SourceFacts`.

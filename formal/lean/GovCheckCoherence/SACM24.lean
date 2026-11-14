@@ -2,27 +2,30 @@ import GovCheckCoherence.Mapping
 
 namespace GovCheck.Coherence.SACM24
 
-/-- The two conflicting SACM 2.4 Beta 1 source views must remain distinct. -/
+/-- Document-level source views. Each document can itself contain conflicting
+    fragments; a document label alone is not enough to select one statement. -/
 inductive SourceView where
   | specificationText
   | normativeMetamodelXML
   deriving DecidableEq, Repr
 
-/-- The PDF text uses gid; the machine-readable metamodel uses elementId. -/
-inductive ElementIdentityField where
-  | gid
-  | elementId
+/-- Source fragments are kept separate so conflicting PDF clauses, figures and
+    annex entries are not collapsed into one fictitious coherent PDF schema. -/
+inductive DeclarationSourceFragment where
+  | pdfClause13_6
+  | pdfAnnexG6Item6
+  | pdfClause15_2_1
+  | normativeMetamodelXML
   deriving DecidableEq, Repr
 
-def nativeFormatForSourceView : SourceView → String
-  | .specificationText => "application/pdf"
-  | .normativeMetamodelXML => "application/xml"
+def declarationSourceView : DeclarationSourceFragment → SourceView
+  | .pdfClause13_6 => .specificationText
+  | .pdfAnnexG6Item6 => .specificationText
+  | .pdfClause15_2_1 => .specificationText
+  | .normativeMetamodelXML => .normativeMetamodelXML
 
-def identityFieldForSourceView : SourceView → ElementIdentityField
-  | .specificationText => .gid
-  | .normativeMetamodelXML => .elementId
-
-/-- Union of declaration literals found across the two Beta 1 source views. -/
+/-- Literal sets transcribed from individual source fragments. These are
+    evidence records, not a decision that one fragment overrides another. -/
 inductive AssertionDeclarationKind where
   | asserted
   | assumed
@@ -31,7 +34,42 @@ inductive AssertionDeclarationKind where
   | byRule
   deriving DecidableEq, Repr
 
-/-- GovCheck preserves each declaration literal as a distinct disposition. -/
+def declarationLiteralsForFragment : DeclarationSourceFragment → List AssertionDeclarationKind
+  | .pdfClause13_6 => [.axiomatic, .assumed, .asserted, .needsSupport]
+  | .pdfAnnexG6Item6 => [.axiomatic, .assumed, .asserted]
+  | .pdfClause15_2_1 => [.axiomatic, .assumed, .asserted, .byRule]
+  | .normativeMetamodelXML => [.axiomatic, .assumed, .asserted, .byRule]
+
+theorem pdf_clause13_6_includes_needsSupport :
+    AssertionDeclarationKind.needsSupport ∈ declarationLiteralsForFragment .pdfClause13_6 := by
+  decide
+
+theorem pdf_clause13_6_does_not_list_byRule :
+    AssertionDeclarationKind.byRule ∉ declarationLiteralsForFragment .pdfClause13_6 := by
+  decide
+
+theorem pdf_annex_g6_item6_lists_three_declarations :
+    declarationLiteralsForFragment .pdfAnnexG6Item6 =
+      [.axiomatic, .assumed, .asserted] := rfl
+
+theorem pdf_clause15_2_1_includes_byRule :
+    AssertionDeclarationKind.byRule ∈ declarationLiteralsForFragment .pdfClause15_2_1 := by
+  decide
+
+theorem xml_model_includes_byRule :
+    AssertionDeclarationKind.byRule ∈ declarationLiteralsForFragment .normativeMetamodelXML := by
+  decide
+
+/-- The PDF is internally inconsistent about this enumeration: clause 13.6
+    includes needsSupport and omits byRule, while clause 15.2.1 includes byRule. -/
+theorem pdf_assertion_declaration_fragments_disagree :
+    AssertionDeclarationKind.needsSupport ∈ declarationLiteralsForFragment .pdfClause13_6 ∧
+    AssertionDeclarationKind.needsSupport ∉ declarationLiteralsForFragment .pdfClause15_2_1 ∧
+    AssertionDeclarationKind.byRule ∉ declarationLiteralsForFragment .pdfClause13_6 ∧
+    AssertionDeclarationKind.byRule ∈ declarationLiteralsForFragment .pdfClause15_2_1 := by
+  decide
+
+/-- GovCheck preserves every source literal as a distinct disposition. -/
 inductive ClaimDisposition where
   | asserted
   | assumed
@@ -52,30 +90,11 @@ theorem mapAssertionDeclaration_injective :
   intro a b h
   cases a <;> cases b <;> cases h <;> rfl
 
-/-- A literal is accepted only against the Beta 1 source view that defines it. -/
-def declarationSupportedBySourceView :
-    SourceView → AssertionDeclarationKind → Bool
-  | .specificationText, .byRule => false
-  | .normativeMetamodelXML, .needsSupport => false
-  | _, _ => true
-
-theorem text_needsSupport_is_supported :
-    declarationSupportedBySourceView .specificationText .needsSupport = true := rfl
-
-theorem text_byRule_is_not_supported :
-    declarationSupportedBySourceView .specificationText .byRule = false := rfl
-
-theorem xml_byRule_is_supported :
-    declarationSupportedBySourceView .normativeMetamodelXML .byRule = true := rfl
-
-theorem xml_needsSupport_is_not_supported :
-    declarationSupportedBySourceView .normativeMetamodelXML .needsSupport = false := rfl
-
-theorem text_identity_field_is_gid :
-    identityFieldForSourceView .specificationText = .gid := rfl
-
-theorem xml_identity_field_is_elementId :
-    identityFieldForSourceView .normativeMetamodelXML = .elementId := rfl
+/-- A PDF clause/annex/figure is the evidence unit for a declaration. This
+    predicate intentionally does not take only SourceView as an argument. -/
+def declarationSupportedByFragment
+    (fragment : DeclarationSourceFragment) (kind : AssertionDeclarationKind) : Prop :=
+  kind ∈ declarationLiteralsForFragment fragment
 
 theorem sacm_axiomatic_remains_declaration :
     mapAssertionDeclaration .axiomatic = .axiomaticDeclared := rfl
@@ -83,8 +102,58 @@ theorem sacm_axiomatic_remains_declaration :
 theorem sacm_assumed_remains_assumption :
     mapAssertionDeclaration .assumed = .assumed := rfl
 
-/-- Optional source subject reference, including the identity field and exact
-    model revision used by the selected source view. -/
+/-- Identity evidence also has fragment-level granularity. The PDF clause text
+    and its Figure 9.1 do not agree on the field name. -/
+inductive IdentitySourceFragment where
+  | pdfClause9_2
+  | pdfFigure9_1
+  | normativeMetamodelXML
+  deriving DecidableEq, Repr
+
+def identitySourceView : IdentitySourceFragment → SourceView
+  | .pdfClause9_2 => .specificationText
+  | .pdfFigure9_1 => .specificationText
+  | .normativeMetamodelXML => .normativeMetamodelXML
+
+inductive ElementIdentityField where
+  | gid
+  | elementId
+  deriving DecidableEq, Repr
+
+def identityFieldForFragment : IdentitySourceFragment → ElementIdentityField
+  | .pdfClause9_2 => .gid
+  | .pdfFigure9_1 => .elementId
+  | .normativeMetamodelXML => .elementId
+
+theorem pdf_clause9_2_uses_gid :
+    identityFieldForFragment .pdfClause9_2 = .gid := rfl
+
+theorem pdf_figure9_1_uses_elementId :
+    identityFieldForFragment .pdfFigure9_1 = .elementId := rfl
+
+theorem xml_model_uses_elementId :
+    identityFieldForFragment .normativeMetamodelXML = .elementId := rfl
+
+/-- PDF prose and Figure 9.1 are two incompatible identity statements. -/
+theorem pdf_identity_fragments_disagree :
+    identityFieldForFragment .pdfClause9_2 = .gid ∧
+    identityFieldForFragment .pdfFigure9_1 = .elementId ∧
+    identityFieldForFragment .pdfClause9_2 ≠ identityFieldForFragment .pdfFigure9_1 := by
+  decide
+
+def nativeFormatForSourceView : SourceView → String
+  | .specificationText => "application/pdf"
+  | .normativeMetamodelXML => "application/xml"
+
+/-- Opaque value payload with its source metaclass/type label retained. -/
+structure RawSourceValue where
+  sourceType : String
+  payload : String
+  deriving DecidableEq, Repr
+
+/-- A source element reference is revision-bound and keeps the source identity
+    field. The mapping slice is partial: only references with a usable identity
+    can be carried into a GovCheck claim. -/
 structure SACMElementRef where
   identity : String
   identityField : ElementIdentityField
@@ -92,41 +161,59 @@ structure SACMElementRef where
   modelRevision : String
   deriving DecidableEq, Repr
 
-/-- Minimal Claim/Assertion slice. Raw values/rule references are retained
-    opaquely; they are not full encodings of the SACM value/rule metaclasses. -/
+/-- Minimal normalized Claim/Assertion slice, not a lossless SACM metamodel.
+    Option (List ...) distinguishes an absent source feature from a present,
+    possibly empty, multi-valued feature. Rule/value payloads remain opaque. -/
 structure SACMClaim where
   identity : String
   identityField : ElementIdentityField
   sourceView : SourceView
-  value : Option String
-  subject : Option SACMElementRef
-  declaration : AssertionDeclarationKind
+  value : Option RawSourceValue
+  subject : Option (List SACMElementRef)
+  whole : Option (List String)
+  declaration : Option AssertionDeclarationKind
   isTrue : Option Bool
-  assertionValue : Option String
-  assertionRule : Option String
+  assertionValues : List String
+  assertionRuleRefs : List String
+  strengthRefs : List String
   deriving DecidableEq, Repr
+
+/-- SACM specifies an optional declaration with the default asserted. Preserve
+    explicit absence and compute the effective declaration separately. -/
+def effectiveDeclaration (claim : SACMClaim) : AssertionDeclarationKind :=
+  claim.declaration.getD .asserted
 
 /-- The proposition is an explicit interpretation supplied by a mapping
     authority. The source text/value is not silently parsed into Lean truth.
-    The constructor obligations reject source-view/literal mismatches. -/
+    Constructor obligations are tied to exact PDF/XML fragments, not a
+    coarse document-level label. -/
 structure SACMClaimInterpretation
     (claim : SACMClaim) (interpretation : ClaimSemantics) where
   sourceModel : ArtifactRef
   sourceFormatMatchesView : sourceModel.nativeFormat = nativeFormatForSourceView claim.sourceView
-  mappedSubject : Option SACMElementRef
+  declarationFragment : DeclarationSourceFragment
+  declarationFragmentMatchesView :
+    declarationSourceView declarationFragment = claim.sourceView
+  declarationConsistentWithFragment :
+    declarationSupportedByFragment declarationFragment (effectiveDeclaration claim)
   disposition : ClaimDisposition
-  declarationPreserved : disposition = mapAssertionDeclaration claim.declaration
-  declarationConsistentWithSourceView :
-    declarationSupportedBySourceView claim.sourceView claim.declaration = true
-  identityFieldMatchesSourceView :
-    claim.identityField = identityFieldForSourceView claim.sourceView
+  declarationPreserved :
+    disposition = mapAssertionDeclaration (effectiveDeclaration claim)
+  identityFragment : IdentitySourceFragment
+  identityFragmentMatchesView : identitySourceView identityFragment = claim.sourceView
+  identityFieldMatchesFragment :
+    claim.identityField = identityFieldForFragment identityFragment
+  claimIdentityNonEmpty : claim.identity ≠ ""
   claimIdentityPreserved : interpretation.claimId = claim.identity
+  mappedSubject : Option (List SACMElementRef)
   subjectPreserved : mappedSubject = claim.subject
-  subjectIdentityFieldMatchesSourceView :
-    ∀ subject, mappedSubject = some subject →
-      subject.identityField = identityFieldForSourceView claim.sourceView
+  subjectIdentityFieldsMatchFragment :
+    ∀ subject, subject ∈ mappedSubject.getD [] →
+      subject.identityField = identityFieldForFragment identityFragment
+  subjectIdentitiesNonEmpty :
+    ∀ subject, subject ∈ mappedSubject.getD [] → subject.identity ≠ ""
   subjectRevisionMatchesModel :
-    ∀ subject, mappedSubject = some subject →
+    ∀ subject, subject ∈ mappedSubject.getD [] →
       subject.modelRevision = sourceModel.revision
   interpretationBasis : String
 
@@ -199,7 +286,7 @@ theorem collective_inference_is_joint_equivalence
 theorem claim_interpretation_preserves_declaration
     {claim : SACMClaim} {interpretation : ClaimSemantics}
     (mapping : SACMClaimInterpretation claim interpretation) :
-    mapping.disposition = mapAssertionDeclaration claim.declaration :=
+    mapping.disposition = mapAssertionDeclaration (effectiveDeclaration claim) :=
   mapping.declarationPreserved
 
 theorem claim_interpretation_preserves_identity
@@ -214,10 +301,16 @@ theorem claim_interpretation_preserves_subject
     mapping.mappedSubject = claim.subject :=
   mapping.subjectPreserved
 
+theorem claim_interpretation_requires_nonempty_identity
+    {claim : SACMClaim} {interpretation : ClaimSemantics}
+    (mapping : SACMClaimInterpretation claim interpretation) :
+    claim.identity ≠ "" :=
+  mapping.claimIdentityNonEmpty
+
 theorem claim_subject_revision_is_pinned
     {claim : SACMClaim} {interpretation : ClaimSemantics}
     (mapping : SACMClaimInterpretation claim interpretation)
-    (subject : SACMElementRef) (h : mapping.mappedSubject = some subject) :
+    (subject : SACMElementRef) (h : subject ∈ mapping.mappedSubject.getD []) :
     subject.modelRevision = mapping.sourceModel.revision :=
   mapping.subjectRevisionMatchesModel subject h
 
@@ -254,5 +347,194 @@ theorem sacm_claim_mapping_has_semantic_bridge
     Nonempty (SemanticBridge source.claim.meaning target.claim.meaning
       mapping.evidenceMapping.contract.coverage) :=
   ⟨mapping.evidenceMapping.semanticBridge⟩
+
+
+/-- A multiplicity interval transcribed from a particular SACM source fragment.
+    `none` as upper bound means unbounded. This records claims; it does not
+    implement UML default-value semantics or prove source extraction. -/
+structure SourceMultiplicity where
+  lower : Nat
+  upper : Option Nat
+  deriving DecidableEq, Repr
+
+namespace SourceFacts
+
+/-- Normative PDF Figure 13.1 (printed page 41) shows Claim.value as MultiLangString. -/
+def normativePdfFigure13_1ClaimValueType : String := "MultiLangString"
+
+/-- Informative PDF Figure 15.1.1 (printed page 59) shows Claim.value as ExpressionLangString. -/
+def informativePdfFigure15_1_1ClaimValueType : String := "ExpressionLangString"
+
+/-- The normative machine-readable metamodel XML declares Claim.value as ExpressionLangString. -/
+def xmlClaimValueType : String := "ExpressionLangString"
+
+/-- R-128 reports MultiLangString for Clause 13.9; this value agrees with the normative
+    Figure 13.1, but the exact Clause 13.9 locator remains a separate transcription check. -/
+def r128ReportedClaimValueType : String := "MultiLangString"
+/-- PDF Clause 13.9, printed page 45, explicitly gives the Claim value type. -/
+def normativePdfClause13_9ClaimValueType : String := "MultiLangString"
+
+theorem pdf_clause13_9_matches_normative_figure13_1 :
+    normativePdfClause13_9ClaimValueType = normativePdfFigure13_1ClaimValueType := by
+  decide
+
+theorem pdf_clause13_9_conflicts_informative_figure15_1_1 :
+    normativePdfClause13_9ClaimValueType ≠ informativePdfFigure15_1_1ClaimValueType := by
+  decide
+
+theorem pdf_normative_figure13_1_vs_informative_figure15_1_1_claim_value_conflict :
+    normativePdfFigure13_1ClaimValueType ≠ informativePdfFigure15_1_1ClaimValueType := by
+  decide
+
+theorem pdf_normative_figure13_1_vs_xml_claim_value_conflict :
+    normativePdfFigure13_1ClaimValueType ≠ xmlClaimValueType := by
+  decide
+
+theorem claim_value_type_agrees_in_informative_pdf_figure15_1_1_and_xml :
+    informativePdfFigure15_1_1ClaimValueType = xmlClaimValueType := by
+  decide
+
+theorem r128_reported_claim_value_type_matches_normative_pdf_figure13_1 :
+    r128ReportedClaimValueType = normativePdfFigure13_1ClaimValueType := by
+  decide
+
+/-- PDF Clause 13.13 text gives AssertedEvidence.evidence a 0..* multiplicity. -/
+def pdfClause13_13AssertedEvidenceEvidence : SourceMultiplicity := ⟨0, none⟩
+
+/-- Normative PDF Figure 13.1 shows the evidence end as 1..*. -/
+def pdfFigure13_1AssertedEvidenceEvidence : SourceMultiplicity := ⟨1, none⟩
+
+/-- The normative metamodel XML declares the evidence end as 1..*. -/
+def xmlAssertedEvidenceEvidence : SourceMultiplicity := ⟨1, none⟩
+
+theorem pdf_clause13_13_vs_figure13_1_asserted_evidence_conflict :
+    pdfClause13_13AssertedEvidenceEvidence ≠ pdfFigure13_1AssertedEvidenceEvidence := by
+  decide
+
+theorem pdf_figure13_1_and_xml_asserted_evidence_agree :
+    pdfFigure13_1AssertedEvidenceEvidence = xmlAssertedEvidenceEvidence := by
+  decide
+
+theorem pdf_clause13_13_vs_xml_asserted_evidence_conflict :
+    pdfClause13_13AssertedEvidenceEvidence ≠ xmlAssertedEvidenceEvidence := by
+  decide
+
+/-- PDF clause 9.2 versus the normative metamodel XML. -/
+def pdfSACMElementAbstraction : SourceMultiplicity := ⟨0, some 1⟩
+def xmlSACMElementAbstraction : SourceMultiplicity := ⟨0, none⟩
+
+theorem sacm_element_abstraction_multiplicity_conflict :
+    pdfSACMElementAbstraction ≠ xmlSACMElementAbstraction := by
+  decide
+
+/-- PDF clause 13.11 versus the normative metamodel XML. -/
+def pdfAssertedRelationshipIsCounter : SourceMultiplicity := ⟨1, some 1⟩
+def xmlAssertedRelationshipIsCounter : SourceMultiplicity := ⟨0, some 1⟩
+
+theorem asserted_relationship_isCounter_multiplicity_conflict :
+    pdfAssertedRelationshipIsCounter ≠ xmlAssertedRelationshipIsCounter := by
+  decide
+
+/-- Normative PDF Figure 13.1 shows isCounter as required, matching Clause 13.11. -/
+def pdfFigure13_1AssertedRelationshipIsCounter : SourceMultiplicity := ⟨1, some 1⟩
+
+theorem pdf_figure13_1_isCounter_matches_clause13_11 :
+    pdfFigure13_1AssertedRelationshipIsCounter = pdfAssertedRelationshipIsCounter := by
+  decide
+
+theorem pdf_figure13_1_vs_xml_isCounter_conflict :
+    pdfFigure13_1AssertedRelationshipIsCounter ≠ xmlAssertedRelationshipIsCounter := by
+  decide
+
+/-- The PDF diagram labels the subject association end at its target type. -/
+def pdfFigure13_1SubjectEndType : String := "SACMElement"
+def pdfFigure13_1SubjectMultiplicity : SourceMultiplicity := ⟨0, none⟩
+
+/-- XML declares Claim.subject as an owned property whose type is SACMElement. -/
+def xmlClaimSubjectType : String := "SACMElement"
+def xmlClaimSubjectMultiplicity : SourceMultiplicity := ⟨0, none⟩
+
+/-- The PDF diagram labels the whole association end at its target type. -/
+def pdfFigure13_1WholeEndType : String := "SACMModel"
+def pdfFigure13_1WholeMultiplicity : SourceMultiplicity := ⟨0, none⟩
+
+/-- XML declares Claim.whole as an owned property whose type is SACMModel. -/
+def xmlClaimWholeType : String := "SACMModel"
+def xmlClaimWholeMultiplicity : SourceMultiplicity := ⟨0, none⟩
+
+/-- Figure 13.1 and the XML agree on the target type of Claim.subject. -/
+theorem claim_subject_target_type_agrees_between_pdf_figure13_1_and_xml :
+    pdfFigure13_1SubjectEndType = xmlClaimSubjectType := by
+  decide
+
+theorem claim_subject_multiplicity_agrees_between_pdf_figure13_1_and_xml :
+    pdfFigure13_1SubjectMultiplicity = xmlClaimSubjectMultiplicity := by
+  decide
+
+/-- Figure 13.1 and the XML agree on the target type of Claim.whole. -/
+theorem claim_whole_target_type_agrees_between_pdf_figure13_1_and_xml :
+    pdfFigure13_1WholeEndType = xmlClaimWholeType := by
+  decide
+
+theorem claim_whole_multiplicity_agrees_between_pdf_figure13_1_and_xml :
+    pdfFigure13_1WholeMultiplicity = xmlClaimWholeMultiplicity := by
+  decide
+
+/-- The PDF diagram records navigable association ends; it does not by itself
+    expose the XML-specific ownedAttribute representation. No ownership conflict
+    is inferred from the diagram's role-label placement. -/
+
+/-- PDF clauses 10.5 and 11.3 give incompatible BindingPackage superclass
+    statements; the XML agrees with clause 10.5. -/
+def pdfBindingPackageClause10_5 : List String :=
+  ["ScopedPackage", "SACMPackageWithBinding"]
+def pdfBindingPackageClause11_3 : List String := ["ModelElement"]
+def xmlBindingPackage : List String :=
+  ["ScopedPackage", "SACMPackageWithBinding"]
+
+theorem binding_package_pdf_fragments_conflict :
+    pdfBindingPackageClause10_5 ≠ pdfBindingPackageClause11_3 := by
+  decide
+
+theorem xml_binding_package_matches_pdf_clause10_5 :
+    xmlBindingPackage = pdfBindingPackageClause10_5 := rfl
+
+/-- PDF clause 9.10 versus Annex G.6 item 5 and the XML metamodel. -/
+def pdfSACMModelClause9_10 : List String := ["ModelElement"]
+def pdfSACMModelAnnexG6Item5 : List String :=
+  ["ModelElement", "Assertion", "Assessment"]
+def xmlSACMModel : List String :=
+  ["ModelElement", "Assertion", "Assessment"]
+
+theorem sacm_model_pdf_fragments_differ :
+    pdfSACMModelClause9_10 ≠ pdfSACMModelAnnexG6Item5 := by
+  decide
+
+theorem xml_sacm_model_matches_pdf_annex_g6 :
+    xmlSACMModel = pdfSACMModelAnnexG6Item5 := rfl
+
+/-- Additional XML generalizations not stated in the corresponding PDF clauses. -/
+def pdfSACMDependencyClause9_11 : List String := ["DirectedRelationship"]
+def xmlSACMDependency : List String := ["DirectedRelationship", "BaseElement"]
+def pdfRuleClause15_2_3 : List String := ["BaseElement"]
+def xmlRule : List String := ["ModelElement", "BaseElement"]
+
+theorem sacm_dependency_xml_adds_base_element :
+    pdfSACMDependencyClause9_11 ≠ xmlSACMDependency := by
+  decide
+
+theorem rule_xml_adds_model_element :
+    pdfRuleClause15_2_3 ≠ xmlRule := by
+  decide
+
+/-- PDF and XML use different names for the multi-valued assertion-rule feature. -/
+def pdfAssertionRuleFeature : String := "assertionRule"
+def xmlAssertionRuleFeature : String := "assertionDeclarationRule"
+
+theorem assertion_rule_feature_name_differs :
+    pdfAssertionRuleFeature ≠ xmlAssertionRuleFeature := by
+  decide
+
+end SourceFacts
 
 end GovCheck.Coherence.SACM24

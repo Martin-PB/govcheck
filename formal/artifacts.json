@@ -338,6 +338,137 @@
         "known SACM 2.4 Beta 1 PDF/XML conflicts remain unresolved",
         "no SACM instance interchange or conformance claim"
       ]
+    },
+    {
+      "artifactId": "govcheck.sacm24-source-view-conflict-register",
+      "kind": "source-view-conflict-register",
+      "title": "SACM 2.4 Beta 1 PDF/XML fragment-level conflict register",
+      "source": "formal/lean/GovCheckCoherence/SACM24.lean",
+      "documentation": {
+        "en": "docs/research/sacm24-source-view-alignment.md",
+        "fr": "docs/research/sacm24-source-view-alignment.fr.md"
+      },
+      "sourceReferences": [
+        "R-128",
+        "R-197",
+        "R-198",
+        "R-199"
+      ],
+      "sourceViews": [
+        {
+          "fileId": "ptc/26-06-34",
+          "role": "normativeSpecificationText",
+          "sha256": "25f32d1cd4bf32dfa9c92c7c1840e1a113b1e91c0e97252f6551878c39997ff5"
+        },
+        {
+          "fileId": "ptc/26-05-28",
+          "role": "normativeMachineReadableMetamodel",
+          "sha256": "0581dfa0b9dfaf17ff0f6c63b74f8e7a8396bea03f315e1334e94f23db110830"
+        }
+      ],
+      "revisionPolicy": "repository-history",
+      "releaseBinding": "release-tag-and-commit",
+      "status": "fragment-level-source-facts-formalized; PDF-and-XML-digests-workflow-verified; Claim.value-and-AssertedEvidence-PDF-internal-conflicts-modelled; subject-whole-target-types-and-multiplicities-aligned; no ownership-conflict claim; transcription-proof-pending; no-precedence-decision",
+      "limitations": [
+        "Lean theorems formalize transcribed source-fragment values, multiplicities and owners; they do not prove transcription correctness",
+        "PDF Clause 13.9 (printed page 45) and normative Figure 13.1 (printed page 41) both state MultiLangString; informative Figure 15.1.1 (printed page 59) states ExpressionLangString",
+        "PDF and XML digests authenticate exact bytes but do not authenticate source-fragment interpretation",
+        "no parser-to-formal-model refinement theorem",
+        "no source-derived GovCheck semantic mapping or conformance claim",
+        "no normative precedence decision between conflicting source fragments"
+      ],
+      "verification": {
+        "sourceWorkflow": ".github/workflows/sacm-native-ingestion.yml",
+        "sourceWorkflowRunId": 43496689208,
+        "sourceCheckedCommit": "d82c810e91e5cee456bf83cdb4198b7de84421d1",
+        "sourceResult": "success",
+        "sourceTests": 12,
+        "pdf": {
+          "sha256": "25f32d1cd4bf32dfa9c92c7c1840e1a113b1e91c0e97252f6551878c39997ff5",
+          "byteLength": 9019601,
+          "fileId": "ptc/26-06-34"
+        },
+        "xml": {
+          "sha256": "0581dfa0b9dfaf17ff0f6c63b74f8e7a8396bea03f315e1334e94f23db110830",
+          "byteLength": 524243,
+          "fileId": "ptc/26-05-28"
+        },
+        "artifact": {
+          "id": 14072371021,
+          "name": "sacm-2.4-beta1-source-views-and-xmi-inventory",
+          "retentionDays": 90,
+          "url": "https://github.com/Martin-PB/govcheck/actions/runs/43496689208/artifacts/14072371021"
+        },
+        "leanWorkflow": ".github/workflows/lean-coherence.yml",
+        "leanWorkflowRunId": 43496689323,
+        "leanCheckedMergeCommit": "af19d63",
+        "leanSourceHead": "d82c810e91e5cee456bf83cdb4198b7de84421d1",
+        "lean": "4.19.0",
+        "leanBuild": "success",
+        "axiomAudit": {
+          "root": "GovCheckCoherence.Proofs",
+          "declarationsAudited": 43,
+          "allowedAxioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "unapprovedAxioms": 0,
+          "sourceFragmentWrappersUsingPropext": 5,
+          "sourceFactsDirectTheoremsWithNoAxioms": 22
+        },
+        "otherChecks": {
+          "referenceIntegrityRunId": 43496689170,
+          "packageAlignmentRunId": 43496689204,
+          "versionGovernanceRunId": 43496689233
+        }
+      },
+      "sourceFragments": [
+        {
+          "sourceFileId": "ptc/26-06-34",
+          "locator": "Figure 13.1",
+          "printedPage": 41,
+          "sectionStatus": "normative",
+          "claims": [
+            "Claim.value: MultiLangString",
+            "AssertedEvidence.evidence: 1..*",
+            "AssertedRelationship.isCounter: Boolean[1]",
+            "SACMElement.subject: 0..*",
+            "SACMElement.whole: 0..*"
+          ]
+        },
+        {
+          "sourceFileId": "ptc/26-06-34",
+          "locator": "Clause 13.13",
+          "sectionStatus": "normative",
+          "claim": "AssertedEvidence.evidence: 0..*"
+        },
+        {
+          "sourceFileId": "ptc/26-06-34",
+          "locator": "Clause 13.11",
+          "sectionStatus": "normative",
+          "claim": "AssertedRelationship.isCounter: Boolean[1]"
+        },
+        {
+          "sourceFileId": "ptc/26-06-34",
+          "locator": "Figure 15.1.1",
+          "printedPage": 59,
+          "sectionStatus": "informative",
+          "claim": "Claim.value: ExpressionLangString"
+        },
+        {
+          "sourceFileId": "ptc/26-05-28",
+          "locator": "Metamodel/Argument/Claim/value",
+          "sectionStatus": "normative-machine-readable",
+          "claim": "type ExpressionLangString"
+        },
+        {
+          "sourceFileId": "ptc/26-05-28",
+          "locator": "Metamodel/Argument/Claim/subject+whole",
+          "sectionStatus": "normative-machine-readable",
+          "claim": "Claim owns subject and whole; both 0..*"
+        }
+      ]
     }
   ]
 }

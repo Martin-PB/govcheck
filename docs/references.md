@@ -9,7 +9,7 @@
 | Security assurance cases and metamodels | R-04, R-33–R-34 |
 | PEAK decision model | R-74 |
 | Continuous monitoring and runtime assurance | R-70, R-72, R-75–R-76 |
-| Assurance 2.0, SACM evolution and implementation audits | R-71, R-73, R-128, R-197 |
+| Assurance 2.0, SACM evolution and implementation audits | R-71, R-73, R-128, R-197, R-198, R-199 |
 | Assurance regimes and goal-oriented requirements | R-35–R-36, R-44, R-92 |
 | Model checking and program-verification alternatives | R-05, R-20, R-37–R-43, R-89–R-91 |
 | Evidence provenance and software supply chain | R-06–R-08 |
@@ -78,7 +78,7 @@
 - **Security assurance cases and metamodels:** R-33–R-34.
 - **PEAK decision model:** R-74.
 - **Continuous monitoring and runtime assurance:** R-70, R-72, R-75–R-76.
-- **Assurance 2.0 and SACM evolution:** R-71, R-73.
+- **Assurance 2.0 and SACM evolution:** R-71, R-73, R-128, R-197, R-198, R-199.
 - **Domain semantics, product quality and open-source compliance (candidate sources):** R-94–R-100, R-102–R-103.
 - **Agent instructions and spec-driven workflows:** R-104.
 - **Policy-as-code, continuous assurance and MCP governance research:** R-105.
@@ -1227,9 +1227,9 @@
 
 <a id="r-128"></a>
 ### R-128 — Assurance Forge: independent SACM 2.4 Beta 1 implementation-impact audit (2026-10-02; repository revision 2026-11-03)
-- **Cited by:** [SACM 2.4 Beta 1 interoperability-risk report](research/sacm24-beta1-interoperability-risk.md), [SACM 2.4 semantic mapping slice](research/sacm24-claim-inference-mapping.md), [integrated metamodel-coherence execution record](research/metamodel-coherence-prototype-execution.md), [metamodel semantic-coverage audit](research/metamodel-semantic-coverage-audit.md), [SACM source-native metamodel ingestion](research/sacm-native-metamodel-ingestion.md), [SACM XMI structural inventory](research/sacm-xmi-structural-inventory.md), [Work portfolio event journal](work-portfolio/events.md), [Work-item register](work-portfolio/work-items.md)
+- **Cited by:** [SACM 2.4 Beta 1 interoperability-risk report](research/sacm24-beta1-interoperability-risk.md), [SACM 2.4 semantic mapping slice](research/sacm24-claim-inference-mapping.md), [integrated metamodel-coherence execution record](research/metamodel-coherence-prototype-execution.md), [metamodel semantic-coverage audit](research/metamodel-semantic-coverage-audit.md), [SACM source-native metamodel ingestion](research/sacm-native-metamodel-ingestion.md), [SACM XMI structural inventory](research/sacm-xmi-structural-inventory.md), [SACM source-view alignment report](research/sacm24-source-view-alignment.md), [Work portfolio event journal](work-portfolio/events.md), [Work-item register](work-portfolio/work-items.md)
 - **Primary source:** [Pinned implementation-impact audit](https://github.com/lasrod/assurance-forge/blob/0f5187099be1c28fc725cb0f381afc695a135c89/docs/sacm/sacm-2.4-beta1-impact.md) · [pinned official-artifact fetch script and SHA-256 checks](https://github.com/lasrod/assurance-forge/blob/0f5187099be1c28fc725cb0f381afc695a135c89/scripts/fetch-sacm24-beta1-references.sh).
-- **Relevant concepts:** reported absence of a stable native 2.4 instance interchange contract; text/XML contradictions in identity fields, assertion declaration literals, multiplicities, Claim value type and inheritance; implementation cost and versioning implications.
+- **Relevant concepts:** reported absence of a stable native 2.4 instance interchange contract; text/XML discrepancies reported in identity fields, assertion declaration literals, multiplicities, Claim value type and inheritance; the Claim.value value is supported by normative Figure 13.1 (MultiLangString) while informative Figure 15.1.1 and the XML show ExpressionLangString; the exact Clause 13.9 locator remains to be checked; implementation cost and versioning implications.
 - **Use in GovCheck:** independent engineering cross-check that the SACM 2.4 Beta 1 text and machine-readable metamodel must be treated as separate source views, not silently normalized into one model.
 - **Limit:** this is a third-party implementation audit, not an OMG statement or normative authority. Its findings must be checked against pinned OMG artifacts; it does not establish that all SACM 2.4 implementations share the same limitations.
 
@@ -1348,8 +1348,26 @@
 
 <a id="r-197"></a>
 ### R-197 — OMG SACM 2.4 Beta 1 normative machine-readable metamodel XML
-- **Cited by:** [SACM source-native metamodel ingestion](research/sacm-native-metamodel-ingestion.md), [SACM XMI structural inventory](research/sacm-xmi-structural-inventory.md), [Work portfolio event journal](work-portfolio/events.md)
-- **Implementation artifacts:** [XMI inventory generator](../scripts/parse-sacm-xmi.py) · [committed inventory summary](../formal/sources/sacm-2.4-beta1/metamodel-inventory-summary.json).\n- **Primary source:** [OMG SACM specification catalogue](https://www.omg.org/spec/SACM) · [normative machine-readable metamodel XML](https://www.omg.org/spec/SACM/20260504/SACM2.4_Metamodel.xml) · OMG file ID `ptc/26-05-28`.
+- **Cited by:** [SACM source-native metamodel ingestion](research/sacm-native-metamodel-ingestion.md), [SACM XMI structural inventory](research/sacm-xmi-structural-inventory.md), [SACM source-view alignment report](research/sacm24-source-view-alignment.md), [Work portfolio event journal](work-portfolio/events.md)
+- **Implementation artifacts:** [XMI inventory generator](../scripts/parse-sacm-xmi.py) · [committed inventory summary](../formal/sources/sacm-2.4-beta1/metamodel-inventory-summary.json).
+- **Primary source:** [OMG SACM specification catalogue](https://www.omg.org/spec/SACM) · [normative machine-readable metamodel XML](https://www.omg.org/spec/SACM/20260504/SACM2.4_Metamodel.xml) · OMG file ID `ptc/26-05-28`.
 - **Pinned identity:** SACM 2.4 Beta 1; source path dated 2026-05-04; native format XML; SHA-256 comparison value `0581dfa0b9dfaf17ff0f6c63b74f8e7a8396bea03f315e1334e94f23db110830`, as reported by R-128 and verified by GovCheck workflow run [43444619765](https://github.com/Martin-PB/govcheck/actions/runs/43444619765) against 524,243 downloaded source bytes.
 - **Relevant concepts:** normative machine-readable metamodel source, distinct from the normative PDF prose and informative UML Profile XMI.
 - **Limit:** SACM 2.4 Beta 1 is in-process/informational; SACM 2.3 remains formal. This metamodel XML is not a portable assurance-case instance interchange format and its digest does not establish semantic conformance.
+
+
+<a id="r-198"></a>
+### R-198 — OMG SACM 2.4 Beta 1 normative specification PDF
+- **Cited by:** [SACM source-view alignment report](research/sacm24-source-view-alignment.md)
+- **Primary source:** [OMG SACM specification catalogue](https://www.omg.org/spec/SACM) · [SACM 2.4 Beta 1 normative PDF](https://www.omg.org/spec/SACM/2.4/Beta1/PDF) · OMG file ID `ptc/26-06-34`.
+- **Pinned identity:** SACM 2.4 Beta 1; source path dated 2026-05-04; 161 pages; SHA-256 `25f32d1cd4bf32dfa9c92c7c1840e1a113b1e91c0e97252f6551878c39997ff5`, reported by the independent R-128 pinned fetch script and independently verified by GovCheck workflow run [43498142371](https://github.com/Martin-PB/govcheck/actions/runs/43498142371) against 9,019,601 downloaded bytes; source PDF is retained in artifact [14071999627](https://github.com/Martin-PB/govcheck/actions/runs/43498142371/artifacts/14071999627).
+- **Relevant concepts:** normative specification prose, figures, clauses and annexes; source-fragment provenance for SACM 2.4 Beta 1 claims.
+- **Limit:** the PDF itself contains conflicting fragments; PDF text extraction does not capture all diagram-only labels. No fragment should be treated as a canonical PDF-wide statement without explicit scope.
+
+<a id="r-199"></a>
+### R-199 — OMG SACM 2.4 Beta 1 informative UML Profile XMI
+- **Cited by:** [SACM source-view alignment report](research/sacm24-source-view-alignment.md)
+- **Primary source:** [OMG SACM specification catalogue](https://www.omg.org/spec/SACM) · [OMG SACM machine-readable files catalogue](https://www.omg.org/spec/SACM/machine-readable) · OMG file ID `ptc/26-05-21`.
+- **Pinned identity:** SACM 2.4 Beta 1; source path dated 2026-05-04; SHA-256 `9149a0414628e1b70c1f7c2235f5180c64e7a144601eb2ae78d539681918838b`, reported by the independent R-128 pinned fetch script. GovCheck has not yet independently downloaded and recomputed this XMI digest.
+- **Relevant concepts:** informative UML profile artifact, kept distinct from the normative metamodel XML (R-197) and normative specification PDF (R-198).
+- **Limit:** informative profile XMI is not the normative SACM metamodel XML and does not establish an instance interchange contract or semantic conformance.

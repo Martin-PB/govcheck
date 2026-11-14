@@ -293,7 +293,7 @@
       },
       "revisionPolicy": "repository-history",
       "releaseBinding": "release-tag-and-commit",
-      "status": "source-revision-bound; structurally-indexed; workflow-verified; no-semantic-mapping",
+      "status": "source-revision-bound; structurally-indexed; UML25-multiplicity-subset-interpreted; workflow-verification-pending-for-v2; no-semantic-mapping",
       "verification": {
         "workflow": ".github/workflows/sacm-native-ingestion.yml",
         "workflowRunId": 43451737489,
@@ -331,13 +331,52 @@
         "currentSourceBlobsVerifiedUnchanged": true
       },
       "limitations": [
-        "structural XMI/UML inventory only; no UML/MOF semantic interpreter",
+        "source-revision-bound structural inventory plus only the narrowly specified UML 2.5 multiplicity default interpreter; no full UML/MOF semantic interpreter",
+        "multiplicity interpretation covers absent bounds, LiteralInteger, LiteralUnlimitedNatural and LiteralNull; arbitrary ValueSpecifications remain unresolved",
         "63 external href references are retained but not resolved",
         "zero unresolved internal references applies only to recognized reference attributes in this pinned document",
         "no parser refinement theorem or source-to-GovCheck semantic correspondence",
         "known SACM 2.4 Beta 1 PDF/XML conflicts remain unresolved",
         "no SACM instance interchange or conformance claim"
-      ]
+      ],
+      "version": "2.0.0",
+      "inventoryFormat": "govcheck.sacm-xmi-structural-inventory/v2",
+      "summaryFormat": "govcheck.sacm-xmi-structural-inventory-summary/v2",
+      "generatorVersion": "2",
+      "sourceReferences": [
+        "R-197",
+        "R-200"
+      ],
+      "multiplicitySemantics": {
+        "standard": "OMG UML 2.5",
+        "sourceReference": "R-200",
+        "rules": [
+          "§7.8.8.7: absent bound or null typed value falls back to 1",
+          "§8.6.9.4: LiteralInteger.value defaults to 0",
+          "§8.6.14.4: LiteralUnlimitedNatural.value defaults to 0",
+          "unsupported ValueSpecifications remain unresolved"
+        ],
+        "boundStatusCounts": {
+          "lower": {
+            "literal-default": 303,
+            "multiplicity-element-fallback": 52
+          },
+          "upper": {
+            "explicit-unlimited": 192,
+            "literal-default": 4,
+            "multiplicity-element-fallback": 159
+          }
+        },
+        "selectedProperties": {
+          "Claim.value": "0..1",
+          "Claim.subject": "0..*",
+          "Claim.whole": "0..*",
+          "SACMElement.abstraction": "0..*",
+          "AssertedRelationship.isCounter": "0..1",
+          "AssertedEvidence.evidence": "1..*",
+          "Assertion.assertionDeclarationRule": "0..*"
+        }
+      }
     },
     {
       "artifactId": "govcheck.sacm24-source-view-conflict-register",
@@ -352,7 +391,8 @@
         "R-128",
         "R-197",
         "R-198",
-        "R-199"
+        "R-199",
+        "R-200"
       ],
       "sourceViews": [
         {
@@ -479,6 +519,53 @@
           "sectionStatus": "normative-machine-readable",
           "claim": "Claim owns subject and whole; both 0..*"
         }
+      ]
+    },
+    {
+      "artifactId": "govcheck.uml25-multiplicity-interpreter",
+      "version": "1.0.0",
+      "kind": "formal-semantic-interpreter",
+      "title": "Narrow UML 2.5 multiplicity default interpreter",
+      "source": "formal/lean/GovCheckCoherence/UML25Multiplicity.lean",
+      "implementation": "scripts/parse-sacm-xmi.py",
+      "documentation": {
+        "en": "docs/research/sacm-xmi-structural-inventory.md",
+        "fr": "docs/research/sacm-xmi-structural-inventory.fr.md"
+      },
+      "sourceReference": "R-200",
+      "status": "narrow-rule-set-formalized; source-shape-extraction-not-proven",
+      "rules": [
+        "MultiplicityElement.lowerBound()/upperBound() fallback to 1 when the corresponding ValueSpecification or typed value is absent/null (§7.8.8.7)",
+        "LiteralInteger.value default 0 (§8.6.9.4)",
+        "LiteralUnlimitedNatural.value default 0 (§8.6.14.4)",
+        "explicit UnlimitedNatural * remains unlimited",
+        "unsupported ValueSpecifications remain unresolved"
+      ],
+      "provedTheorems": [
+        "absent_lower_value_specification_defaults_to_one",
+        "omitted_literal_integer_value_defaults_to_zero",
+        "explicit_literal_integer_value_is_preserved",
+        "literal_null_lower_value_uses_lower_bound_fallback",
+        "absent_upper_value_specification_defaults_to_one",
+        "omitted_literal_unlimited_natural_value_defaults_to_zero",
+        "explicit_unlimited_natural_is_preserved",
+        "literal_null_upper_value_uses_upper_bound_fallback",
+        "unsupported_lower_value_specification_remains_unresolved",
+        "unsupported_upper_value_specification_remains_unresolved"
+      ],
+      "sourceProjectionTheorems": [
+        "xml_claim_value_multiplicity_matches_uml25",
+        "xml_claim_whole_multiplicity_matches_uml25",
+        "xml_claim_subject_multiplicity_matches_uml25",
+        "xml_sacm_element_abstraction_multiplicity_matches_uml25",
+        "xml_asserted_relationship_isCounter_multiplicity_matches_uml25",
+        "xml_asserted_evidence_evidence_multiplicity_matches_uml25",
+        "xml_assertion_declaration_rule_multiplicity_matches_uml25"
+      ],
+      "limitations": [
+        "the Lean theorems prove the UML 2.5 interpretation of manually transcribed ValueSpecification shapes",
+        "they do not prove the Python parser extracted those shapes correctly from the XML",
+        "no arbitrary ValueSpecification evaluation, OCL execution, full UML/MOF conformance or parser refinement"
       ]
     }
   ]

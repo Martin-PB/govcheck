@@ -462,3 +462,18 @@
 - **Formal update:** Lean source facts now compare subject/whole target types and multiplicities rather than conflating target type with property owner. New theorems record the Clause 13.9 value agreement/conflict. These proofs establish relations among the transcribed constants only; they do not prove complete transcription fidelity.
 - **Limits:** this is a direct visual check of the cited fragments, not a full independent audit of all 12 register entries, UML/MOF semantics, parser refinement or SACM conformance.
 - **Normative boundary:** no precedence decision between PDF fragments, no SACM 2.4 adoption and no GovCheck semantic mapping is inferred.
+
+
+<a id="wp-evt-000032"></a>
+## WP-EVT-000032 — UML 2.5 multiplicity semantics and corrected SACM source-fragment register
+
+- **Subject:** `govcheck.work.intermodel-contract-conformance`
+- **Event type:** `source-fragment-review-and-version-pinned-semantics-implemented`
+- **Recorded:** 2026-11-14
+- **Integration PR:** [#133](https://github.com/Martin-PB/govcheck/pull/133), open, non-draft, not merged.
+- **Normative basis:** [R-200](../references.md#r-200), OMG UML 2.5 (formal/2015-03-01; machine-readable file set `ptc/13-08-17`; namespace `http://www.omg.org/spec/UML/20131001`). The SACM source namespace therefore selects UML 2.5, not UML 2.5.1.
+- **Interpreter:** parser/inventory v2 preserves raw `lowerValue`/`upperValue` ValueSpecifications and records effective multiplicities under UML 2.5 §7.8.8.7, §8.6.9.4 and §8.6.14.4. Across 355 properties: lower 303 literal defaults to 0 and 52 absent-bound fallbacks to 1; upper 192 explicit unlimited, 4 literal defaults to 0 and 159 absent-bound fallbacks to 1. Unsupported non-literal ValueSpecifications remain unresolved.
+- **Lean formalization:** `formal/lean/GovCheckCoherence/UML25Multiplicity.lean` proves the narrow default/fallback rules. `SACM24.lean` adds seven theorems showing that manually transcribed XML shapes for Claim.value, Claim.subject, Claim.whole, SACMElement.abstraction, AssertedRelationship.isCounter, AssertedEvidence.evidence and Assertion.assertionDeclarationRule produce the expected intervals. These theorems do not prove parser extraction.
+- **Direct PDF review:** visually inspected printed pages 21, 22, 25, 28, 31, 41, 44, 45, 46, 47, 59, 64 and 151. Corrected findings: subject/whole target types and multiplicities agree; SACMElement.abstraction differs between Clause 9.2 (0..1) and Figure 9.1 (0..*), with XML matching the figure; the PDF declares assertionDeclarationRule and its OCL body references assertionRule; Annex G.6 item 5 is prose about a SACMModel being an Assertion, not an exhaustive superclass list; AssertionDeclaration literal lists differ by fragment status and are not normalized.
+- **No decision:** no source precedence, SACM 2.4 adoption, full UML/MOF interpretation, parser refinement or SACM conformance is claimed.
+- **Verification:** the v2 parser/tests/summary and new Lean declarations are implemented; fresh final-head CI is pending. Earlier inventory-v1 and source-view branch runs do not verify this increment.

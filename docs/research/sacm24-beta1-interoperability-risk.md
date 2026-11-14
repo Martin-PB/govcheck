@@ -16,11 +16,11 @@ The Assurance Forge report is not an OMG authority and its conclusions must be c
 | Subject | Specification PDF text | Machine-readable metamodel XML | Consequence |
 |---|---|---|---|
 | Element identity | `gid : String[0..1]` | `elementId : UID[1]`; no `gid` | Identity cannot be normalized without selecting a source view and recording the transformation |
-| Assertion declaration literals | `axiomatic`, `assumed`, `asserted`, `needsSupport` | `axiomatic`, `assumed`, `asserted`, plus `byRule`; no `needsSupport` | The same enum name has incompatible value sets |
+| Assertion declaration literals | Normative Clause 13.6: `axiomatic`, `assumed`, `asserted`, `needsSupport`; informative Clause 15.2.1 adds `byRule` | `axiomatic`, `assumed`, `asserted`, `byRule`; no `needsSupport` | Fragment-level list divergence. The informative clause presents `byRule` as an addition; its omission of `needsSupport` does not itself prove deletion from the normative list. No normalized enum set is selected. |
 | `AssertedEvidence.evidence` multiplicity | `[0..*]` | `[1..*]` | Empty evidence collections are valid in one view and invalid in the other |
 | `Claim.value` | Normative Figure 13.1 (printed p.41) and Clause 13.9 (printed p.45): `MultiLangString`; informative Figure 15.1.1 (printed p.59): `ExpressionLangString` | `ExpressionLangString` | PDF-internal conflict: XML agrees with the informative figure and differs from the normative fragments. R-128's reported value is supported by both normative fragments. |
 | `BindingPackage` inheritance | Text clauses disagree on the superclass set | XML declares `ScopedPackage` and `SACMPackageWithBinding` | A parser/validator may build a different type hierarchy |
-| `SACMElement.abstraction` multiplicity | `[0..1]` | `[0..*]` | One view permits at most one abstraction, the other multiple |
+| `SACMElement.abstraction` multiplicity | Clause 9.2: `[0..1]`; Figure 9.1: `[0..*]` | `[0..*]` under UML 2.5 multiplicity defaults | PDF-internal multiplicity divergence; XML agrees with Figure 9.1 and differs from Clause 9.2. No precedence is inferred. |
 | `AssertedRelationship.isCounter` multiplicity | `Boolean[1]` | `Boolean[0..1]` | Requiredness differs |
 
 The audit also reports stale 2.3 names in the beta text/annexes, removed literals still referenced by Annex C, ambiguity around compliance points and a vendor-specific UML Profile XMI example. See the complete pinned audit and its linked defect inventory before implementing any additional construct.
@@ -49,7 +49,7 @@ The Assurance Forge fetch script records comparison SHA-256 values for four offi
 
 ## 5. GovCheck response: source-view-qualified mapping
 
-The Lean module `GovCheckCoherence.SACM24` now distinguishes document-level views from the individual clauses, annexes and figures that make claims within those views. The earlier PDF-wide predicate was too coarse: it incorrectly rejected `byRule` for the PDF even though Clause 15.2.1 adds it, while Clause 13.6 includes `needsSupport`.
+The Lean module `GovCheckCoherence.SACM24` now distinguishes document-level views from the individual clauses, annexes and figures that make claims within those views. Clause 13.6 is normative; Annex G.6 and Clause 15.2.1 are informative. The later `byRule` listing is treated as an addition, not as a demonstrated deletion of `needsSupport`. The abstraction multiplicity is also a PDF-internal divergence: Clause 9.2 says `0..1`, Figure 9.1 says `0..*`, and the XML agrees with the figure.
 
 - `SourceView` identifies the document format; `DeclarationSourceFragment` separately identifies PDF Clause 13.6, Annex G.6 item 6, Clause 15.2.1 and the normative XML model.
 - `IdentitySourceFragment` distinguishes PDF Clause 9.2 (`gid`), PDF Figure 9.1 (`elementId`) and the XML model (`elementId`).

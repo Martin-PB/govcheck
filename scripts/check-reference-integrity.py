@@ -22,6 +22,7 @@ ANCHOR_RE = re.compile(r'<a id="r-(\d{2,3})"></a>')
 REF_LINK_RE = re.compile(r'\[[^\]]*\]\(([^)]+references(?:\.fr)?\.md#r-(\d{2,3})[^)]*)\)', re.I)
 LINK_RE = re.compile(r'(?<!!)\[[^\]]*\]\(([^)]+)\)')
 URL_RE = re.compile(r'https?://[^\s)<>]+')
+URL_TRAILING_PUNCTUATION = ".,;:!?*_`" + chr(39) + chr(34)
 CITED_RE = {
     "en": re.compile(r'^- \*\*Cited by:\*\*\s*(.*)$', re.M),
     "fr": re.compile(r'^- \*\*Cité par :\*\*\s*(.*)$', re.M),
@@ -34,6 +35,11 @@ def error(message: str) -> None:
 
 def warning(message: str) -> None:
     WARNINGS.append(message)
+
+def normalized_url(raw: str) -> str:
+    # Markdown prose often places sentence punctuation or emphasis delimiters
+    # immediately after a URL. They are not part of the external URI.
+    return raw.rstrip(URL_TRAILING_PUNCTUATION)
 
 def logical_doc(path: Path) -> str:
     rel = path.relative_to(DOCS).as_posix()
@@ -128,7 +134,8 @@ def check_references(external: bool) -> int:
     catalogue_urls = set(URL_RE.findall(CATALOGUES["en"].read_text(encoding="utf-8")))
     for path in source_docs:
         source_text = path.read_text(encoding="utf-8")
-        for url in URL_RE.findall(source_text):
+        for raw_url in URL_RE.findall(source_text):
+            url = normalized_url(raw_url)
             if url.startswith("https://github.com/Martin-PB/govcheck/"):
                 continue  # Internal evidence links are not external source citations.
             if url not in catalogue_urls:
@@ -172,7 +179,7 @@ def check_references(external: bool) -> int:
             expected = citations.get(ref_id, set())
             if declared != expected:
                 error(f"{catalogue.relative_to(ROOT)}: {ref_id} backlink mismatch; declared={sorted(declared)}, actual={sorted(expected)}")
-            linked_urls.update(URL_RE.findall(block))
+            linked_urls.update(normalized_url(url) for url in URL_RE.findall(block))
     check_local_links(markdown_files)
     if external:
         for url in sorted(linked_urls):

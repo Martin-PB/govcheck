@@ -29,7 +29,7 @@ SEON describes itself as a network of reference ontologies with integration mech
 
 SEON does not by itself settle repository-specific normative authority, delegation/revocation, adoption of decisions, exception expiry, forge-neutral enforcement, or all distinctions between tests, model-checking reports, theorem proofs, accepted risk and real-world observations.
 
-Sources: [R-115](../references.md#r-115), [SEON](https://dev.nemo.inf.ufes.br/seon/SEON.html), [ReqON](https://dev.nemo.inf.ufes.br/seon/ReqON.html), [SPO](https://dev.nemo.inf.ufes.br/seon/SPO.html).
+Sources: [R-200 — SEON/ReqON/SPO](../references.md#r-200).
 
 Related catalogue sources: [R-04](../references.md#r-04) · [R-33](../references.md#r-33) · [R-34](../references.md#r-34) · [R-71](../references.md#r-71) · [R-73](../references.md#r-73) · [R-88](../references.md#r-88) · [R-92](../references.md#r-92) · [R-93](../references.md#r-93) · [R-94](../references.md#r-94) · [R-95](../references.md#r-95) · [R-96](../references.md#r-96) · [R-97](../references.md#r-97) · [R-98](../references.md#r-98) · [R-99](../references.md#r-99) · [R-100](../references.md#r-100) · [R-102](../references.md#r-102) · [R-115](../references.md#r-115) · [R-116](../references.md#r-116) · [R-117](../references.md#r-117) · [R-118](../references.md#r-118) · [R-119](../references.md#r-119) · [R-120](../references.md#r-120)
 
@@ -67,7 +67,7 @@ CSLib's Boole direction is evolving. Its contributor documentation says source t
 
 **Recommendation:** do not make CSLib a universal dependency merely by default. However, schema/contract tests cannot replace the formal demonstration required for every semantic correspondence used in reasoning. Where CSLib provides a fitting, audited formalization, prefer reuse; otherwise develop the smallest suitable formalization in a trusted system. Pin revisions and record toolchain, imports, axioms, assumptions and trusted base.
 
-Sources: [R-118](../references.md#r-118), [CSLib repository](https://github.com/leanprover/cslib), [organization](https://github.com/leanprover/cslib/blob/main/ORGANISATION.md), [contributor guidance](https://github.com/leanprover/cslib/blob/main/CONTRIBUTING.md), [roadmap](https://www.cslib.io/roadmap/).
+Sources: [R-123](../references.md#r-123), [CSLib repository](https://github.com/leanprover/cslib), [organization](https://github.com/leanprover/cslib/blob/main/ORGANISATION.md), [contributor guidance](https://github.com/leanprover/cslib/blob/main/CONTRIBUTING.md), [roadmap](https://www.cslib.io/roadmap/).
 
 ## 5. Ontologies, metamodels, constraints and proof libraries are different things
 
@@ -80,7 +80,7 @@ Sources: [R-118](../references.md#r-118), [CSLib repository](https://github.com/
 
 OMG's Ontology Definition Metamodel (ODM) is relevant as a method: it defines metamodels, profiles and mappings among ontology and modeling standards, including UML/MOF. It is not a ready-made GovCheck lifecycle ontology. OWL 2 can express formal ontologies; RDF provides graph representation; SKOS supports concept schemes and mappings; SHACL validates graph structure against declared constraints. These technologies may be an implementation profile, but GovCheck should not equate its semantics with RDF or mandate this stack before a separate decision.
 
-Sources: [R-116](../references.md#r-116), [R-117](../references.md#r-117), [OWL 2](https://www.w3.org/TR/owl-overview/), [SKOS](https://www.w3.org/TR/skos-reference/), [SHACL](https://www.w3.org/TR/shacl/), [OMG ODM](https://www.omg.org/spec/ODM/).
+Sources: [R-52 — RDF](../references.md#r-52), [R-53 — SKOS](../references.md#r-53), [R-54 — OWL 2](../references.md#r-54), [R-55 — SHACL](../references.md#r-55), [R-201 — OMG ODM](../references.md#r-201).
 
 ## 6. Recommended candidate: federate first, extend only with evidence
 
@@ -129,7 +129,7 @@ Exit criteria: every concept is classified as reused, profiled, mapped, adapter-
 
 ## 9. Traceability
 
-Central catalogue entries: [R-115 SEON/ReqON](../references.md#r-115), [R-116 OWL/RDF/SKOS/SHACL](../references.md#r-116), [R-117 OMG ODM](../references.md#r-117), [R-118 CSLib](../references.md#r-118), [R-119 Essence](../references.md#r-119), [R-120 OSLC RM](../references.md#r-120). Existing sources include SACM (R-04, R-33–R-34, R-71, R-73), engineering/domain models (R-92, R-94–R-100), PROV (R-102) and policy/logic references (R-88, R-93).
+Central catalogue entries: [R-115 ISO/IEC/IEEE 15288](../references.md#r-115), [R-116 ISO/IEC/IEEE 29148](../references.md#r-116), [R-117 NASA Systems Engineering Handbook](../references.md#r-117), [R-118 goal-oriented requirements engineering study](../references.md#r-118), [R-200 SEON/ReqON/SPO](../references.md#r-200), [R-52 RDF](../references.md#r-52), [R-53 SKOS](../references.md#r-53), [R-54 OWL 2](../references.md#r-54), [R-55 SHACL](../references.md#r-55), [R-201 OMG ODM](../references.md#r-201), [R-123 CSLib](../references.md#r-123), [R-119 Essence](../references.md#r-119), [R-120 OSLC RM](../references.md#r-120). Existing sources include SACM (R-04, R-33–R-34, R-71, R-73), engineering/domain models (R-92, R-94–R-100), PROV (R-102) and policy/logic references (R-88, R-93).
 
 Internal records: [Architecture 0013](../architecture/0013-governance-metamodel.md), [Architecture 0027](../architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md), [Specification 0002](../specifications/0002-canonical-governance-model.md), [Specification 0005](../specifications/0005-assurance-model.md), and the [metamodel decision dossier](../decisions/metamodel-design-dossier.md).
 

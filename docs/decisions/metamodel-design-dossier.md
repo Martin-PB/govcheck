@@ -63,6 +63,7 @@ The repository already contains substantial candidate architecture:
 
 - [Issue #73](https://github.com/Martin-PB/govcheck/issues/73) is the primary verification work item for semantic contracts across intent, requirements, architecture, lifecycle, assurance and authority.
 - [Issue #69](https://github.com/Martin-PB/govcheck/issues/69) covers claim-justification chains and preservation of methods, assumptions and limitations.
+- [Issue #131](https://github.com/Martin-PB/govcheck/issues/131) covers the distinct semantics of probability, fuzzy membership, uncertainty and assumed risk. The bilingual [decision/risk research addendum](../research/decision-and-assumed-risk-crosscutting-2026-11.md) clarifies that decisions are transversal graph objects and separates PEAK Assumed Risk, risk assessment, treatment, residual risk and authorized risk acceptance.
 - [Issue #74](https://github.com/Martin-PB/govcheck/issues/74) covers reference status, provenance and machine-checkable traceability.
 - [Issue #79](https://github.com/Martin-PB/govcheck/issues/79) is the assurance/evaluation portfolio container; its children remain individually scoped.
 - [Issue #81](https://github.com/Martin-PB/govcheck/issues/81) is the formal-methods/lifecycle portfolio container.

@@ -43,7 +43,7 @@ Ces documents décrivent un socle général de gouvernance des dépôts. La séc
 
 ## 3. PEAK : tracer le raisonnement qui conduit à une décision
 
-PEAK est utilisé ici dans son sens d'analyse de décision : **Problem, Experience, Assumptions et Knowledge** sont explicités comme éléments d'entrée d'une décision ; le processus consigne la **Solution** retenue et l'**Assumed Risk** [R-74](../references.fr.md#r-74).
+PEAK est utilisé ici dans son sens d'analyse de décision : **Problem, Experience, Assumptions et Knowledge** sont explicités comme éléments d'entrée d'une décision ; le processus consigne la **Solution** retenue et l'**Assumed Risk** [R-74](../references.fr.md#r-74). La distinction entre risque assumé, évaluation, traitement et acceptation du risque s'appuie sur [R-193](../references.fr.md#r-193).
 
 Une décision GovCheck peut exposer ces dimensions sans les transformer en quatre silos de données isolés :
 
@@ -54,9 +54,9 @@ Une décision GovCheck peut exposer ces dimensions sans les transformer en quatr
 | **A — Assumptions** | Quelles prémisses sont utilisées et sous quelles conditions ? | Hypothèses explicites avec responsable, périmètre, justification, validité, confiance et conditions de revue/réfutation |
 | **K — Knowledge** | Quelles informations sont disponibles pour les décideurs ? | Spécifications, architecture, mesures, résultats de tests, preuves, faits sur les dépendances, observations, normes et autres éléments admissibles |
 | **Solution** | Quelle option a été retenue, et pourquoi ? | Alternative retenue, alternatives rejetées, justification, plan d'implémentation ou de suivi |
-| **Assumed Risk** | Quelle incertitude ou exposition est consciemment conservée par ce choix ? | Arbitrages, risque résiduel, incertitude, conditions, responsable redevable et déclencheurs de revue |
+| **Assumed Risk** | Qu'est-ce qui pourrait ne pas fonctionner comme prévu et quelle exposition est consciemment prise en choisissant la solution ? | Scénarios de risque, hypothèses, dépendances non vérifiées, conséquences possibles, incertitude, responsable redevable et déclencheurs de revue ; pas synonyme de risque évalué, résiduel ou accepté par autorité |
 
-PEAK n'est ni un mécanisme d'autorisation, ni une formule de risque, ni une notation de dossier d'assurance, ni un modèle du cycle de vie d'un dépôt. GovCheck doit fournir la gouvernance de la décision : identité, autorité, périmètre, participants, date, justification, liens vers les preuves, validité, revue et remplacement.
+PEAK n'est ni un mécanisme d'autorisation, ni une formule de risque, ni une notation de dossier d'assurance, ni un modèle du cycle de vie d'un dépôt. GovCheck doit fournir la gouvernance de la décision : identité, autorité, périmètre, participants, date, justification, liens vers les preuves, validité, revue et remplacement. Distinguer cinq concepts : le **risque assumé** PEAK est une sortie de décision qui décrit ce qui pourrait ne pas fonctionner comme prévu ; l'**évaluation du risque** est une analyse distincte liée à une méthode ; le **traitement du risque** modifie l'exposition ; le **risque résiduel** est ce qui subsiste après un traitement spécifié ; l'**acceptation du risque** est une disposition autorisée, circonscrite et limitée dans le temps. L'énoncé initial de risque assumé reste dans le dossier historique de décision même lorsque des évaluations ou contrôles ultérieurs le modifient.
 
 La même structure PEAK peut éclairer des décisions d'architecture, de maintenabilité, de stratégie de test, de mise à niveau des dépendances, de préparation d'une publication, de traitement de sécurité ou de gouvernance du projet. Son emploi doit être proportionné à l'importance et aux conséquences de la décision ; il ne doit pas devenir une formalité obligatoire pour chaque choix trivial.
 

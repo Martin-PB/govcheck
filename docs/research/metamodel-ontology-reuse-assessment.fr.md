@@ -117,3 +117,5 @@ Critères de sortie : chaque concept est classé comme réutilisé, profilé, ma
 Catalogue central : [R-115 SEON/ReqON](../references.fr.md#r-115), [R-116 OWL/RDF/SKOS/SHACL](../references.fr.md#r-116), [R-117 OMG ODM](../references.fr.md#r-117), [R-118 CSLib](../references.fr.md#r-118), [R-119 Essence](../references.fr.md#r-119), [R-120 OSLC RM](../references.fr.md#r-120). Sources existantes : SACM (R-04, R-33–R-34, R-71, R-73), modèles d'ingénierie/domaine (R-92, R-94–R-100), PROV (R-102) et politiques/logique (R-88, R-93).
 
 Documents internes : [Architecture 0013](../architecture/0013-governance-metamodel.md), [Architecture 0027](../architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md), [Spécification 0002](../specifications/0002-canonical-governance-model.md), [Spécification 0005](../specifications/0005-assurance-model.md), [dossier de décision](../decisions/metamodel-design-dossier.fr.md).
+
+Catalogue de références : [R-200 — SEON/ReqON/SPO](../references.fr.md#r-200) ; [R-201 — OMG ODM](../references.fr.md#r-201) ; [R-123 — CSLib](../references.fr.md#r-123).

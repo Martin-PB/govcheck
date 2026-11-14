@@ -9,7 +9,7 @@ GovCheck should be able to represent, preserve, validate and operate on the comp
 
 This is stronger than offering a lossy import/export adapter. The target is a **SACM-conformant assurance capability inside GovCheck**: every SACM concept, relationship, multiplicity, constraint, enumeration, package rule and supported view/diagram construct must have a faithful representation in GovCheck. GovCheck must also be able to express its own repository-governance concepts and connect them to SACM without forcing them into SACM classes that do not mean the same thing.
 
-SACM 2.4 Beta 1 was adopted as an in-process OMG specification in September 2026; SACM 2.3 remains the formal version at the time of this record. The beta is therefore a pinned design target, not a claim that the final 2.4 standard is already formal. The normative PDF and machine-readable metamodel are published from the [OMG SACM specification page](https://www.omg.org/spec/SACM). The 2.4 change history is available in the [OMG issue tracker](https://issues.omg.org/issues/spec/SACM?view=CLOSED).
+SACM 2.4 Beta 1 was adopted as an in-process OMG specification in September 2026; SACM 2.3 remains the formal version at the time of this record. The beta is therefore a pinned design target, not a claim that the final 2.4 standard is already formal. The normative PDF and machine-readable metamodel are published from the [OMG SACM specification page](https://www.omg.org/spec/SACM). The 2.4 change history is available in the [OMG SACM issue tracker](../references.md#r-201).
 
 ## 2. Architectural placement in GovCheck
 
@@ -85,7 +85,7 @@ The 2.4 beta includes additional constructs/issues for:
 
 The OMG issue dispositions identify some of these as non-normative supporting constructs. In particular, SACM24-105 updates the conformance clause to include packaging, views/diagrams, and the non-normative joins, assessments and advanced arguments. GovCheck must preserve their status metadata and must not silently promote them into normative requirements or normative metamodel obligations. Where the specification's conformance clause distinguishes normative and non-normative elements, GovCheck must implement and report those conformance points separately.
 
-The beta issue trail gives a useful implementation checklist (issue identifiers are stable links in the [OMG closed-issue register](https://issues.omg.org/issues/spec/SACM?view=CLOSED)):
+The beta issue trail gives a useful implementation checklist (issue identifiers are stable links in the [OMG closed-issue register](../references.md#r-201)):
 
 | Beta work item | OMG issue | GovCheck coverage consequence |
 |---|---|---|
@@ -213,8 +213,8 @@ This record does not select a graph database, mandate UML tooling, require every
 ## 11. Primary sources
 
 - [OMG SACM specification catalogue, including SACM 2.4 Beta 1 and machine-readable metamodel](https://www.omg.org/spec/SACM).
-- [OMG SACM 2.4 issue tracker — closed issues and dispositions](https://issues.omg.org/issues/spec/SACM?view=CLOSED).
-- [OMG SACM 2.4 issue tracker — all issues](https://issues.omg.org/issues/spec/SACM?view=ALL).
+- [OMG SACM 2.4 issue tracker — closed issues and dispositions](../references.md#r-201).
+- [OMG SACM 2.4 issue tracker — all issues](../references.md#r-201).
 - [OMG SACM 2.3 formal specification](https://www.omg.org/spec/SACM/2.3).
 
 ## 12. Relationship to existing GovCheck records

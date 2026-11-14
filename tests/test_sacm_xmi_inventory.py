@@ -94,7 +94,7 @@ class SacmXmiInventoryTests(unittest.TestCase):
     def test_summary_is_derived_from_full_inventory(self):
         result = self.inventory()
         summary = MODULE.build_summary(result)
-        self.assertEqual(summary["summaryFormat"], "govcheck.sacm-xmi-structural-inventory-summary/v1")
+        self.assertEqual(summary["summaryFormat"], "govcheck.sacm-xmi-structural-inventory-summary/v2")
         self.assertEqual(summary["document"]["identifiedElementCount"], 12)
         self.assertEqual(summary["counts"]["resolvedInternalReferenceCount"], 5)
         self.assertEqual(summary["counts"]["externalReferenceCount"], 1)

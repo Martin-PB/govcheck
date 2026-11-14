@@ -183,7 +183,7 @@ structure SACMClaim where
   declaration : Option AssertionDeclarationKind
   isTrue : Option Bool
   assertionValues : List String
-  assertionRuleRefs : List String
+  assertionDeclarationRuleRefs : List String
   strengthRefs : List String
   deriving DecidableEq, Repr
 

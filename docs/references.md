@@ -1363,7 +1363,7 @@
 - **Cited by:** [SACM source-native metamodel ingestion](research/sacm-native-metamodel-ingestion.md), [SACM XMI structural inventory](research/sacm-xmi-structural-inventory.md), [SACM source-view alignment report](research/sacm24-source-view-alignment.md), [Work portfolio event journal](work-portfolio/events.md)
 - **Implementation artifacts:** [XMI inventory generator](../scripts/parse-sacm-xmi.py) · [committed inventory summary](../formal/sources/sacm-2.4-beta1/metamodel-inventory-summary.json).
 - **Primary source:** [OMG SACM specification catalogue](https://www.omg.org/spec/SACM) · [normative machine-readable metamodel XML](https://www.omg.org/spec/SACM/20260504/SACM2.4_Metamodel.xml) · OMG file ID `ptc/26-05-28`.
-- **Pinned identity:** SACM 2.4 Beta 1; source path dated 2026-05-04; native format XML; SHA-256 comparison value `0581dfa0b9dfaf17ff0f6c63b74f8e7a8396bea03f315e1334e94f23db110830`, as reported by R-128 and verified by GovCheck workflow run [43444619765](https://github.com/Martin-PB/govcheck/actions/runs/43444619765) against 524,243 downloaded source bytes.
+- **Pinned identity:** SACM 2.4 Beta 1; source path dated 2026-05-04; native format XML; SHA-256 comparison value `0581dfa0b9dfaf17ff0f6c63b74f8e7a8396bea03f315e1334e94f23db110830`, as reported by R-128 and verified by GovCheck workflow run [43586559738](https://github.com/Martin-PB/govcheck/actions/runs/43586559738) against 524,243 downloaded source bytes.
 - **Relevant concepts:** normative machine-readable metamodel source, distinct from the normative PDF prose and informative UML Profile XMI.
 - **Limit:** SACM 2.4 Beta 1 is in-process/informational; SACM 2.3 remains formal. This metamodel XML is not a portable assurance-case instance interchange format and its digest does not establish semantic conformance.
 
@@ -1387,6 +1387,7 @@
 
 <a id="r-200"></a>
 ### R-200 — OMG Unified Modeling Language (UML) 2.5 specification and machine-readable metamodel
+- **Namespace identifier:** [UML 20131001 namespace](http://www.omg.org/spec/UML/20131001).
 - **Cited by:** [SACM XMI structural inventory](research/sacm-xmi-structural-inventory.md), [SACM 2.4 source-view alignment](research/sacm24-source-view-alignment.md), [SACM 2.4 interoperability risk](research/sacm24-beta1-interoperability-risk.md), [Work portfolio event journal](work-portfolio/events.md), [Work-item register](work-portfolio/work-items.md).
 - **Primary source:** [OMG UML 2.5 normative PDF](https://www.omg.org/spec/UML/2.5/PDF) · [OMG UML machine-readable catalogue](https://www.omg.org/spec/UML/machine-readable) · UML 2.5 machine-readable file set ID `ptc/13-08-17`.
 - **Pinned identity:** UML 2.5; normative document formal/2015-03-01; the SACM XMI source uses the `http://www.omg.org/spec/UML/20131001` namespace, which is the UML 2.5 namespace (not the later UML 2.5.1 `20161101` namespace).

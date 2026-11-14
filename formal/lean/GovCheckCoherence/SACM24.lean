@@ -1,4 +1,5 @@
 import GovCheckCoherence.Mapping
+import GovCheckCoherence.UML25Multiplicity
 
 namespace GovCheck.Coherence.SACM24
 
@@ -350,14 +351,86 @@ theorem sacm_claim_mapping_has_semantic_bridge
 
 
 /-- A multiplicity interval transcribed from a particular SACM source fragment.
-    `none` as upper bound means unbounded. This records claims; it does not
-    implement UML default-value semantics or prove source extraction. -/
+    none as upper bound means unbounded. XML multiplicities below are interpreted
+    using the narrow UML 2.5 rules in UML25Multiplicity; this does not prove
+    that the parser extracted the serialized source values correctly. -/
 structure SourceMultiplicity where
   lower : Nat
   upper : Option Nat
   deriving DecidableEq, Repr
 
+
+/-- Convert the supported UML 2.5 multiplicity result into the source-register
+    interval convention (an absent upper value means unbounded). -/
+def sourceMultiplicityFromUML25 (m : UML25Multiplicity.Multiplicity) : SourceMultiplicity :=
+  { lower := m.lower
+    upper := match m.upper with
+      | .finite value => some value
+      | .unlimited => none }
+
+/-- Interpret the manually transcribed XMI ValueSpecification shape. This
+    projection is checked against the source inventory by workflow tests; the
+    Lean theorems prove the UML 2.5 default interpretation, not XML parsing. -/
+def interpretXmlMultiplicity
+    (lower : Option UML25Multiplicity.LowerValueSpecification)
+    (upper : Option UML25Multiplicity.UpperValueSpecification) :
+    Option SourceMultiplicity :=
+  (UML25Multiplicity.interpretMultiplicity lower upper).map sourceMultiplicityFromUML25
+
 namespace SourceFacts
+
+
+/-- XML source shapes below preserve the distinction between an absent
+    ValueSpecification and a present LiteralInteger with an omitted value.
+    These are manually transcribed from the generated XMI inventory. -/
+def xmlClaimValueMultiplicity : SourceMultiplicity := ⟨0, some 1⟩
+def xmlClaimValueMultiplicityFromUML25 : Option SourceMultiplicity :=
+  interpretXmlMultiplicity (some (.literalInteger none)) none
+
+def xmlClaimWholeMultiplicityFromUML25 : Option SourceMultiplicity :=
+  interpretXmlMultiplicity (some (.literalInteger none))
+    (some (.literalUnlimitedNatural (some .unlimited)))
+
+def xmlClaimSubjectMultiplicityFromUML25 : Option SourceMultiplicity :=
+  interpretXmlMultiplicity (some (.literalInteger none))
+    (some (.literalUnlimitedNatural (some .unlimited)))
+
+def xmlSACMElementAbstractionMultiplicityFromUML25 : Option SourceMultiplicity :=
+  interpretXmlMultiplicity (some (.literalInteger none))
+    (some (.literalUnlimitedNatural (some .unlimited)))
+
+def xmlAssertedRelationshipIsCounterMultiplicityFromUML25 : Option SourceMultiplicity :=
+  interpretXmlMultiplicity (some (.literalInteger none)) none
+
+def xmlAssertedEvidenceEvidenceMultiplicityFromUML25 : Option SourceMultiplicity :=
+  interpretXmlMultiplicity none
+    (some (.literalUnlimitedNatural (some .unlimited)))
+
+def xmlAssertionDeclarationRuleMultiplicity : SourceMultiplicity := ⟨0, none⟩
+def xmlAssertionDeclarationRuleMultiplicityFromUML25 : Option SourceMultiplicity :=
+  interpretXmlMultiplicity (some (.literalInteger none))
+    (some (.literalUnlimitedNatural (some .unlimited)))
+
+theorem xml_claim_value_multiplicity_matches_uml25 :
+    xmlClaimValueMultiplicityFromUML25 = some xmlClaimValueMultiplicity := rfl
+
+theorem xml_claim_whole_multiplicity_matches_uml25 :
+    xmlClaimWholeMultiplicityFromUML25 = some xmlClaimWholeMultiplicity := rfl
+
+theorem xml_claim_subject_multiplicity_matches_uml25 :
+    xmlClaimSubjectMultiplicityFromUML25 = some xmlClaimSubjectMultiplicity := rfl
+
+theorem xml_sacm_element_abstraction_multiplicity_matches_uml25 :
+    xmlSACMElementAbstractionMultiplicityFromUML25 = some xmlSACMElementAbstraction := rfl
+
+theorem xml_asserted_relationship_isCounter_multiplicity_matches_uml25 :
+    xmlAssertedRelationshipIsCounterMultiplicityFromUML25 = some xmlAssertedRelationshipIsCounter := rfl
+
+theorem xml_asserted_evidence_evidence_multiplicity_matches_uml25 :
+    xmlAssertedEvidenceEvidenceMultiplicityFromUML25 = some xmlAssertedEvidenceEvidence := rfl
+
+theorem xml_assertion_declaration_rule_multiplicity_matches_uml25 :
+    xmlAssertionDeclarationRuleMultiplicityFromUML25 = some xmlAssertionDeclarationRuleMultiplicity := rfl
 
 /-- Normative PDF Figure 13.1 (printed page 41) shows Claim.value as MultiLangString. -/
 def normativePdfFigure13_1ClaimValueType : String := "MultiLangString"

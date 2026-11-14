@@ -2,7 +2,7 @@
 
 **Statut :** audit indépendant d'implémentation enregistré ; garde-fous de sélection de vue source ajoutés à GovCheck ; aucune revendication de conformité SACM 2.4.  
 **Date :** 2026-11-12.  
-**Catalogue principal :** [R-73 — OMG SACM 2.4 Beta 1](../references.fr.md#r-73).  
+**Catalogues principaux :** [R-73 — OMG SACM 2.4 Beta 1](../references.fr.md#r-73) · [R-200 — sémantique des multiplicités OMG UML 2.5](../references.fr.md#r-200).  
 **Audit indépendant :** [R-128 — Audit d'impact SACM 2.4 Beta 1 d'Assurance Forge](../references.fr.md#r-128).
 
 ## 1. Constat déterminant

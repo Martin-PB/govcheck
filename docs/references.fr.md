@@ -1363,7 +1363,7 @@
 - **Cité par :** [Ingestion source-native du métamodèle SACM](research/sacm-native-metamodel-ingestion.fr.md), [Inventaire structurel XMI SACM](research/sacm-xmi-structural-inventory.fr.md), [rapport d'alignement des vues source SACM](research/sacm24-source-view-alignment.fr.md), [Journal des événements du portefeuille](work-portfolio/events.fr.md)
 - **Artefacts d'implémentation :** [générateur d'inventaire XMI](../scripts/parse-sacm-xmi.py) · [synthèse d'inventaire versionnée](../formal/sources/sacm-2.4-beta1/metamodel-inventory-summary.json).
 - **Source primaire :** [Catalogue de spécifications SACM de l'OMG](https://www.omg.org/spec/SACM) · [XML normatif du métamodèle lisible par machine](https://www.omg.org/spec/SACM/20260504/SACM2.4_Metamodel.xml) · identifiant de fichier OMG `ptc/26-05-28`.
-- **Identité épinglée :** SACM 2.4 Beta 1 ; chemin source daté du 04/05/2026 ; format natif XML ; valeur SHA-256 de comparaison `0581dfa0b9dfaf17ff0f6c63b74f8e7a8396bea03f315e1334e94f23db110830`, rapportée par R-128 et vérifiée par l'exécution GovCheck [43444619765](https://github.com/Martin-PB/govcheck/actions/runs/43444619765) sur 524 243 octets source téléchargés.
+- **Identité épinglée :** SACM 2.4 Beta 1 ; chemin source daté du 04/05/2026 ; format natif XML ; valeur SHA-256 de comparaison `0581dfa0b9dfaf17ff0f6c63b74f8e7a8396bea03f315e1334e94f23db110830`, rapportée par R-128 et vérifiée par l'exécution GovCheck [43586559738](https://github.com/Martin-PB/govcheck/actions/runs/43586559738) sur 524 243 octets source téléchargés.
 - **Concepts pertinents :** source normative du métamodèle lisible par machine, distincte du texte PDF normatif et du XMI informatif du profil UML.
 - **Limite :** SACM 2.4 Beta 1 est en cours de traitement et informative ; SACM 2.3 reste formelle. Ce XML de métamodèle n'est pas un format portable d'échange d'instances de dossiers d'assurance et son digest n'établit pas la conformité sémantique.
 
@@ -1387,6 +1387,7 @@
 
 <a id="r-200"></a>
 ### R-200 — Spécification OMG UML 2.5 et métamodèle lisible par machine
+- **Identifiant d'espace de noms :** [espace de noms UML 20131001](http://www.omg.org/spec/UML/20131001).
 - **Cité par :** [Inventaire structurel XMI SACM](research/sacm-xmi-structural-inventory.fr.md), [Alignement des vues sources SACM 2.4](research/sacm24-source-view-alignment.fr.md), [Risque d'interopérabilité SACM 2.4](research/sacm24-beta1-interoperability-risk.fr.md), [Journal des événements du portefeuille](work-portfolio/events.fr.md), [Registre des éléments de travail](work-portfolio/work-items.fr.md).
 - **Source primaire :** [PDF normatif OMG UML 2.5](https://www.omg.org/spec/UML/2.5/PDF) · [Catalogue OMG des fichiers UML lisibles par machine](https://www.omg.org/spec/UML/machine-readable) · identifiant du jeu de fichiers UML 2.5 lisibles par machine `ptc/13-08-17`.
 - **Identité épinglée :** UML 2.5 ; document normatif formal/2015-03-01 ; la source XMI SACM utilise l'espace de noms `http://www.omg.org/spec/UML/20131001`, qui est celui d'UML 2.5 (et non l'espace de noms ultérieur `20161101` d'UML 2.5.1).

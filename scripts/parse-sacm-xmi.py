@@ -401,7 +401,7 @@ def build_summary(inventory: dict[str, Any]) -> dict[str, Any]:
             continue
         type_ref = prop.get("typeRef")
         if type_ref and type_ref in by_id:
-            type_info = {"kind": "internal-xmi-id", "targetId": type_ref,
+            type_info = {"kind": "internal-xmi-id",
                          "targetName": by_id[type_ref].get("name"),
                          "targetXmiType": by_id[type_ref].get("xmiType")}
         else:
@@ -409,10 +409,15 @@ def build_summary(inventory: dict[str, Any]) -> dict[str, Any]:
                          if edge.get("sourceId") == prop.get("id")
                          and edge.get("attribute") == "href"), None)
             type_info = {"kind": "external-href", "href": href} if href else {"kind": "not-resolved"}
+        effective = prop.get("effectiveMultiplicity", {})
+        compact_effective = {
+            "standard": effective.get("standard"),
+            "lower": {k: v for k, v in effective.get("lower", {}).items() if k != "sourceElementId"},
+            "upper": {k: v for k, v in effective.get("upper", {}).items() if k != "sourceElementId"},
+        }
         selected_properties.append({
             "owner": owner.get("name"), "property": prop.get("name"),
-            "sourceElementId": prop.get("id"), "type": type_info,
-            "effectiveMultiplicity": prop.get("effectiveMultiplicity"),
+            "type": type_info, "effectiveMultiplicity": compact_effective,
         })
     selected_properties.sort(key=lambda x: (x["owner"] or "", x["property"] or ""))
     multiplicity_semantics = {

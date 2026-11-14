@@ -132,3 +132,5 @@ Exit criteria: every concept is classified as reused, profiled, mapped, adapter-
 Central catalogue entries: [R-115 SEON/ReqON](../references.md#r-115), [R-116 OWL/RDF/SKOS/SHACL](../references.md#r-116), [R-117 OMG ODM](../references.md#r-117), [R-118 CSLib](../references.md#r-118), [R-119 Essence](../references.md#r-119), [R-120 OSLC RM](../references.md#r-120). Existing sources include SACM (R-04, R-33–R-34, R-71, R-73), engineering/domain models (R-92, R-94–R-100), PROV (R-102) and policy/logic references (R-88, R-93).
 
 Internal records: [Architecture 0013](../architecture/0013-governance-metamodel.md), [Architecture 0027](../architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md), [Specification 0002](../specifications/0002-canonical-governance-model.md), [Specification 0005](../specifications/0005-assurance-model.md), and the [metamodel decision dossier](../decisions/metamodel-design-dossier.md).
+
+Reference catalogue: [R-200 — SEON/ReqON/SPO](../references.md#r-200); [R-201 — OMG ODM](../references.md#r-201); [R-123 — CSLib](../references.md#r-123).

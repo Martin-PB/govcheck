@@ -141,3 +141,18 @@ Le modèle précédent confondait le type cible d'une extrémité d'association 
 Les théorèmes Lean mis à jour portent sur les constantes transcrites ; ils ne prouvent pas la fidélité exhaustive de la transcription. Cette inspection est limitée à ces fragments et ne constitue ni une résolution générale des conflits, ni une conformité SACM, ni une adoption normative.
 
 Détail canonique : [journal anglais WP-EVT-000031](events.md#wp-evt-000031).
+
+
+<a id="wp-evt-000032"></a>
+## WP-EVT-000032 — Sémantique des multiplicités UML 2.5 et correction du registre de fragments SACM
+
+- **Sujet :** `govcheck.work.intermodel-contract-conformance`
+- **Type d'événement :** `source-fragment-review-and-version-pinned-semantics-implemented`
+- **Date :** 2026-11-14
+- **PR d'intégration :** [#133](https://github.com/Martin-PB/govcheck/pull/133), ouverte, non brouillon, non fusionnée.
+- **Base normative :** [R-200](../references.fr.md#r-200), OMG UML 2.5 (formal/2015-03-01 ; jeu de fichiers lisibles par machine `ptc/13-08-17` ; espace de noms `http://www.omg.org/spec/UML/20131001`). L'espace de noms de la source SACM sélectionne donc UML 2.5, pas UML 2.5.1.
+- **Interpréteur :** le parseur/inventaire v2 conserve les ValueSpecifications brutes `lowerValue`/`upperValue` et enregistre les multiplicités effectives selon UML 2.5 §7.8.8.7, §8.6.9.4 et §8.6.14.4. Sur 355 propriétés : 303 bornes inférieures utilisent le défaut littéral 0 et 52 le repli 1 en l'absence de borne ; les bornes supérieures comprennent 192 illimitées explicites, 4 défauts littéraux à 0 et 159 replis à 1. Les ValueSpecifications non littérales non prises en charge restent non résolues.
+- **Formalisation Lean :** `formal/lean/GovCheckCoherence/UML25Multiplicity.lean` prouve les règles étroites de valeur par défaut/repli. `SACM24.lean` ajoute sept théorèmes montrant que les formes XML transcrites manuellement pour Claim.value, Claim.subject, Claim.whole, SACMElement.abstraction, AssertedRelationship.isCounter, AssertedEvidence.evidence et Assertion.assertionDeclarationRule produisent les intervalles attendus. Ces théorèmes ne prouvent pas l'extraction du parseur.
+- **Revue directe du PDF :** inspection visuelle des pages imprimées 21, 22, 25, 28, 31, 41, 44, 45, 46, 47, 59, 64 et 151. Corrections : les types cibles et multiplicités subject/whole concordent ; SACMElement.abstraction diverge entre la clause 9.2 (0..1) et la figure 9.1 (0..*), le XML concordant avec la figure ; le PDF déclare assertionDeclarationRule mais son corps OCL référence assertionRule ; le point 5 de l'annexe G.6 est une phrase sur la possibilité qu'un SACMModel soit une Assertion, pas une liste exhaustive de superclasses ; les listes de littéraux AssertionDeclaration diffèrent selon les fragments et ne sont pas normalisées.
+- **Aucune décision :** aucune priorité entre sources, adoption SACM 2.4, interprétation UML/MOF complète, preuve de raffinement du parseur ni conformité SACM n'est revendiquée.
+- **Vérification :** le parseur/tests/synthèse v2 et les nouvelles déclarations Lean sont implémentés ; la CI sur la tête finale reste à exécuter. Les anciennes exécutions de l'inventaire v1 et de la branche de vues sources ne vérifient pas cet incrément.

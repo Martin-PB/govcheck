@@ -2,7 +2,7 @@
 
 **Status:** independent implementation audit recorded; GovCheck source-view guards added; no SACM 2.4 conformance claim.  
 **Date:** 2026-11-12.  
-**Primary catalogue source:** [R-73 — OMG SACM 2.4 Beta 1](../references.md#r-73).  
+**Primary catalogue sources:** [R-73 — OMG SACM 2.4 Beta 1](../references.md#r-73) · [R-200 — OMG UML 2.5 multiplicity semantics](../references.md#r-200).  
 **Independent implementation audit:** [R-128 — Assurance Forge SACM 2.4 Beta 1 impact audit](../references.md#r-128).
 
 ## 1. Decision-relevant finding

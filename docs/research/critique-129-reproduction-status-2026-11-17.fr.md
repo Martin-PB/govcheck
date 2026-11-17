@@ -283,7 +283,7 @@ Le workflow d'audit a été étendu avant exécution pour inclure le neuvième c
 
 Les neuf analyses SANY et exécutions TLC se sont terminées avec « Model checking completed. No error has been found » et zéro état restant dans la file. Outils : TLA+ tools 1.7.4 (SHA-256 `936a262061c914694dfd669a543be24573c45d5aa0ff20a8b96b23d01e050e88`), TLC 2.19 révision `5a47802`, Temurin Java 17.0.21+9. Nombres générés/distincts :
 
-| Model | Generated / distinct states | Result |
+| Modèle | États générés / distincts | Résultat |
 |---|---:|---|
 | CICheckRouting | 65,536 / 32,768 | PASS |
 | GovCheckAssurance | 11,069,137 / 347,424 | PASS |

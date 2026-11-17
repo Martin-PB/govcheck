@@ -1,7 +1,7 @@
 # SACM 2.4 Beta 1 — inventaire structurel XMI dérivé de la source
 
 **Statut :** inventaire structurel généré pour une révision exacte du XML de métamodèle OMG, épinglée par digest ; aucune correspondance sémantique vers GovCheck n'est inférée.  
-**Sources :** [R-197 — XML normatif du métamodèle OMG SACM 2.4 Beta 1](../references.fr.md#r-197) · [R-200 — sémantique OMG UML 2.5](../references.fr.md#r-200).  
+**Sources :** [R-197 — XML normatif du métamodèle OMG SACM 2.4 Beta 1](../references.fr.md#r-197) · [R-200 — sémantique OMG UML 2.5](../references.fr.md#r-220).  
 **Risque indépendant de divergence entre vues :** [R-128](../references.fr.md#r-128).  
 **Générateur :** [`scripts/parse-sacm-xmi.py`](../../scripts/parse-sacm-xmi.py).  
 **Synthèse révisable :** [`formal/sources/sacm-2.4-beta1/metamodel-inventory-summary.json`](../../formal/sources/sacm-2.4-beta1/metamodel-inventory-summary.json).  

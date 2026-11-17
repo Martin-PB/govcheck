@@ -77,7 +77,7 @@ Les contrôles suivants existaient déjà pour la tête de la PR #133, commit `1
 | Contrôle | Résultat | Interprétation |
 |---|---|---|
 | Tests unitaires Python dans `govcheck-check` | **90 réussis** | L'étape bloquante de tests unitaires a réussi sur le checkout de merge de la PR. |
-| Évaluateur GovCheck dans le même job | **overall FAIL**, alors que la conclusion du job est success | Six documents de décision/dossier n'avaient pas de section References. L'étape report-only a masqué le code de sortie non nul de l'évaluateur, ce qui confirme la lacune d'enforcement du point 6.5. |
+| Évaluateur GovCheck dans le même job | **overall FAIL**, alors que la conclusion du job est success | L'évaluateur n'a pas reconnu de section References admissible dans six documents de décision/dossier (voir la nuance sur la reconnaissance des sections ci-dessus). L'étape report-only a masqué le code de sortie non nul de l'évaluateur, ce qui confirme la lacune d'enforcement du point 6.5. |
 | Validateur de gouvernance de version | **13 réussis** | Suite ciblée, pas reproduction complète de #130. |
 | Cohérence Lean | **job success** | L'audit d'axiomes configuré a respecté sa politique. Le journal indique aussi `propext` pour plusieurs déclarations SACM ; il ne faut donc pas résumer le résultat par « tout le développement Lean est sans axiome ». |
 | Alignement des paquets | **success** | Le contrôle d'alignement paquet/template a réussi sur le checkout de la PR. |

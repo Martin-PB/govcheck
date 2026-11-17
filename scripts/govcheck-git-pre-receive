@@ -53,14 +53,13 @@ def _trusted_gate(env: dict[str, str]):
     if not path.is_file() or not os.access(path, os.X_OK):
         return None, "configured gate executable is missing or not executable"
     git_dir = env.get("GIT_DIR")
-    if git_dir:
-        repo_path = Path(git_dir).resolve()
-        try:
-            path.relative_to(repo_path)
-        except ValueError:
-            pass
-        else:
-            return None, "gate executable must be installed outside the candidate repository"
+    repo_path = Path(git_dir).resolve() if git_dir else Path.cwd().resolve()
+    try:
+        path.relative_to(repo_path)
+    except ValueError:
+        pass
+    else:
+        return None, "gate executable must be installed outside the candidate repository"
     expected_digest = env.get("GOVCHECK_EXPECTED_VERIFIER_DIGEST", "")
     if not DIGEST_RE.fullmatch(expected_digest):
         return None, "GOVCHECK_EXPECTED_VERIFIER_DIGEST must be a sha256 digest"

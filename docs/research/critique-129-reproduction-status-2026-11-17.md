@@ -102,6 +102,24 @@ No TLC run for the eight current TLA+ model/configuration pairs was part of thes
 3. **Lean theorem strength:** the generic theorem `kind_mapping_rule_theorem_proof_requires_derivation` concludes that a derivation exists with `derivation.proof = derivation.proof`. That equality is reflexive; the useful content is the existential witness carried by the constructor. The theorem does not independently establish a further semantic property of the derivation. Names and claims must remain aligned with the actual proposition.
 4. **Executable scope:** the current `govcheck/check.py` has eight rules for licence presence, bilingual decisions, manifest pairs, reference integrity, source presence, bootstrap integrity, TLA evidence freshness and independent-review attestation. It does not implement the canonical lifecycle, authority registry, journal protocol, risk/decision semantics or the full cross-model assurance contracts.
 
+
+### Current TLA+ model/configuration inventory (source-level only)
+
+The current tree contains eight `.tla`/`.cfg` pairs. The reusable workflow pins TLA+ tools 1.7.4 by SHA-256 and uses Java 17, runs SANY before TLC, and records model output as an artifact. The model-specific workflows route the eight pairs through five workflow entry points (CI routing, assurance, authority, governance applicability/control/publication/recovery, and lifecycle).
+
+| Model | Finite configuration | Checked properties named in the config |
+|---|---|---|
+| `CICheckRouting` | 15 change categories; routing policy only | TypeOK; no unrelated-doc trigger; lifecycle/assurance/authority isolation; shared-runner invalidation; per-model coverage. |
+| `GovCheckAssurance` | 2 claims, 2 evidence items, 2 dependencies, 2 versions, 2 actors; `MaxTime=2` | 7 invariants for graph well-formedness, review binding, claim soundness, acceptance support/snapshot and revocation; temporal `AcceptedDiscipline`. |
+| `GovCheckAuthority` | 2 principals, 3 revisions; history limit 4 | TypeOK; current-authority amendment, continuous chain, no revision reuse; `HistoryIsAppendOnly`. |
+| `GovCheckCanonicalPublication` | 2 principals, 3 governance revisions, 2 candidates, 3 evaluation IDs and 3 authorization IDs | TypeOK; unique revisions, predecessor continuity, one publication per position, evaluation/authorization binding, effect point, authorization and stale-publication checks; `AppendOnly`. |
+| `GovCheckGovernanceApplicability` | 2 principals, 3 governance revisions, 2 candidates, 3 evaluations and 3 decisions; history limit 3 | TypeOK; unique/continuous governance history, applicable authority, prior-governance decision, no self-authorization, publication authorization, historical binding and evaluation/authorization binding; `AppendOnly`. |
+| `GovCheckGovernanceControls` | 3 principals, 2 revisions, 2 candidate contents, 1 evaluation, 1 authorization, 1 exception | TypeOK; revision uniqueness, prior authority, shadow evaluator restriction, unknown/conflict blocking, non-derogability, prospective revocation, historical preservation and stale-authorization checks; `AppendOnly`. |
+| `GovCheckJournalRecovery` | 2 contents, 2 revision IDs, 2 event IDs, `MaxEvents=2`, Git and Pijul replicas | TypeOK; unique event/revision IDs, position/predecessor continuity, rollback as a new event, non-authoritative VCS observation and durable applied state; `AppendOnly`. |
+| `GovCheckLifecycle` | 2 actors, 1 required approval, history limit 12; 2 bases, candidates, governance revisions and specs; 2 obligation kinds | 12 invariants for type, acceptance/application soundness, freshness, evidence/outcome/approval binding, no implicit application and deadlock discipline; temporal `TerminalDiscipline`. |
+
+This inventory establishes that configurations and named checks exist; it does **not** establish that SANY/TLC ran successfully on the audit SHA, that bounds are adequate, or that the models refine one another or the Python implementation. The exact-main check-run set has no TLC result, so all eight remain to be reproduced under #130.
+
 ## 6. Corrections staged for the two verifier findings
 
 ### 6.1 PR #133 reference-check failure

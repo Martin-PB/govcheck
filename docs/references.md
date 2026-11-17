@@ -24,7 +24,7 @@
 | OMG issue tracking and source history | R-218 |
 | Agent-native repository memory protocols | R-219 |
 | OWL 2 semantics and conformance | R-203 |
-| Software-engineering ontology networks and metamodels | R-204–R-206 |
+| CSLib formalization and proof library roadmap | R-123, R-205 |
 | Assurance argument confidence and probabilistic evidence | R-207–R-209, R-214 |
 | Fuzzy requirements and uncertainty methods | R-210–R-211 |
 | Bayesian software reliability | R-212–R-213 |
@@ -1424,29 +1424,12 @@
 - **Status:** W3C Recommendations, 11 December 2012.
 - **Use:** model-theoretic semantics and conformance-test framing for OWL 2.
 - **Limit:** OWL 2 semantics apply to OWL ontologies; they do not automatically establish correspondence with GovCheck or other ontology languages.
-
-<a id="r-204"></a>
-### R-204 — SEON software-engineering ontology network
-- **Cited by:** [Metamodel ontology reuse assessment](research/metamodel-ontology-reuse-assessment.md).
-- **Primary sources:** [SEON network](https://dev.nemo.inf.ufes.br/seon/SEON.html) · [Requirements Ontology Network (ReqON)](https://dev.nemo.inf.ufes.br/seon/ReqON.html) · [Software Process Ontology (SPO)](https://dev.nemo.inf.ufes.br/seon/SPO.html).
-- **Use:** candidate ontology network for software engineering, requirements and process concepts.
-- **Limit:** project-maintained ontology documentation; reuse requires versioned source capture and explicit correspondence obligations.
-
 <a id="r-205"></a>
 ### R-205 — CSLib roadmap
 - **Cited by:** [Metamodel ontology reuse assessment](research/metamodel-ontology-reuse-assessment.md).
 - **Primary source:** [CSLib roadmap](https://www.cslib.io/roadmap/).
 - **Use:** current roadmap and stated scope for the CSLib/Lean ecosystem.
 - **Limit:** roadmap statements are not formal guarantees of delivered capabilities; verify the exact library revision before relying on an implementation.
-
-<a id="r-206"></a>
-### R-206 — OMG Ontology Definition Metamodel (ODM) 1.1
-- **Cited by:** [Metamodel ontology reuse assessment](research/metamodel-ontology-reuse-assessment.md).
-- **Primary source:** [OMG ODM specification catalogue](https://www.omg.org/spec/ODM/).
-- **Pinned formal version:** ODM 1.1, September 2014; normative PDF file ID formal/14-09-02; normative machine-readable metamodel XMI file ID ptc/13-08-04.
-- **Use:** ontology metamodels, profiles and mappings across UML/MOF, RDF and OWL.
-- **Limit:** ODM mappings do not by themselves prove a mapping from ODM/SACM/OWL to GovCheck.
-
 <a id="r-207"></a>
 ### R-207 — Graydon and Holloway (2017), confidence in assurance arguments
 - **Cited by:** [Semantic assurance and transition models](research/semantic-assurance-and-transition-models-2026-11.md).

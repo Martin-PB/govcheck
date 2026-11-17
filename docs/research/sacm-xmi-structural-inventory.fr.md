@@ -1,7 +1,7 @@
 # SACM 2.4 Beta 1 — inventaire structurel XMI dérivé de la source
 
 **Statut :** inventaire structurel généré pour une révision exacte du XML de métamodèle OMG, épinglée par digest ; aucune correspondance sémantique vers GovCheck n'est inférée.  
-**Sources :** [R-197 — XML normatif du métamodèle OMG SACM 2.4 Beta 1](../references.fr.md#r-197) · [R-200 — sémantique OMG UML 2.5](../references.fr.md#r-220).  
+**Sources :** [R-197 — XML normatif du métamodèle OMG SACM 2.4 Beta 1](../references.fr.md#r-197) · [R-220 — sémantique OMG UML 2.5](../references.fr.md#r-220).  
 **Risque indépendant de divergence entre vues :** [R-128](../references.fr.md#r-128).  
 **Générateur :** [`scripts/parse-sacm-xmi.py`](../../scripts/parse-sacm-xmi.py).  
 **Synthèse révisable :** [`formal/sources/sacm-2.4-beta1/metamodel-inventory-summary.json`](../../formal/sources/sacm-2.4-beta1/metamodel-inventory-summary.json).  
@@ -17,7 +17,7 @@ Le parseur ne consomme que le payload source capturé dont le SHA-256 correspond
 - longueur : `524243` octets ;
 - SHA-256 : `0581dfa0b9dfaf17ff0f6c63b74f8e7a8396bea03f315e1334e94f23db110830`.
 
-Le document est un XML dont la racine et le vocabulaire du métamodèle utilisent les espaces de noms OMG XMI 20131001 et UML 20131001. L'espace de noms UML est épinglé à UML 2.5 (R-200), et non à UML 2.5.1. Les métadonnées d'export indiquent MagicDraw Clean XMI Exporter 2024x v6. Cela décrit la représentation effective de la source ; cela **ne signifie pas** que SACM 2.4 définit un contrat portable d'échange d'instances XMI.
+Le document est un XML dont la racine et le vocabulaire du métamodèle utilisent les espaces de noms OMG XMI 20131001 et UML 20131001. L'espace de noms UML est épinglé à UML 2.5 (R-220), et non à UML 2.5.1. Les métadonnées d'export indiquent MagicDraw Clean XMI Exporter 2024x v6. Cela décrit la représentation effective de la source ; cela **ne signifie pas** que SACM 2.4 définit un contrat portable d'échange d'instances XMI.
 
 Le `source.xml` original reste l'autorité et est conservé octet pour octet par le workflow de capture. L'inventaire généré est une vue dérivée, reproductible à partir de ces octets exacts et de la révision du parseur.
 
@@ -73,7 +73,7 @@ Il n'exécute pas OCL ni d'autres langages de contraintes, ne résout pas le mé
 
 ## 5. Sémantique de multiplicité UML 2.5 épinglée par version
 
-L'espace de noms source https://www.omg.org/spec/UML/20131001 identifie la révision UML 2.5 sélectionnée dans R-200. L'inventaire v2 applique uniquement les règles normatives suivantes :
+L'espace de noms source https://www.omg.org/spec/UML/20131001 identifie la révision UML 2.5 sélectionnée dans R-220. L'inventaire v2 applique uniquement les règles normatives suivantes :
 
 - UML 2.5 §7.8.8.7 : MultiplicityElement.lowerBound() et upperBound() retournent 1 lorsque la ValueSpecification correspondante est absente ou que sa valeur typée est nulle.
 - UML 2.5 §8.6.9.4 : une valeur sérialisée omise pour LiteralInteger.value utilise la valeur par défaut du métamodèle, 0.

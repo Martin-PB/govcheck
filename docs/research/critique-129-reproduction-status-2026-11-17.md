@@ -162,6 +162,8 @@ A separate branch, [`work/fix-reference-integrity-repo-wide-markdown`](https://g
 - five regression tests, including an end-to-end temporary-repository fixture that checks an external formal-document backlink through the catalogue validator.
 
 This correction is **staged but not executed**. It has not been merged into PR #133 and no Actions workflow was triggered. The branch is based on PR #133's old head, not current `main`; integration must first account for the PR's divergence from the current base. No green status is claimed.
+A current-main equivalent is now also staged on [`work/fix-reference-integrity-repo-wide-main`](https://github.com/Martin-PB/govcheck/tree/work/fix-reference-integrity-repo-wide-main), with the same checker correction and five regression tests. This main-based branch is the preferred candidate for an independent PR; the PR-head-based branch above remains useful only as a direct comparison against #133's failing tree. Neither branch has been executed or merged.
+
 
 
 ### 6.2 Current-main evaluator source-reference recognition

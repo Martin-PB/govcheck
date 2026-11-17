@@ -96,10 +96,13 @@ class RepositoryMarkdownPathTests(unittest.TestCase):
                 stack.enter_context(patch.object(CHECK, "WARNINGS", []))
                 self.assertEqual(CHECK.check_references(external=False), 0)
 
-                # Once a French counterpart exists, the French catalogue must
-                # stop using the English fallback and point to that counterpart.
-                (formal / "README.fr.md").write_text(
-                    "# Cohérence Lean\n\nVoir [R-01](../../docs/references.fr.md#r-01).\n",
+                # Once a French counterpart exists, the French catalogue
+                # must not keep pointing to the English-only fallback.
+                (docs / "references.fr.md").write_text(
+                    fr_catalogue.replace(
+                        "../formal/lean/README.fr.md",
+                        "../formal/lean/README.md",
+                    ),
                     encoding="utf-8",
                 )
                 self.assertEqual(CHECK.check_references(external=False), 1)

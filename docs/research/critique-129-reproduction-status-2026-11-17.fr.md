@@ -159,7 +159,7 @@ Une branche distincte, [`work/fix-reference-integrity-repo-wide-markdown`](https
 
 - une identité de document relative à la racine du dépôt, afin que les backlinks vers `formal/lean/README.md` ne déclenchent plus `ValueError` ;
 - la découverte des fichiers Markdown rédigés dans le dépôt, en excluant le miroir du paquet installé `govcheck/` et les répertoires générés/cache, afin que les sources externes à `docs/` participent au contrôle réciproque des citations ;
-- cinq tests de régression, dont un scénario de dépôt temporaire de bout en bout vérifiant un backlink vers un document formel externe à travers le validateur du catalogue.
+- six tests de régression, dont des scénarios de dépôt temporaire de bout en bout pour les documents externes bilingues et pour les sources uniquement anglaises citées comme solution de repli par le catalogue français.
 
 Cette correction est **préparée mais non exécutée**. Elle n'a pas été fusionnée dans la PR #133 et aucun workflow Actions n'a été déclenché. La branche part de l'ancienne tête de la PR #133, pas du `main` courant ; l'intégration doit d'abord tenir compte de la divergence de la PR par rapport à sa base actuelle. Aucun statut vert n'est revendiqué.
 

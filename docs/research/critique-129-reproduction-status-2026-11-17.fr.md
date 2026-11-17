@@ -112,6 +112,18 @@ Une branche distincte, [`work/fix-reference-integrity-repo-wide-markdown`](https
 
 Cette correction est **préparée mais non exécutée**. Elle n'a pas été fusionnée dans la PR #133 et aucun workflow Actions n'a été déclenché. La branche part de l'ancienne tête de la PR #133, pas du `main` courant ; l'intégration doit d'abord tenir compte de la divergence de la PR par rapport à sa base actuelle. Aucun statut vert n'est revendiqué.
 
+
+### 6.2 Reconnaissance des références par l'évaluateur de main
+
+Une seconde branche, [`work/fix-govcheck-sources-present-rule`](https://github.com/Martin-PB/govcheck/tree/work/fix-govcheck-sources-present-rule), part du `main` courant et corrige les six constats de section de sources de l'évaluateur report-only :
+
+- accepter les titres Markdown numérotés, par exemple `## 17. References`, comme sections de références ;
+- ajouter des sections explicites de références au catalogue dans les décisions 0008 et 0009 EN/FR, en réutilisant leurs sources R-05/R-22/R-194–R-196 et R-114–R-122 déjà présentes ;
+- conserver la liste complète des liens au catalogue du dossier de métamodèle à l'intérieur de sa section Références numérotée en transformant le titre suivant en sous-titre ;
+- ajouter un test de régression pour un titre de références numéroté.
+
+L'expression régulière exacte a fait l'objet d'une vérification locale isolée sur cinq formes de titres (anglais/français, numérotés ou non) ; il ne s'agit **pas** de l'exécution de la suite de tests du dépôt. La branche n'a pas été exécutée comme candidat complet, n'a pas été fusionnée et n'a déclenché aucun workflow Actions.
+
 ## 7. Reproductions restantes
 
 Le livrable demandé par #130 n'est pas terminé. Il reste à :

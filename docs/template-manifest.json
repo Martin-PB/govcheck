@@ -73,9 +73,15 @@
     "docs/specifications/0006-governance-revision-applicability.md": {
       "optional": [
         "References"
+      ],
+      "meta_only": [
+        "7.4 Exact governance-context binding across evaluation and authorization"
       ]
     },
     "docs/specifications/0006-governance-revision-applicability.fr.md": {
+      "meta_only": [
+        "7.4 Liaison exacte du contexte de gouvernance entre évaluation et autorisation"
+      ],
       "optional": [
         "Références"
       ]

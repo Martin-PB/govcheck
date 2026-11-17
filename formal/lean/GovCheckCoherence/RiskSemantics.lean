@@ -40,9 +40,11 @@ structure ProbabilityInterval where
     The outcome space and the normalization equation are explicit. -/
 structure FiniteProbabilityDistribution (Outcome : Type) where
   outcomeSpace : List Outcome
+  outcomeSpaceNonempty : outcomeSpace ≠ []
   denominator : Nat
   weights : List (Outcome × Nat)
   denominatorPositive : 0 < denominator
+  weightsSupported : ∀ item, item ∈ weights → item.1 ∈ outcomeSpace
   normalized :
     weights.foldl (fun total item => total + item.2) 0 = denominator
 
@@ -312,7 +314,7 @@ theorem assumed_risk_is_not_assessment
 
 theorem assumed_risk_is_not_acceptance
     (assumed : AssumedRisk) (acceptance : RiskAcceptance) :
-    DecisionRiskObject.assumedRisk ≠
+    DecisionRiskObject.assumedRisk assumed ≠
       DecisionRiskObject.acceptance acceptance := by
   intro h
   cases h

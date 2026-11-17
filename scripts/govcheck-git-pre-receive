@@ -143,6 +143,8 @@ def run_pre_receive(input_text: str, env=None, runner=subprocess.run):
     """Return (exit_code, messages); runner is injectable for protocol tests."""
     env = dict(os.environ if env is None else env)
     protected = _patterns(env)
+    if not protected:
+        return 1, ["reject: GOVCHECK_PROTECTED_REFS must configure at least one protected ref pattern"]
     allow_risk = env.get("GOVCHECK_ALLOW_ACCEPTED_WITH_RISK", "").lower() in {"1", "true", "yes"}
     updates = []
     messages = []

@@ -103,16 +103,17 @@ These are formalization requirements derived from the recorded selections; they 
 
 ## 4. Coverage of the bounded formal models and explicit gaps
 
-The formal artifacts are **separate finite abstractions**, not one integrated model and not a refinement proof:
+The formal artifacts are **five separate finite abstractions**, not one integrated model and not a refinement proof:
 
 - **Applicability and prior authority — [Architecture 0031](../architecture/0031-first-tlc-governance-applicability.md), PR #90:** decision/effective-position binding, prior applicable authority and bounded historical preservation; 20,785 generated / 18,067 distinct states.
 - **Canonical publication — [Architecture 0032](../architecture/0032-canonical-publication-model-checking.md), PR #96:** captured-head evaluation, authorization binding, distinct publication effect, stale-authorization rejection, revision/predecessor uniqueness and one publication per canonical predecessor; 84,307 generated / 56,895 distinct states, eight invariants and `AppendOnly` passed.
 - **Evaluator/exception/revocation controls — [Architecture 0033](../architecture/0033-governance-evaluator-exception-revocation-model.md), PR #98:** prior evaluator authority, comparative-only shadow results, distinct blocking `Unknown`/`Conflict`, bounded/revocable exceptions and non-derogable requirements, prospective revocation, separate historical requalification and stale-authorization rejection; 2,826,117 generated / 1,026,484 distinct states, nine invariants and `AppendOnly` passed.
+- **Governance-context binding — [Architecture 0036](../architecture/0036-governance-revision-context-binding-model.md), PR #145:** exact authority-policy revision, evaluator identity/revision, specification identity/revision and profile identity/revision bound to the applicable governance revision and preserved through evaluation, authorization and later publication; 486,289 generated/distinct states, twelve invariants and `AppendOnly` passed. This is a cross-model binding projection, not an integrated state machine or implementation refinement.
 - **Journal recovery/rollback — [Architecture 0035](../architecture/0035-canonical-journal-recovery-model.md), PR #99:** abstract durable-append commit point, crash before/after commit, replay-to-head, rollback as a new event/revision restoring earlier content, and passive Git/Pijul replica observations; 178,549 generated / 38,434 distinct states, six invariants and `AppendOnly` passed. It assumes one serialized writer and abstracts upstream authorization; its weak-fairness assumption is not a checked eventual-recovery liveness result.
 
 [Specification 0007](../specifications/0007-canonical-governance-journal-protocol.md) is a proposed semantic contract for compare-and-append, linearization, durable receipts, idempotent retry, journal scope/genesis, VCS provenance-only adapters, replica reconciliation and twelve conformance scenarios. It is not itself model-checked as a whole or implemented.
 
-**Integration status:** PRs #90, #96 and #98 are merged into `main`. GitHub marked PR #99 merged into the former PR #98 work branch, not into `main`; PRs #100 and #104 remain open and stacked. The journal-recovery model and Specification 0007 must therefore not be described as already integrated into `main`. This review candidate carries that work toward `main`.
+**Integration status:** PRs #90, #96 and #98 are merged into `main`. PRs #99, #100 and #104 were closed as merged into their respective predecessor work branches rather than directly into `main`; their resulting journal-recovery/protocol artifacts are now present on current `main` after subsequent integration. Their original merge targets remain distinct from `main`.
 
 ### Remaining gaps
 

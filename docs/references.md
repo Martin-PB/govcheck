@@ -1535,6 +1535,7 @@
 - **Relevant clauses:** §7.8.8.7 defines `MultiplicityElement.lowerBound()` and `upperBound()`, including the fallback value 1 when the corresponding value specification or typed value is absent; §8.6.9.4 defines `LiteralInteger.value` default 0; §8.6.14.4 defines `LiteralUnlimitedNatural.value` default 0; §8.6.10 defines `LiteralNull`.
 - **Use in GovCheck:** supplies the exact UML 2.5 rules used to interpret the omitted literal values in the pinned SACM 2.4 Beta 1 XMI. The parser records both the raw value specification and the effective multiplicity, including the rule responsible for a default.
 - **Limit:** only the stated literal/default cases are implemented. Arbitrary `ValueSpecification` expressions, OCL evaluation, full UML/MOF well-formedness and parser refinement remain outside this increment.
+<a id="r-221"></a>
 ### R-221 — GitHub rulesets and protected-branch checks
 - **Type:** Primary platform documentation.
 - **Primary sources:** [About rulesets](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets) · [Available rules](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/available-rules-for-rulesets) · [Protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches).
@@ -1542,6 +1543,7 @@
 - **Limit:** any person or integration with write permission can set a status unless an expected App source is selected. Rulesets do not prove verifier correctness or remove administrator/bypass authority.
 - **Cited by:** [Architecture 0037](architecture/0037-acceptance-boundary-and-enforcement-adapters.md), [acceptance-boundary research](research/acceptance-boundary-enforcement-2026-11.md).
 
+<a id="r-222"></a>
 ### R-222 — GitLab protected branches and external status checks
 - **Type:** Primary platform documentation.
 - **Primary sources:** [Protected branches](https://docs.gitlab.com/user/project/repository/branches/protected/) · [External status checks](https://docs.gitlab.com/user/project/merge_requests/status_checks/) · [Merge checks](https://docs.gitlab.com/user/project/merge_requests/merge_checks/).
@@ -1549,6 +1551,7 @@
 - **Limit:** external status checks are tier-dependent (GitLab Ultimate) and require a service endpoint; platform status is not GovCheck evidence provenance.
 - **Cited by:** [Architecture 0037](architecture/0037-acceptance-boundary-and-enforcement-adapters.md), [acceptance-boundary research](research/acceptance-boundary-enforcement-2026-11.md).
 
+<a id="r-223"></a>
 ### R-223 — Gitea protected branches and status checks
 - **Type:** Primary platform documentation (Gitea 1.27).
 - **Primary source:** [Protected branches](https://docs.gitea.com/1.27/usage/access-control/protected-branches/).
@@ -1556,6 +1559,7 @@
 - **Limit:** Gitea-specific; a status context name alone does not authenticate the verifier or prove evidence provenance.
 - **Cited by:** [Architecture 0037](architecture/0037-acceptance-boundary-and-enforcement-adapters.md), [acceptance-boundary research](research/acceptance-boundary-enforcement-2026-11.md).
 
+<a id="r-224"></a>
 ### R-224 — Forgejo Actions security and workflow trust boundaries
 - **Type:** Primary platform security guidance.
 - **Primary source:** [Securing Forgejo Actions deployments](https://forgejo.org/docs/latest/admin/actions/security/).
@@ -1563,6 +1567,7 @@
 - **Limit:** security guidance for Forgejo Actions, not a general acceptance-attestation protocol.
 - **Cited by:** [Architecture 0037](architecture/0037-acceptance-boundary-and-enforcement-adapters.md), [acceptance-boundary research](research/acceptance-boundary-enforcement-2026-11.md).
 
+<a id="r-225"></a>
 ### R-225 — Git server and client hooks
 - **Type:** Primary VCS documentation.
 - **Primary source:** [Git hooks](https://git-scm.com/docs/githooks).
@@ -1570,6 +1575,7 @@
 - **Limit:** the hook and trusted verifier must be installed outside the candidate tree by the server administrator. Direct filesystem/ref manipulation or administrator replacement remains outside its guarantee.
 - **Cited by:** [Architecture 0037](architecture/0037-acceptance-boundary-and-enforcement-adapters.md), [acceptance-boundary research](research/acceptance-boundary-enforcement-2026-11.md).
 
+<a id="r-226"></a>
 ### R-226 — Pijul local hooks and Nest contribution workflow
 - **Type:** Primary VCS documentation.
 - **Primary sources:** [Pijul configuration and hooks](https://pijul.org/manual/configuration.html) · [Contributing on the Nest](https://pijul.org/manual/the_nest/contributing).

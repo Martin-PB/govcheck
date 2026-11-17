@@ -48,7 +48,7 @@ NoRisk ==
       verifier |-> NoValue,
       authority |-> NoValue,
       reason |-> NoValue,
-      expiresAt |-> NoValue ]
+      expiresAt |-> 0 ]
 
 NoDecision ==
     [ status |-> DecisionNone,
@@ -365,7 +365,7 @@ TypeOK ==
     /\ risk.verifier \in Verifiers \cup {NoValue}
     /\ risk.authority \in {RootAuthority, NoValue}
     /\ risk.reason \in RiskReasons \cup {NoValue}
-    /\ risk.expiresAt \in ((0..MaxTick) \cup {NoValue})
+    /\ risk.expiresAt \in 0..MaxTick
     /\ decision.status \in {DecisionNone, DecisionPass, DecisionBlocked, DecisionRisk, DecisionStale}
     /\ decision.candidate \in Candidates \cup {NoValue}
     /\ decision.base \in Bases \cup {NoValue}

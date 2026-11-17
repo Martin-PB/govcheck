@@ -118,6 +118,24 @@ L'arbre courant contient huit couples `.tla`/`.cfg`. Le workflow réutilisable �
 | `GovCheckJournalRecovery` | 2 contenus, 2 identifiants de révision, 2 identifiants d'événement, `MaxEvents=2`, répliques Git et Pijul | TypeOK ; unicité des événements/révisions, continuité position/prédécesseur, rollback comme nouvel événement, observation VCS non autoritative et état appliqué durable ; `AppendOnly`. |
 | `GovCheckLifecycle` | 2 acteurs, 1 approbation requise, historique limité à 12 ; 2 bases, candidats, révisions de gouvernance et spécifications ; 2 types d'obligation | 12 invariants portant sur les types, la sûreté d'acceptation/application, la fraîcheur, les liaisons de preuve/résultat/approbation, l'absence d'application implicite et la discipline de blocage ; propriété temporelle `TerminalDiscipline`. |
 
+
+### Dernières exécutions TLC réussies observées (historiques, pas sur le SHA audité)
+
+Les huit couples de modèles configurés possèdent chacun au moins une exécution TLC historique réussie dans l'historique des workflows de la branche main. Les journaux indiquent TLC 2.19 (révision `5a47802`), Java 17.0.21+9, « Model checking completed. No error has been found » et zéro état restant dans la file. Les nombres d'états ci-dessous sont **générés / distincts** :
+
+| Modèle | Date et commit source du run | États générés / distincts | Exécution existante |
+|---|---|---:|---|
+| `CICheckRouting` | 2026-11-08, `0f3e402d` | 65 536 / 32 768 | [TLC routage](https://github.com/Martin-PB/govcheck/actions/runs/42486714556) |
+| `GovCheckAssurance` | 2026-11-08, `0f3e402d` | 11 069 137 / 347 424 | [TLC assurance](https://github.com/Martin-PB/govcheck/actions/runs/42486714637) |
+| `GovCheckLifecycle` | 2026-11-08, `0f3e402d` | 132 412 944 / 24 922 992 | [TLC cycle de vie](https://github.com/Martin-PB/govcheck/actions/runs/42486714619) |
+| `GovCheckAuthority` | 2026-11-10, `934000a7` | 13 / 13 | [TLC autorité](https://github.com/Martin-PB/govcheck/actions/runs/42816437925) |
+| `GovCheckGovernanceApplicability` | 2026-11-13, `6c70d4f1` | 20 785 / 18 067 | [Workflow TLC applicabilité](https://github.com/Martin-PB/govcheck/actions/runs/43435417792) |
+| `GovCheckCanonicalPublication` | 2026-11-13, `6c70d4f1` | 178 549 / 38 434 | [Workflow TLC publication](https://github.com/Martin-PB/govcheck/actions/runs/43435417792) |
+| `GovCheckGovernanceControls` | 2026-11-13, `6c70d4f1` | 2 826 117 / 1 026 484 | [Workflow TLC contrôles](https://github.com/Martin-PB/govcheck/actions/runs/43435417792) |
+| `GovCheckJournalRecovery` | 2026-11-13, `6c70d4f1` | 84 307 / 56 895 | [Workflow TLC reprise du journal](https://github.com/Martin-PB/govcheck/actions/runs/43435417792) |
+
+Il s'agit d'éléments historiques de model checking significatifs, plus solides que la simple présence de fichiers de configuration. Ils restent toutefois attachés à trois révisions antérieures des sources, pas à `f27697d` ; ils ne démontrent pas que les modèles/configurations exacts du main courant ont été vérifiés, ni le raffinement vers l'implémentation ou une assurance globale.
+
 L'inspection des hypothèses de fairness apporte une nuance importante : seul `GovCheckJournalRecovery` ajoute explicitement `WF_vars(Recover)` ; les sept autres définitions de `Spec` utilisent `Init /\ [][Next]_vars` sans hypothèse explicite `WF_` ou `SF_`. Les propriétés temporelles configurées ne doivent donc pas être reformulées comme des garanties générales de progrès pour des actions auxquelles aucune hypothèse de fairness ne s'applique.
 
 **Constat sur le filtre de chemins du workflow :** `.github/workflows/ci-routing-model.yml` inclut `.github/workflows/tla-model-reusable.yml` dans `pull_request.paths`, mais l'omet de `push.paths`. Un push direct sur `main` qui modifie le runner TLC partagé ne déclenche donc pas le modèle `CICheckRouting`, alors que les autres workflows d'entrée des modèles incluent le workflow réutilisable dans leurs deux filtres. Il s'agit d'une lacune ciblée de couverture, pas d'un indice d'erreur du modèle lui-même. Une correction d'une ligne est préparée sur [`work/fix-ci-routing-reusable-push-trigger`](https://github.com/Martin-PB/govcheck/tree/work/fix-ci-routing-reusable-push-trigger) ; elle n'a été ni exécutée ni fusionnée.

@@ -5,6 +5,8 @@ on:
     paths:
       - 'formal/tla/GovCheckGovernanceApplicability.tla'
       - 'formal/tla/GovCheckGovernanceApplicability.cfg'
+      - 'formal/tla/GovCheckGovernanceContextBinding.tla'
+      - 'formal/tla/GovCheckGovernanceContextBinding.cfg'
       - 'formal/tla/GovCheckCanonicalPublication.tla'
       - 'formal/tla/GovCheckCanonicalPublication.cfg'
       - 'formal/tla/GovCheckGovernanceControls.tla'
@@ -36,6 +38,11 @@ jobs:
     uses: ./.github/workflows/tla-model-reusable.yml
     with:
       model: GovCheckGovernanceApplicability
+
+  governance-context-binding:
+    uses: ./.github/workflows/tla-model-reusable.yml
+    with:
+      model: GovCheckGovernanceContextBinding
 
   canonical-publication:
     uses: ./.github/workflows/tla-model-reusable.yml

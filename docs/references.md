@@ -45,7 +45,7 @@
 | Repository intent, lifecycle and requirements engineering | R-114–R-118, R-121–R-122 |
 | System modeling and assurance-case metamodels | R-119–R-120 |
 | Metamodel coherence, semantic preservation and formal verification | R-123–R-127 |
-| Probabilistic assurance, fuzzy logic and state-transition models | R-193 |
+| Probabilistic assurance, fuzzy logic and state-transition models | R-193 |\n| Risk management and risk assessment process guidance | R-202 |
 | Concurrent edits, semantic merge conflicts and multi-agent delivery | R-142–R-151 |
 | Canonical journal ordering, durable recovery and idempotent retry | R-194–R-196 |
 | Software-engineering ontology networks and ontology-definition metamodels | R-200–R-201 |
@@ -74,7 +74,7 @@
 - **CRDTs, peer-to-peer transport and discovery:** R-45–R-50, R-66, R-87.
 - **Knowledge representation and linked-data interchange:** R-51–R-61, R-83–R-86.
 - **Native VCS semantics and collaboration adapters:** R-22.
-- **Threat modeling, attack paths and risk management:** R-27–R-32.
+- **Threat modeling, attack paths and risk management:** R-27–R-32.\n- **Risk management and risk-assessment techniques:** R-202.
 - **Goal-oriented requirements modeling:** R-44, R-92.
 - **Security assurance cases and metamodels:** R-33–R-34.
 - **PEAK decision model:** R-74.

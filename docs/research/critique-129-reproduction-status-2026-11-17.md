@@ -112,6 +112,18 @@ A separate branch, [`work/fix-reference-integrity-repo-wide-markdown`](https://g
 
 This correction is **staged but not executed**. It has not been merged into PR #133 and no Actions workflow was triggered. The branch is based on PR #133's old head, not current `main`; integration must first account for the PR's divergence from the current base. No green status is claimed.
 
+
+### 6.2 Current-main evaluator source-reference recognition
+
+A second branch, [`work/fix-govcheck-sources-present-rule`](https://github.com/Martin-PB/govcheck/tree/work/fix-govcheck-sources-present-rule), is based on current `main` and addresses the report-only evaluator's six source-section findings:
+
+- accept numbered Markdown headings such as `## 17. References` as References sections;
+- add explicit catalogue-backed References sections to the 0008 and 0009 EN/FR decision records, reusing their existing R-05/R-22/R-194–R-196 and R-114–R-122 sources;
+- keep the metamodel dossier's existing complete catalogue-link list inside its numbered References section by making the following heading a subheading;
+- add a regression test for a numbered References heading.
+
+The exact regex was sanity-checked locally against five heading forms (unnumbered and numbered English/French); this is **not** a run of the repository test suite. The branch has not been executed as a full candidate, has not been merged and has not triggered Actions.
+
 ## 7. Remaining reproduction work
 
 The deliverable requested by #130 is not complete. Still required:

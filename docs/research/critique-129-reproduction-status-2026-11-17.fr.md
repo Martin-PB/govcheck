@@ -1,7 +1,8 @@
 # État de reproduction de la critique externe #129 — 2026-11-17
 
-**Cible de l'audit :** `main` au commit `f27697dac4ceaa6245b6cd796646d7040b12c9b5`  
-**Arbre :** `3604f0e10765afebef6ea7308f94b488247ba8a8`  
+**Cible d'audit initiale :** `f27697dac4ceaa6245b6cd796646d7040b12c9b5` (arbre `3604f0e10765afebef6ea7308f94b488247ba8a8`)  
+**Cible d'actualisation du main :** `3228404631bb565fddd6d0fb5a52f75724fe24dd`  
+**Arbre du main actualisé :** `92920bfbcf6180c12729fc15e937672a92c7bb09`  
 **Chantier parent :** [Issue #130](https://github.com/Martin-PB/govcheck/issues/130)  
 **Critique source :** [Issue #129](https://github.com/Martin-PB/govcheck/issues/129)
 
@@ -259,4 +260,68 @@ Cette actualisation remplace toute formulation ci-dessus présentant `8e86027297
 
 Le workflow d'audit a été étendu avant exécution pour inclure le neuvième couple TLA+ présent, `GovCheckGovernanceContextBinding`, ainsi que les rapports d'axiomes explicites des tranches de composition des mappings de preuves, de composition des ponts et de sémantique typée du risque, en plus de l'audit de la racine de preuves existante. Cela évite d'omettre silencieusement les artefacts formels ajoutés après l'audit antérieur des huit modèles.
 
-**État au moment de la préparation du rapport :** en attente. Aucun PASS/FAIL n'est affirmé pour la cible actuelle. Les résultats ne seront ajoutés qu'à partir des journaux du workflow liés au checkout exact de cette PR, en consignant séparément le commit et l'arbre `main` parent. Une preuve Actions hébergée ne sera pas présentée comme une reproduction locale.
+**État de l'exécution :** terminé ; voir la section 11. Le marqueur « en attente » ci-dessus restitue la chronologie de préparation du rapport, pas l'état actuel.
+
+
+## 11. Reproduction finale sur le main actualisé — 2026-11-17
+
+### Identité exacte
+
+- Parent `main` figé : `3228404631bb565fddd6d0fb5a52f75724fe24dd` ; arbre : `92920bfbcf6180c12729fc15e937672a92c7bb09`.
+- Tête de la PR #151 : `422254e3b692e705f1f0788eb22edf52a56b480a` ; checkout exact de fusion audité : `b3e98bba92e626f8ee88fefd06b30e2a2b7c182d`.
+- Audit complet : [run 44137752200](https://github.com/Martin-PB/govcheck/actions/runs/44137752200) — **success**. Intégrité des références : [44137752107](https://github.com/Martin-PB/govcheck/actions/runs/44137752107) — **success**. Alignement des paquets : [44137752039](https://github.com/Martin-PB/govcheck/actions/runs/44137752039) — **success**.
+- La PR #151 ne modifie que le workflow d'audit et les deux rapports ; aucune implémentation, aucun modèle, aucune proposition Lean ni spécification normative évalués n'ont été modifiés.
+
+### Python et évaluateur exécutable
+
+- CPython 3.12.16 ; Git 2.56.1 ; **97 tests Python réussis**.
+- Références sur tout le dépôt : **162 entrées au catalogue, 161 citées, 158 fichiers Markdown, PASS avec 0 avertissement**.
+- Évaluateur GovCheck `0.4.0-slice`, sur le candidat `b3e98bba92e626f8ee88fefd06b30e2a2b7c182d` par rapport à `origin/main` : **overall UNKNOWN, code de sortie 1**. Licence, décisions bilingues, paires de manifeste, intégrité des références et présence des sources en PASS. Intégrité du bootstrap et fraîcheur TLA non applicables à ce diff d'audit. `independent-review` est UNKNOWN : aucune attestation humaine, issue d'une identité distincte de l'auteur et liée à la révision candidate, n'a été trouvée ; le rapport recense 20 décisions et zéro attestation.
+- Le workflow d'audit capture et téléverse ce résultat sans traiter le code non nul de l'évaluateur comme un échec des tests. **UNKNOWN n'est pas PASS.** Le workflow ordinaire de contrôle GovCheck reste report-only.
+
+### Neuf couples TLA+
+
+Les neuf analyses SANY et exécutions TLC se sont terminées avec « Model checking completed. No error has been found » et zéro état restant dans la file. Outils : TLA+ tools 1.7.4 (SHA-256 `936a262061c914694dfd669a543be24573c45d5aa0ff20a8b96b23d01e050e88`), TLC 2.19 révision `5a47802`, Temurin Java 17.0.21+9. Nombres générés/distincts :
+
+| Model | Generated / distinct states | Result |
+|---|---:|---|
+| CICheckRouting | 65,536 / 32,768 | PASS |
+| GovCheckAssurance | 11,069,137 / 347,424 | PASS |
+| GovCheckAuthority | 13 / 13 | PASS |
+| GovCheckCanonicalPublication | 84,307 / 56,895 | PASS |
+| GovCheckGovernanceApplicability | 20,785 / 18,067 | PASS |
+| GovCheckGovernanceContextBinding | 486,289 / 486,289 | PASS |
+| GovCheckGovernanceControls | 2,826,117 / 1,026,484 | PASS |
+| GovCheckJournalRecovery | 178,549 / 38,434 | PASS |
+| GovCheckLifecycle | 132,412,944 / 24,922,992 (5 min 07 s) | PASS |
+
+Le neuvième modèle, `GovCheckGovernanceContextBinding`, est désormais inclus dans la matrice d'audit réutilisable ; il a exploré 486 289 états distincts à la profondeur 8. Ces résultats sont des vérifications de modèles bornées, pas des preuves non bornées, une preuve d'adéquation des bornes ou une preuve de raffinement vers le runtime Python.
+
+### Lean 4.19 et CSLib
+
+- Le build du paquet Lean 4.19.0 a réussi. L'audit d'axiomes configuré a couvert **44 déclarations** sous `GovCheckCoherence.Proofs` ; toutes les dépendances étaient dans la liste `propext, Classical.choice, Quot.sound`.
+- Quatre rapports explicites ont été exécutés (principal, composition des mappings de preuves, composition des ponts, sémantique typée du risque) : **124 déclarations**, dont **8 dépendent de `propext`** et 116 ne déclarent aucune dépendance à des axiomes. Aucune déclaration du rapport de sémantique du risque ne dépend d'un axiome. Cela ne signifie pas que tout le dépôt est sans axiomes ni que l'implémentation Python satisfait ces propositions.
+- Sonde CSLib isolée : Lean 4.36.0-rc2 (commit `b35cb10cf2ced51a2fd1880cfdbf75c71ab7a35a`), CSLib épinglé sur `70e25828d89a3916e41c9d84cfffd7e6093bb1a0` ; `lake build CslibCompat` a réussi (**1 779 tâches**). Cela établit uniquement la compatibilité build/API de la sonde, pas un raffinement sémantique.
+
+### Qualification finale des constats 6.1–6.7
+
+| Constat | Qualification sur le main actualisé | Suite |
+|---|---|---|
+| 6.1 Modèle canonique exécutable | **Lacune d'implémentation confirmée.** La Specification 0002 reste proposée ; aucun schéma canonique ni évaluateur n'est implémenté. | Nécessite une décision gouvernée distincte sur le format/l'évaluateur ; cet audit ne choisit rien. |
+| 6.2 Journal canonique | **Partiellement confirmé.** La Specification 0007 définit un protocole logique détaillé mais reste proposée et non implémentée. Elle n'impose pas de base de données/service physiquement séparé. | Aucun moteur de stockage, service ou format filaire choisi. |
+| 6.3 Autorité / séparation des tâches | **Partiellement confirmé, avec nuance.** L'architecture 0023 adopte explicitement une autorité racine unique et accepte l'auto-autorisation comme risque résiduel ; elle ne prétend pas fournir une autorisation à deux personnes. | L'issue existante [#60](https://github.com/Martin-PB/govcheck/issues/60) suit la visibilité du risque résiduel. |
+| 6.4 Attestation de revue indépendante | **Faiblesse structurelle confirmée.** L'attestation est lue dans l'arbre candidat, doit contenir le SHA final du candidat (problème d'auto-référence), et l'identité du reviewer est une chaîne libre non authentifiée. | Issue existante [#44](https://github.com/Martin-PB/govcheck/issues/44). |
+| 6.5 Enforcement de l'acceptation CI | **Confirmé.** L'évaluateur retourne UNKNOWN/code 1 ; le workflow ordinaire masque l'échec avec `continue-on-error: true` et `|| true`. GitHub indique que `main` n'est pas protégée, que l'application des checks requis est désactivée et qu'aucun ruleset n'existe. Aucun contrôle effectif de la forge ne conditionne le merge au résultat. | Nouvelle [issue #152](https://github.com/Martin-PB/govcheck/issues/152) pour concevoir une frontière d'acceptation portable. Aucune protection de branche n'a été modifiée. |
+| 6.6 Mapping sémantique partiel | **Limitation contractuelle confirmée, désormais explicite.** `SemanticBridge.partialMapping` admet toujours un domaine vide. La [PR #137](https://github.com/Martin-PB/govcheck/pull/137), fusionnée, ajoute un contre-exemple de domaine vide vérifié par le noyau. Elle remplace aussi l'ancienne conclusion réflexive `proof = proof` par un `KernelCheckedDerivation` non vide contenant une preuve de la proposition cible exacte. | L'interdiction éventuelle des mappings partiels vides reste un choix contractuel non décidé. |
+| 6.7 Séparation physique du journal | **L'affirmation physique de la critique n'est pas étayée.** La Specification 0007 sépare les actes logiques mais autorise une transaction technique atomique unique ; elle n'exige pas d'infrastructure séparée. | Aucune architecture de séparation physique imposée. |
+
+### Limites formelles restantes
+
+1. Les invariants de sûreté et l'exploration bornée ne démontrent pas la vivacité générale ni la disponibilité sans hypothèses de fairness/environnement adaptées. Seul `GovCheckJournalRecovery` ajoute explicitement `WF_vars(Recover)`.
+2. Les neuf modèles TLA+ restent des modèles bornés distincts. Le modèle de liaison du contexte ajoute une tranche utile, mais aucun raffinement intégré entre modèles ou vers le runtime Python n'est établi.
+3. La faiblesse précise de l'égalité réflexive dans `kind_mapping_rule_theorem_proof_requires_derivation` a été corrigée par la PR #137 fusionnée. Les autres résultats Lean restent des projections/conséquences de constructeurs ; les rapports d'axiomes limités ne prouvent pas la conformité du runtime.
+4. `govcheck/check.py` implémente toujours huit règles (licence, décisions bilingues, paires de manifeste, références, présence des sources, intégrité du bootstrap, fraîcheur TLA et attestation de revue indépendante). Il n'implémente pas le cycle de vie canonique, le registre d'autorité, le protocole de journal, la sémantique du risque/des décisions ni les contrats complets d'assurance intermodèles.
+
+### Disposition
+
+Les PR #137 (contre-exemple de mapping et théorème renforcé) et #138 (workflow d'audit réutilisable) sont fusionnées. La PR #150 (sémantique typée du risque) est fusionnée. La PR #151 contient uniquement cette actualisation, l'ajout du neuvième modèle TLC, les rapports Lean explicites et la capture de l'évaluateur ; elle est ouverte pour revue et n'a pas été fusionnée. La reproduction hébergée est terminée ; aucune reproduction locale distincte n'a été effectuée. La critique n'est ni acceptée ni rejetée en bloc : des lacunes d'implémentation/enforcement sont confirmées, certaines affirmations sont nuancées et certaines faiblesses formelles ont depuis été corrigées. Aucune spécification normative, aucun régime d'autorité, aucun paramètre de protection de branche ni aucune politique d'acceptation n'a été modifié.

@@ -63,6 +63,7 @@ Le dépôt contient déjà une architecture candidate substantielle :
 
 - [Issue #73](https://github.com/Martin-PB/govcheck/issues/73) est l'élément principal de vérification des contrats sémantiques entre intention, exigences, architecture, cycle de vie, assurance et autorité.
 - [Issue #69](https://github.com/Martin-PB/govcheck/issues/69) traite les chaînes de justification des claims et la préservation des méthodes, hypothèses et limites.
+- [Issue #131](https://github.com/Martin-PB/govcheck/issues/131) traite les sémantiques distinctes de la probabilité, de l'appartenance floue, de l'incertitude et du risque assumé. L'[addendum de recherche bilingue décision/risque](../research/decision-and-assumed-risk-crosscutting-2026-11.fr.md) précise que les décisions sont des objets transversaux du graphe et distingue risque assumé PEAK, évaluation, traitement, risque résiduel et acceptation autorisée.
 - [Issue #74](https://github.com/Martin-PB/govcheck/issues/74) traite le statut des références, leur provenance et leur traçabilité vérifiable.
 - [Issue #79](https://github.com/Martin-PB/govcheck/issues/79) est le conteneur de portefeuille assurance/évaluation ; ses enfants conservent chacun leur périmètre.
 - [Issue #81](https://github.com/Martin-PB/govcheck/issues/81) est le conteneur des méthodes formelles et du cycle de vie.
@@ -382,6 +383,6 @@ Documents internes de conception : Architectures 0013, 0022, 0023, 0027 ; Spéci
 
 
 
-## Liens complets vers le catalogue des sources
+### Liens complets vers le catalogue des sources
 
 [R-05](../references.fr.md#r-05) · [R-33](../references.fr.md#r-33) · [R-34](../references.fr.md#r-34) · [R-44](../references.fr.md#r-44) · [R-51](../references.fr.md#r-51) · [R-52](../references.fr.md#r-52) · [R-53](../references.fr.md#r-53) · [R-54](../references.fr.md#r-54) · [R-55](../references.fr.md#r-55) · [R-71](../references.fr.md#r-71) · [R-73](../references.fr.md#r-73) · [R-74](../references.fr.md#r-74) · [R-88](../references.fr.md#r-88) · [R-92](../references.fr.md#r-92) · [R-93](../references.fr.md#r-93) · [R-94](../references.fr.md#r-94) · [R-95](../references.fr.md#r-95) · [R-96](../references.fr.md#r-96) · [R-97](../references.fr.md#r-97) · [R-98](../references.fr.md#r-98) · [R-99](../references.fr.md#r-99) · [R-100](../references.fr.md#r-100) · [R-102](../references.fr.md#r-102)

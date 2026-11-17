@@ -9,7 +9,7 @@
 | Dossiers d'assurance de sécurité et métamodèles | R-04, R-33–R-34 |
 | Modèle de décision PEAK | R-74 |
 | Surveillance continue et assurance à l'exécution | R-70, R-72, R-75–R-76 |
-| Assurance 2.0, évolution de SACM et audits d'implémentation | R-71, R-73, R-128, R-197, R-198, R-199 |
+| Assurance 2.0, évolution de SACM et audits d'implémentation | R-71, R-73, R-128, R-197–R-199 |
 | Régimes d'assurance et exigences orientées objectifs | R-35–R-36, R-44, R-92 |
 | Model checking et vérification de programmes candidates | R-05, R-20, R-37–R-43, R-89–R-91 |
 | Provenance des preuves et chaîne d'approvisionnement logicielle | R-06–R-08 |
@@ -54,9 +54,10 @@
 | Intention du dépôt, cycle de vie et ingénierie des exigences | R-114–R-118, R-121–R-122 |
 | Modélisation des systèmes et métamodèles de dossiers d'assurance | R-119–R-120 |
 | Cohérence du métamodèle, préservation sémantique et vérification formelle | R-123–R-127 |
-| Assurance probabiliste, logique floue et modèles à transitions d'états | R-193 |
+| Assurance probabiliste, logique floue et modèles à transitions d'états | R-193 |\n| Guides de management et d'appréciation du risque | R-202 |
 | Modifications concurrentes, conflits sémantiques et livraison multi-agents | R-142–R-151 |
 | Ordre du journal canonique, reprise durable et nouvelles tentatives idempotentes | R-194–R-196 |
+| Réseaux d'ontologies du génie logiciel et métamodèles de définition d'ontologies | R-200–R-201 |
 
 ## Entrées bibliographiques détaillées
 
@@ -84,7 +85,7 @@
 - **CRDT, transport pair-à-pair et découverte :** R-45–R-50, R-66, R-87.
 - **Représentation des connaissances et échange de données liées :** R-51–R-61, R-83–R-86.
 - **Sémantiques natives des VCS et adaptateurs de collaboration :** R-22.
-- **Modélisation des menaces, chemins d'attaque et gestion des risques :** R-27 à R-32.
+- **Modélisation des menaces, chemins d'attaque et gestion des risques :** R-27 à R-32.\n- **Management du risque et techniques d'appréciation :** R-202.
 - **Modélisation des exigences orientée objectifs :** R-44, R-92.
 - **Dossiers d'assurance de sécurité et métamodèles :** R-33 à R-34.
 - **Modèle de décision PEAK :** R-74.
@@ -97,6 +98,7 @@
 - **Emplacement des workflows GitHub Actions :** R-107.
 - **Licences open source et attribution :** R-108.
 - **Assurance probabiliste, logique floue et modèles à transitions d'états :** R-193.
+- **Réseaux d'ontologies du génie logiciel et métamodèles de définition d'ontologies :** R-200–R-201.
 ## Normes, recommandations publiques et spécifications industrielles
 
 <a id="r-01"></a>
@@ -587,7 +589,7 @@
 
 <a id="r-52"></a>
 ### R-52 — Modèle de données RDF 1.1
-- **Cité par :** [0002-study-placement](decisions/0002-study-placement.fr.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.fr.md)
+- **Cité par :** [0002-study-placement](decisions/0002-study-placement.fr.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.fr.md), [Évaluation du réemploi des ontologies du métamodèle](research/metamodel-ontology-reuse-assessment.fr.md)
 
 - **Source primaire :** [Concepts et syntaxe abstraite W3C RDF 1.1](https://www.w3.org/TR/rdf11-concepts/) · [Guide d'introduction W3C RDF](https://www.w3.org/TR/rdf-primer/)
 - **Concepts pertinents :** modèle de graphes et jeux de données fondé sur des triplets sujet–prédicat–objet et des IRI.
@@ -596,7 +598,7 @@
 
 <a id="r-53"></a>
 ### R-53 — SKOS
-- **Cité par :** [0002-study-placement](decisions/0002-study-placement.fr.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.fr.md)
+- **Cité par :** [0002-study-placement](decisions/0002-study-placement.fr.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.fr.md), [Évaluation du réemploi des ontologies du métamodèle](research/metamodel-ontology-reuse-assessment.fr.md)
 
 - **Source primaire :** [Référence W3C SKOS](https://www.w3.org/TR/skos-reference/)
 - **Concepts pertinents :** concepts identifiés par URI, libellés, notations, schémas conceptuels, correspondances et relations sémantiques légères.
@@ -605,16 +607,16 @@
 
 <a id="r-54"></a>
 ### R-54 — Langage d'ontologie OWL 2
-- **Cité par :** [0002-study-placement](decisions/0002-study-placement.fr.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.fr.md)
+- **Cité par :** [0002-study-placement](decisions/0002-study-placement.fr.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.fr.md), [Vérification de cohérence du métamodèle](research/metamodel-coherence-verification.fr.md), [Évaluation du réemploi des ontologies du métamodèle](research/metamodel-ontology-reuse-assessment.fr.md)
 
-- **Source primaire :** [Spécification structurelle et syntaxe fonctionnelle W3C OWL 2](https://www.w3.org/TR/owl-syntax/) · [Vue d'ensemble W3C OWL 2](https://www.w3.org/TR/owl-overview/)
+- **Sources primaires :** [Spécification structurelle et syntaxe fonctionnelle W3C OWL 2](https://www.w3.org/TR/owl-syntax/) · [Vue d'ensemble W3C OWL 2](https://www.w3.org/TR/owl-overview/) · [Sémantique directe OWL 2, deuxième édition](https://www.w3.org/TR/owl2-direct-semantics/) · [Conformité OWL 2, deuxième édition](https://www.w3.org/TR/owl2-conformance/)
 - **Concepts pertinents :** sémantique formellement définie pour classes, propriétés, individus et axiomes d'ontologie.
 - **Utilité pour GovCheck :** couche sémantique candidate discutée aux côtés de RDF et SKOS dans l'étude d'intégration.
 - **Limite :** le raisonnement OWL ne valide pas toutes les contraintes de données applicatives, ne préserve pas automatiquement toutes les propriétés des sources et ne fournit ni workflow, ni contrôle d'accès, ni synchronisation.
 
 <a id="r-55"></a>
 ### R-55 — SHACL
-- **Cité par :** [0002-study-placement](decisions/0002-study-placement.fr.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.fr.md)
+- **Cité par :** [0002-study-placement](decisions/0002-study-placement.fr.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.fr.md), [Évaluation du réemploi des ontologies du métamodèle](research/metamodel-ontology-reuse-assessment.fr.md)
 
 - **Source primaire :** [W3C Shapes Constraint Language (SHACL)](https://www.w3.org/TR/shacl/)
 - **Concepts pertinents :** validation de graphes RDF selon des formes et contraintes déclarées.
@@ -785,7 +787,7 @@
 
 <a id="r-74"></a>
 ### R-74 — Hoover, Rosso-Llopart et Taran, *Evaluating Project Decisions: Case Studies in Software Engineering* (2009/2010)
-- **Cité par :** [0013-governance-metamodel](architecture/0013-governance-metamodel.fr.md), [0021-assurance-claims-and-freshness](architecture/0021-assurance-claims-and-freshness.fr.md), [0025-runtime-observations-peak-and-sacm](architecture/0025-runtime-observations-peak-and-sacm.fr.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.fr.md), [intent-impact-analysis](intent-impact-analysis.fr.md), [audit de couverture sémantique du métamodèle](research/metamodel-semantic-coverage-audit.fr.md)
+- **Cité par :** [0013-governance-metamodel](architecture/0013-governance-metamodel.fr.md), [0021-assurance-claims-and-freshness](architecture/0021-assurance-claims-and-freshness.fr.md), [0025-runtime-observations-peak-and-sacm](architecture/0025-runtime-observations-peak-and-sacm.fr.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.fr.md), [intent-impact-analysis](intent-impact-analysis.fr.md), [audit de couverture sémantique du métamodèle](research/metamodel-semantic-coverage-audit.fr.md), [Recherche décision et risque assumé](research/decision-and-assumed-risk-crosscutting-2026-11.fr.md), [Journal des événements du portefeuille](work-portfolio/events.fr.md)
 - **Sources primaires :** [Section PEAK du chapitre 1 (InformIT)](https://www.informit.com/articles/article.aspx?p=1409781&seqNum=3) · [Page du livre chez l'éditeur O’Reilly](https://www.oreilly.com/library/view/evaluating-project-decisions/9780321685629/)
 - **Référence bibliographique :** Carol L. Hoover, Mel Rosso-Llopart et Gil Taran, Addison-Wesley Professional, première publication en octobre 2009 (copyright 2010), ISBN 978-0-321-54456-8 ; le chapitre 1, §1.3 présente le modèle de décision PEAK.
 - **Concepts pertinents :** Problem, Experience, Assumptions et Knowledge comme entrées de la décision ; un processus de décision produit une solution et un risque assumé.
@@ -1033,8 +1035,8 @@
 
 <a id="r-104"></a>
 ### R-104 — Formats d'instructions pour agents et workflows pilotés par les spécifications
-- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md) · [Analyse d'impact de l'intention](intent-impact-analysis.fr.md)
-- **Sources primaires :** [Format ouvert AGENTS.md](https://agents.md/) · [Référence des instructions personnalisées de VS Code](https://code.visualstudio.com/docs/agents/reference/custom-instructions-reference) · [Sécurité du développement assisté par IA dans VS Code](https://code.visualstudio.com/docs/agents/run/security) · [Hooks d'agents dans VS Code](https://code.visualstudio.com/docs/agent-customization/hooks) · [Approbations et permissions dans VS Code](https://code.visualstudio.com/docs/agents/run/approvals) · [Instructions de projet et prise en charge d'AGENTS.md dans Claude Code](https://code.claude.com/docs/en/memory) · [Guide Codex sur les workflows de développement](https://developers.openai.com/cookbook/examples/codex/iterating-development-workflows-with-codex) · [Dépôt GitHub Spec Kit](https://github.com/github/spec-kit) · [Documentation GitHub Spec Kit](https://github.github.com/spec-kit/)
+- **Cité par :** [ADR 0002](decisions/0002-study-placement.fr.md), [Adaptateur de portefeuille natif aux forges](architecture/0034-forge-native-portfolio-adapter.fr.md) · [Analyse d'impact de l'intention](intent-impact-analysis.fr.md)
+- **Sources primaires :** [Format ouvert AGENTS.md](https://agents.md/) · [Dépôt brain.md, mémoire d'agent native au dépôt](https://github.com/mindmuxai/brain.md) · [Référence des instructions personnalisées de VS Code](https://code.visualstudio.com/docs/agents/reference/custom-instructions-reference) · [Sécurité du développement assisté par IA dans VS Code](https://code.visualstudio.com/docs/agents/run/security) · [Hooks d'agents dans VS Code](https://code.visualstudio.com/docs/agent-customization/hooks) · [Approbations et permissions dans VS Code](https://code.visualstudio.com/docs/agents/run/approvals) · [Instructions de projet et prise en charge d'AGENTS.md dans Claude Code](https://code.claude.com/docs/en/memory) · [Guide Codex sur les workflows de développement](https://developers.openai.com/cookbook/examples/codex/iterating-development-workflows-with-codex) · [Dépôt GitHub Spec Kit](https://github.com/github/spec-kit) · [Documentation GitHub Spec Kit](https://github.github.com/spec-kit/)
 - **Concepts pertinents :** instructions d'agent partagées au niveau du dépôt ; règles de découverte et de chargement propres à chaque environnement ; consignes de projet et règles ciblées par chemin ; workflows pilotés par les spécifications produisant plans, tâches et résultats révisables.
 - **Utilité pour GovCheck :** conserve les options d'instructions inter-agents et de workflows pilotés par les spécifications évoquées pour le bootstrap des dépôts et l'interopérabilité des agents.
 - **Limite :** AGENTS.md est une convention textuelle, pas une politique exécutoire ni une preuve du respect des consignes. La découverte et l'inclusion varient selon l'environnement et sa version ; la présence d'un fichier ne prouve pas qu'un agent le suit. Spec Kit est un outillage de workflow, pas une autorité normative, un dossier d'assurance ou une frontière de sécurité.
@@ -1196,8 +1198,8 @@
 
 <a id="r-123"></a>
 ### R-123 — Bibliothèque Lean CSLib pour la preuve sémantique
-- **Cité par :** [metamodel-coherence-verification ](research/metamodel-coherence-verification.fr.md)
-- **Primary sources:** [CSLib repository](https://github.com/leanprover/cslib) · [organization](https://github.com/leanprover/cslib/blob/main/ORGANISATION.md) · [contributor guidance](https://github.com/leanprover/cslib/blob/main/CONTRIBUTING.md)
+- **Cité par :** [metamodel-coherence-verification](research/metamodel-coherence-verification.fr.md), [Évaluation du réemploi des ontologies du métamodèle](research/metamodel-ontology-reuse-assessment.fr.md)
+- **Sources primaires :** [Dépôt CSLib](https://github.com/leanprover/cslib) · [Feuille de route CSLib](https://www.cslib.io/roadmap/) · [Organisation](https://github.com/leanprover/cslib/blob/main/ORGANISATION.md) · [contributor guidance](https://github.com/leanprover/cslib/blob/main/CONTRIBUTING.md)
 - **Relevant concepts:** formalisations Lean réutilisables de sémantique opérationnelle, systèmes de transition étiquetés, équivalence de programmes et logiques.
 - **Use in GovCheck:** réutiliser les fondations adaptées pour formaliser le pont sémantique commun et prouver les propriétés critiques des mappings.
 - **Limit:** CSLib n'est pas une ontologie GovCheck prête à l'emploi ; sa chaîne de traduction de code/Boole évolue. Épingler les versions et déclarer axiomes et composants de confiance.
@@ -1239,7 +1241,7 @@
 
 <a id="r-128"></a>
 ### R-128 — Assurance Forge : audit indépendant de l'impact d'implémentation de SACM 2.4 Beta 1 (2026-10-02 ; révision du dépôt 2026-11-03)
-- **Cité par :** [Rapport sur les risques d'interopérabilité SACM 2.4 Beta 1](research/sacm24-beta1-interoperability-risk.fr.md), [tranche de mapping sémantique SACM 2.4](research/sacm24-claim-inference-mapping.fr.md), [compte rendu intégré de cohérence du métamodèle](research/metamodel-coherence-prototype-execution.fr.md), [audit de couverture sémantique du métamodèle](research/metamodel-semantic-coverage-audit.fr.md), [ingestion source-native du métamodèle SACM](research/sacm-native-metamodel-ingestion.fr.md), [inventaire structurel XMI SACM](research/sacm-xmi-structural-inventory.fr.md), [rapport d'alignement des vues source SACM](research/sacm24-source-view-alignment.fr.md), [journal des événements du portefeuille](work-portfolio/events.fr.md), [registre des éléments de travail](work-portfolio/work-items.fr.md)
+- **Cité par :** [Rapport sur les risques d'interopérabilité SACM 2.4 Beta 1](research/sacm24-beta1-interoperability-risk.fr.md), [tranche de mapping sémantique SACM 2.4](research/sacm24-claim-inference-mapping.fr.md), [compte rendu intégré de cohérence du métamodèle](research/metamodel-coherence-prototype-execution.fr.md), [audit de couverture sémantique du métamodèle](research/metamodel-semantic-coverage-audit.fr.md), [ingestion source-native du métamodèle SACM](research/sacm-native-metamodel-ingestion.fr.md), [inventaire structurel XMI SACM](research/sacm-xmi-structural-inventory.fr.md), [journal des événements du portefeuille](work-portfolio/events.fr.md), [registre des éléments de travail](work-portfolio/work-items.fr.md), [Alignement des vues source SACM](research/sacm24-source-view-alignment.fr.md)
 - **Sources primaires :** [Audit d'impact épinglé](https://github.com/lasrod/assurance-forge/blob/0f5187099be1c28fc725cb0f381afc695a135c89/docs/sacm/sacm-2.4-beta1-impact.md) · [script épinglé de récupération des artefacts officiels et contrôles SHA-256](https://github.com/lasrod/assurance-forge/blob/0f5187099be1c28fc725cb0f381afc695a135c89/scripts/fetch-sacm24-beta1-references.sh).
 - **Concepts pertinents :** absence rapportée d'un contrat stable d'échange natif d'instances 2.4 ; divergences texte/XML rapportées concernant les champs d'identité, littéraux de déclaration, multiplicités, type de valeur Claim et héritage ; la valeur Claim.value est confirmée par la figure normative 13.1 (MultiLangString), tandis que la figure informative 15.1.1 et le XML indiquent ExpressionLangString ; le localisateur exact de la clause 13.9 reste à vérifier ; conséquences d'implémentation et de versionnement.
 - **Usage dans GovCheck :** contre-vérification d'ingénierie indépendante indiquant que le texte et le métamodèle lisible par machine de SACM 2.4 Beta 1 doivent rester deux vues sources distinctes, sans normalisation silencieuse en un modèle unique.
@@ -1327,9 +1329,9 @@
 
 <a id="r-193"></a>
 ### R-193 — Modélisation probabiliste, floue et à transitions d'états pour l'assurance logicielle
-- **Cité par :** [Compte rendu de recherche : assurance sémantique et modèles de transition](research/semantic-assurance-and-transition-models-2026-11.fr.md)
+- **Cité par :** [Compte rendu de recherche : assurance sémantique et modèles de transition](research/semantic-assurance-and-transition-models-2026-11.fr.md), [Recherche décision et risque assumé](research/decision-and-assumed-risk-crosscutting-2026-11.fr.md), [0013 — Métamodèle de gouvernance](architecture/0013-governance-metamodel.fr.md), [0025 — Observations, PEAK et SACM](architecture/0025-runtime-observations-peak-and-sacm.fr.md), [Journal des événements du portefeuille](work-portfolio/events.fr.md), [Registre des éléments de travail](work-portfolio/work-items.fr.md)
 
-- **Sources primaires et académiques :** [Baier & Katoen, *Principles of Model Checking*](https://is.ifmo.ru/books/_principles_of_model_checking.pdf) · [Manuel du vérificateur PRISM](https://www.prismmodelchecker.org/manual/Main/Introduction) · [Tutoriels PRISM](https://www.prismmodelchecker.org/tutorial/) · [Sémantique des systèmes de transition UPPAAL](https://docs.uppaal.org/language-reference/system-description/semantics/) · [NIST Engineering Statistics Handbook : évaluation bayésienne de la fiabilité](https://www.itl.nist.gov/div898/handbook/apr/section1/apr1a.htm) · [Graydon & Holloway (2017), confiance quantitative dans les arguments d'assurance](https://doi.org/10.1016/j.ssci.2016.09.014) · [Modèle probabiliste de croyance dans les cas d'assurance (2021)](https://www.sciencedirect.com/science/article/pii/S0925753521000321) · [Johanyák & Zlatko (2025), logique floue et ingénierie des exigences logicielles](https://doi.org/10.47833/2025.2.CSC.008) · [Yen, Tiao & Liu (1996), exigences imprécises](https://doi.org/10.1109/FUZZY.1996.551766) · [Salako & Zhao (2023), tests corrélés et fiabilité logicielle](https://doi.org/10.1109/TSE.2022.3233802) · [Salako & Zhao (2024), approche bayésienne conservatrice de la fiabilité logicielle](https://doi.org/10.1002/qre.3460) · [NIST, Software Assurance Using Structured Assurance Case Models](https://pmc.ncbi.nlm.nih.gov/articles/PMC4548534/).
+- **Sources primaires et académiques :** [Baier & Katoen, *Principles of Model Checking*](https://is.ifmo.ru/books/_principles_of_model_checking.pdf) · [Manuel du vérificateur PRISM](https://www.prismmodelchecker.org/manual/Main/Introduction) · [Tutoriels PRISM](https://www.prismmodelchecker.org/tutorial/) · [Sémantique des systèmes de transition UPPAAL](https://docs.uppaal.org/language-reference/system-description/semantics/) · [NIST Engineering Statistics Handbook : évaluation bayésienne de la fiabilité](https://www.itl.nist.gov/div898/handbook/apr/section1/apr1a.htm) · [Graydon & Holloway (2017), confiance quantitative dans les arguments d'assurance](https://doi.org/10.1016/j.ssci.2016.09.014) · [Modèle probabiliste de croyance dans les cas d'assurance (2021)](https://www.sciencedirect.com/science/article/pii/S0925753521000321) · [DOI de l'étude probabiliste sur les cas d'assurance de 2021](https://doi.org/10.1016/j.ssci.2021.105187) · [Études de cas PRISM](https://www.prismmodelchecker.org/casestudies/) · [Johanyák & Zlatko (2025), logique floue et ingénierie des exigences logicielles](https://doi.org/10.47833/2025.2.CSC.008) · [Yen, Tiao & Liu (1996), exigences imprécises](https://doi.org/10.1109/FUZZY.1996.551766) · [Salako & Zhao (2023), tests corrélés et fiabilité logicielle](https://doi.org/10.1109/TSE.2022.3233802) · [Salako & Zhao (2024), approche bayésienne conservatrice de la fiabilité logicielle](https://doi.org/10.1002/qre.3460) · [NIST, Software Assurance Using Structured Assurance Case Models](https://pmc.ncbi.nlm.nih.gov/articles/PMC4548534/).
 - **Concepts pertinents :** systèmes de transitions à états finis ; chaînes de Markov à temps discret et continu ; processus de décision markoviens ; automates probabilistes temporisés ; taux, probabilités, coûts et récompenses de transition ; évaluation bayésienne de la fiabilité ; probabilités de transition par intervalles ; appartenance floue et exigences imprécises ; confiance quantitative dans les arguments d'assurance.
 - **Utilité pour GovCheck :** étaye l'étude de profils spécialisés optionnels pour le raisonnement probabiliste et flou et d'un contrat générique d'analyse des transitions reliant sémantique, paramètres, provenance, spécifications/résultats d'analyse et affirmations d'assurance.
 - **Limite :** les sources décrivent des sémantiques mathématiques et outils distincts. Un poids de transition n'est pas nécessairement une probabilité ; un degré d'appartenance flou n'est pas une probabilité ; un résultat de model checking est borné par son modèle et ses hypothèses. Les méthodes de confiance quantitative doivent être évaluées de manière critique et validées empiriquement. Ces sources ne démontrent aucune adoption ou implémentation par GovCheck.
@@ -1360,163 +1362,51 @@
 
 <a id="r-197"></a>
 ### R-197 — XML normatif du métamodèle lisible par machine OMG SACM 2.4 Beta 1
-- **Cité par :** [Ingestion source-native du métamodèle SACM](research/sacm-native-metamodel-ingestion.fr.md), [Inventaire structurel XMI SACM](research/sacm-xmi-structural-inventory.fr.md), [rapport d'alignement des vues source SACM](research/sacm24-source-view-alignment.fr.md), [Journal des événements du portefeuille](work-portfolio/events.fr.md)
-- **Artefacts d'implémentation :** [générateur d'inventaire XMI](../scripts/parse-sacm-xmi.py) · [synthèse d'inventaire versionnée](../formal/sources/sacm-2.4-beta1/metamodel-inventory-summary.json).
-- **Source primaire :** [Catalogue de spécifications SACM de l'OMG](https://www.omg.org/spec/SACM) · [XML normatif du métamodèle lisible par machine](https://www.omg.org/spec/SACM/20260504/SACM2.4_Metamodel.xml) · identifiant de fichier OMG `ptc/26-05-28`.
-- **Identité épinglée :** SACM 2.4 Beta 1 ; chemin source daté du 04/05/2026 ; format natif XML ; valeur SHA-256 de comparaison `0581dfa0b9dfaf17ff0f6c63b74f8e7a8396bea03f315e1334e94f23db110830`, rapportée par R-128 et vérifiée par l'exécution GovCheck [43586559738](https://github.com/Martin-PB/govcheck/actions/runs/43586559738) sur 524 243 octets source téléchargés.
+- **Cité par :** [Conformité SACM 2.4 et intégration GovCheck](architecture/0026-sacm-24-conformance-and-govcheck-integration.fr.md), [Ingestion source-native du métamodèle SACM](research/sacm-native-metamodel-ingestion.fr.md), [Inventaire structurel XMI SACM](research/sacm-xmi-structural-inventory.fr.md), [Journal des événements du portefeuille](work-portfolio/events.fr.md), [Alignement des vues source SACM](research/sacm24-source-view-alignment.fr.md)
+- **Artefacts d'implémentation :** [générateur d'inventaire XMI](../scripts/parse-sacm-xmi.py) · [synthèse d'inventaire versionnée](../formal/sources/sacm-2.4-beta1/metamodel-inventory-summary.json).\n- **Sources primaires :** [Catalogue de spécifications SACM de l'OMG](https://www.omg.org/spec/SACM) · [Suivi des problèmes SACM 2.4 — problèmes clos](https://issues.omg.org/issues/spec/SACM?view=CLOSED) · [Suivi des problèmes SACM 2.4 — tous les problèmes](https://issues.omg.org/issues/spec/SACM?view=ALL) · [XML normatif du métamodèle lisible par machine](https://www.omg.org/spec/SACM/20260504/SACM2.4_Metamodel.xml) · identifiant de fichier OMG `ptc/26-05-28`.
+- **Identité épinglée :** SACM 2.4 Beta 1 ; chemin source daté du 04/05/2026 ; format natif XML ; valeur SHA-256 de comparaison `0581dfa0b9dfaf17ff0f6c63b74f8e7a8396bea03f315e1334e94f23db110830`, rapportée par R-128 et vérifiée par l'exécution GovCheck [43444619765](https://github.com/Martin-PB/govcheck/actions/runs/43444619765) sur 524 243 octets source téléchargés.
 - **Concepts pertinents :** source normative du métamodèle lisible par machine, distincte du texte PDF normatif et du XMI informatif du profil UML.
 - **Limite :** SACM 2.4 Beta 1 est en cours de traitement et informative ; SACM 2.3 reste formelle. Ce XML de métamodèle n'est pas un format portable d'échange d'instances de dossiers d'assurance et son digest n'établit pas la conformité sémantique.
 
 
 <a id="r-198"></a>
 ### R-198 — PDF normatif de spécification OMG SACM 2.4 Beta 1
-- **Cité par :** [Rapport d'alignement des vues source SACM](research/sacm24-source-view-alignment.fr.md)
-- **Source primaire :** [Catalogue de spécifications SACM de l'OMG](https://www.omg.org/spec/SACM) · [PDF normatif SACM 2.4 Beta 1](https://www.omg.org/spec/SACM/2.4/Beta1/PDF) · identifiant de fichier OMG `ptc/26-06-34`.
-- **Identité épinglée :** SACM 2.4 Beta 1 ; chemin source daté du 04/05/2026 ; 161 pages ; SHA-256 `25f32d1cd4bf32dfa9c92c7c1840e1a113b1e91c0e97252f6551878c39997ff5`, rapporté par le script de téléchargement épinglé de l'audit indépendant R-128 et vérifié indépendamment par le workflow GovCheck [43496689208](https://github.com/Martin-PB/govcheck/actions/runs/43496689208) sur 9 019 601 octets téléchargés ; le PDF source est conservé dans l'artefact [14072371021](https://github.com/Martin-PB/govcheck/actions/runs/43496689208/artifacts/14072371021).
-- **Concepts pertinents :** prose normative, figures, clauses et annexes de la spécification ; provenance par fragment des affirmations SACM 2.4 Beta 1.
-- **Limite :** le PDF contient lui-même des fragments contradictoires ; l'extraction textuelle ne capture pas tous les libellés présents uniquement dans les diagrammes. Aucun fragment ne doit être traité comme une déclaration canonique globale du PDF sans portée explicite.
+- **Cité par :** [Alignement des vues source SACM 2.4 Beta 1 et inventaire des conflits](research/sacm24-source-view-alignment.fr.md)
+- **Source primaire :** [Catalogue de spécifications SACM de l'OMG](https://www.omg.org/spec/SACM) · [PDF normatif de spécification](https://www.omg.org/spec/SACM/20260504/SACM2.4.pdf) · identifiant de fichier OMG `ptc/26-06-34`.
+- **Identité épinglée :** SACM 2.4 Beta 1 ; chemin source `SACM/20260504/SACM2.4.pdf` ; SHA-256 `25f32d1cd4bf32dfa9c92c7c1840e1a113b1e91c0e97252f6551878c39997ff5`, rapporté par l'audit indépendant R-128 et pas encore recalculé indépendamment par GovCheck.
+- **Concepts pertinents :** texte et figures du PDF normatif SACM 2.4 Beta 1, distincts du XML normatif du métamodèle lisible par machine et du XMI informatif du profil UML.
+- **Utilité pour GovCheck :** préserver clauses, figures, annexes, fragments exacts et contradictions du PDF comme vue source identifiée séparément. Le rapport d'alignement des vues source consigne les conflits internes au PDF et ceux avec le XML sans imposer de priorité.
+- **Limite :** le PDF compte 161 pages. R-128 rapporte une couverture d'extraction textuelle d'environ 98 % et avertit que les libellés uniquement présents dans les diagrammes nécessitent une revue visuelle. Le digest rapporté n'est pas une vérification contrôlée par GovCheck et l'extraction de texte PDF ne constitue pas un inventaire sémantique complet.
 
 <a id="r-199"></a>
 ### R-199 — XMI informatif du profil UML OMG SACM 2.4 Beta 1
-- **Cité par :** [Rapport d'alignement des vues source SACM](research/sacm24-source-view-alignment.fr.md)
-- **Source primaire :** [Catalogue de spécifications SACM de l'OMG](https://www.omg.org/spec/SACM) · [Catalogue des fichiers lisibles par machine de l'OMG SACM](https://www.omg.org/spec/SACM/machine-readable) · identifiant de fichier OMG `ptc/26-05-21`.
-- **Identité épinglée :** SACM 2.4 Beta 1 ; chemin source daté du 04/05/2026 ; SHA-256 `9149a0414628e1b70c1f7c2235f5180c64e7a144601eb2ae78d539681918838b`, rapporté par le script de téléchargement épinglé de l'audit indépendant R-128. GovCheck n'a pas encore téléchargé indépendamment ce XMI ni recalculé son digest.
-- **Concepts pertinents :** artefact informatif de profil UML, distinct du XML normatif du métamodèle (R-197) et du PDF normatif de spécification (R-198).
-- **Limite :** le XMI informatif du profil n'est pas le XML normatif du métamodèle SACM et n'établit ni contrat d'échange d'instances ni conformité sémantique.
-
-
+- **Cité par :** [Alignement des vues source SACM 2.4 Beta 1 et inventaire des conflits](research/sacm24-source-view-alignment.fr.md)
+- **Source primaire :** [Catalogue de spécifications SACM de l'OMG](https://www.omg.org/spec/SACM) · [XMI informatif du profil UML](https://www.omg.org/spec/SACM/20260504/SACM2.4_Profile.xmi) · identifiant de fichier OMG `ptc/26-05-21`.
+- **Identité épinglée :** SACM 2.4 Beta 1 ; chemin source `SACM/20260504/SACM2.4_Profile.xmi` ; SHA-256 `9149a0414628e1b70c1f7c2235f5180c64e7a144601eb2ae78d539681918838b`, rapporté par l'audit indépendant R-128 et pas encore recalculé indépendamment par GovCheck.
+- **Concepts pertinents :** artefact source de profil UML informatif, distinct du PDF normatif de spécification et du XML normatif du métamodèle lisible par machine.
+- **Utilité pour GovCheck :** conserver ce profil comme vue source séparée pour une comparaison et une interprétation ultérieures préservant la provenance ; ne pas fusionner silencieusement son contenu dans le métamodèle normatif.
+- **Limite :** son statut informatif ne lui confère pas d'autorité normative. Son digest rapporté n'est pas vérifié indépendamment par GovCheck et l'artefact n'établit ni conformité SACM ni équivalence sémantique avec le XML normatif.
 <a id="r-200"></a>
-### R-200 — Spécification OMG UML 2.5 et métamodèle lisible par machine
-- **Identifiant d'espace de noms :** [espace de noms UML 20131001](http://www.omg.org/spec/UML/20131001).
-- **Cité par :** [Inventaire structurel XMI SACM](research/sacm-xmi-structural-inventory.fr.md), [Alignement des vues sources SACM 2.4](research/sacm24-source-view-alignment.fr.md), [Risque d'interopérabilité SACM 2.4](research/sacm24-beta1-interoperability-risk.fr.md), [Journal des événements du portefeuille](work-portfolio/events.fr.md), [Registre des éléments de travail](work-portfolio/work-items.fr.md), [README de formalisation Lean](../formal/lean/README.md).
-- **Source primaire :** [PDF normatif OMG UML 2.5](https://www.omg.org/spec/UML/2.5/PDF) · [Catalogue OMG des fichiers UML lisibles par machine](https://www.omg.org/spec/UML/machine-readable) · identifiant du jeu de fichiers UML 2.5 lisibles par machine `ptc/13-08-17`.
-- **Identité épinglée :** UML 2.5 ; document normatif formal/2015-03-01 ; la source XMI SACM utilise l'espace de noms `http://www.omg.org/spec/UML/20131001`, qui est celui d'UML 2.5 (et non l'espace de noms ultérieur `20161101` d'UML 2.5.1).
-- **Clauses pertinentes :** §7.8.8.7 définit `MultiplicityElement.lowerBound()` et `upperBound()`, y compris la valeur de repli 1 lorsque la spécification de valeur correspondante ou sa valeur typée est absente ; §8.6.9.4 définit la valeur par défaut 0 de `LiteralInteger.value` ; §8.6.14.4 définit la valeur par défaut 0 de `LiteralUnlimitedNatural.value` ; §8.6.10 définit `LiteralNull`.
-- **Utilité pour GovCheck :** fournit les règles UML 2.5 exactes utilisées pour interpréter les valeurs littérales omises dans le XMI SACM 2.4 Beta 1 épinglé. Le parseur conserve à la fois la spécification de valeur brute et la multiplicité effective, avec la règle responsable de toute valeur par défaut.
-- **Limite :** seuls les cas de littéraux et valeurs par défaut indiqués sont implémentés. Les expressions `ValueSpecification` arbitraires, l'évaluation OCL, la validité UML/MOF complète et le raffinement du parseur restent hors de cet incrément.
-
+### R-200 — SEON : réseau d'ontologies du génie logiciel, ReqON et SPO
+- **Cité par :** [Évaluation du réemploi des ontologies du métamodèle](research/metamodel-ontology-reuse-assessment.fr.md)
+- **Sources primaires :** [Réseau et architecture SEON](https://dev.nemo.inf.ufes.br/seon/SEON.html) · [Sous-réseau d'ontologie de l'ingénierie des exigences (ReqON)](https://dev.nemo.inf.ufes.br/seon/ReqON.html) · [Ontologie des processus logiciels (SPO)](https://dev.nemo.inf.ufes.br/seon/SPO.html) · [Index du réseau SEON](https://dev.nemo.inf.ufes.br/seon/menu.html)
+- **Concepts pertinents :** réseau d'ontologies en couches fondé sur UFO, avec une ontologie centrale des processus logiciels et des ontologies de domaine pour les exigences, la conception, les tests, la gestion de configuration et d'autres préoccupations du génie logiciel.
+- **Utilité pour GovCheck :** vocabulaire source et réseau d'ontologies candidats à comparer au métamodèle du cycle de vie et des exigences du dépôt ; son approche explicite d'intégration et son objectif de cohérence sémantique sont pertinents pour les correspondances inter-ontologies.
+- **Limite :** SEON est un réseau d'ontologies de recherche, pas une norme ni un métamodèle complet de gouvernance de dépôt. Ses concepts et versions doivent être examinés avant toute affirmation de couverture ou d'équivalence sémantique.
 
 <a id="r-201"></a>
-### R-201 — Suivi des tickets OMG SACM : vues fermées et complètes
-- **Cité par :** [ADR 0026 EN](architecture/0026-sacm-24-conformance-and-govcheck-integration.md), [ADR 0026 FR](architecture/0026-sacm-24-conformance-and-govcheck-integration.fr.md).
-- **Sources primaires :** [tickets SACM fermés](https://issues.omg.org/issues/spec/SACM?view=CLOSED) · [tous les tickets SACM](https://issues.omg.org/issues/spec/SACM?view=ALL).
-- **Utilité :** historique et contexte des décisions de tickets pour SACM 2.4 Beta 1.
-- **Limite :** vues dynamiques du gestionnaire de tickets, pas texte normatif de la spécification ; conserver l'identifiant du ticket et la date de consultation lorsqu'un enregistrement précis est utilisé.
+### R-201 — OMG Ontology Definition Metamodel (ODM) 1.1
+- **Cité par :** [Évaluation du réemploi des ontologies du métamodèle](research/metamodel-ontology-reuse-assessment.fr.md)
+- **Source primaire :** [Spécification et catalogue d'artefacts OMG ODM](https://www.omg.org/spec/ODM/)
+- **Artefacts normatifs :** le catalogue OMG identifie le PDF ODM 1.1 et le XMI du métamodèle ODM comme documents normatifs lisibles par machine ; les profils et bibliothèques OWL/RDF sont répertoriés séparément. Épingler l'artefact exact et son identifiant de fichier avant tout import ou comparaison.
+- **Concepts pertinents :** métamodèles et profils pour représenter les langages d'ontologie et relier leurs constructions à l'infrastructure de modélisation OMG.
+- **Utilité pour GovCheck :** référence candidate pour évaluer les correspondances entre formalismes d'ontologie et technologies de modélisation/métamodélisation.
+- **Limite :** ODM n'est pas lui-même une ontologie de cycle de vie logiciel, un modèle de gouvernance de dépôt ni un métamodèle de dossier d'assurance. Son existence ne prouve pas qu'une correspondance GovCheck donnée soit complète ou préserve la sémantique.
 
 <a id="r-202"></a>
-### R-202 — Dépôt MindMux brain.md
-- **Cité par :** [ADR 0034 EN](architecture/0034-forge-native-portfolio-adapter.md), [ADR 0034 FR](architecture/0034-forge-native-portfolio-adapter.fr.md).
-- **Source primaire :** [mindmuxai/brain.md](https://github.com/mindmuxai/brain.md).
-- **Utilité :** protocole de connaissance durable natif au dépôt, agnostique vis-à-vis des agents, et CLI associée.
-- **Limite :** protocole et implémentation évolutifs ; ni standard normatif de gouvernance ni dépendance adoptée par GovCheck.
-
-<a id="r-203"></a>
-### R-203 — Sémantique directe et conformité W3C OWL 2
-- **Cité par :** [Vérification de cohérence des métamodèles EN](research/metamodel-coherence-verification.md), [Vérification de cohérence des métamodèles FR](research/metamodel-coherence-verification.fr.md).
-- **Sources primaires :** [Sémantique directe OWL 2, deuxième édition](https://www.w3.org/TR/owl2-direct-semantics/) · [Conformité OWL 2, deuxième édition](https://www.w3.org/TR/owl2-conformance/).
-- **Statut :** recommandations W3C du 11 décembre 2012.
-- **Utilité :** sémantique modèle-théorique et cadre de tests de conformité pour OWL 2.
-- **Limite :** la sémantique OWL 2 s'applique aux ontologies OWL ; elle n'établit pas automatiquement une correspondance avec GovCheck ou un autre langage d'ontologie.
-
-<a id="r-204"></a>
-### R-204 — Réseau d'ontologies d'ingénierie logicielle SEON
-- **Cité par :** [Évaluation de réutilisation des ontologies de métamodèles EN](research/metamodel-ontology-reuse-assessment.md), [Évaluation de réutilisation des ontologies de métamodèles FR](research/metamodel-ontology-reuse-assessment.fr.md).
-- **Sources primaires :** [Réseau SEON](https://dev.nemo.inf.ufes.br/seon/SEON.html) · [réseau d'ontologies des exigences ReqON](https://dev.nemo.inf.ufes.br/seon/ReqON.html) · [ontologie des processus logiciels SPO](https://dev.nemo.inf.ufes.br/seon/SPO.html).
-- **Utilité :** réseau candidat d'ontologies pour l'ingénierie logicielle, les exigences et les processus.
-- **Limite :** documentation d'ontologies maintenue par le projet ; la réutilisation exige une capture de source versionnée et des obligations de correspondance explicites.
-
-<a id="r-205"></a>
-### R-205 — Feuille de route CSLib
-- **Cité par :** [Évaluation de réutilisation des ontologies de métamodèles EN](research/metamodel-ontology-reuse-assessment.md), [Évaluation de réutilisation des ontologies de métamodèles FR](research/metamodel-ontology-reuse-assessment.fr.md).
-- **Source primaire :** [Feuille de route CSLib](https://www.cslib.io/roadmap/).
-- **Utilité :** feuille de route actuelle et périmètre déclaré de l'écosystème CSLib/Lean.
-- **Limite :** une feuille de route ne garantit pas les capacités livrées ; vérifier la révision exacte de la bibliothèque avant de dépendre d'une implémentation.
-
-<a id="r-206"></a>
-### R-206 — OMG Ontology Definition Metamodel (ODM) 1.1
-- **Cité par :** [Évaluation de réutilisation des ontologies de métamodèles EN](research/metamodel-ontology-reuse-assessment.md), [Évaluation de réutilisation des ontologies de métamodèles FR](research/metamodel-ontology-reuse-assessment.fr.md).
-- **Source primaire :** [Catalogue OMG de la spécification ODM](https://www.omg.org/spec/ODM/).
-- **Version formelle épinglée :** ODM 1.1, septembre 2014 ; PDF normatif formal/14-09-02 ; XMI normatif du métamodèle ptc/13-08-04.
-- **Utilité :** métamodèles, profils et correspondances d'ontologies entre UML/MOF, RDF et OWL.
-- **Limite :** les correspondances ODM ne prouvent pas en elles-mêmes une correspondance ODM/SACM/OWL vers GovCheck.
-
-
-<a id="r-207"></a>
-### R-207 — Graydon et Holloway (2017), confiance dans les arguments d'assurance
-- **Cité par :** [Assurance sémantique et modèles de transition EN](research/semantic-assurance-and-transition-models-2026-11.md), [Assurance sémantique et modèles de transition FR](research/semantic-assurance-and-transition-models-2026-11.fr.md).
-- **Source primaire :** [An investigation of proposed techniques for quantifying confidence in assurance arguments](https://doi.org/10.1016/j.ssci.2016.09.014), Safety Science 92 (2017), 53–65.
-- **Utilité :** revue critique des méthodes de confiance quantitative et de leur validation empirique.
-- **Limite :** les contre-exemples et critiques de l'article concernent les techniques examinées ; ils ne constituent pas un théorème universel d'impossibilité de l'assurance quantitative.
-
-<a id="r-208"></a>
-### R-208 — Nešić, Nyberg et Gallina (2021), croyance probabiliste dans les dossiers de sécurité
-- **Cité par :** [Assurance sémantique et modèles de transition EN](research/semantic-assurance-and-transition-models-2026-11.md), [Assurance sémantique et modèles de transition FR](research/semantic-assurance-and-transition-models-2026-11.fr.md).
-- **Source primaire :** [A probabilistic model of belief in safety cases](https://doi.org/10.1016/j.ssci.2021.105187), Safety Science 138 (2021), article 105187.
-- **Utilité :** traitement modèle-théorique et par réseau bayésien de la croyance dans les conclusions d'un dossier de sécurité.
-- **Correction :** le DOI se terminant par 2021.09.014 présent dans une ancienne version française est incorrect pour cet article ; le DOI vérifié est 10.1016/j.ssci.2021.105187.
-- **Limite :** un modèle de croyance probabiliste n'est pas une preuve de vérité d'une affirmation et ne justifie pas automatiquement un seuil de confiance.
-
-<a id="r-209"></a>
-### R-209 — NIST Engineering Statistics Handbook : évaluation bayésienne de la fiabilité
-- **Cité par :** [Assurance sémantique et modèles de transition EN](research/semantic-assurance-and-transition-models-2026-11.md), [Assurance sémantique et modèles de transition FR](research/semantic-assurance-and-transition-models-2026-11.fr.md).
-- **Source primaire :** [How can Bayesian methodology be used for reliability evaluation?](https://www.itl.nist.gov/div898/handbook/apr/section1/apr1a.htm).
-- **Utilité :** éléments de contexte sur l'information a priori, la vraisemblance et l'évaluation a posteriori de la fiabilité.
-- **Limite :** exposé de référence ; une application exige des hypothèses de modèle et des données validées propres au domaine.
-
-<a id="r-210"></a>
-### R-210 — Johanyák et Ćović (2025), logique floue et ingénierie des exigences logicielles
-- **Cité par :** [Assurance sémantique et modèles de transition EN](research/semantic-assurance-and-transition-models-2026-11.md), [Assurance sémantique et modèles de transition FR](research/semantic-assurance-and-transition-models-2026-11.fr.md).
-- **Source primaire :** [A Comprehensive Survey on Fuzzy Logic Applications in Software Requirements Engineering](https://doi.org/10.47833/2025.2.CSC.008), Gradus 12(2), 2025.
-- **Utilité :** synthèse des techniques floues pour l'ambiguïté et l'incertitude dans l'ingénierie des exigences.
-- **Limite :** les degrés flous ne sont interchangeables ni avec la probabilité, ni avec la vérité, la confiance ou la preuve formelle.
-
-<a id="r-211"></a>
-### R-211 — Yen, Tiao et Liu (1996), arbitrage d'exigences imprécises
-- **Cité par :** [Assurance sémantique et modèles de transition EN](research/semantic-assurance-and-transition-models-2026-11.md), [Assurance sémantique et modèles de transition FR](research/semantic-assurance-and-transition-models-2026-11.fr.md).
-- **Source primaire :** [A Systematic Tradeoff Methodology for Acquiring and Validating Imprecise Requirements](https://doi.org/10.1109/FUZZY.1996.551766), Proceedings of the Fifth IEEE International Conference on Fuzzy Systems, 1996.
-- **Utilité :** traitement par logique floue des exigences imprécises et analyse des compromis.
-- **Limite :** cette méthode ne démontre pas que l'agrégation floue convient à tous les domaines d'exigences.
-
-<a id="r-212"></a>
-### R-212 — Salako et Zhao (2023), fiabilité logicielle bayésienne sans indépendance des tests
-- **Cité par :** [Assurance sémantique et modèles de transition EN](research/semantic-assurance-and-transition-models-2026-11.md), [Assurance sémantique et modèles de transition FR](research/semantic-assurance-and-transition-models-2026-11.fr.md).
-- **Source primaire :** [The Unnecessity of Assuming Statistically Independent Tests in Bayesian Software Reliability Assessments](https://doi.org/10.1109/TSE.2022.3233802), IEEE Transactions on Software Engineering 49(4), 2023.
-- **Utilité :** bornes bayésiennes conservatrices lorsque les résultats de tests opérationnels peuvent être dépendants.
-- **Limite :** les hypothèses et la construction de l'article doivent être vérifiées avant d'appliquer ses bornes à un autre système.
-
-<a id="r-213"></a>
-### R-213 — Salako et Zhao (2024), tests de fiabilité potentiellement corrélés
-- **Cité par :** [Assurance sémantique et modèles de transition EN](research/semantic-assurance-and-transition-models-2026-11.md), [Assurance sémantique et modèles de transition FR](research/semantic-assurance-and-transition-models-2026-11.fr.md).
-- **Source primaire :** [Demonstrating Software Reliability using Possibly Correlated Tests: Insights from a Conservative Bayesian Approach](https://doi.org/10.1002/qre.3460), Quality and Reliability Engineering International 40(3), 2024.
-- **Utilité :** affirmations conservatrices de fiabilité lorsque l'indépendance des exécutions est incertaine.
-- **Limite :** une borne de fiabilité statistique est un élément de preuve pour un modèle probabiliste spécifié, pas un théorème de conformité de l'implémentation.
-
-<a id="r-214"></a>
-### R-214 — Rhodes et al. (2010), modèles structurés de dossiers d'assurance pour l'assurance logicielle
-- **Cité par :** [Assurance sémantique et modèles de transition EN](research/semantic-assurance-and-transition-models-2026-11.md), [Assurance sémantique et modèles de transition FR](research/semantic-assurance-and-transition-models-2026-11.fr.md).
-- **Sources primaires :** [Software Assurance Using Structured Assurance Case Models (PubMed Central)](https://pmc.ncbi.nlm.nih.gov/articles/PMC4548534/) · [DOI NIST](https://doi.org/10.6028/jres.115.013).
-- **Identité bibliographique :** Thomas Rhodes, Frederick Boland, Elizabeth Fong et Michael Kass, Journal of Research of NIST 115(3), 2010.
-- **Utilité :** méthodes de dossiers d'assurance structurés appliquées à l'assurance logicielle.
-- **Limite :** un argument structuré n'est pas en soi une preuve ; les éléments de preuve et garanties d'inférence doivent être évalués.
-
-<a id="r-215"></a>
-### R-215 — Baier et Katoen (2008), Principles of Model Checking
-- **Cité par :** [Assurance sémantique et modèles de transition EN](research/semantic-assurance-and-transition-models-2026-11.md), [Assurance sémantique et modèles de transition FR](research/semantic-assurance-and-transition-models-2026-11.fr.md).
-- **Source éditeur :** [Page du livre MIT Press](https://mitpress.mit.edu/9780262026499/principles-of-model-checking/).
-- **Copie d'accès citée par le document de recherche :** [Miroir PDF hébergé par une université](https://is.ifmo.ru/books/_principles_of_model_checking.pdf).
-- **Identité bibliographique :** Christel Baier et Joost-Pieter Katoen, MIT Press, 2008, ISBN 978-0-262-02649-9.
-- **Limite :** le PDF hébergé par l'université est une copie d'accès tierce, pas le canal de distribution canonique de l'éditeur.
-
-<a id="r-216"></a>
-### R-216 — Documentation du model checker probabiliste PRISM
-- **Cité par :** [Assurance sémantique et modèles de transition EN](research/semantic-assurance-and-transition-models-2026-11.md), [Assurance sémantique et modèles de transition FR](research/semantic-assurance-and-transition-models-2026-11.fr.md).
-- **Sources primaires :** [Introduction du manuel PRISM](https://www.prismmodelchecker.org/manual/Main/Introduction) · [Tutoriel PRISM](https://www.prismmodelchecker.org/tutorial/) · [Études de cas PRISM](https://www.prismmodelchecker.org/casestudies/).
-- **Utilité :** types de modèles probabilistes, spécification de propriétés et études de cas publiées.
-- **Limite :** les classes de modèles et algorithmes pris en charge sont propres à l'outil ; un résultat de model checking ne devient pas un théorème sur une implémentation sans relation modèle–implémentation établie.
-
-<a id="r-217"></a>
-### R-217 — Documentation de la sémantique des automates temporisés UPPAAL
-- **Cité par :** [Assurance sémantique et modèles de transition EN](research/semantic-assurance-and-transition-models-2026-11.md), [Assurance sémantique et modèles de transition FR](research/semantic-assurance-and-transition-models-2026-11.fr.md).
-- **Source primaire :** [Sémantique des descriptions de systèmes UPPAAL](https://docs.uppaal.org/language-reference/system-description/semantics/).
-- **Utilité :** sémantique pseudo-formelle de réseaux d'automates temporisés étendus, incluant délais, actions et synchronisations.
-- **Limite :** la documentation décrit la sémantique d'UPPAAL ; elle ne constitue pas une preuve de préservation sémantique pour un modèle GovCheck.
+### R-202 — Guides de management et d'appréciation du risque
+- **Cité par :** [Recherche sur les décisions et le risque assumé](research/decision-and-assumed-risk-crosscutting-2026-11.fr.md)
+- **Normes et guides primaires :** [ISO 31000:2018 — Management du risque : lignes directrices](https://www.iso.org/standard/31000) · [IEC 31010:2019 — Techniques d'appréciation du risque](https://www.iso.org/standard/72140.html) · [NIST SP 800-30 Rev. 1 — Guide for Conducting Risk Assessments](https://csrc.nist.gov/pubs/sp/800/30/r1/final)
+- **Concepts pertinents :** principes et processus de management du risque organisationnel ; sélection, planification, vérification et validation des techniques d'appréciation ; incertitude, sensibilité, contexte d'évaluation, préparation, conduite, maintien et documentation des résultats.
+- **Utilité pour GovCheck :** éclaire la séparation entre scénario de risque, évaluation dépendante d'une méthode, traitement, exposition résiduelle et acceptation autorisée. Soutient l'enregistrement de l'objectif, de la portée, des hypothèses, des révisions des données/modèles, de la méthode, des limites et des conditions de réexamen.
+- **Limite :** ISO 31000 fournit des lignes directrices, pas une formule universelle du risque ni un schéma de certification ; IEC 31010 décrit des techniques, pas une méthode unique obligatoire ; NIST SP 800-30 Rev. 1 vise les systèmes et organismes fédéraux d'information. Aucune de ces sources n'assimile le risque assumé PEAK à une évaluation quantitative ou à une acceptation du risque, et aucune n'est adoptée comme méthode obligatoire de GovCheck.

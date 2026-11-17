@@ -229,3 +229,5 @@ This record refines, but does not supersede:
 - Architecture 0025 — lifecycle observations and PEAK decision traceability.
 
 The SACM capability must remain connected to all these foundations without absorbing their distinct responsibilities.
+
+Reference catalogue: [R-197 — SACM 2.4 source artifacts and issue tracker](../references.md#r-197).

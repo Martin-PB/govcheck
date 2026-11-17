@@ -9,7 +9,7 @@
 | Security assurance cases and metamodels | R-04, R-33–R-34 |
 | PEAK decision model | R-74 |
 | Continuous monitoring and runtime assurance | R-70, R-72, R-75–R-76 |
-| Assurance 2.0, SACM evolution and implementation audits | R-71, R-73, R-128, R-197, R-198, R-199 |
+| Assurance 2.0, SACM evolution and implementation audits | R-71, R-73, R-128, R-197–R-199 |
 | Assurance regimes and goal-oriented requirements | R-35–R-36, R-44, R-92 |
 | Model checking and program-verification alternatives | R-05, R-20, R-37–R-43, R-89–R-91 |
 | Evidence provenance and software supply chain | R-06–R-08 |
@@ -54,9 +54,10 @@
 | Repository intent, lifecycle and requirements engineering | R-114–R-118, R-121–R-122 |
 | System modeling and assurance-case metamodels | R-119–R-120 |
 | Metamodel coherence, semantic preservation and formal verification | R-123–R-127 |
-| Probabilistic assurance, fuzzy logic and state-transition models | R-193 |
+| Probabilistic assurance, fuzzy logic and state-transition models | R-193 |\n| Risk management and risk assessment process guidance | R-202 |
 | Concurrent edits, semantic merge conflicts and multi-agent delivery | R-142–R-151 |
 | Canonical journal ordering, durable recovery and idempotent retry | R-194–R-196 |
+| Software-engineering ontology networks and ontology-definition metamodels | R-200–R-201 |
 
 ## Full reference entries
 
@@ -84,12 +85,12 @@
 - **CRDTs, peer-to-peer transport and discovery:** R-45–R-50, R-66, R-87.
 - **Knowledge representation and linked-data interchange:** R-51–R-61, R-83–R-86.
 - **Native VCS semantics and collaboration adapters:** R-22.
-- **Threat modeling, attack paths and risk management:** R-27–R-32.
+- **Threat modeling, attack paths and risk management:** R-27–R-32.\n- **Risk management and risk-assessment techniques:** R-202.
 - **Goal-oriented requirements modeling:** R-44, R-92.
 - **Security assurance cases and metamodels:** R-33–R-34.
 - **PEAK decision model:** R-74.
 - **Continuous monitoring and runtime assurance:** R-70, R-72, R-75–R-76.
-- **Assurance 2.0 and SACM evolution:** R-71, R-73, R-128, R-197, R-198, R-199.
+- **Assurance 2.0 and SACM evolution:** R-71, R-73, R-128, R-197–R-199.
 - **Domain semantics, product quality and open-source compliance (candidate sources):** R-94–R-100, R-102–R-103.
 - **Agent instructions and spec-driven workflows:** R-104.
 - **Policy-as-code, continuous assurance and MCP governance research:** R-105.
@@ -100,6 +101,7 @@
 - **System modeling and assurance-case metamodels:** R-119–R-120.
 - **UML/XMI metamodel semantics and multiplicity defaults:** R-200.
 - **Probabilistic assurance, fuzzy logic and state-transition models:** R-193.
+- **Software-engineering ontology networks and ontology-definition metamodels:** R-200–R-201.
 ## Standards, government guidance and industry specifications
 
 <a id="r-01"></a>
@@ -586,7 +588,7 @@
 
 <a id="r-52"></a>
 ### R-52 — RDF 1.1 data model
-- **Cited by:** [0002-study-placement](decisions/0002-study-placement.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.md)
+- **Cited by:** [0002-study-placement](decisions/0002-study-placement.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.md), [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.md)
 
 - **Primary source:** [W3C RDF 1.1 Concepts and Abstract Syntax](https://www.w3.org/TR/rdf11-concepts/) · [W3C RDF Primer](https://www.w3.org/TR/rdf-primer/)
 - **Relevant concepts:** graph and dataset data model based on subject–predicate–object triples and IRIs.
@@ -595,7 +597,7 @@
 
 <a id="r-53"></a>
 ### R-53 — SKOS
-- **Cited by:** [0002-study-placement](decisions/0002-study-placement.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.md)
+- **Cited by:** [0002-study-placement](decisions/0002-study-placement.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.md), [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.md)
 
 - **Primary source:** [W3C SKOS Reference](https://www.w3.org/TR/skos-reference/)
 - **Relevant concepts:** URI-identified concepts, labels, notations, concept schemes, mappings and lightweight semantic relations.
@@ -604,16 +606,16 @@
 
 <a id="r-54"></a>
 ### R-54 — OWL 2 Web Ontology Language
-- **Cited by:** [0002-study-placement](decisions/0002-study-placement.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.md)
+- **Cited by:** [0002-study-placement](decisions/0002-study-placement.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.md), [metamodel-coherence-verification](research/metamodel-coherence-verification.md), [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.md)
 
-- **Primary source:** [W3C OWL 2 Structural Specification and Functional-Style Syntax](https://www.w3.org/TR/owl-syntax/) · [W3C OWL 2 Overview](https://www.w3.org/TR/owl-overview/)
+- **Primary sources:** [W3C OWL 2 Structural Specification and Functional-Style Syntax](https://www.w3.org/TR/owl-syntax/) · [W3C OWL 2 Overview](https://www.w3.org/TR/owl-overview/) · [OWL 2 Direct Semantics, Second Edition](https://www.w3.org/TR/owl2-direct-semantics/) · [OWL 2 Conformance, Second Edition](https://www.w3.org/TR/owl2-conformance/)
 - **Relevant concepts:** formally defined ontology semantics for classes, properties, individuals and axioms.
 - **Use in GovCheck:** candidate semantic layer discussed alongside RDF and SKOS in the integration study.
 - **Limit:** OWL reasoning does not validate all application data constraints, preserve arbitrary source properties or provide workflow, access-control or synchronization behavior.
 
 <a id="r-55"></a>
 ### R-55 — SHACL
-- **Cited by:** [0002-study-placement](decisions/0002-study-placement.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.md)
+- **Cited by:** [0002-study-placement](decisions/0002-study-placement.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.md), [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.md)
 
 - **Primary source:** [W3C Shapes Constraint Language (SHACL)](https://www.w3.org/TR/shacl/)
 - **Relevant concepts:** validation of RDF graphs against declared shapes and constraints.
@@ -784,7 +786,7 @@
 
 <a id="r-74"></a>
 ### R-74 — Hoover, Rosso-Llopart and Taran, *Evaluating Project Decisions: Case Studies in Software Engineering* (2009/2010)
-- **Cited by:** [0013-governance-metamodel](architecture/0013-governance-metamodel.md), [0021-assurance-claims-and-freshness](architecture/0021-assurance-claims-and-freshness.md), [0025-runtime-observations-peak-and-sacm](architecture/0025-runtime-observations-peak-and-sacm.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.md), [intent-impact-analysis](intent-impact-analysis.md), [metamodel semantic-coverage audit](research/metamodel-semantic-coverage-audit.md)
+- **Cited by:** [0013-governance-metamodel](architecture/0013-governance-metamodel.md), [0021-assurance-claims-and-freshness](architecture/0021-assurance-claims-and-freshness.md), [0025-runtime-observations-peak-and-sacm](architecture/0025-runtime-observations-peak-and-sacm.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.md), [intent-impact-analysis](intent-impact-analysis.md), [metamodel semantic-coverage audit](research/metamodel-semantic-coverage-audit.md), [Decision and assumed risk research](research/decision-and-assumed-risk-crosscutting-2026-11.md), [Work portfolio event journal](work-portfolio/events.md)
 - **Primary sources:** [PEAK section in Chapter 1 (InformIT)](https://www.informit.com/articles/article.aspx?p=1409781&seqNum=3) · [O’Reilly publisher book page](https://www.oreilly.com/library/view/evaluating-project-decisions/9780321685629/)
 - **Bibliographic reference:** Carol L. Hoover, Mel Rosso-Llopart and Gil Taran, Addison-Wesley Professional, first published October 2009 (copyright 2010), ISBN 978-0-321-54456-8; Chapter 1, §1.3 introduces the PEAK decision model.
 - **Relevant concepts:** Problem, Experience, Assumptions and Knowledge as decision inputs; a decision process produces a solution and an assumed risk.
@@ -1032,8 +1034,8 @@
 
 <a id="r-104"></a>
 ### R-104 — Agent instruction formats and spec-driven agent workflows
-- **Cited by:** [ADR 0002](decisions/0002-study-placement.md) · [Intent impact analysis](intent-impact-analysis.md)
-- **Primary sources:** [AGENTS.md open format](https://agents.md/) · [VS Code custom-instructions reference](https://code.visualstudio.com/docs/agents/reference/custom-instructions-reference) · [Secure AI-assisted development in VS Code](https://code.visualstudio.com/docs/agents/run/security) · [VS Code agent hooks](https://code.visualstudio.com/docs/agent-customization/hooks) · [VS Code approvals and permissions](https://code.visualstudio.com/docs/agents/run/approvals) · [Claude Code project instructions and AGENTS.md support](https://code.claude.com/docs/en/memory) · [Codex development-workflow guide](https://developers.openai.com/cookbook/examples/codex/iterating-development-workflows-with-codex) · [GitHub Spec Kit repository](https://github.com/github/spec-kit) · [GitHub Spec Kit documentation](https://github.github.com/spec-kit/)
+- **Cited by:** [ADR 0002](decisions/0002-study-placement.md), [Forge-native portfolio adapter](architecture/0034-forge-native-portfolio-adapter.md) · [Intent impact analysis](intent-impact-analysis.md)
+- **Primary sources:** [AGENTS.md open format](https://agents.md/) · [brain.md repository-native agent memory toolkit](https://github.com/mindmuxai/brain.md) · [VS Code custom-instructions reference](https://code.visualstudio.com/docs/agents/reference/custom-instructions-reference) · [Secure AI-assisted development in VS Code](https://code.visualstudio.com/docs/agents/run/security) · [VS Code agent hooks](https://code.visualstudio.com/docs/agent-customization/hooks) · [VS Code approvals and permissions](https://code.visualstudio.com/docs/agents/run/approvals) · [Claude Code project instructions and AGENTS.md support](https://code.claude.com/docs/en/memory) · [Codex development-workflow guide](https://developers.openai.com/cookbook/examples/codex/iterating-development-workflows-with-codex) · [GitHub Spec Kit repository](https://github.com/github/spec-kit) · [GitHub Spec Kit documentation](https://github.github.com/spec-kit/)
 - **Relevant concepts:** shared repository-level agent instructions; harness-specific discovery and loading rules; project-specific and path-scoped guidance; specification-driven workflows that produce plans, tasks and reviewable outcomes.
 - **Use in GovCheck:** preserves the cross-agent instruction and spec-driven workflow options discussed for repository bootstrap and agent interoperability.
 - **Limit:** AGENTS.md is a plain-text convention, not an enforceable policy or proof of instruction compliance. Discovery and inclusion differ by harness and version; finding a file does not prove that an agent follows it. Spec Kit is a workflow toolkit, not a normative authority, assurance case or security boundary.
@@ -1196,8 +1198,8 @@
 
 <a id="r-123"></a>
 ### R-123 — Lean Computer Science Library (CSLib) for semantic proof
-- **Cited by:** [metamodel-coherence-verification ](research/metamodel-coherence-verification.md)
-- **Primary sources:** [CSLib repository](https://github.com/leanprover/cslib) · [organization](https://github.com/leanprover/cslib/blob/main/ORGANISATION.md) · [contributor guidance](https://github.com/leanprover/cslib/blob/main/CONTRIBUTING.md)
+- **Cited by:** [metamodel-coherence-verification](research/metamodel-coherence-verification.md), [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.md)
+- **Primary sources:** [CSLib repository](https://github.com/leanprover/cslib) · [CSLib roadmap](https://www.cslib.io/roadmap/) · [organization](https://github.com/leanprover/cslib/blob/main/ORGANISATION.md) · [contributor guidance](https://github.com/leanprover/cslib/blob/main/CONTRIBUTING.md)
 - **Relevant concepts:** reusable Lean formalizations for operational semantics, labeled transition systems, program equivalence and logics.
 - **Use in GovCheck:** reuse suitable foundations to formalize the common semantic bridge and prove critical mapping properties.
 - **Limit:** CSLib is not a ready-made GovCheck ontology; its code-translation/Boole preservation pipeline is evolving. Pin versions and disclose axioms and trusted components.
@@ -1239,7 +1241,7 @@
 
 <a id="r-128"></a>
 ### R-128 — Assurance Forge: independent SACM 2.4 Beta 1 implementation-impact audit (2026-10-02; repository revision 2026-11-03)
-- **Cited by:** [SACM 2.4 Beta 1 interoperability-risk report](research/sacm24-beta1-interoperability-risk.md), [SACM 2.4 semantic mapping slice](research/sacm24-claim-inference-mapping.md), [integrated metamodel-coherence execution record](research/metamodel-coherence-prototype-execution.md), [metamodel semantic-coverage audit](research/metamodel-semantic-coverage-audit.md), [SACM source-native metamodel ingestion](research/sacm-native-metamodel-ingestion.md), [SACM XMI structural inventory](research/sacm-xmi-structural-inventory.md), [SACM source-view alignment report](research/sacm24-source-view-alignment.md), [Work portfolio event journal](work-portfolio/events.md), [Work-item register](work-portfolio/work-items.md)
+- **Cited by:** [SACM 2.4 Beta 1 interoperability-risk report](research/sacm24-beta1-interoperability-risk.md), [SACM 2.4 semantic mapping slice](research/sacm24-claim-inference-mapping.md), [integrated metamodel-coherence execution record](research/metamodel-coherence-prototype-execution.md), [metamodel semantic-coverage audit](research/metamodel-semantic-coverage-audit.md), [SACM source-native metamodel ingestion](research/sacm-native-metamodel-ingestion.md), [SACM XMI structural inventory](research/sacm-xmi-structural-inventory.md), [Work portfolio event journal](work-portfolio/events.md), [Work-item register](work-portfolio/work-items.md), [SACM source-view alignment](research/sacm24-source-view-alignment.md)
 - **Primary source:** [Pinned implementation-impact audit](https://github.com/lasrod/assurance-forge/blob/0f5187099be1c28fc725cb0f381afc695a135c89/docs/sacm/sacm-2.4-beta1-impact.md) · [pinned official-artifact fetch script and SHA-256 checks](https://github.com/lasrod/assurance-forge/blob/0f5187099be1c28fc725cb0f381afc695a135c89/scripts/fetch-sacm24-beta1-references.sh).
 - **Relevant concepts:** reported absence of a stable native 2.4 instance interchange contract; text/XML discrepancies reported in identity fields, assertion declaration literals, multiplicities, Claim value type and inheritance; the Claim.value value is supported by normative Figure 13.1 (MultiLangString) while informative Figure 15.1.1 and the XML show ExpressionLangString; the exact Clause 13.9 locator remains to be checked; implementation cost and versioning implications.
 - **Use in GovCheck:** independent engineering cross-check that the SACM 2.4 Beta 1 text and machine-readable metamodel must be treated as separate source views, not silently normalized into one model.
@@ -1327,9 +1329,9 @@
 
 <a id="r-193"></a>
 ### R-193 — Probabilistic, fuzzy and state-transition modelling for software assurance
-- **Cited by:** [Research discussion: semantic assurance and transition models](research/semantic-assurance-and-transition-models-2026-11.md)
+- **Cited by:** [Research discussion: semantic assurance and transition models](research/semantic-assurance-and-transition-models-2026-11.md), [Decision and assumed risk research](research/decision-and-assumed-risk-crosscutting-2026-11.md), [0013 — Governance metamodel](architecture/0013-governance-metamodel.md), [0025 — Runtime observations, PEAK and SACM](architecture/0025-runtime-observations-peak-and-sacm.md), [Work portfolio event journal](work-portfolio/events.md), [Work-item register](work-portfolio/work-items.md)
 
-- **Primary and academic sources:** [Baier & Katoen, *Principles of Model Checking*](https://is.ifmo.ru/books/_principles_of_model_checking.pdf) · [PRISM model checker manual](https://www.prismmodelchecker.org/manual/Main/Introduction) · [PRISM tutorials](https://www.prismmodelchecker.org/tutorial/) · [UPPAAL transition-system semantics](https://docs.uppaal.org/language-reference/system-description/semantics/) · [NIST Engineering Statistics Handbook: Bayesian reliability evaluation](https://www.itl.nist.gov/div898/handbook/apr/section1/apr1a.htm) · [Graydon & Holloway (2017), quantitative confidence in assurance arguments](https://doi.org/10.1016/j.ssci.2016.09.014) · [Probabilistic model of belief in safety cases (2021)](https://www.sciencedirect.com/science/article/pii/S0925753521000321) · [Johanyák & Zlatko (2025), fuzzy logic in software requirements engineering](https://doi.org/10.47833/2025.2.CSC.008) · [Yen, Tiao & Liu (1996), imprecise requirements](https://doi.org/10.1109/FUZZY.1996.551766) · [Salako & Zhao (2023), correlated software reliability tests](https://doi.org/10.1109/TSE.2022.3233802) · [Salako & Zhao (2024), conservative Bayesian software reliability](https://doi.org/10.1002/qre.3460) · [NIST, Software Assurance Using Structured Assurance Case Models](https://pmc.ncbi.nlm.nih.gov/articles/PMC4548534/).
+- **Primary and academic sources:** [Baier & Katoen, *Principles of Model Checking*](https://is.ifmo.ru/books/_principles_of_model_checking.pdf) · [PRISM model checker manual](https://www.prismmodelchecker.org/manual/Main/Introduction) · [PRISM tutorials](https://www.prismmodelchecker.org/tutorial/) · [UPPAAL transition-system semantics](https://docs.uppaal.org/language-reference/system-description/semantics/) · [NIST Engineering Statistics Handbook: Bayesian reliability evaluation](https://www.itl.nist.gov/div898/handbook/apr/section1/apr1a.htm) · [Graydon & Holloway (2017), quantitative confidence in assurance arguments](https://doi.org/10.1016/j.ssci.2016.09.014) · [Probabilistic model of belief in safety cases (2021)](https://www.sciencedirect.com/science/article/pii/S0925753521000321) · [DOI for the 2021 probabilistic safety-case study](https://doi.org/10.1016/j.ssci.2021.105187) · [PRISM case studies](https://www.prismmodelchecker.org/casestudies/) · [Johanyák & Zlatko (2025), fuzzy logic in software requirements engineering](https://doi.org/10.47833/2025.2.CSC.008) · [Yen, Tiao & Liu (1996), imprecise requirements](https://doi.org/10.1109/FUZZY.1996.551766) · [Salako & Zhao (2023), correlated software reliability tests](https://doi.org/10.1109/TSE.2022.3233802) · [Salako & Zhao (2024), conservative Bayesian software reliability](https://doi.org/10.1002/qre.3460) · [NIST, Software Assurance Using Structured Assurance Case Models](https://pmc.ncbi.nlm.nih.gov/articles/PMC4548534/).
 - **Relevant concepts:** finite-state transition systems; discrete- and continuous-time Markov chains; Markov decision processes; probabilistic timed automata; transition rates, probabilities, costs and rewards; Bayesian reliability assessment; interval-valued transition probabilities; fuzzy membership and imprecise requirements; quantitative confidence in assurance arguments.
 - **Use in GovCheck:** supports the study of optional specialist profiles for probabilistic and fuzzy reasoning and of a generic transition-analysis contract linking semantics, parameters, provenance, analysis specifications/results and assurance claims.
 - **Limit:** the sources describe distinct mathematical semantics and tools. A transition weight is not necessarily a probability; a fuzzy membership degree is not a probability; a model-checking result is bounded by its model and assumptions. Quantitative confidence techniques require critical evaluation and empirical validation. These sources do not establish adoption or implementation by GovCheck.
@@ -1360,163 +1362,51 @@
 
 <a id="r-197"></a>
 ### R-197 — OMG SACM 2.4 Beta 1 normative machine-readable metamodel XML
-- **Cited by:** [SACM source-native metamodel ingestion](research/sacm-native-metamodel-ingestion.md), [SACM XMI structural inventory](research/sacm-xmi-structural-inventory.md), [SACM source-view alignment report](research/sacm24-source-view-alignment.md), [Work portfolio event journal](work-portfolio/events.md)
-- **Implementation artifacts:** [XMI inventory generator](../scripts/parse-sacm-xmi.py) · [committed inventory summary](../formal/sources/sacm-2.4-beta1/metamodel-inventory-summary.json).
-- **Primary source:** [OMG SACM specification catalogue](https://www.omg.org/spec/SACM) · [normative machine-readable metamodel XML](https://www.omg.org/spec/SACM/20260504/SACM2.4_Metamodel.xml) · OMG file ID `ptc/26-05-28`.
-- **Pinned identity:** SACM 2.4 Beta 1; source path dated 2026-05-04; native format XML; SHA-256 comparison value `0581dfa0b9dfaf17ff0f6c63b74f8e7a8396bea03f315e1334e94f23db110830`, as reported by R-128 and verified by GovCheck workflow run [43586559738](https://github.com/Martin-PB/govcheck/actions/runs/43586559738) against 524,243 downloaded source bytes.
+- **Cited by:** [SACM 2.4 conformance and GovCheck integration](architecture/0026-sacm-24-conformance-and-govcheck-integration.md), [SACM source-native metamodel ingestion](research/sacm-native-metamodel-ingestion.md), [SACM XMI structural inventory](research/sacm-xmi-structural-inventory.md), [Work portfolio event journal](work-portfolio/events.md), [SACM source-view alignment](research/sacm24-source-view-alignment.md)
+- **Implementation artifacts:** [XMI inventory generator](../scripts/parse-sacm-xmi.py) · [committed inventory summary](../formal/sources/sacm-2.4-beta1/metamodel-inventory-summary.json).\n- **Primary sources:** [OMG SACM specification catalogue](https://www.omg.org/spec/SACM) · [SACM 2.4 issue tracker — closed issues](https://issues.omg.org/issues/spec/SACM?view=CLOSED) · [SACM 2.4 issue tracker — all issues](https://issues.omg.org/issues/spec/SACM?view=ALL) · [normative machine-readable metamodel XML](https://www.omg.org/spec/SACM/20260504/SACM2.4_Metamodel.xml) · OMG file ID `ptc/26-05-28`.
+- **Pinned identity:** SACM 2.4 Beta 1; source path dated 2026-05-04; native format XML; SHA-256 comparison value `0581dfa0b9dfaf17ff0f6c63b74f8e7a8396bea03f315e1334e94f23db110830`, as reported by R-128 and verified by GovCheck workflow run [43444619765](https://github.com/Martin-PB/govcheck/actions/runs/43444619765) against 524,243 downloaded source bytes.
 - **Relevant concepts:** normative machine-readable metamodel source, distinct from the normative PDF prose and informative UML Profile XMI.
 - **Limit:** SACM 2.4 Beta 1 is in-process/informational; SACM 2.3 remains formal. This metamodel XML is not a portable assurance-case instance interchange format and its digest does not establish semantic conformance.
 
 
 <a id="r-198"></a>
 ### R-198 — OMG SACM 2.4 Beta 1 normative specification PDF
-- **Cited by:** [SACM source-view alignment report](research/sacm24-source-view-alignment.md)
-- **Primary source:** [OMG SACM specification catalogue](https://www.omg.org/spec/SACM) · [SACM 2.4 Beta 1 normative PDF](https://www.omg.org/spec/SACM/2.4/Beta1/PDF) · OMG file ID `ptc/26-06-34`.
-- **Pinned identity:** SACM 2.4 Beta 1; source path dated 2026-05-04; 161 pages; SHA-256 `25f32d1cd4bf32dfa9c92c7c1840e1a113b1e91c0e97252f6551878c39997ff5`, reported by the independent R-128 pinned fetch script and independently verified by GovCheck workflow run [43586559738](https://github.com/Martin-PB/govcheck/actions/runs/43586559738) against 9,019,601 downloaded bytes; source PDF is retained in artifact [14110697846](https://github.com/Martin-PB/govcheck/actions/runs/43586559738/artifacts/14110697846).
-- **Relevant concepts:** normative specification prose, figures, clauses and annexes; source-fragment provenance for SACM 2.4 Beta 1 claims.
-- **Limit:** the PDF itself contains conflicting fragments; PDF text extraction does not capture all diagram-only labels. No fragment should be treated as a canonical PDF-wide statement without explicit scope.
+- **Cited by:** [SACM 2.4 Beta 1 source-view alignment and conflict inventory](research/sacm24-source-view-alignment.md)
+- **Primary source:** [OMG SACM specification catalogue](https://www.omg.org/spec/SACM) · [normative specification PDF](https://www.omg.org/spec/SACM/20260504/SACM2.4.pdf) · OMG file ID `ptc/26-06-34`.
+- **Pinned identity:** SACM 2.4 Beta 1; source path `SACM/20260504/SACM2.4.pdf`; SHA-256 `25f32d1cd4bf32dfa9c92c7c1840e1a113b1e91c0e97252f6551878c39997ff5`, reported by the independent R-128 audit and not yet independently recomputed by GovCheck.
+- **Relevant concepts:** normative PDF text and figures for SACM 2.4 Beta 1, distinct from the normative machine-readable metamodel XML and the informative UML Profile XMI.
+- **Use in GovCheck:** preserve PDF clauses, figures, annexes, exact fragments and contradictions as a separately identified source view. The source-view alignment report records conflicts within the PDF and against the XML without imposing precedence.
+- **Limit:** the PDF is 161 pages. R-128 reports approximately 98% text-extraction coverage and warns that diagram-only labels require visual review. The reported digest is not a GovCheck-controlled verification, and PDF text extraction alone is not a complete semantic inventory.
 
 <a id="r-199"></a>
 ### R-199 — OMG SACM 2.4 Beta 1 informative UML Profile XMI
-- **Cited by:** [SACM source-view alignment report](research/sacm24-source-view-alignment.md)
-- **Primary source:** [OMG SACM specification catalogue](https://www.omg.org/spec/SACM) · [OMG SACM machine-readable files catalogue](https://www.omg.org/spec/SACM/machine-readable) · OMG file ID `ptc/26-05-21`.
-- **Pinned identity:** SACM 2.4 Beta 1; source path dated 2026-05-04; SHA-256 `9149a0414628e1b70c1f7c2235f5180c64e7a144601eb2ae78d539681918838b`, reported by the independent R-128 pinned fetch script. GovCheck has not yet independently downloaded and recomputed this XMI digest.
-- **Relevant concepts:** informative UML profile artifact, kept distinct from the normative metamodel XML (R-197) and normative specification PDF (R-198).
-- **Limit:** informative profile XMI is not the normative SACM metamodel XML and does not establish an instance interchange contract or semantic conformance.
-
-
+- **Cited by:** [SACM 2.4 Beta 1 source-view alignment and conflict inventory](research/sacm24-source-view-alignment.md)
+- **Primary source:** [OMG SACM specification catalogue](https://www.omg.org/spec/SACM) · [informative UML Profile XMI](https://www.omg.org/spec/SACM/20260504/SACM2.4_Profile.xmi) · OMG file ID `ptc/26-05-21`.
+- **Pinned identity:** SACM 2.4 Beta 1; source path `SACM/20260504/SACM2.4_Profile.xmi`; SHA-256 `9149a0414628e1b70c1f7c2235f5180c64e7a144601eb2ae78d539681918838b`, reported by the independent R-128 audit and not yet independently recomputed by GovCheck.
+- **Relevant concepts:** informative UML Profile source artifact, distinct from both the normative specification PDF and normative machine-readable metamodel XML.
+- **Use in GovCheck:** retain this profile as a separate source view for later comparison and provenance-aware interpretation; do not silently merge its contents into the normative metamodel.
+- **Limit:** informative status does not confer normative authority. Its reported digest is not independently verified by GovCheck, and the artifact does not establish SACM conformance or semantic equivalence with the normative XML.
 <a id="r-200"></a>
-### R-200 — OMG Unified Modeling Language (UML) 2.5 specification and machine-readable metamodel
-- **Namespace identifier:** [UML 20131001 namespace](http://www.omg.org/spec/UML/20131001).
-- **Cited by:** [SACM XMI structural inventory](research/sacm-xmi-structural-inventory.md), [SACM 2.4 source-view alignment](research/sacm24-source-view-alignment.md), [SACM 2.4 interoperability risk](research/sacm24-beta1-interoperability-risk.md), [Work portfolio event journal](work-portfolio/events.md), [Work-item register](work-portfolio/work-items.md), [Lean formalization README](../formal/lean/README.md).
-- **Primary source:** [OMG UML 2.5 normative PDF](https://www.omg.org/spec/UML/2.5/PDF) · [OMG UML machine-readable catalogue](https://www.omg.org/spec/UML/machine-readable) · UML 2.5 machine-readable file set ID `ptc/13-08-17`.
-- **Pinned identity:** UML 2.5; normative document formal/2015-03-01; the SACM XMI source uses the `http://www.omg.org/spec/UML/20131001` namespace, which is the UML 2.5 namespace (not the later UML 2.5.1 `20161101` namespace).
-- **Relevant clauses:** §7.8.8.7 defines `MultiplicityElement.lowerBound()` and `upperBound()`, including the fallback value 1 when the corresponding value specification or typed value is absent; §8.6.9.4 defines `LiteralInteger.value` default 0; §8.6.14.4 defines `LiteralUnlimitedNatural.value` default 0; §8.6.10 defines `LiteralNull`.
-- **Use in GovCheck:** supplies the exact UML 2.5 rules used to interpret the omitted literal values in the pinned SACM 2.4 Beta 1 XMI. The parser records both the raw value specification and the effective multiplicity, including the rule responsible for a default.
-- **Limit:** only the stated literal/default cases are implemented. Arbitrary `ValueSpecification` expressions, OCL evaluation, full UML/MOF well-formedness and parser refinement remain outside this increment.
-
+### R-200 — SEON: Software Engineering Ontology Network, ReqON and SPO
+- **Cited by:** [Metamodel ontology reuse assessment](research/metamodel-ontology-reuse-assessment.md)
+- **Primary sources:** [SEON network and architecture](https://dev.nemo.inf.ufes.br/seon/SEON.html) · [Requirements engineering ontology subnetwork (ReqON)](https://dev.nemo.inf.ufes.br/seon/ReqON.html) · [Software Process Ontology (SPO)](https://dev.nemo.inf.ufes.br/seon/SPO.html) · [SEON network index](https://dev.nemo.inf.ufes.br/seon/menu.html)
+- **Relevant concepts:** a layered ontology network grounded in UFO, with a software-process core ontology and domain ontologies for requirements, design, testing, configuration management and related software-engineering concerns.
+- **Use in GovCheck:** candidate source vocabulary and ontology network for comparison against the repository lifecycle and requirements metamodel; its explicit integration approach and semantic consistency objective are relevant to cross-ontology mapping.
+- **Limit:** SEON is a research ontology network, not a normative standard or a complete repository-governance metamodel. Its concepts and versions must be inspected before asserting coverage or semantic equivalence.
 
 <a id="r-201"></a>
-### R-201 — OMG SACM issue tracker: closed and complete issue views
-- **Cited by:** [ADR 0026 EN](architecture/0026-sacm-24-conformance-and-govcheck-integration.md), [ADR 0026 FR](architecture/0026-sacm-24-conformance-and-govcheck-integration.fr.md).
-- **Primary sources:** [SACM closed issues](https://issues.omg.org/issues/spec/SACM?view=CLOSED) · [SACM all issues](https://issues.omg.org/issues/spec/SACM?view=ALL).
-- **Use:** issue history and disposition context for SACM 2.4 Beta 1.
-- **Limit:** dynamic issue-tracker views, not normative specification text; capture issue identifiers and access date when relying on a particular record.
+### R-201 — OMG Ontology Definition Metamodel (ODM) 1.1
+- **Cited by:** [Metamodel ontology reuse assessment](research/metamodel-ontology-reuse-assessment.md)
+- **Primary source:** [OMG ODM specification and artifact catalogue](https://www.omg.org/spec/ODM/)
+- **Normative artifacts:** the OMG catalogue identifies the ODM 1.1 PDF and the ODM metamodel XMI as normative machine-readable documents; the OWL/RDF profiles and libraries are separately listed. Pin the exact artifact and file ID before importing or comparing any model.
+- **Relevant concepts:** metamodels and profiles for representing ontology languages and relating ontology constructs to OMG modelling infrastructure.
+- **Use in GovCheck:** candidate reference for assessing mappings between ontology formalisms and modelling/metamodel technologies.
+- **Limit:** ODM is not itself a software lifecycle ontology, repository-governance model or assurance-case metamodel. Its existence does not establish that a particular GovCheck mapping is complete or semantics-preserving.
 
 <a id="r-202"></a>
-### R-202 — MindMux brain.md repository
-- **Cited by:** [ADR 0034 EN](architecture/0034-forge-native-portfolio-adapter.md), [ADR 0034 FR](architecture/0034-forge-native-portfolio-adapter.fr.md).
-- **Primary source:** [mindmuxai/brain.md](https://github.com/mindmuxai/brain.md).
-- **Use:** repository-native, agent-agnostic durable knowledge protocol and CLI.
-- **Limit:** evolving implementation and protocol; not a normative governance standard and not an adopted GovCheck dependency.
-
-<a id="r-203"></a>
-### R-203 — W3C OWL 2 Direct Semantics and Conformance
-- **Cited by:** [Metamodel coherence verification EN](research/metamodel-coherence-verification.md), [Metamodel coherence verification FR](research/metamodel-coherence-verification.fr.md).
-- **Primary sources:** [OWL 2 Direct Semantics, Second Edition](https://www.w3.org/TR/owl2-direct-semantics/) · [OWL 2 Conformance, Second Edition](https://www.w3.org/TR/owl2-conformance/).
-- **Status:** W3C Recommendations, 11 December 2012.
-- **Use:** model-theoretic semantics and conformance-test framing for OWL 2.
-- **Limit:** OWL 2 semantics apply to OWL ontologies; they do not automatically establish correspondence with GovCheck or other ontology languages.
-
-<a id="r-204"></a>
-### R-204 — SEON software-engineering ontology network
-- **Cited by:** [Metamodel ontology reuse assessment EN](research/metamodel-ontology-reuse-assessment.md), [Metamodel ontology reuse assessment FR](research/metamodel-ontology-reuse-assessment.fr.md).
-- **Primary sources:** [SEON network](https://dev.nemo.inf.ufes.br/seon/SEON.html) · [Requirements Ontology Network (ReqON)](https://dev.nemo.inf.ufes.br/seon/ReqON.html) · [Software Process Ontology (SPO)](https://dev.nemo.inf.ufes.br/seon/SPO.html).
-- **Use:** candidate ontology network for software engineering, requirements and process concepts.
-- **Limit:** project-maintained ontology documentation; reuse requires versioned source capture and explicit correspondence obligations.
-
-<a id="r-205"></a>
-### R-205 — CSLib roadmap
-- **Cited by:** [Metamodel ontology reuse assessment EN](research/metamodel-ontology-reuse-assessment.md), [Metamodel ontology reuse assessment FR](research/metamodel-ontology-reuse-assessment.fr.md).
-- **Primary source:** [CSLib roadmap](https://www.cslib.io/roadmap/).
-- **Use:** current roadmap and stated scope for the CSLib/Lean ecosystem.
-- **Limit:** roadmap statements are not formal guarantees of delivered capabilities; verify the exact library revision before relying on an implementation.
-
-<a id="r-206"></a>
-### R-206 — OMG Ontology Definition Metamodel (ODM) 1.1
-- **Cited by:** [Metamodel ontology reuse assessment EN](research/metamodel-ontology-reuse-assessment.md), [Metamodel ontology reuse assessment FR](research/metamodel-ontology-reuse-assessment.fr.md).
-- **Primary source:** [OMG ODM specification catalogue](https://www.omg.org/spec/ODM/).
-- **Pinned formal version:** ODM 1.1, September 2014; normative PDF file ID formal/14-09-02; normative machine-readable metamodel XMI file ID ptc/13-08-04.
-- **Use:** ontology metamodels, profiles and mappings across UML/MOF, RDF and OWL.
-- **Limit:** ODM mappings do not by themselves prove a mapping from ODM/SACM/OWL to GovCheck.
-
-
-<a id="r-207"></a>
-### R-207 — Graydon and Holloway (2017), confidence in assurance arguments
-- **Cited by:** [Semantic assurance and transition models EN](research/semantic-assurance-and-transition-models-2026-11.md), [Semantic assurance and transition models FR](research/semantic-assurance-and-transition-models-2026-11.fr.md).
-- **Primary source:** [An investigation of proposed techniques for quantifying confidence in assurance arguments](https://doi.org/10.1016/j.ssci.2016.09.014), Safety Science 92 (2017), 53–65.
-- **Use:** critical review of quantitative confidence methods and their empirical validation.
-- **Limit:** the paper's counterexamples and critique are evidence about the reviewed techniques, not a universal impossibility theorem for quantitative assurance.
-
-<a id="r-208"></a>
-### R-208 — Nešić, Nyberg and Gallina (2021), probabilistic belief in safety cases
-- **Cited by:** [Semantic assurance and transition models EN](research/semantic-assurance-and-transition-models-2026-11.md), [Semantic assurance and transition models FR](research/semantic-assurance-and-transition-models-2026-11.fr.md).
-- **Primary source:** [A probabilistic model of belief in safety cases](https://doi.org/10.1016/j.ssci.2021.105187), Safety Science 138 (2021), article 105187.
-- **Use:** model-theoretic and Bayesian-network treatment of belief in safety-case conclusions.
-- **Correction:** the DOI ending 2021.09.014 appearing in an earlier French draft is incorrect for this paper; the verified DOI is 10.1016/j.ssci.2021.105187.
-- **Limit:** a probabilistic belief model is not a proof of claim truth and does not automatically justify a confidence threshold.
-
-<a id="r-209"></a>
-### R-209 — NIST Engineering Statistics Handbook: Bayesian reliability evaluation
-- **Cited by:** [Semantic assurance and transition models EN](research/semantic-assurance-and-transition-models-2026-11.md), [Semantic assurance and transition models FR](research/semantic-assurance-and-transition-models-2026-11.fr.md).
-- **Primary source:** [How can Bayesian methodology be used for reliability evaluation?](https://www.itl.nist.gov/div898/handbook/apr/section1/apr1a.htm).
-- **Use:** background on prior information, likelihood and posterior reliability evaluation.
-- **Limit:** handbook exposition; application requires domain-specific model assumptions and validated data.
-
-<a id="r-210"></a>
-### R-210 — Johanyák and Ćović (2025), fuzzy logic in software requirements engineering
-- **Cited by:** [Semantic assurance and transition models EN](research/semantic-assurance-and-transition-models-2026-11.md), [Semantic assurance and transition models FR](research/semantic-assurance-and-transition-models-2026-11.fr.md).
-- **Primary source:** [A Comprehensive Survey on Fuzzy Logic Applications in Software Requirements Engineering](https://doi.org/10.47833/2025.2.CSC.008), Gradus 12(2), 2025.
-- **Use:** survey of fuzzy techniques for ambiguity and uncertainty in requirements engineering.
-- **Limit:** fuzzy degrees are not interchangeable with probability, truth, confidence or formal proof.
-
-<a id="r-211"></a>
-### R-211 — Yen, Tiao and Liu (1996), tradeoffs for imprecise requirements
-- **Cited by:** [Semantic assurance and transition models EN](research/semantic-assurance-and-transition-models-2026-11.md), [Semantic assurance and transition models FR](research/semantic-assurance-and-transition-models-2026-11.fr.md).
-- **Primary source:** [A Systematic Tradeoff Methodology for Acquiring and Validating Imprecise Requirements](https://doi.org/10.1109/FUZZY.1996.551766), Proceedings of the Fifth IEEE International Conference on Fuzzy Systems, 1996.
-- **Use:** fuzzy-logic treatment of imprecise requirements and tradeoff analysis.
-- **Limit:** the method does not establish that fuzzy aggregation is appropriate for every requirement domain.
-
-<a id="r-212"></a>
-### R-212 — Salako and Zhao (2023), Bayesian software reliability without independent tests
-- **Cited by:** [Semantic assurance and transition models EN](research/semantic-assurance-and-transition-models-2026-11.md), [Semantic assurance and transition models FR](research/semantic-assurance-and-transition-models-2026-11.fr.md).
-- **Primary source:** [The Unnecessity of Assuming Statistically Independent Tests in Bayesian Software Reliability Assessments](https://doi.org/10.1109/TSE.2022.3233802), IEEE Transactions on Software Engineering 49(4), 2023.
-- **Use:** conservative Bayesian bounds when operational test outcomes may be dependent.
-- **Limit:** the paper's assumptions and construction must be checked before applying its bounds to a different system.
-
-<a id="r-213"></a>
-### R-213 — Salako and Zhao (2024), possibly correlated reliability tests
-- **Cited by:** [Semantic assurance and transition models EN](research/semantic-assurance-and-transition-models-2026-11.md), [Semantic assurance and transition models FR](research/semantic-assurance-and-transition-models-2026-11.fr.md).
-- **Primary source:** [Demonstrating Software Reliability using Possibly Correlated Tests: Insights from a Conservative Bayesian Approach](https://doi.org/10.1002/qre.3460), Quality and Reliability Engineering International 40(3), 2024.
-- **Use:** conservative reliability claims when execution independence is uncertain.
-- **Limit:** a statistical reliability bound is evidence for a specified probabilistic model, not a theorem about implementation conformance.
-
-<a id="r-214"></a>
-### R-214 — Rhodes et al. (2010), structured assurance case models for software assurance
-- **Cited by:** [Semantic assurance and transition models EN](research/semantic-assurance-and-transition-models-2026-11.md), [Semantic assurance and transition models FR](research/semantic-assurance-and-transition-models-2026-11.fr.md).
-- **Primary sources:** [Software Assurance Using Structured Assurance Case Models (PubMed Central)](https://pmc.ncbi.nlm.nih.gov/articles/PMC4548534/) · [NIST DOI](https://doi.org/10.6028/jres.115.013).
-- **Bibliographic identity:** Thomas Rhodes, Frederick Boland, Elizabeth Fong and Michael Kass, Journal of Research of NIST 115(3), 2010.
-- **Use:** structured assurance-case methods applied to software assurance.
-- **Limit:** a structured argument is not itself a proof; the evidence and inference warrants remain subject to assessment.
-
-<a id="r-215"></a>
-### R-215 — Baier and Katoen (2008), Principles of Model Checking
-- **Cited by:** [Semantic assurance and transition models EN](research/semantic-assurance-and-transition-models-2026-11.md), [Semantic assurance and transition models FR](research/semantic-assurance-and-transition-models-2026-11.fr.md).
-- **Publisher source:** [MIT Press book page](https://mitpress.mit.edu/9780262026499/principles-of-model-checking/).
-- **Access copy cited by the research document:** [University-hosted PDF mirror](https://is.ifmo.ru/books/_principles_of_model_checking.pdf).
-- **Bibliographic identity:** Christel Baier and Joost-Pieter Katoen, MIT Press, 2008, ISBN 978-0-262-02649-9.
-- **Limit:** the university-hosted PDF is a third-party access copy, not the publisher's canonical distribution channel.
-
-<a id="r-216"></a>
-### R-216 — PRISM probabilistic model checker documentation
-- **Cited by:** [Semantic assurance and transition models EN](research/semantic-assurance-and-transition-models-2026-11.md), [Semantic assurance and transition models FR](research/semantic-assurance-and-transition-models-2026-11.fr.md).
-- **Primary sources:** [PRISM manual introduction](https://www.prismmodelchecker.org/manual/Main/Introduction) · [PRISM tutorial](https://www.prismmodelchecker.org/tutorial/) · [PRISM case studies](https://www.prismmodelchecker.org/casestudies/).
-- **Use:** probabilistic model types, property specification and published case studies.
-- **Limit:** PRISM's supported model classes and algorithms are tool-specific; a model-checking result is not a theorem about an implementation unless the model-to-implementation relation is established.
-
-<a id="r-217"></a>
-### R-217 — UPPAAL timed-automata semantics documentation
-- **Cited by:** [Semantic assurance and transition models EN](research/semantic-assurance-and-transition-models-2026-11.md), [Semantic assurance and transition models FR](research/semantic-assurance-and-transition-models-2026-11.fr.md).
-- **Primary source:** [UPPAAL system-description semantics](https://docs.uppaal.org/language-reference/system-description/semantics/).
-- **Use:** pseudo-formal semantics for networks of extended timed automata, including delay, action and synchronization transitions.
-- **Limit:** the documentation describes UPPAAL's semantics; it is not a semantics-preservation proof for a GovCheck model.
+### R-202 — Risk management and risk assessment process guidance
+- **Cited by:** [Decision and assumed risk research](research/decision-and-assumed-risk-crosscutting-2026-11.md)
+- **Primary standards and guidance:** [ISO 31000:2018 — Risk management: Guidelines](https://www.iso.org/standard/31000) · [IEC 31010:2019 — Risk assessment techniques](https://www.iso.org/standard/72140.html) · [NIST SP 800-30 Rev. 1 — Guide for Conducting Risk Assessments](https://csrc.nist.gov/pubs/sp/800/30/r1/final)
+- **Relevant concepts:** organizational risk-management principles and process; selection, planning, verification and validation of risk-assessment techniques; uncertainty, sensitivity, assessment context, preparation, conduct, maintenance and documentation of assessment results.
+- **Use in GovCheck:** informs the separation between a risk scenario, method-specific assessment, treatment, residual exposure and authorized acceptance. Supports recording assessment purpose, scope, assumptions, data/model revisions, method, limitations and review conditions.
+- **Limit:** ISO 31000 provides guidelines, not a universal risk formula or certification scheme; IEC 31010 describes techniques, not a single mandatory method; NIST SP 800-30 Rev. 1 is written for federal information systems and organizations. None of these sources makes PEAK assumed risk equivalent to quantitative assessment or risk acceptance, and none is adopted as a mandatory GovCheck method.

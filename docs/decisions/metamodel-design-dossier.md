@@ -63,6 +63,7 @@ The repository already contains substantial candidate architecture:
 
 - [Issue #73](https://github.com/Martin-PB/govcheck/issues/73) is the primary verification work item for semantic contracts across intent, requirements, architecture, lifecycle, assurance and authority.
 - [Issue #69](https://github.com/Martin-PB/govcheck/issues/69) covers claim-justification chains and preservation of methods, assumptions and limitations.
+- [Issue #131](https://github.com/Martin-PB/govcheck/issues/131) covers the distinct semantics of probability, fuzzy membership, uncertainty and assumed risk. The bilingual [decision/risk research addendum](../research/decision-and-assumed-risk-crosscutting-2026-11.md) clarifies that decisions are transversal graph objects and separates PEAK Assumed Risk, risk assessment, treatment, residual risk and authorized risk acceptance.
 - [Issue #74](https://github.com/Martin-PB/govcheck/issues/74) covers reference status, provenance and machine-checkable traceability.
 - [Issue #79](https://github.com/Martin-PB/govcheck/issues/79) is the assurance/evaluation portfolio container; its children remain individually scoped.
 - [Issue #81](https://github.com/Martin-PB/govcheck/issues/81) is the formal-methods/lifecycle portfolio container.
@@ -384,6 +385,6 @@ Internal design records: Architecture 0013, 0022, 0023, 0027; Specifications 000
 
 
 
-## Complete source-catalogue links
+### Complete source-catalogue links
 
 [R-05](../references.md#r-05) · [R-33](../references.md#r-33) · [R-34](../references.md#r-34) · [R-44](../references.md#r-44) · [R-51](../references.md#r-51) · [R-52](../references.md#r-52) · [R-53](../references.md#r-53) · [R-54](../references.md#r-54) · [R-55](../references.md#r-55) · [R-71](../references.md#r-71) · [R-73](../references.md#r-73) · [R-74](../references.md#r-74) · [R-88](../references.md#r-88) · [R-92](../references.md#r-92) · [R-93](../references.md#r-93) · [R-94](../references.md#r-94) · [R-95](../references.md#r-95) · [R-96](../references.md#r-96) · [R-97](../references.md#r-97) · [R-98](../references.md#r-98) · [R-99](../references.md#r-99) · [R-100](../references.md#r-100) · [R-102](../references.md#r-102)

@@ -30,6 +30,8 @@ A requirement can refine into sub-requirements and link to properties. Propertie
 
 Decision records should make their reasoning inputs inspectable. The PEAK model provides one useful scaffold: Problem, Experience, Assumptions and Knowledge are recorded separately before a Solution and its Assumed Risk are recorded. The assumed-risk output should be linked to the relevant assumptions, observations and claims, with scope, rationale, accountable owner and review/expiry conditions. It is not itself authorization to accept the risk; acceptance remains a separate governed decision by the authorized principal. PEAK complements the metamodel's typed links between decisions, assumptions, claims and evidence; it is not a risk score or an assurance argument. Assumptions remain falsifiable and observations may challenge them. See [R-74](../references.md#r-74).
 
+Do not collapse **PEAK Assumed Risk**, a **risk scenario**, a **risk assessment**, **risk treatment**, **residual risk** and **risk acceptance**. The assumed-risk output records what may not work as envisioned; an assessment is a separate method-bound analysis; treatment changes exposure; acceptance is an authorized disposition. Quantitative probability, fuzzy membership, nondeterminism, transition rates, costs and confidence also retain distinct semantics. See [R-193](../references.md#r-193) and the [decision/risk research clarification](../research/decision-and-assumed-risk-crosscutting-2026-11.md).
+
 ## Normative force
 
 Distinguish obligation, prohibition, explicit permission, invariant/constraint, evidence requirement, process/approval requirement and non-binding recommendation. Absence of prohibition is not permission. A recommendation does not block acceptance. Defeasible rules require explicit priority/exception semantics; conflicts and unresolved precedence remain visible.
@@ -46,15 +48,19 @@ Consistency is not realizability: a logically consistent requirement set may sti
 
 The metamodel should accommodate goal-oriented requirements (including KAOS/GORE-style refinement and iStar 2.0 actor/goal modeling), deontic logic, temporal logic, predicate/relational logic and assume-guarantee contracts. These are conceptual families, not a commitment to one logic or toolchain. See [R-92](../references.md#r-92) for iStar.
 
-## Assurance traceability graph
+## Assurance traceability graph and transversal decisions
 
-A representative chain is:
+A representative **traceability path** (not a mandatory lifecycle and not a decision sequence) is:
 
-`Decision/Authority → Goal → Requirement/Norm → Property/Contract → Model → Implementation → Check/Method → Evidence/Witness → Claim → Argument → Acceptance decision`
+`Intent/Source → Goal/Need → Requirement/Norm → Property/Contract → Model → Implementation → Check/Method → Evidence/Witness → Claim → Argument`
 
-Not every project needs identical granularity, but missing links, unjustified jumps and circular support must be visible. A requirement without a verification strategy remains visible. A test unlinked to a claim does not prove project conformity. A formal property without an approved normative source is not automatically a project obligation.
+Not every project needs identical granularity, and the graph is not required to be acyclic globally. Missing links, unjustified jumps, contradictions, unsupported mappings and circular support must be visible. Requirements may have multiple origins; decisions and evidence may relate to multiple nodes. A test unlinked to a claim does not establish project conformity. A formal property without an approved normative source is not automatically a project obligation.
 
-The graph should answer both directions: why a rule exists and who authorized it; which goals a property supports; which components are affected; which evidence supports/refutes a claim; what is unknown/stale/unsupported; and who authorized an exception, for what scope and expiry.
+**Decision is a transversal first-class object, not the final node of this path.** A decision may create, select, refine, justify, authorize, reject, constrain, suspend, supersede or revoke any node or relation: intent, goal, requirement, property, model, implementation, verification method, evidence/claim, assurance argument, exception, deployment or another decision. The graph must preserve the decision's authority, context, scope, rationale, alternatives, conditions, effective governance revision, provenance, temporal validity and review/revocation conditions. An acceptance decision is one particular decision kind that may follow an assurance assessment; it does not make decision-making a terminal stage.
+
+Keep separate the evidence/assurance that supports a claim, the authority that may decide, and the decision actually made. A decision can accept incomplete assurance or residual exposure only if the missing evidence, assumptions, limitations and accepted risk remain explicit. Such a decision does not convert testimony into proof or make an uncertain scenario impossible.
+
+The graph should answer both directions: why an artifact or rule exists and which decisions authorize or constrain it; which goals a property supports; which components are affected; which evidence supports/refutes a claim; what is unknown/stale/unsupported; and who authorized an exception or risk acceptance, for what scope, under which policy revision and until when.
 
 ## Interpretation pipeline
 
@@ -86,6 +92,7 @@ Ontology vocabulary, serialization, graph representation, formal logic, query la
 - [R-13 — JSON Schema structural contracts](../references.md#r-13)
 - [R-44 — KAOS and goal-oriented requirements engineering](../references.md#r-44)
 - [R-74 — PEAK project-decision model](../references.md#r-74)
+- [R-193 — probabilistic, fuzzy and state-transition modelling](../references.md#r-193)
 - [R-88 — NIST SP 800-192 access-control policy/model verification](../references.md#r-88)
 - [R-92 — iStar 2.0 goal-oriented requirements modeling](../references.md#r-92)
 - [R-93 — deontic logic and normative modalities](../references.md#r-93)

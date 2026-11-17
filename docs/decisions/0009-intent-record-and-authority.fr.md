@@ -43,3 +43,15 @@ Le nom `product-intent.md` avait été utilisé initialement dans une branche de
 Tout changement du nom canonique ou du rôle sémantique nécessite une décision explicite de l'autorité GovCheck compétente. Les changements de l'intention propre à un dépôt sont des changements gouvernés de ce document ; ils ne modifient pas silencieusement les décisions ou exigences existantes.
 
 Le métamodèle des relations est volontairement reporté à un travail distinct d'architecture/spécification fondé sur la recherche.
+
+## Références
+
+- [R-114](../references.fr.md#r-114)
+- [R-115](../references.fr.md#r-115)
+- [R-116](../references.fr.md#r-116)
+- [R-117](../references.fr.md#r-117)
+- [R-118](../references.fr.md#r-118)
+- [R-119](../references.fr.md#r-119)
+- [R-120](../references.fr.md#r-120)
+- [R-121](../references.fr.md#r-121)
+- [R-122](../references.fr.md#r-122)

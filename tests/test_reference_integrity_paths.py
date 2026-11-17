@@ -97,5 +97,63 @@ class RepositoryMarkdownPathTests(unittest.TestCase):
                 self.assertEqual(CHECK.check_references(external=False), 0)
 
 
+    def test_french_catalogue_allows_english_only_source_fallback(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            docs = root / "docs"
+            formal = root / "formal" / "lean"
+            docs.mkdir(parents=True)
+            formal.mkdir(parents=True)
+
+            en_catalogue = """# Catalogue
+
+## Thematic index
+
+| Theme | Entries |
+|---|---|
+| Formal methods | R-01 |
+
+## Full entries
+
+<a id="r-01"></a>
+### R-01 — Example source
+- **Cited by:** [Lean README](../formal/lean/README.md)
+- **Source:** https://example.org/spec
+"""
+            fr_catalogue = """# Catalogue
+
+## Index thématique
+
+| Thème | Entrées |
+|---|---|
+| Méthodes formelles | R-01 |
+
+## Entrées complètes
+
+<a id="r-01"></a>
+### R-01 — Source exemple
+- **Cité par :** [README Lean](../formal/lean/README.md)
+- **Source :** https://example.org/spec
+"""
+            (docs / "references.md").write_text(en_catalogue, encoding="utf-8")
+            (docs / "references.fr.md").write_text(fr_catalogue, encoding="utf-8")
+            (formal / "README.md").write_text(
+                "# Lean coherence\n\nSee [R-01](../../docs/references.md#r-01).\n",
+                encoding="utf-8",
+            )
+
+            with ExitStack() as stack:
+                stack.enter_context(patch.object(CHECK, "ROOT", root))
+                stack.enter_context(patch.object(CHECK, "DOCS", docs))
+                stack.enter_context(patch.object(CHECK, "CATALOGUES", {
+                    "en": docs / "references.md",
+                    "fr": docs / "references.fr.md",
+                }))
+                stack.enter_context(patch.object(CHECK, "ERRORS", []))
+                stack.enter_context(patch.object(CHECK, "WARNINGS", []))
+                self.assertEqual(CHECK.check_references(external=False), 0)
+
+
+
 if __name__ == "__main__":
     unittest.main()

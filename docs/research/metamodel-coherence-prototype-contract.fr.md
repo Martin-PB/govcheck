@@ -60,6 +60,19 @@ Une affirmation/un élément probant traduit ne peut pas élargir la portée de 
 
 Si les correspondances A→B et B→C satisfont chacune une classe de préservation déclarée, la correspondance composée A→C ne peut revendiquer que la classe de préservation la plus forte justifiée par une loi de composition prouvée et des hypothèses compatibles. Elle ne peut hériter de `Equivalent` au seul motif que les deux correspondances existent.
 
+### Première tranche de composition propositionnelle exécutée
+
+Le module Lean `GovCheckCoherence.Composition` compose les neuf combinaisons des trois constructeurs actuels :
+
+- équivalence + équivalence produit une équivalence ;
+- les combinaisons équivalence/directionnel produisent une relation directionnelle ;
+- si l'un des deux côtés est partiel, le résultat reste partiel ;
+- deux mappings partiels se composent sur l'intersection explicite de leurs domaines, avec témoin intermédiaire.
+
+Un théorème vérifié par le noyau établit que le résultat ne peut être une équivalence **que si les deux entrées sont des équivalences**. Deux autres théorèmes montrent qu'un mapping partiel, à gauche ou à droite, n'est jamais promu en relation totale par composition.
+
+Il s'agit volontairement d'un résultat au niveau du `SemanticBridge` propositionnel, et non encore de la composition de dossiers `EvidenceMapping` complets. L'identité exacte des modèles/artefacts, les révisions, la portée, les hypothèses, la classe de méthode, les règles de statut épistémique, l'autorité, l'identité de transformation et le registre des pertes nécessitent encore des contrats de composition distincts. La composition ne corrige pas non plus un domaine partiel vide : le résultat reste partiel, et un témoin de non-vacuité/couverture demeure une obligation séparée.
+
 ### VC-MAP-04 — Aucune perte silencieuse
 
 Toute construction source est classée comme traduite, préservée nativement, explicitement non prise en charge ou explicitement transformée avec déclaration de perte/d'approximation. Les tests aller-retour sont nécessaires mais ne prouvent pas à eux seuls l'équivalence sémantique.

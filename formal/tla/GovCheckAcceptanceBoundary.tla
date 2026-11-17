@@ -16,22 +16,6 @@ CONSTANTS
     RiskAcceptanceIds, RiskReasons, BypassActors,
     AdvisoryBypassReason, AdminBypassReason, MaxTick
 
-ASSUME
-    /\ Candidates # {}
-    /\ Bases # {}
-    /\ Policies # {}
-    /\ Verifiers # {}
-    /\ Results = {Pass, Fail, Unknown, Conflict}
-    /\ BoundaryModes = {Enforced, Advisory, AdminBypassable}
-    /\ BoundaryMode \in BoundaryModes
-    /\ InitialBase \in Bases
-    /\ InitialPolicy \in Policies
-    /\ InitialVerifier \in Verifiers
-    /\ RiskAcceptanceIds # {}
-    /\ RiskReasons # {}
-    /\ BypassActors # {}
-    /\ MaxTick \in Nat
-
 VARIABLES
     currentBase,
     currentPolicy,

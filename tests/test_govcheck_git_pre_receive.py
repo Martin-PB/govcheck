@@ -26,15 +26,19 @@ REF = "refs/heads/main"
 
 
 def envelope(result="pass", verifier_digest="", verifier_identity="govcheck-server-verifier",
-             policy_revision="policy-rev-7", **overrides):
+             repository_id="forge://fixture/project", vcs_kind="git",
+             policy_revision="policy-rev-7", policy_digest="sha256:" + "d" * 64, **overrides):
     payload = {
         "schema": hook.SCHEMA,
         "base": BASE,
         "candidate": CANDIDATE,
         "ref": REF,
+        "repository_id": repository_id,
+        "vcs_kind": vcs_kind,
         "result": result,
         "decision_id": "decision-0001",
         "policy_revision": policy_revision,
+        "policy_digest": policy_digest,
         "evidence_digest": "sha256:" + "a" * 64,
         "verifier": {
             "identity": verifier_identity,
@@ -69,7 +73,9 @@ class PreReceiveTests(unittest.TestCase):
             "GOVCHECK_GATE_COMMAND": str(self.gate),
             "GOVCHECK_EXPECTED_VERIFIER_IDENTITY": "govcheck-server-verifier",
             "GOVCHECK_EXPECTED_VERIFIER_DIGEST": self.digest,
+            "GOVCHECK_EXPECTED_REPOSITORY_ID": "forge://fixture/project",
             "GOVCHECK_EXPECTED_POLICY_REVISION": "policy-rev-7",
+            "GOVCHECK_EXPECTED_POLICY_DIGEST": "sha256:" + "d" * 64,
             "GOVCHECK_PROTECTED_REFS": "refs/heads/main,refs/heads/release/*",
             "GIT_DIR": "/srv/git/project.git",
         }
@@ -81,7 +87,9 @@ class PreReceiveTests(unittest.TestCase):
         values = {
             "verifier_digest": self.digest,
             "verifier_identity": self.env["GOVCHECK_EXPECTED_VERIFIER_IDENTITY"],
+            "repository_id": self.env["GOVCHECK_EXPECTED_REPOSITORY_ID"],
             "policy_revision": self.env["GOVCHECK_EXPECTED_POLICY_REVISION"],
+            "policy_digest": self.env["GOVCHECK_EXPECTED_POLICY_DIGEST"],
         }
         values.update(overrides)
         return envelope(result, **values)
@@ -92,8 +100,12 @@ class PreReceiveTests(unittest.TestCase):
         self.assertEqual(code, 0)
         self.assertIn("accept:", messages[0])
         args, kwargs = calls[0]
+        self.assertEqual(args[args.index("--repository-id") + 1], self.env["GOVCHECK_EXPECTED_REPOSITORY_ID"])
+        self.assertEqual(args[args.index("--vcs-kind") + 1], "git")
+        self.assertEqual(args[args.index("--base") + 1], BASE)
+        self.assertEqual(args[args.index("--candidate") + 1], CANDIDATE)
+        self.assertEqual(args[args.index("--ref") + 1], REF)
         self.assertEqual(args[-2:], ["--git-dir", self.env["GIT_DIR"]])
-        self.assertEqual(args[-8:-2], ["--base", BASE, "--candidate", CANDIDATE, "--ref", REF])
 
     def test_unknown_fails_closed(self):
         runner, _ = runner_for(self.payload("unknown"))
@@ -130,6 +142,18 @@ class PreReceiveTests(unittest.TestCase):
         code, messages = hook.run_pre_receive(self.input(), self.env, runner)
         self.assertEqual(code, 1)
         self.assertIn("not bound to this ref", messages[0])
+
+    def test_repository_vcs_and_policy_digest_mismatches_fail_closed(self):
+        for payload, expected in (
+            (self.payload("pass", repository_id="forge://other/project"), "repository_id"),
+            (self.payload("pass", vcs_kind="pijul"), "vcs_kind"),
+            (self.payload("pass", policy_digest="sha256:" + "e" * 64), "policy digest"),
+        ):
+            with self.subTest(expected=expected):
+                runner, _ = runner_for(payload)
+                code, messages = hook.run_pre_receive(self.input(), self.env, runner)
+                self.assertEqual(code, 1)
+                self.assertIn(expected, messages[0])
 
     def test_policy_revision_mismatch_fails_closed(self):
         runner, _ = runner_for(self.payload("pass", policy_revision="policy-rev-old"))

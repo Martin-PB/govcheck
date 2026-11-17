@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import importlib.util
+from importlib.machinery import SourceFileLoader
 import json
 import os
 import subprocess
@@ -13,11 +14,11 @@ from pathlib import Path
 from types import SimpleNamespace
 
 ROOT = Path(__file__).resolve().parents[1]
-spec = importlib.util.spec_from_file_location(
-    "govcheck_git_pre_receive", ROOT / "scripts" / "govcheck-git-pre-receive"
-)
+hook_path = ROOT / "scripts" / "govcheck-git-pre-receive"
+loader = SourceFileLoader("govcheck_git_pre_receive", str(hook_path))
+spec = importlib.util.spec_from_loader(loader.name, loader)
 hook = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(hook)
+loader.exec_module(hook)
 
 BASE = "1" * 40
 CANDIDATE = "2" * 40

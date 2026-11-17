@@ -1,0 +1,13 @@
+import GovCheckCoherence.EvidenceMappingComposition
+
+#print axioms GovCheck.Coherence.evidence_mapping_chain_binds_endpoint_models
+#print axioms GovCheck.Coherence.evidence_mapping_chain_binds_intermediate_model
+#print axioms GovCheck.Coherence.evidence_mapping_chain_preserves_artifact
+#print axioms GovCheck.Coherence.evidence_mapping_chain_preserves_scope
+#print axioms GovCheck.Coherence.evidence_mapping_chain_preserves_assumptions
+#print axioms GovCheck.Coherence.evidence_mapping_chain_preserves_method_class
+#print axioms GovCheck.Coherence.evidence_mapping_chain_theorem_proof_requires_derivation
+#print axioms GovCheck.Coherence.evidence_mapping_chain_retains_assumption_declarations
+#print axioms GovCheck.Coherence.evidence_mapping_chain_retains_loss_declarations
+#print axioms GovCheck.Coherence.evidence_mapping_chain_retains_transformation_lineage
+

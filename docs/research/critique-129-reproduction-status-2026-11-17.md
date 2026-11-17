@@ -102,7 +102,7 @@ No TLC run for the eight current TLA+ model/configuration pairs was part of thes
 3. **Lean theorem strength:** the generic theorem `kind_mapping_rule_theorem_proof_requires_derivation` concludes that a derivation exists with `derivation.proof = derivation.proof`. That equality is reflexive; the useful content is the existential witness carried by the constructor. The theorem does not independently establish a further semantic property of the derivation. Names and claims must remain aligned with the actual proposition.
 4. **Executable scope:** the current `govcheck/check.py` has eight rules for licence presence, bilingual decisions, manifest pairs, reference integrity, source presence, bootstrap integrity, TLA evidence freshness and independent-review attestation. It does not implement the canonical lifecycle, authority registry, journal protocol, risk/decision semantics or the full cross-model assurance contracts.
 
-## 6. Correction staged for the PR #133 reference-check failure
+## 6. Corrections staged for the two verifier findings
 
 A separate branch, [`work/fix-reference-integrity-repo-wide-markdown`](https://github.com/Martin-PB/govcheck/tree/work/fix-reference-integrity-repo-wide-markdown), was created from PR #133's head. It contains:
 

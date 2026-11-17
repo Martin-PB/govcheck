@@ -193,6 +193,22 @@ class EvaluateTests(unittest.TestCase):
             rule = next(r for r in report["rules"] if r["id"] == "sources-present")
             self.assertEqual(rule["result"], "fail")
 
+    def test_numbered_references_heading_is_recognized(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            build_tree(root)
+            (root / "docs" / "decisions" / "0001-a.md").write_text(
+                "# A\n\n## 17. References\n\n### Complete source catalogue\n\n- [R-01](../references.md#r-01)\n",
+                encoding="utf-8",
+            )
+            (root / "docs" / "decisions" / "0001-a.fr.md").write_text(
+                "# A\n\n## 17. Références\n\n### Catalogue complet\n\n- [R-01](../references.fr.md#r-01)\n",
+                encoding="utf-8",
+            )
+            report = check.evaluate(root)
+            rule = next(r for r in report["rules"] if r["id"] == "sources-present")
+            self.assertEqual(rule["result"], "pass")
+
     def test_references_section_without_source_link_fails(self):
         with tempfile.TemporaryDirectory() as d:
             root = Path(d)

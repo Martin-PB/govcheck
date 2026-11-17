@@ -141,3 +141,11 @@ No finite model-checking result, specification edit or PR merge establishes impl
 - Formal-methods and VCS references: [R-05](../references.md#r-05), [R-22](../references.md#r-22), [R-194](../references.md#r-194), [R-195](../references.md#r-195) and [R-196](../references.md#r-196).
 
 External references inform technical methods; they do not determine or authorize the user's selected governance policy.
+
+## References
+
+- [R-05](../references.md#r-05)
+- [R-22](../references.md#r-22)
+- [R-194](../references.md#r-194)
+- [R-195](../references.md#r-195)
+- [R-196](../references.md#r-196)

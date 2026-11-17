@@ -20,9 +20,9 @@
 | Métadonnées de gouvernance et catalogues | R-17 |
 | Systèmes de workflow d'agents évalués comme fixtures | R-18–R-19 |
 | Sémantiques de contrôle de version | R-22 |
-| Sémantique des métamodèles UML/XMI et des spécifications de valeurs | R-197, R-200 |
-| Suivi OMG et historique des sources | R-201 |
-| Protocoles de mémoire de dépôt natifs aux agents | R-202 |
+| Sémantique des métamodèles UML/XMI et des spécifications de valeurs | R-197, R-220 |
+| Suivi OMG et historique des sources | R-218 |
+| Protocoles de mémoire de dépôt natifs aux agents | R-219 |
 | Sémantique et conformité OWL 2 | R-203 |
 | Réseaux d'ontologies d'ingénierie logicielle et métamodèles | R-204–R-206 |
 | Confiance dans les arguments d'assurance et preuves probabilistes | R-207–R-209, R-214 |
@@ -54,7 +54,8 @@
 | Intention du dépôt, cycle de vie et ingénierie des exigences | R-114–R-118, R-121–R-122 |
 | Modélisation des systèmes et métamodèles de dossiers d'assurance | R-119–R-120 |
 | Cohérence du métamodèle, préservation sémantique et vérification formelle | R-123–R-127 |
-| Assurance probabiliste, logique floue et modèles à transitions d'états | R-193 |\n| Guides de management et d'appréciation du risque | R-202 |
+| Assurance probabiliste, logique floue et modèles à transitions d'états | R-193 |
+| Guides de management et d'appréciation du risque | R-202 |
 | Modifications concurrentes, conflits sémantiques et livraison multi-agents | R-142–R-151 |
 | Ordre du journal canonique, reprise durable et nouvelles tentatives idempotentes | R-194–R-196 |
 | Réseaux d'ontologies du génie logiciel et métamodèles de définition d'ontologies | R-200–R-201 |
@@ -85,7 +86,8 @@
 - **CRDT, transport pair-à-pair et découverte :** R-45–R-50, R-66, R-87.
 - **Représentation des connaissances et échange de données liées :** R-51–R-61, R-83–R-86.
 - **Sémantiques natives des VCS et adaptateurs de collaboration :** R-22.
-- **Modélisation des menaces, chemins d'attaque et gestion des risques :** R-27 à R-32.\n- **Management du risque et techniques d'appréciation :** R-202.
+- **Modélisation des menaces, chemins d'attaque et gestion des risques :** R-27 à R-32.
+- **Management du risque et techniques d'appréciation :** R-202.
 - **Modélisation des exigences orientée objectifs :** R-44, R-92.
 - **Dossiers d'assurance de sécurité et métamodèles :** R-33 à R-34.
 - **Modèle de décision PEAK :** R-74.
@@ -1363,7 +1365,8 @@
 <a id="r-197"></a>
 ### R-197 — XML normatif du métamodèle lisible par machine OMG SACM 2.4 Beta 1
 - **Cité par :** [Conformité SACM 2.4 et intégration GovCheck](architecture/0026-sacm-24-conformance-and-govcheck-integration.fr.md), [Ingestion source-native du métamodèle SACM](research/sacm-native-metamodel-ingestion.fr.md), [Inventaire structurel XMI SACM](research/sacm-xmi-structural-inventory.fr.md), [Journal des événements du portefeuille](work-portfolio/events.fr.md), [Alignement des vues source SACM](research/sacm24-source-view-alignment.fr.md)
-- **Artefacts d'implémentation :** [générateur d'inventaire XMI](../scripts/parse-sacm-xmi.py) · [synthèse d'inventaire versionnée](../formal/sources/sacm-2.4-beta1/metamodel-inventory-summary.json).\n- **Sources primaires :** [Catalogue de spécifications SACM de l'OMG](https://www.omg.org/spec/SACM) · [Suivi des problèmes SACM 2.4 — problèmes clos](https://issues.omg.org/issues/spec/SACM?view=CLOSED) · [Suivi des problèmes SACM 2.4 — tous les problèmes](https://issues.omg.org/issues/spec/SACM?view=ALL) · [XML normatif du métamodèle lisible par machine](https://www.omg.org/spec/SACM/20260504/SACM2.4_Metamodel.xml) · identifiant de fichier OMG `ptc/26-05-28`.
+- **Artefacts d'implémentation :** [générateur d'inventaire XMI](../scripts/parse-sacm-xmi.py) · [synthèse d'inventaire versionnée](../formal/sources/sacm-2.4-beta1/metamodel-inventory-summary.json).
+- **Sources primaires :** [Catalogue de spécifications SACM de l'OMG](https://www.omg.org/spec/SACM) · [Suivi des problèmes SACM 2.4 — problèmes clos](https://issues.omg.org/issues/spec/SACM?view=CLOSED) · [Suivi des problèmes SACM 2.4 — tous les problèmes](https://issues.omg.org/issues/spec/SACM?view=ALL) · [XML normatif du métamodèle lisible par machine](https://www.omg.org/spec/SACM/20260504/SACM2.4_Metamodel.xml) · identifiant de fichier OMG `ptc/26-05-28`.
 - **Identité épinglée :** SACM 2.4 Beta 1 ; chemin source daté du 04/05/2026 ; format natif XML ; valeur SHA-256 de comparaison `0581dfa0b9dfaf17ff0f6c63b74f8e7a8396bea03f315e1334e94f23db110830`, rapportée par R-128 et vérifiée par l'exécution GovCheck [43444619765](https://github.com/Martin-PB/govcheck/actions/runs/43444619765) sur 524 243 octets source téléchargés.
 - **Concepts pertinents :** source normative du métamodèle lisible par machine, distincte du texte PDF normatif et du XMI informatif du profil UML.
 - **Limite :** SACM 2.4 Beta 1 est en cours de traitement et informative ; SACM 2.3 reste formelle. Ce XML de métamodèle n'est pas un format portable d'échange d'instances de dossiers d'assurance et son digest n'établit pas la conformité sémantique.
@@ -1388,7 +1391,7 @@
 - **Limite :** son statut informatif ne lui confère pas d'autorité normative. Son digest rapporté n'est pas vérifié indépendamment par GovCheck et l'artefact n'établit ni conformité SACM ni équivalence sémantique avec le XML normatif.
 <a id="r-200"></a>
 ### R-200 — SEON : réseau d'ontologies du génie logiciel, ReqON et SPO
-- **Cité par :** [Évaluation du réemploi des ontologies du métamodèle](research/metamodel-ontology-reuse-assessment.fr.md), [Inventaire structurel XMI SACM](research/sacm-xmi-structural-inventory.fr.md), [Risque d'interopérabilité SACM 2.4](research/sacm24-beta1-interoperability-risk.fr.md), [Alignement des vues sources SACM 2.4](research/sacm24-source-view-alignment.fr.md), [Éléments de travail](work-portfolio/work-items.fr.md), [README de formalisation Lean](../formal/lean/README.md).
+- **Cité par :** [Évaluation du réemploi des ontologies du métamodèle](research/metamodel-ontology-reuse-assessment.fr.md).
 - **Sources primaires :** [Réseau et architecture SEON](https://dev.nemo.inf.ufes.br/seon/SEON.html) · [Sous-réseau d'ontologie de l'ingénierie des exigences (ReqON)](https://dev.nemo.inf.ufes.br/seon/ReqON.html) · [Ontologie des processus logiciels (SPO)](https://dev.nemo.inf.ufes.br/seon/SPO.html) · [Index du réseau SEON](https://dev.nemo.inf.ufes.br/seon/menu.html)
 - **Concepts pertinents :** réseau d'ontologies en couches fondé sur UFO, avec une ontologie centrale des processus logiciels et des ontologies de domaine pour les exigences, la conception, les tests, la gestion de configuration et d'autres préoccupations du génie logiciel.
 - **Utilité pour GovCheck :** vocabulaire source et réseau d'ontologies candidats à comparer au métamodèle du cycle de vie et des exigences du dépôt ; son approche explicite d'intégration et son objectif de cohérence sémantique sont pertinents pour les correspondances inter-ontologies.
@@ -1535,3 +1538,14 @@
 - **Source primaire :** [mindmuxai/brain.md](https://github.com/mindmux/brain.md).
 - **Utilité :** protocole de connaissance durable natif au dépôt, agnostique vis-à-vis des agents, et CLI associée.
 - **Limite :** protocole et implémentation évolutifs ; ni norme normative de gouvernance ni dépendance adoptée par GovCheck.
+
+
+<a id="r-220"></a>
+### R-220 — Spécification OMG UML 2.5 et métamodèle lisible par machine
+- **Identifiant d'espace de noms :** [espace de noms UML 20131001](http://www.omg.org/spec/UML/20131001).
+- **Cité par :** [Inventaire structurel XMI SACM](research/sacm-xmi-structural-inventory.fr.md), [Alignement des vues sources SACM 2.4](research/sacm24-source-view-alignment.fr.md), [Risque d'interopérabilité SACM 2.4](research/sacm24-beta1-interoperability-risk.fr.md), [Éléments de travail](work-portfolio/work-items.fr.md), [README de formalisation Lean](../formal/lean/README.md).
+- **Source primaire :** [PDF normatif OMG UML 2.5](https://www.omg.org/spec/UML/2.5/PDF) · [Catalogue OMG des fichiers UML lisibles par machine](https://www.omg.org/spec/UML/machine-readable) · identifiant du jeu de fichiers UML 2.5 lisibles par machine `ptc/13-08-17`.
+- **Identité épinglée :** UML 2.5 ; document normatif formal/2015-03-01 ; la source XMI SACM utilise l'espace de noms `http://www.omg.org/spec/UML/20131001`, qui est celui d'UML 2.5 (et non l'espace de noms ultérieur `20161101` d'UML 2.5.1).
+- **Clauses pertinentes :** §7.8.8.7 définit `MultiplicityElement.lowerBound()` et `upperBound()`, y compris la valeur de repli 1 lorsque la spécification de valeur correspondante ou sa valeur typée est absente ; §8.6.9.4 définit la valeur par défaut 0 de `LiteralInteger.value` ; §8.6.14.4 définit la valeur par défaut 0 de `LiteralUnlimitedNatural.value` ; §8.6.10 définit `LiteralNull`.
+- **Utilité pour GovCheck :** fournit les règles UML 2.5 exactes utilisées pour interpréter les valeurs littérales omises dans le XMI SACM 2.4 Beta 1 épinglé. Le parseur conserve à la fois la spécification de valeur brute et la multiplicité effective, avec la règle responsable de toute valeur par défaut.
+- **Limite :** seuls les cas de littéraux et valeurs par défaut indiqués sont implémentés. Les expressions `ValueSpecification` arbitraires, l'évaluation OCL, la validité UML/MOF complète et le raffinement du parseur restent hors de cet incrément.

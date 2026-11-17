@@ -45,6 +45,7 @@ jobs:
           - GovCheckAuthority
           - GovCheckCanonicalPublication
           - GovCheckGovernanceApplicability
+          - GovCheckGovernanceContextBinding
           - GovCheckGovernanceControls
           - GovCheckJournalRecovery
           - GovCheckLifecycle
@@ -79,9 +80,13 @@ jobs:
           auto-config: false
           axiom-audit: true
           axiom-audit-root: GovCheckCoherence.Proofs
-      - name: Emit explicit axiom report
+      - name: Emit explicit axiom reports for all reviewed coherence slices
         working-directory: formal/lean
-        run: lake env lean GovCheckCoherence/AxiomReport.lean
+        run: |
+          lake env lean GovCheckCoherence/AxiomReport.lean
+          lake env lean GovCheckCoherence/EvidenceMappingCompositionAxiomReport.lean
+          lake env lean GovCheckCoherence/CompositionAxiomReport.lean
+          lake env lean GovCheckCoherence/RiskSemanticsAxiomReport.lean
 
   cslib:
     name: Isolated CSLib compatibility build

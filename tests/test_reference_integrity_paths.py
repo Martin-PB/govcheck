@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import importlib.util
+from contextlib import ExitStack
 from pathlib import Path
 import tempfile
 import unittest
@@ -84,14 +85,15 @@ class RepositoryMarkdownPathTests(unittest.TestCase):
                 encoding="utf-8",
             )
 
-            with patch.object(CHECK, "ROOT", root), \\
-                 patch.object(CHECK, "DOCS", docs), \\
-                 patch.object(CHECK, "CATALOGUES", {
-                     "en": docs / "references.md",
-                     "fr": docs / "references.fr.md",
-                 }), \\
-                 patch.object(CHECK, "ERRORS", []), \\
-                 patch.object(CHECK, "WARNINGS", []):
+            with ExitStack() as stack:
+                stack.enter_context(patch.object(CHECK, "ROOT", root))
+                stack.enter_context(patch.object(CHECK, "DOCS", docs))
+                stack.enter_context(patch.object(CHECK, "CATALOGUES", {
+                    "en": docs / "references.md",
+                    "fr": docs / "references.fr.md",
+                }))
+                stack.enter_context(patch.object(CHECK, "ERRORS", []))
+                stack.enter_context(patch.object(CHECK, "WARNINGS", []))
                 self.assertEqual(CHECK.check_references(external=False), 0)
 
 

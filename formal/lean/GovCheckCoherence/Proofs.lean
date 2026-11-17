@@ -35,7 +35,7 @@ theorem transport_preserves_status (record : EvidenceRecord) :
 theorem testimony_mapping_to_theorem_proof_requires_derivation
     {claim : Prop}
     (rule : KindMappingRule claim .testimony .theoremProof) :
-    ∃ derivation : KernelCheckedDerivation claim, claim :=
+    Nonempty (KernelCheckedDerivation claim) :=
   kind_mapping_rule_theorem_proof_requires_derivation rule rfl
 
 /-- A model-checking result cannot be mapped to theorem-proof status without
@@ -43,7 +43,7 @@ theorem testimony_mapping_to_theorem_proof_requires_derivation
 theorem model_checking_mapping_to_theorem_proof_requires_derivation
     {claim : Prop}
     (rule : KindMappingRule claim .modelCheckingResult .theoremProof) :
-    ∃ derivation : KernelCheckedDerivation claim, claim :=
+    Nonempty (KernelCheckedDerivation claim) :=
   kind_mapping_rule_theorem_proof_requires_derivation rule rfl
 
 theorem passing_testimony_is_not_a_theorem_proof :
@@ -109,8 +109,7 @@ exact target claim; a source kind label is never sufficient. -/
 theorem evidence_mapping_theorem_proof_requires_derivation
     {source target : MappingSubject} (mapping : EvidenceMapping source target)
     (h : target.evidence.kind = .theoremProof) :
-    ∃ derivation : KernelCheckedDerivation target.claim.meaning,
-      target.claim.meaning :=
+    Nonempty (KernelCheckedDerivation target.claim.meaning) :=
   mapping_target_theorem_proof_requires_derivation mapping h
 
 /-- Unknown (no determinate result) is not the same as inconclusive

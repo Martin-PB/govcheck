@@ -131,3 +131,16 @@ This record does not adopt a particular logic, standard, model checker, proof as
 
 
 Catalogue de références : [R-193](../references.md#r-193).
+
+
+## 8. Executed composition of complete evidence-mapping records (2026-11-17)
+
+The first Lean-executed composition slice now extends beyond proposition-level `SemanticBridge` relations to a two-stage `EvidenceMapping` chain. The executable contract requires the exact intermediate model revision to agree between the first mapping's target and the second mapping's source. It proves end-to-end preservation of native artifact identity and revision, scope, source assumptions and method class. Semantic bridge coverage is composed using the separately audited proposition-level operation.
+
+The chain retains both epistemic-kind mapping rules at their respective claim revisions. In particular, the final theorem-proof requirement is discharged from the second mapping's derivation of the exact final target claim; an intermediate proof is not silently treated as a proof of a different target proposition. This deliberately avoids pretending that proof terms for distinct propositions compose without an explicit semantic transport obligation.
+
+Transformation identity/revision pairs, declared assumptions and declared losses are retained in order. The result is an `EvidenceMappingChain`, not a flattened `EvidenceMapping`: no canonical algebra has yet been adopted for synthesizing one transformation identity/revision or aggregating loss declarations. The chain is a two-step typed contract, not a general mapping DAG.
+
+The Lean 4.19.0 build and dedicated axiom report passed on PR #143 head `413603ae8b0dd373285ffc2f4ba8060b3f083ea2` (workflow run 44126778174). The checked composition theorems report no axiom dependencies. This establishes the stated Lean propositions only; it does not prove parser correctness, transformation implementation conformance, or a universal composition policy.
+
+This remains an engineering/research increment under issue #73, not a normative metamodel adoption.

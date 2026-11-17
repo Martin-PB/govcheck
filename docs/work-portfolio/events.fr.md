@@ -106,3 +106,10 @@ Détail canonique : [journal anglais WP-EVT-000029](events.md#wp-evt-000029).
 L'Architecture 0025 EN/FR distingue désormais le risque assumé PEAK de l'évaluation, du traitement, du risque résiduel et de l'acceptation autorisée du risque. Voir [R-193](../references.fr.md#r-193).
 
 Détail canonique : [journal anglais WP-EVT-000030](events.md#wp-evt-000030).
+
+
+## WP-EVT-000031 — Composition Lean d'une chaîne complète de mappings d'éléments probants
+
+Le module Lean de composition des `EvidenceMapping` est exécuté : égalité exacte du modèle intermédiaire, préservation de l'identité/révision de l'artefact, du périmètre, des hypothèses source et de la classe de méthode, composition du pont sémantique, règles épistémiques propres à chaque étape et conservation ordonnée des transformations et pertes déclarées. Le résultat reste une chaîne de deux mappings, sans aplatissement artificiel.
+
+Vérification Lean 4.19.0 et rapport d'axiomes dédié réussis sur la tête de PR #143. Voir [journal anglais WP-EVT-000031](events.md#wp-evt-000031).

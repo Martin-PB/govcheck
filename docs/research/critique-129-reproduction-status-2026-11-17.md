@@ -104,6 +104,8 @@ No TLC run for the eight current TLA+ model/configuration pairs was part of thes
 
 ## 6. Corrections staged for the two verifier findings
 
+### 6.1 PR #133 reference-check failure
+
 A separate branch, [`work/fix-reference-integrity-repo-wide-markdown`](https://github.com/Martin-PB/govcheck/tree/work/fix-reference-integrity-repo-wide-markdown), was created from PR #133's head. It contains:
 
 - repository-relative Markdown identity, so backlinks to `formal/lean/README.md` no longer raise `ValueError`;

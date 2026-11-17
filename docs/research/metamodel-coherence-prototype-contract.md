@@ -60,6 +60,19 @@ A mapped claim/evidence record cannot enlarge its subject scope, temporal validi
 
 If mapping A→B and B→C both satisfy a declared preservation class, the composed A→C mapping may claim only the strongest preservation class justified by a proved composition law and compatible assumptions. It cannot inherit `Equivalent` merely because both component mappings exist.
 
+### Executed proposition-level composition slice
+
+The Lean module `GovCheckCoherence.Composition` composes all nine combinations of the three current bridge constructors:
+
+- equivalent + equivalent yields equivalent;
+- equivalent/sound-directional combinations yield sound-directional;
+- if either side is partial, the composite remains partial;
+- two partial bridges compose over the explicit witness-dependent intersection of their domains.
+
+A kernel-checked theorem states that the composite can be equivalent **only if both inputs are equivalent**. Two further theorems show that a partial input on either side is never promoted to a total relation by composition.
+
+This is deliberately a proposition-level `SemanticBridge` result, not yet composition of complete `EvidenceMapping` records. Exact model/artifact identity, revision, scope, assumptions, method class, epistemic-kind rules, authority, transformation identity and loss accounting still require separate composition contracts. Composition also does not repair an empty partial domain: the result remains partial, and a non-vacuity/coverage witness is a separate obligation.
+
 ### VC-MAP-04 — No silent loss
 
 Every source construct is classified as mapped, preserved natively, explicitly unsupported, or explicitly transformed with a loss/approximation statement. Round-trip tests are necessary but do not alone prove semantic equivalence.

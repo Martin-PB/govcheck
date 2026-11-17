@@ -131,3 +131,16 @@ Ce compte rendu n'adopte aucune logique, norme, outil de model checking, assista
 
 
 Catalogue des références : [R-193](../references.fr.md#r-193).
+
+
+## 8. Composition exécutée de mappings d'éléments probants complets (2026-11-17)
+
+Le premier incrément de composition exécuté par Lean dépasse désormais les seules relations propositionnelles `SemanticBridge` et porte sur une chaîne de deux objets `EvidenceMapping`. Le contrat exécutable exige l'égalité exacte de la révision du modèle intermédiaire entre la cible du premier mapping et la source du second. Il démontre la préservation de bout en bout de l'identité et de la révision de l'artefact natif, du périmètre, des hypothèses source et de la classe de méthode. La couverture du pont sémantique est composée au moyen de l'opération propositionnelle auditée séparément.
+
+La chaîne conserve les deux règles de mapping épistémique à leurs révisions de revendication respectives. En particulier, l'exigence finale de preuve de théorème est satisfaite par la dérivation du second mapping portant sur la revendication cible finale exacte ; une preuve intermédiaire n'est pas silencieusement considérée comme une preuve d'une autre proposition cible. Cela évite de prétendre que des termes de preuve portant sur des propositions distinctes se composent sans obligation explicite de transport sémantique.
+
+Les couples identité/révision des transformations, les déclarations d'hypothèses et les pertes déclarées sont conservés dans leur ordre. Le résultat est un `EvidenceMappingChain`, et non un `EvidenceMapping` aplati : aucune algèbre canonique n'a encore été adoptée pour synthétiser une identité/révision unique de transformation ou agréger les déclarations de perte. La chaîne est un contrat typé à deux étapes, pas un graphe général de mappings.
+
+La compilation Lean 4.19.0 et le rapport d'axiomes dédié ont réussi sur la tête de PR #143 `413603ae8b0dd373285ffc2f4ba8060b3f083ea2` (exécution 44126778174). Les théorèmes de composition vérifiés ne déclarent aucune dépendance axiomatique. Cela établit uniquement les propositions Lean énoncées ; cela ne prouve ni la correction d'un parseur, ni la conformité des implémentations de transformation, ni une politique universelle de composition.
+
+Cet incrément reste un travail d'ingénierie/recherche lié à l'issue #73, et non l'adoption normative d'un métamodèle.

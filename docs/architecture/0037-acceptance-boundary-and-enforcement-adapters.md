@@ -150,6 +150,6 @@ No choice above is adopted by this proposal.
 
 ## 11. References and related records
 
-External platform sources are catalogued in [R-221–R-226](../references.md#r-221). Related records: [Architecture 0015](0015-governance-conformance-and-validation-plan.md), [Architecture 0022](0022-governance-capability-audit.md), [Architecture 0023](0023-bootstrap-governance-authority.md), [Specification 0007](../specifications/0007-canonical-governance-journal-protocol.md), [research synthesis](../research/acceptance-boundary-enforcement-2026-11.md), [issue #45](https://github.com/Martin-PB/govcheck/issues/45).
+External platform sources are catalogued in [R-221](../references.md#r-221), [R-222](../references.md#r-222), [R-223](../references.md#r-223), [R-224](../references.md#r-224), [R-225](../references.md#r-225), [R-226](../references.md#r-226). Related records: [Architecture 0015](0015-governance-conformance-and-validation-plan.md), [Architecture 0022](0022-governance-capability-audit.md), [Architecture 0023](0023-bootstrap-governance-authority.md), [Specification 0007](../specifications/0007-canonical-governance-journal-protocol.md), [research synthesis](../research/acceptance-boundary-enforcement-2026-11.md), [issue #45](https://github.com/Martin-PB/govcheck/issues/45).
 
 **This record is a proposal. It does not enable branch protection, install hooks, select a forge or adopt a normative acceptance policy.**

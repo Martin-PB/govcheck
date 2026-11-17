@@ -1,7 +1,7 @@
 # SACM 2.4 Beta 1 — source-derived XMI structural inventory
 
 **Status:** generated structural inventory for one digest-pinned OMG metamodel XML revision; no GovCheck semantic mapping is inferred.  
-**Source:** [R-197 — OMG SACM 2.4 Beta 1 normative machine-readable metamodel XML](../references.md#r-197) · [R-200 — OMG UML 2.5 semantics](../references.md#r-220).  
+**Source:** [R-197 — OMG SACM 2.4 Beta 1 normative machine-readable metamodel XML](../references.md#r-197) · [R-220 — OMG UML 2.5 semantics](../references.md#r-220).  
 **Independent source-view risk:** [R-128](../references.md#r-128).  
 **Generator:** [`scripts/parse-sacm-xmi.py`](../../scripts/parse-sacm-xmi.py).  
 **Reviewable summary:** [`formal/sources/sacm-2.4-beta1/metamodel-inventory-summary.json`](../../formal/sources/sacm-2.4-beta1/metamodel-inventory-summary.json).  
@@ -17,7 +17,7 @@ The parser consumes only the captured source payload whose SHA-256 matches the p
 - byte length: `524243`;
 - SHA-256: `0581dfa0b9dfaf17ff0f6c63b74f8e7a8396bea03f315e1334e94f23db110830`.
 
-The source is XML whose document root and metamodel vocabulary use OMG XMI 20131001 and UML 20131001 namespaces. The UML namespace is pinned to UML 2.5 (R-200), not UML 2.5.1. The exporter metadata identifies MagicDraw Clean XMI Exporter 2024x v6. This describes the actual source representation; it does **not** imply that SACM 2.4 defines a portable XMI instance interchange contract.
+The source is XML whose document root and metamodel vocabulary use OMG XMI 20131001 and UML 20131001 namespaces. The UML namespace is pinned to UML 2.5 (R-220), not UML 2.5.1. The exporter metadata identifies MagicDraw Clean XMI Exporter 2024x v6. This describes the actual source representation; it does **not** imply that SACM 2.4 defines a portable XMI instance interchange contract.
 
 The original `source.xml` remains authoritative and is preserved byte-for-byte by the capture workflow. The generated inventory is a derived view and can always be regenerated from those exact bytes and the parser revision.
 
@@ -73,7 +73,7 @@ It does not execute OCL or other constraint languages, resolve the external UML 
 
 ## 5. Version-pinned UML 2.5 multiplicity semantics
 
-The source namespace https://www.omg.org/spec/UML/20131001 identifies the UML 2.5 metamodel revision selected in R-200. Inventory v2 applies only these normative rules:
+The source namespace https://www.omg.org/spec/UML/20131001 identifies the UML 2.5 metamodel revision selected in R-220. Inventory v2 applies only these normative rules:
 
 - UML 2.5 §7.8.8.7: MultiplicityElement.lowerBound() and upperBound() return 1 when the corresponding ValueSpecification is absent or its typed value is null.
 - UML 2.5 §8.6.9.4: an omitted serialized LiteralInteger.value uses its metamodel default 0.

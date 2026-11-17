@@ -1,0 +1,20 @@
+import GovCheckCoherence.RiskSemantics
+
+#print axioms GovCheck.Coherence.Risk.probability_point_is_not_fuzzy_membership
+#print axioms GovCheck.Coherence.Risk.probability_distribution_is_not_nondeterminism
+#print axioms GovCheck.Coherence.Risk.transition_rate_is_not_probability
+#print axioms GovCheck.Coherence.Risk.argument_confidence_is_not_probability
+#print axioms GovCheck.Coherence.Risk.cost_is_not_utility
+#print axioms GovCheck.Coherence.Risk.priority_is_not_frequency
+#print axioms GovCheck.Coherence.Risk.not_assessed_is_not_unknown
+#print axioms GovCheck.Coherence.Risk.unknown_is_not_not_quantifiable
+#print axioms GovCheck.Coherence.Risk.unknown_is_not_not_applicable
+#print axioms GovCheck.Coherence.Risk.unknown_is_not_inconclusive
+#print axioms GovCheck.Coherence.Risk.quantified_is_not_unknown
+#print axioms GovCheck.Coherence.Risk.assumed_risk_is_not_scenario
+#print axioms GovCheck.Coherence.Risk.assumed_risk_is_not_assessment
+#print axioms GovCheck.Coherence.Risk.assumed_risk_is_not_acceptance
+#print axioms GovCheck.Coherence.Risk.acceptance_is_pinned_to_scenario_and_assessment
+#print axioms GovCheck.Coherence.Risk.acceptance_records_authority_scope_and_validity
+#print axioms GovCheck.Coherence.Risk.decision_outcome_keeps_assumed_risk
+

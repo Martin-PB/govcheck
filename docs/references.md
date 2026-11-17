@@ -20,7 +20,7 @@
 | Governance metadata and catalogues | R-17 |
 | Agent workflow systems assessed as fixtures | R-18–R-19 |
 | Version-control semantics | R-22 |
-| UML/XMI metamodel and value-specification semantics | R-197, R-200 |
+| UML/XMI metamodel and value-specification semantics | R-197, R-220 |
 | OMG issue tracking and source history | R-218 |
 | Agent-native repository memory protocols | R-219 |
 | OWL 2 semantics and conformance | R-203 |
@@ -54,7 +54,8 @@
 | Repository intent, lifecycle and requirements engineering | R-114–R-118, R-121–R-122 |
 | System modeling and assurance-case metamodels | R-119–R-120 |
 | Metamodel coherence, semantic preservation and formal verification | R-123–R-127 |
-| Probabilistic assurance, fuzzy logic and state-transition models | R-193 |\n| Risk management and risk assessment process guidance | R-202 |
+| Probabilistic assurance, fuzzy logic and state-transition models | R-193 |
+| Risk management and risk assessment process guidance | R-202 |
 | Concurrent edits, semantic merge conflicts and multi-agent delivery | R-142–R-151 |
 | Canonical journal ordering, durable recovery and idempotent retry | R-194–R-196 |
 | Software-engineering ontology networks and ontology-definition metamodels | R-200–R-201 |
@@ -87,7 +88,8 @@
 - **CRDTs, peer-to-peer transport and discovery:** R-45–R-50, R-66, R-87.
 - **Knowledge representation and linked-data interchange:** R-51–R-61, R-83–R-86.
 - **Native VCS semantics and collaboration adapters:** R-22.
-- **Threat modeling, attack paths and risk management:** R-27–R-32.\n- **Risk management and risk-assessment techniques:** R-202.
+- **Threat modeling, attack paths and risk management:** R-27–R-32.
+- **Risk management and risk-assessment techniques:** R-202.
 - **Goal-oriented requirements modeling:** R-44, R-92.
 - **Security assurance cases and metamodels:** R-33–R-34.
 - **PEAK decision model:** R-74.
@@ -101,7 +103,7 @@
 - **Open-source licensing and attribution:** R-108.
 - **Repository intent and lifecycle/requirements engineering:** R-114–R-118, R-121–R-122.
 - **System modeling and assurance-case metamodels:** R-119–R-120.
-- **UML/XMI metamodel semantics and multiplicity defaults:** R-200.
+- **UML/XMI metamodel semantics and multiplicity defaults:** R-220.
 - **Probabilistic assurance, fuzzy logic and state-transition models:** R-193.
 - **Software-engineering ontology networks and ontology-definition metamodels:** R-200–R-201.
 ## Standards, government guidance and industry specifications
@@ -1365,7 +1367,8 @@
 <a id="r-197"></a>
 ### R-197 — OMG SACM 2.4 Beta 1 normative machine-readable metamodel XML
 - **Cited by:** [SACM 2.4 conformance and GovCheck integration](architecture/0026-sacm-24-conformance-and-govcheck-integration.md), [SACM source-native metamodel ingestion](research/sacm-native-metamodel-ingestion.md), [SACM XMI structural inventory](research/sacm-xmi-structural-inventory.md), [Work portfolio event journal](work-portfolio/events.md), [SACM source-view alignment](research/sacm24-source-view-alignment.md)
-- **Implementation artifacts:** [XMI inventory generator](../scripts/parse-sacm-xmi.py) · [committed inventory summary](../formal/sources/sacm-2.4-beta1/metamodel-inventory-summary.json).\n- **Primary sources:** [OMG SACM specification catalogue](https://www.omg.org/spec/SACM) · [SACM 2.4 issue tracker — closed issues](https://issues.omg.org/issues/spec/SACM?view=CLOSED) · [SACM 2.4 issue tracker — all issues](https://issues.omg.org/issues/spec/SACM?view=ALL) · [normative machine-readable metamodel XML](https://www.omg.org/spec/SACM/20260504/SACM2.4_Metamodel.xml) · OMG file ID `ptc/26-05-28`.
+- **Implementation artifacts:** [XMI inventory generator](../scripts/parse-sacm-xmi.py) · [committed inventory summary](../formal/sources/sacm-2.4-beta1/metamodel-inventory-summary.json).
+- **Primary sources:** [OMG SACM specification catalogue](https://www.omg.org/spec/SACM) · [SACM 2.4 issue tracker — closed issues](https://issues.omg.org/issues/spec/SACM?view=CLOSED) · [SACM 2.4 issue tracker — all issues](https://issues.omg.org/issues/spec/SACM?view=ALL) · [normative machine-readable metamodel XML](https://www.omg.org/spec/SACM/20260504/SACM2.4_Metamodel.xml) · OMG file ID `ptc/26-05-28`.
 - **Pinned identity:** SACM 2.4 Beta 1; source path dated 2026-05-04; native format XML; SHA-256 comparison value `0581dfa0b9dfaf17ff0f6c63b74f8e7a8396bea03f315e1334e94f23db110830`, as reported by R-128 and verified by GovCheck workflow run [43444619765](https://github.com/Martin-PB/govcheck/actions/runs/43444619765) against 524,243 downloaded source bytes.
 - **Relevant concepts:** normative machine-readable metamodel source, distinct from the normative PDF prose and informative UML Profile XMI.
 - **Limit:** SACM 2.4 Beta 1 is in-process/informational; SACM 2.3 remains formal. This metamodel XML is not a portable assurance-case instance interchange format and its digest does not establish semantic conformance.
@@ -1390,7 +1393,7 @@
 - **Limit:** informative status does not confer normative authority. Its reported digest is not independently verified by GovCheck, and the artifact does not establish SACM conformance or semantic equivalence with the normative XML.
 <a id="r-200"></a>
 ### R-200 — SEON: Software Engineering Ontology Network, ReqON and SPO
-- **Cited by:** [Metamodel ontology reuse assessment](research/metamodel-ontology-reuse-assessment.md), [SACM XMI structural inventory](research/sacm-xmi-structural-inventory.md), [SACM 2.4 interoperability risk](research/sacm24-beta1-interoperability-risk.md), [SACM 2.4 source-view alignment](research/sacm24-source-view-alignment.md), [Work items](work-portfolio/work-items.md), [Lean formalization README](../formal/lean/README.md).
+- **Cited by:** [Metamodel ontology reuse assessment](research/metamodel-ontology-reuse-assessment.md).
 - **Primary sources:** [SEON network and architecture](https://dev.nemo.inf.ufes.br/seon/SEON.html) · [Requirements engineering ontology subnetwork (ReqON)](https://dev.nemo.inf.ufes.br/seon/ReqON.html) · [Software Process Ontology (SPO)](https://dev.nemo.inf.ufes.br/seon/SPO.html) · [SEON network index](https://dev.nemo.inf.ufes.br/seon/menu.html)
 - **Relevant concepts:** a layered ontology network grounded in UFO, with a software-process core ontology and domain ontologies for requirements, design, testing, configuration management and related software-engineering concerns.
 - **Use in GovCheck:** candidate source vocabulary and ontology network for comparison against the repository lifecycle and requirements metamodel; its explicit integration approach and semantic consistency objective are relevant to cross-ontology mapping.
@@ -1537,3 +1540,14 @@
 - **Primary source:** [mindmuxai/brain.md](https://github.com/mindmux/brain.md).
 - **Use:** repository-native, agent-agnostic durable knowledge protocol and CLI.
 - **Limit:** evolving implementation and protocol; not a normative governance standard and not an adopted GovCheck dependency.
+
+
+<a id="r-220"></a>
+### R-220 — OMG Unified Modeling Language (UML) 2.5 specification and machine-readable metamodel
+- **Namespace identifier:** [UML 20131001 namespace](http://www.omg.org/spec/UML/20131001).
+- **Cited by:** [SACM XMI structural inventory](research/sacm-xmi-structural-inventory.md), [SACM 2.4 source-view alignment](research/sacm24-source-view-alignment.md), [SACM 2.4 interoperability risk](research/sacm24-beta1-interoperability-risk.md), [Work-item register](work-portfolio/work-items.md), [Lean formalization README](../formal/lean/README.md).
+- **Primary source:** [OMG UML 2.5 normative PDF](https://www.omg.org/spec/UML/2.5/PDF) · [OMG UML machine-readable catalogue](https://www.omg.org/spec/UML/machine-readable) · UML 2.5 machine-readable file set ID `ptc/13-08-17`.
+- **Pinned identity:** UML 2.5; normative document formal/2015-03-01; the SACM XMI source uses the `http://www.omg.org/spec/UML/20131001` namespace, which is the UML 2.5 namespace (not the later UML 2.5.1 `20161101` namespace).
+- **Relevant clauses:** §7.8.8.7 defines `MultiplicityElement.lowerBound()` and `upperBound()`, including the fallback value 1 when the corresponding value specification or typed value is absent; §8.6.9.4 defines `LiteralInteger.value` default 0; §8.6.14.4 defines `LiteralUnlimitedNatural.value` default 0; §8.6.10 defines `LiteralNull`.
+- **Use in GovCheck:** supplies the exact UML 2.5 rules used to interpret the omitted literal values in the pinned SACM 2.4 Beta 1 XMI. The parser records both the raw value specification and the effective multiplicity, including the rule responsible for a default.
+- **Limit:** only the stated literal/default cases are implemented. Arbitrary `ValueSpecification` expressions, OCL evaluation, full UML/MOF well-formedness and parser refinement remain outside this increment.

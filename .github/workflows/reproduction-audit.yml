@@ -1,0 +1,116 @@
+name: Reproducible governance verification audit
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/reproduction-audit.yml'
+      - 'docs/research/critique-129-reproduction-status-2026-11-17.md'
+      - 'docs/research/critique-129-reproduction-status-2026-11-17.fr.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: reproduction-audit-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  python-tests:
+    name: Full Python test suite and reference integrity
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Record environment
+        run: |
+          python --version
+          git --version
+          git rev-parse HEAD
+      - name: Run complete Python test suite
+        run: python -m unittest discover -s tests -v
+      - name: Check repository-wide reference integrity
+        run: python scripts/check-reference-integrity.py
+
+  tla:
+    name: TLC — ${{ matrix.model }}
+    strategy:
+      fail-fast: false
+      matrix:
+        model:
+          - CICheckRouting
+          - GovCheckAssurance
+          - GovCheckAuthority
+          - GovCheckCanonicalPublication
+          - GovCheckGovernanceApplicability
+          - GovCheckGovernanceControls
+          - GovCheckJournalRecovery
+          - GovCheckLifecycle
+    uses: ./.github/workflows/tla-model-reusable.yml
+    with:
+      model: ${{ matrix.model }}
+
+  lean:
+    name: Lean 4.19 coherence build and axiom audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Record source and toolchain
+        working-directory: formal/lean
+        run: |
+          git -C ../.. rev-parse HEAD
+          cat lean-toolchain
+      - name: Install elan
+        shell: bash
+        run: |
+          curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Generate Lake manifest
+        working-directory: formal/lean
+        run: lake update
+      - name: Build and audit configured proof root
+        uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: formal/lean
+          build: true
+          build-args: GovCheckCoherence
+          auto-config: false
+          axiom-audit: true
+          axiom-audit-root: GovCheckCoherence.Proofs
+      - name: Emit explicit axiom report
+        working-directory: formal/lean
+        run: lake env lean GovCheckCoherence/AxiomReport.lean
+
+  cslib:
+    name: Isolated CSLib compatibility build
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Record source and toolchain
+        working-directory: formal/cslib-compat
+        run: |
+          git -C ../.. rev-parse HEAD
+          cat lean-toolchain
+          cat lakefile.lean
+      - name: Install elan and pinned toolchain
+        shell: bash
+        run: |
+          curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          "$HOME/.elan/bin/elan" toolchain install "$(cat formal/cslib-compat/lean-toolchain)"
+      - name: Cache pinned CSLib dependencies and build outputs
+        uses: actions/cache@v4
+        with:
+          path: |
+            formal/cslib-compat/.lake/packages
+            formal/cslib-compat/.lake/build
+          key: cslib-${{ runner.os }}-${{ hashFiles('formal/cslib-compat/lean-toolchain', 'formal/cslib-compat/lakefile.lean') }}
+      - name: Resolve pinned dependencies and build compatibility probe
+        working-directory: formal/cslib-compat
+        run: |
+          lake update
+          lake exe cache get
+          lake build CslibCompat

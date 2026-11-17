@@ -5,6 +5,18 @@ import GovCheckCoherence.SACM24
 
 namespace GovCheck.Coherence
 
+/-- The current partial-mapping constructor admits an empty domain for any
+source and target propositions. This is a counterexample to any claim that
+partial coverage alone guarantees at least one mapped source case. It records
+the present contract; it does not decide whether empty partial mappings should
+be rejected by a future normative rule. -/
+theorem partial_mapping_bridge_can_have_empty_domain
+    {source target : Prop} :
+    Nonempty (SemanticBridge source target .partialMapping) := by
+  refine ⟨SemanticBridge.partialMapping (fun _ => False) ?_⟩
+  intro _ impossible
+  exact False.elim impossible
+
 /-- Transport preserves the method class, epistemic kind and result status. -/
 theorem transport_preserves_method_class (record : EvidenceRecord) :
     (transport record).methodClass = record.methodClass := by
@@ -23,8 +35,7 @@ theorem transport_preserves_status (record : EvidenceRecord) :
 theorem testimony_mapping_to_theorem_proof_requires_derivation
     {claim : Prop}
     (rule : KindMappingRule claim .testimony .theoremProof) :
-    ∃ derivation : KernelCheckedDerivation claim,
-      derivation.proof = derivation.proof :=
+    ∃ derivation : KernelCheckedDerivation claim, claim :=
   kind_mapping_rule_theorem_proof_requires_derivation rule rfl
 
 /-- A model-checking result cannot be mapped to theorem-proof status without
@@ -32,8 +43,7 @@ theorem testimony_mapping_to_theorem_proof_requires_derivation
 theorem model_checking_mapping_to_theorem_proof_requires_derivation
     {claim : Prop}
     (rule : KindMappingRule claim .modelCheckingResult .theoremProof) :
-    ∃ derivation : KernelCheckedDerivation claim,
-      derivation.proof = derivation.proof :=
+    ∃ derivation : KernelCheckedDerivation claim, claim :=
   kind_mapping_rule_theorem_proof_requires_derivation rule rfl
 
 theorem passing_testimony_is_not_a_theorem_proof :
@@ -100,7 +110,7 @@ theorem evidence_mapping_theorem_proof_requires_derivation
     {source target : MappingSubject} (mapping : EvidenceMapping source target)
     (h : target.evidence.kind = .theoremProof) :
     ∃ derivation : KernelCheckedDerivation target.claim.meaning,
-      derivation.proof = derivation.proof :=
+      target.claim.meaning :=
   mapping_target_theorem_proof_requires_derivation mapping h
 
 /-- Unknown (no determinate result) is not the same as inconclusive

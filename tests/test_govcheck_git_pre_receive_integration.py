@@ -66,10 +66,12 @@ class GitPreReceiveIntegrationTests(unittest.TestCase):
                 "def arg(name): return sys.argv[sys.argv.index(name) + 1]\n"
                 "print(json.dumps({"
                 "'schema':'govcheck.acceptance-decision/v0',"
+                "'repository_id':arg('--repository-id'),'vcs_kind':arg('--vcs-kind'),"
                 "'base':arg('--base'),'candidate':arg('--candidate'),'ref':arg('--ref'),"
                 "'result':os.environ['GOVCHECK_TEST_RESULT'],"
                 "'decision_id':'fixture-' + arg('--candidate')[:8],"
                 "'policy_revision':os.environ['GOVCHECK_EXPECTED_POLICY_REVISION'],"
+                "'policy_digest':os.environ['GOVCHECK_EXPECTED_POLICY_DIGEST'],"
                 "'evidence_digest':'sha256:' + 'a'*64,"
                 "'verifier':{'identity':os.environ['GOVCHECK_EXPECTED_VERIFIER_IDENTITY'],"
                 "'digest':os.environ['GOVCHECK_EXPECTED_VERIFIER_DIGEST']}}))\n",
@@ -84,7 +86,9 @@ class GitPreReceiveIntegrationTests(unittest.TestCase):
                     "export GOVCHECK_GATE_COMMAND=" + shlex.quote(str(gate)) + "\n"
                     "export GOVCHECK_EXPECTED_VERIFIER_IDENTITY=fixture-verifier\n"
                     "export GOVCHECK_EXPECTED_VERIFIER_DIGEST=" + gate_digest + "\n"
+                    "export GOVCHECK_EXPECTED_REPOSITORY_ID=forge://fixture/project\n"
                     "export GOVCHECK_EXPECTED_POLICY_REVISION=fixture-policy-1\n"
+                    "export GOVCHECK_EXPECTED_POLICY_DIGEST=sha256:" + "d" * 64 + "\n"
                     "export GOVCHECK_PROTECTED_REFS=refs/heads/main\n"
                     "export GOVCHECK_TEST_RESULT=" + result + "\n"
                     "export GOVCHECK_GATE_TIMEOUT_SECONDS=10\n",

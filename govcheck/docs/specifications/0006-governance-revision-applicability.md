@@ -73,7 +73,7 @@ Missing authority, ambiguous history, unknown applicability, revoked authority, 
 
 ### 3.6 Authority and separation of concerns
 
-Architecture 0023 currently records one root principal, the configured root principal, and explicitly accepts that the same principal may propose and authorize a change. This specification does not change that regime.
+Architecture 0023 currently records one root principal, `Martin-PB`, and explicitly accepts that the same principal may propose and authorize a change. This specification does not change that regime.
 
 Implementations MUST distinguish proposer/producer, technical reviewer/evaluator, normative authorizer and publisher/executor. Where proposer and authorizer may be the same principal, the record MUST disclose this. It MUST NOT claim independent approval or two-person separation. Repository administration, merge permission and CI execution are not normative authority.
 
@@ -154,3 +154,12 @@ The model deliberately abstracts the authority as one designated prior evaluator
 The bounded [GovCheckJournalRecovery.tla](../../formal/tla/GovCheckJournalRecovery.tla) model and [configuration](../../formal/tla/GovCheckJournalRecovery.cfg) check a single-writer abstraction: durable append as commit point, crash before/after commit, replay-to-head, rollback as a new event/revision restoring earlier content, and passive VCS replica observations. The SANY 2.1/TLC 2.19 run recorded in [Architecture 0035](../architecture/0035-canonical-journal-recovery-model.md) generated 178,549 states, 38,434 distinct, zero remaining; six invariants and `AppendOnly` passed. Weak fairness for `Recover` is assumed, but eventual recovery is not a liveness property checked/reported by TLC.
 
 This model does not establish concrete storage-engine durability, torn-write behavior, multi-writer consensus, divergent-replica convergence/reconciliation, adapter correctness or implementation refinement. The PR #99 recovery model was not on `main`: GitHub marked it merged into the former PR #98 work branch; PRs #100 and #104 remain open and stacked. This review candidate carries the model and Specification 0007 toward `main`, without normative adoption or an implementation claim.
+
+
+### 7.4 Exact governance-context binding across evaluation and authorization
+
+The bounded [GovCheckGovernanceContextBinding.tla](../../formal/tla/GovCheckGovernanceContextBinding.tla) model adds a separate cross-model binding slice. A governance context token resolves to an authority-policy revision, evaluator identity/revision, specification identity/revision and profile identity/revision. The evaluation record captures that context together with its base governance revision, lifecycle base/candidate identifiers and specification identity/revision. Authorization is permitted only while the captured governance revision and context remain current; the decision preserves the exact evaluation binding. Publication applies the resulting governance revision/context only at a later logical event position.
+
+The exact module/configuration passed SANY 2.1 and TLC 2.19 in [workflow run 44131092595](https://github.com/Martin-PB/govcheck/actions/runs/44131092595): 486,289 states generated/distinct, zero remaining, depth 8; twelve invariants and `AppendOnly` passed. The source/configuration identities and limits are recorded in [Architecture 0036](../architecture/0036-governance-revision-context-binding-model.md).
+
+This is not a full integrated model: it does not import/instantiate the authority, lifecycle, canonical-publication, governance-controls or journal-recovery state machines. The root principal remains fixed; the authority revision is an opaque context token, not a cryptographic authority chain or delegation model. The finite two-context fixture is not a serialization/schema decision. Base/candidate identifiers are recorded, while captured-head staleness is checked by the separate canonical-publication model. This model-checking result does not establish implementation refinement or normative adoption.

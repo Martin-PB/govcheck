@@ -118,6 +118,24 @@ The current tree contains eight `.tla`/`.cfg` pairs. The reusable workflow pins 
 | `GovCheckJournalRecovery` | 2 contents, 2 revision IDs, 2 event IDs, `MaxEvents=2`, Git and Pijul replicas | TypeOK; unique event/revision IDs, position/predecessor continuity, rollback as a new event, non-authoritative VCS observation and durable applied state; `AppendOnly`. |
 | `GovCheckLifecycle` | 2 actors, 1 required approval, history limit 12; 2 bases, candidates, governance revisions and specs; 2 obligation kinds | 12 invariants for type, acceptance/application soundness, freshness, evidence/outcome/approval binding, no implicit application and deadlock discipline; temporal `TerminalDiscipline`. |
 
+
+### Last observed successful TLC executions (historical, not the audit SHA)
+
+All eight configured model pairs have at least one historical successful TLC run in the main-branch workflow history. The logs report TLC 2.19 (revision `5a47802`), Java 17.0.21+9, “Model checking completed. No error has been found”, and zero states left on the queue. The state counts below are **generated / distinct**:
+
+| Model | Run date and source commit | Generated / distinct states | Existing run |
+|---|---|---:|---|
+| `CICheckRouting` | 2026-11-08, `0f3e402d` | 65,536 / 32,768 | [TLC routing](https://github.com/Martin-PB/govcheck/actions/runs/42486714556) |
+| `GovCheckAssurance` | 2026-11-08, `0f3e402d` | 11,069,137 / 347,424 | [TLC assurance](https://github.com/Martin-PB/govcheck/actions/runs/42486714637) |
+| `GovCheckLifecycle` | 2026-11-08, `0f3e402d` | 132,412,944 / 24,922,992 | [TLC lifecycle](https://github.com/Martin-PB/govcheck/actions/runs/42486714619) |
+| `GovCheckAuthority` | 2026-11-10, `934000a7` | 13 / 13 | [TLC authority](https://github.com/Martin-PB/govcheck/actions/runs/42816437925) |
+| `GovCheckGovernanceApplicability` | 2026-11-13, `6c70d4f1` | 20,785 / 18,067 | [TLC applicability workflow](https://github.com/Martin-PB/govcheck/actions/runs/43435417792) |
+| `GovCheckCanonicalPublication` | 2026-11-13, `6c70d4f1` | 178,549 / 38,434 | [TLC publication workflow](https://github.com/Martin-PB/govcheck/actions/runs/43435417792) |
+| `GovCheckGovernanceControls` | 2026-11-13, `6c70d4f1` | 2,826,117 / 1,026,484 | [TLC controls workflow](https://github.com/Martin-PB/govcheck/actions/runs/43435417792) |
+| `GovCheckJournalRecovery` | 2026-11-13, `6c70d4f1` | 84,307 / 56,895 | [TLC journal-recovery workflow](https://github.com/Martin-PB/govcheck/actions/runs/43435417792) |
+
+This is meaningful historical model-checking evidence and is stronger than merely having configuration files. It is nevertheless attached to three earlier source revisions, not `f27697d`; it does not show that the exact current models/configurations were checked, and it does not establish implementation refinement or global assurance.
+
 Fairness inspection adds an important qualification: only `GovCheckJournalRecovery` explicitly adds `WF_vars(Recover)`; the other seven `Spec` definitions use `Init /\ [][Next]_vars` without explicit `WF_` or `SF_` assumptions. Consequently, the configured temporal properties should not be paraphrased as general progress guarantees for actions that have no fairness assumption.
 
 **Workflow path-filter finding:** `.github/workflows/ci-routing-model.yml` includes `.github/workflows/tla-model-reusable.yml` in its `pull_request.paths`, but omits it from `push.paths`. A direct push to `main` that changes the shared TLC runner therefore does not trigger the `CICheckRouting` model, although the other model entry workflows include the reusable workflow in both path filters. This is a narrow coverage gap, not evidence that the model itself is wrong. A one-line correction is staged on [`work/fix-ci-routing-reusable-push-trigger`](https://github.com/Martin-PB/govcheck/tree/work/fix-ci-routing-reusable-push-trigger); it has not been run or merged.

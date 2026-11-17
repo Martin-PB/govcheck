@@ -102,7 +102,7 @@ Aucun run TLC des huit couples modèle/configuration TLA+ courants ne faisait pa
 3. **Force des théorèmes Lean :** le théorème générique `kind_mapping_rule_theorem_proof_requires_derivation` conclut à l'existence d'une dérivation accompagnée de `derivation.proof = derivation.proof`. Cette égalité est réflexive ; le contenu utile est le témoin existentiel transporté par le constructeur. Le théorème n'établit pas indépendamment une propriété sémantique supplémentaire de la dérivation. Les noms et les affirmations doivent rester alignés sur la proposition réellement démontrée.
 4. **Périmètre exécutable :** le `govcheck/check.py` actuel contient huit règles : présence de licence, décisions bilingues, paires de manifeste, intégrité des références, présence des sources, intégrité du bootstrap, fraîcheur des preuves TLA et attestation de revue indépendante. Il n'implémente pas le cycle de vie canonique, le registre d'autorité, le protocole de journal, la sémantique des risques/décisions ni les contrats complets d'assurance intermodèles.
 
-## 6. Correction préparée pour l'échec reference-integrity de la PR #133
+## 6. Corrections préparées pour les deux constats sur les vérificateurs
 
 Une branche distincte, [`work/fix-reference-integrity-repo-wide-markdown`](https://github.com/Martin-PB/govcheck/tree/work/fix-reference-integrity-repo-wide-markdown), a été créée depuis la tête de la PR #133. Elle contient :
 

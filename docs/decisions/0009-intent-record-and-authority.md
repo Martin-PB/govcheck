@@ -43,3 +43,15 @@ The name `product-intent.md` was initially used in a working branch. The reposit
 Changes to the canonical name or semantic role require an explicit decision by the competent GovCheck authority. Changes to an individual repository's intent are governed changes to that record; they do not silently amend existing decisions or requirements.
 
 The relationship metamodel is intentionally deferred to a separate, research-backed architecture/specification effort.
+
+## References
+
+- [R-114](../references.md#r-114)
+- [R-115](../references.md#r-115)
+- [R-116](../references.md#r-116)
+- [R-117](../references.md#r-117)
+- [R-118](../references.md#r-118)
+- [R-119](../references.md#r-119)
+- [R-120](../references.md#r-120)
+- [R-121](../references.md#r-121)
+- [R-122](../references.md#r-122)

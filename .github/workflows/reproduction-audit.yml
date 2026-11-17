@@ -21,6 +21,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
@@ -33,6 +35,24 @@ jobs:
         run: python -m unittest discover -s tests -v
       - name: Check repository-wide reference integrity
         run: python scripts/check-reference-integrity.py
+      - name: Evaluate the executable GovCheck slice and preserve its actual outcome
+        shell: bash
+        run: |
+          set +e
+          python govcheck/check.py --tree . --base origin/main --candidate HEAD --out govcheck-report.json
+          evaluator_exit=$?
+          set -e
+          echo "GovCheck evaluator exit code: ${evaluator_exit}"
+          test -s govcheck-report.json
+          cat govcheck-report.json
+          echo "The evaluator result is evidence, not a CI pass/fail gate in this audit job."
+      - name: Upload executable GovCheck evaluation report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: govcheck-evaluator-report
+          path: govcheck-report.json
+          retention-days: 30
 
   tla:
     name: TLC — ${{ matrix.model }}
@@ -45,6 +65,7 @@ jobs:
           - GovCheckAuthority
           - GovCheckCanonicalPublication
           - GovCheckGovernanceApplicability
+          - GovCheckGovernanceContextBinding
           - GovCheckGovernanceControls
           - GovCheckJournalRecovery
           - GovCheckLifecycle
@@ -79,9 +100,13 @@ jobs:
           auto-config: false
           axiom-audit: true
           axiom-audit-root: GovCheckCoherence.Proofs
-      - name: Emit explicit axiom report
+      - name: Emit explicit axiom reports for all reviewed coherence slices
         working-directory: formal/lean
-        run: lake env lean GovCheckCoherence/AxiomReport.lean
+        run: |
+          lake env lean GovCheckCoherence/AxiomReport.lean
+          lake env lean GovCheckCoherence/EvidenceMappingCompositionAxiomReport.lean
+          lake env lean GovCheckCoherence/CompositionAxiomReport.lean
+          lake env lean GovCheckCoherence/RiskSemanticsAxiomReport.lean
 
   cslib:
     name: Isolated CSLib compatibility build

@@ -53,7 +53,7 @@ lake build
 
 ## UML 2.5 multiplicity semantics
 
-`GovCheckCoherence.UML25Multiplicity` formalizes a deliberately narrow subset of the UML 2.5 rules used by the SACM 2.4 Beta 1 XMI source. It proves the fallback to 1 for absent/null lower/upper value specifications, the default 0 for an omitted `LiteralInteger.value` or `LiteralUnlimitedNatural.value`, preservation of an explicit unlimited upper bound, and non-interpretation of unsupported value specifications. The exact source clauses are catalogued in [R-200](../../docs/references.md#r-200).
+`GovCheckCoherence.UML25Multiplicity` formalizes a deliberately narrow subset of the UML 2.5 rules used by the SACM 2.4 Beta 1 XMI source. It proves the fallback to 1 for absent/null lower/upper value specifications, the default 0 for an omitted `LiteralInteger.value` or `LiteralUnlimitedNatural.value`, preservation of an explicit unlimited upper bound, and non-interpretation of unsupported value specifications. The exact source clauses are catalogued in [R-200](../../docs/references.md#r-220).
 
 `GovCheckCoherence.SACM24.SourceFacts` then records seven manually transcribed XML value-specification shapes and proves that this UML 2.5 interpreter yields the corresponding SACM property intervals. This does not prove that the Python XMI parser extracted those shapes correctly; that parser/source refinement obligation remains open. The implementation and generated inventory summary are versioned as inventory v2.
 

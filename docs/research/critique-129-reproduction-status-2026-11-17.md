@@ -53,7 +53,7 @@ GitHub already has three push-triggered checks attached to the exact audit commi
 |---|---|---|
 | Reference integrity | **PASS — 0 warnings** | The central catalogue/backlink checker passed on this exact `main` commit. |
 | Package alignment | **success** | The manifest-declared package/template alignment check passed. |
-| GovCheck check slice | **job success**, with **84 unit tests passed** | The blocking unit-test suite passed. However, the evaluator's JSON/stdout says **overall FAIL** because six decision/dossier files lack a References section. The step is report-only (`continue-on-error` and `|| true`), so the workflow's successful conclusion does not mean the candidate passed the evaluator. |
+| GovCheck check slice | **job success**, with **84 unit tests passed** | The blocking unit-test suite passed. However, the evaluator's JSON/stdout says **overall FAIL** because it does not recognize a qualifying References section in six decision/dossier files. This is partly a validator false negative: the 0008 and 0009 documents already contain relevant catalogue links in traceability/header material but not under a recognized heading; the metamodel dossier has a numbered `## 17. References` heading, but the checker accepts only unnumbered headings and stops that section before the separate source-link subsection. The step is report-only (`continue-on-error` and `|| true`), so the workflow's successful conclusion does not mean the candidate passed the evaluator. |
 
 The six documents reported by the evaluator are:
 

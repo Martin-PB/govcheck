@@ -130,6 +130,10 @@ PR [#104](https://github.com/Martin-PB/govcheck/pull/104), stacked on PR #100, a
 - **Current candidate:** [PR #107](https://github.com/Martin-PB/govcheck/pull/107) is open, non-draft, targets `main` and is currently mergeable; branch `work/issue-41-formalization-reconciliation` carries the #99/#100/#104 technical content and reconciles the bilingual decision/specification/model/portfolio records. No issue is closed, no normative adoption is inferred and no implementation is claimed.
 
 
+### Progress — #45 acceptance-boundary enforcement
+
+The current-main audit in [#130](https://github.com/Martin-PB/govcheck/issues/130) confirmed that the evaluator's UNKNOWN result is not enforced: the ordinary workflow is report-only, main is unprotected and no repository ruleset exists. Existing issue [#45](https://github.com/Martin-PB/govcheck/issues/45) is the canonical work item; duplicate issue #152 was closed. Research and proposal records: [EN](../research/acceptance-boundary-enforcement-2026-11.md) / [FR](../research/acceptance-boundary-enforcement-2026-11.fr.md), Architecture 0037 EN/FR. External sources [R-221](../references.md#r-221), [R-222](../references.md#r-222), [R-223](../references.md#r-223), [R-224](../references.md#r-224), [R-225](../references.md#r-225), [R-226](../references.md#r-226) are catalogued. No branch protection, authority policy or normative acceptance rule has been changed. The next increment is a bounded acceptance-boundary model and a tested Git pre-receive adapter prototype.
+
 ### Progress — #130 source-level triage
 
 The bilingual source-level triage of [#129](https://github.com/Martin-PB/govcheck/issues/129) is prepared: [EN](../research/critique-129-source-triage.md) / [FR](../research/critique-129-source-triage.fr.md). Findings 6.1, 6.4, 6.5 and 6.6 are supported by source inspection; 6.2 and 6.3 are qualified; the physical-infrastructure inference in 6.7 is overstated. Python/TLC/Lean execution and axiom audit remain open.

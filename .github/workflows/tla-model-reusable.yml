@@ -7,13 +7,18 @@ on:
         description: TLA+ module name without extension
         required: true
         type: string
+      config:
+        description: Optional TLC config filename (defaults to <model>.cfg)
+        required: false
+        type: string
+        default: ""
 
 permissions:
   contents: read
 
 jobs:
   verify:
-    name: TLC — ${{ inputs.model }}
+    name: TLC — ${{ inputs.model }} / ${{ inputs.config }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -39,15 +44,17 @@ jobs:
       - name: Run TLC model checking
         env:
           MODEL: ${{ inputs.model }}
+          CONFIG: ${{ inputs.config }}
         run: |
           set -o pipefail
-          java -XX:+UseParallelGC -cp tla2tools.jar tlc2.TLC -workers 4 -config "formal/tla/${MODEL}.cfg" "formal/tla/${MODEL}.tla" 2>&1 | tee "tlc-${MODEL}.txt"
+          CONFIG_FILE="${CONFIG:-${MODEL}.cfg}"
+          java -XX:+UseParallelGC -cp tla2tools.jar tlc2.TLC -workers 4 -config "formal/tla/${CONFIG_FILE}" "formal/tla/${MODEL}.tla" 2>&1 | tee "tlc-${MODEL}-${CONFIG_FILE%.cfg}.txt"
       - name: Upload model-checking report
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: tlc-report-${{ inputs.model }}
+          name: tlc-report-${{ inputs.model }}-${{ inputs.config }}
           path: |
             sany-${{ inputs.model }}.txt
-            tlc-${{ inputs.model }}.txt
+            tlc-${{ inputs.model }}-*.txt
             tla2tools.sha256

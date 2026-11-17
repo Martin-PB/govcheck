@@ -67,14 +67,20 @@ def _trusted_gate(env: dict[str, str]):
     if actual_digest != expected_digest:
         return None, "installed gate executable digest does not match the configured trust pin"
     identity = env.get("GOVCHECK_EXPECTED_VERIFIER_IDENTITY", "").strip()
+    repository_id = env.get("GOVCHECK_EXPECTED_REPOSITORY_ID", "").strip()
     policy = env.get("GOVCHECK_EXPECTED_POLICY_REVISION", "").strip()
-    if not identity or not policy:
-        return None, "expected verifier identity and policy revision must be configured"
+    policy_digest = env.get("GOVCHECK_EXPECTED_POLICY_DIGEST", "")
+    if not identity or not repository_id or not policy:
+        return None, "expected repository identity, verifier identity and policy revision must be configured"
+    if not DIGEST_RE.fullmatch(policy_digest):
+        return None, "GOVCHECK_EXPECTED_POLICY_DIGEST must be a sha256 digest"
     return {
         "command": [str(path)],
         "identity": identity,
         "digest": expected_digest,
+        "repository_id": repository_id,
         "policy_revision": policy,
+        "policy_digest": policy_digest,
     }, None
 
 
@@ -83,11 +89,19 @@ def _validate_decision(payload, old_oid: str, new_oid: str, ref: str, trusted, a
         return False, "gate output is not a JSON object"
     if payload.get("schema") != SCHEMA:
         return False, "unsupported or missing decision-envelope schema"
-    for key, value in (("base", old_oid), ("candidate", new_oid), ("ref", ref)):
+    for key, value in (
+        ("repository_id", trusted["repository_id"]),
+        ("vcs_kind", "git"),
+        ("base", old_oid),
+        ("candidate", new_oid),
+        ("ref", ref),
+    ):
         if payload.get(key) != value:
             return False, "decision envelope is not bound to this " + key
     if payload.get("policy_revision") != trusted["policy_revision"]:
         return False, "decision envelope does not use the pinned policy revision"
+    if payload.get("policy_digest") != trusted["policy_digest"]:
+        return False, "decision envelope does not use the pinned policy digest"
     if not isinstance(payload.get("decision_id"), str) or not payload["decision_id"].strip():
         return False, "decision_id is missing"
     if not isinstance(payload.get("evidence_digest"), str) or not DIGEST_RE.fullmatch(payload["evidence_digest"]):
@@ -158,7 +172,13 @@ def run_pre_receive(input_text: str, env=None, runner=subprocess.run):
             messages.append(f"reject: initial creation of protected ref {ref} requires an out-of-band bootstrap decision")
             continue
 
-        args = trusted["command"] + ["--base", old_oid, "--candidate", new_oid, "--ref", ref]
+        args = trusted["command"] + [
+            "--repository-id", trusted["repository_id"],
+            "--vcs-kind", "git",
+            "--base", old_oid,
+            "--candidate", new_oid,
+            "--ref", ref,
+        ]
         git_dir = env.get("GIT_DIR")
         if git_dir:
             args += ["--git-dir", git_dir]

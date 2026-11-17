@@ -106,3 +106,11 @@ Détail canonique : [journal anglais WP-EVT-000029](events.md#wp-evt-000029).
 L'Architecture 0025 EN/FR distingue désormais le risque assumé PEAK de l'évaluation, du traitement, du risque résiduel et de l'acceptation autorisée du risque. Voir [R-193](../references.fr.md#r-193).
 
 Détail canonique : [journal anglais WP-EVT-000030](events.md#wp-evt-000030).
+
+
+
+## WP-EVT-000033 — Vérification du modèle de liaison du contexte des révisions de gouvernance
+
+Le modèle TLA+ lie la révision de politique d'autorité, l'identité/révision de l'évaluateur, l'identité/révision de la spécification et l'identité/révision du profil au contexte de gouvernance capturé pendant l'évaluation et l'autorisation. SANY 2.1 et TLC 2.19 ont réussi : 486 289 états générés/distincts, zéro restant, profondeur 8 ; douze invariants et `AppendOnly` réussis. Il s'agit d'une projection bornée de liaison intermodèle, pas d'une machine à états intégrée ni d'une preuve d'implémentation.
+
+Détail canonique : [journal anglais WP-EVT-000033](events.md#wp-evt-000033).

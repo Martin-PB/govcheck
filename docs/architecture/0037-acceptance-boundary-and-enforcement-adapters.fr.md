@@ -150,6 +150,6 @@ Aucun de ces choix n'est adopté par cette proposition.
 
 ## 11. Références et documents liés
 
-Les sources externes des plateformes sont cataloguées dans [R-221–R-226](../references.fr.md#r-221). Documents liés : [Architecture 0015](0015-governance-conformance-and-validation-plan.fr.md), [Architecture 0022](0022-governance-capability-audit.fr.md), [Architecture 0023](0023-bootstrap-governance-authority.fr.md), [Specification 0007](../specifications/0007-canonical-governance-journal-protocol.fr.md), [synthèse de recherche](../research/acceptance-boundary-enforcement-2026-11.fr.md), [issue #45](https://github.com/Martin-PB/govcheck/issues/45).
+Les sources externes des plateformes sont cataloguées dans [R-221](../references.fr.md#r-221), [R-222](../references.fr.md#r-222), [R-223](../references.fr.md#r-223), [R-224](../references.fr.md#r-224), [R-225](../references.fr.md#r-225), [R-226](../references.fr.md#r-226). Documents liés : [Architecture 0015](0015-governance-conformance-and-validation-plan.fr.md), [Architecture 0022](0022-governance-capability-audit.fr.md), [Architecture 0023](0023-bootstrap-governance-authority.fr.md), [Specification 0007](../specifications/0007-canonical-governance-journal-protocol.fr.md), [synthèse de recherche](../research/acceptance-boundary-enforcement-2026-11.fr.md), [issue #45](https://github.com/Martin-PB/govcheck/issues/45).
 
 **Ce document est une proposition. Il n'active aucune protection de branche, n'installe aucun hook, ne choisit aucune forge et n'adopte aucune politique normative d'acceptation.**

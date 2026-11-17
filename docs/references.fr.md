@@ -88,6 +88,9 @@
 - **Sémantiques natives des VCS et adaptateurs de collaboration :** R-22.
 - **Modélisation des menaces, chemins d'attaque et gestion des risques :** R-27 à R-32.
 - **Management du risque et techniques d'appréciation :** R-202.
+- **Sémantique UML/XMI et règles de multiplicité :** R-197, R-220.
+- **Historique des tickets OMG SACM :** R-218.
+- **Protocole de mémoire natif au dépôt (évalué, non adopté) :** R-219.
 - **Modélisation des exigences orientée objectifs :** R-44, R-92.
 - **Dossiers d'assurance de sécurité et métamodèles :** R-33 à R-34.
 - **Modèle de décision PEAK :** R-74.

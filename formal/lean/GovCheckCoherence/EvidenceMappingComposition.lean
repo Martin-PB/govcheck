@@ -33,14 +33,23 @@ structure EvidenceMappingChain (source middle target : MappingSubject) where
     mapping transports a non-theorem kind, retain the first rule. If it
     establishes a theorem proof, retain that exact target derivation. -/
 def composeKindMappingRules
-    {claim : Prop} {sourceKind middleKind targetKind : EvidenceKind}
-    (first : KindMappingRule claim sourceKind middleKind)
-    (second : KindMappingRule claim middleKind targetKind) :
-    KindMappingRule claim sourceKind targetKind := by
-  cases second with
-  | transport kind => exact first
-  | deriveTheoremProof intermediate derivation =>
-      exact .deriveTheoremProof sourceKind derivation
+    {middleClaim targetClaim : Prop}
+    {sourceKind middleKind targetKind : EvidenceKind}
+    (first : KindMappingRule middleClaim sourceKind middleKind)
+    (second : KindMappingRule targetClaim middleKind targetKind) :
+    KindMappingRule targetClaim sourceKind targetKind := by
+  cases first with
+  | transport kind =>
+      cases second with
+      | transport _ => exact .transport kind
+      | deriveTheoremProof _ derivation =>
+          exact .deriveTheoremProof sourceKind derivation
+  | deriveTheoremProof _ firstDerivation =>
+      cases second with
+      | transport kind =>
+          exact False.elim (kind.property rfl)
+      | deriveTheoremProof _ derivation =>
+          exact .deriveTheoremProof sourceKind derivation
 
 /-- Compose two complete EvidenceMapping records while preserving their exact
     intermediate model identity and retaining both transformation/loss/
@@ -138,7 +147,7 @@ theorem evidence_mapping_chain_retains_assumption_declarations
     (chain : EvidenceMappingChain source middle target) :
     chain.declaredAssumptions =
       chain.first.contract.assumptions ++ chain.second.contract.assumptions :=
-  rfl
+  by cases chain; rfl
 
 /-- Loss declarations from both steps are retained in order; no loss is
     silently discarded during composition. -/
@@ -147,7 +156,7 @@ theorem evidence_mapping_chain_retains_loss_declarations
     (chain : EvidenceMappingChain source middle target) :
     chain.declaredLosses =
       chain.first.contract.declaredLosses ++ chain.second.contract.declaredLosses :=
-  rfl
+  by cases chain; rfl
 
 /-- The transformation provenance is the ordered pair of exact source steps. -/
 theorem evidence_mapping_chain_retains_transformation_lineage
@@ -159,6 +168,6 @@ theorem evidence_mapping_chain_retains_transformation_lineage
       ⟨chain.second.contract.transformationIdentity,
         chain.second.contract.transformationRevision⟩
     ] :=
-  rfl
+  by cases chain; rfl
 
 end GovCheck.Coherence

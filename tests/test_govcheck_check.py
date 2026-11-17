@@ -198,7 +198,11 @@ class EvaluateTests(unittest.TestCase):
             root = Path(d)
             build_tree(root)
             (root / "docs" / "decisions" / "0001-a.md").write_text(
-                "# A\n\n## 17. References\n\n- [R-01](../references.md#r-01)\n",
+                "# A\n\n## 17. References\n\n### Complete source catalogue\n\n- [R-01](../references.md#r-01)\n",
+                encoding="utf-8",
+            )
+            (root / "docs" / "decisions" / "0001-a.fr.md").write_text(
+                "# A\n\n## 17. Références\n\n### Catalogue complet\n\n- [R-01](../references.fr.md#r-01)\n",
                 encoding="utf-8",
             )
             report = check.evaluate(root)

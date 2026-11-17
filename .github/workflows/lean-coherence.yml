@@ -47,3 +47,6 @@ jobs:
       - name: Report axioms used by prototype theorems
         working-directory: formal/lean
         run: lake env lean GovCheckCoherence/AxiomReport.lean
+      - name: Report axioms used by bridge-composition theorems
+        working-directory: formal/lean
+        run: lake env lean GovCheckCoherence/CompositionAxiomReport.lean

@@ -158,19 +158,18 @@ theorem kind_mapping_rule_theorem_proof_requires_derivation
     {targetClaim : Prop} {source target : EvidenceKind}
     (rule : KindMappingRule targetClaim source target)
     (h : target = .theoremProof) :
-    ∃ derivation : KernelCheckedDerivation targetClaim,
-      derivation.proof = derivation.proof := by
+    ∃ derivation : KernelCheckedDerivation targetClaim, targetClaim := by
   cases rule with
   | transport kind =>
       exact False.elim (kind.property h)
   | deriveTheoremProof _ derivation =>
-      exact ⟨derivation, rfl⟩
+      exact ⟨derivation, derivation.proof⟩
 
 theorem mapping_target_theorem_proof_requires_derivation
     {source target : MappingSubject} (mapping : EvidenceMapping source target)
     (h : target.evidence.kind = .theoremProof) :
     ∃ derivation : KernelCheckedDerivation target.claim.meaning,
-      derivation.proof = derivation.proof :=
+      target.claim.meaning :=
   kind_mapping_rule_theorem_proof_requires_derivation mapping.kindRule h
 
 end GovCheck.Coherence

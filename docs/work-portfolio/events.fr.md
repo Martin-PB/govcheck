@@ -108,6 +108,13 @@ L'Architecture 0025 EN/FR distingue désormais le risque assumé PEAK de l'éval
 Détail canonique : [journal anglais WP-EVT-000030](events.md#wp-evt-000030).
 
 
+## WP-EVT-000032 — Formalisation des sémantiques typées d'incertitude et des objets de risque
+
+Le module Lean distingue les familles de valeurs quantitatives et épistémiques, les états de disponibilité d'une évaluation, les entrées/sorties PEAK et les objets scénario/évaluation/traitement/acceptation du risque. Une acceptation est liée aux révisions exactes du scénario et de l'évaluation et porte autorité, portée, révision de politique et intervalle de validité. Cela ne prouve pas l'autorisation réelle de l'acteur et n'adopte aucun calculateur, score ou politique universelle.
+
+Détail canonique : [journal anglais WP-EVT-000032](events.md#wp-evt-000032).
+
+
 
 ## WP-EVT-000033 — Vérification du modèle de liaison du contexte des révisions de gouvernance
 

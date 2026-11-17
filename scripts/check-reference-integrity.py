@@ -42,8 +42,25 @@ def normalized_url(raw: str) -> str:
     return raw.rstrip(URL_TRAILING_PUNCTUATION)
 
 def logical_doc(path: Path) -> str:
-    rel = path.relative_to(DOCS).as_posix()
+    """Return a repository-relative identity for an EN/FR Markdown document.
+
+    Catalogue backlinks may legitimately target source documents outside docs/
+    (for example formal/lean/README.md). Resolving them relative to DOCS would
+    raise ValueError and, more importantly, hide those documents from the
+    reciprocal-citation check.
+    """
+    rel = path.resolve().relative_to(ROOT).as_posix()
     return rel[:-6] + ".md" if rel.endswith(".fr.md") else rel
+
+
+def repository_markdown_files() -> list[Path]:
+    """Enumerate authored repository Markdown, excluding installed/cache trees."""
+    excluded = {".git", ".lake", "node_modules", "dist", "build", "govcheck"}
+    return sorted(
+        path for path in ROOT.rglob("*.md")
+        if path.is_file()
+        and not (set(path.relative_to(ROOT).parts) & excluded)
+    )
 
 def catalogue_entries(path: Path, lang: str) -> dict[str, str]:
     text = path.read_text(encoding="utf-8")
@@ -126,7 +143,11 @@ def check_references(external: bool) -> int:
                 f"{catalogue.relative_to(ROOT)}: thematic index mismatch; "
                 f"missing={sorted(set(entries)-indexed)}, unknown={sorted(indexed-set(entries))}"
             )
-    markdown_files = sorted(DOCS.rglob("*.md"))
+    # Catalogue citations are not confined to docs/: formal source views and
+    # other authored Markdown may cite catalogue entries too. Scan the
+    # repository's authored Markdown, excluding the installed package mirror
+    # and generated/cache directories.
+    markdown_files = repository_markdown_files()
     source_docs = [p for p in markdown_files if p not in CATALOGUES.values()]
     citations: dict[str, set[str]] = defaultdict(set)
     document_links: dict[str, dict[str, set[str]]] = defaultdict(dict)
@@ -167,14 +188,20 @@ def check_references(external: bool) -> int:
             declared: set[str] = set()
             for target in re.findall(r'\[[^\]]+\]\(([^)]+)\)', line.group(1)):
                 parsed = urllib.parse.urlsplit(target)
-                if lang == "en" and parsed.path.endswith(".fr.md"):
-                    error(f"{catalogue.relative_to(ROOT)}: English backlink uses French document path {target}")
-                if lang == "fr" and not parsed.path.endswith(".fr.md"):
-                    error(f"{catalogue.relative_to(ROOT)}: French backlink uses English document path {target}")
                 path = (DOCS / urllib.parse.unquote(parsed.path)).resolve()
                 if not path.exists():
                     error(f"{catalogue.relative_to(ROOT)}: {ref_id} backlinks to missing document {target}")
                     continue
+                if lang == "en" and path.name.endswith(".fr.md"):
+                    error(f"{catalogue.relative_to(ROOT)}: English backlink uses French document path {target}")
+                if lang == "fr" and not path.name.endswith(".fr.md"):
+                    # A French catalogue may point to an English-only source
+                    # document when no maintained .fr.md counterpart exists.
+                    # If a French counterpart exists, the French catalogue
+                    # must point to that counterpart instead.
+                    french_counterpart = path.with_name(path.name[:-3] + ".fr.md") if path.name.endswith(".md") else path
+                    if french_counterpart.exists():
+                        error(f"{catalogue.relative_to(ROOT)}: French backlink uses English document path despite French counterpart {target}")
                 declared.add(logical_doc(path))
             expected = citations.get(ref_id, set())
             if declared != expected:

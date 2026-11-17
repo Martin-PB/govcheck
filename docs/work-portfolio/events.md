@@ -435,3 +435,15 @@
 - **Reference:** [R-193](../references.md#r-193).
 - **Integration candidate:** [PR #132](https://github.com/Martin-PB/govcheck/pull/132), rebased on current `main` at `e21c4d2bb1a0fdeec250723c72b1115c9921c3a9`; merge/review status remains separate from adoption.
 - **Disposition:** proposed clarification; no normative adoption or method mandate.
+
+
+
+<a id="wp-evt-000033"></a>
+## WP-EVT-000033 — Governance revision context binding model checked
+- **Subject:** `govcheck.governance.revision-context-binding`.
+- **Event type:** `cross-model-context-binding-model-checked`.
+- **Recorded:** 2026-11-17.
+- **Artifacts:** `formal/tla/GovCheckGovernanceContextBinding.tla`; TLC configuration; Architecture 0036 EN/FR; Specification 0006 §7.4 EN/FR; Decision-session record 0008 coverage update.
+- **Binding:** exact authority-policy revision, evaluator identity/revision, specification identity/revision and profile identity/revision are captured by governance context and preserved across evaluation, authorization and later publication.
+- **Verification:** SANY 2.1 and TLC 2.19 passed in workflow run [44131092595](https://github.com/Martin-PB/govcheck/actions/runs/44131092595): 486,289 states generated/distinct, zero remaining, depth 8; twelve invariants and `AppendOnly` passed.
+- **Limit:** a separate bounded cross-model binding projection, not an integrated authority/lifecycle/journal state machine, not an implementation refinement, and not normative adoption.

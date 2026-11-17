@@ -449,6 +449,17 @@
 - **Disposition:** executable research increment for issue #73; no normative metamodel or universal mapping-composition policy adopted.
 
 
+<a id="wp-evt-000032"></a>
+## WP-EVT-000032 — Typed uncertainty and risk-object semantics formalized
+- **Subject:** `govcheck.decision.assumed-risk.typed-semantics`.
+- **Event type:** `typed-risk-semantics-prototype-added`.
+- **Recorded:** 2026-11-17.
+- **Artifacts:** `formal/lean/GovCheckCoherence/RiskSemantics.lean`; dedicated axiom report; bilingual decision/assumed-risk research section 8.
+- **Typed families:** exact rational probability values, probability intervals/distributions, fuzzy membership, nondeterministic possibility sets, transition rates, argument-confidence judgements, cost, utility, priority and empirical frequency.
+- **Epistemic dispositions:** not assessed, unknown, not quantifiable, not applicable, quantified and inconclusive remain distinct constructors.
+- **Decision/risk boundaries:** PEAK inputs and solution/assumed-risk outputs remain explicit; scenario, assessment, treatment and acceptance are separate objects; acceptance is bound to exact scenario/assessment revisions and records authority, scope, policy revision and validity interval.
+- **Limit:** this is not an authority proof, risk calculator, universal score, aggregation policy or normative model. No conversion or acceptance policy is adopted.
+
 
 <a id="wp-evt-000033"></a>
 ## WP-EVT-000033 — Governance revision context binding model checked

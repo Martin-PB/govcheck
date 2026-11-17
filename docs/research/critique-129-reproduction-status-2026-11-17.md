@@ -251,3 +251,12 @@ The independent run confirms the 2026-11-13 historical counts had been transpose
 PR [#137](https://github.com/Martin-PB/govcheck/pull/137) adds a kernel-checked counterexample for vacuous partial mappings and strengthens the theorem-proof mapping proposition. Its latest Lean 4.19 build and axiom audit passed: [run 44111542642](https://github.com/Martin-PB/govcheck/actions/runs/44111542642). It remains open for review/merge and does not change current-main mapping semantics.
 
 PR [#138](https://github.com/Martin-PB/govcheck/pull/138) supplies the reusable audit workflow; all checks are green and it remains open for review/merge.
+
+
+## 10. Current-main audit refresh — target frozen before execution
+
+This refresh supersedes any statement above that calls `8e86027297e2d4259403a48842787851e10c9b08` the current main revision. The audit target is the exact `main` commit `3228404631bb565fddd6d0fb5a52f75724fe24dd`, tree `92920bfbcf6180c12729fc15e937672a92c7bb09` (merge of PR #150). The source critique's original target remains `24760fb`; the prior hosted reproduction remains historical evidence for its own source revision only.
+
+The audit workflow has been extended before execution to include the ninth current TLA+ pair, `GovCheckGovernanceContextBinding`, and explicit axiom reports for the evidence-mapping composition, bridge composition and typed risk-semantics slices in addition to the existing proof-root audit. This avoids silently omitting formal artefacts added after the previous eight-model audit.
+
+**Execution status at report preparation:** pending. No current-target PASS/FAIL claim is made here. Results will be added only from workflow logs tied to this PR's exact merge checkout, with the parent `main` commit and tree recorded separately. Hosted Actions evidence is not described as local reproduction.

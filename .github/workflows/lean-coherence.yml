@@ -52,5 +52,9 @@ jobs:
         run: lake env lean GovCheckCoherence/EvidenceMappingCompositionAxiomReport.lean
 
       - name: Report axioms used by bridge-composition theorems
+
+      - name: Report axioms used by typed uncertainty and risk semantics
+        working-directory: formal/lean
+        run: lake env lean GovCheckCoherence/RiskSemanticsAxiomReport.lean
         working-directory: formal/lean
         run: lake env lean GovCheckCoherence/CompositionAxiomReport.lean

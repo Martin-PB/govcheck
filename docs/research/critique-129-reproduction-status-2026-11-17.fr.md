@@ -251,3 +251,12 @@ La reproduction indépendante confirme que les nombres historiques du 13 novembr
 La PR [#137](https://github.com/Martin-PB/govcheck/pull/137) ajoute un contre-exemple vérifié par le noyau pour les mappings partiels vacants et renforce la proposition du mapping vers une preuve de théorème. Son dernier build Lean 4.19 et son audit d'axiomes ont réussi : [run 44111542642](https://github.com/Martin-PB/govcheck/actions/runs/44111542642). Elle reste ouverte pour revue/fusion et ne modifie pas la sémantique des mappings du main courant.
 
 La PR [#138](https://github.com/Martin-PB/govcheck/pull/138) fournit le workflow d'audit réutilisable ; tous les contrôles sont verts et elle reste ouverte pour revue/fusion.
+
+
+## 10. Actualisation de l'audit du main courant — cible figée avant exécution
+
+Cette actualisation remplace toute formulation ci-dessus présentant `8e86027297e2d4259403a48842787851e10c9b08` comme révision actuelle de `main`. La cible d'audit est le commit exact `3228404631bb565fddd6d0fb5a52f75724fe24dd`, arbre `92920bfbcf6180c12729fc15e937672a92c7bb09` (fusion de la PR #150). La cible originale de la critique reste `24760fb` ; la reproduction hébergée précédente demeure une preuve historique liée à sa propre révision source.
+
+Le workflow d'audit a été étendu avant exécution pour inclure le neuvième couple TLA+ présent, `GovCheckGovernanceContextBinding`, ainsi que les rapports d'axiomes explicites des tranches de composition des mappings de preuves, de composition des ponts et de sémantique typée du risque, en plus de l'audit de la racine de preuves existante. Cela évite d'omettre silencieusement les artefacts formels ajoutés après l'audit antérieur des huit modèles.
+
+**État au moment de la préparation du rapport :** en attente. Aucun PASS/FAIL n'est affirmé pour la cible actuelle. Les résultats ne seront ajoutés qu'à partir des journaux du workflow liés au checkout exact de cette PR, en consignant séparément le commit et l'arbre `main` parent. Une preuve Actions hébergée ne sera pas présentée comme une reproduction locale.

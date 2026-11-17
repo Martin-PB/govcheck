@@ -55,6 +55,7 @@ META_ONLY_WORKFLOWS = {
     "lean-coherence.yml",
     "sacm-native-ingestion.yml",
     "cslib-compatibility.yml",
+    "reproduction-audit.yml",
 }
 
 # Product-package workflow templates are intentionally not executable at the meta level.

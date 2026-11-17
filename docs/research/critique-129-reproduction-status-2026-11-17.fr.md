@@ -102,6 +102,24 @@ Aucun run TLC des huit couples modèle/configuration TLA+ courants ne faisait pa
 3. **Force des théorèmes Lean :** le théorème générique `kind_mapping_rule_theorem_proof_requires_derivation` conclut à l'existence d'une dérivation accompagnée de `derivation.proof = derivation.proof`. Cette égalité est réflexive ; le contenu utile est le témoin existentiel transporté par le constructeur. Le théorème n'établit pas indépendamment une propriété sémantique supplémentaire de la dérivation. Les noms et les affirmations doivent rester alignés sur la proposition réellement démontrée.
 4. **Périmètre exécutable :** le `govcheck/check.py` actuel contient huit règles : présence de licence, décisions bilingues, paires de manifeste, intégrité des références, présence des sources, intégrité du bootstrap, fraîcheur des preuves TLA et attestation de revue indépendante. Il n'implémente pas le cycle de vie canonique, le registre d'autorité, le protocole de journal, la sémantique des risques/décisions ni les contrats complets d'assurance intermodèles.
 
+
+### Inventaire actuel des modèles/configurations TLA+ (inspection des sources uniquement)
+
+L'arbre courant contient huit couples `.tla`/`.cfg`. Le workflow réutilisable épingle TLA+ tools 1.7.4 par SHA-256 et utilise Java 17 ; il exécute SANY avant TLC et conserve les sorties des modèles comme artefacts. Les workflows spécifiques routent les huit couples via cinq points d'entrée (routage CI, assurance, autorité, applicabilité/contrôles/publication/récupération de gouvernance et cycle de vie).
+
+| Modèle | Configuration finie | Propriétés nommées dans la configuration |
+|---|---|---|
+| `CICheckRouting` | 15 catégories de changements ; politique de routage uniquement | TypeOK ; absence de déclenchement par documentation sans rapport ; isolation cycle de vie/assurance/autorité ; invalidation par runner partagé ; couverture de chaque modèle. |
+| `GovCheckAssurance` | 2 affirmations, 2 éléments probants, 2 dépendances, 2 versions, 2 acteurs ; `MaxTime=2` | 7 invariants sur la bonne formation du graphe, la liaison de revue, la cohérence des affirmations, le soutien/snapshot d'acceptation et la révocation ; propriété temporelle `AcceptedDiscipline`. |
+| `GovCheckAuthority` | 2 principaux, 3 révisions ; historique limité à 4 | TypeOK ; modification par l'autorité courante, continuité de chaîne, absence de réutilisation de révision ; `HistoryIsAppendOnly`. |
+| `GovCheckCanonicalPublication` | 2 principaux, 3 révisions de gouvernance, 2 candidats, 3 identifiants d'évaluation et 3 d'autorisation | TypeOK ; unicité des révisions, continuité des prédécesseurs, une publication par position, liaison évaluation/autorisation, point d'effet, autorisation et absence de publication périmée ; `AppendOnly`. |
+| `GovCheckGovernanceApplicability` | 2 principaux, 3 révisions de gouvernance, 2 candidats, 3 évaluations et 3 décisions ; historique limité à 3 | TypeOK ; unicité/continuité de l'historique, autorité applicable, décision sous gouvernance antérieure, absence d'auto-autorisation, publication autorisée, liaison historique et liaison évaluation/autorisation ; `AppendOnly`. |
+| `GovCheckGovernanceControls` | 3 principaux, 2 révisions, 2 contenus candidats, 1 évaluation, 1 autorisation, 1 exception | TypeOK ; unicité des révisions, autorité antérieure, restriction de l'évaluateur parallèle, blocage unknown/conflict, non-dérogabilité, révocation prospective, préservation historique et absence d'autorisation périmée ; `AppendOnly`. |
+| `GovCheckJournalRecovery` | 2 contenus, 2 identifiants de révision, 2 identifiants d'événement, `MaxEvents=2`, répliques Git et Pijul | TypeOK ; unicité des événements/révisions, continuité position/prédécesseur, rollback comme nouvel événement, observation VCS non autoritative et état appliqué durable ; `AppendOnly`. |
+| `GovCheckLifecycle` | 2 acteurs, 1 approbation requise, historique limité à 12 ; 2 bases, candidats, révisions de gouvernance et spécifications ; 2 types d'obligation | 12 invariants portant sur les types, la sûreté d'acceptation/application, la fraîcheur, les liaisons de preuve/résultat/approbation, l'absence d'application implicite et la discipline de blocage ; propriété temporelle `TerminalDiscipline`. |
+
+Cet inventaire établit l'existence des configurations et des contrôles nommés ; il **n'établit pas** que SANY/TLC a réussi sur le SHA audité, que les bornes sont suffisantes, ni que les modèles se raffinent entre eux ou vers l'implémentation Python. Le jeu de contrôles attaché au main exact ne contient aucun résultat TLC ; les huit modèles restent à reproduire dans #130.
+
 ## 6. Corrections préparées pour les deux constats sur les vérificateurs
 
 ### 6.1 Échec du contrôle de références de la PR #133

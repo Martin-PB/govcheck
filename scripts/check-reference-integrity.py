@@ -188,14 +188,20 @@ def check_references(external: bool) -> int:
             declared: set[str] = set()
             for target in re.findall(r'\[[^\]]+\]\(([^)]+)\)', line.group(1)):
                 parsed = urllib.parse.urlsplit(target)
-                if lang == "en" and parsed.path.endswith(".fr.md"):
-                    error(f"{catalogue.relative_to(ROOT)}: English backlink uses French document path {target}")
-                if lang == "fr" and not parsed.path.endswith(".fr.md"):
-                    error(f"{catalogue.relative_to(ROOT)}: French backlink uses English document path {target}")
                 path = (DOCS / urllib.parse.unquote(parsed.path)).resolve()
                 if not path.exists():
                     error(f"{catalogue.relative_to(ROOT)}: {ref_id} backlinks to missing document {target}")
                     continue
+                if lang == "en" and path.name.endswith(".fr.md"):
+                    error(f"{catalogue.relative_to(ROOT)}: English backlink uses French document path {target}")
+                if lang == "fr" and not path.name.endswith(".fr.md"):
+                    # A French catalogue may point to an English-only source
+                    # document when no maintained .fr.md counterpart exists.
+                    # If a French counterpart exists, the French catalogue
+                    # must point to that counterpart instead.
+                    french_counterpart = path.with_name(path.name[:-3] + ".fr.md") if path.name.endswith(".md") else path
+                    if french_counterpart.exists():
+                        error(f"{catalogue.relative_to(ROOT)}: French backlink uses English document path despite French counterpart {target}")
                 declared.add(logical_doc(path))
             expected = citations.get(ref_id, set())
             if declared != expected:

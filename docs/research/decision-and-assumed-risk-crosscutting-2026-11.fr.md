@@ -136,9 +136,64 @@ Obligations formelles candidates, selon pertinence :
 
 Ce sont des obligations candidates à préciser dans #73 et #131, pas des affirmations selon lesquelles le code GovCheck actuel les impose déjà.
 
+## 5.2 Valeurs quantitatives et d'incertitude typées candidates
+
+Ces frontières sémantiques préparent une modélisation ultérieure ; elles ne constituent ni un moteur numérique obligatoire ni un calcul du risque choisi.
+
+| Famille de types | Signification à préserver | Contexte requis |
+|---|---|---|
+| `ProbabilityEstimate` | Mesure/estimation relative à un événement ou résultat spécifié sous des conditions déclarées | Événement, hypothèses de conditionnement, population/frontière du système, horizon temporel, interprétation (fréquentiste/bayésienne/élicitation/modèle), méthode, révisions des données/modèle/paramètres, forme du résultat, dépendances, sensibilité et validité |
+| `ProbabilityPoint` / `ProbabilityInterval` | Estimation ponctuelle ou estimation bornée dans [0,1] | Calibration/dérivation, bornes inférieure/supérieure et nature épistémique, statistique ou décisionnelle de ces bornes |
+| `ProbabilityDistribution` | Distribution sur un espace de résultats déclaré | Espace des résultats, tribu/partition finie, identité de la mesure/du modèle, dépendances et révision des paramètres |
+| `FuzzyMembership` | Degré d'appartenance d'un objet à un concept vague | Concept, univers/domaine, identité/révision de la fonction d'appartenance, termes linguistiques, base de règles, fondement expert et validation |
+| `NondeterministicPossibility` | Ensemble d'états/résultats possibles ou relation de transition, sans pondération | Espace d'états, relation de transition, gardes et hypothèses |
+| `TransitionRate` | Taux par unité de temps déclarée pour une transition/un processus | États source/cible, unité, sémantique du processus, révision du modèle et des paramètres |
+| `ArgumentConfidence` | Évaluation de confiance dans un argument ou dossier d'assurance, dépendante de la méthode | Révision de l'argument, méthode d'évaluation, critères, évaluateur, calibration et limites |
+| `Cost`, `Utility`, `Priority`, `Frequency` | Quantités avec unités et sémantiques propres | Unité, échelle, population/période le cas échéant, méthode et provenance |
+
+Une valeur numérique dans [0,1] ne se décrit pas elle-même. En particulier, `ProbabilityPoint(0.8)` et `FuzzyMembership(0.8)` sont des types différents, d'interprétations différentes. Le modèle ne doit pas fournir de coercition implicite entre eux. Toute correspondance explicite entre domaines doit nommer les sémantiques source/cible, hypothèses, validation et limites.
+
+Un taux de transition ne peut être lu comme une probabilité tant que le modèle de processus et l'intervalle temporel ne sont pas spécifiés. Un choix non déterministe non pondéré n'implique pas l'équiprobabilité. Un jugement de confiance relatif à un argument d'assurance n'est automatiquement ni une probabilité calibrée, ni une preuve de théorème, ni un résultat de model checking.
+
+### Disponibilité épistémique explicite
+
+Un résultat doit distinguer au minimum :
+
+- `NotAssessed` : aucune évaluation n'a été réalisée ;
+- `Unknown(reason)` : une évaluation ou recherche existe, mais la valeur reste indéterminée ;
+- `NotQuantifiable(reason)` : une quantité numérique n'est pas justifiée ou pertinente pour cette question ;
+- `NotApplicable(reason)` : la dimension d'évaluation ne s'applique pas ;
+- `Quantified(value)` : un résultat existe avec son type, sa méthode et sa provenance ;
+- `Inconclusive(reason)` : une évaluation a été exécutée sans résoudre le critère de décision déclaré.
+
+Ces états ne sont pas interchangeables. En particulier, `Unknown`, `NotAssessed` et `NotQuantifiable` ne sont jamais convertis par défaut en zéro, point médian, réussite ou score. Une probabilité nulle est une affirmation mathématique positive relative à un événement/modèle spécifié, et non l'absence d'estimation.
+
+### Séparation décision/risque
+
+- `AssumedRisk` est une sortie de décision PEAK et peut exister sans décomposition en `RiskScenario` ni `RiskAssessment` quantitative.
+- `RiskScenario` identifie un événement/état défavorable possible, son contexte, ses causes et ses conséquences.
+- `RiskAssessment` évalue un scénario selon une technique déclarée et lie les révisions exactes du modèle, des données, paramètres, hypothèses, outil et politique.
+- `RiskTreatment` enregistre les actions de traitement choisies et l'exposition à laquelle elles répondent.
+- `RiskAcceptance` est une décision autorisée distincte, liée à une exposition résiduelle spécifiée, à l'autorité, à la portée, aux révisions de politique/évaluation et à un intervalle de validité.
+
+Aucun résultat d'évaluation ne crée automatiquement l'autorité d'accepter. Aucune acceptation n'implique qu'un scénario est impossible, qu'une estimation est prouvée ou que l'exposition est acceptable hors de la portée et de l'intervalle de validité enregistrés.
+
+### Obligations candidates de preuve/validation
+
+1. Les familles de valeurs distinctes ne disposent d'aucun chemin de conversion implicite.
+2. Un résultat probabiliste est lié à un événement/résultat, un contexte de conditionnement et un horizon temporel.
+3. Un degré flou est lié à un concept et à une révision de fonction d'appartenance.
+4. Une transition non déterministe ne porte aucune probabilité sans distribution distincte.
+5. Un taux porte une unité et une sémantique de processus/temps.
+6. Unknown, non évalué, non quantifiable, non applicable et non concluant restent distincts.
+7. Une sortie PEAK de risque assumé peut exister avant l'évaluation et n'est pas écrasée par des estimations ultérieures.
+8. L'acceptation du risque exige une décision distincte portant l'autorité et ne peut impliquer l'absence ou l'impossibilité du risque.
+
+Ces obligations doivent être affinées en types Lean et fixtures négatives dans #131. La première implémentation doit utiliser des enveloppes typées explicites et de petites obligations de preuve ; elle ne doit introduire aucun score universel ni forcer tous les projets à quantifier les risques.
+
 ## 6. Recherche et références existantes
 
-Cet addendum précise sans la remplacer la [recherche sur l'assurance sémantique et les modèles de transition](semantic-assurance-and-transition-models-2026-11.fr.md). Préserver notamment la distinction qui y est déjà documentée entre probabilité, appartenance floue, non-déterminisme, taux de transition, coûts et récompenses. Voir le catalogue [R-193](../references.fr.md#r-193) pour les sources sur les modèles probabilistes, flous et de transition, et [R-74](../references.fr.md#r-74) pour la source du modèle de décision PEAK.
+Cet addendum précise sans la remplacer la [recherche sur l'assurance sémantique et les modèles de transition](semantic-assurance-and-transition-models-2026-11.fr.md). Préserver notamment la distinction qui y est déjà documentée entre probabilité, appartenance floue, non-déterminisme, taux de transition, coûts et récompenses. Voir le catalogue [R-193](../references.fr.md#r-193) pour les sources sur les modèles probabilistes, flous et de transition, et [R-74](../references.fr.md#r-74) pour la source du modèle de décision PEAK. Voir [R-202](../references.fr.md#r-202) pour les guides de management et d'appréciation du risque.
 
 ## 7. Statut et frontières
 

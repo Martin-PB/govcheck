@@ -136,9 +136,64 @@ Formal obligations should include, where applicable:
 
 These are candidate proof/validation obligations to refine in #73 and #131, not claims that current GovCheck code already enforces them.
 
+## 5.2 Candidate typed quantitative and uncertainty values
+
+These are semantic boundaries for later modelling, not a mandatory numeric engine or a selected risk calculus.
+
+| Type family | Meaning that must be retained | Required context |
+|---|---|---|
+| `ProbabilityEstimate` | Measure/estimate concerning a specified event or outcome under stated conditions | Event, conditioning assumptions, population/system boundary, time horizon, interpretation (frequentist/Bayesian/elicited/model-derived), method, data/model/parameter revisions, result form, dependencies, sensitivity and validity |
+| `ProbabilityPoint` / `ProbabilityInterval` | Point estimate or bounded estimate in [0,1] | Calibration/derivation, lower/upper bounds and whether bounds are epistemic, statistical or decision-based |
+| `ProbabilityDistribution` | Distribution over a declared outcome space | Outcome space, sigma-algebra/finite partition, measure/model identity, dependencies and parameter revision |
+| `FuzzyMembership` | Degree to which an object belongs to a vague concept | Concept, universe/domain, membership-function identity/revision, linguistic terms, rule base, expert basis and validation |
+| `NondeterministicPossibility` | A set of possible states/outcomes or a transition relation, without weights | State space, transition relation, guards and assumptions |
+| `TransitionRate` | Rate per declared unit of time for a transition/process | Source/target state, unit, process semantics, model and parameter revision |
+| `ArgumentConfidence` | Method-dependent assessment of confidence in an argument or assurance case | Argument revision, assessment method, criteria, assessor, calibration and limitations |
+| `Cost`, `Utility`, `Priority`, `Frequency` | Quantities with their own units and semantics | Unit, scale, population/period where applicable, method and provenance |
+
+A numeric value in [0,1] is not self-describing. In particular, `ProbabilityPoint(0.8)` and `FuzzyMembership(0.8)` are different types with different interpretations. The model must not provide an implicit coercion between them. Any explicit cross-domain mapping must name its source/target semantics, assumptions, validation and limitations.
+
+A transition rate cannot be read as a probability until the process model and time interval are specified. An unweighted nondeterministic choice does not imply equiprobability. A confidence judgement about an assurance argument is not automatically a calibrated probability, theorem proof or model-checking result.
+
+### Explicit epistemic availability
+
+A result should distinguish at least:
+
+- `NotAssessed`: no assessment was performed;
+- `Unknown(reason)`: an assessment or inquiry exists but the value is unresolved;
+- `NotQuantifiable(reason)`: a numeric quantity is not justified or meaningful for this question;
+- `NotApplicable(reason)`: the assessment dimension does not apply;
+- `Quantified(value)`: a result exists with its type, method and provenance;
+- `Inconclusive(reason)`: an assessment ran but did not resolve the stated decision criterion.
+
+These states are not interchangeable. In particular, `Unknown`, `NotAssessed` and `NotQuantifiable` are never converted to zero, a midpoint, a pass or a score by default. A probability of zero is a positive mathematical claim about a specified event/model, not the absence of an estimate.
+
+### Decision/risk separation
+
+- `AssumedRisk` is a PEAK decision output and may exist without any `RiskScenario` decomposition or quantitative `RiskAssessment`.
+- `RiskScenario` identifies a possible adverse event/state, its context, causes and consequences.
+- `RiskAssessment` evaluates a scenario under a declared technique and binds exact model, data, parameter, assumption, tool and policy revisions.
+- `RiskTreatment` records chosen treatment actions and the exposure they address.
+- `RiskAcceptance` is a separate authorized decision, bound to a specified residual exposure, authority, scope, policy/assessment revisions and validity interval.
+
+No assessment result automatically creates acceptance authority. No acceptance implies that a scenario is impossible, that an estimate is proven, or that the exposure is acceptable outside the recorded scope and validity interval.
+
+### Candidate proof/validation obligations
+
+1. Distinct value families have no implicit conversion path.
+2. A probability result is bound to an event/outcome, conditioning context and time horizon.
+3. A fuzzy grade is bound to a concept and membership-function revision.
+4. A nondeterministic transition carries no probability unless a separate distribution is supplied.
+5. A rate carries a unit and process/time semantics.
+6. Unknown, not assessed, not quantifiable, not applicable and inconclusive remain distinct.
+7. A PEAK assumed-risk output can exist before assessment and is not overwritten by later estimates.
+8. Risk acceptance requires a separate authority-bearing decision and cannot imply absence or impossibility of the risk.
+
+These obligations should be refined into Lean types and negative fixtures in #131. The first implementation should use explicit typed wrappers and small proof obligations; it should not introduce a universal score or force all projects to quantify risk.
+
 ## 6. Existing research and references
 
-This addendum refines rather than replaces [Research: semantic assurance and transition models](semantic-assurance-and-transition-models-2026-11.md). In particular, preserve the distinction already documented there between probability, fuzzy membership, nondeterminism, transition rates, costs and rewards. See catalogue [R-193](../references.md#r-193) for probabilistic, fuzzy and transition-model sources, and [R-74](../references.md#r-74) for the PEAK decision-model source.
+This addendum refines rather than replaces [Research: semantic assurance and transition models](semantic-assurance-and-transition-models-2026-11.md). In particular, preserve the distinction already documented there between probability, fuzzy membership, nondeterminism, transition rates, costs and rewards. See catalogue [R-193](../references.md#r-193) for probabilistic, fuzzy and transition-model sources, and [R-74](../references.md#r-74) for the PEAK decision-model source. See [R-202](../references.md#r-202) for risk-management and risk-assessment process guidance.
 
 ## 7. Status and boundaries
 

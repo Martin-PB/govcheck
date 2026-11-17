@@ -45,7 +45,7 @@
 | Repository intent, lifecycle and requirements engineering | R-114–R-118, R-121–R-122 |
 | System modeling and assurance-case metamodels | R-119–R-120 |
 | Metamodel coherence, semantic preservation and formal verification | R-123–R-127 |
-| Probabilistic assurance, fuzzy logic and state-transition models | R-193 |
+| Probabilistic assurance, fuzzy logic and state-transition models | R-193 |\n| Risk management and risk assessment process guidance | R-202 |
 | Concurrent edits, semantic merge conflicts and multi-agent delivery | R-142–R-151 |
 | Canonical journal ordering, durable recovery and idempotent retry | R-194–R-196 |
 | Software-engineering ontology networks and ontology-definition metamodels | R-200–R-201 |
@@ -74,7 +74,7 @@
 - **CRDTs, peer-to-peer transport and discovery:** R-45–R-50, R-66, R-87.
 - **Knowledge representation and linked-data interchange:** R-51–R-61, R-83–R-86.
 - **Native VCS semantics and collaboration adapters:** R-22.
-- **Threat modeling, attack paths and risk management:** R-27–R-32.
+- **Threat modeling, attack paths and risk management:** R-27–R-32.\n- **Risk management and risk-assessment techniques:** R-202.
 - **Goal-oriented requirements modeling:** R-44, R-92.
 - **Security assurance cases and metamodels:** R-33–R-34.
 - **PEAK decision model:** R-74.
@@ -1390,3 +1390,11 @@
 - **Relevant concepts:** metamodels and profiles for representing ontology languages and relating ontology constructs to OMG modelling infrastructure.
 - **Use in GovCheck:** candidate reference for assessing mappings between ontology formalisms and modelling/metamodel technologies.
 - **Limit:** ODM is not itself a software lifecycle ontology, repository-governance model or assurance-case metamodel. Its existence does not establish that a particular GovCheck mapping is complete or semantics-preserving.
+
+<a id="r-202"></a>
+### R-202 — Risk management and risk assessment process guidance
+- **Cited by:** [Decision and assumed risk research](research/decision-and-assumed-risk-crosscutting-2026-11.md)
+- **Primary standards and guidance:** [ISO 31000:2018 — Risk management: Guidelines](https://www.iso.org/standard/31000) · [IEC 31010:2019 — Risk assessment techniques](https://www.iso.org/standard/72140.html) · [NIST SP 800-30 Rev. 1 — Guide for Conducting Risk Assessments](https://csrc.nist.gov/pubs/sp/800/30/r1/final)
+- **Relevant concepts:** organizational risk-management principles and process; selection, planning, verification and validation of risk-assessment techniques; uncertainty, sensitivity, assessment context, preparation, conduct, maintenance and documentation of assessment results.
+- **Use in GovCheck:** informs the separation between a risk scenario, method-specific assessment, treatment, residual exposure and authorized acceptance. Supports recording assessment purpose, scope, assumptions, data/model revisions, method, limitations and review conditions.
+- **Limit:** ISO 31000 provides guidelines, not a universal risk formula or certification scheme; IEC 31010 describes techniques, not a single mandatory method; NIST SP 800-30 Rev. 1 is written for federal information systems and organizations. None of these sources makes PEAK assumed risk equivalent to quantitative assessment or risk acceptance, and none is adopted as a mandatory GovCheck method.

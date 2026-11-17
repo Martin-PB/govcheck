@@ -42,8 +42,25 @@ def normalized_url(raw: str) -> str:
     return raw.rstrip(URL_TRAILING_PUNCTUATION)
 
 def logical_doc(path: Path) -> str:
-    rel = path.relative_to(DOCS).as_posix()
+    """Return a repository-relative identity for an EN/FR Markdown document.
+
+    Catalogue backlinks may legitimately target source documents outside docs/
+    (for example formal/lean/README.md). Resolving them relative to DOCS would
+    raise ValueError and, more importantly, hide those documents from the
+    reciprocal-citation check.
+    """
+    rel = path.resolve().relative_to(ROOT).as_posix()
     return rel[:-6] + ".md" if rel.endswith(".fr.md") else rel
+
+
+def repository_markdown_files() -> list[Path]:
+    """Enumerate authored repository Markdown, excluding installed/cache trees."""
+    excluded = {".git", ".lake", "node_modules", "dist", "build", "govcheck"}
+    return sorted(
+        path for path in ROOT.rglob("*.md")
+        if path.is_file()
+        and not (set(path.relative_to(ROOT).parts) & excluded)
+    )
 
 def catalogue_entries(path: Path, lang: str) -> dict[str, str]:
     text = path.read_text(encoding="utf-8")
@@ -126,7 +143,11 @@ def check_references(external: bool) -> int:
                 f"{catalogue.relative_to(ROOT)}: thematic index mismatch; "
                 f"missing={sorted(set(entries)-indexed)}, unknown={sorted(indexed-set(entries))}"
             )
-    markdown_files = sorted(DOCS.rglob("*.md"))
+    # Catalogue citations are not confined to docs/: formal source views and
+    # other authored Markdown may cite catalogue entries too. Scan the
+    # repository's authored Markdown, excluding the installed package mirror
+    # and generated/cache directories.
+    markdown_files = repository_markdown_files()
     source_docs = [p for p in markdown_files if p not in CATALOGUES.values()]
     citations: dict[str, set[str]] = defaultdict(set)
     document_links: dict[str, dict[str, set[str]]] = defaultdict(dict)

@@ -319,7 +319,9 @@ Tick ==
         IF risk.status = OverrideActive /\ tick + 1 >= risk.expiresAt
         THEN [risk EXCEPT !.status = OverrideExpired] ELSE risk
     /\ decision' =
-        IF decision.status = DecisionRisk /\ tick + 1 >= risk.expiresAt
+        IF decision.status = DecisionRisk
+           /\ publication.status = PublicationNone
+           /\ tick + 1 >= risk.expiresAt
         THEN [decision EXCEPT !.status = DecisionStale] ELSE decision
     /\ UNCHANGED << currentBase, currentPolicy, currentVerifier,
                     evaluation, publication, bypass >>
@@ -401,10 +403,11 @@ UnknownNeverPass ==
 RiskIsNotPass ==
     decision.status = DecisionRisk =>
         /\ evaluation.result \in {Fail, Unknown, Conflict}
-        /\ risk.status = OverrideActive
         /\ decision.riskId = risk.id
         /\ decision.authority = RootAuthority
         /\ decision.result = evaluation.result
+        /\ (publication.status = PublicationNone => risk.status = OverrideActive)
+        /\ (publication.status = PublicationPublished => publication.kind = KindRiskAccepted)
 
 FreshDecision ==
     decision.status \in {DecisionPass, DecisionRisk} =>

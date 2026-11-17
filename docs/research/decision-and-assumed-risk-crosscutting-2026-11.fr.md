@@ -197,6 +197,8 @@ Cet addendum précise sans la remplacer la [recherche sur l'assurance sémantiqu
 
 ## 7. Statut et frontières
 
+Ce document est une clarification de recherche. Il n'adopte ni sérialisation canonique, ni calcul universel du risque, ni moteur probabiliste/flou, ni PEAK, ni SACM, ni modèle de décision particulier, ni métamodèle GovCheck normatif. Il ne modifie pas le régime d'autorité actuel. Les propositions doivent être spécifiées, confrontées aux sémantiques sources et soumises au processus de gouvernance du dépôt avant toute adoption normative.
+
 
 ## 8. Tranche exécutée de sémantique typée (2026-11-17)
 
@@ -209,5 +211,3 @@ Les entrées de décision PEAK (Problem, Experience, Assumptions, Knowledge) son
 Cela ne **prouve pas** qu'un acteur nommé soit effectivement autorisé : cela exige le contrat d'autorité séparé. Il ne s'agit ni d'un calculateur de risque, ni d'un score universel, ni d'une conversion probabilité/flou, ni d'une agrégation du risque, ni d'un optimiseur de traitement ou d'une politique normative d'acceptation. C'est uniquement un prototype sémantique typé.
 
 La compilation Lean et le rapport d'axiomes dédié sont exécutés sur la PR #144. Les théorèmes vérifiés ne doivent dépendre d'aucun axiome ; le statut de la vérification de la tête finale est consigné dans la PR et les preuves de workflow.
-
-Ce document est une clarification de recherche. Il n'adopte ni sérialisation canonique, ni calcul universel du risque, ni moteur probabiliste/flou, ni PEAK, ni SACM, ni modèle de décision particulier, ni métamodèle GovCheck normatif. Il ne modifie pas le régime d'autorité actuel. Les propositions doivent être spécifiées, confrontées aux sémantiques sources et soumises au processus de gouvernance du dépôt avant toute adoption normative.

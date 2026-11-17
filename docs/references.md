@@ -1535,42 +1535,42 @@
 - **Relevant clauses:** §7.8.8.7 defines `MultiplicityElement.lowerBound()` and `upperBound()`, including the fallback value 1 when the corresponding value specification or typed value is absent; §8.6.9.4 defines `LiteralInteger.value` default 0; §8.6.14.4 defines `LiteralUnlimitedNatural.value` default 0; §8.6.10 defines `LiteralNull`.
 - **Use in GovCheck:** supplies the exact UML 2.5 rules used to interpret the omitted literal values in the pinned SACM 2.4 Beta 1 XMI. The parser records both the raw value specification and the effective multiplicity, including the rule responsible for a default.
 - **Limit:** only the stated literal/default cases are implemented. Arbitrary `ValueSpecification` expressions, OCL evaluation, full UML/MOF well-formedness and parser refinement remain outside this increment.
-## R-221 — GitHub rulesets and protected-branch checks
+#### R-221 — GitHub rulesets and protected-branch checks
 - **Type:** Primary platform documentation.
 - **Primary sources:** [About rulesets](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets) · [Available rules](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/available-rules-for-rulesets) · [Protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches).
 - **Use:** required status checks, expected GitHub App source, strict/loose base freshness, reviews and bypass configuration.
 - **Limit:** any person or integration with write permission can set a status unless an expected App source is selected. Rulesets do not prove verifier correctness or remove administrator/bypass authority.
 - **Cited by:** [Architecture 0037](architecture/0037-acceptance-boundary-and-enforcement-adapters.md), [acceptance-boundary research](research/acceptance-boundary-enforcement-2026-11.md).
 
-## R-222 — GitLab protected branches and external status checks
+### R-222 — GitLab protected branches and external status checks
 - **Type:** Primary platform documentation.
 - **Primary sources:** [Protected branches](https://docs.gitlab.com/user/project/repository/branches/protected/) · [External status checks](https://docs.gitlab.com/user/project/merge_requests/status_checks/) · [Merge checks](https://docs.gitlab.com/user/project/merge_requests/merge_checks/).
 - **Use:** branch push/merge permissions; external checks bound to current merge-request HEAD; HMAC authentication; stale responses rejected with HTTP 409. Failed external checks block merging only when “Status checks must succeed” is enabled.
 - **Limit:** external status checks are tier-dependent (GitLab Ultimate) and require a service endpoint; platform status is not GovCheck evidence provenance.
 - **Cited by:** [Architecture 0037](architecture/0037-acceptance-boundary-and-enforcement-adapters.md), [acceptance-boundary research](research/acceptance-boundary-enforcement-2026-11.md).
 
-## R-223 — Gitea protected branches and status checks
+### R-223 — Gitea protected branches and status checks
 - **Type:** Primary platform documentation (Gitea 1.27).
 - **Primary source:** [Protected branches](https://docs.gitea.com/1.27/usage/access-control/protected-branches/).
 - **Use:** protection across HTTP(S), SSH, web editor, API and auto-merge; server-side rejection; required status checks; direct-push, force-push, approval and administrator controls.
 - **Limit:** Gitea-specific; a status context name alone does not authenticate the verifier or prove evidence provenance.
 - **Cited by:** [Architecture 0037](architecture/0037-acceptance-boundary-and-enforcement-adapters.md), [acceptance-boundary research](research/acceptance-boundary-enforcement-2026-11.md).
 
-## R-224 — Forgejo Actions security and workflow trust boundaries
+### R-224 — Forgejo Actions security and workflow trust boundaries
 - **Type:** Primary platform security guidance.
 - **Primary source:** [Securing Forgejo Actions deployments](https://forgejo.org/docs/latest/admin/actions/security/).
 - **Use:** documents that direct writers can run arbitrary workflows and can introduce workflows on unprotected branches even when the main branch is protected. Runner registration scope, ephemeral runners and workflow isolation are distinct from branch protection.
 - **Limit:** security guidance for Forgejo Actions, not a general acceptance-attestation protocol.
 - **Cited by:** [Architecture 0037](architecture/0037-acceptance-boundary-and-enforcement-adapters.md), [acceptance-boundary research](research/acceptance-boundary-enforcement-2026-11.md).
 
-## R-225 — Git server and client hooks
+### R-225 — Git server and client hooks
 - **Type:** Primary VCS documentation.
 - **Primary source:** [Git hooks](https://git-scm.com/docs/githooks).
 - **Use:** distinguishes client-side `pre-push` from server-side `pre-receive`. The latter runs once per receive operation, receives old/new object IDs and full ref names, and a non-zero exit rejects the proposed ref updates. It is a native boundary adapter for controlled Git servers and local bare repositories.
 - **Limit:** the hook and trusted verifier must be installed outside the candidate tree by the server administrator. Direct filesystem/ref manipulation or administrator replacement remains outside its guarantee.
 - **Cited by:** [Architecture 0037](architecture/0037-acceptance-boundary-and-enforcement-adapters.md), [acceptance-boundary research](research/acceptance-boundary-enforcement-2026-11.md).
 
-## R-226 — Pijul local hooks and Nest contribution workflow
+### R-226 — Pijul local hooks and Nest contribution workflow
 - **Type:** Primary VCS documentation.
 - **Primary sources:** [Pijul configuration and hooks](https://pijul.org/manual/configuration.html) · [Contributing on the Nest](https://pijul.org/manual/the_nest/contributing).
 - **Use:** Pijul's documented hook runs before `pijul record`; the manual currently says only the `record` hook is supported. The Nest permits direct push for authorized users or attaching changes to a discussion channel.

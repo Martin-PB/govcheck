@@ -163,6 +163,8 @@ Une branche distincte, [`work/fix-reference-integrity-repo-wide-markdown`](https
 
 Cette correction est **préparée mais non exécutée**. Elle n'a pas été fusionnée dans la PR #133 et aucun workflow Actions n'a été déclenché. La branche part de l'ancienne tête de la PR #133, pas du `main` courant ; l'intégration doit d'abord tenir compte de la divergence de la PR par rapport à sa base actuelle. Aucun statut vert n'est revendiqué.
 
+Une version équivalente basée sur le `main` courant est également préparée sur [`work/fix-reference-integrity-repo-wide-main`](https://github.com/Martin-PB/govcheck/tree/work/fix-reference-integrity-repo-wide-main), avec la même correction du vérificateur et cinq tests de régression. Cette branche basée sur main est le meilleur candidat pour une PR indépendante ; la branche basée sur la tête de la PR reste utile uniquement pour comparer directement l'arbre défaillant de #133. Aucune des deux branches n'a été exécutée ni fusionnée.
+
 
 ### 6.2 Reconnaissance des références par l'évaluateur de main
 

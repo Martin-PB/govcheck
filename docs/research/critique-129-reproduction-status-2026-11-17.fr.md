@@ -171,7 +171,7 @@ Une version équivalente basée sur le `main` courant est également préparée 
 Une seconde branche, [`work/fix-govcheck-sources-present-rule`](https://github.com/Martin-PB/govcheck/tree/work/fix-govcheck-sources-present-rule), part du `main` courant et corrige les six constats de section de sources de l'évaluateur report-only :
 
 - accepter les titres Markdown numérotés, par exemple `## 17. References`, comme sections de références ;
-- ajouter des sections explicites de références au catalogue dans les décisions 0008 et 0009 EN/FR, en réutilisant leurs sources R-05/R-22/R-194–R-196 et R-114–R-122 déjà présentes ;
+- ajouter des sections explicites de références au catalogue dans les décisions 0008 et 0009 EN/FR, en réutilisant leurs sources déjà présentes sur les méthodes formelles, les VCS, le protocole de journal, l'intention et les exigences ;
 - conserver la liste complète des liens au catalogue du dossier de métamodèle à l'intérieur de sa section Références numérotée en transformant le titre suivant en sous-titre ;
 - ajouter un test de régression pour un titre de références numéroté.
 

@@ -73,7 +73,7 @@ Il n'exécute pas OCL ni d'autres langages de contraintes, ne résout pas le mé
 
 ## 5. Sémantique de multiplicité UML 2.5 épinglée par version
 
-L'espace de noms source http://www.omg.org/spec/UML/20131001 identifie la révision UML 2.5 sélectionnée dans R-200. L'inventaire v2 applique uniquement les règles normatives suivantes :
+L'espace de noms source https://www.omg.org/spec/UML/20131001 identifie la révision UML 2.5 sélectionnée dans R-200. L'inventaire v2 applique uniquement les règles normatives suivantes :
 
 - UML 2.5 §7.8.8.7 : MultiplicityElement.lowerBound() et upperBound() retournent 1 lorsque la ValueSpecification correspondante est absente ou que sa valeur typée est nulle.
 - UML 2.5 §8.6.9.4 : une valeur sérialisée omise pour LiteralInteger.value utilise la valeur par défaut du métamodèle, 0.

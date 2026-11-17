@@ -61,6 +61,8 @@ Les six documents signalés par l'évaluateur sont :
 - `0009-intent-record-and-authority.md` et son équivalent français ;
 - `metamodel-design-dossier.md` et son équivalent français.
 
+**Nuance importante :** ces six constats révèlent une limite de reconnaissance des sections par l'évaluateur, et non six documents dépourvus de sources. Les comptes rendus 0008 possèdent les liens vers le catalogue dans leur section de traçabilité ; les ADR 0009 les possèdent dans leur ligne de métadonnées References. Le dossier de métamodèle contient déjà `## 17. Références`, mais le validateur rejette les titres numérotés et les liens vers le catalogue se trouvent sous le titre suivant `## Liens complets vers le catalogue des sources`. Une branche de correction reconnaît désormais les titres numérotés et rend les sources existantes visibles pour la règle ; voir la section 6.
+
 Enregistrements existants :
 
 - [Intégrité des références sur le commit audité](https://github.com/Martin-PB/govcheck/actions/runs/43591371080/job/132436604521)

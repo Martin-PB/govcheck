@@ -1391,3 +1391,11 @@
 - **Concepts pertinents :** métamodèles et profils pour représenter les langages d'ontologie et relier leurs constructions à l'infrastructure de modélisation OMG.
 - **Utilité pour GovCheck :** référence candidate pour évaluer les correspondances entre formalismes d'ontologie et technologies de modélisation/métamodélisation.
 - **Limite :** ODM n'est pas lui-même une ontologie de cycle de vie logiciel, un modèle de gouvernance de dépôt ni un métamodèle de dossier d'assurance. Son existence ne prouve pas qu'une correspondance GovCheck donnée soit complète ou préserve la sémantique.
+
+<a id="r-202"></a>
+### R-202 — Guides de management et d'appréciation du risque
+- **Cité par :** [Recherche sur les décisions et le risque assumé](research/decision-and-assumed-risk-crosscutting-2026-11.fr.md)
+- **Normes et guides primaires :** [ISO 31000:2018 — Management du risque : lignes directrices](https://www.iso.org/standard/31000) · [IEC 31010:2019 — Techniques d'appréciation du risque](https://www.iso.org/standard/72140.html) · [NIST SP 800-30 Rev. 1 — Guide for Conducting Risk Assessments](https://csrc.nist.gov/pubs/sp/800/30/r1/final)
+- **Concepts pertinents :** principes et processus de management du risque organisationnel ; sélection, planification, vérification et validation des techniques d'appréciation ; incertitude, sensibilité, contexte d'évaluation, préparation, conduite, maintien et documentation des résultats.
+- **Utilité pour GovCheck :** éclaire la séparation entre scénario de risque, évaluation dépendante d'une méthode, traitement, exposition résiduelle et acceptation autorisée. Soutient l'enregistrement de l'objectif, de la portée, des hypothèses, des révisions des données/modèles, de la méthode, des limites et des conditions de réexamen.
+- **Limite :** ISO 31000 fournit des lignes directrices, pas une formule universelle du risque ni un schéma de certification ; IEC 31010 décrit des techniques, pas une méthode unique obligatoire ; NIST SP 800-30 Rev. 1 vise les systèmes et organismes fédéraux d'information. Aucune de ces sources n'assimile le risque assumé PEAK à une évaluation quantitative ou à une acceptation du risque, et aucune n'est adoptée comme méthode obligatoire de GovCheck.

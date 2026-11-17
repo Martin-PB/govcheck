@@ -1,0 +1,108 @@
+# État de reproduction de la critique externe #129 — 2026-11-17
+
+**Cible de l'audit :** `main` au commit `f27697dac4ceaa6245b6cd796646d7040b12c9b5`  
+**Arbre :** `3604f0e10765afebef6ea7308f94b488247ba8a8`  
+**Chantier parent :** [Issue #130](https://github.com/Martin-PB/govcheck/issues/130)  
+**Critique source :** [Issue #129](https://github.com/Martin-PB/govcheck/issues/129)
+
+## 1. Périmètre et catégories de preuve
+
+Ce rapport distingue :
+
+1. l'inspection directe des sources de l'arbre exact de `main` indiqué ci-dessus ;
+2. les éléments historiques de GitHub Actions issus de la tête de la PR #133, commit `15372f5ca90f5b454a2ff30fa0c0b0fdddab1639` (qui n'est pas la cible de l'audit) ;
+3. la reproduction locale indépendante, qui **n'a pas encore été achevée**.
+
+Aucun workflow GitHub Actions n'a été déclenché pour ce rapport. Les contrôles historiques de la PR ont été consultés sans être relancés. Aucun résultat historique de la PR n'est présenté comme une vérification du `main` courant.
+
+## 2. Constats sur les sources de main
+
+| Point de la critique | Qualification actuelle | Éléments source |
+|---|---|---|
+| 6.1 Modèle canonique exécutable | **Lacune d'implémentation confirmée.** La Specification 0002 indique toujours qu'il s'agit d'une architecture proposée et précise explicitement qu'aucun schéma ni évaluateur n'est implémenté. Les garanties décrites sont des objectifs, pas des garanties opérationnelles. | `docs/specifications/0002-canonical-governance-model.md`, ligne 3 et ligne 60. |
+| 6.2 Journal canonique | **Partiellement confirmé ; la critique doit être nuancée.** La Specification 0007 définit désormais un contrat sémantique indépendant des technologies : append, compare-and-append, commit durable, récupération après crash, retry idempotent, observation des répliques et réconciliation VCS. Elle reste explicitement proposée, non adoptée et non implémentée. | `docs/specifications/0007-canonical-governance-journal-protocol.md`, lignes 3, 7, 11, 68–87. |
+| 6.3 Autorité / séparation des rôles | **Partiellement confirmé.** La conception distingue l'autorisation normative, l'évaluation/revue technique et l'exécution, mais ne garantit pas une séparation entre deux personnes dans tous les déploiements ; un principal racine unique reste une hypothèse explicite de confiance au bootstrap. Il ne faut pas présenter la revue indépendante facultative comme une règle universelle à deux personnes. | `docs/architecture/0023-bootstrap-governance-authority.md` ; voir aussi le triage source-level cité ci-dessous. |
+| 6.4 Attestation de revue indépendante | **Faiblesse structurelle confirmée dans la tranche exécutable actuelle.** `rule_independent_review` lit `docs/attestations/*.json`, compare `candidate_rev` au SHA exact du candidat et compare une chaîne libre `reviewer` à la chaîne de l'auteur Git. L'attestation est lue dans l'arbre candidat lui-même. Un fichier inclus dans un commit ne peut normalement pas contenir le SHA de ce même commit sans problème d'auto-référence/de point fixe. La comparaison de chaînes n'authentifie pas le reviewer. | `govcheck/check.py`, lignes 282–299 ; SHA candidat et auteur alimentés lignes 385–393. |
+| 6.5 Enforcement de l'acceptation CI | **Confirmé.** Le workflow de la tranche GovCheck est explicitement en mode report-only. Les tests unitaires bloquent, mais l'étape d'évaluation utilise `continue-on-error: true` et se termine par `|| true`. Un évaluateur fail-closed ne constitue donc pas, à lui seul, une barrière CI d'acceptation. | `.github/workflows/govcheck-check.yml`, lignes 1, 37–42. |
+| 6.6 Mapping sémantique partiel | **Confirmé.** `SemanticBridge.partialMapping` accepte un prédicat `domain : source → Prop` et ne prouve la cible que pour les membres de ce domaine. Il n'exige pas qu'un membre du domaine existe. Par exemple, avec source `True`, cible `False` et domaine `fun _ => False`, l'obligation du constructeur est satisfaite de manière vacante. Ce n'est pas une dérivation de False à partir de True ; c'est un mapping sans cas source couvert. | `formal/lean/GovCheckCoherence/Mapping.lean`, lignes 63–66. |
+| 6.7 Séparation physique du journal | **L'affirmation de la critique sur une infrastructure physiquement distincte n'est pas étayée par la spécification actuelle.** La Specification 0007 sépare les actes logiques d'évaluation, d'autorisation et de publication, tout en permettant leur exécution dans une même transaction technique atomique. Elle définit l'append durable comme point de commit, sans imposer une base de données ou un service séparé. | `docs/specifications/0007-canonical-governance-journal-protocol.md`, lignes 68–72 et 84–96. |
+
+### Contre-exemple minimal pour le point 6.6
+
+Le constructeur accepte :
+
+`SemanticBridge.partialMapping (source := True) (target := False) (domain := fun _ => False) (by intro h hd; exact False.elim hd)`
+
+Le second argument est valide parce qu'il n'existe aucun `h : True` pour lequel le domaine déclaré est satisfait. Il manque actuellement un témoin de non-vacuité tel que `∃ h, domain h`. L'obligation d'imposer un domaine non vide à tout mapping partiel relève d'une décision de contrat ; le type actuel n'exprime pas cette condition.
+
+### Identité et révision de l'attestation
+
+Le format actuel confond trois préoccupations distinctes :
+
+- **liaison à une révision :** quel candidat exact est revu ;
+- **authentification du reviewer :** qui a émis l'attestation ;
+- **transport/stockage de l'attestation :** comment l'associer au candidat sans exiger que le candidat contienne son propre identifiant final de commit.
+
+Le code actuel ne vérifie qu'une approximation par chaînes des deux premières et stocke l'enregistrement dans l'arbre candidat. Une attestation détachée/signée, une identité de revue native de la forge ou un objet d'attestation gouverné séparément pourraient résoudre le cycle ; le choix de l'une de ces solutions relève d'une décision d'architecture et n'est pas fait silencieusement ici.
+
+## 3. Contrôles historiques sur la PR #133 (pas une vérification du main courant)
+
+Les contrôles suivants existaient déjà pour la tête de la PR #133, commit `15372f5ca90f5b454a2ff30fa0c0b0fdddab1639`. Ils ont été exécutés le 14 novembre 2026 et ne constituent que des éléments sur cette révision de la PR.
+
+| Contrôle | Résultat | Interprétation |
+|---|---|---|
+| Tests unitaires Python dans `govcheck-check` | **90 réussis** | L'étape bloquante de tests unitaires a réussi sur le checkout de merge de la PR. |
+| Évaluateur GovCheck dans le même job | **overall FAIL**, alors que la conclusion du job est success | Six documents de décision/dossier n'avaient pas de section References. L'étape report-only a masqué le code de sortie non nul de l'évaluateur, ce qui confirme la lacune d'enforcement du point 6.5. |
+| Validateur de gouvernance de version | **13 réussis** | Suite ciblée, pas reproduction complète de #130. |
+| Cohérence Lean | **job success** | L'audit d'axiomes configuré a respecté sa politique. Le journal indique aussi `propext` pour plusieurs déclarations SACM ; il ne faut donc pas résumer le résultat par « tout le développement Lean est sans axiome ». |
+| Alignement des paquets | **success** | Le contrôle d'alignement paquet/template a réussi sur le checkout de la PR. |
+| Capture des sources OMG épinglées | **success** | Le contrôle de capture/digest a réussi sur le checkout de la PR. |
+| Intégrité des références | **failure** | Le vérificateur a planté avec `ValueError` : `formal/lean/README.md` est hors de `docs/`, alors que `logical_doc` appelle `path.relative_to(DOCS)` pendant la résolution d'un backlink du catalogue. |
+
+Exécutions historiques pertinentes :
+
+- [Échec reference-integrity](https://github.com/Martin-PB/govcheck/actions/runs/43587576876/job/132425268063)
+- [Tests Python et évaluateur report-only](https://github.com/Martin-PB/govcheck/actions/runs/43587576725/job/132425267482)
+- [Cohérence Lean et rapport d'axiomes](https://github.com/Martin-PB/govcheck/actions/runs/43587576783/job/132425267822)
+- [Validateur de gouvernance de version](https://github.com/Martin-PB/govcheck/actions/runs/43587576734/job/132425267700)
+- [Alignement des paquets](https://github.com/Martin-PB/govcheck/actions/runs/43587576727/job/132425267693)
+- [Capture des sources OMG](https://github.com/Martin-PB/govcheck/actions/runs/43587576732/job/132425267619)
+
+Aucun run TLC des huit couples modèle/configuration TLA+ courants ne faisait partie de ces six contrôles de la PR #133. Les chemins modifiés par la PR n'apportaient donc pas de preuve fraîche de model checking pour la cible de cet audit.
+
+## 4. Limites formelles qui demeurent
+
+1. **Sûreté et vivacité :** les invariants et l'exploration bornée d'états n'établissent pas, sans hypothèses de fairness et hypothèses environnementales adaptées, le progrès éventuel ou la disponibilité.
+2. **Tranches TLA+ séparées :** les modèles de journal, cycle de vie, autorité, assurance, applicabilité/contrôles de gouvernance et routage CI sont des modèles de conception bornés distincts. La Specification 0007 dit elle-même qu'ils constituent des éléments de conception composables, pas un modèle intégré de l'implémentation. Aucune relation de raffinement de bout en bout vers le vérificateur Python ou un runtime de production n'est établie.
+3. **Force des théorèmes Lean :** le théorème générique `kind_mapping_rule_theorem_requires_derivation` conclut à l'existence d'une dérivation accompagnée de `derivation.proof = derivation.proof`. Cette égalité est réflexive ; le contenu utile est le témoin existentiel transporté par le constructeur. Le théorème n'établit pas indépendamment une propriété sémantique supplémentaire de la dérivation. Les noms et les affirmations doivent rester alignés sur la proposition réellement démontrée.
+4. **Périmètre exécutable :** le `govcheck/check.py` actuel contient huit règles : présence de licence, décisions bilingues, paires de manifeste, intégrité des références, présence des sources, intégrité du bootstrap, fraîcheur des preuves TLA et attestation de revue indépendante. Il n'implémente pas le cycle de vie canonique, le registre d'autorité, le protocole de journal, la sémantique des risques/décisions ni les contrats complets d'assurance intermodèles.
+
+## 5. Correction préparée pour l'échec reference-integrity de la PR #133
+
+Une branche distincte, [`work/fix-reference-integrity-repo-wide-markdown`](https://github.com/Martin-PB/govcheck/tree/work/fix-reference-integrity-repo-wide-markdown), a été créée depuis la tête de la PR #133. Elle contient :
+
+- une identité de document relative à la racine du dépôt, afin que les backlinks vers `formal/lean/README.md` ne déclenchent plus `ValueError` ;
+- la découverte des fichiers Markdown rédigés dans le dépôt, en excluant le miroir du paquet installé `govcheck/` et les répertoires générés/cache, afin que les sources externes à `docs/` participent au contrôle réciproque des citations ;
+- quatre tests de régression ciblés sur les chemins.
+
+Cette correction est **préparée mais non exécutée**. Elle n'a pas été fusionnée dans la PR #133 et aucun workflow Actions n'a été déclenché. La branche part de l'ancienne tête de la PR #133, pas du `main` courant ; l'intégration doit d'abord tenir compte de la divergence de la PR par rapport à sa base actuelle. Aucun statut vert n'est revendiqué.
+
+## 6. Reproductions restantes
+
+Le livrable demandé par #130 n'est pas terminé. Il reste à :
+
+- obtenir un checkout local de la cible exacte de l'audit et consigner les versions réelles de Git, Python, Java, TLC et Lean ;
+- exécuter la suite Python complète sur le `main` courant, au lieu de s'appuyer uniquement sur le run historique de la PR #133 ;
+- exécuter SANY/TLC sur les huit couples modèle/configuration, en enregistrant checksum de l'outil, version Java, états, bornes, invariants et propriétés temporelles ;
+- construire et auditer le paquet Lean 4.19.0 épinglé sur les sources formelles exactes de la cible ; examiner le rapport d'axiomes complet, pas seulement la racine configurée ;
+- construire et examiner séparément `formal/cslib-compat` avec sa toolchain Lean 4.36.0-rc2 ;
+- ajouter des tests exécutables de non-régression sur la révision/authentification des attestations et la non-vacuité des mappings partiels, une fois le contrat visé arbitré ;
+- ne classifier les constats restants de la critique qu'après ces reproductions.
+
+**État d'exécution de ce rapport :** inspection des sources et lecture de résultats GitHub existants uniquement. Aucun test local, run TLC, build Lean, audit d'axiomes ou nouveau run Actions n'a été effectué. Aucun crédit Actions n'a été consommé.
+
+## 7. Disposition
+
+La critique n'est ni acceptée en bloc ni rejetée en bloc. Les sources actuelles étayent plusieurs lacunes importantes d'implémentation et d'enforcement ; d'autres affirmations nécessitent une qualification. La spécification du journal améliore la définition du protocole logique, mais ne l'implémente pas. Les travaux SACM/Lean apportent des tranches formalisées utiles, mais ne ferment pas les obligations de cohérence globale du métamodèle, de raffinement du parseur ou de conformité du runtime.
+
+Cet audit n'a modifié aucune spécification normative, décision d'architecture, modèle formel ni politique d'acceptation.

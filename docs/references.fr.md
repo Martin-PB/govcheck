@@ -45,7 +45,7 @@
 | Intention du dépôt, cycle de vie et ingénierie des exigences | R-114–R-118, R-121–R-122 |
 | Modélisation des systèmes et métamodèles de dossiers d'assurance | R-119–R-120 |
 | Cohérence du métamodèle, préservation sémantique et vérification formelle | R-123–R-127 |
-| Assurance probabiliste, logique floue et modèles à transitions d'états | R-193 |
+| Assurance probabiliste, logique floue et modèles à transitions d'états | R-193 |\n| Guides de management et d'appréciation du risque | R-202 |
 | Modifications concurrentes, conflits sémantiques et livraison multi-agents | R-142–R-151 |
 | Ordre du journal canonique, reprise durable et nouvelles tentatives idempotentes | R-194–R-196 |
 | Réseaux d'ontologies du génie logiciel et métamodèles de définition d'ontologies | R-200–R-201 |
@@ -74,7 +74,7 @@
 - **CRDT, transport pair-à-pair et découverte :** R-45–R-50, R-66, R-87.
 - **Représentation des connaissances et échange de données liées :** R-51–R-61, R-83–R-86.
 - **Sémantiques natives des VCS et adaptateurs de collaboration :** R-22.
-- **Modélisation des menaces, chemins d'attaque et gestion des risques :** R-27 à R-32.
+- **Modélisation des menaces, chemins d'attaque et gestion des risques :** R-27 à R-32.\n- **Management du risque et techniques d'appréciation :** R-202.
 - **Modélisation des exigences orientée objectifs :** R-44, R-92.
 - **Dossiers d'assurance de sécurité et métamodèles :** R-33 à R-34.
 - **Modèle de décision PEAK :** R-74.

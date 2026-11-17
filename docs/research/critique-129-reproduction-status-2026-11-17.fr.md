@@ -45,7 +45,30 @@ Le format actuel confond trois préoccupations distinctes :
 
 Le code actuel ne vérifie qu'une approximation par chaînes des deux premières et stocke l'enregistrement dans l'arbre candidat. Une attestation détachée/signée, une identité de revue native de la forge ou un objet d'attestation gouverné séparément pourraient résoudre le cycle ; le choix de l'une de ces solutions relève d'une décision d'architecture et n'est pas fait silencieusement ici.
 
-## 3. Contrôles historiques sur la PR #133 (pas une vérification du main courant)
+## 3. Contrôles existants sur la cible exacte `main`
+
+GitHub possède déjà trois contrôles déclenchés par push et attachés au commit exact de l'audit `f27697dac4ceaa6245b6cd796646d7040b12c9b5` (2026-11-14). Ces enregistrements existants ont été consultés ; ils n'ont pas été relancés pour ce rapport.
+
+| Contrôle | Résultat | Interprétation |
+|---|---|---|
+| Intégrité des références | **PASS — 0 avertissement** | Le vérificateur du catalogue central et de ses backlinks a réussi sur ce commit exact de `main`. |
+| Alignement des paquets | **success** | Le contrôle d'alignement paquet/template déclaré par manifeste a réussi. |
+| Tranche GovCheck | **job success**, avec **84 tests unitaires réussis** | La suite bloquante de tests unitaires a réussi. Cependant, la sortie JSON/standard de l'évaluateur indique **overall FAIL**, car six documents de décision/dossier n'ont pas de section References. L'étape est report-only (`continue-on-error` et `|| true`) ; la conclusion positive du workflow ne signifie donc pas que le candidat a passé l'évaluateur. |
+
+Les six documents signalés par l'évaluateur sont :
+
+- `0008-governance-applicability-arbitration-session.md` et son équivalent français ;
+- `0009-intent-record-and-authority.md` et son équivalent français ;
+- `metamodel-design-dossier.md` et son équivalent français.
+
+Enregistrements existants :
+
+- [Intégrité des références sur le commit audité](https://github.com/Martin-PB/govcheck/actions/runs/43591371080/job/132436604521)
+- [Tranche GovCheck sur le commit audité](https://github.com/Martin-PB/govcheck/actions/runs/43591371057/job/132436604528)
+- [Alignement des paquets sur le commit audité](https://github.com/Martin-PB/govcheck/actions/runs/43591371071/job/132436604617)
+
+Le jeu de contrôles attaché à ce `main` exact ne contient aucun run Lean ni TLC. Les résultats historiques de la PR #133 ci-dessous ne doivent pas se substituer à ces contrôles manquants.
+## 4. Contrôles historiques sur la PR #133 (pas une vérification du main courant)
 
 Les contrôles suivants existaient déjà pour la tête de la PR #133, commit `15372f5ca90f5b454a2ff30fa0c0b0fdddab1639`. Ils ont été exécutés le 14 novembre 2026 et ne constituent que des éléments sur cette révision de la PR.
 
@@ -70,14 +93,14 @@ Exécutions historiques pertinentes :
 
 Aucun run TLC des huit couples modèle/configuration TLA+ courants ne faisait partie de ces six contrôles de la PR #133. Les chemins modifiés par la PR n'apportaient donc pas de preuve fraîche de model checking pour la cible de cet audit.
 
-## 4. Limites formelles qui demeurent
+## 5. Limites formelles qui demeurent
 
 1. **Sûreté et vivacité :** les invariants et l'exploration bornée d'états n'établissent pas, sans hypothèses de fairness et hypothèses environnementales adaptées, le progrès éventuel ou la disponibilité.
 2. **Tranches TLA+ séparées :** les modèles de journal, cycle de vie, autorité, assurance, applicabilité/contrôles de gouvernance et routage CI sont des modèles de conception bornés distincts. La Specification 0007 dit elle-même qu'ils constituent des éléments de conception composables, pas un modèle intégré de l'implémentation. Aucune relation de raffinement de bout en bout vers le vérificateur Python ou un runtime de production n'est établie.
 3. **Force des théorèmes Lean :** le théorème générique `kind_mapping_rule_theorem_proof_requires_derivation` conclut à l'existence d'une dérivation accompagnée de `derivation.proof = derivation.proof`. Cette égalité est réflexive ; le contenu utile est le témoin existentiel transporté par le constructeur. Le théorème n'établit pas indépendamment une propriété sémantique supplémentaire de la dérivation. Les noms et les affirmations doivent rester alignés sur la proposition réellement démontrée.
 4. **Périmètre exécutable :** le `govcheck/check.py` actuel contient huit règles : présence de licence, décisions bilingues, paires de manifeste, intégrité des références, présence des sources, intégrité du bootstrap, fraîcheur des preuves TLA et attestation de revue indépendante. Il n'implémente pas le cycle de vie canonique, le registre d'autorité, le protocole de journal, la sémantique des risques/décisions ni les contrats complets d'assurance intermodèles.
 
-## 5. Correction préparée pour l'échec reference-integrity de la PR #133
+## 6. Correction préparée pour l'échec reference-integrity de la PR #133
 
 Une branche distincte, [`work/fix-reference-integrity-repo-wide-markdown`](https://github.com/Martin-PB/govcheck/tree/work/fix-reference-integrity-repo-wide-markdown), a été créée depuis la tête de la PR #133. Elle contient :
 
@@ -87,7 +110,7 @@ Une branche distincte, [`work/fix-reference-integrity-repo-wide-markdown`](https
 
 Cette correction est **préparée mais non exécutée**. Elle n'a pas été fusionnée dans la PR #133 et aucun workflow Actions n'a été déclenché. La branche part de l'ancienne tête de la PR #133, pas du `main` courant ; l'intégration doit d'abord tenir compte de la divergence de la PR par rapport à sa base actuelle. Aucun statut vert n'est revendiqué.
 
-## 6. Reproductions restantes
+## 7. Reproductions restantes
 
 Le livrable demandé par #130 n'est pas terminé. Il reste à :
 
@@ -101,7 +124,7 @@ Le livrable demandé par #130 n'est pas terminé. Il reste à :
 
 **État d'exécution de ce rapport :** inspection des sources et lecture de résultats GitHub existants uniquement. Aucun test local, run TLC, build Lean, audit d'axiomes ou nouveau run Actions n'a été effectué. Aucun crédit Actions n'a été consommé.
 
-## 7. Disposition
+## 8. Disposition
 
 La critique n'est ni acceptée en bloc ni rejetée en bloc. Les sources actuelles étayent plusieurs lacunes importantes d'implémentation et d'enforcement ; d'autres affirmations nécessitent une qualification. La spécification du journal améliore la définition du protocole logique, mais ne l'implémente pas. Les travaux SACM/Lean apportent des tranches formalisées utiles, mais ne ferment pas les obligations de cohérence globale du métamodèle, de raffinement du parseur ou de conformité du runtime.
 

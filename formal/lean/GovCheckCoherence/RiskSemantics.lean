@@ -155,6 +155,7 @@ structure DecisionOutcome where
   decisionIdentity : String
   solution : DecisionSolution
   assumedRisk : AssumedRisk
+  assumedRiskBound : assumedRisk.decisionIdentity = decisionIdentity
   deriving Repr
 
 structure RiskScenario where
@@ -192,11 +193,15 @@ structure RiskAcceptance where
   scenarioIdentity : String
   assessmentRevision : String
   authorityIdentity : String
+  authorityPresent : authorityIdentity ≠ ""
   scope : String
+  scopePresent : scope ≠ ""
   policyRevision : String
+  policyRevisionPresent : policyRevision ≠ ""
   rationale : String
   validFrom : Nat
   validUntil : Nat
+  validityOrdered : validFrom ≤ validUntil
 
 /-- A binding keeps the scenario and assessment present alongside acceptance,
     and pins acceptance to their exact identities/revisions. -/
@@ -323,18 +328,16 @@ theorem acceptance_is_pinned_to_scenario_and_assessment
 
 theorem acceptance_records_authority_scope_and_validity
     (acceptance : RiskAcceptance) :
-    (acceptance.authorityIdentity, acceptance.scope,
-      acceptance.policyRevision, acceptance.validFrom,
-      acceptance.validUntil) =
-    (acceptance.authorityIdentity, acceptance.scope,
-      acceptance.policyRevision, acceptance.validFrom,
-      acceptance.validUntil) :=
-  rfl
+    acceptance.authorityIdentity ≠ "" ∧
+      acceptance.scope ≠ "" ∧
+      acceptance.policyRevision ≠ "" ∧
+      acceptance.validFrom ≤ acceptance.validUntil :=
+  ⟨acceptance.authorityPresent, acceptance.scopePresent,
+    acceptance.policyRevisionPresent, acceptance.validityOrdered⟩
 
 theorem decision_outcome_keeps_assumed_risk
     (outcome : DecisionOutcome) :
-    outcome.assumedRisk.decisionIdentity = outcome.decisionIdentity ∧
-      outcome.assumedRisk.identity = outcome.assumedRisk.identity :=
-  ⟨rfl, rfl⟩
+    outcome.assumedRisk.decisionIdentity = outcome.decisionIdentity :=
+  outcome.assumedRiskBound
 
 end GovCheck.Coherence.Risk

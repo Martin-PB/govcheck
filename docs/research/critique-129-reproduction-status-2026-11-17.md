@@ -61,6 +61,8 @@ The six documents reported by the evaluator are:
 - `0009-intent-record-and-authority.md` and its French counterpart;
 - `metamodel-design-dossier.md` and its French counterpart.
 
+**Qualification:** the six findings are failures of the current evaluator's section-recognition rule, not six documents devoid of sources. The 0008 records have the relevant catalogue links in their traceability section; the 0009 ADRs have them in their References metadata line. The metamodel dossier already has `## 17. References`, but the checker rejects numbered headings and the actual catalogue links sit under the following `## Complete source-catalogue links` heading. A correction branch now handles numbered headings and makes the existing sources visible to the rule; see Section 6.
+
 Existing run records:
 
 - [Reference integrity on the audit commit](https://github.com/Martin-PB/govcheck/actions/runs/43591371080/job/132436604521)

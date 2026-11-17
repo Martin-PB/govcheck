@@ -219,6 +219,16 @@ class PreReceiveTests(unittest.TestCase):
         self.assertEqual(code, 1)
         self.assertIn("identity and policy revision", messages[0])
 
+        env = {key: value for key, value in self.env.items() if key != "GOVCHECK_EXPECTED_REPOSITORY_ID"}
+        code, messages = hook.run_pre_receive(self.input(), env, runner)
+        self.assertEqual(code, 1)
+        self.assertIn("repository identity", messages[0])
+
+        env = {key: value for key, value in self.env.items() if key != "GOVCHECK_EXPECTED_POLICY_DIGEST"}
+        code, messages = hook.run_pre_receive(self.input(), env, runner)
+        self.assertEqual(code, 1)
+        self.assertIn("POLICY_DIGEST", messages[0])
+
     def test_unprotected_ref_is_not_evaluated(self):
         runner, calls = runner_for(self.payload("pass"))
         code, messages = hook.run_pre_receive(

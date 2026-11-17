@@ -53,7 +53,7 @@ GitHub possède déjà trois contrôles déclenchés par push et attachés au co
 |---|---|---|
 | Intégrité des références | **PASS — 0 avertissement** | Le vérificateur du catalogue central et de ses backlinks a réussi sur ce commit exact de `main`. |
 | Alignement des paquets | **success** | Le contrôle d'alignement paquet/template déclaré par manifeste a réussi. |
-| Tranche GovCheck | **job success**, avec **84 tests unitaires réussis** | La suite bloquante de tests unitaires a réussi. Cependant, la sortie JSON/standard de l'évaluateur indique **overall FAIL**, car six documents de décision/dossier n'ont pas de section References. L'étape est report-only (`continue-on-error` et `|| true`) ; la conclusion positive du workflow ne signifie donc pas que le candidat a passé l'évaluateur. |
+| Tranche GovCheck | **job success**, avec **84 tests unitaires réussis** | La suite bloquante de tests unitaires a réussi. Cependant, la sortie JSON/standard de l'évaluateur indique **overall FAIL**, car il ne reconnaît pas de section References admissible dans six documents de décision/dossier. Il s'agit en partie d'un faux négatif du validateur : les documents 0008 et 0009 contiennent déjà des liens pertinents vers le catalogue dans leur traçabilité/métadonnées, mais pas sous un titre reconnu ; le dossier de métamodèle possède un titre `## 17. References` numéroté, mais le validateur n'accepte que les titres non numérotés et arrête l'extraction de cette section avant la sous-section séparée contenant les liens sources. L'étape est report-only (`continue-on-error` et `|| true`) ; la conclusion positive du workflow ne signifie donc pas que le candidat a passé l'évaluateur. |
 
 Les six documents signalés par l'évaluateur sont :
 

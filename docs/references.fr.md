@@ -24,7 +24,7 @@
 | Suivi OMG et historique des sources | R-218 |
 | Protocoles de mémoire de dépôt natifs aux agents | R-219 |
 | Sémantique et conformité OWL 2 | R-203 |
-| Réseaux d'ontologies d'ingénierie logicielle et métamodèles | R-204–R-206 |
+| Feuille de route de formalisation et bibliothèque de preuve CSLib | R-123, R-205 |
 | Confiance dans les arguments d'assurance et preuves probabilistes | R-207–R-209, R-214 |
 | Exigences floues et méthodes d'incertitude | R-210–R-211 |
 | Fiabilité logicielle bayésienne | R-212–R-213 |
@@ -72,7 +72,7 @@
 
 - **Autorité normative et séparation des tâches :** R-01, R-02, R-03.
 - **Modèles formels, preuves et arguments d'assurance :** R-04, R-05, R-89–R-91, R-215–R-217.
-- **Sémantique des ontologies et métamodèles réutilisables :** R-203–R-206.
+- **Sémantique des ontologies et métamodèles réutilisables :** R-200–R-203, R-205.
 - **Recherche sur la confiance, la fiabilité et l'incertitude :** R-207–R-214.
 - **Provenance des preuves et chaîne d'approvisionnement logicielle :** R-06, R-07, R-08.
 - **Politiques exécutables et autorisation :** R-09, R-10.
@@ -1425,29 +1425,12 @@
 - **Statut :** recommandations W3C du 11 décembre 2012.
 - **Utilité :** sémantique modèle-théorique et cadre de tests de conformité pour OWL 2.
 - **Limite :** la sémantique OWL 2 s'applique aux ontologies OWL ; elle n'établit pas automatiquement une correspondance avec GovCheck ou un autre langage d'ontologie.
-
-<a id="r-204"></a>
-### R-204 — Réseau d'ontologies d'ingénierie logicielle SEON
-- **Cité par :** [Évaluation du réemploi des ontologies du métamodèle](research/metamodel-ontology-reuse-assessment.fr.md).
-- **Sources primaires :** [Réseau SEON](https://dev.nemo.inf.ufes.br/seon/SEON.html) · [réseau d'ontologies des exigences ReqON](https://dev.nemo.inf.ufes.br/seon/ReqON.html) · [ontologie des processus logiciels SPO](https://dev.nemo.inf.ufes.br/seon/SPO.html).
-- **Utilité :** réseau candidat d'ontologies pour l'ingénierie logicielle, les exigences et les processus.
-- **Limite :** documentation d'ontologies maintenue par le projet ; la réutilisation exige une capture de source versionnée et des obligations de correspondance explicites.
-
 <a id="r-205"></a>
 ### R-205 — Feuille de route CSLib
 - **Cité par :** [Évaluation du réemploi des ontologies du métamodèle](research/metamodel-ontology-reuse-assessment.fr.md).
 - **Source primaire :** [Feuille de route CSLib](https://www.cslib.io/roadmap/).
 - **Utilité :** feuille de route actuelle et périmètre déclaré de l'écosystème CSLib/Lean.
 - **Limite :** une feuille de route ne garantit pas les capacités livrées ; vérifier la révision exacte de la bibliothèque avant de dépendre d'une implémentation.
-
-<a id="r-206"></a>
-### R-206 — OMG Ontology Definition Metamodel (ODM) 1.1
-- **Cité par :** [Évaluation du réemploi des ontologies du métamodèle](research/metamodel-ontology-reuse-assessment.fr.md).
-- **Source primaire :** [Catalogue OMG de la spécification ODM](https://www.omg.org/spec/ODM/).
-- **Version formelle épinglée :** ODM 1.1, septembre 2014 ; PDF normatif formal/14-09-02 ; XMI normatif du métamodèle ptc/13-08-04.
-- **Utilité :** métamodèles, profils et correspondances d'ontologies entre UML/MOF, RDF et OWL.
-- **Limite :** les correspondances ODM ne prouvent pas en elles-mêmes une correspondance ODM/SACM/OWL vers GovCheck.
-
 <a id="r-207"></a>
 ### R-207 — Graydon et Holloway (2017), confiance dans les arguments d'assurance
 - **Cité par :** [Assurance sémantique et modèles de transition](research/semantic-assurance-and-transition-models-2026-11.fr.md).

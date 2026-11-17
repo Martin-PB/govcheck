@@ -136,6 +136,15 @@ Les huit couples de modèles configurés possèdent chacun au moins une exécuti
 
 Il s'agit d'éléments historiques de model checking significatifs, plus solides que la simple présence de fichiers de configuration. Ils restent toutefois attachés à trois révisions antérieures des sources, pas à `f27697d` ; ils ne démontrent pas que les modèles/configurations exacts du main courant ont été vérifiés, ni le raffinement vers l'implémentation ou une assurance globale.
 
+
+### Derniers builds Lean et CSLib observés (historiques)
+
+- **Cohérence Lean :** succès le 2026-11-13 au commit `2ae091f5` ([run](https://github.com/Martin-PB/govcheck/actions/runs/43442307871)). Le journal installe Lean 4.19.0, indique le succès de `lake build` et audite 36 déclarations sous `GovCheckCoherence.Proofs` avec la liste d'autorisation configurée `propext, Classical.choice, Quot.sound`. Cela constitue une preuve pour cette révision des sources et cette racine/liste d'audit, pas une affirmation d'absence d'axiomes dans tout le dépôt.
+- **Compatibilité CSLib :** succès le 2026-11-12 au commit `056203bf` ([run](https://github.com/Martin-PB/govcheck/actions/runs/43243377685)). Le paquet isolé `CslibCompat` a été construit avec Lean 4.36.0-rc2, CSLib `70e25828` et Mathlib `887bb849` (1779 tâches de build). Cela établit la compatibilité API/build de cette sonde, pas une preuve de raffinement sémantique entre GovCheck et CSLib.
+- **Extension Lean de la PR #133 :** le run sur la tête de la PR du 2026-11-14 a également réussi ([run](https://github.com/Martin-PB/govcheck/actions/runs/43587576783)) ; sa sortie d'audit mentionne `propext` pour certaines déclarations de faits source SACM, dans la liste d'autorisation configurée. Il ne s'agit pas d'un build du `main` courant.
+
+Aucun contrôle Lean ou CSLib n'est attaché au commit exact audité `f27697d`. Ces runs historiques ne doivent pas être confondus avec une reproduction sur cette cible.
+
 L'inspection des hypothèses de fairness apporte une nuance importante : seul `GovCheckJournalRecovery` ajoute explicitement `WF_vars(Recover)` ; les sept autres définitions de `Spec` utilisent `Init /\ [][Next]_vars` sans hypothèse explicite `WF_` ou `SF_`. Les propriétés temporelles configurées ne doivent donc pas être reformulées comme des garanties générales de progrès pour des actions auxquelles aucune hypothèse de fairness ne s'applique.
 
 **Constat sur le filtre de chemins du workflow :** `.github/workflows/ci-routing-model.yml` inclut `.github/workflows/tla-model-reusable.yml` dans `pull_request.paths`, mais l'omet de `push.paths`. Un push direct sur `main` qui modifie le runner TLC partagé ne déclenche donc pas le modèle `CICheckRouting`, alors que les autres workflows d'entrée des modèles incluent le workflow réutilisable dans leurs deux filtres. Il s'agit d'une lacune ciblée de couverture, pas d'un indice d'erreur du modèle lui-même. Une correction d'une ligne est préparée sur [`work/fix-ci-routing-reusable-push-trigger`](https://github.com/Martin-PB/govcheck/tree/work/fix-ci-routing-reusable-push-trigger) ; elle n'a été ni exécutée ni fusionnée.

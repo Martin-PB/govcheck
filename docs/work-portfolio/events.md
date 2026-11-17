@@ -437,6 +437,18 @@
 - **Disposition:** proposed clarification; no normative adoption or method mandate.
 
 
+<a id="wp-evt-000031"></a>
+## WP-EVT-000031 — Complete evidence-mapping chain composition executed in Lean
+- **Subject:** `govcheck.semantic-evidence-mapping-composition`.
+- **Event type:** `formal-composition-slice-verified`.
+- **Recorded:** 2026-11-17.
+- **Artifacts:** `formal/lean/GovCheckCoherence/EvidenceMappingComposition.lean`; dedicated axiom report; bilingual research section 8.
+- **Contract:** exact intermediate model revision; end-to-end artifact identity/revision, scope, source-assumption and method-class preservation; semantic bridge composition; stage-specific epistemic-kind rules; ordered transformation identity/revision, assumption and loss declarations.
+- **Non-flattening boundary:** preserve the two mappings as an ordered chain. No synthetic transformation identity/revision or lossy aggregate is invented without a canonical composition algebra.
+- **Verification:** Lean 4.19.0 build and dedicated axiom report passed on PR #143 head `413603ae8b0dd373285ffc2f4ba8060b3f083ea2`; workflow run [44126778174](https://github.com/Martin-PB/govcheck/actions/runs/44126778174).
+- **Disposition:** executable research increment for issue #73; no normative metamodel or universal mapping-composition policy adopted.
+
+
 
 <a id="wp-evt-000033"></a>
 ## WP-EVT-000033 — Governance revision context binding model checked

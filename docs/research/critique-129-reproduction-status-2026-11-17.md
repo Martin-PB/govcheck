@@ -136,6 +136,15 @@ All eight configured model pairs have at least one historical successful TLC run
 
 This is meaningful historical model-checking evidence and is stronger than merely having configuration files. It is nevertheless attached to three earlier source revisions, not `f27697d`; it does not show that the exact current models/configurations were checked, and it does not establish implementation refinement or global assurance.
 
+
+### Last observed Lean and CSLib builds (historical)
+
+- **Lean coherence:** successful on 2026-11-13 at commit `2ae091f5` ([run](https://github.com/Martin-PB/govcheck/actions/runs/43442307871)). The log installs Lean 4.19.0, reports `lake build` success, and audits 36 declarations under `GovCheckCoherence.Proofs` against the configured allowlist `propext, Classical.choice, Quot.sound`. This is evidence for that source revision and that audit root/allowlist, not a whole-repository axiom-freedom claim.
+- **CSLib compatibility:** successful on 2026-11-12 at commit `056203bf` ([run](https://github.com/Martin-PB/govcheck/actions/runs/43243377685)). The isolated `CslibCompat` package built with Lean 4.36.0-rc2 against CSLib `70e25828` and Mathlib `887bb849` (1779 build jobs). This establishes API/build compatibility for the probe, not a semantic refinement proof between GovCheck and CSLib.
+- **PR #133 Lean extension:** the PR-head run on 2026-11-14 also succeeded ([run](https://github.com/Martin-PB/govcheck/actions/runs/43587576783)); its axiom output includes `propext` on some SACM source-fact declarations under the configured allowlist. It is not a build of current `main`.
+
+No Lean or CSLib check is attached to the exact audit commit `f27697d`. These historical runs must not be conflated with reproduction on that target.
+
 Fairness inspection adds an important qualification: only `GovCheckJournalRecovery` explicitly adds `WF_vars(Recover)`; the other seven `Spec` definitions use `Init /\ [][Next]_vars` without explicit `WF_` or `SF_` assumptions. Consequently, the configured temporal properties should not be paraphrased as general progress guarantees for actions that have no fairness assumption.
 
 **Workflow path-filter finding:** `.github/workflows/ci-routing-model.yml` includes `.github/workflows/tla-model-reusable.yml` in its `pull_request.paths`, but omits it from `push.paths`. A direct push to `main` that changes the shared TLC runner therefore does not trigger the `CICheckRouting` model, although the other model entry workflows include the reusable workflow in both path filters. This is a narrow coverage gap, not evidence that the model itself is wrong. A one-line correction is staged on [`work/fix-ci-routing-reusable-push-trigger`](https://github.com/Martin-PB/govcheck/tree/work/fix-ci-routing-reusable-push-trigger); it has not been run or merged.

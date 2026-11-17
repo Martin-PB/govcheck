@@ -3,7 +3,7 @@ EXTENDS Naturals
 
 CONSTANTS
     Candidates, Bases, Policies, Verifiers, Results,
-    BoundaryModes, BoundaryMode, RootAuthority,
+    BoundaryMode, RootAuthority,
     InitialBase, InitialPolicy, InitialVerifier, NoValue,
     EvalNone, EvalReady, EvalStale,
     OverrideNone, OverrideActive, OverrideExpired,

@@ -24,7 +24,7 @@ SCHEMA = "govcheck.acceptance-decision/v0"
 DEFAULT_PROTECTED_REFS = "refs/heads/main"
 SHA_RE = re.compile(r"^(?:[0-9a-f]{40}|[0-9a-f]{64})$")
 DIGEST_RE = re.compile(r"^sha256:[0-9a-f]{64}$")
-RISK_FIELDS = ("id", "authority", "reason", "scope", "expires_at")
+RISK_FIELDS = ("id", "authority", "reason", "scope", "expires_at", "residual_risk")
 
 
 def _is_zero_oid(value: str) -> bool:
@@ -126,6 +126,13 @@ def _validate_decision(payload, old_oid: str, new_oid: str, ref: str, trusted, a
             for field in RISK_FIELDS
         ):
             return False, "risk_acceptance record is incomplete"
+        claims = risk.get("affected_claims")
+        if not isinstance(claims, list) or not claims or any(
+            not isinstance(claim, str) or not claim.strip() for claim in claims
+        ):
+            return False, "risk_acceptance affected_claims is incomplete"
+        if not isinstance(risk.get("authorization_digest"), str) or not DIGEST_RE.fullmatch(risk["authorization_digest"]):
+            return False, "risk_acceptance authorization_digest is missing or invalid"
         return True, "ACCEPTED_WITH_RISK (" + risk["id"] + ")"
     if result in {"fail", "unknown", "conflict"}:
         return False, result.upper() + " is not accepted"

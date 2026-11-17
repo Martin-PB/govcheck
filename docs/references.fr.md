@@ -1536,6 +1536,7 @@
 - **Clauses pertinentes :** §7.8.8.7 définit `MultiplicityElement.lowerBound()` et `upperBound()`, y compris la valeur de repli 1 lorsque la spécification de valeur correspondante ou sa valeur typée est absente ; §8.6.9.4 définit la valeur par défaut 0 de `LiteralInteger.value` ; §8.6.14.4 définit la valeur par défaut 0 de `LiteralUnlimitedNatural.value` ; §8.6.10 définit `LiteralNull`.
 - **Utilité pour GovCheck :** fournit les règles UML 2.5 exactes utilisées pour interpréter les valeurs littérales omises dans le XMI SACM 2.4 Beta 1 épinglé. Le parseur conserve à la fois la spécification de valeur brute et la multiplicité effective, avec la règle responsable de toute valeur par défaut.
 - **Limite :** seuls les cas de littéraux et valeurs par défaut indiqués sont implémentés. Les expressions `ValueSpecification` arbitraires, l'évaluation OCL, la validité UML/MOF complète et le raffinement du parseur restent hors de cet incrément.
+<a id="r-221"></a>
 ### R-221 — Rulesets GitHub et contrôles de branches protégées
 - **Type :** Documentation primaire de la plateforme.
 - **Sources primaires :** [Présentation des rulesets](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets) · [Règles disponibles](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/available-rules-for-rulesets) · [Branches protégées](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches).
@@ -1543,6 +1544,7 @@
 - **Limite :** toute personne ou intégration ayant le droit d'écriture peut définir un statut sauf si une App attendue est sélectionnée. Les rulesets ne prouvent ni la correction du vérificateur ni la disparition de l'autorité/bypass administrateur.
 - **Cité par :** [Architecture 0037](architecture/0037-acceptance-boundary-and-enforcement-adapters.fr.md), [recherche sur la frontière d'acceptation](research/acceptance-boundary-enforcement-2026-11.fr.md).
 
+<a id="r-222"></a>
 ### R-222 — Branches protégées et checks externes GitLab
 - **Type :** Documentation primaire de la plateforme.
 - **Sources primaires :** [Branches protégées](https://docs.gitlab.com/user/project/repository/branches/protected/) · [Checks de statut externes](https://docs.gitlab.com/user/project/merge_requests/status_checks/) · [Contrôles de merge](https://docs.gitlab.com/user/project/merge_requests/merge_checks/).
@@ -1550,6 +1552,7 @@
 - **Limite :** les checks externes dépendent du niveau d'abonnement (GitLab Ultimate) et nécessitent un endpoint de service ; le statut de la plateforme n'est pas la provenance des preuves GovCheck.
 - **Cité par :** [Architecture 0037](architecture/0037-acceptance-boundary-and-enforcement-adapters.fr.md), [recherche sur la frontière d'acceptation](research/acceptance-boundary-enforcement-2026-11.fr.md).
 
+<a id="r-223"></a>
 ### R-223 — Branches protégées et checks de statut Gitea
 - **Type :** Documentation primaire de la plateforme (Gitea 1.27).
 - **Source primaire :** [Branches protégées](https://docs.gitea.com/1.27/usage/access-control/protected-branches/).
@@ -1557,6 +1560,7 @@
 - **Limite :** mécanisme propre à Gitea ; un nom de contexte de statut n'authentifie pas à lui seul le vérificateur ni la provenance des preuves.
 - **Cité par :** [Architecture 0037](architecture/0037-acceptance-boundary-and-enforcement-adapters.fr.md), [recherche sur la frontière d'acceptation](research/acceptance-boundary-enforcement-2026-11.fr.md).
 
+<a id="r-224"></a>
 ### R-224 — Sécurité Forgejo Actions et frontières de confiance des workflows
 - **Type :** Guide de sécurité primaire de la plateforme.
 - **Source primaire :** [Sécuriser les déploiements Forgejo Actions](https://forgejo.org/docs/latest/admin/actions/security/).
@@ -1564,6 +1568,7 @@
 - **Limite :** guide de sécurité Forgejo Actions, pas protocole général d'attestation d'acceptation.
 - **Cité par :** [Architecture 0037](architecture/0037-acceptance-boundary-and-enforcement-adapters.fr.md), [recherche sur la frontière d'acceptation](research/acceptance-boundary-enforcement-2026-11.fr.md).
 
+<a id="r-225"></a>
 ### R-225 — Hooks Git côté serveur et côté client
 - **Type :** Documentation primaire du VCS.
 - **Source primaire :** [Hooks Git](https://git-scm.com/docs/githooks).
@@ -1571,6 +1576,7 @@
 - **Limite :** le hook et le vérificateur de confiance doivent être installés hors de l'arbre candidat par l'administrateur du serveur. La manipulation directe des références/fichiers ou le remplacement du hook par l'administrateur restent hors garantie.
 - **Cité par :** [Architecture 0037](architecture/0037-acceptance-boundary-and-enforcement-adapters.fr.md), [recherche sur la frontière d'acceptation](research/acceptance-boundary-enforcement-2026-11.fr.md).
 
+<a id="r-226"></a>
 ### R-226 — Hooks locaux Pijul et contribution sur le Nest
 - **Type :** Documentation primaire du VCS.
 - **Sources primaires :** [Configuration et hooks Pijul](https://pijul.org/manual/configuration.html) · [Contribuer sur le Nest](https://pijul.org/manual/the_nest/contributing).

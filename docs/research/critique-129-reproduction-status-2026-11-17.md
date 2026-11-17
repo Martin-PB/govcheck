@@ -68,7 +68,7 @@ Existing run records:
 - [Package alignment on the audit commit](https://github.com/Martin-PB/govcheck/actions/runs/43591371071/job/132436604617)
 
 The exact-main check set contains no Lean or TLC check run. The historical PR #133 results below must not be substituted for those missing checks.
-## 4. Contrôles historiques de la PR #133 (pas une vérification du main courant)
+## 4. Historical checks on PR #133 (not current-main verification)
 
 The following checks were already present for PR #133 head `15372f5ca90f5b454a2ff30fa0c0b0fdddab1639`. They ran on 2026-11-14 and are reported only as evidence about that PR revision.
 

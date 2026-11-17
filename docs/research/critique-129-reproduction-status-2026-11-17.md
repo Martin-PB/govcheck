@@ -45,7 +45,30 @@ The current record format conflates three different concerns:
 
 The current code checks only a string-level approximation of the first two and stores the record in the candidate tree. A detached/signed attestation, forge-native review identity, or separately governed attestation object could address the cycle, but choosing one is an architecture decision and is not silently made here.
 
-## 3. Historical checks on PR #133 (not current-main verification)
+## 3. Existing checks on the exact audit target `main`
+
+GitHub already has three push-triggered checks attached to the exact audit commit `f27697dac4ceaa6245b6cd796646d7040b12c9b5` (2026-11-14). These were read from the existing records; they were not rerun for this report.
+
+| Check | Result | Interpretation |
+|---|---|---|
+| Reference integrity | **PASS — 0 warnings** | The central catalogue/backlink checker passed on this exact `main` commit. |
+| Package alignment | **success** | The manifest-declared package/template alignment check passed. |
+| GovCheck check slice | **job success**, with **84 unit tests passed** | The blocking unit-test suite passed. However, the evaluator's JSON/stdout says **overall FAIL** because six decision/dossier files lack a References section. The step is report-only (`continue-on-error` and `|| true`), so the workflow's successful conclusion does not mean the candidate passed the evaluator. |
+
+The six documents reported by the evaluator are:
+
+- `0008-governance-applicability-arbitration-session.md` and its French counterpart;
+- `0009-intent-record-and-authority.md` and its French counterpart;
+- `metamodel-design-dossier.md` and its French counterpart.
+
+Existing run records:
+
+- [Reference integrity on the audit commit](https://github.com/Martin-PB/govcheck/actions/runs/43591371080/job/132436604521)
+- [GovCheck check slice on the audit commit](https://github.com/Martin-PB/govcheck/actions/runs/43591371057/job/132436604528)
+- [Package alignment on the audit commit](https://github.com/Martin-PB/govcheck/actions/runs/43591371071/job/132436604617)
+
+The exact-main check set contains no Lean or TLC check run. The historical PR #133 results below must not be substituted for those missing checks.
+## 4. Contrôles historiques de la PR #133 (pas une vérification du main courant)
 
 The following checks were already present for PR #133 head `15372f5ca90f5b454a2ff30fa0c0b0fdddab1639`. They ran on 2026-11-14 and are reported only as evidence about that PR revision.
 
@@ -70,14 +93,14 @@ Relevant historical runs:
 
 No TLC run for the eight current TLA+ model/configuration pairs was part of these six PR #133 checks. The PR's changed paths did not establish fresh model-checking evidence for the audit target.
 
-## 4. Formal limits that remain
+## 5. Formal limits that remain
 
 1. **Safety versus liveness:** invariants and bounded state exploration do not, without suitable fairness and environmental assumptions, establish eventual progress or availability.
 2. **Separate TLA+ slices:** the journal, lifecycle, authority, assurance, governance-applicability/control and CI-routing models are separate bounded design models. Specification 0007 itself says they are composable design evidence, not one integrated implementation model. No end-to-end refinement relation to the Python checker or a production runtime is established.
 3. **Lean theorem strength:** the generic theorem `kind_mapping_rule_theorem_proof_requires_derivation` concludes that a derivation exists with `derivation.proof = derivation.proof`. That equality is reflexive; the useful content is the existential witness carried by the constructor. The theorem does not independently establish a further semantic property of the derivation. Names and claims must remain aligned with the actual proposition.
 4. **Executable scope:** the current `govcheck/check.py` has eight rules for licence presence, bilingual decisions, manifest pairs, reference integrity, source presence, bootstrap integrity, TLA evidence freshness and independent-review attestation. It does not implement the canonical lifecycle, authority registry, journal protocol, risk/decision semantics or the full cross-model assurance contracts.
 
-## 5. Correction staged for the PR #133 reference-check failure
+## 6. Correction staged for the PR #133 reference-check failure
 
 A separate branch, [`work/fix-reference-integrity-repo-wide-markdown`](https://github.com/Martin-PB/govcheck/tree/work/fix-reference-integrity-repo-wide-markdown), was created from PR #133's head. It contains:
 
@@ -87,7 +110,7 @@ A separate branch, [`work/fix-reference-integrity-repo-wide-markdown`](https://g
 
 This correction is **staged but not executed**. It has not been merged into PR #133 and no Actions workflow was triggered. The branch is based on PR #133's old head, not current `main`; integration must first account for the PR's divergence from the current base. No green status is claimed.
 
-## 6. Remaining reproduction work
+## 7. Remaining reproduction work
 
 The deliverable requested by #130 is not complete. Still required:
 
@@ -101,7 +124,7 @@ The deliverable requested by #130 is not complete. Still required:
 
 **Execution status for this report:** source inspection and reading existing GitHub check records only. No local test, TLC run, Lean build, axiom audit or new Actions run was performed. No Actions credits were consumed.
 
-## 7. Disposition
+## 8. Disposition
 
 The critique is neither accepted wholesale nor dismissed. The current source supports several material implementation/enforcement gaps; other claims require qualification. The journal specification improves the logical protocol definition but does not implement it. The SACM/Lean work provides useful formalized slices, but it does not close the repository-wide metamodel, parser-refinement or runtime-conformance obligations.
 

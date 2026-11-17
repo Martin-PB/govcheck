@@ -1420,7 +1420,7 @@
 
 <a id="r-203"></a>
 ### R-203 — Sémantique directe et conformité W3C OWL 2
-- **Cité par :** [Vérification de cohérence des métamodèles EN](research/metamodel-coherence-verification.md), [Vérification de cohérence des métamodèles FR](research/metamodel-coherence-verification.fr.md).
+- **Cité par :** [Vérification de cohérence des métamodèles](research/metamodel-coherence-verification.fr.md).
 - **Sources primaires :** [Sémantique directe OWL 2, deuxième édition](https://www.w3.org/TR/owl2-direct-semantics/) · [Conformité OWL 2, deuxième édition](https://www.w3.org/TR/owl2-conformance/).
 - **Statut :** recommandations W3C du 11 décembre 2012.
 - **Utilité :** sémantique modèle-théorique et cadre de tests de conformité pour OWL 2.
@@ -1428,21 +1428,21 @@
 
 <a id="r-204"></a>
 ### R-204 — Réseau d'ontologies d'ingénierie logicielle SEON
-- **Cité par :** [Évaluation de réutilisation des ontologies de métamodèles EN](research/metamodel-ontology-reuse-assessment.md), [Évaluation de réutilisation des ontologies de métamodèles FR](research/metamodel-ontology-reuse-assessment.fr.md).
+- **Cité par :** [Évaluation du réemploi des ontologies du métamodèle](research/metamodel-ontology-reuse-assessment.fr.md).
 - **Sources primaires :** [Réseau SEON](https://dev.nemo.inf.ufes.br/seon/SEON.html) · [réseau d'ontologies des exigences ReqON](https://dev.nemo.inf.ufes.br/seon/ReqON.html) · [ontologie des processus logiciels SPO](https://dev.nemo.inf.ufes.br/seon/SPO.html).
 - **Utilité :** réseau candidat d'ontologies pour l'ingénierie logicielle, les exigences et les processus.
 - **Limite :** documentation d'ontologies maintenue par le projet ; la réutilisation exige une capture de source versionnée et des obligations de correspondance explicites.
 
 <a id="r-205"></a>
 ### R-205 — Feuille de route CSLib
-- **Cité par :** [Évaluation de réutilisation des ontologies de métamodèles EN](research/metamodel-ontology-reuse-assessment.md), [Évaluation de réutilisation des ontologies de métamodèles FR](research/metamodel-ontology-reuse-assessment.fr.md).
+- **Cité par :** [Évaluation du réemploi des ontologies du métamodèle](research/metamodel-ontology-reuse-assessment.fr.md).
 - **Source primaire :** [Feuille de route CSLib](https://www.cslib.io/roadmap/).
 - **Utilité :** feuille de route actuelle et périmètre déclaré de l'écosystème CSLib/Lean.
 - **Limite :** une feuille de route ne garantit pas les capacités livrées ; vérifier la révision exacte de la bibliothèque avant de dépendre d'une implémentation.
 
 <a id="r-206"></a>
 ### R-206 — OMG Ontology Definition Metamodel (ODM) 1.1
-- **Cité par :** [Évaluation de réutilisation des ontologies de métamodèles EN](research/metamodel-ontology-reuse-assessment.md), [Évaluation de réutilisation des ontologies de métamodèles FR](research/metamodel-ontology-reuse-assessment.fr.md).
+- **Cité par :** [Évaluation du réemploi des ontologies du métamodèle](research/metamodel-ontology-reuse-assessment.fr.md).
 - **Source primaire :** [Catalogue OMG de la spécification ODM](https://www.omg.org/spec/ODM/).
 - **Version formelle épinglée :** ODM 1.1, septembre 2014 ; PDF normatif formal/14-09-02 ; XMI normatif du métamodèle ptc/13-08-04.
 - **Utilité :** métamodèles, profils et correspondances d'ontologies entre UML/MOF, RDF et OWL.
@@ -1450,14 +1450,14 @@
 
 <a id="r-207"></a>
 ### R-207 — Graydon et Holloway (2017), confiance dans les arguments d'assurance
-- **Cité par :** [Assurance sémantique et modèles de transition EN](research/semantic-assurance-and-transition-models-2026-11.md), [Assurance sémantique et modèles de transition FR](research/semantic-assurance-and-transition-models-2026-11.fr.md).
+- **Cité par :** [Assurance sémantique et modèles de transition](research/semantic-assurance-and-transition-models-2026-11.fr.md).
 - **Source primaire :** [An investigation of proposed techniques for quantifying confidence in assurance arguments](https://doi.org/10.1016/j.ssci.2016.09.014), Safety Science 92 (2017), 53–65.
 - **Utilité :** revue critique des méthodes de confiance quantitative et de leur validation empirique.
 - **Limite :** les contre-exemples et critiques de l'article concernent les techniques examinées ; ils ne constituent pas un théorème universel d'impossibilité de l'assurance quantitative.
 
 <a id="r-208"></a>
 ### R-208 — Nešić, Nyberg et Gallina (2021), croyance probabiliste dans les dossiers de sécurité
-- **Cité par :** [Assurance sémantique et modèles de transition EN](research/semantic-assurance-and-transition-models-2026-11.md), [Assurance sémantique et modèles de transition FR](research/semantic-assurance-and-transition-models-2026-11.fr.md).
+- **Cité par :** [Assurance sémantique et modèles de transition](research/semantic-assurance-and-transition-models-2026-11.fr.md).
 - **Source primaire :** [A probabilistic model of belief in safety cases](https://doi.org/10.1016/j.ssci.2021.105187), Safety Science 138 (2021), article 105187.
 - **Utilité :** traitement modèle-théorique et par réseau bayésien de la croyance dans les conclusions d'un dossier de sécurité.
 - **Correction :** le DOI se terminant par 2021.09.014 présent dans une ancienne version française est incorrect pour cet article ; le DOI vérifié est 10.1016/j.ssci.2021.105187.
@@ -1465,42 +1465,42 @@
 
 <a id="r-209"></a>
 ### R-209 — NIST Engineering Statistics Handbook : évaluation bayésienne de la fiabilité
-- **Cité par :** [Assurance sémantique et modèles de transition EN](research/semantic-assurance-and-transition-models-2026-11.md), [Assurance sémantique et modèles de transition FR](research/semantic-assurance-and-transition-models-2026-11.fr.md).
+- **Cité par :** [Assurance sémantique et modèles de transition](research/semantic-assurance-and-transition-models-2026-11.fr.md).
 - **Source primaire :** [How can Bayesian methodology be used for reliability evaluation?](https://www.itl.nist.gov/div898/handbook/apr/section1/apr1a.htm).
 - **Utilité :** éléments de contexte sur l'information a priori, la vraisemblance et l'évaluation a posteriori de la fiabilité.
 - **Limite :** exposé de référence ; une application exige des hypothèses de modèle et des données validées propres au domaine.
 
 <a id="r-210"></a>
 ### R-210 — Johanyák et Ćović (2025), logique floue et ingénierie des exigences logicielles
-- **Cité par :** [Assurance sémantique et modèles de transition EN](research/semantic-assurance-and-transition-models-2026-11.md), [Assurance sémantique et modèles de transition FR](research/semantic-assurance-and-transition-models-2026-11.fr.md).
+- **Cité par :** [Assurance sémantique et modèles de transition](research/semantic-assurance-and-transition-models-2026-11.fr.md).
 - **Source primaire :** [A Comprehensive Survey on Fuzzy Logic Applications in Software Requirements Engineering](https://doi.org/10.47833/2025.2.CSC.008), Gradus 12(2), 2025.
 - **Utilité :** synthèse des techniques floues pour l'ambiguïté et l'incertitude dans l'ingénierie des exigences.
 - **Limite :** les degrés flous ne sont interchangeables ni avec la probabilité, ni avec la vérité, la confiance ou la preuve formelle.
 
 <a id="r-211"></a>
 ### R-211 — Yen, Tiao et Liu (1996), arbitrage d'exigences imprécises
-- **Cité par :** [Assurance sémantique et modèles de transition EN](research/semantic-assurance-and-transition-models-2026-11.md), [Assurance sémantique et modèles de transition FR](research/semantic-assurance-and-transition-models-2026-11.fr.md).
+- **Cité par :** [Assurance sémantique et modèles de transition](research/semantic-assurance-and-transition-models-2026-11.fr.md).
 - **Source primaire :** [A Systematic Tradeoff Methodology for Acquiring and Validating Imprecise Requirements](https://doi.org/10.1109/FUZZY.1996.551766), Proceedings of the Fifth IEEE International Conference on Fuzzy Systems, 1996.
 - **Utilité :** traitement par logique floue des exigences imprécises et analyse des compromis.
 - **Limite :** cette méthode ne démontre pas que l'agrégation floue convient à tous les domaines d'exigences.
 
 <a id="r-212"></a>
 ### R-212 — Salako et Zhao (2023), fiabilité logicielle bayésienne sans indépendance des tests
-- **Cité par :** [Assurance sémantique et modèles de transition EN](research/semantic-assurance-and-transition-models-2026-11.md), [Assurance sémantique et modèles de transition FR](research/semantic-assurance-and-transition-models-2026-11.fr.md).
+- **Cité par :** [Assurance sémantique et modèles de transition](research/semantic-assurance-and-transition-models-2026-11.fr.md).
 - **Source primaire :** [The Unnecessity of Assuming Statistically Independent Tests in Bayesian Software Reliability Assessments](https://doi.org/10.1109/TSE.2022.3233802), IEEE Transactions on Software Engineering 49(4), 2023.
 - **Utilité :** bornes bayésiennes conservatrices lorsque les résultats de tests opérationnels peuvent être dépendants.
 - **Limite :** les hypothèses et la construction de l'article doivent être vérifiées avant d'appliquer ses bornes à un autre système.
 
 <a id="r-213"></a>
 ### R-213 — Salako et Zhao (2024), tests de fiabilité potentiellement corrélés
-- **Cité par :** [Assurance sémantique et modèles de transition EN](research/semantic-assurance-and-transition-models-2026-11.md), [Assurance sémantique et modèles de transition FR](research/semantic-assurance-and-transition-models-2026-11.fr.md).
+- **Cité par :** [Assurance sémantique et modèles de transition](research/semantic-assurance-and-transition-models-2026-11.fr.md).
 - **Source primaire :** [Demonstrating Software Reliability using Possibly Correlated Tests: Insights from a Conservative Bayesian Approach](https://doi.org/10.1002/qre.3460), Quality and Reliability Engineering International 40(3), 2024.
 - **Utilité :** affirmations conservatrices de fiabilité lorsque l'indépendance des exécutions est incertaine.
 - **Limite :** une borne de fiabilité statistique est un élément de preuve pour un modèle probabiliste spécifié, pas un théorème de conformité de l'implémentation.
 
 <a id="r-214"></a>
 ### R-214 — Rhodes et al. (2010), modèles structurés de dossiers d'assurance pour l'assurance logicielle
-- **Cité par :** [Assurance sémantique et modèles de transition EN](research/semantic-assurance-and-transition-models-2026-11.md), [Assurance sémantique et modèles de transition FR](research/semantic-assurance-and-transition-models-2026-11.fr.md).
+- **Cité par :** [Assurance sémantique et modèles de transition](research/semantic-assurance-and-transition-models-2026-11.fr.md).
 - **Sources primaires :** [Software Assurance Using Structured Assurance Case Models (PubMed Central)](https://pmc.ncbi.nlm.nih.gov/articles/PMC4548534/) · [DOI NIST](https://doi.org/10.6028/jres.115.013).
 - **Identité bibliographique :** Thomas Rhodes, Frederick Boland, Elizabeth Fong et Michael Kass, Journal of Research of NIST 115(3), 2010.
 - **Utilité :** méthodes de dossiers d'assurance structurés appliquées à l'assurance logicielle.
@@ -1508,7 +1508,7 @@
 
 <a id="r-215"></a>
 ### R-215 — Baier et Katoen (2008), Principles of Model Checking
-- **Cité par :** [Assurance sémantique et modèles de transition EN](research/semantic-assurance-and-transition-models-2026-11.md), [Assurance sémantique et modèles de transition FR](research/semantic-assurance-and-transition-models-2026-11.fr.md).
+- **Cité par :** [Assurance sémantique et modèles de transition](research/semantic-assurance-and-transition-models-2026-11.fr.md).
 - **Source éditeur :** [Page du livre MIT Press](https://mitpress.mit.edu/9780262026499/principles-of-model-checking/).
 - **Copie d'accès citée par le document de recherche :** [Miroir PDF hébergé par une université](https://is.ifmo.ru/books/_principles_of_model_checking.pdf).
 - **Identité bibliographique :** Christel Baier et Joost-Pieter Katoen, MIT Press, 2008, ISBN 978-0-262-02649-9.
@@ -1516,28 +1516,28 @@
 
 <a id="r-216"></a>
 ### R-216 — Documentation du model checker probabiliste PRISM
-- **Cité par :** [Assurance sémantique et modèles de transition EN](research/semantic-assurance-and-transition-models-2026-11.md), [Assurance sémantique et modèles de transition FR](research/semantic-assurance-and-transition-models-2026-11.fr.md).
+- **Cité par :** [Assurance sémantique et modèles de transition](research/semantic-assurance-and-transition-models-2026-11.fr.md).
 - **Sources primaires :** [Introduction du manuel PRISM](https://www.prismmodelchecker.org/manual/Main/Introduction) · [Tutoriel PRISM](https://www.prismmodelchecker.org/tutorial/) · [Études de cas PRISM](https://www.prismmodelchecker.org/casestudies/).
 - **Utilité :** types de modèles probabilistes, spécification de propriétés et études de cas publiées.
 - **Limite :** les classes de modèles et algorithmes pris en charge sont propres à l'outil ; un résultat de model checking ne devient pas un théorème sur une implémentation sans relation modèle–implémentation établie.
 
 <a id="r-217"></a>
 ### R-217 — Documentation de la sémantique des automates temporisés UPPAAL
-- **Cité par :** [Assurance sémantique et modèles de transition EN](research/semantic-assurance-and-transition-models-2026-11.md), [Assurance sémantique et modèles de transition FR](research/semantic-assurance-and-transition-models-2026-11.fr.md).
+- **Cité par :** [Assurance sémantique et modèles de transition](research/semantic-assurance-and-transition-models-2026-11.fr.md).
 - **Source primaire :** [Sémantique des descriptions de systèmes UPPAAL](https://docs.uppaal.org/language-reference/system-description/semantics/).
 - **Utilité :** sémantique pseudo-formelle de réseaux d'automates temporisés étendus, incluant délais, actions et synchronisations.
 - **Limite :** la documentation décrit la sémantique d'UPPAAL ; elle ne constitue pas une preuve de préservation sémantique pour un modèle GovCheck.
 
 <a id="r-218"></a>
 ### R-218 — Suivi des tickets OMG SACM : vues fermées et complètes
-- **Cité par :** [ADR 0026 EN](architecture/0026-sacm-24-conformance-and-govcheck-integration.md), [ADR 0026 FR](architecture/0026-sacm-24-conformance-and-govcheck-integration.fr.md).
+- **Cité par :** [ADR 0026 — Conformité SACM 2.4 et intégration GovCheck](architecture/0026-sacm-24-conformance-and-govcheck-integration.fr.md).
 - **Sources primaires :** [tickets SACM fermés](https://issues.omg.org/issues/spec/SACM?view=CLOSED) · [tous les tickets SACM](https://issues.omg.org/issues/spec/SACM?view=ALL).
 - **Utilité :** historique et contexte des dispositions des tickets pour SACM 2.4 Beta 1.
 - **Limite :** vues dynamiques du gestionnaire de tickets, pas texte normatif de la spécification ; conserver les identifiants de tickets et la date de consultation lorsqu'un enregistrement précis est utilisé.
 
 <a id="r-219"></a>
 ### R-219 — Dépôt MindMux brain.md
-- **Cité par :** [ADR 0034 EN](architecture/0034-forge-native-portfolio-adapter.md), [ADR 0034 FR](architecture/0034-forge-native-portfolio-adapter.fr.md).
+- **Cité par :** [ADR 0034 — Adaptateur natif de portefeuille côté forge](architecture/0034-forge-native-portfolio-adapter.fr.md).
 - **Source primaire :** [mindmuxai/brain.md](https://github.com/mindmux/brain.md).
 - **Utilité :** protocole de connaissance durable natif au dépôt, agnostique vis-à-vis des agents, et CLI associée.
 - **Limite :** protocole et implémentation évolutifs ; ni norme normative de gouvernance ni dépendance adoptée par GovCheck.
@@ -1545,10 +1545,10 @@
 
 <a id="r-220"></a>
 ### R-220 — Spécification OMG UML 2.5 et métamodèle lisible par machine
-- **Identifiant d'espace de noms :** [espace de noms UML 20131001](http://www.omg.org/spec/UML/20131001).
+- **Identifiant d'espace de noms :** [espace de noms UML 20131001](https://www.omg.org/spec/UML/20131001).
 - **Cité par :** [Inventaire structurel XMI SACM](research/sacm-xmi-structural-inventory.fr.md), [Alignement des vues sources SACM 2.4](research/sacm24-source-view-alignment.fr.md), [Risque d'interopérabilité SACM 2.4](research/sacm24-beta1-interoperability-risk.fr.md), [Éléments de travail](work-portfolio/work-items.fr.md), [README de formalisation Lean](../formal/lean/README.md).
 - **Source primaire :** [PDF normatif OMG UML 2.5](https://www.omg.org/spec/UML/2.5/PDF) · [Catalogue OMG des fichiers UML lisibles par machine](https://www.omg.org/spec/UML/machine-readable) · identifiant du jeu de fichiers UML 2.5 lisibles par machine `ptc/13-08-17`.
-- **Identité épinglée :** UML 2.5 ; document normatif formal/2015-03-01 ; la source XMI SACM utilise l'espace de noms `http://www.omg.org/spec/UML/20131001`, qui est celui d'UML 2.5 (et non l'espace de noms ultérieur `20161101` d'UML 2.5.1).
+- **Identité épinglée :** UML 2.5 ; document normatif formal/2015-03-01 ; la source XMI SACM utilise l'espace de noms `https://www.omg.org/spec/UML/20131001`, qui est celui d'UML 2.5 (et non l'espace de noms ultérieur `20161101` d'UML 2.5.1).
 - **Clauses pertinentes :** §7.8.8.7 définit `MultiplicityElement.lowerBound()` et `upperBound()`, y compris la valeur de repli 1 lorsque la spécification de valeur correspondante ou sa valeur typée est absente ; §8.6.9.4 définit la valeur par défaut 0 de `LiteralInteger.value` ; §8.6.14.4 définit la valeur par défaut 0 de `LiteralUnlimitedNatural.value` ; §8.6.10 définit `LiteralNull`.
 - **Utilité pour GovCheck :** fournit les règles UML 2.5 exactes utilisées pour interpréter les valeurs littérales omises dans le XMI SACM 2.4 Beta 1 épinglé. Le parseur conserve à la fois la spécification de valeur brute et la multiplicité effective, avec la règle responsable de toute valeur par défaut.
 - **Limite :** seuls les cas de littéraux et valeurs par défaut indiqués sont implémentés. Les expressions `ValueSpecification` arbitraires, l'évaluation OCL, la validité UML/MOF complète et le raffinement du parseur restent hors de cet incrément.

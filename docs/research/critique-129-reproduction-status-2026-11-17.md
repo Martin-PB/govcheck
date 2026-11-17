@@ -171,7 +171,7 @@ A current-main equivalent is now also staged on [`work/fix-reference-integrity-r
 A second branch, [`work/fix-govcheck-sources-present-rule`](https://github.com/Martin-PB/govcheck/tree/work/fix-govcheck-sources-present-rule), is based on current `main` and addresses the report-only evaluator's six source-section findings:
 
 - accept numbered Markdown headings such as `## 17. References` as References sections;
-- add explicit catalogue-backed References sections to the 0008 and 0009 EN/FR decision records, reusing their existing R-05/R-22/R-194–R-196 and R-114–R-122 sources;
+- add explicit catalogue-backed References sections to the 0008 and 0009 EN/FR decision records, reusing their existing formal-methods, VCS, journal-protocol, intent and requirements catalogue sources;
 - keep the metamodel dossier's existing complete catalogue-link list inside its numbered References section by making the following heading a subheading;
 - add a regression test for a numbered References heading.
 

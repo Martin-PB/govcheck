@@ -116,6 +116,13 @@ Vérification Lean 4.19.0 et rapport d'axiomes dédié réussis sur la tête de 
 
 
 
+## WP-EVT-000032 — Formalisation des sémantiques typées d'incertitude et des objets de risque
+
+Le module Lean distingue les familles de valeurs quantitatives et épistémiques, les états de disponibilité d'une évaluation, les entrées/sorties PEAK et les objets scénario/évaluation/traitement/acceptation du risque. Une acceptation est liée aux révisions exactes du scénario et de l'évaluation et porte autorité, portée, révision de politique et intervalle de validité. Cela ne prouve pas l'autorisation réelle de l'acteur et n'adopte aucun calculateur, score ou politique universelle.
+
+Détail canonique : [journal anglais WP-EVT-000032](events.md#wp-evt-000032).
+
+
 ## WP-EVT-000033 — Vérification du modèle de liaison du contexte des révisions de gouvernance
 
 Le modèle TLA+ lie la révision de politique d'autorité, l'identité/révision de l'évaluateur, l'identité/révision de la spécification et l'identité/révision du profil au contexte de gouvernance capturé pendant l'évaluation et l'autorisation. SANY 2.1 et TLC 2.19 ont réussi : 486 289 états générés/distincts, zéro restant, profondeur 8 ; douze invariants et `AppendOnly` réussis. Il s'agit d'une projection bornée de liaison intermodèle, pas d'une machine à états intégrée ni d'une preuve d'implémentation.

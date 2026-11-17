@@ -197,6 +197,8 @@ This addendum refines rather than replaces [Research: semantic assurance and tra
 
 ## 7. Status and boundaries
 
+This document is a research clarification. It does not adopt a canonical serialization, universal risk calculus, probability/fuzzy engine, PEAK, SACM, a specific decision model or a normative GovCheck metamodel. It does not change the current authority regime. Proposals must be specified, checked against source semantics and submitted through the repository's governance process before normative adoption.
+
 
 ## 8. Executed typed-semantics slice (2026-11-17)
 
@@ -209,5 +211,3 @@ The PEAK decision inputs (Problem, Experience, Assumptions, Knowledge) are separ
 This does **not** prove that a named actor is actually authorized: that requires the separate authority contract. It does not implement a risk calculator, universal score, probability/fuzzy conversion, risk aggregation, treatment optimizer or normative acceptance policy. It is a typed semantic prototype only.
 
 The Lean build and dedicated axiom report are being run on PR #144. The checked theorems are intended to have no axiom dependencies; final-head verification status is recorded in the PR and workflow evidence.
-
-This document is a research clarification. It does not adopt a canonical serialization, universal risk calculus, probability/fuzzy engine, PEAK, SACM, a specific decision model or a normative GovCheck metamodel. It does not change the current authority regime. Proposals must be specified, checked against source semantics and submitted through the repository's governance process before normative adoption.

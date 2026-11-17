@@ -62,7 +62,7 @@ La PR [#104](https://github.com/Martin-PB/govcheck/pull/104), empilée sur la PR
 
 ## Source SACM — provenance du digest
 
-La première capture source-native du métamodèle OMG SACM 2.4 Beta 1 réutilise la valeur de comparaison SHA-256 publiée par l'audit indépendant [R-128](../references.fr.md#r-128). Le workflow GovCheck l'a vérifiée sur les 524 243 octets téléchargés depuis l'URL officielle (exécution [43444619765](https://github.com/Martin-PB/govcheck/actions/runs/43444619765)). La branche d'implémentation est [PR #126](https://github.com/Martin-PB/govcheck/pull/126) ; l'inventaire MOF/XMI et les correspondances dérivées de la source restent à réaliser.
+La première capture source-native du métamodèle OMG SACM 2.4 Beta 1 réutilise la valeur de comparaison SHA-256 publiée par l'audit indépendant [R-128](../references.fr.md#r-128) et les règles de multiplicité UML 2.5 de [R-220](../references.fr.md#r-220). Le workflow GovCheck l'a vérifiée sur les 524 243 octets téléchargés depuis l'URL officielle (exécution [43444619765](https://github.com/Martin-PB/govcheck/actions/runs/43444619765)). La branche d'implémentation est [PR #126](https://github.com/Martin-PB/govcheck/pull/126) ; l'inventaire MOF/XMI et les correspondances dérivées de la source restent à réaliser.
 
 
 ## État de l'intégration source-native SACM

@@ -94,11 +94,15 @@ class SacmXmiInventoryTests(unittest.TestCase):
     def test_summary_is_derived_from_full_inventory(self):
         result = self.inventory()
         summary = MODULE.build_summary(result)
-        self.assertEqual(summary["summaryFormat"], "govcheck.sacm-xmi-structural-inventory-summary/v1")
+        self.assertEqual(summary["summaryFormat"], "govcheck.sacm-xmi-structural-inventory-summary/v2")
         self.assertEqual(summary["document"]["identifiedElementCount"], 12)
         self.assertEqual(summary["counts"]["resolvedInternalReferenceCount"], 5)
         self.assertEqual(summary["counts"]["externalReferenceCount"], 1)
         self.assertEqual(summary["packages"][0]["name"], "P")
+        self.assertEqual(summary["multiplicitySemantics"]["standard"], "OMG UML 2.5")
+        self.assertEqual(summary["multiplicitySemantics"]["boundStatusCounts"]["lower"], {"explicit-literal": 1})
+        self.assertEqual(summary["multiplicitySemantics"]["boundStatusCounts"]["upper"], {"explicit-unlimited": 1})
+        self.assertEqual(summary["multiplicitySemantics"]["selectedProperties"], [])
 
     def test_rejects_digest_mismatch(self):
         with self.assertRaisesRegex(MODULE.InventoryError, "SHA-256 mismatch"):
@@ -110,6 +114,62 @@ class SacmXmiInventoryTests(unittest.TestCase):
             self.inventory(data)
         with self.assertRaises(MODULE.InventoryError):
             self.inventory(b'<xmi:XMI xmlns:xmi="urn:xmi"><broken></xmi:XMI>')
+ 
+    def test_uml25_multiplicity_defaults_are_versioned_and_explicit(self):
+        result = self.inventory()
+        prop = next(x for x in result["semanticIndex"]["properties"] if x["id"] == "property-a")
+        self.assertEqual(prop["effectiveMultiplicity"]["standard"], "OMG UML 2.5")
+        self.assertEqual(prop["effectiveMultiplicity"]["lower"]["value"], 0)
+        self.assertEqual(prop["effectiveMultiplicity"]["lower"]["status"], "explicit-literal")
+        self.assertEqual(prop["effectiveMultiplicity"]["upper"]["value"], "*")
+        self.assertEqual(prop["effectiveMultiplicity"]["upper"]["kind"], "unlimited")
+
+    def test_uml25_literal_integer_omitted_value_defaults_to_zero(self):
+        data = fixture().replace(b'value="0"', b'', 1)
+        result = self.inventory(data)
+        prop = next(x for x in result["semanticIndex"]["properties"] if x["id"] == "property-a")
+        lower = prop["effectiveMultiplicity"]["lower"]
+        self.assertEqual(lower["value"], 0)
+        self.assertEqual(lower["status"], "literal-default")
+        self.assertIn("LiteralInteger.value default = 0", lower["rule"])
+
+    def test_uml25_absent_bound_specifications_fall_back_to_one(self):
+        data = fixture().replace(
+            b'<lowerValue xmi:type="uml:LiteralInteger" xmi:id="lower-a" value="0"/>', b''
+        ).replace(
+            b'<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="upper-a" value="*"/>', b''
+        )
+        result = self.inventory(data)
+        prop = next(x for x in result["semanticIndex"]["properties"] if x["id"] == "property-a")
+        self.assertEqual(prop["effectiveMultiplicity"]["lower"]["value"], 1)
+        self.assertEqual(prop["effectiveMultiplicity"]["upper"]["value"], 1)
+        self.assertEqual(prop["effectiveMultiplicity"]["lower"]["status"], "multiplicity-element-fallback")
+        self.assertEqual(prop["effectiveMultiplicity"]["upper"]["status"], "multiplicity-element-fallback")
+
+    def test_uml25_unlimited_natural_omitted_value_defaults_to_zero(self):
+        data = fixture().replace(b'value="*"', b'', 1)
+        result = self.inventory(data)
+        prop = next(x for x in result["semanticIndex"]["properties"] if x["id"] == "property-a")
+        upper = prop["effectiveMultiplicity"]["upper"]
+        self.assertEqual(upper["value"], 0)
+        self.assertEqual(upper["status"], "literal-default")
+        self.assertIn("LiteralUnlimitedNatural.value default = 0", upper["rule"])
+
+
+    def test_uml25_literal_null_uses_multiplicity_element_fallback(self):
+        data = fixture().replace(b'uml:LiteralInteger', b'uml:LiteralNull', 1)
+        result = self.inventory(data)
+        prop = next(x for x in result["semanticIndex"]["properties"] if x["id"] == "property-a")
+        lower = prop["effectiveMultiplicity"]["lower"]
+        self.assertEqual(lower["value"], 1)
+        self.assertEqual(lower["status"], "null-value-fallback")
+
+    def test_unsupported_value_specification_remains_unresolved(self):
+        data = fixture().replace(b'uml:LiteralInteger', b'uml:OpaqueExpression', 1)
+        result = self.inventory(data)
+        prop = next(x for x in result["semanticIndex"]["properties"] if x["id"] == "property-a")
+        self.assertEqual(prop["effectiveMultiplicity"]["lower"]["status"], "unresolved-value-specification")
+        self.assertIsNone(prop["effectiveMultiplicity"]["lower"]["value"])
 
 
 if __name__ == "__main__":

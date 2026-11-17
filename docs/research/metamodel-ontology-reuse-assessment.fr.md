@@ -67,7 +67,7 @@ La voie Boole évolue encore. Sa documentation indique que les traductions de so
 
 **Recommandation :** ne pas rendre CSLib obligatoire maintenant. Si un contrat important ne peut être contrôlé par des tests de schéma/contrat, réaliser un petit prototype Lean/CSLib derrière un adaptateur facultatif. Épingler sa révision et documenter chaîne d'outils, imports, axiomes, hypothèses et base de confiance.
 
-Sources : [R-123](../references.fr.md#r-123), [dépôt CSLib](https://github.com/leanprover/cslib), [organisation](https://github.com/leanprover/cslib/blob/main/ORGANISATION.md), [guide de contribution](https://github.com/leanprover/cslib/blob/main/CONTRIBUTING.md), [feuille de route](https://www.cslib.io/roadmap/).
+Sources : [R-123](../references.fr.md#r-123), [dépôt CSLib](https://github.com/leanprover/cslib), [organisation](https://github.com/leanprover/cslib/blob/main/ORGANISATION.md), [guide de contribution](https://github.com/leanprover/cslib/blob/main/CONTRIBUTING.md), [feuille de route](https://www.cslib.io/roadmap/), [R-205 — feuille de route CSLib](../references.fr.md#r-205).
 
 ## 5. Ontologie, métamodèle, contraintes et bibliothèque de preuve : rôles différents
 

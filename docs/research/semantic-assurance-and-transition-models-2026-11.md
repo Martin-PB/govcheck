@@ -59,14 +59,14 @@ Provisional recommendation: a generic core for claims, assumptions, arguments, e
 
 ### Sources on probability, fuzzy logic and assurance confidence
 
-- Graydon & Holloway, “An investigation of proposed techniques for quantifying confidence in assurance arguments,” *Safety Science* 92 (2017): https://doi.org/10.1016/j.ssci.2016.09.014. Reviews quantitative confidence techniques and cautions about implausible results and insufficient empirical validation for general critical-decision use.
-- “A probabilistic model of belief in safety cases,” *Safety Science* 138 (2021), 105187: https://doi.org/10.1016/j.ssci.2021.105187. Illustrates a Bayesian-network approach, not universal suitability.
-- NIST Engineering Statistics Handbook, Bayesian reliability evaluation: https://www.itl.nist.gov/div898/handbook/apr/section1/apr1a.htm.
-- Johanyák & Zlatko (2025), “A comprehensive survey on Fuzzy logic applications in software requirements engineering”: https://doi.org/10.47833/2025.2.CSC.008.
-- Yen, Tiao & Liu (1996), “A Systematic Tradeoff Methodology for Acquiring and Validating Imprecise Requirements”: https://doi.org/10.1109/FUZZY.1996.551766.
-- Salako & Zhao (2023), “The Unnecessity of Assuming Statistically Independent Tests in Bayesian Software Reliability Assessments”: https://doi.org/10.1109/TSE.2022.3233802.
-- Salako & Zhao (2024), “Demonstrating Software Reliability using Possibly Correlated Tests”: https://doi.org/10.1002/qre.3460.
-- NIST, “Software Assurance Using Structured Assurance Case Models”: https://pmc.ncbi.nlm.nih.gov/articles/PMC4548534/.
+- Graydon & Holloway, “An investigation of proposed techniques for quantifying confidence in assurance arguments,” *Safety Science* 92 (2017): [R-207](../references.md#r-207). Reviews quantitative confidence techniques and cautions about implausible results and insufficient empirical validation for general critical-decision use.
+- “A probabilistic model of belief in safety cases,” *Safety Science* 138 (2021), 105187: [R-208](../references.md#r-208). Illustrates a Bayesian-network approach, not universal suitability.
+- NIST Engineering Statistics Handbook, Bayesian reliability evaluation: [R-209](../references.md#r-209).
+- Johanyák & Zlatko (2025), “A comprehensive survey on Fuzzy logic applications in software requirements engineering”: [R-210](../references.md#r-210).
+- Yen, Tiao & Liu (1996), “A Systematic Tradeoff Methodology for Acquiring and Validating Imprecise Requirements”: [R-211](../references.md#r-211).
+- Salako & Zhao (2023), “The Unnecessity of Assuming Statistically Independent Tests in Bayesian Software Reliability Assessments”: [R-212](../references.md#r-212).
+- Salako & Zhao (2024), “Demonstrating Software Reliability using Possibly Correlated Tests”: [R-213](../references.md#r-213).
+- NIST, “Software Assurance Using Structured Assurance Case Models”: [R-214](../references.md#r-214).
 
 ## 5. Finite-state machines, weighted transitions and Markov models
 
@@ -104,9 +104,9 @@ This is conceptual, not an adopted schema. Do not force automata, Petri nets, Ma
 
 ### Sources on transition systems and probabilistic model checking
 
-- Baier & Katoen, *Principles of Model Checking*, MIT Press (2008): https://is.ifmo.ru/books/_principles_of_model_checking.pdf.
-- PRISM official manual: https://www.prismmodelchecker.org/manual/Main/Introduction; tutorials: https://www.prismmodelchecker.org/tutorial/; case studies: https://www.prismmodelchecker.org/casestudies/.
-- UPPAAL semantics documentation: https://docs.uppaal.org/language-reference/system-description/semantics/.
+- Baier & Katoen, *Principles of Model Checking*, MIT Press (2008): [R-215](../references.md#r-215).
+- PRISM official manual: [R-216](../references.md#r-216); tutorials: [R-216](../references.md#r-216); case studies: [R-216](../references.md#r-216).
+- UPPAAL semantics documentation: [R-217](../references.md#r-217).
 
 PRISM and UPPAAL are candidate analysis tools/reference implementations, not GovCheck dependencies or normative authorities.
 

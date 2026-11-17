@@ -8,9 +8,15 @@ on:
       - "tests/test_sacm_native_ingestion.py"
       - "tests/test_sacm_xmi_inventory.py"
       - "formal/sources/sacm-2.4-beta1/metamodel-inventory-summary.json"
+      - "formal/lean/GovCheckCoherence/SACM24.lean"
+      - "formal/lean/GovCheckCoherence/UML25Multiplicity.lean"
+      - "formal/lean/GovCheckCoherence/Proofs.lean"
+      - "formal/lean/GovCheckCoherence/AxiomReport.lean"
       - ".github/workflows/sacm-native-ingestion.yml"
       - "docs/research/sacm-native-metamodel-ingestion.md"
       - "docs/research/sacm-native-metamodel-ingestion.fr.md"
+      - "docs/research/sacm24-source-view-alignment.md"
+      - "docs/research/sacm24-source-view-alignment.fr.md"
   push:
     branches: [main]
     paths:
@@ -19,6 +25,9 @@ on:
       - "tests/test_sacm_native_ingestion.py"
       - "tests/test_sacm_xmi_inventory.py"
       - "formal/sources/sacm-2.4-beta1/metamodel-inventory-summary.json"
+      - "formal/lean/GovCheckCoherence/SACM24.lean"
+      - "formal/lean/GovCheckCoherence/Proofs.lean"
+      - "formal/lean/GovCheckCoherence/AxiomReport.lean"
       - ".github/workflows/sacm-native-ingestion.yml"
   workflow_dispatch:
 
@@ -61,12 +70,51 @@ jobs:
               raise SystemExit("Generated SACM XMI inventory summary differs from the committed source-bound summary.")
           print("Committed SACM XMI inventory summary matches generated summary.")
           PY
+      - name: Download and verify normative specification PDF
+        run: |
+          curl --fail --location --proto '=https' --tlsv1.2 --output /tmp/SACM2.4_Beta1.pdf https://www.omg.org/spec/SACM/2.4/Beta1/PDF
+          echo "25f32d1cd4bf32dfa9c92c7c1840e1a113b1e91c0e97252f6551878c39997ff5  /tmp/SACM2.4_Beta1.pdf" | sha256sum --check
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          pdf = Path("/tmp/SACM2.4_Beta1.pdf").read_bytes()
+          xml = Path("/tmp/govcheck-sacm-import/source.xml").read_bytes()
+          manifest = {
+              "format": "govcheck.sacm-source-view-manifest/v1",
+              "sources": [
+                  {
+                      "role": "normativeSpecificationText",
+                      "fileId": "ptc/26-06-34",
+                      "url": "https://www.omg.org/spec/SACM/2.4/Beta1/PDF",
+                      "revision": "SACM 2.4 Beta 1",
+                      "sha256": hashlib.sha256(pdf).hexdigest(),
+                      "byteLength": len(pdf),
+                      "pages": 161
+                  },
+                  {
+                      "role": "normativeMachineReadableMetamodel",
+                      "fileId": "ptc/26-05-28",
+                      "url": "https://www.omg.org/spec/SACM/20260504/SACM2.4_Metamodel.xml",
+                      "revision": "2026-05-04",
+                      "sha256": hashlib.sha256(xml).hexdigest(),
+                      "byteLength": len(xml)
+                  }
+              ],
+              "interpretation": "Distinct normative source views; no precedence or semantic equivalence is inferred."
+          }
+          Path("/tmp/govcheck-sacm-import/source-view-manifest.json").write_text(
+              json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+          )
+          print(json.dumps(manifest, indent=2))
+          PY
       - name: Publish source capture and full XMI inventory
         uses: actions/upload-artifact@v4
         with:
-          name: sacm-2.4-beta1-source-and-xmi-inventory
+          name: sacm-2.4-beta1-source-views-and-xmi-inventory
           path: |
             /tmp/govcheck-sacm-import/source.xml
+            /tmp/SACM2.4_Beta1.pdf
+            /tmp/govcheck-sacm-import/source-view-manifest.json
             /tmp/govcheck-sacm-import/manifest.json
             /tmp/govcheck-sacm-import/index.json
             /tmp/govcheck-sacm-import/metamodel-inventory.json

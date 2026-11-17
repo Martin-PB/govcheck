@@ -67,7 +67,7 @@ CSLib's Boole direction is evolving. Its contributor documentation says source t
 
 **Recommendation:** do not make CSLib a universal dependency merely by default. However, schema/contract tests cannot replace the formal demonstration required for every semantic correspondence used in reasoning. Where CSLib provides a fitting, audited formalization, prefer reuse; otherwise develop the smallest suitable formalization in a trusted system. Pin revisions and record toolchain, imports, axioms, assumptions and trusted base.
 
-Sources: [R-123](../references.md#r-123), [CSLib repository](https://github.com/leanprover/cslib), [organization](https://github.com/leanprover/cslib/blob/main/ORGANISATION.md), [contributor guidance](https://github.com/leanprover/cslib/blob/main/CONTRIBUTING.md), [roadmap](https://www.cslib.io/roadmap/).
+Sources: [R-123](../references.md#r-123), [CSLib repository](https://github.com/leanprover/cslib), [organization](https://github.com/leanprover/cslib/blob/main/ORGANISATION.md), [contributor guidance](https://github.com/leanprover/cslib/blob/main/CONTRIBUTING.md), [roadmap](https://www.cslib.io/roadmap/), [R-205 CSLib roadmap](../references.md#r-205).
 
 ## 5. Ontologies, metamodels, constraints and proof libraries are different things
 

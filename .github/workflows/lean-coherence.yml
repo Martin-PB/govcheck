@@ -50,3 +50,7 @@ jobs:
       - name: Report axioms used by bridge-composition theorems
         working-directory: formal/lean
         run: lake env lean GovCheckCoherence/CompositionAxiomReport.lean
+
+      - name: Report axioms used by typed uncertainty and risk semantics
+        working-directory: formal/lean
+        run: lake env lean GovCheckCoherence/RiskSemanticsAxiomReport.lean

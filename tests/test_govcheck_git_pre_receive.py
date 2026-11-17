@@ -267,7 +267,9 @@ class PreReceiveTests(unittest.TestCase):
     def test_accepted_risk_requires_complete_record_and_explicit_enablement(self):
         env = {**self.env, "GOVCHECK_ALLOW_ACCEPTED_WITH_RISK": "true"}
         risk = {"id": "risk-1", "authority": "root", "reason": "emergency",
-                "scope": "candidate", "expires_at": "2026-11-18T00:00:00Z"}
+                "scope": "candidate", "expires_at": "2026-11-18T00:00:00Z",
+                "affected_claims": ["claim-1"], "residual_risk": "unverified evidence",
+                "authorization_digest": "sha256:" + "f" * 64}
         runner, _ = runner_for(self.payload("accepted-with-risk", risk_acceptance=risk))
         code, messages = hook.run_pre_receive(self.input(), env, runner)
         self.assertEqual(code, 0)

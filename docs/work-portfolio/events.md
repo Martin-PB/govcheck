@@ -470,3 +470,15 @@
 - **Binding:** exact authority-policy revision, evaluator identity/revision, specification identity/revision and profile identity/revision are captured by governance context and preserved across evaluation, authorization and later publication.
 - **Verification:** SANY 2.1 and TLC 2.19 passed in workflow run [44131092595](https://github.com/Martin-PB/govcheck/actions/runs/44131092595): 486,289 states generated/distinct, zero remaining, depth 8; twelve invariants and `AppendOnly` passed.
 - **Limit:** a separate bounded cross-model binding projection, not an integrated authority/lifecycle/journal state machine, not an implementation refinement, and not normative adoption.
+
+
+<a id="wp-evt-000034"></a>
+## WP-EVT-000034 — Repository acceptance-boundary research and architecture proposal
+- **Subject:** `govcheck.repository.acceptance-boundary-enforcement`.
+- **Event type:** `acceptance-boundary-research-proposed`.
+- **Recorded:** 2026-11-17.
+- **Artifacts:** [acceptance-boundary research EN](../research/acceptance-boundary-enforcement-2026-11.md) / [FR](../research/acceptance-boundary-enforcement-2026-11.fr.md); Architecture 0037 EN/FR; references R-221–R-226; issue [#45](https://github.com/Martin-PB/govcheck/issues/45).
+- **Platform evidence:** GitHub rulesets and expected status-check source; GitLab protected branches and blocking external status checks; Gitea protected branches; Forgejo Actions workflow/runner trust boundaries; Git server pre-receive hooks; Pijul local record hook and Nest direct-push/discussion paths.
+- **Design boundary:** verification core, repository-boundary enforcement and forge/VCS integration remain separate responsibilities, not maturity levels. The proposal preserves local-executable operation, VCS-native candidate identities, exact base/policy/verifier binding, distinct PASS/FAIL/UNKNOWN/CONFLICT/ACCEPTED_WITH_RISK outcomes and explicit bypass limitations.
+- **Pijul limitation:** the cited manual documents only a local record hook, not a mandatory remote policy hook. No Nest enforcement is claimed; a controlled remote/server adapter is required.
+- **Disposition:** proposal only. No branch protection, ruleset, hosted MCP service, authority regime or normative acceptance policy was changed. Next increment: formal acceptance-boundary model and isolated Git pre-receive adapter prototype with positive/negative tests.

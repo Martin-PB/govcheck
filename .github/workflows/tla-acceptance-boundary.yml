@@ -1,0 +1,41 @@
+name: TLA acceptance-boundary scenarios
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/tla-acceptance-boundary.yml'
+      - '.github/workflows/tla-model-reusable.yml'
+      - 'formal/tla/GovCheckAcceptanceBoundary.tla'
+      - 'formal/tla/GovCheckAcceptanceBoundary*.cfg'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/tla-acceptance-boundary.yml'
+      - '.github/workflows/tla-model-reusable.yml'
+      - 'formal/tla/GovCheckAcceptanceBoundary.tla'
+      - 'formal/tla/GovCheckAcceptanceBoundary*.cfg'
+
+permissions:
+  contents: read
+
+jobs:
+  enforced-boundary:
+    name: Enforced boundary — no uncontrolled publication
+    uses: ./.github/workflows/tla-model-reusable.yml
+    with:
+      model: GovCheckAcceptanceBoundary
+      config: GovCheckAcceptanceBoundary.cfg
+
+  advisory-boundary:
+    name: Advisory boundary — bypass is reachable and explicit
+    uses: ./.github/workflows/tla-model-reusable.yml
+    with:
+      model: GovCheckAcceptanceBoundary
+      config: GovCheckAcceptanceBoundaryAdvisory.cfg
+
+  administrator-bypass:
+    name: Administrator bypass — explicit residual authority
+    uses: ./.github/workflows/tla-model-reusable.yml
+    with:
+      model: GovCheckAcceptanceBoundary
+      config: GovCheckAcceptanceBoundaryAdminBypass.cfg

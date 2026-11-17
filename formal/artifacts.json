@@ -814,6 +814,32 @@
         "they do not prove the Python parser extracted those shapes correctly from the XML",
         "no arbitrary ValueSpecification evaluation, OCL execution, full UML/MOF conformance or parser refinement"
       ]
+    },
+    {
+      "artifactId": "govcheck.acceptance-boundary",
+      "kind": "formal-model",
+      "title": "GovCheck repository acceptance-boundary and bypass TLA+ model",
+      "source": "formal/tla/GovCheckAcceptanceBoundary.tla",
+      "configuration": "formal/tla/GovCheckAcceptanceBoundary.cfg",
+      "configurations": [
+        "formal/tla/GovCheckAcceptanceBoundary.cfg",
+        "formal/tla/GovCheckAcceptanceBoundaryAdvisory.cfg",
+        "formal/tla/GovCheckAcceptanceBoundaryAdminBypass.cfg"
+      ],
+      "documentation": {
+        "en": "docs/formal/README.md",
+        "fr": "docs/formal/README.fr.md"
+      },
+      "revisionPolicy": "repository-history",
+      "releaseBinding": "release-tag-and-commit",
+      "status": "bounded-design-model; TLC-validation-pending",
+      "limitations": [
+        "bounded finite abstraction of one candidate publication",
+        "trusted verifier and root-authority identity are assumptions, not proved facts",
+        "does not prove cryptographic signatures, executable dependency closure or real-world principal identity",
+        "does not model Git/Pijul semantic equivalence or a production forge deployment",
+        "does not establish durable append-only audit storage or implementation refinement"
+      ]
     }
   ]
 }

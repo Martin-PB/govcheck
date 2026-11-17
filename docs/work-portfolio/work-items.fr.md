@@ -60,6 +60,10 @@ La PR [#104](https://github.com/Martin-PB/govcheck/pull/104), empilée sur la PR
 - **Références du protocole :** [R-194](../references.fr.md#r-194), [R-195](../references.fr.md#r-195) et [R-196](../references.fr.md#r-196).
 
 
+## Avancement — #45 enforcement de la frontière d'acceptation
+
+L'audit du main dans [#130](https://github.com/Martin-PB/govcheck/issues/130) a confirmé que le résultat UNKNOWN de l'évaluateur n'est pas appliqué : le workflow ordinaire est report-only, main n'est pas protégée et aucun ruleset de dépôt n'existe. L'issue existante [#45](https://github.com/Martin-PB/govcheck/issues/45) reste l'élément de travail canonique ; le doublon #152 a été fermé. Documents de recherche et proposition : [EN](../research/acceptance-boundary-enforcement-2026-11.md) / [FR](../research/acceptance-boundary-enforcement-2026-11.fr.md), Architecture 0037 EN/FR. Les sources externes R-221–R-226 sont cataloguées. Aucune protection de branche, politique d'autorité ou règle normative d'acceptation n'a été modifiée. Le prochain incrément est un modèle borné de frontière d'acceptation et un prototype testé de hook Git pre-receive.
+
 ## Source SACM — provenance du digest
 
 La première capture source-native du métamodèle OMG SACM 2.4 Beta 1 réutilise la valeur de comparaison SHA-256 publiée par l'audit indépendant [R-128](../references.fr.md#r-128) et les règles de multiplicité UML 2.5 de [R-220](../references.fr.md#r-220). Le workflow GovCheck l'a vérifiée sur les 524 243 octets téléchargés depuis l'URL officielle (exécution [43444619765](https://github.com/Martin-PB/govcheck/actions/runs/43444619765)). La branche d'implémentation est [PR #126](https://github.com/Martin-PB/govcheck/pull/126) ; l'inventaire MOF/XMI et les correspondances dérivées de la source restent à réaliser.

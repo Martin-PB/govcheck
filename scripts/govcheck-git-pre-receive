@@ -1,0 +1,204 @@
+#!/usr/bin/env python3
+"""Fail-closed Git pre-receive adapter for a pinned GovCheck gate executable.
+
+Install this file as hooks/pre-receive in a controlled bare repository.
+The gate executable, its policy and this hook are installed outside the
+candidate tree by the server administrator. This prototype pins the gate
+executable file digest; its runtime/dependency closure remains part of the
+server trust root.
+"""
+from __future__ import annotations
+
+import fnmatch
+import hashlib
+import json
+import os
+from pathlib import Path
+import re
+import shlex
+import shutil
+import subprocess
+import sys
+
+SCHEMA = "govcheck.acceptance-decision/v0"
+DEFAULT_PROTECTED_REFS = "refs/heads/main"
+SHA_RE = re.compile(r"^(?:[0-9a-f]{40}|[0-9a-f]{64})$")
+DIGEST_RE = re.compile(r"^sha256:[0-9a-f]{64}$")
+RISK_FIELDS = ("id", "authority", "reason", "scope", "expires_at")
+
+
+def _is_zero_oid(value: str) -> bool:
+    return bool(SHA_RE.fullmatch(value)) and set(value) == {"0"}
+
+
+def _patterns(env: dict[str, str]) -> list[str]:
+    raw = env.get("GOVCHECK_PROTECTED_REFS", DEFAULT_PROTECTED_REFS)
+    return [part.strip() for part in re.split(r"[,\s]+", raw) if part.strip()]
+
+
+def _trusted_gate(env: dict[str, str]):
+    command_text = env.get("GOVCHECK_GATE_COMMAND", "").strip()
+    if not command_text:
+        return None, "GOVCHECK_GATE_COMMAND is not configured"
+    try:
+        parts = shlex.split(command_text)
+    except ValueError as exc:
+        return None, "invalid GOVCHECK_GATE_COMMAND: " + str(exc)
+    if len(parts) != 1:
+        return None, "GOVCHECK_GATE_COMMAND must name one pinned executable (no inline arguments)"
+    resolved = shutil.which(parts[0]) if "/" not in parts[0] else parts[0]
+    if not resolved:
+        return None, "configured gate executable cannot be resolved"
+    path = Path(resolved).expanduser().resolve()
+    if not path.is_file() or not os.access(path, os.X_OK):
+        return None, "configured gate executable is missing or not executable"
+    git_dir = env.get("GIT_DIR")
+    if git_dir:
+        repo_path = Path(git_dir).resolve()
+        try:
+            path.relative_to(repo_path)
+        except ValueError:
+            pass
+        else:
+            return None, "gate executable must be installed outside the candidate repository"
+    expected_digest = env.get("GOVCHECK_EXPECTED_VERIFIER_DIGEST", "")
+    if not DIGEST_RE.fullmatch(expected_digest):
+        return None, "GOVCHECK_EXPECTED_VERIFIER_DIGEST must be a sha256 digest"
+    actual_digest = "sha256:" + hashlib.sha256(path.read_bytes()).hexdigest()
+    if actual_digest != expected_digest:
+        return None, "installed gate executable digest does not match the configured trust pin"
+    identity = env.get("GOVCHECK_EXPECTED_VERIFIER_IDENTITY", "").strip()
+    policy = env.get("GOVCHECK_EXPECTED_POLICY_REVISION", "").strip()
+    if not identity or not policy:
+        return None, "expected verifier identity and policy revision must be configured"
+    return {
+        "command": [str(path)],
+        "identity": identity,
+        "digest": expected_digest,
+        "policy_revision": policy,
+    }, None
+
+
+def _validate_decision(payload, old_oid: str, new_oid: str, ref: str, trusted, allow_risk: bool):
+    if not isinstance(payload, dict):
+        return False, "gate output is not a JSON object"
+    if payload.get("schema") != SCHEMA:
+        return False, "unsupported or missing decision-envelope schema"
+    for key, value in (("base", old_oid), ("candidate", new_oid), ("ref", ref)):
+        if payload.get(key) != value:
+            return False, "decision envelope is not bound to this " + key
+    if payload.get("policy_revision") != trusted["policy_revision"]:
+        return False, "decision envelope does not use the pinned policy revision"
+    if not isinstance(payload.get("decision_id"), str) or not payload["decision_id"].strip():
+        return False, "decision_id is missing"
+    if not isinstance(payload.get("evidence_digest"), str) or not DIGEST_RE.fullmatch(payload["evidence_digest"]):
+        return False, "evidence_digest is missing or invalid"
+    verifier = payload.get("verifier")
+    if not isinstance(verifier, dict):
+        return False, "verifier identity and digest are missing"
+    if verifier.get("identity") != trusted["identity"]:
+        return False, "decision envelope verifier identity does not match the configured trust pin"
+    if verifier.get("digest") != trusted["digest"]:
+        return False, "decision envelope verifier digest does not match the configured trust pin"
+
+    result = payload.get("result")
+    if result == "pass":
+        return True, "PASS"
+    if result == "accepted-with-risk":
+        risk = payload.get("risk_acceptance")
+        if not allow_risk:
+            return False, "ACCEPTED_WITH_RISK is disabled by this deployment"
+        if not isinstance(risk, dict) or any(
+            not isinstance(risk.get(field), str) or not risk[field].strip()
+            for field in RISK_FIELDS
+        ):
+            return False, "risk_acceptance record is incomplete"
+        return True, "ACCEPTED_WITH_RISK (" + risk["id"] + ")"
+    if result in {"fail", "unknown", "conflict"}:
+        return False, result.upper() + " is not accepted"
+    return False, "unknown decision result " + repr(result)
+
+
+def run_pre_receive(input_text: str, env=None, runner=subprocess.run):
+    """Return (exit_code, messages); runner is injectable for protocol tests."""
+    env = dict(os.environ if env is None else env)
+    protected = _patterns(env)
+    allow_risk = env.get("GOVCHECK_ALLOW_ACCEPTED_WITH_RISK", "").lower() in {"1", "true", "yes"}
+    updates = []
+    messages = []
+
+    for line_number, line in enumerate(input_text.splitlines(), start=1):
+        parts = line.split()
+        if len(parts) != 3:
+            return 1, [f"reject: malformed pre-receive input on line {line_number}"]
+        old_oid, new_oid, ref = parts
+        if not SHA_RE.fullmatch(old_oid) or not SHA_RE.fullmatch(new_oid) or not ref.startswith("refs/"):
+            return 1, [f"reject: invalid object ID or ref on line {line_number}"]
+        if any(fnmatch.fnmatchcase(ref, pattern) for pattern in protected):
+            updates.append((old_oid, new_oid, ref))
+
+    if not updates:
+        return 0, ["no protected refs in this receive operation"]
+
+    trusted, trust_error = _trusted_gate(env)
+    if trust_error:
+        return 1, ["reject: " + trust_error]
+
+    try:
+        timeout = int(env.get("GOVCHECK_GATE_TIMEOUT_SECONDS", "300"))
+        if timeout <= 0:
+            raise ValueError("timeout must be positive")
+    except ValueError as exc:
+        return 1, ["reject: invalid GOVCHECK_GATE_TIMEOUT_SECONDS: " + str(exc)]
+
+    for old_oid, new_oid, ref in updates:
+        if _is_zero_oid(new_oid):
+            messages.append(f"reject: deletion of protected ref {ref} is not allowed")
+            continue
+        if _is_zero_oid(old_oid):
+            messages.append(f"reject: initial creation of protected ref {ref} requires an out-of-band bootstrap decision")
+            continue
+
+        args = trusted["command"] + ["--base", old_oid, "--candidate", new_oid, "--ref", ref]
+        git_dir = env.get("GIT_DIR")
+        if git_dir:
+            args += ["--git-dir", git_dir]
+        try:
+            completed = runner(
+                args,
+                capture_output=True,
+                text=True,
+                timeout=timeout,
+                env=env,
+            )
+        except (OSError, subprocess.TimeoutExpired) as exc:
+            messages.append(f"reject: trusted gate execution failed for {ref}: {exc}")
+            continue
+        if completed.returncode != 0:
+            detail = (completed.stderr or "").strip()
+            messages.append(f"reject: trusted gate exited {completed.returncode} for {ref}" + (": " + detail if detail else ""))
+            continue
+        try:
+            payload = json.loads(completed.stdout)
+        except (TypeError, ValueError):
+            messages.append(f"reject: trusted gate returned malformed JSON for {ref}")
+            continue
+        accepted, reason = _validate_decision(payload, old_oid, new_oid, ref, trusted, allow_risk)
+        if accepted:
+            messages.append(f"accept: {ref} {new_oid} — {reason} (decision {payload['decision_id']})")
+        else:
+            messages.append(f"reject: {ref} {new_oid} — {reason}")
+
+    rejected = any(message.startswith("reject:") for message in messages)
+    return (1 if rejected else 0), messages
+
+
+def main() -> int:
+    code, messages = run_pre_receive(sys.stdin.read(), os.environ)
+    for message in messages:
+        print(message, file=sys.stderr)
+    return code
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

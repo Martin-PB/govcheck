@@ -51,6 +51,7 @@ META_ONLY_WORKFLOWS = {
     "tla-authority.yml",
     "tla-lifecycle.yml",
     "tla-model-reusable.yml",
+    "tla-acceptance-boundary.yml",
     "version-governance.yml",
     "lean-coherence.yml",
     "sacm-native-ingestion.yml",

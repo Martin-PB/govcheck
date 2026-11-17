@@ -160,7 +160,7 @@ Le livrable demandé par #130 n'est pas terminé. Il reste à :
 - ajouter des tests exécutables de non-régression sur la révision/authentification des attestations et la non-vacuité des mappings partiels, une fois le contrat visé arbitré ;
 - ne classifier les constats restants de la critique qu'après ces reproductions.
 
-**État d'exécution de ce rapport :** inspection des sources et lecture de résultats GitHub existants uniquement. Aucun test local, run TLC, build Lean, audit d'axiomes ou nouveau run Actions n'a été effectué. Aucun crédit Actions n'a été consommé.
+**État d'exécution de ce rapport :** inspection des sources et lecture de résultats GitHub existants, plus une seule vérification isolée d'expression régulière Python. L'environnement local disponible fournit Python 3.13.5 et OpenJDK 21.0.12.1 ; aucun exécutable `lean`, `lake` ou `tlc` n'est installé, et la résolution DNS de `github.com` est indisponible, ce qui empêche d'obtenir un clone complet et les dépendances épinglées. Aucun test unitaire du dépôt, run TLC, build Lean, audit d'axiomes ou nouveau run Actions n'a été effectué. Aucun crédit Actions n'a été consommé.
 
 ## 8. Disposition
 

@@ -159,7 +159,7 @@ A separate branch, [`work/fix-reference-integrity-repo-wide-markdown`](https://g
 
 - repository-relative Markdown identity, so backlinks to `formal/lean/README.md` no longer raise `ValueError`;
 - repository-wide authored Markdown discovery, excluding the installed `govcheck/` package mirror and generated/cache trees, so external source documents are included in reciprocal-citation accounting;
-- five regression tests, including an end-to-end temporary-repository fixture that checks an external formal-document backlink through the catalogue validator.
+- six regression tests, including end-to-end temporary-repository fixtures for bilingual external documents and English-only source documents cited as a fallback by the French catalogue.
 
 This correction is **staged but not executed**. It has not been merged into PR #133 and no Actions workflow was triggered. The branch is based on PR #133's old head, not current `main`; integration must first account for the PR's divergence from the current base. No green status is claimed.
 A current-main equivalent is now also staged on [`work/fix-reference-integrity-repo-wide-main`](https://github.com/Martin-PB/govcheck/tree/work/fix-reference-integrity-repo-wide-main), with the same checker correction and five regression tests. This main-based branch is the preferred candidate for an independent PR; the PR-head-based branch above remains useful only as a direct comparison against #133's failing tree. Neither branch has been executed or merged.

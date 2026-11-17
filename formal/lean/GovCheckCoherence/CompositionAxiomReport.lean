@@ -1,0 +1,5 @@
+import GovCheckCoherence.Composition
+
+#print axioms GovCheck.Coherence.compose_equivalent_iff_both_equivalent
+#print axioms GovCheck.Coherence.compose_partial_first_remains_partial
+#print axioms GovCheck.Coherence.compose_partial_second_remains_partial

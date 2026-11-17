@@ -1,7 +1,7 @@
 # SACM 2.4 Beta 1 — source-derived XMI structural inventory
 
 **Status:** generated structural inventory for one digest-pinned OMG metamodel XML revision; no GovCheck semantic mapping is inferred.  
-**Source:** [R-197 — OMG SACM 2.4 Beta 1 normative machine-readable metamodel XML](../references.md#r-197) · [R-200 — OMG UML 2.5 semantics](../references.md#r-200).  
+**Source:** [R-197 — OMG SACM 2.4 Beta 1 normative machine-readable metamodel XML](../references.md#r-197) · [R-200 — OMG UML 2.5 semantics](../references.md#r-220).  
 **Independent source-view risk:** [R-128](../references.md#r-128).  
 **Generator:** [`scripts/parse-sacm-xmi.py`](../../scripts/parse-sacm-xmi.py).  
 **Reviewable summary:** [`formal/sources/sacm-2.4-beta1/metamodel-inventory-summary.json`](../../formal/sources/sacm-2.4-beta1/metamodel-inventory-summary.json).  

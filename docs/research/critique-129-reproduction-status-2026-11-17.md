@@ -160,7 +160,7 @@ The deliverable requested by #130 is not complete. Still required:
 - add executable regression tests for attestation revision/authentication and partial-mapping non-vacuity once the intended contract is decided;
 - classify remaining critique claims only after those reproductions.
 
-**Execution status for this report:** source inspection and reading existing GitHub check records only. No local test, TLC run, Lean build, axiom audit or new Actions run was performed. No Actions credits were consumed.
+**Execution status for this report:** source inspection and reading existing GitHub check records, plus one isolated Python regex sanity check only. The available local runtime is Python 3.13.5 and OpenJDK 21.0.12.1; no `lean`, `lake` or `tlc` executable is installed, and DNS resolution for `github.com` is unavailable, so a full checkout and pinned dependencies could not be obtained. No repository unit test, TLC run, Lean build, axiom audit or new Actions run was performed. No Actions credits were consumed.
 
 ## 8. Disposition
 

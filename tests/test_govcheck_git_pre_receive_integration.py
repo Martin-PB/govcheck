@@ -47,11 +47,13 @@ class GitPreReceiveIntegrationTests(unittest.TestCase):
             self.run_git("commit", "-m", "bootstrap", cwd=work)
             initial = self.run_git("rev-parse", "HEAD", cwd=work).stdout.strip()
 
-            # Bootstrap is deliberately out-of-band; the hook rejects implicit
-            # creation of a protected ref and does not claim to secure this step.
-            self.run_git("--git-dir", bare, "update-ref", "refs/heads/main", initial)
-            self.run_git("--git-dir", bare, "symbolic-ref", "HEAD", "refs/heads/main")
+            # Bootstrap is deliberately out-of-band: publish the initial
+            # ref before installing the hook. The hook rejects implicit
+            # protected-ref creation and does not claim to secure this step.
             self.run_git("remote", "add", "origin", str(bare), cwd=work)
+            self.run_git("push", "origin", "main:main", cwd=work)
+            self.run_git("--git-dir", bare, "symbolic-ref", "HEAD", "refs/heads/main")
+            initial = self.run_git("--git-dir", bare, "rev-parse", "refs/heads/main").stdout.strip()
 
             (work / "README.md").write_text("candidate\n", encoding="utf-8")
             self.run_git("commit", "-am", "candidate", cwd=work)

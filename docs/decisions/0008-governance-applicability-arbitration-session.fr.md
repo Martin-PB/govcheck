@@ -141,3 +141,11 @@ Aucun résultat de model checking fini, aucune modification de spécification ni
 - Références : [R-05](../references.fr.md#r-05), [R-22](../references.fr.md#r-22), [R-194](../references.fr.md#r-194), [R-195](../references.fr.md#r-195) et [R-196](../references.fr.md#r-196).
 
 Les références externes éclairent les méthodes techniques ; elles ne déterminent ni n'autorisent la politique de gouvernance choisie par l'utilisateur.
+
+## Références
+
+- [R-05](../references.fr.md#r-05)
+- [R-22](../references.fr.md#r-22)
+- [R-194](../references.fr.md#r-194)
+- [R-195](../references.fr.md#r-195)
+- [R-196](../references.fr.md#r-196)

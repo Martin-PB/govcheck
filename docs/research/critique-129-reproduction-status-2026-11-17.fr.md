@@ -104,6 +104,8 @@ Aucun run TLC des huit couples modèle/configuration TLA+ courants ne faisait pa
 
 ## 6. Corrections préparées pour les deux constats sur les vérificateurs
 
+### 6.1 Échec du contrôle de références de la PR #133
+
 Une branche distincte, [`work/fix-reference-integrity-repo-wide-markdown`](https://github.com/Martin-PB/govcheck/tree/work/fix-reference-integrity-repo-wide-markdown), a été créée depuis la tête de la PR #133. Elle contient :
 
 - une identité de document relative à la racine du dépôt, afin que les backlinks vers `formal/lean/README.md` ne déclenchent plus `ValueError` ;

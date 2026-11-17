@@ -77,7 +77,7 @@ The following checks were already present for PR #133 head `15372f5ca90f5b454a2f
 | Check | Result | Interpretation |
 |---|---|---|
 | Python unit tests in `govcheck-check` | **90 passed** | The blocking unit-test step passed on the PR merge checkout. |
-| GovCheck evaluator in the same job | **overall FAIL**, while job conclusion was success | Six decision/dossier documents lacked a References section. The report-only step swallowed the evaluator's nonzero exit, confirming the enforcement gap in 6.5. |
+| GovCheck evaluator in the same job | **overall FAIL**, while job conclusion was success | The evaluator failed to recognize a qualifying References section in six decision/dossier documents (see the section-recognition qualification above). The report-only step swallowed the evaluator's nonzero exit, confirming the enforcement gap in 6.5. |
 | Version-governance validator | **13 passed** | This is a focused validator suite, not the full #130 reproduction. |
 | Lean coherence | **job success** | The configured axiom audit passed its policy. The log also reports `propext` for several SACM declarations; therefore this must not be paraphrased as “the entire Lean development is axiom-free”. |
 | Package alignment | **success** | Package/template alignment check passed on the PR checkout. |

@@ -39,7 +39,8 @@ MARKER_NAME = ".govcheck-bootstrap.json"
 HEX64_RE = re.compile(r"^[0-9a-f]{64}$")
 
 REFERENCES_HEADING_RE = re.compile(
-    r"^##[ \t]+(References|Bibliographic references|R\u00e9f\u00e9rences|R\u00e9f\u00e9rences bibliographiques)[ \t]*$",
+    r"^##[ \\t]+(?:\\d+(?:\\.\\d+)*[.)]?[ \\t]+)?"
+    r"(References|Bibliographic references|R\\u00e9f\\u00e9rences|R\\u00e9f\\u00e9rences bibliographiques)[ \\t]*$",
     re.I | re.M,
 )
 SOURCE_LINK_RE = re.compile(

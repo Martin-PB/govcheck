@@ -73,7 +73,7 @@ It does not execute OCL or other constraint languages, resolve the external UML 
 
 ## 5. Version-pinned UML 2.5 multiplicity semantics
 
-The source namespace http://www.omg.org/spec/UML/20131001 identifies the UML 2.5 metamodel revision selected in R-200. Inventory v2 applies only these normative rules:
+The source namespace https://www.omg.org/spec/UML/20131001 identifies the UML 2.5 metamodel revision selected in R-200. Inventory v2 applies only these normative rules:
 
 - UML 2.5 §7.8.8.7: MultiplicityElement.lowerBound() and upperBound() return 1 when the corresponding ValueSpecification is absent or its typed value is null.
 - UML 2.5 §8.6.9.4: an omitted serialized LiteralInteger.value uses its metamodel default 0.

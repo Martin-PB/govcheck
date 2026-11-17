@@ -229,6 +229,14 @@ class PreReceiveTests(unittest.TestCase):
         self.assertEqual(code, 1)
         self.assertIn("POLICY_DIGEST", messages[0])
 
+    def test_empty_protected_ref_list_fails_closed(self):
+        env = {**self.env, "GOVCHECK_PROTECTED_REFS": ""}
+        runner, calls = runner_for(self.payload("pass"))
+        code, messages = hook.run_pre_receive(self.input(), env, runner)
+        self.assertEqual(code, 1)
+        self.assertEqual(calls, [])
+        self.assertIn("at least one protected ref", messages[0])
+
     def test_unprotected_ref_is_not_evaluated(self):
         runner, calls = runner_for(self.payload("pass"))
         code, messages = hook.run_pre_receive(

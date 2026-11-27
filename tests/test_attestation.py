@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import base64
-import copy
 import importlib.util
 import json
 import unittest
@@ -43,6 +42,11 @@ def valid_inputs():
 
 
 class StatementTests(unittest.TestCase):
+    def test_package_schema_matches_root_attestation_schema(self):
+        root_schema = ROOT / "docs" / "schemas" / "govcheck-assurance-evaluation-v1.schema.json"
+        package_schema = ROOT / "govcheck" / "formal" / "schemas" / "assurance-evaluation-v1.schema.json"
+        self.assertEqual(root_schema.read_bytes(), package_schema.read_bytes())
+
     def test_builds_in_toto_statement_and_preserves_unknown(self):
         report, context = valid_inputs()
         statement = att.build_statement(report, context)

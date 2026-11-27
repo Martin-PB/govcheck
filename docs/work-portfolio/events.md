@@ -553,3 +553,15 @@
 - **Basis:** Specification 0008 defines DSSE structure/PAE but the builder does not authenticate signatures. A detached verifier must use an operator-pinned trust policy outside candidate-controlled content.
 - **Scope:** optional Ed25519 provider delegated to an OpenSSL executable pinned by path and digest; trust policy and public keys pinned by digest; key ID to principal/role mapping; validity/revocation; exact candidate/governance binding; synthetic positive/negative tests.
 - **Limit:** no PKI, trusted timestamp, online revocation, key lifecycle service or real-world identity proof. The project still has one available contributor; no independent review is fabricated.
+
+
+<a id="wp-evt-000041"></a>
+## WP-EVT-000041 — Pinned detached DSSE verifier provider merged
+- **Subject:** `govcheck.assurance.detached-dsse-verifier`.
+- **Event type:** `pinned-ed25519-dsse-verifier-provider-merged`.
+- **Recorded:** 2026-11-27.
+- **Source issue/PR:** [#158](https://github.com/Martin-PB/govcheck/issues/158), [PR #159](https://github.com/Martin-PB/govcheck/pull/159), merged at `21f40af53b3baca23853f575f1f905c17336ac36`.
+- **Artifacts:** Architecture 0039 EN/FR; OpenSSL/Ed25519 provider; pinned trust-policy schema; strict canonical DSSE Statement parsing; bootstrap capability; EN/FR documentation; synthetic positive/negative fixtures.
+- **Validation:** 187 Python tests, reference integrity and package alignment passed on the final PR head.
+- **Guarantees:** signature verification over exact DSSE PAE bytes; pinned trust policy, OpenSSL executable and public keys; key ID/principal/role mapping; validity/revocation; candidate/base/governance/scope/content binding; verified/invalid/unknown outcomes.
+- **Limits:** no PKI, trusted timestamp, online revocation, key lifecycle service or proof of real-world identity. Synthetic test keys do not establish an independent reviewer. Evaluator/acceptance-gate integration remains open under #44/#45/#158.

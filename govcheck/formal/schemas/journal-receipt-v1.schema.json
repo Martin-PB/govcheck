@@ -6,6 +6,7 @@
   "additionalProperties": false,
   "required": [
     "schemaVersion",
+    "canonicalization",
     "scopeId",
     "position",
     "eventId",
@@ -61,6 +62,9 @@
     },
     "receiptDigest": {
       "$ref": "#/$defs/sha256"
+    },
+    "canonicalization": {
+      "const": "govcheck.jcs-safe-integer/v1"
     }
   },
   "$defs": {

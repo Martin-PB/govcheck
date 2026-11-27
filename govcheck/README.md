@@ -15,6 +15,8 @@ The repository release, the GovCheck product release and the reusable **govcheck
 - formal/ — lifecycle model (TLA+), transition registry, artifact catalogue, JSON schemas
 - docs/formal/ — lifecycle model documentation and generated diagram
 - scripts/ — deterministic diagram generator and drift check
+- attestation.py — in-toto Statement/DSSE payload profile (signature verification remains external)
+- journal.py — local append-only SQLite journal and durable receipts
 - .github/workflows/ — CI workflow template (kept in sync with the meta repository by a check)
 - BOOTSTRAP_GOVERNANCE.md — temporary bootstrap policy
 - decisions/ — guide and template for the **target repository's own** decision register (no GovCheck decisions here)
@@ -81,3 +83,17 @@ govcheck/forge.py is the forge-native adapter (Architecture 0034 of the GovCheck
     python3 govcheck/forge.py capabilities
 
 Configuration comes from the environment only: GOVCHECK_FORGE (default github), GOVCHECK_FORGE_OWNER, GOVCHECK_FORGE_REPO, and the token GOVCHECK_FORGE_TOKEN (fallback GITHUB_TOKEN). Tokens are never written to disk, logs or reports, and error messages never carry them. Writes (create-issue, update-issue, comment) require a token and are explicit commands only; check never mutates the forge. The adapter is standard library only (GitHub REST v3 first) with an injectable transport, so unit tests run fully offline; failures are typed (not-found, unsupported, unavailable, stale, conflict, auth, malformed) and a partial failure is never reported as an atomic success. Registry ids (govcheck.work.<slug>) stay canonical; lossless round-trip tests are required before any live sync. Unit tests live in tests/test_govcheck_forge.py. The forge bootstrap capability installs forge.py alone.
+
+## Local canonical journal (govcheck/journal.py)
+
+The local journal is an embedded SQLite library/CLI; it starts no service or MCP server. It requires an explicit genesis and a local filesystem database path. WAL mode is same-host only and must not be placed on a network filesystem. Each append requires the exact expected head and an idempotency key.
+
+Example bootstrap and verification:
+
+    python3 govcheck/journal.py init --db .govcheck/journal.sqlite --scope-id repo:OWNER/REPOSITORY --authority-id principal:ROOT --authority-revision authority-r1 --governance-revision governance-r1
+    python3 govcheck/journal.py head --db .govcheck/journal.sqlite --scope-id repo:OWNER/REPOSITORY
+    python3 govcheck/journal.py verify --db .govcheck/journal.sqlite --scope-id repo:OWNER/REPOSITORY
+
+Append uses required --expected-position and --expected-digest values returned by head, plus --event-id, --event-type, --payload-file, --idempotency-key and --actor-id. A stale head returns stale; reuse of an idempotency key with a different request returns conflict. If the response is lost after commit, retry with the same key and identical request to recover the original receipt.
+
+The journal uses SHA-256 chaining and SQLite transactions with WAL and synchronous=FULL. These provide integrity/recovery properties, not actor authentication, authority proof, distributed consensus or resistance to a privileged database administrator. Exact rationals and decimals must be encoded as strings; floating-point JSON numbers are rejected by the canonical journal profile. The journal and attestation modules are independently installable through bootstrap capabilities journal and attestation.

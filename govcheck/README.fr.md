@@ -15,6 +15,7 @@ La release du dépôt, celle du produit GovCheck et celle du package de gouverna
 - docs/formal/ — documentation du modèle de cycle de vie et diagramme généré
 - scripts/ — générateur déterministe du diagramme et contrôle de drift
 - attestation.py — profil de payload in-toto Statement/DSSE (la vérification des signatures reste externe)
+- attestation_verify.py — vérificateur DSSE Ed25519/OpenSSL facultatif et épinglé
 - journal.py — journal SQLite local append-only et reçus durables
 - .github/workflows/ — gabarit de workflow CI (synchronisé avec le dépôt méta par un contrôle)
 - BOOTSTRAP_GOVERNANCE.md — politique de bootstrap temporaire
@@ -95,3 +96,15 @@ Exemple de bootstrap et de vérification :
 Append utilise les valeurs obligatoires --expected-position et --expected-digest retournées par head, ainsi que --event-id, --event-type, --payload-file, --idempotency-key et --actor-id. Une tête obsolète retourne stale ; la réutilisation d'une clé d'idempotence avec une requête différente retourne conflict. Si la réponse est perdue après commit, réessayer avec la même clé et la même requête pour retrouver le reçu initial.
 
 Le journal utilise une chaîne SHA-256 et des transactions SQLite avec WAL et synchronous=FULL. Ces mécanismes fournissent des propriétés d'intégrité/reprise, pas l'authentification d'un acteur, la preuve d'autorité, le consensus distribué ou la résistance à un administrateur privilégié de la base. Les rationnels exacts et décimaux doivent être encodés en chaînes ; les nombres JSON flottants sont rejetés par le profil canonique du journal. Les modules journal et attestation peuvent être installés séparément via les capacités de bootstrap journal et attestation.
+
+## Vérification de signature DSSE détachée (fournisseur facultatif)
+
+Le package inclut attestation_verify.py comme vérificateur Ed25519 facultatif. Il délègue la vérification à un exécutable OpenSSL dont le chemin absolu et le SHA-256 sont épinglés dans une politique de confiance gérée par l'opérateur. Le fichier de politique lui-même est épinglé par un SHA-256 fourni hors bande. La politique et les clés publiques doivent être situées hors de l'arbre candidat.
+
+Exemple (remplacer le digest et les chemins par les valeurs gérées par l'opérateur) :
+
+    python3 -m govcheck.attestation_verify verify --envelope evidence/assurance.dsse.json --trust-policy /etc/govcheck/trust-policy.json --trust-policy-sha256 TRUST_POLICY_SHA256 --candidate-root . --required-role verifier --candidate-revision REV_CANDIDAT --governance-revision REV_GOUVERNANCE --scope-id repo:PROPRIETAIRE/DEPOT
+
+Le vérificateur retourne verified, invalid ou unknown. Key ID inconnu, OpenSSL indisponible, politique manquante ou données de confiance indisponibles ne deviennent jamais PASS. La validité de la clé est évaluée selon l'horloge système courante ; aucun horodatage fiable n'est fourni. Une association principal/rôle authentifie la possession de la clé selon la politique configurée, pas l'identité réelle ni l'indépendance d'une personne. Les clés synthétiques de test prouvent uniquement le mécanisme de vérification. Ce fournisseur facultatif ne rend pas la revue indépendante disponible lorsqu'aucun second contributeur n'existe.
+
+Installer cette capacité via bootstrap sous le nom attestation-verify ; elle inclut le module d'attestation structurelle et les schémas Statement/politique de confiance.

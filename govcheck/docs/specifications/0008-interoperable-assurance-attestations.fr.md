@@ -1,6 +1,6 @@
 # Spécification 0008 — Attestations d'assurance interopérables
 
-**Statut :** profil proposé pour l'issue [#44](https://github.com/Martin-PB/govcheck/issues/44) ; il ne constitue pas une adoption normative et ne prétend pas que le runtime actuel vérifie les signatures ou les identités des signataires. **English:** [0008](0008-interoperable-assurance-attestations.md).
+**Statut :** profil proposé pour l'issue issue #44 ; il ne constitue pas une adoption normative et ne prétend pas que le runtime actuel vérifie les signatures ou les identités des signataires. **English:** [0008](0008-interoperable-assurance-attestations.md).
 
 ## 1. Objet
 
@@ -11,7 +11,7 @@ Le profil ne transforme pas une attestation en preuve. Il préserve la distincti
 ## 2. Correspondance interopérable
 
 - **in-toto Statement v1** constitue l'énoncé sémantique externe : `_type`, digest du `subject` immuable, `predicateType` et `predicate` typé.
-- Le **prédicat GovCheck Assurance Evaluation v1** porte les sémantiques d'évaluation et d'assurance propres à GovCheck. URI : `https://github.com/Martin-PB/govcheck/attestation/assurance-evaluation/v1`.
+- Le **prédicat GovCheck Assurance Evaluation v1** porte les sémantiques d'évaluation et d'assurance propres à GovCheck. URI : `urn:govcheck:attestation:assurance-evaluation:v1`.
 - **DSSE v1** est l'enveloppe authentifiée recommandée. Le type de payload est `application/vnd.in-toto+json` ; les signatures authentifient les octets exacts du payload et son type au moyen de DSSE PAE.
 - Le digest du sujet in-toto identifie l'instantané du contenu. Les identités VCS natives Git/Pijul restent des champs supplémentaires ; les identifiants de commit Git et de changement Pijul ne sont pas interchangeables avec un digest de contenu.
 - SLSA Verification Summary Attestation (VSA) n'est pas le prédicat générique de GovCheck. Son `verificationResult` est PASSED/FAILED et ses niveaux décrivent des pistes SLSA. Elle peut être émise séparément lorsqu'un niveau SLSA a réellement été évalué, mais ne doit pas encoder UNKNOWN, CONFLICT, le statut d'une preuve ou une décision d'autorité GovCheck.
@@ -100,6 +100,6 @@ Le contrôle actuel `independent-review` ne doit pas traiter un enregistrement J
 - [Spécification 0005 — Assurance, affirmations et éléments probants](0005-assurance-model.fr.md)
 - [Spécification 0007 — Journal canonique de gouvernance](0007-canonical-governance-journal-protocol.fr.md)
 - [Architecture 0023 — Autorité de gouvernance bootstrap](../architecture/0023-bootstrap-governance-authority.fr.md)
-- [Issue #44](https://github.com/Martin-PB/govcheck/issues/44), [issue #60](https://github.com/Martin-PB/govcheck/issues/60), [issue #131](https://github.com/Martin-PB/govcheck/issues/131)
+- [Issue #44](https://github.com/Martin-PB/govcheck/issues/44), issue #60, issue #131
 
 **Cette spécification est proposée. Elle n'adopte aucune racine de confiance, politique de signataire, algorithme cryptographique ou règle obligatoire d'acceptation.**

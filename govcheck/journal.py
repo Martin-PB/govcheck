@@ -441,7 +441,10 @@ class Journal:
                     conn.execute("ROLLBACK")
                 except sqlite3.Error:
                     pass
-                recovered = self.receipt(scope_id, idempotency_key)
+                try:
+                    recovered = self.receipt(scope_id, idempotency_key)
+                except JournalError:
+                    recovered = None
                 if recovered and recovered.get("eventDigest") == event_digest:
                     return {"status": "committed", "idempotent": True, "receipt": recovered}
                 return {"status": "unknown", "reason": "commit outcome is ambiguous; retry with the same idempotency key: " + str(exc)}

@@ -176,3 +176,14 @@ For each protected update, the gate:
 The entry point must be installed outside the candidate repository. The pre-receive hook pins the executable file digest; the Python package/runtime closure remains part of the server administrator's immutable trust root. Missing evidence or configuration yields UNKNOWN and is rejected by the hook.
 
 **This is still not an effective forge boundary:** the local hook has not been installed on a real protected bare repository and exercised with accepted/rejected pushes, and the GitHub ruleset still lacks required PR/status checks. The adapter's unit tests are protocol tests, not a protected-ref rejection demonstration.
+
+## 11. Disposable bare-repository integration result
+
+The local integration test `test_real_bare_repo_accepts_scoped_risk_and_rejects_stale_decision` installs the actual pre-receive hook and gate entry point into a temporary bare Git repository.
+
+It demonstrated:
+- a candidate update accepted only under a DSSE-signed `accept_with_risk` decision with exact report/candidate/base/ref/governance/scope bindings;
+- a second candidate rejected when it reuses the first candidate's decision;
+- the protected `main` ref remains at the first accepted commit after the stale decision is rejected.
+
+The test uses synthetic Ed25519 keys and a disposable trust policy. It validates the local hook/gate execution path, including Git object-tree materialization, but is not a production forge installation or a test of GitHub's ruleset/bypass behavior.

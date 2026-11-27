@@ -73,11 +73,6 @@ class GitAcceptanceGateTests(unittest.TestCase):
             env = self.environment(root)
             args = self.args(root / "repo.git")
 
-            def runner(command, **kwargs):
-                if command[:2] == ["git", "clone"]:
-                    Path(command[-1]).mkdir()
-                return subprocess.CompletedProcess(command, 0, "", "")
-
             report = {"overall": "pass", "candidate": {}, "rules": []}
             decision = {
                 "result": "pass",
@@ -88,13 +83,13 @@ class GitAcceptanceGateTests(unittest.TestCase):
                 "reason": "verified authority decision accepts the passing report",
             }
             with (
-                patch.object(gate.check_module, "git_full_sha", side_effect=lambda tree, rev: rev),
+                patch.object(gate, "_materialize_candidate", side_effect=lambda gd, candidate, dest, *a, **k: dest.mkdir(parents=True, exist_ok=True)),
+                patch.object(gate, "_git_text", side_effect=["b" * 40, "c" * 40, "d" * 40, "author <a@example.invalid>"]),
+                patch.object(gate, "_git_changed", return_value={"src/main.py"}),
                 patch.object(gate.check_module, "candidate_content_digest", return_value="e" * 64),
-                patch.object(gate.check_module, "git_changed", return_value={"src/main.py"}),
-                patch.object(gate.check_module, "git_worktree_clean", return_value=True),
                 patch.object(gate.check_module, "evaluate", return_value=report) as evaluator,
             ):
-                code, result = gate.run_gate(args, env=env, runner=runner, decision_verifier=lambda *a, **k: decision)
+                code, result = gate.run_gate(args, env=env, decision_verifier=lambda *a, **k: decision)
 
             self.assertEqual(code, 0)
             self.assertEqual(result["result"], "pass")

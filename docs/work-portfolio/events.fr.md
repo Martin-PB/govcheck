@@ -140,3 +140,17 @@ Détail canonique : [journal anglais WP-EVT-000033](events.md#wp-evt-000033).
 - **Frontière de conception :** noyau de vérification, enforcement à la frontière du dépôt et intégration forge/VCS restent des responsabilités distinctes, pas des niveaux de maturité. La proposition préserve l'exécution par exécutable local, les identités natives VCS, la liaison exacte base/politique/vérificateur, les résultats distincts PASS/FAIL/UNKNOWN/CONFLICT/ACCEPTED_WITH_RISK et les limites explicites de bypass.
 - **Limite Pijul :** le manuel cité ne documente qu'un hook local record, pas de hook distant obligatoire de politique. Aucun enforcement Nest n'est revendiqué ; un adaptateur remote/serveur contrôlé est nécessaire.
 - **Disposition :** proposition uniquement. Aucune protection de branche, ruleset, service MCP hébergé, régime d'autorité ou politique normative d'acceptation n'a été modifié. Prochain incrément : modèle formel de frontière d'acceptation et prototype isolé de hook Git pre-receive avec tests positifs/négatifs.
+
+
+<a id="wp-evt-000035"></a>
+## WP-EVT-000035 — Proposition de sémantique typée de l'incertitude et du risque assumé terminée
+- **Sujet :** `govcheck.decision.assumed-risk.typed-semantics`.
+- **Type d'événement :** `typed-risk-specification-candidate-completed`.
+- **Date :** 2026-11-27.
+- **Issue source :** [#131](https://github.com/Martin-PB/govcheck/issues/131) ; incrément de recherche [PR #142](https://github.com/Martin-PB/govcheck/pull/142) ; incrément Lean typé [PR #150](https://github.com/Martin-PB/govcheck/pull/150), fusionné au commit `3228404631bb565fddd6d0fb5a52f75724fe24dd`.
+- **Artefacts :** recherche bilingue `decision-and-assumed-risk-crosscutting-2026-11` ; recherche bilingue `semantic-assurance-and-transition-models-2026-11` ; `formal/lean/GovCheckCoherence/RiskSemantics.lean) ; rapport dédié `RiskSemanticsAxiomReport.lean` ; entrées R-193 et R-202 du catalogue.
+- **Frontières sémantiques :** point/intervalle/distribution probabiliste, appartenance floue, possibilités non déterministes, taux de transition, confiance dans un argument, coût, utilité, priorité et fréquence empirique sont des familles typées distinctes. La disponibilité épistémique préserve NotAssessed, Unknown, NotQuantifiable, NotApplicable, Quantified et Inconclusive.
+- **Frontières décision/risque :** les entrées PEAK restent distinctes ; DecisionOutcome conserve Solution et AssumedRisk ; RiskScenario, RiskAssessment, RiskTreatment et RiskAcceptance sont séparés ; l'acceptation lie les révisions exactes du scénario/de l'évaluation et enregistre autorité, portée, révision de politique et intervalle de validité.
+- **Éléments probants formels :** 17 théorèmes représentatifs de disjonction des constructeurs et d'intégrité des enregistrements passent sous Lean 4.19.0 ; le rapport dédié ne relève aucune dépendance axiomatique.
+- **Limite :** proposition sémantique typée uniquement. Aucun métamodèle normatif, sérialisation canonique, moteur probabiliste/flou, score/calcul universel du risque, politique d'agrégation, optimiseur de traitement ou preuve d'autorité réelle n'est adopté.
+- **Disposition :** l'issue #131 est clôturée comme proposition technique terminée. L'adoption normative reste une décision d'autorité distincte ; aucune adoption n'est impliquée ici.

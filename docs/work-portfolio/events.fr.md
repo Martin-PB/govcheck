@@ -162,7 +162,7 @@ Détail canonique : [journal anglais WP-EVT-000033](events.md#wp-evt-000033).
 - **Type d'événement :** `in-toto-dsse-profile-increment-merged`.
 - **Date :** 2026-11-27.
 - **Issue/PR source :** [#44](https://github.com/Martin-PB/govcheck/issues/44), [PR #154](https://github.com/Martin-PB/govcheck/pull/154), fusionnée dans `main` au commit `6556a03d73c8aa2ee4527865b4d12acbc26bc644`.
-- **Artefacts :** Spécification 0008 EN/FR ; schéma JSON du prédicat ; `govcheck/attestation.py` standard-library-only ; tests de liaison exacte candidat/base, identités Git/Pijul, résultats à quatre valeurs, structure DSSE PAE/enveloppe et revue indépendante indisponible ; références R-227–R-229.
+- **Artefacts :** Spécification 0008 EN/FR ; schéma JSON du prédicat ; `govcheck/attestation.py` standard-library-only ; tests de liaison exacte candidat/base, identités Git/Pijul, résultats à quatre valeurs, structure DSSE PAE/enveloppe et revue indépendante indisponible ; références [R-227](../references.fr.md#r-227), [R-228](../references.fr.md#r-228) et [R-229](../references.fr.md#r-229).
 - **Correction de sécurité :** les JSON de revue intégrés à l'arbre candidat et les noms libres de reviewer ne peuvent plus satisfaire la règle de revue indépendante. La règle reste UNKNOWN tant qu'un vérificateur DSSE détaché et une politique de confiance explicite ne sont pas configurés.
 - **Validation :** 143 tests Python, intégrité des références et alignement du paquet passent sur la tête finale de la PR.
 - **Limite :** aucune signature/vérification cryptographique, gestion de racines de confiance/clés, association signataire/rôle ou génération du digest canonique du contenu n'est implémentée. Aucune revue indépendante n'est revendiquée ; l'issue #44 reste ouverte.

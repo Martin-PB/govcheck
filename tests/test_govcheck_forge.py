@@ -320,7 +320,7 @@ class VerifyTests(unittest.TestCase):
     def test_audit_ruleset_fetches_configuration_read_only(self):
         ruleset = self.ruleset()
         client, opener = make_client(lambda req: FakeResponse(200, ruleset))
-        result = forge.audit_ruleset(client, 28251664, ["govcheck-check", "package-alignment", "reference-integrity"], 15368
+        result = forge.audit_ruleset(client, 28251664, ["govcheck-check", "package-alignment", "reference-integrity"], 15368)
         self.assertEqual(result["result"], "pass")
         self.assertEqual(opener.requests[0].get_method(), "GET")
         self.assertTrue(opener.requests[0].full_url.endswith("/repos/octo/repo/rulesets/28251664"))

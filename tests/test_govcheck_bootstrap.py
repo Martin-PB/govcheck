@@ -29,6 +29,8 @@ class BootstrapTests(unittest.TestCase):
         self.assertTrue(bootstrap.package_version())
         files = bootstrap.package_files()
         self.assertIn("check.py", files)
+        self.assertIn("attestation.py", files)
+        self.assertIn("journal.py", files)
         self.assertNotIn("bootstrap.py", files)
 
     def test_inspect_does_not_mutate_missing_target(self):
@@ -93,6 +95,19 @@ class BootstrapTests(unittest.TestCase):
         self.assertEqual(code, 0)
         self.assertEqual([a["path"] for a in r["created"]], ["check.py"])
         self.assertFalse((self.target / "docs").exists())
+
+    def test_journal_capability_installs_only_journal_module(self):
+        r, code = bootstrap.apply_plan(self.target, ["journal"])
+        self.assertEqual(code, 0)
+        self.assertEqual([a["path"] for a in r["created"]], ["journal.py"])
+        self.assertTrue((self.target / "journal.py").is_file())
+        self.assertFalse((self.target / "check.py").exists())
+
+    def test_attestation_capability_installs_only_attestation_module(self):
+        r, code = bootstrap.apply_plan(self.target, ["attestation"])
+        self.assertEqual(code, 0)
+        self.assertEqual([a["path"] for a in r["created"]], ["attestation.py"])
+        self.assertTrue((self.target / "attestation.py").is_file())
 
     def test_inspect_reports_previous_marker(self):
         bootstrap.apply_plan(self.target, ["check"])

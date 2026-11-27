@@ -95,7 +95,7 @@ class JournalTests(unittest.TestCase):
     def test_canonical_json_uses_utf16_key_order(self):
         value = {"z": 1, "𐀀": 2, "a": 3}
         canonical = journal_module.canonical_json_bytes(value).decode("utf-8")
-        self.assertEqual(canonical, '{"a":3,"𐀀":2,"z":1}')
+        self.assertEqual(canonical, '{"a":3,"z":1,"𐀀":2}')
 
     def test_event_and_receipt_rows_are_immutable_via_sql(self):
         self.append()

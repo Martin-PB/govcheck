@@ -176,3 +176,14 @@ Pour chaque mise à jour protégée, le gate :
 Le point d'entrée doit être installé hors du dépôt candidat. Le hook pre-receive épingle le digest du fichier exécutable ; la fermeture Python/runtime reste dans la racine de confiance immuable de l'administrateur du serveur. Toute preuve ou configuration manquante produit UNKNOWN et est rejetée par le hook.
 
 **Ce n'est toujours pas une frontière de forge effective :** le hook local n'a pas encore été installé sur un véritable dépôt bare protégé et testé avec des pushes acceptés/rejetés, et le ruleset GitHub n'exige toujours ni PR ni checks de statut. Les tests unitaires de l'adaptateur vérifient le protocole, pas le rejet démontré d'une mise à jour de référence protégée.
+
+## 11. Résultat de l'intégration sur dépôt bare jetable
+
+Le test d'intégration local `test_real_bare_repo_accepts_scoped_risk_and_rejects_stale_decision` installe le véritable hook pre-receive et le point d'entrée gate dans un dépôt Git bare temporaire.
+
+Il a démontré :
+- une mise à jour candidate acceptée uniquement avec une décision `accept_with_risk` DSSE signée, liée au rapport/candidat/base/ref/gouvernance/scope exacts ;
+- le rejet d'un second candidat réutilisant la décision du premier candidat ;
+- le maintien de la référence protégée `main` sur le premier commit accepté après le rejet de la décision obsolète.
+
+Le test utilise des clés Ed25519 synthétiques et une politique de confiance jetable. Il valide le chemin d'exécution local du hook/gate, y compris la matérialisation des objets Git, mais ne constitue ni une installation sur une forge de production ni un test des règles/bypass GitHub.

@@ -1,6 +1,6 @@
 # Specification 0008 — Interoperable assurance attestations
 
-**Status:** proposed profile for issue [#44](https://github.com/Martin-PB/govcheck/issues/44); not a normative adoption and not a claim that signatures or signer identities are verified by the current runtime. **French:** [0008](0008-interoperable-assurance-attestations.fr.md).
+**Status:** proposed profile for issue issue #44; not a normative adoption and not a claim that signatures or signer identities are verified by the current runtime. **French:** [0008](0008-interoperable-assurance-attestations.fr.md).
 
 ## 1. Purpose
 
@@ -11,7 +11,7 @@ The profile does not make an attestation a proof. It preserves the distinction b
 ## 2. Interoperability mapping
 
 - **in-toto Statement v1** is the outer semantic statement: `_type`, immutable `subject` digest, `predicateType` and typed `predicate`.
-- **GovCheck Assurance Evaluation predicate v1** carries GovCheck-specific evaluation and assurance semantics. Predicate URI: `https://github.com/Martin-PB/govcheck/attestation/assurance-evaluation/v1`.
+- **GovCheck Assurance Evaluation predicate v1** carries GovCheck-specific evaluation and assurance semantics. Predicate URI: `urn:govcheck:attestation:assurance-evaluation:v1`.
 - **DSSE v1** is the recommended authenticated envelope. The payload type is `application/vnd.in-toto+json`; signatures authenticate the exact payload bytes and payload type through DSSE PAE.
 - A digest in an in-toto subject identifies the content snapshot. Native Git/Pijul identities remain additional VCS-specific fields; Git commit IDs and Pijul change identities are not interchangeable with a content digest.
 - SLSA Verification Summary Attestation (VSA) is not the generic GovCheck predicate. Its `verificationResult` is PASSED/FAILED and its levels describe SLSA tracks. It may be emitted separately when a SLSA level was actually evaluated, but must not encode GovCheck UNKNOWN, CONFLICT, proof status or authority decisions.
@@ -100,6 +100,6 @@ The current `independent-review` checker must not treat a candidate-tree JSON re
 - [Specification 0005 — Assurance, Claims and Evidence](0005-assurance-model.md)
 - [Specification 0007 — Canonical Governance Journal](0007-canonical-governance-journal-protocol.md)
 - [Architecture 0023 — Bootstrap Governance Authority](../architecture/0023-bootstrap-governance-authority.md)
-- [Issue #44](https://github.com/Martin-PB/govcheck/issues/44), [issue #60](https://github.com/Martin-PB/govcheck/issues/60), [issue #131](https://github.com/Martin-PB/govcheck/issues/131)
+- [Issue #44](https://github.com/Martin-PB/govcheck/issues/44), issue #60, issue #131
 
 **This specification is proposed. It does not adopt a trust root, signer policy, cryptographic algorithm or mandatory acceptance rule.**

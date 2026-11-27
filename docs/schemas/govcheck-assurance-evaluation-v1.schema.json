@@ -315,5 +315,55 @@
       },
       "additionalProperties": true
     }
-  }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "independentReview": {
+            "properties": {
+              "status": {
+                "const": "attested"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          }
+        },
+        "required": [
+          "independentReview"
+        ]
+      },
+      "then": {
+        "properties": {
+          "independentReview": {
+            "required": [
+              "reference"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "independentReview": {
+          "not": {
+            "anyOf": [
+              {
+                "required": [
+                  "reviewer"
+                ]
+              },
+              {
+                "required": [
+                  "reviewerName"
+                ]
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
 }

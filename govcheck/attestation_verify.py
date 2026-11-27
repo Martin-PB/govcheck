@@ -102,9 +102,13 @@ def _is_within(path: Path, root: Path) -> bool:
 
 
 def _outside_candidate(path: Path, candidate_root: Path, label: str) -> Path:
-    resolved = path.expanduser().resolve()
+    expanded = path.expanduser()
+    lexical = expanded if expanded.is_absolute() else expanded.absolute()
+    if _is_within(lexical, candidate_root):
+        raise VerificationError("invalid", label + " path must be outside the candidate-controlled tree")
+    resolved = expanded.resolve()
     if _is_within(resolved, candidate_root):
-        raise VerificationError("invalid", label + " must be outside the candidate-controlled tree")
+        raise VerificationError("invalid", label + " resolved path must be outside the candidate-controlled tree")
     if not resolved.is_file():
         raise VerificationError("unknown", label + " is not a readable regular file")
     return resolved
@@ -201,7 +205,12 @@ def _load_policy(policy_path: str | Path, expected_digest: str, candidate_root: 
             "validUntil": valid_until,
             "revoked": entry["revoked"],
         }
-    current = (now or datetime.now(timezone.utc)).astimezone(timezone.utc)
+    if now is None:
+        current = datetime.now(timezone.utc)
+    else:
+        if now.tzinfo is None:
+            raise VerificationError("invalid", "verification time must include a timezone")
+        current = now.astimezone(timezone.utc)
     for key in keys.values():
         if key["revoked"]:
             key["eligibility"] = "revoked"

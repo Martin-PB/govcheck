@@ -522,10 +522,18 @@ class Journal:
                     computed = digest_json(_without(receipt, "receiptDigest"))
                     if computed != receipt.get("receiptDigest"):
                         errors.append("receipt digest mismatch at position " + str(row["position"]))
+                    receipt_columns = {
+                        "scopeId": receipt_row["scope_id"],
+                        "position": receipt_row["position"],
+                        "eventId": receipt_row["event_id"],
+                        "eventDigest": receipt_row["event_digest"],
+                        "previousDigest": receipt_row["previous_digest"],
+                        "idempotencyKey": receipt_row["idempotency_key"],
+                    }
                     for key, expected in (("scopeId", scope_id), ("position", row["position"]),
                                           ("eventId", row["event_id"]), ("eventDigest", row["event_digest"]),
                                           ("previousDigest", row["previous_digest"]), ("idempotencyKey", row["idempotency_key"])):
-                        if receipt.get(key) != expected or receipt_row[key if key != "scopeId" else "scope_id"] != expected:
+                        if receipt.get(key) != expected or receipt_columns[key] != expected:
                             errors.append("receipt " + key + " mismatch at position " + str(row["position"]))
                 except (ValueError, JournalError, TypeError, AttributeError) as exc:
                     errors.append("malformed receipt at position " + str(row["position"]) + ": " + str(exc))

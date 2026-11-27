@@ -78,6 +78,19 @@ class JournalTests(unittest.TestCase):
                                      {"x": 1}, "idem", "principal:root")
         self.assertEqual(result["status"], "unknown")
 
+    def test_journal_schemas_are_present_and_versioned(self):
+        schemas = ROOT / "govcheck" / "formal" / "schemas"
+        event = json.loads((schemas / "journal-event-v1.schema.json").read_text(encoding="utf-8"))
+        receipt = json.loads((schemas / "journal-receipt-v1.schema.json").read_text(encoding="utf-8"))
+        self.assertIn("canonicalization", event["required"])
+        self.assertIn("eventDigest", event["required"])
+        self.assertIn("canonicalization", receipt["required"])
+        self.assertIn("receiptDigest", receipt["required"])
+
+    def test_invalid_expected_digest_is_rejected(self):
+        with self.assertRaisesRegex(journal_module.JournalError, "lowercase SHA-256"):
+            self.append(expected_digest="not-a-digest")
+
     def test_float_is_rejected(self):
         with self.assertRaisesRegex(journal_module.JournalError, "floating-point"):
             self.append(payload={"probability": 0.8})

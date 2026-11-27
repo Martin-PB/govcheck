@@ -144,6 +144,10 @@ class JournalTests(unittest.TestCase):
             conn.commit()
         finally:
             conn.close()
+        with self.assertRaisesRegex(journal_module.JournalError, "head is not trusted"):
+            self.journal.head("repo:example/project")
+        with self.assertRaisesRegex(journal_module.JournalError, "receipt is not trusted"):
+            self.journal.receipt("repo:example/project", "idem-1")
         result = self.journal.append("repo:example/project", head["position"], head["digest"],
                                      "event-after-corruption", "test.event", "1", {"x": 1},
                                      "idem-after-corruption", "principal:root")

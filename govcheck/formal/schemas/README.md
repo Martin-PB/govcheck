@@ -59,3 +59,11 @@ These schemas describe the serialized record shape. They do not authenticate act
 - assurance-evaluation-v1.schema.json — GovCheck assurance-evaluation predicate schema used with the in-toto Statement/DSSE profile.
 
 The schema describes predicate shape only; it does not verify DSSE signatures or authenticate principals/roles. See Specification 0008 and issue #44.
+
+## Detached attestation trust policy
+
+- attestation-trust-policy-v1.schema.json — operator-pinned OpenSSL executable, Ed25519 public keys, principal/role mappings, validity intervals and revocation state.
+
+The policy digest must be supplied out-of-band. The schema does not authenticate the policy owner, the real-world identity behind a key, or a trusted signing time. See Architecture 0039 and issue #158.
+
+The optional attestation-verify bootstrap capability installs attestation.py, attestation_verify.py, assurance-evaluation-v1.schema.json and attestation-trust-policy-v1.schema.json together. It does not install private keys or create a trust policy.

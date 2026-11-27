@@ -14,6 +14,7 @@ import json
 import re
 import sys
 from pathlib import Path
+from urllib.parse import urlparse
 from typing import Any
 
 STATEMENT_TYPE = "https://in-toto.io/Statement/v1"
@@ -50,6 +51,14 @@ def _decode_base64(value: str, label: str) -> bytes:
         except (binascii.Error, ValueError):
             continue
     raise AttestationError(label + " is not valid base64")
+
+
+def _uri(value: Any, label: str) -> str:
+    uri = _string(value, label)
+    parsed = urlparse(uri)
+    if not parsed.scheme or (parsed.scheme in {"http", "https"} and not parsed.netloc):
+        raise AttestationError(label + " must be an absolute URI")
+    return uri
 
 
 def _digest(value: Any, label: str) -> dict:
@@ -138,13 +147,21 @@ def build_statement(report: dict, context: dict) -> dict:
         })
 
     repository = _object(context.get("repository"), "repository")
-    repository_uri = _string(repository.get("uri"), "repository.uri")
+    repository_uri = _uri(repository.get("uri"), "repository.uri")
     vcs_kind = _string(repository.get("vcsKind"), "repository.vcsKind")
     candidate = _object(context.get("candidate"), "candidate")
     candidate_revision = _string(candidate.get("revision"), "candidate.revision")
     candidate_digest = _digest(candidate.get("contentDigest"), "candidate.contentDigest")
     base = _object(context.get("base"), "base")
     base_revision = _string(base.get("revision"), "base.revision")
+    base_reference = _string(base.get("reference"), "base.reference")
+    report_candidate = _object(report.get("candidate"), "report.candidate")
+    report_candidate_revision = _string(report_candidate.get("candidate_rev"), "report.candidate.candidate_rev")
+    report_base_reference = _string(report_candidate.get("base"), "report.candidate.base")
+    if report_candidate_revision != candidate_revision:
+        raise AttestationError("report candidate revision does not match the attestation subject context")
+    if report_base_reference != base_reference:
+        raise AttestationError("report base reference does not match the attestation context")
     governance = _object(context.get("governance"), "governance")
     verifier = _object(context.get("verifier"), "verifier")
 
@@ -182,14 +199,14 @@ def build_statement(report: dict, context: dict) -> dict:
             "revision": candidate_revision,
             "contentDigest": candidate_digest,
         },
-        "base": {"revision": base_revision},
+        "base": {"revision": base_revision, "reference": base_reference},
         "governance": {
             "scopeId": _string(governance.get("scopeId"), "governance.scopeId"),
             "revision": _string(governance.get("revision"), "governance.revision"),
             "digest": _digest(governance.get("digest"), "governance.digest"),
         },
         "verifier": {
-            "id": _string(verifier.get("id"), "verifier.id"),
+            "id": _uri(verifier.get("id"), "verifier.id"),
             "version": _string(verifier.get("version"), "verifier.version"),
             "digest": _digest(verifier.get("digest"), "verifier.digest"),
             "configDigest": _digest(verifier.get("configDigest"), "verifier.configDigest"),
@@ -254,19 +271,22 @@ def validate_statement(statement: dict) -> None:
         _string_list(rule.get("reasons", []), "rule.reasons")
 
     repository = _object(predicate.get("repository"), "repository")
-    _string(repository.get("uri"), "repository.uri")
+    repository_uri = _uri(repository.get("uri"), "repository.uri")
     _string(repository.get("vcsKind"), "repository.vcsKind")
     candidate = _object(predicate.get("candidate"), "candidate")
     _string(candidate.get("revision"), "candidate.revision")
-    _digest(candidate.get("contentDigest"), "candidate.contentDigest")
+    candidate_digest = _digest(candidate.get("contentDigest"), "candidate.contentDigest")
+    if not any(subject.get("digest") == candidate_digest and subject.get("name") == repository_uri for subject in subjects):
+        raise AttestationError("in-toto subject digest/name does not match the candidate/repository binding")
     base = _object(predicate.get("base"), "base")
     _string(base.get("revision"), "base.revision")
+    _string(base.get("reference"), "base.reference")
     governance = _object(predicate.get("governance"), "governance")
     _string(governance.get("scopeId"), "governance.scopeId")
     _string(governance.get("revision"), "governance.revision")
     _digest(governance.get("digest"), "governance.digest")
     verifier = _object(predicate.get("verifier"), "verifier")
-    _string(verifier.get("id"), "verifier.id")
+    _uri(verifier.get("id"), "verifier.id")
     _string(verifier.get("version"), "verifier.version")
     _digest(verifier.get("digest"), "verifier.digest")
     _digest(verifier.get("configDigest"), "verifier.configDigest")

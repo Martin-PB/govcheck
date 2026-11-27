@@ -530,3 +530,15 @@
 - **Artifacts:** Architecture 0034 EN/FR; stdlib-only govcheck/forge.py; offline contract tests; forge bootstrap capability; README EN/FR.
 - **Delivered:** registry-first stable work IDs, lossless round-trip tests, read-only check-run/branch-protection inspection, explicit token-gated writes, typed failures and no forge authorization semantics.
 - **Limit:** GitHub REST v3 is the only implemented backend in this issue. GitLab/Gitea/Forgejo, automatic bidirectional sync and Projects v2 writes remain separate work; issue #118 is closed for its stated first slice.
+
+
+<a id="wp-evt-000039"></a>
+## WP-EVT-000039 — Local canonical journal first backend merged
+- **Subject:** `govcheck.governance.canonical-journal-local-implementation`.
+- **Event type:** `local-canonical-journal-first-backend-merged`.
+- **Recorded:** 2026-11-27.
+- **Source issue/PR:** [#155](https://github.com/Martin-PB/govcheck/issues/155), [PR #157](https://github.com/Martin-PB/govcheck/pull/157), merged at `6ee0b8e64f9f4203a62564b61292b2f4e71e836f`.
+- **Artifacts:** Architecture 0038 EN/FR; standard-library SQLite journal library/CLI; versioned event/receipt schemas; package bootstrap capabilities; EN/FR package documentation; offline tests.
+- **Validation:** 167 Python tests, reference integrity and package alignment passed on the final PR head.
+- **Guarantees:** explicit genesis, compare-and-append, durable idempotent receipts, stale/conflict/unknown outcomes, SQLite transaction recovery, full hash-chain verification and fail-closed reads/appends.
+- **Limits:** single-host local journal; no distributed consensus, signatures, DSSE verification, actor authentication, proof of authority or resistance to privileged database rewrite. Git/Pijul typed provenance and acceptance-boundary integration remain open under #155/#44/#45.

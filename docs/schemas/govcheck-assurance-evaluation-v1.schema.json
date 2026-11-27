@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/Martin-PB/govcheck/blob/main/docs/schemas/govcheck-assurance-evaluation-v1.schema.json",
+  "$id": "urn:govcheck:schema:assurance-evaluation:v1",
   "title": "GovCheck Assurance Evaluation Predicate v1",
   "type": "object",
   "additionalProperties": true,

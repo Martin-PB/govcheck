@@ -235,6 +235,7 @@ class VerifyTests(unittest.TestCase):
                     "required_status_checks": [
                         {"context": "govcheck-check", "integration_id": 15368},
                         {"context": "package-alignment", "integration_id": 15368},
+                        {"context": "reference-integrity", "integration_id": 15368},
                     ],
                     "strict_required_status_checks_policy": True,
                 }},
@@ -246,9 +247,9 @@ class VerifyTests(unittest.TestCase):
         return value
 
     def test_ruleset_audit_passes_exact_pr_checks_source_and_no_bypass(self):
-        result = forge.audit_ruleset_payload(self.ruleset(), ["govcheck-check", "package-alignment"], 15368)
+        result = forge.audit_ruleset_payload(self.ruleset(), ["govcheck-check", "package-alignment", "reference-integrity"], 15368)
         self.assertEqual(result["result"], "pass")
-        self.assertEqual(result["observed_checks"], ["govcheck-check", "package-alignment"])
+        self.assertEqual(result["observed_checks"], ["govcheck-check", "package-alignment", "reference-integrity"])
         self.assertFalse(result["boundary_demonstrated"])
         self.assertEqual(result["bypass_actors"], [])
 
@@ -265,7 +266,7 @@ class VerifyTests(unittest.TestCase):
         rules[-1]["parameters"]["strict_required_status_checks_policy"] = False
         result = forge.audit_ruleset_payload(
             self.ruleset(rules=rules, bypass_actors=[{"actor_id": 1, "actor_type": "Team", "bypass_mode": "always"}]),
-            ["govcheck-check", "package-alignment"], 15368,
+            ["govcheck-check", "package-alignment", "reference-integrity"], 15368,
         )
         self.assertEqual(result["result"], "fail")
         self.assertTrue(any("source integration" in finding for finding in result["findings"]))
@@ -274,9 +275,41 @@ class VerifyTests(unittest.TestCase):
 
     def test_ruleset_audit_rejects_non_default_branch_scope(self):
         ruleset = self.ruleset(conditions={"ref_name": {"include": ["refs/heads/release"], "exclude": []}})
-        result = forge.audit_ruleset_payload(ruleset, ["govcheck-check", "package-alignment"], 15368)
+        result = forge.audit_ruleset_payload(ruleset, ["govcheck-check", "package-alignment", "reference-integrity"], 15368)
         self.assertEqual(result["result"], "fail")
         self.assertIn("ruleset is not exclusively scoped to the default branch", result["findings"])
+
+    def test_ruleset_audit_fails_unexpected_approval_count(self):
+        rules = self.ruleset()["rules"]
+        rules[2]["parameters"]["required_approving_review_count"] = 1
+        result = forge.audit_ruleset_payload(
+            self.ruleset(rules=rules),
+            ["govcheck-check", "package-alignment", "reference-integrity"],
+            15368,
+            expected_approvals=0,
+        )
+        self.assertEqual(result["result"], "fail")
+        self.assertIn("required approving-review count does not match the expected value", result["findings"])
+
+    def test_render_ruleset_payload_is_exact_and_has_no_bypass(self):
+        payload = forge.render_ruleset_payload(
+            "Protection Main",
+            ["govcheck-check", "package-alignment", "reference-integrity"],
+            15368,
+            required_approvals=0,
+        )
+        self.assertEqual(payload["target"], "branch")
+        self.assertEqual(payload["enforcement"], "active")
+        self.assertEqual(payload["conditions"]["ref_name"]["include"], ["~DEFAULT_BRANCH"])
+        self.assertEqual(payload["bypass_actors"], [])
+        pr_rule = next(rule for rule in payload["rules"] if rule["type"] == "pull_request")
+        self.assertEqual(pr_rule["parameters"]["required_approving_review_count"], 0)
+        status_rule = next(rule for rule in payload["rules"] if rule["type"] == "required_status_checks")
+        self.assertEqual(
+            [item["context"] for item in status_rule["parameters"]["required_status_checks"]],
+            ["govcheck-check", "package-alignment", "reference-integrity"],
+        )
+        self.assertTrue(status_rule["parameters"]["strict_required_status_checks_policy"])
 
     def test_list_rulesets_reads_collection(self):
         client, opener = make_client(lambda req: FakeResponse(200, [{"id": 1, "name": "main"}]))
@@ -293,6 +326,19 @@ class VerifyTests(unittest.TestCase):
         self.assertTrue(opener.requests[0].full_url.endswith("/repos/octo/repo/rulesets/28251664"))
 
 class CliTests(unittest.TestCase):
+    def test_ruleset_payload_cli_is_offline(self):
+        output = io.StringIO()
+        with redirect_stdout(output):
+            code = forge.main([
+                "ruleset-payload",
+                "--required-checks", "govcheck-check,package-alignment,reference-integrity",
+                "--check-source-id", "15368",
+                "--required-approvals", "0",
+            ], env={})
+        self.assertEqual(code, 0)
+        payload = json.loads(output.getvalue())
+        self.assertEqual(payload["bypass_actors"], [])
+
     def test_cli_list_issues_prints_json(self):
         opener = FakeOpener(lambda req: FakeResponse(200, [{"number": 5, "title": "t", "state": "open", "body": "", "labels": [], "html_url": "u"}]))
         buf = io.StringIO()

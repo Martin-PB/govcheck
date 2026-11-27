@@ -13,6 +13,7 @@
 | Régimes d'assurance et exigences orientées objectifs | R-35–R-36, R-44, R-92 |
 | Model checking et vérification de programmes candidates | R-05, R-20, R-37–R-43, R-89–R-91 |
 | Provenance des preuves, attestations interopérables et chaîne d'approvisionnement logicielle | R-06–R-08, R-227–R-229 |
+| Stockage local durable du journal et JSON canonique | R-230–R-231 |
 | Moteurs de politiques, autorisation et vérification de modèles | R-09–R-10, R-88 |
 | Logique normative et modalités déontiques | R-93 |
 | Schémas et contrats d'interface | R-13, R-16 |
@@ -1607,3 +1608,19 @@
 - **Utilité :** résume la vérification d'un artefact selon les pistes/niveaux SLSA, avec notamment le vérificateur, la politique, les attestations d'entrée et le résultat de vérification.
 - **Limite :** ses sémantiques PASSED/FAILED et niveaux SLSA ne représentent pas sans perte les résultats pass/fail/unknown/conflict de GovCheck, sa taxonomie des méthodes d'assurance, ses décisions d'autorité ou l'acceptation du risque.
 - **Cité par :** [Spécification 0008](specifications/0008-interoperable-assurance-attestations.fr.md).
+
+<a id="r-230"></a>
+### R-230 — Transactions, WAL et durabilité SQLite
+- **Type :** Documentation primaire d'implémentation.
+- **Sources primaires :** [Transactions](https://www.sqlite.org/lang_transaction.html) · [Write-Ahead Logging](https://www.sqlite.org/wal.html) · [PRAGMA synchronous et paramètres de journal](https://www.sqlite.org/pragma.html) · [Atomic Commit](https://www.sqlite.org/atomiccommit.html).
+- **Utilité :** documente les transactions d'écriture sérialisées, BEGIN IMMEDIATE, le comportement lecteurs/écrivain de WAL, les contraintes de même hôte et les conséquences des paramètres synchronous sur la durabilité.
+- **Limite :** les garanties transactionnelles SQLite dépendent de son VFS, du système de fichiers et du matériel de stockage. WAL n'est pas pris en charge sur les systèmes de fichiers réseau ; une base locale n'authentifie pas les acteurs et ne résiste pas à un administrateur privilégié.
+- **Cité par :** [Architecture 0038](architecture/0038-local-canonical-journal-implementation.fr.md).
+
+<a id="r-231"></a>
+### R-231 — RFC 8785 : JSON Canonicalization Scheme (JCS)
+- **Type :** Spécification primaire de sérialisation/canonicalisation (RFC informative).
+- **Source primaire :** [RFC 8785](https://www.rfc-editor.org/rfc/rfc8785.html).
+- **Utilité :** définit une sérialisation JSON déterministe adaptée au hachage et à la signature, notamment l'ordre des propriétés, la sérialisation des primitives et les contraintes I-JSON.
+- **Limite :** JCS ne définit ni la sémantique des événements GovCheck, ni l'autorisation, ni l'ordre du journal. Son modèle numérique est IEEE-754 ; les rationnels exacts/grands entiers doivent utiliser des chaînes/enregistrements typés ou un sous-ensemble compatible soigneusement spécifié.
+- **Cité par :** [Architecture 0038](architecture/0038-local-canonical-journal-implementation.fr.md).

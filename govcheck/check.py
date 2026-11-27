@@ -330,7 +330,7 @@ def rule_independent_review(ctx: Ctx):
     if in_tree_records:
         return ("unknown", True, [
             str(len(in_tree_records)) + " candidate-tree attestation record(s) found; in-tree reviewer strings "
-            "cannot authenticate independent review and cannot bind the final candidate revision"
+            "cannot authenticate independent review or DSSE signer identity and cannot bind the final candidate revision"
         ])
 
     config = ctx.independent_review

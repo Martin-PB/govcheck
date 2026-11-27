@@ -284,6 +284,13 @@ def run_gate(args, env=None, runner=subprocess.run, evaluator=None, decision_ver
             report_bytes = (json.dumps(report, indent=2, ensure_ascii=False) + "\n").encode("utf-8")
             report_path = temp_root / "evaluation-report.json"
             report_path.write_bytes(report_bytes)
+            external_report = env.get("GOVCHECK_REPORT_OUTPUT_PATH")
+            if external_report:
+                external_path = Path(external_report).expanduser().resolve()
+                if external_path == candidate_root.resolve() or candidate_root.resolve() in external_path.parents:
+                    raise ValueError("GOVCHECK_REPORT_OUTPUT_PATH must be outside the candidate tree")
+                external_path.parent.mkdir(parents=True, exist_ok=True)
+                external_path.write_bytes(report_bytes)
 
             decision_path = _outside_candidate(
                 env["GOVCHECK_ACCEPTANCE_DECISION_ENVELOPE"], candidate_root, "acceptance decision envelope"

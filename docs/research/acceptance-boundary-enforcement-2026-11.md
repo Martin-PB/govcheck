@@ -217,3 +217,27 @@ gh api --method PUT /repos/Martin-PB/govcheck/rulesets/28251664 \
 Then audit the live configuration with `audit-ruleset`. This is a user/admin action: the current ChatGPT GitHub integration is read-only and has not applied it.
 
 **Important:** these three checks currently protect CI/package/reference integrity; `govcheck-check` is still report-only. Requiring them does not by itself make GitHub a signed acceptance-decision gate. The local pre-receive adapter is the acceptance gate for Git transports; a trusted GitHub acceptance check and live ruleset configuration remain outstanding.
+
+## 13. Signing a decision from the exact gate report
+
+The gate can now write the exact serialized report bytes to an external path with `GOVCHECK_REPORT_OUTPUT_PATH`. The output digest is the same `evidence_digest` emitted in the decision protocol; it is not reconstructed from a parsed/reformatted JSON object.
+
+The `sign` command builds and signs a decision from those exact bytes:
+
+```sh
+python3 -m govcheck.acceptance_decision sign \
+  --report govcheck-report.json \
+  --repository-uri https://github.com/Martin-PB/govcheck \
+  --repository-id 1447286150 \
+  --decision-id decision-<unique-id> \
+  --result accept_with_risk \
+  --rationale "Bounded risk accepted by the governance authority." \
+  --risk-acceptance risk-record.json \
+  --private-key ~/.config/govcheck/authority-ed25519.pem \
+  --key-id govcheck-root-authority \
+  --openssl /usr/bin/openssl > acceptance-decision.json
+```
+
+For `accept`, the signer refuses an evaluation report whose overall result is not PASS. For `accept_with_risk`, a complete scoped and expiring risk record is required. The private key remains outside the repository.
+
+The signed envelope can be supplied as a detached artifact or other external input to a trusted forge adapter. It must not be committed into the candidate snapshot whose content digest it authorizes, because doing so would create a circular candidate binding.

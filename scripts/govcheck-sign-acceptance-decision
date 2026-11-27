@@ -1,0 +1,11 @@
+#!/usr/bin/env python3
+"""Sign a GovCheck acceptance decision from an exact evaluation report."""
+from pathlib import Path
+import sys
+
+PACKAGE_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(PACKAGE_ROOT))
+
+from govcheck.acceptance_decision import _main
+
+raise SystemExit(_main())

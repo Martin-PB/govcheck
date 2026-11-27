@@ -18,6 +18,7 @@ spec.loader.exec_module(att)
 def valid_inputs():
     report = {
         "overall": "unknown",
+        "candidate": {"candidate_rev": "c" * 40, "base": "main"},
         "rules": [
             {"id": "unit-tests", "class": "decidable", "result": "pass", "applies": True, "reasons": ["127 tests passed"]},
             {"id": "independent-review", "class": "attested", "result": "unknown", "applies": True, "reasons": ["no second contributor is available"]},
@@ -29,7 +30,7 @@ def valid_inputs():
         "evaluatedOn": "2026-11-27T18:00:00Z",
         "repository": {"uri": "https://github.com/example/project", "vcsKind": "git"},
         "candidate": {"revision": "c" * 40, "tree": "d" * 40, "contentDigest": digest},
-        "base": {"revision": "e" * 40, "tree": "f" * 40},
+        "base": {"reference": "main", "revision": "e" * 40, "tree": "f" * 40},
         "governance": {"scopeId": "repo:example/project", "revision": "gov-17", "digest": {"sha256": "1" * 64}},
         "verifier": {"id": "https://example.org/govcheck/verifier", "version": "0.5.0", "digest": {"sha256": "2" * 64}, "configDigest": {"sha256": "3" * 64}},
         "methods": [
@@ -74,6 +75,18 @@ class StatementTests(unittest.TestCase):
         statement = att.build_statement(report, context)
         self.assertEqual(statement["predicate"]["independentReview"]["status"], "attested")
         self.assertNotIn("reviewer", statement["predicate"]["independentReview"])
+
+    def test_report_candidate_must_match_attestation_context(self):
+        report, context = valid_inputs()
+        report["candidate"]["candidate_rev"] = "9" * 40
+        with self.assertRaisesRegex(att.AttestationError, "candidate revision does not match"):
+            att.build_statement(report, context)
+
+    def test_report_base_reference_must_match_attestation_context(self):
+        report, context = valid_inputs()
+        report["candidate"]["base"] = "release"
+        with self.assertRaisesRegex(att.AttestationError, "base reference does not match"):
+            att.build_statement(report, context)
 
     def test_missing_sha256_is_rejected(self):
         report, context = valid_inputs()

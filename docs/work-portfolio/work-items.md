@@ -144,3 +144,5 @@ Architecture 0013 EN/FR now treats Decision as a transversal first-class object,
 
 
 | govcheck.work.canonical-journal-implementation | [#155](https://github.com/Martin-PB/govcheck/issues/155) | Implement a local canonical append-only journal with compare-and-append, durable receipts, idempotency, crash recovery and chain verification. | implementation / governance | P1, in-progress | New implementation issue grounded in proposed Specification 0007 and Architecture 0035; first local backend must be evaluated and documented without claiming distributed consensus or actor authentication. |
+
+| govcheck.work.forge-native-portfolio-adapter | [#118](https://github.com/Martin-PB/govcheck/issues/118) | Mirror the canonical work portfolio to forge objects and read forge-side verification state without making the forge an authority. | implementation / portfolio | P2, completed | Architecture 0034 EN/FR and PRs #119–#121 merged; stdlib-only GitHub REST v3 adapter, offline contract tests, token handling, typed failure taxonomy and forge bootstrap capability delivered. Non-GitHub forges and automatic bidirectional sync remain outside this slice. |

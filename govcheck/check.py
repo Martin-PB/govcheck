@@ -283,22 +283,21 @@ def rule_bootstrap_integrity(ctx: Ctx):
 def rule_independent_review(ctx: Ctx):
     if ctx.changed is None or not ctx.changed:
         return ("pass", False, ["no candidate diff supplied; rule not applicable"])
-    candidate_rev = ctx.git.get("candidate_rev", "")
-    author = ctx.git.get("author", "")
-    for rec in load_attestations(ctx):
-        if rec.get("decision") != "accept":
-            continue
-        if candidate_rev and rec.get("candidate_rev") != candidate_rev:
-            continue
-        reviewer = str(rec.get("reviewer", "")).strip()
-        if not reviewer:
-            continue
-        if author and reviewer == author:
-            continue
-        return ("pass", True, [
-            "recorded attestation by " + reviewer + " for revision " + (candidate_rev or "(unspecified)") + " (" + rec.get("_file", "") + ")"
+
+    # Candidate-tree records cannot authenticate themselves: they are part of
+    # the object whose final revision they would need to attest. A free-form
+    # reviewer string is not an authenticated principal identity either.
+    in_tree_records = load_attestations(ctx)
+    if in_tree_records:
+        return ("unknown", True, [
+            str(len(in_tree_records)) + " candidate-tree attestation record(s) found, but none can satisfy independent review: "
+            "the candidate cannot self-attest its final revision and reviewer strings are not authenticated identities; "
+            "a detached DSSE attestation plus a configured trust-policy verifier is required"
         ])
-    return ("unknown", True, ["acceptance requires a recorded human attestation by an identity distinct from the author, bound to the candidate revision; none found"])
+    return ("unknown", True, [
+        "independent review is unavailable to the offline evaluator: a detached DSSE attestation and an explicitly "
+        "configured trust-policy verifier are required; no such verifier is configured"
+    ])
 
 
 RULES = [

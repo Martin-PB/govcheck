@@ -20,6 +20,7 @@ from govcheck import attestation as att
 from govcheck import attestation_verify as verify
 from govcheck import independent_review as independent_review
 from govcheck import forge_author_identity as forge_author_identity
+from govcheck import acceptance_decision as acceptance_decision
 
 ROOT = Path(__file__).resolve().parents[1]
 FIXTURE_SPEC = importlib.util.spec_from_file_location("attestation_fixture", ROOT / "tests" / "test_attestation.py")
@@ -55,7 +56,7 @@ class DetachedVerificationTests(unittest.TestCase):
                 "publicKeyPath": self.public_key.name,
                 "publicKeySha256": self.file_digest(self.public_key),
                 "principalId": "principal:synthetic-reviewer",
-                "roles": ["independent-reviewer", "verifier", "forge-authority"],
+                "roles": ["independent-reviewer", "verifier", "forge-authority", "governance-authority"],
                 "validFrom": "2000-01-01T00:00:00Z",
                 "validUntil": "2100-01-01T00:00:00Z",
                 "revoked": False,
@@ -216,6 +217,31 @@ class DetachedVerificationTests(unittest.TestCase):
             expected_predicate_type=forge_author_identity.PREDICATE_TYPE,
         )
         self.assertEqual(result["status"], "unknown")
+
+    def test_signed_acceptance_decision_statement_verifies_under_authority_role(self):
+        statement = acceptance_decision.build_statement(
+            repository_uri="https://github.com/example/project",
+            decision_id="decision-17",
+            repository_id="repo:12345",
+            candidate_revision="c" * 40,
+            candidate_content_sha256="a" * 64,
+            base_revision="e" * 40,
+            ref="refs/heads/main",
+            governance_revision="gov-17",
+            scope_id="repo:example/project",
+            evaluation_digest="d" * 64,
+            result="accept",
+            decided_on="2026-11-27T12:00:00Z",
+            rationale="The evaluation passed under the applicable governance revision.",
+        )
+        self.envelope = self.sign_statement(statement)
+        result = self.verify(
+            required_role="governance-authority",
+            expected_predicate_type=acceptance_decision.PREDICATE_TYPE,
+        )
+        self.assertEqual(result["status"], "verified")
+        self.assertEqual(result["predicateType"], acceptance_decision.PREDICATE_TYPE)
+        self.assertEqual(result["statement"]["predicate"]["decisionId"], "decision-17")
 
     def test_tampered_payload_fails_signature_verification(self):
         statement = copy.deepcopy(self.statement)

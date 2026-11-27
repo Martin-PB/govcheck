@@ -304,6 +304,14 @@ def verify_dsse_envelope(
                 "base_revision": predicate["baseRevision"],
                 "content_sha256": predicate["candidateContentSha256"],
             }
+        elif predicate_type == "urn:govcheck:attestation:acceptance-decision:v1":
+            bindings = {
+                "candidate_revision": predicate["candidateRevision"],
+                "governance_revision": predicate["governanceRevision"],
+                "scope_id": predicate["scopeId"],
+                "base_revision": predicate["baseRevision"],
+                "content_sha256": predicate["candidateContentSha256"],
+            }
         elif predicate_type == "urn:govcheck:attestation:forge-author-identity:v1":
             bindings = {
                 "candidate_revision": predicate["candidateRevision"],

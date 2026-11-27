@@ -14,7 +14,7 @@ Inclusion is descriptive, not adoption. A cited method or standard does not impl
 
 <a id="r-06"></a>
 ## R-06 — in-toto software supply-chain integrity
-- **Cited by:** [Specification 0009](specifications/0009-independent-review-attestations.md).
+- **Cited by:** [Specification 0009](specifications/0009-independent-review-attestations.md), [Specification 0010](specifications/0010-authenticated-acceptance-decisions.md).
 
 - **Primary sources:** [in-toto project](https://in-toto.io/) · [USENIX Security 2019 paper](https://ssl.engineering.nyu.edu/papers/torres-toto-usenix19.pdf)
 - **Use:** provenance of process steps, materials and products.

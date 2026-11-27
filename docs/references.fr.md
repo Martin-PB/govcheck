@@ -13,6 +13,7 @@
 | Régimes d'assurance et exigences orientées objectifs | R-35–R-36, R-44, R-92 |
 | Model checking et vérification de programmes candidates | R-05, R-20, R-37–R-43, R-89–R-91 |
 | Provenance des preuves, attestations interopérables et chaîne d'approvisionnement logicielle | R-06–R-08, R-227–R-229 |
+| Stockage local durable du journal et JSON canonique | R-230–R-231 |
 | Moteurs de politiques, autorisation et vérification de modèles | R-09–R-10, R-88 |
 | Logique normative et modalités déontiques | R-93 |
 | Schémas et contrats d'interface | R-13, R-16 |
@@ -312,7 +313,7 @@
 <a id="r-22"></a>
 
 ### R-22 — Sémantiques natives de Git et Pijul
-- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [0009](architecture/0009-govcheck-design-discussion-record.fr.md), [0011](architecture/0011-lifecycle-model-assertion-audit.fr.md), [0014](architecture/0014-governed-development-workflow.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md), [ADR 0001](decisions/0001-bootstrap-boundaries.fr.md), [Spec 0003](specifications/0003-change-lifecycle.fr.md), [Spec 0004](specifications/0004-vcs-collaboration-contracts.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md), [Modèle de cycle de vie formel](formal/lifecycle-model.fr.md), [Spec 0006](specifications/0006-governance-revision-applicability.fr.md), [ADR 0006](decisions/0006-vcs-forge-portability.fr.md), [ADR 0008](decisions/0008-governance-applicability-arbitration-session.fr.md), [Index des modèles formels](formal/README.fr.md), [Architecture 0032](architecture/0032-canonical-publication-model-checking.fr.md), [Spécification 0007](specifications/0007-canonical-governance-journal-protocol.fr.md), [Architecture 0035](architecture/0035-canonical-journal-recovery-model.fr.md), [Événements du portefeuille](work-portfolio/events.fr.md), [0036-governance-revision-context-binding-model](architecture/0036-governance-revision-context-binding-model.fr.md)
+- **Cité par :** [0007](architecture/0007-technology-decision-framework.fr.md), [0009](architecture/0009-govcheck-design-discussion-record.fr.md), [0011](architecture/0011-lifecycle-model-assertion-audit.fr.md), [0014](architecture/0014-governed-development-workflow.fr.md), [0021](architecture/0021-assurance-claims-and-freshness.fr.md), [ADR 0001](decisions/0001-bootstrap-boundaries.fr.md), [Spec 0003](specifications/0003-change-lifecycle.fr.md), [Spec 0004](specifications/0004-vcs-collaboration-contracts.fr.md), [ADR 0002](decisions/0002-study-placement.fr.md), [Modèle de cycle de vie formel](formal/lifecycle-model.fr.md), [Spec 0006](specifications/0006-governance-revision-applicability.fr.md), [ADR 0006](decisions/0006-vcs-forge-portability.fr.md), [ADR 0008](decisions/0008-governance-applicability-arbitration-session.fr.md), [Index des modèles formels](formal/README.fr.md), [Architecture 0032](architecture/0032-canonical-publication-model-checking.fr.md), [Spécification 0007](specifications/0007-canonical-governance-journal-protocol.fr.md), [Architecture 0035](architecture/0035-canonical-journal-recovery-model.fr.md), [Événements du portefeuille](work-portfolio/events.md), [0036-governance-revision-context-binding-model](architecture/0036-governance-revision-context-binding-model.fr.md)
 
 - **Sources primaires :** [Documentation Git](https://git-scm.com/docs) · [Manuel Pijul : théorie](https://pijul.org/manual/theory) · [Canaux Pijul](https://pijul.org/manual/workflows/channels) · [Conflits Pijul](https://pijul.org/manual/conflicts.html) · [Projet Pijul](https://pijul.org/) · [Service d'hébergement Nest](https://nest.pijul.com/) · [Dépôt source de Nest](https://nest.pijul.com/pijul/nest/tree)
 - **Concepts pertinents :** modèle d'instantanés/commits et arbres de Git ; graphe de changements/patchs, canaux et conflits de première classe de Pijul ; Nest comme plateforme d'hébergement de dépôts Pijul.
@@ -1412,7 +1413,7 @@
 
 <a id="r-202"></a>
 ### R-202 — Guides de management et d'appréciation du risque
-- **Cité par :** [Recherche sur les décisions et le risque assumé](research/decision-and-assumed-risk-crosscutting-2026-11.fr.md)
+- **Cité par :** [Recherche sur les décisions et le risque assumé](research/decision-and-assumed-risk-crosscutting-2026-11.fr.md), [Éléments du portefeuille](work-portfolio/work-items.md), [Événements du portefeuille](work-portfolio/events.md)
 - **Normes et guides primaires :** [ISO 31000:2018 — Management du risque : lignes directrices](https://www.iso.org/standard/31000) · [IEC 31010:2019 — Techniques d'appréciation du risque](https://www.iso.org/standard/72140.html) · [NIST SP 800-30 Rev. 1 — Guide for Conducting Risk Assessments](https://csrc.nist.gov/pubs/sp/800/30/r1/final)
 - **Concepts pertinents :** principes et processus de management du risque organisationnel ; sélection, planification, vérification et validation des techniques d'appréciation ; incertitude, sensibilité, contexte d'évaluation, préparation, conduite, maintien et documentation des résultats.
 - **Utilité pour GovCheck :** éclaire la séparation entre scénario de risque, évaluation dépendante d'une méthode, traitement, exposition résiduelle et acceptation autorisée. Soutient l'enregistrement de l'objectif, de la portée, des hypothèses, des révisions des données/modèles, de la méthode, des limites et des conditions de réexamen.
@@ -1590,7 +1591,7 @@
 - **Sources primaires :** [Spécification de l'enveloppe DSSE](https://github.com/dsse-lf/dsse/blob/master/envelope.md) · [Protocole de signature et de vérification DSSE](https://github.com/dsse-lf/dsse/blob/master/protocol.md).
 - **Utilité :** définit l'enveloppe JSON et la construction PAE qui lie le type et les octets exacts du payload aux signatures ; prend en charge plusieurs signatures.
 - **Limite :** DSSE authentifie des octets signés selon la politique de confiance du vérificateur. Un identifiant de clé est un simple indice non authentifié ; la validité d'une signature n'établit pas à elle seule un rôle GovCheck ni la correction sémantique d'une évaluation.
-- **Cité par :** [Spécification 0008](specifications/0008-interoperable-assurance-attestations.fr.md).
+- **Cité par :** [Spécification 0008](specifications/0008-interoperable-assurance-attestations.fr.md), [Événements du portefeuille](work-portfolio/events.fr.md).
 
 <a id="r-228"></a>
 ### R-228 — Framework d'attestation in-toto v1
@@ -1598,7 +1599,7 @@
 - **Sources primaires :** [Vue d'ensemble v1](https://github.com/in-toto/attestation/tree/main/spec/v1) · [Couche Statement](https://github.com/in-toto/attestation/blob/main/spec/v1/statement.md) · [Couche Envelope](https://github.com/in-toto/attestation/blob/main/spec/v1/envelope.md) · [Couche Predicate](https://github.com/in-toto/attestation/blob/main/spec/v1/predicate.md).
 - **Utilité :** sépare l'enveloppe authentifiée, le Statement liant le sujet et le prédicat typé ; permet un prédicat propre à GovCheck sans redéfinir la couche Statement commune.
 - **Limite :** le framework fournit transport et structure, pas l'autorité, la politique d'acceptation, la sémantique des éléments probants ou l'association des rôles de confiance de GovCheck.
-- **Cité par :** [Spécification 0008](specifications/0008-interoperable-assurance-attestations.fr.md).
+- **Cité par :** [Spécification 0008](specifications/0008-interoperable-assurance-attestations.fr.md), [Événements du portefeuille](work-portfolio/events.fr.md).
 
 <a id="r-229"></a>
 ### R-229 — SLSA Verification Summary Attestation (VSA)
@@ -1606,4 +1607,20 @@
 - **Source primaire :** [SLSA VSA v1.2](https://slsa.dev/spec/v1.2/verification_summary).
 - **Utilité :** résume la vérification d'un artefact selon les pistes/niveaux SLSA, avec notamment le vérificateur, la politique, les attestations d'entrée et le résultat de vérification.
 - **Limite :** ses sémantiques PASSED/FAILED et niveaux SLSA ne représentent pas sans perte les résultats pass/fail/unknown/conflict de GovCheck, sa taxonomie des méthodes d'assurance, ses décisions d'autorité ou l'acceptation du risque.
-- **Cité par :** [Spécification 0008](specifications/0008-interoperable-assurance-attestations.fr.md).
+- **Cité par :** [Spécification 0008](specifications/0008-interoperable-assurance-attestations.fr.md), [Événements du portefeuille](work-portfolio/events.fr.md).
+
+<a id="r-230"></a>
+### R-230 — Transactions, WAL et durabilité SQLite
+- **Type :** Documentation primaire d'implémentation.
+- **Sources primaires :** [Transactions](https://www.sqlite.org/lang_transaction.html) · [Write-Ahead Logging](https://www.sqlite.org/wal.html) · [PRAGMA synchronous et paramètres de journal](https://www.sqlite.org/pragma.html) · [Atomic Commit](https://www.sqlite.org/atomiccommit.html).
+- **Utilité :** documente les transactions d'écriture sérialisées, BEGIN IMMEDIATE, le comportement lecteurs/écrivain de WAL, les contraintes de même hôte et les conséquences des paramètres synchronous sur la durabilité.
+- **Limite :** les garanties transactionnelles SQLite dépendent de son VFS, du système de fichiers et du matériel de stockage. WAL n'est pas pris en charge sur les systèmes de fichiers réseau ; une base locale n'authentifie pas les acteurs et ne résiste pas à un administrateur privilégié.
+- **Cité par :** [Architecture 0038](architecture/0038-local-canonical-journal-implementation.fr.md).
+
+<a id="r-231"></a>
+### R-231 — RFC 8785 : JSON Canonicalization Scheme (JCS)
+- **Type :** Spécification primaire de sérialisation/canonicalisation (RFC informative).
+- **Source primaire :** [RFC 8785](https://www.rfc-editor.org/rfc/rfc8785.html).
+- **Utilité :** définit une sérialisation JSON déterministe adaptée au hachage et à la signature, notamment l'ordre des propriétés, la sérialisation des primitives et les contraintes I-JSON.
+- **Limite :** JCS ne définit ni la sémantique des événements GovCheck, ni l'autorisation, ni l'ordre du journal. Son modèle numérique est IEEE-754 ; les rationnels exacts/grands entiers doivent utiliser des chaînes/enregistrements typés ou un sous-ensemble compatible soigneusement spécifié.
+- **Cité par :** [Architecture 0038](architecture/0038-local-canonical-journal-implementation.fr.md).

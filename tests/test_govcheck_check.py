@@ -150,7 +150,7 @@ class EvaluateTests(unittest.TestCase):
             self.assertEqual(rule["result"], "unknown")
             self.assertEqual(rule["applies"], True)
 
-    def test_review_passes_with_distinct_reviewer_attestation(self):
+    def test_in_tree_attestation_never_satisfies_independent_review(self):
         with tempfile.TemporaryDirectory() as d:
             root = Path(d)
             build_tree(root)
@@ -159,7 +159,9 @@ class EvaluateTests(unittest.TestCase):
             git = {"candidate_rev": rev, "author": "Alice <alice@example.org>"}
             report = check.evaluate(root, changed={"x.md"}, git=git)
             rule = next(r for r in report["rules"] if r["id"] == "independent-review")
-            self.assertEqual(rule["result"], "pass")
+            self.assertEqual(rule["result"], "unknown")
+            self.assertIn("candidate-tree attestation record", rule["reasons"][0])
+            self.assertIn("DSSE", rule["reasons"][0])
 
     def test_review_ignores_attestation_by_the_author(self):
         with tempfile.TemporaryDirectory() as d:

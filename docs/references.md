@@ -13,6 +13,7 @@
 | Assurance regimes and goal-oriented requirements | R-35–R-36, R-44, R-92 |
 | Model checking and program-verification alternatives | R-05, R-20, R-37–R-43, R-89–R-91 |
 | Evidence provenance, interoperable attestations and software supply chain | R-06–R-08, R-227–R-229 |
+| Local durable journal storage and canonical JSON | R-230–R-231 |
 | Policy engines, authorization and policy-model verification | R-09–R-10, R-88 |
 | Normative logic and deontic modalities | R-93 |
 | Schemas and interface contracts | R-13, R-16 |
@@ -1411,7 +1412,7 @@
 
 <a id="r-202"></a>
 ### R-202 — Risk management and risk assessment process guidance
-- **Cited by:** [Decision and assumed risk research](research/decision-and-assumed-risk-crosscutting-2026-11.md)
+- **Cited by:** [Decision and assumed risk research](research/decision-and-assumed-risk-crosscutting-2026-11.md), [Portfolio work items](work-portfolio/work-items.md), [Portfolio events](work-portfolio/events.md)
 - **Primary standards and guidance:** [ISO 31000:2018 — Risk management: Guidelines](https://www.iso.org/standard/31000) · [IEC 31010:2019 — Risk assessment techniques](https://www.iso.org/standard/72140.html) · [NIST SP 800-30 Rev. 1 — Guide for Conducting Risk Assessments](https://csrc.nist.gov/pubs/sp/800/30/r1/final)
 - **Relevant concepts:** organizational risk-management principles and process; selection, planning, verification and validation of risk-assessment techniques; uncertainty, sensitivity, assessment context, preparation, conduct, maintenance and documentation of assessment results.
 - **Use in GovCheck:** informs the separation between a risk scenario, method-specific assessment, treatment, residual exposure and authorized acceptance. Supports recording assessment purpose, scope, assumptions, data/model revisions, method, limitations and review conditions.
@@ -1589,7 +1590,7 @@
 - **Primary sources:** [DSSE envelope specification](https://github.com/dsse-lf/dsse/blob/master/envelope.md) · [DSSE signing and verification protocol](https://github.com/dsse-lf/dsse/blob/master/protocol.md).
 - **Use:** defines the JSON envelope and PAE construction binding the payload type and exact payload bytes to signatures; supports multiple signatures.
 - **Limit:** DSSE authenticates signed bytes under a verifier's trust policy. A key ID is an unauthenticated hint; signature validity alone does not establish a GovCheck role or the semantic correctness of an evaluation.
-- **Cited by:** [Specification 0008](specifications/0008-interoperable-assurance-attestations.md).
+- **Cited by:** [Specification 0008](specifications/0008-interoperable-assurance-attestations.md), [Portfolio events](work-portfolio/events.md).
 
 <a id="r-228"></a>
 ### R-228 — in-toto Attestation Framework v1
@@ -1597,7 +1598,7 @@
 - **Primary sources:** [Framework v1 overview](https://github.com/in-toto/attestation/tree/main/spec/v1) · [Statement layer](https://github.com/in-toto/attestation/blob/main/spec/v1/statement.md) · [Envelope layer](https://github.com/in-toto/attestation/blob/main/spec/v1/envelope.md) · [Predicate layer](https://github.com/in-toto/attestation/blob/main/spec/v1/predicate.md).
 - **Use:** separates authenticated envelope, subject-binding Statement and typed predicate; supports a GovCheck-specific predicate without redefining the common statement layer.
 - **Limit:** the framework provides transport and structure, not GovCheck's authority, acceptance policy, evidence semantics or trust-role mapping.
-- **Cited by:** [Specification 0008](specifications/0008-interoperable-assurance-attestations.md).
+- **Cited by:** [Specification 0008](specifications/0008-interoperable-assurance-attestations.md), [Portfolio events](work-portfolio/events.md).
 
 <a id="r-229"></a>
 ### R-229 — SLSA Verification Summary Attestation (VSA)
@@ -1605,4 +1606,20 @@
 - **Primary source:** [SLSA VSA v1.2](https://slsa.dev/spec/v1.2/verification_summary).
 - **Use:** summarizes verification of an artifact against SLSA tracks/levels, including verifier, policy, input attestations and verification result.
 - **Limit:** its PASSED/FAILED and SLSA-level semantics are not a lossless representation of GovCheck's pass/fail/unknown/conflict results, assurance-method taxonomy, authority decisions or risk acceptance.
-- **Cited by:** [Specification 0008](specifications/0008-interoperable-assurance-attestations.md).
+- **Cited by:** [Specification 0008](specifications/0008-interoperable-assurance-attestations.md), [Portfolio events](work-portfolio/events.md).
+
+<a id="r-230"></a>
+### R-230 — SQLite transactions, WAL and durability
+- **Type:** Primary implementation documentation.
+- **Primary sources:** [Transactions](https://www.sqlite.org/lang_transaction.html) · [Write-Ahead Logging](https://www.sqlite.org/wal.html) · [PRAGMA synchronous and journal settings](https://www.sqlite.org/pragma.html) · [Atomic Commit](https://www.sqlite.org/atomiccommit.html).
+- **Use:** documents serialized write transactions, BEGIN IMMEDIATE, WAL reader/writer behavior, same-host constraints and durability implications of synchronous settings.
+- **Limit:** SQLite's transactional guarantees depend on its VFS, filesystem and storage hardware. WAL is not supported over network filesystems; a local database does not authenticate actors or resist a privileged administrator.
+- **Cited by:** [Architecture 0038](architecture/0038-local-canonical-journal-implementation.md).
+
+<a id="r-231"></a>
+### R-231 — RFC 8785: JSON Canonicalization Scheme (JCS)
+- **Type:** Primary serialization/canonicalization specification (Informational RFC).
+- **Primary source:** [RFC 8785](https://www.rfc-editor.org/rfc/rfc8785.html).
+- **Use:** defines deterministic JSON serialization suitable for hashing/signing, including property ordering, primitive serialization and I-JSON constraints.
+- **Limit:** JCS does not define GovCheck event semantics, authorization or journal ordering. Its numeric model is IEEE-754; exact rationals/large integers should use typed strings/records or a carefully specified compatible subset.
+- **Cited by:** [Architecture 0038](architecture/0038-local-canonical-journal-implementation.md).

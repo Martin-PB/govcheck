@@ -148,7 +148,7 @@ Détail canonique : [journal anglais WP-EVT-000033](events.md#wp-evt-000033).
 - **Type d'événement :** `typed-risk-specification-candidate-completed`.
 - **Date :** 2026-11-27.
 - **Issue source :** [#131](https://github.com/Martin-PB/govcheck/issues/131) ; incrément de recherche [PR #142](https://github.com/Martin-PB/govcheck/pull/142) ; incrément Lean typé [PR #150](https://github.com/Martin-PB/govcheck/pull/150), fusionné au commit `3228404631bb565fddd6d0fb5a52f75724fe24dd`.
-- **Artefacts :** recherche bilingue `decision-and-assumed-risk-crosscutting-2026-11` ; recherche bilingue `semantic-assurance-and-transition-models-2026-11` ; `formal/lean/GovCheckCoherence/RiskSemantics.lean) ; rapport dédié `RiskSemanticsAxiomReport.lean` ; entrées R-193 et R-202 du catalogue.
+- **Artefacts :** recherche bilingue `decision-and-assumed-risk-crosscutting-2026-11` ; recherche bilingue `semantic-assurance-and-transition-models-2026-11` ; `formal/lean/GovCheckCoherence/RiskSemantics.lean ; rapport dédié `RiskSemanticsAxiomReport.lean` ; entrées [R-193](../references.fr.md#r-193) et [R-202](../references.fr.md#r-202) du catalogue.
 - **Frontières sémantiques :** point/intervalle/distribution probabiliste, appartenance floue, possibilités non déterministes, taux de transition, confiance dans un argument, coût, utilité, priorité et fréquence empirique sont des familles typées distinctes. La disponibilité épistémique préserve NotAssessed, Unknown, NotQuantifiable, NotApplicable, Quantified et Inconclusive.
 - **Frontières décision/risque :** les entrées PEAK restent distinctes ; DecisionOutcome conserve Solution et AssumedRisk ; RiskScenario, RiskAssessment, RiskTreatment et RiskAcceptance sont séparés ; l'acceptation lie les révisions exactes du scénario/de l'évaluation et enregistre autorité, portée, révision de politique et intervalle de validité.
 - **Éléments probants formels :** 17 théorèmes représentatifs de disjonction des constructeurs et d'intégrité des enregistrements passent sous Lean 4.19.0 ; le rapport dédié ne relève aucune dépendance axiomatique.
@@ -162,7 +162,7 @@ Détail canonique : [journal anglais WP-EVT-000033](events.md#wp-evt-000033).
 - **Type d'événement :** `in-toto-dsse-profile-increment-merged`.
 - **Date :** 2026-11-27.
 - **Issue/PR source :** [#44](https://github.com/Martin-PB/govcheck/issues/44), [PR #154](https://github.com/Martin-PB/govcheck/pull/154), fusionnée dans `main` au commit `6556a03d73c8aa2ee4527865b4d12acbc26bc644`.
-- **Artefacts :** Spécification 0008 EN/FR ; schéma JSON du prédicat ; `govcheck/attestation.py` standard-library-only ; tests de liaison exacte candidat/base, identités Git/Pijul, résultats à quatre valeurs, structure DSSE PAE/enveloppe et revue indépendante indisponible ; références R-227–R-229.
+- **Artefacts :** Spécification 0008 EN/FR ; schéma JSON du prédicat ; `govcheck/attestation.py` standard-library-only ; tests de liaison exacte candidat/base, identités Git/Pijul, résultats à quatre valeurs, structure DSSE PAE/enveloppe et revue indépendante indisponible ; références [R-227](../references.fr.md#r-227), [R-228](../references.fr.md#r-228) et [R-229](../references.fr.md#r-229).
 - **Correction de sécurité :** les JSON de revue intégrés à l'arbre candidat et les noms libres de reviewer ne peuvent plus satisfaire la règle de revue indépendante. La règle reste UNKNOWN tant qu'un vérificateur DSSE détaché et une politique de confiance explicite ne sont pas configurés.
 - **Validation :** 143 tests Python, intégrité des références et alignement du paquet passent sur la tête finale de la PR.
 - **Limite :** aucune signature/vérification cryptographique, gestion de racines de confiance/clés, association signataire/rôle ou génération du digest canonique du contenu n'est implémentée. Aucune revue indépendante n'est revendiquée ; l'issue #44 reste ouverte.
@@ -177,3 +177,14 @@ Détail canonique : [journal anglais WP-EVT-000033](events.md#wp-evt-000033).
 - **Fondement :** la Spécification 0007 proposée et le modèle borné de reprise Architecture 0035 sont fusionnés, mais aucune implémentation durable du journal n'existe.
 - **Périmètre :** évaluer un stockage embarqué local ; implémenter genesis explicite, append compare-and-append sérialisé, reçus durables, retry idempotent, reprise après crash et vérification de chaîne avec tests hors ligne positifs/négatifs.
 - **Frontière :** aucun serveur/MCP hébergé, consensus distribué, cryptographie maison, genesis implicite ou ordre normatif imposé par une forge/VCS. L'intégrité de la chaîne ne prouve ni l'identité d'un acteur ni son autorité.
+
+
+<a id="wp-evt-000038"></a>
+## WP-EVT-000038 — Adaptateur de portefeuille GitHub livré
+- **Sujet :** `govcheck.portfolio.forge-native-adapter`.
+- **Type d'événement :** `github-forge-adapter-first-backend-completed`.
+- **Date :** 2026-11-27.
+- **Issue/PR sources :** [#118](https://github.com/Martin-PB/govcheck/issues/118) ; [#119](https://github.com/Martin-PB/govcheck/pull/119), [#120](https://github.com/Martin-PB/govcheck/pull/120), [#121](https://github.com/Martin-PB/govcheck/pull/121), toutes fusionnées.
+- **Artefacts :** Architecture 0034 EN/FR ; govcheck/forge.py stdlib-only ; tests de contrat hors ligne ; capacité de bootstrap forge ; README EN/FR.
+- **Livré :** IDs de travail stables registry-first, tests d'aller-retour sans perte, inspection read-only des checks/protections, écritures explicites avec token, échecs typés et absence de sémantique d'autorisation par la forge.
+- **Limite :** GitHub REST v3 est le seul backend implémenté dans cette issue. GitLab/Gitea/Forgejo, synchronisation bidirectionnelle automatique et écritures Projects v2 restent des chantiers séparés ; l'issue #118 est clôturée pour sa première tranche.

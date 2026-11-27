@@ -95,6 +95,8 @@
       "optional": [
         "Références"
       ]
-    }
+    },
+    "docs/specifications/0008-interoperable-assurance-attestations.md": {},
+    "docs/specifications/0008-interoperable-assurance-attestations.fr.md": {}
   }
 }

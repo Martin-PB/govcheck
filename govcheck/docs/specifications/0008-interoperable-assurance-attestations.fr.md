@@ -100,6 +100,6 @@ Le contrôle actuel `independent-review` ne doit pas traiter un enregistrement J
 - [Spécification 0005 — Assurance, affirmations et éléments probants](0005-assurance-model.fr.md)
 - [Spécification 0007 — Journal canonique de gouvernance](0007-canonical-governance-journal-protocol.fr.md)
 - [Architecture 0023 — Autorité de gouvernance bootstrap](../architecture/0023-bootstrap-governance-authority.fr.md)
-- [Issue #44](https://github.com/Martin-PB/govcheck/issues/44), issue #60, issue #131
+- issue #44, issue #60, issue #131
 
 **Cette spécification est proposée. Elle n'adopte aucune racine de confiance, politique de signataire, algorithme cryptographique ou règle obligatoire d'acceptation.**

@@ -101,6 +101,7 @@ class StatementTests(unittest.TestCase):
         report, context = valid_inputs()
         context["repository"]["vcsKind"] = "pijul"
         context["candidate"]["channel"] = "main"
+        context["base"].update({"channel": "main", "changeSet": "pijul-base-change-set"})
         with self.assertRaisesRegex(att.AttestationError, "candidate.changeSet"):
             att.build_statement(report, context)
 

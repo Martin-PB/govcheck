@@ -18,6 +18,7 @@ from pathlib import Path
 
 from govcheck import attestation as att
 from govcheck import attestation_verify as verify
+from govcheck import independent_review as independent_review
 
 ROOT = Path(__file__).resolve().parents[1]
 FIXTURE_SPEC = importlib.util.spec_from_file_location("attestation_fixture", ROOT / "tests" / "test_attestation.py")
@@ -107,6 +108,73 @@ class DetachedVerificationTests(unittest.TestCase):
         self.assertEqual(result["signers"][0]["principalId"], "principal:synthetic-reviewer")
         self.assertIn("independent-reviewer", result["signers"][0]["roles"])
         self.assertEqual(result["predicateType"], att.PREDICATE_TYPE)
+
+    def test_detached_independent_review_predicate_verifies_exact_bindings(self):
+        statement = independent_review.build_statement(
+            repository_uri="https://github.com/example/project",
+            candidate_revision="c" * 40,
+            candidate_content_sha256="a" * 64,
+            base_revision="e" * 40,
+            governance_revision="gov-17",
+            scope_id="repo:example/project",
+            reviewed_on="2026-11-27T12:00:00Z",
+            outcome="accepted",
+            claims_reviewed=["claim:security"],
+            observations=["Review scoped to the declared claims."],
+            limitations=["No trusted timestamp was asserted."],
+        )
+        self.envelope = self.sign_statement(statement)
+        result = self.verify(
+            expected_predicate_type=independent_review.PREDICATE_TYPE,
+            forbidden_principal="principal:candidate-author",
+        )
+        self.assertEqual(result["status"], "verified")
+        self.assertEqual(result["predicateType"], independent_review.PREDICATE_TYPE)
+        self.assertEqual(result["signers"][0]["principalId"], "principal:synthetic-reviewer")
+
+    def test_independent_review_rejects_reviewer_equal_to_author(self):
+        statement = independent_review.build_statement(
+            repository_uri="https://github.com/example/project",
+            candidate_revision="c" * 40,
+            candidate_content_sha256="a" * 64,
+            base_revision="e" * 40,
+            governance_revision="gov-17",
+            scope_id="repo:example/project",
+            reviewed_on="2026-11-27T12:00:00Z",
+            outcome="accepted",
+            claims_reviewed=["claim:security"],
+            observations=["Review scoped to the declared claims."],
+            limitations=["No trusted timestamp was asserted."],
+        )
+        self.envelope = self.sign_statement(statement)
+        result = self.verify(
+            expected_predicate_type=independent_review.PREDICATE_TYPE,
+            forbidden_principal="principal:synthetic-reviewer",
+        )
+        self.assertEqual(result["status"], "invalid")
+        self.assertIn("not independent", result["reason"])
+
+    def test_independent_review_wrong_binding_is_rejected(self):
+        statement = independent_review.build_statement(
+            repository_uri="https://github.com/example/project",
+            candidate_revision="c" * 40,
+            candidate_content_sha256="a" * 64,
+            base_revision="e" * 40,
+            governance_revision="gov-17",
+            scope_id="repo:example/project",
+            reviewed_on="2026-11-27T12:00:00Z",
+            outcome="accepted",
+            claims_reviewed=["claim:security"],
+            observations=["Review scoped to the declared claims."],
+            limitations=["No trusted timestamp was asserted."],
+        )
+        self.envelope = self.sign_statement(statement)
+        result = self.verify(
+            expected_predicate_type=independent_review.PREDICATE_TYPE,
+            expected_candidate_revision="d" * 40,
+        )
+        self.assertEqual(result["status"], "invalid")
+        self.assertIn("candidate revision", result["reason"])
 
     def test_tampered_payload_fails_signature_verification(self):
         statement = copy.deepcopy(self.statement)

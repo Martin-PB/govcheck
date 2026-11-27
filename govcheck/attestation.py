@@ -279,6 +279,25 @@ def validate_statement(statement: dict) -> None:
     for index, subject in enumerate(subjects):
         subject = _object(subject, "subject[" + str(index) + "]")
         _digest(subject.get("digest"), "subject.digest")
+    if statement.get("predicateType") == "urn:govcheck:attestation:independent-review:v1":
+        predicate = _object(statement.get("predicate"), "predicate")
+        try:
+            from .independent_review import validate_predicate
+        except ImportError:
+            from independent_review import validate_predicate
+        normalized = validate_predicate(predicate)
+        if not subjects:
+            raise AttestationError("independent-review Statement requires a subject")
+        subject_matches = False
+        for subject in subjects:
+            subject = _object(subject, "subject")
+            name = _string(subject.get("name"), "subject.name")
+            digest = _digest(subject.get("digest"), "subject.digest")
+            if digest.get("sha256") == normalized["candidateContentSha256"]:
+                subject_matches = True
+        if not subject_matches:
+            raise AttestationError("independent-review subject digest does not match candidate content")
+        return
     if statement.get("predicateType") != PREDICATE_TYPE:
         raise AttestationError("unsupported GovCheck predicate type")
     predicate = _object(statement.get("predicate"), "predicate")

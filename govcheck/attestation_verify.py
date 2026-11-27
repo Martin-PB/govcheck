@@ -388,6 +388,8 @@ def _main(argv=None) -> int:
     verify.add_argument("--scope-id")
     verify.add_argument("--base-revision")
     verify.add_argument("--content-sha256")
+    verify.add_argument("--expected-predicate-type")
+    verify.add_argument("--forbidden-principal", help="Reject a signer principal matching the trusted candidate-author principal")
     args = parser.parse_args(argv)
     try:
         envelope_path = Path(args.envelope).expanduser().resolve()
@@ -404,6 +406,8 @@ def _main(argv=None) -> int:
             expected_scope_id=args.scope_id,
             expected_base_revision=args.base_revision,
             expected_content_sha256=args.content_sha256,
+            expected_predicate_type=args.expected_predicate_type,
+            forbidden_principal=args.forbidden_principal,
         )
         print(json.dumps(result, indent=2, ensure_ascii=False))
         return 0 if result.get("status") == "verified" else 2

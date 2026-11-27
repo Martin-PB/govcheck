@@ -63,7 +63,7 @@ DSSE signs the payload type and exact payload bytes using PAE. The `keyid` field
 
 A valid DSSE signature authenticates the signer of the statement; it does not automatically make that signer an independent reviewer, verifier, governance authority or approver. Consumers must check the signer/verifier pair and role against the relevant trust policy. A free-form `reviewer` field is never sufficient.
 
-The initial Python library builds and validates the in-toto statement payload and DSSE envelope structure, and exposes the DSSE PAE bytes for external signing. It does **not** implement cryptographic signing, certificate/key discovery, trust-root management or signature verification. Until a trusted verifier adapter is configured, a parsed envelope is structurally valid but unauthenticated and cannot satisfy an attestation gate. The verifier runtime and its trust policy remain part of the trusted computing base.
+The structural Python library builds and validates the in-toto statement payload and DSSE envelope structure, and exposes the DSSE PAE bytes for external signing. It does **not** implement signing or trust-root management. An optional local verifier provider is described by [Architecture 0039](../architecture/0039-detached-dsse-trust-policy.md) and implemented in govcheck/attestation_verify.py: Ed25519 verification is delegated to an OpenSSL executable pinned by absolute path and SHA-256, while the trust-policy file is pinned by an out-of-band digest. This provider is not enabled automatically and does not provide PKI, trusted timestamps or key lifecycle management. Until a trusted verifier adapter is configured, a parsed envelope is structurally valid but unauthenticated and cannot satisfy an attestation gate. The verifier runtime and its trust policy remain part of the trusted computing base.
 
 ## 7. SLSA VSA relationship
 
@@ -96,6 +96,10 @@ The current `independent-review` checker must not treat a candidate-tree JSON re
 - [R-227 — DSSE](../references.md#r-227)
 - [R-228 — in-toto Attestation Framework v1](../references.md#r-228)
 - [R-229 — SLSA Verification Summary Attestation](../references.md#r-229)
+- [R-232 — OpenSSL pkeyutl](../references.md#r-232)
+- [R-233 — RFC 8032 Ed25519](../references.md#r-233)
+- [Architecture 0039 — Detached DSSE verification](../architecture/0039-detached-dsse-trust-policy.md)
+- issue #158 — pinned trust-policy verifier
 - [R-06 — in-toto project](../references.md#r-06) and [R-07 — SLSA](../references.md#r-07)
 - [Specification 0005 — Assurance, Claims and Evidence](0005-assurance-model.md)
 - [Specification 0007 — Canonical Governance Journal](0007-canonical-governance-journal-protocol.md)

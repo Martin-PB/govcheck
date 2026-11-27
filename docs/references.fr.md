@@ -14,6 +14,7 @@
 | Model checking et vérification de programmes candidates | R-05, R-20, R-37–R-43, R-89–R-91 |
 | Provenance des preuves, attestations interopérables et chaîne d'approvisionnement logicielle | R-06–R-08, R-227–R-229 |
 | Stockage local durable du journal et JSON canonique | R-230–R-231 |
+| Vérification des signatures DSSE détachées et Ed25519 | R-232–R-233 |
 | Moteurs de politiques, autorisation et vérification de modèles | R-09–R-10, R-88 |
 | Logique normative et modalités déontiques | R-93 |
 | Schémas et contrats d'interface | R-13, R-16 |
@@ -1624,3 +1625,19 @@
 - **Utilité :** définit une sérialisation JSON déterministe adaptée au hachage et à la signature, notamment l'ordre des propriétés, la sérialisation des primitives et les contraintes I-JSON.
 - **Limite :** JCS ne définit ni la sémantique des événements GovCheck, ni l'autorisation, ni l'ordre du journal. Son modèle numérique est IEEE-754 ; les rationnels exacts/grands entiers doivent utiliser des chaînes/enregistrements typés ou un sous-ensemble compatible soigneusement spécifié.
 - **Cité par :** [Architecture 0038](architecture/0038-local-canonical-journal-implementation.fr.md).
+
+<a id="r-232"></a>
+### R-232 — OpenSSL pkeyutl
+- **Type :** Documentation primaire de la commande cryptographique.
+- **Source primaire :** [openssl-pkeyutl](https://docs.openssl.org/3.5/man1/openssl-pkeyutl/).
+- **Utilité :** documente la signature/vérification d'entrées brutes avec les clés publiques/privées EVP, notamment Ed25519 avec le mode raw-input.
+- **Limite :** le succès de la commande prouve uniquement que la clé fournie vérifie les octets fournis. Politique de confiance, association clé-principal, révocation, garde des clés et intégrité du binaire vérificateur restent des responsabilités du déploiement.
+- **Cité par :** [Architecture 0039](architecture/0039-detached-dsse-trust-policy.fr.md), [Spécification 0008](specifications/0008-interoperable-assurance-attestations.fr.md).
+
+<a id="r-233"></a>
+### R-233 — RFC 8032 : Edwards-Curve Digital Signature Algorithm (EdDSA)
+- **Type :** Spécification primaire de l'algorithme.
+- **Source primaire :** [RFC 8032](https://www.rfc-editor.org/rfc/rfc8032.html).
+- **Utilité :** spécifie les algorithmes de clés/signatures Ed25519/Ed448 et leurs vecteurs de test.
+- **Limite :** l'algorithme ne définit ni identité, ni autorisation, ni cycle de vie des clés, ni temps fiable, ni sémantique de politique DSSE.
+- **Cité par :** [Architecture 0039](architecture/0039-detached-dsse-trust-policy.fr.md), [Spécification 0008](specifications/0008-interoperable-assurance-attestations.fr.md).

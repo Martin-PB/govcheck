@@ -80,3 +80,6 @@ Le premier profil n'implémente ni signatures, ni gestion de clés, ni consensus
 - Liés : #45 frontière d'acceptation, #44 attestations détachées, #86 applicabilité de la révision de gouvernance.
 
 **Il s'agit d'un premier profil d'implémentation proposé. Il n'adopte pas SQLite comme backend universel, ne prouve pas l'autorité d'un acteur et ne revendique pas de protection contre un administrateur privilégié de la base.**
+
+
+La première implémentation vérifie la chaîne complète avant append et avant de retourner la tête ou un reçu. Le coût est O(n) en nombre d'événements ; ce premier profil local privilégie volontairement le fail-closed au débit. Une optimisation future par index/point de contrôle devra préserver la vérification à partir d'un point de contrôle fiable et être testée séparément ; une ligne de tête mutable ne constitue pas à elle seule un point de contrôle fiable.

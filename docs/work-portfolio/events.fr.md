@@ -211,3 +211,15 @@ Détail canonique : [journal anglais WP-EVT-000033](events.md#wp-evt-000033).
 - **Fondement :** la Spécification 0008 définit la structure DSSE/PAE, mais le constructeur n'authentifie pas les signatures. Un vérificateur détaché doit utiliser une politique de confiance épinglée par l'opérateur, hors du contenu contrôlé par le candidat.
 - **Périmètre :** fournisseur Ed25519 facultatif délégué à un exécutable OpenSSL épinglé par chemin/digest ; politique et clés publiques épinglées ; association key ID/principal/rôle ; validité/révocation ; liaison exacte candidat/gouvernance ; tests synthétiques positifs/négatifs.
 - **Limite :** aucune PKI, horodatage fiable, révocation en ligne, gestionnaire de cycle de vie des clés ou preuve d'identité réelle. Le projet ne dispose toujours que d'un seul contributeur ; aucune revue indépendante n'est fabriquée.
+
+
+<a id="wp-evt-000041"></a>
+## WP-EVT-000041 — Fournisseur de vérification DSSE détachée épinglée fusionné
+- **Sujet :** `govcheck.assurance.detached-dsse-verifier`.
+- **Type d'événement :** `pinned-ed25519-dsse-verifier-provider-merged`.
+- **Date :** 2026-11-27.
+- **Issue/PR source :** [#158](https://github.com/Martin-PB/govcheck/issues/158), [PR #159](https://github.com/Martin-PB/govcheck/pull/159), fusionnée au commit `21f40af53b3baca23853f575f1f905c17336ac36`.
+- **Artefacts :** Architecture 0039 EN/FR ; fournisseur OpenSSL/Ed25519 ; schéma de politique épinglée ; parsing DSSE Statement canonique strict ; capacité bootstrap ; documentation EN/FR ; fixtures synthétiques positives/négatives.
+- **Validation :** 187 tests Python, intégrité des références et alignement du package passent sur la tête finale de la PR.
+- **Garanties :** vérification de signature sur les octets PAE DSSE exacts ; politique, exécutable OpenSSL et clés publiques épinglés ; association key ID/principal/rôle ; validité/révocation ; liaison candidat/base/gouvernance/scope/contenu ; résultats verified/invalid/unknown.
+- **Limites :** aucune PKI, horodatage fiable, révocation en ligne, gestionnaire de cycle de vie des clés ou preuve d'identité réelle. Les clés synthétiques ne prouvent pas l'existence d'un reviewer indépendant. L'intégration à l'évaluateur/barrière reste ouverte dans #44/#45/#158.

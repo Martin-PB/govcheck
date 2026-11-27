@@ -62,6 +62,11 @@ Comportement par défaut : seul PASS est accepté automatiquement. Les autres r�
 
 La base d'autorité racine unique de l'Architecture 0023 reste inchangée. Cette proposition n'invente pas un second approbateur et ne prétend pas qu'un nom libre de reviewer prouve une autorité indépendante.
 
+
+### Contrainte opérationnelle mono-contributeur
+
+Le projet ne dispose actuellement que d'un seul contributeur. Une revue indépendante par une seconde personne est donc **indisponible**, et non réalisée ni implicitement dispensée. L'évaluateur doit préserver cette distinction : il doit signaler la revue manquante comme UNKNOWN/non disponible (ou dans un état explicite équivalent), sans fabriquer d'attestation de reviewer ni transformer cette absence en PASS. L'unique autorité racine peut prendre une décision distincte et attribuable dans le cadre du modèle d'autorité existant, y compris une acceptation du risque explicite, bornée et limitée dans le temps lorsque la politique applicable le permet. Cette décision ne constitue pas une revue indépendante et n'efface pas le risque résiduel lié à l'absence de séparation des tâches. Il s'agit d'une contrainte opérationnelle actuelle, non d'une hypothèse permanente : si un autre contributeur authentifié devient disponible, la capacité de revue indépendante pourra être réévaluée. L'indisponibilité d'un second contributeur ne vaut pas acceptation générale et automatique du risque.
+
 ## 5. Adaptateurs d'enforcement
 
 | Adaptateur | Frontière effective | Configuration/confiance requise | Limite résiduelle |

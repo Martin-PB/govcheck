@@ -49,6 +49,8 @@ La forme historique `python3 govcheck/bootstrap.py DOSSIER_CIBLE` initialise tou
 
 Chaque règle renvoie `pass`, `fail` ou `unknown`. Le résultat global est `fail` si une règle échoue, sinon `unknown` si une règle est inconnue, sinon `pass` (fermeture par l’échec : `unknown` n’est jamais un succès). Le code de sortie est 0 uniquement lorsque le résultat global est `pass`. Les règles couvrent les trois classes d’assurance : décidable (présence de la licence, paires de décisions bilingues, paires de paquet déclarées par le manifeste, intégrité du catalogue de références, sources obligatoires sur décisions et attestations, intégrité du marqueur d’amorçage), attestée (revue indépendante) et non vérifiable hors ligne (fraîcheur des preuves TLC). Les tests unitaires sont dans `tests/test_govcheck_check.py`.
 
+La règle `independent-review` ne fait pas confiance aux enregistrements JSON committés dans l'arbre candidat ni aux noms libres de reviewer. Un tel enregistrement ne peut authentifier la révision finale de l'arbre qui le contient, et le nom n'est pas une identité de principal authentifiée. Tant qu'une attestation DSSE détachée n'est pas vérifiée par un vérificateur de politique de confiance explicitement configuré, la règle reste `unknown`. Voir la [Spécification 0008](../docs/specifications/0008-interoperable-assurance-attestations.fr.md).
+
 ### Attestations enregistrées (revue indépendante)
 
 En mode git (`--base/--candidate`), la règle `independent-review` renvoie `pass` quand un enregistrement JSON dans `docs/attestations/*.json` porte `"decision": "accept"`, le SHA complet exact de la révision candidate dans `candidate_rev`, et un `reviewer` distinct de l’auteur du commit candidate. Sinon la règle reste `unknown` (fermeture par l’échec).

@@ -34,7 +34,7 @@ WAL mode permits concurrent readers while a writer is active, but does not permi
 
 ## 4. Canonical event and receipt profile
 
-The initial envelope uses:
+The initial envelope is defined by the package schemas [journal-event-v1](../../govcheck/formal/schemas/journal-event-v1.schema.json) and [journal-receipt-v1](../../govcheck/formal/schemas/journal-receipt-v1.schema.json). It uses:
 - explicit journal scope ID;
 - monotonically increasing position (genesis at position 0);
 - event ID, event type and schema revision;

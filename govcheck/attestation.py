@@ -17,7 +17,7 @@ from pathlib import Path
 from typing import Any
 
 STATEMENT_TYPE = "https://in-toto.io/Statement/v1"
-PREDICATE_TYPE = "https://github.com/Martin-PB/govcheck/attestation/assurance-evaluation/v1"
+PREDICATE_TYPE = "urn:govcheck:attestation:assurance-evaluation:v1"
 DSSE_PAYLOAD_TYPE = "application/vnd.in-toto+json"
 RESULTS = {"pass", "fail", "unknown", "conflict"}
 METHOD_KINDS = {"test", "model_check", "proof_check", "inspection", "analysis", "other"}
@@ -38,6 +38,18 @@ def _string(value: Any, label: str) -> str:
     if not isinstance(value, str) or not value.strip():
         raise AttestationError(label + " must be a non-empty string")
     return value.strip()
+
+
+def _decode_base64(value: str, label: str) -> bytes:
+    if not isinstance(value, str) or not value:
+        raise AttestationError(label + " must be a non-empty base64 string")
+    padded = value + "=" * (-len(value) % 4)
+    for altchars in (None, b"-_"):
+        try:
+            return base64.b64decode(padded, altchars=altchars, validate=True)
+        except (binascii.Error, ValueError):
+            continue
+    raise AttestationError(label + " is not valid base64")
 
 
 def _digest(value: Any, label: str) -> dict:
@@ -305,13 +317,7 @@ def build_dsse_envelope(statement: dict, signatures: list[dict]) -> dict:
     for i, item in enumerate(signatures):
         item = _object(item, "signatures[" + str(i) + "]")
         sig = _string(item.get("sig"), "signature.sig")
-        try:
-            decoded = base64.b64decode(sig, validate=True)
-        except (binascii.Error, ValueError):
-            try:
-                decoded = base64.urlsafe_b64decode(sig + "=" * (-len(sig) % 4))
-            except (binascii.Error, ValueError) as exc:
-                raise AttestationError("signature.sig is not valid base64") from exc
+        decoded = _decode_base64(sig, "signature.sig")
         if not decoded:
             raise AttestationError("signature.sig must not be empty")
         normalized_item = {"sig": sig}
@@ -332,26 +338,16 @@ def decode_dsse_envelope(envelope: dict) -> tuple[bytes, dict]:
     if envelope.get("payloadType") != DSSE_PAYLOAD_TYPE:
         raise AttestationError("unsupported DSSE payloadType")
     encoded = _string(envelope.get("payload"), "envelope.payload")
-    try:
-        payload = base64.b64decode(encoded, validate=True)
-    except (binascii.Error, ValueError):
-        try:
-            payload = base64.urlsafe_b64decode(encoded + "=" * (-len(encoded) % 4))
-        except (binascii.Error, ValueError) as exc:
-            raise AttestationError("envelope.payload is not valid base64") from exc
+    payload = _decode_base64(encoded, "envelope.payload")
+    if not payload:
+        raise AttestationError("envelope.payload must not be empty")
     signatures = envelope.get("signatures")
     if not isinstance(signatures, list) or not signatures:
         raise AttestationError("DSSE envelope requires at least one signature")
     for i, signature in enumerate(signatures):
         signature = _object(signature, "signatures[" + str(i) + "]")
         sig = _string(signature.get("sig"), "signature.sig")
-        try:
-            decoded = base64.b64decode(sig, validate=True)
-        except (binascii.Error, ValueError):
-            try:
-                decoded = base64.urlsafe_b64decode(sig + "=" * (-len(sig) % 4))
-            except (binascii.Error, ValueError) as exc:
-                raise AttestationError("signature.sig is not valid base64") from exc
+        decoded = _decode_base64(sig, "signature.sig")
         if not decoded:
             raise AttestationError("signature.sig must not be empty")
     try:

@@ -496,3 +496,26 @@
 - **Formal evidence:** 17 representative constructor-disjointness and record-integrity theorems pass Lean 4.19.0; the dedicated axiom report records no axiom dependencies.
 - **Limit:** typed semantic proposal only. No normative metamodel, canonical serialization, probability/fuzzy engine, universal risk score/calculus, aggregation policy, risk optimizer or proof of real-world authority is adopted.
 - **Disposition:** issue #131 closed as a completed technical proposal. Normative adoption remains a separate authority decision; no such adoption is implied.
+
+
+<a id="wp-evt-000036"></a>
+## WP-EVT-000036 — Interoperable attestation profile first increment merged
+- **Subject:** `govcheck.assurance.interoperable-attestation`.
+- **Event type:** `in-toto-dsse-profile-increment-merged`.
+- **Recorded:** 2026-11-27.
+- **Source issue/PR:** [#44](https://github.com/Martin-PB/govcheck/issues/44), [PR #154](https://github.com/Martin-PB/govcheck/pull/154), merged to `main` at `6556a03d73c8aa2ee4527865b4d12acbc26bc644`.
+- **Artifacts:** Specification 0008 EN/FR; predicate JSON Schema; standard-library `govcheck/attestation.py`; tests for exact candidate/base binding, Git/Pijul identity fields, four-valued results, DSSE PAE/envelope structure and unavailable independent review; references R-227–R-229.
+- **Security correction:** candidate-tree review JSON and free-form reviewer strings can no longer satisfy the independent-review rule. The rule remains UNKNOWN until a detached DSSE verifier and explicit trust policy are configured.
+- **Validation:** 143 Python tests, reference integrity and package alignment passed on the final PR head.
+- **Limit:** no cryptographic signing/verification, trust-root/key lifecycle, signer-role mapping or canonical content-digest generation is implemented. No independent review is claimed; issue #44 remains open.
+
+
+<a id="wp-evt-000037"></a>
+## WP-EVT-000037 — Local canonical journal implementation work item opened
+- **Subject:** `govcheck.governance.canonical-journal-local-implementation`.
+- **Event type:** `canonical-journal-implementation-work-item-opened`.
+- **Recorded:** 2026-11-27.
+- **Source issue:** [#155](https://github.com/Martin-PB/govcheck/issues/155).
+- **Basis:** proposed Specification 0007 and bounded recovery model Architecture 0035 are merged but no durable journal implementation exists.
+- **Scope:** evaluate a local embedded storage profile; implement explicit genesis, serialized compare-and-append, durable receipts, idempotent retry, crash recovery and hash-chain verification with offline positive/negative tests.
+- **Boundary:** no hosted MCP/server, distributed consensus, custom cryptography, implicit genesis or forge/VCS normative ordering. Hash-chain integrity is not actor authentication or proof of authority.

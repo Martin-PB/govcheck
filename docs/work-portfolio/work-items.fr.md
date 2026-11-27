@@ -81,7 +81,7 @@ Il s'agit d'une extraction structurelle, pas d'une interprétation sémantique U
 ## Nouveaux chantiers ouverts — 2026-11-13
 
 - **[#130 — Reproduction de la critique externe #129](https://github.com/Martin-PB/govcheck/issues/130)** : reproduire et qualifier les constats sur la révision source exacte, y compris tests Python, TLA+/TLC, Lean et enforcement CI. Le triage bilingue sur sources est préparé ; les exécutions restent à reproduire.
-- **[#131 — Sémantiques probabilistes, floues et risque assumé](https://github.com/Martin-PB/govcheck/issues/131)** : proposition technique terminée et issue clôturée comme livrable non normatif. Recherche bilingue, références R-193/R-202, distinction PEAK/évaluation/traitement/acceptation et prototype Lean rationnel exact avec 17 théorèmes vérifiés sans dépendance axiomatique. Aucune adoption du métamodèle, aucun score universel ni politique d'acceptation n'est impliqué.
+- **[#131 — Sémantiques probabilistes, floues et risque assumé](https://github.com/Martin-PB/govcheck/issues/131)** : proposition technique terminée et issue clôturée comme livrable non normatif. Recherche bilingue, références [R-193](../references.fr.md#r-193)/[R-202](../references.fr.md#r-202), distinction PEAK/évaluation/traitement/acceptation et prototype Lean rationnel exact avec 17 théorèmes vérifiés sans dépendance axiomatique. Aucune adoption du métamodèle, aucun score universel ni politique d'acceptation n'est impliqué.
 
 ### Avancement — décision transversale et risque PEAK
 

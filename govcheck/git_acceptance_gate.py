@@ -81,6 +81,26 @@ def _config_error(args, env: dict[str, str]) -> str | None:
         return "pinned policy digest must use sha256:<hex>"
     if not DIGEST_RE.fullmatch(env["GOVCHECK_EXPECTED_VERIFIER_DIGEST"]):
         return "pinned verifier digest must use sha256:<hex>"
+    policy_path = Path(env["GOVCHECK_TRUST_POLICY_PATH"]).expanduser().resolve()
+    git_dir = Path(args.git_dir or env.get("GIT_DIR", "")).expanduser().resolve()
+    try:
+        policy_path.relative_to(git_dir)
+    except ValueError:
+        pass
+    else:
+        return "trust policy must be installed outside the candidate repository"
+    try:
+        policy_bytes = policy_path.read_bytes()
+        policy = json.loads(policy_bytes.decode("utf-8"))
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError) as exc:
+        return "cannot read pinned trust policy: " + str(exc)
+    actual_policy_digest = _sha256(policy_bytes)
+    if actual_policy_digest != env["GOVCHECK_TRUST_POLICY_SHA256"]:
+        return "trust policy bytes do not match GOVCHECK_TRUST_POLICY_SHA256"
+    if not isinstance(policy, dict) or policy.get("revision") != env["GOVCHECK_EXPECTED_POLICY_REVISION"]:
+        return "trust policy revision does not match the pre-receive policy pin"
+    if env["GOVCHECK_EXPECTED_POLICY_DIGEST"] != "sha256:" + actual_policy_digest:
+        return "trust policy digest does not match the pre-receive policy pin"
     if not env.get("GIT_DIR") and not args.git_dir:
         return "GIT_DIR or --git-dir is required for pre-receive evaluation"
     return None

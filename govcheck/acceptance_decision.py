@@ -294,6 +294,7 @@ def verify_and_evaluate(
         now=now,
     )
     decision["decisionId"] = predicate.get("decisionId")
+    decision["riskAcceptance"] = predicate.get("riskAcceptance")
     decision["authorityPrincipal"] = next(iter(principals))
     decision["policyDigest"] = verified.get("policyDigest")
     return decision

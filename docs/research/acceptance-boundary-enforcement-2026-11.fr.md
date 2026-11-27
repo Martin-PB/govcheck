@@ -161,3 +161,18 @@ La commande en lecture seule `govcheck/forge.py audit-ruleset` vérifie le scope
 L'identifiant source GitHub Actions observé sur les checks GovCheck est `15368`. Les contextes CI actuels sont `govcheck-check`, `package-alignment` et `reference-integrity` ; les workflows filtrés par chemins doivent être rendus disponibles de manière cohérente avant de pouvoir exiger les trois checks.
 
 **Cet audit n'a modifié aucun ruleset ni paramètre de protection de branche.**
+
+## 10. Adaptateur local de gate d'acceptation authentifié
+
+L'adaptateur `govcheck/git_acceptance_gate.py` et le point d'entrée `scripts/govcheck-acceptance-gate` relient maintenant le vérificateur de décision signé `acceptance-decision/v1` au protocole existant de pre-receive Git `govcheck.acceptance-decision/v0`.
+
+Pour chaque mise à jour protégée, le gate :
+- clone/checkout le candidat exact depuis le magasin d'objets Git du serveur dans un répertoire temporaire ;
+- calcule le snapshot candidat et les bindings complets base/candidat ;
+- exécute l'évaluateur GovCheck installé avec les entrées détachées de revue/assurance/identité forge ;
+- vérifie la décision d'autorité sur les octets exacts du rapport et les bindings candidat/ref/gouvernance/scope ;
+- émet une enveloppe de décision v0 liée au dépôt, à la politique et aux identités/digests du vérificateur épinglés.
+
+Le point d'entrée doit être installé hors du dépôt candidat. Le hook pre-receive épingle le digest du fichier exécutable ; la fermeture Python/runtime reste dans la racine de confiance immuable de l'administrateur du serveur. Toute preuve ou configuration manquante produit UNKNOWN et est rejetée par le hook.
+
+**Ce n'est toujours pas une frontière de forge effective :** le hook local n'a pas encore été installé sur un véritable dépôt bare protégé et testé avec des pushes acceptés/rejetés, et le ruleset GitHub n'exige toujours ni PR ni checks de statut. Les tests unitaires de l'adaptateur vérifient le protocole, pas le rejet démontré d'une mise à jour de référence protégée.

@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:govcheck:schema:journal-receipt:v1",
+  "title": "GovCheck Durable Journal Receipt v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "scopeId",
+    "position",
+    "eventId",
+    "previousDigest",
+    "eventDigest",
+    "idempotencyKey",
+    "committedAt",
+    "receiptDigest"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1"
+    },
+    "scopeId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "position": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "eventId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "previousDigest": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/$defs/sha256"
+        }
+      ]
+    },
+    "eventDigest": {
+      "$ref": "#/$defs/sha256"
+    },
+    "idempotencyKey": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "string",
+          "minLength": 1
+        }
+      ]
+    },
+    "committedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "receiptDigest": {
+      "$ref": "#/$defs/sha256"
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}

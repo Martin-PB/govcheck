@@ -62,12 +62,24 @@ jobs:
           path: drift-check.log
 
   tla-models:
-    name: TLC — ${{ matrix.model }}
+    name: TLC — ${{ matrix.model }} / ${{ matrix.config }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        model: [GovCheckLifecycle, GovCheckAssurance, GovCheckGovernanceApplicability]
+        include:
+          - model: GovCheckLifecycle
+            config: GovCheckLifecycle.cfg
+          - model: GovCheckAssurance
+            config: GovCheckAssurance.cfg
+          - model: GovCheckGovernanceApplicability
+            config: GovCheckGovernanceApplicability.cfg
+          - model: GovCheckAcceptanceBoundary
+            config: GovCheckAcceptanceBoundary.cfg
+          - model: GovCheckAcceptanceBoundary
+            config: GovCheckAcceptanceBoundaryAdvisory.cfg
+          - model: GovCheckAcceptanceBoundary
+            config: GovCheckAcceptanceBoundaryAdminBypass.cfg
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
@@ -92,15 +104,16 @@ jobs:
       - name: Run TLC model checking
         env:
           MODEL: ${{ matrix.model }}
+          CONFIG: ${{ matrix.config }}
         run: |
           set -o pipefail
-          java -XX:+UseParallelGC -cp tla2tools.jar tlc2.TLC -workers 4 -config "formal/tla/${MODEL}.cfg" "formal/tla/${MODEL}.tla" 2>&1 | tee "tlc-${MODEL}.txt"
+          java -XX:+UseParallelGC -cp tla2tools.jar tlc2.TLC -workers 4 -config "formal/tla/${CONFIG}" "formal/tla/${MODEL}.tla" 2>&1 | tee "tlc-${MODEL}-${CONFIG%.cfg}.txt"
       - name: Upload model-checking report
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: tlc-report-${{ matrix.model }}
+          name: tlc-report-${{ matrix.model }}-${{ matrix.config }}
           path: |
             sany-${{ matrix.model }}.txt
-            tlc-${{ matrix.model }}.txt
+            tlc-${{ matrix.model }}-*.txt
             tla2tools.sha256

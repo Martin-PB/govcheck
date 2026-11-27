@@ -71,6 +71,20 @@ La partition des vérifications du dépôt et son modèle formel de routage sont
 Pour les fondements académiques et industriels, notamment les limites du model checking et la distinction entre provenance, preuve et autorité normative, voir le [registre GovCheck des références sur la gouvernance et l'assurance](../references.fr.md) et sa [version anglaise](../references.md).
 
 
+## Frontière d'acceptation
+
+- [Module TLA+](../../formal/tla/GovCheckAcceptanceBoundary.tla)
+- [Configuration de frontière enforced](../../formal/tla/GovCheckAcceptanceBoundary.cfg)
+- [Configuration de frontière advisory](../../formal/tla/GovCheckAcceptanceBoundaryAdvisory.cfg)
+- [Configuration de bypass administrateur](../../formal/tla/GovCheckAcceptanceBoundaryAdminBypass.cfg)
+- [Architecture 0037 — proposition](../architecture/0037-acceptance-boundary-and-enforcement-adapters.fr.md) · [English](../architecture/0037-acceptance-boundary-and-enforcement-adapters.md)
+- [Recherche plateforme et prototype Git pre-receive](../research/acceptance-boundary-enforcement-2026-11.fr.md) · [English](../research/acceptance-boundary-enforcement-2026-11.md)
+- [Entrée du catalogue stable](../../formal/artifacts.json) — govcheck.acceptance-boundary
+
+Le modèle borné sépare l'évaluation, une décision PASS valide, l'acceptation explicite du risque, la publication et le bypass incontrôlé. Il lie chaque décision au candidat, à la base, à la politique de gouvernance et au vérificateur exacts ; un changement de base/politique/vérificateur rend la décision précédente obsolète. FAIL, UNKNOWN et CONFLICT ne peuvent devenir PASS. Une décision accepted-with-risk conserve le résultat sous-jacent et est liée à un enregistrement autorisé par l'autorité racine et expirant. Le mode enforced exclut la publication incontrôlée ; les modes advisory et bypass administrateur rendent cette publication atteignable et exigent un enregistrement explicite du bypass.
+
+Le modèle suppose valide l'entrée de confiance du vérificateur et l'action de l'autorité racine ; il ne prouve ni identité réelle, intégrité exécutable, validité de signature, légitimité de politique, configuration de forge, équivalence sémantique Git/Pijul, stockage durable du journal ni raffinement de l'implémentation. Les trois configurations TLC sont des scénarios finis distincts, pas des profils de déploiement ou des niveaux d'assurance. Les sources/configurations sont cataloguées, mais leur validation TLC est en attente.
+
 ## Durabilité et reprise du journal canonique
 
 - [Architecture 0035 — modèle et limites](../architecture/0035-canonical-journal-recovery-model.fr.md) · [English](../architecture/0035-canonical-journal-recovery-model.md)

@@ -33,6 +33,7 @@ L'anglais est la langue par défaut. Chaque document d'architecture possède une
 - [0034 — Adaptateur de portefeuille natif de forge (govcheck/forge.py)](0034-forge-native-portfolio-adapter.fr.md) · [English](0034-forge-native-portfolio-adapter.md)
 - [0035 — Modèle de durabilité, reprise et rollback du journal canonique](0035-canonical-journal-recovery-model.fr.md) · [English](0035-canonical-journal-recovery-model.md)
 - [0036 — Modèle de liaison du contexte des révisions de gouvernance](0036-governance-revision-context-binding-model.fr.md) · [English](0036-governance-revision-context-binding-model.md)
+- [0037 — Frontière d'acceptation du dépôt et adaptateurs d'enforcement](0037-acceptance-boundary-and-enforcement-adapters.fr.md) · [English](0037-acceptance-boundary-and-enforcement-adapters.md)
 
 L'architecture 0028 définit le cycle de vie du portefeuille et la frontière avec les gestionnaires d'issues. L'architecture 0030 ajoute le registre dans le dépôt, l'identité stable des éléments, les événements logiques préservés, la liaison aux révisions natives du VCS, les règles de migration et les limites explicites du mécanisme initial d'historisation/récupération. Aucun de ces documents ne prétend qu'un moteur de registre, un journal inviolable, une synchronisation automatique ou un service d'application est implémenté.
 

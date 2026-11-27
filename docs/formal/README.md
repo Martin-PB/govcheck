@@ -63,6 +63,20 @@ This bounded design model separates candidate evaluation, authorization and publ
 
 This bounded control model makes the prior evaluator the sole authoritative evaluator while a proposed replacement is represented only by comparative/shadow results. It distinguishes `Pass`, `Fail`, `Unknown` and `Conflict`; only a pass or a fail covered by a currently valid, explicitly granted exception for a waivable requirement can be authorized. Non-derogable requirements cannot be excepted, and exception validity is checked again at publication. Authority revocation is recorded at a later logical position and blocks subsequent publication; prior decisions remain append-only and can receive separate requalification records. The model is a finite abstraction and does not establish durable journal storage, distributed consensus, VCS adapter correctness, crash recovery or implementation refinement.  SANY 2.1 and TLC 2.19 passed on checked PR head `86713a99574c085ee5a41a71e70f93ab7ce4a831` (CI merge checkout `1f387b8f6019db545ccd50d55fd9c7cc0d704d80`): 2,826,117 states generated, 1,026,484 distinct, zero remaining, graph depth 12; all nine invariants and `AppendOnly` passed. See [Architecture 0033](../architecture/0033-governance-evaluator-exception-revocation-model.md) for exact identities and abstraction limits.
 
+## Acceptance boundary
+
+- [TLA+ module](../../formal/tla/GovCheckAcceptanceBoundary.tla)
+- [Enforced-boundary configuration](../../formal/tla/GovCheckAcceptanceBoundary.cfg)
+- [Advisory-boundary configuration](../../formal/tla/GovCheckAcceptanceBoundaryAdvisory.cfg)
+- [Administrator-bypass configuration](../../formal/tla/GovCheckAcceptanceBoundaryAdminBypass.cfg)
+- [Architecture 0037 — proposal](../architecture/0037-acceptance-boundary-and-enforcement-adapters.md) · [French](../architecture/0037-acceptance-boundary-and-enforcement-adapters.fr.md)
+- [Platform research and Git pre-receive prototype](../research/acceptance-boundary-enforcement-2026-11.md) · [French](../research/acceptance-boundary-enforcement-2026-11.fr.md)
+- [Stable artifact catalogue entry](../../formal/artifacts.json) — govcheck.acceptance-boundary
+
+The bounded model separates evaluation, a valid PASS decision, explicit accepted-with-risk, publication and uncontrolled bypass. It binds each decision to the exact candidate, base, governance policy and verifier; base/policy/verifier changes stale the previous decision. FAIL, UNKNOWN and CONFLICT cannot become PASS. An accepted-with-risk decision preserves the underlying result and is scoped to a root-authorized, expiring record. Enforced mode excludes uncontrolled publication; advisory and administrator-bypass modes make an uncontrolled publication reachable and require an explicit bypass record.
+
+The model assumes that the verifier-trust input and root-authority action are valid; it does not prove real-world identity, executable integrity, signature validity, policy legitimacy, forge configuration, Git/Pijul semantic equivalence, durable journal storage or implementation refinement. The three TLC configurations are separate finite scenarios, not deployment profiles or assurance levels. The current source/configurations are registered but their TLC validation is pending.
+
 ## Shared release evidence
 
 - [Stable artifact catalogue](../../formal/artifacts.json)

@@ -4,6 +4,10 @@ on:
   pull_request:
     paths:
       - '.github/workflows/reproduction-audit.yml'
+      - '.github/workflows/tla-acceptance-boundary.yml'
+      - '.github/workflows/tla-model-reusable.yml'
+      - 'formal/tla/GovCheckAcceptanceBoundary.tla'
+      - 'formal/tla/GovCheckAcceptanceBoundary.cfg'
       - 'docs/research/critique-129-reproduction-status-2026-11-17.md'
       - 'docs/research/critique-129-reproduction-status-2026-11-17.fr.md'
   workflow_dispatch:
@@ -41,6 +45,7 @@ jobs:
       matrix:
         model:
           - CICheckRouting
+          - GovCheckAcceptanceBoundary
           - GovCheckAssurance
           - GovCheckAuthority
           - GovCheckCanonicalPublication

@@ -128,3 +128,15 @@ Détail canonique : [journal anglais WP-EVT-000032](events.md#wp-evt-000032).
 Le modèle TLA+ lie la révision de politique d'autorité, l'identité/révision de l'évaluateur, l'identité/révision de la spécification et l'identité/révision du profil au contexte de gouvernance capturé pendant l'évaluation et l'autorisation. SANY 2.1 et TLC 2.19 ont réussi : 486 289 états générés/distincts, zéro restant, profondeur 8 ; douze invariants et `AppendOnly` réussis. Il s'agit d'une projection bornée de liaison intermodèle, pas d'une machine à états intégrée ni d'une preuve d'implémentation.
 
 Détail canonique : [journal anglais WP-EVT-000033](events.md#wp-evt-000033).
+
+
+<a id="wp-evt-000034"></a>
+## WP-EVT-000034 — Recherche sur la frontière d'acceptation du dépôt et proposition d'architecture
+- **Sujet :** `govcheck.repository.acceptance-boundary-enforcement`.
+- **Type d'événement :** `acceptance-boundary-research-proposed`.
+- **Enregistré :** 2026-11-17.
+- **Artefacts :** [recherche EN](../research/acceptance-boundary-enforcement-2026-11.md) / [FR](../research/acceptance-boundary-enforcement-2026-11.fr.md) ; Architecture 0037 EN/FR ; références [R-221](../references.fr.md#r-221), [R-222](../references.fr.md#r-222), [R-223](../references.fr.md#r-223), [R-224](../references.fr.md#r-224), [R-225](../references.fr.md#r-225), [R-226](../references.fr.md#r-226) ; issue [#45](https://github.com/Martin-PB/govcheck/issues/45).
+- **Éléments de preuve plateforme :** rulesets GitHub et source attendue des checks ; branches protégées et checks externes bloquants GitLab ; branches protégées Gitea ; frontières de confiance des workflows/runners Forgejo Actions ; hooks pre-receive Git serveur ; hook local record et voies push direct/discussion du Nest Pijul.
+- **Frontière de conception :** noyau de vérification, enforcement à la frontière du dépôt et intégration forge/VCS restent des responsabilités distinctes, pas des niveaux de maturité. La proposition préserve l'exécution par exécutable local, les identités natives VCS, la liaison exacte base/politique/vérificateur, les résultats distincts PASS/FAIL/UNKNOWN/CONFLICT/ACCEPTED_WITH_RISK et les limites explicites de bypass.
+- **Limite Pijul :** le manuel cité ne documente qu'un hook local record, pas de hook distant obligatoire de politique. Aucun enforcement Nest n'est revendiqué ; un adaptateur remote/serveur contrôlé est nécessaire.
+- **Disposition :** proposition uniquement. Aucune protection de branche, ruleset, service MCP hébergé, régime d'autorité ou politique normative d'acceptation n'a été modifié. Prochain incrément : modèle formel de frontière d'acceptation et prototype isolé de hook Git pre-receive avec tests positifs/négatifs.

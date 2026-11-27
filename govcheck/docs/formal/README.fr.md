@@ -60,6 +60,18 @@ Ce modèle de conception borné sépare l'évaluation du candidat, l'autorisatio
 Ce modèle borné conserve l'évaluateur reconnu par la gouvernance antérieure comme seul évaluateur faisant autorité ; le remplaçant proposé ne produit que des résultats comparatifs. Il distingue `Pass`, `Fail`, `Unknown` et `Conflict`, bloque les deux derniers, borne et revalide les exceptions dérogeables, exclut les exigences non dérogeables, enregistre la révocation prospective et préserve les décisions historiques avec requalification séparée. SANY 2.1 et TLC 2.19 ont réussi sur la tête de PR vérifiée `86713a99574c085ee5a41a71e70f93ab7ce4a831` (checkout CI `1f387b8f6019db545ccd50d55fd9c7cc0d704d80`) : 2 826 117 états générés, 1 026 484 distincts, zéro restant, profondeur 12 ; les neuf invariants et `AppendOnly` ont réussi. Ce résultat ne couvre pas le stockage durable, la reprise après panne, les adaptateurs VCS, le consensus distribué ni le raffinement de l'implémentation.
 
 
+## Frontière d'acceptation
+
+- [Module TLA+](../../formal/tla/GovCheckAcceptanceBoundary.tla)
+- [Configuration de frontière enforced](../../formal/tla/GovCheckAcceptanceBoundary.cfg)
+- [Configuration de frontière advisory](../../formal/tla/GovCheckAcceptanceBoundaryAdvisory.cfg)
+- [Configuration de bypass administrateur](../../formal/tla/GovCheckAcceptanceBoundaryAdminBypass.cfg)
+- [Entrée du catalogue stable](../../formal/artifacts.json) — govcheck.acceptance-boundary
+
+Le modèle borné sépare l'évaluation, une décision PASS valide, l'acceptation explicite du risque, la publication et le bypass incontrôlé. Il lie chaque décision au candidat, à la base, à la politique de gouvernance et au vérificateur exacts ; un changement de base/politique/vérificateur rend la décision précédente obsolète. FAIL, UNKNOWN et CONFLICT ne peuvent devenir PASS. Une décision accepted-with-risk conserve le résultat sous-jacent et est liée à un enregistrement autorisé par l'autorité racine et expirant. Le mode enforced exclut la publication incontrôlée ; les modes advisory et bypass administrateur rendent cette publication atteignable et exigent un enregistrement explicite du bypass.
+
+Le modèle suppose valide l'entrée de confiance du vérificateur et l'action de l'autorité racine ; il ne prouve ni identité réelle, intégrité exécutable, validité de signature, légitimité de politique, configuration de forge, équivalence sémantique Git/Pijul, stockage durable du journal ni raffinement de l'implémentation. Les trois configurations TLC sont des scénarios finis distincts, pas des profils de déploiement ou des niveaux d'assurance. Les sources/configurations sont cataloguées, mais leur validation TLC est en attente.
+
 ## Durabilité et reprise du journal canonique
 
 - [Architecture 0035 — modèle et limites](../architecture/0035-canonical-journal-recovery-model.fr.md) · [English](../architecture/0035-canonical-journal-recovery-model.md)

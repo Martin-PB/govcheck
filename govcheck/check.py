@@ -18,10 +18,12 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import re
 import subprocess
 import sys
 from pathlib import Path
+from urllib.parse import urlparse
 
 TOOL = "govcheck"
 VERSION = "0.4.0-slice"
@@ -50,10 +52,11 @@ SOURCE_LINK_RE = re.compile(
 
 
 class Ctx:
-    def __init__(self, tree: Path, changed, git=None):
+    def __init__(self, tree: Path, changed, git=None, independent_review=None):
         self.tree = tree
         self.changed = changed
         self.git = git or {}
+        self.independent_review = independent_review or {}
 
     def read(self, rel: str) -> str:
         return (self.tree / rel).read_text(encoding="utf-8")
@@ -280,23 +283,114 @@ def rule_bootstrap_integrity(ctx: Ctx):
     return ("pass", True, [str(checked) + " installed file(s) match the recorded digests of package " + str(pv)])
 
 
+def candidate_content_digest(tree: Path) -> str:
+    """Hash a deterministic snapshot of candidate files, excluding VCS metadata."""
+    digest = hashlib.sha256()
+    root = tree.resolve()
+    for path in sorted(root.rglob("*"), key=lambda item: item.relative_to(root).as_posix()):
+        rel = path.relative_to(root)
+        if ".git" in rel.parts or path.is_dir():
+            continue
+        name = rel.as_posix().encode("utf-8")
+        if path.is_symlink():
+            payload = b"symlink:" + os.readlink(path).encode("utf-8")
+        elif path.is_file():
+            payload = path.read_bytes()
+        else:
+            continue
+        digest.update(len(name).to_bytes(8, "big"))
+        digest.update(name)
+        digest.update(len(payload).to_bytes(8, "big"))
+        digest.update(payload)
+    return digest.hexdigest()
+
+
+def _outside_tree(value, tree: Path, label: str) -> Path:
+    path = Path(value).expanduser()
+    if not path.is_absolute():
+        path = path.absolute()
+    root = tree.resolve()
+    resolved = path.resolve()
+    for candidate in (path, resolved):
+        try:
+            candidate.relative_to(root)
+        except ValueError:
+            continue
+        raise ValueError(label + " must be stored outside the candidate tree")
+    if not resolved.is_file():
+        raise ValueError(label + " must be a readable regular file")
+    return resolved
+
+
 def rule_independent_review(ctx: Ctx):
     if ctx.changed is None or not ctx.changed:
         return ("pass", False, ["no candidate diff supplied; rule not applicable"])
 
-    # Candidate-tree records cannot authenticate themselves: they are part of
-    # the object whose final revision they would need to attest. A free-form
-    # reviewer string is not an authenticated principal identity either.
     in_tree_records = load_attestations(ctx)
     if in_tree_records:
         return ("unknown", True, [
-            str(len(in_tree_records)) + " candidate-tree attestation record(s) found, but none can satisfy independent review: "
-            "the candidate cannot self-attest its final revision and reviewer strings are not authenticated identities; "
-            "a detached DSSE attestation plus a configured trust-policy verifier is required"
+            str(len(in_tree_records)) + " candidate-tree attestation record(s) found; in-tree reviewer strings "
+            "cannot authenticate independent review or DSSE signer identity and cannot bind the final candidate revision"
         ])
-    return ("unknown", True, [
-        "independent review is unavailable to the offline evaluator: a detached DSSE attestation and an explicitly "
-        "configured trust-policy verifier are required; no such verifier is configured"
+
+    config = ctx.independent_review
+    required = {
+        "envelope_path", "trust_policy_path", "trust_policy_sha256",
+        "author_principal", "author_principal_source", "governance_revision", "scope_id",
+    }
+    if not config or not required.issubset(config):
+        return ("unknown", True, [
+            "detached review evidence, pinned trust policy, trusted author principal/source, governance revision "
+            "and scope must all be explicitly supplied"
+        ])
+
+    source = config["author_principal_source"]
+    parsed_source = urlparse(source) if isinstance(source, str) else None
+    if not parsed_source or not parsed_source.scheme or (parsed_source.scheme in {"http", "https"} and not parsed_source.netloc):
+        return ("fail", True, ["author principal source must be an absolute URI"])
+
+    try:
+        envelope_path = _outside_tree(config["envelope_path"], ctx.tree, "review envelope")
+        policy_path = _outside_tree(config["trust_policy_path"], ctx.tree, "trust policy")
+        envelope = json.loads(envelope_path.read_text(encoding="utf-8"))
+        content_digest = candidate_content_digest(ctx.tree)
+        candidate_revision = ctx.git.get("candidate_rev")
+        base_revision = ctx.git.get("base_rev")
+        if not candidate_revision or not base_revision:
+            return ("unknown", True, ["full candidate and base revisions are required to bind the detached review"])
+        try:
+            from govcheck.attestation_verify import verify_dsse_envelope
+        except ImportError:
+            from attestation_verify import verify_dsse_envelope
+        result = verify_dsse_envelope(
+            envelope,
+            policy_path,
+            config["trust_policy_sha256"],
+            ctx.tree,
+            required_role="independent-reviewer",
+            expected_candidate_revision=candidate_revision,
+            expected_governance_revision=config["governance_revision"],
+            expected_scope_id=config["scope_id"],
+            expected_base_revision=base_revision,
+            expected_content_sha256=content_digest,
+            expected_predicate_type="urn:govcheck:attestation:independent-review:v1",
+            forbidden_principal=config["author_principal"],
+        )
+    except (OSError, ValueError, TypeError) as exc:
+        return ("fail", True, ["cannot load or validate detached independent-review evidence: " + str(exc)])
+
+    if result.get("status") == "unknown":
+        return ("unknown", True, ["detached reviewer trust could not be established: " + str(result.get("reason", "unknown"))])
+    if result.get("status") != "verified":
+        return ("fail", True, ["detached independent-review verification failed: " + str(result.get("reason", "invalid"))])
+    predicate = result.get("statement", {}).get("predicate", {})
+    if predicate.get("outcome") == "changes_requested":
+        return ("fail", True, ["authenticated independent reviewer requested changes"])
+    if predicate.get("outcome") != "accepted":
+        return ("fail", True, ["verified review has an unsupported outcome"])
+    return ("pass", True, [
+        "detached independent-review DSSE verified against pinned trust policy; reviewer principal differs from "
+        "the explicitly supplied author principal; candidate/base/governance/scope/content bindings match"
     ])
 
 
@@ -312,8 +406,8 @@ RULES = [
 ]
 
 
-def evaluate(tree: Path, changed=None, git=None) -> dict:
-    ctx = Ctx(tree, changed, git)
+def evaluate(tree: Path, changed=None, git=None, independent_review=None) -> dict:
+    ctx = Ctx(tree, changed, git, independent_review)
     rules = []
     for r in RULES:
         result, applies, reasons = r["fn"](ctx)
@@ -369,6 +463,13 @@ def main(argv=None) -> int:
     parser.add_argument("--base")
     parser.add_argument("--candidate")
     parser.add_argument("--out")
+    parser.add_argument("--review-envelope")
+    parser.add_argument("--trust-policy")
+    parser.add_argument("--trust-policy-sha256")
+    parser.add_argument("--author-principal")
+    parser.add_argument("--author-principal-source")
+    parser.add_argument("--governance-revision")
+    parser.add_argument("--scope-id")
     parser.add_argument("--list-rules", action="store_true")
     args = parser.parse_args(argv)
     if args.list_rules:
@@ -384,10 +485,29 @@ def main(argv=None) -> int:
     if args.base:
         git = {
             "base": args.base,
+            "base_rev": git_full_sha(tree, args.base),
             "candidate_rev": git_full_sha(tree, args.candidate),
             "author": git_author(tree, args.candidate),
         }
-    report = evaluate(tree, changed, git)
+    review_values = [
+        args.review_envelope, args.trust_policy, args.trust_policy_sha256,
+        args.author_principal, args.author_principal_source,
+        args.governance_revision, args.scope_id,
+    ]
+    review = None
+    if any(review_values):
+        if not all(review_values):
+            parser.error("detached review verification requires --review-envelope, --trust-policy, --trust-policy-sha256, --author-principal, --author-principal-source, --governance-revision and --scope-id")
+        review = {
+            "envelope_path": args.review_envelope,
+            "trust_policy_path": args.trust_policy,
+            "trust_policy_sha256": args.trust_policy_sha256,
+            "author_principal": args.author_principal,
+            "author_principal_source": args.author_principal_source,
+            "governance_revision": args.governance_revision,
+            "scope_id": args.scope_id,
+        }
+    report = evaluate(tree, changed, git, review)
     if git:
         report["candidate"]["base"] = git["base"]
         report["candidate"]["candidate_rev"] = git["candidate_rev"]

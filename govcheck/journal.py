@@ -141,11 +141,12 @@ class Journal:
     """A local SQLite journal. Each operation opens its own connection."""
 
     def __init__(self, database: str | Path, timeout_seconds: float = 5.0):
-        self.database = str(database)
-        if self.database == ":memory:":
+        raw_database = str(database)
+        if raw_database == ":memory:":
             raise JournalError("unsupported", "in-memory databases cannot provide durable journal receipts")
+        self.database = str(Path(raw_database).expanduser().resolve())
         self.timeout_seconds = max(0.1, float(timeout_seconds))
-        Path(self.database).expanduser().resolve().parent.mkdir(parents=True, exist_ok=True)
+        Path(self.database).parent.mkdir(parents=True, exist_ok=True)
         self._initialize_schema()
 
     def _connect(self):

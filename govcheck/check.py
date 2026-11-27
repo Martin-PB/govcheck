@@ -534,6 +534,7 @@ def main(argv=None) -> int:
     parser.add_argument("--tree", default=".")
     parser.add_argument("--base")
     parser.add_argument("--candidate")
+    parser.add_argument("--ref", help="target ref being evaluated, e.g. refs/heads/main")
     parser.add_argument("--out")
     parser.add_argument("--review-envelope")
     parser.add_argument("--assurance-envelope")
@@ -565,18 +566,21 @@ def main(argv=None) -> int:
             "candidate_rev": git_full_sha(tree, args.candidate),
             "head_rev": git_full_sha(tree, "HEAD"),
             "worktree_clean": git_worktree_clean(tree),
+            "ref": args.ref,
+            "governance_revision": args.governance_revision,
+            "scope_id": args.scope_id,
+            "content_sha256": candidate_content_digest(tree),
             "author": git_author(tree, args.candidate),
         }
     review_values = [
         args.review_envelope, args.assurance_envelope, args.assurance_role,
         args.author_identity_envelope, args.author_identity_role,
-        args.trust_policy, args.trust_policy_sha256,
-        args.author_principal_source, args.governance_revision, args.scope_id,
+        args.trust_policy, args.trust_policy_sha256, args.author_principal_source,
     ]
     review = None
     if any(review_values):
-        if not all(review_values):
-            parser.error("detached review verification requires --review-envelope, --assurance-envelope, --assurance-role, --author-identity-envelope, --author-identity-role, --trust-policy, --trust-policy-sha256, --author-principal-source, --governance-revision and --scope-id")
+        if not all(review_values) or not args.governance_revision or not args.scope_id:
+            parser.error("detached review verification requires all review evidence/trust inputs plus --governance-revision and --scope-id")
         review = {
             "envelope_path": args.review_envelope,
             "assurance_envelope_path": args.assurance_envelope,
@@ -594,6 +598,11 @@ def main(argv=None) -> int:
     if git:
         report["candidate"]["base"] = git["base"]
         report["candidate"]["candidate_rev"] = git["candidate_rev"]
+        report["candidate"]["base_revision"] = git["base_rev"]
+        report["candidate"]["content_sha256"] = git["content_sha256"]
+        report["candidate"]["ref"] = git["ref"]
+        report["candidate"]["governance_revision"] = git["governance_revision"]
+        report["candidate"]["scope_id"] = git["scope_id"]
     text = json.dumps(report, indent=2, ensure_ascii=False)
     if args.out:
         Path(args.out).write_text(text + "\n", encoding="utf-8")

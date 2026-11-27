@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:govcheck:schema:acceptance-decision:v1",
+  "title": "GovCheck Authenticated Acceptance Decision v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion", "decisionId", "repositoryId", "candidateRevision",
+    "candidateContentSha256", "baseRevision", "ref", "governanceRevision",
+    "scopeId", "evaluationDigest", "result", "decidedOn", "rationale",
+    "riskAcceptance"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "1" },
+    "decisionId": { "type": "string", "minLength": 1 },
+    "repositoryId": { "type": "string", "minLength": 1 },
+    "candidateRevision": { "type": "string", "minLength": 1 },
+    "candidateContentSha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "baseRevision": { "type": "string", "minLength": 1 },
+    "ref": { "type": "string", "minLength": 1 },
+    "governanceRevision": { "type": "string", "minLength": 1 },
+    "scopeId": { "type": "string", "minLength": 1 },
+    "evaluationDigest": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "result": { "enum": ["accept", "reject", "accept_with_risk"] },
+    "decidedOn": { "type": "string", "format": "date-time" },
+    "rationale": { "type": "string", "minLength": 1 },
+    "riskAcceptance": {
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "reason", "scope", "expiresAt", "residualRisk", "affectedClaims", "authorizationDigest"],
+          "properties": {
+            "id": { "type": "string", "minLength": 1 },
+            "reason": { "type": "string", "minLength": 1 },
+            "scope": { "type": "string", "minLength": 1 },
+            "expiresAt": { "type": "string", "format": "date-time" },
+            "residualRisk": { "type": "string", "minLength": 1 },
+            "affectedClaims": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+            "authorizationDigest": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+          }
+        }
+      ]
+    }
+  }
+}

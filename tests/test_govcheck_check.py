@@ -10,6 +10,7 @@ import shutil
 import tempfile
 import unittest
 from contextlib import redirect_stdout
+from unittest.mock import patch
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -139,6 +140,77 @@ class EvaluateTests(unittest.TestCase):
             self.assertEqual(report["tool"], "govcheck")
             self.assertEqual(report["overall"], "pass")
             self.assertEqual(len(report["rules"]), 8)
+
+    def _detached_review_inputs(self, root, outcome="accepted"):
+        evidence = root.parent / "detached-review.json"
+        policy = root.parent / "trust-policy.json"
+        evidence.write_text(json.dumps({"payloadType": "application/vnd.in-toto+json", "payload": "e30=", "signatures": [{"keyid": "test", "sig": "AA=="}]}), encoding="utf-8")
+        policy.write_text("{}", encoding="utf-8")
+        config = {
+            "envelope_path": str(evidence),
+            "trust_policy_path": str(policy),
+            "trust_policy_sha256": "0" * 64,
+            "author_principal": "forge:author-1",
+            "author_principal_source": "https://forge.example/api/author/1",
+            "governance_revision": "gov-17",
+            "scope_id": "repo:example/project",
+        }
+        git = {"candidate_rev": "c" * 40, "base_rev": "b" * 40}
+        result = {
+            "status": "verified",
+            "statement": {"predicate": {"outcome": outcome}},
+        }
+        return config, git, result
+
+    def test_detached_review_config_can_satisfy_rule_when_verifier_confirms(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d) / "candidate"
+            root.mkdir()
+            build_tree(root)
+            config, git, verified = self._detached_review_inputs(root)
+            with patch("govcheck.attestation_verify.verify_dsse_envelope", return_value=verified) as verifier:
+                report = check.evaluate(root, changed={"docs/a.md"}, git=git, independent_review=config)
+            rule = next(r for r in report["rules"] if r["id"] == "independent-review")
+            self.assertEqual(rule["result"], "pass")
+            self.assertEqual(verifier.call_args.kwargs["required_role"], "independent-reviewer")
+            self.assertEqual(verifier.call_args.kwargs["expected_content_sha256"], check.candidate_content_digest(root))
+            self.assertEqual(verifier.call_args.kwargs["forbidden_principal"], "forge:author-1")
+
+    def test_detached_review_changes_requested_fails_rule(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d) / "candidate"
+            root.mkdir()
+            build_tree(root)
+            config, git, verified = self._detached_review_inputs(root, outcome="changes_requested")
+            with patch("govcheck.attestation_verify.verify_dsse_envelope", return_value=verified):
+                report = check.evaluate(root, changed={"docs/a.md"}, git=git, independent_review=config)
+            rule = next(r for r in report["rules"] if r["id"] == "independent-review")
+            self.assertEqual(rule["result"], "fail")
+            self.assertIn("requested changes", rule["reasons"][0])
+
+    def test_detached_review_evidence_inside_candidate_is_rejected(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d) / "candidate"
+            root.mkdir()
+            build_tree(root)
+            evidence = root / "review.json"
+            evidence.write_text("{}", encoding="utf-8")
+            policy = Path(d) / "policy.json"
+            policy.write_text("{}", encoding="utf-8")
+            config = {
+                "envelope_path": str(evidence),
+                "trust_policy_path": str(policy),
+                "trust_policy_sha256": "0" * 64,
+                "author_principal": "forge:author-1",
+                "author_principal_source": "https://forge.example/api/author/1",
+                "governance_revision": "gov-17",
+                "scope_id": "repo:example/project",
+            }
+            git = {"candidate_rev": "c" * 40, "base_rev": "b" * 40}
+            report = check.evaluate(root, changed={"docs/a.md"}, git=git, independent_review=config)
+            rule = next(r for r in report["rules"] if r["id"] == "independent-review")
+            self.assertEqual(rule["result"], "fail")
+            self.assertIn("outside the candidate tree", rule["reasons"][0])
 
     def test_review_unknown_without_attestation(self):
         with tempfile.TemporaryDirectory() as d:

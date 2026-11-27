@@ -66,7 +66,7 @@ CAPABILITY_DECLARATION = {
     "forges": list(SUPPORTED_FORGES),
     "read": ["list_issues", "get_issue", "list_labels"],
     "write": ["create_issue", "update_issue", "add_comment"],
-    "verify": ["list_check_runs", "get_branch_protection"],
+    "verify": ["list_check_runs", "get_branch_protection", "list_rulesets", "get_ruleset", "audit_ruleset"],
     "never": [
         "mutate the forge from govcheck check",
         "persist a token on disk, in logs or in reports",
@@ -311,6 +311,108 @@ def get_branch_protection(client: GitHubClient, branch: str = "main") -> dict:
     }
 
 
+def list_rulesets(client: GitHubClient) -> list:
+    """Read repository rulesets without mutating forge configuration."""
+    items = _paginate(client, client.repo_path("/rulesets"), {"per_page": 100})
+    return [item for item in items if isinstance(item, dict)]
+
+
+def get_ruleset(client: GitHubClient, ruleset_id: int) -> dict:
+    parsed, _ = client._request("GET", client.repo_path("/rulesets/" + str(int(ruleset_id))))
+    if not isinstance(parsed, dict):
+        raise ForgeError("malformed", "expected a JSON object for ruleset " + str(ruleset_id))
+    return parsed
+
+
+def audit_ruleset_payload(ruleset: dict, expected_checks, expected_source_id: int) -> dict:
+    """Audit configuration only; never claim that a protected-ref write was rejected."""
+    if not isinstance(ruleset, dict):
+        raise ForgeError("malformed", "ruleset must be a JSON object")
+    if not isinstance(expected_checks, list) or not expected_checks or not all(isinstance(x, str) and x.strip() for x in expected_checks):
+        raise ForgeError("malformed", "expected_checks must be a non-empty list of check context names")
+    expected = [x.strip() for x in expected_checks]
+    if len(set(expected)) != len(expected):
+        raise ForgeError("malformed", "expected check context names must be unique")
+    if not isinstance(expected_source_id, int) or expected_source_id <= 0:
+        raise ForgeError("malformed", "expected_check_source_id must be a positive integer")
+
+    findings = []
+    if ruleset.get("target") != "branch":
+        findings.append("ruleset target is not branch")
+    if ruleset.get("enforcement") != "active":
+        findings.append("ruleset enforcement is not active")
+    conditions = ruleset.get("conditions") or {}
+    refs = conditions.get("ref_name") or {}
+    includes = refs.get("include") or []
+    excludes = refs.get("exclude") or []
+    if includes != ["~DEFAULT_BRANCH"] or excludes:
+        findings.append("ruleset is not exclusively scoped to the default branch")
+
+    rules = ruleset.get("rules")
+    if not isinstance(rules, list):
+        raise ForgeError("malformed", "ruleset.rules must be an array")
+    by_type = {}
+    for rule in rules:
+        if isinstance(rule, dict) and isinstance(rule.get("type"), str):
+            by_type.setdefault(rule["type"], []).append(rule)
+    if "deletion" not in by_type:
+        findings.append("deletion protection is missing")
+    if "non_fast_forward" not in by_type:
+        findings.append("non-fast-forward protection is missing")
+    if "pull_request" not in by_type:
+        findings.append("pull-request requirement is missing")
+
+    status_rules = by_type.get("required_status_checks", [])
+    if not status_rules:
+        findings.append("required-status-checks rule is missing")
+        required = []
+        strict = False
+    else:
+        if len(status_rules) != 1:
+            findings.append("ruleset must contain exactly one required-status-checks rule")
+        params = status_rules[0].get("parameters") or {}
+        required = params.get("required_status_checks") or []
+        strict = params.get("strict_required_status_checks_policy") is True
+        contexts = [item.get("context") for item in required if isinstance(item, dict)]
+        if len(contexts) != len(required):
+            findings.append("required status check entry is malformed")
+        if set(contexts) != set(expected) or len(contexts) != len(expected):
+            findings.append("required status-check contexts do not exactly match the expected contexts")
+        for item in required:
+            if not isinstance(item, dict):
+                continue
+            if item.get("integration_id") != expected_source_id:
+                findings.append("required status check " + str(item.get("context")) + " is not pinned to the expected source integration")
+        if not strict:
+            findings.append("strict required-status-check freshness is disabled")
+
+    bypass = ruleset.get("bypass_actors") or []
+    if bypass:
+        findings.append("ruleset has bypass actors")
+    current_bypass = ruleset.get("current_user_can_bypass")
+    if current_bypass is not None and current_bypass != "never":
+        findings.append("current identity has a ruleset bypass capability")
+
+    return {
+        "result": "pass" if not findings else "fail",
+        "ruleset_id": ruleset.get("id"),
+        "ruleset_name": ruleset.get("name"),
+        "enforcement": ruleset.get("enforcement"),
+        "scope": "default-branch",
+        "expected_checks": expected,
+        "observed_checks": sorted(item.get("context", "") for item in required if isinstance(item, dict)),
+        "expected_check_source_id": expected_source_id,
+        "bypass_actors": bypass,
+        "findings": findings,
+        "boundary_demonstrated": False,
+        "limitation": "This is a read-only configuration audit; it does not demonstrate a real protected-ref rejection or authenticate the check publisher beyond the configured integration ID.",
+    }
+
+
+def audit_ruleset(client: GitHubClient, ruleset_id: int, expected_checks, expected_source_id: int) -> dict:
+    return audit_ruleset_payload(get_ruleset(client, ruleset_id), expected_checks, expected_source_id)
+
+
 def make_client(forge=None, owner=None, repo=None, token=None, opener=None, env=None):
     env = os.environ if env is None else env
     forge = (forge or env.get("GOVCHECK_FORGE") or "github").strip().lower()
@@ -354,6 +456,11 @@ def main(argv=None, opener=None, env=None) -> int:
     p.add_argument("--ref", required=True)
     p = sub.add_parser("branch-protection")
     p.add_argument("--branch", default="main")
+    sub.add_parser("rulesets")
+    p = sub.add_parser("audit-ruleset")
+    p.add_argument("--id", type=int, required=True)
+    p.add_argument("--required-checks", required=True, help="comma-separated exact required check contexts")
+    p.add_argument("--check-source-id", type=int, required=True, help="expected GitHub App/integration ID for required checks")
     p = sub.add_parser("create-issue")
     p.add_argument("--title", required=True)
     p.add_argument("--body", default="")
@@ -385,6 +492,10 @@ def main(argv=None, opener=None, env=None) -> int:
             result = list_check_runs(client, args.ref)
         elif args.command == "branch-protection":
             result = get_branch_protection(client, args.branch)
+        elif args.command == "rulesets":
+            result = list_rulesets(client)
+        elif args.command == "audit-ruleset":
+            result = audit_ruleset(client, args.id, _split_labels(args.required_checks) or [], args.check_source_id)
         elif args.command == "create-issue":
             result = create_issue(client, args.title, args.body, labels=_split_labels(args.labels), registry_id=args.registry_id)
         elif args.command == "update-issue":
@@ -397,6 +508,8 @@ def main(argv=None, opener=None, env=None) -> int:
         print("forge error [" + e.kind + "]: " + str(e), file=sys.stderr)
         return 1
     print(json.dumps(result, indent=2, ensure_ascii=False))
+    if args.command == "audit-ruleset" and result.get("result") != "pass":
+        return 2
     return 0
 
 

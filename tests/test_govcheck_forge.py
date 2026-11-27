@@ -220,6 +220,78 @@ class VerifyTests(unittest.TestCase):
         self.assertEqual(prot["required_approving_reviews"], 1)
 
 
+    def ruleset(self, **overrides):
+        value = {
+            "id": 28251664,
+            "name": "Protection Main",
+            "target": "branch",
+            "enforcement": "active",
+            "conditions": {"ref_name": {"include": ["~DEFAULT_BRANCH"], "exclude": []}},
+            "rules": [
+                {"type": "deletion"},
+                {"type": "non_fast_forward"},
+                {"type": "pull_request", "parameters": {"required_approving_review_count": 0}},
+                {"type": "required_status_checks", "parameters": {
+                    "required_status_checks": [
+                        {"context": "govcheck-check", "integration_id": 15368},
+                        {"context": "package-alignment", "integration_id": 15368},
+                    ],
+                    "strict_required_status_checks_policy": True,
+                }},
+            ],
+            "bypass_actors": [],
+            "current_user_can_bypass": "never",
+        }
+        value.update(overrides)
+        return value
+
+    def test_ruleset_audit_passes_exact_pr_checks_source_and_no_bypass(self):
+        result = forge.audit_ruleset_payload(self.ruleset(), ["govcheck-check", "package-alignment"], 15368)
+        self.assertEqual(result["result"], "pass")
+        self.assertEqual(result["observed_checks"], ["govcheck-check", "package-alignment"])
+        self.assertFalse(result["boundary_demonstrated"])
+        self.assertEqual(result["bypass_actors"], [])
+
+    def test_ruleset_audit_fails_missing_pull_request_and_required_checks(self):
+        ruleset = self.ruleset(rules=[{"type": "deletion"}, {"type": "non_fast_forward"}])
+        result = forge.audit_ruleset_payload(ruleset, ["govcheck-check"], 15368)
+        self.assertEqual(result["result"], "fail")
+        self.assertIn("pull-request requirement is missing", result["findings"])
+        self.assertIn("required-status-checks rule is missing", result["findings"])
+
+    def test_ruleset_audit_fails_wrong_source_non_strict_and_bypass(self):
+        rules = self.ruleset()["rules"]
+        rules[-1]["parameters"]["required_status_checks"][0]["integration_id"] = 999
+        rules[-1]["parameters"]["strict_required_status_checks_policy"] = False
+        result = forge.audit_ruleset_payload(
+            self.ruleset(rules=rules, bypass_actors=[{"actor_id": 1, "actor_type": "Team", "bypass_mode": "always"}]),
+            ["govcheck-check", "package-alignment"], 15368,
+        )
+        self.assertEqual(result["result"], "fail")
+        self.assertTrue(any("source integration" in finding for finding in result["findings"]))
+        self.assertIn("strict required-status-check freshness is disabled", result["findings"])
+        self.assertIn("ruleset has bypass actors", result["findings"])
+
+    def test_ruleset_audit_rejects_non_default_branch_scope(self):
+        ruleset = self.ruleset(conditions={"ref_name": {"include": ["refs/heads/release"], "exclude": []}})
+        result = forge.audit_ruleset_payload(ruleset, ["govcheck-check", "package-alignment"], 15368)
+        self.assertEqual(result["result"], "fail")
+        self.assertIn("ruleset is not exclusively scoped to the default branch", result["findings"])
+
+    def test_list_rulesets_reads_collection(self):
+        client, opener = make_client(lambda req: FakeResponse(200, [{"id": 1, "name": "main"}]))
+        result = forge.list_rulesets(client)
+        self.assertEqual(result, [{"id": 1, "name": "main"}])
+        self.assertTrue(opener.requests[0].full_url.endswith("/repos/octo/repo/rulesets?per_page=100"))
+
+    def test_audit_ruleset_fetches_configuration_read_only(self):
+        ruleset = self.ruleset()
+        client, opener = make_client(lambda req: FakeResponse(200, ruleset))
+        result = forge.audit_ruleset(client, 28251664, ["govcheck-check", "package-alignment"], 15368)
+        self.assertEqual(result["result"], "pass")
+        self.assertEqual(opener.requests[0].get_method(), "GET")
+        self.assertTrue(opener.requests[0].full_url.endswith("/repos/octo/repo/rulesets/28251664"))
+
 class CliTests(unittest.TestCase):
     def test_cli_list_issues_prints_json(self):
         opener = FakeOpener(lambda req: FakeResponse(200, [{"number": 5, "title": "t", "state": "open", "body": "", "labels": [], "html_url": "u"}]))
@@ -238,6 +310,28 @@ class CliTests(unittest.TestCase):
         self.assertEqual(code, 1)
         self.assertIn("[auth]", err.getvalue())
         self.assertNotIn("tok-secret-123", err.getvalue())
+
+    def test_cli_audit_ruleset_returns_nonzero_for_missing_gate(self):
+        payload = {
+            "id": 1,
+            "target": "branch",
+            "enforcement": "active",
+            "conditions": {"ref_name": {"include": ["~DEFAULT_BRANCH"], "exclude": []}},
+            "rules": [{"type": "deletion"}, {"type": "non_fast_forward"}],
+            "bypass_actors": [],
+            "current_user_can_bypass": "never",
+        }
+        opener = FakeOpener(lambda req: FakeResponse(200, payload))
+        out = io.StringIO()
+        with redirect_stdout(out):
+            code = forge.main(
+                ["--owner", "octo", "--repo", "repo", "audit-ruleset", "--id", "1",
+                 "--required-checks", "govcheck-check", "--check-source-id", "15368"],
+                opener=opener, env={"GOVCHECK_FORGE_TOKEN": "t"},
+            )
+        self.assertEqual(code, 2)
+        self.assertEqual(json.loads(out.getvalue())["result"], "fail")
+        self.assertEqual(opener.requests[0].get_method(), "GET")
 
     def test_check_module_never_imports_the_adapter(self):
         src = (ROOT / "govcheck" / "check.py").read_text(encoding="utf-8")

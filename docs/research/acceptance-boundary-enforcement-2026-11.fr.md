@@ -144,3 +144,20 @@ Le test end-to-end utilise un dépôt bare isolé et un faux exécutable gate : 
 - [Issue #45](https://github.com/Martin-PB/govcheck/issues/45) porte l'implémentation et la vérification de la frontière d'acceptation.
 
 **Cette recherche ne modifie aucune protection de branche, aucun ruleset, service hébergé, politique d'autorité ni règle normative d'acceptation.**
+
+## 9. Observation actuelle du ruleset GitHub et audit
+
+Une inspection API en lecture seule le 2026-11-27 a trouvé le ruleset de dépôt `Protection Main` (ID `28251664`) :
+
+- l'application est active et le ruleset cible la branche par défaut ;
+- les restrictions de suppression et de non-fast-forward sont activées ;
+- aucun acteur de bypass n'est configuré et la réponse API indique `current_user_can_bypass=never` ;
+- le ruleset ne contient ni exigence `pull_request`, ni règle `required_status_checks`.
+
+L'endpoint de protection de branche a retourné HTTP 403 `Resource not accessible by integration` ; il s'agit d'une limite de permission API et non d'une preuve d'absence de protection. L'endpoint rulesets était accessible en lecture.
+
+La commande en lecture seule `govcheck/forge.py audit-ruleset` vérifie le scope actif de la branche par défaut, l'exigence de PR, les contextes exacts des checks requis, l'identifiant d'intégration/source GitHub attendu, la fraîcheur stricte, la protection contre suppression/non-fast-forward et les acteurs de bypass. Elle ne rapporte que la conformité de configuration et définit toujours `boundary_demonstrated=false` : un refus réel de mise à jour de référence protégée et la fraîcheur du résultat de merge nécessitent des tests distincts.
+
+L'identifiant source GitHub Actions observé sur les checks GovCheck est `15368`. Les contextes CI actuels sont `govcheck-check`, `package-alignment` et `reference-integrity` ; les workflows filtrés par chemins doivent être rendus disponibles de manière cohérente avant de pouvoir exiger les trois checks.
+
+**Cet audit n'a modifié aucun ruleset ni paramètre de protection de branche.**

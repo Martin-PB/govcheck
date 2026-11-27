@@ -8,18 +8,8 @@ name: GovCheck check slice (report-only)
 
 on:
   pull_request:
-    paths:
-      - 'govcheck/**'
-      - 'tests/**'
-      - 'scripts/**'
-      - '.github/workflows/govcheck-check.yml'
   push:
     branches: [main]
-    paths:
-      - 'govcheck/**'
-      - 'tests/**'
-      - 'scripts/**'
-      - '.github/workflows/govcheck-check.yml'
 
 permissions:
   contents: read

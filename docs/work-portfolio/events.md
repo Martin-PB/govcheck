@@ -490,7 +490,7 @@
 - **Event type:** `typed-risk-specification-candidate-completed`.
 - **Recorded:** 2026-11-27.
 - **Source issue:** [#131](https://github.com/Martin-PB/govcheck/issues/131); research increment [PR #142](https://github.com/Martin-PB/govcheck/pull/142); typed Lean increment [PR #150](https://github.com/Martin-PB/govcheck/pull/150), merged at `3228404631bb565fddd6d0fb5a52f75724fe24dd`.
-- **Artifacts:** bilingual `decision-and-assumed-risk-crosscutting-2026-11` research; bilingual `semantic-assurance-and-transition-models-2026-11` research; `formal/lean/GovCheckCoherence/RiskSemantics.lean`; dedicated `RiskSemanticsAxiomReport.lean`; catalogue entries R-193 and R-202.
+- **Artifacts:** bilingual `decision-and-assumed-risk-crosscutting-2026-11` research; bilingual `semantic-assurance-and-transition-models-2026-11` research; `formal/lean/GovCheckCoherence/RiskSemantics.lean`; dedicated `RiskSemanticsAxiomReport.lean`; catalogue entries [R-193](../references.md#r-193) and [R-202](../references.md#r-202).
 - **Semantic boundaries:** probability point/interval/distribution, fuzzy membership, nondeterministic possibilities, transition rates, argument confidence, cost, utility, priority and empirical frequency are distinct typed families. Epistemic availability preserves NotAssessed, Unknown, NotQuantifiable, NotApplicable, Quantified and Inconclusive.
 - **Decision/risk boundaries:** PEAK inputs remain distinct; DecisionOutcome retains Solution and AssumedRisk; RiskScenario, RiskAssessment, RiskTreatment and RiskAcceptance are separate; acceptance binds exact scenario/assessment revisions and records authority, scope, policy revision and validity interval.
 - **Formal evidence:** 17 representative constructor-disjointness and record-integrity theorems pass Lean 4.19.0; the dedicated axiom report records no axiom dependencies.
@@ -504,7 +504,7 @@
 - **Event type:** `in-toto-dsse-profile-increment-merged`.
 - **Recorded:** 2026-11-27.
 - **Source issue/PR:** [#44](https://github.com/Martin-PB/govcheck/issues/44), [PR #154](https://github.com/Martin-PB/govcheck/pull/154), merged to `main` at `6556a03d73c8aa2ee4527865b4d12acbc26bc644`.
-- **Artifacts:** Specification 0008 EN/FR; predicate JSON Schema; standard-library `govcheck/attestation.py`; tests for exact candidate/base binding, Git/Pijul identity fields, four-valued results, DSSE PAE/envelope structure and unavailable independent review; references R-227–R-229.
+- **Artifacts:** Specification 0008 EN/FR; predicate JSON Schema; standard-library `govcheck/attestation.py`; tests for exact candidate/base binding, Git/Pijul identity fields, four-valued results, DSSE PAE/envelope structure and unavailable independent review; references [R-227](../references.md#r-227), [R-228](../references.md#r-228) and [R-229](../references.md#r-229).
 - **Security correction:** candidate-tree review JSON and free-form reviewer strings can no longer satisfy the independent-review rule. The rule remains UNKNOWN until a detached DSSE verifier and explicit trust policy are configured.
 - **Validation:** 143 Python tests, reference integrity and package alignment passed on the final PR head.
 - **Limit:** no cryptographic signing/verification, trust-root/key lifecycle, signer-role mapping or canonical content-digest generation is implemented. No independent review is claimed; issue #44 remains open.

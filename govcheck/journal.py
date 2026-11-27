@@ -492,6 +492,8 @@ class Journal:
                         raise JournalError("malformed", "event envelope must be a JSON object")
                     if canonical_json_bytes(envelope).decode("utf-8") != row["envelope_json"]:
                         errors.append("event envelope is not canonically serialized at position " + str(row["position"]))
+                    if envelope.get("schemaVersion") != SCHEMA_VERSION:
+                        errors.append("unsupported event schema version at position " + str(row["position"]))
                     if envelope.get("canonicalization") != CANONICALIZATION_ID:
                         errors.append("unsupported event canonicalization profile at position " + str(row["position"]))
                     if envelope.get("scopeId") != scope_id or envelope.get("position") != row["position"]:
@@ -540,6 +542,8 @@ class Journal:
                     receipt = json.loads(receipt_row["receipt_json"], object_pairs_hook=_reject_duplicate_pairs)
                     if not isinstance(receipt, dict):
                         raise JournalError("malformed", "receipt must be a JSON object")
+                    if receipt.get("schemaVersion") != SCHEMA_VERSION:
+                        errors.append("unsupported receipt schema version at position " + str(row["position"]))
                     if receipt.get("canonicalization") != CANONICALIZATION_ID:
                         errors.append("unsupported receipt canonicalization profile at position " + str(row["position"]))
                     if canonical_json_bytes(receipt).decode("utf-8") != receipt_row["receipt_json"]:

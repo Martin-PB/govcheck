@@ -340,8 +340,9 @@ def rule_independent_review(ctx: Ctx):
         return ("fail", True, ["checked-out HEAD does not equal the candidate revision being evaluated"])
     required = {
         "envelope_path", "assurance_envelope_path", "assurance_role",
-        "trust_policy_path", "trust_policy_sha256", "author_principal",
-        "author_principal_source", "governance_revision", "scope_id",
+        "author_identity_envelope_path", "author_identity_role",
+        "trust_policy_path", "trust_policy_sha256", "author_principal_source",
+        "governance_revision", "scope_id",
     }
     if not config or not required.issubset(config):
         return ("unknown", True, [
@@ -357,9 +358,11 @@ def rule_independent_review(ctx: Ctx):
     try:
         envelope_path = _outside_tree(config["envelope_path"], ctx.tree, "review envelope")
         assurance_path = _outside_tree(config["assurance_envelope_path"], ctx.tree, "assurance envelope")
+        author_identity_path = _outside_tree(config["author_identity_envelope_path"], ctx.tree, "author identity envelope")
         policy_path = _outside_tree(config["trust_policy_path"], ctx.tree, "trust policy")
         envelope = json.loads(envelope_path.read_text(encoding="utf-8"))
         assurance_envelope = json.loads(assurance_path.read_text(encoding="utf-8"))
+        author_identity_envelope = json.loads(author_identity_path.read_text(encoding="utf-8"))
         review_envelope_digest = hashlib.sha256(envelope_path.read_bytes()).hexdigest()
         content_digest = candidate_content_digest(ctx.tree)
         candidate_revision = ctx.git.get("candidate_rev")
@@ -370,6 +373,31 @@ def rule_independent_review(ctx: Ctx):
             from govcheck.attestation_verify import verify_dsse_envelope
         except ImportError:
             from attestation_verify import verify_dsse_envelope
+        author_result = verify_dsse_envelope(
+            author_identity_envelope,
+            policy_path,
+            config["trust_policy_sha256"],
+            ctx.tree,
+            required_role=config["author_identity_role"],
+            expected_candidate_revision=candidate_revision,
+            expected_governance_revision=config["governance_revision"],
+            expected_scope_id=config["scope_id"],
+            expected_base_revision=base_revision,
+            expected_content_sha256=content_digest,
+            expected_predicate_type="urn:govcheck:attestation:forge-author-identity:v1",
+        )
+        if author_result.get("status") == "unknown":
+            return ("unknown", True, ["forge author identity trust could not be established: " + str(author_result.get("reason", "unknown"))])
+        if author_result.get("status") != "verified":
+            return ("fail", True, ["forge author identity attestation verification failed: " + str(author_result.get("reason", "invalid"))])
+        author_identity = author_result.get("statement", {}).get("predicate", {})
+        author_principal = author_identity.get("authorPrincipal")
+        if not author_principal:
+            return ("fail", True, ["verified forge identity Statement has no author principal"])
+        if author_identity.get("sourceUri") != config["author_principal_source"]:
+            return ("fail", True, ["forge author identity source URI does not match the explicitly trusted source"])
+        if config.get("author_principal") and config["author_principal"] != author_principal:
+            return ("fail", True, ["forge author identity principal does not match the optional expected principal"])
         result = verify_dsse_envelope(
             envelope,
             policy_path,
@@ -382,7 +410,7 @@ def rule_independent_review(ctx: Ctx):
             expected_base_revision=base_revision,
             expected_content_sha256=content_digest,
             expected_predicate_type="urn:govcheck:attestation:independent-review:v1",
-            forbidden_principal=config["author_principal"],
+            forbidden_principal=author_principal,
         )
         assurance_result = verify_dsse_envelope(
             assurance_envelope,
@@ -423,7 +451,7 @@ def rule_independent_review(ctx: Ctx):
         return ("fail", True, ["verified review has an unsupported outcome"])
     return ("pass", True, [
         "detached independent-review and assurance DSSE statements verified; assurance reference digest matches the exact review envelope; "
-        "reviewer differs from the explicitly supplied author principal; candidate/base/governance/scope/content bindings match"
+        "reviewer differs from the author principal in the signed forge identity assertion; candidate/base/governance/scope/content bindings match"
     ])
 
 
@@ -510,6 +538,8 @@ def main(argv=None) -> int:
     parser.add_argument("--review-envelope")
     parser.add_argument("--assurance-envelope")
     parser.add_argument("--assurance-role", help="Trust-policy role required for the detached assurance Statement")
+    parser.add_argument("--author-identity-envelope")
+    parser.add_argument("--author-identity-role", help="Trust-policy role required for the signed forge author-identity assertion")
     parser.add_argument("--trust-policy")
     parser.add_argument("--trust-policy-sha256")
     parser.add_argument("--author-principal")
@@ -539,17 +569,20 @@ def main(argv=None) -> int:
         }
     review_values = [
         args.review_envelope, args.assurance_envelope, args.assurance_role,
-        args.trust_policy, args.trust_policy_sha256, args.author_principal,
+        args.author_identity_envelope, args.author_identity_role,
+        args.trust_policy, args.trust_policy_sha256,
         args.author_principal_source, args.governance_revision, args.scope_id,
     ]
     review = None
     if any(review_values):
         if not all(review_values):
-            parser.error("detached review verification requires --review-envelope, --assurance-envelope, --assurance-role, --trust-policy, --trust-policy-sha256, --author-principal, --author-principal-source, --governance-revision and --scope-id")
+            parser.error("detached review verification requires --review-envelope, --assurance-envelope, --assurance-role, --author-identity-envelope, --author-identity-role, --trust-policy, --trust-policy-sha256, --author-principal-source, --governance-revision and --scope-id")
         review = {
             "envelope_path": args.review_envelope,
             "assurance_envelope_path": args.assurance_envelope,
             "assurance_role": args.assurance_role,
+            "author_identity_envelope_path": args.author_identity_envelope,
+            "author_identity_role": args.author_identity_role,
             "trust_policy_path": args.trust_policy,
             "trust_policy_sha256": args.trust_policy_sha256,
             "author_principal": args.author_principal,

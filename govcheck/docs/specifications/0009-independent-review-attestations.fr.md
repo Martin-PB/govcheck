@@ -14,7 +14,7 @@ La revue est un Statement in-toto v1 utilisant le type de prédicat :
 
 `urn:govcheck:attestation:independent-review:v1`
 
-Le schéma JSON strict est `../../formal/schemas/independent-review-v1.schema.json`. Le prédicat lie :
+Le schéma JSON strict est `../../formal/schemas/independent-review-v1.schema.json`. Le schéma distinct du prédicat d'identité d'auteur forge est `../../formal/schemas/forge-author-identity-v1.schema.json`. Le prédicat de revue lie :
 
 - la révision candidate et le SHA-256 du contenu candidat ;
 - la révision exacte de base ;
@@ -38,7 +38,7 @@ Le checkout doit être propre (fichiers suivis et non suivis) et `HEAD` doit êt
 
 Le principal du reviewer provient uniquement du signataire DSSE vérifié et de l'association key ID/principal/rôle de la politique de confiance épinglée par l'opérateur. Le rôle requis est `independent-reviewer`. Le principal reviewer authentifié doit être distinct du principal auteur.
 
-Le principal auteur et l'URI de sa source sont des entrées explicites de l'évaluateur. La CLI n'authentifie **pas** elle-même l'API de forge ni l'URI source ; l'opérateur/le déploiement doit obtenir le principal auteur depuis un mécanisme d'identité de forge distinct et fiable. Les métadonnées d'auteur Git seules ne constituent pas un principal authentifié.
+Le principal auteur et l'URI source sont portés par un Statement détaché `forge-author-identity/v1`, signé par un fournisseur d'identité de forge. Son signataire doit être autorisé par la politique de confiance épinglée par l'opérateur sous un rôle explicite d'identité forge. Le prédicat lie la révision/le contenu candidat, la base, la gouvernance et le scope. L'évaluateur vérifie cette enveloppe, exige que son `sourceUri` signé soit égal à l'URI source attendue épinglée par l'opérateur et dérive `authorPrincipal` du prédicat signé ; `--author-principal` n'est qu'une vérification de cohérence facultative. La CLI n'authentifie pas elle-même une API de forge : la signature du fournisseur et son association dans la politique de confiance constituent la frontière de confiance. Les métadonnées d'auteur Git seules ne constituent pas un principal authentifié.
 
 Le Statement d'assurance est lui aussi détaché et vérifié sous un rôle explicite de la politique de confiance. Son `independentReview.status` doit être `attested`, et son `independentReview.reference.digest.sha256` doit être égal au SHA-256 des octets exacts du fichier d'enveloppe de revue. Les deux enveloppes et la politique de confiance doivent se trouver hors de l'arbre candidat.
 

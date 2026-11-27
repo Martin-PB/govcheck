@@ -144,14 +144,18 @@ class EvaluateTests(unittest.TestCase):
     def _detached_review_inputs(self, root, outcome="accepted"):
         evidence = root.parent / "detached-review.json"
         assurance = root.parent / "detached-assurance.json"
+        author_identity = root.parent / "forge-author-identity.json"
         policy = root.parent / "trust-policy.json"
         evidence.write_text(json.dumps({"payloadType": "application/vnd.in-toto+json", "payload": "e30=", "signatures": [{"keyid": "test", "sig": "AA=="}]}), encoding="utf-8")
         assurance.write_text(json.dumps({"payloadType": "application/vnd.in-toto+json", "payload": "e30=", "signatures": [{"keyid": "test", "sig": "AA=="}]}), encoding="utf-8")
+        author_identity.write_text(json.dumps({"payloadType": "application/vnd.in-toto+json", "payload": "e30=", "signatures": [{"keyid": "test", "sig": "AA=="}]}), encoding="utf-8")
         policy.write_text("{}", encoding="utf-8")
         config = {
             "envelope_path": str(evidence),
             "assurance_envelope_path": str(assurance),
             "assurance_role": "assurance-evaluator",
+            "author_identity_envelope_path": str(author_identity),
+            "author_identity_role": "forge-authority",
             "trust_policy_path": str(policy),
             "trust_policy_sha256": "0" * 64,
             "author_principal": "forge:author-1",
@@ -160,6 +164,7 @@ class EvaluateTests(unittest.TestCase):
             "scope_id": "repo:example/project",
         }
         git = {"candidate_rev": "c" * 40, "base_rev": "b" * 40, "head_rev": "c" * 40, "worktree_clean": True}
+        author_result = {"status": "verified", "statement": {"predicate": {"authorPrincipal": "forge:author-1", "sourceUri": "https://forge.example/api/author/1"}}}
         result = {
             "status": "verified",
             "statement": {"predicate": {"outcome": outcome}},
@@ -171,7 +176,7 @@ class EvaluateTests(unittest.TestCase):
                 "reference": {"digest": {"sha256": hashlib.sha256(evidence.read_bytes()).hexdigest()}},
             }}},
         }
-        return config, git, [result, assurance_result]
+        return config, git, [author_result, result, assurance_result]
 
     def test_detached_review_config_can_satisfy_rule_when_verifier_confirms(self):
         with tempfile.TemporaryDirectory() as d:
@@ -183,11 +188,25 @@ class EvaluateTests(unittest.TestCase):
                 report = check.evaluate(root, changed={"docs/a.md"}, git=git, independent_review=config)
             rule = next(r for r in report["rules"] if r["id"] == "independent-review")
             self.assertEqual(rule["result"], "pass")
-            self.assertEqual(verifier.call_args_list[0].kwargs["required_role"], "independent-reviewer")
-            self.assertEqual(verifier.call_args_list[1].kwargs["required_role"], "assurance-evaluator")
-            self.assertEqual(verifier.call_args.kwargs["expected_content_sha256"], check.candidate_content_digest(root))
-            self.assertEqual(verifier.call_args_list[0].kwargs["forbidden_principal"], "forge:author-1")
-            self.assertEqual(verifier.call_count, 2)
+            self.assertEqual(verifier.call_args_list[0].kwargs["required_role"], "forge-authority")
+            self.assertEqual(verifier.call_args_list[1].kwargs["required_role"], "independent-reviewer")
+            self.assertEqual(verifier.call_args_list[2].kwargs["required_role"], "assurance-evaluator")
+            self.assertEqual(verifier.call_args_list[1].kwargs["expected_content_sha256"], check.candidate_content_digest(root))
+            self.assertEqual(verifier.call_args_list[1].kwargs["forbidden_principal"], "forge:author-1")
+            self.assertEqual(verifier.call_count, 3)
+
+    def test_signed_forge_author_source_mismatch_fails(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d) / "candidate"
+            root.mkdir()
+            build_tree(root)
+            config, git, results = self._detached_review_inputs(root)
+            config["author_principal_source"] = "https://untrusted.example/author"
+            with patch("govcheck.attestation_verify.verify_dsse_envelope", side_effect=results):
+                report = check.evaluate(root, changed={"docs/a.md"}, git=git, independent_review=config)
+            rule = next(r for r in report["rules"] if r["id"] == "independent-review")
+            self.assertEqual(rule["result"], "fail")
+            self.assertIn("source URI", rule["reasons"][0])
 
     def test_detached_review_changes_requested_fails_rule(self):
         with tempfile.TemporaryDirectory() as d:
@@ -210,12 +229,16 @@ class EvaluateTests(unittest.TestCase):
             evidence.write_text("{}", encoding="utf-8")
             policy = Path(d) / "policy.json"
             assurance = Path(d) / "assurance.json"
+            author_identity = Path(d) / "author-identity.json"
             policy.write_text("{}", encoding="utf-8")
             assurance.write_text("{}", encoding="utf-8")
+            author_identity.write_text("{}", encoding="utf-8")
             config = {
                 "envelope_path": str(evidence),
                 "assurance_envelope_path": str(assurance),
                 "assurance_role": "assurance-evaluator",
+                "author_identity_envelope_path": str(author_identity),
+                "author_identity_role": "forge-authority",
                 "trust_policy_path": str(policy),
                 "trust_policy_sha256": "0" * 64,
                 "author_principal": "forge:author-1",

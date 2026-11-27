@@ -19,6 +19,7 @@ from pathlib import Path
 from govcheck import attestation as att
 from govcheck import attestation_verify as verify
 from govcheck import independent_review as independent_review
+from govcheck import forge_author_identity as forge_author_identity
 
 ROOT = Path(__file__).resolve().parents[1]
 FIXTURE_SPEC = importlib.util.spec_from_file_location("attestation_fixture", ROOT / "tests" / "test_attestation.py")
@@ -54,7 +55,7 @@ class DetachedVerificationTests(unittest.TestCase):
                 "publicKeyPath": self.public_key.name,
                 "publicKeySha256": self.file_digest(self.public_key),
                 "principalId": "principal:synthetic-reviewer",
-                "roles": ["independent-reviewer", "verifier"],
+                "roles": ["independent-reviewer", "verifier", "forge-authority"],
                 "validFrom": "2000-01-01T00:00:00Z",
                 "validUntil": "2100-01-01T00:00:00Z",
                 "revoked": False,
@@ -175,6 +176,46 @@ class DetachedVerificationTests(unittest.TestCase):
         )
         self.assertEqual(result["status"], "invalid")
         self.assertIn("candidate revision", result["reason"])
+
+    def test_signed_forge_author_identity_predicate_verifies(self):
+        statement = forge_author_identity.build_statement(
+            repository_uri="https://github.com/example/project",
+            candidate_revision="c" * 40,
+            candidate_content_sha256="a" * 64,
+            base_revision="e" * 40,
+            governance_revision="gov-17",
+            scope_id="repo:example/project",
+            author_principal="forge:author-123",
+            source_uri="https://forge.example/api/commits/" + "c" * 40 + "/author",
+            asserted_on="2026-11-27T12:00:00Z",
+        )
+        self.envelope = self.sign_statement(statement)
+        result = self.verify(
+            required_role="forge-authority",
+            expected_predicate_type=forge_author_identity.PREDICATE_TYPE,
+        )
+        self.assertEqual(result["status"], "verified")
+        self.assertEqual(result["predicateType"], forge_author_identity.PREDICATE_TYPE)
+        self.assertEqual(result["statement"]["predicate"]["authorPrincipal"], "forge:author-123")
+
+    def test_forge_author_identity_requires_authorized_provider_role(self):
+        statement = forge_author_identity.build_statement(
+            repository_uri="https://github.com/example/project",
+            candidate_revision="c" * 40,
+            candidate_content_sha256="a" * 64,
+            base_revision="e" * 40,
+            governance_revision="gov-17",
+            scope_id="repo:example/project",
+            author_principal="forge:author-123",
+            source_uri="https://forge.example/api/commits/" + "c" * 40 + "/author",
+            asserted_on="2026-11-27T12:00:00Z",
+        )
+        self.envelope = self.sign_statement(statement)
+        result = self.verify(
+            required_role="untrusted-role",
+            expected_predicate_type=forge_author_identity.PREDICATE_TYPE,
+        )
+        self.assertEqual(result["status"], "unknown")
 
     def test_tampered_payload_fails_signature_verification(self):
         statement = copy.deepcopy(self.statement)

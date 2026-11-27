@@ -401,7 +401,10 @@ TypeOKPublicationKind ==
 
 TypeOKPublicationResult ==
     \/ publication.result = NoValue
-    \/ publication.result \in Results
+    \/ publication.result = Pass
+    \/ publication.result = Fail
+    \/ publication.result = Unknown
+    \/ publication.result = Conflict
 
 TypeOKPublication ==
     TypeOKPublicationStatus

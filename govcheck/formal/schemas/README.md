@@ -53,3 +53,9 @@ See [Architecture 0017](../../docs/architecture/0017-artifact-identity-revision-
 - journal-receipt-v1.schema.json — durable receipt binding scope, position, event, predecessor and event digest.
 
 These schemas describe the serialized record shape. They do not authenticate actor IDs, verify authority, or make a hash chain tamper-proof against a privileged database administrator. See meta-level Architecture 0038 and Specification 0007.
+
+## Assurance attestations
+
+- assurance-evaluation-v1.schema.json — GovCheck assurance-evaluation predicate schema used with the in-toto Statement/DSSE profile.
+
+The schema describes predicate shape only; it does not verify DSSE signatures or authenticate principals/roles. See Specification 0008 and issue #44.

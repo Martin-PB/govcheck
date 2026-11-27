@@ -229,6 +229,9 @@ class JournalTests(unittest.TestCase):
                                      "--payload-file", str(payload), "--idempotency-key", "cli-idem",
                                      "--actor-id", "principal:root"])
         self.assertEqual(code, 0)
+        code = journal_module._main(["receipt", "--db", str(db), "--scope-id", "repo:cli",
+                                     "--idempotency-key", "cli-idem"])
+        self.assertEqual(code, 0)
         code = journal_module._main(["verify", "--db", str(db), "--scope-id", "repo:cli"])
         self.assertEqual(code, 0)
 

@@ -36,7 +36,7 @@ TOOL = "govcheck-bootstrap"
 CAPABILITIES = {
     "readme": ("README.md", "README.fr.md"),
     "check": ("check.py",),
-    "attestation": ("attestation.py",),
+    "attestation": ("attestation.py", "formal/schemas/assurance-evaluation-v1.schema.json"),
     "journal": ("journal.py", "formal/schemas/journal-event-v1.schema.json", "formal/schemas/journal-receipt-v1.schema.json"),
     "forge": ("forge.py",),
     "decisions": ("decisions",),

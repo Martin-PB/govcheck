@@ -62,6 +62,11 @@ Default behavior: only PASS is automatically accepted. Other outcomes block unle
 
 The current root-authority baseline in Architecture 0023 remains unchanged. This proposal does not invent a second approver or imply that a free-form reviewer name proves independent authority.
 
+
+### Single-contributor operating constraint
+
+The current project has only one available contributor. Independent review by a second person is therefore **unavailable**, not completed and not implicitly waived. An evaluator must preserve that distinction: it must report the missing review as UNKNOWN/not available (or an equivalent explicit state), never synthesize a reviewer attestation or turn the absence into PASS. The sole root authority may make a separately attributable decision under the existing authority model, including an explicit, scoped and time-bounded risk acceptance where the applicable policy permits it. That decision is not independent review and does not erase the residual separation-of-duties risk. This is a current operating constraint, not a permanent assumption: if another authenticated contributor becomes available, the independent-review capability can be reassessed. The project does not grant blanket risk acceptance merely because no second contributor is available.
+
 ## 5. Enforcement adapters
 
 | Adapter | Effective boundary | Required configuration/trust | Residual limitation |

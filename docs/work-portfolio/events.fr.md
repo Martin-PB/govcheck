@@ -177,3 +177,14 @@ Détail canonique : [journal anglais WP-EVT-000033](events.md#wp-evt-000033).
 - **Fondement :** la Spécification 0007 proposée et le modèle borné de reprise Architecture 0035 sont fusionnés, mais aucune implémentation durable du journal n'existe.
 - **Périmètre :** évaluer un stockage embarqué local ; implémenter genesis explicite, append compare-and-append sérialisé, reçus durables, retry idempotent, reprise après crash et vérification de chaîne avec tests hors ligne positifs/négatifs.
 - **Frontière :** aucun serveur/MCP hébergé, consensus distribué, cryptographie maison, genesis implicite ou ordre normatif imposé par une forge/VCS. L'intégrité de la chaîne ne prouve ni l'identité d'un acteur ni son autorité.
+
+
+<a id="wp-evt-000038"></a>
+## WP-EVT-000038 — Adaptateur de portefeuille GitHub livré
+- **Sujet :** `govcheck.portfolio.forge-native-adapter`.
+- **Type d'événement :** `github-forge-adapter-first-backend-completed`.
+- **Date :** 2026-11-27.
+- **Issue/PR sources :** [#118](https://github.com/Martin-PB/govcheck/issues/118) ; [#119](https://github.com/Martin-PB/govcheck/pull/119), [#120](https://github.com/Martin-PB/govcheck/pull/120), [#121](https://github.com/Martin-PB/govcheck/pull/121), toutes fusionnées.
+- **Artefacts :** Architecture 0034 EN/FR ; govcheck/forge.py stdlib-only ; tests de contrat hors ligne ; capacité de bootstrap forge ; README EN/FR.
+- **Livré :** IDs de travail stables registry-first, tests d'aller-retour sans perte, inspection read-only des checks/protections, écritures explicites avec token, échecs typés et absence de sémantique d'autorisation par la forge.
+- **Limite :** GitHub REST v3 est le seul backend implémenté dans cette issue. GitLab/Gitea/Forgejo, synchronisation bidirectionnelle automatique et écritures Projects v2 restent des chantiers séparés ; l'issue #118 est clôturée pour sa première tranche.

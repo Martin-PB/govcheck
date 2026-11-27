@@ -13,6 +13,7 @@
 | Assurance regimes and goal-oriented requirements | R-35–R-36, R-44, R-92 |
 | Model checking and program-verification alternatives | R-05, R-20, R-37–R-43, R-89–R-91 |
 | Evidence provenance, interoperable attestations and software supply chain | R-06–R-08, R-227–R-229 |
+| Local durable journal storage and canonical JSON | R-230–R-231 |
 | Policy engines, authorization and policy-model verification | R-09–R-10, R-88 |
 | Normative logic and deontic modalities | R-93 |
 | Schemas and interface contracts | R-13, R-16 |
@@ -1606,3 +1607,19 @@
 - **Use:** summarizes verification of an artifact against SLSA tracks/levels, including verifier, policy, input attestations and verification result.
 - **Limit:** its PASSED/FAILED and SLSA-level semantics are not a lossless representation of GovCheck's pass/fail/unknown/conflict results, assurance-method taxonomy, authority decisions or risk acceptance.
 - **Cited by:** [Specification 0008](specifications/0008-interoperable-assurance-attestations.md).
+
+<a id="r-230"></a>
+### R-230 — SQLite transactions, WAL and durability
+- **Type:** Primary implementation documentation.
+- **Primary sources:** [Transactions](https://www.sqlite.org/lang_transaction.html) · [Write-Ahead Logging](https://www.sqlite.org/wal.html) · [PRAGMA synchronous and journal settings](https://www.sqlite.org/pragma.html) · [Atomic Commit](https://www.sqlite.org/atomiccommit.html).
+- **Use:** documents serialized write transactions, BEGIN IMMEDIATE, WAL reader/writer behavior, same-host constraints and durability implications of synchronous settings.
+- **Limit:** SQLite's transactional guarantees depend on its VFS, filesystem and storage hardware. WAL is not supported over network filesystems; a local database does not authenticate actors or resist a privileged administrator.
+- **Cited by:** [Architecture 0038](architecture/0038-local-canonical-journal-implementation.md).
+
+<a id="r-231"></a>
+### R-231 — RFC 8785: JSON Canonicalization Scheme (JCS)
+- **Type:** Primary serialization/canonicalization specification (Informational RFC).
+- **Primary source:** [RFC 8785](https://www.rfc-editor.org/rfc/rfc8785.html).
+- **Use:** defines deterministic JSON serialization suitable for hashing/signing, including property ordering, primitive serialization and I-JSON constraints.
+- **Limit:** JCS does not define GovCheck event semantics, authorization or journal ordering. Its numeric model is IEEE-754; exact rationals/large integers should use typed strings/records or a carefully specified compatible subset.
+- **Cited by:** [Architecture 0038](architecture/0038-local-canonical-journal-implementation.md).

@@ -46,3 +46,16 @@ The examples deliberately use reserved `example.invalid` references and syntheti
 JSON Schema validates record shape, required fields, enumerations and syntax. A future evaluator must additionally resolve authority and delegation, verify revision existence/integrity, assess compatibility semantics, compute dependency impact and determine evidence freshness. Unknown authority and undetermined compatibility block authorization.
 
 See [Architecture 0017](../../docs/architecture/0017-artifact-identity-revision-and-versioning.md) and [Architecture 0018](../../docs/architecture/0018-version-governance-and-compatibility-authority.md).
+
+## Canonical journal v1
+
+- journal-event-v1.schema.json — immutable event envelope, including genesis and append events.
+- journal-receipt-v1.schema.json — durable receipt binding scope, position, event, predecessor and event digest.
+
+These schemas describe the serialized record shape. They do not authenticate actor IDs, verify authority, or make a hash chain tamper-proof against a privileged database administrator. See meta-level Architecture 0038 and Specification 0007.
+
+## Assurance attestations
+
+- assurance-evaluation-v1.schema.json — GovCheck assurance-evaluation predicate schema used with the in-toto Statement/DSSE profile.
+
+The schema describes predicate shape only; it does not verify DSSE signatures or authenticate principals/roles. See Specification 0008 and issue #44.

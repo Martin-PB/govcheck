@@ -16,6 +16,7 @@ The repository release, the GovCheck product release and the reusable **govcheck
 - docs/formal/ — lifecycle model documentation and generated diagram
 - scripts/ — deterministic diagram generator and drift check
 - attestation.py — in-toto Statement/DSSE payload profile (signature verification remains external)
+- attestation_verify.py — optional pinned OpenSSL/Ed25519 DSSE verifier
 - journal.py — local append-only SQLite journal and durable receipts
 - .github/workflows/ — CI workflow template (kept in sync with the meta repository by a check)
 - BOOTSTRAP_GOVERNANCE.md — temporary bootstrap policy
@@ -97,3 +98,15 @@ Example bootstrap and verification:
 Append uses required --expected-position and --expected-digest values returned by head, plus --event-id, --event-type, --payload-file, --idempotency-key and --actor-id. A stale head returns stale; reuse of an idempotency key with a different request returns conflict. If the response is lost after commit, retry with the same key and identical request to recover the original receipt.
 
 The journal uses SHA-256 chaining and SQLite transactions with WAL and synchronous=FULL. These provide integrity/recovery properties, not actor authentication, authority proof, distributed consensus or resistance to a privileged database administrator. Exact rationals and decimals must be encoded as strings; floating-point JSON numbers are rejected by the canonical journal profile. The journal and attestation modules are independently installable through bootstrap capabilities journal and attestation.
+
+## Detached DSSE signature verification (optional provider)
+
+The package includes attestation_verify.py as an optional Ed25519 verifier. It delegates signature verification to an OpenSSL executable whose absolute path and SHA-256 are pinned in an operator-managed trust policy. The trust-policy file itself is pinned by a SHA-256 supplied out-of-band. The trust policy and public keys must be outside the candidate tree.
+
+Example (replace the digest and paths with operator-managed values):
+
+    python3 -m govcheck.attestation_verify verify --envelope evidence/assurance.dsse.json --trust-policy /etc/govcheck/trust-policy.json --trust-policy-sha256 TRUST_POLICY_SHA256 --candidate-root . --required-role verifier --candidate-revision CANDIDATE_REV --governance-revision GOVERNANCE_REV --scope-id repo:OWNER/REPOSITORY
+
+The verifier returns verified, invalid or unknown. Unknown key IDs, unavailable OpenSSL, missing trust policy or unavailable trust data never become PASS. Key validity is checked against the current system clock; there is no trusted timestamp. A principal/role mapping authenticates key possession under the configured policy, not a real-world person's identity or independence. Synthetic test keys prove only the verification mechanism. This optional provider does not make independent review available when no second contributor exists.
+
+Install the capability through bootstrap as attestation-verify; it includes the structural attestation module and the trust-policy/statement schemas.

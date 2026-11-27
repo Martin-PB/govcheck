@@ -324,7 +324,47 @@ def get_ruleset(client: GitHubClient, ruleset_id: int) -> dict:
     return parsed
 
 
-def audit_ruleset_payload(ruleset: dict, expected_checks, expected_source_id: int) -> dict:
+def render_ruleset_payload(name: str, expected_checks, expected_source_id: int, required_approvals: int = 0) -> dict:
+    """Render a least-bypass default-branch ruleset; does not call or mutate the forge."""
+    if not isinstance(name, str) or not name.strip():
+        raise ForgeError("malformed", "ruleset name must be a non-empty string")
+    if not isinstance(expected_checks, list) or not expected_checks or not all(isinstance(x, str) and x.strip() for x in expected_checks):
+        raise ForgeError("malformed", "expected_checks must be a non-empty list of check context names")
+    expected = [x.strip() for x in expected_checks]
+    if len(set(expected)) != len(expected):
+        raise ForgeError("malformed", "expected check context names must be unique")
+    if not isinstance(expected_source_id, int) or expected_source_id <= 0:
+        raise ForgeError("malformed", "expected_check_source_id must be a positive integer")
+    if not isinstance(required_approvals, int) or not 0 <= required_approvals <= 6:
+        raise ForgeError("malformed", "required_approvals must be an integer from 0 to 6")
+    return {
+        "name": name.strip(),
+        "target": "branch",
+        "enforcement": "active",
+        "conditions": {"ref_name": {"include": ["~DEFAULT_BRANCH"], "exclude": []}},
+        "rules": [
+            {"type": "deletion"},
+            {"type": "non_fast_forward"},
+            {"type": "pull_request", "parameters": {
+                "required_approving_review_count": required_approvals,
+                "dismiss_stale_reviews_on_push": True,
+                "require_code_owner_review": False,
+                "require_last_push_approval": False,
+                "required_review_thread_resolution": False,
+            }},
+            {"type": "required_status_checks", "parameters": {
+                "required_status_checks": [
+                    {"context": context, "integration_id": expected_source_id}
+                    for context in expected
+                ],
+                "strict_required_status_checks_policy": True,
+            }},
+        ],
+        "bypass_actors": [],
+    }
+
+
+def audit_ruleset_payload(ruleset: dict, expected_checks, expected_source_id: int, expected_approvals: int = 0) -> dict:
     """Audit configuration only; never claim that a protected-ref write was rejected."""
     if not isinstance(ruleset, dict):
         raise ForgeError("malformed", "ruleset must be a JSON object")
@@ -335,6 +375,8 @@ def audit_ruleset_payload(ruleset: dict, expected_checks, expected_source_id: in
         raise ForgeError("malformed", "expected check context names must be unique")
     if not isinstance(expected_source_id, int) or expected_source_id <= 0:
         raise ForgeError("malformed", "expected_check_source_id must be a positive integer")
+    if not isinstance(expected_approvals, int) or not 0 <= expected_approvals <= 6:
+        raise ForgeError("malformed", "expected_approvals must be an integer from 0 to 6")
 
     findings = []
     if ruleset.get("target") != "branch":
@@ -359,8 +401,16 @@ def audit_ruleset_payload(ruleset: dict, expected_checks, expected_source_id: in
         findings.append("deletion protection is missing")
     if "non_fast_forward" not in by_type:
         findings.append("non-fast-forward protection is missing")
-    if "pull_request" not in by_type:
+    pull_rules = by_type.get("pull_request", [])
+    if not pull_rules:
         findings.append("pull-request requirement is missing")
+    else:
+        if len(pull_rules) != 1:
+            findings.append("ruleset must contain exactly one pull-request rule")
+        parameters = pull_rules[0].get("parameters") or {}
+        observed_approvals = parameters.get("required_approving_review_count")
+        if observed_approvals != expected_approvals:
+            findings.append("required approving-review count does not match the expected value")
 
     status_rules = by_type.get("required_status_checks", [])
     if not status_rules:
@@ -402,6 +452,7 @@ def audit_ruleset_payload(ruleset: dict, expected_checks, expected_source_id: in
         "expected_checks": expected,
         "observed_checks": sorted(item.get("context", "") for item in required if isinstance(item, dict)),
         "expected_check_source_id": expected_source_id,
+        "expected_approvals": expected_approvals,
         "bypass_actors": bypass,
         "findings": findings,
         "boundary_demonstrated": False,
@@ -409,8 +460,8 @@ def audit_ruleset_payload(ruleset: dict, expected_checks, expected_source_id: in
     }
 
 
-def audit_ruleset(client: GitHubClient, ruleset_id: int, expected_checks, expected_source_id: int) -> dict:
-    return audit_ruleset_payload(get_ruleset(client, ruleset_id), expected_checks, expected_source_id)
+def audit_ruleset(client: GitHubClient, ruleset_id: int, expected_checks, expected_source_id: int, expected_approvals: int = 0) -> dict:
+    return audit_ruleset_payload(get_ruleset(client, ruleset_id), expected_checks, expected_source_id, expected_approvals)
 
 
 def make_client(forge=None, owner=None, repo=None, token=None, opener=None, env=None):
@@ -461,6 +512,12 @@ def main(argv=None, opener=None, env=None) -> int:
     p.add_argument("--id", type=int, required=True)
     p.add_argument("--required-checks", required=True, help="comma-separated exact required check contexts")
     p.add_argument("--check-source-id", type=int, required=True, help="expected GitHub App/integration ID for required checks")
+    p.add_argument("--required-approvals", type=int, default=0, help="expected approving-review count (default: 0 for a sole-authority repository)")
+    p = sub.add_parser("ruleset-payload", help="render a desired ruleset JSON payload without contacting or mutating a forge")
+    p.add_argument("--name", default="GovCheck main protection")
+    p.add_argument("--required-checks", required=True, help="comma-separated exact required check contexts")
+    p.add_argument("--check-source-id", type=int, required=True, help="expected GitHub App/integration ID for required checks")
+    p.add_argument("--required-approvals", type=int, default=0, help="required approving-review count (default: 0)")
     p = sub.add_parser("create-issue")
     p.add_argument("--title", required=True)
     p.add_argument("--body", default="")
@@ -479,31 +536,37 @@ def main(argv=None, opener=None, env=None) -> int:
 
     args = parser.parse_args(argv)
     try:
-        client = make_client(args.forge, args.owner, args.repo, opener=opener, env=env)
-        if args.command == "capabilities":
-            result = declare_capabilities()
-        elif args.command == "list-issues":
-            result = list_issues(client, state=args.state, labels=_split_labels(args.labels))
-        elif args.command == "get-issue":
-            result = get_issue(client, args.number)
-        elif args.command == "list-labels":
-            result = list_labels(client)
-        elif args.command == "check-runs":
-            result = list_check_runs(client, args.ref)
-        elif args.command == "branch-protection":
-            result = get_branch_protection(client, args.branch)
-        elif args.command == "rulesets":
-            result = list_rulesets(client)
-        elif args.command == "audit-ruleset":
-            result = audit_ruleset(client, args.id, _split_labels(args.required_checks) or [], args.check_source_id)
-        elif args.command == "create-issue":
-            result = create_issue(client, args.title, args.body, labels=_split_labels(args.labels), registry_id=args.registry_id)
-        elif args.command == "update-issue":
-            result = update_issue(client, args.number, title=args.title, body=args.body, state=args.state, labels=_split_labels(args.labels))
-        elif args.command == "comment":
-            result = add_comment(client, args.number, args.body)
+        if args.command == "ruleset-payload":
+            result = render_ruleset_payload(
+                args.name, _split_labels(args.required_checks) or [], args.check_source_id,
+                required_approvals=args.required_approvals,
+            )
         else:
-            raise ForgeError("unsupported", "unknown command " + repr(args.command))
+            client = make_client(args.forge, args.owner, args.repo, opener=opener, env=env)
+            if args.command == "capabilities":
+                result = declare_capabilities()
+            elif args.command == "list-issues":
+                result = list_issues(client, state=args.state, labels=_split_labels(args.labels))
+            elif args.command == "get-issue":
+                result = get_issue(client, args.number)
+            elif args.command == "list-labels":
+                result = list_labels(client)
+            elif args.command == "check-runs":
+                result = list_check_runs(client, args.ref)
+            elif args.command == "branch-protection":
+                result = get_branch_protection(client, args.branch)
+            elif args.command == "rulesets":
+                result = list_rulesets(client)
+            elif args.command == "audit-ruleset":
+                result = audit_ruleset(client, args.id, _split_labels(args.required_checks) or [], args.check_source_id, args.required_approvals)
+            elif args.command == "create-issue":
+                result = create_issue(client, args.title, args.body, labels=_split_labels(args.labels), registry_id=args.registry_id)
+            elif args.command == "update-issue":
+                result = update_issue(client, args.number, title=args.title, body=args.body, state=args.state, labels=_split_labels(args.labels))
+            elif args.command == "comment":
+                result = add_comment(client, args.number, args.body)
+            else:
+                raise ForgeError("unsupported", "unknown command " + repr(args.command))
     except ForgeError as e:
         print("forge error [" + e.kind + "]: " + str(e), file=sys.stderr)
         return 1

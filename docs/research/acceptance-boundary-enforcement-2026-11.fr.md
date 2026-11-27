@@ -187,3 +187,33 @@ Il a démontré :
 - le maintien de la référence protégée `main` sur le premier commit accepté après le rejet de la décision obsolète.
 
 Le test utilise des clés Ed25519 synthétiques et une politique de confiance jetable. Il valide le chemin d'exécution local du hook/gate, y compris la matérialisation des objets Git, mais ne constitue ni une installation sur une forge de production ni un test des règles/bypass GitHub.
+
+## 12. Payload du ruleset GitHub et action externe restante
+
+Les noms et la source des checks de la branche main ont été vérifiés directement dans les check-runs GitHub actuels :
+
+- `govcheck-check`
+- `package-alignment`
+- `reference-integrity`
+- identifiant d'intégration GitHub Actions `15368`
+
+`govcheck/forge.py ruleset-payload` génère un ruleset de branche par défaut avec PR obligatoire, zéro approbation de revue (l'autorité configurée reste la décision GovCheck signée), protection contre suppression/non-fast-forward, les trois checks exacts épinglés à l'intégration `15368`, fraîcheur stricte et aucun bypass. Il n'appelle ni ne modifie GitHub.
+
+Générer le payload :
+
+```sh
+python3 govcheck/forge.py ruleset-payload \
+  --required-checks govcheck-check,package-alignment,reference-integrity \
+  --check-source-id 15368 --required-approvals 0 > govcheck-main-ruleset.json
+```
+
+Après examen du JSON généré, un administrateur peut mettre à jour le ruleset existant `28251664` avec GitHub CLI :
+
+```sh
+gh api --method PUT /repos/Martin-PB/govcheck/rulesets/28251664 \
+  --input govcheck-main-ruleset.json
+```
+
+Puis auditer la configuration réelle avec `audit-ruleset`. C'est une action utilisateur/administrateur : l'intégration GitHub actuelle de ChatGPT est en lecture seule et ne l'a pas appliquée.
+
+**Important :** ces trois checks protègent actuellement CI/package/intégrité des références ; `govcheck-check` reste en mode report-only. Les rendre obligatoires ne transforme pas à eux seuls GitHub en gate de décision d'acceptation signée. L'adaptateur local pre-receive est le gate d'acceptation pour les transports Git ; un check d'acceptation GitHub de confiance et la configuration réelle du ruleset restent à faire.

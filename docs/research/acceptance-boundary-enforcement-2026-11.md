@@ -187,3 +187,33 @@ It demonstrated:
 - the protected `main` ref remains at the first accepted commit after the stale decision is rejected.
 
 The test uses synthetic Ed25519 keys and a disposable trust policy. It validates the local hook/gate execution path, including Git object-tree materialization, but is not a production forge installation or a test of GitHub's ruleset/bypass behavior.
+
+## 12. GitHub ruleset payload and remaining external action
+
+The current main-branch check-run names and source were verified directly from GitHub:
+
+- `govcheck-check`
+- `package-alignment`
+- `reference-integrity`
+- GitHub Actions integration ID `15368`
+
+`govcheck/forge.py ruleset-payload` renders a least-bypass default-branch ruleset with PR required, zero approving reviews (the configured authority remains the signed GovCheck decision), deletion/non-fast-forward protection, the three exact checks pinned to integration `15368`, strict freshness and no bypass actors. It does not call or mutate GitHub.
+
+Render the payload:
+
+```sh
+python3 govcheck/forge.py ruleset-payload \
+  --required-checks govcheck-check,package-alignment,reference-integrity \
+  --check-source-id 15368 --required-approvals 0 > govcheck-main-ruleset.json
+```
+
+After reviewing the generated JSON, an administrator can update the existing ruleset `28251664` with the GitHub CLI:
+
+```sh
+gh api --method PUT /repos/Martin-PB/govcheck/rulesets/28251664 \
+  --input govcheck-main-ruleset.json
+```
+
+Then audit the live configuration with `audit-ruleset`. This is a user/admin action: the current ChatGPT GitHub integration is read-only and has not applied it.
+
+**Important:** these three checks currently protect CI/package/reference integrity; `govcheck-check` is still report-only. Requiring them does not by itself make GitHub a signed acceptance-decision gate. The local pre-receive adapter is the acceptance gate for Git transports; a trusted GitHub acceptance check and live ruleset configuration remain outstanding.

@@ -142,16 +142,3 @@ The bilingual source-level triage of [#129](https://github.com/Martin-PB/govchec
 
 Architecture 0013 EN/FR now treats Decision as a transversal first-class object, not a terminal stage. Architecture 0025 EN/FR distinguishes PEAK Assumed Risk from Risk Assessment, Risk Treatment, Residual Risk and authorized Risk Acceptance [R-193](../references.md#r-193). The detailed [decision/risk research addendum](../research/decision-and-assumed-risk-crosscutting-2026-11.md) remains a candidate, not a normative adoption.
 
-
-<a id="wp-evt-000035"></a>
-## WP-EVT-000035 — Typed uncertainty and assumed-risk specification candidate completed
-- **Subject:** `govcheck.decision.assumed-risk.typed-semantics`.
-- **Event type:** `typed-risk-specification-candidate-completed`.
-- **Recorded:** 2026-11-27.
-- **Source issue:** [#131](https://github.com/Martin-PB/govcheck/issues/131); research increment [PR #142](https://github.com/Martin-PB/govcheck/pull/142); typed Lean increment [PR #150](https://github.com/Martin-PB/govcheck/pull/150), merged at `3228404631bb565fddd6d0fb5a52f75724fe24dd`.
-- **Artifacts:** bilingual `decision-and-assumed-risk-crosscutting-2026-11` research; bilingual `semantic-assurance-and-transition-models-2026-11` research; `formal/lean/GovCheckCoherence/RiskSemantics.lean`; dedicated `RiskSemanticsAxiomReport.lean`; catalogue entries R-193 and R-202.
-- **Semantic boundaries:** probability point/interval/distribution, fuzzy membership, nondeterministic possibilities, transition rates, argument confidence, cost, utility, priority and empirical frequency are distinct typed families. Epistemic availability preserves NotAssessed, Unknown, NotQuantifiable, NotApplicable, Quantified and Inconclusive.
-- **Decision/risk boundaries:** PEAK inputs remain distinct; DecisionOutcome retains Solution and AssumedRisk; RiskScenario, RiskAssessment, RiskTreatment and RiskAcceptance are separate; acceptance binds exact scenario/assessment revisions and records authority, scope, policy revision and validity interval.
-- **Formal evidence:** 17 representative constructor-disjointness and record-integrity theorems pass Lean 4.19.0; the dedicated axiom report records no axiom dependencies.
-- **Limit:** typed semantic proposal only. No normative metamodel, canonical serialization, probability/fuzzy engine, universal risk score/calculus, aggregation policy, risk optimizer or proof of real-world authority is adopted.
-- **Disposition:** issue #131 closed as a completed technical proposal. Normative adoption remains a separate authority decision; no such adoption is implied.

@@ -54,7 +54,7 @@ The current project has one available contributor. Therefore the verifier must n
 - Output states: verified, invalid, unknown.
 - CLI: local command; no network calls or hosted service.
 
-This provider is optional. If OpenSSL is absent or does not match the pinned digest, the result is UNKNOWN. Other providers/algorithms can implement the same verifier contract later.
+Implementation: [attestation_verify.py](../../govcheck/attestation_verify.py) and [trust-policy schema](../../govcheck/formal/schemas/attestation-trust-policy-v1.schema.json). This provider is optional. If OpenSSL is absent or does not match the pinned digest, the result is UNKNOWN. Other providers/algorithms can implement the same verifier contract later.
 
 ## 6. Non-goals
 

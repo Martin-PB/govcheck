@@ -12,7 +12,7 @@
 | Assurance 2.0, évolution de SACM et audits d'implémentation | R-71, R-73, R-128, R-197–R-199 |
 | Régimes d'assurance et exigences orientées objectifs | R-35–R-36, R-44, R-92 |
 | Model checking et vérification de programmes candidates | R-05, R-20, R-37–R-43, R-89–R-91 |
-| Provenance des preuves et chaîne d'approvisionnement logicielle | R-06–R-08 |
+| Provenance des preuves, attestations interopérables et chaîne d'approvisionnement logicielle | R-06–R-08, R-227–R-229 |
 | Moteurs de politiques, autorisation et vérification de modèles | R-09–R-10, R-88 |
 | Logique normative et modalités déontiques | R-93 |
 | Schémas et contrats d'interface | R-13, R-16 |
@@ -160,7 +160,7 @@
 <a id="r-06"></a>
 
 ### R-06 — in-toto : intégrité de la chaîne d'approvisionnement logicielle
-- **Cité par :** [0006-threat-and-trust-model](architecture/0006-threat-and-trust-model.fr.md), [0007-technology-decision-framework](architecture/0007-technology-decision-framework.fr.md), [0010-assurance-proof-and-conformance](architecture/0010-assurance-proof-and-conformance.fr.md), [0014-governed-development-workflow](architecture/0014-governed-development-workflow.fr.md), [0015-governance-conformance-and-validation-plan](architecture/0015-governance-conformance-and-validation-plan.fr.md), [0002-study-placement](decisions/0002-study-placement.fr.md), [0007-mandatory-sources](decisions/0007-mandatory-sources.fr.md), [intent-impact-analysis](intent-impact-analysis.fr.md), [concurrent-agent-change-governance](research/concurrent-agent-change-governance.fr.md)
+- **Cité par :** [0006-threat-and-trust-model](architecture/0006-threat-and-trust-model.fr.md), [0007-technology-decision-framework](architecture/0007-technology-decision-framework.fr.md), [0010-assurance-proof-and-conformance](architecture/0010-assurance-proof-and-conformance.fr.md), [0014-governed-development-workflow](architecture/0014-governed-development-workflow.fr.md), [0015-governance-conformance-and-validation-plan](architecture/0015-governance-conformance-and-validation-plan.fr.md), [0002-study-placement](decisions/0002-study-placement.fr.md), [0007-mandatory-sources](decisions/0007-mandatory-sources.fr.md), [intent-impact-analysis](intent-impact-analysis.fr.md), [concurrent-agent-change-governance](research/concurrent-agent-change-governance.fr.md), [Spécification 0008](specifications/0008-interoperable-assurance-attestations.fr.md)
 
 - **Sources primaires :** [Projet in-toto](https://in-toto.io/) · [Article USENIX Security 2019](https://ssl.engineering.nyu.edu/papers/torres-toto-usenix19.pdf)
 - **Référence académique :** Santiago Torres-Arias et al., « in-toto: Providing farm-to-table guarantees for bits and bytes », 28th USENIX Security Symposium, 2019.
@@ -171,7 +171,7 @@
 <a id="r-07"></a>
 
 ### R-07 — SLSA
-- **Cité par :** [0006-threat-and-trust-model](architecture/0006-threat-and-trust-model.fr.md), [0007-technology-decision-framework](architecture/0007-technology-decision-framework.fr.md), [0014-governed-development-workflow](architecture/0014-governed-development-workflow.fr.md), [0015-governance-conformance-and-validation-plan](architecture/0015-governance-conformance-and-validation-plan.fr.md), [0002-study-placement](decisions/0002-study-placement.fr.md), [concurrent-agent-change-governance](research/concurrent-agent-change-governance.fr.md), [0005-assurance-model](specifications/0005-assurance-model.fr.md)
+- **Cité par :** [0006-threat-and-trust-model](architecture/0006-threat-and-trust-model.fr.md), [0007-technology-decision-framework](architecture/0007-technology-decision-framework.fr.md), [0014-governed-development-workflow](architecture/0014-governed-development-workflow.fr.md), [0015-governance-conformance-and-validation-plan](architecture/0015-governance-conformance-and-validation-plan.fr.md), [0002-study-placement](decisions/0002-study-placement.fr.md), [concurrent-agent-change-governance](research/concurrent-agent-change-governance.fr.md), [0005-assurance-model](specifications/0005-assurance-model.fr.md), [Spécification 0008](specifications/0008-interoperable-assurance-attestations.fr.md)
 
 - **Source primaire :** [Spécification SLSA](https://slsa.dev/spec/)
 - **Concepts pertinents :** niveaux de chaîne d'approvisionnement logicielle, provenance et intégrité de construction.

@@ -400,7 +400,8 @@ TypeOKPublicationKind ==
     publication.kind \in {KindNone, KindVerified, KindRiskAccepted, KindUncontrolled}
 
 TypeOKPublicationResult ==
-    publication.result \in Results \cup {NoValue}
+    \/ publication.result = NoValue
+    \/ publication.result \in Results
 
 TypeOKPublication ==
     TypeOKPublicationStatus

@@ -47,7 +47,7 @@ L'enveloppe initiale est définie par les schémas du package [journal-event-v1]
 
 Le reçu lie le périmètre, la position, l'identifiant d'événement, le digest précédent et le digest d'événement. Il est persisté dans la même transaction que l'événement et la tête mise à jour. Le reçu n'est retourné qu'après le point de commit. Sa reconstruction depuis le journal après un résultat client ambigu est idempotente.
 
-Pour le JSON hachable, utiliser un profil restreint compatible RFC 8785 JCS : chaînes Unicode valides, clés d'objet triées selon l'ordre des unités de code UTF-16, tableaux conservant leur ordre, absence de clés d'objet dupliquées, absence de nombres flottants et entiers limités à l'intervalle des entiers sûrs exactement représentables en IEEE-754. Les rationnels exacts, décimaux et grands entiers sont encodés en chaînes ou en enregistrements typés. Ce sous-ensemble évite un canonicaliseur ad hoc non standard tout en restant implémentable avec la bibliothèque standard.
+Les événements et reçus sérialisés identifient le profil de canonicalisation par govcheck.jcs-safe-integer/v1. Pour le JSON hachable, utiliser un profil restreint compatible RFC 8785 JCS : chaînes Unicode valides, clés d'objet triées selon l'ordre des unités de code UTF-16, tableaux conservant leur ordre, absence de clés d'objet dupliquées, absence de nombres flottants et entiers limités à l'intervalle des entiers sûrs exactement représentables en IEEE-754. Les rationnels exacts, décimaux et grands entiers sont encodés en chaînes ou en enregistrements typés. Ce sous-ensemble évite un canonicaliseur ad hoc non standard tout en restant implémentable avec la bibliothèque standard.
 
 ## 5. Sémantique d'append et de reprise
 

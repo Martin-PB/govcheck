@@ -112,8 +112,12 @@ class BootstrapTests(unittest.TestCase):
     def test_attestation_capability_installs_only_attestation_module(self):
         r, code = bootstrap.apply_plan(self.target, ["attestation"])
         self.assertEqual(code, 0)
-        self.assertEqual([a["path"] for a in r["created"]], ["attestation.py"])
+        self.assertEqual(
+            [a["path"] for a in r["created"]],
+            ["attestation.py", "formal/schemas/assurance-evaluation-v1.schema.json"],
+        )
         self.assertTrue((self.target / "attestation.py").is_file())
+        self.assertTrue((self.target / "formal/schemas/assurance-evaluation-v1.schema.json").is_file())
 
     def test_inspect_reports_previous_marker(self):
         bootstrap.apply_plan(self.target, ["check"])

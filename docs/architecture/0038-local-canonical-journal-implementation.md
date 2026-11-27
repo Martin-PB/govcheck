@@ -47,7 +47,7 @@ The initial envelope is defined by the package schemas [journal-event-v1](../../
 
 The receipt binds scope, position, event ID, predecessor digest and event digest. It is persisted in the same transaction as the event and updated head. A receipt is returned only after the commit point. Reconstructing the receipt from the journal after an ambiguous client outcome is idempotent.
 
-For hashable JSON, use a restricted RFC 8785 JCS-compatible profile: valid Unicode strings, object keys sorted by UTF-16 code-unit order, arrays kept in order, no duplicate object keys, no floating-point numbers, and integer values restricted to the exactly representable IEEE-754 safe-integer range. Exact rationals, decimals and larger integers are encoded as strings or typed records. This subset avoids an ad-hoc non-standard canonicalizer while remaining implementable with the standard library.
+The serialized event and receipt identify the canonicalization profile as govcheck.jcs-safe-integer/v1. For hashable JSON, use a restricted RFC 8785 JCS-compatible profile: valid Unicode strings, object keys sorted by UTF-16 code-unit order, arrays kept in order, no duplicate object keys, no floating-point numbers, and integer values restricted to the exactly representable IEEE-754 safe-integer range. Exact rationals, decimals and larger integers are encoded as strings or typed records. This subset avoids an ad-hoc non-standard canonicalizer while remaining implementable with the standard library.
 
 ## 5. Append and recovery semantics
 

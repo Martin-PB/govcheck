@@ -71,7 +71,7 @@ class AcceptanceDecisionTests(unittest.TestCase):
     def test_accept_requires_evaluation_pass(self):
         predicate = self.predicate()
         report = {"overall": "pass"}
-        result = decision.evaluate_decision(predicate, report=report, report_bytes=self.report_bytes, **self.bindings)
+        result = decision.evaluate_decision(predicate, report=self.report, report_bytes=self.report_bytes, **self.bindings)
         self.assertEqual(result["result"], "pass")
         report = {"overall": "unknown", "candidate": self.candidate, "rules": [{"id": "tests", "result": "pass"}]}
         unknown_bytes = json.dumps(report, sort_keys=True, separators=(",", ":")).encode("utf-8")
@@ -79,6 +79,17 @@ class AcceptanceDecisionTests(unittest.TestCase):
         result = decision.evaluate_decision(unknown_predicate, report=report, report_bytes=unknown_bytes, **self.bindings)
         self.assertEqual(result["result"], "fail")
         self.assertIn("cannot override", result["reason"])
+
+    def test_decision_cannot_accept_report_for_another_candidate(self):
+        report = dict(self.report)
+        candidate = dict(self.candidate)
+        candidate["candidate_rev"] = "d" * 40
+        report["candidate"] = candidate
+        report_bytes = json.dumps(report, sort_keys=True, separators=(",", ":")).encode("utf-8")
+        predicate = self.predicate(report_bytes=report_bytes)
+        result = decision.evaluate_decision(predicate, report=report, report_bytes=report_bytes, **self.bindings)
+        self.assertEqual(result["result"], "fail")
+        self.assertIn("candidate_rev", result["reason"])
 
     def test_report_digest_mismatch_fails(self):
         predicate = self.predicate()
@@ -142,6 +153,20 @@ class AcceptanceDecisionTests(unittest.TestCase):
         self.assertEqual(verifier.call_args.kwargs["required_role"], "governance-authority")
         self.assertEqual(verifier.call_args.kwargs["expected_predicate_type"], decision.PREDICATE_TYPE)
 
+    def test_only_governance_authority_role_can_verify_decision(self):
+        result = decision.verify_and_evaluate(
+            {},
+            "trust-policy.json",
+            "f" * 64,
+            ".",
+            report=self.report,
+            report_bytes=self.report_bytes,
+            required_role="independent-reviewer",
+            **self.bindings,
+        )
+        self.assertEqual(result["result"], "fail")
+        self.assertIn("governance-authority", result["reason"])
+
     def test_risk_acceptance_cannot_be_unscoped_or_missing(self):
         predicate = self.predicate(result="accept_with_risk", risk=None)
         with self.assertRaises(decision.AcceptanceDecisionError):
@@ -151,7 +176,7 @@ class AcceptanceDecisionTests(unittest.TestCase):
             "expiresAt": "2026-12-01T00:00:00Z", "residualRisk": "residual",
             "affectedClaims": ["claim:x"], "authorizationDigest": "d" * 64,
         }
-        unknown_report = {"overall": "unknown"}
+        unknown_report = {"overall": "unknown", "candidate": self.candidate, "rules": [{"id": "tests", "result": "pass"}]}
         unknown_bytes = json.dumps(unknown_report, sort_keys=True, separators=(",", ":")).encode("utf-8")
         predicate = self.predicate(result="accept_with_risk", risk=risk, report_bytes=unknown_bytes)
         result = decision.evaluate_decision(

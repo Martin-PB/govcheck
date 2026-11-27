@@ -1,8 +1,12 @@
 import hashlib
+import shutil
+import subprocess
+import tempfile
 import json
 import unittest
 from unittest.mock import patch
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
+from pathlib import Path
 
 from govcheck import acceptance_decision as decision
 from govcheck import attestation
@@ -67,6 +71,101 @@ class AcceptanceDecisionTests(unittest.TestCase):
         self.assertEqual(statement["predicateType"], decision.PREDICATE_TYPE)
         self.assertEqual(statement["subject"][0]["digest"]["sha256"], "a" * 64)
         attestation.validate_statement(statement)
+
+    @unittest.skipUnless(shutil.which("openssl"), "OpenSSL is required for decision signing test")
+    def test_sign_decision_from_exact_report_and_verify_authority(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            private_key = root / "authority-private.pem"
+            public_key = root / "authority-public.pem"
+            openssl = Path(shutil.which("openssl")).resolve()
+            subprocess.run([str(openssl), "genpkey", "-algorithm", "ED25519", "-out", str(private_key)], check=True, capture_output=True)
+            subprocess.run([str(openssl), "pkey", "-in", str(private_key), "-pubout", "-out", str(public_key)], check=True, capture_output=True)
+
+            def digest(path):
+                return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+            now = datetime.now(timezone.utc)
+            report = {
+                "overall": "unknown",
+                "candidate": {
+                    "candidate_rev": "c" * 40,
+                    "base_revision": "b" * 40,
+                    "content_sha256": "a" * 64,
+                    "ref": "refs/heads/main",
+                    "governance_revision": "gov-17",
+                    "scope_id": "repo:example/project",
+                    "tree": "d" * 40,
+                },
+                "rules": [{"id": "independent-review", "result": "unknown"}],
+            }
+            report_bytes = json.dumps(report, sort_keys=True, separators=(",", ":")).encode("utf-8")
+            risk = {
+                "id": "risk-signing-test",
+                "reason": "review evidence unavailable",
+                "scope": "repo:example/project",
+                "expiresAt": (now + timedelta(days=14)).isoformat(),
+                "residualRisk": "review remains unknown",
+                "affectedClaims": ["claim:review"],
+                "authorizationDigest": hashlib.sha256(b"risk authorization").hexdigest(),
+            }
+            envelope = decision.sign_decision_from_report(
+                report_bytes,
+                repository_uri="https://example.invalid/repo",
+                repository_id="repo:12345",
+                decision_id="decision-sign-test",
+                result="accept_with_risk",
+                rationale="bounded authority acceptance",
+                private_key_path=private_key,
+                key_id="authority-key",
+                openssl_path=str(openssl),
+                risk_acceptance=risk,
+                decided_on=now.isoformat(),
+            )
+
+            policy = {
+                "schemaVersion": "1",
+                "policyId": "govcheck.attestation-trust-policy/v1",
+                "revision": "policy-sign-test",
+                "openssl": {"path": str(openssl), "sha256": digest(openssl)},
+                "keys": [{
+                    "keyId": "authority-key",
+                    "algorithm": "ed25519",
+                    "publicKeyPath": public_key.name,
+                    "publicKeySha256": digest(public_key),
+                    "principalId": "principal:root-authority",
+                    "roles": ["governance-authority"],
+                    "validFrom": "2000-01-01T00:00:00Z",
+                    "validUntil": "2100-01-01T00:00:00Z",
+                    "revoked": False,
+                }],
+            }
+            policy_path = root / "trust-policy.json"
+            policy_bytes = json.dumps(policy, sort_keys=True, separators=(",", ":")).encode("utf-8")
+            policy_path.write_bytes(policy_bytes)
+            candidate_root = root / "candidate"
+            candidate_root.mkdir()
+
+            result = decision.verify_and_evaluate(
+                envelope,
+                policy_path,
+                hashlib.sha256(policy_bytes).hexdigest(),
+                candidate_root,
+                report=report,
+                report_bytes=report_bytes,
+                expected_repository_id="repo:12345",
+                expected_candidate_revision="c" * 40,
+                expected_candidate_content_sha256="a" * 64,
+                expected_base_revision="b" * 40,
+                expected_ref="refs/heads/main",
+                expected_governance_revision="gov-17",
+                expected_scope_id="repo:example/project",
+                required_role="governance-authority",
+                now=now,
+            )
+            self.assertEqual(result["result"], "accepted-with-risk")
+            self.assertEqual(result["authorityPrincipal"], "principal:root-authority")
+            self.assertEqual(result["decisionId"], "decision-sign-test")
 
     def test_accept_requires_evaluation_pass(self):
         predicate = self.predicate()

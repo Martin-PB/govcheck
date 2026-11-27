@@ -1,4 +1,5 @@
 import hashlib
+import hashlib
 import json
 import subprocess
 import tempfile
@@ -71,6 +72,7 @@ class GitAcceptanceGateTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d:
             root = Path(d)
             env = self.environment(root)
+            env["GOVCHECK_REPORT_OUTPUT_PATH"] = str(root / "evaluation-report.json")
             args = self.args(root / "repo.git")
 
             report = {"overall": "pass", "candidate": {}, "rules": []}
@@ -101,6 +103,8 @@ class GitAcceptanceGateTests(unittest.TestCase):
             self.assertEqual(result["policy_revision"], "gov-policy-17")
             self.assertEqual(result["verifier"]["identity"], "govcheck-gate-v1")
             self.assertTrue(result["evidence_digest"].startswith("sha256:"))
+            report_bytes = (root / "evaluation-report.json").read_bytes()
+            self.assertEqual(result["evidence_digest"], "sha256:" + hashlib.sha256(report_bytes).hexdigest())
             self.assertEqual(evaluator.call_args.args[1], {"src/main.py"})
 
     def test_accepted_with_risk_is_mapped_to_hook_schema(self):

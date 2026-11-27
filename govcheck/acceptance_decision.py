@@ -2,10 +2,14 @@
 from __future__ import annotations
 
 import argparse
+import base64
 import hashlib
 import json
 import sys
 import re
+import subprocess
+import tempfile
+import uuid
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -162,6 +166,101 @@ def build_statement(
     }
 
 
+def sign_statement(statement: dict, private_key_path: str | Path, key_id: str, openssl_path: str = "openssl", timeout_seconds: float = 10.0) -> dict:
+    """Create a DSSE Ed25519 envelope using the operator's private key."""
+    try:
+        from govcheck import attestation
+    except ImportError:
+        import attestation
+    payload = attestation.canonical_statement_bytes(statement)
+    pae = attestation.dsse_pae(attestation.DSSE_PAYLOAD_TYPE, payload)
+    try:
+        with tempfile.TemporaryDirectory(prefix="govcheck-sign-decision-") as directory:
+            root = Path(directory)
+            pae_path = root / "pae.bin"
+            signature_path = root / "signature.bin"
+            pae_path.write_bytes(pae)
+            result = subprocess.run(
+                [str(openssl_path), "pkeyutl", "-sign", "-inkey", str(Path(private_key_path).expanduser()),
+                 "-rawin", "-in", str(pae_path), "-out", str(signature_path)],
+                stdin=subprocess.DEVNULL,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                check=False,
+                timeout=timeout_seconds,
+                shell=False,
+            )
+            if result.returncode != 0:
+                detail = result.stderr.decode("utf-8", errors="replace").strip()
+                raise AcceptanceDecisionError("OpenSSL could not sign the decision: " + (detail or "signing failed"))
+            signature = signature_path.read_bytes()
+    except subprocess.TimeoutExpired as exc:
+        raise AcceptanceDecisionError("OpenSSL decision signing timed out") from exc
+    except OSError as exc:
+        raise AcceptanceDecisionError("cannot execute OpenSSL or read the signing key: " + str(exc)) from exc
+    return attestation.build_dsse_envelope(statement, [{
+        "keyid": _text(key_id, "key_id"),
+        "sig": base64.b64encode(signature).decode("ascii"),
+    }])
+
+
+def sign_decision_from_report(
+    report_bytes: bytes,
+    *,
+    repository_uri: str,
+    repository_id: str,
+    decision_id: str,
+    result: str,
+    rationale: str,
+    private_key_path: str | Path,
+    key_id: str,
+    openssl_path: str = "openssl",
+    risk_acceptance: dict | None = None,
+    decided_on: str | None = None,
+) -> dict:
+    """Build and sign a decision bound to the exact report bytes from the gate."""
+    try:
+        report = json.loads(report_bytes.decode("utf-8"))
+    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise AcceptanceDecisionError("evaluation report must be valid UTF-8 JSON") from exc
+    if not isinstance(report, dict) or report.get("overall") not in EVALUATION_RESULTS:
+        raise AcceptanceDecisionError("evaluation report is malformed")
+    candidate = report.get("candidate")
+    if not isinstance(candidate, dict):
+        raise AcceptanceDecisionError("evaluation report has no candidate bindings")
+    fields = {
+        "candidateRevision": candidate.get("candidate_rev"),
+        "candidateContentSha256": candidate.get("content_sha256"),
+        "baseRevision": candidate.get("base_revision"),
+        "ref": candidate.get("ref"),
+        "governanceRevision": candidate.get("governance_revision"),
+        "scopeId": candidate.get("scope_id"),
+    }
+    if not all(isinstance(value, str) and value for value in fields.values()):
+        raise AcceptanceDecisionError("evaluation report is missing candidate/base/ref/governance/scope bindings")
+    if result == "accept" and report["overall"] != "pass":
+        raise AcceptanceDecisionError("accept can only be signed for an overall PASS report")
+    if result == "accept_with_risk" and report["overall"] == "pass":
+        raise AcceptanceDecisionError("accept_with_risk is not applicable to an overall PASS report")
+    statement = build_statement(
+        repository_uri=repository_uri,
+        decision_id=decision_id or str(uuid.uuid4()),
+        repository_id=repository_id,
+        candidate_revision=fields["candidateRevision"],
+        candidate_content_sha256=fields["candidateContentSha256"],
+        base_revision=fields["baseRevision"],
+        ref=fields["ref"],
+        governance_revision=fields["governanceRevision"],
+        scope_id=fields["scopeId"],
+        evaluation_digest=evaluation_report_digest(report_bytes),
+        result=result,
+        decided_on=decided_on or datetime.now(timezone.utc).isoformat(),
+        rationale=rationale,
+        risk_acceptance=risk_acceptance,
+    )
+    return sign_statement(statement, private_key_path, key_id, openssl_path)
+
+
 def evaluate_decision(
     predicate: dict,
     *,
@@ -303,6 +402,17 @@ def verify_and_evaluate(
 def _main(argv=None) -> int:
     parser = argparse.ArgumentParser(description="Verify a detached GovCheck governance acceptance decision.")
     sub = parser.add_subparsers(dest="command", required=True)
+    sign = sub.add_parser("sign", help="sign an authority decision bound to an exact evaluation report")
+    sign.add_argument("--report", required=True, help="exact report JSON bytes produced by the gate")
+    sign.add_argument("--repository-uri", required=True)
+    sign.add_argument("--repository-id", required=True)
+    sign.add_argument("--decision-id", default="")
+    sign.add_argument("--result", choices=sorted(DECISIONS), required=True)
+    sign.add_argument("--rationale", required=True)
+    sign.add_argument("--risk-acceptance", help="JSON file containing the complete riskAcceptance object")
+    sign.add_argument("--private-key", required=True)
+    sign.add_argument("--key-id", required=True)
+    sign.add_argument("--openssl", default="openssl")
     verify = sub.add_parser("verify", help="verify DSSE authority decision and exact evaluation bindings")
     verify.add_argument("--envelope", required=True)
     verify.add_argument("--report", required=True)
@@ -319,6 +429,25 @@ def _main(argv=None) -> int:
     verify.add_argument("--required-role", required=True)
     args = parser.parse_args(argv)
     try:
+        if args.command == "sign":
+            report_bytes = Path(args.report).expanduser().resolve().read_bytes()
+            risk = None
+            if args.risk_acceptance:
+                risk = json.loads(Path(args.risk_acceptance).expanduser().resolve().read_text(encoding="utf-8"))
+            envelope = sign_decision_from_report(
+                report_bytes,
+                repository_uri=args.repository_uri,
+                repository_id=args.repository_id,
+                decision_id=args.decision_id,
+                result=args.result,
+                rationale=args.rationale,
+                private_key_path=args.private_key,
+                key_id=args.key_id,
+                openssl_path=args.openssl,
+                risk_acceptance=risk,
+            )
+            print(json.dumps(envelope, indent=2, ensure_ascii=False))
+            return 0
         root = Path(args.candidate_root).expanduser().resolve()
         for label, value in (("envelope", args.envelope), ("report", args.report)):
             path = Path(value).expanduser().resolve()

@@ -217,3 +217,27 @@ gh api --method PUT /repos/Martin-PB/govcheck/rulesets/28251664 \
 Puis auditer la configuration réelle avec `audit-ruleset`. C'est une action utilisateur/administrateur : l'intégration GitHub actuelle de ChatGPT est en lecture seule et ne l'a pas appliquée.
 
 **Important :** ces trois checks protègent actuellement CI/package/intégrité des références ; `govcheck-check` reste en mode report-only. Les rendre obligatoires ne transforme pas à eux seuls GitHub en gate de décision d'acceptation signée. L'adaptateur local pre-receive est le gate d'acceptation pour les transports Git ; un check d'acceptation GitHub de confiance et la configuration réelle du ruleset restent à faire.
+
+## 13. Signer une décision à partir du rapport exact du gate
+
+Le gate peut maintenant écrire les octets sérialisés exacts du rapport vers un chemin externe avec `GOVCHECK_REPORT_OUTPUT_PATH`. Le digest de sortie est le même `evidence_digest` que celui émis dans le protocole de décision ; il n'est pas recalculé à partir d'un objet JSON parsé puis reformatté.
+
+La commande `sign` construit et signe une décision à partir de ces octets exacts :
+
+```sh
+python3 -m govcheck.acceptance_decision sign \
+  --report govcheck-report.json \
+  --repository-uri https://github.com/Martin-PB/govcheck \
+  --repository-id 1447286150 \
+  --decision-id decision-<identifiant-unique> \
+  --result accept_with_risk \
+  --rationale "Risque borné accepté par l'autorité de gouvernance." \
+  --risk-acceptance risk-record.json \
+  --private-key ~/.config/govcheck/authority-ed25519.pem \
+  --key-id govcheck-root-authority \
+  --openssl /usr/bin/openssl > acceptance-decision.json
+```
+
+Pour `accept`, le signer refuse un rapport dont le résultat global n'est pas PASS. Pour `accept_with_risk`, un dossier de risque complet, borné et expirant est obligatoire. La clé privée reste hors du dépôt.
+
+L'enveloppe signée peut être fournie comme artefact détaché ou autre entrée externe à un adaptateur de forge de confiance. Elle ne doit pas être commitée dans le snapshot candidat dont elle autorise le digest de contenu, car cela créerait une liaison circulaire.

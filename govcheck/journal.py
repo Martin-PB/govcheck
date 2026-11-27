@@ -337,16 +337,7 @@ class Journal:
         integrity = self.verify(scope_id)
         if integrity.get("status") != "valid":
             raise JournalError("unknown", "journal head is not trusted because verification failed: " + "; ".join(integrity.get("errors", [])))
-        conn = self._connect()
-        try:
-            row = conn.execute("SELECT head_position,head_digest FROM journal_scopes WHERE scope_id=?", (scope_id,)).fetchone()
-            if row is None:
-                raise JournalError("unknown", "journal scope has no explicit genesis")
-            if row["head_position"] < 0 or not row["head_digest"]:
-                raise JournalError("unknown", "journal scope has no committed genesis")
-            return {"scopeId": scope_id, "position": row["head_position"], "digest": row["head_digest"]}
-        finally:
-            conn.close()
+        return {"scopeId": scope_id, "position": integrity["head"]["position"], "digest": integrity["head"]["digest"]}
 
     def receipt(self, scope_id: str, idempotency_key: str) -> dict | None:
         scope_id = _validate_string(scope_id, "scope_id")
@@ -487,6 +478,12 @@ class Journal:
         errors = []
         try:
             conn.execute("BEGIN")
+            quick_check = [row[0] for row in conn.execute("PRAGMA quick_check").fetchall()]
+            if quick_check != ["ok"]:
+                errors.extend("SQLite quick_check: " + str(message) for message in quick_check)
+            foreign_key_errors = conn.execute("PRAGMA foreign_key_check").fetchall()
+            if foreign_key_errors:
+                errors.append("SQLite foreign_key_check found " + str(len(foreign_key_errors)) + " violation(s)")
             scope = conn.execute("SELECT * FROM journal_scopes WHERE scope_id=?", (scope_id,)).fetchone()
             if scope is None:
                 conn.execute("ROLLBACK")
@@ -646,9 +643,11 @@ def _main(argv=None) -> int:
         elif args.command == "verify":
             result = journal.verify(args.scope_id)
         else:
-            result = journal.receipt(args.scope_id, args.idempotency_key)
-            if result is None:
+            recovered_receipt = journal.receipt(args.scope_id, args.idempotency_key)
+            if recovered_receipt is None:
                 result = {"status": "unknown", "reason": "no receipt for this idempotency key"}
+            else:
+                result = {"status": "committed", "receipt": recovered_receipt}
         print(json.dumps(result, indent=2, ensure_ascii=False))
         status = result.get("status")
         if status in {"stale", "conflict", "unknown", "invalid"}:

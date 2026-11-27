@@ -1582,3 +1582,27 @@
 - **Use:** Pijul's documented hook runs before `pijul record`; the manual currently says only the `record` hook is supported. The Nest permits direct push for authorized users or attaching changes to a discussion channel.
 - **Limit:** the cited manual documents no mandatory remote pre-push/pre-receive hook. Conditional server-side enforcement requires a controlled remote/server integration; a local hook or wrapper is cooperative and bypassable.
 - **Cited by:** [Architecture 0037](architecture/0037-acceptance-boundary-and-enforcement-adapters.md), [acceptance-boundary research](research/acceptance-boundary-enforcement-2026-11.md), [work-item register](work-portfolio/work-items.md), [event journal](work-portfolio/events.md).
+
+<a id="r-227"></a>
+### R-227 — DSSE: Dead Simple Signing Envelope
+- **Type:** Primary protocol specification.
+- **Primary sources:** [DSSE envelope specification](https://github.com/dsse-lf/dsse/blob/master/envelope.md) · [DSSE signing and verification protocol](https://github.com/dsse-lf/dsse/blob/master/protocol.md).
+- **Use:** defines the JSON envelope and PAE construction binding the payload type and exact payload bytes to signatures; supports multiple signatures.
+- **Limit:** DSSE authenticates signed bytes under a verifier's trust policy. A key ID is an unauthenticated hint; signature validity alone does not establish a GovCheck role or the semantic correctness of an evaluation.
+- **Cited by:** [Specification 0008](specifications/0008-interoperable-assurance-attestations.md).
+
+<a id="r-228"></a>
+### R-228 — in-toto Attestation Framework v1
+- **Type:** Primary attestation framework specification.
+- **Primary sources:** [Framework v1 overview](https://github.com/in-toto/attestation/tree/main/spec/v1) · [Statement layer](https://github.com/in-toto/attestation/blob/main/spec/v1/statement.md) · [Envelope layer](https://github.com/in-toto/attestation/blob/main/spec/v1/envelope.md) · [Predicate layer](https://github.com/in-toto/attestation/blob/main/spec/v1/predicate.md).
+- **Use:** separates authenticated envelope, subject-binding Statement and typed predicate; supports a GovCheck-specific predicate without redefining the common statement layer.
+- **Limit:** the framework provides transport and structure, not GovCheck's authority, acceptance policy, evidence semantics or trust-role mapping.
+- **Cited by:** [Specification 0008](specifications/0008-interoperable-assurance-attestations.md).
+
+<a id="r-229"></a>
+### R-229 — SLSA Verification Summary Attestation (VSA)
+- **Type:** Primary SLSA predicate specification.
+- **Primary source:** [SLSA VSA v1.2](https://slsa.dev/spec/v1.2/verification_summary).
+- **Use:** summarizes verification of an artifact against SLSA tracks/levels, including verifier, policy, input attestations and verification result.
+- **Limit:** its PASSED/FAILED and SLSA-level semantics are not a lossless representation of GovCheck's pass/fail/unknown/conflict results, assurance-method taxonomy, authority decisions or risk acceptance.
+- **Cited by:** [Specification 0008](specifications/0008-interoperable-assurance-attestations.md).

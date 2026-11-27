@@ -345,7 +345,15 @@
           "independentReview": {
             "required": [
               "reference"
-            ]
+            ],
+            "properties": {
+              "reference": {
+                "required": [
+                  "uri",
+                  "digest"
+                ]
+              }
+            }
           }
         }
       }
@@ -365,6 +373,74 @@
                   "reviewerName"
                 ]
               }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "repository": {
+            "properties": {
+              "vcsKind": {
+                "const": "git"
+              }
+            },
+            "required": [
+              "vcsKind"
+            ]
+          }
+        },
+        "required": [
+          "repository"
+        ]
+      },
+      "then": {
+        "properties": {
+          "candidate": {
+            "required": [
+              "tree"
+            ]
+          },
+          "base": {
+            "required": [
+              "tree"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "repository": {
+            "properties": {
+              "vcsKind": {
+                "const": "pijul"
+              }
+            },
+            "required": [
+              "vcsKind"
+            ]
+          }
+        },
+        "required": [
+          "repository"
+        ]
+      },
+      "then": {
+        "properties": {
+          "candidate": {
+            "required": [
+              "channel",
+              "changeSet"
+            ]
+          },
+          "base": {
+            "required": [
+              "channel",
+              "changeSet"
             ]
           }
         }

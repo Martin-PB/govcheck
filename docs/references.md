@@ -12,7 +12,7 @@
 | Assurance 2.0, SACM evolution and implementation audits | R-71, R-73, R-128, R-197–R-199 |
 | Assurance regimes and goal-oriented requirements | R-35–R-36, R-44, R-92 |
 | Model checking and program-verification alternatives | R-05, R-20, R-37–R-43, R-89–R-91 |
-| Evidence provenance and software supply chain | R-06–R-08 |
+| Evidence provenance, interoperable attestations and software supply chain | R-06–R-08, R-227–R-229 |
 | Policy engines, authorization and policy-model verification | R-09–R-10, R-88 |
 | Normative logic and deontic modalities | R-93 |
 | Schemas and interface contracts | R-13, R-16 |
@@ -162,7 +162,7 @@
 <a id="r-06"></a>
 
 ### R-06 — in-toto: software supply-chain integrity
-- **Cited by:** [0006-threat-and-trust-model](architecture/0006-threat-and-trust-model.md), [0007-technology-decision-framework](architecture/0007-technology-decision-framework.md), [0010-assurance-proof-and-conformance](architecture/0010-assurance-proof-and-conformance.md), [0014-governed-development-workflow](architecture/0014-governed-development-workflow.md), [0015-governance-conformance-and-validation-plan](architecture/0015-governance-conformance-and-validation-plan.md), [0002-study-placement](decisions/0002-study-placement.md), [0007-mandatory-sources](decisions/0007-mandatory-sources.md), [intent-impact-analysis](intent-impact-analysis.md), [concurrent-agent-change-governance](research/concurrent-agent-change-governance.md)
+- **Cited by:** [0006-threat-and-trust-model](architecture/0006-threat-and-trust-model.md), [0007-technology-decision-framework](architecture/0007-technology-decision-framework.md), [0010-assurance-proof-and-conformance](architecture/0010-assurance-proof-and-conformance.md), [0014-governed-development-workflow](architecture/0014-governed-development-workflow.md), [0015-governance-conformance-and-validation-plan](architecture/0015-governance-conformance-and-validation-plan.md), [0002-study-placement](decisions/0002-study-placement.md), [0007-mandatory-sources](decisions/0007-mandatory-sources.md), [intent-impact-analysis](intent-impact-analysis.md), [concurrent-agent-change-governance](research/concurrent-agent-change-governance.md), [Specification 0008](specifications/0008-interoperable-assurance-attestations.md)
 
 - **Primary sources:** [in-toto project](https://in-toto.io/) · [USENIX Security 2019 paper](https://ssl.engineering.nyu.edu/papers/torres-toto-usenix19.pdf)
 - **Academic reference:** Santiago Torres-Arias et al., “in-toto: Providing farm-to-table guarantees for bits and bytes,” 28th USENIX Security Symposium, 2019.
@@ -173,7 +173,7 @@
 <a id="r-07"></a>
 
 ### R-07 — SLSA
-- **Cited by:** [0006-threat-and-trust-model](architecture/0006-threat-and-trust-model.md), [0007-technology-decision-framework](architecture/0007-technology-decision-framework.md), [0014-governed-development-workflow](architecture/0014-governed-development-workflow.md), [0015-governance-conformance-and-validation-plan](architecture/0015-governance-conformance-and-validation-plan.md), [0002-study-placement](decisions/0002-study-placement.md), [concurrent-agent-change-governance](research/concurrent-agent-change-governance.md), [0005-assurance-model](specifications/0005-assurance-model.md)
+- **Cited by:** [0006-threat-and-trust-model](architecture/0006-threat-and-trust-model.md), [0007-technology-decision-framework](architecture/0007-technology-decision-framework.md), [0014-governed-development-workflow](architecture/0014-governed-development-workflow.md), [0015-governance-conformance-and-validation-plan](architecture/0015-governance-conformance-and-validation-plan.md), [0002-study-placement](decisions/0002-study-placement.md), [concurrent-agent-change-governance](research/concurrent-agent-change-governance.md), [0005-assurance-model](specifications/0005-assurance-model.md), [Specification 0008](specifications/0008-interoperable-assurance-attestations.md)
 
 - **Primary source:** [SLSA specification](https://slsa.dev/spec/)
 - **Relevant concepts:** software supply-chain levels, provenance and build integrity.

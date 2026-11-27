@@ -17,6 +17,7 @@ from pathlib import Path
 from typing import Any
 
 SCHEMA_VERSION = "1"
+CANONICALIZATION_ID = "govcheck.jcs-safe-integer/v1"
 GENESIS_EVENT_TYPE = "govcheck.journal.genesis"
 MAX_SAFE_INTEGER = 9007199254740991
 
@@ -123,6 +124,7 @@ def _receipt_object(scope_id: str, position: int, event_id: str,
                     idempotency_key: str | None, committed_at: str) -> dict:
     receipt = {
         "schemaVersion": SCHEMA_VERSION,
+        "canonicalization": CANONICALIZATION_ID,
         "scopeId": scope_id,
         "position": position,
         "eventId": event_id,
@@ -275,6 +277,7 @@ class Journal:
             })
             envelope = {
                 "schemaVersion": SCHEMA_VERSION,
+                "canonicalization": CANONICALIZATION_ID,
                 "scopeId": scope_id,
                 "position": 0,
                 "eventId": event_id,
@@ -488,6 +491,8 @@ class Journal:
                         raise JournalError("malformed", "event envelope must be a JSON object")
                     if canonical_json_bytes(envelope).decode("utf-8") != row["envelope_json"]:
                         errors.append("event envelope is not canonically serialized at position " + str(row["position"]))
+                    if envelope.get("canonicalization") != CANONICALIZATION_ID:
+                        errors.append("unsupported event canonicalization profile at position " + str(row["position"]))
                     if envelope.get("scopeId") != scope_id or envelope.get("position") != row["position"]:
                         errors.append("event scope/position mismatch at position " + str(row["position"]))
                     if envelope.get("previousDigest") != previous or row["previous_digest"] != previous:
@@ -534,6 +539,8 @@ class Journal:
                     receipt = json.loads(receipt_row["receipt_json"], object_pairs_hook=_reject_duplicate_pairs)
                     if not isinstance(receipt, dict):
                         raise JournalError("malformed", "receipt must be a JSON object")
+                    if receipt.get("canonicalization") != CANONICALIZATION_ID:
+                        errors.append("unsupported receipt canonicalization profile at position " + str(row["position"]))
                     if canonical_json_bytes(receipt).decode("utf-8") != receipt_row["receipt_json"]:
                         errors.append("receipt is not canonically serialized at position " + str(row["position"]))
                     computed = digest_json(_without(receipt, "receiptDigest"))

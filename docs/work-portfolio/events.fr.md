@@ -200,3 +200,14 @@ Détail canonique : [journal anglais WP-EVT-000033](events.md#wp-evt-000033).
 - **Validation :** 167 tests Python, intégrité des références et alignement du package passent sur la tête finale de la PR.
 - **Garanties :** genesis explicite, append compare-and-append, reçus durables idempotents, résultats stale/conflict/unknown, reprise transactionnelle SQLite, vérification complète de la chaîne et lectures/appends fail-closed.
 - **Limites :** journal local mono-hôte ; aucun consensus distribué, signature, vérification DSSE, authentification d'acteur, preuve d'autorité ou résistance à la réécriture par un administrateur privilégié. Les identités Git/Pijul typées et l'intégration à la frontière d'acceptation restent ouvertes dans #155/#44/#45.
+
+
+<a id="wp-evt-000040"></a>
+## WP-EVT-000040 — Ouverture du chantier de vérification DSSE détachée épinglée
+- **Sujet :** `govcheck.assurance.detached-dsse-verifier`.
+- **Type d'événement :** `detached-dsse-verifier-work-item-opened`.
+- **Date :** 2026-11-27.
+- **Issue source :** [#158](https://github.com/Martin-PB/govcheck/issues/158), enfant de #44.
+- **Fondement :** la Spécification 0008 définit la structure DSSE/PAE, mais le constructeur n'authentifie pas les signatures. Un vérificateur détaché doit utiliser une politique de confiance épinglée par l'opérateur, hors du contenu contrôlé par le candidat.
+- **Périmètre :** fournisseur Ed25519 facultatif délégué à un exécutable OpenSSL épinglé par chemin/digest ; politique et clés publiques épinglées ; association key ID/principal/rôle ; validité/révocation ; liaison exacte candidat/gouvernance ; tests synthétiques positifs/négatifs.
+- **Limite :** aucune PKI, horodatage fiable, révocation en ligne, gestionnaire de cycle de vie des clés ou preuve d'identité réelle. Le projet ne dispose toujours que d'un seul contributeur ; aucune revue indépendante n'est fabriquée.

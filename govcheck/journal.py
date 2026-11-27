@@ -261,6 +261,11 @@ class Journal:
                 "initialGovernanceRevision": governance_revision,
             }
             payload_digest = digest_json(payload)
+            genesis_request_digest = digest_json({
+                "scopeId": scope_id,
+                "initialAuthority": {"id": authority_id, "revision": authority_revision},
+                "initialGovernanceRevision": governance_revision,
+            })
             envelope = {
                 "schemaVersion": SCHEMA_VERSION,
                 "scopeId": scope_id,
@@ -273,6 +278,7 @@ class Journal:
                 "payload": payload,
                 "payloadDigest": payload_digest,
                 "actorId": authority_id,
+                "requestDigest": genesis_request_digest,
                 "idempotencyKey": None,
                 "createdAt": created_at,
             }
@@ -288,7 +294,7 @@ class Journal:
             )
             conn.execute(
                 "INSERT INTO journal_events(scope_id,position,event_id,event_type,schema_version,previous_digest,payload_digest,request_digest,idempotency_key,envelope_json,event_digest) VALUES(?,?,?,?,?,?,?,?,?,?,?)",
-                (scope_id, 0, event_id, GENESIS_EVENT_TYPE, SCHEMA_VERSION, None, payload_digest, digest_json(payload), None, envelope_json, event_digest),
+                (scope_id, 0, event_id, GENESIS_EVENT_TYPE, SCHEMA_VERSION, None, payload_digest, genesis_request_digest, None, envelope_json, event_digest),
             )
             conn.execute(
                 "INSERT INTO journal_receipts(scope_id,position,event_id,previous_digest,event_digest,idempotency_key,receipt_json) VALUES(?,?,?,?,?,?,?)",
@@ -468,23 +474,36 @@ class Journal:
                     errors.append("non-contiguous event position at " + str(row["position"]))
                 try:
                     envelope = json.loads(row["envelope_json"], object_pairs_hook=_reject_duplicate_pairs)
+                    if not isinstance(envelope, dict):
+                        raise JournalError("malformed", "event envelope must be a JSON object")
                     if canonical_json_bytes(envelope).decode("utf-8") != row["envelope_json"]:
                         errors.append("event envelope is not canonically serialized at position " + str(row["position"]))
                     if envelope.get("scopeId") != scope_id or envelope.get("position") != row["position"]:
                         errors.append("event scope/position mismatch at position " + str(row["position"]))
-                    if envelope.get("previousDigest") != previous:
+                    if envelope.get("previousDigest") != previous or row["previous_digest"] != previous:
                         errors.append("previous digest mismatch at position " + str(row["position"]))
                     if digest_json(envelope.get("payload")) != envelope.get("payloadDigest") or envelope.get("payloadDigest") != row["payload_digest"]:
                         errors.append("payload digest mismatch at position " + str(row["position"]))
                     computed = digest_json(_without(envelope, "eventDigest"))
                     if computed != envelope.get("eventDigest") or computed != row["event_digest"]:
                         errors.append("event digest mismatch at position " + str(row["position"]))
-                    if envelope.get("eventId") != row["event_id"] or envelope.get("eventType") != row["event_type"]:
-                        errors.append("event identity/type mismatch at position " + str(row["position"]))
-                    if envelope.get("requestDigest") and envelope.get("requestDigest") != row["request_digest"]:
-                        errors.append("request digest mismatch at position " + str(row["position"]))
+                    if (envelope.get("eventId") != row["event_id"]
+                            or envelope.get("eventType") != row["event_type"]
+                            or envelope.get("eventSchemaVersion") != row["schema_version"]
+                            or envelope.get("idempotencyKey") != row["idempotency_key"]
+                            or envelope.get("requestDigest") != row["request_digest"]):
+                        errors.append("event columns do not match envelope at position " + str(row["position"]))
+                    if expected_position == 0:
+                        payload = envelope.get("payload")
+                        authority = payload.get("initialAuthority", {}) if isinstance(payload, dict) else {}
+                        if (envelope.get("eventType") != GENESIS_EVENT_TYPE
+                                or payload.get("scopeId") != scope_id
+                                or authority.get("id") != scope["authority_id"]
+                                or authority.get("revision") != scope["authority_revision"]
+                                or payload.get("initialGovernanceRevision") != scope["governance_revision"]):
+                            errors.append("genesis payload does not match the journal scope authority/governance bindings")
                     previous = row["event_digest"]
-                except (ValueError, JournalError, TypeError) as exc:
+                except (ValueError, JournalError, TypeError, AttributeError) as exc:
                     errors.append("malformed event at position " + str(row["position"]) + ": " + str(exc))
             receipt_by_position = {r["position"]: r for r in receipts}
             if len(receipts) != len(rows):
@@ -496,6 +515,8 @@ class Journal:
                     continue
                 try:
                     receipt = json.loads(receipt_row["receipt_json"], object_pairs_hook=_reject_duplicate_pairs)
+                    if not isinstance(receipt, dict):
+                        raise JournalError("malformed", "receipt must be a JSON object")
                     if canonical_json_bytes(receipt).decode("utf-8") != receipt_row["receipt_json"]:
                         errors.append("receipt is not canonically serialized at position " + str(row["position"]))
                     computed = digest_json(_without(receipt, "receiptDigest"))
@@ -504,9 +525,9 @@ class Journal:
                     for key, expected in (("scopeId", scope_id), ("position", row["position"]),
                                           ("eventId", row["event_id"]), ("eventDigest", row["event_digest"]),
                                           ("previousDigest", row["previous_digest"]), ("idempotencyKey", row["idempotency_key"])):
-                        if receipt.get(key) != expected:
+                        if receipt.get(key) != expected or receipt_row[key if key != "scopeId" else "scope_id"] != expected:
                             errors.append("receipt " + key + " mismatch at position " + str(row["position"]))
-                except (ValueError, JournalError, TypeError) as exc:
+                except (ValueError, JournalError, TypeError, AttributeError) as exc:
                     errors.append("malformed receipt at position " + str(row["position"]) + ": " + str(exc))
             if rows:
                 last = rows[-1]

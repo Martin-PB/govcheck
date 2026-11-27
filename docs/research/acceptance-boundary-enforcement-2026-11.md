@@ -161,3 +161,18 @@ The read-only `govcheck/forge.py audit-ruleset` command checks active default-br
 The GitHub Actions source ID observed on GovCheck check runs is `15368`. The current CI check contexts are `govcheck-check`, `package-alignment` and `reference-integrity`; path-filtered workflows must be made consistently available before all three can be configured as required checks.
 
 **No ruleset or branch-protection setting was changed by this audit.**
+
+## 10. Local authenticated acceptance-gate adapter
+
+The `govcheck/git_acceptance_gate.py` adapter and `scripts/govcheck-acceptance-gate` entry point now bridge the signed `acceptance-decision/v1` verifier to the existing Git pre-receive `govcheck.acceptance-decision/v0` protocol.
+
+For each protected update, the gate:
+- clones/checks out the exact candidate from the server Git object store into a temporary directory;
+- computes the candidate snapshot and full base/candidate bindings;
+- runs the installed GovCheck evaluator with detached review/assurance/forge-identity inputs;
+- verifies the authority decision against the exact report bytes and candidate/ref/governance/scope bindings;
+- emits a v0 decision envelope with the pinned repository, policy and verifier identity/digests.
+
+The entry point must be installed outside the candidate repository. The pre-receive hook pins the executable file digest; the Python package/runtime closure remains part of the server administrator's immutable trust root. Missing evidence or configuration yields UNKNOWN and is rejected by the hook.
+
+**This is still not an effective forge boundary:** the local hook has not been installed on a real protected bare repository and exercised with accepted/rejected pushes, and the GitHub ruleset still lacks required PR/status checks. The adapter's unit tests are protocol tests, not a protected-ref rejection demonstration.

@@ -99,8 +99,14 @@ class BootstrapTests(unittest.TestCase):
     def test_journal_capability_installs_only_journal_module(self):
         r, code = bootstrap.apply_plan(self.target, ["journal"])
         self.assertEqual(code, 0)
-        self.assertEqual([a["path"] for a in r["created"]], ["journal.py"])
+        self.assertEqual(
+            [a["path"] for a in r["created"]],
+            ["formal/schemas/journal-event-v1.schema.json",
+             "formal/schemas/journal-receipt-v1.schema.json", "journal.py"],
+        )
         self.assertTrue((self.target / "journal.py").is_file())
+        self.assertTrue((self.target / "formal/schemas/journal-event-v1.schema.json").is_file())
+        self.assertTrue((self.target / "formal/schemas/journal-receipt-v1.schema.json").is_file())
         self.assertFalse((self.target / "check.py").exists())
 
     def test_attestation_capability_installs_only_attestation_module(self):

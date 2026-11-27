@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:govcheck:schema:journal-event:v1",
+  "title": "GovCheck Canonical Journal Event v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "scopeId",
+    "position",
+    "eventId",
+    "eventType",
+    "eventSchemaVersion",
+    "previousDigest",
+    "expectedHead",
+    "payload",
+    "payloadDigest",
+    "actorId",
+    "idempotencyKey",
+    "requestDigest",
+    "createdAt",
+    "eventDigest"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1"
+    },
+    "scopeId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "position": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "eventId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "eventType": {
+      "type": "string",
+      "minLength": 1
+    },
+    "eventSchemaVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "previousDigest": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/$defs/sha256"
+        }
+      ]
+    },
+    "expectedHead": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "position",
+            "digest"
+          ],
+          "properties": {
+            "position": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "digest": {
+              "$ref": "#/$defs/sha256"
+            }
+          }
+        }
+      ]
+    },
+    "payload": {},
+    "payloadDigest": {
+      "$ref": "#/$defs/sha256"
+    },
+    "actorId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "idempotencyKey": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "string",
+          "minLength": 1
+        }
+      ]
+    },
+    "requestDigest": {
+      "$ref": "#/$defs/sha256"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "eventDigest": {
+      "$ref": "#/$defs/sha256"
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}

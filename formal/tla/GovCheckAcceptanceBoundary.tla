@@ -381,14 +381,35 @@ TypeOKDecision ==
     /\ decision.authority \in {RootAuthority, NoValue}
     /\ decision.riskId \in RiskAcceptanceIds \cup {NoValue}
 
+TypeOKPublicationStatus ==
+    publication.status \in {PublicationNone, PublicationPublished}
+
+TypeOKPublicationCandidate ==
+    publication.candidate \in Candidates \cup {NoValue}
+
+TypeOKPublicationBase ==
+    publication.base \in Bases \cup {NoValue}
+
+TypeOKPublicationPolicy ==
+    publication.policy \in Policies \cup {NoValue}
+
+TypeOKPublicationVerifier ==
+    publication.verifier \in Verifiers \cup {NoValue}
+
+TypeOKPublicationKind ==
+    publication.kind \in {KindNone, KindVerified, KindRiskAccepted, KindUncontrolled}
+
+TypeOKPublicationResult ==
+    publication.result \in Results \cup {NoValue}
+
 TypeOKPublication ==
-    /\ publication.status \in {PublicationNone, PublicationPublished}
-    /\ publication.candidate \in Candidates \cup {NoValue}
-    /\ publication.base \in Bases \cup {NoValue}
-    /\ publication.policy \in Policies \cup {NoValue}
-    /\ publication.verifier \in Verifiers \cup {NoValue}
-    /\ publication.kind \in {KindNone, KindVerified, KindRiskAccepted, KindUncontrolled}
-    /\ publication.result \in Results \cup {NoValue}
+    TypeOKPublicationStatus
+    /\ TypeOKPublicationCandidate
+    /\ TypeOKPublicationBase
+    /\ TypeOKPublicationPolicy
+    /\ TypeOKPublicationVerifier
+    /\ TypeOKPublicationKind
+    /\ TypeOKPublicationResult
 
 TypeOKBypass ==
     /\ bypass.status \in {BypassNone, BypassRecorded}

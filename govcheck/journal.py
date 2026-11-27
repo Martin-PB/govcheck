@@ -334,6 +334,9 @@ class Journal:
 
     def head(self, scope_id: str) -> dict:
         scope_id = _validate_string(scope_id, "scope_id")
+        integrity = self.verify(scope_id)
+        if integrity.get("status") != "valid":
+            raise JournalError("unknown", "journal head is not trusted because verification failed: " + "; ".join(integrity.get("errors", [])))
         conn = self._connect()
         try:
             row = conn.execute("SELECT head_position,head_digest FROM journal_scopes WHERE scope_id=?", (scope_id,)).fetchone()
@@ -348,6 +351,9 @@ class Journal:
     def receipt(self, scope_id: str, idempotency_key: str) -> dict | None:
         scope_id = _validate_string(scope_id, "scope_id")
         idempotency_key = _validate_string(idempotency_key, "idempotency_key")
+        integrity = self.verify(scope_id)
+        if integrity.get("status") != "valid":
+            raise JournalError("unknown", "journal receipt is not trusted because verification failed: " + "; ".join(integrity.get("errors", [])))
         conn = self._connect()
         try:
             return self._load_receipt(conn, scope_id, idempotency_key)

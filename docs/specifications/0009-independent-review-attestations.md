@@ -14,7 +14,7 @@ The review is an in-toto Statement v1 using predicate type:
 
 `urn:govcheck:attestation:independent-review:v1`
 
-The strict JSON Schema is `../../govcheck/formal/schemas/independent-review-v1.schema.json`. The predicate binds:
+The strict JSON Schema is `../../govcheck/formal/schemas/independent-review-v1.schema.json`. The separate forge-author identity predicate schema is `../../govcheck/formal/schemas/forge-author-identity-v1.schema.json`. The review predicate binds:
 
 - candidate revision and candidate content SHA-256;
 - exact base revision;
@@ -38,7 +38,7 @@ The checkout must be clean (tracked and untracked files) and `HEAD` must equal t
 
 The reviewer principal is derived only from the verified DSSE signer and the operator-pinned trust policy's key-ID/principal/role mapping. The required reviewer role is `independent-reviewer`. The authenticated reviewer principal must differ from the author principal.
 
-The author principal and its source URI are explicit evaluator inputs. The CLI does **not** authenticate the forge API or source URI itself; an operator/deployment must obtain the author principal from a separately trusted forge identity mechanism. Git author metadata alone is not an authenticated principal.
+The author principal and source URI are carried by a detached `forge-author-identity/v1` Statement signed by a forge identity provider. Its signer must be authorized by the operator-pinned trust policy under an explicit forge-identity role. The predicate binds the candidate revision/content, base, governance and scope. The evaluator verifies this envelope, requires its signed `sourceUri` to equal the operator-pinned expected source URI, and derives `authorPrincipal` from the signed predicate; `--author-principal` is only an optional consistency check. The CLI does not itself authenticate a forge API: the provider signature and trust-policy mapping are the trust boundary. Git author metadata alone is not an authenticated principal.
 
 The assurance Statement is separately detached and verified under an explicit trust-policy role. Its `independentReview.status` must be `attested`, and its `independentReview.reference.digest.sha256` must equal SHA-256 of the exact review-envelope file bytes. Both envelopes and the trust policy must be outside the candidate tree.
 

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:govcheck:schema:forge-author-identity:v1",
+  "title": "GovCheck Forge Author Identity Assertion v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion", "candidateRevision", "candidateContentSha256",
+    "baseRevision", "governanceRevision", "scopeId", "authorPrincipal",
+    "sourceUri", "assertedOn"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "1" },
+    "candidateRevision": { "type": "string", "minLength": 1 },
+    "candidateContentSha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "baseRevision": { "type": "string", "minLength": 1 },
+    "governanceRevision": { "type": "string", "minLength": 1 },
+    "scopeId": { "type": "string", "minLength": 1 },
+    "authorPrincipal": { "type": "string", "minLength": 1 },
+    "sourceUri": { "type": "string", "format": "uri" },
+    "assertedOn": { "type": "string", "format": "date-time" }
+  }
+}

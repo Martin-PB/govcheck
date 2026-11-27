@@ -298,6 +298,23 @@ def validate_statement(statement: dict) -> None:
         if not subject_matches:
             raise AttestationError("independent-review subject digest does not match candidate content")
         return
+    if statement.get("predicateType") == "urn:govcheck:attestation:forge-author-identity:v1":
+        predicate = _object(statement.get("predicate"), "predicate")
+        try:
+            from .forge_author_identity import validate_predicate
+        except ImportError:
+            from forge_author_identity import validate_predicate
+        normalized = validate_predicate(predicate)
+        subject_matches = False
+        for subject in subjects:
+            subject = _object(subject, "subject")
+            _uri(subject.get("name"), "subject.name")
+            digest = _digest(subject.get("digest"), "subject.digest")
+            if digest.get("sha256") == normalized["candidateContentSha256"]:
+                subject_matches = True
+        if not subject_matches:
+            raise AttestationError("forge-author identity subject digest does not match candidate content")
+        return
     if statement.get("predicateType") != PREDICATE_TYPE:
         raise AttestationError("unsupported GovCheck predicate type")
     predicate = _object(statement.get("predicate"), "predicate")

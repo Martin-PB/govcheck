@@ -14,7 +14,7 @@ import re
 import subprocess
 import sys
 import tempfile
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 
 try:
     from govcheck import check as check_module
@@ -148,6 +148,69 @@ def _review_config(env: dict[str, str]) -> dict | None:
     return {key: env[value] for key, value in keys.items()}
 
 
+def _git_text(git_dir: Path, git_args: list[str], runner, env, timeout) -> str:
+    command = ["git", "--git-dir", str(git_dir), *git_args]
+    result = runner(command, capture_output=True, text=True, timeout=timeout, env=env)
+    if result.returncode != 0:
+        raise ValueError("Git command failed: " + result.stderr.strip())
+    return result.stdout.strip()
+
+
+def _git_bytes(git_dir: Path, git_args: list[str], runner, env, timeout) -> bytes:
+    command = ["git", "--git-dir", str(git_dir), *git_args]
+    result = runner(command, capture_output=True, text=False, timeout=timeout, env=env)
+    if result.returncode != 0:
+        detail = result.stderr.decode("utf-8", errors="replace").strip()
+        raise ValueError("Git object command failed: " + detail)
+    return result.stdout
+
+
+def _materialize_candidate(git_dir: Path, candidate: str, root: Path, runner, env, timeout) -> None:
+    """Materialize exact tree blobs without executing candidate code or using git archive."""
+    root.mkdir(parents=True, exist_ok=True)
+    root_resolved = root.resolve()
+    listing = _git_bytes(git_dir, ["ls-tree", "-rz", "--full-tree", candidate], runner, env, timeout)
+    for record in listing.split(b"\0"):
+        if not record:
+            continue
+        try:
+            metadata, raw_path = record.split(b"\t", 1)
+            mode, kind, object_id = metadata.split(b" ", 2)
+        except ValueError as exc:
+            raise ValueError("malformed ls-tree record") from exc
+        relative = PurePosixPath(os.fsdecode(raw_path))
+        if relative.is_absolute() or any(part in {"", ".", ".."} for part in relative.parts):
+            raise ValueError("candidate tree contains an unsafe path")
+        target = root.joinpath(*relative.parts)
+        parent = target.parent
+        parent.mkdir(parents=True, exist_ok=True)
+        if not parent.resolve().is_relative_to(root_resolved):
+            raise ValueError("candidate path escapes the materialized tree")
+        if kind == b"commit":
+            raise ValueError("candidate submodules are not supported by this local gate")
+        if kind != b"blob":
+            raise ValueError("candidate tree contains an unsupported Git object")
+        content = _git_bytes(git_dir, ["cat-file", "blob", object_id.decode("ascii")], runner, env, timeout)
+        if mode == b"120000":
+            link_target = os.fsdecode(content)
+            if Path(link_target).is_absolute():
+                raise ValueError("candidate contains an absolute symlink")
+            resolved_link = (parent / link_target).resolve(strict=False)
+            if not resolved_link.is_relative_to(root_resolved):
+                raise ValueError("candidate symlink escapes the materialized tree")
+            target.symlink_to(link_target)
+        elif mode in {b"100644", b"100755"}:
+            target.write_bytes(content)
+            target.chmod(0o755 if mode == b"100755" else 0o644)
+        else:
+            raise ValueError("candidate contains unsupported file mode " + mode.decode("ascii"))
+
+
+def _git_changed(git_dir: Path, base: str, candidate: str, runner, env, timeout) -> set[str]:
+    raw = _git_bytes(git_dir, ["diff", "--name-only", "-z", base + "..." + candidate], runner, env, timeout)
+    return {os.fsdecode(path) for path in raw.split(b"\0") if path}
+
+
 def _risk_v0(decision: dict) -> dict | None:
     risk = decision.get("riskAcceptance")
     if decision.get("result") != "accepted-with-risk" or not isinstance(risk, dict):
@@ -172,7 +235,7 @@ def run_gate(args, env=None, runner=subprocess.run, evaluator=None, decision_ver
         payload["reason"] = error
         return 0, payload
 
-    git_dir = args.git_dir or env.get("GIT_DIR")
+    git_dir = Path(args.git_dir or env.get("GIT_DIR", "")).expanduser().resolve()
     try:
         timeout = int(env.get("GOVCHECK_GATE_TIMEOUT_SECONDS", "300"))
         if timeout <= 0:
@@ -180,44 +243,31 @@ def run_gate(args, env=None, runner=subprocess.run, evaluator=None, decision_ver
     except ValueError as exc:
         payload["reason"] = "invalid gate timeout: " + str(exc)
         return 0, payload
-    git_env = dict(env)
-    git_env.pop("GIT_DIR", None)
-    git_env.pop("GIT_WORK_TREE", None)
-    git_env.pop("GIT_COMMON_DIR", None)
 
     try:
         with tempfile.TemporaryDirectory(prefix="govcheck-gate-") as directory:
             temp_root = Path(directory)
             candidate_root = temp_root / "candidate"
-            cloned = _run(
-                ["git", "clone", "--shared", "--no-checkout", str(Path(git_dir).resolve()), str(candidate_root)],
-                runner, git_env, timeout,
-            )
-            if cloned.returncode != 0:
-                payload["reason"] = "candidate repository clone failed"
-                return 0, payload
-            checked = _run(
-                ["git", "-C", str(candidate_root), "checkout", "--detach", args.candidate],
-                runner, git_env, timeout,
-            )
-            if checked.returncode != 0:
-                payload["reason"] = "candidate checkout failed"
-                return 0, payload
+            _materialize_candidate(git_dir, args.candidate, candidate_root, runner, env, timeout)
 
-            base_revision = check_module.git_full_sha(candidate_root, args.base)
-            candidate_revision = check_module.git_full_sha(candidate_root, args.candidate)
+            base_revision = _git_text(git_dir, ["rev-parse", args.base], runner, env, timeout)
+            candidate_revision = _git_text(git_dir, ["rev-parse", args.candidate], runner, env, timeout)
+            tree_sha = _git_text(git_dir, ["rev-parse", args.candidate + "^{tree}"], runner, env, timeout)
+            author = _git_text(git_dir, ["log", "-1", "--format=%an <%ae>", args.candidate], runner, env, timeout)
             content_digest = check_module.candidate_content_digest(candidate_root)
-            changed = check_module.git_changed(candidate_root, args.base, args.candidate)
+            changed = _git_changed(git_dir, args.base, args.candidate, runner, env, timeout)
             git = {
                 "base": args.base,
                 "base_rev": base_revision,
                 "candidate_rev": candidate_revision,
-                "head_rev": check_module.git_full_sha(candidate_root, "HEAD"),
-                "worktree_clean": check_module.git_worktree_clean(candidate_root),
+                "head_rev": candidate_revision,
+                "tree": tree_sha,
+                "worktree_clean": True,
                 "ref": args.ref,
                 "governance_revision": env["GOVCHECK_GOVERNANCE_REVISION"],
                 "scope_id": env["GOVCHECK_SCOPE_ID"],
                 "content_sha256": content_digest,
+                "author": author,
             }
             review = _review_config(env)
             evaluator = evaluator or check_module.evaluate

@@ -482,7 +482,7 @@ def evaluate(tree: Path, changed=None, git=None, independent_review=None) -> dic
     return {
         "tool": TOOL,
         "version": VERSION,
-        "candidate": {"tree": str(tree), "changed_files": sorted(changed) if changed is not None else None},
+        "candidate": {"tree": git.get("tree", str(tree)) if git else str(tree), "changed_files": sorted(changed) if changed is not None else None},
         "overall": overall,
         "rules": rules,
     }
@@ -565,6 +565,7 @@ def main(argv=None) -> int:
             "base_rev": git_full_sha(tree, args.base),
             "candidate_rev": git_full_sha(tree, args.candidate),
             "head_rev": git_full_sha(tree, "HEAD"),
+            "tree": git_full_sha(tree, args.candidate + "^{tree}"),
             "worktree_clean": git_worktree_clean(tree),
             "ref": args.ref,
             "governance_revision": args.governance_revision,

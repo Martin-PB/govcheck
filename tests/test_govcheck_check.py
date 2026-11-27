@@ -395,6 +395,14 @@ class EvaluateTests(unittest.TestCase):
             rule = next(item for item in result["rules"] if item["id"] == "independent-review")
             self.assertEqual(rule["result"], "pass", rule["reasons"])
 
+    def test_evaluation_report_uses_stable_candidate_tree_identity(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            build_tree(root)
+            report = check.evaluate(root, changed={"docs/a.md"}, git={"tree": "f" * 40}, independent_review=None)
+            self.assertEqual(report["candidate"]["tree"], "f" * 40)
+            self.assertNotEqual(report["candidate"]["tree"], str(root.resolve()))
+
     def test_review_unknown_without_attestation(self):
         with tempfile.TemporaryDirectory() as d:
             root = Path(d)

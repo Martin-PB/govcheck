@@ -129,7 +129,8 @@
     "base": {
       "type": "object",
       "required": [
-        "revision"
+        "revision",
+        "reference"
       ],
       "properties": {
         "revision": {
@@ -141,6 +142,10 @@
         },
         "contentDigest": {
           "$ref": "#/$defs/digest"
+        },
+        "reference": {
+          "type": "string",
+          "minLength": 1
         }
       },
       "additionalProperties": true

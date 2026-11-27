@@ -519,3 +519,14 @@
 - **Basis:** proposed Specification 0007 and bounded recovery model Architecture 0035 are merged but no durable journal implementation exists.
 - **Scope:** evaluate a local embedded storage profile; implement explicit genesis, serialized compare-and-append, durable receipts, idempotent retry, crash recovery and hash-chain verification with offline positive/negative tests.
 - **Boundary:** no hosted MCP/server, distributed consensus, custom cryptography, implicit genesis or forge/VCS normative ordering. Hash-chain integrity is not actor authentication or proof of authority.
+
+
+<a id="wp-evt-000038"></a>
+## WP-EVT-000038 — GitHub forge-native portfolio adapter delivered
+- **Subject:** `govcheck.portfolio.forge-native-adapter`.
+- **Event type:** `github-forge-adapter-first-backend-completed`.
+- **Recorded:** 2026-11-27.
+- **Source issue/PRs:** [#118](https://github.com/Martin-PB/govcheck/issues/118); [#119](https://github.com/Martin-PB/govcheck/pull/119), [#120](https://github.com/Martin-PB/govcheck/pull/120), [#121](https://github.com/Martin-PB/govcheck/pull/121), all merged.
+- **Artifacts:** Architecture 0034 EN/FR; stdlib-only govcheck/forge.py; offline contract tests; forge bootstrap capability; README EN/FR.
+- **Delivered:** registry-first stable work IDs, lossless round-trip tests, read-only check-run/branch-protection inspection, explicit token-gated writes, typed failures and no forge authorization semantics.
+- **Limit:** GitHub REST v3 is the only implemented backend in this issue. GitLab/Gitea/Forgejo, automatic bidirectional sync and Projects v2 writes remain separate work; issue #118 is closed for its stated first slice.

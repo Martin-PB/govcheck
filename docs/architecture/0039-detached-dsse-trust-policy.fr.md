@@ -54,7 +54,7 @@ Le projet ne dispose actuellement que d'un seul contributeur. Le vérificateur n
 - États de sortie : verified, invalid, unknown.
 - CLI : commande locale ; aucun appel réseau ni service hébergé.
 
-Ce fournisseur est facultatif. Si OpenSSL est absent ou ne correspond pas au digest épinglé, le résultat est UNKNOWN. D'autres fournisseurs/algorithmes pourront implémenter ultérieurement le même contrat de vérification.
+Implémentation : [attestation_verify.py](../../govcheck/attestation_verify.py) et [schéma de politique de confiance](../../govcheck/formal/schemas/attestation-trust-policy-v1.schema.json). Ce fournisseur est facultatif. Si OpenSSL est absent ou ne correspond pas au digest épinglé, le résultat est UNKNOWN. D'autres fournisseurs/algorithmes pourront implémenter ultérieurement le même contrat de vérification.
 
 ## 6. Hors objectifs
 

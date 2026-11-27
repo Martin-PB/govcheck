@@ -348,6 +348,11 @@ BypassSpec ==
 ResultDomain ==
     Results = {Pass, Fail, Unknown, Conflict}
 
+NoUnexpectedDeadlock ==
+    \/ publication.status = PublicationPublished
+    \/ decision.status \in {DecisionBlocked, DecisionStale}
+    \/ ENABLED Next
+
 PassInResults ==
     Pass \in Results
 

@@ -348,6 +348,18 @@ BypassSpec ==
 ResultDomain ==
     Results = {Pass, Fail, Unknown, Conflict}
 
+PassInResults ==
+    Pass \in Results
+
+FailInResults ==
+    Fail \in Results
+
+UnknownInResults ==
+    Unknown \in Results
+
+ConflictInResults ==
+    Conflict \in Results
+
 TypeOKCore ==
     /\ currentBase \in Bases
     /\ currentPolicy \in Policies

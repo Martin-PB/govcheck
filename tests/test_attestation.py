@@ -70,7 +70,7 @@ class StatementTests(unittest.TestCase):
         report, context = valid_inputs()
         context["independentReview"] = {
             "status": "attested",
-            "reference": {"name": "review-statement.json", "digest": {"sha256": "4" * 64}},
+            "reference": {"uri": "https://evidence.example.org/reviews/review-statement.json", "digest": {"sha256": "4" * 64}},
         }
         statement = att.build_statement(report, context)
         self.assertEqual(statement["predicate"]["independentReview"]["status"], "attested")
@@ -86,6 +86,22 @@ class StatementTests(unittest.TestCase):
         report, context = valid_inputs()
         report["candidate"]["base"] = "release"
         with self.assertRaisesRegex(att.AttestationError, "base reference does not match"):
+            att.build_statement(report, context)
+
+    def test_pijul_candidate_requires_native_channel_and_change_set(self):
+        report, context = valid_inputs()
+        context["repository"]["vcsKind"] = "pijul"
+        context["candidate"].update({"channel": "main", "changeSet": "pijul-change-set-id"})
+        context["base"].update({"channel": "main", "changeSet": "pijul-base-change-set"})
+        statement = att.build_statement(report, context)
+        self.assertEqual(statement["predicate"]["candidate"]["channel"], "main")
+        self.assertEqual(statement["predicate"]["candidate"]["changeSet"], "pijul-change-set-id")
+
+    def test_pijul_candidate_without_change_set_is_rejected(self):
+        report, context = valid_inputs()
+        context["repository"]["vcsKind"] = "pijul"
+        context["candidate"]["channel"] = "main"
+        with self.assertRaisesRegex(att.AttestationError, "candidate.changeSet"):
             att.build_statement(report, context)
 
     def test_missing_sha256_is_rejected(self):

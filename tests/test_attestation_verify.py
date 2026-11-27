@@ -187,6 +187,18 @@ class DetachedVerificationTests(unittest.TestCase):
         self.assertEqual(result["status"], "invalid")
         self.assertIn("outside", result["reason"])
 
+    def test_candidate_local_symlink_to_external_policy_is_rejected(self):
+        link = self.candidate_root / "policy-link.json"
+        link.symlink_to(self.policy_path)
+        result = verify.verify_dsse_envelope(self.envelope, link, self.policy_digest, self.candidate_root)
+        self.assertEqual(result["status"], "invalid")
+        self.assertIn("outside", result["reason"])
+
+    def test_naive_verification_time_is_rejected(self):
+        result = self.verify(now=datetime(2026, 11, 27))
+        self.assertEqual(result["status"], "invalid")
+        self.assertIn("timezone", result["reason"])
+
     def test_public_key_inside_candidate_tree_is_rejected(self):
         candidate_key = self.candidate_root / "reviewer-public.pem"
         candidate_key.write_bytes(self.public_key.read_bytes())

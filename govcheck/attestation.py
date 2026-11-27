@@ -98,7 +98,7 @@ def _resource(value: Any, label: str) -> dict:
     result = {"digest": _digest(resource.get("digest"), label + ".digest")}
     for key in ("name", "uri", "mediaType"):
         if key in resource:
-            result[key] = _string(resource[key], label + "." + key)
+            result[key] = _uri(resource[key], label + "." + key) if key == "uri" else _string(resource[key], label + "." + key)
     return result
 
 
@@ -312,6 +312,8 @@ def validate_statement(statement: dict) -> None:
     _string(base.get("reference"), "base.reference")
     if "tree" in base:
         _string(base["tree"], "base.tree")
+    if "contentDigest" in base:
+        _digest(base["contentDigest"], "base.contentDigest")
     if vcs_kind == "git" and "tree" not in base:
         raise AttestationError("Git base binding requires a tree identity")
     if vcs_kind == "pijul":

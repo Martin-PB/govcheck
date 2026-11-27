@@ -34,7 +34,7 @@ Le mode WAL permet aux lecteurs de continuer pendant un écrivain, mais n'autori
 
 ## 4. Profil d'événement canonique et de reçu
 
-L'enveloppe initiale contient :
+L'enveloppe initiale est définie par les schémas du package [journal-event-v1](../../govcheck/formal/schemas/journal-event-v1.schema.json) et [journal-receipt-v1](../../govcheck/formal/schemas/journal-receipt-v1.schema.json). Elle contient :
 - un identifiant explicite du périmètre de journal ;
 - une position monotone (genesis en position 0) ;
 - un identifiant d'événement, un type d'événement et une révision de schéma ;

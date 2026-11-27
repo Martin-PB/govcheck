@@ -159,7 +159,7 @@ class EvaluateTests(unittest.TestCase):
             "governance_revision": "gov-17",
             "scope_id": "repo:example/project",
         }
-        git = {"candidate_rev": "c" * 40, "base_rev": "b" * 40}
+        git = {"candidate_rev": "c" * 40, "base_rev": "b" * 40, "head_rev": "c" * 40, "worktree_clean": True}
         result = {
             "status": "verified",
             "statement": {"predicate": {"outcome": outcome}},
@@ -223,7 +223,7 @@ class EvaluateTests(unittest.TestCase):
                 "governance_revision": "gov-17",
                 "scope_id": "repo:example/project",
             }
-            git = {"candidate_rev": "c" * 40, "base_rev": "b" * 40}
+            git = {"candidate_rev": "c" * 40, "base_rev": "b" * 40, "head_rev": "c" * 40, "worktree_clean": True}
             report = check.evaluate(root, changed={"docs/a.md"}, git=git, independent_review=config)
             rule = next(r for r in report["rules"] if r["id"] == "independent-review")
             self.assertEqual(rule["result"], "fail")

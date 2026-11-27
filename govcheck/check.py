@@ -334,6 +334,10 @@ def rule_independent_review(ctx: Ctx):
         ])
 
     config = ctx.independent_review
+    if ctx.git.get("worktree_clean") is not True:
+        return ("unknown", True, ["candidate checkout is not proven clean; snapshot digest cannot be safely bound to the named revision"])
+    if ctx.git.get("head_rev") != ctx.git.get("candidate_rev"):
+        return ("fail", True, ["checked-out HEAD does not equal the candidate revision being evaluated"])
     required = {
         "envelope_path", "assurance_envelope_path", "assurance_role",
         "trust_policy_path", "trust_policy_sha256", "author_principal",
@@ -486,6 +490,17 @@ def git_full_sha(tree: Path, rev: str):
     return proc.stdout.strip()
 
 
+def git_worktree_clean(tree: Path) -> bool:
+    """Return true only for a clean tracked and untracked candidate checkout."""
+    proc = subprocess.run(
+        ["git", "-C", str(tree), "status", "--porcelain", "--untracked-files=all"],
+        capture_output=True, text=True,
+    )
+    if proc.returncode != 0:
+        raise SystemExit("git status failed: " + proc.stderr.strip())
+    return not proc.stdout.strip()
+
+
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description="First executable GovCheck slice.")
     parser.add_argument("--tree", default=".")
@@ -518,6 +533,8 @@ def main(argv=None) -> int:
             "base": args.base,
             "base_rev": git_full_sha(tree, args.base),
             "candidate_rev": git_full_sha(tree, args.candidate),
+            "head_rev": git_full_sha(tree, "HEAD"),
+            "worktree_clean": git_worktree_clean(tree),
             "author": git_author(tree, args.candidate),
         }
     review_values = [

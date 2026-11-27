@@ -164,7 +164,7 @@
 <a id="r-06"></a>
 
 ### R-06 — in-toto: software supply-chain integrity
-- **Cited by:** [0006-threat-and-trust-model](architecture/0006-threat-and-trust-model.md), [0007-technology-decision-framework](architecture/0007-technology-decision-framework.md), [0010-assurance-proof-and-conformance](architecture/0010-assurance-proof-and-conformance.md), [0014-governed-development-workflow](architecture/0014-governed-development-workflow.md), [0015-governance-conformance-and-validation-plan](architecture/0015-governance-conformance-and-validation-plan.md), [0002-study-placement](decisions/0002-study-placement.md), [0007-mandatory-sources](decisions/0007-mandatory-sources.md), [intent-impact-analysis](intent-impact-analysis.md), [concurrent-agent-change-governance](research/concurrent-agent-change-governance.md), [Specification 0008](specifications/0008-interoperable-assurance-attestations.md)
+- **Cited by:** [0006-threat-and-trust-model](architecture/0006-threat-and-trust-model.md), [0007-technology-decision-framework](architecture/0007-technology-decision-framework.md), [0010-assurance-proof-and-conformance](architecture/0010-assurance-proof-and-conformance.md), [0014-governed-development-workflow](architecture/0014-governed-development-workflow.md), [0015-governance-conformance-and-validation-plan](architecture/0015-governance-conformance-and-validation-plan.md), [0002-study-placement](decisions/0002-study-placement.md), [0007-mandatory-sources](decisions/0007-mandatory-sources.md), [intent-impact-analysis](intent-impact-analysis.md), [concurrent-agent-change-governance](research/concurrent-agent-change-governance.md), [Specification 0008](specifications/0008-interoperable-assurance-attestations.md), [Specification 0009](specifications/0009-independent-review-attestations.md)
 
 - **Primary sources:** [in-toto project](https://in-toto.io/) · [USENIX Security 2019 paper](https://ssl.engineering.nyu.edu/papers/torres-toto-usenix19.pdf)
 - **Academic reference:** Santiago Torres-Arias et al., “in-toto: Providing farm-to-table guarantees for bits and bytes,” 28th USENIX Security Symposium, 2019.
@@ -1631,7 +1631,7 @@
 - **Primary source:** [openssl-pkeyutl](https://docs.openssl.org/3.0/man1/openssl-pkeyutl/).
 - **Use:** documents raw-input signing/verification with EVP public/private keys, including Ed25519 use with the raw-input mode.
 - **Limit:** OpenSSL command-line success proves only that the supplied key verifies the supplied bytes. Trust policy, key-to-principal binding, revocation, key custody and verifier-binary integrity remain deployment responsibilities.
-- **Cited by:** [Architecture 0039](architecture/0039-detached-dsse-trust-policy.md), [Specification 0008](specifications/0008-interoperable-assurance-attestations.md).
+- **Cited by:** [Architecture 0039](architecture/0039-detached-dsse-trust-policy.md), [Specification 0008](specifications/0008-interoperable-assurance-attestations.md), [Specification 0009](specifications/0009-independent-review-attestations.md).
 
 <a id="r-233"></a>
 ### R-233 — RFC 8032: Edwards-Curve Digital Signature Algorithm (EdDSA)
@@ -1639,4 +1639,4 @@
 - **Primary source:** [RFC 8032](https://www.rfc-editor.org/rfc/rfc8032.html).
 - **Use:** specifies Ed25519/Ed448 key and signature algorithms and test vectors.
 - **Limit:** the algorithm does not define identity, authorization, key lifecycle, trusted time or DSSE policy semantics.
-- **Cited by:** [Architecture 0039](architecture/0039-detached-dsse-trust-policy.md), [Specification 0008](specifications/0008-interoperable-assurance-attestations.md).
+- **Cited by:** [Architecture 0039](architecture/0039-detached-dsse-trust-policy.md), [Specification 0008](specifications/0008-interoperable-assurance-attestations.md), [Specification 0009](specifications/0009-independent-review-attestations.md).

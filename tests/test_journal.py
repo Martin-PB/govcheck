@@ -136,6 +136,7 @@ class JournalTests(unittest.TestCase):
 
     def test_append_fails_closed_when_existing_chain_is_corrupt(self):
         self.append()
+        head = self.journal.head("repo:example/project")
         conn = sqlite3.connect(self.db)
         try:
             conn.execute("DROP TRIGGER journal_events_no_update")
@@ -143,7 +144,6 @@ class JournalTests(unittest.TestCase):
             conn.commit()
         finally:
             conn.close()
-        head = self.journal.head("repo:example/project")
         result = self.journal.append("repo:example/project", head["position"], head["digest"],
                                      "event-after-corruption", "test.event", "1", {"x": 1},
                                      "idem-after-corruption", "principal:root")

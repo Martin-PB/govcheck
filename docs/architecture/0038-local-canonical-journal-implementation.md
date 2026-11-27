@@ -80,3 +80,6 @@ The first profile does not implement signatures, key management, distributed con
 - Related: #45 acceptance boundary, #44 detached attestations, #86 governance revision applicability.
 
 **This is a proposed first implementation profile. It does not adopt SQLite as a universal backend, prove actor authority, or claim protection against a privileged database administrator.**
+
+
+The initial implementation verifies the full chain before append and before returning head/receipt data. This is O(n) in the number of events and intentionally favors fail-closed behavior over throughput for the first local profile. A future checkpoint/index optimization must preserve verification against a trusted checkpoint and be separately tested; a mutable head row alone is not a trusted checkpoint.

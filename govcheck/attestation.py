@@ -11,6 +11,7 @@ import argparse
 import base64
 import binascii
 import json
+from datetime import datetime
 import re
 import sys
 from pathlib import Path
@@ -51,6 +52,17 @@ def _decode_base64(value: str, label: str) -> bytes:
         except (binascii.Error, ValueError):
             continue
     raise AttestationError(label + " is not valid base64")
+
+
+def _timestamp(value: Any, label: str) -> str:
+    timestamp = _string(value, label)
+    try:
+        parsed = datetime.fromisoformat(timestamp.replace("Z", "+00:00"))
+    except ValueError as exc:
+        raise AttestationError(label + " must be an RFC 3339 timestamp") from exc
+    if parsed.tzinfo is None:
+        raise AttestationError(label + " must include a timezone")
+    return timestamp
 
 
 def _uri(value: Any, label: str) -> str:
@@ -178,6 +190,8 @@ def build_statement(report: dict, context: dict) -> dict:
         if "reference" not in review:
             raise AttestationError("attested independent review requires a detached statement reference")
         normalized_review["reference"] = _resource(review["reference"], "independentReview.reference")
+        if "uri" not in normalized_review["reference"]:
+            raise AttestationError("detached review reference requires an absolute URI")
     elif "reference" in review:
         normalized_review["reference"] = _resource(review["reference"], "independentReview.reference")
 
@@ -186,11 +200,19 @@ def build_statement(report: dict, context: dict) -> dict:
         raise AttestationError("context.methods must be an array")
     normalized_methods = [_validate_method(m, i) for i, m in enumerate(methods)]
 
+    if vcs_kind == "git":
+        _string(candidate.get("tree"), "candidate.tree")
+        _string(base.get("tree"), "base.tree")
+    elif vcs_kind == "pijul":
+        for key in ("channel", "changeSet"):
+            _string(candidate.get(key), "candidate." + key)
+            _string(base.get(key), "base." + key)
+
     predicate = {
         "schemaVersion": "1",
         "evaluation": {
             "id": _string(context.get("evaluationId"), "evaluationId"),
-            "evaluatedOn": _string(context.get("evaluatedOn"), "evaluatedOn"),
+            "evaluatedOn": _timestamp(context.get("evaluatedOn"), "evaluatedOn"),
             "result": evaluation_result,
             "rules": normalized_rules,
         },
@@ -256,7 +278,7 @@ def validate_statement(statement: dict) -> None:
 
     evaluation = _object(predicate.get("evaluation"), "evaluation")
     _string(evaluation.get("id"), "evaluation.id")
-    _string(evaluation.get("evaluatedOn"), "evaluation.evaluatedOn")
+    _timestamp(evaluation.get("evaluatedOn"), "evaluation.evaluatedOn")
     if evaluation.get("result") not in RESULTS:
         raise AttestationError("invalid evaluation result")
     rules = evaluation.get("rules")
@@ -272,15 +294,29 @@ def validate_statement(statement: dict) -> None:
 
     repository = _object(predicate.get("repository"), "repository")
     repository_uri = _uri(repository.get("uri"), "repository.uri")
-    _string(repository.get("vcsKind"), "repository.vcsKind")
+    vcs_kind = _string(repository.get("vcsKind"), "repository.vcsKind")
     candidate = _object(predicate.get("candidate"), "candidate")
     _string(candidate.get("revision"), "candidate.revision")
     candidate_digest = _digest(candidate.get("contentDigest"), "candidate.contentDigest")
+    if "tree" in candidate:
+        _string(candidate["tree"], "candidate.tree")
+    if vcs_kind == "git" and "tree" not in candidate:
+        raise AttestationError("Git candidate binding requires a tree identity")
+    if vcs_kind == "pijul":
+        _string(candidate.get("channel"), "candidate.channel")
+        _string(candidate.get("changeSet"), "candidate.changeSet")
     if not any(subject.get("digest") == candidate_digest and subject.get("name") == repository_uri for subject in subjects):
         raise AttestationError("in-toto subject digest/name does not match the candidate/repository binding")
     base = _object(predicate.get("base"), "base")
     _string(base.get("revision"), "base.revision")
     _string(base.get("reference"), "base.reference")
+    if "tree" in base:
+        _string(base["tree"], "base.tree")
+    if vcs_kind == "git" and "tree" not in base:
+        raise AttestationError("Git base binding requires a tree identity")
+    if vcs_kind == "pijul":
+        _string(base.get("channel"), "base.channel")
+        _string(base.get("changeSet"), "base.changeSet")
     governance = _object(predicate.get("governance"), "governance")
     _string(governance.get("scopeId"), "governance.scopeId")
     _string(governance.get("revision"), "governance.revision")
@@ -301,12 +337,24 @@ def validate_statement(statement: dict) -> None:
         raise AttestationError("invalid independentReview.status")
     if "reviewer" in review or "reviewerName" in review:
         raise AttestationError("free-form reviewer identity is forbidden")
+    if "reason" in review:
+        _string(review["reason"], "independentReview.reason")
     if review.get("status") == "attested":
         if "reference" not in review:
             raise AttestationError("attested review requires a detached reference")
-        _resource(review["reference"], "independentReview.reference")
+        reference = _resource(review["reference"], "independentReview.reference")
+        if "uri" not in reference:
+            raise AttestationError("detached review reference requires an absolute URI")
     elif "reference" in review:
         _resource(review["reference"], "independentReview.reference")
+    for reference_group in ("decisionReferences", "riskReferences"):
+        if reference_group in predicate:
+            if not isinstance(predicate[reference_group], list):
+                raise AttestationError(reference_group + " must be an array")
+            for resource in predicate[reference_group]:
+                _resource(resource, reference_group)
+    if "profile" in governance:
+        _string(governance["profile"], "governance.profile")
 
 
 def canonical_statement_bytes(statement: dict) -> bytes:
@@ -370,6 +418,8 @@ def decode_dsse_envelope(envelope: dict) -> tuple[bytes, dict]:
         decoded = _decode_base64(sig, "signature.sig")
         if not decoded:
             raise AttestationError("signature.sig must not be empty")
+        if "keyid" in signature:
+            _string(signature["keyid"], "signature.keyid")
     try:
         statement = json.loads(payload.decode("utf-8"))
     except (UnicodeDecodeError, ValueError) as exc:

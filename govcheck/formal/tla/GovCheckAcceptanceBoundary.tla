@@ -345,6 +345,9 @@ Spec ==
 BypassSpec ==
     Init /\ [][DirectPublish]_vars /\ WF_vars(DirectPublish)
 
+ResultDomain ==
+    Results = {Pass, Fail, Unknown, Conflict}
+
 TypeOKCore ==
     /\ currentBase \in Bases
     /\ currentPolicy \in Policies

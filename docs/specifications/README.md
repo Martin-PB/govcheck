@@ -10,6 +10,7 @@ These specifications complete the initial architecture-design pass. English is t
 
 6. [0007 — Canonical Governance Journal and VCS Adapter Protocol](0007-canonical-governance-journal-protocol.md) · [Français](0007-canonical-governance-journal-protocol.fr.md)
 7. [0008 — Interoperable Assurance Attestations](0008-interoperable-assurance-attestations.md) · [Français](0008-interoperable-assurance-attestations.fr.md)
+8. [0009 — Detached Independent-Review Attestations](0009-independent-review-attestations.md) · [Français](0009-independent-review-attestations.fr.md)
 
 Threat analysis and technology-selection process: [Architecture design](../architecture/README.md) · [Français](../architecture/README.fr.md).
 

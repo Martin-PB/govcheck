@@ -10,6 +10,7 @@ These specifications complete the initial architecture-design pass. English is t
 
 6. [0007 — Canonical Governance Journal and VCS Adapter Protocol](0007-canonical-governance-journal-protocol.md) · [Français](0007-canonical-governance-journal-protocol.fr.md)
 7. [0008 — Interoperable Assurance Attestations](0008-interoperable-assurance-attestations.md) · [Français](0008-interoperable-assurance-attestations.fr.md)
+8. [0009 — Detached Independent-Review Attestations](0009-independent-review-attestations.md) · [Français](0009-independent-review-attestations.fr.md)
 
 Threat analysis and technology-selection process: [Architecture design](../architecture/README.md) · [Français](../architecture/README.fr.md).
 
@@ -21,7 +22,8 @@ The specifications define semantics and conformance targets. They do not claim t
 
 The next engineering phase should derive executable conformance tests and formal models, then resolve technology choices using the architecture decision framework.
 
-## External references
+External standards, methods and project sources are indexed in the [central reference catalogue](../references.md) ([French](../references.fr.md)). Follow the [reference-integrity maintenance guide](../reference-integrity.md) and run the offline checker before changing references; inclusion does not imply adoption.
 
-See the [package reference catalogue](../references.md) for external sources, their use and limitations. Inclusion does not imply adoption or implementation.
+The governed work portfolio is maintained in the repository at [docs/work-portfolio/](../work-portfolio/README.md), with the portfolio lifecycle and issue-tracker boundary in [Architecture 0028](../architecture/0028-governed-work-portfolio-and-issue-tracker-boundary.md) and the repository-backed registry/revision contract in [Architecture 0030](../architecture/0030-repository-backed-work-portfolio-and-recoverable-history.md) ([French](../architecture/0030-repository-backed-work-portfolio-and-recoverable-history.fr.md)). GitHub Issues and Projects remain adapters, not canonical governance records.
+
 The journal protocol in Specification 0007 is a proposed, technology-neutral contract for review. It does not select a storage engine or VCS adapter and does not claim implementation or normative adoption.

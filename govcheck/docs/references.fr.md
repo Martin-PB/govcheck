@@ -14,7 +14,7 @@ La présence d'une référence est descriptive, pas une adoption. Citer une mét
 
 <a id="r-06"></a>
 ## R-06 — Intégrité de chaîne logicielle in-toto
-- **Cité par :** aucun document du paquet ne cite actuellement cette source.
+- **Cité par :** [Spécification 0009](specifications/0009-independent-review-attestations.fr.md).
 
 - **Sources primaires :** [Projet in-toto](https://in-toto.io/) · [Article USENIX Security 2019](https://ssl.engineering.nyu.edu/papers/torres-toto-usenix19.pdf)
 - **Utilité :** provenance des étapes de processus, matériaux et produits.

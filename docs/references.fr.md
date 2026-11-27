@@ -1632,7 +1632,7 @@
 - **Source primaire :** [openssl-pkeyutl](https://docs.openssl.org/3.0/man1/openssl-pkeyutl/).
 - **Utilité :** documente la signature/vérification d'entrées brutes avec les clés publiques/privées EVP, notamment Ed25519 avec le mode raw-input.
 - **Limite :** le succès de la commande prouve uniquement que la clé fournie vérifie les octets fournis. Politique de confiance, association clé-principal, révocation, garde des clés et intégrité du binaire vérificateur restent des responsabilités du déploiement.
-- **Cité par :** [Architecture 0039](architecture/0039-detached-dsse-trust-policy.fr.md), [Spécification 0008](specifications/0008-interoperable-assurance-attestations.fr.md).
+- **Cité par :** [Architecture 0039](architecture/0039-detached-dsse-trust-policy.fr.md), [Spécification 0008](specifications/0008-interoperable-assurance-attestations.fr.md), [Spécification 0009](specifications/0009-independent-review-attestations.fr.md).
 
 <a id="r-233"></a>
 ### R-233 — RFC 8032 : Edwards-Curve Digital Signature Algorithm (EdDSA)
@@ -1640,4 +1640,4 @@
 - **Source primaire :** [RFC 8032](https://www.rfc-editor.org/rfc/rfc8032.html).
 - **Utilité :** spécifie les algorithmes de clés/signatures Ed25519/Ed448 et leurs vecteurs de test.
 - **Limite :** l'algorithme ne définit ni identité, ni autorisation, ni cycle de vie des clés, ni temps fiable, ni sémantique de politique DSSE.
-- **Cité par :** [Architecture 0039](architecture/0039-detached-dsse-trust-policy.fr.md), [Spécification 0008](specifications/0008-interoperable-assurance-attestations.fr.md).
+- **Cité par :** [Architecture 0039](architecture/0039-detached-dsse-trust-policy.fr.md), [Spécification 0008](specifications/0008-interoperable-assurance-attestations.fr.md), [Spécification 0009](specifications/0009-independent-review-attestations.fr.md).

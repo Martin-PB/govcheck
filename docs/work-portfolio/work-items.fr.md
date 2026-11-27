@@ -87,3 +87,8 @@ Il s'agit d'une extraction structurelle, pas d'une interprétation sémantique U
 
 L'Architecture 0013 EN/FR présente un chemin de traçabilité sans décision terminale et définit la décision comme objet transversal de premier rang. L'Architecture 0025 EN/FR distingue le risque assumé PEAK de l'évaluation, du traitement, du risque résiduel et de l'acceptation autorisée [R-193](../references.fr.md#r-193). Voir l'[addendum de recherche bilingue](../research/decision-and-assumed-risk-crosscutting-2026-11.fr.md). Ces éléments restent des propositions.
 
+
+
+- **[#44 — Attestation interopérable](https://github.com/Martin-PB/govcheck/issues/44)** : PR #154 fusionnée ; profil in-toto/DSSE, schéma et constructeur de Statement disponibles. La vérification cryptographique détachée, les racines de confiance et l'association signataire/rôle restent à implémenter.
+- **[#45 — Frontière d'acceptation](https://github.com/Martin-PB/govcheck/issues/45)** : PR #153 a livré un prototype borné, mais l'issue a été rouverte. La protection Main actuelle bloque suppression et mises à jour non fast-forward, sans exiger encore PR/checks ; l'enforcement effectif, les reçus durables et les adaptateurs de forge restent à démontrer.
+- **[#155 — Journal canonique local](https://github.com/Martin-PB/govcheck/issues/155)** : nouveau chantier d'implémentation de la Spécification 0007, avec append compare-and-append, reçus durables, idempotence, reprise après crash et vérification de chaîne. Aucun service hébergé n'est requis.

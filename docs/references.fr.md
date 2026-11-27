@@ -1591,7 +1591,7 @@
 - **Sources primaires :** [Spécification de l'enveloppe DSSE](https://github.com/dsse-lf/dsse/blob/master/envelope.md) · [Protocole de signature et de vérification DSSE](https://github.com/dsse-lf/dsse/blob/master/protocol.md).
 - **Utilité :** définit l'enveloppe JSON et la construction PAE qui lie le type et les octets exacts du payload aux signatures ; prend en charge plusieurs signatures.
 - **Limite :** DSSE authentifie des octets signés selon la politique de confiance du vérificateur. Un identifiant de clé est un simple indice non authentifié ; la validité d'une signature n'établit pas à elle seule un rôle GovCheck ni la correction sémantique d'une évaluation.
-- **Cité par :** [Spécification 0008](specifications/0008-interoperable-assurance-attestations.fr.md), [Événements du portefeuille](work-portfolio/events.fr.md).
+- **Cité par :** [Spécification 0008](specifications/0008-interoperable-assurance-attestations.fr.md).
 
 <a id="r-228"></a>
 ### R-228 — Framework d'attestation in-toto v1
@@ -1599,7 +1599,7 @@
 - **Sources primaires :** [Vue d'ensemble v1](https://github.com/in-toto/attestation/tree/main/spec/v1) · [Couche Statement](https://github.com/in-toto/attestation/blob/main/spec/v1/statement.md) · [Couche Envelope](https://github.com/in-toto/attestation/blob/main/spec/v1/envelope.md) · [Couche Predicate](https://github.com/in-toto/attestation/blob/main/spec/v1/predicate.md).
 - **Utilité :** sépare l'enveloppe authentifiée, le Statement liant le sujet et le prédicat typé ; permet un prédicat propre à GovCheck sans redéfinir la couche Statement commune.
 - **Limite :** le framework fournit transport et structure, pas l'autorité, la politique d'acceptation, la sémantique des éléments probants ou l'association des rôles de confiance de GovCheck.
-- **Cité par :** [Spécification 0008](specifications/0008-interoperable-assurance-attestations.fr.md), [Événements du portefeuille](work-portfolio/events.fr.md).
+- **Cité par :** [Spécification 0008](specifications/0008-interoperable-assurance-attestations.fr.md).
 
 <a id="r-229"></a>
 ### R-229 — SLSA Verification Summary Attestation (VSA)
@@ -1607,7 +1607,7 @@
 - **Source primaire :** [SLSA VSA v1.2](https://slsa.dev/spec/v1.2/verification_summary).
 - **Utilité :** résume la vérification d'un artefact selon les pistes/niveaux SLSA, avec notamment le vérificateur, la politique, les attestations d'entrée et le résultat de vérification.
 - **Limite :** ses sémantiques PASSED/FAILED et niveaux SLSA ne représentent pas sans perte les résultats pass/fail/unknown/conflict de GovCheck, sa taxonomie des méthodes d'assurance, ses décisions d'autorité ou l'acceptation du risque.
-- **Cité par :** [Spécification 0008](specifications/0008-interoperable-assurance-attestations.fr.md), [Événements du portefeuille](work-portfolio/events.fr.md).
+- **Cité par :** [Spécification 0008](specifications/0008-interoperable-assurance-attestations.fr.md).
 
 <a id="r-230"></a>
 ### R-230 — Transactions, WAL et durabilité SQLite

@@ -273,6 +273,8 @@ def verify_dsse_envelope(
     expected_scope_id: str | None = None,
     expected_base_revision: str | None = None,
     expected_content_sha256: str | None = None,
+    expected_predicate_type: str | None = None,
+    forbidden_principal: str | None = None,
     now: datetime | None = None,
     openssl_timeout_seconds: float = 10.0,
 ) -> dict:
@@ -290,18 +292,37 @@ def verify_dsse_envelope(
         payload, statement = decode_dsse_envelope(envelope)
         if envelope.get("payloadType") != DSSE_PAYLOAD_TYPE:
             raise VerificationError("invalid", "unsupported DSSE payload type")
-        if expected_candidate_revision is not None and statement["predicate"]["candidate"]["revision"] != expected_candidate_revision:
-            raise VerificationError("invalid", "candidate revision does not match the expected candidate")
-        if expected_governance_revision is not None and statement["predicate"]["governance"]["revision"] != expected_governance_revision:
-            raise VerificationError("invalid", "governance revision does not match the expected policy")
-        if expected_scope_id is not None and statement["predicate"]["governance"]["scopeId"] != expected_scope_id:
-            raise VerificationError("invalid", "governance scope does not match the expected scope")
-        if expected_base_revision is not None and statement["predicate"]["base"]["revision"] != expected_base_revision:
-            raise VerificationError("invalid", "base revision does not match the expected base")
+        predicate_type = statement["predicateType"]
+        if expected_predicate_type is not None and predicate_type != expected_predicate_type:
+            raise VerificationError("invalid", "predicate type does not match the expected type")
+        predicate = statement["predicate"]
+        if predicate_type == "urn:govcheck:attestation:independent-review:v1":
+            bindings = {
+                "candidate_revision": predicate["candidateRevision"],
+                "governance_revision": predicate["governanceRevision"],
+                "scope_id": predicate["scopeId"],
+                "base_revision": predicate["baseRevision"],
+                "content_sha256": predicate["candidateContentSha256"],
+            }
+        else:
+            bindings = {
+                "candidate_revision": predicate["candidate"]["revision"],
+                "governance_revision": predicate["governance"]["revision"],
+                "scope_id": predicate["governance"]["scopeId"],
+                "base_revision": predicate["base"]["revision"],
+                "content_sha256": predicate["candidate"]["contentDigest"]["sha256"],
+            }
+        for expected, actual, label in (
+            (expected_candidate_revision, bindings["candidate_revision"], "candidate revision"),
+            (expected_governance_revision, bindings["governance_revision"], "governance revision"),
+            (expected_scope_id, bindings["scope_id"], "scope"),
+            (expected_base_revision, bindings["base_revision"], "base revision"),
+        ):
+            if expected is not None and actual != expected:
+                raise VerificationError("invalid", label + " does not match the expected binding")
         if expected_content_sha256 is not None:
             _digest(expected_content_sha256, "expected_content_sha256")
-            actual = statement["predicate"]["candidate"]["contentDigest"]["sha256"]
-            if actual != expected_content_sha256:
+            if bindings["content_sha256"] != expected_content_sha256:
                 raise VerificationError("invalid", "candidate content digest does not match the expected content")
 
         policy = _load_policy(trust_policy_path, expected_policy_sha256, candidate_root, now=now)
@@ -349,6 +370,12 @@ def verify_dsse_envelope(
             else:
                 rejected.append("signature for key " + key_id + " failed: " + reason)
         if valid_signers:
+            if forbidden_principal is not None:
+                _string(forbidden_principal, "forbidden_principal")
+                if any(signer["principalId"] == forbidden_principal for signer in valid_signers):
+                    return {"status": "invalid", "reason": "authenticated reviewer principal is not independent from the candidate author"}
+                if len({signer["principalId"] for signer in valid_signers}) != 1:
+                    return {"status": "invalid", "reason": "independent-review envelope has multiple authenticated reviewer principals"}
             return {
                 "status": "verified",
                 "policyId": policy["policyId"],

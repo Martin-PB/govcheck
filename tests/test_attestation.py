@@ -144,6 +144,28 @@ class StatementTests(unittest.TestCase):
         self.assertEqual(json.loads(payload.decode("utf-8")), statement)
         # A structural round trip must not claim that the synthetic signature was verified.
 
+    def test_duplicate_keys_in_dsse_payload_are_rejected(self):
+        payload = b'{"_type":"one","_type":"two"}'
+        envelope = {
+            "payloadType": att.DSSE_PAYLOAD_TYPE,
+            "payload": base64.b64encode(payload).decode("ascii"),
+            "signatures": [{"keyid": "synthetic-key", "sig": base64.b64encode(b"fake").decode("ascii")}],
+        }
+        with self.assertRaisesRegex(att.AttestationError, "duplicate JSON object key"):
+            att.decode_dsse_envelope(envelope)
+
+    def test_noncanonical_statement_payload_is_rejected(self):
+        report, context = valid_inputs()
+        statement = att.build_statement(report, context)
+        payload = json.dumps(statement, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+        envelope = {
+            "payloadType": att.DSSE_PAYLOAD_TYPE,
+            "payload": base64.b64encode(payload).decode("ascii"),
+            "signatures": [{"keyid": "synthetic-key", "sig": base64.b64encode(b"fake").decode("ascii")}],
+        }
+        with self.assertRaisesRegex(att.AttestationError, "canonical Statement serialization"):
+            att.decode_dsse_envelope(envelope)
+
     def test_empty_signature_list_is_rejected(self):
         report, context = valid_inputs()
         statement = att.build_statement(report, context)

@@ -14,6 +14,7 @@
 | Model checking and program-verification alternatives | R-05, R-20, R-37–R-43, R-89–R-91 |
 | Evidence provenance, interoperable attestations and software supply chain | R-06–R-08, R-227–R-229 |
 | Local durable journal storage and canonical JSON | R-230–R-231 |
+| Detached DSSE signature verification and Ed25519 | R-232–R-233 |
 | Policy engines, authorization and policy-model verification | R-09–R-10, R-88 |
 | Normative logic and deontic modalities | R-93 |
 | Schemas and interface contracts | R-13, R-16 |
@@ -1623,3 +1624,19 @@
 - **Use:** defines deterministic JSON serialization suitable for hashing/signing, including property ordering, primitive serialization and I-JSON constraints.
 - **Limit:** JCS does not define GovCheck event semantics, authorization or journal ordering. Its numeric model is IEEE-754; exact rationals/large integers should use typed strings/records or a carefully specified compatible subset.
 - **Cited by:** [Architecture 0038](architecture/0038-local-canonical-journal-implementation.md).
+
+<a id="r-232"></a>
+### R-232 — OpenSSL pkeyutl
+- **Type:** Primary cryptographic command-line documentation.
+- **Primary source:** [openssl-pkeyutl](https://docs.openssl.org/3.0/man1/openssl-pkeyutl/).
+- **Use:** documents raw-input signing/verification with EVP public/private keys, including Ed25519 use with the raw-input mode.
+- **Limit:** OpenSSL command-line success proves only that the supplied key verifies the supplied bytes. Trust policy, key-to-principal binding, revocation, key custody and verifier-binary integrity remain deployment responsibilities.
+- **Cited by:** [Architecture 0039](architecture/0039-detached-dsse-trust-policy.md), [Specification 0008](specifications/0008-interoperable-assurance-attestations.md).
+
+<a id="r-233"></a>
+### R-233 — RFC 8032: Edwards-Curve Digital Signature Algorithm (EdDSA)
+- **Type:** Primary algorithm specification.
+- **Primary source:** [RFC 8032](https://www.rfc-editor.org/rfc/rfc8032.html).
+- **Use:** specifies Ed25519/Ed448 key and signature algorithms and test vectors.
+- **Limit:** the algorithm does not define identity, authorization, key lifecycle, trusted time or DSSE policy semantics.
+- **Cited by:** [Architecture 0039](architecture/0039-detached-dsse-trust-policy.md), [Specification 0008](specifications/0008-interoperable-assurance-attestations.md).

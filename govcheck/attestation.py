@@ -42,6 +42,15 @@ def _string(value: Any, label: str) -> str:
     return value.strip()
 
 
+def _reject_duplicate_pairs(pairs):
+    result = {}
+    for key, value in pairs:
+        if key in result:
+            raise AttestationError("duplicate JSON object key: " + key)
+        result[key] = value
+    return result
+
+
 def _decode_base64(value: str, label: str) -> bytes:
     if not isinstance(value, str) or not value:
         raise AttestationError(label + " must be a non-empty base64 string")
@@ -423,10 +432,19 @@ def decode_dsse_envelope(envelope: dict) -> tuple[bytes, dict]:
         if "keyid" in signature:
             _string(signature["keyid"], "signature.keyid")
     try:
-        statement = json.loads(payload.decode("utf-8"))
+        statement = json.loads(
+            payload.decode("utf-8"),
+            object_pairs_hook=_reject_duplicate_pairs,
+            parse_float=lambda _: (_ for _ in ()).throw(AttestationError("floating-point values are not allowed in an assurance Statement")),
+            parse_constant=lambda _: (_ for _ in ()).throw(AttestationError("non-finite values are not allowed in an assurance Statement")),
+        )
+    except AttestationError:
+        raise
     except (UnicodeDecodeError, ValueError) as exc:
         raise AttestationError("DSSE payload is not valid UTF-8 JSON") from exc
     validate_statement(statement)
+    if canonical_statement_bytes(statement) != payload:
+        raise AttestationError("DSSE payload is not in canonical Statement serialization")
     return payload, statement
 
 

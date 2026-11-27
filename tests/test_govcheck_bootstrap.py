@@ -96,6 +96,20 @@ class BootstrapTests(unittest.TestCase):
         self.assertEqual([a["path"] for a in r["created"]], ["check.py"])
         self.assertFalse((self.target / "docs").exists())
 
+    def test_attestation_verify_capability_installs_verifier_and_trust_schema(self):
+        r, code = bootstrap.apply_plan(self.target, ["attestation-verify"])
+        self.assertEqual(code, 0)
+        self.assertEqual(
+            [a["path"] for a in r["created"]],
+            ["attestation.py", "attestation_verify.py",
+             "formal/schemas/assurance-evaluation-v1.schema.json",
+             "formal/schemas/attestation-trust-policy-v1.schema.json"],
+        )
+        self.assertTrue((self.target / "attestation.py").is_file())
+        self.assertTrue((self.target / "attestation_verify.py").is_file())
+        self.assertTrue((self.target / "formal/schemas/attestation-trust-policy-v1.schema.json").is_file())
+        self.assertFalse((self.target / "check.py").exists())
+
     def test_journal_capability_installs_only_journal_module(self):
         r, code = bootstrap.apply_plan(self.target, ["journal"])
         self.assertEqual(code, 0)

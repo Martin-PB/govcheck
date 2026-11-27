@@ -63,7 +63,7 @@ DSSE signe le type de payload et les octets exacts du payload via PAE. Le champ 
 
 Une signature DSSE valide authentifie le signataire de l'énoncé ; elle ne fait pas automatiquement de ce signataire un reviewer indépendant, un vérificateur, une autorité de gouvernance ou un approbateur. Les consommateurs doivent contrôler la paire signataire/vérificateur et le rôle selon la politique de confiance applicable. Un champ libre `reviewer` ne suffit jamais.
 
-La première implémentation Python construit et valide le payload Statement in-toto et la structure de l'enveloppe DSSE, et expose les octets DSSE PAE pour une signature externe. Elle **n'implémente pas** la signature cryptographique, la découverte de certificats/clés, la gestion des racines de confiance ou la vérification des signatures. Tant qu'un adaptateur de vérification fiable n'est pas configuré, une enveloppe analysée est structurellement valide mais non authentifiée et ne peut satisfaire une barrière d'attestation. Le runtime du vérificateur et sa politique de confiance appartiennent au TCB.
+La bibliothèque structurelle Python construit et valide le payload Statement in-toto et la structure de l'enveloppe DSSE, et expose les octets DSSE PAE pour une signature externe. Elle **n'implémente pas** la signature ni la gestion des racines de confiance. Un fournisseur de vérification local facultatif est décrit par [l'Architecture 0039](../architecture/0039-detached-dsse-trust-policy.fr.md) et implémenté dans govcheck/attestation_verify.py : la vérification Ed25519 est déléguée à un exécutable OpenSSL épinglé par chemin absolu et SHA-256, tandis que le fichier de politique de confiance est épinglé par un digest fourni hors bande. Ce fournisseur n'est pas activé automatiquement et ne fournit ni PKI, ni horodatage fiable, ni gestion du cycle de vie des clés. Tant qu'un adaptateur de vérification fiable n'est pas configuré, une enveloppe analysée est structurellement valide mais non authentifiée et ne peut satisfaire une barrière d'attestation. Le runtime du vérificateur et sa politique de confiance appartiennent au TCB.
 
 ## 7. Relation avec SLSA VSA
 
@@ -96,6 +96,10 @@ Le contrôle actuel `independent-review` ne doit pas traiter un enregistrement J
 - [R-227 — DSSE](../references.fr.md#r-227)
 - [R-228 — Framework d'attestation in-toto v1](../references.fr.md#r-228)
 - [R-229 — SLSA Verification Summary Attestation](../references.fr.md#r-229)
+- [R-232 — OpenSSL pkeyutl](../references.fr.md#r-232)
+- [R-233 — RFC 8032 Ed25519](../references.fr.md#r-233)
+- [Architecture 0039 — Vérification DSSE détachée](../architecture/0039-detached-dsse-trust-policy.fr.md)
+- issue #158 — vérificateur à politique de confiance épinglée
 - [R-06 — Projet in-toto](../references.fr.md#r-06) et [R-07 — SLSA](../references.fr.md#r-07)
 - [Spécification 0005 — Assurance, affirmations et éléments probants](0005-assurance-model.fr.md)
 - [Spécification 0007 — Journal canonique de gouvernance](0007-canonical-governance-journal-protocol.fr.md)

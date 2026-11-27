@@ -1629,7 +1629,7 @@
 <a id="r-232"></a>
 ### R-232 — OpenSSL pkeyutl
 - **Type :** Documentation primaire de la commande cryptographique.
-- **Source primaire :** [openssl-pkeyutl](https://docs.openssl.org/3.5/man1/openssl-pkeyutl/).
+- **Source primaire :** [openssl-pkeyutl](https://docs.openssl.org/3.0/man1/openssl-pkeyutl/).
 - **Utilité :** documente la signature/vérification d'entrées brutes avec les clés publiques/privées EVP, notamment Ed25519 avec le mode raw-input.
 - **Limite :** le succès de la commande prouve uniquement que la clé fournie vérifie les octets fournis. Politique de confiance, association clé-principal, révocation, garde des clés et intégrité du binaire vérificateur restent des responsabilités du déploiement.
 - **Cité par :** [Architecture 0039](architecture/0039-detached-dsse-trust-policy.fr.md), [Spécification 0008](specifications/0008-interoperable-assurance-attestations.fr.md).

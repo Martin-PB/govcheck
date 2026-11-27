@@ -100,6 +100,6 @@ The current `independent-review` checker must not treat a candidate-tree JSON re
 - [Specification 0005 — Assurance, Claims and Evidence](0005-assurance-model.md)
 - [Specification 0007 — Canonical Governance Journal](0007-canonical-governance-journal-protocol.md)
 - [Architecture 0023 — Bootstrap Governance Authority](../architecture/0023-bootstrap-governance-authority.md)
-- [Issue #44](https://github.com/Martin-PB/govcheck/issues/44), issue #60, issue #131
+- issue #44, issue #60, issue #131
 
 **This specification is proposed. It does not adopt a trust root, signer policy, cryptographic algorithm or mandatory acceptance rule.**

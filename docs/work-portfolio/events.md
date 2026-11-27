@@ -542,3 +542,14 @@
 - **Validation:** 167 Python tests, reference integrity and package alignment passed on the final PR head.
 - **Guarantees:** explicit genesis, compare-and-append, durable idempotent receipts, stale/conflict/unknown outcomes, SQLite transaction recovery, full hash-chain verification and fail-closed reads/appends.
 - **Limits:** single-host local journal; no distributed consensus, signatures, DSSE verification, actor authentication, proof of authority or resistance to privileged database rewrite. Git/Pijul typed provenance and acceptance-boundary integration remain open under #155/#44/#45.
+
+
+<a id="wp-evt-000040"></a>
+## WP-EVT-000040 — Pinned detached DSSE verifier work item opened
+- **Subject:** `govcheck.assurance.detached-dsse-verifier`.
+- **Event type:** `detached-dsse-verifier-work-item-opened`.
+- **Recorded:** 2026-11-27.
+- **Source issue:** [#158](https://github.com/Martin-PB/govcheck/issues/158), child of #44.
+- **Basis:** Specification 0008 defines DSSE structure/PAE but the builder does not authenticate signatures. A detached verifier must use an operator-pinned trust policy outside candidate-controlled content.
+- **Scope:** optional Ed25519 provider delegated to an OpenSSL executable pinned by path and digest; trust policy and public keys pinned by digest; key ID to principal/role mapping; validity/revocation; exact candidate/governance binding; synthetic positive/negative tests.
+- **Limit:** no PKI, trusted timestamp, online revocation, key lifecycle service or real-world identity proof. The project still has one available contributor; no independent review is fabricated.

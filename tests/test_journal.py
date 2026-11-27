@@ -134,6 +134,35 @@ class JournalTests(unittest.TestCase):
         self.assertEqual(result["status"], "invalid")
         self.assertTrue(any("event digest mismatch" in e for e in result["errors"]))
 
+    def test_append_fails_closed_when_existing_chain_is_corrupt(self):
+        self.append()
+        conn = sqlite3.connect(self.db)
+        try:
+            conn.execute("DROP TRIGGER journal_events_no_update")
+            conn.execute("UPDATE journal_events SET event_digest=? WHERE position=1", ("e" * 64,))
+            conn.commit()
+        finally:
+            conn.close()
+        head = self.journal.head("repo:example/project")
+        result = self.journal.append("repo:example/project", head["position"], head["digest"],
+                                     "event-after-corruption", "test.event", "1", {"x": 1},
+                                     "idem-after-corruption", "principal:root")
+        self.assertEqual(result["status"], "unknown")
+        self.assertIn("integrity verification failed", result["reason"])
+
+    def test_receipt_column_tampering_is_detected(self):
+        self.append()
+        conn = sqlite3.connect(self.db)
+        try:
+            conn.execute("DROP TRIGGER journal_receipts_no_update")
+            conn.execute("UPDATE journal_receipts SET event_digest=? WHERE position=1", ("f" * 64,))
+            conn.commit()
+        finally:
+            conn.close()
+        result = self.journal.verify("repo:example/project")
+        self.assertEqual(result["status"], "invalid")
+        self.assertTrue(any("receipt eventDigest mismatch" in e for e in result["errors"]))
+
     def test_uncommitted_transaction_is_rolled_back_on_connection_close(self):
         conn = sqlite3.connect(self.db, isolation_level=None)
         try:

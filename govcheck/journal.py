@@ -261,6 +261,9 @@ class Journal:
                 conn.execute("ROLLBACK")
                 if not receipt:
                     raise JournalError("unknown", "journal scope exists but its genesis receipt is missing")
+                integrity = self.verify(scope_id)
+                if integrity.get("status") != "valid":
+                    raise JournalError("unknown", "existing journal failed integrity verification: " + "; ".join(integrity.get("errors", [])))
                 return {"status": "committed", "idempotent": True, "receipt": json.loads(receipt["receipt_json"])}
 
             created_at = utc_now()
@@ -376,6 +379,9 @@ class Journal:
             "idempotencyKey": idempotency_key,
         }
         request_digest = digest_json(request)
+        integrity = self.verify(scope_id)
+        if integrity.get("status") != "valid":
+            return {"status": "unknown", "reason": "journal integrity verification failed before append: " + "; ".join(integrity.get("errors", []))}
         conn = self._connect()
         try:
             try:

@@ -216,25 +216,49 @@ def validate_statement(statement: dict) -> None:
     subjects = statement.get("subject")
     if not isinstance(subjects, list) or not subjects:
         raise AttestationError("in-toto Statement requires at least one subject")
-    for subject in subjects:
-        subject = _object(subject, "subject")
+    for index, subject in enumerate(subjects):
+        subject = _object(subject, "subject[" + str(index) + "]")
         _digest(subject.get("digest"), "subject.digest")
     if statement.get("predicateType") != PREDICATE_TYPE:
         raise AttestationError("unsupported GovCheck predicate type")
     predicate = _object(statement.get("predicate"), "predicate")
     if predicate.get("schemaVersion") != "1":
         raise AttestationError("unsupported GovCheck predicate schema version")
+
     evaluation = _object(predicate.get("evaluation"), "evaluation")
+    _string(evaluation.get("id"), "evaluation.id")
+    _string(evaluation.get("evaluatedOn"), "evaluation.evaluatedOn")
     if evaluation.get("result") not in RESULTS:
         raise AttestationError("invalid evaluation result")
     rules = evaluation.get("rules")
     if not isinstance(rules, list):
         raise AttestationError("evaluation.rules must be an array")
-    _object(predicate.get("repository"), "repository")
-    _object(predicate.get("candidate"), "candidate")
-    _object(predicate.get("base"), "base")
-    _object(predicate.get("governance"), "governance")
-    _object(predicate.get("verifier"), "verifier")
+    for index, rule in enumerate(rules):
+        rule = _object(rule, "evaluation.rules[" + str(index) + "]")
+        _string(rule.get("id"), "rule.id")
+        _string(rule.get("class"), "rule.class")
+        if rule.get("result") not in RESULTS or not isinstance(rule.get("applies"), bool):
+            raise AttestationError("invalid evaluation rule result or applies value")
+        _string_list(rule.get("reasons", []), "rule.reasons")
+
+    repository = _object(predicate.get("repository"), "repository")
+    _string(repository.get("uri"), "repository.uri")
+    _string(repository.get("vcsKind"), "repository.vcsKind")
+    candidate = _object(predicate.get("candidate"), "candidate")
+    _string(candidate.get("revision"), "candidate.revision")
+    _digest(candidate.get("contentDigest"), "candidate.contentDigest")
+    base = _object(predicate.get("base"), "base")
+    _string(base.get("revision"), "base.revision")
+    governance = _object(predicate.get("governance"), "governance")
+    _string(governance.get("scopeId"), "governance.scopeId")
+    _string(governance.get("revision"), "governance.revision")
+    _digest(governance.get("digest"), "governance.digest")
+    verifier = _object(predicate.get("verifier"), "verifier")
+    _string(verifier.get("id"), "verifier.id")
+    _string(verifier.get("version"), "verifier.version")
+    _digest(verifier.get("digest"), "verifier.digest")
+    _digest(verifier.get("configDigest"), "verifier.configDigest")
+
     methods = predicate.get("methods")
     if not isinstance(methods, list):
         raise AttestationError("predicate.methods must be an array")
@@ -248,6 +272,8 @@ def validate_statement(statement: dict) -> None:
     if review.get("status") == "attested":
         if "reference" not in review:
             raise AttestationError("attested review requires a detached reference")
+        _resource(review["reference"], "independentReview.reference")
+    elif "reference" in review:
         _resource(review["reference"], "independentReview.reference")
 
 

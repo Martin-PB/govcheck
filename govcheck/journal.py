@@ -421,6 +421,7 @@ class Journal:
             created_at = utc_now()
             envelope = {
                 "schemaVersion": SCHEMA_VERSION,
+                "canonicalization": CANONICALIZATION_ID,
                 "scopeId": scope_id,
                 "position": position,
                 "eventId": event_id,

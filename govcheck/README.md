@@ -50,6 +50,8 @@ The legacy form `python3 govcheck/bootstrap.py TARGET_DIR` still initializes an 
 
 Each rule returns `pass`, `fail` or `unknown`. The overall result is `fail` if any rule fails, otherwise `unknown` if any rule is unknown, otherwise `pass` (fail-closed: `unknown` never counts as a success). The exit code is 0 only when the overall result is `pass`. The rules span the three assurance classes: decidable (license presence, bilingual decision pairs, manifest-declared package pairs, reference-catalogue integrity, mandatory sources on decisions and attestations, bootstrap-marker integrity), attested (independent review) and not verifiable offline (TLC evidence freshness). Unit tests live in `tests/test_govcheck_check.py`.
 
+The `independent-review` rule does not trust JSON records committed inside the candidate tree or free-form reviewer names. Such a record cannot authenticate the final revision of the tree that contains it, and the name is not an authenticated principal identity. Until a detached DSSE attestation is verified by an explicitly configured trust-policy verifier, the rule remains `unknown`. See [Specification 0008](../docs/specifications/0008-interoperable-assurance-attestations.md).
+
 
 ### Recorded attestations (independent review)
 

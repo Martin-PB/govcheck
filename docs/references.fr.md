@@ -12,7 +12,7 @@
 | Assurance 2.0, évolution de SACM et audits d'implémentation | R-71, R-73, R-128, R-197–R-199 |
 | Régimes d'assurance et exigences orientées objectifs | R-35–R-36, R-44, R-92 |
 | Model checking et vérification de programmes candidates | R-05, R-20, R-37–R-43, R-89–R-91 |
-| Provenance des preuves et chaîne d'approvisionnement logicielle | R-06–R-08 |
+| Provenance des preuves, attestations interopérables et chaîne d'approvisionnement logicielle | R-06–R-08, R-227–R-229 |
 | Moteurs de politiques, autorisation et vérification de modèles | R-09–R-10, R-88 |
 | Logique normative et modalités déontiques | R-93 |
 | Schémas et contrats d'interface | R-13, R-16 |
@@ -160,7 +160,7 @@
 <a id="r-06"></a>
 
 ### R-06 — in-toto : intégrité de la chaîne d'approvisionnement logicielle
-- **Cité par :** [0006-threat-and-trust-model](architecture/0006-threat-and-trust-model.fr.md), [0007-technology-decision-framework](architecture/0007-technology-decision-framework.fr.md), [0010-assurance-proof-and-conformance](architecture/0010-assurance-proof-and-conformance.fr.md), [0014-governed-development-workflow](architecture/0014-governed-development-workflow.fr.md), [0015-governance-conformance-and-validation-plan](architecture/0015-governance-conformance-and-validation-plan.fr.md), [0002-study-placement](decisions/0002-study-placement.fr.md), [0007-mandatory-sources](decisions/0007-mandatory-sources.fr.md), [intent-impact-analysis](intent-impact-analysis.fr.md), [concurrent-agent-change-governance](research/concurrent-agent-change-governance.fr.md)
+- **Cité par :** [0006-threat-and-trust-model](architecture/0006-threat-and-trust-model.fr.md), [0007-technology-decision-framework](architecture/0007-technology-decision-framework.fr.md), [0010-assurance-proof-and-conformance](architecture/0010-assurance-proof-and-conformance.fr.md), [0014-governed-development-workflow](architecture/0014-governed-development-workflow.fr.md), [0015-governance-conformance-and-validation-plan](architecture/0015-governance-conformance-and-validation-plan.fr.md), [0002-study-placement](decisions/0002-study-placement.fr.md), [0007-mandatory-sources](decisions/0007-mandatory-sources.fr.md), [intent-impact-analysis](intent-impact-analysis.fr.md), [concurrent-agent-change-governance](research/concurrent-agent-change-governance.fr.md), [Spécification 0008](specifications/0008-interoperable-assurance-attestations.fr.md)
 
 - **Sources primaires :** [Projet in-toto](https://in-toto.io/) · [Article USENIX Security 2019](https://ssl.engineering.nyu.edu/papers/torres-toto-usenix19.pdf)
 - **Référence académique :** Santiago Torres-Arias et al., « in-toto: Providing farm-to-table guarantees for bits and bytes », 28th USENIX Security Symposium, 2019.
@@ -171,7 +171,7 @@
 <a id="r-07"></a>
 
 ### R-07 — SLSA
-- **Cité par :** [0006-threat-and-trust-model](architecture/0006-threat-and-trust-model.fr.md), [0007-technology-decision-framework](architecture/0007-technology-decision-framework.fr.md), [0014-governed-development-workflow](architecture/0014-governed-development-workflow.fr.md), [0015-governance-conformance-and-validation-plan](architecture/0015-governance-conformance-and-validation-plan.fr.md), [0002-study-placement](decisions/0002-study-placement.fr.md), [concurrent-agent-change-governance](research/concurrent-agent-change-governance.fr.md), [0005-assurance-model](specifications/0005-assurance-model.fr.md)
+- **Cité par :** [0006-threat-and-trust-model](architecture/0006-threat-and-trust-model.fr.md), [0007-technology-decision-framework](architecture/0007-technology-decision-framework.fr.md), [0014-governed-development-workflow](architecture/0014-governed-development-workflow.fr.md), [0015-governance-conformance-and-validation-plan](architecture/0015-governance-conformance-and-validation-plan.fr.md), [0002-study-placement](decisions/0002-study-placement.fr.md), [concurrent-agent-change-governance](research/concurrent-agent-change-governance.fr.md), [0005-assurance-model](specifications/0005-assurance-model.fr.md), [Spécification 0008](specifications/0008-interoperable-assurance-attestations.fr.md)
 
 - **Source primaire :** [Spécification SLSA](https://slsa.dev/spec/)
 - **Concepts pertinents :** niveaux de chaîne d'approvisionnement logicielle, provenance et intégrité de construction.
@@ -1583,3 +1583,27 @@
 - **Utilité :** le hook Pijul documenté s'exécute avant `pijul record` ; le manuel indique que seul le hook `record` est actuellement pris en charge. Le Nest permet le push direct aux utilisateurs autorisés ou l'attachement de changements à un canal de discussion.
 - **Limite :** le manuel cité ne documente aucun hook distant obligatoire pre-push/pre-receive. L'enforcement conditionnel côté serveur exige un remote/serveur contrôlé ; un hook ou wrapper local reste coopératif et contournable.
 - **Cité par :** [Architecture 0037](architecture/0037-acceptance-boundary-and-enforcement-adapters.fr.md), [recherche sur la frontière d'acceptation](research/acceptance-boundary-enforcement-2026-11.fr.md), [registre des travaux](work-portfolio/work-items.fr.md), [journal des événements](work-portfolio/events.fr.md).
+
+<a id="r-227"></a>
+### R-227 — DSSE : Dead Simple Signing Envelope
+- **Type :** Spécification primaire de protocole.
+- **Sources primaires :** [Spécification de l'enveloppe DSSE](https://github.com/dsse-lf/dsse/blob/master/envelope.md) · [Protocole de signature et de vérification DSSE](https://github.com/dsse-lf/dsse/blob/master/protocol.md).
+- **Utilité :** définit l'enveloppe JSON et la construction PAE qui lie le type et les octets exacts du payload aux signatures ; prend en charge plusieurs signatures.
+- **Limite :** DSSE authentifie des octets signés selon la politique de confiance du vérificateur. Un identifiant de clé est un simple indice non authentifié ; la validité d'une signature n'établit pas à elle seule un rôle GovCheck ni la correction sémantique d'une évaluation.
+- **Cité par :** [Spécification 0008](specifications/0008-interoperable-assurance-attestations.fr.md).
+
+<a id="r-228"></a>
+### R-228 — Framework d'attestation in-toto v1
+- **Type :** Spécification primaire de framework d'attestation.
+- **Sources primaires :** [Vue d'ensemble v1](https://github.com/in-toto/attestation/tree/main/spec/v1) · [Couche Statement](https://github.com/in-toto/attestation/blob/main/spec/v1/statement.md) · [Couche Envelope](https://github.com/in-toto/attestation/blob/main/spec/v1/envelope.md) · [Couche Predicate](https://github.com/in-toto/attestation/blob/main/spec/v1/predicate.md).
+- **Utilité :** sépare l'enveloppe authentifiée, le Statement liant le sujet et le prédicat typé ; permet un prédicat propre à GovCheck sans redéfinir la couche Statement commune.
+- **Limite :** le framework fournit transport et structure, pas l'autorité, la politique d'acceptation, la sémantique des éléments probants ou l'association des rôles de confiance de GovCheck.
+- **Cité par :** [Spécification 0008](specifications/0008-interoperable-assurance-attestations.fr.md).
+
+<a id="r-229"></a>
+### R-229 — SLSA Verification Summary Attestation (VSA)
+- **Type :** Spécification primaire de prédicat SLSA.
+- **Source primaire :** [SLSA VSA v1.2](https://slsa.dev/spec/v1.2/verification_summary).
+- **Utilité :** résume la vérification d'un artefact selon les pistes/niveaux SLSA, avec notamment le vérificateur, la politique, les attestations d'entrée et le résultat de vérification.
+- **Limite :** ses sémantiques PASSED/FAILED et niveaux SLSA ne représentent pas sans perte les résultats pass/fail/unknown/conflict de GovCheck, sa taxonomie des méthodes d'assurance, ses décisions d'autorité ou l'acceptation du risque.
+- **Cité par :** [Spécification 0008](specifications/0008-interoperable-assurance-attestations.fr.md).

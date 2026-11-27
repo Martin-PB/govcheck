@@ -144,3 +144,20 @@ The end-to-end test uses an isolated bare repository and a fake gate executable:
 - [Issue #45](https://github.com/Martin-PB/govcheck/issues/45) owns the acceptance-boundary implementation and verification work.
 
 **No branch protection, ruleset, hosted service, authority policy or normative acceptance rule is changed by this research.**
+
+## 9. Current GitHub ruleset observation and audit
+
+A read-only API inspection on 2026-11-27 found repository ruleset `Protection Main` (ID `28251664`):
+
+- enforcement is active and the ruleset targets the default branch;
+- deletion and non-fast-forward restrictions are enabled;
+- no bypass actors are configured and the current API response reports `current_user_can_bypass=never`;
+- the ruleset has no `pull_request` requirement and no `required_status_checks` rule.
+
+The branch-protection endpoint returned HTTP 403 `Resource not accessible by integration`; this is an API permission limitation and is not evidence that branch protection is absent. The ruleset endpoint was readable.
+
+The read-only `govcheck/forge.py audit-ruleset` command checks active default-branch scope, PR requirement, exact required-check contexts, expected GitHub integration/source ID, strict freshness, deletion/non-fast-forward and bypass actors. It reports configuration conformance only and always sets `boundary_demonstrated=false`: a real protected-ref rejection and merge-result freshness still require separate tests.
+
+The GitHub Actions source ID observed on GovCheck check runs is `15368`. The current CI check contexts are `govcheck-check`, `package-alignment` and `reference-integrity`; path-filtered workflows must be made consistently available before all three can be configured as required checks.
+
+**No ruleset or branch-protection setting was changed by this audit.**

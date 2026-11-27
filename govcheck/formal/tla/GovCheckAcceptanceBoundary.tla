@@ -345,11 +345,13 @@ Spec ==
 BypassSpec ==
     Init /\ [][DirectPublish]_vars /\ WF_vars(DirectPublish)
 
-TypeOK ==
+TypeOKCore ==
     /\ currentBase \in Bases
     /\ currentPolicy \in Policies
     /\ currentVerifier \in Verifiers
     /\ tick \in 0..MaxTick
+
+TypeOKEvaluation ==
     /\ evaluation.status \in {EvalNone, EvalReady, EvalStale}
     /\ evaluation.candidate \in Candidates \cup {NoValue}
     /\ evaluation.base \in Bases \cup {NoValue}
@@ -357,6 +359,8 @@ TypeOK ==
     /\ evaluation.verifier \in Verifiers \cup {NoValue}
     /\ evaluation.result \in Results \cup {NoValue}
     /\ evaluation.trusted \in BOOLEAN
+
+TypeOKRisk ==
     /\ risk.status \in {OverrideNone, OverrideActive, OverrideExpired}
     /\ risk.id \in RiskAcceptanceIds \cup {NoValue}
     /\ risk.candidate \in Candidates \cup {NoValue}
@@ -366,6 +370,8 @@ TypeOK ==
     /\ risk.authority \in {RootAuthority, NoValue}
     /\ risk.reason \in RiskReasons \cup {NoValue}
     /\ risk.expiresAt \in 0..MaxTick
+
+TypeOKDecision ==
     /\ decision.status \in {DecisionNone, DecisionPass, DecisionBlocked, DecisionRisk, DecisionStale}
     /\ decision.candidate \in Candidates \cup {NoValue}
     /\ decision.base \in Bases \cup {NoValue}
@@ -374,6 +380,8 @@ TypeOK ==
     /\ decision.result \in Results \cup {NoValue}
     /\ decision.authority \in {RootAuthority, NoValue}
     /\ decision.riskId \in RiskAcceptanceIds \cup {NoValue}
+
+TypeOKPublication ==
     /\ publication.status \in {PublicationNone, PublicationPublished}
     /\ publication.candidate \in Candidates \cup {NoValue}
     /\ publication.base \in Bases \cup {NoValue}
@@ -381,12 +389,20 @@ TypeOK ==
     /\ publication.verifier \in Verifiers \cup {NoValue}
     /\ publication.kind \in {KindNone, KindVerified, KindRiskAccepted, KindUncontrolled}
     /\ publication.result \in Results \cup {NoValue}
+
+TypeOKBypass ==
     /\ bypass.status \in {BypassNone, BypassRecorded}
     /\ bypass.candidate \in Candidates \cup {NoValue}
     /\ bypass.actor \in BypassActors \cup {NoValue}
     /\ bypass.reason \in {AdvisoryBypassReason, AdminBypassReason, NoValue}
 
-NoFalsePass ==
+TypeOK ==
+    (TypeOKCore)
+    /\ (TypeOKEvaluation)
+    /\ (TypeOKRisk)
+    /\ (TypeOKDecision)
+    /\ (TypeOKPublication)
+    /\ (TypeOKBypass)NoFalsePass ==
     decision.status = DecisionPass =>
         /\ evaluation.status = EvalReady
         /\ evaluation.result = Pass

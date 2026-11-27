@@ -154,3 +154,26 @@ Détail canonique : [journal anglais WP-EVT-000033](events.md#wp-evt-000033).
 - **Éléments probants formels :** 17 théorèmes représentatifs de disjonction des constructeurs et d'intégrité des enregistrements passent sous Lean 4.19.0 ; le rapport dédié ne relève aucune dépendance axiomatique.
 - **Limite :** proposition sémantique typée uniquement. Aucun métamodèle normatif, sérialisation canonique, moteur probabiliste/flou, score/calcul universel du risque, politique d'agrégation, optimiseur de traitement ou preuve d'autorité réelle n'est adopté.
 - **Disposition :** l'issue #131 est clôturée comme proposition technique terminée. L'adoption normative reste une décision d'autorité distincte ; aucune adoption n'est impliquée ici.
+
+
+<a id="wp-evt-000036"></a>
+## WP-EVT-000036 — Premier incrément du profil d'attestation interopérable fusionné
+- **Sujet :** `govcheck.assurance.interoperable-attestation`.
+- **Type d'événement :** `in-toto-dsse-profile-increment-merged`.
+- **Date :** 2026-11-27.
+- **Issue/PR source :** [#44](https://github.com/Martin-PB/govcheck/issues/44), [PR #154](https://github.com/Martin-PB/govcheck/pull/154), fusionnée dans `main` au commit `6556a03d73c8aa2ee4527865b4d12acbc26bc644`.
+- **Artefacts :** Spécification 0008 EN/FR ; schéma JSON du prédicat ; `govcheck/attestation.py` standard-library-only ; tests de liaison exacte candidat/base, identités Git/Pijul, résultats à quatre valeurs, structure DSSE PAE/enveloppe et revue indépendante indisponible ; références R-227–R-229.
+- **Correction de sécurité :** les JSON de revue intégrés à l'arbre candidat et les noms libres de reviewer ne peuvent plus satisfaire la règle de revue indépendante. La règle reste UNKNOWN tant qu'un vérificateur DSSE détaché et une politique de confiance explicite ne sont pas configurés.
+- **Validation :** 143 tests Python, intégrité des références et alignement du paquet passent sur la tête finale de la PR.
+- **Limite :** aucune signature/vérification cryptographique, gestion de racines de confiance/clés, association signataire/rôle ou génération du digest canonique du contenu n'est implémentée. Aucune revue indépendante n'est revendiquée ; l'issue #44 reste ouverte.
+
+
+<a id="wp-evt-000037"></a>
+## WP-EVT-000037 — Ouverture du chantier d'implémentation du journal canonique local
+- **Sujet :** `govcheck.governance.canonical-journal-local-implementation`.
+- **Type d'événement :** `canonical-journal-implementation-work-item-opened`.
+- **Date :** 2026-11-27.
+- **Issue source :** [#155](https://github.com/Martin-PB/govcheck/issues/155).
+- **Fondement :** la Spécification 0007 proposée et le modèle borné de reprise Architecture 0035 sont fusionnés, mais aucune implémentation durable du journal n'existe.
+- **Périmètre :** évaluer un stockage embarqué local ; implémenter genesis explicite, append compare-and-append sérialisé, reçus durables, retry idempotent, reprise après crash et vérification de chaîne avec tests hors ligne positifs/négatifs.
+- **Frontière :** aucun serveur/MCP hébergé, consensus distribué, cryptographie maison, genesis implicite ou ordre normatif imposé par une forge/VCS. L'intégrité de la chaîne ne prouve ni l'identité d'un acteur ni son autorité.

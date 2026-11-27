@@ -28,7 +28,7 @@ class JournalError(Exception):
 
 
 def _validate_string(value: Any, label: str) -> str:
-    if not isinstance(value, str) or not value:
+    if not isinstance(value, str) or not value.strip():
         raise JournalError("malformed", label + " must be a non-empty string")
     if any(0xD800 <= ord(ch) <= 0xDFFF for ch in value):
         raise JournalError("malformed", label + " contains an invalid Unicode surrogate")
@@ -70,6 +70,13 @@ def _canonical_text(value: Any, path: str = "$") -> str:
 
 def canonical_json_bytes(value: Any) -> bytes:
     return _canonical_text(value).encode("utf-8")
+
+
+def _validate_digest(value: Any, label: str) -> str:
+    digest = _validate_string(value, label)
+    if len(digest) != 64 or any(ch not in "0123456789abcdef" for ch in digest):
+        raise JournalError("malformed", label + " must be a lowercase SHA-256 digest")
+    return digest
 
 
 def sha256(value: bytes) -> str:
@@ -344,14 +351,14 @@ class Journal:
                event_id: str, event_type: str, schema_version: str,
                payload: Any, idempotency_key: str, actor_id: str) -> dict:
         scope_id = _validate_string(scope_id, "scope_id")
-        expected_digest = _validate_string(expected_digest, "expected_digest")
+        expected_digest = _validate_digest(expected_digest, "expected_digest")
         event_id = _validate_string(event_id, "event_id")
         event_type = _validate_string(event_type, "event_type")
         schema_version = _validate_string(schema_version, "schema_version")
         idempotency_key = _validate_string(idempotency_key, "idempotency_key")
         actor_id = _validate_string(actor_id, "actor_id")
-        if not isinstance(expected_position, int) or isinstance(expected_position, bool) or expected_position < 0:
-            raise JournalError("malformed", "expected_position must be a non-negative integer")
+        if not isinstance(expected_position, int) or isinstance(expected_position, bool) or expected_position < 0 or expected_position >= MAX_SAFE_INTEGER:
+            raise JournalError("malformed", "expected_position must be a non-negative safe integer below the maximum")
         payload_bytes = canonical_json_bytes(payload)
         payload_digest = sha256(payload_bytes)
         request = {
@@ -482,6 +489,12 @@ class Journal:
                         errors.append("event scope/position mismatch at position " + str(row["position"]))
                     if envelope.get("previousDigest") != previous or row["previous_digest"] != previous:
                         errors.append("previous digest mismatch at position " + str(row["position"]))
+                    if expected_position > 0:
+                        expected_head = envelope.get("expectedHead")
+                        if not isinstance(expected_head, dict) or expected_head.get("position") != expected_position - 1 or expected_head.get("digest") != previous:
+                            errors.append("expected-head binding mismatch at position " + str(row["position"]))
+                    elif envelope.get("expectedHead") is not None:
+                        errors.append("genesis event must not claim an expected prior head")
                     if digest_json(envelope.get("payload")) != envelope.get("payloadDigest") or envelope.get("payloadDigest") != row["payload_digest"]:
                         errors.append("payload digest mismatch at position " + str(row["position"]))
                     computed = digest_json(_without(envelope, "eventDigest"))
@@ -497,6 +510,7 @@ class Journal:
                         payload = envelope.get("payload")
                         authority = payload.get("initialAuthority", {}) if isinstance(payload, dict) else {}
                         if (envelope.get("eventType") != GENESIS_EVENT_TYPE
+                                or row["event_id"] != scope["genesis_event_id"]
                                 or payload.get("scopeId") != scope_id
                                 or authority.get("id") != scope["authority_id"]
                                 or authority.get("revision") != scope["authority_revision"]

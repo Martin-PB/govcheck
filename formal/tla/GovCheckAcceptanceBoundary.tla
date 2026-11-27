@@ -402,7 +402,9 @@ TypeOK ==
     /\ (TypeOKRisk)
     /\ (TypeOKDecision)
     /\ (TypeOKPublication)
-    /\ (TypeOKBypass)NoFalsePass ==
+    /\ (TypeOKBypass)
+
+NoFalsePass ==
     decision.status = DecisionPass =>
         /\ evaluation.status = EvalReady
         /\ evaluation.result = Pass

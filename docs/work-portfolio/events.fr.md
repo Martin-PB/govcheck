@@ -188,3 +188,15 @@ Détail canonique : [journal anglais WP-EVT-000033](events.md#wp-evt-000033).
 - **Artefacts :** Architecture 0034 EN/FR ; govcheck/forge.py stdlib-only ; tests de contrat hors ligne ; capacité de bootstrap forge ; README EN/FR.
 - **Livré :** IDs de travail stables registry-first, tests d'aller-retour sans perte, inspection read-only des checks/protections, écritures explicites avec token, échecs typés et absence de sémantique d'autorisation par la forge.
 - **Limite :** GitHub REST v3 est le seul backend implémenté dans cette issue. GitLab/Gitea/Forgejo, synchronisation bidirectionnelle automatique et écritures Projects v2 restent des chantiers séparés ; l'issue #118 est clôturée pour sa première tranche.
+
+
+<a id="wp-evt-000039"></a>
+## WP-EVT-000039 — Premier backend du journal canonique local fusionné
+- **Sujet :** `govcheck.governance.canonical-journal-local-implementation`.
+- **Type d'événement :** `local-canonical-journal-first-backend-merged`.
+- **Date :** 2026-11-27.
+- **Issue/PR source :** [#155](https://github.com/Martin-PB/govcheck/issues/155), [PR #157](https://github.com/Martin-PB/govcheck/pull/157), fusionnée au commit `6ee0b8e64f9f4203a62564b61292b2f4e71e836f`.
+- **Artefacts :** Architecture 0038 EN/FR ; bibliothèque/CLI SQLite standard-library ; schémas versionnés d'événement/reçu ; capacités de bootstrap du package ; documentation package EN/FR ; tests hors ligne.
+- **Validation :** 167 tests Python, intégrité des références et alignement du package passent sur la tête finale de la PR.
+- **Garanties :** genesis explicite, append compare-and-append, reçus durables idempotents, résultats stale/conflict/unknown, reprise transactionnelle SQLite, vérification complète de la chaîne et lectures/appends fail-closed.
+- **Limites :** journal local mono-hôte ; aucun consensus distribué, signature, vérification DSSE, authentification d'acteur, preuve d'autorité ou résistance à la réécriture par un administrateur privilégié. Les identités Git/Pijul typées et l'intégration à la frontière d'acceptation restent ouvertes dans #155/#44/#45.

@@ -119,3 +119,6 @@ Le module `govcheck.pijul_journal` peut ajouter au journal canonique la provenan
 
 
 CLI pour un record produit par un adaptateur de confiance : `python -m govcheck.pijul_journal --provenance-json /path/hors-worktree/record.json --observation-kind channel-state-observed`. Il ajoute une observation locale et affiche le reçu durable ; il ne collecte pas lui-même les hashes natifs et ne vérifie pas un push distant.
+
+
+Export optionnel de reçu authentifié : `python -m govcheck.journal_attestation` signe un événement/reçu vérifié sélectionné comme Statement in-toto DSSE à l'aide d'un exécutable OpenSSL épinglé et d'une clé Ed25519 gérée à l'extérieur. L'enveloppe est vérifiée avec la trust-policy épinglée avant écriture. GovCheck ne génère ni ne gère les clés.

@@ -1,7 +1,7 @@
-# Corpus de candidats adversariaux — version 1.1.0
+# Corpus de candidats adversariaux — version 1.2.0
 
-**Statut :** catalogue versionné 1.1.0 avec pointeurs vers les tests existants ; il ne prétend ni que chaque attaque possède une fixture exécutable, ni que la frontière d'acceptation est déployée.  
-**Instantané source :** révision du corpus v1.1.0 `d25e417f41eb67619cc6a9df285cdb89b317dd70` ; la base v1.0.0 avait été auditée sur `451d1e1ff929946274edba8e844e08d74fdd306f`.  
+**Statut :** catalogue versionné 1.2.0 avec pointeurs vers les tests existants ; il ne prétend ni que chaque attaque possède une fixture exécutable, ni que la frontière d'acceptation est déployée.  
+**Instantané source :** candidat du corpus v1.2.0 fondé sur la révision source `7366914aa347f87b1ce817c90f468cfa9688a45c` ; la base v1.1.0 avait été auditée sur `d25e417f41eb67619cc6a9df285cdb89b317dd70`.  
 **Parent :** [Issue #72](https://github.com/Martin-PB/govcheck/issues/72).  
 **English:** [Adversarial candidate corpus](adversarial-candidate-corpus-v1.md).  
 **Manifeste lisible par machine :** [`formal/adversarial-candidate-corpus-v1.json`](../../formal/adversarial-candidate-corpus-v1.json).
@@ -36,13 +36,14 @@ Ce corpus ne contient volontairement aucun digest partagé de politique de confi
 | AC-014–AC-015 | Concurrence du journal et parsing JSON canonique | `tests/test_journal.py` | Tests unitaires |
 | AC-016 | Abstraction de frontière d'acceptation enforced/advisory/bypass admin | `formal/tla/GovCheckAcceptanceBoundary.tla` et configurations | Modèle uniquement |
 | AC-017 | Symétrie des filtres de chemins, routage des workflows réutilisables, syntaxe de chemins non prise en charge et routage des entrées de modèles | `tests/test_ci_workflow_routing_audit.py` | Tests unitaires sur fixtures de dépôt synthétiques ; pas un gate de forge |
-| AC-018–AC-019 | Rejeu d'un rapport TLC périmé ; injection de `sorry`/axiome Lean | Aucun test exécutable propre au corpus | Planifié |
+| AC-018 | Rejeu d'un rapport TLC périmé entre révisions de modèle/configuration/workflow/rapport | `tests/test_tlc_run_manifest.py` | Testé unitairement sur dépôts Git synthétiques ; manifeste non signé, pas une attestation d'exécution hébergée |
+| AC-019 | Injection de `sorry`/axiome Lean | Aucun test exécutable propre au corpus | Planifié |
 | AC-020 | Rejet réel d'une référence protégée GitHub et bypass | Recherche sur la frontière d'acceptation ; vérification de la configuration réelle encore requise | Non démontré ; suivi par #45 |
 | AC-023 | Workflow report-only non obligatoire comme check d'acceptation dans le ruleset réel | Workflow et instantané du ruleset | Non démontré ; liste des checks requis vide ; suivi par #45 |
 | AC-021 | Bypass de l'enforcement distant Pijul/Nest | Recherche plateforme uniquement | Planifié ; aucun adaptateur distant d'enforcement |
 | AC-022 | Exécution hostile de contrôles fournis par le dépôt, exfiltration de secrets et épuisement de ressources | Architecture 0006 ; issue candidate #218 | Planifié ; aucun sandbox sélectionné |
 
-Le manifeste lisible par machine constitue la source des identifiants de cas et des pointeurs de preuve exacts. AC-017 référence désormais les tests de routage synthétiques : asymétrie des filtres PR/push, workflows réutilisables absents ou non routés, syntaxe non prise en charge, globs non justifiés et routage des entrées de modèles. Ces tests ne prouvent pas l'existence d'un gate GitHub obligatoire. AC-023 enregistre la lacune distincte : le workflow report-only n'est pas un check obligatoire dans le ruleset actuel. `tests/test_adversarial_candidate_corpus.py` vérifie l'identité/version du manifeste, l'unicité des IDs, les sémantiques requises, l'existence des fichiers de preuve et les noms des méthodes de test Python référencées. Ce test d'intégrité n'exécute pas lui-même les attaques sous-jacentes.
+Le manifeste lisible par machine constitue la source des identifiants de cas et des pointeurs de preuve exacts. La version 1.2.0 ajoute les manifestes TLC liés aux sources et les tests synthétiques de rejeu périmé pour AC-018. Le manifeste enregistre les métadonnées de checkout/exécution, l'arbre Git complet de `formal/tla` (modules transitifs et configurations inclus), le blob du workflow réutilisable et celui du workflow appelant lorsqu'il est identifiable, ainsi que les empreintes des rapports ; les tests rejettent les dérives et le rejeu. Il n'est pas signé et ne lie ni la révision de gouvernance ni l'identité de l'évaluateur ; il n'authentifie pas l'exécution hébergée par GitHub et ne prouve pas l'existence d'un check obligatoire. AC-017 référence désormais les tests de routage synthétiques : asymétrie des filtres PR/push, workflows réutilisables absents ou non routés, syntaxe non prise en charge, globs non justifiés et routage des entrées de modèles. Ces tests ne prouvent pas l'existence d'un gate GitHub obligatoire. AC-023 enregistre la lacune distincte : le workflow report-only n'est pas un check obligatoire dans le ruleset actuel. `tests/test_adversarial_candidate_corpus.py` vérifie l'identité/version du manifeste, l'unicité des IDs, les sémantiques requises, l'existence des fichiers de preuve et les noms des méthodes de test Python référencées. Ce test d'intégrité n'exécute pas lui-même les attaques sous-jacentes.
 
 ## 4. Limites importantes
 
@@ -50,11 +51,11 @@ Le manifeste lisible par machine constitue la source des identifiants de cas et 
 2. **Aucun relecteur indépendant synthétisé.** Les clés de test et principaux des fixtures n'établissent pas l'existence d'un relecteur humain indépendant.
 3. **Aucun enforcement général Pijul.** Un hook local n'est pas une frontière d'acceptation distante obligatoire.
 4. **Aucun sandbox de code projet arbitraire.** Isolation d'exécution, minimisation des secrets et budgets de ressources restent des travaux candidats dans #218.
-5. **Aucune suite complète d'attaques sur les preuves formelles pour l'instant.** Les rapports de model checking périmés et les preuves Lean contenant des axiomes interdits restent des cas planifiés.
+5. **Couverture partielle d'AC-018 seulement.** Les tests synthétiques rejettent désormais les entrées modèle/configuration/workflow/rapport périmées. Le manifeste non signé n'authentifie pas l'exécution hébergée et ne lie pas la révision de gouvernance ni l'identité de l'évaluateur ; l'injection `sorry`/axiome Lean d'AC-019 reste planifiée.
 
 ## 5. Incréments suivants
 
-- Transformer AC-018–AC-019 en fixtures liées à des candidats exacts, avec résultats fail/unknown attendus et provenance explicite ; étendre AC-017 aux chemins d'altération non couverts par l'audit de routage.
+- Transformer AC-019 (injection `sorry`/axiome Lean) en fixtures négatives liées à des candidats exacts ; étendre AC-017 aux chemins d'altération non couverts par l'audit de routage.
 - Étendre le corpus aux chemins d'attaque et hypothèses de confiance précis de l'Architecture 0006.
 - Lier tout nouveau rapport de test à la révision du corpus, à la version des outils/tests, au candidat/base exacts, à la politique applicable et à l'identité du vérificateur.
 - N'ajouter une expérience de frontière forge réelle que lorsque sa configuration requise et son environnement de test sont explicitement autorisés et disponibles.

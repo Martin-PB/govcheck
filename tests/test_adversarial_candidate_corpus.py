@@ -61,7 +61,7 @@ class AdversarialCandidateCorpusTests(unittest.TestCase):
         statuses = {case["id"]: case["coverageStatus"] for case in self.data["cases"]}
         self.assertEqual(statuses["AC-016"], "model-only")
         self.assertEqual(statuses["AC-017"], "tested-unit")
-        self.assertEqual(statuses["AC-018"], "planned")
+        self.assertEqual(statuses["AC-018"], "tested-unit")
         self.assertEqual(statuses["AC-019"], "planned")
         self.assertEqual(statuses["AC-020"], "not-demonstrated")
         self.assertEqual(statuses["AC-021"], "planned")

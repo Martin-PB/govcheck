@@ -35,6 +35,7 @@
 | Plateformes VCS, forges et CI alternatives (CLI Pijul, GitLab, Woodpecker, SourceHut, Fossil) | R-109–R-113 |
 | CRDT, collaboration temps réel et transport réseau | R-45–R-50, R-66, R-87 |
 | Représentation des connaissances et interopérabilité | R-51–R-61, R-83–R-86, R-234–R-235 |
+| Correspondances sémantiques, sémantique des standards et ambiguïtés de conformité | R-243–R-245 |
 | Dépôts et études d'intégration | R-62 |
 | Protocoles d'intégration et conventions documentaires | R-67 |
 | Dépôts adjacents de l'écosystème GovCheck | R-68 |
@@ -1721,3 +1722,28 @@
 - **Utilité :** documente le sandbox de build, les chemins visibles, les namespaces Linux, le support plateforme et le comportement de configuration.
 - **Limite :** le sandbox Nix s'applique aux builds Nix, pas automatiquement à toute commande fournie par un dépôt. Le manuel documente le support Linux/macOS, l'exigence root et les exceptions réseau pour les derivations à sortie fixe ; ce n'est pas une frontière universelle d'exécution de code hostile.
 - **Cité par :** [recherche sur l'isolation d'exécution des contrôles](research/check-execution-isolation-2026-11.fr.md).
+
+
+<a id="r-243"></a>
+### R-243 — Suivi officiel des issues OMG SACM 2.3 : sémantique du raisonnement et de l'inférence
+- **Type :** Suivi officiel d'issues de standard ; contenu informatif, pas un amendement normatif.
+- **Source primaire :** [Issues ouvertes SACM 2.3](https://issues.omg.org/issues/spec/SACM/2.3).
+- **Utilité :** relève une ambiguïté entre ArgumentReasoning et la notation diagrammatique AssertedRelationship/AssertedInference, ainsi qu'un décalage entre la prose AssertedInference et le typage des extrémités dans le profil lisible par machine.
+- **Limite :** l'analyse du suivi d'issues ne remplace pas la spécification normative SACM 2.3 et n'établit pas une résolution adoptée. Préserver la structure native et signaler l'ambiguïté.
+- **Cité par :** [audit sémantique des correspondances](research/semantic-mapping-audit-2026-11-28.fr.md).
+
+<a id="r-244"></a>
+### R-244 — Issue OMG ReqIF 1.2 REQIF12-3 : contraintes de types source/cible
+- **Type :** Suivi officiel d'issues de standard ; issue close et disposition.
+- **Source primaire :** [REQIF12-3 — Allowed source and target elements on SpecRelationType level](https://issues.omg.org/issues/REQIF12-3).
+- **Utilité :** enregistre une proposition visant à contraindre les types source/cible de SpecRelation via SpecRelationType, et la décision de la retirer du périmètre en raison de l'impact cassant sur le schéma XML et l'interopérabilité.
+- **Limite :** l'historique d'issue n'est pas une nouvelle contrainte normative. SpecRelation ReqIF 1.2 reste générique ; les importeurs doivent préserver types de relation et extrémités sources.
+- **Cité par :** [audit sémantique des correspondances](research/semantic-mapping-audit-2026-11-28.fr.md).
+
+<a id="r-245"></a>
+### R-245 — Issue OMG SysML 2.1 RTF SYSML21-737 : grammaire de satisfaction d'exigence
+- **Type :** Suivi officiel d'issues de standard ; issue ouverte du groupe de révision.
+- **Source primaire :** [SYSML21-737 — SatisfyRequirementUsage production makes assert and not mandatory](https://issues.omg.org/issues/SYSML21-737).
+- **Utilité :** relève une incohérence grammaticale entre la production SatisfyRequirementUsage de SysML 2.0 et les exemples/l'implémentation pilote, reprise dans les éléments SysML 2.1 Beta 2 selon l'issue.
+- **Limite :** il s'agit d'une question de grammaire, pas d'une redéfinition de la sémantique de satisfaction. Ne pas traiter le rapport d'issue comme une correction adoptée ni normaliser silencieusement le texte source.
+- **Cité par :** [audit sémantique des correspondances](research/semantic-mapping-audit-2026-11-28.fr.md).

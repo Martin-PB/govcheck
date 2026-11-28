@@ -46,7 +46,7 @@ Export the same values locally (or retrieve them with `gh variable get`) and run
 python scripts/validate-github-receipt-check-config.py --repository-root .
 ```
 
-The preflight checks required variables, trust-policy file pin, OpenSSL executable pin, public-key file digests and presence of an active key for the required role. It does not expose private material.
+The preflight checks required variables, trust-policy file pin, OpenSSL executable pin, public-key file digests and presence of an active key for the required role. The PR receipt workflow runs this same preflight before signature verification. It does not expose private material.
 
 ## 4. Require the check in the ruleset
 

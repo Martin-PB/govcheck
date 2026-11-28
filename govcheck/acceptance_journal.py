@@ -124,14 +124,14 @@ def append_verified_decision(env: dict[str, str], gate_payload: dict[str, Any]) 
         event_id = "acceptance-gate-result:" + request_digest
         head = journal.head(scope_id)
         result = journal.append(
-        scope_id=scope_id,
-        expected_position=head["position"],
-        expected_digest=head["digest"],
-        event_id=event_id,
-        event_type="govcheck.acceptance.gate-result/v1",
-        schema_version="1",
-        payload=payload,
-        idempotency_key=idempotency_key,
+            scope_id=scope_id,
+            expected_position=head["position"],
+            expected_digest=head["digest"],
+            event_id=event_id,
+            event_type="govcheck.acceptance.gate-result/v1",
+            schema_version="1",
+            payload=payload,
+            idempotency_key=idempotency_key,
             actor_id=authority or "system:govcheck-gate",
         )
     except JournalError as exc:

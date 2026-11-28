@@ -1,0 +1,94 @@
+name: GovCheck authenticated PR receipt check
+
+on:
+  issue_comment:
+    types: [created]
+  pull_request_target:
+    types: [opened, synchronize, reopened, edited, ready_for_review]
+
+permissions:
+  contents: read
+  issues: read
+  pull-requests: read
+  checks: write
+
+jobs:
+  receipt-check:
+    if: >-
+      (github.event_name == 'pull_request_target') ||
+      (github.event_name == 'issue_comment' &&
+       github.event.issue.pull_request &&
+       contains(github.event.comment.body, '/govcheck-receipt'))
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout trusted GovCheck verifier from main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: trusted
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Invalidate acceptance check when PR head/base changes
+        if: github.event_name == 'pull_request_target'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_RUN_ID: ${{ github.run_id }}
+        run: |
+          python trusted/scripts/github-pr-receipt-check.py \
+            --mode invalidate \
+            --event-path "$GITHUB_EVENT_PATH" \
+            --trusted-root trusted
+
+      - name: Fetch current PR head metadata
+        if: github.event_name == 'issue_comment'
+        id: pr
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          gh api "repos/$GITHUB_REPOSITORY/pulls/$PR_NUMBER" > "$RUNNER_TEMP/pr.json"
+          echo "head_repo=$(jq -r '.head.repo.full_name // ""' "$RUNNER_TEMP/pr.json")" >> "$GITHUB_OUTPUT"
+          echo "head_sha=$(jq -r '.head.sha' "$RUNNER_TEMP/pr.json")" >> "$GITHUB_OUTPUT"
+
+      - name: Checkout candidate tree without credentials
+        if: github.event_name == 'issue_comment' && steps.pr.outputs.head_repo == github.repository
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ steps.pr.outputs.head_repo }}
+          ref: ${{ steps.pr.outputs.head_sha }}
+          path: candidate
+          token: ${{ secrets.GITHUB_TOKEN }}
+          persist-credentials: false
+
+      - name: Verify signed receipt and update required check
+        if: github.event_name == 'issue_comment'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_RUN_ID: ${{ github.run_id }}
+          GOVCHECK_TRUST_POLICY_PATH: ${{ vars.GOVCHECK_TRUST_POLICY_PATH }}
+          GOVCHECK_TRUST_POLICY_SHA256: ${{ vars.GOVCHECK_TRUST_POLICY_SHA256 }}
+          GOVCHECK_JOURNAL_SCOPE_ID: ${{ vars.GOVCHECK_JOURNAL_SCOPE_ID }}
+          GOVCHECK_REPOSITORY_URI: ${{ vars.GOVCHECK_REPOSITORY_URI }}
+          GOVCHECK_GOVERNANCE_REVISION: ${{ vars.GOVCHECK_GOVERNANCE_REVISION }}
+          GOVCHECK_GOVERNANCE_DIGEST: ${{ vars.GOVCHECK_GOVERNANCE_DIGEST }}
+          GOVCHECK_EXPECTED_REPOSITORY_ID: ${{ vars.GOVCHECK_EXPECTED_REPOSITORY_ID }}
+          GOVCHECK_EXPECTED_POLICY_DIGEST: ${{ vars.GOVCHECK_EXPECTED_POLICY_DIGEST }}
+          GOVCHECK_REQUIRED_ROLE: ${{ vars.GOVCHECK_REQUIRED_ROLE }}
+          GOVCHECK_PROTECTED_BASE_REF: ${{ vars.GOVCHECK_PROTECTED_BASE_REF }}
+        run: |
+          candidate_root="candidate"
+          if [ ! -d candidate ]; then
+            candidate_root="trusted"
+          fi
+          python trusted/scripts/github-pr-receipt-check.py \
+            --mode verify \
+            --event-path "$GITHUB_EVENT_PATH" \
+            --trusted-root trusted \
+            --candidate-root "$candidate_root"

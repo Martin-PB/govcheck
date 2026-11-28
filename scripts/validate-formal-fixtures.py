@@ -33,6 +33,7 @@ PACKAGE_ONLY_FIXTURE_SCHEMAS = {
     "govcheck/formal/schemas/journal-receipt-v1.schema.json",
     "govcheck/formal/schemas/journal-receipt-attestation-v1.schema.json",
     "govcheck/formal/schemas/assurance-evaluation-v1.schema.json",
+    "govcheck/formal/schemas/journal-event-v1.schema.json",
 }
 DOCUMENTATION_FIXTURE_SCHEMAS = {
     "docs/schemas/govcheck-assurance-evaluation-v1.schema.json",
@@ -67,6 +68,8 @@ def fixture_schema_name(name: str, *, packaged: bool = False) -> str | None:
         return "govcheck/formal/schemas/journal-receipt-attestation-v1.schema.json"
     if name == "assurance-evaluation.example.json":
         return "govcheck/formal/schemas/assurance-evaluation-v1.schema.json"
+    if name == "journal-event.example.json":
+        return "govcheck/formal/schemas/journal-event-v1.schema.json"
     if name == "dependency-edge.example.json":
         schema = "dependency-edge.schema.json"
     elif name.startswith("evidence-record-") and name.endswith(".example.json"):
@@ -234,7 +237,7 @@ def audit(root: str | Path) -> dict:
         "package_schemas_fixture_covered": sum(name in covered for name in schemas if name.startswith("govcheck/formal/schemas/")),
         "package_only_schemas_fixture_covered": sum(name in covered for name in PACKAGE_ONLY_FIXTURE_SCHEMAS),
         "documentation_schemas_fixture_covered": sum(name in covered for name in DOCUMENTATION_FIXTURE_SCHEMAS),
-        "fixture_coverage_scope": "Formal and packaged fixture files are mapped to their respective source/package schemas. When a packaged fixture is absent, its formal fixture is used as a fallback against the package projection. Package-only independent-review, VCS-provenance, acceptance-decision, forge-author-identity, trust-policy, journal-receipt and assurance-evaluation fixtures are included; the assurance fixture also validates the identical documentation schema. The journal-event package schema remains meta-validated but not fixture-covered.",
+        "fixture_coverage_scope": "Formal and packaged fixture files are mapped to their respective source/package schemas. When a packaged fixture is absent, its formal fixture is used as a fallback against the package projection. Package-only independent-review, VCS-provenance, acceptance-decision, forge-author-identity, trust-policy, journal-receipt, assurance-evaluation and journal-event fixtures are included; the assurance fixture also validates the identical documentation schema.",
         "finding_count": len(findings),
         "findings": findings,
         "limitations": [

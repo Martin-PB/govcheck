@@ -28,7 +28,7 @@ class GitHubReceiptConfigPreflightTests(unittest.TestCase):
         self.file_digest = lambda path: hashlib.sha256(Path(path).read_bytes()).hexdigest()
         self.policy = {
             "schemaVersion": "1",
-            "policyId": "urn:govcheck:trust-policy:v1",
+            "policyId": "govcheck.attestation-trust-policy/v1",
             "revision": "trust-r1",
             "openssl": {"path": str(self.openssl), "sha256": self.file_digest(self.openssl)},
             "keys": [{
@@ -62,6 +62,14 @@ class GitHubReceiptConfigPreflightTests(unittest.TestCase):
         self.assertEqual(result["status"], "ready")
         self.assertEqual(result["activeKeyCount"], 1)
         self.assertEqual(result["scopeId"], "repo:example/project")
+
+    def test_legacy_mismatched_policy_id_fails_closed(self):
+        policy = dict(self.policy, policyId="urn:govcheck:trust-policy:v1")
+        raw = json.dumps(policy, sort_keys=True, separators=(",", ":")).encode("utf-8")
+        self.policy_path.write_bytes(raw)
+        env = dict(self.env, GOVCHECK_TRUST_POLICY_SHA256=hashlib.sha256(raw).hexdigest())
+        with self.assertRaises(PREFLIGHT.ConfigError):
+            PREFLIGHT.validate_config(self.root, env)
 
     def test_missing_repository_variable_fails_closed(self):
         env = dict(self.env)

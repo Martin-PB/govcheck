@@ -103,3 +103,10 @@ mapping proof against SACM/OWL/SEON, proof of imported-source fidelity,
 mapping-composition proof, or implementation conformance. A successful Git
 commit or a historical green run is not a Lean verification result for a
 different formal source revision.
+
+
+## Adversarial axiom-audit fixture
+
+The isolated [forbidden proof artifact](GovCheckCoherence/Reproductions/ForbiddenProofArtifact.lean) deliberately contains both a theorem using `sorryAx` and a theorem depending on an unapproved named axiom. It is not imported by the production proof library. The Lean workflow compiles this fixture, captures its `#print axioms` output, and requires the independent [report auditor](../../scripts/audit-lean-axiom-report.py) to reject both dependencies. Python tests cover allow-list handling, missing-report fail-closed behavior and the two injected-axiom classes.
+
+This is a negative test of the report-audit path, not evidence that every production theorem or imported dependency is audited at every revision. The manifest/corpus records this as a synthetic adversarial test; it does not authenticate the hosted workflow or replace the pinned Lean kernel and its separate trusted-base analysis.

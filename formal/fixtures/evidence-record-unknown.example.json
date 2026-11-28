@@ -33,10 +33,25 @@
       "Synthetic unknown-status example; no method result is asserted."
     ]
   },
+  "execution": {
+    "tool": {
+      "name": "synthetic-model-checker",
+      "version": "0.0.0"
+    },
+    "invocation": "synthetic-model-checker --bounded-check",
+    "environment": {
+      "platform": "example"
+    },
+    "externalInputs": []
+  },
   "result": {
     "status": "unknown",
     "observedAt": "2026-11-06T00:00:00Z",
-    "summary": "No reliable result is available from the available inputs."
+    "summary": "An execution occurred, but the available inputs do not support a reliable conclusion.",
+    "rawResult": {
+      "outcome": "unknown",
+      "reason": "Synthetic example only."
+    }
   },
   "provenance": {
     "producer": {

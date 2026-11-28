@@ -4,17 +4,25 @@ on:
   pull_request:
     paths:
       - 'scripts/validate-version-governance.py'
+      - 'scripts/validate-formal-fixtures.py'
       - 'tests/test_version_governance_validator.py'
+      - 'tests/test_formal_fixture_validation.py'
       - 'formal/schemas/**'
+      - 'formal/fixtures/**'
       - 'formal/artifacts.json'
+      - 'requirements-validation.txt'
       - '.github/workflows/version-governance.yml'
   push:
     branches: [main]
     paths:
       - 'scripts/validate-version-governance.py'
+      - 'scripts/validate-formal-fixtures.py'
       - 'tests/test_version_governance_validator.py'
+      - 'tests/test_formal_fixture_validation.py'
       - 'formal/schemas/**'
+      - 'formal/fixtures/**'
       - 'formal/artifacts.json'
+      - 'requirements-validation.txt'
       - '.github/workflows/version-governance.yml'
 
 permissions:
@@ -28,7 +36,13 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Install pinned JSON Schema validation dependency
+        run: python3 -m pip install --requirement requirements-validation.txt
       - name: Run version-governance validator unit tests
         run: python3 -m unittest discover -s tests -p 'test_version_governance_validator.py' -v
-      - name: Compile validator and tests
-        run: python3 -m py_compile scripts/validate-version-governance.py tests/test_version_governance_validator.py
+      - name: Validate Draft 2020-12 schemas and synthetic fixtures
+        run: python3 scripts/validate-formal-fixtures.py --root .
+      - name: Run formal fixture validation tests
+        run: python3 -m unittest discover -s tests -p 'test_formal_fixture_validation.py' -v
+      - name: Compile validators and tests
+        run: python3 -m py_compile scripts/validate-version-governance.py scripts/validate-formal-fixtures.py tests/test_version_governance_validator.py tests/test_formal_fixture_validation.py

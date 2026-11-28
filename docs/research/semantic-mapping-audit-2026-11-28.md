@@ -123,7 +123,7 @@ Therefore a future operative mapping profile must carry an inhabited-domain witn
 - [R-73 — SACM 2.4 Beta](../references.md#r-73)
 - [R-95 — SysML and ReqIF sources](../references.md#r-95)
 - [R-102 — W3C PROV-O](../references.md#r-102)
-- [R-234/R-235 — OSLC Core and Resource Shape](../references.md#r-234)
+- [R-234 — OSLC Core](../references.md#r-234) and [R-235 — OSLC Resource Shape](../references.md#r-235)
 - [R-243 — SACM 2.3 open issue tracker](../references.md#r-243)
 - [R-244 — ReqIF 1.2 source/target type issue](../references.md#r-244)
 - [R-245 — SysML 2.1 requirement-satisfaction grammar issue](../references.md#r-245)

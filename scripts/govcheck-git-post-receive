@@ -1,0 +1,3 @@
+#!/bin/sh
+# Install as hooks/post-receive after reviewing the deployment configuration.
+exec python3 -m govcheck.git_publication_receipt

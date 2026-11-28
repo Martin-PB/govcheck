@@ -614,3 +614,15 @@
 - **Validation:** `receipt-check`, `reference-integrity`, `package-alignment` and `govcheck-check` all succeeded on the PR head.
 - **Disposition:** issue #72 remains open for stale TLC report replay, Lean proof attacks, real hosted-forge rejection/bypass, remote Pijul enforcement and untrusted execution.
 - **Limit:** synthetic workflow-routing tests do not demonstrate a real GitHub acceptance boundary.
+
+
+<a id="wp-evt-000046"></a>
+## WP-EVT-000046 — Semantic mapping audit merged
+- **Subject:** `govcheck.metamodel.semantic-mapping-audit`.
+- **Event type:** `semantic-mapping-audit-merged`.
+- **Recorded:** 2026-11-28.
+- **Source issue/PR:** [#73](https://github.com/Martin-PB/govcheck/issues/73), [PR #225](https://github.com/Martin-PB/govcheck/pull/225), merged at `01a187cf339cb4ba57d2c35d9fb2e78828761fd4`.
+- **Artifacts:** bilingual semantic mapping audit; source-level ambiguity references R-243–R-245; cross-links from the typed relation candidate matrix; refreshed #73 work-item record.
+- **Validation:** `receipt-check`, `reference-integrity`, `package-alignment` and `govcheck-check` all succeeded on the PR head.
+- **Disposition:** issue #73 remains open for relation-specific mapping profiles, formal obligations and negative fixtures; #210 remains open for the partial-mapping domain/composition contract.
+- **Limit:** no external ontology, standard relation or canonical GovCheck mapping is adopted.

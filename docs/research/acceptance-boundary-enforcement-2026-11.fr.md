@@ -241,3 +241,20 @@ python3 -m govcheck.acceptance_decision sign \
 Pour `accept`, le signer refuse un rapport dont le résultat global n'est pas PASS. Pour `accept_with_risk`, un dossier de risque complet, borné et expirant est obligatoire. La clé privée reste hors du dépôt.
 
 L'enveloppe signée peut être fournie comme artefact détaché ou autre entrée externe à un adaptateur de forge de confiance. Elle ne doit pas être commitée dans le snapshot candidat dont elle autorise le digest de contenu, car cela créerait une liaison circulaire.
+
+
+## 14. Reçu durable du journal pour une décision d'acceptation vérifiée
+
+Le gate Git local peut, de manière optionnelle, ajouter un événement de décision d'acceptation à un journal GovCheck SQLite explicitement initialisé. Ce reçu local est distinct d'un check de forge et ne constitue pas un reçu de publication.
+
+L'intégration n'est activée que si les trois paramètres suivants sont fournis au processus du gate :
+
+- `GOVCHECK_JOURNAL_DB` : base SQLite située hors du dépôt bare ;
+- `GOVCHECK_JOURNAL_SCOPE_ID` : scope exact, identique à `GOVCHECK_SCOPE_ID` ;
+- `GOVCHECK_JOURNAL_AUTHORITY_REVISION` : révision d'autorité épinglée dans le genesis du journal.
+
+Avant l'ajout, l'intégration vérifie le journal complet, compare le principal d'autorité du genesis au signataire DSSE authentifié, contrôle les révisions d'autorité et de gouvernance, puis lie l'événement au dépôt, candidat, base, ref, politique, digest du rapport, résultat et dossier de risque. Elle utilise compare-and-append et une clé d'idempotence déterministe dérivée du payload exact de décision. Le reçu commis peut être récupéré avec la commande `receipt` du journal.
+
+Le gate ne crée jamais le genesis. Celui-ci doit être initialisé explicitement hors du dépôt, avec le principal d'autorité authentifié et les révisions d'autorité/de gouvernance épinglées. Si un paramètre du journal est présent mais que la configuration, le genesis ou l'ajout échoue, le gate retourne UNKNOWN et le pre-receive rejette la mise à jour. Sans aucun paramètre de journal, le comportement antérieur (journal optionnel) est conservé ; un déploiement ne doit pas revendiquer une acceptation journalisée avant installation et audit de ces paramètres.
+
+Cet incrément enregistre les décisions d'acceptation vérifiées, pas les tentatives échouées, bypass ou publications effectives de ref. La chaîne de hachage locale n'authentifie pas les acteurs et ne résiste pas à un administrateur privilégié qui réécrit la base. Ces catégories de reçus et le check/ruleset GitHub réel restent à traiter dans #45/#155.

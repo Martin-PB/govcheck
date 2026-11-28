@@ -379,6 +379,36 @@ class Journal:
             raise JournalError("unknown", "journal head is not trusted because verification failed: " + "; ".join(integrity.get("errors", [])))
         return {"scopeId": scope_id, "position": integrity["head"]["position"], "digest": integrity["head"]["digest"]}
 
+    def event_at(self, scope_id: str, position: int) -> dict | None:
+        """Read one event and its durable receipt after verifying the full scope chain."""
+        scope_id = _validate_string(scope_id, "scope_id")
+        if isinstance(position, bool) or not isinstance(position, int) or position < 0:
+            raise JournalError("malformed", "position must be a non-negative integer")
+        integrity = self.verify(scope_id)
+        if integrity.get("status") != "valid":
+            raise JournalError("unknown", "event read is not trusted because journal verification failed: " + "; ".join(integrity.get("errors", [])))
+        conn = self._connect()
+        try:
+            row = conn.execute(
+                "SELECT e.envelope_json,e.event_digest,r.receipt_json FROM journal_events e JOIN journal_receipts r ON r.scope_id=e.scope_id AND r.position=e.position WHERE e.scope_id=? AND e.position=?",
+                (scope_id, position),
+            ).fetchone()
+            if row is None:
+                return None
+            event = json.loads(row["envelope_json"], object_pairs_hook=_reject_duplicate_pairs)
+            receipt = json.loads(row["receipt_json"], object_pairs_hook=_reject_duplicate_pairs)
+            return {
+                "event": event,
+                "receipt": receipt,
+                "integrity": integrity,
+                "verifiedHeadPosition": integrity["head"]["position"],
+                "verifiedHeadDigest": integrity["head"]["digest"],
+            }
+        except (sqlite3.Error, ValueError, TypeError) as exc:
+            raise JournalError("unknown", "journal event read could not complete: " + str(exc)) from exc
+        finally:
+            conn.close()
+
     def receipt(self, scope_id: str, idempotency_key: str) -> dict | None:
         scope_id = _validate_string(scope_id, "scope_id")
         idempotency_key = _validate_string(idempotency_key, "idempotency_key")

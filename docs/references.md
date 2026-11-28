@@ -1651,7 +1651,7 @@
 - **Relevant concepts:** Linked Data-based resource and service interoperability, discovery, vocabularies and cross-tool links.
 - **Use in GovCheck:** candidate transport/interoperability layer for linking typed artifact resources across tools.
 - **Limit:** an OSLC link or resource URI is not by itself a semantic assurance relation, evidence, authority grant or proof.
-- **Cited by:** [typed metamodel relation candidate](research/typed-metamodel-relation-candidate.md), [metamodel semantic-coverage audit](research/metamodel-semantic-coverage-audit.md).
+- **Cited by:** [typed metamodel relation candidate](research/typed-metamodel-relation-candidate.md).
 
 <a id="r-235"></a>
 

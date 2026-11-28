@@ -49,12 +49,12 @@ def _paths_for_event(lines: list[str], event: str, workflow: str) -> set[str] | 
         return None
     paths_index = None
     for index, line in enumerate(block):
-        if re.match(r"^    paths-ignore\\s*:", line):
+        if re.match(r"^    paths-ignore\s*:", line):
             raise WorkflowParseError(
                 f"{workflow}: {event}.paths-ignore is not supported by this audit; refusing to omit its routing semantics"
             )
-        if re.match(r"^    paths\\s*:", line):
-            if not re.match(r"^    paths:\\s*(?:#.*)?$", line):
+        if re.match(r"^    paths\s*:", line):
+            if not re.match(r"^    paths:\s*(?:#.*)?$", line):
                 raise WorkflowParseError(
                     f"{workflow}: inline or malformed {event}.paths syntax is unsupported: {line.strip()}"
                 )

@@ -230,7 +230,7 @@ def audit_category_policy(root: Path, reports: list[dict]) -> tuple[dict, list[d
                         findings.append({
                             "kind": "category-workflow-missing",
                             "category": name,
-                            workflow: workflow,
+                            "workflow": workflow,
                         })
                         continue
                     for event in EVENTS:

@@ -158,3 +158,17 @@ No choice above is adopted by this proposal.
 External platform sources are catalogued in [R-221](../references.md#r-221), [R-222](../references.md#r-222), [R-223](../references.md#r-223), [R-224](../references.md#r-224), [R-225](../references.md#r-225), [R-226](../references.md#r-226). Related records: [Architecture 0015](0015-governance-conformance-and-validation-plan.md), [Architecture 0022](0022-governance-capability-audit.md), [Architecture 0023](0023-bootstrap-governance-authority.md), [Specification 0007](../specifications/0007-canonical-governance-journal-protocol.md), [research synthesis](../research/acceptance-boundary-enforcement-2026-11.md), [issue #45](https://github.com/Martin-PB/govcheck/issues/45).
 
 **This record is a proposal. It does not enable branch protection, install hooks, select a forge or adopt a normative acceptance policy.**
+
+
+## 12. Bounded Pijul remote-boundary model
+
+The new `GovCheckPijulRemoteBoundary` TLA+ model treats a native Pijul change-set identity and the resulting channel version as distinct bindings. Its finite configurations check:
+
+- acceptance only for a trusted PASS bound to the exact change-set, candidate channel, current base and policy;
+- accepted risk remains a distinct decision and preserves the underlying FAIL/UNKNOWN/CONFLICT result;
+- stale evaluation after a channel or policy change cannot authorize application;
+- enforced mode cannot apply an uncontrolled change;
+- advisory and administrator-bypassable modes mark uncontrolled application with an explicit actor/reason;
+- a publication receipt binds the applied change-set/base/candidate, while receipt failure is modeled as occurring after application and cannot undo it.
+
+The model is registered in the root and reusable-package formal artifact catalogues and checked in three TLC configurations. The official Pijul manual documents local hooks before `record`, currently only that hook; it does not document a mandatory Nest remote acceptance hook (R-226). Accordingly, this model specifies obligations for a future controlled remote/server adapter. It is not evidence that the Nest currently enforces GovCheck, that all remote transports are intercepted, or that a production server adapter exists.

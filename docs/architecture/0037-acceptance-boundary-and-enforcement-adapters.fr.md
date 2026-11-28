@@ -158,3 +158,17 @@ Aucun de ces choix n'est adopté par cette proposition.
 Les sources externes des plateformes sont cataloguées dans [R-221](../references.fr.md#r-221), [R-222](../references.fr.md#r-222), [R-223](../references.fr.md#r-223), [R-224](../references.fr.md#r-224), [R-225](../references.fr.md#r-225), [R-226](../references.fr.md#r-226). Documents liés : [Architecture 0015](0015-governance-conformance-and-validation-plan.fr.md), [Architecture 0022](0022-governance-capability-audit.fr.md), [Architecture 0023](0023-bootstrap-governance-authority.fr.md), [Specification 0007](../specifications/0007-canonical-governance-journal-protocol.fr.md), [synthèse de recherche](../research/acceptance-boundary-enforcement-2026-11.fr.md), [issue #45](https://github.com/Martin-PB/govcheck/issues/45).
 
 **Ce document est une proposition. Il n'active aucune protection de branche, n'installe aucun hook, ne choisit aucune forge et n'adopte aucune politique normative d'acceptation.**
+
+
+## 12. Modèle borné de frontière distante Pijul
+
+Le nouveau modèle TLA+ `GovCheckPijulRemoteBoundary` distingue l'identité native d'un change-set Pijul de la version de canal résultante. Ses configurations finies vérifient :
+
+- l'acceptation uniquement pour un PASS de confiance lié au change-set, au canal candidat, à la base courante et à la politique exacts ;
+- le risque accepté reste une décision distincte et conserve le résultat FAIL/UNKNOWN/CONFLICT sous-jacent ;
+- une évaluation devenue obsolète après changement de canal ou de politique ne peut autoriser l'application ;
+- le mode enforced ne peut appliquer un changement non contrôlé ;
+- les modes advisory et bypass administrateur marquent l'application non contrôlée avec un acteur/motif explicite ;
+- le reçu de publication lie le change-set/base/candidat appliqués ; l'échec du reçu est modélisé après application et ne peut l'annuler.
+
+Le modèle est enregistré dans les catalogues d'artefacts formels racine et package réutilisable et vérifié dans trois configurations TLC. Le manuel officiel Pijul documente les hooks locaux avant `record`, actuellement seul ce hook ; il ne documente pas de hook obligatoire d'acceptation distante du Nest (R-226). Ce modèle spécifie donc les obligations d'un futur adaptateur distant/serveur contrôlé. Il ne prouve pas que le Nest applique actuellement GovCheck, que tous les transports distants sont interceptés, ni qu'un adaptateur serveur de production existe.

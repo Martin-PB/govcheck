@@ -106,3 +106,10 @@ For the academic and industrial foundations, including the limitations of model 
 - [Stable artifact catalogue](../../formal/artifacts.json) — `govcheck.journal-recovery`
 
 The model separates volatile pending state from the durable append-only journal. Durable append is the commit point; recovery replays to the durable head. Rollback appends a new event/revision whose content is restored from an earlier position. Git/Pijul replica observations are passive provenance/replication positions and cannot establish normative ordering. The model is bounded and does not specify a storage engine or prove crash safety of an implementation. The exact module/configuration passed SANY 2.1 and TLC 2.19 on PR #99 head `a5c9845b1df7a36c9b1f23af0a28bdabdd4300f3`: 178,549 states generated, 38,434 distinct, zero remaining, graph depth 9. All six configured invariants and `AppendOnly` passed. See [Architecture 0035](../architecture/0035-canonical-journal-recovery-model.md) and [workflow run 42848709804](https://github.com/Martin-PB/govcheck/actions/runs/42848709804). This is bounded model-checking evidence only; the model abstracts upstream authorization and does not prove implementation durability or eventual recovery.
+
+
+## Pijul remote boundary model
+
+The new bounded TLA+ model `GovCheckPijulRemoteBoundary` treats the Pijul channel version and native change-set identity as distinct model values. It checks that an applied channel update is bound to the exact candidate/base/policy and an authenticated accepted decision in enforced mode; accepted risk remains distinct from PASS; advisory/admin bypasses are explicitly marked; and post-receive receipt failure cannot undo an already-applied update.
+
+Three TLC configurations (enforced, advisory, administrator-bypassable) are wired into the dedicated workflow. This is a design model only, not a Nest/server implementation or proof of transport interception. See R-226 and formal artifact catalogue entry `govcheck.pijul-remote-acceptance-boundary`.

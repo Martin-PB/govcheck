@@ -80,7 +80,7 @@ def inspect_workflow(path: Path, root: Path) -> dict:
     for line in lines:
         match = USES_ITEM.match(line)
         if match:
-            target = match.group(1)
+            target = match.group(1).removeprefix("./")
             if not (root / target).is_file():
                 raise WorkflowParseError(f"{path}: reusable workflow does not exist: {target}")
             result["reusable_workflows"].append(target)

@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "1",
+  "evaluation": {
+    "id": "evaluation:fixture:001",
+    "evaluatedOn": "2026-11-28T12:00:00Z",
+    "result": "unknown",
+    "rules": [
+      {
+        "id": "synthetic-rule",
+        "class": "attested",
+        "result": "unknown",
+        "applies": true,
+        "reasons": [
+          "Synthetic fixture; no real evaluation is asserted."
+        ]
+      }
+    ]
+  },
+  "repository": {
+    "uri": "https://example.invalid/govcheck",
+    "vcsKind": "git"
+  },
+  "candidate": {
+    "revision": "1111111111111111111111111111111111111111",
+    "tree": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "contentDigest": {
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    }
+  },
+  "base": {
+    "revision": "2222222222222222222222222222222222222222",
+    "tree": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "contentDigest": {
+      "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    },
+    "reference": "refs/heads/main"
+  },
+  "governance": {
+    "scopeId": "repo:fixture",
+    "revision": "gov-fixture",
+    "digest": {
+      "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+    },
+    "profile": "synthetic"
+  },
+  "verifier": {
+    "id": "https://example.invalid/govcheck/verifier",
+    "version": "0.0.0-fixture",
+    "digest": {
+      "sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+    },
+    "configDigest": {
+      "sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+    }
+  },
+  "methods": [
+    {
+      "id": "method:fixture:001",
+      "kind": "inspection",
+      "result": "unknown",
+      "scope": "Schema fixture only.",
+      "assumptions": [],
+      "limitations": [
+        "No repository behavior is verified."
+      ],
+      "evidence": []
+    }
+  ],
+  "independentReview": {
+    "status": "unavailable",
+    "reason": "No real independent review is represented by this synthetic fixture."
+  }
+}

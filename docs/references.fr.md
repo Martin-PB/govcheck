@@ -1546,7 +1546,7 @@
 - **Sources primaires :** [Présentation des rulesets](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets) · [Règles disponibles](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/available-rules-for-rulesets) · [Branches protégées](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches).
 - **Utilité :** checks requis, source GitHub App attendue, fraîcheur stricte/souple par rapport à la base, revues et contournements.
 - **Limite :** toute personne ou intégration ayant le droit d'écriture peut définir un statut sauf si une App attendue est sélectionnée. Les rulesets ne prouvent ni la correction du vérificateur ni la disparition de l'autorité/bypass administrateur.
-- **Cité par :** [Architecture 0037](architecture/0037-acceptance-boundary-and-enforcement-adapters.fr.md), [recherche sur la frontière d'acceptation](research/acceptance-boundary-enforcement-2026-11.fr.md), [journal des événements](work-portfolio/events.fr.md).
+- **Cité par :** [Architecture 0037](architecture/0037-acceptance-boundary-and-enforcement-adapters.fr.md), [recherche sur la frontière d'acceptation](research/acceptance-boundary-enforcement-2026-11.fr.md), [registre des travaux](work-portfolio/work-items.md), [journal des événements](work-portfolio/events.fr.md).
 
 <a id="r-222"></a>
 ### R-222 — Branches protégées et checks externes GitLab
@@ -1554,7 +1554,7 @@
 - **Sources primaires :** [Branches protégées](https://docs.gitlab.com/user/project/repository/branches/protected/) · [Checks de statut externes](https://docs.gitlab.com/user/project/merge_requests/status_checks/) · [Contrôles de merge](https://docs.gitlab.com/user/project/merge_requests/merge_checks/).
 - **Utilité :** permissions de push/merge ; checks externes liés au HEAD courant de la merge request ; authentification HMAC ; rejet HTTP 409 des réponses obsolètes. Les checks externes en échec ne bloquent le merge que si « Status checks must succeed » est activé.
 - **Limite :** les checks externes dépendent du niveau d'abonnement (GitLab Ultimate) et nécessitent un endpoint de service ; le statut de la plateforme n'est pas la provenance des preuves GovCheck.
-- **Cité par :** [Architecture 0037](architecture/0037-acceptance-boundary-and-enforcement-adapters.fr.md), [recherche sur la frontière d'acceptation](research/acceptance-boundary-enforcement-2026-11.fr.md), [registre des travaux](work-portfolio/work-items.fr.md), [journal des événements](work-portfolio/events.fr.md).
+- **Cité par :** [Architecture 0037](architecture/0037-acceptance-boundary-and-enforcement-adapters.fr.md), [recherche sur la frontière d'acceptation](research/acceptance-boundary-enforcement-2026-11.fr.md), [journal des événements](work-portfolio/events.fr.md).
 
 <a id="r-223"></a>
 ### R-223 — Branches protégées et checks de statut Gitea

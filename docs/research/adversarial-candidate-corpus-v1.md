@@ -51,11 +51,11 @@ The machine-readable manifest is the source of the case IDs and exact evidence p
 2. **No synthesized independent reviewer.** Test keys and fixture principals do not establish an independent human reviewer.
 3. **No general Pijul enforcement.** A local hook is not a mandatory remote acceptance boundary.
 4. **No arbitrary project-code sandbox.** Execution isolation, secret minimization and resource budgets remain candidate work in #218.
-5. **No complete proof-artifact attack suite yet.** Stale model-checking reports and Lean proof artifacts containing forbidden axioms remain planned cases.
+5. **Partial AC-018 coverage only.** Synthetic tests now reject stale model/config/workflow/report inputs. The unsigned manifest does not authenticate the hosted run or bind governance revision/evaluator identity; AC-019's Lean `sorry`/axiom injection remains planned.
 
 ## 5. Next increments
 
-- Turn AC-018–AC-019 into exact-candidate fixtures with explicit expected fail/unknown outcomes and provenance; expand AC-017 only for workflow-tampering paths not covered by the routing audit.
+- Turn AC-019 (Lean `sorry`/axiom injection) into exact-candidate negative fixtures; expand AC-017 only for workflow-tampering paths not covered by the routing audit.
 - Extend the corpus with the specific attack paths and trust assumptions from Architecture 0006.
 - Bind any new test report to the corpus revision, test/tool version, exact candidate/base, applicable policy and verifier identity.
 - Add a real forge-boundary experiment only when its required configuration and test environment are explicitly authorized and available.

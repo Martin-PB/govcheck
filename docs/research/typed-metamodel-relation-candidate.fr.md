@@ -88,3 +88,6 @@ Cette matrice est un artefact de recherche pour l'issue #73. Elle ne met pas à 
 Avant qu'une relation native devienne opérante, son profil de mapping doit consigner : spécification/version source exacte ; identifiant et domaine/cible de la relation source ; relation candidate GovCheck ; direction et cardinalité ; préservation sémantique ou perte explicite ; constructs non mappés ; conservation du payload natif ; révision et applicabilité ; provenance ; autorité si normative ; et fixtures positives/négatives.
 
 Une correspondance de label n'est pas une preuve de mapping. Un profil incapable de justifier la relation reste candidate/unsupported et ne doit pas alimenter l'évaluateur. Voir le [catalogue de références](../references.fr.md#r-234) et l'[audit de couverture sémantique](metamodel-semantic-coverage-audit.fr.md).
+
+
+Sources du crosswalk : [R-4](../references.fr.md#r-04) · [R-24](../references.fr.md#r-24) · [R-34](../references.fr.md#r-34) · [R-73](../references.fr.md#r-73) · [R-95](../references.fr.md#r-95) · [R-102](../references.fr.md#r-102) · [R-119](../references.fr.md#r-119) · [R-234](../references.fr.md#r-234) · [R-235](../references.fr.md#r-235).

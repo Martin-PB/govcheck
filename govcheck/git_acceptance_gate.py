@@ -20,10 +20,12 @@ try:
     from govcheck import check as check_module
     from govcheck import acceptance_decision
     from govcheck import acceptance_journal
+    from govcheck import vcs_provenance
 except ImportError:  # standalone GovCheck installation
     import check as check_module
     import acceptance_decision
     import acceptance_journal
+    import vcs_provenance
 
 OID_RE = re.compile(r"^(?:[0-9a-f]{40}|[0-9a-f]{64})$")
 HEX64_RE = re.compile(r"^[0-9a-f]{64}$")
@@ -321,6 +323,11 @@ def run_gate(args, env=None, runner=subprocess.run, evaluator=None, decision_ver
             payload["result"] = decision.get("result", "unknown")
             payload["risk_acceptance"] = _risk_v0(decision)
             payload["reason"] = decision.get("reason", "decision verification returned no reason")
+            payload["candidate_content_digest"] = "sha256:" + content_digest
+            if any(env.get(key, "").strip() for key in ("GOVCHECK_JOURNAL_DB", "GOVCHECK_JOURNAL_SCOPE_ID", "GOVCHECK_JOURNAL_AUTHORITY_REVISION")):
+                base_root = temp_root / "base"
+                _materialize_candidate(git_dir, base_revision, base_root, runner, env, timeout)
+                payload["base_content_digest"] = "sha256:" + check_module.candidate_content_digest(base_root)
             try:
                 acceptance_journal.append_verified_decision(env, payload)
             except acceptance_journal.AcceptanceJournalError as exc:

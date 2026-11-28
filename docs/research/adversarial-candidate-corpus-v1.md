@@ -1,4 +1,4 @@
-# Adversarial candidate corpus — version 1.1.0
+# Adversarial candidate corpus — version 1.2.0
 
 **Status:** version 1.1.0 corpus catalogue with executable-test pointers; not a claim that every attack has a runnable fixture or that the acceptance boundary is deployed.  
 **Snapshot:** corpus v1.1.0 source revision `d25e417f41eb67619cc6a9df285cdb89b317dd70`; the v1.0.0 baseline was audited against `451d1e1ff929946274edba8e844e08d74fdd306f`.  
@@ -36,13 +36,14 @@ There is deliberately no shared production trust-policy digest in this corpus. E
 | AC-014–AC-015 | Journal concurrency and canonical JSON parsing | `tests/test_journal.py` | Unit-tested |
 | AC-016 | Enforced/advisory/admin-bypass acceptance-boundary abstraction | `formal/tla/GovCheckAcceptanceBoundary.tla` and configurations | Model-only |
 | AC-017 | Workflow path-filter symmetry, reusable-workflow routing, unsupported path syntax and model-input routing | `tests/test_ci_workflow_routing_audit.py` | Unit-tested on synthetic repository fixtures; not a forge gate |
-| AC-018–AC-019 | Stale TLC report replay; Lean `sorry`/axiom injection | No corpus-specific executable test yet | Planned |
+| AC-018 | Stale TLC report replay across model/config/workflow/report revisions | `tests/test_tlc_run_manifest.py` | Unit-tested on synthetic Git repositories; unsigned manifest, not hosted-run attestation |
+| AC-019 | Lean `sorry`/axiom injection | No corpus-specific executable test yet | Planned |
 | AC-020 | Real GitHub protected-ref rejection and bypass | Acceptance-boundary research and live configuration still need verification | Not demonstrated; tracked by #45 |
 | AC-023 | Report-only workflow is not a mandatory acceptance check under the live ruleset | Workflow and live ruleset snapshot | Not demonstrated; required-check list is empty; tracked by #45 |
 | AC-021 | Pijul remote/Nest enforcement bypass | Platform research only | Planned; no remote enforcement adapter |
 | AC-022 | Malicious repository-controlled check execution, secret exfiltration and resource exhaustion | Architecture 0006; candidate issue #218 | Planned; no sandbox selected |
 
-The machine-readable manifest is the source of the case IDs and exact evidence pointers. AC-017 now maps the existing synthetic workflow-routing tests: asymmetric PR/push path filters, missing or unrouted reusable workflows, unsupported path syntax, unjustified globs and model-input routing. These tests do not prove a live GitHub required-check gate. AC-023 records the distinct live gap: the report-only workflow is not a mandatory check under the current ruleset. `tests/test_adversarial_candidate_corpus.py` checks manifest identity/versioning, unique IDs, required semantics, evidence-file existence and referenced Python test-method names. This integrity test does not itself execute the underlying attacks.
+The machine-readable manifest is the source of the case IDs and exact evidence pointers. Version 1.2.0 adds AC-018 source-bound TLC run manifests and synthetic stale-replay tests. The manifest records checkout/run metadata, model/config/reusable-workflow Git blobs, a discoverable caller-workflow blob, and report digests; tests reject drift and replay. It is unsigned and does not bind governance revision/evaluator identity or authenticate GitHub's hosted execution. It is not proof of a mandatory check. AC-017 now maps the existing synthetic workflow-routing tests: asymmetric PR/push path filters, missing or unrouted reusable workflows, unsupported path syntax, unjustified globs and model-input routing. These tests do not prove a live GitHub required-check gate. AC-023 records the distinct live gap: the report-only workflow is not a mandatory check under the current ruleset. `tests/test_adversarial_candidate_corpus.py` checks manifest identity/versioning, unique IDs, required semantics, evidence-file existence and referenced Python test-method names. This integrity test does not itself execute the underlying attacks.
 
 ## 4. Important limits
 

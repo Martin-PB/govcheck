@@ -72,6 +72,12 @@ class TlcRunManifestTests(unittest.TestCase):
         errors = MODULE.verify_manifest(self.root, self.manifest)
         self.assertTrue(any("model" in error for error in errors))
 
+
+    def test_rejects_stale_transitive_tla_source_tree(self):
+        self.commit_change("formal/tla/OtherModule.tla", "---- MODULE OtherModule ----\\n====\\n")
+        errors = MODULE.verify_manifest(self.root, self.manifest)
+        self.assertTrue(any("formalTlaTree" in error for error in errors))
+
     def test_rejects_stale_configuration_revision(self):
         self.commit_change("formal/tla/Example.cfg", "SPECIFICATION Other\n")
         errors = MODULE.verify_manifest(self.root, self.manifest)

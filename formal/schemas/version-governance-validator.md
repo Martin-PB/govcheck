@@ -1,5 +1,7 @@
 # Version-governance bundle validator
 
+See the [fixture and bundle validation contract](fixture-validation-contract.md) for the distinction between individual schema instances and cross-record bundles.
+
 **Status:** experimental implementation proposal. It does not make Architectures 0017/0018 normative and is not connected to release publication or the current catalogue.
 
 ## Purpose

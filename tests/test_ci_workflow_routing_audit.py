@@ -1,3 +1,4 @@
+import json
 import importlib.util
 import tempfile
 import unittest
@@ -14,6 +15,15 @@ class CIWorkflowRoutingAuditTests(unittest.TestCase):
         self.temp = tempfile.TemporaryDirectory()
         self.root = Path(self.temp.name)
         (self.root / ".github" / "workflows").mkdir(parents=True)
+        policy_dir = self.root / "docs"
+        policy_dir.mkdir()
+        (policy_dir / "ci-routing-glob-policy.json").write_text(
+            json.dumps({
+                "format": "govcheck.ci-routing-glob-policy/v1",
+                "patterns": [{"pattern": "src/**", "rationale": "Test-only source glob."}],
+            }),
+            encoding="utf-8",
+        )
 
     def tearDown(self):
         self.temp.cleanup()
@@ -44,6 +54,10 @@ jobs:
         self.assertEqual(report["finding_count"], 0)
 
     def test_asymmetric_paths_are_reported(self):
+        (self.root / "docs" / "ci-routing-glob-policy.json").write_text(
+            json.dumps({"format": "govcheck.ci-routing-glob-policy/v1", "patterns": []}),
+            encoding="utf-8",
+        )
         self.write("asymmetric.yml", """name: asymmetric
 on:
   pull_request:
@@ -117,6 +131,45 @@ on:
 """)
         with self.assertRaisesRegex(AUDIT.WorkflowParseError, "inline or malformed"):
             AUDIT.audit_workflows(self.root)
+
+    def test_unjustified_workflow_glob_is_reported(self):
+        (self.root / "docs" / "ci-routing-glob-policy.json").write_text(
+            json.dumps({"format": "govcheck.ci-routing-glob-policy/v1", "patterns": []}),
+            encoding="utf-8",
+        )
+        self.write("glob.yml", """name: glob
+on:
+  pull_request:
+    paths:
+      - 'docs/**'
+  push:
+    paths:
+      - 'docs/**'
+""")
+        report = AUDIT.audit_workflows(self.root)
+        findings = [item for item in report["findings"] if item["kind"] == "unjustified-glob"]
+        self.assertEqual([item["pattern"] for item in findings], ["docs/**"])
+
+    def test_stale_glob_justification_is_reported(self):
+        (self.root / "docs" / "ci-routing-glob-policy.json").write_text(
+            json.dumps({
+                "format": "govcheck.ci-routing-glob-policy/v1",
+                "patterns": [{"pattern": "unused/**", "rationale": "No longer used."}],
+            }),
+            encoding="utf-8",
+        )
+        self.write("plain.yml", """name: plain
+on:
+  pull_request:
+    paths:
+      - 'src/file.py'
+  push:
+    paths:
+      - 'src/file.py'
+""")
+        report = AUDIT.audit_workflows(self.root)
+        findings = [item for item in report["findings"] if item["kind"] == "stale-glob-justification"]
+        self.assertEqual([item["pattern"] for item in findings], ["unused/**"])
 
     def test_unsupported_path_entry_is_rejected_not_ignored(self):
         self.write("bad.yml", """name: bad

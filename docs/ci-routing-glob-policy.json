@@ -1,0 +1,29 @@
+{
+  "format": "govcheck.ci-routing-glob-policy/v1",
+  "patterns": [
+    {
+      "pattern": "formal/cslib-compat/**",
+      "rationale": "Include the complete compatibility corpus and its configuration/fixture files in the CsLib compatibility workflow."
+    },
+    {
+      "pattern": "formal/lean/**",
+      "rationale": "Compile and check the complete Lean coherence project, including modules and project metadata."
+    },
+    {
+      "pattern": "formal/tla/GovCheckAcceptanceBoundary*.cfg",
+      "rationale": "Include every bounded TLC configuration for the acceptance-boundary model family."
+    },
+    {
+      "pattern": "formal/schemas/**",
+      "rationale": "Validate all formal JSON Schemas so newly added schemas cannot bypass the schema-validation workflow."
+    },
+    {
+      "pattern": "formal/fixtures/**",
+      "rationale": "Validate all formal synthetic fixtures so newly added examples cannot bypass schema conformance checks."
+    },
+    {
+      "pattern": "formal/tla/GovCheckPijulRemoteBoundary*.cfg",
+      "rationale": "Include every bounded TLC configuration for the Pijul remote-boundary model family."
+    }
+  ]
+}

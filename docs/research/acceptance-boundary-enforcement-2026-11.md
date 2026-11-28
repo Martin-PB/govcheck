@@ -281,3 +281,21 @@ If the ref was updated without a matching authenticated acceptance event (for ex
 Install the wrapper as `hooks/post-receive` (review it and set executable permission in the server deployment). Configure the same external journal DB and scope as pre-receive, plus `GOVCHECK_EXPECTED_REPOSITORY_ID`, `GOVCHECK_JOURNAL_AUTHORITY_ID`, `GOVCHECK_JOURNAL_AUTHORITY_REVISION` and `GOVCHECK_GOVERNANCE_REVISION`. The adapter verifies those genesis bindings and only monitors refs matching `GOVCHECK_PROTECTED_REFS` (default `refs/heads/main`). No journal genesis is created automatically.
 
 This completes a local event sequence—gate outcome before update, publication receipt after update—for Git only. It does not configure GitHub, prove the live ruleset cannot be bypassed, or implement a Pijul remote/server boundary. Those remain explicit criteria of #45.
+
+
+## 17. Safe post-receive hook installation
+
+`scripts/install-govcheck-git-post-receive.py` installs the publication receipt adapter into a controlled bare Git repository. It requires an administrator-owned environment file with mode 0600 outside the bare repository and a GovCheck package root outside the bare repository. It verifies the target is bare, copies the launcher to a server-controlled helper path, creates a wrapper that loads the external environment and pins the package path, and sets both hook files to mode 0755.
+
+The installer refuses to overwrite an existing `hooks/post-receive` or helper; it does not implicitly chain arbitrary hooks. Review and explicitly compose any existing post-receive behavior before installation. The command only prepares a local server repository; it does not alter this GitHub repository or its ruleset.
+
+Example (replace paths with administrator-controlled locations):
+
+```sh
+python3 scripts/install-govcheck-git-post-receive.py \\
+  /srv/git/project.git \\
+  /etc/govcheck/project-hook.env \\
+  /opt/govcheck
+```
+
+The environment file must pin the journal DB/scope, expected repository identity, genesis authority ID/revision, governance revision and protected refs. This installer does not create journal genesis or provision trust keys.

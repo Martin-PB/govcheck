@@ -598,7 +598,7 @@
 - **Event type:** `candidate-execution-isolation-research-merged`.
 - **Recorded:** 2026-11-28.
 - **Source issue/PR:** [#218](https://github.com/Martin-PB/govcheck/issues/218), [PR #222](https://github.com/Martin-PB/govcheck/pull/222), merged at `d25e417f41eb67619cc6a9df285cdb89b317dd70`.
-- **Artifacts:** bilingual execution-isolation research; comparison of Landlock, seccomp, namespaces, cgroups v2, OCI, Nix, ephemeral VMs and microVMs; candidate profiles P0–P3; execution-attestation field set; primary sources R-236–R-242.
+- **Artifacts:** bilingual execution-isolation research; comparison of Landlock, seccomp, namespaces, cgroups v2, OCI, Nix, ephemeral VMs and microVMs; candidate profiles P0–P3; execution-attestation field set; primary sources catalogued in the reference register.
 - **Validation:** `receipt-check`, `reference-integrity`, `package-alignment` and `govcheck-check` all succeeded on the PR head.
 - **Disposition:** issue #218 remains in progress; the report proposes a contract and options but adopts no sandbox, runner or universal execution policy.
 - **Limit:** no sandbox implementation or adversarial execution claim is made.

@@ -1,0 +1,41 @@
+name: TLA Pijul remote acceptance-boundary scenarios
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/tla-pijul-remote-boundary.yml'
+      - '.github/workflows/tla-model-reusable.yml'
+      - 'formal/tla/GovCheckPijulRemoteBoundary.tla'
+      - 'formal/tla/GovCheckPijulRemoteBoundary*.cfg'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/tla-pijul-remote-boundary.yml'
+      - '.github/workflows/tla-model-reusable.yml'
+      - 'formal/tla/GovCheckPijulRemoteBoundary.tla'
+      - 'formal/tla/GovCheckPijulRemoteBoundary*.cfg'
+
+permissions:
+  contents: read
+
+jobs:
+  enforced:
+    name: Pijul enforced remote — no uncontrolled apply
+    uses: ./.github/workflows/tla-model-reusable.yml
+    with:
+      model: GovCheckPijulRemoteBoundary
+      config: GovCheckPijulRemoteBoundary.cfg
+
+  advisory:
+    name: Pijul advisory remote — bypass explicitly marked
+    uses: ./.github/workflows/tla-model-reusable.yml
+    with:
+      model: GovCheckPijulRemoteBoundary
+      config: GovCheckPijulRemoteBoundaryAdvisory.cfg
+
+  administrator-bypass:
+    name: Pijul admin bypass — residual authority explicit
+    uses: ./.github/workflows/tla-model-reusable.yml
+    with:
+      model: GovCheckPijulRemoteBoundary
+      config: GovCheckPijulRemoteBoundaryAdminBypass.cfg

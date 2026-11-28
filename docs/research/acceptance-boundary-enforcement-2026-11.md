@@ -299,3 +299,8 @@ python3 scripts/install-govcheck-git-post-receive.py \\
 ```
 
 The environment file must pin the journal DB/scope, expected repository identity, genesis authority ID/revision, governance revision and protected refs. This installer does not create journal genesis or provision trust keys.
+
+
+## 18. Required provenance settings for journal-backed Git acceptance
+
+The typed Git provenance binding introduced in the journal implementation requires `GOVCHECK_REPOSITORY_URI` and `GOVCHECK_GOVERNANCE_DIGEST` in addition to the journal settings. The governance digest must identify the exact governed governance package/revision; it is not the trust-policy or acceptance-policy digest. `GOVCHECK_JOURNAL_AUTHORITY_ID` pins the genesis authority and is required for unauthenticated gate-attempt receipts. When journal mode is enabled, the gate materializes the base snapshot as well as the candidate to compute exact content digests. Missing values or invalid provenance return UNKNOWN and reject the pre-receive update.

@@ -4,7 +4,7 @@ Les travaux formels de GovCheck sont développés progressivement et restent dis
 
 ## Corpus adversarial d'acceptation
 
-- [Catalogue du corpus version 1.0.0](../research/adversarial-candidate-corpus-v1.fr.md) · [English](../research/adversarial-candidate-corpus-v1.md)
+- [Catalogue du corpus version 1.1.0](../research/adversarial-candidate-corpus-v1.fr.md) · [English](../research/adversarial-candidate-corpus-v1.md)
 - [Manifeste du corpus lisible par machine](../../formal/adversarial-candidate-corpus-v1.json)
 - [Test d'intégrité du manifeste et des preuves du corpus](../../tests/test_adversarial_candidate_corpus.py)
 

@@ -1584,7 +1584,7 @@
 - **Sources primaires :** [Configuration et hooks Pijul](https://pijul.org/manual/configuration.html) · [Contribuer sur le Nest](https://pijul.org/manual/the_nest/contributing).
 - **Utilité :** le hook Pijul documenté s'exécute avant `pijul record` ; le manuel indique que seul le hook `record` est actuellement pris en charge. Le Nest permet le push direct aux utilisateurs autorisés ou l'attachement de changements à un canal de discussion.
 - **Limite :** le manuel cité ne documente aucun hook distant obligatoire pre-push/pre-receive. L'enforcement conditionnel côté serveur exige un remote/serveur contrôlé ; un hook ou wrapper local reste coopératif et contournable.
-- **Cité par :** [Architecture 0037](architecture/0037-acceptance-boundary-and-enforcement-adapters.fr.md), [Architecture 0038](architecture/0038-local-canonical-journal-implementation.fr.md), [documentation du modèle formel](formal/README.fr.md), [recherche sur la frontière d'acceptation](research/acceptance-boundary-enforcement-2026-11.fr.md), [registre des travaux](work-portfolio/work-items.fr.md), [journal des événements](work-portfolio/events.fr.md), [documentation formelle du package](../govcheck/docs/formal/README.fr.md).
+- **Cité par :** [Architecture 0037](architecture/0037-acceptance-boundary-and-enforcement-adapters.fr.md), [Architecture 0038](architecture/0038-local-canonical-journal-implementation.fr.md), [documentation du modèle formel](formal/README.fr.md), [recherche sur la frontière d'acceptation](research/acceptance-boundary-enforcement-2026-11.fr.md), [registre des travaux](work-portfolio/work-items.fr.md), [journal des événements](work-portfolio/events.fr.md).
 
 <a id="r-227"></a>
 ### R-227 — DSSE : Dead Simple Signing Envelope

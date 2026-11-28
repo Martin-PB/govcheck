@@ -18,7 +18,7 @@ EVENTS = ("pull_request", "push")
 PATH_ITEM = re.compile(r"""^      -\s+(?:"([^"]+)"|'([^']+)'|([^\s#]+))\s*(?:#.*)?$""")
 USES_ITEM = re.compile(r"""^\s{4}uses:\s*['"]?(\./\.github/workflows/[^\s'"]+\.ya?ml)['"]?\s*(?:#.*)?$""")
 GLOB_POLICY_FILE = Path("docs/ci-routing-glob-policy.json")
-GLOB_PATTERN = re.compile(r"[*?\\[\\]{}!]")
+GLOB_PATTERN = re.compile(r"[*?\[\]{}!]")
 
 
 class WorkflowParseError(ValueError):

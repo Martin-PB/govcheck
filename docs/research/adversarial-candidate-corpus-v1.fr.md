@@ -35,12 +35,14 @@ Ce corpus ne contient volontairement aucun digest partagé de politique de confi
 | AC-012–AC-013 | Configuration du ruleset forge et références non applicables | `tests/test_govcheck_forge.py`, `tests/test_govcheck_git_pre_receive.py` | Tests unitaires ; configuration seulement |
 | AC-014–AC-015 | Concurrence du journal et parsing JSON canonique | `tests/test_journal.py` | Tests unitaires |
 | AC-016 | Abstraction de frontière d'acceptation enforced/advisory/bypass admin | `formal/tla/GovCheckAcceptanceBoundary.tla` et configurations | Modèle uniquement |
-| AC-017–AC-019 | Altération du workflow/ruleset, rejeu d'un rapport TLC périmé, injection de `sorry`/axiome Lean | Pas encore de test exécutable propre au corpus | Planifié |
+| AC-017 | Symétrie des filtres de chemins, routage des workflows réutilisables, syntaxe de chemins non prise en charge et routage des entrées de modèles | `tests/test_ci_workflow_routing_audit.py` | Tests unitaires sur fixtures de dépôt synthétiques ; pas un gate de forge |
+| AC-018–AC-019 | Rejeu d'un rapport TLC périmé ; injection de `sorry`/axiome Lean | Aucun test exécutable propre au corpus | Planifié |
 | AC-020 | Rejet réel d'une référence protégée GitHub et bypass | Recherche sur la frontière d'acceptation ; vérification de la configuration réelle encore requise | Non démontré ; suivi par #45 |
+| AC-023 | Workflow report-only non obligatoire comme check d'acceptation dans le ruleset réel | Workflow et instantané du ruleset | Non démontré ; liste des checks requis vide ; suivi par #45 |
 | AC-021 | Bypass de l'enforcement distant Pijul/Nest | Recherche plateforme uniquement | Planifié ; aucun adaptateur distant d'enforcement |
 | AC-022 | Exécution hostile de contrôles fournis par le dépôt, exfiltration de secrets et épuisement de ressources | Architecture 0006 ; issue candidate #218 | Planifié ; aucun sandbox sélectionné |
 
-Le manifeste lisible par machine constitue la source des identifiants de cas et des pointeurs de preuve exacts. `tests/test_adversarial_candidate_corpus.py` vérifie l'identité/version du manifeste, l'unicité des IDs, les sémantiques requises, l'existence des fichiers de preuve et les noms des méthodes de test Python référencées. Ce test d'intégrité n'exécute pas lui-même les attaques sous-jacentes.
+Le manifeste lisible par machine constitue la source des identifiants de cas et des pointeurs de preuve exacts. AC-017 référence désormais les tests de routage synthétiques : asymétrie des filtres PR/push, workflows réutilisables absents ou non routés, syntaxe non prise en charge, globs non justifiés et routage des entrées de modèles. Ces tests ne prouvent pas l'existence d'un gate GitHub obligatoire. AC-023 enregistre la lacune distincte : le workflow report-only n'est pas un check obligatoire dans le ruleset actuel. `tests/test_adversarial_candidate_corpus.py` vérifie l'identité/version du manifeste, l'unicité des IDs, les sémantiques requises, l'existence des fichiers de preuve et les noms des méthodes de test Python référencées. Ce test d'intégrité n'exécute pas lui-même les attaques sous-jacentes.
 
 ## 4. Limites importantes
 
@@ -52,7 +54,7 @@ Le manifeste lisible par machine constitue la source des identifiants de cas et 
 
 ## 5. Incréments suivants
 
-- Transformer AC-017–AC-019 en fixtures liées à des candidats exacts, avec résultats fail/unknown attendus et provenance explicite.
+- Transformer AC-018–AC-019 en fixtures liées à des candidats exacts, avec résultats fail/unknown attendus et provenance explicite ; étendre AC-017 aux chemins d'altération non couverts par l'audit de routage.
 - Étendre le corpus aux chemins d'attaque et hypothèses de confiance précis de l'Architecture 0006.
 - Lier tout nouveau rapport de test à la révision du corpus, à la version des outils/tests, au candidat/base exacts, à la politique applicable et à l'identité du vérificateur.
 - N'ajouter une expérience de frontière forge réelle que lorsque sa configuration requise et son environnement de test sont explicitement autorisés et disponibles.

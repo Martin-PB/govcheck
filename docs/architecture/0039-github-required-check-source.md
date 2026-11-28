@@ -29,3 +29,6 @@ The workflow creates a pending check on PR lifecycle events. To ensure base-bran
 
 
 Configuration and activation steps are maintained in the [authenticated receipt check setup guide](../setup/github-authenticated-receipt-check.md), including a local preflight command.
+
+
+The check source is opt-in via the public repository variable `GOVCHECK_RECEIPT_CHECK_ENABLED=true`. While disabled, PR lifecycle events neutralize stale pending receipt checks; receipt comments do not trigger verification. Enable it only after the trust policy, pins and required-check ruleset are configured.

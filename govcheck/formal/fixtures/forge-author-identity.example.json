@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "1",
+  "candidateRevision": "cccccccccccccccccccccccccccccccccccccccc",
+  "candidateContentSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "baseRevision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "governanceRevision": "gov-fixture",
+  "scopeId": "repo:fixture",
+  "authorPrincipal": "principal:synthetic-author",
+  "sourceUri": "https://github.com/example/project",
+  "assertedOn": "2026-11-28T12:00:00Z"
+}

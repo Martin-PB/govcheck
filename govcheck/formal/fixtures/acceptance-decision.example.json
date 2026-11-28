@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "1",
+  "decisionId": "fixture:acceptance:001",
+  "repositoryId": "repo:fixture",
+  "candidateRevision": "cccccccccccccccccccccccccccccccccccccccc",
+  "candidateContentSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "baseRevision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "ref": "refs/heads/example",
+  "governanceRevision": "gov-fixture",
+  "scopeId": "repo:fixture",
+  "evaluationDigest": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+  "result": "reject",
+  "decidedOn": "2026-11-28T12:00:00Z",
+  "rationale": "Synthetic schema-conformance fixture only; not an actual acceptance decision.",
+  "riskAcceptance": null
+}

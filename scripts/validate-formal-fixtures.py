@@ -27,6 +27,8 @@ FIXTURE_DIRS = (
 PACKAGE_ONLY_FIXTURE_SCHEMAS = {
     "govcheck/formal/schemas/independent-review-v1.schema.json",
     "govcheck/formal/schemas/vcs-provenance-v1.schema.json",
+    "govcheck/formal/schemas/acceptance-decision-v1.schema.json",
+    "govcheck/formal/schemas/forge-author-identity-v1.schema.json",
 }
 
 
@@ -46,6 +48,10 @@ def fixture_schema_name(name: str, *, packaged: bool = False) -> str | None:
         return "govcheck/formal/schemas/independent-review-v1.schema.json"
     if name == "vcs-provenance.example.json":
         return "govcheck/formal/schemas/vcs-provenance-v1.schema.json"
+    if name == "acceptance-decision.example.json":
+        return "govcheck/formal/schemas/acceptance-decision-v1.schema.json"
+    if name == "forge-author-identity.example.json":
+        return "govcheck/formal/schemas/forge-author-identity-v1.schema.json"
     if name == "dependency-edge.example.json":
         schema = "dependency-edge.schema.json"
     elif name.startswith("evidence-record-") and name.endswith(".example.json"):
@@ -201,7 +207,7 @@ def audit(root: str | Path) -> dict:
         "fixture_schema_validations": fixture_schema_validation_count,
         "package_schemas_fixture_covered": sum(name in covered for name in schemas if name.startswith("govcheck/formal/schemas/")),
         "package_only_schemas_fixture_covered": sum(name in covered for name in PACKAGE_ONLY_FIXTURE_SCHEMAS),
-        "fixture_coverage_scope": "Formal and packaged fixture files are mapped to their respective source/package schemas. When a packaged fixture is absent, its formal fixture is used as a fallback against the package projection. Package-only independent-review predicate and VCS-provenance fixtures are included; other package-only schemas and the documentation schema remain meta-validated but not fixture-covered.",
+        "fixture_coverage_scope": "Formal and packaged fixture files are mapped to their respective source/package schemas. When a packaged fixture is absent, its formal fixture is used as a fallback against the package projection. Package-only independent-review, VCS-provenance, acceptance-decision and forge-author-identity fixtures are included; other package-only schemas and the documentation schema remain meta-validated but not fixture-covered.",
         "finding_count": len(findings),
         "findings": findings,
         "limitations": [

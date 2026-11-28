@@ -21,10 +21,10 @@ class FormalFixtureValidationTests(unittest.TestCase):
         self.assertEqual(report["formal_schemas_checked"], 5)
         self.assertEqual(report["package_schemas_checked"], 14)
         self.assertEqual(report["documentation_schemas_checked"], 1)
-        self.assertEqual(report["fixtures_checked"], 14)
-        self.assertEqual(report["fixture_schema_validations"], 16)
-        self.assertEqual(report["package_schemas_fixture_covered"], 7)
-        self.assertEqual(report["package_only_schemas_fixture_covered"], 2)
+        self.assertEqual(report["fixtures_checked"], 16)
+        self.assertEqual(report["fixture_schema_validations"], 18)
+        self.assertEqual(report["package_schemas_fixture_covered"], 9)
+        self.assertEqual(report["package_only_schemas_fixture_covered"], 4)
         self.assertEqual(report["finding_count"], 0)
 
     def test_each_schema_rejects_missing_required_property(self):
@@ -138,6 +138,24 @@ class FormalFixtureValidationTests(unittest.TestCase):
         invalid["vcs"]["kind"] = "unknown-vcs"
         findings = MODULE.validate_instance(invalid, schema, registry, "invalid-vcs-provenance")
         self.assertTrue(findings)
+
+    def test_package_only_acceptance_decision_fixture_is_strict(self):
+        schemas, registry = MODULE.load_schemas(ROOT)
+        schema = schemas["govcheck/formal/schemas/acceptance-decision-v1.schema.json"]
+        fixture = MODULE._read_json(ROOT / "govcheck/formal/fixtures/acceptance-decision.example.json")
+        self.assertEqual(MODULE.validate_instance(fixture, schema, registry, "acceptance-decision.example.json"), [])
+        invalid = copy.deepcopy(fixture)
+        invalid["result"] = "approved"
+        self.assertTrue(MODULE.validate_instance(invalid, schema, registry, "invalid-acceptance-decision"))
+
+    def test_package_only_forge_author_identity_fixture_is_strict(self):
+        schemas, registry = MODULE.load_schemas(ROOT)
+        schema = schemas["govcheck/formal/schemas/forge-author-identity-v1.schema.json"]
+        fixture = MODULE._read_json(ROOT / "govcheck/formal/fixtures/forge-author-identity.example.json")
+        self.assertEqual(MODULE.validate_instance(fixture, schema, registry, "forge-author-identity.example.json"), [])
+        invalid = copy.deepcopy(fixture)
+        invalid["authorPrincipal"] = ""
+        self.assertTrue(MODULE.validate_instance(invalid, schema, registry, "invalid-forge-author-identity"))
 
     def test_malformed_fixture_format_is_rejected(self):
         schemas, registry = MODULE.load_schemas(ROOT)

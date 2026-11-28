@@ -565,3 +565,28 @@
 - **Validation:** 187 Python tests, reference integrity and package alignment passed on the final PR head.
 - **Guarantees:** signature verification over exact DSSE PAE bytes; pinned trust policy, OpenSSL executable and public keys; key ID/principal/role mapping; validity/revocation; candidate/base/governance/scope/content binding; verified/invalid/unknown outcomes.
 - **Limits:** no PKI, trusted timestamp, online revocation, key lifecycle service or proof of real-world identity. Synthetic test keys do not establish an independent reviewer. Evaluator/acceptance-gate integration remains open under #44/#45/#158.
+
+
+
+<a id="wp-evt-000042"></a>
+## WP-EVT-000042 — Threat-model coverage audit merged
+- **Subject:** `govcheck.security.threat-model-coverage`.
+- **Event type:** `threat-model-coverage-audit-merged`.
+- **Recorded:** 2026-11-28.
+- **Source issue/PR:** [#70](https://github.com/Martin-PB/govcheck/issues/70), [PR #219](https://github.com/Martin-PB/govcheck/pull/219), merged at `bcf4f609b5a8be880144a1c903338ba8a8e0b5e5`.
+- **Artifacts:** bilingual coverage audit; factual status correction to Architecture 0006 EN/FR; canonical work-item update; candidate issue #218 for execution isolation, secret exposure and resource budgets.
+- **Validation:** `receipt-check`, `reference-integrity`, `package-alignment` and `govcheck-check` all succeeded on the PR head.
+- **Disposition:** issue #70's audit deliverable is complete; #44/#45/#60/#72/#218 retain their distinct follow-up scopes.
+- **Limit:** source inspection only; no penetration test, live forge enforcement demonstration, security certification or normative adoption.
+
+
+<a id="wp-evt-000043"></a>
+## WP-EVT-000043 — Versioned adversarial candidate corpus v1 merged
+- **Subject:** `govcheck.security.adversarial-candidate-corpus`.
+- **Event type:** `adversarial-candidate-corpus-v1-merged`.
+- **Recorded:** 2026-11-28.
+- **Source issue/PR:** [#72](https://github.com/Martin-PB/govcheck/issues/72), [PR #220](https://github.com/Martin-PB/govcheck/pull/220), merged at `cc7e1595224d0f7238737ca90de5c13c53ab18bc`.
+- **Artifacts:** versioned JSON manifest `govcheck.adversarial-candidate-corpus` 1.0.0; 22 stable cases; bilingual catalogue; manifest/evidence integrity unittest; formal-model index.
+- **Validation:** `receipt-check`, `reference-integrity`, `package-alignment` and `govcheck-check` all succeeded on the PR head, including the new integrity test.
+- **Disposition:** initial corpus catalogue integrated; #72 remains open for planned workflow/formal-proof attacks and real hosted-forge/Pijul/untrusted-execution evidence.
+- **Limit:** no live GitHub enforcement, Pijul remote gate, sandbox or independent reviewer is claimed.

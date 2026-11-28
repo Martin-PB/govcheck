@@ -1583,7 +1583,7 @@
 - **Primary sources:** [Pijul configuration and hooks](https://pijul.org/manual/configuration.html) · [Contributing on the Nest](https://pijul.org/manual/the_nest/contributing).
 - **Use:** Pijul's documented hook runs before `pijul record`; the manual currently says only the `record` hook is supported. The Nest permits direct push for authorized users or attaching changes to a discussion channel.
 - **Limit:** the cited manual documents no mandatory remote pre-push/pre-receive hook. Conditional server-side enforcement requires a controlled remote/server integration; a local hook or wrapper is cooperative and bypassable.
-- **Cited by:** [Architecture 0037](architecture/0037-acceptance-boundary-and-enforcement-adapters.md), [Architecture 0038](architecture/0038-local-canonical-journal-implementation.md), [formal model documentation](formal/README.md), [acceptance-boundary research](research/acceptance-boundary-enforcement-2026-11.md), [work-item register](work-portfolio/work-items.md), [event journal](work-portfolio/events.md), [package formal model documentation](../govcheck/docs/formal/README.md).
+- **Cited by:** [Architecture 0037](architecture/0037-acceptance-boundary-and-enforcement-adapters.md), [Architecture 0038](architecture/0038-local-canonical-journal-implementation.md), [formal model documentation](formal/README.md), [acceptance-boundary research](research/acceptance-boundary-enforcement-2026-11.md), [work-item register](work-portfolio/work-items.md), [event journal](work-portfolio/events.md).
 
 <a id="r-227"></a>
 ### R-227 — DSSE: Dead Simple Signing Envelope

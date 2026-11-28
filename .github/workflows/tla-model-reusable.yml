@@ -32,6 +32,7 @@ jobs:
           echo "936a262061c914694dfd669a543be24573c45d5aa0ff20a8b96b23d01e050e88  tla2tools.jar" | sha256sum -c -
           sha256sum tla2tools.jar | tee tla2tools.sha256
       - name: Run SANY parse and semantic check
+        id: sany
         env:
           MODEL: ${{ inputs.model }}
         run: |
@@ -42,6 +43,7 @@ jobs:
             exit 1
           fi
       - name: Run TLC model checking
+        id: tlc
         env:
           MODEL: ${{ inputs.model }}
           CONFIG: ${{ inputs.config }}
@@ -49,6 +51,22 @@ jobs:
           set -o pipefail
           CONFIG_FILE="${CONFIG:-${MODEL}.cfg}"
           java -XX:+UseParallelGC -cp tla2tools.jar tlc2.TLC -workers 4 -config "formal/tla/${CONFIG_FILE}" "formal/tla/${MODEL}.tla" 2>&1 | tee "tlc-${MODEL}-${CONFIG_FILE%.cfg}.txt"
+      - name: Create and self-verify source-bound run manifest
+        if: always()
+        env:
+          MODEL: \${{ inputs.model }}
+          CONFIG: \${{ inputs.config }}
+          SANY_OUTCOME: \${{ steps.sany.outcome }}
+          TLC_OUTCOME: \${{ steps.tlc.outcome }}
+          JAVA_VERSION: '17'
+        run: |
+          CONFIG_FILE="\${CONFIG:-\${MODEL}.cfg}"
+          python3 scripts/tlc-run-manifest.py \
+            --model "$MODEL" \
+            --config "$CONFIG_FILE" \
+            --output tlc-run-manifest.json
+          python3 scripts/tlc-run-manifest.py --verify tlc-run-manifest.json
+
       - name: Upload model-checking report
         if: always()
         uses: actions/upload-artifact@v4
@@ -58,3 +76,4 @@ jobs:
             sany-${{ inputs.model }}.txt
             tlc-${{ inputs.model }}-*.txt
             tla2tools.sha256
+            tlc-run-manifest.json

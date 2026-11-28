@@ -227,7 +227,7 @@ def sign_journal_receipt(
     key_path = _outside(Path(private_key), repository_root, "private key")
     policy_path = _outside(Path(trust_policy_path), repository_root, "trust policy")
     output = _outside(Path(output_path), repository_root, "output envelope")
-    openssl = Path(openssl_path).expanduser().resolve()
+    openssl = _outside(Path(openssl_path), repository_root, "OpenSSL executable")
     if not openssl.is_file() or not os.access(openssl, os.X_OK):
         raise JournalAttestationError("pinned OpenSSL executable is missing or not executable")
     actual_openssl_digest = hashlib.sha256(openssl.read_bytes()).hexdigest()

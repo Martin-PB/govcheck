@@ -326,8 +326,10 @@ NoFalseAcceptedDecision ==
         /\ evaluation.trusted = TRUE
         /\ decision.changeSet = evaluation.changeSet
         /\ decision.candidate = evaluation.candidate
-        /\ decision.base = currentChannel
-        /\ decision.policy = currentPolicy
+        /\ decision.base = evaluation.base
+        /\ decision.policy = evaluation.policy
+        /\ (applied.status = Applied => applied.base = decision.base)
+        /\ (applied.status = AppliedNone => decision.base = currentChannel)
 
 RiskDoesNotRewriteResult ==
     decision.status = DecisionRisk =>

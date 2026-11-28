@@ -332,6 +332,21 @@ class Journal:
         finally:
             conn.close()
 
+    def scope_info(self, scope_id: str) -> dict:
+        """Return genesis bindings only after the complete journal verifies."""
+        scope_id = _validate_string(scope_id, "scope_id")
+        integrity = self.verify(scope_id)
+        if integrity.get("status") != "valid":
+            raise JournalError("unknown", "journal scope metadata is not trusted because verification failed: " + "; ".join(integrity.get("errors", [])))
+        conn = self._connect()
+        try:
+            row = conn.execute("SELECT authority_id,authority_revision,governance_revision FROM journal_scopes WHERE scope_id=?", (scope_id,)).fetchone()
+            if row is None:
+                raise JournalError("unknown", "journal scope metadata is unavailable")
+            return {"scopeId": scope_id, "authorityId": row["authority_id"], "authorityRevision": row["authority_revision"], "governanceRevision": row["governance_revision"]}
+        finally:
+            conn.close()
+
     def head(self, scope_id: str) -> dict:
         scope_id = _validate_string(scope_id, "scope_id")
         integrity = self.verify(scope_id)

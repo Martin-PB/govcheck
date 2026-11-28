@@ -130,5 +130,60 @@ class GitHubPrReceiptCheckTests(unittest.TestCase):
             CHECK.extract_envelope_comment(duplicate)
 
 
+    def test_completed_success_is_not_reused_for_a_new_receipt_attempt(self):
+        completed = {
+            "id": 41,
+            "external_id": "govcheck-pr-7-base-" + self.base,
+            "status": "completed",
+            "conclusion": "success",
+        }
+        created = {"id": 42}
+        with patch.object(CHECK, "github_api", side_effect=[{"check_runs": [completed]}, created]) as api:
+            result = CHECK.ensure_check_run(
+                "token", "Martin-PB/govcheck", self.head, self.base, 7,
+                "https://github.com/Martin-PB/govcheck/actions/runs/1",
+            )
+        self.assertEqual(result, 42)
+        self.assertEqual(api.call_count, 2)
+        self.assertEqual(api.call_args_list[1].args[2:4], ("POST", "/check-runs"))
+        payload = api.call_args_list[1].args[4]
+        self.assertEqual(payload["head_sha"], self.head)
+        self.assertEqual(payload["external_id"], "govcheck-pr-7-base-" + self.base)
+        self.assertEqual(payload["status"], "in_progress")
+
+    def test_pending_check_is_reused_only_for_the_exact_pr_base(self):
+        matching = {
+            "id": 51,
+            "external_id": "govcheck-pr-7-base-" + self.base,
+            "status": "in_progress",
+        }
+        with patch.object(CHECK, "github_api", return_value={"check_runs": [matching]}) as api:
+            result = CHECK.ensure_check_run(
+                "token", "Martin-PB/govcheck", self.head, self.base, 7, "https://example.invalid"
+            )
+        self.assertEqual(result, 51)
+        api.assert_called_once()
+        self.assertEqual(api.call_args.args[2:4], (
+            "GET",
+            "/commits/" + self.head + "/check-runs?check_name=" +
+            CHECK.urllib.parse.quote(CHECK.CHECK_NAME) + "&filter=latest&per_page=100",
+        ))
+
+    def test_pr_lifecycle_creates_pending_check_bound_to_head_and_base(self):
+        event = {"pull_request": {
+            "number": 7,
+            "head": {"sha": self.head},
+            "base": {"sha": self.base},
+        }}
+        with patch.object(CHECK, "ensure_check_run", return_value=73) as ensure:
+            result = CHECK.invalidate_pr_event(
+                event, "token", "Martin-PB/govcheck", "https://example.invalid"
+            )
+        self.assertEqual(result, 0)
+        ensure.assert_called_once_with(
+            "token", "Martin-PB/govcheck", self.head, self.base, 7, "https://example.invalid"
+        )
+
+
 if __name__ == "__main__":
     unittest.main()

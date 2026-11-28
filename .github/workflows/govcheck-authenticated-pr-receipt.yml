@@ -4,7 +4,7 @@ on:
   issue_comment:
     types: [created]
   pull_request_target:
-    types: [opened, synchronize, reopened, edited, ready_for_review]
+    types: [opened, synchronize, reopened, edited, ready_for_review, closed]
 
 permissions:
   contents: read
@@ -35,7 +35,7 @@ jobs:
           python-version: '3.12'
 
       - name: Invalidate acceptance check when PR head/base changes
-        if: github.event_name == 'pull_request_target' && vars.GOVCHECK_RECEIPT_CHECK_ENABLED == 'true'
+        if: github.event_name == 'pull_request_target' && vars.GOVCHECK_RECEIPT_CHECK_ENABLED == 'true' && github.event.action != 'closed'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
@@ -47,7 +47,7 @@ jobs:
             --trusted-root trusted
 
       - name: Clear stale pending receipt check while feature is disabled
-        if: github.event_name == 'pull_request_target' && vars.GOVCHECK_RECEIPT_CHECK_ENABLED != 'true'
+        if: github.event_name == 'pull_request_target' && (vars.GOVCHECK_RECEIPT_CHECK_ENABLED != 'true' || github.event.action == 'closed')
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}

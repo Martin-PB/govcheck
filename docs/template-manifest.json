@@ -1,8 +1,22 @@
 {
   "_comment": "Template manifest for the ADR 0003 structural alignment check (scripts/check-package-alignment.py). Key = meta path of a paired normative document. meta_only = sections allowed only at the meta level (never copied into govcheck/); optional = sections that may appear on either side; every other section defaults to 'package' (indispensable: present at both levels, same relative order). Changing a status is a PR touching this manifest, both levels and ADR 0003 together.",
   "pairs": {
-    "docs/BOOTSTRAP_GOVERNANCE.md": {},
-    "docs/BOOTSTRAP_GOVERNANCE.fr.md": {},
+    "docs/BOOTSTRAP_GOVERNANCE.md": {
+      "meta_only": [
+        "Recorded authorization"
+      ],
+      "optional": [
+        "Package boundary"
+      ]
+    },
+    "docs/BOOTSTRAP_GOVERNANCE.fr.md": {
+      "meta_only": [
+        "Autorisation enregistrée"
+      ],
+      "optional": [
+        "Frontière du package"
+      ]
+    },
     "docs/formal/README.md": {
       "meta_only": [
         "Governance authority",

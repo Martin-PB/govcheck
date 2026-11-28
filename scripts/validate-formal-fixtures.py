@@ -20,7 +20,13 @@ SCHEMA_DIRS = (
     Path("govcheck/formal/schemas"),
     Path("docs/schemas"),
 )
-FIXTURE_DIR = Path("formal/fixtures")
+FIXTURE_DIRS = (
+    Path("formal/fixtures"),
+    Path("govcheck/formal/fixtures"),
+)
+PACKAGE_ONLY_FIXTURE_SCHEMAS = {
+    "govcheck/formal/schemas/independent-review-v1.schema.json",
+}
 
 
 class ValidationSetupError(ValueError):
@@ -35,6 +41,8 @@ def _read_json(path: Path) -> Any:
 
 
 def fixture_schema_name(name: str) -> str | None:
+    if name == "independent-review.example.json":
+        return "govcheck/formal/schemas/independent-review-v1.schema.json"
     if name == "dependency-edge.example.json":
         return "formal/schemas/dependency-edge.schema.json"
     if name.startswith("evidence-record-") and name.endswith(".example.json"):
@@ -112,7 +120,11 @@ def audit(root: str | Path) -> dict:
     fixture_count = 0
     fixture_schema_validation_count = 0
     covered: set[str] = set()
-    for path in sorted(fixtures_dir.glob("*.example.json")):
+    fixture_paths = sorted(
+        path for directory in fixture_directories
+        for path in directory.glob("*.example.json")
+    )
+    for path in fixture_paths:
         schema_name = fixture_schema_name(path.name)
         if schema_name is None:
             findings.append({
@@ -159,7 +171,7 @@ def audit(root: str | Path) -> dict:
         for name in formal_fixture_schemas
         if "govcheck/formal/schemas/" + Path(name).name in schemas
     }
-    fixture_required = formal_fixture_schemas | package_mirror_schemas
+    fixture_required = formal_fixture_schemas | package_mirror_schemas | PACKAGE_ONLY_FIXTURE_SCHEMAS
     for schema_name in sorted(fixture_required - covered):
         findings.append({
             "instance": "",
@@ -178,8 +190,9 @@ def audit(root: str | Path) -> dict:
         "documentation_schemas_checked": sum(name.startswith("docs/schemas/") for name in schemas),
         "fixtures_checked": fixture_count,
         "fixture_schema_validations": fixture_schema_validation_count,
-        "package_schemas_fixture_covered": sum(name in covered for name in package_mirror_schemas),
-        "fixture_coverage_scope": "The seven formal example fixtures are validated against the five formal schemas and their five package projections. The remaining package-only schemas and documentation schema are meta-validated but not yet fixture-covered.",
+        "package_schemas_fixture_covered": sum(name in covered for name in schemas if name.startswith("govcheck/formal/schemas/")),
+        "package_only_schemas_fixture_covered": sum(name in covered for name in PACKAGE_ONLY_FIXTURE_SCHEMAS),
+        "fixture_coverage_scope": "The seven formal fixtures are validated against five formal schemas and five package projections; one package-only independent-review predicate fixture is validated directly. Other package-only schemas and the documentation schema remain meta-validated but not fixture-covered.",
         "finding_count": len(findings),
         "findings": findings,
         "limitations": [

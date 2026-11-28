@@ -309,3 +309,8 @@ Le binding de provenance Git typé introduit dans l'implémentation du journal e
 ## 19. Source de check GitHub requis
 
 L'Architecture 0039 et le workflow `.github/workflows/govcheck-authenticated-pr-receipt.yml` fournissent un check de confiance nommé `GovCheck authenticated acceptance receipt`. Le check reste en attente lors des mises à jour du cycle de vie de la PR et ne se termine qu'après binding d'un reçu PASS authentifié à la tête/base courantes exactes et au digest de contenu candidat. Le workflow n'exécute jamais le code candidat. Il ne configure pas le ruleset ; un administrateur doit exiger le check exact, restreindre les bypass et exiger une branche à jour. Les variables publiques requises et leur signification sont documentées dans l'Architecture 0039.
+
+
+## 20. Préflight de configuration
+
+Avant d'activer le check requis, valider le fichier public de trust-policy, les pins OpenSSL et des clés publiques ainsi que toutes les variables du dépôt avec `python scripts/validate-github-receipt-check-config.py --repository-root .`. Voir le [guide de configuration](../setup/github-authenticated-receipt-check.fr.md). Une configuration manquante reste fail-closed ; le workflow ne modifie pas le ruleset.

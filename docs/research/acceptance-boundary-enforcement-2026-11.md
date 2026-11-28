@@ -309,3 +309,8 @@ The typed Git provenance binding introduced in the journal implementation requir
 ## 19. GitHub required-check source
 
 Architecture 0039 and the workflow `.github/workflows/govcheck-authenticated-pr-receipt.yml` provide a trusted check run named `GovCheck authenticated acceptance receipt`. The check remains pending on PR lifecycle updates and completes only after an authenticated PASS receipt is bound to the exact current head/base and candidate content digest. The workflow never executes candidate code. It does not configure the ruleset; an administrator must require the exact check, restrict bypasses and require an up-to-date branch. Required public repository variables and their meanings are documented in Architecture 0039.
+
+
+## 20. Configuration preflight
+
+Before activating the required check, validate the public trust-policy file, OpenSSL and public-key pins and all repository variables with `python scripts/validate-github-receipt-check-config.py --repository-root .`. See the [setup guide](../setup/github-authenticated-receipt-check.md). Missing configuration remains fail-closed; the ruleset is not changed by the workflow.

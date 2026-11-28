@@ -1575,7 +1575,7 @@
 - **Primary source:** [Git hooks](https://git-scm.com/docs/githooks).
 - **Use:** distinguishes client-side `pre-push` from server-side `pre-receive`. The latter runs once per receive operation, receives old/new object IDs and full ref names, and a non-zero exit rejects the proposed ref updates. It is a native boundary adapter for controlled Git servers and local bare repositories.
 - **Limit:** the hook and trusted verifier must be installed outside the candidate tree by the server administrator. Direct filesystem/ref manipulation or administrator replacement remains outside its guarantee.
-- **Cited by:** [Architecture 0037](architecture/0037-acceptance-boundary-and-enforcement-adapters.md), [acceptance-boundary research](research/acceptance-boundary-enforcement-2026-11.md), [work-item register](work-portfolio/work-items.md), [event journal](work-portfolio/events.md).
+- **Cited by:** [Architecture 0037](architecture/0037-acceptance-boundary-and-enforcement-adapters.md), [Architecture 0038](architecture/0038-local-canonical-journal-implementation.md), [acceptance-boundary research](research/acceptance-boundary-enforcement-2026-11.md), [work-item register](work-portfolio/work-items.md), [event journal](work-portfolio/events.md).
 
 <a id="r-226"></a>
 ### R-226 — Pijul local hooks and Nest contribution workflow
@@ -1583,7 +1583,7 @@
 - **Primary sources:** [Pijul configuration and hooks](https://pijul.org/manual/configuration.html) · [Contributing on the Nest](https://pijul.org/manual/the_nest/contributing).
 - **Use:** Pijul's documented hook runs before `pijul record`; the manual currently says only the `record` hook is supported. The Nest permits direct push for authorized users or attaching changes to a discussion channel.
 - **Limit:** the cited manual documents no mandatory remote pre-push/pre-receive hook. Conditional server-side enforcement requires a controlled remote/server integration; a local hook or wrapper is cooperative and bypassable.
-- **Cited by:** [Architecture 0037](architecture/0037-acceptance-boundary-and-enforcement-adapters.md), [acceptance-boundary research](research/acceptance-boundary-enforcement-2026-11.md), [work-item register](work-portfolio/work-items.md), [event journal](work-portfolio/events.md).
+- **Cited by:** [Architecture 0037](architecture/0037-acceptance-boundary-and-enforcement-adapters.md), [Architecture 0038](architecture/0038-local-canonical-journal-implementation.md), [formal model documentation](formal/README.md), [acceptance-boundary research](research/acceptance-boundary-enforcement-2026-11.md), [work-item register](work-portfolio/work-items.md), [event journal](work-portfolio/events.md).
 
 <a id="r-227"></a>
 ### R-227 — DSSE: Dead Simple Signing Envelope

@@ -91,7 +91,7 @@ Le premier enregistrement de provenance typé est implémenté sous `govcheck.vc
 
 L'enregistrement lie l'identité/URI du dépôt, le type VCS et l'adaptateur, la ref/le canal cible, les identités natives de base et de candidat, les digests du contenu matérialisé, les identifiants natifs du change-set, le scope/révision/digest de gouvernance et la date d'observation. Les OID de commit Git restent natifs à Git (SHA-1 ou SHA-256) ; les hashes de canal et de change Pijul restent des tokens opaques natifs à Pijul. La liste de hashes de changement Pijul est représentée comme un ensemble et triée uniquement pour le digest déterministe ; elle n'encode pas la sémantique de dépendance/ordre des patches.
 
-Le digest de change-set porte sur le type VCS et la liste d'identifiants natifs ; il ne revendique pas d'équivalence inter-VCS. Les digests de contenu sont des bindings de comparaison supplémentaires et ne prouvent pas l'équivalence sémantique. Le builder rejette les types de cible mixtes, les OID Git mal formés, les bindings de base partiels, les IDs Pijul dupliqués et l'absence de scope de gouvernance. Il s'agit d'un profil de payload pour les consommateurs du journal, pas d'une modification de la Spécification 0007 ni d'un adaptateur de forge. Voir R-225 et R-226 dans le catalogue central des références.
+Le digest de change-set porte sur le type VCS et la liste d'identifiants natifs ; il ne revendique pas d'équivalence inter-VCS. Les digests de contenu sont des bindings de comparaison supplémentaires et ne prouvent pas l'équivalence sémantique. Le builder rejette les types de cible mixtes, les OID Git mal formés, les bindings de base partiels, les IDs Pijul dupliqués et l'absence de scope de gouvernance. Il s'agit d'un profil de payload pour les consommateurs du journal, pas d'une modification de la Spécification 0007 ni d'un adaptateur de forge. Voir [R-225](../references.md#r-225) et [R-226](../references.md#r-226) dans le catalogue central des références.
 
 
 ## 9. Binding de provenance dans les reçus d'acceptation
@@ -110,7 +110,31 @@ Pour les décisions authentifiées, l'horodatage de provenance provient du champ
 
 `govcheck.pijul_journal.append_pijul_observation` accepte un enregistrement de provenance natif Pijul validé et ajoute `govcheck.pijul.provenance-observed/v1` au journal canonique local. Il épingle l'URI/identité du dépôt, le scope/révision/digest de gouvernance et l'autorité/révision du genesis du journal ; exige que la base soit située hors du répertoire de travail Pijul ; utilise l'idempotence déterministe ; et attribue l'événement à un acteur observateur local fixe.
 
-L'événement indique explicitement `observationResult=observed` et `authorityStatus=not-established-by-vcs-observation`. Les types pris en charge sont l'observation d'état local de canal et l'observation d'une tentative de push. Il n'existe volontairement aucun type `remote-accepted` : le manuel officiel Pijul documente les hooks locaux avant `record` (actuellement seul ce hook), pas un hook obligatoire d'acceptation distante (R-226). Cet observateur n'intercepte pas `pijul push`, n'authentifie pas l'utilisateur local et n'établit pas la publication distante.
+L'événement indique explicitement `observationResult=observed` et `authorityStatus=not-established-by-vcs-observation`. Les types pris en charge sont l'observation d'état local de canal et l'observation d'une tentative de push. Il n'existe volontairement aucun type `remote-accepted` : le manuel officiel Pijul documente les hooks locaux avant `record` (actuellement seul ce hook), pas un hook obligatoire d'acceptation distante ([R-226](../references.md#r-226)). Cet observateur n'intercepte pas `pijul push`, n'authentifie pas l'utilisateur local et n'établit pas la publication distante.
 
 
 L'observateur dispose aussi d'un point d'entrée CLI local strict : `python -m govcheck.pijul_journal --provenance-json <record-externe.json> --observation-kind channel-state-observed|push-attempt-observed`. Il rejette les clés JSON dupliquées, les constantes JSON non standard et les fichiers d'entrée situés dans le répertoire de travail Pijul ; il n'affiche le reçu durable qu'après commit. Le record d'entrée doit provenir d'un adaptateur natif de confiance ; le CLI ne scrape pas la sortie humaine de `pijul log` et n'invente pas de hash de canal.
+
+
+## 11. Export DSSE optionnel de reçu authentifié
+
+`govcheck.journal_attestation` exporte un événement de journal sélectionné, entièrement vérifié, et son reçu durable sous forme de Statement in-toto dans une enveloppe DSSE. Le prédicat contient l'événement complet, le reçu, la tête du journal vérifiée au moment de la signature et les bindings natifs VCS candidat/base/gouvernance. Les digests événement/reçu et le binding du sujet sont validés avant signature puis par le validateur de Statement DSSE.
+
+La signature est déléguée à l'exécutable OpenSSL épinglé par l'administrateur (chemin absolu et digest SHA-256). GovCheck n'implémente pas les primitives de signature, ne génère pas de clés et ne gère pas les clés privées. La clé privée Ed25519 fournie doit être en mode 0600 et hors du dépôt ; la trust-policy et l'enveloppe de sortie doivent également être hors du dépôt. Le signataire vérifie lui-même l'enveloppe avec la trust-policy épinglée et le rôle requis avant de publier atomiquement un nouveau fichier ; il refuse d'écraser un fichier existant.
+
+Exemple d'invocation :
+
+```sh
+python -m govcheck.journal_attestation \\
+  --database /var/lib/govcheck/journal.sqlite \\
+  --scope-id repo:example/project --position 42 \\
+  --private-key /etc/govcheck/authority-ed25519.pem \\
+  --key-id governance-root-2026 \\
+  --openssl /usr/bin/openssl --openssl-sha256 <sha256-binaire-épinglé> \\
+  --trust-policy /etc/govcheck/trust-policy.json \\
+  --trust-policy-sha256 <sha256-policy-épinglé> \\
+  --repository-root /srv/git/project.git \\
+  --output /var/lib/govcheck/receipts/position-42.dsse.json
+```
+
+La signature prouve que le signataire configuré a approuvé le reçu et l'état de chaîne du journal vérifié au moment de la signature. Elle n'empêche pas une réécriture ultérieure par un administrateur privilégié et ne remplace pas la revérification du journal courant. L'export de reçu authentifié est optionnel et ne modifie pas l'enforcement du gate local.

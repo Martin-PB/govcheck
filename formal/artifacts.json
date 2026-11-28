@@ -877,6 +877,18 @@
       },
       "sourceReference": "R-225; R-226",
       "status": "implemented-payload-profile; non-normative"
+    },
+    {
+      "artifactId": "govcheck.journal-receipt-attestation.schema",
+      "kind": "json-schema",
+      "title": "GovCheck canonical journal receipt DSSE statement v1",
+      "source": "govcheck/formal/schemas/journal-receipt-attestation-v1.schema.json",
+      "documentation": {
+        "en": "docs/architecture/0038-local-canonical-journal-implementation.md",
+        "fr": "docs/architecture/0038-local-canonical-journal-implementation.fr.md"
+      },
+      "sourceReference": "R-225; R-226",
+      "status": "implemented-optional-authenticated-receipt"
     }
   ]
 }

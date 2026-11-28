@@ -112,4 +112,4 @@ The model separates volatile pending state from the durable append-only journal.
 
 The new bounded TLA+ model `GovCheckPijulRemoteBoundary` treats the Pijul channel version and native change-set identity as distinct model values. It checks that an applied channel update is bound to the exact candidate/base/policy and an authenticated accepted decision in enforced mode; accepted risk remains distinct from PASS; advisory/admin bypasses are explicitly marked; and post-receive receipt failure cannot undo an already-applied update.
 
-Three TLC configurations (enforced, advisory, administrator-bypassable) are wired into the dedicated workflow. This is a design model only, not a Nest/server implementation or proof of transport interception. See R-226 and formal artifact catalogue entry `govcheck.pijul-remote-acceptance-boundary`.
+Three TLC configurations (enforced, advisory, administrator-bypassable) are wired into the dedicated workflow. This is a design model only, not a Nest/server implementation or proof of transport interception. See [R-226](../references.md#r-226) and formal artifact catalogue entry `govcheck.pijul-remote-acceptance-boundary`.

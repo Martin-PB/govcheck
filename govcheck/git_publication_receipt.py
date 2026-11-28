@@ -31,6 +31,9 @@ def _protected(ref: str, env: dict[str, str]) -> bool:
 def _append(journal: Journal, scope_id: str, event_id: str, payload: dict, actor_id: str) -> dict:
     key = hashlib.sha256(canonical_json_bytes(payload)).hexdigest()
     idempotency_key = "git-ref-publication:" + key
+    existing = journal.receipt(scope_id, idempotency_key)
+    if existing is not None:
+        return existing
     event_id = "git-ref-publication:" + key
     for _ in range(3):
         head = journal.head(scope_id)

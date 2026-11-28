@@ -62,9 +62,10 @@ class GitPublicationReceiptTests(unittest.TestCase):
             "govcheck.acceptance.gate-result/v1", "1", payload,
             "gate-key-55", "principal:root" if verification == "authenticated-authority" else "system:govcheck-gate",
         )
+        return provenance
 
     def test_post_receive_records_publication_linked_to_verified_acceptance(self):
-        self.add_gate_receipt()
+        provenance = self.add_gate_receipt()
         code, messages = run_post_receive(f"{self.old} {self.new} refs/heads/main\n", self.env)
         self.assertEqual(code, 0)
         self.assertTrue(messages[0].startswith("receipt: published"))

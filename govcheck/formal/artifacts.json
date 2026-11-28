@@ -149,6 +149,14 @@
       "source": "formal/schemas/vcs-provenance-v1.schema.json",
       "documentation": "formal/schemas/README.md",
       "status": "implemented-payload-profile; non-normative"
+    },
+    {
+      "artifactId": "govcheck.journal-receipt-attestation.schema",
+      "kind": "json-schema",
+      "title": "GovCheck canonical journal receipt DSSE statement v1",
+      "source": "formal/schemas/journal-receipt-attestation-v1.schema.json",
+      "documentation": "formal/schemas/README.md",
+      "status": "implemented-optional-authenticated-receipt"
     }
   ]
 }

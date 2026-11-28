@@ -72,3 +72,13 @@ The optional attestation-verify bootstrap capability installs attestation.py, at
 ## VCS-native provenance schema
 
 `vcs-provenance-v1.schema.json` describes a typed payload that preserves native Git and Pijul identities. The Python builder additionally enforces cross-field rules (Git uses a full ref and commit OID; Pijul uses a channel target and opaque channel/change hashes) that are intentionally not encoded through non-portable JSON Schema extensions. Content digests do not assert semantic equivalence across VCSs. This profile is an implementation payload, not a normative amendment to Specification 0007.
+
+
+## Journal receipt DSSE statement
+
+`journal-receipt-attestation-v1.schema.json` defines the optional signed receipt statement. It includes the complete canonical event and durable receipt, the journal integrity status/head verified at signing time, and native VCS candidate/base/governance bindings. The verifier checks the event and receipt digests and the subject binding. A signature attests that the configured signer endorsed this receipt; it does not prevent later database rewriting or replace re-verification of the current journal chain.
+
+
+## Authenticated journal receipt statement
+
+`journal-receipt-attestation-v1.schema.json` defines the optional DSSE statement binding the full journal event, durable receipt, verified chain head, and native VCS candidate/base/governance identities. Its verifier checks canonical event/receipt digests and the in-toto subject binding.

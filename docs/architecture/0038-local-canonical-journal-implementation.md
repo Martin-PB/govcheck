@@ -91,7 +91,7 @@ The first typed provenance record is implemented as `govcheck.vcs-provenance/v1`
 
 The record binds repository identity/URI, VCS kind and adapter, target ref/channel, native base and candidate identities, materialized content digests, native change-set IDs, governance scope/revision/digest and observation time. Git commit OIDs remain Git-native (SHA-1 or SHA-256); Pijul channel hashes and change hashes remain opaque Pijul-native tokens. The Pijul change-hash list is represented as a set and sorted only for deterministic digesting; it does not encode patch dependency/order semantics.
 
-The change-set digest is a digest of the VCS kind and native-ID list, not a cross-VCS equivalence claim. Content digests are supplementary comparison bindings and do not establish semantic equivalence. The builder rejects mixed target types, malformed Git OIDs, partial base bindings, duplicate Pijul IDs and missing governance scope. This is a payload profile for journal consumers, not a change to Specification 0007 or a forge adapter. See R-225 and R-226 in the central reference catalogue.
+The change-set digest is a digest of the VCS kind and native-ID list, not a cross-VCS equivalence claim. Content digests are supplementary comparison bindings and do not establish semantic equivalence. The builder rejects mixed target types, malformed Git OIDs, partial base bindings, duplicate Pijul IDs and missing governance scope. This is a payload profile for journal consumers, not a change to Specification 0007 or a forge adapter. See [R-225](../references.md#r-225) and [R-226](../references.md#r-226) in the central reference catalogue.
 
 
 ## 9. Provenance binding in acceptance receipts
@@ -110,7 +110,31 @@ For authenticated decisions, the provenance timestamp is taken from the signed d
 
 `govcheck.pijul_journal.append_pijul_observation` accepts a validated Pijul-native provenance record and appends `govcheck.pijul.provenance-observed/v1` to the canonical local journal. It pins repository URI/identity, governance scope/revision/digest and journal genesis authority/revision; requires the database to be outside the Pijul working tree; uses deterministic idempotency; and attributes the event to a fixed local observer actor.
 
-The event explicitly says `observationResult=observed` and `authorityStatus=not-established-by-vcs-observation`. Supported kinds are local channel-state observation and push-attempt observation. There is deliberately no `remote-accepted` kind: the official Pijul manual documents local hooks before `record` (currently only that hook), not a mandatory remote acceptance hook (R-226). This observer does not intercept `pijul push`, authenticate the local user or establish remote publication.
+The event explicitly says `observationResult=observed` and `authorityStatus=not-established-by-vcs-observation`. Supported kinds are local channel-state observation and push-attempt observation. There is deliberately no `remote-accepted` kind: the official Pijul manual documents local hooks before `record` (currently only that hook), not a mandatory remote acceptance hook ([R-226](../references.md#r-226)). This observer does not intercept `pijul push`, authenticate the local user or establish remote publication.
 
 
 The observer also has a strict local CLI entry point: `python -m govcheck.pijul_journal --provenance-json <external-record.json> --observation-kind channel-state-observed|push-attempt-observed`. It rejects duplicate JSON keys, non-standard JSON constants and input files inside the Pijul worktree, and prints the durable receipt only after commit. The input record must come from a trusted native adapter; the CLI does not scrape human-readable `pijul log` output or invent a channel hash.
+
+
+## 11. Optional authenticated DSSE receipt export
+
+`govcheck.journal_attestation` exports a selected, fully verified journal event and its durable receipt as an in-toto Statement carried in a DSSE envelope. The predicate includes the full event, receipt, verified journal head at signing time, and native VCS candidate/base/governance bindings. The event/receipt digests and subject binding are validated before signing and again by the DSSE statement validator.
+
+Signing is delegated to the operator-pinned OpenSSL executable (absolute path and SHA-256 pin). GovCheck does not implement signature primitives, generate keys or manage private keys. The supplied Ed25519 private key must be mode 0600 and outside the repository; the trust policy and output envelope must also be outside the repository. The signer self-verifies the envelope against the pinned trust policy and required role before atomically publishing a new output file; it refuses to overwrite an existing file.
+
+Example invocation:
+
+```sh
+python -m govcheck.journal_attestation \\
+  --database /var/lib/govcheck/journal.sqlite \\
+  --scope-id repo:example/project --position 42 \\
+  --private-key /etc/govcheck/authority-ed25519.pem \\
+  --key-id governance-root-2026 \\
+  --openssl /usr/bin/openssl --openssl-sha256 <pinned-binary-sha256> \\
+  --trust-policy /etc/govcheck/trust-policy.json \\
+  --trust-policy-sha256 <pinned-policy-sha256> \\
+  --repository-root /srv/git/project.git \\
+  --output /var/lib/govcheck/receipts/position-42.dsse.json
+```
+
+The signature proves that the configured signer endorsed the receipt and journal chain state verified at signing time. It does not prevent later privileged database rewriting, and it does not replace re-verification of the current journal. Authenticated receipt export is optional and does not change local gate enforcement.

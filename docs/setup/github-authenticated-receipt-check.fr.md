@@ -1,6 +1,6 @@
 # Activer le check GitHub de reçu authentifié
 
-Ce guide configure la source de check fusionnée dans la PR #185. Il ne configure **pas** automatiquement la protection de branche.
+Ce guide configure la source de check fusionnée dans la PR #185. Il ne configure **pas** automatiquement la protection de branche. Le check est opt-in : sans `GOVCHECK_RECEIPT_CHECK_ENABLED=true`, les événements de PR neutralisent tout check en attente obsolète et les commentaires de reçu ne lancent pas la vérification.
 
 ## 1. Committer une policy de clés publiques de confiance
 
@@ -34,6 +34,9 @@ gh variable set GOVCHECK_EXPECTED_POLICY_DIGEST --body "sha256:<digest de la pol
 
 gh variable set GOVCHECK_REQUIRED_ROLE --body "governance-authority"
 gh variable set GOVCHECK_PROTECTED_BASE_REF --body "main"
+
+# Activer seulement après la policy de confiance, tous les pins et le ruleset requis.
+gh variable set GOVCHECK_RECEIPT_CHECK_ENABLED --body "true"
 ```
 
 Le scope du journal, l'ID/URI du dépôt, la révision/digest de gouvernance et le digest de politique d'acceptation doivent être exactement les mêmes que ceux utilisés par le gate local de confiance. Ne pas deviner ni substituer le digest de trust-policy au digest de gouvernance ou de politique d'acceptation.

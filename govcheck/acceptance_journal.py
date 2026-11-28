@@ -107,7 +107,7 @@ def append_verified_decision(env: dict[str, str], gate_payload: dict[str, Any]) 
         "decisionResult": result,
         "authorityPrincipal": authority,
         "verification": "authenticated-authority" if authority else "unverified-gate-attempt",
-        "reason": gate_payload.get("reason", ""),
+        "reason": gate_payload.get("reason") or "not-provided",
         "policyDigest": policy_digest,
         "repositoryId": gate_payload["repository_id"],
         "candidateRevision": gate_payload["candidate"],

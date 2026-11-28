@@ -332,6 +332,31 @@ class Journal:
         finally:
             conn.close()
 
+    def find_latest_event(self, scope_id: str, event_type: str, payload_criteria: dict) -> dict | None:
+        """Find the newest verified event of a type matching exact payload fields."""
+        scope_id = _validate_string(scope_id, "scope_id")
+        event_type = _validate_string(event_type, "event_type")
+        if not isinstance(payload_criteria, dict):
+            raise JournalError("malformed", "payload_criteria must be an object")
+        integrity = self.verify(scope_id)
+        if integrity.get("status") != "valid":
+            raise JournalError("unknown", "journal event lookup is not trusted because verification failed: " + "; ".join(integrity.get("errors", [])))
+        conn = self._connect()
+        try:
+            rows = conn.execute("SELECT position,envelope_json,event_digest FROM journal_events WHERE scope_id=? ORDER BY position DESC", (scope_id,)).fetchall()
+            for row in rows:
+                envelope = json.loads(row["envelope_json"], object_pairs_hook=_reject_duplicate_pairs)
+                if envelope.get("eventType") != event_type:
+                    continue
+                payload = envelope.get("payload")
+                if isinstance(payload, dict) and all(payload.get(key) == value for key, value in payload_criteria.items()):
+                    return {"scopeId": scope_id, "position": row["position"], "eventDigest": row["event_digest"], "event": envelope}
+            return None
+        except (sqlite3.Error, ValueError, TypeError) as exc:
+            raise JournalError("unknown", "journal event lookup could not complete: " + str(exc)) from exc
+        finally:
+            conn.close()
+
     def scope_info(self, scope_id: str) -> dict:
         """Return genesis bindings only after the complete journal verifies."""
         scope_id = _validate_string(scope_id, "scope_id")

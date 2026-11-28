@@ -270,3 +270,14 @@ Le reçu du journal est écrit avant le retour du hook pre-receive. Il atteste d
 
 
 La section 15 étend le reçu optionnel de décision acceptée décrit à la section 14 : elle enregistre tous les résultats de gate terminés, en distinguant explicitement l'attribution d'une autorité authentifiée de l'attribution locale non authentifiée d'une tentative du gate.
+
+
+## 16. Reçu de publication post-receive
+
+Un adaptateur local post-receive distinct, `govcheck.git_publication_receipt`, enregistre la mise à jour réelle de la ref protégée après son exécution par Git. Il recherche dans le journal vérifié le dernier événement de gate correspondant exactement au dépôt, à l'ancienne révision, à la nouvelle révision et à la ref. L'événement de publication ne référence la position et le digest de cet événement de gate que si son résultat est accepté et son attribution d'autorité authentifiée.
+
+Si la ref a été mise à jour sans événement d'acceptation authentifié correspondant (par exemple à la suite d'un bypass administrateur), le hook enregistre tout de même `published-without-verified-acceptance` et émet un avertissement. Il s'agit d'une voie de détection/reçu, pas d'un rollback : le hook Git post-receive intervient après la mise à jour et ne peut pas la rejeter. Un échec d'écriture du reçu est donc un incident nécessitant récupération, et non une preuve que la mise à jour a été bloquée.
+
+Installer le wrapper comme `hooks/post-receive` (le relire et lui donner le droit d'exécution dans le déploiement serveur). Configurer la même base de journal externe et le même scope que pre-receive, ainsi que `GOVCHECK_EXPECTED_REPOSITORY_ID`, `GOVCHECK_JOURNAL_AUTHORITY_ID`, `GOVCHECK_JOURNAL_AUTHORITY_REVISION` et `GOVCHECK_GOVERNANCE_REVISION`. L'adaptateur vérifie ces bindings de genesis et ne surveille que les refs correspondant à `GOVCHECK_PROTECTED_REFS` (par défaut `refs/heads/main`). Aucun genesis n'est créé automatiquement.
+
+Cela complète une séquence locale d'événements—résultat du gate avant mise à jour, reçu de publication après mise à jour—pour Git uniquement. Cela ne configure pas GitHub, ne prouve pas l'impossibilité de contourner le ruleset réel et n'implémente pas de frontière distante/serveur Pijul. Ces critères restent explicitement ouverts dans #45.

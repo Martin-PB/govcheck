@@ -22,6 +22,9 @@ class GitPublicationReceiptTests(unittest.TestCase):
             "GOVCHECK_JOURNAL_DB": str(self.db),
             "GOVCHECK_JOURNAL_SCOPE_ID": self.scope,
             "GOVCHECK_EXPECTED_REPOSITORY_ID": "repo:12345",
+            "GOVCHECK_JOURNAL_AUTHORITY_ID": "principal:root",
+            "GOVCHECK_JOURNAL_AUTHORITY_REVISION": "authority-rev-3",
+            "GOVCHECK_GOVERNANCE_REVISION": "gov-17",
             "GOVCHECK_PROTECTED_REFS": "refs/heads/main",
         }
         self.old = "b" * 40

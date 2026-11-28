@@ -63,11 +63,11 @@ Do not treat the workflow as enforcement until this ruleset is active. The check
 
 On the PR, post a comment containing the standalone command and the signed envelope:
 
-```text
+````text
 /govcheck-receipt
 ```json
 <signed DSSE envelope>
 ```
-```
+````
 
 Only an authenticated `pass` decision with exact current head/base and content digest bindings can complete the check successfully. Fork PRs are not supported by this initial adapter.

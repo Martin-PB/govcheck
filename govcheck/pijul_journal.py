@@ -146,6 +146,12 @@ def append_pijul_observation(
     try:
         digest = hashlib.sha256(canonical_json_bytes(payload)).hexdigest()
         key = "pijul-provenance:" + digest
+        integrity = journal.verify(scope_id)
+        if integrity.get("status") != "valid":
+            raise PijulJournalError("journal verification failed before idempotent lookup")
+        existing = journal.receipt(scope_id, key)
+        if existing is not None:
+            return existing
         head = journal.head(scope_id)
         result = journal.append(
             scope_id=scope_id,

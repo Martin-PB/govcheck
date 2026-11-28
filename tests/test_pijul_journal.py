@@ -1,10 +1,15 @@
+import contextlib
+import io
+import json
+import os
 import tempfile
 import unittest
+from unittest.mock import patch
 from pathlib import Path
 
 from govcheck.journal import Journal
 from govcheck.vcs_provenance import build_pijul_provenance
-from govcheck.pijul_journal import PijulJournalError, append_pijul_observation
+from govcheck.pijul_journal import PijulJournalError, append_pijul_observation, main
 
 
 class PijulJournalObserverTests(unittest.TestCase):
@@ -96,6 +101,37 @@ class PijulJournalObserverTests(unittest.TestCase):
     def test_partial_journal_configuration_fails_closed(self):
         with self.assertRaises(PijulJournalError):
             append_pijul_observation({"GOVCHECK_JOURNAL_DB": str(self.db)}, self.record)
+
+    def test_cli_writes_receipt_from_external_strict_json(self):
+        source = self.root / "provenance.json"
+        source.write_text(json.dumps(self.record), encoding="utf-8")
+        stdout = io.StringIO()
+        with patch.dict(os.environ, self.env, clear=False), contextlib.redirect_stdout(stdout):
+            code = main(["--provenance-json", str(source), "--observation-kind", "push-attempt-observed"])
+        self.assertEqual(code, 0)
+        receipt = json.loads(stdout.getvalue())
+        self.assertEqual(receipt["scopeId"], self.scope)
+        self.assertEqual(self.journal.verify(self.scope)["eventCount"], 2)
+
+    def test_cli_rejects_provenance_file_inside_worktree(self):
+        source = self.repo_path / "provenance.json"
+        source.write_text(json.dumps(self.record), encoding="utf-8")
+        stderr = io.StringIO()
+        with patch.dict(os.environ, self.env, clear=False), contextlib.redirect_stderr(stderr):
+            code = main(["--provenance-json", str(source)])
+        self.assertEqual(code, 1)
+        self.assertIn("outside the Pijul working tree", stderr.getvalue())
+        self.assertEqual(self.journal.verify(self.scope)["eventCount"], 1)
+
+    def test_cli_rejects_duplicate_json_keys(self):
+        source = self.root / "duplicate.json"
+        source.write_text('{"schemaVersion":"1","schemaVersion":"1"}', encoding="utf-8")
+        stderr = io.StringIO()
+        with patch.dict(os.environ, self.env, clear=False), contextlib.redirect_stderr(stderr):
+            code = main(["--provenance-json", str(source)])
+        self.assertEqual(code, 1)
+        self.assertIn("duplicate JSON object key", stderr.getvalue())
+        self.assertEqual(self.journal.verify(self.scope)["eventCount"], 1)
 
     def test_no_journal_configuration_keeps_observer_optional(self):
         self.assertIsNone(append_pijul_observation({}, self.record))

@@ -166,6 +166,7 @@ class AcceptanceDecisionTests(unittest.TestCase):
             self.assertEqual(result["result"], "accepted-with-risk")
             self.assertEqual(result["authorityPrincipal"], "principal:root-authority")
             self.assertEqual(result["decisionId"], "decision-sign-test")
+            self.assertEqual(result["decidedOn"], now.isoformat())
 
     def test_accept_requires_evaluation_pass(self):
         predicate = self.predicate()

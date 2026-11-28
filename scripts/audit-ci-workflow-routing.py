@@ -206,7 +206,50 @@ def audit_category_policy(root: Path, reports: list[dict]) -> tuple[dict, list[d
             "not_in_model": sorted(policy_model_specific - model_specific),
         })
 
+    input_sets = policy.get("inputSets", {})
+    if not isinstance(input_sets, dict) or not all(
+        isinstance(key, str) and isinstance(value, str) and value
+        for key, value in input_sets.items()
+    ):
+        raise WorkflowParseError(f"{policy_path}: inputSets must map TLA set names to workflow paths")
+    model_input_sets: dict[str, list[str]] = {}
     report_by_path = {report["workflow"]: report for report in reports}
+    for set_name, expected_workflow in input_sets.items():
+        members = _read_tla_set(model_text, set_name, model_path)
+        model_input_sets[set_name] = sorted(members)
+        for category in members:
+            entry = mapped.get(category)
+            if entry is None:
+                findings.append({
+                    "kind": "model-dependency-category-missing",
+                    "input_set": set_name,
+                    "category": category,
+                })
+            elif expected_workflow not in entry["workflows"]:
+                findings.append({
+                    "kind": "model-dependency-workflow-mismatch",
+                    "input_set": set_name,
+                    "category": category,
+                    "expected_workflow": expected_workflow,
+                    "declared_workflows": sorted(entry["workflows"]),
+                })
+    shared_category = policy.get("sharedTlcCategory")
+    if shared_category is not None:
+        if not isinstance(shared_category, str) or not shared_category:
+            raise WorkflowParseError(f"{policy_path}: sharedTlcCategory must be a non-empty string or null")
+        shared_entry = mapped.get(shared_category)
+        if shared_entry is None:
+            findings.append({
+                "kind": "shared-tlc-category-missing",
+                "category": shared_category,
+            })
+        elif set(shared_entry["workflows"]) != TLC_WORKFLOWS:
+            findings.append({
+                "kind": "shared-tlc-workflow-mismatch",
+                "category": shared_category,
+                "expected_workflows": sorted(TLC_WORKFLOWS),
+                "declared_workflows": sorted(shared_entry["workflows"]),
+            })
     for name, entry in mapped.items():
         paths = entry["paths"]
         workflows = entry["workflows"]
@@ -259,6 +302,8 @@ def audit_category_policy(root: Path, reports: list[dict]) -> tuple[dict, list[d
         "model_specific_categories": sorted(model_specific),
         "policy_categories": sorted(policy_categories),
         "policy_model_specific_categories": sorted(policy_model_specific),
+        "model_input_sets": model_input_sets,
+        "shared_tlc_category": shared_category,
     }, findings
 
 

@@ -157,7 +157,7 @@ def audit(root: str | Path) -> dict:
         # of these five formal schemas (with only $id rewritten). Reuse the
         # same synthetic examples to validate both source and package copies.
         package_schema_name = "govcheck/formal/schemas/" + Path(schema_name).name
-        if package_schema_name in schemas:
+        if schema_name.startswith("formal/schemas/") and package_schema_name in schemas:
             covered.add(package_schema_name)
             findings.extend(validate_instance(
                 instance, schemas[package_schema_name], registry,

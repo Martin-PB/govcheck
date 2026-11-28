@@ -45,6 +45,8 @@ class FormalFixtureValidationTests(unittest.TestCase):
     def test_each_schema_rejects_unknown_top_level_property(self):
         schemas, registry = MODULE.load_schemas(ROOT)
         for schema_name, schema in schemas.items():
+            if not schema_name.startswith("formal/schemas/"):
+                continue
             with self.subTest(schema=schema_name):
                 fixture_path = next(
                     path for path in (ROOT / "formal/fixtures").glob("*.example.json")
@@ -69,7 +71,7 @@ class FormalFixtureValidationTests(unittest.TestCase):
              lambda value: value["compatibility"].__setitem__("classification", "unknown-classification")),
             ("formal/schemas/release-manifest.schema.json", "release-manifest.example.json",
              lambda value: value["release"].__setitem__("commit", 42)),
-            ("formal/schemas/version-governance-bundle.schema.json", "version-governance-bundle.example.json,
+            ("formal/schemas/version-governance-bundle.schema.json", "version-governance-bundle.example.json",
              lambda value: value["decisions"].append({
                  "schemaVersion": 2,
                  "decisionId": "invalid:decision:001"

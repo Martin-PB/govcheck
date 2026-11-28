@@ -90,7 +90,7 @@ class RealGitPostReceivePublicationTests(unittest.TestCase):
             candidate = self.git(work, "rev-parse", "HEAD")
             pushed = subprocess.run(
                 ["git", "push", "origin", "main:refs/heads/main"],
-                cwd=work, env={**os.environ, **env_values}, text=True, capture_output=True,
+                cwd=work, env=dict(os.environ), text=True, capture_output=True,
             )
             self.assertEqual(pushed.returncode, 0, pushed.stderr)
             self.assertEqual(self.git(bare, "rev-parse", "refs/heads/main"), candidate)

@@ -301,13 +301,44 @@ def get_branch_protection(client: GitHubClient, branch: str = "main") -> dict:
     parsed, _ = client._request("GET", client.repo_path("/branches/" + urllib.parse.quote(branch, safe="") + "/protection"))
     if not isinstance(parsed, dict):
         raise ForgeError("malformed", "expected a JSON object for branch protection")
-    required = parsed.get("required_status_checks") or {}
-    reviews = parsed.get("required_pull_request_reviews") or {}
+
+    # GitHub uses explicit null for disabled optional protections. A missing
+    # field is different: it is an incomplete response and must not be
+    # silently converted into an apparently unprotected/zero-valued result.
+    required_raw = parsed.get("required_status_checks")
+    if "required_status_checks" not in parsed:
+        raise ForgeError("malformed", "branch-protection response is missing required_status_checks")
+    if required_raw is None:
+        required_checks = []
+    elif isinstance(required_raw, dict):
+        contexts = required_raw.get("contexts")
+        if not isinstance(contexts, list) or any(not isinstance(x, str) or not x for x in contexts):
+            raise ForgeError("malformed", "branch-protection required_status_checks.contexts is missing or malformed")
+        required_checks = sorted(contexts)
+    else:
+        raise ForgeError("malformed", "branch-protection required_status_checks is malformed")
+
+    reviews_raw = parsed.get("required_pull_request_reviews")
+    if "required_pull_request_reviews" not in parsed:
+        raise ForgeError("malformed", "branch-protection response is missing required_pull_request_reviews")
+    if reviews_raw is None:
+        required_reviews = 0
+    elif isinstance(reviews_raw, dict):
+        required_reviews = reviews_raw.get("required_approving_review_count")
+        if isinstance(required_reviews, bool) or not isinstance(required_reviews, int) or required_reviews < 0:
+            raise ForgeError("malformed", "branch-protection required approving-review count is missing or malformed")
+    else:
+        raise ForgeError("malformed", "branch-protection required_pull_request_reviews is malformed")
+
+    admins_raw = parsed.get("enforce_admins")
+    if not isinstance(admins_raw, dict) or not isinstance(admins_raw.get("enabled"), bool):
+        raise ForgeError("malformed", "branch-protection enforce_admins metadata is missing or malformed")
+
     return {
         "branch": branch,
-        "required_checks": sorted(required.get("contexts", []) or []),
-        "enforce_admins": bool((parsed.get("enforce_admins") or {}).get("enabled")),
-        "required_approving_reviews": reviews.get("required_approving_review_count", 0),
+        "required_checks": required_checks,
+        "enforce_admins": admins_raw["enabled"],
+        "required_approving_reviews": required_reviews,
     }
 
 

@@ -21,10 +21,10 @@ class FormalFixtureValidationTests(unittest.TestCase):
         self.assertEqual(report["formal_schemas_checked"], 5)
         self.assertEqual(report["package_schemas_checked"], 14)
         self.assertEqual(report["documentation_schemas_checked"], 1)
-        self.assertEqual(report["fixtures_checked"], 16)
-        self.assertEqual(report["fixture_schema_validations"], 18)
-        self.assertEqual(report["package_schemas_fixture_covered"], 9)
-        self.assertEqual(report["package_only_schemas_fixture_covered"], 4)
+        self.assertEqual(report["fixtures_checked"], 17)
+        self.assertEqual(report["fixture_schema_validations"], 19)
+        self.assertEqual(report["package_schemas_fixture_covered"], 10)
+        self.assertEqual(report["package_only_schemas_fixture_covered"], 5)
         self.assertEqual(report["finding_count"], 0)
 
     def test_each_schema_rejects_missing_required_property(self):
@@ -156,6 +156,15 @@ class FormalFixtureValidationTests(unittest.TestCase):
         invalid = copy.deepcopy(fixture)
         invalid["authorPrincipal"] = ""
         self.assertTrue(MODULE.validate_instance(invalid, schema, registry, "invalid-forge-author-identity"))
+
+    def test_package_only_trust_policy_fixture_is_strict(self):
+        schemas, registry = MODULE.load_schemas(ROOT)
+        schema = schemas["govcheck/formal/schemas/attestation-trust-policy-v1.schema.json"]
+        fixture = MODULE._read_json(ROOT / "govcheck/formal/fixtures/attestation-trust-policy.example.json")
+        self.assertEqual(MODULE.validate_instance(fixture, schema, registry, "attestation-trust-policy.example.json"), [])
+        invalid = copy.deepcopy(fixture)
+        invalid["keys"][0]["algorithm"] = "rsa"
+        self.assertTrue(MODULE.validate_instance(invalid, schema, registry, "invalid-trust-policy"))
 
     def test_malformed_fixture_format_is_rejected(self):
         schemas, registry = MODULE.load_schemas(ROOT)

@@ -276,9 +276,27 @@ def invalidate_pr_event(event: dict, token: str, repository: str, details_url: s
     return 0
 
 
+def disable_pr_event(event: dict, token: str, repository: str) -> int:
+    pr = event.get("pull_request")
+    if not isinstance(pr, dict):
+        return 0
+    head_sha = pr.get("head", {}).get("sha", "")
+    base_sha = pr.get("base", {}).get("sha", "")
+    number = pr.get("number")
+    if not isinstance(number, int) or not OID_RE.fullmatch(head_sha) or not OID_RE.fullmatch(base_sha):
+        return 0
+    external_id = "govcheck-pr-" + str(number) + "-base-" + base_sha
+    runs = github_api(token, repository, "GET", "/commits/" + head_sha + "/check-runs?check_name=" + urllib.parse.quote(CHECK_NAME) + "&filter=latest&per_page=100")
+    for run in runs.get("check_runs", []):
+        if run.get("external_id") == external_id and run.get("status") == "in_progress":
+            complete_check_run(token, repository, run["id"], "neutral", "GovCheck receipt check disabled",
+                               "GOVCHECK_RECEIPT_CHECK_ENABLED is not true; the check source is opt-in and no receipt is required yet.")
+    return 0
+
+
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--mode", choices=["verify", "invalidate"], required=True)
+    parser.add_argument("--mode", choices=["verify", "invalidate", "disable"], required=True)
     parser.add_argument("--event-path", type=Path, required=True)
     parser.add_argument("--trusted-root", type=Path, required=True)
     parser.add_argument("--candidate-root", type=Path)
@@ -293,6 +311,8 @@ def main(argv=None) -> int:
         details_url = os.environ.get("GITHUB_SERVER_URL", "https://github.com") + "/" + repository + "/actions/runs/" + os.environ.get("GITHUB_RUN_ID", "")
         if args.mode == "invalidate":
             return invalidate_pr_event(event, token, repository, details_url)
+        if args.mode == "disable":
+            return disable_pr_event(event, token, repository)
         if args.candidate_root is None:
             raise CheckError("--candidate-root is required in verify mode")
         trusted_root = args.trusted_root.resolve()

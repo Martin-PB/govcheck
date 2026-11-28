@@ -2,6 +2,14 @@
 
 Les travaux formels de GovCheck sont développés progressivement et restent distincts de toute affirmation relative à l’implémentation. Ils s'appuient sur [R-05 — TLA+ et TLC](../references.fr.md#r-05) et [R-22 — Sémantiques natives de Git et Pijul](../references.fr.md#r-22).
 
+## Corpus adversarial d'acceptation
+
+- [Catalogue du corpus version 1.0.0](../research/adversarial-candidate-corpus-v1.fr.md) · [English](../research/adversarial-candidate-corpus-v1.md)
+- [Manifeste du corpus lisible par machine](../../formal/adversarial-candidate-corpus-v1.json)
+- [Test d'intégrité du manifeste et des preuves du corpus](../../tests/test_adversarial_candidate_corpus.py)
+
+Le catalogue distingue les tests unitaires/d'intégration exécutables, les cas modélisés uniquement, les cas planifiés et l'enforcement réel non démontré. Il s'agit d'un élément d'assurance au niveau du dépôt, pas d'un artefact du package projet généré ni d'une politique d'enforcement.
+
 ## Cycle de vie
 
 - [Modèle du cycle de vie — français](lifecycle-model.fr.md)

@@ -273,6 +273,31 @@ class VerifyTests(unittest.TestCase):
         self.assertIn("strict required-status-check freshness is disabled", result["findings"])
         self.assertIn("ruleset has bypass actors", result["findings"])
 
+    def test_ruleset_audit_fails_when_bypass_metadata_is_missing(self):
+        ruleset = self.ruleset()
+        del ruleset["bypass_actors"]
+        result = forge.audit_ruleset_payload(
+            ruleset, ["govcheck-check", "package-alignment", "reference-integrity"], 15368
+        )
+        self.assertEqual(result["result"], "fail")
+        self.assertIn("ruleset bypass-actor configuration is missing or malformed", result["findings"])
+
+        ruleset = self.ruleset()
+        del ruleset["current_user_can_bypass"]
+        result = forge.audit_ruleset_payload(
+            ruleset, ["govcheck-check", "package-alignment", "reference-integrity"], 15368
+        )
+        self.assertEqual(result["result"], "fail")
+        self.assertIn("current identity bypass capability is not explicitly disabled", result["findings"])
+
+    def test_ruleset_audit_fails_on_malformed_bypass_metadata(self):
+        ruleset = self.ruleset(bypass_actors=None)
+        result = forge.audit_ruleset_payload(
+            ruleset, ["govcheck-check", "package-alignment", "reference-integrity"], 15368
+        )
+        self.assertEqual(result["result"], "fail")
+        self.assertIn("ruleset bypass-actor configuration is missing or malformed", result["findings"])
+
     def test_ruleset_audit_rejects_non_default_branch_scope(self):
         ruleset = self.ruleset(conditions={"ref_name": {"include": ["refs/heads/release"], "exclude": []}})
         result = forge.audit_ruleset_payload(ruleset, ["govcheck-check", "package-alignment", "reference-integrity"], 15368)

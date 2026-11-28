@@ -51,11 +51,11 @@ Le manifeste lisible par machine constitue la source des identifiants de cas et 
 2. **Aucun relecteur indépendant synthétisé.** Les clés de test et principaux des fixtures n'établissent pas l'existence d'un relecteur humain indépendant.
 3. **Aucun enforcement général Pijul.** Un hook local n'est pas une frontière d'acceptation distante obligatoire.
 4. **Aucun sandbox de code projet arbitraire.** Isolation d'exécution, minimisation des secrets et budgets de ressources restent des travaux candidats dans #218.
-5. **Aucune suite complète d'attaques sur les preuves formelles pour l'instant.** Les rapports de model checking périmés et les preuves Lean contenant des axiomes interdits restent des cas planifiés.
+5. **Couverture partielle d'AC-018 seulement.** Les tests synthétiques rejettent désormais les entrées modèle/configuration/workflow/rapport périmées. Le manifeste non signé n'authentifie pas l'exécution hébergée et ne lie pas la révision de gouvernance ni l'identité de l'évaluateur ; l'injection `sorry`/axiome Lean d'AC-019 reste planifiée.
 
 ## 5. Incréments suivants
 
-- Transformer AC-018–AC-019 en fixtures liées à des candidats exacts, avec résultats fail/unknown attendus et provenance explicite ; étendre AC-017 aux chemins d'altération non couverts par l'audit de routage.
+- Transformer AC-019 (injection `sorry`/axiome Lean) en fixtures négatives liées à des candidats exacts ; étendre AC-017 aux chemins d'altération non couverts par l'audit de routage.
 - Étendre le corpus aux chemins d'attaque et hypothèses de confiance précis de l'Architecture 0006.
 - Lier tout nouveau rapport de test à la révision du corpus, à la version des outils/tests, au candidat/base exacts, à la politique applicable et à l'identité du vérificateur.
 - N'ajouter une expérience de frontière forge réelle que lorsque sa configuration requise et son environnement de test sont explicitement autorisés et disponibles.

@@ -54,13 +54,13 @@ jobs:
       - name: Create and self-verify source-bound run manifest
         if: always()
         env:
-          MODEL: \${{ inputs.model }}
-          CONFIG: \${{ inputs.config }}
-          SANY_OUTCOME: \${{ steps.sany.outcome }}
-          TLC_OUTCOME: \${{ steps.tlc.outcome }}
+          MODEL: ${{ inputs.model }}
+          CONFIG: ${{ inputs.config }}
+          SANY_OUTCOME: ${{ steps.sany.outcome }}
+          TLC_OUTCOME: ${{ steps.tlc.outcome }}
           JAVA_VERSION: '17'
         run: |
-          CONFIG_FILE="\${CONFIG:-\${MODEL}.cfg}"
+          CONFIG_FILE="${CONFIG:-${MODEL}.cfg}"
           python3 scripts/tlc-run-manifest.py \
             --model "$MODEL" \
             --config "$CONFIG_FILE" \

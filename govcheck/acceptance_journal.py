@@ -11,9 +11,9 @@ from pathlib import Path
 from typing import Any
 
 try:
-    from govcheck.journal import Journal, JournalError, canonical_json_bytes
+    from govcheck.journal import Journal, canonical_json_bytes
 except ImportError:  # standalone GovCheck installation
-    from journal import Journal, JournalError, canonical_json_bytes
+    from journal import Journal, canonical_json_bytes
 
 
 CONFIG_KEYS = (
@@ -28,7 +28,7 @@ class AcceptanceJournalError(Exception):
 
 
 def append_verified_decision(env: dict[str, str], gate_payload: dict[str, Any]) -> dict[str, Any] | None:
-    """Append a receipt for a verified PASS/accepted-with-risk decision."""
+    """Append a durable receipt for an evaluated gate outcome."""
     configured = [bool(env.get(key, "").strip()) for key in CONFIG_KEYS]
     if not any(configured):
         return None
@@ -53,18 +53,24 @@ def append_verified_decision(env: dict[str, str], gate_payload: dict[str, Any]) 
         raise AcceptanceJournalError("journal scope does not match the pinned gate scope")
 
     decision_id = gate_payload.get("decision_id")
-    authority = gate_payload.get("authority_principal")
+    authority = gate_payload.get("authority_principal") or None
     policy_digest = gate_payload.get("policy_digest")
     evidence_digest = gate_payload.get("evidence_digest")
-    if not all(isinstance(value, str) and value.strip() for value in (decision_id, authority, policy_digest, evidence_digest)):
-        raise AcceptanceJournalError("verified decision is missing its identity or digest bindings")
-    if gate_payload.get("result") not in {"pass", "accepted-with-risk"}:
-        raise AcceptanceJournalError("only an accepted verified decision can be journaled by this integration")
+    if not all(isinstance(value, str) and value.strip() for value in (decision_id, policy_digest, evidence_digest)):
+        raise AcceptanceJournalError("gate result is missing its decision or digest bindings")
+    result = gate_payload.get("result")
+    if result not in {"pass", "accepted-with-risk", "fail", "unknown", "conflict"}:
+        raise AcceptanceJournalError("unsupported gate result for journal receipt: " + repr(result))
 
     journal = Journal(db_path)
     genesis = journal.scope_info(scope_id)
-    if genesis["authorityId"] != authority:
-        raise AcceptanceJournalError("journal genesis authority does not match the verified decision signer")
+    expected_authority = env.get("GOVCHECK_JOURNAL_AUTHORITY_ID", authority or "")
+    if not expected_authority:
+        raise AcceptanceJournalError("GOVCHECK_JOURNAL_AUTHORITY_ID is required to journal an unauthenticated gate attempt")
+    if genesis["authorityId"] != expected_authority:
+        raise AcceptanceJournalError("journal genesis authority does not match the configured authority pin")
+    if authority and authority != expected_authority:
+        raise AcceptanceJournalError("verified decision signer does not match the journal authority pin")
     if genesis["authorityRevision"] != env["GOVCHECK_JOURNAL_AUTHORITY_REVISION"]:
         raise AcceptanceJournalError("journal genesis authority revision does not match the configured pin")
     if genesis["governanceRevision"] != env.get("GOVCHECK_GOVERNANCE_REVISION", ""):
@@ -72,8 +78,10 @@ def append_verified_decision(env: dict[str, str], gate_payload: dict[str, Any]) 
 
     payload = {
         "decisionId": decision_id,
-        "decisionResult": gate_payload["result"],
+        "decisionResult": result,
         "authorityPrincipal": authority,
+        "verification": "authenticated-authority" if authority else "unverified-gate-attempt",
+        "reason": gate_payload.get("reason", ""),
         "policyDigest": policy_digest,
         "repositoryId": gate_payload["repository_id"],
         "candidateRevision": gate_payload["candidate"],
@@ -85,18 +93,18 @@ def append_verified_decision(env: dict[str, str], gate_payload: dict[str, Any]) 
         "riskAcceptance": gate_payload.get("risk_acceptance"),
     }
     idempotency_key = "acceptance-decision:" + hashlib.sha256(canonical_json_bytes(payload)).hexdigest()
-    event_id = "acceptance-decision:" + decision_id
+    event_id = "acceptance-gate-result:" + hashlib.sha256(canonical_json_bytes(payload)).hexdigest()
     head = journal.head(scope_id)
     result = journal.append(
         scope_id=scope_id,
         expected_position=head["position"],
         expected_digest=head["digest"],
         event_id=event_id,
-        event_type="govcheck.acceptance.decision-verified/v1",
+        event_type="govcheck.acceptance.gate-result/v1",
         schema_version="1",
         payload=payload,
         idempotency_key=idempotency_key,
-        actor_id=authority,
+        actor_id=authority or "system:govcheck-gate",
     )
     if result.get("status") != "committed":
         raise AcceptanceJournalError("journal append did not commit: " + str(result.get("reason", result.get("status"))))

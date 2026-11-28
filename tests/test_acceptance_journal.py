@@ -1,5 +1,6 @@
 import hashlib
 import json
+import sqlite3
 import tempfile
 import unittest
 from pathlib import Path
@@ -62,6 +63,23 @@ class AcceptanceJournalIntegrationTests(unittest.TestCase):
         with self.assertRaises(acceptance_journal.AcceptanceJournalError):
             acceptance_journal.append_verified_decision(self.env, self.payload)
         self.assertEqual(self.journal.verify(self.scope)["eventCount"], 1)
+
+    def test_unverified_unknown_gate_attempt_is_recorded_as_system_attribution(self):
+        self.env["GOVCHECK_JOURNAL_AUTHORITY_ID"] = "principal:root"
+        self.payload.update({
+            "decision_id": "unavailable",
+            "result": "unknown",
+            "authority_principal": "",
+            "reason": "signature verification unavailable",
+        })
+        receipt = acceptance_journal.append_verified_decision(self.env, self.payload)
+        with sqlite3.connect(self.db) as connection:
+            row = connection.execute("SELECT envelope_json FROM journal_events WHERE position=?", (receipt["position"],)).fetchone()
+        event = json.loads(row[0])
+        self.assertEqual(event["actorId"], "system:govcheck-gate")
+        self.assertEqual(event["eventType"], "govcheck.acceptance.gate-result/v1")
+        self.assertEqual(event["payload"]["verification"], "unverified-gate-attempt")
+        self.assertEqual(self.journal.verify(self.scope)["status"], "valid")
 
     def test_journal_inside_bare_repository_is_rejected(self):
         self.env["GOVCHECK_JOURNAL_DB"] = str(self.git_dir / "journal.sqlite")

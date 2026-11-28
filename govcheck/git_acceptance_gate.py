@@ -321,12 +321,11 @@ def run_gate(args, env=None, runner=subprocess.run, evaluator=None, decision_ver
             payload["result"] = decision.get("result", "unknown")
             payload["risk_acceptance"] = _risk_v0(decision)
             payload["reason"] = decision.get("reason", "decision verification returned no reason")
-            if payload["result"] in {"pass", "accepted-with-risk"}:
-                try:
-                    acceptance_journal.append_verified_decision(env, payload)
-                except acceptance_journal.AcceptanceJournalError as exc:
-                    payload["result"] = "unknown"
-                    payload["reason"] = "acceptance journal receipt unavailable: " + str(exc)
+            try:
+                acceptance_journal.append_verified_decision(env, payload)
+            except acceptance_journal.AcceptanceJournalError as exc:
+                payload["result"] = "unknown"
+                payload["reason"] = "acceptance journal receipt unavailable: " + str(exc)
             return 0, payload
     except (OSError, ValueError, TypeError, subprocess.TimeoutExpired) as exc:
         payload["reason"] = "gate evaluation failed: " + str(exc)

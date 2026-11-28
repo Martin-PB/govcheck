@@ -258,3 +258,15 @@ Avant l'ajout, l'intégration vérifie le journal complet, compare le principal 
 Le gate ne crée jamais le genesis. Celui-ci doit être initialisé explicitement hors du dépôt, avec le principal d'autorité authentifié et les révisions d'autorité/de gouvernance épinglées. Si un paramètre du journal est présent mais que la configuration, le genesis ou l'ajout échoue, le gate retourne UNKNOWN et le pre-receive rejette la mise à jour. Sans aucun paramètre de journal, le comportement antérieur (journal optionnel) est conservé ; un déploiement ne doit pas revendiquer une acceptation journalisée avant installation et audit de ces paramètres.
 
 Cet incrément enregistre les décisions d'acceptation vérifiées, pas les tentatives échouées, bypass ou publications effectives de ref. La chaîne de hachage locale n'authentifie pas les acteurs et ne résiste pas à un administrateur privilégié qui réécrit la base. Ces catégories de reçus et le check/ruleset GitHub réel restent à traiter dans #45/#155.
+
+
+## 15. Journaliser les résultats du gate, y compris UNKNOWN et le rejet
+
+L'intégration journalise désormais chaque évaluation terminée lorsque le mode journal est configuré, et pas seulement les décisions acceptées. Le type d'événement est `govcheck.acceptance.gate-result/v1` ; il inclut les bindings exacts candidat/base/ref/digest du rapport, l'identifiant et le résultat de décision, les bindings politique/gouvernance/scope, le motif et le dossier de risque.
+
+Lorsqu'un principal d'autorité vérifié est disponible, l'événement lui est attribué uniquement après vérification de son égalité avec le principal épinglé dans le genesis du journal. Si la preuve d'autorité est invalide ou absente, l'acteur enregistré est l'attribution locale fixe `system:govcheck-gate` et le payload indique explicitement `unverified-gate-attempt` ; il ne s'agit pas d'une décision humaine authentifiée. Ces tentatives exigent `GOVCHECK_JOURNAL_AUTHORITY_ID` correspondant à l'autorité du genesis.
+
+Le reçu du journal est écrit avant le retour du hook pre-receive. Il atteste donc le résultat/la tentative du gate, pas la mise à jour ultérieure de la ref Git. Un reçu post-receive sera nécessaire pour établir la publication. Si le journal configuré ne peut pas enregistrer le résultat, le gate retourne UNKNOWN et la mise à jour protégée est rejetée.
+
+
+La section 15 étend le reçu optionnel de décision acceptée décrit à la section 14 : elle enregistre tous les résultats de gate terminés, en distinguant explicitement l'attribution d'une autorité authentifiée de l'attribution locale non authentifiée d'une tentative du gate.

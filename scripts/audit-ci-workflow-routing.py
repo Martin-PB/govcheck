@@ -20,10 +20,12 @@ USES_ITEM = re.compile(r"""^\s{4}uses:\s*['"]?(\./\.github/workflows/[^\s'"]+\.y
 GLOB_POLICY_FILE = Path("docs/ci-routing-glob-policy.json")
 GLOB_PATTERN = re.compile(r"[*?\[\]{}!]")
 CATEGORY_POLICY_FILE = Path("docs/ci-routing-category-policy.json")
-TLC_WORKFLOWS = {
+SHARED_TLC_WORKFLOWS = {
     ".github/workflows/tla-lifecycle.yml",
     ".github/workflows/tla-assurance.yml",
     ".github/workflows/tla-authority.yml",
+}
+TLC_WORKFLOWS = SHARED_TLC_WORKFLOWS | {
     ".github/workflows/tla-governance-applicability.yml",
 }
 
@@ -277,11 +279,11 @@ def audit_category_policy(root: Path, reports: list[dict]) -> tuple[dict, list[d
                 "kind": "shared-tlc-category-missing",
                 "category": shared_category,
             })
-        elif set(shared_entry["workflows"]) != TLC_WORKFLOWS:
+        elif set(shared_entry["workflows"]) != SHARED_TLC_WORKFLOWS:
             findings.append({
                 "kind": "shared-tlc-workflow-mismatch",
                 "category": shared_category,
-                "expected_workflows": sorted(TLC_WORKFLOWS),
+                "expected_workflows": sorted(SHARED_TLC_WORKFLOWS),
                 "declared_workflows": sorted(shared_entry["workflows"]),
             })
     for name, entry in mapped.items():

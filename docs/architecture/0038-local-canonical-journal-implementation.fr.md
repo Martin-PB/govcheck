@@ -104,3 +104,10 @@ Cela lie l'événement Git du journal à l'identité native commit/ref et au con
 
 
 Pour les décisions authentifiées, l'horodatage de provenance provient du champ signé `decidedOn` de la décision ; rejouer la même décision signée produit ainsi le même payload de provenance et la même clé d'idempotence. Le champ `createdAt` de l'enveloppe du journal enregistre l'heure réelle de l'ajout. Les tentatives de gate non authentifiées utilisent l'horodatage d'observation de la tentative et ne sont pas représentées comme une décision d'autorité signée.
+
+
+## 10. Observateur local de provenance Pijul
+
+`govcheck.pijul_journal.append_pijul_observation` accepte un enregistrement de provenance natif Pijul validé et ajoute `govcheck.pijul.provenance-observed/v1` au journal canonique local. Il épingle l'URI/identité du dépôt, le scope/révision/digest de gouvernance et l'autorité/révision du genesis du journal ; exige que la base soit située hors du répertoire de travail Pijul ; utilise l'idempotence déterministe ; et attribue l'événement à un acteur observateur local fixe.
+
+L'événement indique explicitement `observationResult=observed` et `authorityStatus=not-established-by-vcs-observation`. Les types pris en charge sont l'observation d'état local de canal et l'observation d'une tentative de push. Il n'existe volontairement aucun type `remote-accepted` : le manuel officiel Pijul documente les hooks locaux avant `record` (actuellement seul ce hook), pas un hook obligatoire d'acceptation distante (R-226). Cet observateur n'intercepte pas `pijul push`, n'authentifie pas l'utilisateur local et n'établit pas la publication distante.

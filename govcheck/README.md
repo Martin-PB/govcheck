@@ -115,3 +115,6 @@ Install the capability through bootstrap as attestation-verify; it includes the 
 ## VCS-native provenance records
 
 The `govcheck.vcs_provenance` module builds typed `govcheck.vcs-provenance/v1` payloads for Git and Pijul. Git commit OIDs/full refs remain native to Git; Pijul channel hashes and change hashes remain opaque native identities. Content digests support exact snapshot binding but do not claim cross-VCS semantic equivalence. The JSON Schema is catalogued in `formal/artifacts.json` and the package formal catalogue.
+
+
+The `govcheck.pijul_journal` module can append local Pijul channel-state or push-attempt provenance to the canonical journal. It records observation only—not remote acceptance or publication—and keeps the journal outside the Pijul working tree.

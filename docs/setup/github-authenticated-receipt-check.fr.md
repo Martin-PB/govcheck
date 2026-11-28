@@ -10,7 +10,7 @@ Créer un fichier JSON de trust-policy sur la branche protégée `main`, par exe
 
 Il doit respecter le schéma de trust-policy GovCheck existant et contenir :
 
-- `schemaVersion: "1"` et `policyId: "urn:govcheck:trust-policy:v1"` ;
+- `schemaVersion: "1"` et `policyId: "govcheck.attestation-trust-policy/v1"` ;
 - une `revision` contrôlée par la gouvernance ;
 - `openssl.path` comme chemin absolu d'exécutable et `openssl.sha256` comme SHA-256 brut sur 64 caractères hexadécimaux ;
 - au moins une clé publique `ed25519` active avec `keyId`, `publicKeyPath`, `publicKeySha256`, `principalId` et le rôle requis `governance-authority` (ou un autre rôle configuré).

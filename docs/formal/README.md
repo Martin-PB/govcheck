@@ -2,6 +2,14 @@
 
 GovCheck's formal work is developed incrementally and remains separate from implementation claims. It draws on [R-05 — TLA+ and TLC](../references.md#r-05) and [R-22 — Native Git and Pijul semantics](../references.md#r-22).
 
+## Adversarial acceptance corpus
+
+- [Version 1.0.0 corpus catalogue](../research/adversarial-candidate-corpus-v1.md) · [French](../research/adversarial-candidate-corpus-v1.fr.md)
+- [Machine-readable corpus manifest](../../formal/adversarial-candidate-corpus-v1.json)
+- [Corpus manifest/evidence integrity test](../../tests/test_adversarial_candidate_corpus.py)
+
+The catalogue distinguishes executable unit/integration tests, model-only cases, planned cases and real enforcement that has not been demonstrated. It is repository-level assurance evidence, not part of the generated project package and not an enforcement policy.
+
 ## Lifecycle
 
 - [Lifecycle model — English](lifecycle-model.md)

@@ -1,6 +1,6 @@
-# Corpus de candidats adversariaux — version 1.0.0
+# Corpus de candidats adversariaux — version 1.1.0
 
-**Statut :** premier catalogue versionné avec pointeurs vers les tests existants ; il ne prétend ni que chaque attaque possède une fixture exécutable, ni que la frontière d'acceptation est déployée.  
+**Statut :** catalogue versionné 1.1.0 avec pointeurs vers les tests existants ; il ne prétend ni que chaque attaque possède une fixture exécutable, ni que la frontière d'acceptation est déployée.  
 **Instantané source :** révision `451d1e1ff929946274edba8e844e08d74fdd306f`.  
 **Parent :** [Issue #72](https://github.com/Martin-PB/govcheck/issues/72).  
 **English:** [Adversarial candidate corpus](adversarial-candidate-corpus-v1.md).  

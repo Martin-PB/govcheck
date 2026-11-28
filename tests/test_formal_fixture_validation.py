@@ -21,9 +21,10 @@ class FormalFixtureValidationTests(unittest.TestCase):
         self.assertEqual(report["formal_schemas_checked"], 5)
         self.assertEqual(report["package_schemas_checked"], 14)
         self.assertEqual(report["documentation_schemas_checked"], 1)
-        self.assertEqual(report["fixtures_checked"], 7)
-        self.assertEqual(report["fixture_schema_validations"], 14)
-        self.assertEqual(report["package_schemas_fixture_covered"], 5)
+        self.assertEqual(report["fixtures_checked"], 13)
+        self.assertEqual(report["fixture_schema_validations"], 15)
+        self.assertEqual(report["package_schemas_fixture_covered"], 6)
+        self.assertEqual(report["package_only_schemas_fixture_covered"], 1)
         self.assertEqual(report["finding_count"], 0)
 
     def test_each_schema_rejects_missing_required_property(self):
@@ -111,6 +112,19 @@ class FormalFixtureValidationTests(unittest.TestCase):
         self.assertTrue(findings)
         messages = " ".join(item["message"] for item in findings)
         self.assertIn("was expected", messages)
+
+    def test_package_only_independent_review_fixture_is_strict(self):
+        schemas, registry = MODULE.load_schemas(ROOT)
+        schema = schemas["govcheck/formal/schemas/independent-review-v1.schema.json"]
+        fixture = MODULE._read_json(ROOT / "govcheck/formal/fixtures/independent-review.example.json")
+        self.assertEqual(
+            MODULE.validate_instance(fixture, schema, registry, "independent-review.example.json"),
+            [],
+        )
+        invalid = copy.deepcopy(fixture)
+        invalid["reviewer"] = "untrusted free-form identity"
+        findings = MODULE.validate_instance(invalid, schema, registry, "invalid-independent-review")
+        self.assertTrue(findings)
 
     def test_malformed_fixture_format_is_rejected(self):
         schemas, registry = MODULE.load_schemas(ROOT)

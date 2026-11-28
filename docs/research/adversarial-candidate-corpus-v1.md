@@ -1,6 +1,6 @@
-# Adversarial candidate corpus — version 1.0.0
+# Adversarial candidate corpus — version 1.1.0
 
-**Status:** first versioned corpus catalogue with executable-test pointers; not a claim that every attack has a runnable fixture or that the acceptance boundary is deployed.  
+**Status:** version 1.1.0 corpus catalogue with executable-test pointers; not a claim that every attack has a runnable fixture or that the acceptance boundary is deployed.  
 **Snapshot:** source revision `451d1e1ff929946274edba8e844e08d74fdd306f`.  
 **Parent:** [Issue #72](https://github.com/Martin-PB/govcheck/issues/72).  
 **French:** [Corpus de candidats adversariaux](adversarial-candidate-corpus-v1.fr.md).  

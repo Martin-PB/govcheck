@@ -108,3 +108,8 @@ Exemple (remplacer le digest et les chemins par les valeurs gérées par l'opér
 Le vérificateur retourne verified, invalid ou unknown. Key ID inconnu, OpenSSL indisponible, politique manquante ou données de confiance indisponibles ne deviennent jamais PASS. La validité de la clé est évaluée selon l'horloge système courante ; aucun horodatage fiable n'est fourni. Une association principal/rôle authentifie la possession de la clé selon la politique configurée, pas l'identité réelle ni l'indépendance d'une personne. Les clés synthétiques de test prouvent uniquement le mécanisme de vérification. Ce fournisseur facultatif ne rend pas la revue indépendante disponible lorsqu'aucun second contributeur n'existe.
 
 Installer cette capacité via bootstrap sous le nom attestation-verify ; elle inclut le module d'attestation structurelle et les schémas Statement/politique de confiance.
+
+
+## Enregistrements de provenance natifs VCS
+
+Le module `govcheck.vcs_provenance` construit des payloads typés `govcheck.vcs-provenance/v1` pour Git et Pijul. Les OID de commit/refs complètes restent natifs à Git ; les hashes de canal et de changement Pijul restent des identités natives opaques. Les digests de contenu permettent un binding exact de snapshot mais ne revendiquent pas d'équivalence sémantique inter-VCS. Le JSON Schema est catalogué dans `formal/artifacts.json` et dans le catalogue formel du package.

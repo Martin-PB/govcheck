@@ -27,7 +27,7 @@ class AdversarialCandidateCorpusTests(unittest.TestCase):
         cases = self.data["cases"]
         ids = [case["id"] for case in cases]
         self.assertEqual(len(ids), len(set(ids)))
-        self.assertGreaterEqual(len(cases), 20)
+        self.assertGreaterEqual(len(cases), 23)
         for case in cases:
             with self.subTest(case=case["id"]):
                 self.assertRegex(case["id"], r"^AC-[0-9]{3}$")
@@ -60,12 +60,13 @@ class AdversarialCandidateCorpusTests(unittest.TestCase):
     def test_model_only_and_planned_cases_are_not_mislabeled_as_executed_tests(self):
         statuses = {case["id"]: case["coverageStatus"] for case in self.data["cases"]}
         self.assertEqual(statuses["AC-016"], "model-only")
-        self.assertEqual(statuses["AC-017"], "planned")
+        self.assertEqual(statuses["AC-017"], "tested-unit")
         self.assertEqual(statuses["AC-018"], "planned")
         self.assertEqual(statuses["AC-019"], "planned")
         self.assertEqual(statuses["AC-020"], "not-demonstrated")
         self.assertEqual(statuses["AC-021"], "planned")
         self.assertEqual(statuses["AC-022"], "planned")
+        self.assertEqual(statuses["AC-023"], "not-demonstrated")
 
     def test_every_evidence_path_is_present(self):
         for case in self.data["cases"]:

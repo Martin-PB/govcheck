@@ -21,10 +21,10 @@ class FormalFixtureValidationTests(unittest.TestCase):
         self.assertEqual(report["formal_schemas_checked"], 5)
         self.assertEqual(report["package_schemas_checked"], 14)
         self.assertEqual(report["documentation_schemas_checked"], 1)
-        self.assertEqual(report["fixtures_checked"], 20)
-        self.assertEqual(report["fixture_schema_validations"], 23)
-        self.assertEqual(report["package_schemas_fixture_covered"], 13)
-        self.assertEqual(report["package_only_schemas_fixture_covered"], 8)
+        self.assertEqual(report["fixtures_checked"], 21)
+        self.assertEqual(report["fixture_schema_validations"], 24)
+        self.assertEqual(report["package_schemas_fixture_covered"], 14)
+        self.assertEqual(report["package_only_schemas_fixture_covered"], 9)
         self.assertEqual(report["documentation_schemas_fixture_covered"], 1)
         self.assertEqual(report["finding_count"], 0)
 
@@ -195,6 +195,15 @@ class FormalFixtureValidationTests(unittest.TestCase):
         invalid = copy.deepcopy(fixture)
         invalid["evaluation"]["result"] = "verified"
         self.assertTrue(MODULE.validate_instance(invalid, schema, registry, "invalid-assurance-evaluation"))
+
+    def test_package_only_journal_event_fixture_is_strict(self):
+        schemas, registry = MODULE.load_schemas(ROOT)
+        schema = schemas["govcheck/formal/schemas/journal-event-v1.schema.json"]
+        fixture = MODULE._read_json(ROOT / "govcheck/formal/fixtures/journal-event.example.json")
+        self.assertEqual(MODULE.validate_instance(fixture, schema, registry, "journal-event.example.json"), [])
+        invalid = copy.deepcopy(fixture)
+        invalid["position"] = -1
+        self.assertTrue(MODULE.validate_instance(invalid, schema, registry, "invalid-journal-event"))
 
     def test_malformed_fixture_format_is_rejected(self):
         schemas, registry = MODULE.load_schemas(ROOT)

@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "1",
+  "canonicalization": "govcheck.jcs-safe-integer/v1",
+  "scopeId": "repo:fixture",
+  "position": 1,
+  "eventId": "fixture:event:journal:001",
+  "eventType": "govcheck.fixture/event",
+  "eventSchemaVersion": "1",
+  "previousDigest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "expectedHead": {
+    "position": 0,
+    "digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "payload": {
+    "synthetic": true,
+    "description": "Schema-conformance event only."
+  },
+  "payloadDigest": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "actorId": "actor:synthetic-fixture",
+  "idempotencyKey": "fixture:idempotency:journal:001",
+  "requestDigest": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+  "createdAt": "2026-11-28T12:00:00Z",
+  "eventDigest": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+}

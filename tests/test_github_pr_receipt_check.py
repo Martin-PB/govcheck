@@ -1,6 +1,7 @@
 import importlib.util
 import json
 import unittest
+from unittest.mock import patch
 from pathlib import Path
 
 SCRIPT = Path(__file__).resolve().parents[1] / "scripts" / "github-pr-receipt-check.py"
@@ -109,6 +110,14 @@ class GitHubPrReceiptCheckTests(unittest.TestCase):
         config = dict(self.config, GOVCHECK_GOVERNANCE_REVISION="gov-18")
         with self.assertRaises(CHECK.CheckError):
             CHECK.validate_pr_bindings(self.statement, self.pr, self.content_digest, config)
+
+    def test_disabled_opt_in_neutralizes_existing_pending_check(self):
+        event = {"pull_request": {"number": 7, "head": {"sha": self.head}, "base": {"sha": self.base}}}
+        external_id = "govcheck-pr-7-base-" + self.base
+        with patch.object(CHECK, "github_api", return_value={"check_runs": [{"id": 99, "external_id": external_id, "status": "in_progress"}]}), patch.object(CHECK, "complete_check_run") as complete:
+            self.assertEqual(CHECK.disable_pr_event(event, "token", "Martin-PB/govcheck"), 0)
+        complete.assert_called_once()
+        self.assertEqual(complete.call_args.args[2:4], (99, "neutral"))
 
     def test_comment_requires_command_and_strict_single_json_envelope(self):
         envelope = {"payloadType": "application/vnd.in-toto+json", "payload": "e30=", "signatures": [{"keyid": "k", "sig": "YQ=="}]}

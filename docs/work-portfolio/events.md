@@ -622,7 +622,7 @@
 - **Event type:** `semantic-mapping-audit-merged`.
 - **Recorded:** 2026-11-28.
 - **Source issue/PR:** [#73](https://github.com/Martin-PB/govcheck/issues/73), [PR #225](https://github.com/Martin-PB/govcheck/pull/225), merged at `01a187cf339cb4ba57d2c35d9fb2e78828761fd4`.
-- **Artifacts:** bilingual semantic mapping audit; source-level ambiguity references R-243–R-245; cross-links from the typed relation candidate matrix; refreshed #73 work-item record.
+- **Artifacts:** bilingual semantic mapping audit; source-level ambiguities catalogued in the audit; cross-links from the typed relation candidate matrix; refreshed #73 work-item record.
 - **Validation:** `receipt-check`, `reference-integrity`, `package-alignment` and `govcheck-check` all succeeded on the PR head.
 - **Disposition:** issue #73 remains open for relation-specific mapping profiles, formal obligations and negative fixtures; #210 remains open for the partial-mapping domain/composition contract.
 - **Limit:** no external ontology, standard relation or canonical GovCheck mapping is adopted.

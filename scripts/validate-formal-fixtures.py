@@ -52,7 +52,7 @@ def load_schemas(root: str | Path) -> tuple[dict[str, dict], Registry]:
     root = Path(root).resolve()
     schemas: dict[str, dict] = {}
     resources = []
-    schema_ids: set[str] = set()
+    schema_by_id: dict[str, dict] = {}
     for relative_directory in SCHEMA_DIRS:
         directory = root / relative_directory
         if not directory.is_dir():
@@ -67,11 +67,18 @@ def load_schemas(root: str | Path) -> tuple[dict[str, dict], Registry]:
             key = path.relative_to(root).as_posix()
             if key in schemas:
                 raise ValidationSetupError(f"duplicate schema path: {key}")
-            if schema_id in schema_ids:
-                raise ValidationSetupError(f"duplicate schema $id: {schema_id}")
             Draft202012Validator.check_schema(schema)
             schemas[key] = schema
-            schema_ids.add(schema_id)
+            previous = schema_by_id.get(schema_id)
+            if previous is not None:
+                if previous != schema:
+                    raise ValidationSetupError(
+                        f"duplicate schema $id has conflicting contents: {schema_id}"
+                    )
+                # Documentation and package projections may intentionally share
+                # one canonical schema ID. Register that resource only once.
+                continue
+            schema_by_id[schema_id] = schema
             resources.append((schema_id, Resource.from_contents(schema)))
     if not schemas:
         raise ValidationSetupError("no *.schema.json files found")

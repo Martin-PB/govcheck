@@ -20,7 +20,6 @@ SCHEMA_DIRS = (
     Path("govcheck/formal/schemas"),
     Path("docs/schemas"),
 )
-FORMAL_SCHEMA_DIR = Path("formal/schemas")
 FIXTURE_DIR = Path("formal/fixtures")
 
 

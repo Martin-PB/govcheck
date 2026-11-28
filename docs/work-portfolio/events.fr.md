@@ -15,7 +15,7 @@ Pour consulter les entrées, leur provenance et leurs limites, se reporter au [j
 
 ## Dernier événement enregistré
 
-Le journal canonique a maintenant enregistré **WP-EVT-000046**. La PR [#225](https://github.com/Martin-PB/govcheck/pull/225) a intégré l'audit sémantique bilingue du crosswalk de relations typées. Il distingue préservation source, liens génériques, correspondances candidates, mappings opérationnels et preuves/décisions séparées ; il documente les non-équivalences SACM, GSN, SysML, ReqIF, PROV-O et OSLC ainsi que les ambiguïtés de sources R-243–R-245.
+Le journal canonique a maintenant enregistré **WP-EVT-000046**. La PR [#225](https://github.com/Martin-PB/govcheck/pull/225) a intégré l'audit sémantique bilingue du crosswalk de relations typées. Il distingue préservation source, liens génériques, correspondances candidates, mappings opérationnels et preuves/décisions séparées ; il documente les non-équivalences SACM, GSN, SysML, ReqIF, PROV-O et OSLC ainsi que les ambiguïtés de sources consignées dans le catalogue.
 
 Les quatre contrôles CI ont réussi. Le crosswalk reste candidat : aucun standard, ontologie ou mapping n'est adopté. L'issue #73 reste ouverte pour les profils de mapping relation par relation, les obligations formelles et les fixtures négatives ; l'issue #210 reste ouverte pour le contrat de domaine/composition des mappings partiels.
 

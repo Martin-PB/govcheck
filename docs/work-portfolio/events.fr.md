@@ -15,12 +15,11 @@ Pour consulter les entrées, leur provenance et leurs limites, se reporter au [j
 
 ## Dernier événement enregistré
 
-Le journal canonique a maintenant enregistré **WP-EVT-000043**. La PR [#219](https://github.com/Martin-PB/govcheck/pull/219) a intégré l'audit bilingue de couverture de l'Architecture 0006 et créé le suivi candidat #218 pour l'isolation des contrôles fournis par les dépôts. La PR [#220](https://github.com/Martin-PB/govcheck/pull/220) a intégré le corpus adversarial versionné 1.0.0 (22 cas) et son test d'intégrité. Les quatre contrôles CI de chaque PR ont réussi.
+Le journal canonique a maintenant enregistré **WP-EVT-000045**. La PR [#222](https://github.com/Martin-PB/govcheck/pull/222) a intégré la recherche bilingue sur l'isolation d'exécution des contrôles fournis par les dépôts, avec comparaison des mécanismes et profils candidats P0–P3, sans adopter de sandbox. La PR [#223](https://github.com/Martin-PB/govcheck/pull/223) a fait évoluer le corpus adversarial vers la version 1.1.0 (23 cas), en ajoutant les tests de routage de workflows AC-017 et le constat non démontré AC-023.
 
-Les limites restent explicites : l'audit n'est pas une certification ; plusieurs attaques restent planifiées ; aucune frontière GitHub d'enforcement, aucun gate distant Pijul, aucun sandbox universel ni relecteur indépendant n'est revendiqué. Les issues #45 et #72 restent ouvertes pour leurs travaux résiduels.
+Les quatre contrôles CI des deux PR ont réussi. Les limites restent explicites : aucun sandbox n'est implémenté, aucune frontière GitHub d'enforcement n'est démontrée et les attaques formelles/résiduelles restent ouvertes.
 
-Détails et provenance : [WP-EVT-000042](events.md#wp-evt-000042) et [WP-EVT-000043](events.md#wp-evt-000043) dans le journal canonique anglais.
-
+Détails et provenance : [WP-EVT-000044](events.md#wp-evt-000044) et [WP-EVT-000045](events.md#wp-evt-000045) dans le journal canonique anglais.
 
 ## Dernier événement — WP-EVT-000022
 

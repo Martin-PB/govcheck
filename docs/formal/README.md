@@ -4,7 +4,7 @@ GovCheck's formal work is developed incrementally and remains separate from impl
 
 ## Adversarial acceptance corpus
 
-- [Version 1.0.0 corpus catalogue](../research/adversarial-candidate-corpus-v1.md) · [French](../research/adversarial-candidate-corpus-v1.fr.md)
+- [Version 1.1.0 corpus catalogue](../research/adversarial-candidate-corpus-v1.md) · [French](../research/adversarial-candidate-corpus-v1.fr.md)
 - [Machine-readable corpus manifest](../../formal/adversarial-candidate-corpus-v1.json)
 - [Corpus manifest/evidence integrity test](../../tests/test_adversarial_candidate_corpus.py)
 

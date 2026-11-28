@@ -44,6 +44,10 @@ jobs:
           axiom-audit: true
           axiom-audit-root: GovCheckCoherence.Proofs
 
+      - name: Reproduce empty-domain partial semantic bridge (known limitation)
+        working-directory: formal/lean
+        run: lake env lean GovCheckCoherence/Reproductions/EmptyDomainPartialMapping.lean
+
       - name: Report axioms used by prototype theorems
         working-directory: formal/lean
         run: lake env lean GovCheckCoherence/AxiomReport.lean

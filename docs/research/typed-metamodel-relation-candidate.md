@@ -2,6 +2,8 @@
 
 **Status:** research candidate, not an adopted metamodel or evaluator rule. This addendum responds to the semantic-coverage work in issue #73. It proposes typed relations rather than a single lifecycle chain; it does not declare external ontology terms equivalent by name.
 
+**Semantic audit:** [2026-11-28 relation-mapping audit](semantic-mapping-audit-2026-11-28.md) evaluates source-native semantics and non-equivalences; it does not adopt any mapping.
+
 ## 1. Relation assertion, not a bare edge
 
 A relation assertion should carry at least:

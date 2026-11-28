@@ -116,3 +116,6 @@ Le module `govcheck.vcs_provenance` construit des payloads typés `govcheck.vcs-
 
 
 Le module `govcheck.pijul_journal` peut ajouter au journal canonique la provenance d'une observation d'état local de canal Pijul ou d'une tentative de push. Il enregistre uniquement une observation—pas une acceptation distante ni une publication—et conserve le journal hors du répertoire de travail Pijul.
+
+
+CLI pour un record produit par un adaptateur de confiance : `python -m govcheck.pijul_journal --provenance-json /path/hors-worktree/record.json --observation-kind channel-state-observed`. Il ajoute une observation locale et affiche le reçu durable ; il ne collecte pas lui-même les hashes natifs et ne vérifie pas un push distant.

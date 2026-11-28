@@ -1576,7 +1576,7 @@
 - **Source primaire :** [Hooks Git](https://git-scm.com/docs/githooks).
 - **Utilité :** distingue `pre-push` côté client de `pre-receive` côté serveur. Ce dernier s'exécute une fois par réception, reçoit les anciens/nouveaux identifiants d'objets et les noms complets des références ; un code non nul rejette les mises à jour proposées. C'est un adaptateur natif de frontière pour les serveurs Git contrôlés et les dépôts bare locaux.
 - **Limite :** le hook et le vérificateur de confiance doivent être installés hors de l'arbre candidat par l'administrateur du serveur. La manipulation directe des références/fichiers ou le remplacement du hook par l'administrateur restent hors garantie.
-- **Cité par :** [Architecture 0037](architecture/0037-acceptance-boundary-and-enforcement-adapters.fr.md), [Architecture 0038](architecture/0038-local-canonical-journal-implementation.fr.md), [recherche sur la frontière d'acceptation](research/acceptance-boundary-enforcement-2026-11.fr.md), [registre des travaux](work-portfolio/work-items.fr.md), [journal des événements](work-portfolio/events.fr.md).
+- **Cité par :** [Architecture 0037](architecture/0037-acceptance-boundary-and-enforcement-adapters.fr.md), [Architecture 0038](architecture/0038-local-canonical-journal-implementation.fr.md), [Architecture 0039](architecture/0039-github-required-check-source.fr.md), [recherche sur la frontière d'acceptation](research/acceptance-boundary-enforcement-2026-11.fr.md), [registre des travaux](work-portfolio/work-items.fr.md), [journal des événements](work-portfolio/events.fr.md).
 
 <a id="r-226"></a>
 ### R-226 — Hooks locaux Pijul et contribution sur le Nest
@@ -1592,7 +1592,7 @@
 - **Sources primaires :** [Spécification de l'enveloppe DSSE](https://github.com/dsse-lf/dsse/blob/master/envelope.md) · [Protocole de signature et de vérification DSSE](https://github.com/dsse-lf/dsse/blob/master/protocol.md).
 - **Utilité :** définit l'enveloppe JSON et la construction PAE qui lie le type et les octets exacts du payload aux signatures ; prend en charge plusieurs signatures.
 - **Limite :** DSSE authentifie des octets signés selon la politique de confiance du vérificateur. Un identifiant de clé est un simple indice non authentifié ; la validité d'une signature n'établit pas à elle seule un rôle GovCheck ni la correction sémantique d'une évaluation.
-- **Cité par :** [Spécification 0008](specifications/0008-interoperable-assurance-attestations.fr.md).
+- **Cité par :** [Spécification 0008](specifications/0008-interoperable-assurance-attestations.fr.md), [Architecture 0039](architecture/0039-github-required-check-source.fr.md).
 
 <a id="r-228"></a>
 ### R-228 — Framework d'attestation in-toto v1

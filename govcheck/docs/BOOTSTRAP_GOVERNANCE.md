@@ -14,8 +14,8 @@ There is no executable, machine-enforced canonical policy, formal proof, model-c
 
 Replace this policy only when a reviewed implementation provides a versioned canonical model; defined semantics for obligations, permissions, prohibitions, exceptions, and lifecycle transitions; a deterministic local evaluator; assurance records bound to exact repository and governance states; documented verification and trust boundaries; and a history-preserving migration.
 
-## Recorded authorization
+## Package boundary
 
-The maintainer's explicit hosted-CI authorization for public `Martin-PB/govcheck` is recorded in [Architecture 0040](architecture/0040-scoped-hosted-ci-authorization.md). It does not authorize merge bypass, ruleset/secret changes, external side effects or use on other repositories.
+This packaged policy is generic. Repository-specific hosted-CI authorizations are maintained outside the package and are not inherited by package consumers. Each consumer must obtain explicit authorization for its own repository; an authorization granted to the source repository does not extend to downstream repositories.
 
 French: [BOOTSTRAP_GOVERNANCE.fr.md](BOOTSTRAP_GOVERNANCE.fr.md).

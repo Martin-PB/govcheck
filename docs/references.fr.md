@@ -6,6 +6,7 @@
 |---|---|
 | Autorité de gouvernance, séparation des tâches et développement sécurisé | R-01–R-03, R-11 |
 | Évaluation des risques, modélisation des menaces et chemins d'attaque | R-27–R-32 |
+| Isolation d'exécution, sandboxing et limites de ressources | R-236–R-242 |
 | Dossiers d'assurance de sécurité et métamodèles | R-04, R-33–R-34 |
 | Modèle de décision PEAK | R-74 |
 | Surveillance continue et assurance à l'exécution | R-70, R-72, R-75–R-76 |
@@ -1663,3 +1664,60 @@
 - **Utilité pour GovCheck :** validation structurelle candidate des enveloppes d'échange et des payloads de liens typés.
 - **Limite :** la conformité aux formes établit uniquement des contraintes structurelles ; elle n'établit ni vérité, ni authenticité de provenance, ni autorité, ni raffinement sémantique, ni suffisance des preuves.
 - **Cité par :** [matrice candidate de relations typées](research/typed-metamodel-relation-candidate.fr.md).
+
+
+<a id="r-236"></a>
+### R-236 — LSM Landlock Linux
+- **Type :** Documentation primaire de sécurité du noyau Linux.
+- **Source primaire :** [Documentation LSM Landlock](https://docs.kernel.org/security/landlock.html).
+- **Utilité :** documente des règles de contrôle d'accès additives et non privilégiées pouvant restreindre l'accès au système de fichiers d'un processus et se composer avec les contrôles existants.
+- **Limite :** Landlock n'est ni un filtre général d'appels système, ni un système de quotas, ni une politique complète de sortie réseau, ni une frontière VM. Le support ABI et les règles effectives doivent être vérifiés.
+- **Cité par :** [recherche sur l'isolation d'exécution des contrôles](research/check-execution-isolation-2026-11.fr.md).
+
+<a id="r-237"></a>
+### R-237 — Filtre seccomp Linux
+- **Type :** Documentation primaire de l'API utilisateur du noyau Linux.
+- **Source primaire :** [Documentation du filtre seccomp](https://docs.kernel.org/userspace-api/seccomp_filter.html).
+- **Utilité :** documente le filtrage des appels système, notamment les décisions fondées sur leurs numéros et certains arguments.
+- **Limite :** seccomp n'exprime pas une politique générale de chemins de fichiers, des quotas CPU/mémoire ou un filtrage complet de sortie réseau. Correction du filtre et couverture des architectures sont critiques.
+- **Cité par :** [recherche sur l'isolation d'exécution des contrôles](research/check-execution-isolation-2026-11.fr.md).
+
+<a id="r-238"></a>
+### R-238 — Contrôle des ressources cgroup v2 Linux
+- **Type :** Documentation primaire d'administration du noyau Linux.
+- **Source primaire :** [Control Group v2](https://docs.kernel.org/admin-guide/cgroup-v2.html).
+- **Utilité :** documente le contrôle hiérarchique des ressources, notamment CPU, mémoire, processus et E/S.
+- **Limite :** les cgroups contraignent la consommation de ressources, mais n'empêchent pas à eux seuls l'accès aux fichiers hôte, l'exposition d'identifiants, l'accès réseau ou les attaques du noyau.
+- **Cité par :** [recherche sur l'isolation d'exécution des contrôles](research/check-execution-isolation-2026-11.fr.md).
+
+<a id="r-239"></a>
+### R-239 — Spécification de runtime Open Container Initiative : configuration Linux
+- **Type :** Spécification primaire de runtime de conteneur.
+- **Source primaire :** [Configuration Linux OCI runtime-spec](https://github.com/opencontainers/runtime-spec/blob/main/config-linux.md).
+- **Utilité :** spécifie les paramètres configurables de namespaces Linux, cgroups/ressources, capacités, seccomp, LSM et système de fichiers/périphériques pour un runtime de conteneur.
+- **Limite :** la spécification est une interface de configuration, pas une preuve de sécurité d'un conteneur déployé. Les namespaces omis peuvent être hérités ; runtime effectif et configuration hôte font partie de la TCB.
+- **Cité par :** [recherche sur l'isolation d'exécution des contrôles](research/check-execution-isolation-2026-11.fr.md).
+
+<a id="r-240"></a>
+### R-240 — Conception et sandboxing Firecracker
+- **Type :** Documentation primaire d'implémentation microVM.
+- **Source primaire :** [Conception Firecracker](https://github.com/firecracker-microvm/firecracker/blob/main/docs/design.md).
+- **Utilité :** décrit la frontière microVM KVM et la défense en profondeur avec seccomp, cgroups, namespaces et jailer.
+- **Limite :** Firecracker ne filtre pas le trafic réseau ; la sortie de l'invité doit être filtrée au niveau hôte. Noyau hôte, KVM, jailer et superviseur restent de confiance.
+- **Cité par :** [recherche sur l'isolation d'exécution des contrôles](research/check-execution-isolation-2026-11.fr.md).
+
+<a id="r-241"></a>
+### R-241 — Utilisation sécurisée de GitHub Actions
+- **Type :** Documentation primaire de sécurité d'une plateforme CI hébergée.
+- **Source primaire :** [Référence d'utilisation sécurisée de GitHub Actions](https://docs.github.com/en/actions/reference/security/secure-use).
+- **Utilité :** décrit permissions et sécurité des runners ; distingue les VM éphémères propres hébergées par GitHub des runners auto-hébergés qui peuvent être compromis durablement par des workflows non fiables.
+- **Limite :** ces affirmations décrivent le service et la configuration GitHub, pas une garantie générique pour d'autres fournisseurs CI ou des runners auto-hébergés arbitraires. Permissions de workflow, secrets et actions nécessitent toujours le moindre privilège.
+- **Cité par :** [recherche sur l'isolation d'exécution des contrôles](research/check-execution-isolation-2026-11.fr.md).
+
+<a id="r-242"></a>
+### R-242 — Configuration du sandbox de build Nix
+- **Type :** Manuel de référence primaire Nix.
+- **Source primaire :** [Référence de configuration Nix](https://nix.dev/manual/nix/2.30/command-ref/conf-file).
+- **Utilité :** documente le sandbox de build, les chemins visibles, les namespaces Linux, le support plateforme et le comportement de configuration.
+- **Limite :** le sandbox Nix s'applique aux builds Nix, pas automatiquement à toute commande fournie par un dépôt. Le manuel documente le support Linux/macOS, l'exigence root et les exceptions réseau pour les derivations à sortie fixe ; ce n'est pas une frontière universelle d'exécution de code hostile.
+- **Cité par :** [recherche sur l'isolation d'exécution des contrôles](research/check-execution-isolation-2026-11.fr.md).

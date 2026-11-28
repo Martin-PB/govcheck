@@ -34,7 +34,7 @@ class CIWorkflowRoutingAuditTests(unittest.TestCase):
             "name": "TestCategory", "modelSpecific": False, "paths": [], "workflows": [],
         }])
 
-    def write_category_policy(self, categories, input_sets=None, shared_tlc_category=None):
+    def write_category_policy(self, categories, input_sets=None, shared_tlc_category=None, additional_workflow_routing=None):
         (self.root / "docs" / "ci-routing-category-policy.json").write_text(
             json.dumps({
                 "format": "govcheck.ci-routing-category-policy/v1",
@@ -42,6 +42,7 @@ class CIWorkflowRoutingAuditTests(unittest.TestCase):
                 "categories": categories,
                 "inputSets": input_sets or {},
                 "sharedTlcCategory": shared_tlc_category,
+                "additionalWorkflowRouting": additional_workflow_routing or [],
             }),
             encoding="utf-8",
         )
@@ -260,6 +261,37 @@ on:
         findings = [item for item in report["findings"] if item["kind"] == "model-dependency-workflow-mismatch"]
         self.assertEqual(findings[0]["input_set"], "LifecycleInputs")
         self.assertEqual(findings[0]["expected_workflow"], ".github/workflows/tla-lifecycle.yml")
+
+    def test_additional_model_workflow_paths_must_route_on_pr_and_push(self):
+        required_paths = ["formal/tla/ModelGroup.tla", "formal/tla/ModelGroup.cfg"]
+        for path in required_paths:
+            file_path = self.root / path
+            file_path.parent.mkdir(parents=True, exist_ok=True)
+            file_path.write_text("synthetic", encoding="utf-8")
+        self.write_category_policy([{
+            "name": "TestCategory", "modelSpecific": False, "paths": [], "workflows": [],
+        }], additional_workflow_routing=[{
+            "workflow": ".github/workflows/model-group.yml",
+            "requiredPaths": required_paths,
+        }])
+        self.write("model-group.yml", """name: model group
+on:
+  pull_request:
+    paths:
+      - 'formal/tla/ModelGroup.tla'
+      - 'formal/tla/ModelGroup.cfg'
+  push:
+    paths:
+      - 'formal/tla/ModelGroup.tla'
+""")
+        report = AUDIT.audit_workflows(self.root)
+        findings = [item for item in report["findings"] if item["kind"] == "additional-workflow-path-missing"]
+        self.assertEqual(findings, [{
+            "kind": "additional-workflow-path-missing",
+            "workflow": ".github/workflows/model-group.yml",
+            "event": "push",
+            "path": "formal/tla/ModelGroup.cfg",
+        }])
 
     def test_unsupported_path_entry_is_rejected_not_ignored(self):
         self.write("bad.yml", """name: bad

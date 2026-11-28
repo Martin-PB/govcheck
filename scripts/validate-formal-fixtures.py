@@ -40,20 +40,23 @@ def _read_json(path: Path) -> Any:
         raise ValidationSetupError(f"{path}: cannot read JSON: {exc}") from exc
 
 
-def fixture_schema_name(name: str) -> str | None:
+def fixture_schema_name(name: str, *, packaged: bool = False) -> str | None:
     if name == "independent-review.example.json":
         return "govcheck/formal/schemas/independent-review-v1.schema.json"
     if name == "dependency-edge.example.json":
-        return "formal/schemas/dependency-edge.schema.json"
-    if name.startswith("evidence-record-") and name.endswith(".example.json"):
-        return "formal/schemas/evidence-record.schema.json"
-    if name.startswith("version-decision-") and name.endswith(".example.json"):
-        return "formal/schemas/version-decision.schema.json"
-    if name == "release-manifest.example.json":
-        return "formal/schemas/release-manifest.schema.json"
-    if name == "version-governance-bundle.example.json":
-        return "formal/schemas/version-governance-bundle.schema.json"
-    return None
+        schema = "dependency-edge.schema.json"
+    elif name.startswith("evidence-record-") and name.endswith(".example.json"):
+        schema = "evidence-record.schema.json"
+    elif name.startswith("version-decision-") and name.endswith(".example.json"):
+        schema = "version-decision.schema.json"
+    elif name == "release-manifest.example.json":
+        schema = "release-manifest.schema.json"
+    elif name == "version-governance-bundle.example.json":
+        schema = "version-governance-bundle.schema.json"
+    else:
+        return None
+    prefix = "govcheck/formal/schemas/" if packaged else "formal/schemas/"
+    return prefix + schema
 
 
 def load_schemas(root: str | Path) -> tuple[dict[str, dict], Registry]:
@@ -126,7 +129,8 @@ def audit(root: str | Path) -> dict:
         for path in directory.glob("*.example.json")
     )
     for path in fixture_paths:
-        schema_name = fixture_schema_name(path.name)
+        packaged = path.parent == root / Path("govcheck/formal/fixtures")
+        schema_name = fixture_schema_name(path.name, packaged=packaged)
         if schema_name is None:
             findings.append({
                 "instance": path.relative_to(root).as_posix(),
@@ -154,11 +158,12 @@ def audit(root: str | Path) -> dict:
         ))
         fixture_schema_validation_count += 1
 
-        # The distributable package contains byte-for-byte schema projections
-        # of these five formal schemas (with only $id rewritten). Reuse the
-        # same synthetic examples to validate both source and package copies.
+        # If a packaged fixture exists, it is validated separately against
+        # the package schema. Otherwise reuse the formal fixture as a fallback
+        # conformance instance for the package projection.
         package_schema_name = "govcheck/formal/schemas/" + Path(schema_name).name
-        if schema_name.startswith("formal/schemas/") and package_schema_name in schemas:
+        packaged_fixture_exists = (root / "govcheck/formal/fixtures" / path.name).is_file()
+        if schema_name.startswith("formal/schemas/") and package_schema_name in schemas and not packaged_fixture_exists:
             covered.add(package_schema_name)
             findings.extend(validate_instance(
                 instance, schemas[package_schema_name], registry,
@@ -193,7 +198,7 @@ def audit(root: str | Path) -> dict:
         "fixture_schema_validations": fixture_schema_validation_count,
         "package_schemas_fixture_covered": sum(name in covered for name in schemas if name.startswith("govcheck/formal/schemas/")),
         "package_only_schemas_fixture_covered": sum(name in covered for name in PACKAGE_ONLY_FIXTURE_SCHEMAS),
-        "fixture_coverage_scope": "The seven formal fixtures are validated against five formal schemas and five package projections; one package-only independent-review predicate fixture is validated directly. Other package-only schemas and the documentation schema remain meta-validated but not fixture-covered.",
+        "fixture_coverage_scope": "Formal and packaged fixture files are mapped to their respective source/package schemas. When a packaged fixture is absent, its formal fixture is used as a fallback against the package projection. One package-only independent-review predicate fixture is included; other package-only schemas and the documentation schema remain meta-validated but not fixture-covered.",
         "finding_count": len(findings),
         "findings": findings,
         "limitations": [

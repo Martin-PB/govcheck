@@ -112,9 +112,10 @@ def validate_instance(instance: Any, schema: dict, registry: Registry, path: str
 def audit(root: str | Path) -> dict:
     root = Path(root).resolve()
     schemas, registry = load_schemas(root)
-    fixtures_dir = root / FIXTURE_DIR
-    if not fixtures_dir.is_dir():
-        raise ValidationSetupError(f"fixture directory does not exist: {fixtures_dir}")
+    fixture_directories = [root / relative for relative in FIXTURE_DIRS]
+    for fixtures_dir in fixture_directories:
+        if not fixtures_dir.is_dir():
+            raise ValidationSetupError(f"fixture directory does not exist: {fixtures_dir}")
 
     findings: list[dict[str, str]] = []
     fixture_count = 0

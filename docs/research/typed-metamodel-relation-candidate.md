@@ -88,3 +88,6 @@ This matrix is a research artifact for issue #73. It does not update the canonic
 Before any source-native relation becomes operative, its mapping profile must record: exact source specification/version; source relation identifier and domain/range; GovCheck candidate relation; direction and cardinality; semantic preservation or explicit loss; unmapped constructs; source-native payload retention; revision and applicability; provenance; authority if normative; and positive/negative fixtures.
 
 A label match is not a mapping proof. A profile that cannot justify the mapping remains a candidate/unsupported relation and must not feed the evaluator. See the [reference catalogue](../references.md#r-234) and [semantic-coverage audit](metamodel-semantic-coverage-audit.md).
+
+
+Crosswalk sources: [R-4](../references.md#r-04) · [R-24](../references.md#r-24) · [R-34](../references.md#r-34) · [R-73](../references.md#r-73) · [R-95](../references.md#r-95) · [R-102](../references.md#r-102) · [R-119](../references.md#r-119) · [R-234](../references.md#r-234) · [R-235](../references.md#r-235).

@@ -66,6 +66,7 @@ def build_manifest(root: Path, args: argparse.Namespace) -> dict[str, Any]:
         "model": {"path": model_path, "gitBlob": blob_id(root, model_path)},
         "configuration": {"path": config_path, "gitBlob": blob_id(root, config_path)},
         "reusableWorkflow": {"path": reusable_path, "gitBlob": blob_id(root, reusable_path)},
+        "formalTlaTree": {"path": "formal/tla", "gitBlob": blob_id(root, "formal/tla")},
     }
     caller_path = caller_workflow_path(workflow_ref)
     if caller_path and safe_path(root, caller_path).is_file():
@@ -118,7 +119,7 @@ def verify_manifest(root: Path, manifest: dict[str, Any]) -> list[str]:
     if (manifest.get("run") or {}).get("checkoutCommit") != actual_commit:
         errors.append("checkout commit differs from manifest")
     sources = manifest.get("sources") or {}
-    for key in ("model", "configuration", "reusableWorkflow", "callerWorkflow"):
+    for key in ("model", "configuration", "reusableWorkflow", "formalTlaTree", "callerWorkflow"):
         record = sources.get(key)
         if key == "callerWorkflow" and record is None:
             continue

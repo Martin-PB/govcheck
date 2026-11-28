@@ -1,7 +1,7 @@
 # Corpus de candidats adversariaux — version 1.2.0
 
-**Statut :** catalogue versionné 1.1.0 avec pointeurs vers les tests existants ; il ne prétend ni que chaque attaque possède une fixture exécutable, ni que la frontière d'acceptation est déployée.  
-**Instantané source :** révision du corpus v1.1.0 `d25e417f41eb67619cc6a9df285cdb89b317dd70` ; la base v1.0.0 avait été auditée sur `451d1e1ff929946274edba8e844e08d74fdd306f`.  
+**Statut :** catalogue versionné 1.2.0 avec pointeurs vers les tests existants ; il ne prétend ni que chaque attaque possède une fixture exécutable, ni que la frontière d'acceptation est déployée.  
+**Instantané source :** candidat du corpus v1.2.0 fondé sur la révision source `7366914aa347f87b1ce817c90f468cfa9688a45c` ; la base v1.1.0 avait été auditée sur `d25e417f41eb67619cc6a9df285cdb89b317dd70`.  
 **Parent :** [Issue #72](https://github.com/Martin-PB/govcheck/issues/72).  
 **English:** [Adversarial candidate corpus](adversarial-candidate-corpus-v1.md).  
 **Manifeste lisible par machine :** [`formal/adversarial-candidate-corpus-v1.json`](../../formal/adversarial-candidate-corpus-v1.json).

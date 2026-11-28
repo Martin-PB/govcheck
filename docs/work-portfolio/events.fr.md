@@ -15,11 +15,11 @@ Pour consulter les entrées, leur provenance et leurs limites, se reporter au [j
 
 ## Dernier événement enregistré
 
-Le journal canonique a maintenant enregistré **WP-EVT-000045**. La PR [#222](https://github.com/Martin-PB/govcheck/pull/222) a intégré la recherche bilingue sur l'isolation d'exécution des contrôles fournis par les dépôts, avec comparaison des mécanismes et profils candidats P0–P3, sans adopter de sandbox. La PR [#223](https://github.com/Martin-PB/govcheck/pull/223) a fait évoluer le corpus adversarial vers la version 1.1.0 (23 cas), en ajoutant les tests de routage de workflows AC-017 et le constat non démontré AC-023.
+Le journal canonique a maintenant enregistré **WP-EVT-000046**. La PR [#225](https://github.com/Martin-PB/govcheck/pull/225) a intégré l'audit sémantique bilingue du crosswalk de relations typées. Il distingue préservation source, liens génériques, correspondances candidates, mappings opérationnels et preuves/décisions séparées ; il documente les non-équivalences SACM, GSN, SysML, ReqIF, PROV-O et OSLC ainsi que les ambiguïtés de sources consignées dans le catalogue.
 
-Les quatre contrôles CI des deux PR ont réussi. Les limites restent explicites : aucun sandbox n'est implémenté, aucune frontière GitHub d'enforcement n'est démontrée et les attaques formelles/résiduelles restent ouvertes.
+Les quatre contrôles CI ont réussi. Le crosswalk reste candidat : aucun standard, ontologie ou mapping n'est adopté. L'issue #73 reste ouverte pour les profils de mapping relation par relation, les obligations formelles et les fixtures négatives ; l'issue #210 reste ouverte pour le contrat de domaine/composition des mappings partiels.
 
-Détails et provenance : [WP-EVT-000044](events.md#wp-evt-000044) et [WP-EVT-000045](events.md#wp-evt-000045) dans le journal canonique anglais.
+Détails et provenance : [WP-EVT-000046](events.md#wp-evt-000046) dans le journal canonique anglais.
 
 ## Dernier événement — WP-EVT-000022
 

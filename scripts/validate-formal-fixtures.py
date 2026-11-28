@@ -110,6 +110,7 @@ def audit(root: str | Path) -> dict:
 
     findings: list[dict[str, str]] = []
     fixture_count = 0
+    fixture_schema_validation_count = 0
     covered: set[str] = set()
     for path in sorted(fixtures_dir.glob("*.example.json")):
         schema_name = fixture_schema_name(path.name)
@@ -134,11 +135,31 @@ def audit(root: str | Path) -> dict:
         except ValidationSetupError as exc:
             findings.append({"instance": path.relative_to(root).as_posix(), "location": "", "message": str(exc)})
             continue
+        instance_path = path.relative_to(root).as_posix()
         findings.extend(validate_instance(
-            instance, schemas[schema_name], registry, path.relative_to(root).as_posix()
+            instance, schemas[schema_name], registry, instance_path
         ))
+        fixture_schema_validation_count += 1
 
-    fixture_required = {name for name in schemas if name.startswith("formal/schemas/")}
+        # The distributable package contains byte-for-byte schema projections
+        # of these five formal schemas (with only $id rewritten). Reuse the
+        # same synthetic examples to validate both source and package copies.
+        package_schema_name = "govcheck/formal/schemas/" + Path(schema_name).name
+        if package_schema_name in schemas:
+            covered.add(package_schema_name)
+            findings.extend(validate_instance(
+                instance, schemas[package_schema_name], registry,
+                instance_path + " -> " + package_schema_name
+            ))
+            fixture_schema_validation_count += 1
+
+    formal_fixture_schemas = {name for name in schemas if name.startswith("formal/schemas/")}
+    package_mirror_schemas = {
+        "govcheck/formal/schemas/" + Path(name).name
+        for name in formal_fixture_schemas
+        if "govcheck/formal/schemas/" + Path(name).name in schemas
+    }
+    fixture_required = formal_fixture_schemas | package_mirror_schemas
     for schema_name in sorted(fixture_required - covered):
         findings.append({
             "instance": "",
@@ -156,7 +177,9 @@ def audit(root: str | Path) -> dict:
         "package_schemas_checked": sum(name.startswith("govcheck/formal/schemas/") for name in schemas),
         "documentation_schemas_checked": sum(name.startswith("docs/schemas/") for name in schemas),
         "fixtures_checked": fixture_count,
-        "fixture_coverage_scope": "Example fixtures are currently required for formal/schemas; packaged and documentation schemas are meta-validated and registered for cross-reference resolution, but are not yet fixture-covered.",
+        "fixture_schema_validations": fixture_schema_validation_count,
+        "package_schemas_fixture_covered": sum(name in covered for name in package_mirror_schemas),
+        "fixture_coverage_scope": "The seven formal example fixtures are validated against the five formal schemas and their five package projections. The remaining package-only schemas and documentation schema are meta-validated but not yet fixture-covered.",
         "finding_count": len(findings),
         "findings": findings,
         "limitations": [

@@ -17,10 +17,6 @@ on:
       - "docs/research/sacm24-source-view-alignment.md"
       - "docs/research/sacm24-source-view-alignment.fr.md"
       - ".github/workflows/sacm-native-ingestion.yml"
-      - "docs/research/sacm-native-metamodel-ingestion.md"
-      - "docs/research/sacm-native-metamodel-ingestion.fr.md"
-      - "docs/research/sacm24-source-view-alignment.md"
-      - "docs/research/sacm24-source-view-alignment.fr.md"
   push:
     branches: [main]
     paths:
@@ -34,6 +30,10 @@ on:
       - "formal/lean/GovCheckCoherence/Proofs.lean"
       - "formal/lean/GovCheckCoherence/AxiomReport.lean"
       - ".github/workflows/sacm-native-ingestion.yml"
+      - "docs/research/sacm-native-metamodel-ingestion.md"
+      - "docs/research/sacm-native-metamodel-ingestion.fr.md"
+      - "docs/research/sacm24-source-view-alignment.md"
+      - "docs/research/sacm24-source-view-alignment.fr.md"
   workflow_dispatch:
 
 permissions:

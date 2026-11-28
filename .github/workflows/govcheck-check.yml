@@ -26,6 +26,8 @@ jobs:
           python-version: '3.12'
       - name: Unit tests of the check slice (blocking)
         run: python3 -m unittest discover -s tests -v
+      - name: Audit workflow path-filter symmetry and reusable routing
+        run: python3 scripts/audit-ci-workflow-routing.py --root .
       - name: Run govcheck check on the candidate (report-only)
         continue-on-error: true
         run: |

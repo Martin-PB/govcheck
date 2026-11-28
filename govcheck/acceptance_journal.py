@@ -98,6 +98,7 @@ def append_verified_decision(env: dict[str, str], gate_payload: dict[str, Any]) 
             governance_digest=env["GOVCHECK_GOVERNANCE_DIGEST"],
             adapter_id="govcheck.git-acceptance-gate",
             adapter_version="1",
+            observed_at=gate_payload.get("decision_time"),
         )
     except (VcsProvenanceError, KeyError, TypeError, ValueError) as exc:
         raise AcceptanceJournalError("typed Git provenance could not be built: " + str(exc)) from exc

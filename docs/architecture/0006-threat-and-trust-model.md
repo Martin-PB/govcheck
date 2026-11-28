@@ -1,6 +1,6 @@
 # Architecture 0006 — Threat and Trust Model
 
-**Status:** Proposed for review; no security controls are implemented. **French:** [0006 (fr)](0006-threat-and-trust-model.fr.md).
+**Status:** Proposed for review; bounded security prototypes now exist, but no complete or generally deployed security boundary is established. See the [2026-11-28 coverage audit](../research/threat-model-coverage-audit-2026-11-28.md). **French:** [0006 (fr)](0006-threat-and-trust-model.fr.md).
 
 ## 1. Assets
 

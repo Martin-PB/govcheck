@@ -68,7 +68,7 @@ def _paths_for_event(lines: list[str], event: str, workflow: str) -> set[str] | 
 
 def inspect_workflow(path: Path, root: Path) -> dict:
     try:
-        text = path.read_text(encoding="utf-8")
+        text = (root / path).read_text(encoding="utf-8")
     except OSError as exc:
         raise WorkflowParseError(f"{path}: {exc}") from exc
     lines = text.splitlines()

@@ -26,6 +26,7 @@ FIXTURE_DIRS = (
 )
 PACKAGE_ONLY_FIXTURE_SCHEMAS = {
     "govcheck/formal/schemas/independent-review-v1.schema.json",
+    "govcheck/formal/schemas/vcs-provenance-v1.schema.json",
 }
 
 
@@ -43,6 +44,8 @@ def _read_json(path: Path) -> Any:
 def fixture_schema_name(name: str, *, packaged: bool = False) -> str | None:
     if name == "independent-review.example.json":
         return "govcheck/formal/schemas/independent-review-v1.schema.json"
+    if name == "vcs-provenance.example.json":
+        return "govcheck/formal/schemas/vcs-provenance-v1.schema.json"
     if name == "dependency-edge.example.json":
         schema = "dependency-edge.schema.json"
     elif name.startswith("evidence-record-") and name.endswith(".example.json"):
@@ -198,7 +201,7 @@ def audit(root: str | Path) -> dict:
         "fixture_schema_validations": fixture_schema_validation_count,
         "package_schemas_fixture_covered": sum(name in covered for name in schemas if name.startswith("govcheck/formal/schemas/")),
         "package_only_schemas_fixture_covered": sum(name in covered for name in PACKAGE_ONLY_FIXTURE_SCHEMAS),
-        "fixture_coverage_scope": "Formal and packaged fixture files are mapped to their respective source/package schemas. When a packaged fixture is absent, its formal fixture is used as a fallback against the package projection. One package-only independent-review predicate fixture is included; other package-only schemas and the documentation schema remain meta-validated but not fixture-covered.",
+        "fixture_coverage_scope": "Formal and packaged fixture files are mapped to their respective source/package schemas. When a packaged fixture is absent, its formal fixture is used as a fallback against the package projection. Package-only independent-review predicate and VCS-provenance fixtures are included; other package-only schemas and the documentation schema remain meta-validated but not fixture-covered.",
         "finding_count": len(findings),
         "findings": findings,
         "limitations": [

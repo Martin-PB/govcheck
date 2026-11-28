@@ -126,6 +126,7 @@ def run_post_receive(input_text: str, env=None) -> tuple[int, list[str]]:
                 "publication": "linked-to-verified-acceptance" if linked else "published-without-verified-acceptance",
                 "gateReceipt": ({"position": gate["position"], "eventDigest": gate["eventDigest"]} if gate else None),
                 "decisionId": gate_payload.get("decisionId") if gate else None,
+                "vcsProvenance": gate_payload.get("vcsProvenance") if gate else None,
             }
             try:
                 receipt = _append(journal, scope_id, "", payload, "system:govcheck-git-post-receive")

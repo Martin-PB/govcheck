@@ -98,6 +98,13 @@ class PijulJournalObserverTests(unittest.TestCase):
             append_pijul_observation(self.env, record)
         self.assertEqual(self.journal.verify(self.scope)["eventCount"], 1)
 
+    def test_well_formed_but_forged_change_set_digest_is_rejected(self):
+        record = dict(self.record)
+        record["changeSet"] = dict(self.record["changeSet"], digest="sha256:" + "d" * 64)
+        with self.assertRaisesRegex(PijulJournalError, "does not match native change hashes"):
+            append_pijul_observation(self.env, record)
+        self.assertEqual(self.journal.verify(self.scope)["eventCount"], 1)
+
     def test_partial_journal_configuration_fails_closed(self):
         with self.assertRaises(PijulJournalError):
             append_pijul_observation({"GOVCHECK_JOURNAL_DB": str(self.db)}, self.record)

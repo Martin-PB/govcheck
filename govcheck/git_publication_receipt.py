@@ -54,7 +54,10 @@ def _append(journal: Journal, scope_id: str, event_id: str, payload: dict, actor
 
 def run_post_receive(input_text: str, env=None) -> tuple[int, list[str]]:
     env = dict(os.environ if env is None else env)
-    keys = ("GOVCHECK_JOURNAL_DB", "GOVCHECK_JOURNAL_SCOPE_ID", "GOVCHECK_EXPECTED_REPOSITORY_ID")
+    keys = (
+        "GOVCHECK_JOURNAL_DB", "GOVCHECK_JOURNAL_SCOPE_ID", "GOVCHECK_EXPECTED_REPOSITORY_ID",
+        "GOVCHECK_JOURNAL_AUTHORITY_ID", "GOVCHECK_JOURNAL_AUTHORITY_REVISION", "GOVCHECK_GOVERNANCE_REVISION",
+    )
     configured = [bool(env.get(key, "").strip()) for key in keys]
     if not any(configured):
         return 0, ["publication receipt journal is not configured"]
@@ -78,6 +81,13 @@ def run_post_receive(input_text: str, env=None) -> tuple[int, list[str]]:
     failed = False
     try:
         journal = Journal(db_path)
+        genesis = journal.scope_info(scope_id)
+        if genesis["authorityId"] != env["GOVCHECK_JOURNAL_AUTHORITY_ID"]:
+            raise JournalError("journal genesis authority does not match the configured pin")
+        if genesis["authorityRevision"] != env["GOVCHECK_JOURNAL_AUTHORITY_REVISION"]:
+            raise JournalError("journal genesis authority revision does not match the configured pin")
+        if genesis["governanceRevision"] != env["GOVCHECK_GOVERNANCE_REVISION"]:
+            raise JournalError("journal genesis governance revision does not match the configured pin")
         for line_number, line in enumerate(input_text.splitlines(), start=1):
             parts = line.split()
             if len(parts) != 3:

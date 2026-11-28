@@ -279,7 +279,7 @@ Next ==
     \/ PostReceiveReceipt
     \/ ReceiptFailure
     \/ AdvanceChannelAction
-    \/ ChangePolicy
+    \/ \E newPolicy \in Policies: ChangePolicy(newPolicy)
 
 Spec == Init /\ [][Next]_vars
 

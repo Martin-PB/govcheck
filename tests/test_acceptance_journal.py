@@ -31,6 +31,7 @@ class AcceptanceJournalIntegrationTests(unittest.TestCase):
         }
         self.payload = {
             "decision_id": "decision-42",
+            "decision_time": "2026-11-28T12:00:00Z",
             "result": "pass",
             "authority_principal": "principal:root",
             "policy_digest": "sha256:" + "a" * 64,

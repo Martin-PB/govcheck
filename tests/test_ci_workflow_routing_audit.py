@@ -99,6 +99,25 @@ jobs:
         with self.assertRaises(AUDIT.WorkflowParseError):
             AUDIT.audit_workflows(self.root)
 
+    def test_paths_ignore_is_rejected_not_silently_omitted(self):
+        self.write("ignored.yml", """name: ignored
+on:
+  pull_request:
+    paths-ignore:
+      - 'docs/**'
+""")
+        with self.assertRaisesRegex(AUDIT.WorkflowParseError, "paths-ignore is not supported"):
+            AUDIT.audit_workflows(self.root)
+
+    def test_inline_paths_list_is_rejected_not_silently_omitted(self):
+        self.write("inline.yml", """name: inline
+on:
+  pull_request:
+    paths: ['src/**']
+""")
+        with self.assertRaisesRegex(AUDIT.WorkflowParseError, "inline or malformed"):
+            AUDIT.audit_workflows(self.root)
+
     def test_unsupported_path_entry_is_rejected_not_ignored(self):
         self.write("bad.yml", """name: bad
 on:

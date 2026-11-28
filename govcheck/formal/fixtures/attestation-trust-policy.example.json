@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "1",
+  "policyId": "govcheck.attestation-trust-policy/v1",
+  "revision": "fixture-policy-rev-1",
+  "openssl": {
+    "path": "/example/bin/openssl",
+    "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "keys": [
+    {
+      "keyId": "synthetic-fixture-key",
+      "algorithm": "ed25519",
+      "publicKeyPath": "/example/keys/synthetic-public.pem",
+      "publicKeySha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "principalId": "principal:synthetic-reviewer",
+      "roles": [
+        "independent-reviewer"
+      ],
+      "validFrom": "2026-01-01T00:00:00Z",
+      "validUntil": "2027-01-01T00:00:00Z",
+      "revoked": false
+    }
+  ]
+}

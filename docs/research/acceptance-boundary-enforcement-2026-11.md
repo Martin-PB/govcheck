@@ -270,3 +270,14 @@ The journal receipt is written before the pre-receive hook returns. It therefore
 
 
 Section 15 extends the earlier optional accepted-decision receipt described in section 14: it records all completed gate outcomes, with explicit distinction between authenticated authority attribution and unauthenticated local gate-attempt attribution.
+
+
+## 16. Post-receive publication receipt
+
+A separate local post-receive adapter, `govcheck.git_publication_receipt`, records the actual protected-ref update after Git has completed it. It searches the verified journal for the latest gate-result event matching the exact repository, old revision, new revision and ref. The publication event links to that gate event's position and digest only when its result is accepted and its authority attribution is authenticated.
+
+If the ref was updated without a matching authenticated acceptance event (for example, because an administrator bypassed pre-receive), the hook still records `published-without-verified-acceptance` and emits a warning. This is a detection/receipt path, not rollback: Git's post-receive hook runs after the update and cannot reject it. A receipt-write failure is therefore an incident/recovery condition, not evidence that the ref update was blocked.
+
+Install the wrapper as `hooks/post-receive` (review it and set executable permission in the server deployment). Configure the same external journal DB and scope as pre-receive, plus `GOVCHECK_EXPECTED_REPOSITORY_ID`, `GOVCHECK_JOURNAL_AUTHORITY_ID`, `GOVCHECK_JOURNAL_AUTHORITY_REVISION` and `GOVCHECK_GOVERNANCE_REVISION`. The adapter verifies those genesis bindings and only monitors refs matching `GOVCHECK_PROTECTED_REFS` (default `refs/heads/main`). No journal genesis is created automatically.
+
+This completes a local event sequence—gate outcome before update, publication receipt after update—for Git only. It does not configure GitHub, prove the live ruleset cannot be bypassed, or implement a Pijul remote/server boundary. Those remain explicit criteria of #45.

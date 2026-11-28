@@ -67,3 +67,8 @@ The schema describes predicate shape only; it does not verify DSSE signatures or
 The policy digest must be supplied out-of-band. The schema does not authenticate the policy owner, the real-world identity behind a key, or a trusted signing time. See Architecture 0039 and issue #158.
 
 The optional attestation-verify bootstrap capability installs attestation.py, attestation_verify.py, assurance-evaluation-v1.schema.json and attestation-trust-policy-v1.schema.json together. It does not install private keys or create a trust policy.
+
+
+## VCS-native provenance schema
+
+`vcs-provenance-v1.schema.json` describes a typed payload that preserves native Git and Pijul identities. The Python builder additionally enforces cross-field rules (Git uses a full ref and commit OID; Pijul uses a channel target and opaque channel/change hashes) that are intentionally not encoded through non-portable JSON Schema extensions. Content digests do not assert semantic equivalence across VCSs. This profile is an implementation payload, not a normative amendment to Specification 0007.

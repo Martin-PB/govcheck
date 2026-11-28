@@ -1,0 +1,181 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:govcheck:schema:vcs-provenance:v1",
+  "title": "GovCheck VCS-native provenance record v1",
+  "description": "Cross-field VCS-kind/target/revision constraints are enforced by the GovCheck builder; native IDs are not cross-VCS semantic identities.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "repository",
+    "vcs",
+    "target",
+    "base",
+    "candidate",
+    "changeSet",
+    "governance",
+    "observedAt"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1"
+    },
+    "repository": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "uri"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "uri": {
+          "type": "string",
+          "format": "uri",
+          "minLength": 1
+        }
+      }
+    },
+    "vcs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "adapterId",
+        "adapterVersion"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "git",
+            "pijul"
+          ]
+        },
+        "adapterId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "adapterVersion": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "name"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "ref",
+            "channel"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "base": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "nativeRevision",
+            "contentDigest"
+          ],
+          "properties": {
+            "nativeRevision": {
+              "type": "string",
+              "minLength": 1
+            },
+            "contentDigest": {
+              "type": "string",
+              "pattern": "^sha256:[0-9a-f]{64}$"
+            }
+          }
+        }
+      ]
+    },
+    "candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "nativeRevision",
+        "contentDigest"
+      ],
+      "properties": {
+        "nativeRevision": {
+          "type": "string",
+          "minLength": 1
+        },
+        "contentDigest": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        }
+      }
+    },
+    "changeSet": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "nativeIds",
+        "digest"
+      ],
+      "properties": {
+        "nativeIds": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "digest": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        }
+      }
+    },
+    "governance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "scopeId",
+        "revision",
+        "digest"
+      ],
+      "properties": {
+        "scopeId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revision": {
+          "type": "string",
+          "minLength": 1
+        },
+        "digest": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        }
+      }
+    },
+    "observedAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

@@ -83,3 +83,12 @@ Le premier profil n'implémente ni signatures, ni gestion de clés, ni consensus
 
 
 La première implémentation vérifie la chaîne complète avant append et avant de retourner la tête ou un reçu. Le coût est O(n) en nombre d'événements ; ce premier profil local privilégie volontairement le fail-closed au débit. Une optimisation future par index/point de contrôle devra préserver la vérification à partir d'un point de contrôle fiable et être testée séparément ; une ligne de tête mutable ne constitue pas à elle seule un point de contrôle fiable.
+
+
+## 8. Profil de payload de provenance natif VCS
+
+Le premier enregistrement de provenance typé est implémenté sous `govcheck.vcs-provenance/v1` dans `govcheck/vcs_provenance.py`, avec le JSON Schema `govcheck/formal/schemas/vcs-provenance-v1.schema.json`.
+
+L'enregistrement lie l'identité/URI du dépôt, le type VCS et l'adaptateur, la ref/le canal cible, les identités natives de base et de candidat, les digests du contenu matérialisé, les identifiants natifs du change-set, le scope/révision/digest de gouvernance et la date d'observation. Les OID de commit Git restent natifs à Git (SHA-1 ou SHA-256) ; les hashes de canal et de change Pijul restent des tokens opaques natifs à Pijul. La liste de hashes de changement Pijul est représentée comme un ensemble et triée uniquement pour le digest déterministe ; elle n'encode pas la sémantique de dépendance/ordre des patches.
+
+Le digest de change-set porte sur le type VCS et la liste d'identifiants natifs ; il ne revendique pas d'équivalence inter-VCS. Les digests de contenu sont des bindings de comparaison supplémentaires et ne prouvent pas l'équivalence sémantique. Le builder rejette les types de cible mixtes, les OID Git mal formés, les bindings de base partiels, les IDs Pijul dupliqués et l'absence de scope de gouvernance. Il s'agit d'un profil de payload pour les consommateurs du journal, pas d'une modification de la Spécification 0007 ni d'un adaptateur de forge. Voir R-225 et R-226 dans le catalogue central des références.

@@ -110,3 +110,8 @@ Example (replace the digest and paths with operator-managed values):
 The verifier returns verified, invalid or unknown. Unknown key IDs, unavailable OpenSSL, missing trust policy or unavailable trust data never become PASS. Key validity is checked against the current system clock; there is no trusted timestamp. A principal/role mapping authenticates key possession under the configured policy, not a real-world person's identity or independence. Synthetic test keys prove only the verification mechanism. This optional provider does not make independent review available when no second contributor exists.
 
 Install the capability through bootstrap as attestation-verify; it includes the structural attestation module and the trust-policy/statement schemas.
+
+
+## VCS-native provenance records
+
+The `govcheck.vcs_provenance` module builds typed `govcheck.vcs-provenance/v1` payloads for Git and Pijul. Git commit OIDs/full refs remain native to Git; Pijul channel hashes and change hashes remain opaque native identities. Content digests support exact snapshot binding but do not claim cross-VCS semantic equivalence. The JSON Schema is catalogued in `formal/artifacts.json` and the package formal catalogue.

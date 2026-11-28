@@ -865,6 +865,18 @@
         "does not establish implementation refinement, cryptographic trust or semantic equivalence with Git commits",
         "post-receive receipt failure occurs after channel application and cannot undo it"
       ]
+    },
+    {
+      "artifactId": "govcheck.vcs-provenance.schema",
+      "kind": "json-schema",
+      "title": "GovCheck VCS-native provenance record v1",
+      "source": "govcheck/formal/schemas/vcs-provenance-v1.schema.json",
+      "documentation": {
+        "en": "docs/architecture/0038-local-canonical-journal-implementation.md",
+        "fr": "docs/architecture/0038-local-canonical-journal-implementation.fr.md"
+      },
+      "sourceReference": "R-225; R-226",
+      "status": "implemented-payload-profile; non-normative"
     }
   ]
 }

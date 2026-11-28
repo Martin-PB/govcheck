@@ -141,6 +141,14 @@
         "does not prove implementation refinement or semantic equivalence with Git commits",
         "post-receive receipt failure occurs after application and cannot undo it"
       ]
+    },
+    {
+      "artifactId": "govcheck.vcs-provenance.schema",
+      "kind": "json-schema",
+      "title": "GovCheck VCS-native provenance record v1",
+      "source": "formal/schemas/vcs-provenance-v1.schema.json",
+      "documentation": "formal/schemas/README.md",
+      "status": "implemented-payload-profile; non-normative"
     }
   ]
 }

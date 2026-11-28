@@ -83,3 +83,12 @@ The first profile does not implement signatures, key management, distributed con
 
 
 The initial implementation verifies the full chain before append and before returning head/receipt data. This is O(n) in the number of events and intentionally favors fail-closed behavior over throughput for the first local profile. A future checkpoint/index optimization must preserve verification against a trusted checkpoint and be separately tested; a mutable head row alone is not a trusted checkpoint.
+
+
+## 8. VCS-native provenance payload profile
+
+The first typed provenance record is implemented as `govcheck.vcs-provenance/v1` in `govcheck/vcs_provenance.py`, with JSON Schema `govcheck/formal/schemas/vcs-provenance-v1.schema.json`.
+
+The record binds repository identity/URI, VCS kind and adapter, target ref/channel, native base and candidate identities, materialized content digests, native change-set IDs, governance scope/revision/digest and observation time. Git commit OIDs remain Git-native (SHA-1 or SHA-256); Pijul channel hashes and change hashes remain opaque Pijul-native tokens. The Pijul change-hash list is represented as a set and sorted only for deterministic digesting; it does not encode patch dependency/order semantics.
+
+The change-set digest is a digest of the VCS kind and native-ID list, not a cross-VCS equivalence claim. Content digests are supplementary comparison bindings and do not establish semantic equivalence. The builder rejects mixed target types, malformed Git OIDs, partial base bindings, duplicate Pijul IDs and missing governance scope. This is a payload profile for journal consumers, not a change to Specification 0007 or a forge adapter. See R-225 and R-226 in the central reference catalogue.

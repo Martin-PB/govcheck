@@ -1544,7 +1544,7 @@
 - **Sources primaires :** [Présentation des rulesets](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets) · [Règles disponibles](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/available-rules-for-rulesets) · [Branches protégées](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches).
 - **Utilité :** checks requis, source GitHub App attendue, fraîcheur stricte/souple par rapport à la base, revues et contournements.
 - **Limite :** toute personne ou intégration ayant le droit d'écriture peut définir un statut sauf si une App attendue est sélectionnée. Les rulesets ne prouvent ni la correction du vérificateur ni la disparition de l'autorité/bypass administrateur.
-- **Cité par :** [Architecture 0037](architecture/0037-acceptance-boundary-and-enforcement-adapters.fr.md), [Architecture 0038](architecture/0038-local-canonical-journal-implementation.fr.md), [recherche sur la frontière d'acceptation](research/acceptance-boundary-enforcement-2026-11.fr.md), [registre des travaux](work-portfolio/work-items.fr.md), [journal des événements](work-portfolio/events.fr.md).
+- **Cité par :** [Architecture 0037](architecture/0037-acceptance-boundary-and-enforcement-adapters.fr.md), [recherche sur la frontière d'acceptation](research/acceptance-boundary-enforcement-2026-11.fr.md), [registre des travaux](work-portfolio/work-items.fr.md), [journal des événements](work-portfolio/events.fr.md).
 
 <a id="r-222"></a>
 ### R-222 — Branches protégées et checks externes GitLab
@@ -1552,7 +1552,7 @@
 - **Sources primaires :** [Branches protégées](https://docs.gitlab.com/user/project/repository/branches/protected/) · [Checks de statut externes](https://docs.gitlab.com/user/project/merge_requests/status_checks/) · [Contrôles de merge](https://docs.gitlab.com/user/project/merge_requests/merge_checks/).
 - **Utilité :** permissions de push/merge ; checks externes liés au HEAD courant de la merge request ; authentification HMAC ; rejet HTTP 409 des réponses obsolètes. Les checks externes en échec ne bloquent le merge que si « Status checks must succeed » est activé.
 - **Limite :** les checks externes dépendent du niveau d'abonnement (GitLab Ultimate) et nécessitent un endpoint de service ; le statut de la plateforme n'est pas la provenance des preuves GovCheck.
-- **Cité par :** [Architecture 0037](architecture/0037-acceptance-boundary-and-enforcement-adapters.fr.md), [Architecture 0038](architecture/0038-local-canonical-journal-implementation.fr.md), [documentation du modèle formel](formal/README.fr.md), [recherche sur la frontière d'acceptation](research/acceptance-boundary-enforcement-2026-11.fr.md), [registre des travaux](work-portfolio/work-items.fr.md), [journal des événements](work-portfolio/events.fr.md), [documentation formelle du package](../govcheck/docs/formal/README.fr.md).
+- **Cité par :** [Architecture 0037](architecture/0037-acceptance-boundary-and-enforcement-adapters.fr.md), [recherche sur la frontière d'acceptation](research/acceptance-boundary-enforcement-2026-11.fr.md), [registre des travaux](work-portfolio/work-items.fr.md), [journal des événements](work-portfolio/events.fr.md).
 
 <a id="r-223"></a>
 ### R-223 — Branches protégées et checks de statut Gitea
@@ -1576,7 +1576,7 @@
 - **Source primaire :** [Hooks Git](https://git-scm.com/docs/githooks).
 - **Utilité :** distingue `pre-push` côté client de `pre-receive` côté serveur. Ce dernier s'exécute une fois par réception, reçoit les anciens/nouveaux identifiants d'objets et les noms complets des références ; un code non nul rejette les mises à jour proposées. C'est un adaptateur natif de frontière pour les serveurs Git contrôlés et les dépôts bare locaux.
 - **Limite :** le hook et le vérificateur de confiance doivent être installés hors de l'arbre candidat par l'administrateur du serveur. La manipulation directe des références/fichiers ou le remplacement du hook par l'administrateur restent hors garantie.
-- **Cité par :** [Architecture 0037](architecture/0037-acceptance-boundary-and-enforcement-adapters.fr.md), [recherche sur la frontière d'acceptation](research/acceptance-boundary-enforcement-2026-11.fr.md), [registre des travaux](work-portfolio/work-items.fr.md), [journal des événements](work-portfolio/events.fr.md).
+- **Cité par :** [Architecture 0037](architecture/0037-acceptance-boundary-and-enforcement-adapters.fr.md), [Architecture 0038](architecture/0038-local-canonical-journal-implementation.fr.md), [recherche sur la frontière d'acceptation](research/acceptance-boundary-enforcement-2026-11.fr.md), [registre des travaux](work-portfolio/work-items.fr.md), [journal des événements](work-portfolio/events.fr.md).
 
 <a id="r-226"></a>
 ### R-226 — Hooks locaux Pijul et contribution sur le Nest
@@ -1584,7 +1584,7 @@
 - **Sources primaires :** [Configuration et hooks Pijul](https://pijul.org/manual/configuration.html) · [Contribuer sur le Nest](https://pijul.org/manual/the_nest/contributing).
 - **Utilité :** le hook Pijul documenté s'exécute avant `pijul record` ; le manuel indique que seul le hook `record` est actuellement pris en charge. Le Nest permet le push direct aux utilisateurs autorisés ou l'attachement de changements à un canal de discussion.
 - **Limite :** le manuel cité ne documente aucun hook distant obligatoire pre-push/pre-receive. L'enforcement conditionnel côté serveur exige un remote/serveur contrôlé ; un hook ou wrapper local reste coopératif et contournable.
-- **Cité par :** [Architecture 0037](architecture/0037-acceptance-boundary-and-enforcement-adapters.fr.md), [recherche sur la frontière d'acceptation](research/acceptance-boundary-enforcement-2026-11.fr.md), [registre des travaux](work-portfolio/work-items.fr.md), [journal des événements](work-portfolio/events.fr.md).
+- **Cité par :** [Architecture 0037](architecture/0037-acceptance-boundary-and-enforcement-adapters.fr.md), [Architecture 0038](architecture/0038-local-canonical-journal-implementation.fr.md), [documentation du modèle formel](formal/README.fr.md), [recherche sur la frontière d'acceptation](research/acceptance-boundary-enforcement-2026-11.fr.md), [registre des travaux](work-portfolio/work-items.fr.md), [journal des événements](work-portfolio/events.fr.md), [documentation formelle du package](../govcheck/docs/formal/README.fr.md).
 
 <a id="r-227"></a>
 ### R-227 — DSSE : Dead Simple Signing Envelope

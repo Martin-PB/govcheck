@@ -63,7 +63,7 @@ class FormalFixtureValidationTests(unittest.TestCase):
             ("version-decision.schema.json", "version-decision-blocked.example.json",
              lambda value: value["compatibility"].__setitem__("classification", "unknown-classification")),
             ("release-manifest.schema.json", "release-manifest.example.json",
-             lambda value: value["release"].__setitem__("commit", "not-a-commit")),
+             lambda value: value["release"].__setitem__("commit", 42)),
             ("version-governance-bundle.schema.json", "version-governance-bundle.example.json",
              lambda value: value["decisions"].append({
                  "schemaVersion": 2,
@@ -101,7 +101,7 @@ class FormalFixtureValidationTests(unittest.TestCase):
         )
         self.assertTrue(findings)
         messages = " ".join(item["message"] for item in findings)
-        self.assertIn("2", messages)
+        self.assertIn("was expected", messages)
 
     def test_malformed_fixture_format_is_rejected(self):
         schemas, registry = MODULE.load_schemas(ROOT)

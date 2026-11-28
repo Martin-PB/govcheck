@@ -281,3 +281,21 @@ Si la ref a été mise à jour sans événement d'acceptation authentifié corre
 Installer le wrapper comme `hooks/post-receive` (le relire et lui donner le droit d'exécution dans le déploiement serveur). Configurer la même base de journal externe et le même scope que pre-receive, ainsi que `GOVCHECK_EXPECTED_REPOSITORY_ID`, `GOVCHECK_JOURNAL_AUTHORITY_ID`, `GOVCHECK_JOURNAL_AUTHORITY_REVISION` et `GOVCHECK_GOVERNANCE_REVISION`. L'adaptateur vérifie ces bindings de genesis et ne surveille que les refs correspondant à `GOVCHECK_PROTECTED_REFS` (par défaut `refs/heads/main`). Aucun genesis n'est créé automatiquement.
 
 Cela complète une séquence locale d'événements—résultat du gate avant mise à jour, reçu de publication après mise à jour—pour Git uniquement. Cela ne configure pas GitHub, ne prouve pas l'impossibilité de contourner le ruleset réel et n'implémente pas de frontière distante/serveur Pijul. Ces critères restent explicitement ouverts dans #45.
+
+
+## 17. Installation sûre du hook post-receive
+
+`scripts/install-govcheck-git-post-receive.py` installe l'adaptateur de reçu de publication dans un dépôt Git bare contrôlé. Il exige un fichier d'environnement administrateur en mode 0600, situé hors du dépôt bare, et une racine du package GovCheck également située hors du dépôt bare. Il vérifie que la cible est bare, copie le lanceur vers un emplacement contrôlé par le serveur, crée un wrapper qui charge l'environnement externe et épingle le chemin du package, puis donne le mode 0755 aux deux fichiers de hook.
+
+L'installateur refuse d'écraser un `hooks/post-receive` ou un helper existant ; il n'enchaîne pas implicitement des hooks arbitraires. Relire et composer explicitement tout comportement post-receive existant avant installation. La commande prépare uniquement un dépôt serveur local ; elle ne modifie pas ce dépôt GitHub ni son ruleset.
+
+Exemple (remplacer les chemins par des emplacements contrôlés par l'administrateur) :
+
+```sh
+python3 scripts/install-govcheck-git-post-receive.py \\
+  /srv/git/project.git \\
+  /etc/govcheck/project-hook.env \\
+  /opt/govcheck
+```
+
+Le fichier d'environnement doit épingler la base/scope du journal, l'identité attendue du dépôt, l'identifiant/révision d'autorité du genesis, la révision de gouvernance et les refs protégées. Cet installateur ne crée pas le genesis du journal et ne provisionne pas les clés de confiance.

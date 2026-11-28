@@ -5,6 +5,7 @@ import unittest
 from pathlib import Path
 
 from govcheck.journal import Journal
+from govcheck.vcs_provenance import build_git_provenance
 
 
 class RealGitPostReceivePublicationTests(unittest.TestCase):
@@ -60,6 +61,16 @@ class RealGitPostReceivePublicationTests(unittest.TestCase):
             (work / "tracked.txt").write_text("accepted candidate\n", encoding="utf-8")
             self.git(work, "commit", "-am", "accepted candidate")
             candidate = self.git(work, "rev-parse", "HEAD")
+            provenance = build_git_provenance(
+                repository_id="repo:12345", repository_uri="https://example.invalid/repo",
+                target_ref="refs/heads/main", candidate_commit=candidate,
+                candidate_content_digest="sha256:" + "a" * 64,
+                base_commit=old, base_content_digest="sha256:" + "b" * 64,
+                governance_scope_id=scope, governance_revision="gov-17",
+                governance_digest="sha256:" + "c" * 64,
+                adapter_id="govcheck.git-acceptance-gate", adapter_version="1",
+                observed_at="2026-11-28T12:00:00Z",
+            )
             gate_payload = {
                 "repositoryId": "repo:12345",
                 "candidateRevision": candidate,
@@ -69,6 +80,7 @@ class RealGitPostReceivePublicationTests(unittest.TestCase):
                 "verification": "authenticated-authority",
                 "authorityPrincipal": "principal:root",
                 "decisionId": "decision-real-hook-1",
+                "vcsProvenance": provenance,
             }
             head = journal.head(scope)
             journal.append(

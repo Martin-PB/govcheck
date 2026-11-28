@@ -1,3 +1,4 @@
+import json
 import importlib.util
 import unittest
 from pathlib import Path
@@ -62,6 +63,13 @@ def bundle():
 
 
 class ValidatorTests(unittest.TestCase):
+    def test_unit_record_is_not_accepted_as_bundle(self):
+        unit_path = Path(__file__).resolve().parents[1] / "formal" / "fixtures" / "dependency-edge.example.json"
+        unit_record = json.loads(unit_path.read_text(encoding="utf-8"))
+        result = MODULE.validate_bundle(unit_record)
+        self.assertEqual(result["status"], "invalid")
+        self.assertIn("bundle.revisions.type", {item["code"] for item in result["findings"]})
+
     def test_semver_rejects_numeric_prerelease_leading_zero(self):
         self.assertIsNone(MODULE.SEMVER.fullmatch("1.2.3-alpha.01"))
         self.assertIsNone(MODULE.SEMVER.fullmatch("1.2.3-01"))

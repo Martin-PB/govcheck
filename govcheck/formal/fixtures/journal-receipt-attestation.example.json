@@ -1,0 +1,66 @@
+{
+  "_type": "https://in-toto.io/Statement/v1",
+  "subject": [
+    {
+      "name": "fixture:synthetic-journal-receipt",
+      "digest": {
+        "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+      }
+    }
+  ],
+  "predicateType": "urn:govcheck:attestation:journal-receipt:v1",
+  "predicate": {
+    "schemaVersion": "1",
+    "repository": {
+      "uri": "https://example.invalid/govcheck",
+      "vcsKind": "git"
+    },
+    "candidate": {
+      "revision": "1111111111111111111111111111111111111111",
+      "contentDigest": {
+        "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    },
+    "base": {
+      "revision": "2222222222222222222222222222222222222222",
+      "reference": "refs/heads/main"
+    },
+    "governance": {
+      "scopeId": "repo:fixture",
+      "revision": "gov-fixture",
+      "digest": {
+        "sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+      }
+    },
+    "receipt": {
+      "schemaVersion": "1",
+      "canonicalization": "govcheck.jcs-safe-integer/v1",
+      "scopeId": "repo:fixture",
+      "position": 1,
+      "eventId": "fixture:event:001",
+      "previousDigest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "eventDigest": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "idempotencyKey": "fixture:idempotency:001",
+      "committedAt": "2026-11-28T12:00:00Z",
+      "receiptDigest": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+    },
+    "event": {
+      "scopeId": "repo:fixture",
+      "position": 1,
+      "eventId": "fixture:event:001",
+      "eventType": "govcheck.fixture/v1",
+      "payload": {
+        "synthetic": true
+      },
+      "payloadDigest": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "previousDigest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "eventDigest": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "canonicalization": "govcheck.jcs-safe-integer/v1"
+    },
+    "journal": {
+      "integrityStatus": "valid",
+      "verifiedHeadPosition": 1,
+      "verifiedHeadDigest": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    }
+  }
+}

@@ -840,6 +840,31 @@
         "does not model Git/Pijul semantic equivalence or a production forge deployment",
         "does not establish durable append-only audit storage or implementation refinement"
       ]
+    },
+    {
+      "artifactId": "govcheck.pijul-remote-acceptance-boundary",
+      "kind": "formal-model",
+      "title": "GovCheck controlled Pijul remote acceptance-boundary TLA+ model",
+      "source": "formal/tla/GovCheckPijulRemoteBoundary.tla",
+      "configurations": [
+        "formal/tla/GovCheckPijulRemoteBoundary.cfg",
+        "formal/tla/GovCheckPijulRemoteBoundaryAdvisory.cfg",
+        "formal/tla/GovCheckPijulRemoteBoundaryAdminBypass.cfg"
+      ],
+      "documentation": {
+        "en": "docs/formal/README.md",
+        "fr": "docs/formal/README.fr.md"
+      },
+      "sourceReference": "R-226",
+      "status": "bounded-design-model; TLC-validation-pending",
+      "limitations": [
+        "models a controlled remote/server application boundary, not the Pijul Nest implementation",
+        "native channel/change-set identity is abstracted as finite model values",
+        "does not prove a real server hook exists or intercepts every remote transport",
+        "trusted evaluator, root authority and VCS-server behavior are assumptions",
+        "does not establish implementation refinement, cryptographic trust or semantic equivalence with Git commits",
+        "post-receive receipt failure occurs after channel application and cannot undo it"
+      ]
     }
   ]
 }

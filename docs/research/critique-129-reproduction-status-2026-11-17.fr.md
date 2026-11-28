@@ -325,3 +325,28 @@ Le neuvième modèle, `GovCheckGovernanceContextBinding`, est désormais inclus 
 ### Disposition
 
 Les PR #137 (contre-exemple de mapping et théorème renforcé) et #138 (workflow d'audit réutilisable) sont fusionnées. La PR #150 (sémantique typée du risque) est fusionnée. La PR #151 contient uniquement cette actualisation, l'ajout du neuvième modèle TLC, les rapports Lean explicites et la capture de l'évaluateur ; elle est ouverte pour revue et n'a pas été fusionnée. La reproduction hébergée est terminée ; aucune reproduction locale distincte n'a été effectuée. La critique n'est ni acceptée ni rejetée en bloc : des lacunes d'implémentation/enforcement sont confirmées, certaines affirmations sont nuancées et certaines faiblesses formelles ont depuis été corrigées. Aucune spécification normative, aucun régime d'autorité, aucun paramètre de protection de branche ni aucune politique d'acceptation n'a été modifié.
+
+
+## 12. Actualisation du main courant — 2026-11-28 (tranche ciblée)
+
+**Cible source :** commit `708c7bc16bf40d2ad4537fa6d7328e824a0b7ccf` de `main`, arbre `65ad756ca1d67412d6a3bbbb27274260ee3344b1`. Il s'agit d'une actualisation des sources et d'une reproduction Lean ciblée, pas de la reproduction complète de #130. Cette section remplace les anciennes formulations présentant le snapshot du 17 novembre comme le main courant.
+
+| Constat | Qualification actuelle | Preuve |
+|---|---|---|
+| 6.4 auto-référence de l'attestation dans l'arbre | La circularité de l'attestation intégrée est **obsolète dans le main courant** ; la disponibilité d'une revue demeure un écart. | `govcheck/check.py:329–334` retourne UNKNOWN pour les attestations dans l'arbre candidat ; lignes 359–362 exigent que revue, assurance, identité d'auteur et politique de confiance soient hors de l'arbre. Les lignes 366, 401–427 et 440–446 lient les preuves détachées au candidat, à la base, au contenu, à la gouvernance, au périmètre et aux octets exacts de l'enveloppe de revue. Tests : `test_in_tree_attestation_never_satisfies_independent_review` et `test_detached_review_config_can_satisfy_rule_when_verifier_confirms`. Le commit historique `24760fb` n'a pas été rejoué directement dans cette tranche. |
+| 6.5 enforcement de l'acceptation CI | **Confirmé sur le main courant.** | `.github/workflows/govcheck-check.yml:1,33–36` est report-only, utilise `continue-on-error: true` et `|| true`. Le ruleset actif `Protection Main` (ID `28251664`, lu le 28-11-2026) exige une PR, approvals=0, bloque suppression/force-push et n'a aucun bypass, mais `required_status_checks=[]`. Main est donc protégée par PR sans statut GovCheck de confiance obligatoire ; l'enforcement effectif reste non établi (#45). Aucun paramètre n'a été modifié. |
+| 6.6 mapping partiel à domaine vide | **Confirmé sur le main courant.** | `formal/lean/GovCheckCoherence/Mapping.lean:63–66` exige une preuve uniquement pour les membres d'un prédicat de domaine, sans exiger que le domaine soit habité. Le choix `domain := fun _ : True => False` permet d'habiter `SemanticBridge True False .partialMapping` par vacuité : le mapping ne couvre aucun cas source, ce n'est pas une preuve de False. La PR #211 ajoute une reproduction compilable ; l'issue #210 suit la décision contractuelle sans modifier Mapping.lean. |
+
+Les constats 6.1, 6.2, 6.3 et 6.7 ne sont **pas entièrement rejoués sur cette cible** ; leurs qualifications précédentes restent historiques jusqu'à une nouvelle revue constat par constat. Le journal, les attestations détachées, la provenance typée et la protection du ruleset sont des améliorations, mais ne prouvent pas à elles seules l'adoption du modèle canonique, le consensus d'un journal distribué ou un régime d'autorité à deux personnes.
+
+Les limites formelles restent : TLC borné ne prouve pas la vivacité générale ; les modèles TLA+ séparés ne sont pas un raffinement de bout en bout vers Python ; Lean prouve les propositions encodées (y compris le contre-exemple à domaine vide) ; l'évaluateur ordinaire reste report-only. Toutes les exécutions TLC courantes, l'audit Lean/CSLib complet, le commit historique `24760fb` et les autres éléments 6.1–6.7 sont **non reproduits dans cette tranche** et restent ouverts dans #130. Aucune recommandation de la critique n'est adoptée par ce rapport.
+
+La commande Lean ciblée est exécutée par le workflow épinglé `lean-coherence.yml`, depuis `formal/lean` :
+
+```sh
+lake env lean GovCheckCoherence/Reproductions/EmptyDomainPartialMapping.lean
+```
+
+Les tests Python peuvent être lancés par `python3 -m unittest discover -s tests -p 'test_govcheck_check.py' -v`. La CI de la PR constitue la reproduction hébergée enregistrée pour le nouveau fixture Lean ; aucune reproduction locale avec checkout/toolchain n'a été effectuée.
+
+**Disposition :** le cycle du constat 6.4 est mitigé par les preuves détachées ; le 6.5 demeure une lacune d'enforcement ; le 6.6 est une limitation formelle confirmée suivie dans #210. L'issue #130 reste ouverte pour la matrice complète.

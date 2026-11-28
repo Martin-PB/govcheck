@@ -325,3 +325,28 @@ The ninth model, `GovCheckGovernanceContextBinding`, is now included in the reus
 ### Disposition
 
 PR #137 (mapping counterexample and stronger theorem) and PR #138 (reusable audit workflow) are merged. PR #150 (typed risk semantics) is merged. PR #151 contains only this audit refresh, the ninth TLC matrix entry, explicit Lean reports and evaluator capture; it is open for review and was not merged by this audit. Hosted reproduction is complete; a separate local reproduction was not performed. The critique is neither accepted nor rejected wholesale: implementation/enforcement gaps are confirmed, some claims are qualified, and some formal weaknesses have since been corrected. No normative specification, authority regime, branch-protection setting or acceptance policy was changed.
+
+
+## 12. Current-main refresh — 2026-11-28 (focused tranche)
+
+**Source target:** `main` commit `708c7bc16bf40d2ad4537fa6d7328e824a0b7ccf`, tree `65ad756ca1d67412d6a3bbbb27274260ee3344b1`. This is a source-level refresh and a focused Lean reproduction, not the complete #130 replay. It supersedes earlier descriptions of the November 17 snapshot as current main.
+
+| Critique item | Current qualification | Evidence |
+|---|---|---|
+| 6.4 in-tree attestation self-reference | The in-tree circularity is **obsolete in current main**; review availability remains a gap. | `govcheck/check.py:329–334` returns UNKNOWN for candidate-tree attestations; lines 359–362 require review, assurance, author-identity and trust-policy files outside the candidate tree. Lines 366, 401–427 and 440–446 bind the detached evidence to candidate/base/content/governance/scope and exact review-envelope bytes. Regression tests: `test_in_tree_attestation_never_satisfies_independent_review`, `test_detached_review_config_can_satisfy_rule_when_verifier_confirms`. The historical commit `24760fb` was not replayed directly in this tranche. |
+| 6.5 CI acceptance enforcement | **Confirmed on current main.** | `.github/workflows/govcheck-check.yml:1,33–36` is report-only, sets `continue-on-error: true`, and uses `|| true`. The live `Protection Main` ruleset (ID `28251664`, read 2026-11-28) is active, requires PRs, has approvals=0, blocks deletion/force-push, has no bypass actors, but `required_status_checks=[]`. Thus main has PR protection but no required trusted GovCheck status; effective acceptance enforcement remains unestablished (#45). No ruleset setting was changed. |
+| 6.6 empty-domain partial mapping | **Confirmed on current main.** | `formal/lean/GovCheckCoherence/Mapping.lean:63–66` requires a proof only for members of a domain predicate, not an inhabited domain. Choosing `domain := fun _ : True => False` inhabits `SemanticBridge True False .partialMapping` vacuously; this is a mapping with no covered source case, not a proof of False. PR #211 adds a compiling reproduction and issue #210 tracks the contract decision without changing Mapping.lean. |
+
+Findings 6.1, 6.2, 6.3 and 6.7 were **not fully re-executed against this target**; their previous qualifications remain historical until a fresh finding-by-finding review. The recent journal, detached attestations, typed provenance and ruleset protection are relevant improvements, but do not by themselves establish canonical-model adoption, distributed journal consensus or a two-person authority regime.
+
+Formal limits remain: bounded TLC safety does not prove general liveness; separate TLA+ models are not an end-to-end refinement of the Python runtime; Lean proves only the propositions encoded (including the empty-domain counterexample); and the ordinary evaluator remains report-only. All current TLC runs, the full Lean axiom audit/CSLib build, historical commit `24760fb`, and remaining 6.1–6.7 items are **not reproduced in this tranche** and remain open under #130. No critique recommendation is adopted by this report.
+
+The focused Lean command is run by the pinned `lean-coherence.yml` workflow from `formal/lean`:
+
+```sh
+lake env lean GovCheckCoherence/Reproductions/EmptyDomainPartialMapping.lean
+```
+
+Python regressions can be run with `python3 -m unittest discover -s tests -p 'test_govcheck_check.py' -v`. The PR's CI is the recorded hosted reproduction for the new Lean fixture; no local checkout/toolchain replay was performed.
+
+**Disposition:** 6.4's in-tree cycle is mitigated by detached evidence; 6.5 remains an enforcement gap; 6.6 is a confirmed formal limitation tracked by #210. Issue #130 remains open for the full matrix.

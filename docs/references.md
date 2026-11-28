@@ -35,6 +35,7 @@
 | Alternative VCS, forges and CI platforms (Pijul CLI, GitLab, Woodpecker, SourceHut, Fossil) | R-109–R-113 |
 | CRDTs, real-time collaboration and network transport | R-45–R-50, R-66, R-87 |
 | Knowledge representation and interoperability | R-51–R-61, R-83–R-86, R-234–R-235 |
+| Semantic mappings, standard semantics and conformance ambiguities | R-243–R-245 |
 | Integration project repositories and studies | R-62 |
 | Integration protocols and document conventions | R-67 |
 | Adjacent GovCheck ecosystem repositories | R-68 |
@@ -1720,3 +1721,28 @@
 - **Use:** documents build sandboxing, visible paths, Linux namespaces, platform support and configuration behavior.
 - **Limit:** Nix build sandboxing applies to Nix builds, not automatically to every repository-controlled command. The manual documents Linux/macOS support, root requirements and network exceptions for fixed-output derivations; it is not a universal hostile-code execution boundary.
 - **Cited by:** [repository check-execution isolation research](research/check-execution-isolation-2026-11.md).
+
+
+<a id="r-243"></a>
+### R-243 — OMG SACM 2.3 open issue tracker: argument-reasoning and inference semantics
+- **Type:** Official standards issue tracker; informative issue material, not a normative amendment.
+- **Primary source:** [SACM 2.3 open issues](https://issues.omg.org/issues/spec/SACM/2.3).
+- **Use:** records ambiguity in the relationship between ArgumentReasoning and AssertedRelationship/AssertedInference diagram notation, and a mismatch between AssertedInference prose and the machine-readable/profile endpoint typing.
+- **Limit:** issue-tracker analysis does not override the normative SACM 2.3 specification or establish an adopted resolution. Preserve native model structure and mark the ambiguity.
+- **Cited by:** [semantic mapping audit](research/semantic-mapping-audit-2026-11-28.md).
+
+<a id="r-244"></a>
+### R-244 — OMG ReqIF 1.2 issue REQIF12-3: source/target type constraints
+- **Type:** Official standards issue tracker; closed issue and disposition.
+- **Primary source:** [REQIF12-3 — Allowed source and target elements on SpecRelationType level](https://issues.omg.org/issues/REQIF12-3).
+- **Use:** records a proposal to constrain SpecRelation source/target types through SpecRelationType, and the decision to take it out of scope because of the breaking XML schema/interoperability impact.
+- **Limit:** issue history is not a new normative constraint. ReqIF 1.2 SpecRelation remains generic; importers must preserve source relation types and endpoints.
+- **Cited by:** [semantic mapping audit](research/semantic-mapping-audit-2026-11-28.md).
+
+<a id="r-245"></a>
+### R-245 — OMG SysML 2.1 RTF issue SYSML21-737: satisfaction-usage grammar
+- **Type:** Official standards issue tracker; open revision-task-force issue.
+- **Primary source:** [SYSML21-737 — SatisfyRequirementUsage production makes assert and not mandatory](https://issues.omg.org/issues/SYSML21-737).
+- **Use:** records a grammar inconsistency between the SysML 2.0 SatisfyRequirementUsage production and examples/pilot implementation, carried into the SysML 2.1 Beta 2 material according to the issue.
+- **Limit:** this is a grammar issue, not a redefinition of satisfaction semantics. Do not treat the issue report as an adopted correction or silently normalize source text.
+- **Cited by:** [semantic mapping audit](research/semantic-mapping-audit-2026-11-28.md).

@@ -590,3 +590,27 @@
 - **Validation:** `receipt-check`, `reference-integrity`, `package-alignment` and `govcheck-check` all succeeded on the PR head, including the new integrity test.
 - **Disposition:** initial corpus catalogue integrated; #72 remains open for planned workflow/formal-proof attacks and real hosted-forge/Pijul/untrusted-execution evidence.
 - **Limit:** no live GitHub enforcement, Pijul remote gate, sandbox or independent reviewer is claimed.
+
+
+<a id="wp-evt-000044"></a>
+## WP-EVT-000044 — Candidate check-execution isolation research merged
+- **Subject:** `govcheck.security.check-execution-isolation`.
+- **Event type:** `candidate-execution-isolation-research-merged`.
+- **Recorded:** 2026-11-28.
+- **Source issue/PR:** [#218](https://github.com/Martin-PB/govcheck/issues/218), [PR #222](https://github.com/Martin-PB/govcheck/pull/222), merged at `d25e417f41eb67619cc6a9df285cdb89b317dd70`.
+- **Artifacts:** bilingual execution-isolation research; comparison of Landlock, seccomp, namespaces, cgroups v2, OCI, Nix, ephemeral VMs and microVMs; candidate profiles P0–P3; execution-attestation field set; primary sources R-236–R-242.
+- **Validation:** `receipt-check`, `reference-integrity`, `package-alignment` and `govcheck-check` all succeeded on the PR head.
+- **Disposition:** issue #218 remains in progress; the report proposes a contract and options but adopts no sandbox, runner or universal execution policy.
+- **Limit:** no sandbox implementation or adversarial execution claim is made.
+
+
+<a id="wp-evt-000045"></a>
+## WP-EVT-000045 — Adversarial candidate corpus expanded to v1.1.0
+- **Subject:** `govcheck.security.adversarial-candidate-corpus`.
+- **Event type:** `adversarial-candidate-corpus-v1.1.0-merged`.
+- **Recorded:** 2026-11-28.
+- **Source issue/PR:** [#72](https://github.com/Martin-PB/govcheck/issues/72), [PR #223](https://github.com/Martin-PB/govcheck/pull/223), merged at `41549f75e8775308f2c38cbb01316149b7ee16da`.
+- **Artifacts:** corpus v1.1.0 with 23 cases; AC-017 linked to synthetic workflow-routing positive/negative tests; AC-023 records the non-mandatory report-only workflow gap; manifest-integrity test extended.
+- **Validation:** `receipt-check`, `reference-integrity`, `package-alignment` and `govcheck-check` all succeeded on the PR head.
+- **Disposition:** issue #72 remains open for stale TLC report replay, Lean proof attacks, real hosted-forge rejection/bypass, remote Pijul enforcement and untrusted execution.
+- **Limit:** synthetic workflow-routing tests do not demonstrate a real GitHub acceptance boundary.

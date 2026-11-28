@@ -27,7 +27,7 @@ class CIWorkflowRoutingAuditTests(unittest.TestCase):
         model_dir = self.root / "formal" / "tla"
         model_dir.mkdir(parents=True)
         (model_dir / "CICheckRouting.tla").write_text(
-            'Categories == {"TestCategory"}\\nModelSpecific == {}\\n',
+            'Categories == {"TestCategory"}\nModelSpecific == {}\n',
             encoding="utf-8",
         )
         self.write_category_policy([{
@@ -197,7 +197,7 @@ on:
 
     def test_tla_model_category_drift_is_reported(self):
         (self.root / "formal" / "tla" / "CICheckRouting.tla").write_text(
-            'Categories == {"NewCategory"}\\nModelSpecific == {}\\n',
+            'Categories == {"NewCategory"}\nModelSpecific == {}\n',
             encoding="utf-8",
         )
         report = AUDIT.audit_workflows(self.root)
@@ -205,7 +205,7 @@ on:
 
     def test_model_specific_category_paths_must_route_to_workflow(self):
         (self.root / "formal" / "tla" / "CICheckRouting.tla").write_text(
-            'Categories == {"TestCategory"}\\nModelSpecific == {"TestCategory"}\\n',
+            'Categories == {"TestCategory"}\nModelSpecific == {"TestCategory"}\n',
             encoding="utf-8",
         )
         self.write_category_policy([{
@@ -223,7 +223,7 @@ on:
     paths:
       - 'other/**'
 """)
-        (self.root / "formal" / "model.tla").write_text("---- MODULE Model ----\\n", encoding="utf-8")
+        (self.root / "formal" / "model.tla").write_text("---- MODULE Model ----\n", encoding="utf-8")
         report = AUDIT.audit_workflows(self.root)
         findings = [item for item in report["findings"] if item["kind"] == "model-category-path-missing"]
         self.assertEqual({item["event"] for item in findings}, {"pull_request", "push"})

@@ -2,6 +2,8 @@
 
 **Statut :** candidate de recherche, pas un métamodèle ni une règle d'évaluateur adopté. Cet addendum répond au travail de couverture sémantique de l'issue #73. Il propose des relations typées plutôt qu'une chaîne unique du cycle de vie ; il ne déclare pas équivalents des termes d'ontologies externes sur la seule base de leur nom.
 
+**Audit sémantique :** l'[audit des correspondances du 28-11-2026](semantic-mapping-audit-2026-11-28.fr.md) évalue les sémantiques natives et les non-équivalences ; il n'adopte aucun mapping.
+
 ## 1. Assertion de relation, pas une simple arête
 
 Une assertion de relation devrait contenir au minimum :

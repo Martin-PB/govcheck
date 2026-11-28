@@ -241,3 +241,20 @@ python3 -m govcheck.acceptance_decision sign \
 For `accept`, the signer refuses an evaluation report whose overall result is not PASS. For `accept_with_risk`, a complete scoped and expiring risk record is required. The private key remains outside the repository.
 
 The signed envelope can be supplied as a detached artifact or other external input to a trusted forge adapter. It must not be committed into the candidate snapshot whose content digest it authorizes, because doing so would create a circular candidate binding.
+
+
+## 14. Durable journal receipt for a verified acceptance decision
+
+The local Git gate can optionally append an acceptance-decision event to an explicitly initialized GovCheck SQLite journal. This is a separate local receipt, not a forge status check and not a publication receipt.
+
+The integration is enabled only when all three settings are supplied to the gate process:
+
+- `GOVCHECK_JOURNAL_DB`: SQLite database outside the bare repository;
+- `GOVCHECK_JOURNAL_SCOPE_ID`: exact scope matching `GOVCHECK_SCOPE_ID`;
+- `GOVCHECK_JOURNAL_AUTHORITY_REVISION`: the authority revision pinned by the journal genesis.
+
+Before appending, the integration verifies the complete journal, checks the genesis authority principal against the authenticated DSSE decision signer, checks the authority revision and governance revision, and binds the event to repository, candidate, base, ref, policy, report digest, result and risk record. It uses compare-and-append and a deterministic idempotency key derived from the exact decision payload. A committed receipt can be recovered with the journal's `receipt` command.
+
+Genesis is never created by the gate. Initialize it explicitly outside the repository, using the authenticated authority principal and pinned authority/governance revisions. If any journal setting is present but configuration, genesis or append fails, the gate returns UNKNOWN and the pre-receive adapter rejects the update. If no journal setting is present, the gate retains its previous optional-journal behavior; deployments must not claim journal-backed acceptance until the settings are installed and audited.
+
+This increment records verified acceptance, not failed attempts, bypasses or successful ref publication. The journal's local hash chain is not actor authentication and does not resist a privileged administrator rewriting the database. Those receipt classes and the live GitHub check/ruleset remain open work under #45/#155.

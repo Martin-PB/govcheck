@@ -17,13 +17,18 @@ class FormalFixtureValidationTests(unittest.TestCase):
         report = MODULE.audit(ROOT)
         self.assertTrue(report["json_schema_validation_performed"])
         self.assertEqual(report["status"], "valid", report["findings"])
-        self.assertEqual(report["schemas_checked"], 5)
+        self.assertEqual(report["schemas_checked"], 20)
+        self.assertEqual(report["formal_schemas_checked"], 5)
+        self.assertEqual(report["package_schemas_checked"], 14)
+        self.assertEqual(report["documentation_schemas_checked"], 1)
         self.assertEqual(report["fixtures_checked"], 7)
         self.assertEqual(report["finding_count"], 0)
 
     def test_each_schema_rejects_missing_required_property(self):
         schemas, registry = MODULE.load_schemas(ROOT)
         for schema_name, schema in schemas.items():
+            if not schema_name.startswith("formal/schemas/"):
+                continue
             with self.subTest(schema=schema_name):
                 fixture_path = next(
                     path for path in (ROOT / "formal/fixtures").glob("*.example.json")
@@ -56,15 +61,15 @@ class FormalFixtureValidationTests(unittest.TestCase):
         fixtures = ROOT / "formal/fixtures"
 
         cases = [
-            ("evidence-record.schema.json", "evidence-record-passed.example.json",
+            ("formal/schemas/evidence-record.schema.json", "evidence-record-passed.example.json",
              lambda value: value["claimIds"].append(value["claimIds"][0])),
-            ("dependency-edge.schema.json", "dependency-edge.example.json",
+            ("formal/schemas/dependency-edge.schema.json", "dependency-edge.example.json",
              lambda value: value.__setitem__("relation", "unknown-relation")),
-            ("version-decision.schema.json", "version-decision-blocked.example.json",
+            ("formal/schemas/version-decision.schema.json", "version-decision-blocked.example.json",
              lambda value: value["compatibility"].__setitem__("classification", "unknown-classification")),
-            ("release-manifest.schema.json", "release-manifest.example.json",
+            ("formal/schemas/release-manifest.schema.json", "release-manifest.example.json",
              lambda value: value["release"].__setitem__("commit", 42)),
-            ("version-governance-bundle.schema.json", "version-governance-bundle.example.json",
+            ("formal/schemas/version-governance-bundle.schema.json", "version-governance-bundle.example.json,
              lambda value: value["decisions"].append({
                  "schemaVersion": 2,
                  "decisionId": "invalid:decision:001"
@@ -97,7 +102,7 @@ class FormalFixtureValidationTests(unittest.TestCase):
             }]
         }
         findings = MODULE.validate_instance(
-            bundle, schemas["version-governance-bundle.schema.json"], registry, "bad-bundle"
+            bundle, schemas["formal/schemas/version-governance-bundle.schema.json"], registry, "bad-bundle"
         )
         self.assertTrue(findings)
         messages = " ".join(item["message"] for item in findings)
@@ -105,7 +110,7 @@ class FormalFixtureValidationTests(unittest.TestCase):
 
     def test_malformed_fixture_format_is_rejected(self):
         schemas, registry = MODULE.load_schemas(ROOT)
-        schema = schemas["release-manifest.schema.json"]
+        schema = schemas["formal/schemas/release-manifest.schema.json"]
         fixture = MODULE._read_json(ROOT / "formal/fixtures/release-manifest.example.json")
         invalid = copy.deepcopy(fixture)
         invalid["release"]["publishedAt"] = "not-a-date"

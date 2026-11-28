@@ -5,8 +5,12 @@ not a Pijul remote acceptance hook and does not claim that a push was accepted.
 """
 from __future__ import annotations
 
+import argparse
 import hashlib
+import json
+import os
 import re
+import sys
 from pathlib import Path
 from typing import Any
 
@@ -159,3 +163,47 @@ def append_pijul_observation(
     if result.get("status") != "committed":
         raise PijulJournalError("Pijul provenance receipt did not commit: " + str(result.get("reason", result.get("status"))))
     return result["receipt"]
+
+def _reject_duplicate_pairs(pairs):
+    result = {}
+    for key, value in pairs:
+        if key in result:
+            raise ValueError("duplicate JSON object key: " + key)
+        result[key] = value
+    return result
+
+
+def main(argv=None) -> int:
+    parser = argparse.ArgumentParser(description="Append a Pijul-native local provenance observation to the GovCheck journal.")
+    parser.add_argument("--provenance-json", type=Path, required=True, help="trusted adapter-produced provenance record, stored outside the Pijul worktree")
+    parser.add_argument("--observation-kind", choices=sorted(OBSERVATION_KINDS), default="channel-state-observed")
+    args = parser.parse_args(argv)
+    env = dict(os.environ)
+    try:
+        repository_path = Path(env["GOVCHECK_REPOSITORY_PATH"]).expanduser().resolve()
+        source_path = args.provenance_json.expanduser().resolve()
+        if not source_path.is_file():
+            raise PijulJournalError("provenance JSON file does not exist")
+        try:
+            source_path.relative_to(repository_path)
+        except ValueError:
+            pass
+        else:
+            raise PijulJournalError("provenance JSON must be outside the Pijul working tree")
+        try:
+            record = json.loads(source_path.read_text(encoding="utf-8"), object_pairs_hook=_reject_duplicate_pairs,
+                                parse_constant=lambda value: (_ for _ in ()).throw(ValueError("invalid JSON constant " + value)))
+        except (OSError, UnicodeDecodeError, json.JSONDecodeError, ValueError) as exc:
+            raise PijulJournalError("cannot read strict provenance JSON: " + str(exc)) from exc
+        receipt = append_pijul_observation(env, record, observation_kind=args.observation_kind)
+        if receipt is None:
+            raise PijulJournalError("journal is not configured; no provenance receipt was written")
+        print(json.dumps(receipt, ensure_ascii=False, sort_keys=True, indent=2))
+        return 0
+    except (OSError, KeyError, PijulJournalError, ValueError) as exc:
+        print("pijul provenance observation failed: " + str(exc), file=sys.stderr)
+        return 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

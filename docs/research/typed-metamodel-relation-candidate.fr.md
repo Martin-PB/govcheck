@@ -70,3 +70,21 @@ Pour un mapping sémantique opérant, le profil doit préciser son domaine et so
 ## 6. Limite de non-adoption
 
 Cette matrice est un artefact de recherche pour l'issue #73. Elle ne met pas à jour le métamodèle canonique, ne modifie pas les sémantiques SACM/GSN/SysML et n'autorise pas de claims d'implémentation. L'adoption nécessite une décision distincte dans #41 après examen du dossier de couverture sémantique et des obligations formelles.
+
+
+## 7. Correspondance étayée par les sources (versions épinglées, candidate uniquement)
+
+| Base source | Structures/relations natives | Usage GovCheck candidat | Garde-fou de non-équivalence |
+|---|---|---|---|
+| SACM 2.3 formel ; SACM 2.4 Beta 1 (R-34, R-73) | Claims, argumentation, références d'évidence/artefacts ; la bêta 2.4 ajoute/précise des structures d'assertion et d'inférence. | Sous-graphe d'assurance et mapping typé claim/preuve/argument. | Préserver version et structure native ; 2.4 reste une bêta. Un lien SACM claim/argument n'est pas automatiquement une exigence GovCheck, une preuve ou une autorisation. |
+| GSN Community Standard v3 (R-04) | Goals, Strategies, Context, Assumptions, Justifications, Solutions et liens d'argument définis. | Mapping candidat de décomposition d'affirmation, rationale, contexte, hypothèse et référence de preuve. | GSN est une notation/standard d'argument, pas un cycle de vie ni une autorité de gouvernance. Ne pas l'appeler « GSN 3.0 » ; utiliser la source SCSC v3. |
+| SysML v2.0 (R-95, R-119) | Langage formel de modélisation des systèmes avec sémantique d'exigences, structure, comportement, analyse et vérification. | Artefacts d'ingénierie typés et relations candidates exigence/propriété/composant. | Ne pas inférer `satisfies`, `realizes` ou `refines` par simple correspondance de labels ; préserver sémantique du modèle et profil de transformation. |
+| ReqIF 1.2 (R-95) | Objets d'échange d'exigences, attributs et relations. | Import/export des enregistrements d'exigences et liens natifs. | Les relations du format d'échange ne sont pas automatiquement des assertions d'assurance, d'autorité ou de satisfaction. |
+| W3C PROV-O (R-24, R-102) | Entity, Activity, Agent et propriétés de provenance comme dérivation, usage, génération et association. | Assertions de provenance entre artefact/révision/processus/agent. | `wasDerivedFrom` est une provenance, pas un raffinement sémantique, un entailment ni une vérité. |
+| OASIS OSLC Core 3.0 et Resource Shape (R-234, R-235) | Interopérabilité des ressources/services Linked Data et contraintes de formes structurelles. | Liens de navigation/interopérabilité et validation structurelle des payloads d'échange. | Les URI et la conformité aux shapes n'établissent ni sémantique d'assurance, ni autorité, ni authenticité/suffisance des preuves. |
+
+## 8. Enregistrement requis du profil de mapping
+
+Avant qu'une relation native devienne opérante, son profil de mapping doit consigner : spécification/version source exacte ; identifiant et domaine/cible de la relation source ; relation candidate GovCheck ; direction et cardinalité ; préservation sémantique ou perte explicite ; constructs non mappés ; conservation du payload natif ; révision et applicabilité ; provenance ; autorité si normative ; et fixtures positives/négatives.
+
+Une correspondance de label n'est pas une preuve de mapping. Un profil incapable de justifier la relation reste candidate/unsupported et ne doit pas alimenter l'évaluateur. Voir le [catalogue de références](../references.fr.md#r-234) et l'[audit de couverture sémantique](metamodel-semantic-coverage-audit.fr.md).

@@ -165,3 +165,8 @@ La correction actuelle restreint ce que le prototype Lean peut représenter comm
 - [Évaluation du réemploi des ontologies et de CSLib](metamodel-ontology-reuse-assessment.fr.md)
 - [Standards sémantiques de domaine, modèles de décision et engagements de bootstrap](../architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md)
 - [Méthodes formelles et évaluation de la chaîne d'outils](metamodel-coherence-verification.fr.md)
+
+
+## Addendum — 2026-11-28
+
+Une matrice candidate bilingue et non normative des relations consigne les domaines/cibles typés, familles de relations, qualificatifs temporels/de provenance/d'autorité, vérification qualifiée par méthode et contraintes de cycles propres aux relations : [matrice candidate de relations typées](typed-metamodel-relation-candidate.fr.md). Elle conserve le modèle en graphe et n'adopte pas les labels d'ontologies externes ni ne modifie le métamodèle canonique ; l'adoption reste sous l'autorité de l'issue décisionnelle #41.

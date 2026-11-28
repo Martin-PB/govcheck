@@ -165,3 +165,8 @@ The current correction narrows what the Lean prototype can represent as an *oper
 - [Ontology reuse and CSLib assessment](metamodel-ontology-reuse-assessment.md)
 - [Domain semantic standards, decision models and bootstrap commitments](../architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md)
 - [Formal coherence methods and toolchain assessment](metamodel-coherence-verification.md)
+
+
+## Addendum — 2026-11-28
+
+A bilingual, non-normative candidate relation matrix now records typed domains/ranges, relation families, temporal/provenance/authority qualifiers, method-specific verification, and relation-specific cycle constraints: [typed metamodel relation candidate](typed-metamodel-relation-candidate.md). It preserves the graph model and does not adopt external ontology labels or update the canonical metamodel; adoption remains with decision issue #41.

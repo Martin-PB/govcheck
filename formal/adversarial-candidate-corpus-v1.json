@@ -1,8 +1,8 @@
 {
   "corpusId": "govcheck.adversarial-candidate-corpus",
-  "corpusVersion": "1.0.0",
+  "corpusVersion": "1.1.0",
   "schemaVersion": 1,
-  "sourceRevision": "451d1e1ff929946274edba8e844e08d74fdd306f",
+  "sourceRevision": "d25e417f41eb67619cc6a9df285cdb89b317dd70",
   "recordedOn": "2026-11-28",
   "purpose": "Versioned positive, adversarial, boundary and not-yet-tested cases for the GovCheck evaluator and acceptance adapters.",
   "bindingPolicy": {

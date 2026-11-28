@@ -219,6 +219,34 @@ class VerifyTests(unittest.TestCase):
         self.assertTrue(prot["enforce_admins"])
         self.assertEqual(prot["required_approving_reviews"], 1)
 
+    def test_branch_protection_rejects_missing_or_malformed_metadata(self):
+        malformed_payloads = [
+            {"required_status_checks": None, "required_pull_request_reviews": None},
+            {"required_status_checks": {"contexts": "not-a-list"}, "required_pull_request_reviews": None,
+             "enforce_admins": {"enabled": False}},
+            {"required_status_checks": None, "required_pull_request_reviews": {"required_approving_review_count": True},
+             "enforce_admins": {"enabled": False}},
+            {"required_status_checks": None, "required_pull_request_reviews": None,
+             "enforce_admins": {"enabled": "false"}},
+        ]
+        for payload in malformed_payloads:
+            client, _ = make_client(lambda req, payload=payload: FakeResponse(200, payload))
+            with self.subTest(payload=payload):
+                with self.assertRaises(forge.ForgeError) as cm:
+                    forge.get_branch_protection(client, "main")
+                self.assertEqual(cm.exception.kind, "malformed")
+
+    def test_branch_protection_accepts_explicitly_disabled_optional_rules(self):
+        payload = {
+            "required_status_checks": None,
+            "required_pull_request_reviews": None,
+            "enforce_admins": {"enabled": False},
+        }
+        client, _ = make_client(lambda req: FakeResponse(200, payload))
+        protection = forge.get_branch_protection(client, "main")
+        self.assertEqual(protection["required_checks"], [])
+        self.assertEqual(protection["required_approving_reviews"], 0)
+        self.assertFalse(protection["enforce_admins"])
 
     def ruleset(self, **overrides):
         value = {

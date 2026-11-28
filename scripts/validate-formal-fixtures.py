@@ -15,7 +15,11 @@ from typing import Any
 from jsonschema import Draft202012Validator, FormatChecker
 from referencing import Registry, Resource
 
-SCHEMA_DIR = Path("formal/schemas")
+SCHEMA_DIRS = (
+    Path("formal/schemas"),
+    Path("govcheck/formal/schemas"),
+    Path("docs/schemas"),
+)
 FIXTURE_DIR = Path("formal/fixtures")
 
 
@@ -32,37 +36,50 @@ def _read_json(path: Path) -> Any:
 
 def fixture_schema_name(name: str) -> str | None:
     if name == "dependency-edge.example.json":
-        return "dependency-edge.schema.json"
+        return "formal/schemas/dependency-edge.schema.json"
     if name.startswith("evidence-record-") and name.endswith(".example.json"):
-        return "evidence-record.schema.json"
+        return "formal/schemas/evidence-record.schema.json"
     if name.startswith("version-decision-") and name.endswith(".example.json"):
-        return "version-decision.schema.json"
+        return "formal/schemas/version-decision.schema.json"
     if name == "release-manifest.example.json":
-        return "release-manifest.schema.json"
+        return "formal/schemas/release-manifest.schema.json"
     if name == "version-governance-bundle.example.json":
-        return "version-governance-bundle.schema.json"
+        return "formal/schemas/version-governance-bundle.schema.json"
     return None
 
 
 def load_schemas(root: str | Path) -> tuple[dict[str, dict], Registry]:
     root = Path(root).resolve()
-    directory = root / SCHEMA_DIR
-    if not directory.is_dir():
-        raise ValidationSetupError(f"schema directory does not exist: {directory}")
     schemas: dict[str, dict] = {}
     resources = []
-    for path in sorted(directory.glob("*.schema.json")):
-        schema = _read_json(path)
-        if not isinstance(schema, dict):
-            raise ValidationSetupError(f"{path}: schema root must be an object")
-        schema_id = schema.get("$id")
-        if not isinstance(schema_id, str) or not schema_id:
-            raise ValidationSetupError(f"{path}: schema must declare a non-empty $id")
-        if path.name in schemas:
-            raise ValidationSetupError(f"duplicate schema filename: {path.name}")
-        Draft202012Validator.check_schema(schema)
-        schemas[path.name] = schema
-        resources.append((schema_id, Resource.from_contents(schema)))
+    schema_by_id: dict[str, dict] = {}
+    for relative_directory in SCHEMA_DIRS:
+        directory = root / relative_directory
+        if not directory.is_dir():
+            raise ValidationSetupError(f"schema directory does not exist: {directory}")
+        for path in sorted(directory.glob("*.schema.json")):
+            schema = _read_json(path)
+            if not isinstance(schema, dict):
+                raise ValidationSetupError(f"{path}: schema root must be an object")
+            schema_id = schema.get("$id")
+            if not isinstance(schema_id, str) or not schema_id:
+                raise ValidationSetupError(f"{path}: schema must declare a non-empty $id")
+            key = path.relative_to(root).as_posix()
+            if key in schemas:
+                raise ValidationSetupError(f"duplicate schema path: {key}")
+            Draft202012Validator.check_schema(schema)
+            schemas[key] = schema
+            previous = schema_by_id.get(schema_id)
+            if previous is not None:
+                if previous != schema:
+                    raise ValidationSetupError(
+                        f"duplicate schema $id has conflicting contents: {schema_id}"
+                    )
+                # Documentation and package projections may intentionally share
+                # one canonical schema ID. Register that resource only once.
+                continue
+            schema_by_id[schema_id] = schema
+            resources.append((schema_id, Resource.from_contents(schema)))
     if not schemas:
         raise ValidationSetupError("no *.schema.json files found")
     registry = Registry().with_resources(resources)
@@ -121,7 +138,8 @@ def audit(root: str | Path) -> dict:
             instance, schemas[schema_name], registry, path.relative_to(root).as_posix()
         ))
 
-    for schema_name in sorted(set(schemas) - covered):
+    fixture_required = {name for name in schemas if name.startswith("formal/schemas/")}
+    for schema_name in sorted(fixture_required - covered):
         findings.append({
             "instance": "",
             "location": "",
@@ -134,7 +152,11 @@ def audit(root: str | Path) -> dict:
         "json_schema_validation_performed": True,
         "dialect": "https://json-schema.org/draft/2020-12/schema",
         "schemas_checked": len(schemas),
+        "formal_schemas_checked": sum(name.startswith("formal/schemas/") for name in schemas),
+        "package_schemas_checked": sum(name.startswith("govcheck/formal/schemas/") for name in schemas),
+        "documentation_schemas_checked": sum(name.startswith("docs/schemas/") for name in schemas),
         "fixtures_checked": fixture_count,
+        "fixture_coverage_scope": "Example fixtures are currently required for formal/schemas; packaged and documentation schemas are meta-validated and registered for cross-reference resolution, but are not yet fixture-covered.",
         "finding_count": len(findings),
         "findings": findings,
         "limitations": [

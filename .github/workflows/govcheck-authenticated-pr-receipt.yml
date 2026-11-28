@@ -17,6 +17,7 @@ jobs:
     if: >-
       (github.event_name == 'pull_request_target') ||
       (github.event_name == 'issue_comment' &&
+       vars.GOVCHECK_RECEIPT_CHECK_ENABLED == 'true' &&
        github.event.issue.pull_request &&
        contains(github.event.comment.body, '/govcheck-receipt'))
     runs-on: ubuntu-latest
@@ -34,7 +35,7 @@ jobs:
           python-version: '3.12'
 
       - name: Invalidate acceptance check when PR head/base changes
-        if: github.event_name == 'pull_request_target'
+        if: github.event_name == 'pull_request_target' && vars.GOVCHECK_RECEIPT_CHECK_ENABLED == 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
@@ -45,8 +46,20 @@ jobs:
             --event-path "$GITHUB_EVENT_PATH" \
             --trusted-root trusted
 
+      - name: Clear stale pending receipt check while feature is disabled
+        if: github.event_name == 'pull_request_target' && vars.GOVCHECK_RECEIPT_CHECK_ENABLED != 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_RUN_ID: ${{ github.run_id }}
+        run: |
+          python trusted/scripts/github-pr-receipt-check.py \\
+            --mode disable \\
+            --event-path "$GITHUB_EVENT_PATH" \\
+            --trusted-root trusted
+
       - name: Fetch current PR head metadata
-        if: github.event_name == 'issue_comment'
+        if: github.event_name == 'issue_comment' && vars.GOVCHECK_RECEIPT_CHECK_ENABLED == 'true'
         id: pr
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -57,7 +70,7 @@ jobs:
           echo "head_sha=$(jq -r '.head.sha' "$RUNNER_TEMP/pr.json")" >> "$GITHUB_OUTPUT"
 
       - name: Checkout candidate tree without credentials
-        if: github.event_name == 'issue_comment' && steps.pr.outputs.head_repo == github.repository
+        if: github.event_name == 'issue_comment' && vars.GOVCHECK_RECEIPT_CHECK_ENABLED == 'true' && steps.pr.outputs.head_repo == github.repository
         uses: actions/checkout@v4
         with:
           repository: ${{ steps.pr.outputs.head_repo }}
@@ -67,7 +80,7 @@ jobs:
           persist-credentials: false
 
       - name: Verify signed receipt and update required check
-        if: github.event_name == 'issue_comment'
+        if: github.event_name == 'issue_comment' && vars.GOVCHECK_RECEIPT_CHECK_ENABLED == 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}

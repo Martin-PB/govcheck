@@ -1,0 +1,287 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:govcheck:schema:journal-receipt-attestation:v1",
+  "title": "GovCheck canonical journal receipt DSSE statement v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "_type",
+    "subject",
+    "predicateType",
+    "predicate"
+  ],
+  "properties": {
+    "_type": {
+      "const": "https://in-toto.io/Statement/v1"
+    },
+    "subject": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "digest"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "digest": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "sha256"
+            ],
+            "properties": {
+              "sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              }
+            }
+          }
+        }
+      }
+    },
+    "predicateType": {
+      "const": "urn:govcheck:attestation:journal-receipt:v1"
+    },
+    "predicate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "repository",
+        "candidate",
+        "base",
+        "governance",
+        "receipt",
+        "event",
+        "journal"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": "1"
+        },
+        "repository": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "uri",
+            "vcsKind"
+          ],
+          "properties": {
+            "uri": {
+              "type": "string",
+              "format": "uri"
+            },
+            "vcsKind": {
+              "enum": [
+                "git",
+                "pijul"
+              ]
+            }
+          }
+        },
+        "candidate": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "revision",
+            "contentDigest"
+          ],
+          "properties": {
+            "revision": {
+              "type": "string",
+              "minLength": 1
+            },
+            "contentDigest": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "sha256"
+              ],
+              "properties": {
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                }
+              }
+            }
+          }
+        },
+        "base": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "revision",
+            "reference"
+          ],
+          "properties": {
+            "revision": {
+              "type": "string",
+              "minLength": 1
+            },
+            "reference": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "governance": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "scopeId",
+            "revision",
+            "digest"
+          ],
+          "properties": {
+            "scopeId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "revision": {
+              "type": "string",
+              "minLength": 1
+            },
+            "digest": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "sha256"
+              ],
+              "properties": {
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                }
+              }
+            }
+          }
+        },
+        "receipt": {
+          "type": "object",
+          "additionalProperties": true,
+          "required": [
+            "scopeId",
+            "position",
+            "eventId",
+            "previousDigest",
+            "eventDigest",
+            "idempotencyKey",
+            "committedAt",
+            "receiptDigest"
+          ],
+          "properties": {
+            "scopeId": {
+              "type": "string"
+            },
+            "position": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "eventId": {
+              "type": "string"
+            },
+            "previousDigest": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "eventDigest": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "idempotencyKey": {
+              "type": "string"
+            },
+            "committedAt": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "receiptDigest": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          }
+        },
+        "event": {
+          "type": "object",
+          "additionalProperties": true,
+          "required": [
+            "scopeId",
+            "position",
+            "eventId",
+            "eventType",
+            "payload",
+            "payloadDigest",
+            "previousDigest",
+            "eventDigest",
+            "canonicalization"
+          ],
+          "properties": {
+            "scopeId": {
+              "type": "string"
+            },
+            "position": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "eventId": {
+              "type": "string"
+            },
+            "eventType": {
+              "type": "string"
+            },
+            "payload": {
+              "type": "object"
+            },
+            "payloadDigest": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "previousDigest": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "eventDigest": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "canonicalization": {
+              "const": "govcheck.jcs-safe-integer/v1"
+            }
+          }
+        },
+        "journal": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "integrityStatus",
+            "verifiedHeadPosition",
+            "verifiedHeadDigest"
+          ],
+          "properties": {
+            "integrityStatus": {
+              "const": "valid"
+            },
+            "verifiedHeadPosition": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "verifiedHeadDigest": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          }
+        }
+      }
+    }
+  }
+}

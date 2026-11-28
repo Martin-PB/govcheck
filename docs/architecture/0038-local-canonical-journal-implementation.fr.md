@@ -101,3 +101,6 @@ Lorsque le mode journal local est activé pour le gate d'acceptation Git, le gat
 Les paramètres supplémentaires `GOVCHECK_REPOSITORY_URI` et `GOVCHECK_GOVERNANCE_DIGEST` sont obligatoires en mode journal. Le second est le digest du package/révision de gouvernance gouverné, et non le digest de politique/de trust-policy. Une provenance absente ou mal formée provoque UNKNOWN en mode journal configuré. Sans mode journal, le gate n'effectue pas la matérialisation supplémentaire de la base.
 
 Cela lie l'événement Git du journal à l'identité native commit/ref et au contenu matérialisé ; aucun adaptateur de journal Pijul n'est encore ajouté. Le builder Pijul est disponible comme constructeur de payload distinct, et son intégration distante/serveur reste ouverte dans #45/#155.
+
+
+Pour les décisions authentifiées, l'horodatage de provenance provient du champ signé `decidedOn` de la décision ; rejouer la même décision signée produit ainsi le même payload de provenance et la même clé d'idempotence. Le champ `createdAt` de l'enveloppe du journal enregistre l'heure réelle de l'ajout. Les tentatives de gate non authentifiées utilisent l'horodatage d'observation de la tentative et ne sont pas représentées comme une décision d'autorité signée.

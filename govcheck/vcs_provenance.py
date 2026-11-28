@@ -139,6 +139,8 @@ def build_pijul_provenance(
 ) -> dict:
     """Build a record preserving the native Pijul channel and change hashes as opaque IDs."""
     target_channel = _text(target_channel, "target_channel")
+    if any(ch.isspace() for ch in target_channel):
+        raise VcsProvenanceError("Pijul target channel must not contain whitespace")
     candidate_channel_hash = _text(candidate_channel_hash, "candidate_channel_hash")
     if any(ch.isspace() for ch in candidate_channel_hash):
         raise VcsProvenanceError("Pijul channel hash must be an opaque token without whitespace")
@@ -156,8 +158,11 @@ def build_pijul_provenance(
     if base_channel_hash is not None or base_content_digest is not None:
         if base_channel_hash is None or base_content_digest is None:
             raise VcsProvenanceError("base channel hash and content digest must be supplied together")
+        base_revision = _text(base_channel_hash, "base_channel_hash")
+        if any(ch.isspace() for ch in base_revision):
+            raise VcsProvenanceError("Pijul base channel hash must be an opaque token without whitespace")
         base = {
-            "nativeRevision": _text(base_channel_hash, "base_channel_hash"),
+            "nativeRevision": base_revision,
             "contentDigest": _digest(base_content_digest, "base_content_digest"),
         }
     return {

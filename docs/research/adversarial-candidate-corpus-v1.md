@@ -1,0 +1,60 @@
+# Adversarial candidate corpus — version 1.0.0
+
+**Status:** first versioned corpus catalogue with executable-test pointers; not a claim that every attack has a runnable fixture or that the acceptance boundary is deployed.  
+**Snapshot:** source revision `451d1e1ff929946274edba8e844e08d74fdd306f`.  
+**Parent:** [Issue #72](https://github.com/Martin-PB/govcheck/issues/72).  
+**French:** [Corpus de candidats adversariaux](adversarial-candidate-corpus-v1.fr.md).  
+**Machine-readable manifest:** [`formal/adversarial-candidate-corpus-v1.json`](../../formal/adversarial-candidate-corpus-v1.json).
+
+## 1. Purpose and interpretation
+
+This corpus records positive, adversarial, boundary and currently untested scenarios for the evaluator and acceptance adapters. It is intentionally not a single generic "attack score". Each case states:
+
+- the attack or boundary condition;
+- the expected outcome;
+- how the candidate and base/policy context are bound;
+- the existing test/model/document that supplies evidence;
+- the coverage status and residual limitation.
+
+The corpus distinguishes `tested-unit`, `tested-integration`, `model-only`, `planned` and `not-demonstrated`. A test pointer is not a claim that the test was rerun in this change. A model-only case is not an implementation test. A configuration audit is not proof that a forge rejects a real update.
+
+## 2. Binding and provenance
+
+The manifest pins the source snapshot from which its initial test pointers were audited. Unit tests may use deterministic synthetic candidate/base values or generate ephemeral signing keys and policies. The local Git integration tests create exact temporary commit IDs and bind decisions to the old/new/ref tuple at runtime. In each case, the test itself must exercise the exact values it generated or declared; a test result must not be generalized to another candidate or policy.
+
+There is deliberately no shared production trust-policy digest in this corpus. Ephemeral keys and test policies are test material, not GovCheck trust roots. All current entries declare `deploymentStatus: not-demonstrated`: even an isolated Git integration test does not show that the same gate is installed on a production forge.
+
+## 3. Initial coverage map
+
+| Case range | Area | Existing evidence | Current status |
+|---|---|---|---|
+| AC-001–AC-003 | Acceptance decision, report digest, candidate binding, PASS/risk distinction | `tests/test_acceptance_decision.py` | Unit-tested |
+| AC-004–AC-005 | DSSE signature, signer role/principal, key expiry/revocation | `tests/test_attestation_verify.py` | Unit-tested with synthetic keys |
+| AC-006–AC-009 | Gate result handling, exact tuple/pins, protected refs and explicit risk path | `tests/test_govcheck_git_pre_receive.py` | Unit-tested |
+| AC-010–AC-011 | Stale decision and real local bare-Git receive behavior | `tests/test_pre_receive_acceptance_integration.py`, `tests/test_govcheck_git_pre_receive_integration.py` | Isolated integration-tested |
+| AC-012–AC-013 | Forge ruleset configuration and non-applicable refs | `tests/test_govcheck_forge.py`, `tests/test_govcheck_git_pre_receive.py` | Unit-tested; configuration only |
+| AC-014–AC-015 | Journal concurrency and canonical JSON parsing | `tests/test_journal.py` | Unit-tested |
+| AC-016 | Enforced/advisory/admin-bypass acceptance-boundary abstraction | `formal/tla/GovCheckAcceptanceBoundary.tla` and configurations | Model-only |
+| AC-017–AC-019 | Workflow/ruleset tampering, stale TLC report replay, Lean `sorry`/axiom injection | No corpus-specific executable test yet | Planned |
+| AC-020 | Real GitHub protected-ref rejection and bypass | Acceptance-boundary research and live configuration still need verification | Not demonstrated; tracked by #45 |
+| AC-021 | Pijul remote/Nest enforcement bypass | Platform research only | Planned; no remote enforcement adapter |
+| AC-022 | Malicious repository-controlled check execution, secret exfiltration and resource exhaustion | Architecture 0006; candidate issue #218 | Planned; no sandbox selected |
+
+The machine-readable manifest is the source of the case IDs and exact evidence pointers. `tests/test_adversarial_candidate_corpus.py` checks manifest identity/versioning, unique IDs, required semantics, evidence-file existence and referenced Python test-method names. This integrity test does not itself execute the underlying attacks.
+
+## 4. Important limits
+
+1. **No production enforcement claim.** The current local Git hook prototype is not a GitHub App or a live hosted-merge gate.
+2. **No synthesized independent reviewer.** Test keys and fixture principals do not establish an independent human reviewer.
+3. **No general Pijul enforcement.** A local hook is not a mandatory remote acceptance boundary.
+4. **No arbitrary project-code sandbox.** Execution isolation, secret minimization and resource budgets remain candidate work in #218.
+5. **No complete proof-artifact attack suite yet.** Stale model-checking reports and Lean proof artifacts containing forbidden axioms remain planned cases.
+
+## 5. Next increments
+
+- Turn AC-017–AC-019 into exact-candidate fixtures with explicit expected fail/unknown outcomes and provenance.
+- Extend the corpus with the specific attack paths and trust assumptions from Architecture 0006.
+- Bind any new test report to the corpus revision, test/tool version, exact candidate/base, applicable policy and verifier identity.
+- Add a real forge-boundary experiment only when its required configuration and test environment are explicitly authorized and available.
+
+This catalogue does not adopt a new normative rule, modify the branch-protection configuration or claim that a planned case is already tested.

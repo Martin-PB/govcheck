@@ -14,8 +14,8 @@ Il n'existe encore aucun exécutable, politique canonique appliquée par machine
 
 Ne remplacer cette politique que lorsqu'une implémentation examinée fournit un modèle canonique versionné ; une sémantique définie des obligations, permissions, interdictions, exceptions et transitions ; un évaluateur local déterministe ; des dossiers d'assurance liés à des états exacts du dépôt et de la gouvernance ; des éléments de vérification et frontières de confiance documentés ; et une migration préservant l'historique.
 
-## Autorisation enregistrée
+## Frontière du package
 
-L'autorisation explicite du mainteneur pour la CI hébergée du dépôt public `Martin-PB/govcheck` est consignée dans l'[Architecture 0040](architecture/0040-scoped-hosted-ci-authorization.fr.md). Elle n'autorise ni contournement de fusion, ni modification du ruleset/secrets, ni effet externe, ni utilisation dans d'autres dépôts.
+Cette politique distribuée est générique. Les autorisations de CI hébergée propres à un dépôt sont conservées hors du package et ne sont pas héritées par ses consommateurs. Chaque consommateur doit obtenir une autorisation explicite pour son propre dépôt ; une autorisation accordée au dépôt source ne s'étend pas aux dépôts aval.
 
 English: [BOOTSTRAP_GOVERNANCE.md](BOOTSTRAP_GOVERNANCE.md).

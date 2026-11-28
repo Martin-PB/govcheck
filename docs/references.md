@@ -1545,7 +1545,7 @@
 - **Primary sources:** [About rulesets](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets) · [Available rules](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/available-rules-for-rulesets) · [Protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches).
 - **Use:** required status checks, expected GitHub App source, strict/loose base freshness, reviews and bypass configuration.
 - **Limit:** any person or integration with write permission can set a status unless an expected App source is selected. Rulesets do not prove verifier correctness or remove administrator/bypass authority.
-- **Cited by:** [Architecture 0037](architecture/0037-acceptance-boundary-and-enforcement-adapters.md), [acceptance-boundary research](research/acceptance-boundary-enforcement-2026-11.md), [event journal](work-portfolio/events.md).
+- **Cited by:** [Architecture 0037](architecture/0037-acceptance-boundary-and-enforcement-adapters.md), [acceptance-boundary research](research/acceptance-boundary-enforcement-2026-11.md), [work-item register](work-portfolio/work-items.md), [event journal](work-portfolio/events.md).
 
 <a id="r-222"></a>
 ### R-222 — GitLab protected branches and external status checks
@@ -1585,7 +1585,7 @@
 - **Primary sources:** [Pijul configuration and hooks](https://pijul.org/manual/configuration.html) · [Contributing on the Nest](https://pijul.org/manual/the_nest/contributing).
 - **Use:** Pijul's documented hook runs before `pijul record`; the manual currently says only the `record` hook is supported. The Nest permits direct push for authorized users or attaching changes to a discussion channel.
 - **Limit:** the cited manual documents no mandatory remote pre-push/pre-receive hook. Conditional server-side enforcement requires a controlled remote/server integration; a local hook or wrapper is cooperative and bypassable.
-- **Cited by:** [Architecture 0037](architecture/0037-acceptance-boundary-and-enforcement-adapters.md), [Architecture 0038](architecture/0038-local-canonical-journal-implementation.md), [formal model documentation](formal/README.md), [acceptance-boundary research](research/acceptance-boundary-enforcement-2026-11.md), [work-item register](work-portfolio/work-items.md), [event journal](work-portfolio/events.md).
+- **Cited by:** [Architecture 0037](architecture/0037-acceptance-boundary-and-enforcement-adapters.md), [Architecture 0038](architecture/0038-local-canonical-journal-implementation.md), [formal model documentation](formal/README.md), [acceptance-boundary research](research/acceptance-boundary-enforcement-2026-11.md), [event journal](work-portfolio/events.md).
 
 <a id="r-227"></a>
 ### R-227 — DSSE: Dead Simple Signing Envelope

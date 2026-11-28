@@ -92,3 +92,12 @@ The first typed provenance record is implemented as `govcheck.vcs-provenance/v1`
 The record binds repository identity/URI, VCS kind and adapter, target ref/channel, native base and candidate identities, materialized content digests, native change-set IDs, governance scope/revision/digest and observation time. Git commit OIDs remain Git-native (SHA-1 or SHA-256); Pijul channel hashes and change hashes remain opaque Pijul-native tokens. The Pijul change-hash list is represented as a set and sorted only for deterministic digesting; it does not encode patch dependency/order semantics.
 
 The change-set digest is a digest of the VCS kind and native-ID list, not a cross-VCS equivalence claim. Content digests are supplementary comparison bindings and do not establish semantic equivalence. The builder rejects mixed target types, malformed Git OIDs, partial base bindings, duplicate Pijul IDs and missing governance scope. This is a payload profile for journal consumers, not a change to Specification 0007 or a forge adapter. See R-225 and R-226 in the central reference catalogue.
+
+
+## 9. Provenance binding in acceptance receipts
+
+When local journal mode is enabled for the Git acceptance gate, the gate now materializes both the exact base and candidate snapshots and computes their GovCheck content digests. It passes those bindings, the repository URI and an explicitly configured governance digest to the typed provenance builder. The canonical gate-result event stores the resulting `vcsProvenance` object; the post-receive publication receipt carries that same object forward and references the gate event by journal position/digest.
+
+The extra inputs `GOVCHECK_REPOSITORY_URI` and `GOVCHECK_GOVERNANCE_DIGEST` are mandatory in journal mode. The latter is the digest of the governed governance package/revision, not the policy/trust-policy digest. Missing or malformed provenance fails closed to UNKNOWN when journaling is configured. Without journal mode, the gate does not incur the additional base materialization.
+
+This binds the journal's Git event to native commit/ref identity and materialized content; it does not yet add a Pijul journal adapter. The Pijul builder is available as a separate payload constructor, and its remote/server integration remains open under #45/#155.

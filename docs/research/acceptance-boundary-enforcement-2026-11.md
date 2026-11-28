@@ -258,3 +258,12 @@ Before appending, the integration verifies the complete journal, checks the gene
 Genesis is never created by the gate. Initialize it explicitly outside the repository, using the authenticated authority principal and pinned authority/governance revisions. If any journal setting is present but configuration, genesis or append fails, the gate returns UNKNOWN and the pre-receive adapter rejects the update. If no journal setting is present, the gate retains its previous optional-journal behavior; deployments must not claim journal-backed acceptance until the settings are installed and audited.
 
 This increment records verified acceptance, not failed attempts, bypasses or successful ref publication. The journal's local hash chain is not actor authentication and does not resist a privileged administrator rewriting the database. Those receipt classes and the live GitHub check/ruleset remain open work under #45/#155.
+
+
+## 15. Journal gate outcomes, including UNKNOWN and rejection
+
+The journal integration now records each completed gate evaluation when journal mode is configured, not only accepted decisions. The event type is `govcheck.acceptance.gate-result/v1` and includes the exact candidate/base/ref/report digest, decision ID/result, policy/governance/scope bindings, reason and risk record.
+
+When a verified authority principal is available, the event is attributed to that principal only after its equality with the journal's configured genesis authority pin is checked. For invalid or unavailable authority evidence, the event actor is the fixed local attribution `system:govcheck-gate` and the payload explicitly labels the result `unverified-gate-attempt`; this is not an authenticated human decision. Such attempts require `GOVCHECK_JOURNAL_AUTHORITY_ID` to match the journal genesis authority.
+
+The journal receipt is written before the pre-receive hook returns. It therefore records the gate outcome/attempt, not whether Git subsequently updated the ref. A later post-receive receipt is needed to establish publication. If the configured journal cannot record the outcome, the gate returns UNKNOWN and the protected update is rejected.

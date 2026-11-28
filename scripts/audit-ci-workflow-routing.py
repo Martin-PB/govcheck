@@ -16,7 +16,7 @@ from pathlib import Path
 WORKFLOW_DIR = Path(".github/workflows")
 EVENTS = ("pull_request", "push")
 PATH_ITEM = re.compile(r"""^      -\s+(?:"([^"]+)"|'([^']+)'|([^\s#]+))\s*(?:#.*)?$""")
-USES_ITEM = re.compile(r"""^\s{6}uses:\s*['"]?(\./\.github/workflows/[^\s'"]+\.ya?ml)['"]?\s*(?:#.*)?$""")
+USES_ITEM = re.compile(r"""^\s{4}uses:\s*['"]?(\./\.github/workflows/[^\s'"]+\.ya?ml)['"]?\s*(?:#.*)?$""")
 
 
 class WorkflowParseError(ValueError):

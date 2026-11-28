@@ -52,6 +52,7 @@ META_ONLY_WORKFLOWS = {
     "tla-lifecycle.yml",
     "tla-model-reusable.yml",
     "tla-pijul-remote-boundary.yml",
+    "govcheck-authenticated-pr-receipt.yml",
     "tla-acceptance-boundary.yml",
     "version-governance.yml",
     "lean-coherence.yml",

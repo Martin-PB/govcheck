@@ -304,3 +304,8 @@ The environment file must pin the journal DB/scope, expected repository identity
 ## 18. Required provenance settings for journal-backed Git acceptance
 
 The typed Git provenance binding introduced in the journal implementation requires `GOVCHECK_REPOSITORY_URI` and `GOVCHECK_GOVERNANCE_DIGEST` in addition to the journal settings. The governance digest must identify the exact governed governance package/revision; it is not the trust-policy or acceptance-policy digest. `GOVCHECK_JOURNAL_AUTHORITY_ID` pins the genesis authority and is required for unauthenticated gate-attempt receipts. When journal mode is enabled, the gate materializes the base snapshot as well as the candidate to compute exact content digests. Missing values or invalid provenance return UNKNOWN and reject the pre-receive update.
+
+
+## 19. GitHub required-check source
+
+Architecture 0039 and the workflow `.github/workflows/govcheck-authenticated-pr-receipt.yml` provide a trusted check run named `GovCheck authenticated acceptance receipt`. The check remains pending on PR lifecycle updates and completes only after an authenticated PASS receipt is bound to the exact current head/base and candidate content digest. The workflow never executes candidate code. It does not configure the ruleset; an administrator must require the exact check, restrict bypasses and require an up-to-date branch. Required public repository variables and their meanings are documented in Architecture 0039.

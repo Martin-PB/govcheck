@@ -304,3 +304,8 @@ Le fichier d'environnement doit épingler la base/scope du journal, l'identité 
 ## 18. Paramètres de provenance requis pour l'acceptation Git avec journal
 
 Le binding de provenance Git typé introduit dans l'implémentation du journal exige `GOVCHECK_REPOSITORY_URI` et `GOVCHECK_GOVERNANCE_DIGEST` en plus des paramètres du journal. Le digest de gouvernance doit identifier le package/révision exact de gouvernance gouverné ; ce n'est pas le digest de trust-policy ou de politique d'acceptation. `GOVCHECK_JOURNAL_AUTHORITY_ID` épingle l'autorité du genesis et est requis pour les reçus de tentatives de gate non authentifiées. Lorsque le mode journal est activé, le gate matérialise aussi le snapshot de base, en plus du candidat, afin de calculer les digests de contenu exacts. Des valeurs manquantes ou une provenance invalide produisent UNKNOWN et rejettent la mise à jour pre-receive.
+
+
+## 19. Source de check GitHub requis
+
+L'Architecture 0039 et le workflow `.github/workflows/govcheck-authenticated-pr-receipt.yml` fournissent un check de confiance nommé `GovCheck authenticated acceptance receipt`. Le check reste en attente lors des mises à jour du cycle de vie de la PR et ne se termine qu'après binding d'un reçu PASS authentifié à la tête/base courantes exactes et au digest de contenu candidat. Le workflow n'exécute jamais le code candidat. Il ne configure pas le ruleset ; un administrateur doit exiger le check exact, restreindre les bypass et exiger une branche à jour. Les variables publiques requises et leur signification sont documentées dans l'Architecture 0039.

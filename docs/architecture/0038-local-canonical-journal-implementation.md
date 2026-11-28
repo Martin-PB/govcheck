@@ -101,3 +101,6 @@ When local journal mode is enabled for the Git acceptance gate, the gate now mat
 The extra inputs `GOVCHECK_REPOSITORY_URI` and `GOVCHECK_GOVERNANCE_DIGEST` are mandatory in journal mode. The latter is the digest of the governed governance package/revision, not the policy/trust-policy digest. Missing or malformed provenance fails closed to UNKNOWN when journaling is configured. Without journal mode, the gate does not incur the additional base materialization.
 
 This binds the journal's Git event to native commit/ref identity and materialized content; it does not yet add a Pijul journal adapter. The Pijul builder is available as a separate payload constructor, and its remote/server integration remains open under #45/#155.
+
+
+For authenticated decisions, the provenance timestamp is taken from the signed decision's `decidedOn` field, so replaying the same signed decision produces the same provenance payload and idempotency key. The journal envelope's own `createdAt` records the actual append time. Unauthenticated gate attempts use the observation timestamp of that attempt and are not represented as a signed authority decision.

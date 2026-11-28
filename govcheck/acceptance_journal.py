@@ -123,6 +123,12 @@ def append_verified_decision(env: dict[str, str], gate_payload: dict[str, Any]) 
         request_digest = hashlib.sha256(canonical_json_bytes(payload)).hexdigest()
         idempotency_key = "acceptance-decision:" + request_digest
         event_id = "acceptance-gate-result:" + request_digest
+        integrity = journal.verify(scope_id)
+        if integrity.get("status") != "valid":
+            raise AcceptanceJournalError("journal verification failed before idempotent lookup")
+        existing = journal.receipt(scope_id, idempotency_key)
+        if existing is not None:
+            return existing
         head = journal.head(scope_id)
         result = journal.append(
             scope_id=scope_id,

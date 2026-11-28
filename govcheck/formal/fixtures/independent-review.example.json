@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1",
+  "candidateRevision": "cccccccccccccccccccccccccccccccccccccccc",
+  "candidateContentSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "baseRevision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "governanceRevision": "gov-17",
+  "scopeId": "repo:example/project",
+  "reviewedOn": "2026-11-27T12:00:00Z",
+  "outcome": "accepted",
+  "claimsReviewed": [
+    "claim:security",
+    "claim:tests"
+  ],
+  "observations": [
+    "No blocking finding in declared scope."
+  ],
+  "limitations": [
+    "Review was limited to the declared scope."
+  ]
+}

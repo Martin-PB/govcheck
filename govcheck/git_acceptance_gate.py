@@ -316,6 +316,7 @@ def run_gate(args, env=None, runner=subprocess.run, evaluator=None, decision_ver
                 required_role="governance-authority",
             )
             payload["decision_id"] = decision.get("decisionId") or "unavailable"
+            payload["authority_principal"] = decision.get("authorityPrincipal") or ""
             payload["evidence_digest"] = "sha256:" + _sha256(report_bytes)
             payload["result"] = decision.get("result", "unknown")
             payload["risk_acceptance"] = _risk_v0(decision)

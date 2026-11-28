@@ -103,7 +103,7 @@ def audit_ruleset(
         findings.append({
             "kind": "required-check-liveness-unverified",
             "checks": required_checks,
-            message: "Required contexts need a trusted source and path/liveness mapping.",
+            "message": "Required contexts need a trusted source and path/liveness mapping.",
         })
 
     acceptance_gate = "not-established"

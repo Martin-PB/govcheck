@@ -46,7 +46,7 @@ Exporter localement les mêmes valeurs (ou les récupérer avec `gh variable get
 python scripts/validate-github-receipt-check-config.py --repository-root .
 ```
 
-Le préflight vérifie les variables requises, le pin du fichier trust-policy, le pin de l'exécutable OpenSSL, les digests des fichiers de clés publiques et la présence d'une clé active pour le rôle requis. Il n'expose aucun matériel privé.
+Le préflight vérifie les variables requises, le pin du fichier trust-policy, le pin de l'exécutable OpenSSL, les digests des fichiers de clés publiques et la présence d'une clé active pour le rôle requis. Le workflow de reçu de PR exécute ce même préflight avant la vérification de signature. Il n'expose aucun matériel privé.
 
 ## 4. Exiger le check dans le ruleset
 

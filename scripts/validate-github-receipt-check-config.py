@@ -137,7 +137,9 @@ def validate_config(repository_root: str | Path, env: dict[str, str]) -> dict:
         if _digest(public_path) != key["publicKeySha256"]:
             raise ConfigError("public key digest mismatch for " + key_id)
         roles = key.get("roles")
-        if key.get("revoked") is not True and isinstance(roles, list) and required_role in roles:
+        if key.get("revoked") not in (True, False):
+            raise ConfigError("trust-policy revoked flag must be an explicit boolean for " + key_id)
+        if key.get("revoked") is False and isinstance(roles, list) and required_role in roles:
             eligible += 1
     if eligible == 0:
         raise ConfigError("no non-revoked Ed25519 key has the required role: " + required_role)

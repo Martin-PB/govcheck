@@ -114,3 +114,27 @@ L'événement indique explicitement `observationResult=observed` et `authoritySt
 
 
 L'observateur dispose aussi d'un point d'entrée CLI local strict : `python -m govcheck.pijul_journal --provenance-json <record-externe.json> --observation-kind channel-state-observed|push-attempt-observed`. Il rejette les clés JSON dupliquées, les constantes JSON non standard et les fichiers d'entrée situés dans le répertoire de travail Pijul ; il n'affiche le reçu durable qu'après commit. Le record d'entrée doit provenir d'un adaptateur natif de confiance ; le CLI ne scrape pas la sortie humaine de `pijul log` et n'invente pas de hash de canal.
+
+
+## 11. Export DSSE optionnel de reçu authentifié
+
+`govcheck.journal_attestation` exporte un événement de journal sélectionné, entièrement vérifié, et son reçu durable sous forme de Statement in-toto dans une enveloppe DSSE. Le prédicat contient l'événement complet, le reçu, la tête du journal vérifiée au moment de la signature et les bindings natifs VCS candidat/base/gouvernance. Les digests événement/reçu et le binding du sujet sont validés avant signature puis par le validateur de Statement DSSE.
+
+La signature est déléguée à l'exécutable OpenSSL épinglé par l'administrateur (chemin absolu et digest SHA-256). GovCheck n'implémente pas les primitives de signature, ne génère pas de clés et ne gère pas les clés privées. La clé privée Ed25519 fournie doit être en mode 0600 et hors du dépôt ; la trust-policy et l'enveloppe de sortie doivent également être hors du dépôt. Le signataire vérifie lui-même l'enveloppe avec la trust-policy épinglée et le rôle requis avant de publier atomiquement un nouveau fichier ; il refuse d'écraser un fichier existant.
+
+Exemple d'invocation :
+
+```sh
+python -m govcheck.journal_attestation \\
+  --database /var/lib/govcheck/journal.sqlite \\
+  --scope-id repo:example/project --position 42 \\
+  --private-key /etc/govcheck/authority-ed25519.pem \\
+  --key-id governance-root-2026 \\
+  --openssl /usr/bin/openssl --openssl-sha256 <sha256-binaire-épinglé> \\
+  --trust-policy /etc/govcheck/trust-policy.json \\
+  --trust-policy-sha256 <sha256-policy-épinglé> \\
+  --repository-root /srv/git/project.git \\
+  --output /var/lib/govcheck/receipts/position-42.dsse.json
+```
+
+La signature prouve que le signataire configuré a approuvé le reçu et l'état de chaîne du journal vérifié au moment de la signature. Elle n'empêche pas une réécriture ultérieure par un administrateur privilégié et ne remplace pas la revérification du journal courant. L'export de reçu authentifié est optionnel et ne modifie pas l'enforcement du gate local.

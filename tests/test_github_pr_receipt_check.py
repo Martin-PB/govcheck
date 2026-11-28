@@ -169,6 +169,26 @@ class GitHubPrReceiptCheckTests(unittest.TestCase):
             CHECK.urllib.parse.quote(CHECK.CHECK_NAME) + "&filter=latest&per_page=100",
         ))
 
+    def test_pending_check_for_a_different_base_is_not_reused(self):
+        stale = {
+            "id": 61,
+            "external_id": "govcheck-pr-7-base-" + "d" * 40,
+            "status": "in_progress",
+        }
+        with patch.object(CHECK, "github_api", side_effect=[
+            {"check_runs": [stale]}, {"id": 62}
+        ]) as api:
+            result = CHECK.ensure_check_run(
+                "token", "Martin-PB/govcheck", self.head, self.base, 7, "https://example.invalid"
+            )
+        self.assertEqual(result, 62)
+        self.assertEqual(api.call_count, 2)
+        self.assertEqual(api.call_args_list[1].args[2:4], ("POST", "/check-runs"))
+        self.assertEqual(
+            api.call_args_list[1].args[4]["external_id"],
+            "govcheck-pr-7-base-" + self.base,
+        )
+
     def test_pr_lifecycle_creates_pending_check_bound_to_head_and_base(self):
         event = {"pull_request": {
             "number": 7,

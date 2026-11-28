@@ -27,19 +27,21 @@ class CIWorkflowRoutingAuditTests(unittest.TestCase):
         model_dir = self.root / "formal" / "tla"
         model_dir.mkdir(parents=True)
         (model_dir / "CICheckRouting.tla").write_text(
-            'Categories == {"TestCategory"}\nModelSpecific == {}\n',
+            'Categories == {"TestCategory"}\nModelSpecific == {}\nLifecycleInputs == {}\nAssuranceInputs == {}\nAuthorityInputs == {}\n',
             encoding="utf-8",
         )
         self.write_category_policy([{
             "name": "TestCategory", "modelSpecific": False, "paths": [], "workflows": [],
         }])
 
-    def write_category_policy(self, categories):
+    def write_category_policy(self, categories, input_sets=None, shared_tlc_category=None):
         (self.root / "docs" / "ci-routing-category-policy.json").write_text(
             json.dumps({
                 "format": "govcheck.ci-routing-category-policy/v1",
                 "model": "formal/tla/CICheckRouting.tla",
                 "categories": categories,
+                "inputSets": input_sets or {},
+                "sharedTlcCategory": shared_tlc_category,
             }),
             encoding="utf-8",
         )
@@ -227,6 +229,37 @@ on:
         report = AUDIT.audit_workflows(self.root)
         findings = [item for item in report["findings"] if item["kind"] == "model-category-path-missing"]
         self.assertEqual({item["event"] for item in findings}, {"pull_request", "push"})
+
+    def test_model_input_dependency_must_match_declared_workflow(self):
+        (self.root / "formal" / "tla" / "CICheckRouting.tla").write_text(
+            'Categories == {"TestCategory"}\n'
+            'ModelSpecific == {"TestCategory"}\n'
+            'LifecycleInputs == {"TestCategory"}\n'
+            'AssuranceInputs == {}\n'
+            'AuthorityInputs == {}\n',
+            encoding="utf-8",
+        )
+        self.write_category_policy([{
+            "name": "TestCategory",
+            "modelSpecific": True,
+            "paths": ["formal/model.tla"],
+            "workflows": [".github/workflows/model.yml"],
+        }], input_sets={"LifecycleInputs": ".github/workflows/tla-lifecycle.yml"})
+        self.write("model.yml", """name: model
+on:
+  pull_request:
+    paths:
+      - 'formal/model.tla'
+  push:
+    paths:
+      - 'formal/model.tla'
+""")
+        (self.root / "formal").mkdir(exist_ok=True)
+        (self.root / "formal" / "model.tla").write_text("---- MODULE Model ----\\n", encoding="utf-8")
+        report = AUDIT.audit_workflows(self.root)
+        findings = [item for item in report["findings"] if item["kind"] == "model-dependency-workflow-mismatch"]
+        self.assertEqual(findings[0]["input_set"], "LifecycleInputs")
+        self.assertEqual(findings[0]["expected_workflow"], ".github/workflows/tla-lifecycle.yml")
 
     def test_unsupported_path_entry_is_rejected_not_ignored(self):
         self.write("bad.yml", """name: bad

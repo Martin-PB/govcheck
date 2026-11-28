@@ -118,3 +118,6 @@ The `govcheck.vcs_provenance` module builds typed `govcheck.vcs-provenance/v1` p
 
 
 The `govcheck.pijul_journal` module can append local Pijul channel-state or push-attempt provenance to the canonical journal. It records observation only—not remote acceptance or publication—and keeps the journal outside the Pijul working tree.
+
+
+CLI for a trusted adapter-produced record: `python -m govcheck.pijul_journal --provenance-json /path/outside/worktree/record.json --observation-kind channel-state-observed`. It appends a local observation and prints the durable receipt; it does not collect native hashes or verify a remote push itself.

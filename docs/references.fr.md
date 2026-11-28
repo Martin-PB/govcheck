@@ -1652,7 +1652,7 @@
 - **Concepts pertinents :** interopérabilité des ressources et services fondée sur Linked Data, découverte, vocabulaires et liens entre outils.
 - **Utilité pour GovCheck :** couche candidate de transport/interopérabilité pour relier des ressources d'artefacts typés entre outils.
 - **Limite :** un lien OSLC ou URI de ressource n'est pas à lui seul une relation d'assurance sémantique, une preuve, une autorisation ou une démonstration.
-- **Cité par :** [matrice candidate de relations typées](research/typed-metamodel-relation-candidate.fr.md), [audit de couverture sémantique du métamodèle](research/metamodel-semantic-coverage-audit.fr.md).
+- **Cité par :** [matrice candidate de relations typées](research/typed-metamodel-relation-candidate.fr.md).
 
 <a id="r-235"></a>
 

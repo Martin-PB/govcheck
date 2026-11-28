@@ -20,6 +20,7 @@ from typing import Any
 
 STATEMENT_TYPE = "https://in-toto.io/Statement/v1"
 PREDICATE_TYPE = "urn:govcheck:attestation:assurance-evaluation:v1"
+JOURNAL_RECEIPT_PREDICATE_TYPE = "urn:govcheck:attestation:journal-receipt:v1"
 DSSE_PAYLOAD_TYPE = "application/vnd.in-toto+json"
 RESULTS = {"pass", "fail", "unknown", "conflict"}
 METHOD_KINDS = {"test", "model_check", "proof_check", "inspection", "analysis", "other"}
@@ -331,6 +332,25 @@ def validate_statement(statement: dict) -> None:
                 subject_matches = True
         if not subject_matches:
             raise AttestationError("acceptance-decision subject digest does not match candidate content")
+        return
+    if statement.get("predicateType") == JOURNAL_RECEIPT_PREDICATE_TYPE:
+        predicate = _object(statement.get("predicate"), "journal receipt predicate")
+        try:
+            from .journal_attestation import validate_predicate
+        except ImportError:
+            from journal_attestation import validate_predicate
+        normalized = validate_predicate(predicate)
+        receipt = _object(normalized.get("receipt"), "receipt")
+        expected_subject = "urn:govcheck:journal-receipt:" + receipt["scopeId"] + ":" + str(receipt["position"])
+        subject_matches = False
+        for subject in subjects:
+            subject = _object(subject, "subject")
+            name = _string(subject.get("name"), "subject.name")
+            digest = _digest(subject.get("digest"), "subject.digest")
+            if name == expected_subject and digest.get("sha256") == receipt["eventDigest"]:
+                subject_matches = True
+        if not subject_matches:
+            raise AttestationError("journal receipt subject does not match the canonical event receipt")
         return
     if statement.get("predicateType") != PREDICATE_TYPE:
         raise AttestationError("unsupported GovCheck predicate type")

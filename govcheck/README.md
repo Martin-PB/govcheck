@@ -121,3 +121,6 @@ The `govcheck.pijul_journal` module can append local Pijul channel-state or push
 
 
 CLI for a trusted adapter-produced record: `python -m govcheck.pijul_journal --provenance-json /path/outside/worktree/record.json --observation-kind channel-state-observed`. It appends a local observation and prints the durable receipt; it does not collect native hashes or verify a remote push itself.
+
+
+Optional authenticated receipt export: `python -m govcheck.journal_attestation` signs a selected verified journal event/receipt as a DSSE in-toto Statement using an operator-pinned OpenSSL executable and externally managed Ed25519 key. The envelope is self-verified against the pinned trust policy before writing. GovCheck does not generate or manage keys.

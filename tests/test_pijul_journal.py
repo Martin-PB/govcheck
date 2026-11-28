@@ -12,6 +12,8 @@ class PijulJournalObserverTests(unittest.TestCase):
         self.temp = tempfile.TemporaryDirectory()
         self.root = Path(self.temp.name)
         self.db = self.root / "journal.sqlite"
+        self.repo_path = self.root / "pijul-repo"
+        self.repo_path.mkdir()
         self.scope = "repo:example/project"
         self.journal = Journal(self.db)
         self.journal.initialize(self.scope, "principal:root", "authority-rev-3", "gov-17")
@@ -24,6 +26,7 @@ class PijulJournalObserverTests(unittest.TestCase):
             "GOVCHECK_GOVERNANCE_DIGEST": "sha256:" + "c" * 64,
             "GOVCHECK_EXPECTED_REPOSITORY_ID": "repo:12345",
             "GOVCHECK_REPOSITORY_URI": "https://nest.pijul.com/example/project",
+            "GOVCHECK_REPOSITORY_PATH": str(self.repo_path),
         }
         self.record = build_pijul_provenance(
             repository_id="repo:12345",
@@ -75,6 +78,19 @@ class PijulJournalObserverTests(unittest.TestCase):
     def test_remote_acceptance_claim_is_not_a_supported_observation_kind(self):
         with self.assertRaises(PijulJournalError):
             append_pijul_observation(self.env, self.record, observation_kind="remote-accepted")
+        self.assertEqual(self.journal.verify(self.scope)["eventCount"], 1)
+
+    def test_journal_inside_worktree_is_rejected(self):
+        env = dict(self.env, GOVCHECK_JOURNAL_DB=str(self.repo_path / "journal.sqlite"))
+        with self.assertRaises(PijulJournalError):
+            append_pijul_observation(env, self.record)
+        self.assertEqual(self.journal.verify(self.scope)["eventCount"], 1)
+
+    def test_invalid_native_change_set_digest_is_rejected(self):
+        record = dict(self.record)
+        record["changeSet"] = dict(self.record["changeSet"], digest="sha256:bad")
+        with self.assertRaises(PijulJournalError):
+            append_pijul_observation(self.env, record)
         self.assertEqual(self.journal.verify(self.scope)["eventCount"], 1)
 
     def test_partial_journal_configuration_fails_closed(self):

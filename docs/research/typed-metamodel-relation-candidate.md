@@ -70,3 +70,21 @@ For an operative semantic mapping, the profile must state its domain and coverag
 ## 6. Non-adoption boundary
 
 This matrix is a research artifact for issue #73. It does not update the canonical metamodel, alter SACM/GSN/SysML semantics, or authorize implementation claims. Adoption requires a separate decision under #41 after review of the semantic-coverage dossier and formal obligations.
+
+
+## 7. Source-grounded crosswalk (version-pinned, candidate only)
+
+| Source baseline | Native structure/relations | Candidate GovCheck use | Non-equivalence guard |
+|---|---|---|---|
+| SACM 2.3 formal; SACM 2.4 Beta 1 (R-34, R-73) | Claims, argumentation, evidence/artifact references; 2.4 beta adds/clarifies assertion and inference structures. | Assurance subgraph and typed claim/evidence/argument mapping. | Preserve source version and native structure; 2.4 remains beta. An SACM claim/argument link is not automatically a GovCheck requirement, proof or authorization. |
+| GSN Community Standard v3 (R-04) | Goals, Strategies, Context, Assumptions, Justifications, Solutions and defined argument links. | Candidate mapping of claim decomposition, rationale, context, assumption and evidence references. | GSN is an argument notation/standard, not a lifecycle or governance authority. Do not call it “GSN 3.0”; use the SCSC v3 source. |
+| SysML v2.0 (R-95, R-119) | Formal systems-modeling language with requirements, structure, behavior, analysis and verification semantics. | Typed engineering artifacts and candidate requirement/property/component relations. | Do not infer `satisfies`, `realizes` or `refines` from matching labels; preserve model semantics and transformation profile. |
+| ReqIF 1.2 (R-95) | Requirements interchange objects, attributes and relations. | Import/export of requirement records and source-native links. | Exchange-format relations are not automatically assurance, authority or satisfaction claims. |
+| W3C PROV-O (R-24, R-102) | Entity, Activity, Agent and provenance properties such as derivation, use, generation and association. | Provenance assertions for artifact/revision/process/agent relationships. | `wasDerivedFrom` is provenance, not semantic refinement, entailment or truth. |
+| OASIS OSLC Core 3.0 and Resource Shape (R-234, R-235) | Linked-data resource/service interoperability and structural shape constraints. | Navigation/interoperability links and structural validation of exchange payloads. | URI links and shape conformance do not establish assurance semantics, authority, evidence authenticity or sufficiency. |
+
+## 8. Required mapping-profile record
+
+Before any source-native relation becomes operative, its mapping profile must record: exact source specification/version; source relation identifier and domain/range; GovCheck candidate relation; direction and cardinality; semantic preservation or explicit loss; unmapped constructs; source-native payload retention; revision and applicability; provenance; authority if normative; and positive/negative fixtures.
+
+A label match is not a mapping proof. A profile that cannot justify the mapping remains a candidate/unsupported relation and must not feed the evaluator. See the [reference catalogue](../references.md#r-234) and [semantic-coverage audit](metamodel-semantic-coverage-audit.md).

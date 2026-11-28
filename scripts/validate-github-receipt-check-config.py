@@ -97,9 +97,12 @@ def validate_config(repository_root: str | Path, env: dict[str, str]) -> dict:
     openssl = policy.get("openssl")
     if not isinstance(openssl, dict):
         raise ConfigError("trust policy OpenSSL pin is missing")
-    openssl_path = Path(str(openssl.get("path", ""))).expanduser().resolve()
-    if not openssl_path.is_absolute() or not openssl_path.is_file() or not os.access(openssl_path, os.X_OK):
-        raise ConfigError("pinned OpenSSL path must be an absolute executable")
+    raw_openssl_path = Path(str(openssl.get("path", ""))).expanduser()
+    if not raw_openssl_path.is_absolute():
+        raise ConfigError("pinned OpenSSL path must be absolute")
+    openssl_path = raw_openssl_path.resolve()
+    if not openssl_path.is_file() or not os.access(openssl_path, os.X_OK):
+        raise ConfigError("pinned OpenSSL path must be an executable")
     try:
         openssl_path.relative_to(root)
     except ValueError:

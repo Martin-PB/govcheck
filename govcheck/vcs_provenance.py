@@ -70,6 +70,7 @@ def _base(base_revision: str | None, base_content_digest: str | None, kind: str)
         return None
     if base_revision is None or base_content_digest is None:
         raise VcsProvenanceError("base revision and content digest must be supplied together")
+    base_revision = _text(base_revision, "base_revision")
     if kind == "git" and not GIT_OID_RE.fullmatch(base_revision):
         raise VcsProvenanceError("Git base revision must be a lowercase SHA-1 or SHA-256 object ID")
     return {
@@ -95,6 +96,7 @@ def build_git_provenance(
     observed_at: str | None = None,
 ) -> dict:
     """Build a record whose native candidate and change-set identity is a Git commit OID."""
+    candidate_commit = _text(candidate_commit, "candidate_commit")
     if not GIT_OID_RE.fullmatch(candidate_commit):
         raise VcsProvenanceError("Git candidate revision must be a lowercase SHA-1 or SHA-256 object ID")
     target_ref = _text(target_ref, "target_ref")

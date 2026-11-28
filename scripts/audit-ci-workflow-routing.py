@@ -17,6 +17,8 @@ WORKFLOW_DIR = Path(".github/workflows")
 EVENTS = ("pull_request", "push")
 PATH_ITEM = re.compile(r"""^      -\s+(?:"([^"]+)"|'([^']+)'|([^\s#]+))\s*(?:#.*)?$""")
 USES_ITEM = re.compile(r"""^\s{4}uses:\s*['"]?(\./\.github/workflows/[^\s'"]+\.ya?ml)['"]?\s*(?:#.*)?$""")
+GLOB_POLICY_FILE = Path("docs/ci-routing-glob-policy.json")
+GLOB_PATTERN = re.compile(r"[*?\\[\\]{}!]")
 
 
 class WorkflowParseError(ValueError):
@@ -100,6 +102,33 @@ def inspect_workflow(path: Path, root: Path) -> dict:
     return result
 
 
+def load_glob_policy(root: Path) -> set[str]:
+    path = root / GLOB_POLICY_FILE
+    try:
+        document = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise WorkflowParseError(f"glob policy cannot be read: {path}: {exc}") from exc
+    if not isinstance(document, dict) or document.get("format") != "govcheck.ci-routing-glob-policy/v1":
+        raise WorkflowParseError(f"{path}: unsupported or missing policy format")
+    entries = document.get("patterns")
+    if not isinstance(entries, list):
+        raise WorkflowParseError(f"{path}: patterns must be an array")
+    patterns: set[str] = set()
+    for entry in entries:
+        if not isinstance(entry, dict):
+            raise WorkflowParseError(f"{path}: each pattern entry must be an object")
+        pattern = entry.get("pattern")
+        rationale = entry.get("rationale")
+        if not isinstance(pattern, str) or not pattern or not GLOB_PATTERN.search(pattern):
+            raise WorkflowParseError(f"{path}: policy pattern must be a non-empty glob")
+        if not isinstance(rationale, str) or not rationale.strip():
+            raise WorkflowParseError(f"{path}: glob {pattern!r} requires a non-empty rationale")
+        if pattern in patterns:
+            raise WorkflowParseError(f"{path}: duplicate glob justification: {pattern}")
+        patterns.add(pattern)
+    return patterns
+
+
 def audit_workflows(root: str | Path) -> dict:
     root = Path(root).resolve()
     directory = root / WORKFLOW_DIR
@@ -109,6 +138,26 @@ def audit_workflows(root: str | Path) -> dict:
     for path in sorted(directory.glob("*.yml")) + sorted(directory.glob("*.yaml")):
         reports.append(inspect_workflow(path.relative_to(root), root))
     findings = []
+    workflow_globs = {
+        path_pattern
+        for report in reports
+        for event_paths in report["events"].values()
+        for path_pattern in event_paths
+        if GLOB_PATTERN.search(path_pattern)
+    }
+    policy_globs = load_glob_policy(root)
+    for pattern in sorted(workflow_globs - policy_globs):
+        findings.append({
+            "kind": "unjustified-glob",
+            "pattern": pattern,
+            "message": "Workflow wildcard has no exact-pattern rationale in docs/ci-routing-glob-policy.json",
+        })
+    for pattern in sorted(policy_globs - workflow_globs):
+        findings.append({
+            "kind": "stale-glob-justification",
+            "pattern": pattern,
+            "message": "Glob rationale is not used by any workflow path filter",
+        })
     for report in reports:
         events = report["events"]
         pr_paths = set(events.get("pull_request", []))
@@ -138,15 +187,18 @@ def audit_workflows(root: str | Path) -> dict:
         "workflow_count": len(reports),
         "finding_count": len(findings),
         "findings": findings,
+        "workflow_globs": sorted(workflow_globs),
+        "justified_globs": sorted(policy_globs),
         "workflows": reports,
         "scope": [
             "GitHub Actions pull_request/push paths symmetry",
             "local reusable-workflow file existence and path routing",
+            "exact-pattern justification for wildcard path filters",
         ],
         "limitations": [
             "This is a constrained parser, not a general YAML implementation.",
             "Path-filter symmetry is a review signal; intentional asymmetry may require an explicit policy exception.",
-            "TLA+ category coverage, model dependency semantics, glob justification and required-check liveness are not yet evaluated.",
+            "TLA+ category coverage, model dependency semantics and required-check liveness are not yet evaluated.",
         ],
     }
 

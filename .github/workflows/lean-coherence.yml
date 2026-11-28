@@ -62,3 +62,14 @@ jobs:
       - name: Report axioms used by bridge-composition theorems
         working-directory: formal/lean
         run: lake env lean GovCheckCoherence/CompositionAxiomReport.lean
+ 
+      - name: Confirm axiom audit rejects adversarial sorry and unapproved axiom
+        working-directory: formal/lean
+        run: |
+          set -o pipefail
+          lake env lean GovCheckCoherence/Reproductions/ForbiddenProofArtifact.lean 2>&1 | tee /tmp/govcheck-forbidden-proof-axioms.txt
+          python3 ../../scripts/audit-lean-axiom-report.py \
+            --input /tmp/govcheck-forbidden-proof-axioms.txt \
+            --expect-rejected \
+            --require-forbidden sorryAx \
+            --require-forbidden injectedFalse

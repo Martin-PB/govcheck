@@ -22,6 +22,8 @@ on:
     paths:
       - 'formal/tla/GovCheckGovernanceApplicability.tla'
       - 'formal/tla/GovCheckGovernanceApplicability.cfg'
+      - 'formal/tla/GovCheckGovernanceContextBinding.tla'
+      - 'formal/tla/GovCheckGovernanceContextBinding.cfg'
       - 'formal/tla/GovCheckCanonicalPublication.tla'
       - 'formal/tla/GovCheckCanonicalPublication.cfg'
       - 'formal/tla/GovCheckGovernanceControls.tla'

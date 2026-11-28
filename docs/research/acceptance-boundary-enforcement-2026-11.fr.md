@@ -267,3 +267,6 @@ L'intégration journalise désormais chaque évaluation terminée lorsque le mod
 Lorsqu'un principal d'autorité vérifié est disponible, l'événement lui est attribué uniquement après vérification de son égalité avec le principal épinglé dans le genesis du journal. Si la preuve d'autorité est invalide ou absente, l'acteur enregistré est l'attribution locale fixe `system:govcheck-gate` et le payload indique explicitement `unverified-gate-attempt` ; il ne s'agit pas d'une décision humaine authentifiée. Ces tentatives exigent `GOVCHECK_JOURNAL_AUTHORITY_ID` correspondant à l'autorité du genesis.
 
 Le reçu du journal est écrit avant le retour du hook pre-receive. Il atteste donc le résultat/la tentative du gate, pas la mise à jour ultérieure de la ref Git. Un reçu post-receive sera nécessaire pour établir la publication. Si le journal configuré ne peut pas enregistrer le résultat, le gate retourne UNKNOWN et la mise à jour protégée est rejetée.
+
+
+La section 15 étend le reçu optionnel de décision acceptée décrit à la section 14 : elle enregistre tous les résultats de gate terminés, en distinguant explicitement l'attribution d'une autorité authentifiée de l'attribution locale non authentifiée d'une tentative du gate.

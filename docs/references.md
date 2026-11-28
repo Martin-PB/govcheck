@@ -1543,7 +1543,7 @@
 - **Primary sources:** [About rulesets](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets) · [Available rules](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/available-rules-for-rulesets) · [Protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches).
 - **Use:** required status checks, expected GitHub App source, strict/loose base freshness, reviews and bypass configuration.
 - **Limit:** any person or integration with write permission can set a status unless an expected App source is selected. Rulesets do not prove verifier correctness or remove administrator/bypass authority.
-- **Cited by:** [Architecture 0037](architecture/0037-acceptance-boundary-and-enforcement-adapters.md), [acceptance-boundary research](research/acceptance-boundary-enforcement-2026-11.md), [work-item register](work-portfolio/work-items.md), [event journal](work-portfolio/events.md).
+- **Cited by:** [Architecture 0037](architecture/0037-acceptance-boundary-and-enforcement-adapters.md), [Architecture 0038](architecture/0038-local-canonical-journal-implementation.md), [acceptance-boundary research](research/acceptance-boundary-enforcement-2026-11.md), [work-item register](work-portfolio/work-items.md), [event journal](work-portfolio/events.md).
 
 <a id="r-222"></a>
 ### R-222 — GitLab protected branches and external status checks
@@ -1551,7 +1551,7 @@
 - **Primary sources:** [Protected branches](https://docs.gitlab.com/user/project/repository/branches/protected/) · [External status checks](https://docs.gitlab.com/user/project/merge_requests/status_checks/) · [Merge checks](https://docs.gitlab.com/user/project/merge_requests/merge_checks/).
 - **Use:** branch push/merge permissions; external checks bound to current merge-request HEAD; HMAC authentication; stale responses rejected with HTTP 409. Failed external checks block merging only when “Status checks must succeed” is enabled.
 - **Limit:** external status checks are tier-dependent (GitLab Ultimate) and require a service endpoint; platform status is not GovCheck evidence provenance.
-- **Cited by:** [Architecture 0037](architecture/0037-acceptance-boundary-and-enforcement-adapters.md), [acceptance-boundary research](research/acceptance-boundary-enforcement-2026-11.md), [work-item register](work-portfolio/work-items.md), [event journal](work-portfolio/events.md).
+- **Cited by:** [Architecture 0037](architecture/0037-acceptance-boundary-and-enforcement-adapters.md), [Architecture 0038](architecture/0038-local-canonical-journal-implementation.md), [formal model documentation](formal/README.md), [acceptance-boundary research](research/acceptance-boundary-enforcement-2026-11.md), [work-item register](work-portfolio/work-items.md), [event journal](work-portfolio/events.md), [package formal model documentation](../govcheck/docs/formal/README.md).
 
 <a id="r-223"></a>
 ### R-223 — Gitea protected branches and status checks

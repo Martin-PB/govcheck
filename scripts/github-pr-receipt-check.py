@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import importlib.util
 import json
 import os
 import re
@@ -215,6 +216,13 @@ def verify_comment_event(event: dict, trusted_root: Path, candidate_root: Path, 
     base_sha = pr.get("base", {}).get("sha", "")
     check_id = ensure_check_run(token, repository, head_sha, base_sha, number, details_url)
     try:
+        preflight_path = trusted_root / "scripts" / "validate-github-receipt-check-config.py"
+        spec = importlib.util.spec_from_file_location("govcheck_receipt_config_preflight", preflight_path)
+        if spec is None or spec.loader is None:
+            raise CheckError("cannot load trusted receipt-check configuration preflight")
+        preflight = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(preflight)
+        preflight.validate_config(trusted_root, config)
         body = event.get("comment", {}).get("body", "")
         envelope = extract_envelope_comment(body)
         from govcheck import attestation, attestation_verify, check

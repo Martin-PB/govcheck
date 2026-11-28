@@ -1575,7 +1575,7 @@
 - **Primary source:** [Git hooks](https://git-scm.com/docs/githooks).
 - **Use:** distinguishes client-side `pre-push` from server-side `pre-receive`. The latter runs once per receive operation, receives old/new object IDs and full ref names, and a non-zero exit rejects the proposed ref updates. It is a native boundary adapter for controlled Git servers and local bare repositories.
 - **Limit:** the hook and trusted verifier must be installed outside the candidate tree by the server administrator. Direct filesystem/ref manipulation or administrator replacement remains outside its guarantee.
-- **Cited by:** [Architecture 0037](architecture/0037-acceptance-boundary-and-enforcement-adapters.md), [Architecture 0038](architecture/0038-local-canonical-journal-implementation.md), [acceptance-boundary research](research/acceptance-boundary-enforcement-2026-11.md), [work-item register](work-portfolio/work-items.md), [event journal](work-portfolio/events.md).
+- **Cited by:** [Architecture 0037](architecture/0037-acceptance-boundary-and-enforcement-adapters.md), [Architecture 0038](architecture/0038-local-canonical-journal-implementation.md), [Architecture 0039](architecture/0039-github-required-check-source.md), [acceptance-boundary research](research/acceptance-boundary-enforcement-2026-11.md), [work-item register](work-portfolio/work-items.md), [event journal](work-portfolio/events.md).
 
 <a id="r-226"></a>
 ### R-226 — Pijul local hooks and Nest contribution workflow
@@ -1591,7 +1591,7 @@
 - **Primary sources:** [DSSE envelope specification](https://github.com/dsse-lf/dsse/blob/master/envelope.md) · [DSSE signing and verification protocol](https://github.com/dsse-lf/dsse/blob/master/protocol.md).
 - **Use:** defines the JSON envelope and PAE construction binding the payload type and exact payload bytes to signatures; supports multiple signatures.
 - **Limit:** DSSE authenticates signed bytes under a verifier's trust policy. A key ID is an unauthenticated hint; signature validity alone does not establish a GovCheck role or the semantic correctness of an evaluation.
-- **Cited by:** [Specification 0008](specifications/0008-interoperable-assurance-attestations.md).
+- **Cited by:** [Specification 0008](specifications/0008-interoperable-assurance-attestations.md), [Architecture 0039](architecture/0039-github-required-check-source.md).
 
 <a id="r-228"></a>
 ### R-228 — in-toto Attestation Framework v1

@@ -21,7 +21,8 @@
       "meta_only": [
         "Governance authority",
         "Reference register",
-        "CI verification boundaries"
+        "CI verification boundaries",
+        "Adversarial acceptance corpus"
       ],
       "optional": [
         "Bibliographic references"
@@ -31,7 +32,8 @@
       "meta_only": [
         "Autorité de gouvernance",
         "Registre de références",
-        "Périmètres de vérification CI"
+        "Périmètres de vérification CI",
+        "Corpus adversarial d'acceptation"
       ],
       "optional": [
         "Références bibliographiques"

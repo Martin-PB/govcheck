@@ -11,7 +11,7 @@ import sys
 from pathlib import Path
 from urllib.parse import urlparse
 
-POLICY_ID = "urn:govcheck:trust-policy:v1"
+POLICY_ID = "govcheck.attestation-trust-policy/v1"
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 DIGEST_RE = re.compile(r"^sha256:[0-9a-f]{64}$")
 

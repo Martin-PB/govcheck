@@ -267,3 +267,6 @@ The journal integration now records each completed gate evaluation when journal 
 When a verified authority principal is available, the event is attributed to that principal only after its equality with the journal's configured genesis authority pin is checked. For invalid or unavailable authority evidence, the event actor is the fixed local attribution `system:govcheck-gate` and the payload explicitly labels the result `unverified-gate-attempt`; this is not an authenticated human decision. Such attempts require `GOVCHECK_JOURNAL_AUTHORITY_ID` to match the journal genesis authority.
 
 The journal receipt is written before the pre-receive hook returns. It therefore records the gate outcome/attempt, not whether Git subsequently updated the ref. A later post-receive receipt is needed to establish publication. If the configured journal cannot record the outcome, the gate returns UNKNOWN and the protected update is rejected.
+
+
+Section 15 extends the earlier optional accepted-decision receipt described in section 14: it records all completed gate outcomes, with explicit distinction between authenticated authority attribution and unauthenticated local gate-attempt attribution.

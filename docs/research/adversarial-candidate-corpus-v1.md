@@ -1,7 +1,7 @@
-# Adversarial candidate corpus — version 1.0.0
+# Adversarial candidate corpus — version 1.1.0
 
-**Status:** first versioned corpus catalogue with executable-test pointers; not a claim that every attack has a runnable fixture or that the acceptance boundary is deployed.  
-**Snapshot:** source revision `451d1e1ff929946274edba8e844e08d74fdd306f`.  
+**Status:** version 1.1.0 corpus catalogue with executable-test pointers; not a claim that every attack has a runnable fixture or that the acceptance boundary is deployed.  
+**Snapshot:** corpus v1.1.0 source revision `d25e417f41eb67619cc6a9df285cdb89b317dd70`; the v1.0.0 baseline was audited against `451d1e1ff929946274edba8e844e08d74fdd306f`.  
 **Parent:** [Issue #72](https://github.com/Martin-PB/govcheck/issues/72).  
 **French:** [Corpus de candidats adversariaux](adversarial-candidate-corpus-v1.fr.md).  
 **Machine-readable manifest:** [`formal/adversarial-candidate-corpus-v1.json`](../../formal/adversarial-candidate-corpus-v1.json).
@@ -35,12 +35,14 @@ There is deliberately no shared production trust-policy digest in this corpus. E
 | AC-012–AC-013 | Forge ruleset configuration and non-applicable refs | `tests/test_govcheck_forge.py`, `tests/test_govcheck_git_pre_receive.py` | Unit-tested; configuration only |
 | AC-014–AC-015 | Journal concurrency and canonical JSON parsing | `tests/test_journal.py` | Unit-tested |
 | AC-016 | Enforced/advisory/admin-bypass acceptance-boundary abstraction | `formal/tla/GovCheckAcceptanceBoundary.tla` and configurations | Model-only |
-| AC-017–AC-019 | Workflow/ruleset tampering, stale TLC report replay, Lean `sorry`/axiom injection | No corpus-specific executable test yet | Planned |
+| AC-017 | Workflow path-filter symmetry, reusable-workflow routing, unsupported path syntax and model-input routing | `tests/test_ci_workflow_routing_audit.py` | Unit-tested on synthetic repository fixtures; not a forge gate |
+| AC-018–AC-019 | Stale TLC report replay; Lean `sorry`/axiom injection | No corpus-specific executable test yet | Planned |
 | AC-020 | Real GitHub protected-ref rejection and bypass | Acceptance-boundary research and live configuration still need verification | Not demonstrated; tracked by #45 |
+| AC-023 | Report-only workflow is not a mandatory acceptance check under the live ruleset | Workflow and live ruleset snapshot | Not demonstrated; required-check list is empty; tracked by #45 |
 | AC-021 | Pijul remote/Nest enforcement bypass | Platform research only | Planned; no remote enforcement adapter |
 | AC-022 | Malicious repository-controlled check execution, secret exfiltration and resource exhaustion | Architecture 0006; candidate issue #218 | Planned; no sandbox selected |
 
-The machine-readable manifest is the source of the case IDs and exact evidence pointers. `tests/test_adversarial_candidate_corpus.py` checks manifest identity/versioning, unique IDs, required semantics, evidence-file existence and referenced Python test-method names. This integrity test does not itself execute the underlying attacks.
+The machine-readable manifest is the source of the case IDs and exact evidence pointers. AC-017 now maps the existing synthetic workflow-routing tests: asymmetric PR/push path filters, missing or unrouted reusable workflows, unsupported path syntax, unjustified globs and model-input routing. These tests do not prove a live GitHub required-check gate. AC-023 records the distinct live gap: the report-only workflow is not a mandatory check under the current ruleset. `tests/test_adversarial_candidate_corpus.py` checks manifest identity/versioning, unique IDs, required semantics, evidence-file existence and referenced Python test-method names. This integrity test does not itself execute the underlying attacks.
 
 ## 4. Important limits
 
@@ -52,7 +54,7 @@ The machine-readable manifest is the source of the case IDs and exact evidence p
 
 ## 5. Next increments
 
-- Turn AC-017–AC-019 into exact-candidate fixtures with explicit expected fail/unknown outcomes and provenance.
+- Turn AC-018–AC-019 into exact-candidate fixtures with explicit expected fail/unknown outcomes and provenance; expand AC-017 only for workflow-tampering paths not covered by the routing audit.
 - Extend the corpus with the specific attack paths and trust assumptions from Architecture 0006.
 - Bind any new test report to the corpus revision, test/tool version, exact candidate/base, applicable policy and verifier identity.
 - Add a real forge-boundary experiment only when its required configuration and test environment are explicitly authorized and available.

@@ -1,8 +1,8 @@
 {
   "corpusId": "govcheck.adversarial-candidate-corpus",
-  "corpusVersion": "1.0.0",
+  "corpusVersion": "1.1.0",
   "schemaVersion": 1,
-  "sourceRevision": "451d1e1ff929946274edba8e844e08d74fdd306f",
+  "sourceRevision": "d25e417f41eb67619cc6a9df285cdb89b317dd70",
   "recordedOn": "2026-11-28",
   "purpose": "Versioned positive, adversarial, boundary and not-yet-tested cases for the GovCheck evaluator and acceptance adapters.",
   "bindingPolicy": {
@@ -261,14 +261,28 @@
     {
       "id": "AC-017",
       "category": "workflow-tampering",
-      "attack": "Remove the workflow, weaken a required check or turn a report-only result into a false acceptance.",
-      "expectedOutcome": "reject-or-unknown",
-      "coverageStatus": "planned",
-      "candidateBinding": "Exact candidate and base commits must be captured by a future executable fixture.",
-      "basePolicyBinding": "The applicable protected ruleset and trusted check-source identity must be fixed outside the candidate.",
-      "evidence": [],
+      "attack": "Change pull-request/push path filters, remove or misroute a reusable workflow, or omit a model-input path so a changed control file does not trigger the intended validation.",
+      "expectedOutcome": "finding-or-parse-error",
+      "coverageStatus": "tested-unit",
+      "candidateBinding": "Each test creates an exact synthetic repository tree with workflow files, path filters, reusable-workflow references and model-input files; the test exercises that exact tree.",
+      "basePolicyBinding": "Each test creates exact synthetic glob/category policy JSON and a TLA category inventory; the test source is pinned by sourceRevision.",
+      "evidence": [
+        "tests/test_ci_workflow_routing_audit.py::test_symmetric_event_paths_pass",
+        "tests/test_ci_workflow_routing_audit.py::test_asymmetric_paths_are_reported",
+        "tests/test_ci_workflow_routing_audit.py::test_reusable_workflow_must_exist_and_be_routed",
+        "tests/test_ci_workflow_routing_audit.py::test_missing_reusable_workflow_is_rejected",
+        "tests/test_ci_workflow_routing_audit.py::test_paths_ignore_is_rejected_not_silently_omitted",
+        "tests/test_ci_workflow_routing_audit.py::test_inline_paths_list_is_rejected_not_silently_omitted",
+        "tests/test_ci_workflow_routing_audit.py::test_unjustified_workflow_glob_is_reported",
+        "tests/test_ci_workflow_routing_audit.py::test_stale_glob_justification_is_reported",
+        "tests/test_ci_workflow_routing_audit.py::test_tla_model_category_drift_is_reported",
+        "tests/test_ci_workflow_routing_audit.py::test_model_specific_category_paths_must_route_to_workflow",
+        "tests/test_ci_workflow_routing_audit.py::test_model_input_dependency_must_match_declared_workflow",
+        "tests/test_ci_workflow_routing_audit.py::test_additional_model_workflow_paths_must_route_on_pr_and_push",
+        "tests/test_ci_workflow_routing_audit.py::test_unsupported_path_entry_is_rejected_not_ignored"
+      ],
       "deploymentStatus": "not-demonstrated",
-      "limitation": "No corpus test currently proves a real GitHub merge rejection after workflow/ruleset tampering."
+      "limitation": "These tests cover the local workflow-routing audit and synthetic path/model-policy fixtures only. They do not prove GitHub ruleset enforcement, a mandatory status-check source, or real protected-ref rejection."
     },
     {
       "id": "AC-018",
@@ -335,6 +349,22 @@
       ],
       "deploymentStatus": "not-demonstrated",
       "limitation": "Execution isolation and resource budgets are a new candidate work item; no sandbox is selected."
+    },
+    {
+      "id": "AC-023",
+      "category": "hosted-forge-enforcement",
+      "attack": "Treat the report-only GovCheck workflow as a mandatory acceptance check even though the live main ruleset has no required status contexts.",
+      "expectedOutcome": "not-demonstrated",
+      "coverageStatus": "not-demonstrated",
+      "candidateBinding": "A real experiment would need the exact pull-request candidate and main base revisions; no protected-ref update was exercised by this corpus case.",
+      "basePolicyBinding": "Live ruleset Protection Main (ID 28251664) snapshot 2026-11-28 reports an empty required-status-check list; no check-source binding is configured.",
+      "evidence": [
+        ".github/workflows/govcheck-check.yml",
+        "docs/research/acceptance-boundary-enforcement-2026-11.md",
+        "docs/work-portfolio/work-items.md"
+      ],
+      "deploymentStatus": "not-demonstrated",
+      "limitation": "The workflow is explicitly report-only and the live ruleset currently requires zero status checks. This case records the gap; it does not demonstrate a bypass test or rejection. Tracked by #45."
     }
   ]
 }

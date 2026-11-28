@@ -29,3 +29,6 @@ Le workflow crée un check en attente lors des événements du cycle de vie de l
 
 
 Les étapes de configuration et d'activation sont décrites dans le [guide de configuration du check de reçu authentifié](../setup/github-authenticated-receipt-check.fr.md), avec une commande de préflight locale.
+
+
+La source de check est opt-in via la variable publique du dépôt `GOVCHECK_RECEIPT_CHECK_ENABLED=true`. Tant qu'elle est désactivée, les événements de PR neutralisent les checks de reçu en attente obsolètes et les commentaires de reçu ne déclenchent pas de vérification. Ne l'activer qu'après configuration de la trust-policy, des pins et du ruleset requis.

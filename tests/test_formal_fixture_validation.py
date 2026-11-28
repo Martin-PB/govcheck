@@ -21,10 +21,10 @@ class FormalFixtureValidationTests(unittest.TestCase):
         self.assertEqual(report["formal_schemas_checked"], 5)
         self.assertEqual(report["package_schemas_checked"], 14)
         self.assertEqual(report["documentation_schemas_checked"], 1)
-        self.assertEqual(report["fixtures_checked"], 17)
-        self.assertEqual(report["fixture_schema_validations"], 19)
-        self.assertEqual(report["package_schemas_fixture_covered"], 10)
-        self.assertEqual(report["package_only_schemas_fixture_covered"], 5)
+        self.assertEqual(report["fixtures_checked"], 19)
+        self.assertEqual(report["fixture_schema_validations"], 21)
+        self.assertEqual(report["package_schemas_fixture_covered"], 12)
+        self.assertEqual(report["package_only_schemas_fixture_covered"], 7)
         self.assertEqual(report["finding_count"], 0)
 
     def test_each_schema_rejects_missing_required_property(self):
@@ -165,6 +165,24 @@ class FormalFixtureValidationTests(unittest.TestCase):
         invalid = copy.deepcopy(fixture)
         invalid["keys"][0]["algorithm"] = "rsa"
         self.assertTrue(MODULE.validate_instance(invalid, schema, registry, "invalid-trust-policy"))
+
+    def test_package_only_journal_receipt_fixture_is_strict(self):
+        schemas, registry = MODULE.load_schemas(ROOT)
+        schema = schemas["govcheck/formal/schemas/journal-receipt-v1.schema.json"]
+        fixture = MODULE._read_json(ROOT / "govcheck/formal/fixtures/journal-receipt.example.json")
+        self.assertEqual(MODULE.validate_instance(fixture, schema, registry, "journal-receipt.example.json"), [])
+        invalid = copy.deepcopy(fixture)
+        invalid["position"] = -1
+        self.assertTrue(MODULE.validate_instance(invalid, schema, registry, "invalid-journal-receipt"))
+
+    def test_package_only_journal_receipt_attestation_fixture_is_strict(self):
+        schemas, registry = MODULE.load_schemas(ROOT)
+        schema = schemas["govcheck/formal/schemas/journal-receipt-attestation-v1.schema.json"]
+        fixture = MODULE._read_json(ROOT / "govcheck/formal/fixtures/journal-receipt-attestation.example.json")
+        self.assertEqual(MODULE.validate_instance(fixture, schema, registry, "journal-receipt-attestation.example.json"), [])
+        invalid = copy.deepcopy(fixture)
+        invalid["predicate"]["journal"]["integrityStatus"] = "unknown"
+        self.assertTrue(MODULE.validate_instance(invalid, schema, registry, "invalid-journal-receipt-attestation"))
 
     def test_malformed_fixture_format_is_rejected(self):
         schemas, registry = MODULE.load_schemas(ROOT)

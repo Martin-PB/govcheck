@@ -32,6 +32,10 @@ PACKAGE_ONLY_FIXTURE_SCHEMAS = {
     "govcheck/formal/schemas/attestation-trust-policy-v1.schema.json",
     "govcheck/formal/schemas/journal-receipt-v1.schema.json",
     "govcheck/formal/schemas/journal-receipt-attestation-v1.schema.json",
+    "govcheck/formal/schemas/assurance-evaluation-v1.schema.json",
+}
+DOCUMENTATION_FIXTURE_SCHEMAS = {
+    "docs/schemas/govcheck-assurance-evaluation-v1.schema.json",
 }
 
 
@@ -61,6 +65,8 @@ def fixture_schema_name(name: str, *, packaged: bool = False) -> str | None:
         return "govcheck/formal/schemas/journal-receipt-v1.schema.json"
     if name == "journal-receipt-attestation.example.json":
         return "govcheck/formal/schemas/journal-receipt-attestation-v1.schema.json"
+    if name == "assurance-evaluation.example.json":
+        return "govcheck/formal/schemas/assurance-evaluation-v1.schema.json"
     if name == "dependency-edge.example.json":
         schema = "dependency-edge.schema.json"
     elif name.startswith("evidence-record-") and name.endswith(".example.json"):
@@ -189,6 +195,17 @@ def audit(root: str | Path) -> dict:
             ))
             fixture_schema_validation_count += 1
 
+        # The assurance-evaluation schema is also published in docs/schemas
+        # under the same canonical $id. Validate and track that projection too.
+        documentation_schema_name = "docs/schemas/govcheck-assurance-evaluation-v1.schema.json"
+        if schema_name == "govcheck/formal/schemas/assurance-evaluation-v1.schema.json" and documentation_schema_name in schemas:
+            covered.add(documentation_schema_name)
+            findings.extend(validate_instance(
+                instance, schemas[documentation_schema_name], registry,
+                instance_path + " -> " + documentation_schema_name
+            ))
+            fixture_schema_validation_count += 1
+
     formal_fixture_schemas = {name for name in schemas if name.startswith("formal/schemas/")}
     package_mirror_schemas = {
         "govcheck/formal/schemas/" + Path(name).name
@@ -216,7 +233,8 @@ def audit(root: str | Path) -> dict:
         "fixture_schema_validations": fixture_schema_validation_count,
         "package_schemas_fixture_covered": sum(name in covered for name in schemas if name.startswith("govcheck/formal/schemas/")),
         "package_only_schemas_fixture_covered": sum(name in covered for name in PACKAGE_ONLY_FIXTURE_SCHEMAS),
-        "fixture_coverage_scope": "Formal and packaged fixture files are mapped to their respective source/package schemas. When a packaged fixture is absent, its formal fixture is used as a fallback against the package projection. Package-only independent-review, VCS-provenance, acceptance-decision, forge-author-identity, trust-policy and journal-receipt fixtures are included; other package-only schemas and the documentation schema remain meta-validated but not fixture-covered.",
+        "documentation_schemas_fixture_covered": sum(name in covered for name in DOCUMENTATION_FIXTURE_SCHEMAS),
+        "fixture_coverage_scope": "Formal and packaged fixture files are mapped to their respective source/package schemas. When a packaged fixture is absent, its formal fixture is used as a fallback against the package projection. Package-only independent-review, VCS-provenance, acceptance-decision, forge-author-identity, trust-policy, journal-receipt and assurance-evaluation fixtures are included; the assurance fixture also validates the identical documentation schema. The journal-event package schema remains meta-validated but not fixture-covered.",
         "finding_count": len(findings),
         "findings": findings,
         "limitations": [

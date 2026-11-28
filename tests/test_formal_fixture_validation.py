@@ -21,10 +21,11 @@ class FormalFixtureValidationTests(unittest.TestCase):
         self.assertEqual(report["formal_schemas_checked"], 5)
         self.assertEqual(report["package_schemas_checked"], 14)
         self.assertEqual(report["documentation_schemas_checked"], 1)
-        self.assertEqual(report["fixtures_checked"], 19)
-        self.assertEqual(report["fixture_schema_validations"], 21)
-        self.assertEqual(report["package_schemas_fixture_covered"], 12)
-        self.assertEqual(report["package_only_schemas_fixture_covered"], 7)
+        self.assertEqual(report["fixtures_checked"], 20)
+        self.assertEqual(report["fixture_schema_validations"], 23)
+        self.assertEqual(report["package_schemas_fixture_covered"], 13)
+        self.assertEqual(report["package_only_schemas_fixture_covered"], 8)
+        self.assertEqual(report["documentation_schemas_fixture_covered"], 1)
         self.assertEqual(report["finding_count"], 0)
 
     def test_each_schema_rejects_missing_required_property(self):
@@ -183,6 +184,17 @@ class FormalFixtureValidationTests(unittest.TestCase):
         invalid = copy.deepcopy(fixture)
         invalid["predicate"]["journal"]["integrityStatus"] = "unknown"
         self.assertTrue(MODULE.validate_instance(invalid, schema, registry, "invalid-journal-receipt-attestation"))
+
+    def test_package_only_assurance_evaluation_fixture_is_strict(self):
+        schemas, registry = MODULE.load_schemas(ROOT)
+        schema = schemas["govcheck/formal/schemas/assurance-evaluation-v1.schema.json"]
+        fixture = MODULE._read_json(ROOT / "govcheck/formal/fixtures/assurance-evaluation.example.json")
+        self.assertEqual(MODULE.validate_instance(fixture, schema, registry, "assurance-evaluation.example.json"), [])
+        docs_schema = schemas["docs/schemas/govcheck-assurance-evaluation-v1.schema.json"]
+        self.assertEqual(MODULE.validate_instance(fixture, docs_schema, registry, "assurance-evaluation-docs"), [])
+        invalid = copy.deepcopy(fixture)
+        invalid["evaluation"]["result"] = "verified"
+        self.assertTrue(MODULE.validate_instance(invalid, schema, registry, "invalid-assurance-evaluation"))
 
     def test_malformed_fixture_format_is_rejected(self):
         schemas, registry = MODULE.load_schemas(ROOT)

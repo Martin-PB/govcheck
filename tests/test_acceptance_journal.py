@@ -24,11 +24,14 @@ class AcceptanceJournalIntegrationTests(unittest.TestCase):
             "GOVCHECK_JOURNAL_DB": str(self.db),
             "GOVCHECK_JOURNAL_SCOPE_ID": self.scope,
             "GOVCHECK_JOURNAL_AUTHORITY_REVISION": "authority-rev-3",
+            "GOVCHECK_REPOSITORY_URI": "https://example.invalid/repo",
+            "GOVCHECK_GOVERNANCE_DIGEST": "sha256:" + "c" * 64,
             "GOVCHECK_SCOPE_ID": self.scope,
             "GOVCHECK_GOVERNANCE_REVISION": "gov-17",
         }
         self.payload = {
             "decision_id": "decision-42",
+            "decision_time": "2026-11-28T12:00:00Z",
             "result": "pass",
             "authority_principal": "principal:root",
             "policy_digest": "sha256:" + "a" * 64,
@@ -36,6 +39,8 @@ class AcceptanceJournalIntegrationTests(unittest.TestCase):
             "repository_id": "repo:12345",
             "candidate": "c" * 40,
             "base": "b" * 40,
+            "candidate_content_digest": "sha256:" + "a" * 64,
+            "base_content_digest": "sha256:" + "b" * 64,
             "ref": "refs/heads/main",
             "risk_acceptance": None,
         }
@@ -50,6 +55,24 @@ class AcceptanceJournalIntegrationTests(unittest.TestCase):
         self.assertEqual(self.journal.verify(self.scope)["eventCount"], 2)
         receipt = self.journal.receipt(self.scope, first["idempotencyKey"])
         self.assertEqual(receipt, first)
+
+    def test_receipt_embeds_exact_typed_git_provenance(self):
+        receipt = acceptance_journal.append_verified_decision(self.env, self.payload)
+        with sqlite3.connect(self.db) as connection:
+            row = connection.execute("SELECT envelope_json FROM journal_events WHERE position=?", (receipt["position"],)).fetchone()
+        event = json.loads(row[0])
+        provenance = event["payload"]["vcsProvenance"]
+        self.assertEqual(provenance["vcs"]["kind"], "git")
+        self.assertEqual(provenance["candidate"]["nativeRevision"], "c" * 40)
+        self.assertEqual(provenance["base"]["nativeRevision"], "b" * 40)
+        self.assertEqual(provenance["candidate"]["contentDigest"], "sha256:" + "a" * 64)
+        self.assertEqual(provenance["target"]["name"], "refs/heads/main")
+
+    def test_missing_repository_uri_or_governance_digest_fails_closed(self):
+        self.env.pop("GOVCHECK_REPOSITORY_URI")
+        with self.assertRaises(acceptance_journal.AcceptanceJournalError):
+            acceptance_journal.append_verified_decision(self.env, self.payload)
+        self.assertEqual(self.journal.verify(self.scope)["eventCount"], 1)
 
     def test_no_journal_configuration_preserves_legacy_optional_mode(self):
         self.assertIsNone(acceptance_journal.append_verified_decision({}, self.payload))

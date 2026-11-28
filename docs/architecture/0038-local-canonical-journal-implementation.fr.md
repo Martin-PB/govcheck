@@ -92,3 +92,15 @@ Le premier enregistrement de provenance typé est implémenté sous `govcheck.vc
 L'enregistrement lie l'identité/URI du dépôt, le type VCS et l'adaptateur, la ref/le canal cible, les identités natives de base et de candidat, les digests du contenu matérialisé, les identifiants natifs du change-set, le scope/révision/digest de gouvernance et la date d'observation. Les OID de commit Git restent natifs à Git (SHA-1 ou SHA-256) ; les hashes de canal et de change Pijul restent des tokens opaques natifs à Pijul. La liste de hashes de changement Pijul est représentée comme un ensemble et triée uniquement pour le digest déterministe ; elle n'encode pas la sémantique de dépendance/ordre des patches.
 
 Le digest de change-set porte sur le type VCS et la liste d'identifiants natifs ; il ne revendique pas d'équivalence inter-VCS. Les digests de contenu sont des bindings de comparaison supplémentaires et ne prouvent pas l'équivalence sémantique. Le builder rejette les types de cible mixtes, les OID Git mal formés, les bindings de base partiels, les IDs Pijul dupliqués et l'absence de scope de gouvernance. Il s'agit d'un profil de payload pour les consommateurs du journal, pas d'une modification de la Spécification 0007 ni d'un adaptateur de forge. Voir R-225 et R-226 dans le catalogue central des références.
+
+
+## 9. Binding de provenance dans les reçus d'acceptation
+
+Lorsque le mode journal local est activé pour le gate d'acceptation Git, le gate matérialise désormais les snapshots exacts de base et de candidat et calcule leurs digests de contenu GovCheck. Il transmet ces bindings, l'URI du dépôt et un digest de gouvernance explicitement configuré au builder de provenance typé. L'événement canonique de résultat du gate stocke l'objet `vcsProvenance` obtenu ; le reçu de publication post-receive transporte le même objet et référence l'événement de gate par position/digest du journal.
+
+Les paramètres supplémentaires `GOVCHECK_REPOSITORY_URI` et `GOVCHECK_GOVERNANCE_DIGEST` sont obligatoires en mode journal. Le second est le digest du package/révision de gouvernance gouverné, et non le digest de politique/de trust-policy. Une provenance absente ou mal formée provoque UNKNOWN en mode journal configuré. Sans mode journal, le gate n'effectue pas la matérialisation supplémentaire de la base.
+
+Cela lie l'événement Git du journal à l'identité native commit/ref et au contenu matérialisé ; aucun adaptateur de journal Pijul n'est encore ajouté. Le builder Pijul est disponible comme constructeur de payload distinct, et son intégration distante/serveur reste ouverte dans #45/#155.
+
+
+Pour les décisions authentifiées, l'horodatage de provenance provient du champ signé `decidedOn` de la décision ; rejouer la même décision signée produit ainsi le même payload de provenance et la même clé d'idempotence. Le champ `createdAt` de l'enveloppe du journal enregistre l'heure réelle de l'ajout. Les tentatives de gate non authentifiées utilisent l'horodatage d'observation de la tentative et ne sont pas représentées comme une décision d'autorité signée.

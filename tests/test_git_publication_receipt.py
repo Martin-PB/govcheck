@@ -4,6 +4,7 @@ import unittest
 from pathlib import Path
 
 from govcheck.journal import Journal
+from govcheck.vcs_provenance import build_git_provenance
 from govcheck.git_publication_receipt import run_post_receive
 
 
@@ -34,6 +35,16 @@ class GitPublicationReceiptTests(unittest.TestCase):
         self.temp.cleanup()
 
     def add_gate_receipt(self, result="pass", verification="authenticated-authority"):
+        provenance = build_git_provenance(
+            repository_id="repo:12345", repository_uri="https://example.invalid/repo",
+            target_ref="refs/heads/main", candidate_commit=self.new,
+            candidate_content_digest="sha256:" + "a" * 64,
+            base_commit=self.old, base_content_digest="sha256:" + "b" * 64,
+            governance_scope_id=self.scope, governance_revision="gov-17",
+            governance_digest="sha256:" + "c" * 64,
+            adapter_id="govcheck.git-acceptance-gate", adapter_version="1",
+            observed_at="2026-11-28T12:00:00Z",
+        )
         payload = {
             "repositoryId": "repo:12345",
             "candidateRevision": self.new,
@@ -43,6 +54,7 @@ class GitPublicationReceiptTests(unittest.TestCase):
             "verification": verification,
             "authorityPrincipal": "principal:root" if verification == "authenticated-authority" else None,
             "decisionId": "decision-55",
+            "vcsProvenance": provenance,
         }
         head = self.journal.head(self.scope)
         self.journal.append(
@@ -63,6 +75,7 @@ class GitPublicationReceiptTests(unittest.TestCase):
             "ref": "refs/heads/main",
         })
         self.assertEqual(event["event"]["payload"]["publication"], "linked-to-verified-acceptance")
+        self.assertEqual(event["event"]["payload"]["vcsProvenance"], provenance)
 
     def test_bypassed_or_unverified_publication_is_recorded_and_reported(self):
         code, messages = run_post_receive(f"{self.old} {self.new} refs/heads/main\n", self.env)

@@ -299,3 +299,8 @@ python3 scripts/install-govcheck-git-post-receive.py \\
 ```
 
 Le fichier d'environnement doit épingler la base/scope du journal, l'identité attendue du dépôt, l'identifiant/révision d'autorité du genesis, la révision de gouvernance et les refs protégées. Cet installateur ne crée pas le genesis du journal et ne provisionne pas les clés de confiance.
+
+
+## 18. Paramètres de provenance requis pour l'acceptation Git avec journal
+
+Le binding de provenance Git typé introduit dans l'implémentation du journal exige `GOVCHECK_REPOSITORY_URI` et `GOVCHECK_GOVERNANCE_DIGEST` en plus des paramètres du journal. Le digest de gouvernance doit identifier le package/révision exact de gouvernance gouverné ; ce n'est pas le digest de trust-policy ou de politique d'acceptation. `GOVCHECK_JOURNAL_AUTHORITY_ID` épingle l'autorité du genesis et est requis pour les reçus de tentatives de gate non authentifiées. Lorsque le mode journal est activé, le gate matérialise aussi le snapshot de base, en plus du candidat, afin de calculer les digests de contenu exacts. Des valeurs manquantes ou une provenance invalide produisent UNKNOWN et rejettent la mise à jour pre-receive.

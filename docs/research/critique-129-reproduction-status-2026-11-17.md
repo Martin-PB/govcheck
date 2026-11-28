@@ -337,9 +337,9 @@ PR #137 (mapping counterexample and stronger theorem) and PR #138 (reusable audi
 | 6.5 CI acceptance enforcement | **Confirmed on current main.** | `.github/workflows/govcheck-check.yml:1,33–36` is report-only, sets `continue-on-error: true`, and uses `|| true`. The live `Protection Main` ruleset (ID `28251664`, read 2026-11-28) is active, requires PRs, has approvals=0, blocks deletion/force-push, has no bypass actors, but `required_status_checks=[]`. Thus main has PR protection but no required trusted GovCheck status; effective acceptance enforcement remains unestablished (#45). No ruleset setting was changed. |
 | 6.6 empty-domain partial mapping | **Confirmed on current main.** | `formal/lean/GovCheckCoherence/Mapping.lean:63–66` requires a proof only for members of a domain predicate, not an inhabited domain. Choosing `domain := fun _ : True => False` inhabits `SemanticBridge True False .partialMapping` vacuously; this is a mapping with no covered source case, not a proof of False. PR #211 adds a compiling reproduction and issue #210 tracks the contract decision without changing Mapping.lean. |
 
-Findings 6.1, 6.2, 6.3 and 6.7 were **not fully re-executed against this target**; their previous qualifications remain historical until a fresh finding-by-finding review. The recent journal, detached attestations, typed provenance and ruleset protection are relevant improvements, but do not by themselves establish canonical-model adoption, distributed journal consensus or a two-person authority regime.
+The historical/current source comparison for findings 6.1, 6.2, 6.3 and 6.7 is now recorded in §12.6. No historical runtime test suite was executed at `24760fb`; the current-main runtime/formal suite is recorded in §12.5. The recent journal, detached attestations, typed provenance and ruleset protection are relevant improvements, but do not by themselves establish canonical-model adoption, distributed journal consensus or a two-person authority regime.
 
-Formal limits remain: bounded TLC safety does not prove general liveness; separate TLA+ models are not an end-to-end refinement of the Python runtime; Lean proves only the propositions encoded (including the empty-domain counterexample); and the ordinary evaluator remains report-only. All current TLC runs, the full Lean axiom audit/CSLib build, historical commit `24760fb`, and remaining 6.1–6.7 items are **not reproduced in this tranche** and remain open under #130. No critique recommendation is adopted by this report.
+Formal limits remain: bounded TLC safety does not prove general liveness; separate TLA+ models are not an end-to-end refinement of the Python runtime; Lean proves only the propositions encoded (including the empty-domain counterexample); and the ordinary evaluator remains report-only. The ten current TLC models, full Lean axiom audit and CSLib build were subsequently run successfully; see §12.5. The historical runtime at `24760fb` was not replayed; §12.6 records the exact source comparison for findings 6.1–6.7. No critique recommendation is adopted by this report.
 
 The focused Lean command is run by the pinned `lean-coherence.yml` workflow from `formal/lean`:
 
@@ -350,3 +350,24 @@ lake env lean GovCheckCoherence/Reproductions/EmptyDomainPartialMapping.lean
 Python regressions can be run with `python3 -m unittest discover -s tests -p 'test_govcheck_check.py' -v`. The PR's CI is the recorded hosted reproduction for the new Lean fixture; no local checkout/toolchain replay was performed.
 
 **Disposition:** 6.4's in-tree cycle is mitigated by detached evidence; 6.5 remains an enforcement gap; 6.6 is a confirmed formal limitation tracked by #210. Issue #130 remains open for the full matrix.
+
+
+### 12.6 Historical/current source comparison — final matrix
+
+Historical object: `24760fbfd747fc64f6261b53182f4ed8fdbd4467`. Current main: `a2c757081be471ffaa9b9b37e66960dab2ca2203`, tree `309c42e718c05dac78b83f159c520f75f1653de9`. This is exact source comparison, not historical runtime replay.
+
+| Finding | Current qualification |
+|---|---|
+| 6.1 Canonical model | Spec 0002 blob unchanged (`5174d628...`), still proposed/design-only. Component JSON Schemas do not constitute an adopted canonical model/evaluator. **Confirmed adoption/implementation gap**; #86/#73. |
+| 6.2 Canonical journal | Spec 0007 blob unchanged (`3f11adce...`), still proposed. Historical tree has no journal implementation; current main has local SQLite journal, acceptance/Pijul adapters and optional DSSE receipts. **Partially confirmed, materially improved**; no distributed canonical journal/replica consensus. #155 closed for local implementation; #73/#86 remain. |
+| 6.3 Authority/SoD | Architecture 0023 blob unchanged (`ee4d7d0a...`): one root authority and self-authorization as explicit bootstrap risk. Missing detached review yields UNKNOWN, not PASS; accepted risk is scoped/expiring. **Explicit deployment risk, not a two-person guarantee**; #60 closed. |
+| 6.4 In-tree review | Historical `check.py:282–300` accepted a distinct reviewer string from candidate-tree attestations; current main rejects in-tree records and requires detached trust inputs (§12.1). **Historically confirmed, current implementation mitigated**; no historical runtime replay. |
+| 6.5 CI enforcement | Historical/current workflow report-only; current ruleset has PR required but `required_status_checks=[]`. **Current enforcement gap confirmed**; #45. |
+| 6.6 Partial mapping | Constructor present historically and currently without inhabited-domain witness; Lean counterexample compiled. **Formal limitation confirmed**; #210. |
+| 6.7 Physical journal separation | Spec 0007 unchanged: evaluation/authorization/publication are logically distinct and may share an atomic technical transaction. Local SQLite is not a distributed trust service. **Mandatory physical separation unsupported by the specification**; separate adoption needed. |
+
+Four formal limits: (1) 10/10 bounded TLC models pass but do not prove general liveness; (2) separate TLA+ slices do not refine end-to-end to Python/forge; (3) Lean proves only encoded propositions and the empty-domain example exposes a missing coverage premise; (4) report-only evaluator plus zero required status checks does not enforce acceptance. Hosted commands, versions and run IDs are in §12.5.
+
+Historical source commands: `git show 24760fb:govcheck/check.py`, `git show 24760fb:.github/workflows/govcheck-check.yml`, and `git ls-tree -r --name-only 24760fb`. The tree API confirmed no journal implementation files at that historical commit; current journal files exist. The historical runtime suite was not executed, and this is stated rather than inferred from current CI.
+
+**Final disposition of #130:** the finding matrix, current-main hosted run, historical source comparison, formal limits and corrective issue boundaries are documented. Close #130 as completed research; keep source critique #129 and corrective/adoption issues #45, #73, #86 and #210 open. No external recommendation is adopted.

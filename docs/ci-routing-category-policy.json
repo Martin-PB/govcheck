@@ -153,5 +153,11 @@
       ],
       "workflows": []
     }
-  ]
+  ],
+  "inputSets": {
+    "LifecycleInputs": ".github/workflows/tla-lifecycle.yml",
+    "AssuranceInputs": ".github/workflows/tla-assurance.yml",
+    "AuthorityInputs": ".github/workflows/tla-authority.yml"
+  },
+  "sharedTlcCategory": "SharedTLCWorkflow"
 }

@@ -205,6 +205,17 @@ class FormalFixtureValidationTests(unittest.TestCase):
         invalid["position"] = -1
         self.assertTrue(MODULE.validate_instance(invalid, schema, registry, "invalid-journal-event"))
 
+    def test_bundle_envelope_is_not_a_unit_dependency_edge(self):
+        schemas, registry = MODULE.load_schemas(ROOT)
+        bundle = {"schemaVersion": 1, "revisions": [], "decisions": [], "dependencies": []}
+        findings = MODULE.validate_instance(
+            bundle,
+            schemas["formal/schemas/dependency-edge.schema.json"],
+            registry,
+            "synthetic-bundle-as-unit",
+        )
+        self.assertTrue(findings)
+
     def test_malformed_fixture_format_is_rejected(self):
         schemas, registry = MODULE.load_schemas(ROOT)
         schema = schemas["formal/schemas/release-manifest.schema.json"]

@@ -19,9 +19,11 @@ from pathlib import Path, PurePosixPath
 try:
     from govcheck import check as check_module
     from govcheck import acceptance_decision
+    from govcheck import acceptance_journal
 except ImportError:  # standalone GovCheck installation
     import check as check_module
     import acceptance_decision
+    import acceptance_journal
 
 OID_RE = re.compile(r"^(?:[0-9a-f]{40}|[0-9a-f]{64})$")
 HEX64_RE = re.compile(r"^[0-9a-f]{64}$")
@@ -318,6 +320,12 @@ def run_gate(args, env=None, runner=subprocess.run, evaluator=None, decision_ver
             payload["result"] = decision.get("result", "unknown")
             payload["risk_acceptance"] = _risk_v0(decision)
             payload["reason"] = decision.get("reason", "decision verification returned no reason")
+            if payload["result"] in {"pass", "accepted-with-risk"}:
+                try:
+                    acceptance_journal.append_verified_decision(env, payload)
+                except acceptance_journal.AcceptanceJournalError as exc:
+                    payload["result"] = "unknown"
+                    payload["reason"] = "acceptance journal receipt unavailable: " + str(exc)
             return 0, payload
     except (OSError, ValueError, TypeError, subprocess.TimeoutExpired) as exc:
         payload["reason"] = "gate evaluation failed: " + str(exc)

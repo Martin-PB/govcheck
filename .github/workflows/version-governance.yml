@@ -4,25 +4,25 @@ on:
   pull_request:
     paths:
       - 'scripts/validate-version-governance.py'
+      - 'scripts/validate-formal-fixtures.py'
       - 'tests/test_version_governance_validator.py'
-      - 'scripts/validate-formal-fixtures.py'
       - 'tests/test_formal_fixture_validation.py'
-      - 'formal/fixtures/**'
-      - 'requirements-validation.txt'
-      - 'scripts/validate-formal-fixtures.py'
-      - 'tests/test_formal_fixture_validation.py'
-      - 'formal/fixtures/**'
-      - 'requirements-validation.txt'
       - 'formal/schemas/**'
+      - 'formal/fixtures/**'
       - 'formal/artifacts.json'
+      - 'requirements-validation.txt'
       - '.github/workflows/version-governance.yml'
   push:
     branches: [main]
     paths:
       - 'scripts/validate-version-governance.py'
+      - 'scripts/validate-formal-fixtures.py'
       - 'tests/test_version_governance_validator.py'
+      - 'tests/test_formal_fixture_validation.py'
       - 'formal/schemas/**'
+      - 'formal/fixtures/**'
       - 'formal/artifacts.json'
+      - 'requirements-validation.txt'
       - '.github/workflows/version-governance.yml'
 
 permissions:

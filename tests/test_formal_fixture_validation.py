@@ -21,7 +21,7 @@ class FormalFixtureValidationTests(unittest.TestCase):
         self.assertEqual(report["formal_schemas_checked"], 5)
         self.assertEqual(report["package_schemas_checked"], 14)
         self.assertEqual(report["documentation_schemas_checked"], 1)
-        self.assertEqual(report["fixtures_checked"], 8)
+        self.assertEqual(report["fixtures_checked"], 15)
         self.assertEqual(report["fixture_schema_validations"], 15)
         self.assertEqual(report["package_schemas_fixture_covered"], 6)
         self.assertEqual(report["package_only_schemas_fixture_covered"], 1)

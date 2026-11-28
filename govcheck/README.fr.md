@@ -113,3 +113,6 @@ Installer cette capacité via bootstrap sous le nom attestation-verify ; elle in
 ## Enregistrements de provenance natifs VCS
 
 Le module `govcheck.vcs_provenance` construit des payloads typés `govcheck.vcs-provenance/v1` pour Git et Pijul. Les OID de commit/refs complètes restent natifs à Git ; les hashes de canal et de changement Pijul restent des identités natives opaques. Les digests de contenu permettent un binding exact de snapshot mais ne revendiquent pas d'équivalence sémantique inter-VCS. Le JSON Schema est catalogué dans `formal/artifacts.json` et dans le catalogue formel du package.
+
+
+Le module `govcheck.pijul_journal` peut ajouter au journal canonique la provenance d'une observation d'état local de canal Pijul ou d'une tentative de push. Il enregistre uniquement une observation—pas une acceptation distante ni une publication—et conserve le journal hors du répertoire de travail Pijul.

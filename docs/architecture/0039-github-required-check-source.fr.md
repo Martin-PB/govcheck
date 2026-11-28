@@ -26,3 +26,6 @@ Toute valeur absente ou non conforme provoque un échec fermé. Les PR provenant
 Le check vérifie un reçu signé et ses bindings exacts ; une signature ne devient pas une preuve de la justesse de la décision sous-jacente. Le statement de journal signé atteste l'intégrité de chaîne vérifiée au moment de la signature, pas l'immutabilité future de la base. L'arbre candidat est haché par le code GovCheck de confiance mais jamais exécuté.
 
 Le workflow crée un check en attente lors des événements du cycle de vie de la PR. Pour que le déplacement de la branche de base invalide les anciens résultats, le ruleset doit également exiger que la branche de PR soit à jour. Un status check seul ne bloque pas les push directs sans enforcement par le ruleset. Aucun réglage de forge n'est modifié par cette ADR.
+
+
+Les étapes de configuration et d'activation sont décrites dans le [guide de configuration du check de reçu authentifié](../setup/github-authenticated-receipt-check.fr.md), avec une commande de préflight locale.

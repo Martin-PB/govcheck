@@ -11,9 +11,9 @@ from pathlib import Path
 from typing import Any
 
 try:
-    from govcheck.journal import Journal, JournalError, canonical_json_bytes
+    from govcheck.journal import Journal, canonical_json_bytes
 except ImportError:  # standalone GovCheck installation
-    from journal import Journal, JournalError, canonical_json_bytes
+    from journal import Journal, canonical_json_bytes
 
 
 CONFIG_KEYS = (
@@ -28,7 +28,7 @@ class AcceptanceJournalError(Exception):
 
 
 def append_verified_decision(env: dict[str, str], gate_payload: dict[str, Any]) -> dict[str, Any] | None:
-    """Append a receipt for a verified PASS/accepted-with-risk decision."""
+    """Append a durable receipt for an evaluated gate outcome."""
     configured = [bool(env.get(key, "").strip()) for key in CONFIG_KEYS]
     if not any(configured):
         return None
@@ -104,7 +104,7 @@ def append_verified_decision(env: dict[str, str], gate_payload: dict[str, Any]) 
         schema_version="1",
         payload=payload,
         idempotency_key=idempotency_key,
-        actor_id=authority,
+        actor_id=authority or "system:govcheck-gate",
     )
     if result.get("status") != "committed":
         raise AcceptanceJournalError("journal append did not commit: " + str(result.get("reason", result.get("status"))))

@@ -51,6 +51,58 @@ class FormalFixtureValidationTests(unittest.TestCase):
                 findings = MODULE.validate_instance(invalid, schema, registry, schema_name)
                 self.assertTrue(findings, f"{schema_name} accepted an unknown top-level property")
 
+    def test_nested_types_enums_cardinalities_and_schema_references_are_enforced(self):
+        schemas, registry = MODULE.load_schemas(ROOT)
+        fixtures = ROOT / "formal/fixtures"
+
+        cases = [
+            ("evidence-record.schema.json", "evidence-record-passed.example.json",
+             lambda value: value["claimIds"].append(value["claimIds"][0])),
+            ("dependency-edge.schema.json", "dependency-edge.example.json",
+             lambda value: value.__setitem__("relation", "unknown-relation")),
+            ("version-decision.schema.json", "version-decision-blocked.example.json",
+             lambda value: value["compatibility"].__setitem__("classification", "unknown-classification")),
+            ("release-manifest.schema.json", "release-manifest.example.json",
+             lambda value: value["release"].__setitem__("commit", "not-a-commit")),
+            ("version-governance-bundle.schema.json", "version-governance-bundle.example.json",
+             lambda value: value["decisions"].append({
+                 "schemaVersion": 2,
+                 "decisionId": "invalid:decision:001"
+             })),
+        ]
+        for schema_name, fixture_name, mutate in cases:
+            with self.subTest(schema=schema_name):
+                instance = MODULE._read_json(fixtures / fixture_name)
+                invalid = copy.deepcopy(instance)
+                mutate(invalid)
+                findings = MODULE.validate_instance(invalid, schemas[schema_name], registry, fixture_name)
+                self.assertTrue(findings, f"{schema_name} accepted an invalid nested value")
+
+    def test_bundle_resolves_external_record_schema_references(self):
+        schemas, registry = MODULE.load_schemas(ROOT)
+        bundle = {
+            "schemaVersion": 1,
+            "revisions": [],
+            "decisions": [{
+                "schemaVersion": 2,
+                "decisionId": "bad:decision:001"
+            }],
+            "dependencies": [{
+                "schemaVersion": 1,
+                "edgeId": "bad:edge:001",
+                "relation": "not-a-relation",
+                "source": {},
+                "target": {},
+                "provenance": {}
+            }]
+        }
+        findings = MODULE.validate_instance(
+            bundle, schemas["version-governance-bundle.schema.json"], registry, "bad-bundle"
+        )
+        self.assertTrue(findings)
+        messages = " ".join(item["message"] for item in findings)
+        self.assertIn("2", messages)
+
     def test_malformed_fixture_format_is_rejected(self):
         schemas, registry = MODULE.load_schemas(ROOT)
         schema = schemas["release-manifest.schema.json"]

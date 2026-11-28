@@ -1,0 +1,157 @@
+{
+  "format": "govcheck.ci-routing-category-policy/v1",
+  "model": "formal/tla/CICheckRouting.tla",
+  "categories": [
+    {
+      "name": "LifecycleSource",
+      "modelSpecific": true,
+      "paths": [
+        "formal/tla/GovCheckLifecycle.tla"
+      ],
+      "workflows": [
+        ".github/workflows/tla-lifecycle.yml"
+      ]
+    },
+    {
+      "name": "LifecycleConfig",
+      "modelSpecific": true,
+      "paths": [
+        "formal/tla/GovCheckLifecycle.cfg"
+      ],
+      "workflows": [
+        ".github/workflows/tla-lifecycle.yml"
+      ]
+    },
+    {
+      "name": "LifecycleSemantics",
+      "modelSpecific": true,
+      "paths": [
+        "docs/formal/lifecycle-model.md",
+        "docs/formal/lifecycle-model.fr.md"
+      ],
+      "workflows": [
+        ".github/workflows/tla-lifecycle.yml"
+      ]
+    },
+    {
+      "name": "AssuranceSource",
+      "modelSpecific": true,
+      "paths": [
+        "formal/tla/GovCheckAssurance.tla"
+      ],
+      "workflows": [
+        ".github/workflows/tla-assurance.yml"
+      ]
+    },
+    {
+      "name": "AssuranceConfig",
+      "modelSpecific": true,
+      "paths": [
+        "formal/tla/GovCheckAssurance.cfg"
+      ],
+      "workflows": [
+        ".github/workflows/tla-assurance.yml"
+      ]
+    },
+    {
+      "name": "AssuranceSemantics",
+      "modelSpecific": true,
+      "paths": [
+        "docs/architecture/0021-assurance-claims-and-freshness.md",
+        "docs/architecture/0021-assurance-claims-and-freshness.fr.md"
+      ],
+      "workflows": [
+        ".github/workflows/tla-assurance.yml"
+      ]
+    },
+    {
+      "name": "AuthoritySource",
+      "modelSpecific": true,
+      "paths": [
+        "formal/tla/GovCheckAuthority.tla"
+      ],
+      "workflows": [
+        ".github/workflows/tla-authority.yml"
+      ]
+    },
+    {
+      "name": "AuthorityConfig",
+      "modelSpecific": true,
+      "paths": [
+        "formal/tla/GovCheckAuthority.cfg"
+      ],
+      "workflows": [
+        ".github/workflows/tla-authority.yml"
+      ]
+    },
+    {
+      "name": "AuthoritySemantics",
+      "modelSpecific": true,
+      "paths": [
+        "docs/architecture/0023-bootstrap-governance-authority.md",
+        "docs/architecture/0023-bootstrap-governance-authority.fr.md"
+      ],
+      "workflows": [
+        ".github/workflows/tla-authority.yml"
+      ]
+    },
+    {
+      "name": "LifecycleWorkflow",
+      "modelSpecific": false,
+      "paths": [
+        ".github/workflows/tla-lifecycle.yml"
+      ],
+      "workflows": [
+        ".github/workflows/tla-lifecycle.yml"
+      ]
+    },
+    {
+      "name": "AssuranceWorkflow",
+      "modelSpecific": false,
+      "paths": [
+        ".github/workflows/tla-assurance.yml"
+      ],
+      "workflows": [
+        ".github/workflows/tla-assurance.yml"
+      ]
+    },
+    {
+      "name": "AuthorityWorkflow",
+      "modelSpecific": false,
+      "paths": [
+        ".github/workflows/tla-authority.yml"
+      ],
+      "workflows": [
+        ".github/workflows/tla-authority.yml"
+      ]
+    },
+    {
+      "name": "SharedTLCWorkflow",
+      "modelSpecific": false,
+      "paths": [
+        ".github/workflows/tla-model-reusable.yml"
+      ],
+      "workflows": [
+        ".github/workflows/tla-lifecycle.yml",
+        ".github/workflows/tla-assurance.yml",
+        ".github/workflows/tla-authority.yml"
+      ]
+    },
+    {
+      "name": "UnrelatedArchitecture",
+      "modelSpecific": false,
+      "paths": [
+        "docs/architecture/0028-governed-work-portfolio-and-issue-tracker-boundary.md"
+      ],
+      "workflows": []
+    },
+    {
+      "name": "OrdinaryDocumentation",
+      "modelSpecific": false,
+      "paths": [
+        "README.md"
+      ],
+      "workflows": []
+    }
+  ]
+}

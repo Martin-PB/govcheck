@@ -24,6 +24,25 @@ class CIWorkflowRoutingAuditTests(unittest.TestCase):
             }),
             encoding="utf-8",
         )
+        model_dir = self.root / "formal" / "tla"
+        model_dir.mkdir(parents=True)
+        (model_dir / "CICheckRouting.tla").write_text(
+            'Categories == {"TestCategory"}\nModelSpecific == {}\n',
+            encoding="utf-8",
+        )
+        self.write_category_policy([{
+            "name": "TestCategory", "modelSpecific": False, "paths": [], "workflows": [],
+        }])
+
+    def write_category_policy(self, categories):
+        (self.root / "docs" / "ci-routing-category-policy.json").write_text(
+            json.dumps({
+                "format": "govcheck.ci-routing-category-policy/v1",
+                "model": "formal/tla/CICheckRouting.tla",
+                "categories": categories,
+            }),
+            encoding="utf-8",
+        )
 
     def tearDown(self):
         self.temp.cleanup()
@@ -170,6 +189,44 @@ on:
         report = AUDIT.audit_workflows(self.root)
         findings = [item for item in report["findings"] if item["kind"] == "stale-glob-justification"]
         self.assertEqual([item["pattern"] for item in findings], ["unused/**"])
+
+    def test_tla_category_inventory_is_checked_against_policy(self):
+        report = AUDIT.audit_workflows(self.root)
+        self.assertEqual(report["category_policy"]["model_categories"], ["TestCategory"])
+        self.assertEqual(report["category_policy"]["policy_categories"], ["TestCategory"])
+
+    def test_tla_model_category_drift_is_reported(self):
+        (self.root / "formal" / "tla" / "CICheckRouting.tla").write_text(
+            'Categories == {"NewCategory"}\nModelSpecific == {}\n',
+            encoding="utf-8",
+        )
+        report = AUDIT.audit_workflows(self.root)
+        self.assertIn("model-category-inventory-mismatch", {item["kind"] for item in report["findings"]})
+
+    def test_model_specific_category_paths_must_route_to_workflow(self):
+        (self.root / "formal" / "tla" / "CICheckRouting.tla").write_text(
+            'Categories == {"TestCategory"}\nModelSpecific == {"TestCategory"}\n',
+            encoding="utf-8",
+        )
+        self.write_category_policy([{
+            "name": "TestCategory",
+            "modelSpecific": True,
+            "paths": ["formal/model.tla"],
+            "workflows": [".github/workflows/model.yml"],
+        }])
+        self.write("model.yml", """name: model
+on:
+  pull_request:
+    paths:
+      - 'other/**'
+  push:
+    paths:
+      - 'other/**'
+""")
+        (self.root / "formal" / "model.tla").write_text("---- MODULE Model ----\n", encoding="utf-8")
+        report = AUDIT.audit_workflows(self.root)
+        findings = [item for item in report["findings"] if item["kind"] == "model-category-path-missing"]
+        self.assertEqual({item["event"] for item in findings}, {"pull_request", "push"})
 
     def test_unsupported_path_entry_is_rejected_not_ignored(self):
         self.write("bad.yml", """name: bad

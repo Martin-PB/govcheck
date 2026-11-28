@@ -6,6 +6,8 @@ not a Pijul remote acceptance hook and does not claim that a push was accepted.
 from __future__ import annotations
 
 import hashlib
+import re
+from pathlib import Path
 from typing import Any
 
 try:
@@ -19,6 +21,7 @@ CONFIG_KEYS = (
     "GOVCHECK_JOURNAL_AUTHORITY_REVISION",
 )
 EVENT_TYPE = "govcheck.pijul.provenance-observed/v1"
+SHA256_RE = re.compile(r"^sha256:[0-9a-f]{64}$")
 OBSERVATION_KINDS = {"channel-state-observed", "push-attempt-observed"}
 
 
@@ -55,10 +58,25 @@ def _validate_record(env: dict[str, str], record: dict[str, Any]) -> None:
             raise PijulJournalError("provenance governance binding mismatch: " + key)
     if not isinstance(candidate, dict) or not isinstance(candidate.get("nativeRevision"), str) or not candidate["nativeRevision"]:
         raise PijulJournalError("Pijul channel candidate identity is missing")
+    if any(ch.isspace() for ch in candidate["nativeRevision"]):
+        raise PijulJournalError("Pijul channel candidate identity must be an opaque token")
+    if not isinstance(candidate.get("contentDigest"), str) or not SHA256_RE.fullmatch(candidate["contentDigest"]):
+        raise PijulJournalError("Pijul candidate content digest is invalid")
     if not isinstance(change_set, dict) or not isinstance(change_set.get("nativeIds"), list) or not change_set["nativeIds"]:
         raise PijulJournalError("Pijul native change-set identities are missing")
-    if not isinstance(change_set.get("digest"), str) or not change_set["digest"].startswith("sha256:"):
-        raise PijulJournalError("Pijul change-set digest is missing")
+    if not isinstance(change_set.get("digest"), str) or not SHA256_RE.fullmatch(change_set["digest"]):
+        raise PijulJournalError("Pijul change-set digest is missing or invalid")
+    native_ids = change_set["nativeIds"]
+    if any(not isinstance(value, str) or not value or any(ch.isspace() for ch in value) for value in native_ids):
+        raise PijulJournalError("Pijul native change hashes must be opaque tokens")
+    if len(set(native_ids)) != len(native_ids):
+        raise PijulJournalError("Pijul native change hashes must be unique")
+    base = record.get("base")
+    if base is not None:
+        if not isinstance(base, dict) or not isinstance(base.get("nativeRevision"), str) or not base["nativeRevision"]:
+            raise PijulJournalError("Pijul base channel binding is malformed")
+        if not isinstance(base.get("contentDigest"), str) or not SHA256_RE.fullmatch(base["contentDigest"]):
+            raise PijulJournalError("Pijul base content digest is invalid")
 
 
 def append_pijul_observation(
@@ -83,6 +101,7 @@ def append_pijul_observation(
         "GOVCHECK_GOVERNANCE_REVISION",
         "GOVCHECK_EXPECTED_REPOSITORY_ID",
         "GOVCHECK_REPOSITORY_URI",
+        "GOVCHECK_REPOSITORY_PATH",
         "GOVCHECK_GOVERNANCE_DIGEST",
     )
     missing = [key for key in required if not env.get(key, "").strip()]
@@ -90,6 +109,14 @@ def append_pijul_observation(
         raise PijulJournalError("missing Pijul journal pins: " + ", ".join(missing))
 
     _validate_record(env, provenance_record)
+    repository_path = Path(env["GOVCHECK_REPOSITORY_PATH"]).expanduser().resolve()
+    db_path = Path(env["GOVCHECK_JOURNAL_DB"]).expanduser().resolve()
+    try:
+        db_path.relative_to(repository_path)
+    except ValueError:
+        pass
+    else:
+        raise PijulJournalError("journal database must be outside the Pijul working tree")
     scope_id = env["GOVCHECK_JOURNAL_SCOPE_ID"]
     try:
         journal = Journal(env["GOVCHECK_JOURNAL_DB"])

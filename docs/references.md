@@ -6,6 +6,7 @@
 |---|---|
 | Governance authority, separation of duties and secure development | R-01–R-03, R-11 |
 | Risk assessment, threat modeling and attack paths | R-27–R-32 |
+| Execution isolation, sandboxing and resource limits | R-236–R-242 |
 | Security assurance cases and metamodels | R-04, R-33–R-34 |
 | PEAK decision model | R-74 |
 | Continuous monitoring and runtime assurance | R-70, R-72, R-75–R-76 |
@@ -1662,3 +1663,60 @@
 - **Use in GovCheck:** candidate structural validation for exchange envelopes and typed link payloads.
 - **Limit:** shape conformance establishes structural constraints only; it does not establish truth, provenance authenticity, authority, semantic refinement or evidence sufficiency.
 - **Cited by:** [typed metamodel relation candidate](research/typed-metamodel-relation-candidate.md).
+
+
+<a id="r-236"></a>
+### R-236 — Linux Landlock LSM
+- **Type:** Primary Linux kernel security documentation.
+- **Primary source:** [Landlock LSM documentation](https://docs.kernel.org/security/landlock.html).
+- **Use:** documents unprivileged, additive access-control rules that can restrict filesystem access for a process and compose with existing system access controls.
+- **Limit:** Landlock is not a general syscall filter, resource quota system, full network-egress policy or VM boundary. ABI support and effective rules must be checked.
+- **Cited by:** [repository check-execution isolation research](research/check-execution-isolation-2026-11.md).
+
+<a id="r-237"></a>
+### R-237 — Linux seccomp filter
+- **Type:** Primary Linux kernel userspace API documentation.
+- **Primary source:** [Seccomp filter documentation](https://docs.kernel.org/userspace-api/seccomp_filter.html).
+- **Use:** documents syscall filtering, including decisions based on syscall numbers and selected arguments.
+- **Limit:** seccomp does not express general filesystem path policy, CPU/memory quotas or complete network egress filtering. Filter correctness and architecture coverage are critical.
+- **Cited by:** [repository check-execution isolation research](research/check-execution-isolation-2026-11.md).
+
+<a id="r-238"></a>
+### R-238 — Linux cgroup v2 resource control
+- **Type:** Primary Linux kernel administration documentation.
+- **Primary source:** [Control Group v2](https://docs.kernel.org/admin-guide/cgroup-v2.html).
+- **Use:** documents hierarchical resource control, including CPU, memory, process and I/O controls.
+- **Limit:** cgroups constrain resource consumption but do not by themselves prevent host-file access, credential exposure, network access or kernel attacks.
+- **Cited by:** [repository check-execution isolation research](research/check-execution-isolation-2026-11.md).
+
+<a id="r-239"></a>
+### R-239 — Open Container Initiative runtime specification: Linux configuration
+- **Type:** Primary container-runtime specification.
+- **Primary source:** [OCI runtime-spec Linux configuration](https://github.com/opencontainers/runtime-spec/blob/main/config-linux.md).
+- **Use:** specifies configurable Linux namespaces, cgroups/resources, capabilities, seccomp, LSM and filesystem/device settings for a container runtime.
+- **Limit:** the specification is a configuration interface, not proof that a deployed container is secure. Omitted namespaces may be inherited; the effective runtime and host configuration remain part of the TCB.
+- **Cited by:** [repository check-execution isolation research](research/check-execution-isolation-2026-11.md).
+
+<a id="r-240"></a>
+### R-240 — Firecracker design and sandboxing
+- **Type:** Primary microVM implementation documentation.
+- **Primary source:** [Firecracker design](https://github.com/firecracker-microvm/firecracker/blob/main/docs/design.md).
+- **Use:** describes the KVM microVM boundary and defense-in-depth using seccomp, cgroups, namespaces and the jailer.
+- **Limit:** Firecracker does not perform network traffic filtering; guest egress must be filtered at host level. Host kernel, KVM, jailer and supervisor remain trusted.
+- **Cited by:** [repository check-execution isolation research](research/check-execution-isolation-2026-11.md).
+
+<a id="r-241"></a>
+### R-241 — GitHub Actions secure use
+- **Type:** Primary hosted CI platform security documentation.
+- **Primary source:** [GitHub Actions secure use reference](https://docs.github.com/en/actions/reference/security/secure-use).
+- **Use:** describes permissions and runner security; distinguishes GitHub-hosted ephemeral clean VMs from self-hosted runners that may be persistently compromised by untrusted workflows.
+- **Limit:** these claims describe GitHub's service and configuration, not a generic guarantee for other CI providers or arbitrary self-hosted runners. Workflow permissions, secrets and actions still require least privilege.
+- **Cited by:** [repository check-execution isolation research](research/check-execution-isolation-2026-11.md).
+
+<a id="r-242"></a>
+### R-242 — Nix build sandbox configuration
+- **Type:** Primary Nix reference manual.
+- **Primary source:** [Nix configuration reference](https://nix.dev/manual/nix/2.30/command-ref/conf-file).
+- **Use:** documents build sandboxing, visible paths, Linux namespaces, platform support and configuration behavior.
+- **Limit:** Nix build sandboxing applies to Nix builds, not automatically to every repository-controlled command. The manual documents Linux/macOS support, root requirements and network exceptions for fixed-output derivations; it is not a universal hostile-code execution boundary.
+- **Cited by:** [repository check-execution isolation research](research/check-execution-isolation-2026-11.md).

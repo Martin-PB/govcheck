@@ -20,6 +20,10 @@
     {
       "pattern": "formal/fixtures/**",
       "rationale": "Validate all formal synthetic fixtures so newly added examples cannot bypass schema conformance checks."
+    },
+    {
+      "pattern": "formal/tla/GovCheckPijulRemoteBoundary*.cfg",
+      "rationale": "Include every bounded TLC configuration for the Pijul remote-boundary model family."
     }
   ]
 }

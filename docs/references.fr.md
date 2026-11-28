@@ -143,7 +143,8 @@
 ### R-04 — Goal Structuring Notation (GSN), standard communautaire
 - **Cité par :** [0010-assurance-proof-and-conformance](architecture/0010-assurance-proof-and-conformance.fr.md), [intent-impact-analysis](intent-impact-analysis.fr.md), [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.fr.md)
 
-- **Source primaire :** [Site officiel du standard GSN](https://scsc.uk/gsn)
+- **Sources primaires :** [Page SCSC du standard GSN](https://www.scsc.uk/gsn-standard) · [Notice de citation de la version 3 (04/05/2021)](https://scsc.uk/resources/citation_r1386.html) · [PDF version 3](https://scsc.uk/r1386.pdf)
+- **Note de version :** SCSC identifie la version 3 comme la version courante du standard GSN ; utiliser la source versionnée et ne pas la nommer « GSN 3.0 ».
 - **Concepts pertinents :** structuration des affirmations d'assurance, arguments, stratégies, contexte, hypothèses et preuves.
 - **Utilité pour GovCheck :** vocabulaire utile au dossier d'assurance et à la traçabilité des exigences vers les propriétés et les preuves.
 - **Limite :** structurer un argument ne rend pas automatiquement ses prémisses vraies et ne remplace pas les prédicats vérifiables.
@@ -340,7 +341,8 @@
 ### R-24 — W3C PROV-O
 - **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md), [0018](architecture/0018-version-governance-and-compatibility-authority.fr.md) · [ADR 0004](decisions/0004-semantic-versioning-contracts.fr.md) · [Portefeuille de travaux](work-portfolio/README.fr.md), [ADR 0007](decisions/0007-mandatory-sources.fr.md)
 
-- **Source primaire :** [Recommandation W3C PROV-O](https://www.w3.org/TR/prov-o/).
+- **Sources primaires :** [PROV-O — Recommandation W3C du 30 avril 2013](https://www.w3.org/TR/prov-o/) · [Vue d'ensemble PROV](https://www.w3.org/TR/prov-overview/).
+- **Note de version :** PROV-O exprime le modèle de données PROV en OWL 2 et est extensible ; GovCheck l'utilise uniquement comme vocabulaire de provenance.
 - **Concepts pertinents :** entités, activités, agents et relations de provenance.
 - **Utilité pour GovCheck :** vocabulaire de provenance et relations entre artefacts, activités et agents responsables.
 - **Limite :** une ontologie ne fournit à elle seule ni politique de dépôt, ni assurance d'identité, ni mécanisme d'application.
@@ -978,7 +980,7 @@
 <a id="r-95"></a>
 ### R-95 — Modèles OMG d'ingénierie, de risque, de test, d'exigences, de métriques et de provenance
 - **Cité par :** [0027-domain-semantic-standards-decisions-and-bootstrap](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.fr.md), [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.fr.md)
-- **Sources primaires :** [RAAML 1.1](https://www.omg.org/spec/RAAML/1.1) · [RAAML 1.2 Beta 1](https://www.omg.org/spec/RAAML/1.2/Beta1) · [SysML v2](https://www.omg.org/spec/SysML/2.0) · [Présentation de SysML v2](https://www.omg.org/sysml/sysmlv2/) · [UTP 2.3 Beta 1](https://www.omg.org/spec/UTP2) · [ReqIF 1.2](https://www.omg.org/spec/ReqIF/1.2) · [Structured Metrics Metamodel 1.2](https://www.omg.org/spec/SMM/1.2) · [PPMN 1.0](https://www.omg.org/spec/PPMN/)
+- **Sources primaires :** [RAAML 1.1](https://www.omg.org/spec/RAAML/1.1) · [RAAML 1.2 Beta 1](https://www.omg.org/spec/RAAML/1.2/Beta1) · [SysML v2.0](https://www.omg.org/spec/SysML/2.0) · [Spécification du langage SysML v2.0](https://www.omg.org/spec/SysML/2.0/Language/PDF) · [Présentation de SysML v2](https://www.omg.org/sysml/sysmlv2/) · [Annonce OMG d'adoption finale (21/07/2025)](https://www.omg.org/news/releases/pr2025/07-21-25.htm) · [UTP 2.3 Beta 1](https://www.omg.org/spec/UTP2) · [ReqIF 1.2](https://www.omg.org/spec/ReqIF/1.2) · [Structured Metrics Metamodel 1.2](https://www.omg.org/spec/SMM/1.2) · [PPMN 1.0](https://www.omg.org/spec/PPMN/)
 - **Concepts pertinents :** analyse structurée des risques et de la sécurité ; exigences, structure, comportement et vérification des systèmes ; spécification des tests fondée sur les modèles ; échange d'exigences ; définitions et résultats de mesure ; provenance des entités, activités et agents.
 - **Utilité pour GovCheck :** sources primaires des candidats couvrant les domaines d'ingénierie, y compris les artefacts de modèle et d'échange lisibles par machine lorsqu'ils sont publiés.
 - **Limite :** ces modèles ne sont pas interchangeables et ne fournissent pas une autorité de gouvernance commune. Leurs versions et maturités diffèrent : RAAML 1.1 est formel tandis que 1.2 Beta 1 est en cours ; UTP 2.3 est Beta 1 ; SysML 2.0, ReqIF 1.2, SMM 1.2 et PPMN 1.0 sont des entrées formelles du catalogue. Vérifier la version épinglée et le support des outils avant adoption.
@@ -1175,7 +1177,7 @@
 <a id="r-119"></a>
 ### R-119 — OMG Systems Modeling Language (SysML) v2.0
 - **Cité par :** [0009-intent-record-and-authority](decisions/0009-intent-record-and-authority.fr.md), [intent-impact-analysis](intent-impact-analysis.fr.md), [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.fr.md)
-- **Source primaire :** [Spécification OMG SysML](https://www.omg.org/spec/SysML)
+- **Sources primaires :** [OMG SysML v2.0](https://www.omg.org/spec/SysML/2.0) · [PDF de la spécification du langage](https://www.omg.org/spec/SysML/2.0/Language/PDF) · [Annonce OMG d'adoption finale, 21 juillet 2025](https://www.omg.org/news/releases/pr2025/07-21-25.htm).
 - **Concepts pertinents :** modélisation normalisée des systèmes couvrant exigences, comportement, structure, analyse et vérification ; relations de modèle et interopérabilité par API normalisées.
 - **Utilité pour GovCheck :** source candidate pour des relations typées entre exigences, éléments de modèle, conception et vérification, et d'éventuels profils d'échange.
 - **Limite :** SysML est un langage de modélisation des systèmes, pas le métamodèle de gouvernance GovCheck ni une sérialisation obligatoire.
@@ -1641,3 +1643,23 @@
 - **Utilité :** spécifie les algorithmes de clés/signatures Ed25519/Ed448 et leurs vecteurs de test.
 - **Limite :** l'algorithme ne définit ni identité, ni autorisation, ni cycle de vie des clés, ni temps fiable, ni sémantique de politique DSSE.
 - **Cité par :** [Architecture 0039](architecture/0039-detached-dsse-trust-policy.fr.md), [Spécification 0008](specifications/0008-interoperable-assurance-attestations.fr.md), [Spécification 0009](specifications/0009-independent-review-attestations.fr.md), [Spécification 0010](specifications/0010-authenticated-acceptance-decisions.fr.md).
+
+<a id="r-234"></a>
+
+### R-234 — OASIS OSLC Core 3.0
+- **Type :** spécification primaire d'interopérabilité ; standard OASIS (2021).
+- **Source primaire :** [OSLC Core 3.0 OASIS Standard, Partie 1](https://docs.oasis-open-projects.org/oslc-op/core/v3.0/os/oslc-core.html) · [Catalogue des spécifications OSLC actives](https://www.open-services.net/specifications/).
+- **Concepts pertinents :** interopérabilité des ressources et services fondée sur Linked Data, découverte, vocabulaires et liens entre outils.
+- **Utilité pour GovCheck :** couche candidate de transport/interopérabilité pour relier des ressources d'artefacts typés entre outils.
+- **Limite :** un lien OSLC ou URI de ressource n'est pas à lui seul une relation d'assurance sémantique, une preuve, une autorisation ou une démonstration.
+- **Cité par :** [matrice candidate de relations typées](research/typed-metamodel-relation-candidate.fr.md), [audit de couverture sémantique du métamodèle](research/metamodel-semantic-coverage-audit.fr.md).
+
+<a id="r-235"></a>
+
+### R-235 — OASIS OSLC Core 3.0, Partie 6 : Resource Shape
+- **Type :** spécification primaire de contraintes/interoperabilité.
+- **Source primaire :** [OSLC Resource Shape 3.0 OASIS Standard](https://docs.oasis-open-projects.org/oslc-op/core/v3.0/os/resource-shape.html).
+- **Concepts pertinents :** association de formes de ressources et contraintes de validation des représentations interopérables.
+- **Utilité pour GovCheck :** validation structurelle candidate des enveloppes d'échange et des payloads de liens typés.
+- **Limite :** la conformité aux formes établit uniquement des contraintes structurelles ; elle n'établit ni vérité, ni authenticité de provenance, ni autorité, ni raffinement sémantique, ni suffisance des preuves.
+- **Cité par :** [matrice candidate de relations typées](research/typed-metamodel-relation-candidate.fr.md), [audit de couverture sémantique du métamodèle](research/metamodel-semantic-coverage-audit.fr.md).

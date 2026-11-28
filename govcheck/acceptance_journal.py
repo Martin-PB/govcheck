@@ -12,8 +12,10 @@ from typing import Any
 
 try:
     from govcheck.journal import Journal, canonical_json_bytes
+    from govcheck.vcs_provenance import build_git_provenance
 except ImportError:  # standalone GovCheck installation
     from journal import Journal, canonical_json_bytes
+    from vcs_provenance import build_git_provenance
 
 
 CONFIG_KEYS = (
@@ -76,6 +78,23 @@ def append_verified_decision(env: dict[str, str], gate_payload: dict[str, Any]) 
     if genesis["governanceRevision"] != env.get("GOVCHECK_GOVERNANCE_REVISION", ""):
         raise AcceptanceJournalError("journal genesis governance revision does not match the gate")
 
+    for key in ("GOVCHECK_REPOSITORY_URI", "GOVCHECK_GOVERNANCE_DIGEST"):
+        if not env.get(key, "").strip():
+            raise AcceptanceJournalError("journal provenance requires " + key)
+    provenance = build_git_provenance(
+        repository_id=gate_payload["repository_id"],
+        repository_uri=env["GOVCHECK_REPOSITORY_URI"],
+        target_ref=gate_payload["ref"],
+        candidate_commit=gate_payload["candidate"],
+        candidate_content_digest=gate_payload["candidate_content_digest"],
+        base_commit=gate_payload["base"],
+        base_content_digest=gate_payload["base_content_digest"],
+        governance_scope_id=scope_id,
+        governance_revision=env["GOVCHECK_GOVERNANCE_REVISION"],
+        governance_digest=env["GOVCHECK_GOVERNANCE_DIGEST"],
+        adapter_id="govcheck.git-acceptance-gate",
+        adapter_version="1",
+    )
     payload = {
         "decisionId": decision_id,
         "decisionResult": result,
@@ -91,6 +110,7 @@ def append_verified_decision(env: dict[str, str], gate_payload: dict[str, Any]) 
         "governanceRevision": env["GOVCHECK_GOVERNANCE_REVISION"],
         "scopeId": scope_id,
         "riskAcceptance": gate_payload.get("risk_acceptance"),
+        "vcsProvenance": provenance,
     }
     idempotency_key = "acceptance-decision:" + hashlib.sha256(canonical_json_bytes(payload)).hexdigest()
     event_id = "acceptance-gate-result:" + hashlib.sha256(canonical_json_bytes(payload)).hexdigest()

@@ -20,10 +20,13 @@ USES_ITEM = re.compile(r"""^\s{4}uses:\s*['"]?(\./\.github/workflows/[^\s'"]+\.y
 GLOB_POLICY_FILE = Path("docs/ci-routing-glob-policy.json")
 GLOB_PATTERN = re.compile(r"[*?\[\]{}!]")
 CATEGORY_POLICY_FILE = Path("docs/ci-routing-category-policy.json")
-TLC_WORKFLOWS = {
+SHARED_TLC_WORKFLOWS = {
     ".github/workflows/tla-lifecycle.yml",
     ".github/workflows/tla-assurance.yml",
     ".github/workflows/tla-authority.yml",
+}
+TLC_WORKFLOWS = SHARED_TLC_WORKFLOWS | {
+    ".github/workflows/tla-governance-applicability.yml",
 }
 
 
@@ -233,6 +236,39 @@ def audit_category_policy(root: Path, reports: list[dict]) -> tuple[dict, list[d
                     "expected_workflow": expected_workflow,
                     "declared_workflows": sorted(entry["workflows"]),
                 })
+    additional_routes = policy.get("additionalWorkflowRouting", [])
+    if not isinstance(additional_routes, list):
+        raise WorkflowParseError(f"{policy_path}: additionalWorkflowRouting must be an array")
+    for route in additional_routes:
+        if not isinstance(route, dict):
+            raise WorkflowParseError(f"{policy_path}: each additional workflow route must be an object")
+        workflow = route.get("workflow")
+        required_paths = route.get("requiredPaths")
+        if not isinstance(workflow, str) or not workflow:
+            raise WorkflowParseError(f"{policy_path}: additional route workflow must be a non-empty path")
+        if not isinstance(required_paths, list) or not all(
+            isinstance(item, str) and item for item in required_paths
+        ):
+            raise WorkflowParseError(f"{policy_path}: additional route requiredPaths must be non-empty strings")
+        report = report_by_path.get(workflow)
+        if report is None:
+            findings.append({"kind": "additional-workflow-missing", "workflow": workflow})
+            continue
+        for source_path in required_paths:
+            if not (root / source_path).is_file():
+                findings.append({
+                    "kind": "additional-workflow-source-path-missing",
+                    "workflow": workflow,
+                    "path": source_path,
+                })
+            for event in EVENTS:
+                if event not in report["events"] or source_path not in set(report["events"][event]):
+                    findings.append({
+                        "kind": "additional-workflow-path-missing",
+                        "workflow": workflow,
+                        "event": event,
+                        "path": source_path,
+                    })
     shared_category = policy.get("sharedTlcCategory")
     if shared_category is not None:
         if not isinstance(shared_category, str) or not shared_category:
@@ -243,11 +279,11 @@ def audit_category_policy(root: Path, reports: list[dict]) -> tuple[dict, list[d
                 "kind": "shared-tlc-category-missing",
                 "category": shared_category,
             })
-        elif set(shared_entry["workflows"]) != TLC_WORKFLOWS:
+        elif set(shared_entry["workflows"]) != SHARED_TLC_WORKFLOWS:
             findings.append({
                 "kind": "shared-tlc-workflow-mismatch",
                 "category": shared_category,
-                "expected_workflows": sorted(TLC_WORKFLOWS),
+                "expected_workflows": sorted(SHARED_TLC_WORKFLOWS),
                 "declared_workflows": sorted(shared_entry["workflows"]),
             })
     for name, entry in mapped.items():
@@ -304,6 +340,10 @@ def audit_category_policy(root: Path, reports: list[dict]) -> tuple[dict, list[d
         "policy_model_specific_categories": sorted(policy_model_specific),
         "model_input_sets": model_input_sets,
         "shared_tlc_category": shared_category,
+        "additional_workflow_routing": [
+            {"workflow": route["workflow"], "required_paths": sorted(route["requiredPaths"])}
+            for route in additional_routes
+        ],
     }, findings
 
 
@@ -376,6 +416,7 @@ def audit_workflows(root: str | Path) -> dict:
             "local reusable-workflow file existence and path routing",
             "exact-pattern justification for wildcard path filters",
             "TLA+ category inventory and declared source/config/semantics-to-workflow routing",
+            "explicit PR/push path inventory for additional model workflows",
         ],
         "limitations": [
             "This is a constrained parser, not a general YAML implementation.",

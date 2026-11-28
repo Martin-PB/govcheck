@@ -159,5 +159,26 @@
     "AssuranceInputs": ".github/workflows/tla-assurance.yml",
     "AuthorityInputs": ".github/workflows/tla-authority.yml"
   },
-  "sharedTlcCategory": "SharedTLCWorkflow"
+  "sharedTlcCategory": "SharedTLCWorkflow",
+  "additionalWorkflowRouting": [
+    {
+      "workflow": ".github/workflows/tla-governance-applicability.yml",
+      "requiredPaths": [
+        "formal/tla/GovCheckGovernanceApplicability.tla",
+        "formal/tla/GovCheckGovernanceApplicability.cfg",
+        "formal/tla/GovCheckGovernanceContextBinding.tla",
+        "formal/tla/GovCheckGovernanceContextBinding.cfg",
+        "formal/tla/GovCheckCanonicalPublication.tla",
+        "formal/tla/GovCheckCanonicalPublication.cfg",
+        "formal/tla/GovCheckGovernanceControls.tla",
+        "formal/tla/GovCheckGovernanceControls.cfg",
+        "formal/tla/GovCheckJournalRecovery.tla",
+        "formal/tla/GovCheckJournalRecovery.cfg",
+        "docs/specifications/0006-governance-revision-applicability.md",
+        "docs/specifications/0006-governance-revision-applicability.fr.md",
+        ".github/workflows/tla-governance-applicability.yml",
+        ".github/workflows/tla-model-reusable.yml"
+      ]
+    }
+  ]
 }

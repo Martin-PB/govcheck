@@ -10,7 +10,7 @@ Create a trust-policy JSON file on protected `main`, for example:
 
 It must use the existing GovCheck trust-policy schema and contain:
 
-- `schemaVersion: "1"` and `policyId: "urn:govcheck:trust-policy:v1"`;
+- `schemaVersion: "1"` and `policyId: "govcheck.attestation-trust-policy/v1"`;
 - a governance-controlled `revision`;
 - `openssl.path` as an absolute executable path and `openssl.sha256` as its raw 64-hex SHA-256;
 - at least one active `ed25519` public key with `keyId`, `publicKeyPath`, `publicKeySha256`, `principalId` and the required `governance-authority` role (or another configured role).

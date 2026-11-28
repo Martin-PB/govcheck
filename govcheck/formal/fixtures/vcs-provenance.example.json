@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "1",
+  "repository": {
+    "id": "repo:12345",
+    "uri": "https://github.com/example/project"
+  },
+  "vcs": {
+    "kind": "git",
+    "adapterId": "govcheck.git-provenance",
+    "adapterVersion": "1"
+  },
+  "target": {
+    "kind": "ref",
+    "name": "refs/heads/main"
+  },
+  "base": {
+    "nativeRevision": "2222222222222222222222222222222222222222",
+    "contentDigest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+  },
+  "candidate": {
+    "nativeRevision": "1111111111111111111111111111111111111111",
+    "contentDigest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "changeSet": {
+    "nativeIds": [
+      "1111111111111111111111111111111111111111"
+    ],
+    "digest": "sha256:a62181d98445431c22156f36057f3c33cb5605045865c7a9287cb9c48925ac3a"
+  },
+  "governance": {
+    "scopeId": "repo:example/project",
+    "revision": "gov-17",
+    "digest": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+  },
+  "observedAt": "2026-11-28T12:00:00Z"
+}

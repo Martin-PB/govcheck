@@ -22,6 +22,8 @@ class FormalFixtureValidationTests(unittest.TestCase):
         self.assertEqual(report["package_schemas_checked"], 14)
         self.assertEqual(report["documentation_schemas_checked"], 1)
         self.assertEqual(report["fixtures_checked"], 7)
+        self.assertEqual(report["fixture_schema_validations"], 14)
+        self.assertEqual(report["package_schemas_fixture_covered"], 5)
         self.assertEqual(report["finding_count"], 0)
 
     def test_each_schema_rejects_missing_required_property(self):

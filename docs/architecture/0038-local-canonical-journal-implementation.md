@@ -114,3 +114,27 @@ The event explicitly says `observationResult=observed` and `authorityStatus=not-
 
 
 The observer also has a strict local CLI entry point: `python -m govcheck.pijul_journal --provenance-json <external-record.json> --observation-kind channel-state-observed|push-attempt-observed`. It rejects duplicate JSON keys, non-standard JSON constants and input files inside the Pijul worktree, and prints the durable receipt only after commit. The input record must come from a trusted native adapter; the CLI does not scrape human-readable `pijul log` output or invent a channel hash.
+
+
+## 11. Optional authenticated DSSE receipt export
+
+`govcheck.journal_attestation` exports a selected, fully verified journal event and its durable receipt as an in-toto Statement carried in a DSSE envelope. The predicate includes the full event, receipt, verified journal head at signing time, and native VCS candidate/base/governance bindings. The event/receipt digests and subject binding are validated before signing and again by the DSSE statement validator.
+
+Signing is delegated to the operator-pinned OpenSSL executable (absolute path and SHA-256 pin). GovCheck does not implement signature primitives, generate keys or manage private keys. The supplied Ed25519 private key must be mode 0600 and outside the repository; the trust policy and output envelope must also be outside the repository. The signer self-verifies the envelope against the pinned trust policy and required role before atomically publishing a new output file; it refuses to overwrite an existing file.
+
+Example invocation:
+
+```sh
+python -m govcheck.journal_attestation \\
+  --database /var/lib/govcheck/journal.sqlite \\
+  --scope-id repo:example/project --position 42 \\
+  --private-key /etc/govcheck/authority-ed25519.pem \\
+  --key-id governance-root-2026 \\
+  --openssl /usr/bin/openssl --openssl-sha256 <pinned-binary-sha256> \\
+  --trust-policy /etc/govcheck/trust-policy.json \\
+  --trust-policy-sha256 <pinned-policy-sha256> \\
+  --repository-root /srv/git/project.git \\
+  --output /var/lib/govcheck/receipts/position-42.dsse.json
+```
+
+The signature proves that the configured signer endorsed the receipt and journal chain state verified at signing time. It does not prevent later privileged database rewriting, and it does not replace re-verification of the current journal. Authenticated receipt export is optional and does not change local gate enforcement.

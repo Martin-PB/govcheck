@@ -1,6 +1,6 @@
 # Activate the authenticated GitHub receipt check
 
-This guide configures the check source merged in PR #185. It does **not** configure branch protection automatically.
+This guide configures the check source merged in PR #185. It does **not** configure branch protection automatically. The check is opt-in: without `GOVCHECK_RECEIPT_CHECK_ENABLED=true`, PR lifecycle events clear any stale pending check and receipt comments do not run verification.
 
 ## 1. Commit a trusted public-key policy
 
@@ -34,6 +34,9 @@ gh variable set GOVCHECK_EXPECTED_POLICY_DIGEST --body "sha256:<64-hex acceptanc
 
 gh variable set GOVCHECK_REQUIRED_ROLE --body "governance-authority"
 gh variable set GOVCHECK_PROTECTED_BASE_REF --body "main"
+
+# Enable only after the trust policy, all pins and the required-check ruleset are ready.
+gh variable set GOVCHECK_RECEIPT_CHECK_ENABLED --body "true"
 ```
 
 The journal scope, repository ID/URI, governance revision/digest and acceptance-policy digest must be the same values used by the trusted local acceptance gate. Do not guess or substitute the trust-policy digest for the governance or acceptance-policy digest.

@@ -53,6 +53,10 @@ jobs:
         self.assertEqual(report["finding_count"], 0)
 
     def test_asymmetric_paths_are_reported(self):
+        (self.root / "docs" / "ci-routing-glob-policy.json").write_text(
+            json.dumps({"format": "govcheck.ci-routing-glob-policy/v1", "patterns": []}),
+            encoding="utf-8",
+        )
         self.write("asymmetric.yml", """name: asymmetric
 on:
   pull_request:

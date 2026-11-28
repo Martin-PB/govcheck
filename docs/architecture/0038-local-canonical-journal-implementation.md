@@ -104,3 +104,10 @@ This binds the journal's Git event to native commit/ref identity and materialize
 
 
 For authenticated decisions, the provenance timestamp is taken from the signed decision's `decidedOn` field, so replaying the same signed decision produces the same provenance payload and idempotency key. The journal envelope's own `createdAt` records the actual append time. Unauthenticated gate attempts use the observation timestamp of that attempt and are not represented as a signed authority decision.
+
+
+## 10. Pijul local provenance observer
+
+`govcheck.pijul_journal.append_pijul_observation` accepts a validated Pijul-native provenance record and appends `govcheck.pijul.provenance-observed/v1` to the canonical local journal. It pins repository URI/identity, governance scope/revision/digest and journal genesis authority/revision; requires the database to be outside the Pijul working tree; uses deterministic idempotency; and attributes the event to a fixed local observer actor.
+
+The event explicitly says `observationResult=observed` and `authorityStatus=not-established-by-vcs-observation`. Supported kinds are local channel-state observation and push-attempt observation. There is deliberately no `remote-accepted` kind: the official Pijul manual documents local hooks before `record` (currently only that hook), not a mandatory remote acceptance hook (R-226). This observer does not intercept `pijul push`, authenticate the local user or establish remote publication.

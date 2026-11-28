@@ -41,6 +41,20 @@ The examples deliberately use reserved `example.invalid` references and syntheti
 
 [version-governance-validator.md](version-governance-validator.md) documents the experimental standard-library validator and its bundle contract. The envelope schema references the two record schemas; the validator performs additional cross-record checks. It intentionally returns `unknown` for authorized decisions until delegation can be resolved against an adopted authority registry.
 
+## Executable schema and fixture validation
+
+The Draft 2020-12 schemas and synthetic examples are checked by:
+
+```sh
+python3 -m pip install --requirement requirements-validation.txt
+python3 scripts/validate-formal-fixtures.py --root .
+python3 -m unittest discover -s tests -p 'test_formal_fixture_validation.py' -v
+```
+
+The command validates every schema against the Draft 2020-12 meta-schema, validates each mapped `formal/fixtures/*.example.json` instance with format checking enabled, and fails if a schema has no example fixture or a fixture has no explicit schema mapping. The mapping is deliberately explicit in `scripts/validate-formal-fixtures.py`; adding a schema or fixture requires updating it and its tests.
+
+The report sets `json_schema_validation_performed` to `true` only after the schema/instance validation path has actually run. The separate cross-record validator continues to report this field as `false` when it performs only its own structural and semantic checks; it does not silently imply JSON Schema validation.
+
 ## Validation boundary
 
 JSON Schema validates record shape, required fields, enumerations and syntax. A future evaluator must additionally resolve authority and delegation, verify revision existence/integrity, assess compatibility semantics, compute dependency impact and determine evidence freshness. Unknown authority and undetermined compatibility block authorization.

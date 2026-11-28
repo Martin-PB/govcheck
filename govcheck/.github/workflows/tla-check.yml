@@ -80,6 +80,12 @@ jobs:
             config: GovCheckAcceptanceBoundaryAdvisory.cfg
           - model: GovCheckAcceptanceBoundary
             config: GovCheckAcceptanceBoundaryAdminBypass.cfg
+          - model: GovCheckPijulRemoteBoundary
+            config: GovCheckPijulRemoteBoundary.cfg
+          - model: GovCheckPijulRemoteBoundary
+            config: GovCheckPijulRemoteBoundaryAdvisory.cfg
+          - model: GovCheckPijulRemoteBoundary
+            config: GovCheckPijulRemoteBoundaryAdminBypass.cfg
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4

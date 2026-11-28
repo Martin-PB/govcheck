@@ -8,7 +8,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "formal" / "adversarial-candidate-corpus-v1.json"
 SHA_RE = re.compile(r"^[0-9a-f]{40,64}$")
-SEMVER_RE = re.compile(r"^[0-9]+\\.[0-9]+\\.[0-9]+$")
+SEMVER_RE = re.compile(r"^[0-9]+\.[0-9]+\.[0-9]+$")
 
 
 class AdversarialCandidateCorpusTests(unittest.TestCase):

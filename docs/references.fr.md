@@ -33,7 +33,7 @@
 | Model checking et sémantique des automates temporisés | R-215–R-217 |
 | Plateformes VCS, forges et CI alternatives (CLI Pijul, GitLab, Woodpecker, SourceHut, Fossil) | R-109–R-113 |
 | CRDT, collaboration temps réel et transport réseau | R-45–R-50, R-66, R-87 |
-| Représentation des connaissances et interopérabilité | R-51–R-61, R-83–R-86 |
+| Représentation des connaissances et interopérabilité | R-51–R-61, R-83–R-86, R-234–R-235 |
 | Dépôts et études d'intégration | R-62 |
 | Protocoles d'intégration et conventions documentaires | R-67 |
 | Dépôts adjacents de l'écosystème GovCheck | R-68 |
@@ -141,9 +141,10 @@
 <a id="r-04"></a>
 
 ### R-04 — Goal Structuring Notation (GSN), standard communautaire
-- **Cité par :** [0010-assurance-proof-and-conformance](architecture/0010-assurance-proof-and-conformance.fr.md), [intent-impact-analysis](intent-impact-analysis.fr.md), [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.fr.md)
+- **Cité par :** [0010-assurance-proof-and-conformance](architecture/0010-assurance-proof-and-conformance.fr.md), [intent-impact-analysis](intent-impact-analysis.fr.md), [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.fr.md) · [matrice candidate de relations typées](research/typed-metamodel-relation-candidate.fr.md)
 
-- **Source primaire :** [Site officiel du standard GSN](https://scsc.uk/gsn)
+- **Sources primaires :** [Page SCSC du standard GSN](https://www.scsc.uk/gsn-standard) · [Notice de citation de la version 3 (04/05/2021)](https://scsc.uk/resources/citation_r1386.html) · [PDF version 3](https://scsc.uk/r1386.pdf)
+- **Note de version :** SCSC identifie la version 3 comme la version courante du standard GSN ; utiliser la source versionnée et ne pas la nommer « GSN 3.0 ».
 - **Concepts pertinents :** structuration des affirmations d'assurance, arguments, stratégies, contexte, hypothèses et preuves.
 - **Utilité pour GovCheck :** vocabulaire utile au dossier d'assurance et à la traçabilité des exigences vers les propriétés et les preuves.
 - **Limite :** structurer un argument ne rend pas automatiquement ses prémisses vraies et ne remplace pas les prédicats vérifiables.
@@ -338,9 +339,10 @@
 <a id="r-24"></a>
 
 ### R-24 — W3C PROV-O
-- **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md), [0018](architecture/0018-version-governance-and-compatibility-authority.fr.md) · [ADR 0004](decisions/0004-semantic-versioning-contracts.fr.md) · [Portefeuille de travaux](work-portfolio/README.fr.md), [ADR 0007](decisions/0007-mandatory-sources.fr.md)
+- **Cité par :** [0017](architecture/0017-artifact-identity-revision-and-versioning.fr.md), [0018](architecture/0018-version-governance-and-compatibility-authority.fr.md) · [ADR 0004](decisions/0004-semantic-versioning-contracts.fr.md) · [Portefeuille de travaux](work-portfolio/README.fr.md), [ADR 0007](decisions/0007-mandatory-sources.fr.md) · [matrice candidate de relations typées](research/typed-metamodel-relation-candidate.fr.md)
 
-- **Source primaire :** [Recommandation W3C PROV-O](https://www.w3.org/TR/prov-o/).
+- **Sources primaires :** [PROV-O — Recommandation W3C du 30 avril 2013](https://www.w3.org/TR/prov-o/) · [Vue d'ensemble PROV](https://www.w3.org/TR/prov-overview/).
+- **Note de version :** PROV-O exprime le modèle de données PROV en OWL 2 et est extensible ; GovCheck l'utilise uniquement comme vocabulaire de provenance.
 - **Concepts pertinents :** entités, activités, agents et relations de provenance.
 - **Utilité pour GovCheck :** vocabulaire de provenance et relations entre artefacts, activités et agents responsables.
 - **Limite :** une ontologie ne fournit à elle seule ni politique de dépôt, ni assurance d'identité, ni mécanisme d'application.
@@ -432,7 +434,7 @@
 
 <a id="r-34"></a>
 ### R-34 — OMG Structured Assurance Case Metamodel (SACM)
-- **Cité par :** [0010-assurance-proof-and-conformance](architecture/0010-assurance-proof-and-conformance.fr.md), [0021-assurance-claims-and-freshness](architecture/0021-assurance-claims-and-freshness.fr.md), [0024-project-bootstrap-and-assurance-profiles](architecture/0024-project-bootstrap-and-assurance-profiles.fr.md), [0025-runtime-observations-peak-and-sacm](architecture/0025-runtime-observations-peak-and-sacm.fr.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.fr.md), [intent-impact-analysis](intent-impact-analysis.fr.md), [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.fr.md), [audit de couverture sémantique du métamodèle](research/metamodel-semantic-coverage-audit.fr.md)
+- **Cité par :** [0010-assurance-proof-and-conformance](architecture/0010-assurance-proof-and-conformance.fr.md), [0021-assurance-claims-and-freshness](architecture/0021-assurance-claims-and-freshness.fr.md), [0024-project-bootstrap-and-assurance-profiles](architecture/0024-project-bootstrap-and-assurance-profiles.fr.md), [0025-runtime-observations-peak-and-sacm](architecture/0025-runtime-observations-peak-and-sacm.fr.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.fr.md), [intent-impact-analysis](intent-impact-analysis.fr.md), [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.fr.md) · [matrice candidate de relations typées](research/typed-metamodel-relation-candidate.fr.md), [audit de couverture sémantique du métamodèle](research/metamodel-semantic-coverage-audit.fr.md)
 
 - **Source primaire :** [Famille de spécifications OMG SACM](https://www.omg.org/spec/SACM/) · [Version formelle 2.3](https://www.omg.org/spec/SACM/2.3)
 - **Concepts pertinents :** représentation exploitable par machine de structures de dossiers d'assurance et relations entre affirmations, argumentation, artefacts et preuves.
@@ -786,7 +788,7 @@
 
 <a id="r-73"></a>
 ### R-73 — OMG Structured Assurance Case Metamodel (SACM), version 2.4 Beta 1 (septembre 2026)
-- **Cité par :** [0010-assurance-proof-and-conformance](architecture/0010-assurance-proof-and-conformance.fr.md), [0021-assurance-claims-and-freshness](architecture/0021-assurance-claims-and-freshness.fr.md), [0025-runtime-observations-peak-and-sacm](architecture/0025-runtime-observations-peak-and-sacm.fr.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.fr.md), [intent-impact-analysis](intent-impact-analysis.fr.md), [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.fr.md), [sacm24-beta1-interoperability-risk](research/sacm24-beta1-interoperability-risk.fr.md), [sacm24-claim-inference-mapping](research/sacm24-claim-inference-mapping.fr.md), [audit de couverture sémantique du métamodèle](research/metamodel-semantic-coverage-audit.fr.md)
+- **Cité par :** [0010-assurance-proof-and-conformance](architecture/0010-assurance-proof-and-conformance.fr.md), [0021-assurance-claims-and-freshness](architecture/0021-assurance-claims-and-freshness.fr.md), [0025-runtime-observations-peak-and-sacm](architecture/0025-runtime-observations-peak-and-sacm.fr.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.fr.md), [intent-impact-analysis](intent-impact-analysis.fr.md), [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.fr.md), [sacm24-beta1-interoperability-risk](research/sacm24-beta1-interoperability-risk.fr.md), [sacm24-claim-inference-mapping](research/sacm24-claim-inference-mapping.fr.md) · [matrice candidate de relations typées](research/typed-metamodel-relation-candidate.fr.md), [audit de couverture sémantique du métamodèle](research/metamodel-semantic-coverage-audit.fr.md)
 - **Sources primaires :** [page OMG SACM 2.4 Beta 1](https://www.omg.org/spec/SACM/2.4/Beta1) · [artefact PDF de spécification (normatif dans le paquet Beta 1)](https://www.omg.org/spec/SACM/2.4/Beta1/PDF) · [XML lisible par machine du métamodèle (normatif dans le paquet Beta 1), 04/05/2026](https://www.omg.org/spec/SACM/20260504/SACM2.4_Metamodel.xml). Le paquet bêta reste informatif/en cours ; SACM 2.3 demeure la base formelle adoptée.
 - **Résolutions d'issues pertinentes :** [SACM24-83 sujet explicite du Claim](https://issues.omg.org/issues/SACM24-83) · [SACM24-75 Assessment](https://issues.omg.org/issues/SACM24-75) · [SACM24-77 arguments avancés](https://issues.omg.org/issues/SACM24-77) · [SACM24-48 sémantique des inférences/relations](https://issues.omg.org/issues/SACM24-48).
 - **Concepts pertinents :** sujet explicite du Claim via SACMElement ; AssertionDeclarationKind (asserted, assumed, axiomatic, byRule) ; structures optionnelles de vérité/valeur/règle ; InferenceTypeKind (probable, collective, necessary, sufficient, necessaryAndSufficient, byRule) ; AssertionRule et InferenceRule ; extensions d'évaluation et d'arguments avancés.
@@ -795,7 +797,7 @@
 
 <a id="r-74"></a>
 ### R-74 — Hoover, Rosso-Llopart et Taran, *Evaluating Project Decisions: Case Studies in Software Engineering* (2009/2010)
-- **Cité par :** [0013-governance-metamodel](architecture/0013-governance-metamodel.fr.md), [0021-assurance-claims-and-freshness](architecture/0021-assurance-claims-and-freshness.fr.md), [0025-runtime-observations-peak-and-sacm](architecture/0025-runtime-observations-peak-and-sacm.fr.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.fr.md), [intent-impact-analysis](intent-impact-analysis.fr.md), [audit de couverture sémantique du métamodèle](research/metamodel-semantic-coverage-audit.fr.md), [Recherche décision et risque assumé](research/decision-and-assumed-risk-crosscutting-2026-11.fr.md), [Journal des événements du portefeuille](work-portfolio/events.fr.md)
+- **Cité par :** [0013-governance-metamodel](architecture/0013-governance-metamodel.fr.md), [0021-assurance-claims-and-freshness](architecture/0021-assurance-claims-and-freshness.fr.md), [0025-runtime-observations-peak-and-sacm](architecture/0025-runtime-observations-peak-and-sacm.fr.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.fr.md), [intent-impact-analysis](intent-impact-analysis.fr.md), [Recherche décision et risque assumé](research/decision-and-assumed-risk-crosscutting-2026-11.fr.md), [Journal des événements du portefeuille](work-portfolio/events.fr.md), [audit de couverture sémantique du métamodèle](research/metamodel-semantic-coverage-audit.fr.md)
 - **Sources primaires :** [Section PEAK du chapitre 1 (InformIT)](https://www.informit.com/articles/article.aspx?p=1409781&seqNum=3) · [Page du livre chez l'éditeur O’Reilly](https://www.oreilly.com/library/view/evaluating-project-decisions/9780321685629/)
 - **Référence bibliographique :** Carol L. Hoover, Mel Rosso-Llopart et Gil Taran, Addison-Wesley Professional, première publication en octobre 2009 (copyright 2010), ISBN 978-0-321-54456-8 ; le chapitre 1, §1.3 présente le modèle de décision PEAK.
 - **Concepts pertinents :** Problem, Experience, Assumptions et Knowledge comme entrées de la décision ; un processus de décision produit une solution et un risque assumé.
@@ -977,8 +979,8 @@
 
 <a id="r-95"></a>
 ### R-95 — Modèles OMG d'ingénierie, de risque, de test, d'exigences, de métriques et de provenance
-- **Cité par :** [0027-domain-semantic-standards-decisions-and-bootstrap](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.fr.md), [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.fr.md)
-- **Sources primaires :** [RAAML 1.1](https://www.omg.org/spec/RAAML/1.1) · [RAAML 1.2 Beta 1](https://www.omg.org/spec/RAAML/1.2/Beta1) · [SysML v2](https://www.omg.org/spec/SysML/2.0) · [Présentation de SysML v2](https://www.omg.org/sysml/sysmlv2/) · [UTP 2.3 Beta 1](https://www.omg.org/spec/UTP2) · [ReqIF 1.2](https://www.omg.org/spec/ReqIF/1.2) · [Structured Metrics Metamodel 1.2](https://www.omg.org/spec/SMM/1.2) · [PPMN 1.0](https://www.omg.org/spec/PPMN/)
+- **Cité par :** [0027-domain-semantic-standards-decisions-and-bootstrap](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.fr.md), [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.fr.md) · [matrice candidate de relations typées](research/typed-metamodel-relation-candidate.fr.md)
+- **Sources primaires :** [RAAML 1.1](https://www.omg.org/spec/RAAML/1.1) · [RAAML 1.2 Beta 1](https://www.omg.org/spec/RAAML/1.2/Beta1) · [SysML v2.0](https://www.omg.org/spec/SysML/2.0) · [Spécification du langage SysML v2.0](https://www.omg.org/spec/SysML/2.0/Language/PDF) · [Présentation de SysML v2](https://www.omg.org/sysml/sysmlv2/) · [Annonce OMG d'adoption finale (21/07/2025)](https://www.omg.org/news/releases/pr2025/07-21-25.htm) · [UTP 2.3 Beta 1](https://www.omg.org/spec/UTP2) · [ReqIF 1.2](https://www.omg.org/spec/ReqIF/1.2) · [Structured Metrics Metamodel 1.2](https://www.omg.org/spec/SMM/1.2) · [PPMN 1.0](https://www.omg.org/spec/PPMN/)
 - **Concepts pertinents :** analyse structurée des risques et de la sécurité ; exigences, structure, comportement et vérification des systèmes ; spécification des tests fondée sur les modèles ; échange d'exigences ; définitions et résultats de mesure ; provenance des entités, activités et agents.
 - **Utilité pour GovCheck :** sources primaires des candidats couvrant les domaines d'ingénierie, y compris les artefacts de modèle et d'échange lisibles par machine lorsqu'ils sont publiés.
 - **Limite :** ces modèles ne sont pas interchangeables et ne fournissent pas une autorité de gouvernance commune. Leurs versions et maturités diffèrent : RAAML 1.1 est formel tandis que 1.2 Beta 1 est en cours ; UTP 2.3 est Beta 1 ; SysML 2.0, ReqIF 1.2, SMM 1.2 et PPMN 1.0 sont des entrées formelles du catalogue. Vérifier la version épinglée et le support des outils avant adoption.
@@ -1025,7 +1027,7 @@
 
 <a id="r-102"></a>
 ### R-102 — Famille W3C PROV
-- **Cité par :** [0027-domain-semantic-standards-decisions-and-bootstrap](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.fr.md), [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.fr.md)
+- **Cité par :** [0027-domain-semantic-standards-decisions-and-bootstrap](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.fr.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.fr.md), [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.fr.md) · [matrice candidate de relations typées](research/typed-metamodel-relation-candidate.fr.md)
 - **Source primaire :** [Vue d'ensemble W3C PROV](https://www.w3.org/TR/prov-overview/)
 - **Concepts pertinents :** famille de modèles de provenance interopérables couvrant entités, activités, agents et relations de dérivation/attribution, avec modèle de données, ontologie, contraintes et spécifications de sérialisation.
 - **Utilité pour GovCheck :** vocabulaire et famille de représentations candidates pour la provenance des décisions, sources, artefacts générés, observations et preuves.
@@ -1174,8 +1176,8 @@
 
 <a id="r-119"></a>
 ### R-119 — OMG Systems Modeling Language (SysML) v2.0
-- **Cité par :** [0009-intent-record-and-authority](decisions/0009-intent-record-and-authority.fr.md), [intent-impact-analysis](intent-impact-analysis.fr.md), [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.fr.md)
-- **Source primaire :** [Spécification OMG SysML](https://www.omg.org/spec/SysML)
+- **Cité par :** [0009-intent-record-and-authority](decisions/0009-intent-record-and-authority.fr.md), [intent-impact-analysis](intent-impact-analysis.fr.md), [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.fr.md) · [matrice candidate de relations typées](research/typed-metamodel-relation-candidate.fr.md)
+- **Sources primaires :** [OMG SysML v2.0](https://www.omg.org/spec/SysML/2.0) · [PDF de la spécification du langage](https://www.omg.org/spec/SysML/2.0/Language/PDF) · [Annonce OMG d'adoption finale, 21 juillet 2025](https://www.omg.org/news/releases/pr2025/07-21-25.htm).
 - **Concepts pertinents :** modélisation normalisée des systèmes couvrant exigences, comportement, structure, analyse et vérification ; relations de modèle et interopérabilité par API normalisées.
 - **Utilité pour GovCheck :** source candidate pour des relations typées entre exigences, éléments de modèle, conception et vérification, et d'éventuels profils d'échange.
 - **Limite :** SysML est un langage de modélisation des systèmes, pas le métamodèle de gouvernance GovCheck ni une sérialisation obligatoire.
@@ -1249,7 +1251,7 @@
 
 <a id="r-128"></a>
 ### R-128 — Assurance Forge : audit indépendant de l'impact d'implémentation de SACM 2.4 Beta 1 (2026-10-02 ; révision du dépôt 2026-11-03)
-- **Cité par :** [Rapport sur les risques d'interopérabilité SACM 2.4 Beta 1](research/sacm24-beta1-interoperability-risk.fr.md), [tranche de mapping sémantique SACM 2.4](research/sacm24-claim-inference-mapping.fr.md), [compte rendu intégré de cohérence du métamodèle](research/metamodel-coherence-prototype-execution.fr.md), [audit de couverture sémantique du métamodèle](research/metamodel-semantic-coverage-audit.fr.md), [ingestion source-native du métamodèle SACM](research/sacm-native-metamodel-ingestion.fr.md), [inventaire structurel XMI SACM](research/sacm-xmi-structural-inventory.fr.md), [journal des événements du portefeuille](work-portfolio/events.fr.md), [registre des éléments de travail](work-portfolio/work-items.fr.md), [Alignement des vues source SACM](research/sacm24-source-view-alignment.fr.md)
+- **Cité par :** [Rapport sur les risques d'interopérabilité SACM 2.4 Beta 1](research/sacm24-beta1-interoperability-risk.fr.md), [tranche de mapping sémantique SACM 2.4](research/sacm24-claim-inference-mapping.fr.md), [compte rendu intégré de cohérence du métamodèle](research/metamodel-coherence-prototype-execution.fr.md), [ingestion source-native du métamodèle SACM](research/sacm-native-metamodel-ingestion.fr.md), [inventaire structurel XMI SACM](research/sacm-xmi-structural-inventory.fr.md), [journal des événements du portefeuille](work-portfolio/events.fr.md), [registre des éléments de travail](work-portfolio/work-items.fr.md), [Alignement des vues source SACM](research/sacm24-source-view-alignment.fr.md), [audit de couverture sémantique du métamodèle](research/metamodel-semantic-coverage-audit.fr.md)
 - **Sources primaires :** [Audit d'impact épinglé](https://github.com/lasrod/assurance-forge/blob/0f5187099be1c28fc725cb0f381afc695a135c89/docs/sacm/sacm-2.4-beta1-impact.md) · [script épinglé de récupération des artefacts officiels et contrôles SHA-256](https://github.com/lasrod/assurance-forge/blob/0f5187099be1c28fc725cb0f381afc695a135c89/scripts/fetch-sacm24-beta1-references.sh).
 - **Concepts pertinents :** absence rapportée d'un contrat stable d'échange natif d'instances 2.4 ; divergences texte/XML rapportées concernant les champs d'identité, littéraux de déclaration, multiplicités, type de valeur Claim et héritage ; la valeur Claim.value est confirmée par la figure normative 13.1 (MultiLangString), tandis que la figure informative 15.1.1 et le XML indiquent ExpressionLangString ; le localisateur exact de la clause 13.9 reste à vérifier ; conséquences d'implémentation et de versionnement.
 - **Usage dans GovCheck :** contre-vérification d'ingénierie indépendante indiquant que le texte et le métamodèle lisible par machine de SACM 2.4 Beta 1 doivent rester deux vues sources distinctes, sans normalisation silencieuse en un modèle unique.
@@ -1641,3 +1643,23 @@
 - **Utilité :** spécifie les algorithmes de clés/signatures Ed25519/Ed448 et leurs vecteurs de test.
 - **Limite :** l'algorithme ne définit ni identité, ni autorisation, ni cycle de vie des clés, ni temps fiable, ni sémantique de politique DSSE.
 - **Cité par :** [Architecture 0039](architecture/0039-detached-dsse-trust-policy.fr.md), [Spécification 0008](specifications/0008-interoperable-assurance-attestations.fr.md), [Spécification 0009](specifications/0009-independent-review-attestations.fr.md), [Spécification 0010](specifications/0010-authenticated-acceptance-decisions.fr.md).
+
+<a id="r-234"></a>
+
+### R-234 — OASIS OSLC Core 3.0
+- **Type :** spécification primaire d'interopérabilité ; standard OASIS (2021).
+- **Source primaire :** [OSLC Core 3.0 OASIS Standard, Partie 1](https://docs.oasis-open-projects.org/oslc-op/core/v3.0/os/oslc-core.html) · [Catalogue des spécifications OSLC actives](https://www.open-services.net/specifications/).
+- **Concepts pertinents :** interopérabilité des ressources et services fondée sur Linked Data, découverte, vocabulaires et liens entre outils.
+- **Utilité pour GovCheck :** couche candidate de transport/interopérabilité pour relier des ressources d'artefacts typés entre outils.
+- **Limite :** un lien OSLC ou URI de ressource n'est pas à lui seul une relation d'assurance sémantique, une preuve, une autorisation ou une démonstration.
+- **Cité par :** [matrice candidate de relations typées](research/typed-metamodel-relation-candidate.fr.md).
+
+<a id="r-235"></a>
+
+### R-235 — OASIS OSLC Core 3.0, Partie 6 : Resource Shape
+- **Type :** spécification primaire de contraintes/interoperabilité.
+- **Source primaire :** [OSLC Resource Shape 3.0 OASIS Standard](https://docs.oasis-open-projects.org/oslc-op/core/v3.0/os/resource-shape.html).
+- **Concepts pertinents :** association de formes de ressources et contraintes de validation des représentations interopérables.
+- **Utilité pour GovCheck :** validation structurelle candidate des enveloppes d'échange et des payloads de liens typés.
+- **Limite :** la conformité aux formes établit uniquement des contraintes structurelles ; elle n'établit ni vérité, ni authenticité de provenance, ni autorité, ni raffinement sémantique, ni suffisance des preuves.
+- **Cité par :** [matrice candidate de relations typées](research/typed-metamodel-relation-candidate.fr.md).

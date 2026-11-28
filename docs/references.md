@@ -33,7 +33,7 @@
 | Model checking and timed-automata semantics | R-215–R-217 |
 | Alternative VCS, forges and CI platforms (Pijul CLI, GitLab, Woodpecker, SourceHut, Fossil) | R-109–R-113 |
 | CRDTs, real-time collaboration and network transport | R-45–R-50, R-66, R-87 |
-| Knowledge representation and interoperability | R-51–R-61, R-83–R-86 |
+| Knowledge representation and interoperability | R-51–R-61, R-83–R-86, R-234–R-235 |
 | Integration project repositories and studies | R-62 |
 | Integration protocols and document conventions | R-67 |
 | Adjacent GovCheck ecosystem repositories | R-68 |
@@ -143,9 +143,10 @@
 <a id="r-04"></a>
 
 ### R-04 — Goal Structuring Notation (GSN) Community Standard
-- **Cited by:** [0010-assurance-proof-and-conformance](architecture/0010-assurance-proof-and-conformance.md), [intent-impact-analysis](intent-impact-analysis.md), [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.md)
+- **Cited by:** [0010-assurance-proof-and-conformance](architecture/0010-assurance-proof-and-conformance.md), [intent-impact-analysis](intent-impact-analysis.md), [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.md) · [typed metamodel relation candidate](research/typed-metamodel-relation-candidate.md)
 
-- **Primary source:** [GSN Community Standard — official site](https://scsc.uk/gsn)
+- **Primary sources:** [SCSC GSN Standard page](https://www.scsc.uk/gsn-standard) · [Version 3 citation record (2021-05-04)](https://scsc.uk/resources/citation_r1386.html) · [Version 3 PDF](https://scsc.uk/r1386.pdf)
+- **Version note:** SCSC identifies version 3 as the current GSN standard; use the versioned source and do not call it “GSN 3.0”.
 - **Relevant concepts:** structured assurance claims, arguments, strategies, context, assumptions and evidence.
 - **Use in GovCheck:** useful vocabulary for the assurance dossier and traceability from governance requirements to properties and evidence.
 - **Limit:** an assurance argument structures reasoning; it does not automatically make premises true or replace machine-checkable predicates.
@@ -338,9 +339,10 @@
 
 <a id="r-24"></a>
 ### R-24 — W3C PROV-O
-- **Cited by:** [0017](architecture/0017-artifact-identity-revision-and-versioning.md), [0018](architecture/0018-version-governance-and-compatibility-authority.md) · [ADR 0004](decisions/0004-semantic-versioning-contracts.md) · [Work portfolio](work-portfolio/README.md), [ADR 0007](decisions/0007-mandatory-sources.md)
+- **Cited by:** [0017](architecture/0017-artifact-identity-revision-and-versioning.md), [0018](architecture/0018-version-governance-and-compatibility-authority.md) · [ADR 0004](decisions/0004-semantic-versioning-contracts.md) · [Work portfolio](work-portfolio/README.md), [ADR 0007](decisions/0007-mandatory-sources.md) · [typed metamodel relation candidate](research/typed-metamodel-relation-candidate.md)
 
-- **Primary source:** [W3C PROV-O recommendation](https://www.w3.org/TR/prov-o/).
+- **Primary sources:** [PROV-O — W3C Recommendation, 30 April 2013](https://www.w3.org/TR/prov-o/) · [PROV overview](https://www.w3.org/TR/prov-overview/).
+- **Version note:** PROV-O expresses the PROV data model in OWL 2 and is extensible; GovCheck uses it as provenance vocabulary only.
 - **Relevant concepts:** entities, activities, agents and provenance relations.
 - **Use in GovCheck:** vocabulary for provenance and relationships between artifacts, activities and responsible agents.
 - **Limit:** an ontology does not itself provide repository policy, identity assurance or enforcement.
@@ -430,7 +432,7 @@
 
 <a id="r-34"></a>
 ### R-34 — OMG Structured Assurance Case Metamodel (SACM)
-- **Cited by:** [0010-assurance-proof-and-conformance](architecture/0010-assurance-proof-and-conformance.md), [0021-assurance-claims-and-freshness](architecture/0021-assurance-claims-and-freshness.md), [0024-project-bootstrap-and-assurance-profiles](architecture/0024-project-bootstrap-and-assurance-profiles.md), [0025-runtime-observations-peak-and-sacm](architecture/0025-runtime-observations-peak-and-sacm.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.md), [intent-impact-analysis](intent-impact-analysis.md), [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.md), [metamodel semantic-coverage audit](research/metamodel-semantic-coverage-audit.md)
+- **Cited by:** [0010-assurance-proof-and-conformance](architecture/0010-assurance-proof-and-conformance.md), [0021-assurance-claims-and-freshness](architecture/0021-assurance-claims-and-freshness.md), [0024-project-bootstrap-and-assurance-profiles](architecture/0024-project-bootstrap-and-assurance-profiles.md), [0025-runtime-observations-peak-and-sacm](architecture/0025-runtime-observations-peak-and-sacm.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.md), [intent-impact-analysis](intent-impact-analysis.md), [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.md), [metamodel semantic-coverage audit](research/metamodel-semantic-coverage-audit.md) · [typed metamodel relation candidate](research/typed-metamodel-relation-candidate.md)
 
 - **Primary source:** [OMG SACM specification family](https://www.omg.org/spec/SACM/) · [formal version 2.3](https://www.omg.org/spec/SACM/2.3)
 - **Relevant concepts:** machine-processable representation of assurance-case structures and relationships between claims, argumentation, artifacts and evidence.
@@ -784,7 +786,7 @@
 
 <a id="r-73"></a>
 ### R-73 — OMG Structured Assurance Case Metamodel (SACM), Version 2.4 Beta 1 (September 2026)
-- **Cited by:** [0010-assurance-proof-and-conformance](architecture/0010-assurance-proof-and-conformance.md), [0021-assurance-claims-and-freshness](architecture/0021-assurance-claims-and-freshness.md), [0025-runtime-observations-peak-and-sacm](architecture/0025-runtime-observations-peak-and-sacm.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.md), [intent-impact-analysis](intent-impact-analysis.md), [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.md), [sacm24-beta1-interoperability-risk](research/sacm24-beta1-interoperability-risk.md), [sacm24-claim-inference-mapping](research/sacm24-claim-inference-mapping.md), [metamodel semantic-coverage audit](research/metamodel-semantic-coverage-audit.md)
+- **Cited by:** [0010-assurance-proof-and-conformance](architecture/0010-assurance-proof-and-conformance.md), [0021-assurance-claims-and-freshness](architecture/0021-assurance-claims-and-freshness.md), [0025-runtime-observations-peak-and-sacm](architecture/0025-runtime-observations-peak-and-sacm.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.md), [intent-impact-analysis](intent-impact-analysis.md), [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.md), [sacm24-beta1-interoperability-risk](research/sacm24-beta1-interoperability-risk.md), [sacm24-claim-inference-mapping](research/sacm24-claim-inference-mapping.md), [metamodel semantic-coverage audit](research/metamodel-semantic-coverage-audit.md) · [typed metamodel relation candidate](research/typed-metamodel-relation-candidate.md)
 - **Primary sources:** [OMG SACM 2.4 Beta 1 specification page](https://www.omg.org/spec/SACM/2.4/Beta1) · [PDF specification artifact (normative within the Beta 1 package)](https://www.omg.org/spec/SACM/2.4/Beta1/PDF) · [machine-readable metamodel XML (normative within the Beta 1 package), 2026-05-04](https://www.omg.org/spec/SACM/20260504/SACM2.4_Metamodel.xml). The beta package is informational/in-process; SACM 2.3 remains the formal adopted baseline.
 - **Relevant issue resolutions:** [SACM24-83 explicit Claim subject](https://issues.omg.org/issues/SACM24-83) · [SACM24-75 Assessment](https://issues.omg.org/issues/SACM24-75) · [SACM24-77 advanced arguments](https://issues.omg.org/issues/SACM24-77) · [SACM24-48 inference/relationship semantics](https://issues.omg.org/issues/SACM24-48).
 - **Relevant concepts:** explicit Claim subject via SACMElement; AssertionDeclarationKind (asserted, assumed, axiomatic, byRule); optional assertion truth/value/rule structures; InferenceTypeKind (probable, collective, necessary, sufficient, necessaryAndSufficient, byRule); AssertionRule and InferenceRule; assessment and advanced-argument extensions.
@@ -975,8 +977,8 @@
 
 <a id="r-95"></a>
 ### R-95 — OMG engineering, risk, testing, requirements, metrics and provenance models
-- **Cited by:** [0027-domain-semantic-standards-decisions-and-bootstrap](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.md), [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.md)
-- **Primary sources:** [RAAML 1.1](https://www.omg.org/spec/RAAML/1.1) · [RAAML 1.2 Beta 1](https://www.omg.org/spec/RAAML/1.2/Beta1) · [SysML v2](https://www.omg.org/spec/SysML/2.0) · [SysML v2 overview](https://www.omg.org/sysml/sysmlv2/) · [UTP 2.3 Beta 1](https://www.omg.org/spec/UTP2) · [ReqIF 1.2](https://www.omg.org/spec/ReqIF/1.2) · [Structured Metrics Metamodel 1.2](https://www.omg.org/spec/SMM/1.2) · [PPMN 1.0](https://www.omg.org/spec/PPMN/)
+- **Cited by:** [0027-domain-semantic-standards-decisions-and-bootstrap](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.md), [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.md) · [typed metamodel relation candidate](research/typed-metamodel-relation-candidate.md)
+- **Primary sources:** [RAAML 1.1](https://www.omg.org/spec/RAAML/1.1) · [RAAML 1.2 Beta 1](https://www.omg.org/spec/RAAML/1.2/Beta1) · [SysML v2.0](https://www.omg.org/spec/SysML/2.0) · [SysML v2.0 Language Specification](https://www.omg.org/spec/SysML/2.0/Language/PDF) · [SysML v2 overview](https://www.omg.org/sysml/sysmlv2/) · [OMG final-adoption announcement (21 July 2025)](https://www.omg.org/news/releases/pr2025/07-21-25.htm) · [UTP 2.3 Beta 1](https://www.omg.org/spec/UTP2) · [ReqIF 1.2](https://www.omg.org/spec/ReqIF/1.2) · [Structured Metrics Metamodel 1.2](https://www.omg.org/spec/SMM/1.2) · [PPMN 1.0](https://www.omg.org/spec/PPMN/)
 - **Relevant concepts:** risk/safety analysis; systems requirements, structure, behavior and verification; model-based test specification; requirements exchange; measurement definitions/results; provenance of entities, activities and agents.
 - **Use in GovCheck:** primary sources for candidate engineering-domain models, including machine-readable model and exchange artifacts where published.
 - **Limit:** these models are not interchangeable and provide no common governance authority. Versions and maturity differ: RAAML 1.1 is formal and 1.2 Beta 1 is in process; UTP 2.3 is Beta 1; SysML 2.0, ReqIF 1.2, SMM 1.2 and PPMN 1.0 are formal catalogue entries. Verify pinned versions and implementation support before adoption.
@@ -1023,7 +1025,7 @@
 
 <a id="r-102"></a>
 ### R-102 — W3C PROV family
-- **Cited by:** [0027-domain-semantic-standards-decisions-and-bootstrap](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.md), [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.md)
+- **Cited by:** [0027-domain-semantic-standards-decisions-and-bootstrap](architecture/0027-domain-semantic-standards-decisions-and-bootstrap.md), [metamodel-design-dossier](decisions/metamodel-design-dossier.md), [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.md) · [typed metamodel relation candidate](research/typed-metamodel-relation-candidate.md)
 - **Primary source:** [W3C PROV overview](https://www.w3.org/TR/prov-overview/)
 - **Relevant concepts:** interoperable provenance models for entities, activities, agents and derivation/attribution, with data model, ontology, constraints and serialization specifications.
 - **Use in GovCheck:** candidate vocabulary and representation family for provenance across decisions, sources, generated artifacts, observations and evidence.
@@ -1173,8 +1175,8 @@
 
 <a id="r-119"></a>
 ### R-119 — OMG Systems Modeling Language (SysML) v2.0
-- **Cited by:** [0009-intent-record-and-authority](decisions/0009-intent-record-and-authority.md), [intent-impact-analysis](intent-impact-analysis.md), [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.md)
-- **Primary source:** [OMG SysML specification](https://www.omg.org/spec/SysML)
+- **Cited by:** [0009-intent-record-and-authority](decisions/0009-intent-record-and-authority.md), [intent-impact-analysis](intent-impact-analysis.md), [metamodel-ontology-reuse-assessment](research/metamodel-ontology-reuse-assessment.md) · [typed metamodel relation candidate](research/typed-metamodel-relation-candidate.md)
+- **Primary sources:** [OMG SysML v2.0](https://www.omg.org/spec/SysML/2.0) · [Language Specification PDF](https://www.omg.org/spec/SysML/2.0/Language/PDF) · [OMG final-adoption announcement, 21 July 2025](https://www.omg.org/news/releases/pr2025/07-21-25.htm).
 - **Relevant concepts:** standardized systems modeling for requirements, behavior, structure, analysis and verification; model relationships and interoperability through standardized APIs.
 - **Use in GovCheck:** candidate source for typed relationships among requirements, model elements, design and verification, and possible exchange/mapping profiles.
 - **Limit:** SysML is a systems-modeling language, not GovCheck's repository-governance metamodel or a mandatory serialization.
@@ -1640,3 +1642,23 @@
 - **Use:** specifies Ed25519/Ed448 key and signature algorithms and test vectors.
 - **Limit:** the algorithm does not define identity, authorization, key lifecycle, trusted time or DSSE policy semantics.
 - **Cited by:** [Architecture 0039](architecture/0039-detached-dsse-trust-policy.md), [Specification 0008](specifications/0008-interoperable-assurance-attestations.md), [Specification 0009](specifications/0009-independent-review-attestations.md), [Specification 0010](specifications/0010-authenticated-acceptance-decisions.md).
+
+<a id="r-234"></a>
+
+### R-234 — OASIS OSLC Core 3.0
+- **Type:** Primary interoperability specification; OASIS Standard (2021).
+- **Primary source:** [OSLC Core 3.0 OASIS Standard, Part 1](https://docs.oasis-open-projects.org/oslc-op/core/v3.0/os/oslc-core.html) · [OSLC active specifications catalogue](https://www.open-services.net/specifications/).
+- **Relevant concepts:** Linked Data-based resource and service interoperability, discovery, vocabularies and cross-tool links.
+- **Use in GovCheck:** candidate transport/interoperability layer for linking typed artifact resources across tools.
+- **Limit:** an OSLC link or resource URI is not by itself a semantic assurance relation, evidence, authority grant or proof.
+- **Cited by:** [typed metamodel relation candidate](research/typed-metamodel-relation-candidate.md).
+
+<a id="r-235"></a>
+
+### R-235 — OASIS OSLC Core 3.0, Part 6: Resource Shape
+- **Type:** Primary constraint/interoperability specification.
+- **Primary source:** [OSLC Resource Shape 3.0 OASIS Standard](https://docs.oasis-open-projects.org/oslc-op/core/v3.0/os/resource-shape.html).
+- **Relevant concepts:** resource-shape association and validation constraints for interoperable resource representations.
+- **Use in GovCheck:** candidate structural validation for exchange envelopes and typed link payloads.
+- **Limit:** shape conformance establishes structural constraints only; it does not establish truth, provenance authenticity, authority, semantic refinement or evidence sufficiency.
+- **Cited by:** [typed metamodel relation candidate](research/typed-metamodel-relation-candidate.md).

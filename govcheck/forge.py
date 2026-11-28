@@ -436,12 +436,17 @@ def audit_ruleset_payload(ruleset: dict, expected_checks, expected_source_id: in
         if not strict:
             findings.append("strict required-status-check freshness is disabled")
 
-    bypass = ruleset.get("bypass_actors") or []
-    if bypass:
-        findings.append("ruleset has bypass actors")
+    bypass_value = ruleset.get("bypass_actors")
+    if not isinstance(bypass_value, list):
+        findings.append("ruleset bypass-actor configuration is missing or malformed")
+        bypass = []
+    else:
+        bypass = bypass_value
+        if bypass:
+            findings.append("ruleset has bypass actors")
     current_bypass = ruleset.get("current_user_can_bypass")
-    if current_bypass is not None and current_bypass != "never":
-        findings.append("current identity has a ruleset bypass capability")
+    if current_bypass != "never":
+        findings.append("current identity bypass capability is not explicitly disabled")
 
     return {
         "result": "pass" if not findings else "fail",

@@ -123,7 +123,7 @@ Un futur profil de mapping opérationnel doit donc porter un témoin de domaine 
 - [R-73 — SACM 2.4 Beta](../references.fr.md#r-73)
 - [R-95 — Sources SysML et ReqIF](../references.fr.md#r-95)
 - [R-102 — W3C PROV-O](../references.fr.md#r-102)
-- [R-234/R-235 — OSLC Core et Resource Shape](../references.fr.md#r-234)
+- [R-234 — OSLC Core](../references.fr.md#r-234) et [R-235 — OSLC Resource Shape](../references.fr.md#r-235)
 - [R-243 — Suivi d'issues SACM 2.3](../references.fr.md#r-243)
 - [R-244 — Issue ReqIF 1.2 sur les types source/cible](../references.fr.md#r-244)
 - [R-245 — Issue SysML 2.1 sur la grammaire de satisfaction d'exigence](../references.fr.md#r-245)

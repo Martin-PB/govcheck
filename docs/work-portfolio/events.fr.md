@@ -15,11 +15,11 @@ Pour consulter les entrées, leur provenance et leurs limites, se reporter au [j
 
 ## Dernier événement enregistré
 
-Le journal canonique a enregistré **WP-EVT-000021** : la PR [#125](https://github.com/Martin-PB/govcheck/pull/125) présente le premier audit bilingue de couverture sémantique du métamodèle et corrige deux failles de typage dans le prototype Lean. Les correspondances opérationnelles sont désormais limitées aux relations dont l'obligation de preuve est explicite ; les propositions approximatives, limitées à la traçabilité ou non prises en charge restent non opérationnelles. Toute cible de nature preuve de théorème exige un terme de preuve de la proposition cible exacte.
+Le journal canonique a maintenant enregistré **WP-EVT-000043**. La PR [#219](https://github.com/Martin-PB/govcheck/pull/219) a intégré l'audit bilingue de couverture de l'Architecture 0006 et créé le suivi candidat #218 pour l'isolation des contrôles fournis par les dépôts. La PR [#220](https://github.com/Martin-PB/govcheck/pull/220) a intégré le corpus adversarial versionné 1.0.0 (22 cas) et son test d'intégrité. Les quatre contrôles CI de chaque PR ont réussi.
 
-La compilation Lean 4.19.0 et l'audit des axiomes ont réussi (36 déclarations auditées, aucune dépendance hors liste autorisée ; les théorèmes explicitement rapportés ne dépendent d'aucun axiome). Les contrôles d'intégrité des références et d'alignement du package ont également réussi. La PR reste ouverte, non fusionnée et fusionnable. L'issue #73 reste ouverte ; aucun métamodèle complet n'est adopté.
+Les limites restent explicites : l'audit n'est pas une certification ; plusieurs attaques restent planifiées ; aucune frontière GitHub d'enforcement, aucun gate distant Pijul, aucun sandbox universel ni relecteur indépendant n'est revendiqué. Les issues #45 et #72 restent ouvertes pour leurs travaux résiduels.
 
-Le détail et la provenance restent dans le [journal canonique en anglais](events.md#wp-evt-000021).
+Détails et provenance : [WP-EVT-000042](events.md#wp-evt-000042) et [WP-EVT-000043](events.md#wp-evt-000043) dans le journal canonique anglais.
 
 
 ## Dernier événement — WP-EVT-000022

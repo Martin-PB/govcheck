@@ -75,6 +75,13 @@ def _validate_record(env: dict[str, str], record: dict[str, Any]) -> None:
         raise PijulJournalError("Pijul native change hashes must be opaque tokens")
     if len(set(native_ids)) != len(native_ids):
         raise PijulJournalError("Pijul native change hashes must be unique")
+    if native_ids != sorted(native_ids):
+        raise PijulJournalError("Pijul native change hashes must use canonical sorted order")
+    expected_change_set_digest = "sha256:" + hashlib.sha256(
+        canonical_json_bytes({"vcsKind": "pijul", "nativeIds": native_ids})
+    ).hexdigest()
+    if change_set["digest"] != expected_change_set_digest:
+        raise PijulJournalError("Pijul change-set digest does not match native change hashes")
     base = record.get("base")
     if base is not None:
         if not isinstance(base, dict) or not isinstance(base.get("nativeRevision"), str) or not base["nativeRevision"]:

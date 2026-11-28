@@ -26,3 +26,6 @@ If any pin is absent or mismatched, the check fails closed. Fork PRs are not sup
 The check verifies a signed receipt and its exact bindings; it does not turn a signature into proof of the underlying decision's correctness. The signed journal statement attests to chain integrity verified at signing time, not the database's future immutability. The candidate tree is hashed by trusted GovCheck code but never executed.
 
 The workflow creates a pending check on PR lifecycle events. To ensure base-branch movement invalidates old results, the ruleset must also require the PR branch to be up to date. A status check alone does not block direct pushes unless the ruleset enforces it. No forge configuration is changed by this ADR.
+
+
+Configuration and activation steps are maintained in the [authenticated receipt check setup guide](../setup/github-authenticated-receipt-check.md), including a local preflight command.

@@ -1,6 +1,6 @@
 # Architecture 0006 — Modèle de menace et de confiance
 
-**Statut :** proposition à examiner ; aucun contrôle de sécurité n'est implémenté. **English:** [0006](0006-threat-and-trust-model.md).
+**Statut :** proposition à examiner ; des prototypes de sécurité bornés existent désormais, mais aucune frontière de sécurité complète ou généralement déployée n'est établie. Voir l'[audit de couverture du 2026-11-28](../research/threat-model-coverage-audit-2026-11-28.fr.md). **English:** [0006](0006-threat-and-trust-model.md).
 
 ## 1. Actifs
 

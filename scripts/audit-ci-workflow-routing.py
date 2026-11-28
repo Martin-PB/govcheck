@@ -137,7 +137,7 @@ def load_glob_policy(root: Path) -> set[str]:
 
 def _read_tla_set(model_text: str, set_name: str, model_path: Path) -> set[str]:
     pattern = re.compile(
-        "^" + re.escape(set_name) + r"\\s*==\\s*\\{(.*?)\\}",
+        "^" + re.escape(set_name) + r"\s*==\s*\{(.*?)\}",
         re.MULTILINE | re.DOTALL,
     )
     match = pattern.search(model_text)
